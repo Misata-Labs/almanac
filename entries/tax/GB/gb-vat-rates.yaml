@@ -1,0 +1,69 @@
+id: gb-vat-rates
+title: United Kingdom VAT rates (standard 20%, reduced 5%, zero 0%)
+kind: rule
+domain: tax
+region: GB
+status: verified
+tier: A
+valid_from: 2011-01-04
+valid_to: null
+spec:
+  implementation: almanac.rules.rate_schedule
+  parameters:
+    slabs:
+      standard: 20
+      reduced: 5
+      zero: 0
+    standard_rate_effective_from: "2011-01-04"
+    previous_standard_rate: 17.5
+    exempt_examples: [postage stamps, financial transactions, property transactions]
+  vectors:
+    - {input: 20, expected: true, origin: source}
+    - {input: 5, expected: true, origin: source}
+    - {input: 0, expected: true, origin: source}
+    - {input: 17.5, expected: false, origin: source, note: the standard rate before 4 January 2011}
+    - {input: 12, expected: false, origin: derived}
+evidence:
+  - publisher: HM Revenue & Customs (GOV.UK)
+    title: "GOV.UK content API item for /vat-rates (JSON)"
+    url: https://www.gov.uk/api/content/vat-rates
+    accessed_at: 2026-10-31
+    locator: "details.body, table row 'Standard rate'"
+    value: "<td>20%</td>"
+    unit: text
+    snippet: "Standard rate</th>"
+    source_license: OGL-UK-3.0
+    content_sha256: 73230e5cc5fc852f7055fd3911b1633c9dda50ebbb06d34ac37b0f47b310effb
+  - publisher: HM Revenue & Customs (GOV.UK)
+    title: "GOV.UK content API item for /vat-rates (JSON)"
+    url: https://www.gov.uk/api/content/vat-rates
+    accessed_at: 2026-10-31
+    locator: "details.body, table rows 'Reduced rate' and 'Zero rate'"
+    value: "<td>5%</td>"
+    unit: text
+    snippet: "Reduced rate</th>"
+    source_license: OGL-UK-3.0
+    content_sha256: 73230e5cc5fc852f7055fd3911b1633c9dda50ebbb06d34ac37b0f47b310effb
+  - publisher: HM Revenue & Customs (GOV.UK)
+    title: "GOV.UK content API item for /vat-rates (JSON)"
+    url: https://www.gov.uk/api/content/vat-rates
+    accessed_at: 2026-10-31
+    locator: "details.body, paragraph after the table"
+    value: "increased to 20% on 4 January 2011 (from 17.5%)"
+    unit: text
+    snippet: "Some things are exempt from"
+    source_license: OGL-UK-3.0
+    content_sha256: 73230e5cc5fc852f7055fd3911b1633c9dda50ebbb06d34ac37b0f47b310effb
+assumed: []
+tests:
+  - {statistic: vector_pass_fraction, expected: 1, tolerance: 0}
+  - {statistic: count, expected: 3, tolerance: 0}
+  - {statistic: "slab[standard]", expected: 20, tolerance: 0}
+  - {statistic: "slab[reduced]", expected: 5, tolerance: 0}
+notes: |
+  The three UK VAT rates as GOV.UK states them: standard 20%, reduced 5% and zero 0%, with the
+  standard rate at 20% since 4 January 2011, which sets valid_from. Exempt supplies carry no
+  rate and are not a slab. The source is the GOV.UK content API's JSON for the page, which is
+  stable between editorial updates; the rendered HTML page carries per-request tokens and is
+  not cited. GOV.UK publishes its content under the Open Government Licence v3.0, stated in the
+  footer of every GOV.UK page.

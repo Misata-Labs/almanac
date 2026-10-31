@@ -1,0 +1,102 @@
+id: gb-census-2021-household-size
+title: England and Wales households by household size, Census 2021
+kind: marginal
+domain: demographics
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2021-03-21'
+  end: '2021-03-21'
+spec:
+  variable: household_size
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        0 people in household: 0.0
+        1 person in household: 0.30189
+        2 people in household: 0.341013
+        3 people in household: 0.159591
+        4 people in household: 0.128404
+        5 people in household: 0.0449
+        6 people in household: 0.015089
+        7 people in household: 0.005275
+        8 or more people in household: 0.003839
+      counts:
+        0 people in household: 0
+        1 person in household: 7481791
+        2 people in household: 8451403
+        3 people in household: 3955168
+        4 people in household: 3182251
+        5 people in household: 1112754
+        6 people in household: 373957
+        7 people in household: 130727
+        8 or more people in household: 95153
+      total: 24783204
+      option_ids:
+        0 people in household: '0'
+        1 person in household: '1'
+        2 people in household: '2'
+        3 people in household: '3'
+        4 people in household: '4'
+        5 people in household: '5'
+        6 people in household: '6'
+        7 people in household: '7'
+        8 or more people in household: '8'
+evidence:
+- publisher: Office for National Statistics
+  title: 'Census 2021 observations: households by hh_size_9a, by country (ONS API)'
+  url: https://api.beta.ons.gov.uk/v1/population-types/HH/census-observations?area-type=ctry&dimensions=hh_size_9a
+  accessed_at: '2026-10-31'
+  locator: observations[ctry=England, hh_size_9a="0 people in household"].observation
+  value: 0
+  unit: count
+  snippet: '"option":"0 people in household","option_id":"0"}],"observation":'
+  source_license: OGL-UK-3.0
+  content_sha256: d5401e382081d1740e831b3b6168e282ca39f0d73389357a17246501ff728d8b
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata TS017 (Household size)
+  url: https://api.beta.ons.gov.uk/v1/datasets/TS017
+  accessed_at: '2026-10-31'
+  locator: description
+  value: The estimates are as at Census Day, 21 March 2021.
+  unit: text
+  snippet: Census Day, 21 March 2021
+  source_license: OGL-UK-3.0
+  content_sha256: 117eba01311bca2f9628a0e4cecf04ea19487c8e39314722990a11952dc01f0f
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata, Population Estimates (licence statement)
+  url: https://api.beta.ons.gov.uk/v1/datasets/mid-year-pop-est
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: b0159564676459d73de7bb2bd78b76e67c94b10a6a5f86a6c5c49e31fa68484d
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total over England and Wales
+  method: derived
+  rationale: The API publishes counts per country; England and Wales are summed and each share is the summed count
+    divided by the total. Any 'Does not apply' category is kept so shares describe the full population base.
+tests:
+- statistic: share["2 people in household"]
+  expected: 0.341013
+  tolerance: 0.002
+- statistic: share["0 people in household"]
+  expected: 0.0
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Census 2021 households of England and Wales by household size from the ONS census observations API (population
+  type HH, dimension hh_size_9a, area type country), summed over England and Wales. Category labels are the ONS
+  labels and option_ids keep the ONS codes. Counts sit beside the shares so they can be re-derived. Reference date
+  is Census Day, 21 March 2021. ONS publishes its datasets under the Open Government Licence v3.0, as the licence
+  field of its dataset metadata states; the census observations endpoint itself carries no licence field.

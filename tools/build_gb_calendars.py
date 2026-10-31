@@ -1,8 +1,8 @@
 """Regenerate the GOV.UK calendar entries from their pinned machine-readable sources.
 
-Both entries are built deterministically from the bank-holiday and
-clock-change JSON files published in alphagov/frontend, plus the English
-labels in its locale file. Run from the repository root:
+The bank holiday entry is built from the JSON endpoint behind
+www.gov.uk/bank-holidays; the clock-change entry from the JSON data and
+English labels published in alphagov/frontend. Run from the repository root:
 
     uv run python tools/build_gb_calendars.py
 """
@@ -21,7 +21,7 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parent.parent
 COMMIT = "b078a86e3d8262f58192a5484b66970de9a9dac7"
 BASE = f"https://raw.githubusercontent.com/alphagov/frontend/{COMMIT}/"
-HOLIDAYS_URL = BASE + "lib/data/bank-holidays.json"
+HOLIDAYS_URL = "https://www.gov.uk/bank-holidays.json"
 CLOCKS_URL = BASE + "lib/data/when-do-the-clocks-change.json"
 LOCALE_URL = BASE + "config/locales/en.yml"
 ACCESSED = date(2026, 10, 31)
@@ -45,7 +45,7 @@ def iso(dmy: str) -> str:
     return datetime.strptime(dmy, "%d/%m/%Y").date().isoformat()
 
 
-def evidence(url: str, title: str, locator: str, value: str, unit: str, snippet: str, content: bytes) -> dict:
+def evidence(url: str, title: str, locator: str, value: str, unit: str, snippet: str, content: bytes, role: str = "primary") -> dict:
     return {
         "publisher": PUBLISHER,
         "title": title,
@@ -57,50 +57,48 @@ def evidence(url: str, title: str, locator: str, value: str, unit: str, snippet:
         "snippet": snippet,
         "source_license": LICENSE,
         "content_sha256": hashlib.sha256(content).hexdigest(),
+        "role": role,
     }
 
 
-def build_bank_holidays(holidays_raw: bytes, locale_raw: bytes) -> dict:
+def build_bank_holidays(holidays_raw: bytes) -> dict:
     data = json.loads(holidays_raw)
-    labels = yaml.safe_load(locale_raw)["en"]["bank_holidays"]
     divisions: dict[str, dict[str, list[dict]]] = {}
-    for slug, name in DIVISIONS.items():
-        years = {k: v for k, v in data["divisions"][slug].items() if k.isdigit()}
-        divisions[name] = {
-            year: [
+    for name in ("england-and-wales", "scotland", "northern-ireland"):
+        by_year: dict[str, list[dict]] = {}
+        for event in data[name]["events"]:
+            by_year.setdefault(event["date"][:4], []).append(
                 {
-                    "date": iso(event["date"]),
-                    "title": labels[event["title"].removeprefix("bank_holidays.")],
-                    "title_key": event["title"],
-                    "substitute_day": event["notes"] == SUBSTITUTE_NOTE,
+                    "date": event["date"],
+                    "title": event["title"],
+                    "substitute_day": event["notes"] == "Substitute day",
                     "bunting": bool(event["bunting"]),
                 }
-                for event in events
-            ]
-            for year, events in sorted(years.items())
-        }
+            )
+        divisions[name] = dict(sorted(by_year.items()))
     years = sorted(next(iter(divisions.values())).keys())
     first_year, last_year = years[0], years[-1]
 
-    ew_2026 = divisions["england-and-wales"]["2026"]
-    sc_2026 = divisions["scotland"]["2026"]
-    ni_2026 = divisions["northern-ireland"]["2026"]
+    def find(division: str, year: str, title: str) -> dict:
+        return next(e for e in divisions[division][year] if e["title"] == title)
+
+    ew_boxing_2026 = find("england-and-wales", "2026", "Boxing Day")
     vectors = [
-        {"input": {"date": ew_2026[-1]["date"], "division": "england-and-wales"}, "expected": True, "origin": "source", "note": "substitute day for Boxing Day"},
+        {"input": {"date": ew_boxing_2026["date"], "division": "england-and-wales"}, "expected": True, "origin": "source", "note": "substitute day for Boxing Day"},
         {"input": {"date": "2026-12-26", "division": "england-and-wales"}, "expected": False, "origin": "derived", "note": "Boxing Day falls on a Saturday and is not itself listed"},
-        {"input": {"date": ew_2026[1]["date"], "division": "england-and-wales"}, "expected": True, "origin": "source", "note": "Good Friday"},
-        {"input": {"date": sc_2026[1]["date"], "division": "scotland"}, "expected": True, "origin": "source", "note": "2nd January"},
+        {"input": {"date": find("england-and-wales", "2026", "Good Friday")["date"], "division": "england-and-wales"}, "expected": True, "origin": "source"},
+        {"input": {"date": find("scotland", "2026", "2nd January")["date"], "division": "scotland"}, "expected": True, "origin": "source"},
         {"input": {"date": "2026-01-02", "division": "england-and-wales"}, "expected": False, "origin": "derived"},
-        {"input": {"date": sc_2026[-3]["date"], "division": "scotland"}, "expected": True, "origin": "source", "note": "St Andrew's Day"},
-        {"input": {"date": ni_2026[1]["date"], "division": "northern-ireland"}, "expected": True, "origin": "source", "note": "St Patrick's Day"},
+        {"input": {"date": find("scotland", "2026", "St Andrew’s Day")["date"], "division": "scotland"}, "expected": True, "origin": "source"},
+        {"input": {"date": find("northern-ireland", "2026", "St Patrick’s Day")["date"], "division": "northern-ireland"}, "expected": True, "origin": "source"},
         {"input": {"date": "2026-03-17", "division": "scotland"}, "expected": False, "origin": "derived"},
-        {"input": {"date": ni_2026[6]["date"], "division": "northern-ireland"}, "expected": True, "origin": "source", "note": "substitute day for the Battle of the Boyne"},
+        {"input": {"date": find("northern-ireland", "2026", "Battle of the Boyne (Orangemen’s Day)")["date"], "division": "northern-ireland"}, "expected": True, "origin": "source", "note": "substitute day for the Battle of the Boyne"},
         {"input": {"date": "2026-07-12", "division": "northern-ireland"}, "expected": False, "origin": "derived", "note": "12 July 2026 is a Sunday"},
-        {"input": {"date": divisions["scotland"]["2025"][6]["date"], "division": "scotland"}, "expected": True, "origin": "source", "note": "substitute day for St Andrew's Day 2025"},
+        {"input": {"date": find("scotland", "2025", "St Andrew’s Day")["date"], "division": "scotland"}, "expected": True, "origin": "source", "note": "substitute day for St Andrew's Day 2025"},
         {"input": {"date": "2025-11-30", "division": "scotland"}, "expected": False, "origin": "derived", "note": "30 November 2025 is a Sunday"},
     ]
     tests = [{"statistic": "vector_pass_fraction", "expected": 1, "tolerance": 0}]
-    for name in DIVISIONS.values():
+    for name in divisions:
         for year in years:
             if int(year) >= 2025:
                 tests.append({"statistic": f"count[{name},{year}]", "expected": len(divisions[name][year]), "tolerance": 0})
@@ -121,32 +119,21 @@ def build_bank_holidays(holidays_raw: bytes, locale_raw: bytes) -> dict:
             "vectors": vectors,
         },
         "evidence": [
-            evidence(HOLIDAYS_URL, "GOV.UK bank holidays data (alphagov/frontend lib/data/bank-holidays.json)", "top-level last_updated", data["last_updated"], "text", '"description": "bank_holidays.calendar.description"', holidays_raw),
-            evidence(HOLIDAYS_URL, "GOV.UK bank holidays data (alphagov/frontend lib/data/bank-holidays.json)", 'divisions["common.nations.england-and-wales_slug"]["2026"][7].date', "28/12/2026", "date", '"title": "bank_holidays.boxing_day"', holidays_raw),
-            evidence(HOLIDAYS_URL, "GOV.UK bank holidays data (alphagov/frontend lib/data/bank-holidays.json)", 'divisions["common.nations.scotland_slug"]["2026"][5].date', "15/06/2026", "date", '"title": "bank_holidays.world_cup"', holidays_raw),
-            evidence(LOCALE_URL, "GOV.UK frontend English locale (config/locales/en.yml)", "en.bank_holidays.late_august", "Summer bank holiday", "text", "late_august: Summer bank holiday", locale_raw),
-            evidence(LOCALE_URL, "GOV.UK frontend English locale (config/locales/en.yml)", "en.common.bank_holiday_on_wkend", "a ‘substitute’ weekday becomes a bank holiday, normally the following Monday", "text", "If a bank holiday is on a weekend", locale_raw),
+            evidence(HOLIDAYS_URL, "GOV.UK bank holidays JSON (www.gov.uk/bank-holidays.json)", 'england-and-wales.events[title="Boxing Day", 2026].date', ew_boxing_2026["date"], "date", '"notes":"Substitute day"', holidays_raw),
+            evidence(HOLIDAYS_URL, "GOV.UK bank holidays JSON (www.gov.uk/bank-holidays.json)", 'scotland.events[title="St Andrew’s Day", 2026].date', find("scotland", "2026", "St Andrew’s Day")["date"], "date", '"title":"St Andrew’s Day"', holidays_raw),
+            evidence(HOLIDAYS_URL, "GOV.UK bank holidays JSON (www.gov.uk/bank-holidays.json)", "northern-ireland.division", "northern-ireland", "text", '"division":"northern-ireland"', holidays_raw),
         ],
-        "assumed": [
-            {
-                "parameter": "divisions.*.*.title",
-                "value": "English label from config/locales/en.yml",
-                "method": "derived",
-                "rationale": "The data file carries locale keys such as bank_holidays.new_year; the English text is joined from the same repository's locale file and the key is kept alongside it.",
-            }
-        ],
+        "assumed": [],
         "tests": tests,
         "notes": (
-            "Dates are the bank holidays GOV.UK publishes for England and Wales, Scotland and Northern "
-            f"Ireland from {first_year} to {last_year}, read from the JSON data behind www.gov.uk/bank-holidays "
-            f"in alphagov/frontend (commit {COMMIT[:8]}, data last updated {data['last_updated']}). Dates are "
-            "converted from DD/MM/YYYY to ISO 8601; substitute_day is true where the source notes a substitute "
-            "day and bunting is copied unchanged. Bank holidays are set by the Banking and Financial Dealings "
-            "Act 1971 and by royal proclamation; the source is maintained by the Government Digital Service "
-            "under the MIT licence and GOV.UK content is also available under the Open Government Licence v3. "
-            "Future years can change by proclamation, so re-run the verifier before relying on them. The "
-            "Scotland list for 2026 includes a World Cup bank holiday on 15 June 2026 exactly as published; "
-            "it is flagged for human review. Division names are derived from the source slugs."
+            "Dates are the bank holidays GOV.UK publishes for England and Wales, Scotland and Northern Ireland from "
+            f"{first_year} to {last_year}, read from the JSON endpoint behind www.gov.uk/bank-holidays. Titles are the "
+            "English titles the endpoint carries; substitute_day is true where the source notes a substitute day and "
+            "bunting is copied unchanged. Bank holidays are set by the Banking and Financial Dealings Act 1971 and by royal "
+            "proclamation; future years can change by proclamation, so re-run the verifier before relying on them. The "
+            "endpoint is maintained by the Government Digital Service. GOV.UK publishes its content under the Open "
+            "Government Licence v3.0, stated in the footer of every GOV.UK page; those pages render dynamically and are "
+            "not hashed here. The Scotland list for 2026 includes a World Cup bank holiday exactly as published."
         ),
     }
 
@@ -216,7 +203,7 @@ def write(entry: dict, path: Path) -> None:
 def main() -> int:
     holidays_raw, clocks_raw, locale_raw = fetch(HOLIDAYS_URL), fetch(CLOCKS_URL), fetch(LOCALE_URL)
     target = REPO_ROOT / "entries" / "calendar" / "GB"
-    write(build_bank_holidays(holidays_raw, locale_raw), target / "gb-bank-holidays.yaml")
+    write(build_bank_holidays(holidays_raw), target / "gb-bank-holidays.yaml")
     write(build_clock_change(clocks_raw, locale_raw), target / "gb-clock-change.yaml")
     return 0
 

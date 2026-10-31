@@ -6,6 +6,13 @@ readme = "README.md"
 license = "Apache-2.0"
 license-files = ["LICENSE"]
 authors = [{ name = "Muhammed Rasin" }]
+keywords = ["synthetic data", "test data", "data validation", "check digit", "identifier formats", "tax rates", "bank holidays", "official statistics", "reference data", "data quality"]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Database",
+    "Topic :: Software Development :: Testing",
+]
 requires-python = ">=3.13"
 dependencies = [
     "httpx>=0.28",
@@ -14,6 +21,12 @@ dependencies = [
     "pypdf>=6.21.4",
     "pyyaml>=6.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/Misata-labs/almanac"
+Repository = "https://github.com/Misata-labs/almanac"
+Catalogue = "https://github.com/Misata-labs/almanac/blob/main/CATALOGUE.md"
+Misata = "https://pypi.org/project/misata/"
 
 [project.scripts]
 almanac = "almanac.cli:main"

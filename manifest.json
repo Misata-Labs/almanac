@@ -1,0 +1,715 @@
+{
+  "name": "Misata Almanac",
+  "description": "An open, proof-backed knowledge base of real-world data rules and patterns for synthetic data generation: check-digit algorithms, identifier formats, tax rates, calendars, code lists, and distributions from official statistics, each cited to a primary source with a content hash and executable tests.",
+  "repository": "https://github.com/Misata-labs/almanac",
+  "creator": "Muhammed Rasin",
+  "schema": "https://raw.githubusercontent.com/Misata-labs/almanac/main/schema/entry.schema.json",
+  "license": {
+    "entries": "ODbL-1.0",
+    "code": "Apache-2.0"
+  },
+  "entry_count": 31,
+  "entries": [
+    {
+      "id": "gb-bank-holidays",
+      "title": "United Kingdom bank holidays by nation, 2019 to 2028",
+      "kind": "rule",
+      "domain": "calendar",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2019-01-01 to 2028-12-31",
+      "publishers": [
+        "Government Digital Service (GOV.UK)"
+      ],
+      "source_licenses": [
+        "MIT"
+      ],
+      "path": "entries/calendar/GB/gb-bank-holidays.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/calendar/GB/gb-bank-holidays.yaml",
+      "valid_from": "2019-01-01",
+      "valid_to": "2028-12-31",
+      "implementation": "almanac.rules.gb_bank_holidays",
+      "vectors": 12
+    },
+    {
+      "id": "gb-clock-change",
+      "title": "United Kingdom clock changes (British Summer Time), 2025 to 2028",
+      "kind": "rule",
+      "domain": "calendar",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-01-01 to 2028-12-31",
+      "publishers": [
+        "Government Digital Service (GOV.UK)"
+      ],
+      "source_licenses": [
+        "MIT"
+      ],
+      "path": "entries/calendar/GB/gb-clock-change.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/calendar/GB/gb-clock-change.yaml",
+      "valid_from": "2025-01-01",
+      "valid_to": "2028-12-31",
+      "implementation": "almanac.rules.gb_clock_change",
+      "vectors": 4
+    },
+    {
+      "id": "gb-company-type-and-status-codes",
+      "title": "United Kingdom Companies House company type and company status codes",
+      "kind": "rule",
+      "domain": "company",
+      "region": "GB",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-09-11 to open",
+      "publishers": [
+        "Companies House"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "path": "entries/company/GB/gb-company-type-and-status-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/company/GB/gb-company-type-and-status-codes.yaml",
+      "valid_from": "2026-09-11",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 10
+    },
+    {
+      "id": "gb-email-address-acceptance",
+      "title": "Email address acceptance pattern used by HM Revenue & Customs services",
+      "kind": "rule",
+      "domain": "contact",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-09-27 to open",
+      "publishers": [
+        "HM Revenue & Customs"
+      ],
+      "source_licenses": [
+        "Apache-2.0"
+      ],
+      "path": "entries/contact/GB/gb-email-address-acceptance.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/contact/GB/gb-email-address-acceptance.yaml",
+      "valid_from": "2024-09-27",
+      "valid_to": null,
+      "implementation": "almanac.rules.gb_email_address",
+      "vectors": 13
+    },
+    {
+      "id": "global-ecb-euro-fx-reference-rates-monthly-2025",
+      "title": "ECB euro foreign exchange reference rates, monthly averages 2025 (USD, GBP, JPY, INR, BRL, CNY, CHF per EUR)",
+      "kind": "temporal",
+      "domain": "currency",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "European Central Bank"
+      ],
+      "source_licenses": [
+        "ECB-free-use-with-attribution"
+      ],
+      "path": "entries/currency/global/global-ecb-euro-fx-reference-rates-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/currency/global/global-ecb-euro-fx-reference-rates-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "usd_per_eur"
+    },
+    {
+      "id": "global-iso4217-currency-minor-units",
+      "title": "ISO 4217 current currency codes with numeric codes and minor units, list published 2026-09-17",
+      "kind": "rule",
+      "domain": "currency",
+      "region": "global",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-09-17 to open",
+      "publishers": [
+        "SIX Financial Information (ISO 4217 Maintenance Agency)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "path": "entries/currency/global/global-iso4217-currency-minor-units.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/currency/global/global-iso4217-currency-minor-units.yaml",
+      "valid_from": "2026-09-17",
+      "valid_to": null,
+      "implementation": "almanac.rules.currency_minor_units",
+      "vectors": 12
+    },
+    {
+      "id": "gb-census-2021-accommodation-type",
+      "title": "England and Wales households by accommodation type, Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-accommodation-type.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-accommodation-type.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "accommodation_type"
+    },
+    {
+      "id": "gb-census-2021-age",
+      "title": "England and Wales usual residents by single year of age, Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-age.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-age.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "age"
+    },
+    {
+      "id": "gb-census-2021-car-availability",
+      "title": "England and Wales households by car or van availability, Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-car-availability.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-car-availability.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "car_or_van_availability"
+    },
+    {
+      "id": "gb-census-2021-economic-activity",
+      "title": "England and Wales usual residents aged 16 and over by economic activity status (12 categories), Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-economic-activity.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-economic-activity.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "economic_activity_status"
+    },
+    {
+      "id": "gb-census-2021-ethnic-group",
+      "title": "England and Wales usual residents by ethnic group (20 categories), Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-ethnic-group.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-ethnic-group.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "ethnic_group"
+    },
+    {
+      "id": "gb-census-2021-general-health",
+      "title": "England and Wales usual residents by general health, Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-general-health.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-general-health.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "general_health"
+    },
+    {
+      "id": "gb-census-2021-highest-qualification",
+      "title": "England and Wales usual residents aged 16 and over by highest level of qualification, Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-highest-qualification.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-highest-qualification.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "highest_qualification"
+    },
+    {
+      "id": "gb-census-2021-household-size",
+      "title": "England and Wales households by household size, Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-household-size.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-household-size.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "household_size"
+    },
+    {
+      "id": "gb-census-2021-marital-status",
+      "title": "England and Wales usual residents aged 16 and over by marital and civil partnership status, Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-marital-status.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-marital-status.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "legal_partnership_status"
+    },
+    {
+      "id": "gb-census-2021-religion",
+      "title": "England and Wales usual residents by religion, Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-religion.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-religion.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "religion"
+    },
+    {
+      "id": "gb-census-2021-sex",
+      "title": "England and Wales usual residents by sex, Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-sex.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-sex.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "sex"
+    },
+    {
+      "id": "gb-census-2021-tenure",
+      "title": "England and Wales households by tenure, Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-tenure.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-tenure.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "tenure"
+    },
+    {
+      "id": "global-population-by-economy-2024",
+      "title": "World population by economy, 2024 (World Bank, 217 economies)",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "path": "entries/demographics/global/global-population-by-economy-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/global/global-population-by-economy-2024.yaml",
+      "observed_period": {
+        "start": "2024-01-01",
+        "end": "2024-12-31"
+      },
+      "variable": "economy_iso3"
+    },
+    {
+      "id": "br-cnpj-check-digits",
+      "title": "Brazil CNPJ check digits (modulus 11) for numeric and alphanumeric registrations",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "BR",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-07-01 to open",
+      "publishers": [
+        "Secretaria Especial da Receita Federal do Brasil",
+        "SERPRO (Serviço Federal de Processamento de Dados)"
+      ],
+      "source_licenses": [
+        "CC-BY-ND-3.0",
+        "unstated"
+      ],
+      "path": "entries/identifiers/BR/br-cnpj-check-digits.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/BR/br-cnpj-check-digits.yaml",
+      "valid_from": "2026-07-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.br_cnpj",
+      "vectors": 6
+    },
+    {
+      "id": "gb-nino-format",
+      "title": "United Kingdom National Insurance number (NINO) format",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-08-11 to open",
+      "publishers": [
+        "HM Revenue & Customs"
+      ],
+      "source_licenses": [
+        "Apache-2.0"
+      ],
+      "path": "entries/identifiers/GB/gb-nino-format.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/GB/gb-nino-format.yaml",
+      "valid_from": "2025-08-11",
+      "valid_to": null,
+      "implementation": "almanac.rules.gb_nino",
+      "vectors": 28
+    },
+    {
+      "id": "gb-utr-check-digit",
+      "title": "United Kingdom Unique Taxpayer Reference (UTR) modulus-11 check digit",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-08-11 to open",
+      "publishers": [
+        "HM Revenue & Customs"
+      ],
+      "source_licenses": [
+        "Apache-2.0"
+      ],
+      "path": "entries/identifiers/GB/gb-utr-check-digit.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/GB/gb-utr-check-digit.yaml",
+      "valid_from": "2025-08-11",
+      "valid_to": null,
+      "implementation": "almanac.rules.gb_utr",
+      "vectors": 23
+    },
+    {
+      "id": "gb-vrn-check-digits",
+      "title": "United Kingdom VAT registration number (VRN) MOD 97 and MOD 9755 check digits",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-08-11 to open",
+      "publishers": [
+        "HM Revenue & Customs"
+      ],
+      "source_licenses": [
+        "Apache-2.0"
+      ],
+      "path": "entries/identifiers/GB/gb-vrn-check-digits.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/GB/gb-vrn-check-digits.yaml",
+      "valid_from": "2025-08-11",
+      "valid_to": null,
+      "implementation": "almanac.rules.gb_vrn",
+      "vectors": 7
+    },
+    {
+      "id": "br-pix-identifier-formats",
+      "title": "Brazil Pix identifier formats (txid, EndToEndId, CPF, CNPJ, ISPB, amount)",
+      "kind": "rule",
+      "domain": "payments",
+      "region": "BR",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-10-29 to open",
+      "publishers": [
+        "Banco Central do Brasil"
+      ],
+      "source_licenses": [
+        "Apache-2.0"
+      ],
+      "path": "entries/payments/BR/br-pix-identifier-formats.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/BR/br-pix-identifier-formats.yaml",
+      "valid_from": "2026-10-29",
+      "valid_to": null,
+      "implementation": "almanac.rules.br_pix_identifiers",
+      "vectors": 18
+    },
+    {
+      "id": "br-pix-key-types",
+      "title": "Brazil Pix keys registered in the DICT by key type, snapshot 2026-09-30",
+      "kind": "marginal",
+      "domain": "payments",
+      "region": "BR",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2026-09-30 to 2026-09-30",
+      "publishers": [
+        "Banco Central do Brasil"
+      ],
+      "source_licenses": [
+        "ODbL-1.0"
+      ],
+      "path": "entries/payments/BR/br-pix-key-types.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/BR/br-pix-key-types.yaml",
+      "observed_period": {
+        "start": "2026-09-30",
+        "end": "2026-09-30"
+      },
+      "variable": "pix_key_type"
+    },
+    {
+      "id": "br-pix-monthly-volume-and-value",
+      "title": "Brazil Pix monthly transaction volume, value and average ticket, 2024-01 to 2026-09",
+      "kind": "temporal",
+      "domain": "payments",
+      "region": "BR",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2024-01-01 to 2026-09-30",
+      "publishers": [
+        "Banco Central do Brasil"
+      ],
+      "source_licenses": [
+        "ODbL-1.0"
+      ],
+      "path": "entries/payments/BR/br-pix-monthly-volume-and-value.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/BR/br-pix-monthly-volume-and-value.yaml",
+      "observed_period": {
+        "start": "2024-01-01",
+        "end": "2026-09-30"
+      },
+      "variable": "pix_average_ticket_brl"
+    },
+    {
+      "id": "global-central-bank-policy-rates-monthly-2025",
+      "title": "Central bank policy rates, monthly 2025 (US, GB, euro area, JP, BR, IN, CH, CA, AU)",
+      "kind": "temporal",
+      "domain": "rates",
+      "region": "global",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Bank for International Settlements"
+      ],
+      "source_licenses": [
+        "BIS terms and conditions (statistics subject to 'About BIS statistics' terms)"
+      ],
+      "path": "entries/rates/global/global-central-bank-policy-rates-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/rates/global/global-central-bank-policy-rates-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "us_percent"
+    },
+    {
+      "id": "gb-hmrc-payment-reference-check-characters",
+      "title": "HM Revenue & Customs payment reference check characters (PAYE Accounts Office, other taxes, SDLT)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-08-11 to open",
+      "publishers": [
+        "HM Revenue & Customs"
+      ],
+      "source_licenses": [
+        "Apache-2.0"
+      ],
+      "path": "entries/tax/GB/gb-hmrc-payment-reference-check-characters.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/GB/gb-hmrc-payment-reference-check-characters.yaml",
+      "valid_from": "2025-08-11",
+      "valid_to": null,
+      "implementation": "almanac.rules.gb_hmrc_reference",
+      "vectors": 86
+    },
+    {
+      "id": "gb-tax-code-format",
+      "title": "United Kingdom PAYE tax code format",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-08-11 to open",
+      "publishers": [
+        "HM Revenue & Customs"
+      ],
+      "source_licenses": [
+        "Apache-2.0"
+      ],
+      "path": "entries/tax/GB/gb-tax-code-format.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/GB/gb-tax-code-format.yaml",
+      "valid_from": "2025-08-11",
+      "valid_to": null,
+      "implementation": "almanac.rules.gb_tax_code",
+      "vectors": 26
+    },
+    {
+      "id": "gb-vat-rates",
+      "title": "United Kingdom VAT rates (standard 20%, reduced 5%, zero 0%)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2011-01-04 to open",
+      "publishers": [
+        "HM Revenue & Customs (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "path": "entries/tax/GB/gb-vat-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/GB/gb-vat-rates.yaml",
+      "valid_from": "2011-01-04",
+      "valid_to": null,
+      "implementation": "almanac.rules.rate_schedule",
+      "vectors": 5
+    },
+    {
+      "id": "in-gst-rate-structure",
+      "title": "India GST rate structure after the 56th GST Council meeting (merit 5%, standard 18%, de-merit 40%)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2025-09-22 to open",
+      "publishers": [
+        "GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)"
+      ],
+      "source_licenses": [
+        "GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement"
+      ],
+      "path": "entries/tax/IN/in-gst-rate-structure.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/IN/in-gst-rate-structure.yaml",
+      "valid_from": "2025-09-22",
+      "valid_to": null,
+      "implementation": "almanac.rules.rate_schedule",
+      "vectors": 6
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="300" viewBox="0 0 960 300" role="img" aria-label="Three panels of synthetic data failing real-world checks, and one that passes">
+  <style>
+    .panel { fill: #ffffff; stroke: #cbd5e1; }
+    .cap { font: 700 13px ui-sans-serif, system-ui, sans-serif; fill: #0f172a; }
+    .mono { font: 12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #334155; }
+    .bad { font: 700 12px ui-monospace, Menlo, monospace; fill: #dc2626; }
+    .good { font: 700 12px ui-monospace, Menlo, monospace; fill: #16a34a; }
+    .muted { font: italic 11px ui-sans-serif, system-ui, sans-serif; fill: #64748b; }
+  </style>
+  <rect width="960" height="300" rx="16" fill="#f1f5f9"/>
+  <text x="24" y="34" class="cap" font-size="16">Synthetic data in the wild, before and after the Almanac</text>
+
+  <g transform="translate(24 54)">
+    <rect class="panel" width="216" height="222" rx="10"/>
+    <text x="14" y="26" class="cap">Panel 1: the invoice</text>
+    <text x="14" y="54" class="mono">VAT no.  GB123456789</text>
+    <text x="14" y="72" class="mono">date     2026-12-28</text>
+    <text x="14" y="90" class="mono">amount   ¥1,234.56</text>
+    <text x="14" y="128" class="bad">✗ check digits fail MOD 97</text>
+    <text x="14" y="146" class="bad">✗ bank holiday (substitute day)</text>
+    <text x="14" y="164" class="bad">✗ yen has no minor units</text>
+    <text x="14" y="202" class="muted">Three strikes in nine fields.</text>
+  </g>
+
+  <g transform="translate(260 54)">
+    <rect class="panel" width="216" height="222" rx="10"/>
+    <text x="14" y="26" class="cap">Panel 2: the customer</text>
+    <text x="14" y="54" class="mono">NINO     AO 12 34 56 E</text>
+    <text x="14" y="72" class="mono">tax code 0500L</text>
+    <text x="14" y="90" class="mono">e-mail   a@.uk</text>
+    <text x="14" y="128" class="bad">✗ O never in position 2, E no suffix</text>
+    <text x="14" y="146" class="bad">✗ leading zero</text>
+    <text x="14" y="164" class="bad">✗ domain starts with a dot</text>
+    <text x="14" y="202" class="muted">HMRC would bounce all three.</text>
+  </g>
+
+  <g transform="translate(496 54)">
+    <rect class="panel" width="216" height="222" rx="10"/>
+    <text x="14" y="26" class="cap">Panel 3: the Pix</text>
+    <text x="14" y="54" class="mono">txid   7978c0c9-7ea8-47e7</text>
+    <text x="14" y="72" class="mono">CNPJ   12.ABC.345/01DE-53</text>
+    <text x="14" y="90" class="mono">valor  100</text>
+    <text x="14" y="128" class="bad">✗ hyphens outside the alphabet</text>
+    <text x="14" y="146" class="bad">✗ check digits should read 35</text>
+    <text x="14" y="164" class="bad">✗ two decimals are mandatory</text>
+    <text x="14" y="202" class="muted">Banco Central says no.</text>
+  </g>
+
+  <g transform="translate(732 54)">
+    <rect class="panel" width="204" height="222" rx="10" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="14" y="26" class="cap">Panel 4: with the Almanac</text>
+    <text x="14" y="54" class="mono">VAT no.  101747696</text>
+    <text x="14" y="72" class="mono">NINO     AB 12 34 56 C</text>
+    <text x="14" y="90" class="mono">CNPJ     12.ABC.345/01DE-35</text>
+    <text x="14" y="128" class="good">✓ MOD 97, from HMRC's own vectors</text>
+    <text x="14" y="146" class="good">✓ prefix and suffix rules</text>
+    <text x="14" y="164" class="good">✓ Receita Federal's worked example</text>
+    <text x="14" y="202" class="muted">Every line has a receipt.</text>
+    <g transform="translate(150 20) rotate(12)">
+      <rect x="-28" y="-10" width="56" height="20" rx="3" fill="none" stroke="#16a34a" stroke-width="2"/>
+      <text x="0" y="4" text-anchor="middle" class="good" font-size="10">PASS</text>
+      <animate attributeName="opacity" values="0;0;1;1;1" keyTimes="0;0.4;0.5;0.9;1" dur="3s" repeatCount="indefinite"/>
+    </g>
+  </g>
+</svg>

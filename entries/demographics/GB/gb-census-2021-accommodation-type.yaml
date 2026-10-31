@@ -1,0 +1,99 @@
+id: gb-census-2021-accommodation-type
+title: England and Wales households by accommodation type, Census 2021
+kind: marginal
+domain: demographics
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2021-03-21'
+  end: '2021-03-21'
+spec:
+  variable: accommodation_type
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Detached: 0.232143
+        Semi-detached: 0.31514
+        Terraced: 0.231587
+        In a purpose-built block of flats or tenement: 0.166501
+        Part of a converted or shared house, including bedsits: 0.03412
+        Part of another converted building, for example, former school, church or warehouse: 0.00789
+        In a commercial building, for example, in an office building, hotel or over a shop: 0.008411
+        A caravan or other mobile or temporary structure: 0.004207
+      counts:
+        Detached: 5753254
+        Semi-detached: 7810175
+        Terraced: 5739467
+        In a purpose-built block of flats or tenement: 4126433
+        Part of a converted or shared house, including bedsits: 845604
+        Part of another converted building, for example, former school, church or warehouse: 195547
+        In a commercial building, for example, in an office building, hotel or over a shop: 208456
+        A caravan or other mobile or temporary structure: 104262
+      total: 24783198
+      option_ids:
+        Detached: '1'
+        Semi-detached: '2'
+        Terraced: '3'
+        In a purpose-built block of flats or tenement: '4'
+        Part of a converted or shared house, including bedsits: '5'
+        Part of another converted building, for example, former school, church or warehouse: '6'
+        In a commercial building, for example, in an office building, hotel or over a shop: '7'
+        A caravan or other mobile or temporary structure: '8'
+evidence:
+- publisher: Office for National Statistics
+  title: 'Census 2021 observations: households by accommodation_type, by country (ONS API)'
+  url: https://api.beta.ons.gov.uk/v1/population-types/HH/census-observations?area-type=ctry&dimensions=accommodation_type
+  accessed_at: '2026-10-31'
+  locator: observations[ctry=England, accommodation_type="Detached"].observation
+  value: 5368859
+  unit: count
+  snippet: '"option":"Detached","option_id":"1"}],"observation":'
+  source_license: OGL-UK-3.0
+  content_sha256: 52f7d40f43b91535a736ef9d2e5f1b8e071eb35b1b6669c8c3a12aaa65427d35
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata TS044 (Accommodation type)
+  url: https://api.beta.ons.gov.uk/v1/datasets/TS044
+  accessed_at: '2026-10-31'
+  locator: description
+  value: The estimates are as at Census Day, 21 March 2021.
+  unit: text
+  snippet: Census Day, 21 March 2021
+  source_license: OGL-UK-3.0
+  content_sha256: 32c90836c25a561b4b843b79d8a043b41b1a853a973f2ae6f67b1e4c2e6f2048
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata, Population Estimates (licence statement)
+  url: https://api.beta.ons.gov.uk/v1/datasets/mid-year-pop-est
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: b0159564676459d73de7bb2bd78b76e67c94b10a6a5f86a6c5c49e31fa68484d
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total over England and Wales
+  method: derived
+  rationale: The API publishes counts per country; England and Wales are summed and each share is the summed count
+    divided by the total. Any 'Does not apply' category is kept so shares describe the full population base.
+tests:
+- statistic: share["Semi-detached"]
+  expected: 0.31514
+  tolerance: 0.002
+- statistic: share["A caravan or other mobile or temporary structure"]
+  expected: 0.004207
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Census 2021 households of England and Wales by accommodation type from the ONS census observations API (population
+  type HH, dimension accommodation_type, area type country), summed over England and Wales. Category labels are
+  the ONS labels and option_ids keep the ONS codes. Counts sit beside the shares so they can be re-derived. Reference
+  date is Census Day, 21 March 2021. ONS publishes its datasets under the Open Government Licence v3.0, as the licence
+  field of its dataset metadata states; the census observations endpoint itself carries no licence field.

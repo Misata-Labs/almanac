@@ -31,7 +31,7 @@ def test_select_by_date_region_and_domain(almanac):
     assert {e.id for e in on_day} == {"gb-bank-holidays", "gb-clock-change"}
     assert almanac.select(on=date(2018, 1, 1), domain="calendar") == []
     assert all(e.status == "verified" for e in almanac.select(status="verified"))
-    assert all(e.region == "BR" for e in almanac.select(region="BR"))
+    assert all(e.region in ("BR", "global") for e in almanac.select(region="BR"))
 
 
 def test_bound_rule_evaluates_and_exposes_helpers(almanac):

@@ -1,65 +1,58 @@
+<p align="center">
+  <img src="docs/assets/hero.svg" alt="Misata Almanac: the rules real-world data obeys, with receipts" width="100%">
+</p>
+
 # Misata Almanac
 
-**Real-world data has rules. Synthetic data usually breaks them.**
+**The open rulebook for synthetic data that survives contact with reality.**
 
-A VAT number whose check digits fail. An invoice dated on a bank holiday. A
-tax code with a leading zero. A Pix transaction id with a hyphen. These are
-the details that make generated data useless the moment it meets a real
-validator, a real reconciliation job, or a real analyst.
-
-The Almanac is an open knowledge base of those rules and patterns, written
-so that every value can be traced to the official body that published it,
-re-fetched, and re-checked. The [Misata](https://pypi.org/project/misata/)
-synthetic data engine reads it to generate data that passes the same checks
-the real thing passes.
+Check-digit algorithms, identifier formats, tax rates, bank holidays, currency
+minor units, code lists, and distributions from official statistics. Every
+value traced to the statistical office, central bank, regulator or standards
+body that published it, with the exact URL, the SHA-256 of what was fetched,
+and the tests that prove it still holds. The [Misata](https://pypi.org/project/misata/)
+synthetic data engine reads this archive so the data it generates passes the
+same validators, reconciliations and sanity checks that real data passes.
 
 Created and edited by Muhammed Rasin.
 
-## The promise
+<p align="center">
+  <img src="docs/assets/wild-synthetic-data.svg" alt="Three panels of synthetic data failing real-world checks and one panel passing with the Almanac" width="100%">
+</p>
 
-Every entry carries its own proof.
+## Why this exists
 
-- **No value from memory.** Every number, pattern, date, and code list was
-  fetched from a primary source while the entry was written, and the entry
-  records the exact URL, the SHA-256 of what was fetched, where in the
-  resource the value sits, and a snippet that locates it.
-- **Primary sources only.** Statistical offices, central banks, ministries
-  and regulators, intergovernmental bodies, official operators of payment
-  and numbering systems, peer-reviewed open-access papers. Nothing else.
-- **Executable.** Rules ship with a typed Python implementation and test
-  vectors taken from the source's own worked examples. Distributions ship
-  with the statistics the source publishes, and the verifier reproduces them
-  by sampling.
-- **Dated.** Every entry says when it applied, so you can ask what the world
-  looked like on a given day.
-- **Re-verifiable by anyone.** `uv run almanac verify` re-fetches every
-  source and fails loudly if anything drifted.
+Most generated data is wrong in ways that only show up later. A VAT number
+whose check digits do not add up. A payment dated on a bank holiday. A yen
+amount with two decimals. A tax code with a leading zero. A Pix transaction id
+with hyphens in it. Each one is small; together they are why synthetic data
+gets thrown out the moment it meets a real system.
 
-## Try it
+The fix is not cleverness. It is knowing the rules, knowing where they come
+from, and being able to prove it. That is what an almanac is for.
+
+<p align="center">
+  <img src="docs/assets/proof-chain.svg" alt="The proof chain: primary source, exact URL, sha256, locator and snippet, test vectors, verifier" width="100%">
+</p>
+
+## What you get
+
+| | |
+| --- | --- |
+| **Rules you can run** | Modulus checks, formats, calendars and rate schedules implemented in typed Python, with test vectors taken from the publisher's own examples. |
+| **Distributions you can sample** | Census marginals, population weights, payment key mixes, FX and policy-rate series, each with the published counts beside the derived shares. |
+| **Proof you can re-run** | `almanac verify` re-fetches every source, checks the hash, finds the snippet and the value, runs every vector, and reproduces every statistic. |
+| **Time you can ask about** | Every entry says when it applied. `almanac applies --on 2026-06-15` answers for any date. |
+| **Indexes for machines** | `manifest.json`, `dataset.jsonld` (schema.org) and `llms.txt` so search engines, data catalogues and AI agents find the right entry without reading YAML. |
+
+## Thirty seconds
 
 ```
 uv sync
 uv run almanac verify                      # re-fetch and re-check every entry
 uv run almanac applies --on 2026-06-15     # which entries applied on that date
 uv run almanac show gb-utr-check-digit     # the provenance card for one entry
-uv run almanac catalogue                   # the table in CATALOGUE.md
 ```
-
-A verifier run looks like this:
-
-```
-[PASS] gb-utr-check-digit  (entries/identifiers/GB/gb-utr-check-digit.yaml)
-    PASS evidence[0]
-    PASS vectors  23/23 passed
-    PASS test vector_pass_fraction  observed 1, expected 1 ± 0
-[PASS] br-pix-monthly-volume-and-value  (entries/payments/BR/br-pix-monthly-volume-and-value.yaml)
-    PASS evidence[0]
-    PASS test column[quantity_thousands,2026-09]  observed 7.89294e+06, expected 7892936.44 ± 0
-...
-15 passed, 0 failed, 15 entries
-```
-
-And from Python:
 
 ```python
 from datetime import date
@@ -67,50 +60,44 @@ from almanac.api import Almanac
 
 almanac = Almanac.load()
 
-utr = almanac.rule("gb-utr-check-digit")
-utr.call("check_digit", "234567890")            # '2'
-utr.evaluate({"reference": "2234567890K", "scheme": "sa"})  # True
+almanac.rule("gb-utr-check-digit").call("check_digit", "234567890")        # '2'
+almanac.rule("br-cnpj-check-digits").call("check_digits", "12.ABC.345/01DE") # '35'
+almanac.rule("global-iso4217-currency-minor-units").call("minor_units", "JPY") # 0
+almanac.rule("gb-bank-holidays").call("is_bank_holiday", date(2026, 12, 28), division="england-and-wales")  # True
 
-holidays = almanac.rule("gb-bank-holidays")
-holidays.call("is_bank_holiday", date(2026, 12, 28), division="england-and-wales")  # True
-
-for entry in almanac.select(on=date(2026, 6, 15), region="GB"):
+for entry in almanac.select(on=date(2026, 6, 15), region="GB", kind="rule"):
     print(entry.id, entry.tier, entry.status)
 ```
 
-## What is in it
+## What is in the archive
 
-See [CATALOGUE.md](CATALOGUE.md) for the generated table. Highlights:
+See [CATALOGUE.md](CATALOGUE.md) for the generated table. By domain:
 
-- **UK identifiers from HM Revenue & Customs' own validation library**:
-  National Insurance numbers, Unique Taxpayer References (modulus 11),
-  VAT registration numbers (MOD 97 and MOD 9755), PAYE tax codes, and the
-  modulus-23 check characters on PAYE, SDLT and other-tax payment references.
-  Every vector is one HMRC uses in its own test suite.
-- **UK calendars from GOV.UK**: bank holidays for England and Wales,
-  Scotland and Northern Ireland for 2019 to 2028, and the clock-change
+- **Identifiers**: UK National Insurance numbers, Unique Taxpayer References,
+  VAT registration numbers and PAYE, SDLT and other-tax payment references
+  from HM Revenue & Customs' own validation library; Brazil CNPJ check digits
+  from Receita Federal's worked example.
+- **Payments**: Brazil Pix identifier formats from the Banco Central do Brasil
+  API specification, monthly Pix volume, value and average ticket, and the mix
+  of Pix key types registered in the DICT.
+- **Currency**: ISO 4217 codes with numeric codes and minor units from the
+  maintenance agency's list; ECB euro reference rates, monthly 2025, for seven
+  currencies.
+- **Tax**: UK VAT rates with the 2011 effective date, UK PAYE tax code format,
+  and the India GST slab structure after the 56th GST Council meeting.
+- **Calendar**: UK bank holidays by nation, 2019 to 2028, and the clock-change
   rule with its published dates.
-- **Brazil Pix from Banco Central do Brasil**: identifier formats (txid,
-  EndToEndId, CPF, CNPJ, ISPB, amounts) from the API specification, and a
-  monthly series of transaction counts, settled value and the derived
-  average ticket from the bank's open data API, under ODbL.
-- **Brazil CNPJ check digits** for numeric and alphanumeric registrations,
-  from Receita Federal's own worked example, with the remainder rule from
-  SERPRO's calculation note.
-- **England and Wales Census 2021 distributions** from the ONS API: usual
-  residents by sex and by single year of age (101 categories), with counts
-  kept beside the derived shares so the verifier reproduces them by sampling.
-- **India GST rate structure** after the 56th GST Council meeting (merit 5%,
-  standard 18%, de-merit 40%, effective 22 September 2025) from the Council
-  Secretariat's published release and FAQ, held at `license-review` because
-  the Council's copyright policy asks for permission by email.
-- **Companies House code lists**: company type and company status codes,
-  held at `license-review` until the publisher's terms for the file are
-  confirmed.
+- **Demographics**: twelve Census 2021 marginals for England and Wales (sex,
+  single year of age, ethnic group, religion, marital status, economic
+  activity, general health, highest qualification, household size, tenure, car
+  availability, accommodation type) and world population weights by economy.
+- **Rates**: central bank policy rates for nine economies, monthly 2025.
+- **Company and contact**: Companies House company type and status codes; the
+  email address pattern HMRC services accept.
 
-[WANTED.md](WANTED.md) lists the entries we most want next, each with the
-official body to source it from. If you know a national numbering scheme or
-a statistical release well, that is the place to start.
+Entries whose source terms are not clearly permissive stay at
+`license-review` and say so. [WANTED.md](WANTED.md) lists what we want next,
+each with the official body to source it from.
 
 ## Anatomy of an entry
 
@@ -142,8 +129,9 @@ tests:
 
 `spec` is what a data engine executes. `evidence` is why you should believe
 it; an item marked `role: supporting` documents context such as units or
-licence terms and may be a PDF or web page even in a tier A entry. `assumed` is where anything restated, converted, fitted or guessed is
-confessed, with the method. `tests` is what the verifier reproduces.
+licence terms. `assumed` is where anything restated, converted, fitted or
+guessed is confessed, with the method. `tests` is what the verifier
+reproduces.
 
 ## Evidence tiers
 
@@ -159,8 +147,8 @@ confessed, with the method. `tests` is what the verifier reproduces.
   code lists, calendars, rate schedules. Carries `valid_from` and `valid_to`.
 - **marginal**: a distribution or category shares for one variable. Carries
   `observed_period`.
-- **temporal**: seasonality, calendar effects or trends from an official
-  time series. Carries `observed_period`.
+- **temporal**: a time series, seasonality or trend from an official source.
+  Carries `observed_period`.
 - **conditional**: a distribution conditioned on another variable, only when
   the source publishes it directly. Carries `observed_period`.
 
@@ -171,7 +159,10 @@ proof, not a claim about legislative history.
 ## Integrity rules
 
 1. Never write a number, rate, rule or date from memory.
-2. Primary sources only, in the priority order above.
+2. Primary sources only: national statistical offices; central banks;
+   ministries, regulators and gazettes; intergovernmental bodies; official
+   operators of payment and numbering systems; peer-reviewed open-access
+   papers.
 3. Record each source's licence; unclear terms keep an entry at
    `license-review`, never `verified`.
 4. At most one verbatim snippet under 25 words per evidence item, used only
@@ -181,8 +172,9 @@ proof, not a claim about legislative history.
 
 The verifier enforces what it can: schema and typed models, directory
 placement, dates, units, snippet length, hash and content checks against the
-live source, machine-readable resources for tier A, permissive licences for
-`verified` entries, every rule vector, and every published statistic.
+live source (PDFs by extracted text), machine-readable primary evidence for
+tier A, permissive licences for `verified` entries, every rule vector, and
+every published statistic.
 
 ## Layout
 
@@ -194,6 +186,9 @@ almanac/rules/                executable rule implementations
 tools/                        reproducible builders for generated entries
 tests/                        pytest suites for the verifier, the API and the rules
 CATALOGUE.md                  generated table of entries
+manifest.json                 generated JSON index of every entry
+dataset.jsonld                generated schema.org Dataset description
+llms.txt                      generated map of the archive for AI agents
 WANTED.md                     entries we want next, with their official sources
 ```
 
@@ -211,14 +206,16 @@ uv run almanac verify --cache-dir .cache/evidence --offline
 uv run almanac verify --no-fetch                          # structure, vectors and statistics only
 uv run almanac verify -v --json                           # machine-readable report
 uv run almanac catalogue --write CATALOGUE.md             # refresh the catalogue
+uv run almanac index                                      # refresh manifest.json, dataset.jsonld, llms.txt
 uv run pytest
 ```
 
 ## Licences
 
-- **Entries** (`entries/`, `schema/`, `CATALOGUE.md`) are data, released
-  under the Open Database License 1.0 in `LICENSE-DATA`. Share, create and
-  adapt the database; attribute it; keep derived databases open.
+- **Entries** (`entries/`, `schema/`, the generated catalogue and indexes)
+  are data, released under the Open Database License 1.0 in `LICENSE-DATA`.
+  Share, create and adapt the database; attribute it; keep derived databases
+  open.
 - **Code** (`almanac/`, `tools/`, `tests/`) is released under the Apache
   License 2.0 in `LICENSE`.
 

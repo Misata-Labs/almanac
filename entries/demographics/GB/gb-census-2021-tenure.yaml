@@ -1,0 +1,102 @@
+id: gb-census-2021-tenure
+title: England and Wales households by tenure, Census 2021
+kind: marginal
+domain: demographics
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2021-03-21'
+  end: '2021-03-21'
+spec:
+  variable: tenure
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Does not apply: 0.0
+        'Owned: Owns outright': 0.328318
+        'Owned: Owns with a mortgage or loan': 0.28738
+        'Shared ownership: Shared ownership': 0.009693
+        'Social rented: Rents from council or Local Authority': 0.083193
+        'Social rented: Other social rented': 0.087397
+        'Private rented: Private landlord or letting agency': 0.180305
+        'Private rented: Other private rented': 0.022394
+        Lives rent free: 0.001319
+      counts:
+        Does not apply: 0
+        'Owned: Owns outright': 8136782
+        'Owned: Owns with a mortgage or loan': 7122199
+        'Shared ownership: Shared ownership': 240234
+        'Social rented: Rents from council or Local Authority': 2061789
+        'Social rented: Other social rented': 2165967
+        'Private rented: Private landlord or letting agency': 4468534
+        'Private rented: Other private rented': 554997
+        Lives rent free: 32700
+      total: 24783202
+      option_ids:
+        Does not apply: '-8'
+        'Owned: Owns outright': '0'
+        'Owned: Owns with a mortgage or loan': '1'
+        'Shared ownership: Shared ownership': '2'
+        'Social rented: Rents from council or Local Authority': '3'
+        'Social rented: Other social rented': '4'
+        'Private rented: Private landlord or letting agency': '5'
+        'Private rented: Other private rented': '6'
+        Lives rent free: '7'
+evidence:
+- publisher: Office for National Statistics
+  title: 'Census 2021 observations: households by hh_tenure_9a, by country (ONS API)'
+  url: https://api.beta.ons.gov.uk/v1/population-types/HH/census-observations?area-type=ctry&dimensions=hh_tenure_9a
+  accessed_at: '2026-10-31'
+  locator: observations[ctry=England, hh_tenure_9a="Does not apply"].observation
+  value: 0
+  unit: count
+  snippet: '"option":"Does not apply","option_id":"-8"}],"observation":'
+  source_license: OGL-UK-3.0
+  content_sha256: dcb1ceedcb97bc0bae48593cc11f93845b20915a4a75a84e6cfccd71bde31330
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata TS054 (Tenure)
+  url: https://api.beta.ons.gov.uk/v1/datasets/TS054
+  accessed_at: '2026-10-31'
+  locator: description
+  value: The estimates are as at Census Day, 21 March 2021.
+  unit: text
+  snippet: Census Day, 21 March 2021
+  source_license: OGL-UK-3.0
+  content_sha256: d7132fadc53de05e893991ab0301521db88272160fc4192ee870358f3aaf4175
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata, Population Estimates (licence statement)
+  url: https://api.beta.ons.gov.uk/v1/datasets/mid-year-pop-est
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: b0159564676459d73de7bb2bd78b76e67c94b10a6a5f86a6c5c49e31fa68484d
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total over England and Wales
+  method: derived
+  rationale: The API publishes counts per country; England and Wales are summed and each share is the summed count
+    divided by the total. Any 'Does not apply' category is kept so shares describe the full population base.
+tests:
+- statistic: 'share["Owned: Owns outright"]'
+  expected: 0.328318
+  tolerance: 0.002
+- statistic: share["Does not apply"]
+  expected: 0.0
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Census 2021 households of England and Wales by tenure from the ONS census observations API (population type
+  HH, dimension hh_tenure_9a, area type country), summed over England and Wales. Category labels are the ONS labels
+  and option_ids keep the ONS codes. Counts sit beside the shares so they can be re-derived. Reference date is Census
+  Day, 21 March 2021. ONS publishes its datasets under the Open Government Licence v3.0, as the licence field of
+  its dataset metadata states; the census observations endpoint itself carries no licence field.

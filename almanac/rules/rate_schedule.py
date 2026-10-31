@@ -1,9 +1,10 @@
-"""India GST rate structure rule.
+"""Named rate schedule rule.
 
-The rule holds the rate slabs the GST Council has decided on, with the date
-they took effect, and answers whether a given percentage is a slab in force.
-Goods the Council has explicitly carved out of a change keep their earlier
-rates; the parameters name those carve-outs so generators can respect them.
+A schedule is a small set of named percentage rates in force together, such
+as the slabs of a value-added tax. The rule answers whether a percentage is
+one of the published rates, names the rate, and reports the schedule's size.
+Entries may add context such as carve-outs or effective dates alongside the
+slabs; the rule itself only reads ``slabs``.
 """
 
 from __future__ import annotations
@@ -18,7 +19,7 @@ def slabs(parameters: Mapping[str, Any]) -> dict[str, float]:
 
 
 def is_slab(rate: float, parameters: Mapping[str, Any]) -> bool:
-    """Return whether ``rate`` (a percentage) is one of the published slabs."""
+    """Return whether ``rate`` (a percentage) is one of the published rates."""
     return float(rate) in set(slabs(parameters).values())
 
 

@@ -35,7 +35,21 @@ UNIT_VOCABULARY: frozenset[str] = frozenset(
     }
 )
 _CURRENCY_UNIT = re.compile(r"^currency:[A-Z]{3}$")
-_STATISTIC = re.compile(r"^(?P<name>[a-z_]+)(?:\[(?P<args>[^\]]*)\])?$")
+_STATISTIC = re.compile(r"^(?P<name>[a-z_]+)(?:\[(?P<args>.*)\])?$")
+_ARGUMENT = re.compile(r'\s*(?:"(?P<quoted>[^"]*)"|(?P<bare>[^,]*))\s*(?:,|$)')
+
+
+def split_arguments(text: str) -> tuple[str, ...]:
+    """Split bracketed statistic arguments on commas, honouring double-quoted arguments that contain commas."""
+    args: list[str] = []
+    position = 0
+    while position < len(text):
+        match = _ARGUMENT.match(text, position)
+        if match is None or match.end() == position:
+            raise ValueError(f"malformed statistic arguments {text!r}")
+        args.append(match.group("quoted") if match.group("quoted") is not None else match.group("bare").strip())
+        position = match.end()
+    return tuple(args)
 
 
 def is_known_unit(unit: str) -> bool:
@@ -89,8 +103,7 @@ class Statistic(StrictModel):
         if match is None:
             raise ValueError(f"malformed statistic {text!r}")
         raw_args = match.group("args")
-        args = tuple(part.strip() for part in raw_args.split(",")) if raw_args is not None else ()
-        return cls(name=match.group("name"), args=args)
+        return cls(name=match.group("name"), args=split_arguments(raw_args) if raw_args is not None else ())
 
 
 class Test(StrictModel):

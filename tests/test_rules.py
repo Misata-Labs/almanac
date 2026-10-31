@@ -175,7 +175,7 @@ def test_enumeration_membership_and_labels():
         enumeration.statistic(params, Statistic.parse("mean"))
 
 
-from almanac.rules import br_cnpj, in_gst_rate_structure
+from almanac.rules import br_cnpj, rate_schedule
 
 CNPJ = {
     "base_pattern": r"^[0-9A-Z]{12}$",
@@ -204,9 +204,9 @@ def test_cnpj_character_values_and_zero_rule():
 
 
 def test_gst_slabs():
-    assert in_gst_rate_structure.is_slab(18, GST) and not in_gst_rate_structure.is_slab(12, GST)
-    assert in_gst_rate_structure.slab_name(40, GST) == "de_merit"
-    assert in_gst_rate_structure.statistic(GST, Statistic.parse("slab[merit]")) == 5
-    assert in_gst_rate_structure.statistic(GST, Statistic.parse("count")) == 4
+    assert rate_schedule.is_slab(18, GST) and not rate_schedule.is_slab(12, GST)
+    assert rate_schedule.slab_name(40, GST) == "de_merit"
+    assert rate_schedule.statistic(GST, Statistic.parse("slab[merit]")) == 5
+    assert rate_schedule.statistic(GST, Statistic.parse("count")) == 4
     with pytest.raises(KeyError):
-        in_gst_rate_structure.slab_name(12, GST)
+        rate_schedule.slab_name(12, GST)

@@ -10,7 +10,8 @@ from pathlib import Path
 from almanac import verify
 from almanac.api import Almanac
 from almanac.catalogue import render_card, render_catalogue, validity
-from almanac.store import DEFAULT_ENTRIES
+from almanac.discovery import render_jsonld, render_llms_txt, render_manifest
+from almanac.store import DEFAULT_ENTRIES, REPO_ROOT
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -34,6 +35,9 @@ def build_parser() -> argparse.ArgumentParser:
 
     catalogue = subcommands.add_parser("catalogue", help="render the catalogue table as Markdown")
     catalogue.add_argument("--write", type=Path, help="write to this file instead of standard output")
+
+    index = subcommands.add_parser("index", help="write manifest.json, dataset.jsonld and llms.txt for agents and search engines")
+    index.add_argument("--out", type=Path, default=REPO_ROOT, help="directory to write the three files into")
     return parser
 
 
@@ -68,6 +72,12 @@ def main(argv: list[str] | None = None) -> int:
             print(f"wrote {args.write}")
         else:
             print(text, end="")
+        return 0
+    if args.command == "index":
+        outputs = {"manifest.json": render_manifest(almanac), "dataset.jsonld": render_jsonld(almanac), "llms.txt": render_llms_txt(almanac)}
+        for name, text in outputs.items():
+            (args.out / name).write_text(text, encoding="utf-8")
+            print(f"wrote {args.out / name}")
         return 0
     raise AssertionError(f"unhandled command {args.command}")
 

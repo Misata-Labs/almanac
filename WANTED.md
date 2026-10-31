@@ -9,8 +9,22 @@ CONTRIBUTING.md.
 Claim one by opening an issue titled with the entry id.
 
 Already done, for the pattern to copy: `br-cnpj-check-digits`,
-`br-pix-monthly-volume-and-value`, `gb-census-2021-age`, `gb-census-2021-sex`
-and `in-gst-rate-structure` each started as a line in this file.
+`br-pix-monthly-volume-and-value`, `br-pix-key-types`, the twelve
+`gb-census-2021-*` marginals, `gb-vat-rates`, `in-gst-rate-structure`,
+`global-iso4217-currency-minor-units`, `global-ecb-euro-fx-reference-rates-monthly-2025`,
+`global-population-by-economy-2024` and `global-central-bank-policy-rates-monthly-2025`
+each started as a line in this file.
+
+## Most wanted right now
+
+| Entry id | Why it matters | Where the official source lives |
+| --- | --- | --- |
+| global-iban-structure | Every bank transfer generator needs it | SWIFT IBAN Registry (the site refuses non-browser clients; download the TXT release by hand and cite its release number) |
+| in-upi-monthly-volume | The largest real-time payment system by volume | NPCI product statistics (download the XLSX by hand) |
+| br-cpf-check-digits | The identifier on every Brazilian customer record | Receita Federal do Brasil |
+| us-federal-holidays | Settlement and payroll calendars for the US | US Office of Personnel Management |
+| global-card-pan-luhn | Card numbers that pass issuer checks | ISO/IEC 7812 registration authority |
+| eu-vat-rates | Invoices across 27 member states | European Commission, Taxation and Customs Union |
 
 ## Identifiers and numbering systems
 
@@ -22,7 +36,7 @@ and `in-gst-rate-structure` each started as a line in this file.
 | in-pan-format | Permanent Account Number structure | Income Tax Department, India |
 | in-gstin-format | GSTIN composition and check character | Goods and Services Tax Network |
 | in-ifsc-format | IFSC bank branch code structure | Reserve Bank of India |
-| global-lei-check-digits | Legal Entity Identifier structure and MOD 97-10 check digits | Global Legal Entity Identifier Foundation |
+| global-lei-check-digits | Legal Entity Identifier structure and MOD 97-10 check digits | Global Legal Entity Identifier Foundation (api.gleif.org serves stable LEI records; the structure page is HTML) |
 | global-isin-check-digit | ISIN Luhn check digit | Association of National Numbering Agencies (ISO 6166) |
 | gb-nhs-number-check-digit | NHS number modulus 11 check digit | NHS England |
 | gb-postcode-format | Postcode structure as defined for government data exchange | Office for National Statistics or Cabinet Office |
@@ -52,7 +66,7 @@ and `in-gst-rate-structure` each started as a line in this file.
 | Entry id | What it fixes | Where the official source lives |
 | --- | --- | --- |
 | in-gst-rate-schedule | Item-level GST rates by HSN chapter with effective dates (the slab structure is already in in-gst-rate-structure) | Central Board of Indirect Taxes and Customs rate notifications |
-| gb-vat-rate-history | Standard, reduced and zero VAT rates with effective dates | HM Revenue & Customs |
+| gb-vat-rate-history | Historic standard-rate changes before 2011 (current rates are in gb-vat-rates) | HM Revenue & Customs |
 | eu-vat-rates | VAT rates by member state | European Commission, Taxation and Customs Union |
 | ca-cash-rounding | Cash rounding to the nearest five cents after the penny was withdrawn | Department of Finance Canada |
 | ch-cash-rounding | Rounding to five centimes | Swiss Federal Department of Finance |
@@ -65,7 +79,7 @@ and `in-gst-rate-structure` each started as a line in this file.
 | us-federal-holidays | Federal holidays and observed dates | US Office of Personnel Management |
 | in-gazetted-holidays | Central government gazetted holidays | Ministry of Personnel, Public Grievances and Pensions |
 | br-national-holidays | National holidays and point facultativo days | Ministério da Gestão e da Inovação |
-| global-target2-closing-days | TARGET closing days for euro settlement | European Central Bank |
+| global-target2-closing-days | TARGET closing days for euro settlement | European Central Bank (use the ECB Data Portal or a PDF; the website renders dynamically) |
 | us-nyse-trading-calendar | Exchange holidays and early closes | NYSE |
 
 ## Distributions from official statistics
@@ -73,7 +87,7 @@ and `in-gst-rate-structure` each started as a line in this file.
 | Entry id | What it fixes | Where the official source lives |
 | --- | --- | --- |
 | gb-population-by-age-sex | Mid-year population by single year of age and sex, as a conditional on top of the Census 2021 marginals | Office for National Statistics |
-| us-household-income-distribution | Household income distribution by bracket | US Census Bureau, Current Population Survey |
+| us-household-income-distribution | Household income distribution by bracket | US Census Bureau API (needs a free API key; record the query without the key) |
 | in-population-by-state | Population by state and sex | Office of the Registrar General, Census of India |
 | gb-baby-names | Given name frequencies by sex and year | Office for National Statistics |
 | us-baby-names | Given name frequencies by sex and year | US Social Security Administration |

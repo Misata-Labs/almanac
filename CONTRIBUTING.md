@@ -65,6 +65,30 @@ confirm a value, leave the entry out.
 7. Write `notes` for a reader who has never seen the source: what the rule is,
    where the dates come from, anything odd you noticed.
 
+## Licence identifiers
+
+`source_license` takes an SPDX identifier where one exists (Apache-2.0, MIT,
+OGL-UK-3.0, CC-BY-4.0, ODbL-1.0, CC0-1.0 and so on). A `verified` entry may
+cite only licences the verifier lists as permissive, plus these documented
+publisher terms, each of which explicitly permits free reuse with attribution:
+
+| Identifier | Publisher | Clause |
+| --- | --- | --- |
+| ECB-free-use-with-attribution | European Central Bank | Users may make free use of information obtained from the ECB website provided it is reproduced accurately and the ECB is cited as the source (website disclaimer, Copyright section). |
+
+Any other wording, including "reproduction permitted after permission" or
+"no derivatives", keeps the entry at `license-review`. Write `unstated` when
+the source carries no licence statement at all.
+
+## Generated entries
+
+Entries built from APIs live next to a builder under `tools/` that fetches
+the pinned URLs and rewrites the YAML. Re-run the builder rather than editing
+those files by hand, and commit both. After adding or changing entries run
+`uv run almanac catalogue --write CATALOGUE.md` and `uv run almanac index`
+so the catalogue, manifest, schema.org description and llms.txt stay current;
+a test fails when they drift.
+
 ## Before opening a pull request
 
 Run all of these and include the output summary in the pull request:

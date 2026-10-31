@@ -1,0 +1,135 @@
+id: gb-census-2021-ethnic-group
+title: England and Wales usual residents by ethnic group (20 categories), Census 2021
+kind: marginal
+domain: demographics
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2021-03-21'
+  end: '2021-03-21'
+spec:
+  variable: ethnic_group
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Does not apply: 0.0
+        'Asian, Asian British or Asian Welsh: Bangladeshi': 0.010821
+        'Asian, Asian British or Asian Welsh: Chinese': 0.007477
+        'Asian, Asian British or Asian Welsh: Indian': 0.031282
+        'Asian, Asian British or Asian Welsh: Pakistani': 0.026642
+        'Asian, Asian British or Asian Welsh: Other Asian': 0.016323
+        'Black, Black British, Black Welsh, Caribbean or African: African': 0.024974
+        'Black, Black British, Black Welsh, Caribbean or African: Caribbean': 0.010455
+        'Black, Black British, Black Welsh, Caribbean or African: Other Black': 0.004996
+        'Mixed or Multiple ethnic groups: White and Asian': 0.008192
+        'Mixed or Multiple ethnic groups: White and Black African': 0.004188
+        'Mixed or Multiple ethnic groups: White and Black Caribbean': 0.008608
+        'Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups': 0.007838
+        'White: English, Welsh, Scottish, Northern Irish or British': 0.744243
+        'White: Irish': 0.008515
+        'White: Gypsy or Irish Traveller': 0.001137
+        'White: Roma': 0.001694
+        'White: Other White': 0.061546
+        'Other ethnic group: Arab': 0.005568
+        'Other ethnic group: Any other ethnic group': 0.0155
+      counts:
+        Does not apply: 0
+        'Asian, Asian British or Asian Welsh: Bangladeshi': 644881
+        'Asian, Asian British or Asian Welsh: Chinese': 445619
+        'Asian, Asian British or Asian Welsh: Indian': 1864318
+        'Asian, Asian British or Asian Welsh: Pakistani': 1587819
+        'Asian, Asian British or Asian Welsh: Other Asian': 972783
+        'Black, Black British, Black Welsh, Caribbean or African: African': 1488381
+        'Black, Black British, Black Welsh, Caribbean or African: Caribbean': 623119
+        'Black, Black British, Black Welsh, Caribbean or African: Other Black': 297778
+        'Mixed or Multiple ethnic groups: White and Asian': 488225
+        'Mixed or Multiple ethnic groups: White and Black African': 249596
+        'Mixed or Multiple ethnic groups: White and Black Caribbean': 513042
+        'Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups': 467113
+        'White: English, Welsh, Scottish, Northern Irish or British': 44355037
+        'White: Irish': 507465
+        'White: Gypsy or Irish Traveller': 67768
+        'White: Roma': 100981
+        'White: Other White': 3667997
+        'Other ethnic group: Arab': 331844
+        'Other ethnic group: Any other ethnic group': 923775
+      total: 59597541
+      option_ids:
+        Does not apply: '-8'
+        'Asian, Asian British or Asian Welsh: Bangladeshi': '1'
+        'Asian, Asian British or Asian Welsh: Chinese': '2'
+        'Asian, Asian British or Asian Welsh: Indian': '3'
+        'Asian, Asian British or Asian Welsh: Pakistani': '4'
+        'Asian, Asian British or Asian Welsh: Other Asian': '5'
+        'Black, Black British, Black Welsh, Caribbean or African: African': '6'
+        'Black, Black British, Black Welsh, Caribbean or African: Caribbean': '7'
+        'Black, Black British, Black Welsh, Caribbean or African: Other Black': '8'
+        'Mixed or Multiple ethnic groups: White and Asian': '9'
+        'Mixed or Multiple ethnic groups: White and Black African': '10'
+        'Mixed or Multiple ethnic groups: White and Black Caribbean': '11'
+        'Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups': '12'
+        'White: English, Welsh, Scottish, Northern Irish or British': '13'
+        'White: Irish': '14'
+        'White: Gypsy or Irish Traveller': '15'
+        'White: Roma': '16'
+        'White: Other White': '17'
+        'Other ethnic group: Arab': '18'
+        'Other ethnic group: Any other ethnic group': '19'
+evidence:
+- publisher: Office for National Statistics
+  title: 'Census 2021 observations: usual residents by ethnic_group_tb_20b, by country (ONS API)'
+  url: https://api.beta.ons.gov.uk/v1/population-types/UR/census-observations?area-type=ctry&dimensions=ethnic_group_tb_20b
+  accessed_at: '2026-10-31'
+  locator: observations[ctry=England, ethnic_group_tb_20b="Does not apply"].observation
+  value: 0
+  unit: count
+  snippet: '"option":"Does not apply","option_id":"-8"}],"observation":'
+  source_license: OGL-UK-3.0
+  content_sha256: 9946c4995179ec3feac11438ed05fc1fedbcd6d2cf56a2ec7bb201d2c5035d3f
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata TS021 (Ethnic group)
+  url: https://api.beta.ons.gov.uk/v1/datasets/TS021
+  accessed_at: '2026-10-31'
+  locator: description
+  value: The estimates are as at Census Day, 21 March 2021.
+  unit: text
+  snippet: Census Day, 21 March 2021
+  source_license: OGL-UK-3.0
+  content_sha256: 3dc31058f1f7428f795e0576f9620249c83c793b5e7554f5c075ce2c7d07fa8d
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata, Population Estimates (licence statement)
+  url: https://api.beta.ons.gov.uk/v1/datasets/mid-year-pop-est
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: b0159564676459d73de7bb2bd78b76e67c94b10a6a5f86a6c5c49e31fa68484d
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total over England and Wales
+  method: derived
+  rationale: The API publishes counts per country; England and Wales are summed and each share is the summed count
+    divided by the total. Any 'Does not apply' category is kept so shares describe the full population base.
+tests:
+- statistic: 'share["White: English, Welsh, Scottish, Northern Irish or British"]'
+  expected: 0.744243
+  tolerance: 0.002
+- statistic: share["Does not apply"]
+  expected: 0.0
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Census 2021 usual residents of England and Wales by ethnic group from the ONS census observations API (population
+  type UR, dimension ethnic_group_tb_20b, area type country), summed over England and Wales. Category labels are
+  the ONS labels and option_ids keep the ONS codes. Counts sit beside the shares so they can be re-derived. Reference
+  date is Census Day, 21 March 2021. ONS publishes its datasets under the Open Government Licence v3.0, as the licence
+  field of its dataset metadata states; the census observations endpoint itself carries no licence field.

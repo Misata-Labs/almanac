@@ -1,0 +1,145 @@
+id: gb-census-2021-highest-qualification
+title: England and Wales usual residents aged 16 and over by highest level of qualification, Census 2021
+kind: marginal
+domain: demographics
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2021-03-21'
+  end: '2021-03-21'
+spec:
+  variable: highest_qualification
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Does not apply: 0.185094
+        No qualifications: 0.148118
+        ? 'Level 1 and entry level qualifications: 1 to 4 GCSEs grade A* to C, Any GCSEs at other grades, O levels
+          or CSEs (any grades), 1 AS level, NVQ level 1, Foundation GNVQ, Basic or Essential Skills'
+        : 0.078514
+        ? 'Level 2 qualifications: 5 or more GCSEs (A* to C or 9 to 4), O levels (passes), CSEs (grade 1), School
+          Certification, 1 A level, 2 to 3 AS levels, VCEs, Intermediate or Higher Diploma, Welsh Baccalaureate
+          Intermediate Diploma, NVQ level 2, Intermediate GNVQ, City and Guilds Craft, BTEC First or General Diploma,
+          RSA Diploma'
+        : 0.108956
+        Apprenticeship: 0.043462
+        ? 'Level 3 qualifications: 2 or more A levels or VCEs, 4 or more AS levels, Higher School Certificate, Progression
+          or Advanced Diploma, Welsh Baccalaureate Advance Diploma, NVQ level 3; Advanced GNVQ, City and Guilds
+          Advanced Craft, ONC, OND, BTEC National, RSA Advanced Diploma'
+        : 0.13802
+        ? 'Level 4 qualifications or above: degree (BA, BSc), higher degree (MA, PhD, PGCE), NVQ level 4 to 5, HNC,
+          HND, RSA Higher Diploma, BTEC Higher level, professional qualifications (for example, teaching, nursing,
+          accountancy)'
+        : 0.275401
+        ? 'Other: vocational or work-related qualifications, other qualifications achieved in England or Wales,
+          qualifications achieved outside England or Wales (equivalent not stated or unknown)'
+        : 0.022435
+      counts:
+        Does not apply: 11031169
+        No qualifications: 8827471
+        ? 'Level 1 and entry level qualifications: 1 to 4 GCSEs grade A* to C, Any GCSEs at other grades, O levels
+          or CSEs (any grades), 1 AS level, NVQ level 1, Foundation GNVQ, Basic or Essential Skills'
+        : 4679223
+        ? 'Level 2 qualifications: 5 or more GCSEs (A* to C or 9 to 4), O levels (passes), CSEs (grade 1), School
+          Certification, 1 A level, 2 to 3 AS levels, VCEs, Intermediate or Higher Diploma, Welsh Baccalaureate
+          Intermediate Diploma, NVQ level 2, Intermediate GNVQ, City and Guilds Craft, BTEC First or General Diploma,
+          RSA Diploma'
+        : 6493490
+        Apprenticeship: 2590251
+        ? 'Level 3 qualifications: 2 or more A levels or VCEs, 4 or more AS levels, Higher School Certificate, Progression
+          or Advanced Diploma, Welsh Baccalaureate Advance Diploma, NVQ level 3; Advanced GNVQ, City and Guilds
+          Advanced Craft, ONC, OND, BTEC National, RSA Advanced Diploma'
+        : 8225629
+        ? 'Level 4 qualifications or above: degree (BA, BSc), higher degree (MA, PhD, PGCE), NVQ level 4 to 5, HNC,
+          HND, RSA Higher Diploma, BTEC Higher level, professional qualifications (for example, teaching, nursing,
+          accountancy)'
+        : 16413231
+        ? 'Other: vocational or work-related qualifications, other qualifications achieved in England or Wales,
+          qualifications achieved outside England or Wales (equivalent not stated or unknown)'
+        : 1337076
+      total: 59597540
+      option_ids:
+        Does not apply: '-8'
+        No qualifications: '0'
+        ? 'Level 1 and entry level qualifications: 1 to 4 GCSEs grade A* to C, Any GCSEs at other grades, O levels
+          or CSEs (any grades), 1 AS level, NVQ level 1, Foundation GNVQ, Basic or Essential Skills'
+        : '1'
+        ? 'Level 2 qualifications: 5 or more GCSEs (A* to C or 9 to 4), O levels (passes), CSEs (grade 1), School
+          Certification, 1 A level, 2 to 3 AS levels, VCEs, Intermediate or Higher Diploma, Welsh Baccalaureate
+          Intermediate Diploma, NVQ level 2, Intermediate GNVQ, City and Guilds Craft, BTEC First or General Diploma,
+          RSA Diploma'
+        : '2'
+        Apprenticeship: '3'
+        ? 'Level 3 qualifications: 2 or more A levels or VCEs, 4 or more AS levels, Higher School Certificate, Progression
+          or Advanced Diploma, Welsh Baccalaureate Advance Diploma, NVQ level 3; Advanced GNVQ, City and Guilds
+          Advanced Craft, ONC, OND, BTEC National, RSA Advanced Diploma'
+        : '4'
+        ? 'Level 4 qualifications or above: degree (BA, BSc), higher degree (MA, PhD, PGCE), NVQ level 4 to 5, HNC,
+          HND, RSA Higher Diploma, BTEC Higher level, professional qualifications (for example, teaching, nursing,
+          accountancy)'
+        : '5'
+        ? 'Other: vocational or work-related qualifications, other qualifications achieved in England or Wales,
+          qualifications achieved outside England or Wales (equivalent not stated or unknown)'
+        : '6'
+evidence:
+- publisher: Office for National Statistics
+  title: 'Census 2021 observations: usual residents by highest_qualification, by country (ONS API)'
+  url: https://api.beta.ons.gov.uk/v1/population-types/UR/census-observations?area-type=ctry&dimensions=highest_qualification
+  accessed_at: '2026-10-31'
+  locator: observations[ctry=England, highest_qualification="Does not apply"].observation
+  value: 10483091
+  unit: count
+  snippet: '"option":"Does not apply","option_id":"-8"}],"observation":'
+  source_license: OGL-UK-3.0
+  content_sha256: c5c2bf489136364fcab7372e1348b7f9b39dd20a30de05e8542daba78541eb0c
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata TS067 (Highest level of qualification)
+  url: https://api.beta.ons.gov.uk/v1/datasets/TS067
+  accessed_at: '2026-10-31'
+  locator: description
+  value: The estimates are as at Census Day, 21 March 2021.
+  unit: text
+  snippet: Census Day, 21 March 2021
+  source_license: OGL-UK-3.0
+  content_sha256: 3046c094a7e7405fa442b624c2365e982c2ac70695efe43b8cd56e850d7888a6
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata, Population Estimates (licence statement)
+  url: https://api.beta.ons.gov.uk/v1/datasets/mid-year-pop-est
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: b0159564676459d73de7bb2bd78b76e67c94b10a6a5f86a6c5c49e31fa68484d
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total over England and Wales
+  method: derived
+  rationale: The API publishes counts per country; England and Wales are summed and each share is the summed count
+    divided by the total. Any 'Does not apply' category is kept so shares describe the full population base.
+tests:
+- statistic: 'share["Level 4 qualifications or above: degree (BA, BSc), higher degree (MA, PhD, PGCE), NVQ level
+    4 to 5, HNC, HND, RSA Higher Diploma, BTEC Higher level, professional qualifications (for example, teaching,
+    nursing, accountancy)"]'
+  expected: 0.275401
+  tolerance: 0.002
+- statistic: 'share["Other: vocational or work-related qualifications, other qualifications achieved in England
+    or Wales, qualifications achieved outside England or Wales (equivalent not stated or unknown)"]'
+  expected: 0.022435
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Census 2021 usual residents of England and Wales by highest qualification from the ONS census observations
+  API (population type UR, dimension highest_qualification, area type country), summed over England and Wales. Category
+  labels are the ONS labels and option_ids keep the ONS codes. Counts sit beside the shares so they can be re-derived.
+  Reference date is Census Day, 21 March 2021. ONS publishes its datasets under the Open Government Licence v3.0,
+  as the licence field of its dataset metadata states; the census observations endpoint itself carries no licence
+  field.

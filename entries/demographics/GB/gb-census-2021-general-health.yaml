@@ -1,0 +1,93 @@
+id: gb-census-2021-general-health
+title: England and Wales usual residents by general health, Census 2021
+kind: marginal
+domain: demographics
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2021-03-21'
+  end: '2021-03-21'
+spec:
+  variable: general_health
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Does not apply: 0.0
+        Very good health: 0.4837
+        Good health: 0.33636
+        Fair health: 0.127472
+        Bad health: 0.040477
+        Very bad health: 0.011991
+      counts:
+        Does not apply: 0
+        Very good health: 28827307
+        Good health: 20046221
+        Fair health: 7597001
+        Bad health: 2412357
+        Very bad health: 714655
+      total: 59597541
+      option_ids:
+        Does not apply: '-8'
+        Very good health: '1'
+        Good health: '2'
+        Fair health: '3'
+        Bad health: '4'
+        Very bad health: '5'
+evidence:
+- publisher: Office for National Statistics
+  title: 'Census 2021 observations: usual residents by health_in_general, by country (ONS API)'
+  url: https://api.beta.ons.gov.uk/v1/population-types/UR/census-observations?area-type=ctry&dimensions=health_in_general
+  accessed_at: '2026-10-31'
+  locator: observations[ctry=England, health_in_general="Does not apply"].observation
+  value: 0
+  unit: count
+  snippet: '"option":"Does not apply","option_id":"-8"}],"observation":'
+  source_license: OGL-UK-3.0
+  content_sha256: 98f44a3f194d484369ec303b24051fec8b902afa6abf33d2fe3f43f090d5f6d7
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata TS037 (General health)
+  url: https://api.beta.ons.gov.uk/v1/datasets/TS037
+  accessed_at: '2026-10-31'
+  locator: description
+  value: The estimates are as at Census Day, 21 March 2021.
+  unit: text
+  snippet: Census Day, 21 March 2021
+  source_license: OGL-UK-3.0
+  content_sha256: f15978379734f92b3fbd3c711a645a36971e9307e89fa8121c3d4d2112bc158d
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata, Population Estimates (licence statement)
+  url: https://api.beta.ons.gov.uk/v1/datasets/mid-year-pop-est
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: b0159564676459d73de7bb2bd78b76e67c94b10a6a5f86a6c5c49e31fa68484d
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total over England and Wales
+  method: derived
+  rationale: The API publishes counts per country; England and Wales are summed and each share is the summed count
+    divided by the total. Any 'Does not apply' category is kept so shares describe the full population base.
+tests:
+- statistic: share["Very good health"]
+  expected: 0.4837
+  tolerance: 0.002
+- statistic: share["Does not apply"]
+  expected: 0.0
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Census 2021 usual residents of England and Wales by general health from the ONS census observations API (population
+  type UR, dimension health_in_general, area type country), summed over England and Wales. Category labels are the
+  ONS labels and option_ids keep the ONS codes. Counts sit beside the shares so they can be re-derived. Reference
+  date is Census Day, 21 March 2021. ONS publishes its datasets under the Open Government Licence v3.0, as the licence
+  field of its dataset metadata states; the census observations endpoint itself carries no licence field.

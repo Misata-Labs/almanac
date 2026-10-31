@@ -39,6 +39,14 @@ PERMISSIVE_LICENSES: frozenset[str] = frozenset(
     }
 )
 
+PERMISSIVE_TERMS: frozenset[str] = frozenset(
+    {
+        # Publisher terms that are not SPDX licences but explicitly permit free reuse with attribution.
+        # Each identifier is documented in CONTRIBUTING.md with the clause it stands for.
+        "ECB-free-use-with-attribution",
+    }
+)
+
 RULE_STATISTICS = ("vector_count", "vectors_passed", "vector_pass_fraction")
 
 
@@ -176,7 +184,7 @@ class Verifier:
         if entry.status != "verified":
             report.add("license", True, f"status {entry.status}: no permissive-license requirement")
             return
-        unclear = sorted({item.source_license for item in entry.evidence} - PERMISSIVE_LICENSES)
+        unclear = sorted({item.source_license for item in entry.evidence} - PERMISSIVE_LICENSES - PERMISSIVE_TERMS)
         report.add("license", not unclear, f"verified entry cites non-permissive license(s): {', '.join(unclear)}" if unclear else "")
 
     def _check_assumptions(self, entry: Entry, report: EntryReport) -> None:
