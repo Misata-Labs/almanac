@@ -1,0 +1,94 @@
+id: gb-utr-check-digit
+title: United Kingdom Unique Taxpayer Reference (UTR) modulus-11 check digit
+kind: rule
+domain: identifiers
+region: GB
+status: verified
+tier: A
+valid_from: 2025-08-11
+valid_to: null
+spec:
+  implementation: almanac.rules.gb_utr
+  parameters:
+    length: 10
+    weights: [6, 7, 8, 9, 10, 5, 4, 3, 2]
+    remainder_lookup: "21987654321"
+    modulus: 11
+    check_position: 0
+    sa_affix: K
+  vectors:
+    - {input: {reference: "2234567890K", scheme: sa}, expected: true, origin: source}
+    - {input: {reference: "2108834503K", scheme: sa}, expected: true, origin: source}
+    - {input: {reference: "1097172564K", scheme: sa}, expected: true, origin: source}
+    - {input: {reference: "2234567890", scheme: sa}, expected: true, origin: source}
+    - {input: {reference: "K2234567890", scheme: sa}, expected: true, origin: source}
+    - {input: {reference: "1097172564k", scheme: sa}, expected: true, origin: source}
+    - {input: {reference: "k1097172564", scheme: sa}, expected: true, origin: source}
+    - {input: {reference: "", scheme: sa}, expected: false, origin: source}
+    - {input: {reference: "123456", scheme: sa}, expected: false, origin: source}
+    - {input: {reference: "1234567890K", scheme: sa}, expected: false, origin: source, note: wrong check digit}
+    - {input: {reference: "inv@lid123K", scheme: sa}, expected: false, origin: source}
+    - {input: {reference: "1nv@l-d~&*!", scheme: sa}, expected: false, origin: source}
+    - {input: {reference: "1234567890E", scheme: sa}, expected: false, origin: source}
+    - {input: {reference: "12345678905", scheme: sa}, expected: false, origin: source}
+    - {input: {reference: "1097172564KZ", scheme: sa}, expected: false, origin: source}
+    - {input: {reference: "1097172564", scheme: ct}, expected: true, origin: source}
+    - {input: {reference: "2108834503", scheme: ct}, expected: true, origin: source}
+    - {input: {reference: "2234567890", scheme: ct}, expected: true, origin: source}
+    - {input: {reference: "", scheme: ct}, expected: false, origin: source}
+    - {input: {reference: "123456", scheme: ct}, expected: false, origin: source}
+    - {input: {reference: "5550000621", scheme: ct}, expected: false, origin: source, note: wrong check digit}
+    - {input: {reference: "inv@lid123", scheme: ct}, expected: false, origin: source}
+    - {input: {reference: "2234567890K", scheme: ct}, expected: false, origin: derived, note: the K affix is accepted for Self Assessment only}
+evidence:
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: ReferenceChecker.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/main/scala/uk/gov/hmrc/referencechecker/ReferenceChecker.scala
+    accessed_at: 2026-10-31
+    locator: "line 107, UtrReferenceChecker.weights"
+    value: "List(6, 7, 8, 9, 10, 5, 4, 3, 2)"
+    unit: list
+    snippet: "trait UtrReferenceChecker extends ModulusReferenceChecker"
+    source_license: Apache-2.0
+    content_sha256: 28370b888af29cf0b8ef6289249c0fef8749cd09313a64228373399f0a18a0c6
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: ReferenceChecker.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/main/scala/uk/gov/hmrc/referencechecker/ReferenceChecker.scala
+    accessed_at: 2026-10-31
+    locator: "lines 103-104, UtrReferenceChecker.remainderLookupTable and modulus"
+    value: "List('2', '1', '9', '8', '7', '6', '5', '4', '3', '2', '1')"
+    unit: list
+    snippet: "val modulus = 11"
+    source_license: Apache-2.0
+    content_sha256: 28370b888af29cf0b8ef6289249c0fef8749cd09313a64228373399f0a18a0c6
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: ReferenceChecker.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/main/scala/uk/gov/hmrc/referencechecker/ReferenceChecker.scala
+    accessed_at: 2026-10-31
+    locator: "lines 114-118, SelfAssessmentReferenceChecker.prepareReference"
+    value: 'if (reference.startsWith("K")) reference.drop(1)'
+    unit: text
+    snippet: "object SelfAssessmentReferenceChecker extends UtrReferenceChecker"
+    source_license: Apache-2.0
+    content_sha256: 28370b888af29cf0b8ef6289249c0fef8749cd09313a64228373399f0a18a0c6
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: ModulusCheckerSpec.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/test/scala/uk/gov/hmrc/referencechecker/ModulusCheckerSpec.scala
+    accessed_at: 2026-10-31
+    locator: "lines 29-31 (Self Assessment) and 62-63 (Corporation Tax)"
+    value: '"2234567890K", "2108834503K", "1097172564K"'
+    unit: list
+    snippet: '"The SA reference checker" should'
+    source_license: Apache-2.0
+    content_sha256: 0da8144dcec9ff14ae7421f1ee8973e52501b37a0336e77428cd63ac706b0f98
+assumed: []
+tests:
+  - {statistic: vector_pass_fraction, expected: 1, tolerance: 0}
+  - {statistic: vector_count, expected: 23, tolerance: 0}
+notes: |
+  The check character is the first of the ten digits. It is the remainder-lookup entry for the
+  weighted sum of the following nine digits modulo 11, using weights 6 7 8 9 10 5 4 3 2 and the
+  lookup string 21987654321. Self Assessment references may carry a K before or after the
+  digits (case-insensitive); Corporation Tax references may not. Source: the reference checker
+  HM Revenue & Customs publishes in hmrc/domain (release v13.0.0, commit bc4a37fe), whose test
+  suite supplies the vectors. valid_from is the date of the pinned revision; valid_to is open.

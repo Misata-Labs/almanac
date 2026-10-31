@@ -1,0 +1,148 @@
+id: br-pix-identifier-formats
+title: Brazil Pix identifier formats (txid, EndToEndId, CPF, CNPJ, ISPB, amount)
+kind: rule
+domain: payments
+region: BR
+status: verified
+tier: A
+valid_from: 2026-10-29
+valid_to: null
+spec:
+  implementation: almanac.rules.br_pix_identifiers
+  parameters:
+    fields:
+      txid:
+        pattern: "[a-zA-Z0-9]{26,35}"
+      end_to_end_id:
+        pattern: "[a-zA-Z0-9]{32}"
+        min_length: 32
+        max_length: 32
+      cpf:
+        pattern: '^\d{11}$'
+      cnpj:
+        pattern: "^[0-9A-Z]{14}$"
+      ispb:
+        pattern: "^[0-9A-Z]{8}$"
+      amount:
+        pattern: '\d{1,10}\.\d{2}'
+  vectors:
+    - {input: {field: txid, value: "7978c0c97ea847e78e8849634473c1f1"}, expected: true, origin: source}
+    - {input: {field: txid, value: "cd1fe328c875481285a6f233ae41b662"}, expected: true, origin: source}
+    - {input: {field: txid, value: "abcdefghijklmnopqrstuvwxy"}, expected: false, origin: derived, note: 25 characters}
+    - {input: {field: txid, value: "7978c0c9-7ea8-47e7-8e88-49634473c1f1"}, expected: false, origin: derived, note: hyphens are outside the alphabet}
+    - {input: {field: end_to_end_id, value: "E12345678202009091221abcdef12345"}, expected: true, origin: source}
+    - {input: {field: end_to_end_id, value: "E1234567820200909122120200808008"}, expected: true, origin: source}
+    - {input: {field: end_to_end_id, value: "E12345678202009091221ghijk78901234"}, expected: false, origin: source, note: 34-character example in the specification contradicts its own 32-character bound}
+    - {input: {field: cnpj, value: "12345678000195"}, expected: true, origin: source}
+    - {input: {field: cnpj, value: "12345678000195a"}, expected: false, origin: derived, note: 15 characters}
+    - {input: {field: cpf, value: "12345678901"}, expected: true, origin: derived, note: eleven digits}
+    - {input: {field: cpf, value: "1234567890"}, expected: false, origin: derived, note: ten digits}
+    - {input: {field: ispb, value: "81102623"}, expected: true, origin: source}
+    - {input: {field: ispb, value: "52780028"}, expected: true, origin: source}
+    - {input: {field: amount, value: "100.00"}, expected: true, origin: source}
+    - {input: {field: amount, value: "110.00"}, expected: true, origin: source}
+    - {input: {field: amount, value: "3.50"}, expected: true, origin: source}
+    - {input: {field: amount, value: "100"}, expected: false, origin: derived, note: two decimals are mandatory}
+    - {input: {field: amount, value: "100,00"}, expected: false, origin: derived, note: comma separator}
+evidence:
+  - publisher: Banco Central do Brasil
+    title: "API Pix OpenAPI specification, version 2.11.0-rc1 (bacen/pix-api)"
+    url: https://raw.githubusercontent.com/bacen/pix-api/3ebbd6a184519cf8a032f2747b87cce2a3d05e7f/openapi.yaml
+    accessed_at: 2026-10-31
+    locator: "line 4, info.version"
+    value: "2.11.0-rc1"
+    unit: version
+    snippet: "title: API Pix"
+    source_license: Apache-2.0
+    content_sha256: cf191845044a5edd38c00b0e099924e8daceacfe53502abaa6a5b238bed41eb4
+  - publisher: Banco Central do Brasil
+    title: "API Pix OpenAPI specification, version 2.11.0-rc1 (bacen/pix-api)"
+    url: https://raw.githubusercontent.com/bacen/pix-api/3ebbd6a184519cf8a032f2747b87cce2a3d05e7f/openapi.yaml
+    accessed_at: 2026-10-31
+    locator: "line 5370, components.schemas.TxId.pattern"
+    value: "[a-zA-Z0-9]{26,35}"
+    unit: regex
+    snippet: "O txid é criado exclusivamente pelo usuário recebedor"
+    source_license: Apache-2.0
+    content_sha256: cf191845044a5edd38c00b0e099924e8daceacfe53502abaa6a5b238bed41eb4
+  - publisher: Banco Central do Brasil
+    title: "API Pix OpenAPI specification, version 2.11.0-rc1 (bacen/pix-api)"
+    url: https://raw.githubusercontent.com/bacen/pix-api/3ebbd6a184519cf8a032f2747b87cce2a3d05e7f/openapi.yaml
+    accessed_at: 2026-10-31
+    locator: "lines 5371-5377, components.schemas.EndToEndId"
+    value: "[a-zA-Z0-9]{32}"
+    unit: regex
+    snippet: "EndToEndIdentification que transita na PACS002, PACS004 e PACS008"
+    source_license: Apache-2.0
+    content_sha256: cf191845044a5edd38c00b0e099924e8daceacfe53502abaa6a5b238bed41eb4
+  - publisher: Banco Central do Brasil
+    title: "API Pix OpenAPI specification, version 2.11.0-rc1 (bacen/pix-api)"
+    url: https://raw.githubusercontent.com/bacen/pix-api/3ebbd6a184519cf8a032f2747b87cce2a3d05e7f/openapi.yaml
+    accessed_at: 2026-10-31
+    locator: "line 5490, components.schemas.PessoaFisica.properties.cpf.pattern"
+    value: '/^\\d{11}$/'
+    unit: regex
+    snippet: 'title: "CPF"'
+    source_license: Apache-2.0
+    content_sha256: cf191845044a5edd38c00b0e099924e8daceacfe53502abaa6a5b238bed41eb4
+  - publisher: Banco Central do Brasil
+    title: "API Pix OpenAPI specification, version 2.11.0-rc1 (bacen/pix-api)"
+    url: https://raw.githubusercontent.com/bacen/pix-api/3ebbd6a184519cf8a032f2747b87cce2a3d05e7f/openapi.yaml
+    accessed_at: 2026-10-31
+    locator: "line 5505, components.schemas.PessoaJuridica.properties.cnpj.pattern"
+    value: "^[0-9A-Z]{14}$"
+    unit: regex
+    snippet: 'title: "CNPJ"'
+    source_license: Apache-2.0
+    content_sha256: cf191845044a5edd38c00b0e099924e8daceacfe53502abaa6a5b238bed41eb4
+  - publisher: Banco Central do Brasil
+    title: "API Pix OpenAPI specification, version 2.11.0-rc1 (bacen/pix-api)"
+    url: https://raw.githubusercontent.com/bacen/pix-api/3ebbd6a184519cf8a032f2747b87cce2a3d05e7f/openapi.yaml
+    accessed_at: 2026-10-31
+    locator: "line 5648, ispbParticipante.pattern"
+    value: "^[0-9A-Z]{8}$"
+    unit: regex
+    snippet: 'title: "ISPB do usuário pagador."'
+    source_license: Apache-2.0
+    content_sha256: cf191845044a5edd38c00b0e099924e8daceacfe53502abaa6a5b238bed41eb4
+  - publisher: Banco Central do Brasil
+    title: "API Pix OpenAPI specification, version 2.11.0-rc1 (bacen/pix-api)"
+    url: https://raw.githubusercontent.com/bacen/pix-api/3ebbd6a184519cf8a032f2747b87cce2a3d05e7f/openapi.yaml
+    accessed_at: 2026-10-31
+    locator: "line 6059, components.schemas.CobVValor.properties.original.pattern"
+    value: '\\d{1,10}\\.\\d{2}'
+    unit: regex
+    snippet: 'title: "Valor da cobrança com vencimento"'
+    source_license: Apache-2.0
+    content_sha256: cf191845044a5edd38c00b0e099924e8daceacfe53502abaa6a5b238bed41eb4
+  - publisher: Banco Central do Brasil
+    title: "API Pix changelog (bacen/pix-api)"
+    url: https://raw.githubusercontent.com/bacen/pix-api/3ebbd6a184519cf8a032f2747b87cce2a3d05e7f/changelog.md
+    accessed_at: 2026-10-31
+    locator: "section [2.9.0], first bullet"
+    value: "Instrução Normativa RFB nº 2229, de 15 de outubro de 2024"
+    unit: text
+    snippet: "para aceitar valores alfanuméricos"
+    source_license: Apache-2.0
+    content_sha256: 4b89add1ec5bfef78d96a6e50f49921b8d62b86fec0c008c8e718020e96b580d
+assumed:
+  - parameter: fields.cpf.pattern
+    value: '^\d{11}$'
+    method: derived
+    rationale: The specification writes the CPF pattern as /^\d{11}$/; the surrounding slashes are regex-literal delimiters, not pattern characters, and are removed.
+  - parameter: fields.end_to_end_id.min_length, fields.end_to_end_id.max_length
+    value: 32
+    method: derived
+    rationale: Copied from the schema's minLength and maxLength, which restate the fixed width already implied by the pattern.
+tests:
+  - {statistic: vector_pass_fraction, expected: 1, tolerance: 0}
+  - {statistic: vector_count, expected: 18, tolerance: 0}
+notes: |
+  Formats are taken from the OpenAPI document Banco Central do Brasil publishes for the Pix API
+  (version 2.11.0-rc1, commit 3ebbd6a1). Positive vectors are the specification's own example
+  values. The CNPJ field has accepted alphanumeric values since API version 2.9.0, which the
+  changelog attributes to Instrução Normativa RFB nº 2229 of 15 October 2024; the digits-only
+  pattern for CPF is unchanged. One example EndToEndId in the specification is 34 characters
+  long and therefore fails the specification's own 32-character constraint; it is kept as a
+  negative vector and flagged for review. Pattern matching is whole-string. The pinned version
+  is a release candidate; valid_from is the date of the pinned revision and valid_to is open.

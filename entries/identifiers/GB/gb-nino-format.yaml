@@ -1,0 +1,92 @@
+id: gb-nino-format
+title: United Kingdom National Insurance number (NINO) format
+kind: rule
+domain: identifiers
+region: GB
+status: verified
+tier: A
+valid_from: 2025-08-11
+valid_to: null
+spec:
+  implementation: almanac.rules.gb_nino
+  parameters:
+    excluded_first_letters: [D, F, I, Q, U, V]
+    excluded_second_letters: [D, F, I, O, Q, U, V]
+    invalid_prefixes: [BG, GB, NK, KN, TN, NT, ZZ]
+    suffix_letters: [A, B, C, D]
+    optional_spaces: true
+  vectors:
+    - {input: "AB123456C", expected: true, origin: source}
+    - {input: "AB 12 34 56 C", expected: true, origin: source}
+    - {input: "CS100700A", expected: true, origin: source}
+    - {input: "AA111111A", expected: true, origin: source}
+    - {input: " AB123456C", expected: false, origin: source, note: leading space}
+    - {input: "AB123456C ", expected: false, origin: source, note: trailing space}
+    - {input: "", expected: false, origin: source}
+    - {input: "    ", expected: false, origin: source}
+    - {input: "XXX", expected: false, origin: source}
+    - {input: "123456", expected: false, origin: source}
+    - {input: "A123456C", expected: false, origin: source, note: one prefix letter}
+    - {input: "A1234567C", expected: false, origin: source}
+    - {input: "ABC12345C", expected: false, origin: source, note: three prefix letters}
+    - {input: "ABC123456C", expected: false, origin: source}
+    - {input: "ab123456c", expected: false, origin: source, note: lowercase}
+    - {input: "AB12345C", expected: false, origin: source, note: five digits}
+    - {input: "AB1234567C", expected: false, origin: source, note: seven digits}
+    - {input: "DF123456C", expected: false, origin: source, note: excluded letters in both prefix positions}
+    - {input: "QU123456C", expected: false, origin: source, note: excluded letters in both prefix positions}
+    - {input: "BG123456C", expected: false, origin: source, note: never-issued prefix}
+    - {input: "GB123456C", expected: false, origin: source, note: never-issued prefix}
+    - {input: "NK123456C", expected: false, origin: source, note: never-issued prefix}
+    - {input: "KN123456C", expected: false, origin: source, note: never-issued prefix}
+    - {input: "TN123456C", expected: false, origin: source, note: never-issued prefix}
+    - {input: "NT123456C", expected: false, origin: source, note: never-issued prefix}
+    - {input: "ZZ123456C", expected: false, origin: source, note: never-issued prefix}
+    - {input: "AO123456C", expected: false, origin: source, note: O is excluded in the second position only}
+    - {input: "AB123456E", expected: false, origin: source, note: suffix outside A-D}
+evidence:
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: Nino.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/main/scala/uk/gov/hmrc/domain/Nino.scala
+    accessed_at: 2026-10-31
+    locator: "line 40, validNinoFormat"
+    value: '[[A-Z]&&[^DFIQUV]][[A-Z]&&[^DFIQUVO]] ?\\d{2} ?\\d{2} ?\\d{2} ?[A-D]{1}'
+    unit: regex
+    snippet: "private val validNinoFormat ="
+    source_license: Apache-2.0
+    content_sha256: f43dec2b4afdd809531c7c9343dbf75a689def14a2b506e39bc7a212b1160ff4
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: Nino.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/main/scala/uk/gov/hmrc/domain/Nino.scala
+    accessed_at: 2026-10-31
+    locator: "line 41, invalidPrefixes"
+    value: 'List("BG", "GB", "NK", "KN", "TN", "NT", "ZZ")'
+    unit: list
+    snippet: "private val invalidPrefixes ="
+    source_license: Apache-2.0
+    content_sha256: f43dec2b4afdd809531c7c9343dbf75a689def14a2b506e39bc7a212b1160ff4
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: NinoSpec.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/test/scala/uk/gov/hmrc/domain/NinoSpec.scala
+    accessed_at: 2026-10-31
+    locator: "lines 25-66, validation examples"
+    value: "AB 12 34 56 C"
+    unit: text
+    snippet: "pass with valid number with spaces"
+    source_license: Apache-2.0
+    content_sha256: 1574e3576d6332e3bf09cd7e4615ee885f126549971db48710c6bc83daeef775
+assumed:
+  - parameter: excluded_first_letters, excluded_second_letters
+    value: "D F I Q U V; D F I O Q U V"
+    method: derived
+    rationale: The Java character-class intersections in the published pattern are restated as explicit exclusion lists so the pattern can be rebuilt in any regex dialect; the rebuilt pattern accepts and rejects exactly the same strings.
+tests:
+  - {statistic: vector_pass_fraction, expected: 1, tolerance: 0}
+  - {statistic: vector_count, expected: 28, tolerance: 0}
+notes: |
+  Source is the validation library HM Revenue & Customs publishes and uses in its own services
+  (hmrc/domain, release v13.0.0, pinned to commit bc4a37fe). The library tests supply every
+  test vector; the loop over excluded-letter pairs and never-issued prefixes in NinoSpec is
+  represented by one vector per prefix. Matching is whole-string, mirroring Java String.matches.
+  valid_from is the date of the pinned revision, the earliest date this evidence attests the
+  rule; it is not a claim about when the format was introduced. valid_to is open.

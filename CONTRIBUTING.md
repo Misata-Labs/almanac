@@ -1,0 +1,88 @@
+# Contributing
+
+The Almanac only accepts entries whose every value traces to a primary
+source fetched while the entry was written. Read this before opening a
+pull request.
+
+## Source policy
+
+Allowed sources, in priority order:
+
+1. National statistical offices.
+2. Central banks.
+3. Government ministries, regulators and official gazettes.
+4. Intergovernmental bodies: World Bank, IMF, OECD, UN agencies, BIS, ILO, WHO.
+5. Official operators of payment or numbering systems (for example a national
+   payments corporation, a telecom regulator, the IBAN registry maintainer).
+6. Peer-reviewed open-access papers.
+
+Not allowed as primary sources: blogs, vendor marketing, news articles,
+encyclopaedias, forums, paywalled documents, and output of language models.
+Code or data an official body publishes on a code-hosting platform under its
+own organisation counts as that body's publication; pin it to a commit.
+
+Never write a number, rate, rule or date from memory. If you cannot fetch and
+confirm a value, leave the entry out.
+
+## Tiers
+
+- **A**: reproducible from an official machine-readable artefact at an exact
+  URL, hash recorded.
+- **B**: a value located in an official PDF or HTML document, with page, table
+  or cell locator and a snippet.
+- **C**: estimate or derived value; clearly labelled, with `assumed[]` filled
+  in. Prefer omitting.
+
+## Writing an entry
+
+1. Pick `entries/<domain>/<region>/<id>.yaml`. `region` is an ISO 3166-1
+   alpha-2 code or `global`; `id` equals the file name.
+2. Fetch each source yourself. Record the URL you fetched, the date, the
+   locator, the value exactly as it appears, the unit from the controlled
+   vocabulary, one snippet under 25 words that locates the value, the source
+   licence, and the SHA-256 of the fetched bytes:
+   `curl -sSL <url> | sha256sum`.
+3. For a rule, implement it under `almanac/rules/<name>.py` with an
+   `evaluate(parameters, value)` function, and take the test vectors from the
+   source's own worked examples (`origin: source`). Vectors you construct from
+   source data, such as a date absent from a published list, are
+   `origin: derived` and should stay few.
+4. For a distribution, declare the family and parameters, and add tests whose
+   expected values are the statistics the source publishes.
+5. Anything fitted, restated or assumed goes in `assumed[]` with `method` and
+   `rationale`.
+6. Set `status`: `draft` while working, `license-review` if the source's terms
+   are unclear, `verified` only when the verifier passes and all source
+   licences are clearly permissive.
+7. Write `notes` for a reader who has never seen the source: what the rule is,
+   where the dates come from, anything odd you noticed.
+
+## Before opening a pull request
+
+Run all of these and include the output summary in the pull request:
+
+```
+uv sync
+uv run almanac verify <path-to-your-entry>
+uv run almanac verify
+uv run pytest
+```
+
+Then confirm by hand:
+
+- Open each evidence URL in a browser and check the snippet and value are
+  there and the locator is right.
+- Confirm the licence you recorded is the one the publisher states.
+- Check that `valid_from`, `valid_to` or `observed_period` reflect what the
+  source says, not what you expect.
+- Re-read `assumed[]`: is every restatement, conversion or derived parameter
+  listed?
+
+Pull requests that add values without fetched evidence, or that copy tables
+or passages from a source, will be declined.
+
+## Code
+
+Code is typed, small and documented for intent. Comments explain what the
+code does and why, never the history of how it was written. Run `uv run
+pytest` before pushing. Commit messages are short and simple.

@@ -1,0 +1,78 @@
+id: gb-vrn-check-digits
+title: United Kingdom VAT registration number (VRN) MOD 97 and MOD 9755 check digits
+kind: rule
+domain: identifiers
+region: GB
+status: verified
+tier: A
+valid_from: 2025-08-11
+valid_to: null
+spec:
+  implementation: almanac.rules.gb_vrn
+  parameters:
+    length: 9
+    weights: [8, 7, 6, 5, 4, 3, 2]
+    modulus: 97
+    variant_offset: 55
+  vectors:
+    - {input: "101747696", expected: true, origin: source}
+    - {input: "101747641", expected: true, origin: source}
+    - {input: "000000097", expected: true, origin: source}
+    - {input: "", expected: false, origin: source}
+    - {input: "123456", expected: false, origin: source}
+    - {input: "123456789", expected: false, origin: source, note: wrong check digits}
+    - {input: "123abc789", expected: false, origin: source}
+evidence:
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: ReferenceChecker.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/main/scala/uk/gov/hmrc/referencechecker/ReferenceChecker.scala
+    accessed_at: 2026-10-31
+    locator: "lines 123-127, VatReferenceChecker"
+    value: "List(8, 7, 6, 5, 4, 3, 2)"
+    unit: list
+    snippet: "object VatReferenceChecker extends DifferenceReferenceChecker"
+    source_license: Apache-2.0
+    content_sha256: 28370b888af29cf0b8ef6289249c0fef8749cd09313a64228373399f0a18a0c6
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: ReferenceChecker.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/main/scala/uk/gov/hmrc/referencechecker/ReferenceChecker.scala
+    accessed_at: 2026-10-31
+    locator: "lines 80-93, DifferenceReferenceChecker.mainCheck"
+    value: "checkVatReference(weightedSum, expected) || checkVatReference(weightedSum + 55, expected)"
+    unit: text
+    snippet: "val calculatedDigits = 97 - sumLessThan97"
+    source_license: Apache-2.0
+    content_sha256: 28370b888af29cf0b8ef6289249c0fef8749cd09313a64228373399f0a18a0c6
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: ModulusCheckerSpec.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/test/scala/uk/gov/hmrc/referencechecker/ModulusCheckerSpec.scala
+    accessed_at: 2026-10-31
+    locator: "lines 95-96, VAT reference checker examples"
+    value: '"101747696", "101747641", "000000097"'
+    unit: list
+    snippet: '"The VAT reference checker" should'
+    source_license: Apache-2.0
+    content_sha256: 0da8144dcec9ff14ae7421f1ee8973e52501b37a0336e77428cd63ac706b0f98
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: Vrn.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/main/scala/uk/gov/hmrc/domain/Vrn.scala
+    accessed_at: 2026-10-31
+    locator: "line 32, validFormat"
+    value: "^[0-9]{9}$"
+    unit: regex
+    snippet: "private val validFormat ="
+    source_license: Apache-2.0
+    content_sha256: 3aa31a4186cd4d6e02ba642b887313d66de44752fdce0589b8e6331efc8f2bbc
+assumed: []
+tests:
+  - {statistic: vector_pass_fraction, expected: 1, tolerance: 0}
+  - {statistic: vector_count, expected: 7, tolerance: 0}
+notes: |
+  A nine-digit VRN ends with two check digits. The weighted sum of the first seven digits
+  (weights 8 7 6 5 4 3 2) is reduced by repeatedly subtracting 97 while it exceeds 97, and the
+  check digits are 97 minus the result. The MOD 9755 variant adds 55 to the sum first; a VRN is
+  accepted if either variant reproduces its check digits. The reduction stops at exactly 97,
+  so a sum of 97 yields check digits 00 and a sum of 0 yields 97, which is why 000000097 is
+  valid. Vrn.scala additionally accepts a legacy five-digit form in stored data; that is a
+  storage compatibility case, not an issued-number format, and is excluded from this rule.
+  valid_from is the date of the pinned revision; valid_to is open.

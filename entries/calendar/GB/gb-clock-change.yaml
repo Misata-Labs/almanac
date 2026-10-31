@@ -1,0 +1,106 @@
+id: gb-clock-change
+title: United Kingdom clock changes (British Summer Time), 2025 to 2028
+kind: rule
+domain: calendar
+region: GB
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2028-12-31'
+spec:
+  implementation: almanac.rules.gb_clock_change
+  parameters:
+    transitions:
+      forward:
+        month: 3
+        weekday: sunday
+        ordinal: last
+        local_time: 01:00
+      back:
+        month: 10
+        weekday: sunday
+        ordinal: last
+        local_time: 02:00
+    published:
+      '2025':
+        forward: '2025-03-30'
+        back: '2025-10-26'
+      '2026':
+        forward: '2026-03-29'
+        back: '2026-10-25'
+      '2027':
+        forward: '2027-03-28'
+        back: '2027-10-31'
+      '2028':
+        forward: '2028-03-26'
+        back: '2028-10-29'
+  vectors:
+  - input:
+      year: 2025
+    expected:
+      forward: '2025-03-30'
+      back: '2025-10-26'
+    origin: source
+  - input:
+      year: 2026
+    expected:
+      forward: '2026-03-29'
+      back: '2026-10-25'
+    origin: source
+  - input:
+      year: 2027
+    expected:
+      forward: '2027-03-28'
+      back: '2027-10-31'
+    origin: source
+  - input:
+      year: 2028
+    expected:
+      forward: '2028-03-26'
+      back: '2028-10-29'
+    origin: source
+evidence:
+- publisher: Government Digital Service (GOV.UK)
+  title: GOV.UK clock change data (alphagov/frontend lib/data/when-do-the-clocks-change.json)
+  url: https://raw.githubusercontent.com/alphagov/frontend/b078a86e3d8262f58192a5484b66970de9a9dac7/lib/data/when-do-the-clocks-change.json
+  accessed_at: '2026-10-31'
+  locator: divisions["common.united-kingdom_slug"]["2026"][0].date
+  value: 29/03/2026
+  unit: date
+  snippet: '"title": "when_do_the_clocks_change.start_title"'
+  source_license: MIT
+  content_sha256: f25fb9c554490d8c82d568735b8bc6a55a92055671e671b6b7a47461f504d24c
+- publisher: Government Digital Service (GOV.UK)
+  title: GOV.UK clock change data (alphagov/frontend lib/data/when-do-the-clocks-change.json)
+  url: https://raw.githubusercontent.com/alphagov/frontend/b078a86e3d8262f58192a5484b66970de9a9dac7/lib/data/when-do-the-clocks-change.json
+  accessed_at: '2026-10-31'
+  locator: divisions["common.united-kingdom_slug"]["2027"][1].date
+  value: 31/10/2027
+  unit: date
+  snippet: '"title": "when_do_the_clocks_change.end_title"'
+  source_license: MIT
+  content_sha256: f25fb9c554490d8c82d568735b8bc6a55a92055671e671b6b7a47461f504d24c
+- publisher: Government Digital Service (GOV.UK)
+  title: GOV.UK frontend English locale (config/locales/en.yml)
+  url: https://raw.githubusercontent.com/alphagov/frontend/b078a86e3d8262f58192a5484b66970de9a9dac7/config/locales/en.yml
+  accessed_at: '2026-10-31'
+  locator: en.bank_holidays.clock_change_explanation
+  value: In the UK the clocks go forward 1 hour at 1am on the last Sunday in March, and back 1 hour at 2am on the
+    last Sunday in October.
+  unit: text
+  snippet: last Sunday in March, and back 1 hour at 2am
+  source_license: MIT
+  content_sha256: 67627dbde96e4e05a040a869337469d263e687d0bad34755ba4ae9e57ae5170b
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 4
+  tolerance: 0
+notes: The rule computes the last Sunday of March (clocks forward, 01:00 local) and the last Sunday of October (clocks
+  back, 02:00 local) as GOV.UK states, and every published date for 2025 to 2028 in the JSON behind www.gov.uk/when-do-the-clocks-change
+  reproduces from it (alphagov/frontend commit b078a86e, data last updated 24/11/2025). The published dates are
+  kept under parameters.published for direct lookup. Transition times are taken from the same GOV.UK sentence; the
+  underlying statute is the Summer Time Act 1972.

@@ -1,0 +1,32 @@
+[project]
+name = "almanac"
+version = "0.1.0"
+description = "Misata Almanac: a proof-backed knowledge base of real-world data rules and patterns, with a local verifier."
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{ name = "Muhammed Rasin" }]
+requires-python = ">=3.13"
+dependencies = [
+    "httpx>=0.28",
+    "jsonschema>=4.23",
+    "pydantic>=2.10",
+    "pyyaml>=6.0",
+]
+
+[project.scripts]
+almanac = "almanac.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8.3"]
+
+[build-system]
+requires = ["uv_build>=0.11.32,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
