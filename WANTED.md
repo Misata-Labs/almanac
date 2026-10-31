@@ -8,13 +8,16 @@ CONTRIBUTING.md.
 
 Claim one by opening an issue titled with the entry id.
 
+Already done, for the pattern to copy: `br-cnpj-check-digits`,
+`br-pix-monthly-volume-and-value`, `gb-census-2021-age`, `gb-census-2021-sex`
+and `in-gst-rate-structure` each started as a line in this file.
+
 ## Identifiers and numbering systems
 
 | Entry id | What it fixes | Where the official source lives |
 | --- | --- | --- |
 | global-iban-structure | IBAN length, check digits (ISO 7064 MOD 97-10) and per-country BBAN layout | SWIFT, the ISO 13616 registration authority: the IBAN Registry (TXT and PDF releases) |
 | br-cpf-check-digits | Brazilian CPF check digits | Receita Federal do Brasil |
-| br-cnpj-check-digits | Brazilian CNPJ check digits, including the alphanumeric form introduced by Instrução Normativa RFB 2229/2024 | Receita Federal do Brasil |
 | in-aadhaar-verhoeff | Aadhaar number Verhoeff check digit | Unique Identification Authority of India |
 | in-pan-format | Permanent Account Number structure | Income Tax Department, India |
 | in-gstin-format | GSTIN composition and check character | Goods and Services Tax Network |
@@ -38,9 +41,8 @@ Claim one by opening an issue titled with the entry id.
 
 | Entry id | What it fixes | Where the official source lives |
 | --- | --- | --- |
-| in-upi-monthly-volume | UPI transaction count and value by month, giving ticket size | National Payments Corporation of India, product statistics |
+| in-upi-monthly-volume | UPI transaction count and value by month, giving ticket size | National Payments Corporation of India, product statistics (the site refuses non-browser clients; fetch the published XLSX by hand) |
 | in-upi-vpa-format | Virtual payment address structure | National Payments Corporation of India |
-| br-pix-monthly-volume | Pix transactions and value by month | Banco Central do Brasil, Pix statistics |
 | eu-sepa-creditor-identifier | SEPA creditor identifier structure and check digits | European Payments Council |
 | global-card-pan-luhn | Payment card number Luhn check and issuer identifier lengths | ISO/IEC 7812 registration authority (ABA) |
 | gb-sort-code-structure | Sort code and account number modulus checks (VocaLink rules) | Pay.UK |
@@ -49,7 +51,7 @@ Claim one by opening an issue titled with the entry id.
 
 | Entry id | What it fixes | Where the official source lives |
 | --- | --- | --- |
-| in-gst-rate-schedule | GST rate slabs with effective dates, including the September 2025 rationalisation | Central Board of Indirect Taxes and Customs; GST Council notifications |
+| in-gst-rate-schedule | Item-level GST rates by HSN chapter with effective dates (the slab structure is already in in-gst-rate-structure) | Central Board of Indirect Taxes and Customs rate notifications |
 | gb-vat-rate-history | Standard, reduced and zero VAT rates with effective dates | HM Revenue & Customs |
 | eu-vat-rates | VAT rates by member state | European Commission, Taxation and Customs Union |
 | ca-cash-rounding | Cash rounding to the nearest five cents after the penny was withdrawn | Department of Finance Canada |
@@ -70,7 +72,7 @@ Claim one by opening an issue titled with the entry id.
 
 | Entry id | What it fixes | Where the official source lives |
 | --- | --- | --- |
-| gb-population-by-age-sex | Mid-year population by single year of age and sex | Office for National Statistics |
+| gb-population-by-age-sex | Mid-year population by single year of age and sex, as a conditional on top of the Census 2021 marginals | Office for National Statistics |
 | us-household-income-distribution | Household income distribution by bracket | US Census Bureau, Current Population Survey |
 | in-population-by-state | Population by state and sex | Office of the Registrar General, Census of India |
 | gb-baby-names | Given name frequencies by sex and year | Office for National Statistics |

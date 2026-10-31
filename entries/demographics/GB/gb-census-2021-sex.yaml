@@ -1,0 +1,78 @@
+id: gb-census-2021-sex
+title: England and Wales usual residents by sex, Census 2021
+kind: marginal
+domain: demographics
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2021-03-21'
+  end: '2021-03-21'
+spec:
+  variable: sex
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Female: 0.510427
+        Male: 0.489573
+      counts:
+        Female: 30420202
+        Male: 29177340
+      total: 59597542
+evidence:
+- publisher: Office for National Statistics
+  title: 'Census 2021 observations: usual residents by sex, by country (ONS API)'
+  url: https://api.beta.ons.gov.uk/v1/population-types/UR/census-observations?area-type=ctry&dimensions=sex
+  accessed_at: '2026-10-31'
+  locator: observations[ctry=England, sex=Female].observation
+  value: 28833712
+  unit: count
+  snippet: '"option":"Female","option_id":"1"}],"observation":'
+  source_license: OGL-UK-3.0
+  content_sha256: 475b939ce0457e0d5d57740b59a34e85bc5344db7361e3d079f2197151104fe3
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata TS008 (Sex)
+  url: https://api.beta.ons.gov.uk/v1/datasets/TS008
+  accessed_at: '2026-10-31'
+  locator: description
+  value: The estimates are as at Census Day, 21 March 2021.
+  unit: text
+  snippet: classify usual residents in England and Wales by sex
+  source_license: OGL-UK-3.0
+  content_sha256: 6c889ee1a17ac7681ff6ed2643a80472072224b16eec7639352ab39824fb6c30
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata, Population Estimates (licence statement)
+  url: https://api.beta.ons.gov.uk/v1/datasets/mid-year-pop-est
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: b0159564676459d73de7bb2bd78b76e67c94b10a6a5f86a6c5c49e31fa68484d
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total over England and Wales
+  method: derived
+  rationale: The API publishes counts per country; England and Wales are summed and each share is the summed count
+    divided by the total.
+tests:
+- statistic: share[Female]
+  expected: 0.510427
+  tolerance: 0.005
+- statistic: share[Male]
+  expected: 0.489573
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 1.0e-05
+notes: Census 2021 usual residents of England and Wales by sex, from the ONS census observations API (population
+  type UR, area type country), summed over England and Wales. Counts are recorded under distribution.parameters.counts
+  so the shares can be re-derived. The reference date is Census Day, 21 March 2021. ONS publishes its datasets under
+  the Open Government Licence v3.0, as the licence field of its dataset metadata states; the census observations
+  endpoint itself carries no licence field.

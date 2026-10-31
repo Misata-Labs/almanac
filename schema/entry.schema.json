@@ -5,15 +5,39 @@
   "description": "A single proof-backed rule, distribution, or time pattern. Every value in an entry must be traceable to the evidence items it carries.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "title", "kind", "domain", "region", "status", "tier", "spec", "evidence", "assumed", "tests", "notes"],
+  "required": [
+    "id",
+    "title",
+    "kind",
+    "domain",
+    "region",
+    "status",
+    "tier",
+    "spec",
+    "evidence",
+    "assumed",
+    "tests",
+    "notes"
+  ],
   "properties": {
     "id": {
       "type": "string",
       "description": "Stable identifier; must equal the file name without extension.",
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
     },
-    "title": { "type": "string", "minLength": 3, "maxLength": 160 },
-    "kind": { "enum": ["rule", "marginal", "temporal", "conditional"] },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 160
+    },
+    "kind": {
+      "enum": [
+        "rule",
+        "marginal",
+        "temporal",
+        "conditional"
+      ]
+    },
     "domain": {
       "type": "string",
       "description": "Top-level subject area; must equal the first directory under entries/.",
@@ -24,17 +48,47 @@
       "description": "ISO 3166-1 alpha-2 code or the literal 'global'; must equal the second directory under entries/.",
       "pattern": "^([A-Z]{2}|global)$"
     },
-    "status": { "enum": ["draft", "verified", "license-review"] },
-    "tier": { "enum": ["A", "B", "C"] },
-    "valid_from": { "$ref": "#/$defs/date" },
-    "valid_to": { "oneOf": [{ "$ref": "#/$defs/date" }, { "type": "null" }] },
+    "status": {
+      "enum": [
+        "draft",
+        "verified",
+        "license-review"
+      ]
+    },
+    "tier": {
+      "enum": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "valid_from": {
+      "$ref": "#/$defs/date"
+    },
+    "valid_to": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/date"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
     "observed_period": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["start", "end"],
+      "required": [
+        "start",
+        "end"
+      ],
       "properties": {
-        "start": { "$ref": "#/$defs/date" },
-        "end": { "$ref": "#/$defs/date" }
+        "start": {
+          "$ref": "#/$defs/date"
+        },
+        "end": {
+          "$ref": "#/$defs/date"
+        }
       }
     },
     "spec": {
@@ -44,46 +98,103 @@
     "evidence": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/$defs/evidence" }
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
     },
     "assumed": {
       "type": "array",
-      "items": { "$ref": "#/$defs/assumption" }
+      "items": {
+        "$ref": "#/$defs/assumption"
+      }
     },
     "tests": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/$defs/test" }
+      "items": {
+        "$ref": "#/$defs/test"
+      }
     },
-    "notes": { "type": "string" }
+    "notes": {
+      "type": "string"
+    }
   },
   "allOf": [
     {
-      "if": { "properties": { "kind": { "const": "rule" } } },
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "rule"
+          }
+        }
+      },
       "then": {
-        "required": ["valid_from", "valid_to"],
-        "properties": { "spec": { "$ref": "#/$defs/rule_spec" } }
+        "required": [
+          "valid_from",
+          "valid_to"
+        ],
+        "properties": {
+          "spec": {
+            "$ref": "#/$defs/rule_spec"
+          }
+        }
       }
     },
     {
-      "if": { "properties": { "kind": { "const": "marginal" } } },
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "marginal"
+          }
+        }
+      },
       "then": {
-        "required": ["observed_period"],
-        "properties": { "spec": { "$ref": "#/$defs/marginal_spec" } }
+        "required": [
+          "observed_period"
+        ],
+        "properties": {
+          "spec": {
+            "$ref": "#/$defs/marginal_spec"
+          }
+        }
       }
     },
     {
-      "if": { "properties": { "kind": { "const": "temporal" } } },
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "temporal"
+          }
+        }
+      },
       "then": {
-        "required": ["observed_period"],
-        "properties": { "spec": { "$ref": "#/$defs/temporal_spec" } }
+        "required": [
+          "observed_period"
+        ],
+        "properties": {
+          "spec": {
+            "$ref": "#/$defs/temporal_spec"
+          }
+        }
       }
     },
     {
-      "if": { "properties": { "kind": { "const": "conditional" } } },
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "conditional"
+          }
+        }
+      },
       "then": {
-        "required": ["observed_period"],
-        "properties": { "spec": { "$ref": "#/$defs/conditional_spec" } }
+        "required": [
+          "observed_period"
+        ],
+        "properties": {
+          "spec": {
+            "$ref": "#/$defs/conditional_spec"
+          }
+        }
       }
     }
   ],
@@ -95,146 +206,338 @@
     "unit": {
       "description": "Controlled vocabulary for the unit of an evidence value or statistic.",
       "anyOf": [
-        { "enum": ["text", "regex", "integer", "decimal", "ratio", "percent", "count", "date", "datetime", "version", "boolean", "list"] },
-        { "type": "string", "pattern": "^currency:[A-Z]{3}$" }
+        {
+          "enum": [
+            "text",
+            "regex",
+            "integer",
+            "decimal",
+            "ratio",
+            "percent",
+            "count",
+            "date",
+            "datetime",
+            "version",
+            "boolean",
+            "list"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^currency:[A-Z]{3}$"
+        }
       ]
     },
     "scalar": {
-      "oneOf": [{ "type": "string" }, { "type": "number" }, { "type": "boolean" }]
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        }
+      ]
     },
     "evidence": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["publisher", "title", "url", "accessed_at", "locator", "value", "unit", "snippet", "source_license", "content_sha256"],
+      "required": [
+        "publisher",
+        "title",
+        "url",
+        "accessed_at",
+        "locator",
+        "value",
+        "unit",
+        "snippet",
+        "source_license",
+        "content_sha256"
+      ],
       "properties": {
-        "publisher": { "type": "string", "minLength": 2 },
-        "title": { "type": "string", "minLength": 2 },
-        "url": { "type": "string", "format": "uri", "pattern": "^https://" },
-        "accessed_at": { "$ref": "#/$defs/date" },
+        "publisher": {
+          "type": "string",
+          "minLength": 2
+        },
+        "title": {
+          "type": "string",
+          "minLength": 2
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "accessed_at": {
+          "$ref": "#/$defs/date"
+        },
         "locator": {
           "type": "string",
           "description": "Where inside the resource the value sits: line, table, cell, JSON path, or section.",
           "minLength": 2
         },
-        "value": { "$ref": "#/$defs/scalar" },
-        "unit": { "$ref": "#/$defs/unit" },
+        "value": {
+          "$ref": "#/$defs/scalar"
+        },
+        "unit": {
+          "$ref": "#/$defs/unit"
+        },
         "snippet": {
           "type": "string",
           "description": "One verbatim fragment under 25 words that locates the value in the resource.",
           "minLength": 3,
           "maxLength": 240
         },
-        "source_license": { "type": "string", "minLength": 2 },
-        "content_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        "source_license": {
+          "type": "string",
+          "minLength": 2
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "role": {
+          "enum": [
+            "primary",
+            "supporting"
+          ],
+          "default": "primary",
+          "description": "'primary' evidence carries a value the spec depends on and must be machine-readable for tier A; 'supporting' evidence documents context such as units or licence terms."
+        }
       }
     },
     "assumption": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["parameter", "value", "method", "rationale"],
+      "required": [
+        "parameter",
+        "value",
+        "method",
+        "rationale"
+      ],
       "properties": {
-        "parameter": { "type": "string", "minLength": 1 },
+        "parameter": {
+          "type": "string",
+          "minLength": 1
+        },
         "value": {},
-        "method": { "enum": ["fitted", "derived", "assumed"] },
-        "rationale": { "type": "string", "minLength": 3 }
+        "method": {
+          "enum": [
+            "fitted",
+            "derived",
+            "assumed"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 3
+        }
       }
     },
     "test": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["statistic", "expected", "tolerance"],
+      "required": [
+        "statistic",
+        "expected",
+        "tolerance"
+      ],
       "properties": {
         "statistic": {
           "type": "string",
           "description": "A statistic name, optionally with bracketed arguments, e.g. share[female] or count[scotland,2026].",
           "pattern": "^[a-z_]+(\\[[^\\]]*\\])?$"
         },
-        "expected": { "$ref": "#/$defs/scalar" },
-        "tolerance": { "type": "number", "minimum": 0 }
+        "expected": {
+          "$ref": "#/$defs/scalar"
+        },
+        "tolerance": {
+          "type": "number",
+          "minimum": 0
+        }
       }
     },
     "vector": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["input", "expected", "origin"],
+      "required": [
+        "input",
+        "expected",
+        "origin"
+      ],
       "properties": {
         "input": {},
         "expected": {},
         "origin": {
-          "enum": ["source", "derived"],
+          "enum": [
+            "source",
+            "derived"
+          ],
           "description": "'source' when copied from the official source's own worked example; 'derived' when constructed from source data, e.g. a date absent from a published list."
         },
-        "note": { "type": "string" }
+        "note": {
+          "type": "string"
+        }
       }
     },
     "rule_spec": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["implementation", "parameters", "vectors"],
+      "required": [
+        "implementation",
+        "parameters",
+        "vectors"
+      ],
       "properties": {
         "implementation": {
           "type": "string",
           "description": "Dotted module path of the rule implementation inside the almanac.rules package.",
           "pattern": "^almanac\\.rules\\.[a-z0-9_]+$"
         },
-        "parameters": { "type": "object" },
-        "vectors": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/vector" } }
+        "parameters": {
+          "type": "object"
+        },
+        "vectors": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/vector"
+          }
+        }
       }
     },
     "distribution": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["family", "parameters"],
+      "required": [
+        "family",
+        "parameters"
+      ],
       "properties": {
-        "family": { "enum": ["categorical", "uniform", "normal", "lognormal", "empirical"] },
-        "parameters": { "type": "object" }
+        "family": {
+          "enum": [
+            "categorical",
+            "uniform",
+            "normal",
+            "lognormal",
+            "empirical"
+          ]
+        },
+        "parameters": {
+          "type": "object"
+        }
       }
     },
     "marginal_spec": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["variable", "unit", "distribution"],
+      "required": [
+        "variable",
+        "unit",
+        "distribution"
+      ],
       "properties": {
-        "variable": { "type": "string", "minLength": 1 },
-        "unit": { "$ref": "#/$defs/unit" },
-        "distribution": { "$ref": "#/$defs/distribution" }
+        "variable": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "$ref": "#/$defs/unit"
+        },
+        "distribution": {
+          "$ref": "#/$defs/distribution"
+        }
       }
     },
     "temporal_spec": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["variable", "unit", "frequency", "series"],
+      "required": [
+        "variable",
+        "unit",
+        "frequency",
+        "series"
+      ],
       "properties": {
-        "variable": { "type": "string", "minLength": 1 },
-        "unit": { "$ref": "#/$defs/unit" },
-        "frequency": { "enum": ["daily", "weekly", "monthly", "quarterly", "annual"] },
+        "variable": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "$ref": "#/$defs/unit"
+        },
+        "frequency": {
+          "enum": [
+            "daily",
+            "weekly",
+            "monthly",
+            "quarterly",
+            "annual"
+          ]
+        },
         "series": {
           "type": "array",
           "minItems": 2,
           "items": {
             "type": "object",
-            "additionalProperties": false,
-            "required": ["period", "value"],
+            "additionalProperties": {
+              "type": "number"
+            },
+            "required": [
+              "period",
+              "value"
+            ],
             "properties": {
-              "period": { "type": "string", "minLength": 4 },
-              "value": { "type": "number" }
+              "period": {
+                "type": "string",
+                "minLength": 4
+              },
+              "value": {
+                "type": "number"
+              }
             }
           }
+        },
+        "columns": {
+          "type": "array",
+          "description": "Names of additional numeric columns carried by every series point.",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
         }
       }
     },
     "conditional_spec": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["variable", "unit", "given", "distributions"],
+      "required": [
+        "variable",
+        "unit",
+        "given",
+        "distributions"
+      ],
       "properties": {
-        "variable": { "type": "string", "minLength": 1 },
-        "unit": { "$ref": "#/$defs/unit" },
-        "given": { "type": "string", "minLength": 1 },
+        "variable": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "$ref": "#/$defs/unit"
+        },
+        "given": {
+          "type": "string",
+          "minLength": 1
+        },
         "distributions": {
           "type": "object",
           "minProperties": 1,
-          "additionalProperties": { "$ref": "#/$defs/distribution" }
+          "additionalProperties": {
+            "$ref": "#/$defs/distribution"
+          }
         }
       }
     }

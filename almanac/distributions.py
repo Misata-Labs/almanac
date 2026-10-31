@@ -82,11 +82,18 @@ def declared_share_total(distribution: Distribution) -> float:
     return float(sum(float(v) for v in distribution.parameters["shares"].values()))
 
 
-def series_statistic(series: Mapping[str, float], stat: Statistic) -> float:
-    """Evaluate a statistic over a temporal series keyed by period label."""
+def series_statistic(series: Mapping[str, float], stat: Statistic, columns: Mapping[str, Mapping[str, float]] | None = None) -> float:
+    """Evaluate a statistic over a temporal series keyed by period label.
+
+    ``columns`` maps a column name to its own period-keyed series, answering
+    ``column[name,period]`` for the extra columns a temporal entry carries.
+    """
     if stat.name == "value":
         (period,) = stat.args
         return series[period]
+    if stat.name == "column":
+        name, period = stat.args
+        return (columns or {})[name][period]
     if stat.name == "ratio":
         numerator, denominator = stat.args
         return series[numerator] / series[denominator]

@@ -173,3 +173,40 @@ def test_enumeration_membership_and_labels():
         enumeration.codes(params, "type")
     with pytest.raises(ValueError):
         enumeration.statistic(params, Statistic.parse("mean"))
+
+
+from almanac.rules import br_cnpj, in_gst_rate_structure
+
+CNPJ = {
+    "base_pattern": r"^[0-9A-Z]{12}$",
+    "modulus": 11,
+    "zero_below_remainder": 2,
+    "weights_first": [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2],
+    "weights_second": [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2],
+}
+GST = {"slabs": {"nil": 0, "merit": 5, "standard": 18, "de_merit": 40}}
+
+
+def test_cnpj_reproduces_the_receita_federal_example():
+    assert br_cnpj.check_digits("12.ABC.345/01DE", CNPJ) == "35"
+    assert br_cnpj.is_valid("12.ABC.345/01DE-35", CNPJ)
+    assert not br_cnpj.is_valid("12.ABC.345/01DE-36", CNPJ)
+
+
+def test_cnpj_character_values_and_zero_rule():
+    assert br_cnpj.character_value("A") == 17 and br_cnpj.character_value("0") == 0
+    zero_rule = {**CNPJ, "zero_below_remainder": 2}
+    base = "000000000000"
+    assert br_cnpj.check_digits(base, zero_rule) == "00"
+    with pytest.raises(ValueError):
+        br_cnpj.check_digits("12345", CNPJ)
+    assert not br_cnpj.is_valid("12.ABC.345/01DE-3X", CNPJ)
+
+
+def test_gst_slabs():
+    assert in_gst_rate_structure.is_slab(18, GST) and not in_gst_rate_structure.is_slab(12, GST)
+    assert in_gst_rate_structure.slab_name(40, GST) == "de_merit"
+    assert in_gst_rate_structure.statistic(GST, Statistic.parse("slab[merit]")) == 5
+    assert in_gst_rate_structure.statistic(GST, Statistic.parse("count")) == 4
+    with pytest.raises(KeyError):
+        in_gst_rate_structure.slab_name(12, GST)

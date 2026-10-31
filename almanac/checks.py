@@ -76,6 +76,11 @@ def _scalar_text(value: Any) -> str:
     return str(value)
 
 
+def _collapse(text: str) -> str:
+    """Normalise whitespace so a snippet matches regardless of line wrapping in the resource."""
+    return " ".join(text.split())
+
+
 def _within(actual: Any, expected: Any, tolerance: float) -> bool:
     if isinstance(actual, (int, float)) and not isinstance(actual, bool) and isinstance(expected, (int, float)):
         return abs(float(actual) - float(expected)) <= tolerance
@@ -197,12 +202,12 @@ class Verifier:
             problems = []
             if resource.sha256 != item.content_sha256:
                 problems.append(f"content_sha256 changed to {resource.sha256[:12]}…")
-            if entry.tier == "A" and not resource.is_machine_readable:
-                problems.append(f"tier A requires a machine-readable resource, got {resource.content_type or 'unknown type'}")
-            text = resource.text
-            if item.snippet not in text:
+            if entry.tier == "A" and item.role == "primary" and not resource.is_machine_readable:
+                problems.append(f"tier A primary evidence must be machine-readable, got {resource.content_type or 'unknown type'}")
+            text = _collapse(resource.text)
+            if _collapse(item.snippet) not in text:
                 problems.append("snippet not found in resource")
-            if _scalar_text(item.value) not in text:
+            if _collapse(_scalar_text(item.value)) not in text:
                 problems.append("value not found in resource")
             report.add(name, not problems, "; ".join(problems))
 
@@ -214,7 +219,8 @@ class Verifier:
             self._check_tests(entry.tests, self._marginal_resolver(spec), report)
         elif isinstance(spec, TemporalSpec):
             series = {point.period: point.value for point in spec.series}
-            self._check_tests(entry.tests, lambda stat: series_statistic(series, stat), report)
+            columns = {name: {point.period: point.column(name) for point in spec.series} for name in spec.columns}
+            self._check_tests(entry.tests, lambda stat: series_statistic(series, stat, columns), report)
         elif isinstance(spec, ConditionalSpec):
             self._check_tests(entry.tests, self._conditional_resolver(spec), report)
 

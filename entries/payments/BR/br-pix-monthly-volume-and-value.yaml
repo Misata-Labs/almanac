@@ -1,0 +1,245 @@
+id: br-pix-monthly-volume-and-value
+title: Brazil Pix monthly transaction volume, value and average ticket, 2024-01 to 2026-09
+kind: temporal
+domain: payments
+region: BR
+status: verified
+tier: A
+observed_period:
+  start: '2024-01-01'
+  end: '2026-09-30'
+spec:
+  variable: pix_average_ticket_brl
+  unit: currency:BRL
+  frequency: monthly
+  columns:
+  - quantity_thousands
+  - value_brl_millions
+  series:
+  - period: 2024-01
+    value: 414.79
+    quantity_thousands: 4350076.79
+    value_brl_millions: 1804382.83
+  - period: 2024-02
+    value: 392.17
+    quantity_thousands: 4344916.74
+    value_brl_millions: 1703935.27
+  - period: 2024-03
+    value: 393.61
+    quantity_thousands: 4880450.84
+    value_brl_millions: 1920981.78
+  - period: 2024-04
+    value: 420.9
+    quantity_thousands: 4900457.64
+    value_brl_millions: 2062609.18
+  - period: 2024-05
+    value: 404.16
+    quantity_thousands: 5204193.37
+    value_brl_millions: 2103326.01
+  - period: 2024-06
+    value: 403.32
+    quantity_thousands: 5252176.9
+    value_brl_millions: 2118312.04
+  - period: 2024-07
+    value: 433.57
+    quantity_thousands: 5392806.29
+    value_brl_millions: 2338132.97
+  - period: 2024-08
+    value: 412.5
+    quantity_thousands: 5639358.01
+    value_brl_millions: 2326231.16
+  - period: 2024-09
+    value: 419.45
+    quantity_thousands: 5515140.08
+    value_brl_millions: 2313327.22
+  - period: 2024-10
+    value: 433.58
+    quantity_thousands: 5712448.02
+    value_brl_millions: 2476793.69
+  - period: 2024-11
+    value: 424.02
+    quantity_thousands: 5794534.99
+    value_brl_millions: 2456993.87
+  - period: 2024-12
+    value: 432.09
+    quantity_thousands: 6429873.76
+    value_brl_millions: 2778266.67
+  - period: 2025-01
+    value: 435.38
+    quantity_thousands: 5673012.47
+    value_brl_millions: 2469941.67
+  - period: 2025-02
+    value: 433.91
+    quantity_thousands: 5598509.94
+    value_brl_millions: 2429262.08
+  - period: 2025-03
+    value: 411.49
+    quantity_thousands: 6238231.6
+    value_brl_millions: 2566965.2
+  - period: 2025-04
+    value: 426.55
+    quantity_thousands: 6267333.46
+    value_brl_millions: 2673358.43
+  - period: 2025-05
+    value: 424.45
+    quantity_thousands: 6642017.9
+    value_brl_millions: 2819173.19
+  - period: 2025-06
+    value: 443.78
+    quantity_thousands: 6458166.7
+    value_brl_millions: 2866010.93
+  - period: 2025-07
+    value: 457.58
+    quantity_thousands: 6677736.17
+    value_brl_millions: 3055581.38
+  - period: 2025-08
+    value: 435.43
+    quantity_thousands: 6966869.39
+    value_brl_millions: 3033574.41
+  - period: 2025-09
+    value: 464.5
+    quantity_thousands: 6843677.25
+    value_brl_millions: 3178872.86
+  - period: 2025-10
+    value: 456.62
+    quantity_thousands: 7262044.75
+    value_brl_millions: 3315978.76
+  - period: 2025-11
+    value: 435.96
+    quantity_thousands: 7161424.75
+    value_brl_millions: 3122098.39
+  - period: 2025-12
+    value: 479.91
+    quantity_thousands: 7858999.2
+    value_brl_millions: 3771628.4
+  - period: 2026-01
+    value: 451.58
+    quantity_thousands: 7021993.67
+    value_brl_millions: 3170986.22
+  - period: 2026-02
+    value: 453.65
+    quantity_thousands: 6606114.79
+    value_brl_millions: 2996838.9
+  - period: 2026-03
+    value: 474.77
+    quantity_thousands: 7442903.15
+    value_brl_millions: 3533664.12
+  - period: 2026-04
+    value: 464.24
+    quantity_thousands: 7370602.06
+    value_brl_millions: 3421737.84
+  - period: 2026-05
+    value: 442.8
+    quantity_thousands: 7854699.48
+    value_brl_millions: 3478038.27
+  - period: 2026-06
+    value: 467.45
+    quantity_thousands: 7699815.65
+    value_brl_millions: 3599283.96
+  - period: 2026-07
+    value: 476.61
+    quantity_thousands: 7975215.71
+    value_brl_millions: 3801027.97
+  - period: 2026-08
+    value: 460.33
+    quantity_thousands: 8110186.6
+    value_brl_millions: 3733392.56
+  - period: 2026-09
+    value: 482.85
+    quantity_thousands: 7892936.44
+    value_brl_millions: 3811087.96
+evidence:
+- publisher: Banco Central do Brasil
+  title: Estatísticas de Meios de Pagamentos, MeiosdePagamentosMensalDA (Olinda open data API)
+  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/odata/MeiosdePagamentosMensalDA(AnoMes=@AnoMes)?@AnoMes='202401'&$format=json
+  accessed_at: '2026-10-31'
+  locator: value[AnoMes=202609].quantidadePix
+  value: 7892936.44
+  unit: count
+  snippet: '"AnoMes":"202609"'
+  source_license: ODbL-1.0
+  content_sha256: 045cfde72de0ea479194b84d23db5b86ca4ad463c30f0cc4ad8ec25b857a2e22
+  role: primary
+- publisher: Banco Central do Brasil
+  title: Estatísticas de Meios de Pagamentos, MeiosdePagamentosMensalDA (Olinda open data API)
+  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/odata/MeiosdePagamentosMensalDA(AnoMes=@AnoMes)?@AnoMes='202401'&$format=json
+  accessed_at: '2026-10-31'
+  locator: value[AnoMes=202609].valorPix
+  value: 3811087.96
+  unit: currency:BRL
+  snippet: '"valorPix"'
+  source_license: ODbL-1.0
+  content_sha256: 045cfde72de0ea479194b84d23db5b86ca4ad463c30f0cc4ad8ec25b857a2e22
+  role: primary
+- publisher: Banco Central do Brasil
+  title: Estatísticas de Meios de Pagamentos, MeiosdePagamentosMensalDA (Olinda open data API)
+  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/odata/MeiosdePagamentosMensalDA(AnoMes=@AnoMes)?@AnoMes='202401'&$format=json
+  accessed_at: '2026-10-31'
+  locator: value[AnoMes=202401].quantidadePix
+  value: 4350076.79
+  unit: count
+  snippet: '"AnoMes":"202401"'
+  source_license: ODbL-1.0
+  content_sha256: 045cfde72de0ea479194b84d23db5b86ca4ad463c30f0cc4ad8ec25b857a2e22
+  role: primary
+- publisher: Banco Central do Brasil
+  title: MPV_DadosAbertos service documentation (field descriptions)
+  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/aplicacao
+  accessed_at: '2026-10-31'
+  locator: quantidadePix description
+  value: Quantidade (em milhares) de transações Pix liquidadas mensalmente
+  unit: text
+  snippet: Quantidade (em milhares) de transações Pix
+  source_license: ODbL-1.0
+  content_sha256: 3e678af8205ea0f32e4f20e52b8e36b1ae8da8c963c0bf6fb324a664de0ca8a5
+  role: supporting
+- publisher: Banco Central do Brasil
+  title: MPV_DadosAbertos service documentation (field descriptions)
+  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/aplicacao
+  accessed_at: '2026-10-31'
+  locator: valorPix description
+  value: Volume financeiro (R$ milhões) de transações Pix liquidadas mensalmente
+  unit: text
+  snippet: Volume financeiro (R$ milhões) de transações Pix
+  source_license: ODbL-1.0
+  content_sha256: 3e678af8205ea0f32e4f20e52b8e36b1ae8da8c963c0bf6fb324a664de0ca8a5
+  role: supporting
+- publisher: Banco Central do Brasil
+  title: dadosabertos.bcb.gov.br package metadata for Estatísticas de Meios de Pagamentos
+  url: https://dadosabertos.bcb.gov.br/api/3/action/package_show?id=estatisticas-meios-pagamentos
+  accessed_at: '2026-10-31'
+  locator: result.license_id
+  value: odc-odbl
+  unit: text
+  snippet: '"license_title": "Open Data Commons Open Database License (ODbL)"'
+  source_license: ODbL-1.0
+  content_sha256: d6ed407c2c71e43fc52d2026bb9bb65ce493d8cbdc01edd21f5cff10b8ac38bb
+  role: supporting
+assumed:
+- parameter: series[*].value (pix_average_ticket_brl)
+  value: value_brl_millions * 1e6 / (quantity_thousands * 1e3), rounded to cents
+  method: derived
+  rationale: The source publishes the monthly count (thousands) and the settled value (BRL millions); the average
+    ticket is their quotient and is not itself published.
+tests:
+- statistic: column[quantity_thousands,2026-09]
+  expected: 7892936.44
+  tolerance: 0
+- statistic: column[value_brl_millions,2026-09]
+  expected: 3811087.96
+  tolerance: 0
+- statistic: column[quantity_thousands,2024-01]
+  expected: 4350076.79
+  tolerance: 0
+- statistic: value[2026-09]
+  expected: 482.85
+  tolerance: 0.01
+- statistic: count
+  expected: 33
+  tolerance: 0
+notes: Monthly Pix transactions and settled value from the Banco Central do Brasil payment-instrument statistics
+  (Olinda MPV_DadosAbertos service), covering settlements inside and outside the SPI including payment orders and
+  returns. The query asks for every month from 2024-01 onward; the service answered with 33 months ending 2026-09.
+  The publisher warns that figures for transactions settled outside the SPI can be revised retroactively, so a later
+  re-fetch may change the content hash; the figures recorded here are those served on the access date. The dataset
+  is released under the Open Database License according to the BCB open data catalogue.

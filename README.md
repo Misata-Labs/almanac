@@ -52,8 +52,11 @@ A verifier run looks like this:
     PASS evidence[0]
     PASS vectors  23/23 passed
     PASS test vector_pass_fraction  observed 1, expected 1 ± 0
+[PASS] br-pix-monthly-volume-and-value  (entries/payments/BR/br-pix-monthly-volume-and-value.yaml)
+    PASS evidence[0]
+    PASS test column[quantity_thousands,2026-09]  observed 7.89294e+06, expected 7892936.44 ± 0
 ...
-10 passed, 0 failed, 10 entries
+15 passed, 0 failed, 15 entries
 ```
 
 And from Python:
@@ -87,8 +90,20 @@ See [CATALOGUE.md](CATALOGUE.md) for the generated table. Highlights:
 - **UK calendars from GOV.UK**: bank holidays for England and Wales,
   Scotland and Northern Ireland for 2019 to 2028, and the clock-change
   rule with its published dates.
-- **Brazil Pix identifier formats from Banco Central do Brasil**: txid,
-  EndToEndId, CPF, CNPJ (alphanumeric since 2024), ISPB and monetary amounts.
+- **Brazil Pix from Banco Central do Brasil**: identifier formats (txid,
+  EndToEndId, CPF, CNPJ, ISPB, amounts) from the API specification, and a
+  monthly series of transaction counts, settled value and the derived
+  average ticket from the bank's open data API, under ODbL.
+- **Brazil CNPJ check digits** for numeric and alphanumeric registrations,
+  from Receita Federal's own worked example, with the remainder rule from
+  SERPRO's calculation note.
+- **England and Wales Census 2021 distributions** from the ONS API: usual
+  residents by sex and by single year of age (101 categories), with counts
+  kept beside the derived shares so the verifier reproduces them by sampling.
+- **India GST rate structure** after the 56th GST Council meeting (merit 5%,
+  standard 18%, de-merit 40%, effective 22 September 2025) from the Council
+  Secretariat's published release and FAQ, held at `license-review` because
+  the Council's copyright policy asks for permission by email.
 - **Companies House code lists**: company type and company status codes,
   held at `license-review` until the publisher's terms for the file are
   confirmed.
@@ -126,7 +141,8 @@ tests:
 ```
 
 `spec` is what a data engine executes. `evidence` is why you should believe
-it. `assumed` is where anything restated, converted, fitted or guessed is
+it; an item marked `role: supporting` documents context such as units or
+licence terms and may be a PDF or web page even in a tier A entry. `assumed` is where anything restated, converted, fitted or guessed is
 confessed, with the method. `tests` is what the verifier reproduces.
 
 ## Evidence tiers

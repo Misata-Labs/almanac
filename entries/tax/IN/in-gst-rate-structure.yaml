@@ -1,0 +1,83 @@
+id: in-gst-rate-structure
+title: India GST rate structure after the 56th GST Council meeting (merit 5%, standard 18%, de-merit 40%)
+kind: rule
+domain: tax
+region: IN
+status: license-review
+tier: B
+valid_from: 2025-09-22
+valid_to: null
+spec:
+  implementation: almanac.rules.in_gst_rate_structure
+  parameters:
+    slabs:
+      nil: 0
+      merit: 5
+      standard: 18
+      de_merit: 40
+    effective_from: "2025-09-22"
+    carve_outs:
+      - cigarettes
+      - chewing tobacco products such as zarda
+      - unmanufactured tobacco
+      - beedi
+    carve_out_treatment: existing GST and compensation cess rates continue until a later notified date
+  vectors:
+    - {input: 18, expected: true, origin: source}
+    - {input: 5, expected: true, origin: source}
+    - {input: 40, expected: true, origin: source}
+    - {input: 0, expected: true, origin: source, note: NIL rate named in the Council's reductions}
+    - {input: 12, expected: false, origin: source, note: former slab merged away by the rationalisation}
+    - {input: 28, expected: false, origin: source, note: former slab merged away by the rationalisation}
+evidence:
+  - publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+    title: Recommendations of the 56th Meeting of the GST Council held at New Delhi, 3 September 2025
+    url: https://gstcouncil.gov.in/sites/default/files/2025-09/press_release_press_information_bureau_0.pdf
+    accessed_at: 2026-10-31
+    locator: "page 1, rate rationalisation bullet"
+    value: "a 2 rate structure with a Standard Rate of 18% and a Merit Rate of 5%; a special de-merit rate of 40%"
+    unit: text
+    snippet: "Rationalisation of the current 4-tiered tax rate structure"
+    source_license: "GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement"
+    content_sha256: 2b596a6fcc583922fb31b4a601e0e905d84fd1edf20e0fcf77dce6ab82585484
+  - publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+    title: Frequently Asked Questions on the decisions of the 56th GST Council, 3 September 2025
+    url: https://gstcouncil.gov.in/sites/default/files/2025-09/faq_0.pdf
+    accessed_at: 2026-10-31
+    locator: "page 1, question 1"
+    value: "effective from 22nd September, 2025"
+    unit: text
+    snippet: "When will the changes in GST rates come into force?"
+    source_license: "GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement"
+    content_sha256: 99cd227a6de7606c9680ef87830abc936d5d7dd78c5c51b9cef72a2a75fa0bb8
+  - publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+    title: Frequently Asked Questions on the decisions of the 56th GST Council, 3 September 2025
+    url: https://gstcouncil.gov.in/sites/default/files/2025-09/faq_0.pdf
+    accessed_at: 2026-10-31
+    locator: "page 1, question 1, carve-outs"
+    value: "the existing rates of GST and compensation cess will continue to apply"
+    unit: text
+    snippet: "cigarettes, chewing tobacco products like zarda, unmanufactured tobacco and beedi"
+    source_license: "GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement"
+    content_sha256: 99cd227a6de7606c9680ef87830abc936d5d7dd78c5c51b9cef72a2a75fa0bb8
+assumed:
+  - parameter: slabs.nil
+    value: 0
+    method: derived
+    rationale: The press release lists reductions "from 5% to NIL" for named goods; NIL is recorded as a 0% slab so generators can represent exempt supplies, although the release does not call it a slab.
+tests:
+  - {statistic: vector_pass_fraction, expected: 1, tolerance: 0}
+  - {statistic: count, expected: 4, tolerance: 0}
+  - {statistic: "slab[standard]", expected: 18, tolerance: 0}
+  - {statistic: "slab[merit]", expected: 5, tolerance: 0}
+  - {statistic: "slab[de_merit]", expected: 40, tolerance: 0}
+notes: |
+  The 56th GST Council meeting of 3 September 2025 replaced the four-slab structure with a
+  standard rate of 18%, a merit rate of 5% and a de-merit rate of 40% for a small set of goods
+  and services, effective 22 September 2025 for everything except cigarettes, chewing tobacco
+  products, unmanufactured tobacco and beedi, which keep their earlier GST and compensation
+  cess rates until a later notified date. Sources are the Council Secretariat's own copies of
+  the Ministry of Finance press release and FAQ; the legally operative instruments are the CBIC
+  rate notifications the FAQ points to, which should be added as evidence when reachable. The
+  Council's copyright policy permits reproduction after permission by email, so the entry stays
+  at license-review. This entry describes the slab structure, not the item-level schedule.

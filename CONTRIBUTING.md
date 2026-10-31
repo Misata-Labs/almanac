@@ -42,6 +42,14 @@ confirm a value, leave the entry out.
    vocabulary, one snippet under 25 words that locates the value, the source
    licence, and the SHA-256 of the fetched bytes:
    `curl -sSL <url> | sha256sum`.
+   Fetch twice and compare the hashes: a page that changes on every request
+   (personalised HTML, rotating tokens) cannot be verified and must not be
+   cited. Prefer an API response, a CSV, or a PDF from the same publisher.
+   PDFs are searched by their extracted text, so take snippets from text the
+   PDF actually contains, not from headings rendered as images.
+   Mark an item `role: supporting` when it documents context such as units
+   or licence terms rather than a value the spec depends on; supporting items
+   may be HTML or PDF even in a tier A entry.
 3. For a rule, implement it under `almanac/rules/<name>.py` with an
    `evaluate(parameters, value)` function, and take the test vectors from the
    source's own worked examples (`origin: source`). Vectors you construct from

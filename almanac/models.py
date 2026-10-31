@@ -63,6 +63,7 @@ class Evidence(StrictModel):
     snippet: str
     source_license: str
     content_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
+    role: Literal["primary", "supporting"] = "primary"
 
     @property
     def snippet_word_count(self) -> int:
@@ -128,9 +129,19 @@ class MarginalSpec(StrictModel):
     distribution: Distribution
 
 
-class SeriesPoint(StrictModel):
+class SeriesPoint(BaseModel):
+    """One observation of a temporal series; extra numeric columns ride alongside ``value``."""
+
+    model_config = ConfigDict(extra="allow", frozen=True)
+
     period: str
     value: float
+
+    def column(self, name: str) -> float:
+        extra = self.model_extra or {}
+        if name not in extra:
+            raise KeyError(f"series point {self.period} has no column {name!r}")
+        return float(extra[name])
 
 
 class TemporalSpec(StrictModel):
@@ -138,7 +149,18 @@ class TemporalSpec(StrictModel):
     variable: str
     unit: str
     frequency: Literal["daily", "weekly", "monthly", "quarterly", "annual"]
+    columns: list[str] = []
     series: list[SeriesPoint] = Field(min_length=2)
+
+    @model_validator(mode="after")
+    def _check_columns_present(self) -> TemporalSpec:
+        for point in self.series:
+            extra = set(point.model_extra or {})
+            missing = set(self.columns) - extra
+            unexpected = extra - set(self.columns)
+            if missing or unexpected:
+                raise ValueError(f"series point {point.period}: missing {sorted(missing)}, unexpected {sorted(unexpected)}")
+        return self
 
 
 class ConditionalSpec(StrictModel):

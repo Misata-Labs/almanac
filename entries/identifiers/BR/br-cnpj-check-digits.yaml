@@ -1,0 +1,103 @@
+id: br-cnpj-check-digits
+title: Brazil CNPJ check digits (modulus 11) for numeric and alphanumeric registrations
+kind: rule
+domain: identifiers
+region: BR
+status: license-review
+tier: B
+valid_from: 2026-07-01
+valid_to: null
+spec:
+  implementation: almanac.rules.br_cnpj
+  parameters:
+    base_pattern: '^[0-9A-Z]{12}$'
+    character_value: ASCII code minus 48
+    modulus: 11
+    zero_below_remainder: 2
+    weights_first: [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+    weights_second: [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+  vectors:
+    - {input: {base: "12.ABC.345/01DE"}, expected: "35", origin: source, note: worked example in the Receita Federal Q&A}
+    - {input: "12.ABC.345/01DE-35", expected: true, origin: source}
+    - {input: "12ABC34501DE35", expected: true, origin: source, note: same example without punctuation}
+    - {input: "12.ABC.345/01DE-53", expected: false, origin: derived, note: check digits swapped}
+    - {input: "12.ABC.345/01DE-3", expected: false, origin: derived, note: one check digit missing}
+    - {input: "12.abc.345/01de-35", expected: true, origin: derived, note: lower-case input is upper-cased}
+evidence:
+  - publisher: Secretaria Especial da Receita Federal do Brasil
+    title: "CNPJ Alfanumérico: Perguntas e Respostas (PDF)"
+    url: https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/perguntas-e-respostas/cnpj/cnpj-alfanumerico.pdf
+    accessed_at: 2026-10-31
+    locator: "page 4, question 14"
+    value: "O Dígito Verificador será calculado pelo algoritmo do módulo 11"
+    unit: text
+    snippet: "Como será calculado o Dígito Verificador do formato alfanumérico?"
+    source_license: CC-BY-ND-3.0
+    content_sha256: c59ab587536ca22f634373cd6a0603afc834f286d3f557e60ad488f4e6264835
+  - publisher: Secretaria Especial da Receita Federal do Brasil
+    title: "CNPJ Alfanumérico: Perguntas e Respostas (PDF)"
+    url: https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/perguntas-e-respostas/cnpj/cnpj-alfanumerico.pdf
+    accessed_at: 2026-10-31
+    locator: "page 6, worked example (values, weights, sums)"
+    value: "Subtraindo 48"
+    unit: text
+    snippet: "Vamos tomar como exemplo o número do CNPJ 12.ABC.345/01DE-dv"
+    source_license: CC-BY-ND-3.0
+    content_sha256: c59ab587536ca22f634373cd6a0603afc834f286d3f557e60ad488f4e6264835
+  - publisher: Secretaria Especial da Receita Federal do Brasil
+    title: "CNPJ Alfanumérico: Perguntas e Respostas (PDF)"
+    url: https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/perguntas-e-respostas/cnpj/cnpj-alfanumerico.pdf
+    accessed_at: 2026-10-31
+    locator: "page 6, result of the worked example"
+    value: "Segundo dv = 11- 6 = 5"
+    unit: text
+    snippet: "Primeiro dv = 11- 8 = 3"
+    source_license: CC-BY-ND-3.0
+    content_sha256: c59ab587536ca22f634373cd6a0603afc834f286d3f557e60ad488f4e6264835
+  - publisher: SERPRO (Serviço Federal de Processamento de Dados)
+    title: "Cálculo do DV do CNPJ alfanumérico (PDF)"
+    url: https://www.serpro.gov.br/menu/noticias/videos/calculodvcnpjalfanaumerico.pdf
+    accessed_at: 2026-10-31
+    locator: "page 2, remainder rule"
+    value: "Se o resto da divisão for igual a 1 ou 0, o primeiro dígito será igual a 0 (zero)."
+    unit: text
+    snippet: "Obter o resto da divisão do somatório por 11."
+    source_license: unstated
+    content_sha256: 7bb839f6c9beb968bd5bb67d31dd5db090d2333be55815759cfb293e639b4754
+    role: supporting
+  - publisher: Secretaria Especial da Receita Federal do Brasil
+    title: "CNPJ Alfanumérico: Perguntas e Respostas (PDF)"
+    url: https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/perguntas-e-respostas/cnpj/cnpj-alfanumerico.pdf
+    accessed_at: 2026-10-31
+    locator: "page 9, question 26 (implementation schedule)"
+    value: "o cronograma para implementação do CNPJ alfanumérico será julho de 2026"
+    unit: text
+    snippet: "Instrução Normativa RFB 2.229/2024"
+    source_license: CC-BY-ND-3.0
+    content_sha256: c59ab587536ca22f634373cd6a0603afc834f286d3f557e60ad488f4e6264835
+    role: supporting
+assumed:
+  - parameter: zero_below_remainder
+    value: 2
+    method: derived
+    rationale: The Receita Federal worked example only shows remainders 8 and 6. The treatment of remainders 0 and 1 (check digit 0) is taken from SERPRO's calculation note, the federal data-processing company that builds the CNPJ systems, and is recorded as supporting evidence rather than from the regulator's own document.
+  - parameter: character_value
+    value: ASCII code minus 48
+    method: derived
+    rationale: The Q&A states that every character is transformed by its ASCII code and shows A as 65 minus 48 equal to 17; the rule applies the same subtraction to all characters, which leaves digits at their face value.
+tests:
+  - {statistic: vector_pass_fraction, expected: 1, tolerance: 0}
+  - {statistic: vector_count, expected: 6, tolerance: 0}
+notes: |
+  Check digits for the CNPJ as described by Receita Federal for the alphanumeric format
+  introduced by Instrução Normativa RFB 2.229/2024, with implementation scheduled for July
+  2026 according to the same Q&A; valid_from is the start of that month. Numeric registrations
+  issued earlier keep their check digits, and the same arithmetic reproduces them. Each of the twelve base
+  characters is valued at its ASCII code minus 48, weights 5 4 3 2 9 8 7 6 5 4 3 2 give the
+  first check digit and weights 6 5 4 3 2 9 8 7 6 5 4 3 2 over the thirteen characters give
+  the second, each as 11 minus the remainder modulo 11, or 0 when the remainder is 0 or 1.
+  The Q&A states that existing numeric registrations and their check digits remain valid,
+  which the same arithmetic reproduces because digits keep their face value. The gov.br
+  pages are published under Creative Commons Attribution-NoDerivatives 3.0 and the SERPRO
+  note carries no licence statement, so the entry is held at license-review; only facts and
+  the publisher's own worked example are restated.

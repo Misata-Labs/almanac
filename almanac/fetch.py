@@ -9,11 +9,13 @@ recorded value and snippet.
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 from dataclasses import dataclass
 from pathlib import Path
 
 import httpx
+from pypdf import PdfReader
 
 USER_AGENT = "misata-almanac-verify/0.1 (+https://github.com/Misata-labs/almanac)"
 DEFAULT_TIMEOUT = 30.0
@@ -34,7 +36,15 @@ class Resource:
         return hashlib.sha256(self.content).hexdigest()
 
     @property
+    def is_pdf(self) -> bool:
+        return self.content.startswith(b"%PDF")
+
+    @property
     def text(self) -> str:
+        """The resource as searchable text: extracted page text for a PDF, decoded bytes otherwise."""
+        if self.is_pdf:
+            reader = PdfReader(io.BytesIO(self.content))
+            return "\n".join(page.extract_text() or "" for page in reader.pages)
         return self.content.decode("utf-8", errors="replace")
 
     @property

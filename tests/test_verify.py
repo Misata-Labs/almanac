@@ -253,3 +253,64 @@ def test_cli_exit_codes(schema, web, tmp_path, capsys):
     path = write_entry(tmp_path, broken)
     assert cli.main(["verify", str(path), "--no-fetch", "--sample-size", "2000", "--json", "--schema", str(schema_path)]) == 1
     assert '"passed": false' in capsys.readouterr().out
+
+
+def test_temporal_columns_and_pdf_evidence(schema, web, tmp_path):
+    from pypdf import PdfWriter
+
+    writer = PdfWriter()
+    writer.add_blank_page(width=200, height=200)
+    import io
+
+    buffer = io.BytesIO()
+    writer.write(buffer)
+    pdf_url = "https://stats.example.test/release.pdf"
+    web.pages[pdf_url] = (buffer.getvalue(), "application/pdf")
+    import hashlib
+
+    pdf_sha = hashlib.sha256(buffer.getvalue()).hexdigest()
+    csv_sha = web.add(URL, "2025-01,100,2.5\n2025-02,150,3.0\n", "text/csv")
+    entry = _marginal_entry(
+        csv_sha,
+        id="xx-monthly-ticket",
+        kind="temporal",
+        tier="B",
+        spec={
+            "variable": "ticket",
+            "unit": "currency:XXX",
+            "frequency": "monthly",
+            "columns": ["volume"],
+            "series": [{"period": "2025-01", "value": 2.5, "volume": 100}, {"period": "2025-02", "value": 3.0, "volume": 150}],
+        },
+        tests=[{"statistic": "column[volume,2025-02]", "expected": 150, "tolerance": 0}, {"statistic": "value[2025-01]", "expected": 2.5, "tolerance": 0}],
+        evidence=[
+            evidence(URL, csv_sha, 150, "2025-02,150", unit="count"),
+            evidence(pdf_url, pdf_sha, "x", "release", unit="text", role="supporting"),
+        ],
+    )
+    report = _verify(schema, web, tmp_path, entry)
+    failed = _failed(report)
+    assert "test column[volume,2025-02]" not in failed and "test value[2025-01]" not in failed
+    assert "snippet not found" in failed["evidence[1]"]
+
+
+def test_supporting_html_evidence_allowed_for_tier_a(schema, web, tmp_path):
+    sha = web.add(URL, "female,0.51", "text/csv")
+    html_url = "https://stats.example.test/terms.html"
+    html_sha = web.add(html_url, "<p>Open Government Licence</p>", "text/html")
+    entry = _marginal_entry(sha)
+    entry["evidence"].append(evidence(html_url, html_sha, "Open Government Licence", "Open Government", role="supporting"))
+    assert _verify(schema, web, tmp_path, entry).passed
+    entry["evidence"][1]["role"] = "primary"
+    assert "machine-readable" in _failed(_verify(schema, web, tmp_path, entry))["evidence[1]"]
+
+
+def test_temporal_columns_must_match_series(schema, web, tmp_path):
+    sha = web.add(URL, "x", "text/csv")
+    entry = _marginal_entry(
+        sha,
+        kind="temporal",
+        spec={"variable": "v", "unit": "count", "frequency": "monthly", "columns": ["a"], "series": [{"period": "2025-01", "value": 1}, {"period": "2025-02", "value": 2, "a": 1}]},
+        tests=[{"statistic": "count", "expected": 2, "tolerance": 0}],
+    )
+    assert "model" in _failed(_verify(schema, web, tmp_path, entry))
