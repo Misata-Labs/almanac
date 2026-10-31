@@ -1,0 +1,91 @@
+id: br-selic-target-rate-changes-2025
+title: 'Brazil Selic target rate set by the Copom: levels in force during 2025'
+kind: rule
+domain: rates
+region: BR
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- policy-rate
+- selic
+- step-schedule
+- bcb
+use_cases:
+- banking-demo
+- loan-pricing
+- treasury
+spec:
+  implementation: almanac.rules.step_schedule
+  parameters:
+    series: bcdata.sgs.432
+    unit: percent per year
+    steps:
+    - from: '2025-01-01'
+      value: 12.25
+    - from: '2025-01-30'
+      value: 13.25
+    - from: '2025-03-20'
+      value: 14.25
+    - from: '2025-05-08'
+      value: 14.75
+    - from: '2025-06-19'
+      value: 15.0
+  vectors:
+  - input:
+      'on': '2025-01-01'
+    expected: 12.25
+    origin: source
+  - input:
+      'on': '2025-12-31'
+    expected: 15.0
+    origin: source
+  - input:
+      'on': '2025-01-30'
+    expected: 13.25
+    origin: source
+    note: first change of the year
+evidence:
+- publisher: Banco Central do Brasil
+  title: SGS series 432, Taxa de juros - Meta Selic definida pelo Copom (daily, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=01/01/2025, valor
+  value: '12.25'
+  unit: percent
+  snippet: '{"data":"01/01/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: 9a5bf16530aa431bcb0f6bacf086cce487644607dea8ea14b5fcf59b9ba3eaac
+  role: primary
+- publisher: Banco Central do Brasil
+  title: SGS series 432, Taxa de juros - Meta Selic definida pelo Copom (daily, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=31/12/2025, valor
+  value: '15.00'
+  unit: percent
+  snippet: '{"data":"31/12/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: 9a5bf16530aa431bcb0f6bacf086cce487644607dea8ea14b5fcf59b9ba3eaac
+  role: primary
+assumed:
+- parameter: steps[*].from
+  value: first calendar day on which the daily series shows a new level
+  method: derived
+  rationale: The series publishes the target level for every day; the schedule keeps only the days on which the
+    level differs from the previous day. The first step is the level on 1 January, not a decision date.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: max
+  expected: 15.0
+  tolerance: 0
+notes: The Selic target rate (percent per year) in force on each day of 2025 from SGS series 432, reduced to the
+  dates on which the level changed. The BCB open data catalogue (dadosabertos.bcb.gov.br) lists this series under
+  the Open Database License; the catalogue API answers vary between requests, so that record is referenced here
+  rather than hashed as evidence.

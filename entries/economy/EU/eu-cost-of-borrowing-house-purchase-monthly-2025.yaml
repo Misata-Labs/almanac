@@ -1,0 +1,88 @@
+id: eu-cost-of-borrowing-house-purchase-monthly-2025
+title: Euro area cost of borrowing for households for house purchase, monthly 2025
+kind: temporal
+domain: economy
+region: EU
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- mortgage
+- lending-rates
+- ecb
+- euro-area
+use_cases:
+- banking-demo
+- loan-pricing
+- mortgage-origination
+spec:
+  variable: mortgage_rate_percent
+  unit: percent
+  frequency: monthly
+  columns: []
+  series:
+  - period: 2025-01
+    value: 3.25
+  - period: 2025-02
+    value: 3.33
+  - period: 2025-03
+    value: 3.32
+  - period: 2025-04
+    value: 3.27
+  - period: 2025-05
+    value: 3.3
+  - period: 2025-06
+    value: 3.3
+  - period: 2025-07
+    value: 3.28
+  - period: 2025-08
+    value: 3.31
+  - period: 2025-09
+    value: 3.31
+  - period: 2025-10
+    value: 3.31
+  - period: 2025-11
+    value: 3.3
+  - period: 2025-12
+    value: 3.32
+evidence:
+- publisher: European Central Bank
+  title: ECB Data Portal, series MIR.M.U2.B.A2C.AM.R.A.2250.EUR.N (SDMX CSV)
+  url: https://data-api.ecb.europa.eu/service/data/MIR/M.U2.B.A2C.AM.R.A.2250.EUR.N?startPeriod=2025-01&endPeriod=2025-12&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: TIME_PERIOD=2025-01, OBS_VALUE
+  value: '3.25'
+  unit: percent
+  snippet: MIR.M.U2.B.A2C.AM.R.A.2250.EUR.N,
+  source_license: ECB-free-use-with-attribution
+  content_sha256: c84adf47eb5073719a86b8117b5d07211821e284e88d282cb7c553637205adfc
+  role: primary
+- publisher: European Central Bank
+  title: ECB Data Portal, series MIR.M.U2.B.A2C.AM.R.A.2250.EUR.N (SDMX CSV)
+  url: https://data-api.ecb.europa.eu/service/data/MIR/M.U2.B.A2C.AM.R.A.2250.EUR.N?startPeriod=2025-01&endPeriod=2025-12&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: TITLE_COMPL
+  value: Euro area (changing composition), Annualised agreed rate (AAR) / Narrowly defined effectiv
+  unit: text
+  snippet: Cost of borrowing for households for house purchase
+  source_license: ECB-free-use-with-attribution
+  content_sha256: c84adf47eb5073719a86b8117b5d07211821e284e88d282cb7c553637205adfc
+  role: primary
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 3.25
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 3.32
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: Euro area cost-of-borrowing indicator for households for house purchase (annualised agreed rate, new business),
+  monthly for 2025, from the ECB MFI interest rate statistics. The ECB's website disclaimer states that users may
+  make free use of information obtained from it provided it is reproduced accurately and the ECB is cited as the
+  source; the page renders dynamically, so the clause is carried by the licence identifier ECB-free-use-with-attribution
+  documented in CONTRIBUTING.md.

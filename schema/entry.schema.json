@@ -117,6 +117,24 @@
     },
     "notes": {
       "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Free-form lowercase topic tags, e.g. kyc, payroll, invoicing.",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+      },
+      "uniqueItems": true
+    },
+    "use_cases": {
+      "type": "array",
+      "description": "Business scenarios the entry serves; see CONTRIBUTING.md for the shared vocabulary.",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+      },
+      "uniqueItems": true
     }
   },
   "allOf": [

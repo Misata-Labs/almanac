@@ -210,3 +210,51 @@ def test_gst_slabs():
     assert rate_schedule.statistic(GST, Statistic.parse("count")) == 4
     with pytest.raises(KeyError):
         rate_schedule.slab_name(12, GST)
+
+
+from almanac.rules import age_band_rates, income_tax_bands, lookup_table, step_schedule
+
+TAX = {"personal_allowance": 12570, "taper": {"above": 100000, "ratio": 2}, "bands": [{"name": "basic", "up_to": 37700, "rate_percent": 20}, {"name": "higher", "up_to": 112570, "rate_percent": 40}, {"name": "additional", "up_to": None, "rate_percent": 45}]}
+WAGES = {"bands": [{"name": "adult", "min_age": 21}, {"name": "youth", "min_age": 18, "max_age": 20}, {"name": "minor", "max_age": 17}], "tables": [{"from": "2026-04-01", "rates": {"adult": 12.71, "youth": 10.85, "minor": 8, "apprentice": 8}}, {"from": "2027-04-01", "rates": {"adult": 13.21, "youth": 11.27, "minor": 8.31, "apprentice": 8.31}}]}
+STEPS = {"steps": [{"from": "2025-01-01", "value": 12.25}, {"from": "2025-01-30", "value": 13.25}, {"from": "2025-06-19", "value": 15.0}]}
+TABLE = {"rows": {"IND": {"value": 2.5, "name": "India"}, "GBR": {"value": 50.0, "name": "United Kingdom"}}}
+
+
+def test_income_tax_bands_compute_allowance_and_tax():
+    from decimal import Decimal
+
+    assert income_tax_bands.tax_due(TAX, 35000) == Decimal("4486.00")
+    assert income_tax_bands.tax_due(TAX, 12570) == Decimal("0.00")
+    assert income_tax_bands.tax_due(TAX, 50270) == Decimal("7540.00")
+    assert income_tax_bands.personal_allowance(TAX, Decimal(110000)) == Decimal(7570)
+    assert income_tax_bands.personal_allowance(TAX, Decimal(130000)) == Decimal(0)
+    assert income_tax_bands.evaluate(TAX, {"income": 200000}) == "76831.50"
+    assert income_tax_bands.statistic(TAX, Statistic.parse("rate[higher]")) == 40
+
+
+def test_age_band_rates_pick_table_and_band():
+    assert age_band_rates.rate(WAGES, 30, date(2026, 6, 1)) == 12.71
+    assert age_band_rates.rate(WAGES, 19, date(2027, 4, 1)) == 11.27
+    assert age_band_rates.rate(WAGES, 30, date(2026, 6, 1), category="apprentice") == 8
+    with pytest.raises(ValueError):
+        age_band_rates.rate(WAGES, 30, date(2020, 1, 1))
+    assert age_band_rates.statistic(WAGES, Statistic.parse("rate[minor,2027-05-01]")) == 8.31
+
+
+def test_step_schedule_value_in_force():
+    assert step_schedule.value_on(STEPS, date(2025, 1, 29)) == 12.25
+    assert step_schedule.value_on(STEPS, date(2025, 1, 30)) == 13.25
+    assert step_schedule.evaluate(STEPS, {"on": "2025-12-31"}) == 15.0
+    with pytest.raises(ValueError):
+        step_schedule.value_on(STEPS, date(2024, 12, 31))
+    assert step_schedule.statistic(STEPS, Statistic.parse("max")) == 15.0
+    assert step_schedule.statistic(STEPS, Statistic.parse("count")) == 3
+
+
+def test_lookup_table_rows_and_statistics():
+    assert lookup_table.lookup(TABLE, "IND", "value") == 2.5
+    assert lookup_table.evaluate(TABLE, "GBR") is True and lookup_table.evaluate(TABLE, "WLD") is False
+    assert lookup_table.statistic(TABLE, Statistic.parse("max[value]")) == 50.0
+    assert lookup_table.statistic(TABLE, Statistic.parse("value[IND,name]")) == "India"
+    with pytest.raises(KeyError):
+        lookup_table.lookup(TABLE, "ZZZ")

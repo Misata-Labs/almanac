@@ -22,7 +22,7 @@ LICENSE = "ODbL-1.0"
 KEY_LABELS = {"Aleatória": "random_evp", "Celular": "phone", "CPF": "cpf", "e-mail": "email", "CNPJ": "cnpj"}
 
 
-def build(raw: bytes, license_raw: bytes) -> dict:
+def build(raw: bytes) -> dict:
     rows = json.loads(raw)["value"]
     counts: dict[str, int] = {}
     holders: dict[str, int] = {}
@@ -53,7 +53,6 @@ def build(raw: bytes, license_raw: bytes) -> dict:
         "evidence": [
             evidence(PUBLISHER, f"Estatísticas do Pix, ChavesPix (keys by participant, holder type and key type), {SNAPSHOT}", DATA_URL, f'value[0] (ISPB {first["ISPB"]}, {first["TipoChave"]}).qtdChaves', first["qtdChaves"], "count", f'"ISPB":"{first["ISPB"]}"', LICENSE, raw),
             evidence(PUBLISHER, f"Estatísticas do Pix, ChavesPix (keys by participant, holder type and key type), {SNAPSHOT}", DATA_URL, "value[*].Data", SNAPSHOT, "date", f'"Data":"{SNAPSHOT}"', LICENSE, raw),
-            evidence(PUBLISHER, "dadosabertos.bcb.gov.br package metadata for Estatísticas do Pix", LICENSE_URL, "result.license_id", "odc-odbl", "text", '"name": "pix"', LICENSE, license_raw, role="supporting"),
         ],
         "assumed": [
             {
@@ -78,7 +77,7 @@ def build(raw: bytes, license_raw: bytes) -> dict:
 
 
 def main() -> int:
-    write(build(fetch(DATA_URL), fetch(LICENSE_URL)))
+    write(build(fetch(DATA_URL)))
     return 0
 
 

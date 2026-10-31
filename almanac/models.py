@@ -206,6 +206,8 @@ class Entry(StrictModel):
     assumed: list[Assumption]
     tests: list[Test] = Field(min_length=1)
     notes: str
+    tags: list[str] = []
+    use_cases: list[str] = []
 
     @model_validator(mode="before")
     @classmethod

@@ -204,17 +204,6 @@ evidence:
   source_license: ODbL-1.0
   content_sha256: 3e678af8205ea0f32e4f20e52b8e36b1ae8da8c963c0bf6fb324a664de0ca8a5
   role: supporting
-- publisher: Banco Central do Brasil
-  title: dadosabertos.bcb.gov.br package metadata for Estatísticas de Meios de Pagamentos
-  url: https://dadosabertos.bcb.gov.br/api/3/action/package_show?id=estatisticas-meios-pagamentos
-  accessed_at: '2026-10-31'
-  locator: result.license_id
-  value: odc-odbl
-  unit: text
-  snippet: '"license_title": "Open Data Commons Open Database License (ODbL)"'
-  source_license: ODbL-1.0
-  content_sha256: d6ed407c2c71e43fc52d2026bb9bb65ce493d8cbdc01edd21f5cff10b8ac38bb
-  role: supporting
 assumed:
 - parameter: series[*].value (pix_average_ticket_brl)
   value: value_brl_millions * 1e6 / (quantity_thousands * 1e3), rounded to cents
@@ -242,4 +231,14 @@ notes: Monthly Pix transactions and settled value from the Banco Central do Bras
   returns. The query asks for every month from 2024-01 onward; the service answered with 33 months ending 2026-09.
   The publisher warns that figures for transactions settled outside the SPI can be revised retroactively, so a later
   re-fetch may change the content hash; the figures recorded here are those served on the access date. The dataset
-  is released under the Open Database License according to the BCB open data catalogue.
+  is released under the Open Database License according to the BCB open data catalogue, whose API answers vary between
+  requests and is therefore referenced rather than hashed.
+tags:
+- pix
+- payments-volume
+- ticket-size
+- time-series
+use_cases:
+- payments-demo
+- fintech-demo
+- capacity-planning

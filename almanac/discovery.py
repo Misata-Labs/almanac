@@ -40,6 +40,8 @@ def _entry_record(almanac: Almanac, entry: Entry) -> dict[str, Any]:
         "validity": validity(entry),
         "publishers": publishers(entry),
         "source_licenses": sorted({item.source_license for item in entry.evidence}),
+        "tags": entry.tags,
+        "use_cases": entry.use_cases,
         "path": rel,
         "url": RAW_BASE + rel,
     }
@@ -76,6 +78,8 @@ def render_jsonld(almanac: Almanac) -> str:
     keywords = sorted(
         {"synthetic data", "data validation", "check digit", "test data", "data quality", "official statistics", "reference data"}
         | {e.domain for e in almanac}
+        | {t for e in almanac for t in e.tags}
+        | {u for e in almanac for u in e.use_cases}
         | {f"{e.region} data rules" for e in almanac if e.region != "global"}
     )
     parts = [
@@ -132,6 +136,15 @@ def render_llms_txt(almanac: Almanac) -> str:
         f"- Contributing and source policy: {RAW_BASE}CONTRIBUTING.md",
         "",
     ]
+    by_use_case: dict[str, list[str]] = {}
+    for entry in almanac:
+        for use_case in entry.use_cases:
+            by_use_case.setdefault(use_case, []).append(entry.id)
+    lines.append("## Entries by business problem")
+    lines.append("")
+    for use_case, ids in sorted(by_use_case.items()):
+        lines.append(f"- {use_case}: {', '.join(sorted(ids))}")
+    lines.append("")
     by_domain: dict[str, list[Entry]] = {}
     for entry in sorted(almanac, key=lambda e: (e.domain, e.region, e.id)):
         by_domain.setdefault(entry.domain, []).append(entry)
@@ -140,6 +153,9 @@ def render_llms_txt(almanac: Almanac) -> str:
         lines.append("")
         for entry in entries:
             rel = almanac.path(entry.id).relative_to(almanac.path(entry.id).parents[3]).as_posix()
-            lines.append(f"- [{entry.id}]({RAW_BASE}{rel}): {entry.title}. {entry.kind}, {entry.region}, tier {entry.tier}, {entry.status}, {validity(entry)}. Source: {'; '.join(publishers(entry))}.")
+            lines.append(
+                f"- [{entry.id}]({RAW_BASE}{rel}): {entry.title}. {entry.kind}, {entry.region}, tier {entry.tier}, {entry.status}, "
+                f"{validity(entry)}. Source: {'; '.join(publishers(entry))}. Use cases: {', '.join(entry.use_cases) or 'none'}."
+            )
         lines.append("")
     return "\n".join(lines)

@@ -18,29 +18,182 @@
   },
   "keywords": [
     "BR data rules",
+    "EU data rules",
     "GB data rules",
     "IN data rules",
+    "US data rules",
+    "accounts-payable",
+    "address-generation",
+    "age",
+    "audit-demo",
+    "bank-holidays",
+    "banking",
+    "banking-demo",
+    "bcb",
+    "bis",
     "calendar",
+    "capacity-planning",
+    "cars",
+    "category-shares",
+    "census",
     "check digit",
+    "check-character",
+    "check-digit",
+    "cnpj",
+    "code-list",
+    "collections",
+    "companies-house",
     "company",
+    "company-generation",
+    "company-status",
+    "company-type",
+    "consumer",
     "contact",
+    "contact-data",
+    "contract-indexation",
+    "country-codes",
+    "country-weights",
+    "cpf",
+    "cpih",
+    "credit-risk",
+    "crm-demo",
     "currency",
+    "customer-segmentation",
     "data quality",
     "data validation",
+    "daylight-saving",
+    "default",
+    "demand-forecasting",
     "demographics",
+    "dict",
+    "digital",
+    "digital-channels",
+    "ecb",
+    "economic-activity",
+    "economy",
+    "education",
+    "email",
+    "employment",
+    "end-to-end-id",
+    "ethnic-group",
+    "euro-area",
+    "event-timestamps",
+    "exchange-rates",
+    "financial-inclusion",
+    "financial-planning",
+    "financial-reporting",
+    "fintech-demo",
+    "fx",
+    "gst",
+    "health",
+    "health-demo",
+    "hmrc",
+    "hourly-rates",
+    "household-credit",
+    "household-generation",
+    "household-size",
+    "households",
+    "housing",
+    "hr-analytics",
+    "identifier",
     "identifiers",
+    "income",
+    "income-group",
+    "income-tax",
+    "index",
+    "industry-codes",
+    "inflation",
+    "insurance",
+    "invoicing",
+    "ipca",
+    "iso-4217",
+    "kyb-onboarding",
+    "kyc-onboarding",
+    "labour",
+    "lending-rates",
+    "living-wage",
+    "loan-pricing",
+    "logistics",
+    "macro",
+    "marital-status",
+    "market-sizing",
+    "minimum-wage",
+    "minor-units",
+    "mortgage",
+    "mortgage-origination",
+    "multi-currency-ledger",
+    "national-insurance",
+    "nino",
     "official statistics",
+    "paye",
+    "payment-reference",
     "payments",
+    "payments-demo",
+    "payments-reconciliation",
+    "payments-scheduling",
+    "payments-volume",
+    "payroll",
+    "payroll-demo",
+    "pensions",
+    "person-generation",
+    "personal-allowance",
+    "personal-finance",
+    "pix",
+    "pix-keys",
+    "policy-rate",
+    "population",
+    "prices",
+    "pricing",
+    "qualifications",
     "rates",
+    "receita-federal",
     "reference data",
+    "reference-table",
+    "religion",
+    "reporting",
+    "retail",
+    "retail-demo",
+    "sales-generation",
+    "sales-index",
+    "sdlt",
+    "seasonality",
+    "selic",
+    "sex",
+    "sgs",
+    "sic",
+    "sla-calculation",
+    "slabs",
+    "step-schedule",
     "synthetic data",
     "tax",
-    "test data"
+    "tax-code",
+    "tax-filing-demo",
+    "tax-identifier",
+    "tax-rates",
+    "telecom",
+    "telecom-demo",
+    "tenure",
+    "test data",
+    "ticket-size",
+    "time-series",
+    "timezone",
+    "treasury",
+    "txid",
+    "utilities-demo",
+    "utr",
+    "validation",
+    "vat",
+    "vrn",
+    "workforce-planning",
+    "working-days",
+    "world-bank"
   ],
   "spatialCoverage": [
     "BR",
+    "EU",
     "GB",
     "IN",
+    "US",
     "global"
   ],
   "distribution": [
@@ -100,6 +253,20 @@
     },
     {
       "@type": "Dataset",
+      "name": "UK Standard Industrial Classification 2007, condensed list used by Companies House (731 codes)",
+      "identifier": "gb-sic-2007-condensed-codes",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/company/GB/gb-sic-2007-condensed-codes.yaml",
+      "temporalCoverage": "2026-10-31 to open",
+      "spatialCoverage": "GB",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Companies House (GOV.UK publication)"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
       "name": "Email address acceptance pattern used by HM Revenue & Customs services",
       "identifier": "gb-email-address-acceptance",
       "url": "https://github.com/Misata-labs/almanac/blob/main/entries/contact/GB/gb-email-address-acceptance.yaml",
@@ -109,6 +276,20 @@
         {
           "@type": "Organization",
           "name": "HM Revenue & Customs"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "US Treasury reporting rates of exchange as of 2025-12-31 (167 country-currency pairs)",
+      "identifier": "us-treasury-reporting-rates-of-exchange-2025-12-31",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/currency/US/us-treasury-reporting-rates-of-exchange-2025-12-31.yaml",
+      "temporalCoverage": "2025-12-31 to open",
+      "spatialCoverage": "US",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "US Department of the Treasury, Bureau of the Fiscal Service"
         }
       ]
     },
@@ -324,6 +505,286 @@
     },
     {
       "@type": "Dataset",
+      "name": "Brazil credit portfolio default rate, individuals, monthly 2025",
+      "identifier": "br-household-credit-default-rate-2025",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/BR/br-household-credit-default-rate-2025.yaml",
+      "temporalCoverage": "observed 2025-01-01 to 2025-12-31",
+      "spatialCoverage": "BR",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Banco Central do Brasil"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Brazil IPCA consumer price inflation, monthly variation, 2025",
+      "identifier": "br-ipca-monthly-inflation-2025",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/BR/br-ipca-monthly-inflation-2025.yaml",
+      "temporalCoverage": "observed 2025-01-01 to 2025-12-31",
+      "spatialCoverage": "BR",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Banco Central do Brasil"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Euro area cost of borrowing for households for house purchase, monthly 2025",
+      "identifier": "eu-cost-of-borrowing-house-purchase-monthly-2025",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/EU/eu-cost-of-borrowing-house-purchase-monthly-2025.yaml",
+      "temporalCoverage": "observed 2025-01-01 to 2025-12-31",
+      "spatialCoverage": "EU",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "European Central Bank"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Euro area HICP inflation, annual rate of change by month, 2025",
+      "identifier": "eu-hicp-inflation-annual-rate-monthly-2025",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/EU/eu-hicp-inflation-annual-rate-monthly-2025.yaml",
+      "temporalCoverage": "observed 2025-01-01 to 2025-12-31",
+      "spatialCoverage": "EU",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "European Central Bank"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "UK Consumer Prices Index including owner occupiers' housing costs (CPIH), all items index, monthly 2025",
+      "identifier": "gb-cpih-all-items-index-monthly-2025",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/GB/gb-cpih-all-items-index-monthly-2025.yaml",
+      "temporalCoverage": "observed 2025-01-01 to 2025-12-31",
+      "spatialCoverage": "GB",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Office for National Statistics"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Great Britain retail sales index, chained volume, all retailing excluding automotive fuel, seasonally adjusted, monthly 2025",
+      "identifier": "gb-retail-sales-index-volume-monthly-2025",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/GB/gb-retail-sales-index-volume-monthly-2025.yaml",
+      "temporalCoverage": "observed 2025-01-01 to 2025-12-31",
+      "spatialCoverage": "GB",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Office for National Statistics"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "World Bank economies with ISO codes, region and income group (217 economies)",
+      "identifier": "global-economy-classification",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/global/global-economy-classification.yaml",
+      "temporalCoverage": "2026-10-31 to open",
+      "spatialCoverage": "global",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "World Bank"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Population, female (% of total population), by economy, 2024 (World Bank, 217 economies)",
+      "identifier": "global-female-population-share-2024",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/global/global-female-population-share-2024.yaml",
+      "temporalCoverage": "2024-01-01 to 2024-12-31",
+      "spatialCoverage": "global",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "World Bank"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Fertility rate, total (births per woman), by economy, 2023 (World Bank, 217 economies)",
+      "identifier": "global-fertility-rate-2023",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/global/global-fertility-rate-2023.yaml",
+      "temporalCoverage": "2023-01-01 to 2023-12-31",
+      "spatialCoverage": "global",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "World Bank"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Account ownership at a financial institution or with a mobile-money-service provider (% of population ages 15+), by economy, 2024 (World Bank, 139 economies)",
+      "identifier": "global-financial-account-ownership-2024",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/global/global-financial-account-ownership-2024.yaml",
+      "temporalCoverage": "2024-01-01 to 2024-12-31",
+      "spatialCoverage": "global",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "World Bank"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "GDP (current US$), by economy, 2024 (World Bank, 200 economies)",
+      "identifier": "global-gdp-2024",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/global/global-gdp-2024.yaml",
+      "temporalCoverage": "2024-01-01 to 2024-12-31",
+      "spatialCoverage": "global",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "World Bank"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "GDP per capita (current US$), by economy, 2024 (World Bank, 200 economies)",
+      "identifier": "global-gdp-per-capita-2024",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/global/global-gdp-per-capita-2024.yaml",
+      "temporalCoverage": "2024-01-01 to 2024-12-31",
+      "spatialCoverage": "global",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "World Bank"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Inflation, consumer prices (annual %), by economy, 2024 (World Bank, 176 economies)",
+      "identifier": "global-inflation-cpi-2024",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/global/global-inflation-cpi-2024.yaml",
+      "temporalCoverage": "2024-01-01 to 2024-12-31",
+      "spatialCoverage": "global",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "World Bank"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Individuals using the Internet (% of population), by economy, 2024 (World Bank, 182 economies)",
+      "identifier": "global-internet-users-2024",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/global/global-internet-users-2024.yaml",
+      "temporalCoverage": "2024-01-01 to 2024-12-31",
+      "spatialCoverage": "global",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "World Bank"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate), by economy, 2024 (World Bank, 182 economies)",
+      "identifier": "global-labour-force-participation-2024",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/global/global-labour-force-participation-2024.yaml",
+      "temporalCoverage": "2024-01-01 to 2024-12-31",
+      "spatialCoverage": "global",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "World Bank"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Life expectancy at birth, total (years), by economy, 2023 (World Bank, 217 economies)",
+      "identifier": "global-life-expectancy-2023",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/global/global-life-expectancy-2023.yaml",
+      "temporalCoverage": "2023-01-01 to 2023-12-31",
+      "spatialCoverage": "global",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "World Bank"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Mobile cellular subscriptions (per 100 people), by economy, 2024 (World Bank, 151 economies)",
+      "identifier": "global-mobile-subscriptions-per-100-2024",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/global/global-mobile-subscriptions-per-100-2024.yaml",
+      "temporalCoverage": "2024-01-01 to 2024-12-31",
+      "spatialCoverage": "global",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "World Bank"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Unemployment, total (% of total labor force) (modeled ILO estimate), by economy, 2024 (World Bank, 182 economies)",
+      "identifier": "global-unemployment-rate-2024",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/global/global-unemployment-rate-2024.yaml",
+      "temporalCoverage": "2024-01-01 to 2024-12-31",
+      "spatialCoverage": "global",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "World Bank"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Urban population (% of total population), by economy, 2024 (World Bank, 217 economies)",
+      "identifier": "global-urban-population-share-2024",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/global/global-urban-population-share-2024.yaml",
+      "temporalCoverage": "2024-01-01 to 2024-12-31",
+      "spatialCoverage": "global",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "World Bank"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "United Kingdom National Minimum Wage and National Living Wage hourly rates from April 2026 and April 2027",
+      "identifier": "gb-national-minimum-wage-2026-2027",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/employment/GB/gb-national-minimum-wage-2026-2027.yaml",
+      "temporalCoverage": "2026-04-01 to open",
+      "spatialCoverage": "GB",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Department for Business and Trade (GOV.UK)"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
       "name": "Brazil CNPJ check digits (modulus 11) for numeric and alphanumeric registrations",
       "identifier": "br-cnpj-check-digits",
       "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/BR/br-cnpj-check-digits.yaml",
@@ -426,6 +887,34 @@
     },
     {
       "@type": "Dataset",
+      "name": "Brazil Selic target rate set by the Copom: levels in force during 2025",
+      "identifier": "br-selic-target-rate-changes-2025",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/rates/BR/br-selic-target-rate-changes-2025.yaml",
+      "temporalCoverage": "2025-01-01 to 2025-12-31",
+      "spatialCoverage": "BR",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Banco Central do Brasil"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "ECB deposit facility rate: changes decided in 2025",
+      "identifier": "eu-ecb-deposit-facility-rate-changes-2025",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/rates/EU/eu-ecb-deposit-facility-rate-changes-2025.yaml",
+      "temporalCoverage": "2025-02-05 to open",
+      "spatialCoverage": "EU",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "European Central Bank"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
       "name": "Central bank policy rates, monthly 2025 (US, GB, euro area, JP, BR, IN, CH, CA, AU)",
       "identifier": "global-central-bank-policy-rates-monthly-2025",
       "url": "https://github.com/Misata-labs/almanac/blob/main/entries/rates/global/global-central-bank-policy-rates-monthly-2025.yaml",
@@ -449,6 +938,20 @@
         {
           "@type": "Organization",
           "name": "HM Revenue & Customs"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "United Kingdom Income Tax rates, bands and Personal Allowance for the 2026 to 2027 tax year (England, Wales and Northern Ireland)",
+      "identifier": "gb-income-tax-bands-2026-27",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/tax/GB/gb-income-tax-bands-2026-27.yaml",
+      "temporalCoverage": "2026-04-06 to 2027-04-05",
+      "spatialCoverage": "GB",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "HM Revenue & Customs (GOV.UK)"
         }
       ]
     },

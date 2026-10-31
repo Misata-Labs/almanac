@@ -9,6 +9,8 @@ from pathlib import Path
 import httpx
 import yaml
 
+from taxonomy import TAXONOMY
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 ACCESSED = date(2026, 10, 31)
 
@@ -39,7 +41,16 @@ def evidence(publisher: str, title: str, url: str, locator: str, value, unit: st
     }
 
 
+def with_taxonomy(entry: dict) -> dict:
+    """Fill tags and use_cases from the shared taxonomy when a builder does not set them."""
+    if entry["id"] in TAXONOMY and not entry.get("tags"):
+        tags, use_cases = TAXONOMY[entry["id"]]
+        entry = {**entry, "tags": tags, "use_cases": use_cases}
+    return entry
+
+
 def write(entry: dict) -> Path:
+    entry = with_taxonomy(entry)
     path = REPO_ROOT / "entries" / entry["domain"] / entry["region"] / f"{entry['id']}.yaml"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(yaml.safe_dump(entry, sort_keys=False, allow_unicode=True, width=110), encoding="utf-8")

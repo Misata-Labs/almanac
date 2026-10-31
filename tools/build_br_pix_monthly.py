@@ -19,6 +19,9 @@ from pathlib import Path
 import httpx
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from taxonomy import TAXONOMY  # noqa: E402
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 FIRST_MONTH = "202401"
 DATA_URL = (
@@ -46,7 +49,7 @@ def period(ano_mes: str) -> str:
     return f"{ano_mes[:4]}-{ano_mes[4:]}"
 
 
-def build(data_raw: bytes, doc_raw: bytes, license_raw: bytes) -> dict:
+def build(data_raw: bytes, doc_raw: bytes) -> dict:
     rows = sorted(json.loads(data_raw)["value"], key=lambda r: r["AnoMes"])
     series = []
     for row in rows:
@@ -109,7 +112,6 @@ def build(data_raw: bytes, doc_raw: bytes, license_raw: bytes) -> dict:
             item(DATA_URL, data_title, f"value[AnoMes={first['period'].replace('-', '')}].quantidadePix", first["quantity_thousands"], "count", f'"AnoMes":"{first["period"].replace("-", "")}"', data_raw),
             item(DOC_URL, "MPV_DadosAbertos service documentation (field descriptions)", "quantidadePix description", "Quantidade (em milhares) de transações Pix liquidadas mensalmente", "text", "Quantidade (em milhares) de transações Pix", doc_raw, role="supporting"),
             item(DOC_URL, "MPV_DadosAbertos service documentation (field descriptions)", "valorPix description", "Volume financeiro (R$ milhões) de transações Pix liquidadas mensalmente", "text", "Volume financeiro (R$ milhões) de transações Pix", doc_raw, role="supporting"),
-            item(LICENSE_URL, "dadosabertos.bcb.gov.br package metadata for Estatísticas de Meios de Pagamentos", "result.license_id", "odc-odbl", "text", '"license_title": "Open Data Commons Open Database License (ODbL)"', license_raw, role="supporting"),
         ],
         "assumed": [
             {
@@ -127,14 +129,17 @@ def build(data_raw: bytes, doc_raw: bytes, license_raw: bytes) -> dict:
             f"{first['period']} onward; the service answered with {len(series)} months ending {last['period']}. The publisher "
             "warns that figures for transactions settled outside the SPI can be revised retroactively, so a later re-fetch "
             "may change the content hash; the figures recorded here are those served on the access date. The dataset is "
-            "released under the Open Database License according to the BCB open data catalogue."
+            "released under the Open Database License according to the BCB open data catalogue, whose API answers vary between requests and is therefore referenced rather than hashed."
         ),
     }
 
 
 def main() -> int:
-    entry = build(fetch(DATA_URL), fetch(DOC_URL), fetch(LICENSE_URL))
+    entry = build(fetch(DATA_URL), fetch(DOC_URL))
     path = REPO_ROOT / "entries" / "payments" / "BR" / f"{entry['id']}.yaml"
+    if entry["id"] in TAXONOMY:
+        tags, use_cases = TAXONOMY[entry["id"]]
+        entry = {**entry, "tags": tags, "use_cases": use_cases}
     path.write_text(yaml.safe_dump(entry, sort_keys=False, allow_unicode=True, width=110), encoding="utf-8")
     print(f"wrote {path.relative_to(REPO_ROOT)}")
     return 0

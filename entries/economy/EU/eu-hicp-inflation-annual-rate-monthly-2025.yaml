@@ -1,0 +1,88 @@
+id: eu-hicp-inflation-annual-rate-monthly-2025
+title: Euro area HICP inflation, annual rate of change by month, 2025
+kind: temporal
+domain: economy
+region: EU
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- inflation
+- prices
+- ecb
+- euro-area
+use_cases:
+- pricing
+- financial-planning
+- banking-demo
+spec:
+  variable: hicp_annual_rate_percent
+  unit: percent
+  frequency: monthly
+  columns: []
+  series:
+  - period: 2025-01
+    value: 2.5
+  - period: 2025-02
+    value: 2.3
+  - period: 2025-03
+    value: 2.2
+  - period: 2025-04
+    value: 2.2
+  - period: 2025-05
+    value: 1.9
+  - period: 2025-06
+    value: 2.0
+  - period: 2025-07
+    value: 2.0
+  - period: 2025-08
+    value: 2.0
+  - period: 2025-09
+    value: 2.2
+  - period: 2025-10
+    value: 2.1
+  - period: 2025-11
+    value: 2.1
+  - period: 2025-12
+    value: 1.9
+evidence:
+- publisher: European Central Bank
+  title: ECB Data Portal, series ICP.M.U2.N.000000.4.ANR (SDMX CSV)
+  url: https://data-api.ecb.europa.eu/service/data/ICP/M.U2.N.000000.4.ANR?startPeriod=2025-01&endPeriod=2025-12&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: TIME_PERIOD=2025-01, OBS_VALUE
+  value: '2.5'
+  unit: percent
+  snippet: ICP.M.U2.N.000000.4.ANR,
+  source_license: ECB-free-use-with-attribution
+  content_sha256: f0fea51d184909078299b3b66fd99f168e8844bf376bea3276418fc976642570
+  role: primary
+- publisher: European Central Bank
+  title: ECB Data Portal, series ICP.M.U2.N.000000.4.ANR (SDMX CSV)
+  url: https://data-api.ecb.europa.eu/service/data/ICP/M.U2.N.000000.4.ANR?startPeriod=2025-01&endPeriod=2025-12&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: TITLE_COMPL
+  value: 'Euro area (changing composition) - HICP - Overall index, Annual rate of change, Eurostat, '
+  unit: text
+  snippet: HICP - Overall index
+  source_license: ECB-free-use-with-attribution
+  content_sha256: f0fea51d184909078299b3b66fd99f168e8844bf376bea3276418fc976642570
+  role: primary
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 2.5
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 1.9
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: Euro area (changing composition) HICP overall index, annual rate of change, monthly for 2025, compiled by
+  Eurostat and published by the ECB Data Portal. The ECB's website disclaimer states that users may make free use
+  of information obtained from it provided it is reproduced accurately and the ECB is cited as the source; the page
+  renders dynamically, so the clause is carried by the licence identifier ECB-free-use-with-attribution documented
+  in CONTRIBUTING.md.

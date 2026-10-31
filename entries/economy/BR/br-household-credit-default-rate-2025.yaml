@@ -1,0 +1,88 @@
+id: br-household-credit-default-rate-2025
+title: Brazil credit portfolio default rate, individuals, monthly 2025
+kind: temporal
+domain: economy
+region: BR
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- credit-risk
+- default
+- household-credit
+- bcb
+- sgs
+use_cases:
+- credit-risk
+- banking-demo
+- collections
+spec:
+  variable: default_rate_percent
+  unit: percent
+  frequency: monthly
+  columns: []
+  series:
+  - period: 2025-01
+    value: 3.89
+  - period: 2025-02
+    value: 3.96
+  - period: 2025-03
+    value: 4.03
+  - period: 2025-04
+    value: 4.25
+  - period: 2025-05
+    value: 4.36
+  - period: 2025-06
+    value: 4.41
+  - period: 2025-07
+    value: 4.66
+  - period: 2025-08
+    value: 4.92
+  - period: 2025-09
+    value: 4.89
+  - period: 2025-10
+    value: 4.99
+  - period: 2025-11
+    value: 5.12
+  - period: 2025-12
+    value: 5.12
+evidence:
+- publisher: Banco Central do Brasil
+  title: SGS series 21084, Inadimplência da carteira de crédito - Pessoas físicas - Total (monthly, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.21084/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=01/01/2025, valor
+  value: '3.89'
+  unit: percent
+  snippet: '{"data":"01/01/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: f69461bd99608997469612d23b66bc90bb233a51f6219cd264a982f14e600aed
+  role: primary
+- publisher: Banco Central do Brasil
+  title: SGS series 21084, Inadimplência da carteira de crédito - Pessoas físicas - Total (monthly, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.21084/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=01/12/2025, valor
+  value: '5.12'
+  unit: percent
+  snippet: '{"data":"01/12/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: f69461bd99608997469612d23b66bc90bb233a51f6219cd264a982f14e600aed
+  role: primary
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 3.89
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 5.12
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: Share of the credit portfolio of individuals (pessoas físicas) in arrears, monthly for 2025, from SGS series
+  21084 of the BCB credit statistics. The BCB open data catalogue (dadosabertos.bcb.gov.br) lists this series under
+  the Open Database License; the catalogue API answers vary between requests, so that record is referenced here
+  rather than hashed as evidence.

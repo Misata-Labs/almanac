@@ -18,6 +18,9 @@ from pathlib import Path
 import httpx
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from taxonomy import TAXONOMY  # noqa: E402
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 COMMIT = "b078a86e3d8262f58192a5484b66970de9a9dac7"
 BASE = f"https://raw.githubusercontent.com/alphagov/frontend/{COMMIT}/"
@@ -194,6 +197,9 @@ def build_clock_change(clocks_raw: bytes, locale_raw: bytes) -> dict:
 
 
 def write(entry: dict, path: Path) -> None:
+    if entry["id"] in TAXONOMY:
+        tags, use_cases = TAXONOMY[entry["id"]]
+        entry = {**entry, "tags": tags, "use_cases": use_cases}
     path.parent.mkdir(parents=True, exist_ok=True)
     text = yaml.safe_dump(entry, sort_keys=False, allow_unicode=True, width=110)
     path.write_text(text, encoding="utf-8")

@@ -89,6 +89,24 @@ those files by hand, and commit both. After adding or changing entries run
 so the catalogue, manifest, schema.org description and llms.txt stay current;
 a test fails when they drift.
 
+## Tags and use cases
+
+`tags` are free-form lowercase topics (`vat`, `check-digit`, `census`).
+`use_cases` name the business scenario an entry serves, so the catalogue can
+be read by problem. Reuse these before inventing a new one:
+
+payroll-demo, hr-analytics, workforce-planning, personal-finance,
+financial-planning, banking-demo, loan-pricing, mortgage-origination,
+credit-risk, collections, treasury, payments-demo, fintech-demo,
+payments-reconciliation, payments-scheduling, kyc-onboarding, kyb-onboarding,
+company-generation, person-generation, household-generation,
+address-generation, customer-segmentation, market-sizing, invoicing,
+accounts-payable, tax-filing-demo, audit-demo, financial-reporting,
+multi-currency-ledger, contract-indexation, pricing, retail-demo,
+demand-forecasting, sales-generation, insurance, pensions, health-demo,
+utilities-demo, telecom-demo, digital-channels, logistics,
+capacity-planning, sla-calculation, event-timestamps, crm-demo.
+
 ## Before opening a pull request
 
 Run all of these and include the output summary in the pull request:

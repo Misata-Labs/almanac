@@ -42,6 +42,8 @@ def render_card(entry: Entry) -> str:
         lines.append("  assumed")
         for assumption in entry.assumed:
             lines.append(f"    - {assumption.parameter} ({assumption.method}): {assumption.rationale}")
+    if entry.tags or entry.use_cases:
+        lines.append(f"  tags {', '.join(entry.tags)} · use cases {', '.join(entry.use_cases)}")
     lines.append(f"  tests {len(entry.tests)}")
     lines.append("  notes")
     lines.extend(f"    {line}" for line in entry.notes.strip().splitlines())
@@ -60,13 +62,33 @@ def render_catalogue(almanac: Almanac) -> str:
         "",
         f"{len(rows)} entries: {counts['verified']} verified, {counts['license-review']} awaiting licence review, {counts['draft']} draft.",
         "",
-        "| Entry | Domain | Region | Kind | Tier | Status | Validity | Sources |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- |",
+        "## By business problem",
+        "",
+        "| Use case | Entries |",
+        "| --- | --- |",
+    ]
+    by_use_case: dict[str, list[Entry]] = {}
+    for entry in rows:
+        for use_case in entry.use_cases:
+            by_use_case.setdefault(use_case, []).append(entry)
+    for use_case, members in sorted(by_use_case.items()):
+        links = ", ".join(f"[{e.id}]({_rel(almanac, e)})" for e in members)
+        lines.append(f"| {use_case} | {links} |")
+    lines += [
+        "",
+        "## All entries",
+        "",
+        "| Entry | Domain | Region | Kind | Tier | Status | Validity | Sources | Tags |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for entry in rows:
-        rel = almanac.path(entry.id).relative_to(almanac.path(entry.id).parents[3]).as_posix()
         lines.append(
-            f"| [{entry.id}]({rel})<br>{entry.title} | {entry.domain} | {entry.region} | {entry.kind} | {entry.tier} "
-            f"| {entry.status} | {validity(entry)} | {'; '.join(publishers(entry))} |"
+            f"| [{entry.id}]({_rel(almanac, entry)})<br>{entry.title} | {entry.domain} | {entry.region} | {entry.kind} | {entry.tier} "
+            f"| {entry.status} | {validity(entry)} | {'; '.join(publishers(entry))} | {', '.join(entry.tags)} |"
         )
     return "\n".join(lines) + "\n"
+
+
+def _rel(almanac: Almanac, entry: Entry) -> str:
+    path = almanac.path(entry.id)
+    return path.relative_to(path.parents[3]).as_posix()

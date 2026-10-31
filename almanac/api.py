@@ -85,6 +85,8 @@ class Almanac:
         domain: str | None = None,
         kind: str | None = None,
         status: str | None = None,
+        use_case: str | None = None,
+        tag: str | None = None,
     ) -> list[Entry]:
         """Entries matching every given filter; ``on`` keeps those whose validity covers that date."""
         chosen = []
@@ -98,6 +100,10 @@ class Almanac:
             if kind is not None and entry.kind != kind:
                 continue
             if status is not None and entry.status != status:
+                continue
+            if use_case is not None and use_case not in entry.use_cases:
+                continue
+            if tag is not None and tag not in entry.tags:
                 continue
             chosen.append(entry)
         return sorted(chosen, key=lambda e: (e.domain, e.region, e.id))

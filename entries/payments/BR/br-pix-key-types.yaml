@@ -59,17 +59,6 @@ evidence:
   source_license: ODbL-1.0
   content_sha256: 382e07df92815ef786f1516f1e30eddbb4981a71b34b35754f91195522c23b3c
   role: primary
-- publisher: Banco Central do Brasil
-  title: dadosabertos.bcb.gov.br package metadata for Estatísticas do Pix
-  url: https://dadosabertos.bcb.gov.br/api/3/action/package_show?id=pix
-  accessed_at: '2026-10-31'
-  locator: result.license_id
-  value: odc-odbl
-  unit: text
-  snippet: '"name": "pix"'
-  source_license: ODbL-1.0
-  content_sha256: 84e14e3d60649dc33719c0afc2d3cb52bafbb2cc09b081c3d052bb345a1ea8a7
-  role: supporting
 assumed:
 - parameter: distribution.parameters.shares
   value: sum of qtdChaves per key type / total keys
@@ -91,3 +80,12 @@ notes: 'Pix keys registered in the DICT on 2026-09-30, from the Banco Central do
   summed by key type: random keys (EVP), mobile phone numbers, CPF, e-mail and CNPJ. Holder totals by natural and
   legal person are kept under parameters.holders. Released under the Open Database License according to the BCB
   open data catalogue.'
+tags:
+- pix
+- pix-keys
+- dict
+- category-shares
+use_cases:
+- payments-demo
+- fintech-demo
+- person-generation

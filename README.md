@@ -64,14 +64,41 @@ almanac.rule("gb-utr-check-digit").call("check_digit", "234567890")        # '2'
 almanac.rule("br-cnpj-check-digits").call("check_digits", "12.ABC.345/01DE") # '35'
 almanac.rule("global-iso4217-currency-minor-units").call("minor_units", "JPY") # 0
 almanac.rule("gb-bank-holidays").call("is_bank_holiday", date(2026, 12, 28), division="england-and-wales")  # True
+almanac.rule("gb-income-tax-bands-2026-27").call("tax_due", 35000)                    # Decimal('4486.00')
+almanac.rule("br-selic-target-rate-changes-2025").call("value_on", date(2025, 7, 1))  # 15.0
 
 for entry in almanac.select(on=date(2026, 6, 15), region="GB", kind="rule"):
     print(entry.id, entry.tier, entry.status)
 ```
 
+## Start from the business problem
+
+Every entry carries `use_cases`, so you can pull exactly what a demo or a
+test suite needs:
+
+```
+uv run almanac list --use-case payroll-demo
+uv run almanac list --use-case kyb-onboarding
+uv run almanac applies --on 2026-06-15 --use-case banking-demo
+```
+
+| If you are building… | Start with |
+| --- | --- |
+| **Payroll and HR** demos | UK income tax bands with the tapered allowance, minimum wage by age band and date, NINO and tax code formats, Census economic activity and qualifications |
+| **Banking, lending and treasury** demos | Selic and ECB deposit-rate step schedules, policy rates for nine economies, euro area mortgage cost of borrowing, Brazil household credit default rate, financial account ownership by economy |
+| **Payments and fintech** demos | Pix identifier formats, monthly Pix volume and average ticket, Pix key-type mix, HMRC payment reference check characters, bank holidays for settlement calendars |
+| **KYC, KYB and onboarding** flows | CNPJ and UTR check digits, VAT registration numbers, Companies House company types and statuses, SIC 2007 codes, email acceptance rules, World Bank economy classification |
+| **Invoicing, tax and audit** demos | UK VAT rates, India GST slab structure, ISO 4217 minor units, ECB and US Treasury exchange-rate tables, CPIH and IPCA price indices |
+| **Customer, person and household** generation | Twelve Census 2021 marginals, world population weights, female population share, urban share, fertility and life expectancy by economy |
+| **Retail and demand** demos | Retail sales index with its December peak, inflation series, GDP and GDP per capita by economy |
+| **Telecom and digital** demos | Internet users and mobile subscriptions per 100 people by economy, clock-change dates for timestamps |
+
+The full matrix of use cases to entries is the first table in
+[CATALOGUE.md](CATALOGUE.md).
+
 ## What is in the archive
 
-See [CATALOGUE.md](CATALOGUE.md) for the generated table. By domain:
+See [CATALOGUE.md](CATALOGUE.md) for the generated tables. By domain:
 
 - **Identifiers**: UK National Insurance numbers, Unique Taxpayer References,
   VAT registration numbers and PAYE, SDLT and other-tax payment references
@@ -82,9 +109,19 @@ See [CATALOGUE.md](CATALOGUE.md) for the generated table. By domain:
   of Pix key types registered in the DICT.
 - **Currency**: ISO 4217 codes with numeric codes and minor units from the
   maintenance agency's list; ECB euro reference rates, monthly 2025, for seven
-  currencies.
-- **Tax**: UK VAT rates with the 2011 effective date, UK PAYE tax code format,
-  and the India GST slab structure after the 56th GST Council meeting.
+  currencies; US Treasury reporting rates of exchange for 174 currency pairs.
+- **Tax and employment**: UK VAT rates with the 2011 effective date, UK Income
+  Tax bands and the tapered Personal Allowance for 2026 to 2027, National
+  Minimum Wage rates by age band for April 2026 and April 2027, UK PAYE tax
+  code format, and the India GST slab structure after the 56th GST Council
+  meeting.
+- **Economy and rates**: thirteen World Bank reference tables by economy (GDP,
+  GDP per capita, inflation, unemployment, labour participation, internet use,
+  mobile subscriptions, urban share, life expectancy, fertility, female share,
+  account ownership, and the region and income-group classification); euro
+  area HICP inflation and mortgage cost of borrowing; ECB deposit facility
+  rate changes; Brazil Selic target changes, IPCA inflation and household
+  credit default rate; UK CPIH index and retail sales index, all monthly 2025.
 - **Calendar**: UK bank holidays by nation, 2019 to 2028, and the clock-change
   rule with its published dates.
 - **Demographics**: twelve Census 2021 marginals for England and Wales (sex,
@@ -92,8 +129,9 @@ See [CATALOGUE.md](CATALOGUE.md) for the generated table. By domain:
   activity, general health, highest qualification, household size, tenure, car
   availability, accommodation type) and world population weights by economy.
 - **Rates**: central bank policy rates for nine economies, monthly 2025.
-- **Company and contact**: Companies House company type and status codes; the
-  email address pattern HMRC services accept.
+- **Company and contact**: Companies House company type and status codes, the
+  SIC 2007 condensed code list, and the email address pattern HMRC services
+  accept.
 
 Entries whose source terms are not clearly permissive stay at
 `license-review` and say so. [WANTED.md](WANTED.md) lists what we want next,

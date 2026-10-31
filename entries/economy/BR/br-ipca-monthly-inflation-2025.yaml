@@ -1,0 +1,87 @@
+id: br-ipca-monthly-inflation-2025
+title: Brazil IPCA consumer price inflation, monthly variation, 2025
+kind: temporal
+domain: economy
+region: BR
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- inflation
+- prices
+- ipca
+- bcb
+- sgs
+use_cases:
+- pricing
+- financial-planning
+spec:
+  variable: ipca_monthly_percent
+  unit: percent
+  frequency: monthly
+  columns: []
+  series:
+  - period: 2025-01
+    value: 0.16
+  - period: 2025-02
+    value: 1.31
+  - period: 2025-03
+    value: 0.56
+  - period: 2025-04
+    value: 0.43
+  - period: 2025-05
+    value: 0.26
+  - period: 2025-06
+    value: 0.24
+  - period: 2025-07
+    value: 0.26
+  - period: 2025-08
+    value: -0.11
+  - period: 2025-09
+    value: 0.48
+  - period: 2025-10
+    value: 0.09
+  - period: 2025-11
+    value: 0.18
+  - period: 2025-12
+    value: 0.33
+evidence:
+- publisher: Banco Central do Brasil
+  title: SGS series 433, Índice nacional de preços ao consumidor-amplo (IPCA), variação mensal (monthly, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=01/01/2025, valor
+  value: '0.16'
+  unit: percent
+  snippet: '{"data":"01/01/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: edb41f451ba121bbee8af8d90493a237d05968ca8a654da4568d523603050761
+  role: primary
+- publisher: Banco Central do Brasil
+  title: SGS series 433, Índice nacional de preços ao consumidor-amplo (IPCA), variação mensal (monthly, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=01/12/2025, valor
+  value: '0.33'
+  unit: percent
+  snippet: '{"data":"01/12/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: edb41f451ba121bbee8af8d90493a237d05968ca8a654da4568d523603050761
+  role: primary
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 0.16
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 0.33
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: Monthly percentage variation of the IPCA, Brazil's headline consumer price index compiled by IBGE, for 2025
+  as published by the BCB time-series system (SGS 433). The BCB open data catalogue (dadosabertos.bcb.gov.br) lists
+  this series under the Open Database License; the catalogue API answers vary between requests, so that record is
+  referenced here rather than hashed as evidence.

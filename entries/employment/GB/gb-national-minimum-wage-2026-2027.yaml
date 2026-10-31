@@ -1,0 +1,80 @@
+id: gb-national-minimum-wage-2026-2027
+title: United Kingdom National Minimum Wage and National Living Wage hourly rates from April 2026 and April 2027
+kind: rule
+domain: employment
+region: GB
+status: verified
+tier: A
+valid_from: 2026-04-01
+valid_to: null
+tags: [minimum-wage, living-wage, payroll, hourly-rates]
+use_cases: [payroll-demo, hr-analytics, workforce-planning]
+spec:
+  implementation: almanac.rules.age_band_rates
+  parameters:
+    currency: GBP
+    unit: per hour
+    bands:
+      - {name: "21 and over", min_age: 21}
+      - {name: "18 to 20", min_age: 18, max_age: 20}
+      - {name: "Under 18", max_age: 17}
+    categories: [Apprentice]
+    tables:
+      - {from: "2026-04-01", rates: {"21 and over": 12.71, "18 to 20": 10.85, "Under 18": 8, "Apprentice": 8}}
+      - {from: "2027-04-01", rates: {"21 and over": 13.21, "18 to 20": 11.27, "Under 18": 8.31, "Apprentice": 8.31}}
+  vectors:
+    - {input: {age: 21, "on": "2026-04-01"}, expected: 12.71, origin: source}
+    - {input: {age: 19, "on": "2026-06-15"}, expected: 10.85, origin: source}
+    - {input: {age: 17, "on": "2026-06-15"}, expected: 8, origin: source}
+    - {input: {age: 21, "on": "2026-06-15", category: Apprentice}, expected: 8, origin: source, note: "GOV.UK example: an apprentice aged 21 in the first year is entitled to £8"}
+    - {input: {age: 35, "on": "2027-04-01"}, expected: 13.21, origin: source}
+    - {input: {age: 18, "on": "2027-04-01"}, expected: 11.27, origin: source}
+    - {input: {age: 16, "on": "2027-05-01"}, expected: 8.31, origin: source}
+    - {input: {age: 25, "on": "2027-03-31"}, expected: 12.71, origin: derived, note: the April 2027 table is not yet in force}
+evidence:
+  - publisher: Department for Business and Trade (GOV.UK)
+    title: "GOV.UK content API item for /national-minimum-wage-rates (JSON)"
+    url: https://www.gov.uk/api/content/national-minimum-wage-rates
+    accessed_at: 2026-10-31
+    locator: "details.body, 'Current rates' table, row April 2026"
+    value: "<td>£12.71</td>"
+    unit: text
+    snippet: "April 2026</th>"
+    source_license: OGL-UK-3.0
+    content_sha256: 1e4604e2ea35807cee0cf23aff28ff747545b1e8b8808d5ed2327bcc67f8b459
+  - publisher: Department for Business and Trade (GOV.UK)
+    title: "GOV.UK content API item for /national-minimum-wage-rates (JSON)"
+    url: https://www.gov.uk/api/content/national-minimum-wage-rates
+    accessed_at: 2026-10-31
+    locator: "details.body, 'Current rates' table, row April 2027"
+    value: "<td>£13.21</td>"
+    unit: text
+    snippet: "April 2027</th>"
+    source_license: OGL-UK-3.0
+    content_sha256: 1e4604e2ea35807cee0cf23aff28ff747545b1e8b8808d5ed2327bcc67f8b459
+  - publisher: Department for Business and Trade (GOV.UK)
+    title: "GOV.UK content API item for /national-minimum-wage-rates (JSON)"
+    url: https://www.gov.uk/api/content/national-minimum-wage-rates
+    accessed_at: 2026-10-31
+    locator: "details.body, table header and rate-change sentence"
+    value: "The rates change on 1 April every year"
+    unit: text
+    snippet: "21 and over</th>"
+    source_license: OGL-UK-3.0
+    content_sha256: 1e4604e2ea35807cee0cf23aff28ff747545b1e8b8808d5ed2327bcc67f8b459
+assumed:
+  - parameter: tables[*].from
+    value: "1 April of the year named in the table row"
+    method: derived
+    rationale: The table labels rows 'April 2026' and 'April 2027'; GOV.UK states that rates change on 1 April every year, so each table takes effect on the first of that month.
+tests:
+  - {statistic: vector_pass_fraction, expected: 1, tolerance: 0}
+  - {statistic: count, expected: 2, tolerance: 0}
+  - {statistic: "rate[21 and over,2026-04-01]", expected: 12.71, tolerance: 0}
+  - {statistic: "rate[Apprentice,2027-04-01]", expected: 8.31, tolerance: 0}
+notes: |
+  Hourly National Living Wage (21 and over) and National Minimum Wage rates (18 to 20, under
+  18, apprentice) from April 2026 and April 2027 as GOV.UK publishes them. The apprentice rate
+  applies to apprentices under 19, or 19 and over in the first year of their apprenticeship;
+  a caller passes category Apprentice for those workers. Source is the GOV.UK content API's
+  JSON for the page; GOV.UK publishes its content under the Open Government Licence v3.0.

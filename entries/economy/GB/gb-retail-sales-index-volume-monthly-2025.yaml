@@ -1,0 +1,103 @@
+id: gb-retail-sales-index-volume-monthly-2025
+title: Great Britain retail sales index, chained volume, all retailing excluding automotive fuel, seasonally adjusted,
+  monthly 2025
+kind: temporal
+domain: economy
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- retail
+- sales-index
+- seasonality
+- consumer
+use_cases:
+- retail-demo
+- demand-forecasting
+- sales-generation
+spec:
+  variable: retail_sales_volume_index
+  unit: decimal
+  frequency: monthly
+  columns: []
+  series:
+  - period: 2025-01
+    value: 98.9
+  - period: 2025-02
+    value: 100.7
+  - period: 2025-03
+    value: 102.1
+  - period: 2025-04
+    value: 101.7
+  - period: 2025-05
+    value: 100.2
+  - period: 2025-06
+    value: 101.1
+  - period: 2025-07
+    value: 102.5
+  - period: 2025-08
+    value: 102.5
+  - period: 2025-09
+    value: 103.4
+  - period: 2025-10
+    value: 102.7
+  - period: 2025-11
+    value: 102.0
+  - period: 2025-12
+    value: 102.3
+evidence:
+- publisher: Office for National Statistics
+  title: ONS API, dataset retail-sales-index version 45, observations (chained volume, all retailing excluding automotive
+    fuel, seasonally adjusted, Great Britain)
+  url: https://api.beta.ons.gov.uk/v1/datasets/retail-sales-index/editions/time-series/versions/45/observations?time=*&geography=K03000001&prices=chained-volume-of-retail-sales&seasonaladjustment=seasonal-adjustment&unofficialstandardindustrialclassification=all-retailing-excluding-automotive-fuel
+  accessed_at: '2026-10-31'
+  locator: observations[Time=Jan-25].observation
+  value: '98.9'
+  unit: decimal
+  snippet: '"id":"Jan-25","label":"Jan-25"'
+  source_license: OGL-UK-3.0
+  content_sha256: bfa37de00f9bdc1c5a06b83019cfb3814146d9a23b60f51d1543efd21a28c08a
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata retail-sales-index
+  url: https://api.beta.ons.gov.uk/v1/datasets/retail-sales-index
+  accessed_at: '2026-10-31'
+  locator: title
+  value: Retail sales index
+  unit: text
+  snippet: '"id":"retail-sales-index"'
+  source_license: OGL-UK-3.0
+  content_sha256: 0edede576f1e5de74349605d6e9e6a8e03a1ab5db97183efc3828f55cf48f1e0
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata cpih01 (licence statement for ONS datasets)
+  url: https://api.beta.ons.gov.uk/v1/datasets/cpih01
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: c8d0e2fde94bc0ed865f5e5b237a7b34835371ff71a5b36d460e6bb3aac5d40c
+  role: supporting
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 98.9
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 102.3
+  tolerance: 1.0e-09
+- statistic: max
+  expected: 103.4
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: Retail sales index for Great Britain, chained volume measure, all retailing excluding automotive fuel, seasonally
+  adjusted, monthly for 2025, from version 45 of the ONS retail-sales-index dataset through the ONS API observations
+  endpoint (full history returned; other years dropped). The retail-sales-index metadata carries no licence field;
+  ONS publishes its datasets under the Open Government Licence v3.0, as the cpih01 metadata states.

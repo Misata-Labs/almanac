@@ -17,6 +17,9 @@ from pathlib import Path
 import httpx
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from taxonomy import TAXONOMY  # noqa: E402
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 COMMIT = "05067abc50da2c9277bb5d3504187f55e5ec9e24"
 URL = f"https://raw.githubusercontent.com/companieshouse/api-enumerations/{COMMIT}/constants.yml"
@@ -98,6 +101,9 @@ def main() -> int:
     entry = build(fetch(URL))
     path = REPO_ROOT / "entries" / "company" / "GB" / f"{entry['id']}.yaml"
     path.parent.mkdir(parents=True, exist_ok=True)
+    if entry["id"] in TAXONOMY:
+        tags, use_cases = TAXONOMY[entry["id"]]
+        entry = {**entry, "tags": tags, "use_cases": use_cases}
     path.write_text(yaml.safe_dump(entry, sort_keys=False, allow_unicode=True, width=110), encoding="utf-8")
     print(f"wrote {path.relative_to(REPO_ROOT)}")
     return 0

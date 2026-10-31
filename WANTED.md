@@ -12,7 +12,10 @@ Already done, for the pattern to copy: `br-cnpj-check-digits`,
 `br-pix-monthly-volume-and-value`, `br-pix-key-types`, the twelve
 `gb-census-2021-*` marginals, `gb-vat-rates`, `in-gst-rate-structure`,
 `global-iso4217-currency-minor-units`, `global-ecb-euro-fx-reference-rates-monthly-2025`,
-`global-population-by-economy-2024` and `global-central-bank-policy-rates-monthly-2025`
+`global-population-by-economy-2024`, `global-central-bank-policy-rates-monthly-2025`,
+the thirteen World Bank reference tables, the ECB, BCB and ONS series,
+`gb-income-tax-bands-2026-27`, `gb-national-minimum-wage-2026-2027`,
+`gb-sic-2007-condensed-codes` and `us-treasury-reporting-rates-of-exchange-2025-12-31`
 each started as a line in this file.
 
 ## Most wanted right now
@@ -91,6 +94,6 @@ each started as a line in this file.
 | in-population-by-state | Population by state and sex | Office of the Registrar General, Census of India |
 | gb-baby-names | Given name frequencies by sex and year | Office for National Statistics |
 | us-baby-names | Given name frequencies by sex and year | US Social Security Administration |
-| global-retail-sales-seasonality | Monthly retail sales index with seasonal factors | National statistical offices (ONS, Census Bureau, Eurostat) |
+| global-retail-sales-seasonality | Monthly retail sales index with seasonal factors for the US and euro area (the UK series is in gb-retail-sales-index-volume-monthly-2025) | US Census Bureau, Eurostat |
 | gb-card-spending-by-category | Card spending shares by merchant category | Bank of England or UK Finance |
 | in-mobile-subscribers-by-operator | Subscriber shares by operator | Telecom Regulatory Authority of India |
