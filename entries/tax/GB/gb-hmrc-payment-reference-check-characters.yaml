@@ -1,0 +1,191 @@
+id: gb-hmrc-payment-reference-check-characters
+title: HM Revenue & Customs payment reference check characters (PAYE Accounts Office, other taxes, SDLT)
+kind: rule
+domain: tax
+region: GB
+status: verified
+tier: A
+valid_from: 2025-08-11
+valid_to: null
+spec:
+  implementation: almanac.rules.gb_hmrc_reference
+  parameters:
+    modulus: 23
+    check_alphabet: "ABCDEFGHXJKLMNYPQRSTZVW"
+    families:
+      epaye:
+        description: 13-character Accounts Office reference for PAYE payments
+        pattern: '^\d{3}P[A-Z]\d{6}[A-Z_0-9]{2}$'
+        check_index: 4
+        weights: [9, 10, 11, 12, 0, 8, 7, 6, 5, 4, 3, 2, 1]
+        letter_values: {A: 33, B: 34, C: 35, D: 36, E: 37, F: 38, G: 39, H: 40, J: 42, K: 43, L: 44, M: 45, N: 46, P: 48, Q: 49, R: 50, S: 51, T: 52, U: 56, V: 54, W: 55, X: 41, Y: 47, Z: 53}
+        special_prefix: "961"
+        special_prefix_pattern: '^961P[A-Z]\d{8}$'
+      other_tax:
+        description: 14- or 15-character X-prefixed reference for other taxes
+        pattern: '^X[A-Z](([0-9A-Z]{13})|([0-9A-Z]\d{11}))$'
+        check_index: 1
+        weights: [0, 0, 9, 10, 11, 12, 13, 8, 7, 6, 5, 4, 3, 2, 1]
+        letter_values: {A: 33, B: 34, C: 35, D: 36, E: 37, F: 38, G: 39, H: 40, I: 41, J: 42, K: 43, L: 44, M: 45, N: 46, O: 47, P: 48, Q: 49, R: 50, S: 51, T: 52, U: 53, V: 54, W: 55, X: 56, Y: 57, Z: 58}
+      sdlt:
+        description: 11-character Stamp Duty Land Tax unique transaction reference
+        pattern: '^\d{9}M[A-Z]$'
+        check_index: 10
+        weights: [6, 7, 8, 9, 10, 5, 4, 3, 2]
+        letter_values: {A: 0, B: 1, C: 2, D: 3, E: 4, F: 5, G: 6, H: 7, X: 8, J: 9, K: 10, L: 11, M: 12, N: 13, Y: 14, P: 15, Q: 16, R: 17, S: 18, T: 19, Z: 20, V: 21, W: 22}
+  vectors:
+    - {input: {family: epaye, reference: "123PW12345678"}, expected: true, origin: source}
+    - {input: {family: epaye, reference: "450PE00923437"}, expected: true, origin: source}
+    - {input: {family: epaye, reference: "120PY19064375"}, expected: true, origin: source}
+    - {input: {family: epaye, reference: "450PA0096437K"}, expected: true, origin: source}
+    - {input: {family: epaye, reference: "853PW0076584X"}, expected: true, origin: source}
+    - {input: {family: epaye, reference: "846PS00928342"}, expected: true, origin: source}
+    - {input: {family: epaye, reference: "961PA0045782X"}, expected: true, origin: source}
+    - {input: {family: epaye, reference: "961PF10305739"}, expected: true, origin: source}
+    - {input: {family: epaye, reference: "123PH45678900"}, expected: true, origin: source}
+    - {input: {family: epaye, reference: ""}, expected: false, origin: source}
+    - {input: {family: epaye, reference: "1234"}, expected: false, origin: source}
+    - {input: {family: epaye, reference: "000PL00000000"}, expected: false, origin: source}
+    - {input: {family: epaye, reference: "120PA12697495"}, expected: false, origin: source}
+    - {input: {family: epaye, reference: "846PT00568772"}, expected: false, origin: source}
+    - {input: {family: epaye, reference: "820PB0091254X"}, expected: false, origin: source}
+    - {input: {family: epaye, reference: "961PI004578OQ"}, expected: false, origin: source}
+    - {input: {family: epaye, reference: "123PW12345678Z"}, expected: false, origin: source}
+    - {input: {family: epaye, reference: "8465L04697138"}, expected: false, origin: source}
+    - {input: {family: epaye, reference: "120PW003179212324"}, expected: false, origin: source}
+    - {input: {family: epaye, reference: "120PW0024"}, expected: false, origin: source}
+    - {input: {family: epaye, reference: "123XH4!@£900"}, expected: false, origin: source}
+    - {input: {family: epaye, reference: "961PA1145782X"}, expected: false, origin: source, note: 961 prefix with X suffix requires 0 at position 6}
+    - {input: {family: epaye, reference: "961PL004578FQ"}, expected: false, origin: source}
+    - {input: {family: other_tax, reference: "XA012345678901"}, expected: true, origin: source}
+    - {input: {family: other_tax, reference: "XDS98712398712"}, expected: true, origin: source}
+    - {input: {family: other_tax, reference: "XAP74589243785"}, expected: true, origin: source}
+    - {input: {family: other_tax, reference: "XE123456789012"}, expected: true, origin: source}
+    - {input: {family: other_tax, reference: "XM123995577846"}, expected: true, origin: source}
+    - {input: {family: other_tax, reference: "XM003425669813"}, expected: true, origin: source}
+    - {input: {family: other_tax, reference: "XP00CATINTHEHAT"}, expected: true, origin: source}
+    - {input: {family: other_tax, reference: "XH1234567890123"}, expected: true, origin: source}
+    - {input: {family: other_tax, reference: "XQ0938588127545"}, expected: true, origin: source}
+    - {input: {family: other_tax, reference: "XK0046537877231"}, expected: true, origin: source}
+    - {input: {family: other_tax, reference: "XRgreeneggs4ham"}, expected: true, origin: source, note: lowercase input is upper-cased before checking}
+    - {input: {family: other_tax, reference: "XM0yertleturtle"}, expected: true, origin: source}
+    - {input: {family: other_tax, reference: "XF093624679222"}, expected: false, origin: source}
+    - {input: {family: other_tax, reference: "XW135792468123"}, expected: false, origin: source}
+    - {input: {family: other_tax, reference: "XFG03589343785"}, expected: false, origin: source}
+    - {input: {family: other_tax, reference: "inv@lid12A3456"}, expected: false, origin: source}
+    - {input: {family: other_tax, reference: "12345678901234"}, expected: false, origin: source}
+    - {input: {family: other_tax, reference: "X1234567890123"}, expected: false, origin: source}
+    - {input: {family: other_tax, reference: "XA1234567890AA"}, expected: false, origin: source}
+    - {input: {family: other_tax, reference: "X12345678901233"}, expected: false, origin: source}
+    - {input: {family: other_tax, reference: "XJ9876543210123"}, expected: false, origin: source}
+    - {input: {family: other_tax, reference: "XAP74589243785Z"}, expected: false, origin: source}
+    - {input: {family: other_tax, reference: "XP1234567890120"}, expected: false, origin: source}
+    - {input: {family: other_tax, reference: "XM7846942270421"}, expected: false, origin: source}
+    - {input: {family: other_tax, reference: "X23456789012345"}, expected: false, origin: source}
+    - {input: {family: other_tax, reference: ""}, expected: false, origin: source}
+    - {input: {family: other_tax, reference: "123456"}, expected: false, origin: source}
+    - {input: {family: other_tax, reference: "123456789A123"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "123456789MA"}, expected: true, origin: source}
+    - {input: {family: sdlt, reference: "918273645MV"}, expected: true, origin: source}
+    - {input: {family: sdlt, reference: "576682142MP"}, expected: true, origin: source}
+    - {input: {family: sdlt, reference: "586110842MR"}, expected: true, origin: source}
+    - {input: {family: sdlt, reference: "143245939MZ"}, expected: true, origin: source}
+    - {input: {family: sdlt, reference: "345726781MA"}, expected: true, origin: source}
+    - {input: {family: sdlt, reference: "335626481MS"}, expected: true, origin: source}
+    - {input: {family: sdlt, reference: "680686481MW"}, expected: true, origin: source}
+    - {input: {family: sdlt, reference: "430622221MH"}, expected: true, origin: source}
+    - {input: {family: sdlt, reference: "222222222MQ"}, expected: true, origin: source}
+    - {input: {family: sdlt, reference: ""}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "12345"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "233795664MB"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "946725624MQ"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "848785828MB"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "151617181MC"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "273647567MJ"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "632926282MQ"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "246485202MQ"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "426442202MQ"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "486848282MA"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "222222222MX"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "A23456789MA"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "1A3456789MA"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "12A456789MA"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "123A56789MA"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "1234A6789MA"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "12345A789MA"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "123456A89MA"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "1234567A9MA"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "12345678AMA"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "576682142MPZ"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "123456789MAAAAAAA"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "123456789DA"}, expected: false, origin: source}
+    - {input: {family: sdlt, reference: "123456789M2"}, expected: false, origin: source}
+evidence:
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: ReferenceChecker.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/main/scala/uk/gov/hmrc/referencechecker/ReferenceChecker.scala
+    accessed_at: 2026-10-31
+    locator: "lines 96-100, LetterRemainderLookup (alphabet and modulus 23)"
+    value: "List('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'X', 'J', 'K', 'L', 'M', 'N', 'Y', 'P', 'Q', 'R', 'S', 'T', 'Z', 'V', 'W')"
+    unit: list
+    snippet: "trait LetterRemainderLookup extends ModulusReferenceChecker"
+    source_license: Apache-2.0
+    content_sha256: 28370b888af29cf0b8ef6289249c0fef8749cd09313a64228373399f0a18a0c6
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: ReferenceChecker.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/main/scala/uk/gov/hmrc/referencechecker/ReferenceChecker.scala
+    accessed_at: 2026-10-31
+    locator: "lines 129-162, EpayeReferenceChecker"
+    value: "List(9, 10, 11, 12, 0, 8, 7, 6, 5, 4, 3, 2, 1)"
+    unit: list
+    snippet: "object EpayeReferenceChecker extends LetterRemainderLookup"
+    source_license: Apache-2.0
+    content_sha256: 28370b888af29cf0b8ef6289249c0fef8749cd09313a64228373399f0a18a0c6
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: ReferenceChecker.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/main/scala/uk/gov/hmrc/referencechecker/ReferenceChecker.scala
+    accessed_at: 2026-10-31
+    locator: "lines 164-196, OtherTaxReferenceChecker"
+    value: "List(0, 0, 9, 10, 11, 12, 13, 8, 7, 6, 5, 4, 3, 2, 1)"
+    unit: list
+    snippet: "object OtherTaxReferenceChecker extends LetterRemainderLookup"
+    source_license: Apache-2.0
+    content_sha256: 28370b888af29cf0b8ef6289249c0fef8749cd09313a64228373399f0a18a0c6
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: ReferenceChecker.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/main/scala/uk/gov/hmrc/referencechecker/ReferenceChecker.scala
+    accessed_at: 2026-10-31
+    locator: "lines 198-228, SdltReferenceChecker"
+    value: '^\d{9}M[A-Z]$'
+    unit: regex
+    snippet: "object SdltReferenceChecker extends LetterRemainderLookup"
+    source_license: Apache-2.0
+    content_sha256: 28370b888af29cf0b8ef6289249c0fef8749cd09313a64228373399f0a18a0c6
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: ModulusCheckerSpec.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/test/scala/uk/gov/hmrc/referencechecker/ModulusCheckerSpec.scala
+    accessed_at: 2026-10-31
+    locator: "lines 149-260, ePAYE, other taxes and SDLT examples"
+    value: "123PW12345678"
+    unit: text
+    snippet: '"The ePAYE reference checker" should'
+    source_license: Apache-2.0
+    content_sha256: 0da8144dcec9ff14ae7421f1ee8973e52501b37a0336e77428cd63ac706b0f98
+assumed:
+  - parameter: character values outside letter_values
+    value: base-36 digit value, or -1 for other characters
+    method: derived
+    rationale: The source falls back to Scala's Char.asDigit for characters absent from a family's letter table, which is the base-36 digit value for ASCII letters and digits and -1 otherwise; the rule reproduces that fallback so references containing such characters are judged identically.
+tests:
+  - {statistic: vector_pass_fraction, expected: 1, tolerance: 0}
+  - {statistic: vector_count, expected: 86, tolerance: 0}
+notes: |
+  One modulus-23 scheme with three parameterisations. The weighted sum of the reference's
+  characters (digits by value, letters by the family's table) modulo 23 indexes the alphabet
+  ABCDEFGHXJKLMNYPQRSTZVW, and the selected letter must appear at the family's check position:
+  position 4 of the 13-character PAYE Accounts Office reference, position 1 of the X-prefixed
+  other-taxes reference, and position 10 of the SDLT reference. References starting 961 in the
+  PAYE family carry two extra constraints that the source states explicitly. Input is upper-cased
+  before checking. Source is the reference checker HM Revenue & Customs publishes in hmrc/domain
+  (v13.0.0, commit bc4a37fe); all 86 vectors are the library's own. valid_from is the date of
+  the pinned revision; valid_to is open.

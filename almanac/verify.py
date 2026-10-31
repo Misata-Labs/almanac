@@ -17,11 +17,7 @@ from pathlib import Path
 from almanac.checks import Verifier
 from almanac.fetch import Fetcher
 from almanac.report import render_json, render_text
-from almanac.store import iter_entry_files
-
-REPO_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_ENTRIES = REPO_ROOT / "entries"
-DEFAULT_SCHEMA = REPO_ROOT / "schema" / "entry.schema.json"
+from almanac.store import DEFAULT_ENTRIES, DEFAULT_SCHEMA, iter_entry_files
 
 
 def build_parser(parser: argparse.ArgumentParser | None = None) -> argparse.ArgumentParser:

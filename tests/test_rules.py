@@ -111,3 +111,65 @@ def test_pix_field_validation():
     assert not br_pix_identifiers.is_valid("E" + "1" * 32, PIX, "end_to_end_id")
     with pytest.raises(KeyError):
         br_pix_identifiers.is_valid("x", PIX, "unknown")
+
+
+from almanac.rules import enumeration, gb_email_address, gb_hmrc_reference, gb_tax_code
+
+HMRC_REF = {
+    "modulus": 23,
+    "check_alphabet": "ABCDEFGHXJKLMNYPQRSTZVW",
+    "families": {
+        "sdlt": {
+            "pattern": r"^\d{9}M[A-Z]$",
+            "check_index": 10,
+            "weights": [6, 7, 8, 9, 10, 5, 4, 3, 2],
+            "letter_values": {},
+        },
+        "epaye": {
+            "pattern": r"^\d{3}P[A-Z]\d{6}[A-Z_0-9]{2}$",
+            "check_index": 4,
+            "weights": [9, 10, 11, 12, 0, 8, 7, 6, 5, 4, 3, 2, 1],
+            "letter_values": {"A": 33, "B": 34, "W": 55, "X": 41, "Y": 47},
+            "special_prefix": "961",
+            "special_prefix_pattern": r"^961P[A-Z]\d{8}$",
+        },
+    },
+}
+
+
+def test_character_values_follow_the_source_fallback():
+    assert gb_hmrc_reference.character_value("7", {}) == 7
+    assert gb_hmrc_reference.character_value("A", {"A": 33}) == 33
+    assert gb_hmrc_reference.character_value("I", {}) == 18
+    assert gb_hmrc_reference.character_value("_", {}) == -1
+
+
+def test_sdlt_check_character_can_be_generated():
+    assert gb_hmrc_reference.check_character("123456789M", HMRC_REF, "sdlt") == "A"
+    assert gb_hmrc_reference.is_valid("123456789MA", HMRC_REF, "sdlt")
+    assert not gb_hmrc_reference.is_valid("123456789MB", HMRC_REF, "sdlt")
+
+
+def test_epaye_special_prefix_rules():
+    assert gb_hmrc_reference.is_valid("961PA0045782X", HMRC_REF, "epaye")
+    assert not gb_hmrc_reference.is_valid("961PA1145782X", HMRC_REF, "epaye")
+
+
+def test_tax_code_and_email_patterns():
+    assert gb_tax_code.is_valid("1257L", {"pattern": r"^([K]*([1-9][0-9]{0,5}|0)[TLPY]*|BR|NT|D[01])$"})
+    assert not gb_tax_code.is_valid("1257L\n", {"pattern": r"^([K]*([1-9][0-9]{0,5}|0)[TLPY]*|BR|NT|D[01])$"})
+    params = {"address_pattern": r"^([a-z]+)@([a-z]+(?:\.[a-z]+)*)$", "domain_pattern": r"^([a-z]+(?:\.[a-z]+)*)$"}
+    assert gb_email_address.evaluate(params, "a@b.c")
+    assert gb_email_address.evaluate(params, {"part": "domain", "value": "b.c"})
+    assert not gb_email_address.evaluate(params, {"part": "domain", "value": "b."})
+
+
+def test_enumeration_membership_and_labels():
+    params = {"sets": {"status": {"active": "Active", "dissolved": "Dissolved"}}}
+    assert enumeration.is_member("active", params, "status")
+    assert enumeration.label("dissolved", params, "status") == "Dissolved"
+    assert enumeration.statistic(params, Statistic.parse("count[status]")) == 2
+    with pytest.raises(KeyError):
+        enumeration.codes(params, "type")
+    with pytest.raises(ValueError):
+        enumeration.statistic(params, Statistic.parse("mean"))

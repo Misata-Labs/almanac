@@ -1,0 +1,73 @@
+id: gb-tax-code-format
+title: United Kingdom PAYE tax code format
+kind: rule
+domain: tax
+region: GB
+status: verified
+tier: A
+valid_from: 2025-08-11
+valid_to: null
+spec:
+  implementation: almanac.rules.gb_tax_code
+  parameters:
+    pattern: '^([K]*([1-9][0-9]{0,5}|0)[TLPY]*|BR|NT|D[01])$'
+  vectors:
+    - {input: "0T", expected: true, origin: source}
+    - {input: "D0", expected: true, origin: source}
+    - {input: "D1", expected: true, origin: source}
+    - {input: "123456L", expected: true, origin: source}
+    - {input: "100P", expected: true, origin: source}
+    - {input: "100Y", expected: true, origin: source}
+    - {input: "K500", expected: true, origin: source}
+    - {input: "BR", expected: true, origin: source}
+    - {input: "NT", expected: true, origin: source}
+    - {input: "1234567", expected: false, origin: source, note: seven digits}
+    - {input: "1A3456P", expected: false, origin: source}
+    - {input: "123456H", expected: false, origin: source, note: H is not a suffix letter}
+    - {input: "123456A", expected: false, origin: source}
+    - {input: "NI", expected: false, origin: source}
+    - {input: "69 L", expected: false, origin: source}
+    - {input: " 69L", expected: false, origin: source}
+    - {input: "K0500", expected: false, origin: source, note: leading zero}
+    - {input: "6O9L", expected: false, origin: source, note: letter O in the digits}
+    - {input: "OT", expected: false, origin: source, note: letter O instead of zero}
+    - {input: "69LM1", expected: false, origin: source}
+    - {input: "69LW1", expected: false, origin: source}
+    - {input: "500K", expected: false, origin: source, note: K must lead}
+    - {input: "474Lwk1/mth1", expected: false, origin: source}
+    - {input: "474L/X", expected: false, origin: source}
+    - {input: "474L/1", expected: false, origin: source}
+    - {input: "D", expected: false, origin: source}
+evidence:
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: TaxCode.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/main/scala/uk/gov/hmrc/domain/TaxCode.scala
+    accessed_at: 2026-10-31
+    locator: "line 22, TaxCode require pattern"
+    value: '^([K]*([1-9][0-9]{0,5}|0)[TLPY]*|BR|NT|D[01])$'
+    unit: regex
+    snippet: "case class TaxCode(code: String)"
+    source_license: Apache-2.0
+    content_sha256: f80e646f89feec9f308844a2c82cc50fff6188cd8ef8cdd8a8e43c09bf53682b
+  - publisher: HM Revenue & Customs
+    title: "hmrc/domain: TaxCodeSpec.scala (tag v13.0.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/domain/bc4a37feff08a524529124f757ebcfd9f11290b7/domain-play-30/src/test/scala/uk/gov/hmrc/domain/TaxCodeSpec.scala
+    accessed_at: 2026-10-31
+    locator: "lines 24-43, legalCodes and illegalCodes"
+    value: '"0T", "D0", "D1", "123456L", "100P", "100Y", "K500", "BR", "NT"'
+    unit: list
+    snippet: "val legalCodes = Seq("
+    source_license: Apache-2.0
+    content_sha256: d2a7a10a8193106ba5fd4c1824d4863da7d71d22148ca75feb88977623e8f50b
+assumed: []
+tests:
+  - {statistic: vector_pass_fraction, expected: 1, tolerance: 0}
+  - {statistic: vector_count, expected: 26, tolerance: 0}
+notes: |
+  The pattern is the one HM Revenue & Customs applies when it parses a tax code in its own
+  services (hmrc/domain v13.0.0, commit bc4a37fe): an optional K prefix, a number without a
+  leading zero (or 0 alone), an optional suffix from T, L, P or Y, or one of the fixed codes
+  BR, NT, D0 and D1. The pattern is permissive about repetition of K and of the suffix letter,
+  which the library's own tests do not exercise; generators should emit at most one of each.
+  Week-1/month-1 markers (W1, M1, X) are not part of the code under this rule. valid_from is
+  the date of the pinned revision; valid_to is open.

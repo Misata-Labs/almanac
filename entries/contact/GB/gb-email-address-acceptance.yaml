@@ -1,0 +1,71 @@
+id: gb-email-address-acceptance
+title: Email address acceptance pattern used by HM Revenue & Customs services
+kind: rule
+domain: contact
+region: GB
+status: verified
+tier: A
+valid_from: 2024-09-27
+valid_to: null
+spec:
+  implementation: almanac.rules.gb_email_address
+  parameters:
+    address_pattern: '^([a-zA-Z0-9.!#$%&’''*+/=?^_`{|}~-]+)@([a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*)$'
+    domain_pattern: '^([a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*)$'
+  vectors:
+    - {input: "test@domain.com", expected: true, origin: source}
+    - {input: "abcdef@example.com", expected: true, origin: source}
+    - {input: "sausages", expected: false, origin: source}
+    - {input: "", expected: false, origin: source}
+    - {input: "test@domain.comtest@domain.com", expected: false, origin: source, note: two addresses joined}
+    - {input: "§test@domain.com", expected: false, origin: source, note: leading character outside the alphabet}
+    - {input: "test@domain.com§", expected: false, origin: source, note: trailing character outside the alphabet}
+    - {input: {part: domain, value: "domain.com"}, expected: true, origin: source}
+    - {input: {part: domain, value: ""}, expected: false, origin: source}
+    - {input: {part: domain, value: "e."}, expected: false, origin: source}
+    - {input: {part: domain, value: ".uk"}, expected: false, origin: source}
+    - {input: {part: domain, value: ".com"}, expected: false, origin: source}
+    - {input: {part: domain, value: "*domain"}, expected: false, origin: source}
+evidence:
+  - publisher: HM Revenue & Customs
+    title: "hmrc/emailaddress: EmailAddress.scala (tag v4.1.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/emailaddress/5d467f934f20813c1324a2e69ca75f8b6c623122/shared/src/main/scala/uk/gov/hmrc/emailaddress/EmailAddress.scala
+    accessed_at: 2026-10-31
+    locator: "line 31, validEmail"
+    value: '^([a-zA-Z0-9.!#$%&’''*+/=?^_`{|}~-]+)@([a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*)$'
+    unit: regex
+    snippet: "final private[emailaddress] val validEmail ="
+    source_license: Apache-2.0
+    content_sha256: 9d6188e0b32cfc0ce1350a65d095474831ad14f22318422bac1c8f64611250f0
+  - publisher: HM Revenue & Customs
+    title: "hmrc/emailaddress: EmailAddress.scala (tag v4.1.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/emailaddress/5d467f934f20813c1324a2e69ca75f8b6c623122/shared/src/main/scala/uk/gov/hmrc/emailaddress/EmailAddress.scala
+    accessed_at: 2026-10-31
+    locator: "line 30, validDomain"
+    value: '^([a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*)$'
+    unit: regex
+    snippet: "final private[emailaddress] val validDomain ="
+    source_license: Apache-2.0
+    content_sha256: 9d6188e0b32cfc0ce1350a65d095474831ad14f22318422bac1c8f64611250f0
+  - publisher: HM Revenue & Customs
+    title: "hmrc/emailaddress: EmailAddressSpec.scala (tag v4.1.0 line)"
+    url: https://raw.githubusercontent.com/hmrc/emailaddress/5d467f934f20813c1324a2e69ca75f8b6c623122/shared/src/test/scala/uk/gov/hmrc/emailaddress/EmailAddressSpec.scala
+    accessed_at: 2026-10-31
+    locator: "lines 33-97, address and domain examples"
+    value: "test@domain.comtest@domain.com"
+    unit: text
+    snippet: "throw an exception for a repeated email"
+    source_license: Apache-2.0
+    content_sha256: e44662dccce15e82418d49ca16a93e06c75196c76d2d7df52bbef93b36c1f73b
+assumed: []
+tests:
+  - {statistic: vector_pass_fraction, expected: 1, tolerance: 0}
+  - {statistic: vector_count, expected: 13, tolerance: 0}
+notes: |
+  This is the acceptance rule a large government service estate applies to email addresses,
+  not the full RFC 5322 grammar: no quoted local parts, no comments, no IP-literal domains,
+  and the domain may not start or end with a dot or contain consecutive dots. The local part
+  alphabet includes the typographic apostrophe (U+2019) as well as the ASCII one. Source is
+  hmrc/emailaddress v4.1.0 (commit 5d467f93); vectors are the library's own examples, with the
+  property-based cases represented by their fixed seeds. valid_from is the date of the pinned
+  revision; valid_to is open.

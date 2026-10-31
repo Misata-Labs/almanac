@@ -9,6 +9,9 @@ from typing import Any, Iterator
 import yaml
 
 ENTRY_SUFFIX = ".yaml"
+REPO_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_ENTRIES = REPO_ROOT / "entries"
+DEFAULT_SCHEMA = REPO_ROOT / "schema" / "entry.schema.json"
 
 
 class EntryLoader(yaml.SafeLoader):
