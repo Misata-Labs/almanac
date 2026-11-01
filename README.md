@@ -1,56 +1,78 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/assets/hero-dark.svg">
-    <img src="docs/assets/hero-light.svg" alt="Misata Almanac: the rules real-world data obeys, with receipts" width="100%">
+    <img src="docs/assets/hero-light.svg" alt="Misata Almanac: open rulebook of real-world data rules for synthetic data, with receipts" width="100%">
   </picture>
 </p>
 
 # Misata Almanac
 
-**Real data obeys rules. Fake data usually breaks them. This is the rulebook, with receipts.**
+### The open rulebook of real-world data. Every rule has a receipt.
 
-A VAT number whose check digits do not add up. A payment dated on a bank
-holiday. A yen amount with two decimal places. A tax code with a leading zero.
-A Pix transaction id with hyphens in it. Each slip is small. Together they are
-why synthetic data gets thrown out the moment it meets a real validator, a real
-reconciliation job, or a real auditor.
+Check-digit algorithms, identifier formats, tax rates, bank holidays, currency
+conventions, industry code lists and official statistics, collected in one
+place and traced back to the government body, central bank, regulator or
+standards agency that published them. Built for synthetic data generation,
+test data, demo environments and data validation, and read by the
+[Misata](https://pypi.org/project/misata/) synthetic data engine.
 
-The Almanac is an open archive of those rules and the distributions behind
-them: check-digit algorithms, identifier formats, tax bands, holiday calendars,
-currency conventions, code lists, and the statistics official bodies publish.
-Every value is traced to the statistical office, central bank, regulator or
-standards body that published it, with the exact URL, the SHA-256 of what was
-fetched, and the tests that prove it still holds. The
-[Misata](https://pypi.org/project/misata/) synthetic data engine reads it so
-the data it generates passes the same checks real data passes.
+Created and edited by Muhammed Rasin · Misata Labs
 
-Created and edited by Muhammed Rasin.
+---
+
+## Why fake data keeps getting caught
+
+You have seen the demo that died in the first five minutes. The VAT number
+whose check digits did not add up. The invoice dated on a bank holiday. The
+yen amount with two decimals. The tax code with a leading zero. The Pix
+transaction id with hyphens in it. Nobody notices while you are building. The
+validator notices. The reconciliation job notices. The auditor at EY notices.
+
+Realistic data is not about clever generators. It is about knowing the rules,
+knowing where they come from, and being able to prove it. That is what an
+almanac is for.
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/assets/before-after-dark.svg">
-    <img src="docs/assets/before-after-light.svg" alt="Three panels of synthetic data failing real-world checks, and one passing with the Almanac" width="100%">
+    <img src="docs/assets/before-after-light.svg" alt="Synthetic data before and after the Misata Almanac: invoice, customer and Pix records failing real checks, then passing" width="100%">
   </picture>
 </p>
 
-## The promise
+## What makes this different
 
-No value in this archive was typed from memory. A number, a pattern, a date
-or a code list exists here only because someone fetched it from a primary
-source while writing the entry, recorded where it sits in that source, hashed
-the bytes, and wrote down the test that reproduces it. Anyone can run the
-verifier and watch every entry re-fetch and re-check itself.
+Most "reference data" on the internet is copied from a blog that copied it
+from a wiki that copied it from memory. Nothing here was typed from memory.
+
+- **Primary sources only.** HM Revenue & Customs, Banco Central do Brasil,
+  the European Central Bank, Eurostat, the Office for National Statistics,
+  the World Bank, the US Code of Federal Regulations, the CDC, Receita
+  Federal, the ITU, the ISO 4217 maintenance agency. If a body did not
+  publish it, it is not in here.
+- **Receipts, not citations.** Every value records the exact URL it was
+  fetched from, the SHA-256 of the bytes, where in the resource it sits, and
+  a snippet that finds it. A citation says "trust me". A receipt says "check".
+- **Executable, not descriptive.** Rules ship as typed Python with the
+  publisher's own worked examples as test vectors. Distributions ship with the
+  published counts beside the derived shares, and the verifier reproduces
+  them by sampling.
+- **Dated.** Every entry says when it applied. Ask the archive what the world
+  looked like on any given day.
+- **Re-verifiable by anyone.** One command re-fetches every source and fails
+  loudly if anything drifted. There is no CI because you should not have to
+  trust ours.
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/assets/proof-chain-dark.svg">
-    <img src="docs/assets/proof-chain-light.svg" alt="How a value earns its place: primary source, exact URL, sha256, locator and snippet, test vectors, verifier" width="100%">
+    <img src="docs/assets/proof-chain-light.svg" alt="How a value earns its place in the Almanac: primary source, exact URL, SHA-256, locator and snippet, test vectors, verifier" width="100%">
   </picture>
 </p>
 
-## Start from the business problem
+## Start from the problem you are solving
 
-Every entry carries `use_cases`, so a demo team pulls exactly what it needs.
+Every entry is tagged with the business scenario it serves, so a demo team or
+a test engineer pulls exactly what the story needs.
 
 ```
 uv run almanac list --use-case payroll-demo
@@ -58,22 +80,22 @@ uv run almanac list --use-case kyb-onboarding
 uv run almanac applies --on 2026-06-15 --use-case banking-demo
 ```
 
-| If you are building… | Start with |
+| You are building… | Reach for |
 | --- | --- |
-| **Payroll and HR** | UK Income Tax bands with the tapered allowance, minimum wage by age band and date, NINO and tax code formats, Census economic activity and qualifications |
-| **Banking, lending, treasury** | Selic and ECB deposit-rate step schedules, policy rates for nine economies, euro area mortgage cost of borrowing, Brazil household credit default rate, account ownership by economy |
-| **Payments and fintech** | Pix identifier formats, monthly Pix volume and average ticket, Pix key-type mix, HMRC payment reference check characters, bank holidays for settlement calendars |
-| **KYC, KYB, onboarding** | CNPJ and UTR check digits, VAT registration numbers, Companies House types and statuses, SIC 2007 codes, the email pattern HMRC accepts, World Bank economy classification |
-| **Invoicing, tax, audit** | UK VAT rates, India GST slab structure, ISO 4217 minor units, ECB and US Treasury exchange-rate tables, CPIH and IPCA price indices |
-| **Customers, people, households** | Twelve Census 2021 marginals, single-year age distributions for Germany and France, world population weights, fertility and life expectancy by economy |
-| **Healthcare and claims** | ICD-10-CM 2026 diagnosis categories with code counts, the NPI Luhn check digit, Census general health, life expectancy by economy |
-| **Insurance, property, fleet** | The VIN check digit from the federal regulation, UK house prices by month, euro area mortgage rates, Census tenure and car availability |
-| **Retail and demand** | Retail sales index with its December peak, inflation by month and by country, GDP and GDP per capita by economy |
-| **Telecom, energy, utilities** | ITU country calling codes, internet and mobile penetration by economy, household electricity prices for ten EU states, clock-change dates |
+| **A payroll or HR demo** | UK Income Tax bands with the tapered Personal Allowance, National Minimum Wage by age band and date, National Insurance number and tax code formats, Census economic activity and qualifications |
+| **A banking, lending or treasury demo** | Selic and ECB deposit-rate step schedules, policy rates for nine economies, euro area mortgage cost of borrowing, Brazil household credit default rate, financial account ownership by economy |
+| **A payments or fintech demo** | Pix identifier formats, monthly Pix volume and average ticket, Pix key-type mix, HMRC payment reference check characters, bank holidays for settlement calendars |
+| **KYC, KYB or customer onboarding test data** | CNPJ and UTR check digits, VAT registration number validation, Companies House company types and statuses, SIC 2007 codes, the email pattern HMRC accepts, World Bank economy classification |
+| **Invoicing, tax or audit test data** | UK VAT rates, India GST slab structure, ISO 4217 minor units, ECB and US Treasury exchange-rate tables, CPIH and IPCA price indices |
+| **Synthetic customers, people and households** | Twelve Census 2021 marginals for England and Wales, single-year age distributions for Germany and France, world population weights, fertility and life expectancy by economy |
+| **Healthcare and claims test data** | ICD-10-CM 2026 diagnosis categories with code counts, the NPI Luhn check digit, Census general health, life expectancy by economy |
+| **Insurance, property or fleet data** | The VIN check digit from the federal regulation, UK house prices by month, euro area mortgage rates, Census tenure and car availability |
+| **Retail and demand forecasting demos** | Retail sales index with its December peak, inflation by month and by country, GDP and GDP per capita by economy |
+| **Telecom, energy and utilities demos** | ITU country calling codes, internet and mobile penetration by economy, household electricity prices for ten EU states, clock-change dates |
 
-The full matrix of use cases to entries opens [CATALOGUE.md](CATALOGUE.md).
+The complete map of use cases to entries opens [CATALOGUE.md](CATALOGUE.md).
 
-## Thirty seconds
+## Thirty seconds to a verified rule
 
 ```
 uv sync
@@ -93,19 +115,82 @@ almanac.rule("br-cnpj-check-digits").call("check_digits", "12.ABC.345/01DE")   #
 almanac.rule("us-vin-check-digit").call("check_digit", "1G4AH59H45G118341")    # '4'
 almanac.rule("global-iso4217-currency-minor-units").call("minor_units", "JPY") # 0
 almanac.rule("gb-income-tax-bands-2026-27").call("tax_due", 35000)             # Decimal('4486.00')
-almanac.rule("us-federal-holidays").call("is_holiday", date(2026, 7, 3))       # True, observed day
+almanac.rule("us-federal-holidays").call("is_holiday", date(2026, 7, 3))       # True, the observed day
 almanac.rule("br-selic-target-rate-changes-2025").call("value_on", date(2025, 7, 1))  # 15.0
 
 for entry in almanac.select(on=date(2026, 6, 15), region="GB", kind="rule"):
     print(entry.id, entry.tier, entry.status)
 ```
 
+## What is inside
+
+Sixty-eight entries across sixteen domains and eight regions at the time of
+writing, every one of them passing live verification. The generated
+[CATALOGUE.md](CATALOGUE.md) is the authoritative list; this is the tour.
+
+**Identifier validation and check digits.** UK National Insurance numbers,
+Unique Taxpayer References, VAT registration numbers and the PAYE, SDLT and
+other-tax payment references, all from HM Revenue & Customs' own validation
+library with its own test suite as vectors. Brazil CNPJ check digits for the
+numeric and the new alphanumeric format, from Receita Federal's worked
+example. The US vehicle identification number check digit lifted from
+49 CFR 565.15 through the eCFR API, with NHTSA's decoder confirming the
+vectors. The National Provider Identifier check digit from the CMS note that
+defines it.
+
+**Payments and currency.** Pix identifier formats from the Banco Central do
+Brasil API specification, monthly Pix volume with the derived average ticket,
+and the mix of Pix key types registered in the DICT. ISO 4217 currency codes
+with numeric codes and minor units from the maintenance agency's own list.
+ECB euro reference rates for seven currencies. US Treasury reporting rates of
+exchange for 174 currency pairs.
+
+**Tax, payroll and employment.** UK VAT rates with the 2011 effective date.
+UK Income Tax bands and the tapered Personal Allowance for 2026 to 2027.
+National Minimum Wage and National Living Wage rates for April 2026 and April
+2027. The PAYE tax code format. The India GST slab structure after the 56th
+GST Council meeting.
+
+**Calendars.** UK bank holidays by nation through 2028 from the GOV.UK
+endpoint. The British Summer Time clock-change rule with its published dates.
+US federal holidays from the statute, the executive order and the regulation,
+with the Saturday and Sunday observance rules that payroll and settlement
+systems actually apply.
+
+**Economy, rates and prices.** Thirteen World Bank reference tables by
+economy, from GDP per capita to financial account ownership, plus the region
+and income-group classification. Euro area HICP inflation and mortgage cost of
+borrowing. ECB deposit facility and Selic target rate changes as step
+schedules. Central bank policy rates for nine economies. UK CPIH and retail
+sales indices. Brazil IPCA inflation and household credit default rate.
+Eurostat unemployment and inflation by member state, household electricity
+prices across ten states.
+
+**Demographics.** Twelve Census 2021 marginals for England and Wales: sex,
+single year of age, ethnic group, religion, marital status, economic activity,
+general health, highest qualification, household size, tenure, car
+availability, accommodation type. Single-year age distributions for Germany
+and France. Population by sex for ten member states. World population weights
+for 217 economies.
+
+**Healthcare, property, telecom, companies.** ICD-10-CM FY2026 diagnosis
+categories with code counts from the CDC archive. UK House Price Index by
+month from HM Land Registry. ITU-T E.164 country calling codes. Companies
+House company types and statuses, the SIC 2007 condensed list, and the email
+address pattern HMRC services accept.
+
+Entries whose source terms are not clearly permissive wait at
+`license-review` and say exactly why. [WANTED.md](WANTED.md) is the queue of
+what comes next, each with the official body to source it from. If you know a
+national numbering scheme or a statistical release well, that is where to
+start.
+
 ## Anatomy of an entry
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/assets/anatomy-dark.svg">
-    <img src="docs/assets/anatomy-light.svg" alt="Anatomy of an entry: spec runs in the data engine; evidence, assumed and tests are checked by the verifier" width="100%">
+    <img src="docs/assets/anatomy-light.svg" alt="Anatomy of a Misata Almanac entry: spec runs in the data engine; evidence, assumed and tests are checked by the verifier" width="100%">
   </picture>
 </p>
 
@@ -138,10 +223,8 @@ tests:
 ```
 
 `spec` is what a data engine executes. `evidence` is why you should believe
-it; an item marked `role: supporting` documents context such as units or
-licence terms. `assumed` is where anything restated, converted, fitted or
-guessed is confessed, with the method. `tests` is what the verifier
-reproduces.
+it. `assumed` is where anything restated, converted, fitted or guessed is
+confessed, with the method. `tests` is what the verifier reproduces.
 
 ## What the verifier does
 
@@ -163,53 +246,61 @@ reproduces.
 68 passed, 0 failed, 68 entries
 ```
 
-## What is in the archive
+## Frequently asked questions
 
-[CATALOGUE.md](CATALOGUE.md) is generated from the entries and lists all of
-them by use case and by domain. The short version:
+**What is the Misata Almanac?**
+An open, proof-backed knowledge base of the rules real-world data follows:
+check-digit algorithms, identifier formats, tax rates, holiday calendars,
+currency conventions, code lists and official distributions. Each entry is a
+YAML file that cites its primary source, records a content hash, and carries
+executable tests. It is the reference layer behind the Misata synthetic data
+engine, and it works on its own as a Python library and CLI.
 
-- **Identifiers**: UK National Insurance numbers, Unique Taxpayer References,
-  VAT registration numbers, and PAYE, SDLT and other-tax payment references
-  from HM Revenue & Customs' own validation library; Brazil CNPJ check digits
-  from Receita Federal's worked example; the US VIN check digit from
-  49 CFR 565.15; the NPI check digit from the CMS note.
-- **Payments and currency**: Pix identifier formats, monthly Pix volume and
-  key-type mix from Banco Central do Brasil; ISO 4217 codes and minor units
-  from the maintenance agency; ECB euro reference rates; US Treasury
-  reporting rates of exchange for 174 currency pairs.
-- **Tax and employment**: UK VAT rates, UK Income Tax bands for 2026 to 2027,
-  National Minimum Wage rates for April 2026 and April 2027, the PAYE tax
-  code format, and the India GST slab structure.
-- **Calendars**: UK bank holidays by nation to 2028, the UK clock-change
-  rule, and US federal holidays with Saturday and Sunday observance.
-- **Economy and rates**: thirteen World Bank reference tables by economy;
-  euro area HICP and mortgage rates; ECB deposit facility and Selic step
-  schedules; central bank policy rates for nine economies; UK CPIH and retail
-  sales indices; Brazil IPCA and household credit default; Eurostat
-  unemployment and inflation by member state.
-- **Demographics**: twelve Census 2021 marginals for England and Wales,
-  single-year age distributions for Germany and France, population by sex
-  for ten member states, world population weights.
-- **Healthcare, property, energy, telecom**: ICD-10-CM 2026 categories, UK
-  house prices by month, household electricity prices across the EU, ITU
-  country calling codes.
-- **Companies and contact**: Companies House company types and statuses, the
-  SIC 2007 condensed list, the email pattern HMRC services accept.
+**Who is it for?**
+Anyone who has to make generated data survive contact with reality: synthetic
+data and test data engineers, QA teams, consultancies building client demos,
+fintech and payments teams, data platform teams seeding environments, and AI
+agents that need an authoritative answer to "what does a valid VAT number
+look like" without guessing.
 
-Entries whose source terms are not clearly permissive stay at
-`license-review` and say why. [WANTED.md](WANTED.md) lists what comes next,
-each with the official body to source it from.
+**How is this different from a faker library?**
+Faker-style tools produce plausible-looking values. The Almanac tells you,
+with a receipt, what the real rule is and where it was published, and lets
+you check that it still holds. Use both: let a generator produce the shape,
+let the Almanac make it correct.
 
-## Findable by people and by agents
+**Can I use it without Misata?**
+Yes. `uv sync` and `from almanac.api import Almanac` give you every rule,
+distribution and series as typed Python. The YAML entries are plain data and
+can be read by anything.
 
-- `llms.txt` maps the whole archive for AI agents in a single read.
-- `manifest.json` indexes every entry with validity, publishers, licences,
-  tags and use cases.
-- `dataset.jsonld` describes the archive as a schema.org Dataset for data
-  catalogues and search engines.
+**Is the data licensed for commercial use?**
+Entries are released under the Open Database License 1.0 and the code under
+Apache 2.0. Each evidence item also records the licence of its own source.
+Entries whose source terms are unclear are marked `license-review` and are
+never marked `verified`.
 
-All three are generated by `uv run almanac index`, and a test fails when
-they drift from the entries.
+**How do I know a value is still current?**
+Run `uv run almanac verify`. It re-fetches every source, checks the hash,
+finds the snippet and the value again, runs every rule vector and reproduces
+every published statistic. A changed source fails the run and names the
+entry.
+
+**How does an AI agent find the right entry?**
+Read `llms.txt` first; it maps the archive by business problem and links
+every entry. `manifest.json` is the machine index with validity, publishers,
+licences, tags and use cases, and `dataset.jsonld` describes the archive as a
+schema.org Dataset. All three are generated from the entries and tested for
+drift.
+
+**What applied on a given date?**
+`uv run almanac applies --on 2026-06-15` lists every entry whose validity
+covers that day; add `--region`, `--domain` or `--use-case` to narrow it.
+
+**Can I contribute an entry?**
+Yes, and [CONTRIBUTING.md](CONTRIBUTING.md) explains the source policy, the
+evidence tiers and the manual checks to run before opening a pull request.
+Start with [WANTED.md](WANTED.md).
 
 ## Evidence tiers
 
@@ -300,3 +391,5 @@ governs the source material, not this repository's restatement of it.
 
 See `CITATION.cff`. In prose: Muhammed Rasin, *Misata Almanac*, Misata Labs,
 https://github.com/Misata-labs/almanac.
+
+<sub>Keywords: synthetic data, test data generation, data validation rules, check digit algorithms, VAT number validation, CNPJ validation, VIN check digit, NPI check digit, National Insurance number format, bank holidays API, federal holidays, ISO 4217 minor units, exchange rates, income tax bands, minimum wage rates, GST rates, ICD-10-CM codes, SIC codes, census distributions, official statistics, reference data, KYC test data, KYB test data, payroll test data, fintech demo data, Misata.</sub>
