@@ -1,0 +1,117 @@
+id: gb-vacancies-per-100-employee-jobs-monthly-2025
+title: UK job vacancies per 100 employee jobs, all industries, monthly 2025
+kind: temporal
+domain: employment
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- vacancies
+- labour-demand
+- hiring
+- ons
+- time-series
+use_cases:
+- hr-analytics
+- workforce-planning
+- capacity-planning
+spec:
+  variable: vacancies_per_100_employee_jobs
+  unit: ratio
+  frequency: monthly
+  columns: []
+  series:
+  - period: 2025-01
+    value: 2.5
+  - period: 2025-02
+    value: 2.4
+  - period: 2025-03
+    value: 2.4
+  - period: 2025-04
+    value: 2.3
+  - period: 2025-05
+    value: 2.3
+  - period: 2025-06
+    value: 2.3
+  - period: 2025-07
+    value: 2.3
+  - period: 2025-08
+    value: 2.3
+  - period: 2025-09
+    value: 2.3
+  - period: 2025-10
+    value: 2.3
+  - period: 2025-11
+    value: 2.3
+  - period: 2025-12
+    value: 2.3
+evidence:
+- publisher: Office for National Statistics
+  title: ONS time series AP2Z in dataset UNEM (version v128), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/timeseries/ap2z/unem/previous/v128/data
+  accessed_at: '2026-10-31'
+  locator: months[date=2025 JAN].value
+  value: '2.5'
+  unit: ratio
+  snippet: '"date":"2025 JAN","value":"2.5","label":"2024 DEC-FEB"'
+  source_license: OGL-UK-3.0
+  content_sha256: 4b2893686e056e0b530a0842f4550460ed29ab86c27c2fc34091110630c6cdd4
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS time series AP2Z in dataset UNEM (version v128), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/timeseries/ap2z/unem/previous/v128/data
+  accessed_at: '2026-10-31'
+  locator: months[date=2025 DEC].value
+  value: '2.3'
+  unit: ratio
+  snippet: '"date":"2025 DEC","value":"2.3","label":"2025 NOV-JAN"'
+  source_license: OGL-UK-3.0
+  content_sha256: 4b2893686e056e0b530a0842f4550460ed29ab86c27c2fc34091110630c6cdd4
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS time series AP2Z in dataset UNEM (version v128), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/timeseries/ap2z/unem/previous/v128/data
+  accessed_at: '2026-10-31'
+  locator: description.title
+  value: UK Job Vacancies ratio per 100 emp jobs - Total
+  unit: text
+  snippet: '"datasetId":"UNEM","datasetUri":"/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/claimantcountandvacanciesdataset","cdid":"AP2Z"'
+  source_license: OGL-UK-3.0
+  content_sha256: 4b2893686e056e0b530a0842f4550460ed29ab86c27c2fc34091110630c6cdd4
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata cpih01 (licence statement for ONS datasets)
+  url: https://api.beta.ons.gov.uk/v1/datasets/cpih01
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: c8d0e2fde94bc0ed865f5e5b237a7b34835371ff71a5b36d460e6bb3aac5d40c
+  role: supporting
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 2.5
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 2.3
+  tolerance: 1.0e-09
+- statistic: max
+  expected: 2.5
+  tolerance: 1.0e-09
+- statistic: min
+  expected: 2.3
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: Vacancies per 100 employee jobs, UK, all industries, monthly for 2025 (ONS labels the series as superseded
+  by the job openings rate, N4JE, but continues to publish it). Series AP2Z (UK Job Vacancies ratio per 100 emp
+  jobs - Total) from ONS dataset UNEM, pinned to published version v128, whose bytes do not change; release date
+  2026-07-20. The ONS JSON endpoint lists the series as months, quarters and years; only the periods in observed_period
+  are kept. ONS publishes its data under the Open Government Licence v3.0, as the cpih01 dataset metadata states.

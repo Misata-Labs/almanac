@@ -1,0 +1,119 @@
+id: gb-average-weekly-earnings-total-pay-monthly-2025
+title: Great Britain average weekly earnings, whole economy, total pay, seasonally adjusted, monthly 2025
+kind: temporal
+domain: employment
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- earnings
+- wages
+- awe
+- pay
+- ons
+- time-series
+use_cases:
+- payroll-demo
+- hr-analytics
+- personal-finance
+- workforce-planning
+spec:
+  variable: average_weekly_earnings_total_pay_gbp
+  unit: currency:GBP
+  frequency: monthly
+  columns: []
+  series:
+  - period: 2025-01
+    value: 710.0
+  - period: 2025-02
+    value: 718.0
+  - period: 2025-03
+    value: 722.0
+  - period: 2025-04
+    value: 720.0
+  - period: 2025-05
+    value: 724.0
+  - period: 2025-06
+    value: 725.0
+  - period: 2025-07
+    value: 729.0
+  - period: 2025-08
+    value: 733.0
+  - period: 2025-09
+    value: 734.0
+  - period: 2025-10
+    value: 739.0
+  - period: 2025-11
+    value: 739.0
+  - period: 2025-12
+    value: 738.0
+evidence:
+- publisher: Office for National Statistics
+  title: ONS time series KAB9 in dataset EMP (version v131), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/timeseries/kab9/emp/previous/v131/data
+  accessed_at: '2026-10-31'
+  locator: months[date=2025 JAN].value
+  value: '710'
+  unit: currency:GBP
+  snippet: '"date":"2025 JAN","value":"710","label":"2025 JAN"'
+  source_license: OGL-UK-3.0
+  content_sha256: dc8a6385015400e4197f986c09ede6e92f33308ef243e83f2ab4897e6dbb8be9
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS time series KAB9 in dataset EMP (version v131), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/timeseries/kab9/emp/previous/v131/data
+  accessed_at: '2026-10-31'
+  locator: months[date=2025 DEC].value
+  value: '738'
+  unit: currency:GBP
+  snippet: '"date":"2025 DEC","value":"738","label":"2025 DEC"'
+  source_license: OGL-UK-3.0
+  content_sha256: dc8a6385015400e4197f986c09ede6e92f33308ef243e83f2ab4897e6dbb8be9
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS time series KAB9 in dataset EMP (version v131), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/timeseries/kab9/emp/previous/v131/data
+  accessed_at: '2026-10-31'
+  locator: description.title
+  value: 'AWE: Whole Economy Level (£): Seasonally Adjusted Total Pay Excluding Arrears'
+  unit: text
+  snippet: '"datasetId":"EMP","datasetUri":"/employmentandlabourmarket/peopleinwork/earningsandworkinghours/datasets/averageweeklyearnings","cdid":"KAB9"'
+  source_license: OGL-UK-3.0
+  content_sha256: dc8a6385015400e4197f986c09ede6e92f33308ef243e83f2ab4897e6dbb8be9
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata cpih01 (licence statement for ONS datasets)
+  url: https://api.beta.ons.gov.uk/v1/datasets/cpih01
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: c8d0e2fde94bc0ed865f5e5b237a7b34835371ff71a5b36d460e6bb3aac5d40c
+  role: supporting
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 710.0
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 738.0
+  tolerance: 1.0e-09
+- statistic: max
+  expected: 739.0
+  tolerance: 1.0e-09
+- statistic: min
+  expected: 710.0
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: 'Average weekly earnings in pounds (total pay excluding arrears, whole economy, seasonally adjusted), Great
+  Britain, monthly for 2025. Series KAB9 (AWE: Whole Economy Level (£): Seasonally Adjusted Total Pay Excluding
+  Arrears) from ONS dataset EMP, pinned to published version v131, whose bytes do not change; release date 2026-09-14.
+  The ONS JSON endpoint lists the series as months, quarters and years; only the periods in observed_period are
+  kept. ONS publishes its data under the Open Government Licence v3.0, as the cpih01 dataset metadata states.'

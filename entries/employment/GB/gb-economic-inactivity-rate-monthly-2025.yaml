@@ -1,0 +1,116 @@
+id: gb-economic-inactivity-rate-monthly-2025
+title: UK economic inactivity rate, aged 16 to 64, seasonally adjusted, monthly 2025
+kind: temporal
+domain: employment
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- economic-inactivity
+- labour
+- ons
+- time-series
+use_cases:
+- hr-analytics
+- person-generation
+- household-generation
+spec:
+  variable: economic_inactivity_rate_percent
+  unit: percent
+  frequency: monthly
+  columns: []
+  series:
+  - period: 2025-01
+    value: 21.3
+  - period: 2025-02
+    value: 21.3
+  - period: 2025-03
+    value: 21.2
+  - period: 2025-04
+    value: 21.0
+  - period: 2025-05
+    value: 20.9
+  - period: 2025-06
+    value: 21.0
+  - period: 2025-07
+    value: 21.0
+  - period: 2025-08
+    value: 20.9
+  - period: 2025-09
+    value: 21.0
+  - period: 2025-10
+    value: 20.8
+  - period: 2025-11
+    value: 20.9
+  - period: 2025-12
+    value: 20.7
+evidence:
+- publisher: Office for National Statistics
+  title: ONS time series LF2S in dataset LMS (version v128), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/economicinactivity/timeseries/lf2s/lms/previous/v128/data
+  accessed_at: '2026-10-31'
+  locator: months[date=2025 JAN].value
+  value: '21.3'
+  unit: percent
+  snippet: '"date":"2025 JAN","value":"21.3","label":"2024 DEC-FEB"'
+  source_license: OGL-UK-3.0
+  content_sha256: 1072456370017c29d2614fa14822af891c4d3639f6dc16b286d127fb20e2cbaa
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS time series LF2S in dataset LMS (version v128), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/economicinactivity/timeseries/lf2s/lms/previous/v128/data
+  accessed_at: '2026-10-31'
+  locator: months[date=2025 DEC].value
+  value: '20.7'
+  unit: percent
+  snippet: '"date":"2025 DEC","value":"20.7","label":"2025 NOV-JAN"'
+  source_license: OGL-UK-3.0
+  content_sha256: 1072456370017c29d2614fa14822af891c4d3639f6dc16b286d127fb20e2cbaa
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS time series LF2S in dataset LMS (version v128), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/economicinactivity/timeseries/lf2s/lms/previous/v128/data
+  accessed_at: '2026-10-31'
+  locator: description.title
+  value: 'LFS: Economic inactivity rate: UK: All: Aged 16-64: %: SA'
+  unit: text
+  snippet: '"datasetId":"LMS","datasetUri":"/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourmarketstatistics","cdid":"LF2S"'
+  source_license: OGL-UK-3.0
+  content_sha256: 1072456370017c29d2614fa14822af891c4d3639f6dc16b286d127fb20e2cbaa
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata cpih01 (licence statement for ONS datasets)
+  url: https://api.beta.ons.gov.uk/v1/datasets/cpih01
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: c8d0e2fde94bc0ed865f5e5b237a7b34835371ff71a5b36d460e6bb3aac5d40c
+  role: supporting
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 21.3
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 20.7
+  tolerance: 1.0e-09
+- statistic: max
+  expected: 21.3
+  tolerance: 1.0e-09
+- statistic: min
+  expected: 20.7
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: 'Economic inactivity rate (aged 16 to 64, seasonally adjusted), UK, as labelled by month for 2025 in the
+  ONS Labour Force Survey series. Series LF2S (LFS: Economic inactivity rate: UK: All: Aged 16-64: %: SA) from ONS
+  dataset LMS, pinned to published version v128, whose bytes do not change; release date 2026-09-14. The ONS JSON
+  endpoint lists the series as months, quarters and years; only the periods in observed_period are kept. ONS publishes
+  its data under the Open Government Licence v3.0, as the cpih01 dataset metadata states.'

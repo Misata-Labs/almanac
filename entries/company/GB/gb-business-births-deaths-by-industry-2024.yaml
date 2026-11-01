@@ -1,0 +1,683 @@
+id: gb-business-births-deaths-by-industry-2024
+title: UK business births, deaths and active enterprises by SIC 2007 division, 2024, with birth and death rates
+kind: rule
+domain: company
+region: GB
+status: verified
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- business-demography
+- births
+- deaths
+- sic-2007
+- by-industry
+- reference-table
+- ons
+use_cases:
+- company-generation
+- kyb-onboarding
+- market-sizing
+- credit-risk
+- customer-segmentation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    year: 2024
+    classification: SIC 2007 division (two digits)
+    rows:
+      '05':
+        name: Mining of coal and lignite
+        births: 0
+        deaths: 0
+        active: 10
+        birth_rate_percent: 0.0
+        death_rate_percent: 0.0
+      '06':
+        name: Extraction of crude petroleum and natural gas
+        births: 10
+        deaths: 5
+        active: 125
+        birth_rate_percent: 8.0
+        death_rate_percent: 4.0
+      '07':
+        name: Mining of metal ores
+        births: 0
+        deaths: 0
+        active: 5
+        birth_rate_percent: 0.0
+        death_rate_percent: 0.0
+      08:
+        name: Other mining and quarrying
+        births: 45
+        deaths: 80
+        active: 780
+        birth_rate_percent: 5.77
+        death_rate_percent: 10.26
+      09:
+        name: Mining support service activities
+        births: 40
+        deaths: 25
+        active: 405
+        birth_rate_percent: 9.88
+        death_rate_percent: 6.17
+      '10':
+        name: Manufacture of food products
+        births: 1020
+        deaths: 910
+        active: 10385
+        birth_rate_percent: 9.82
+        death_rate_percent: 8.76
+      '11':
+        name: Manufacture of beverages
+        births: 200
+        deaths: 280
+        active: 3015
+        birth_rate_percent: 6.63
+        death_rate_percent: 9.29
+      '12':
+        name: Manufacture of tobacco products
+        births: 0
+        deaths: 0
+        active: 5
+        birth_rate_percent: 0.0
+        death_rate_percent: 0.0
+      '13':
+        name: Manufacture of textiles
+        births: 535
+        deaths: 525
+        active: 4860
+        birth_rate_percent: 11.01
+        death_rate_percent: 10.8
+      '14':
+        name: Manufacture of wearing apparel
+        births: 310
+        deaths: 490
+        active: 4020
+        birth_rate_percent: 7.71
+        death_rate_percent: 12.19
+      '15':
+        name: Manufacture of leather and related products
+        births: 70
+        deaths: 85
+        active: 660
+        birth_rate_percent: 10.61
+        death_rate_percent: 12.88
+      '16':
+        name: Manufacture of wood and of products of wood and cork, except furniture; manufacture of articles of
+          straw and plaiting materials
+        births: 930
+        deaths: 1000
+        active: 11335
+        birth_rate_percent: 8.2
+        death_rate_percent: 8.82
+      '17':
+        name: Manufacture of paper and paper products
+        births: 115
+        deaths: 135
+        active: 1500
+        birth_rate_percent: 7.67
+        death_rate_percent: 9.0
+      '18':
+        name: Printing and reproduction of recorded media
+        births: 595
+        deaths: 790
+        active: 10420
+        birth_rate_percent: 5.71
+        death_rate_percent: 7.58
+      '19':
+        name: Manufacture of coke and refined petroleum products
+        births: 5
+        deaths: 10
+        active: 95
+        birth_rate_percent: 5.26
+        death_rate_percent: 10.53
+      '20':
+        name: Manufacture of chemicals and chemical products
+        births: 270
+        deaths: 310
+        active: 3520
+        birth_rate_percent: 7.67
+        death_rate_percent: 8.81
+      '21':
+        name: Manufacture of basic pharmaceutical products and pharmaceutical preparations
+        births: 55
+        deaths: 50
+        active: 690
+        birth_rate_percent: 7.97
+        death_rate_percent: 7.25
+      '22':
+        name: Manufacture of rubber and plastic products
+        births: 330
+        deaths: 385
+        active: 5530
+        birth_rate_percent: 5.97
+        death_rate_percent: 6.96
+      '23':
+        name: Manufacture of other non-metallic mineral products
+        births: 355
+        deaths: 310
+        active: 4340
+        birth_rate_percent: 8.18
+        death_rate_percent: 7.14
+      '24':
+        name: Manufacture of basic metals
+        births: 175
+        deaths: 155
+        active: 1970
+        birth_rate_percent: 8.88
+        death_rate_percent: 7.87
+      '25':
+        name: Manufacture of fabricated metal products, except machinery and equipment
+        births: 975
+        deaths: 1565
+        active: 23375
+        birth_rate_percent: 4.17
+        death_rate_percent: 6.7
+      '26':
+        name: Manufacture of computer, electronic and optical products
+        births: 390
+        deaths: 405
+        active: 5790
+        birth_rate_percent: 6.74
+        death_rate_percent: 6.99
+      '27':
+        name: Manufacture of electrical equipment
+        births: 220
+        deaths: 205
+        active: 3220
+        birth_rate_percent: 6.83
+        death_rate_percent: 6.37
+      '28':
+        name: Manufacture of machinery and equipment n.e.c.
+        births: 470
+        deaths: 465
+        active: 7585
+        birth_rate_percent: 6.2
+        death_rate_percent: 6.13
+      '29':
+        name: Manufacture of motor vehicles, trailers and semi-trailers
+        births: 315
+        deaths: 300
+        active: 3830
+        birth_rate_percent: 8.22
+        death_rate_percent: 7.83
+      '30':
+        name: Manufacture of other transport equipment
+        births: 150
+        deaths: 180
+        active: 2070
+        birth_rate_percent: 7.25
+        death_rate_percent: 8.7
+      '31':
+        name: Manufacture of furniture
+        births: 570
+        deaths: 590
+        active: 7225
+        birth_rate_percent: 7.89
+        death_rate_percent: 8.17
+      '32':
+        name: Other manufacturing
+        births: 970
+        deaths: 1055
+        active: 10595
+        birth_rate_percent: 9.16
+        death_rate_percent: 9.96
+      '33':
+        name: Repair and installation of machinery and equipment
+        births: 1595
+        deaths: 1050
+        active: 16225
+        birth_rate_percent: 9.83
+        death_rate_percent: 6.47
+      '35':
+        name: Electricity, gas, steam and air conditioning supply
+        births: 560
+        deaths: 375
+        active: 6625
+        birth_rate_percent: 8.45
+        death_rate_percent: 5.66
+      '36':
+        name: Water collection, treatment and supply
+        births: 10
+        deaths: 0
+        active: 110
+        birth_rate_percent: 9.09
+        death_rate_percent: 0.0
+      '37':
+        name: Sewerage
+        births: 130
+        deaths: 95
+        active: 1310
+        birth_rate_percent: 9.92
+        death_rate_percent: 7.25
+      '38':
+        name: Waste collection, treatment and disposal activities; materials recovery
+        births: 620
+        deaths: 570
+        active: 6735
+        birth_rate_percent: 9.21
+        death_rate_percent: 8.46
+      '39':
+        name: Remediation activities and other waste management services.
+        births: 140
+        deaths: 100
+        active: 1340
+        birth_rate_percent: 10.45
+        death_rate_percent: 7.46
+      '41':
+        name: Construction of buildings
+        births: 15390
+        deaths: 13880
+        active: 136095
+        birth_rate_percent: 11.31
+        death_rate_percent: 10.2
+      '42':
+        name: Civil engineering
+        births: 3065
+        deaths: 2580
+        active: 25645
+        birth_rate_percent: 11.95
+        death_rate_percent: 10.06
+      '43':
+        name: Specialised construction activities
+        births: 26500
+        deaths: 20625
+        active: 260910
+        birth_rate_percent: 10.16
+        death_rate_percent: 7.91
+      '45':
+        name: Wholesale and retail trade and repair of motor vehicles and motorcycles
+        births: 8190
+        deaths: 6405
+        active: 89225
+        birth_rate_percent: 9.18
+        death_rate_percent: 7.18
+      '46':
+        name: Wholesale trade, except of motor vehicles and motorcycles
+        births: 9685
+        deaths: 9860
+        active: 111660
+        birth_rate_percent: 8.67
+        death_rate_percent: 8.83
+      '47':
+        name: Retail trade, except of motor vehicles and motorcycles
+        births: 27380
+        deaths: 26100
+        active: 240665
+        birth_rate_percent: 11.38
+        death_rate_percent: 10.84
+      '49':
+        name: Land transport and transport via pipelines
+        births: 9965
+        deaths: 10785
+        active: 73625
+        birth_rate_percent: 13.53
+        death_rate_percent: 14.65
+      '50':
+        name: Water transport
+        births: 150
+        deaths: 110
+        active: 1540
+        birth_rate_percent: 9.74
+        death_rate_percent: 7.14
+      '51':
+        name: Air transport
+        births: 85
+        deaths: 125
+        active: 1005
+        birth_rate_percent: 8.46
+        death_rate_percent: 12.44
+      '52':
+        name: Warehousing and support activities for transportation
+        births: 2445
+        deaths: 3035
+        active: 19905
+        birth_rate_percent: 12.28
+        death_rate_percent: 15.25
+      '53':
+        name: Postal and courier activities
+        births: 8865
+        deaths: 8830
+        active: 41975
+        birth_rate_percent: 21.12
+        death_rate_percent: 21.04
+      '55':
+        name: Accommodation
+        births: 2135
+        deaths: 1710
+        active: 23100
+        birth_rate_percent: 9.24
+        death_rate_percent: 7.4
+      '56':
+        name: Food and beverage service activities
+        births: 28220
+        deaths: 24425
+        active: 180125
+        birth_rate_percent: 15.67
+        death_rate_percent: 13.56
+      '58':
+        name: Publishing activities
+        births: 1520
+        deaths: 1205
+        active: 13890
+        birth_rate_percent: 10.94
+        death_rate_percent: 8.68
+      '59':
+        name: Motion picture, video and television programme production, sound recording and music publishing activities
+        births: 4340
+        deaths: 2995
+        active: 37455
+        birth_rate_percent: 11.59
+        death_rate_percent: 8.0
+      '60':
+        name: Programming and broadcasting activities
+        births: 215
+        deaths: 155
+        active: 2335
+        birth_rate_percent: 9.21
+        death_rate_percent: 6.64
+      '61':
+        name: Telecommunications
+        births: 855
+        deaths: 870
+        active: 8770
+        birth_rate_percent: 9.75
+        death_rate_percent: 9.92
+      '62':
+        name: Computer programming, consultancy and related activities
+        births: 14540
+        deaths: 14425
+        active: 138880
+        birth_rate_percent: 10.47
+        death_rate_percent: 10.39
+      '63':
+        name: Information service activities
+        births: 1105
+        deaths: 1020
+        active: 9410
+        birth_rate_percent: 11.74
+        death_rate_percent: 10.84
+      '65':
+        name: Insurance, reinsurance and pension funding, except compulsory social security
+        births: 150
+        deaths: 145
+        active: 1150
+        birth_rate_percent: 13.04
+        death_rate_percent: 12.61
+      '66':
+        name: Activities auxiliary to financial services and insurance activities
+        births: 1015
+        deaths: 1615
+        active: 25680
+        birth_rate_percent: 3.95
+        death_rate_percent: 6.29
+      '68':
+        name: Real estate activities
+        births: 13385
+        deaths: 8110
+        active: 131340
+        birth_rate_percent: 10.19
+        death_rate_percent: 6.17
+      '69':
+        name: Legal and accounting activities
+        births: 4880
+        deaths: 4195
+        active: 77535
+        birth_rate_percent: 6.29
+        death_rate_percent: 5.41
+      '70':
+        name: Activities of head offices; management consultancy activities
+        births: 20265
+        deaths: 17430
+        active: 176135
+        birth_rate_percent: 11.51
+        death_rate_percent: 9.9
+      '71':
+        name: Architectural and engineering activities; technical testing and analysis
+        births: 7155
+        deaths: 7080
+        active: 86220
+        birth_rate_percent: 8.3
+        death_rate_percent: 8.21
+      '72':
+        name: Scientific research and development
+        births: 615
+        deaths: 490
+        active: 6385
+        birth_rate_percent: 9.63
+        death_rate_percent: 7.67
+      '73':
+        name: Advertising and market research
+        births: 3100
+        deaths: 2380
+        active: 26305
+        birth_rate_percent: 11.78
+        death_rate_percent: 9.05
+      '74':
+        name: Other professional, scientific and technical activities
+        births: 12570
+        deaths: 10870
+        active: 89250
+        birth_rate_percent: 14.08
+        death_rate_percent: 12.18
+      '75':
+        name: Veterinary activities
+        births: 390
+        deaths: 225
+        active: 3805
+        birth_rate_percent: 10.25
+        death_rate_percent: 5.91
+      '77':
+        name: Rental and leasing activities
+        births: 1795
+        deaths: 1635
+        active: 19965
+        birth_rate_percent: 8.99
+        death_rate_percent: 8.19
+      '78':
+        name: Employment activities
+        births: 4305
+        deaths: 3890
+        active: 34905
+        birth_rate_percent: 12.33
+        death_rate_percent: 11.14
+      '79':
+        name: Travel agency, tour operator and other reservation service and related activities
+        births: 1225
+        deaths: 745
+        active: 9940
+        birth_rate_percent: 12.32
+        death_rate_percent: 7.49
+      '80':
+        name: Security and investigation activities
+        births: 1720
+        deaths: 1205
+        active: 12260
+        birth_rate_percent: 14.03
+        death_rate_percent: 9.83
+      '81':
+        name: Services to buildings and landscape activities
+        births: 6285
+        deaths: 5300
+        active: 58445
+        birth_rate_percent: 10.75
+        death_rate_percent: 9.07
+      '82':
+        name: Office administrative, office support and other business support activities
+        births: 23285
+        deaths: 23390
+        active: 131935
+        birth_rate_percent: 17.65
+        death_rate_percent: 17.73
+      '85':
+        name: Education
+        births: 5200
+        deaths: 3695
+        active: 49015
+        birth_rate_percent: 10.61
+        death_rate_percent: 7.54
+      '86':
+        name: Human health activities
+        births: 8500
+        deaths: 5150
+        active: 73815
+        birth_rate_percent: 11.52
+        death_rate_percent: 6.98
+      '87':
+        name: Residential care activities
+        births: 1160
+        deaths: 845
+        active: 12955
+        birth_rate_percent: 8.95
+        death_rate_percent: 6.52
+      '88':
+        name: Social work activities without accommodation
+        births: 2090
+        deaths: 2135
+        active: 38110
+        birth_rate_percent: 5.48
+        death_rate_percent: 5.6
+      '90':
+        name: Creative, arts and entertainment activities
+        births: 3555
+        deaths: 2470
+        active: 35680
+        birth_rate_percent: 9.96
+        death_rate_percent: 6.92
+      '91':
+        name: Libraries, archives, museums and other cultural activities
+        births: 60
+        deaths: 55
+        active: 1930
+        birth_rate_percent: 3.11
+        death_rate_percent: 2.85
+      '92':
+        name: Gambling and betting activities
+        births: 25
+        deaths: 55
+        active: 895
+        birth_rate_percent: 2.79
+        death_rate_percent: 6.15
+      '93':
+        name: Sports activities and amusement and recreation activities
+        births: 4330
+        deaths: 3585
+        active: 43235
+        birth_rate_percent: 10.02
+        death_rate_percent: 8.29
+      '94':
+        name: Activities of membership organisations
+        births: 880
+        deaths: 1120
+        active: 23480
+        birth_rate_percent: 3.75
+        death_rate_percent: 4.77
+      '95':
+        name: Repair of computers and personal and household goods
+        births: 630
+        deaths: 915
+        active: 9895
+        birth_rate_percent: 6.37
+        death_rate_percent: 9.25
+      '96':
+        name: Other personal service activities
+        births: 10680
+        deaths: 9190
+        active: 91680
+        birth_rate_percent: 11.65
+        death_rate_percent: 10.02
+  vectors:
+  - input:
+      key: '10'
+      column: births
+    expected: 1020
+    origin: source
+  - input:
+      key: '10'
+      column: deaths
+    expected: 910
+    origin: source
+  - input:
+      key: '10'
+      column: active
+    expected: 10385
+    origin: source
+  - input: '00'
+    expected: false
+    origin: derived
+    note: no division 00 exists
+evidence:
+- publisher: Office for National Statistics
+  title: ONS business demography reference table 2024 (XLSX), Table 1.2
+  url: https://www.ons.gov.uk/file?uri=/businessindustryandtrade/business/activitysizeandlocation/datasets/businessdemographyreferencetable/current/businessdemographyexceltables2024.xlsx
+  accessed_at: '2026-10-31'
+  locator: 'sheet Table 1.2, row ''10 : Manufacture of food products'', column 2024'
+  value: 1020
+  unit: count
+  snippet: Table 1.2 - Count Of Births Of New Enterprises For 2019 To 2024 Standard Industrial Classification (SIC2007)
+    Group
+  source_license: OGL-UK-3.0
+  content_sha256: d0687054646be98c0b7ba0f476888111523cc7ead380e07ecf609f0c5e2cde37
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS business demography reference table 2024 (XLSX), Table 2.2
+  url: https://www.ons.gov.uk/file?uri=/businessindustryandtrade/business/activitysizeandlocation/datasets/businessdemographyreferencetable/current/businessdemographyexceltables2024.xlsx
+  accessed_at: '2026-10-31'
+  locator: 'sheet Table 2.2, row ''10 : Manufacture of food products'', column 2024'
+  value: 910
+  unit: count
+  snippet: Table 2.2 - Count Of Deaths Of Enterprises For 2019 To 2024 Standard Industrial Classification (SIC2007)
+    Group
+  source_license: OGL-UK-3.0
+  content_sha256: d0687054646be98c0b7ba0f476888111523cc7ead380e07ecf609f0c5e2cde37
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS business demography reference table 2024 (XLSX), Table 3.2
+  url: https://www.ons.gov.uk/file?uri=/businessindustryandtrade/business/activitysizeandlocation/datasets/businessdemographyreferencetable/current/businessdemographyexceltables2024.xlsx
+  accessed_at: '2026-10-31'
+  locator: 'sheet Table 3.2, row ''10 : Manufacture of food products'', column 2024'
+  value: 10385
+  unit: count
+  snippet: Table 3.2
+  source_license: OGL-UK-3.0
+  content_sha256: d0687054646be98c0b7ba0f476888111523cc7ead380e07ecf609f0c5e2cde37
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata cpih01 (licence statement for ONS datasets)
+  url: https://api.beta.ons.gov.uk/v1/datasets/cpih01
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: c8d0e2fde94bc0ed865f5e5b237a7b34835371ff71a5b36d460e6bb3aac5d40c
+  role: supporting
+assumed:
+- parameter: rows[*].birth_rate_percent
+  value: 100 * births / active
+  method: derived
+  rationale: ONS publishes the counts; the birth rate is births as a percentage of active enterprises, rounded to
+    two decimals, null where no enterprise is active.
+- parameter: rows[*].death_rate_percent
+  value: 100 * deaths / active
+  method: derived
+  rationale: Deaths as a percentage of active enterprises, rounded to two decimals, null where no enterprise is
+    active.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 80
+  tolerance: 0
+- statistic: max[active]
+  expected: 260910
+  tolerance: 0
+notes: Counts of enterprise births, deaths and active enterprises for 2024 at SIC 2007 division level (two-digit
+  codes) from Tables 1.2, 2.2 and 3.2 of the ONS Business Demography 2024 reference workbook (published 20 November
+  2025); the three-digit group rows beneath each division are dropped. Counts are control rounded to base 5 by ONS,
+  so small divisions show zeros. Birth and death rates are derived here as counts over active enterprises. ONS publishes
+  the workbook under the Open Government Licence v3.0.

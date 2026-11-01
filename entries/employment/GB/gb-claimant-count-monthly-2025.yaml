@@ -1,0 +1,119 @@
+id: gb-claimant-count-monthly-2025
+title: UK claimant count, people claiming unemployment-related benefits, seasonally adjusted, thousands, monthly
+  2025
+kind: temporal
+domain: employment
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- claimant-count
+- benefits
+- labour
+- ons
+- time-series
+use_cases:
+- hr-analytics
+- credit-risk
+- market-sizing
+spec:
+  variable: claimant_count_thousands
+  unit: decimal
+  frequency: monthly
+  columns: []
+  series:
+  - period: 2025-01
+    value: 1714.6
+  - period: 2025-02
+    value: 1714.9
+  - period: 2025-03
+    value: 1713.6
+  - period: 2025-04
+    value: 1702.1
+  - period: 2025-05
+    value: 1699.4
+  - period: 2025-06
+    value: 1694.4
+  - period: 2025-07
+    value: 1667.9
+  - period: 2025-08
+    value: 1662.4
+  - period: 2025-09
+    value: 1658.7
+  - period: 2025-10
+    value: 1657.0
+  - period: 2025-11
+    value: 1652.9
+  - period: 2025-12
+    value: 1650.4
+evidence:
+- publisher: Office for National Statistics
+  title: ONS time series BCJD in dataset UNEM (version v131), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/outofworkbenefits/timeseries/bcjd/unem/previous/v131/data
+  accessed_at: '2026-10-31'
+  locator: months[date=2025 JAN].value
+  value: '1714.6'
+  unit: decimal
+  snippet: '"date":"2025 JAN","value":"1714.6","label":"2025 JAN"'
+  source_license: OGL-UK-3.0
+  content_sha256: 1ff51aad2605fb6a81c33ae307f096a2462042ff18f45b1e446903f625f1e4c8
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS time series BCJD in dataset UNEM (version v131), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/outofworkbenefits/timeseries/bcjd/unem/previous/v131/data
+  accessed_at: '2026-10-31'
+  locator: months[date=2025 DEC].value
+  value: '1650.4'
+  unit: decimal
+  snippet: '"date":"2025 DEC","value":"1650.4","label":"2025 DEC"'
+  source_license: OGL-UK-3.0
+  content_sha256: 1ff51aad2605fb6a81c33ae307f096a2462042ff18f45b1e446903f625f1e4c8
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS time series BCJD in dataset UNEM (version v131), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/outofworkbenefits/timeseries/bcjd/unem/previous/v131/data
+  accessed_at: '2026-10-31'
+  locator: description.title
+  value: 'Claimant Count : K02000001 UK : People : SA : Thousands'
+  unit: text
+  snippet: '"datasetId":"UNEM","datasetUri":"/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/claimantcountandvacanciesdataset","cdid":"BCJD"'
+  source_license: OGL-UK-3.0
+  content_sha256: 1ff51aad2605fb6a81c33ae307f096a2462042ff18f45b1e446903f625f1e4c8
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata cpih01 (licence statement for ONS datasets)
+  url: https://api.beta.ons.gov.uk/v1/datasets/cpih01
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: c8d0e2fde94bc0ed865f5e5b237a7b34835371ff71a5b36d460e6bb3aac5d40c
+  role: supporting
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 1714.6
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 1650.4
+  tolerance: 1.0e-09
+- statistic: max
+  expected: 1714.9
+  tolerance: 1.0e-09
+- statistic: min
+  expected: 1650.4
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: 'People claiming unemployment-related benefits (Jobseeker''s Allowance and Universal Credit claimants required
+  to search for work) in thousands, UK, seasonally adjusted, monthly for 2025. Series BCJD (Claimant Count : K02000001
+  UK : People : SA : Thousands) from ONS dataset UNEM, pinned to published version v131, whose bytes do not change;
+  release date 2026-09-14. The ONS JSON endpoint lists the series as months, quarters and years; only the periods
+  in observed_period are kept. ONS publishes its data under the Open Government Licence v3.0, as the cpih01 dataset
+  metadata states.'

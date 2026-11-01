@@ -1,0 +1,231 @@
+id: gb-business-births-deaths-by-region-2024
+title: UK business births, deaths and active enterprises by region and country, 2024, with birth and death rates
+kind: rule
+domain: company
+region: GB
+status: verified
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- business-demography
+- births
+- deaths
+- by-region
+- reference-table
+- ons
+use_cases:
+- company-generation
+- kyb-onboarding
+- market-sizing
+- credit-risk
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    year: 2024
+    rows:
+      E12000001:
+        name: North East
+        births: 9030
+        deaths: 7850
+        active: 76590
+        birth_rate_percent: 11.79
+        death_rate_percent: 10.25
+      E12000002:
+        name: North West
+        births: 33685
+        deaths: 29725
+        active: 283620
+        birth_rate_percent: 11.88
+        death_rate_percent: 10.48
+      E12000003:
+        name: Yorkshire And The Humber
+        births: 22615
+        deaths: 20375
+        active: 199980
+        birth_rate_percent: 11.31
+        death_rate_percent: 10.19
+      E12000004:
+        name: East Midlands
+        births: 19985
+        deaths: 19280
+        active: 188020
+        birth_rate_percent: 10.63
+        death_rate_percent: 10.25
+      E12000005:
+        name: West Midlands
+        births: 26880
+        deaths: 24255
+        active: 228545
+        birth_rate_percent: 11.76
+        death_rate_percent: 10.61
+      E12000006:
+        name: East
+        births: 29590
+        deaths: 26550
+        active: 285540
+        birth_rate_percent: 10.36
+        death_rate_percent: 9.3
+      E12000007:
+        name: London
+        births: 75550
+        deaths: 61245
+        active: 595280
+        birth_rate_percent: 12.69
+        death_rate_percent: 10.29
+      E12000008:
+        name: South East
+        births: 43015
+        deaths: 39200
+        active: 431000
+        birth_rate_percent: 9.98
+        death_rate_percent: 9.1
+      E12000009:
+        name: South West
+        births: 22330
+        deaths: 21250
+        active: 232765
+        birth_rate_percent: 9.59
+        death_rate_percent: 9.13
+      E92000001:
+        name: England
+        births: 282680
+        deaths: 249730
+        active: 2521340
+        birth_rate_percent: 11.21
+        death_rate_percent: 9.9
+      K02000001:
+        name: United Kingdom
+        births: 317440
+        deaths: 280370
+        active: 2859535
+        birth_rate_percent: 11.1
+        death_rate_percent: 9.8
+      K03000001:
+        name: Great Britain
+        births: 311205
+        deaths: 275580
+        active: 2793825
+        birth_rate_percent: 11.14
+        death_rate_percent: 9.86
+      K04000001:
+        name: England And Wales
+        births: 292785
+        deaths: 259440
+        active: 2621760
+        birth_rate_percent: 11.17
+        death_rate_percent: 9.9
+      N92000002:
+        name: Northern Ireland
+        births: 6235
+        deaths: 4790
+        active: 65710
+        birth_rate_percent: 9.49
+        death_rate_percent: 7.29
+      S92000003:
+        name: Scotland
+        births: 18420
+        deaths: 16140
+        active: 172065
+        birth_rate_percent: 10.71
+        death_rate_percent: 9.38
+      W92000004:
+        name: Wales
+        births: 10105
+        deaths: 9710
+        active: 100420
+        birth_rate_percent: 10.06
+        death_rate_percent: 9.67
+  vectors:
+  - input:
+      key: K02000001
+      column: births
+    expected: 317440
+    origin: source
+  - input:
+      key: E12000007
+      column: active
+    expected: 595280
+    origin: source
+  - input:
+      key: K02000001
+      column: birth_rate_percent
+    expected: 11.1
+    origin: derived
+  - input: E12000099
+    expected: false
+    origin: derived
+evidence:
+- publisher: Office for National Statistics
+  title: ONS business demography reference table 2024 (XLSX), Table 1.1d
+  url: https://www.ons.gov.uk/file?uri=/businessindustryandtrade/business/activitysizeandlocation/datasets/businessdemographyreferencetable/current/businessdemographyexceltables2024.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 1.1d, row K02000001, column 2024
+  value: 317440
+  unit: count
+  snippet: Table 1.1d - Count Of Births Of New Enterprises For 2024 by District, Counties And Unitary Authorities
+    Within Region And Country
+  source_license: OGL-UK-3.0
+  content_sha256: d0687054646be98c0b7ba0f476888111523cc7ead380e07ecf609f0c5e2cde37
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS business demography reference table 2024 (XLSX), Table 2.1d
+  url: https://www.ons.gov.uk/file?uri=/businessindustryandtrade/business/activitysizeandlocation/datasets/businessdemographyreferencetable/current/businessdemographyexceltables2024.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 2.1d, row K02000001, column 2024
+  value: 280370
+  unit: count
+  snippet: Table 2.1d - Count Of Deaths Of New Enterprises For 2024 by District, Counties And Unitary Authorities
+    Within Region And Country
+  source_license: OGL-UK-3.0
+  content_sha256: d0687054646be98c0b7ba0f476888111523cc7ead380e07ecf609f0c5e2cde37
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS business demography reference table 2024 (XLSX), Table 3.1d
+  url: https://www.ons.gov.uk/file?uri=/businessindustryandtrade/business/activitysizeandlocation/datasets/businessdemographyreferencetable/current/businessdemographyexceltables2024.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 3.1d, row K02000001, column 2024
+  value: 2859535
+  unit: count
+  snippet: Table 3.1d - Count Of Active Enterprises For 2024 by District, Counties And Unitary Authorities Within
+    Region And Country
+  source_license: OGL-UK-3.0
+  content_sha256: d0687054646be98c0b7ba0f476888111523cc7ead380e07ecf609f0c5e2cde37
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata cpih01 (licence statement for ONS datasets)
+  url: https://api.beta.ons.gov.uk/v1/datasets/cpih01
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: c8d0e2fde94bc0ed865f5e5b237a7b34835371ff71a5b36d460e6bb3aac5d40c
+  role: supporting
+assumed:
+- parameter: rows[*].birth_rate_percent
+  value: 100 * births / active
+  method: derived
+  rationale: ONS publishes the counts; the birth rate is births as a percentage of active enterprises, rounded to
+    two decimals.
+- parameter: rows[*].death_rate_percent
+  value: 100 * deaths / active
+  method: derived
+  rationale: Deaths as a percentage of active enterprises, rounded to two decimals.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 16
+  tolerance: 0
+- statistic: max[births]
+  expected: 317440
+  tolerance: 0
+notes: Counts of enterprise births, deaths and active enterprises for 2024 from Tables 1.1d, 2.1d and 3.1d of the
+  ONS Business Demography 2024 reference workbook (published 20 November 2025), kept for the United Kingdom, Great
+  Britain, England and Wales, England, the nine English regions, Wales, Scotland and Northern Ireland, keyed by
+  GSS area code; the workbook's local authority rows are dropped. Counts are control rounded to base 5 by ONS. Birth
+  and death rates are derived here as counts over active enterprises. ONS publishes the workbook under the Open
+  Government Licence v3.0.

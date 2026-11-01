@@ -1,0 +1,142 @@
+id: gb-household-saving-ratio-quarterly
+title: UK households' saving ratio, seasonally adjusted, latest 24 quarters
+kind: temporal
+domain: economy
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2020-04-01'
+  end: '2026-03-31'
+tags:
+- saving-ratio
+- households
+- consumer
+- ons
+- time-series
+- quarterly
+use_cases:
+- personal-finance
+- financial-planning
+- banking-demo
+- household-generation
+spec:
+  variable: household_saving_ratio_percent
+  unit: percent
+  frequency: quarterly
+  columns: []
+  series:
+  - period: 2020-Q2
+    value: 27.4
+  - period: 2020-Q3
+    value: 15.4
+  - period: 2020-Q4
+    value: 16.9
+  - period: 2021-Q1
+    value: 21.9
+  - period: 2021-Q2
+    value: 12.5
+  - period: 2021-Q3
+    value: 9.5
+  - period: 2021-Q4
+    value: 7.3
+  - period: 2022-Q1
+    value: 7.5
+  - period: 2022-Q2
+    value: 4.0
+  - period: 2022-Q3
+    value: 5.1
+  - period: 2022-Q4
+    value: 5.4
+  - period: 2023-Q1
+    value: 5.0
+  - period: 2023-Q2
+    value: 6.4
+  - period: 2023-Q3
+    value: 7.1
+  - period: 2023-Q4
+    value: 7.3
+  - period: 2024-Q1
+    value: 9.0
+  - period: 2024-Q2
+    value: 9.5
+  - period: 2024-Q3
+    value: 10.1
+  - period: 2024-Q4
+    value: 11.1
+  - period: 2025-Q1
+    value: 10.5
+  - period: 2025-Q2
+    value: 9.6
+  - period: 2025-Q3
+    value: 9.0
+  - period: 2025-Q4
+    value: 9.6
+  - period: 2026-Q1
+    value: 8.9
+evidence:
+- publisher: Office for National Statistics
+  title: ONS time series NRJS in dataset UKEA (version v44), JSON data endpoint
+  url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/nrjs/ukea/previous/v44/data
+  accessed_at: '2026-10-31'
+  locator: quarters[date=2020 Q2].value
+  value: '27.4'
+  unit: percent
+  snippet: '"date":"2020 Q2","value":"27.4","label":"2020 Q2"'
+  source_license: OGL-UK-3.0
+  content_sha256: 68fffcbbe393cf57a6a5a156dfc38ae48cb17806f6d0096d73d2594a53c355d1
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS time series NRJS in dataset UKEA (version v44), JSON data endpoint
+  url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/nrjs/ukea/previous/v44/data
+  accessed_at: '2026-10-31'
+  locator: quarters[date=2026 Q1].value
+  value: '8.9'
+  unit: percent
+  snippet: '"date":"2026 Q1","value":"8.9","label":"2026 Q1"'
+  source_license: OGL-UK-3.0
+  content_sha256: 68fffcbbe393cf57a6a5a156dfc38ae48cb17806f6d0096d73d2594a53c355d1
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS time series NRJS in dataset UKEA (version v44), JSON data endpoint
+  url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/nrjs/ukea/previous/v44/data
+  accessed_at: '2026-10-31'
+  locator: 'description.cdid (title: HH & NPISH (S.14 + S.15): Households'' & NPISH saving ratio (per cent): Current
+    price: £m: SA)'
+  value: NRJS
+  unit: text
+  snippet: '"datasetId":"UKEA","datasetUri":"/economy/grossdomesticproductgdp/datasets/unitedkingdomeconomicaccounts","cdid":"NRJS"'
+  source_license: OGL-UK-3.0
+  content_sha256: 68fffcbbe393cf57a6a5a156dfc38ae48cb17806f6d0096d73d2594a53c355d1
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata cpih01 (licence statement for ONS datasets)
+  url: https://api.beta.ons.gov.uk/v1/datasets/cpih01
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: c8d0e2fde94bc0ed865f5e5b237a7b34835371ff71a5b36d460e6bb3aac5d40c
+  role: supporting
+assumed: []
+tests:
+- statistic: value[2020-Q2]
+  expected: 27.4
+  tolerance: 1.0e-09
+- statistic: value[2026-Q1]
+  expected: 8.9
+  tolerance: 1.0e-09
+- statistic: max
+  expected: 27.4
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 24
+  tolerance: 0
+notes: 'Households'' and NPISH saving ratio (saving as a percentage of total resources, current prices, seasonally
+  adjusted), UK, quarterly, the latest 24 quarters in the pinned version. Series NRJS (HH & NPISH (S.14 + S.15):
+  Households'' & NPISH saving ratio (per cent): Current price: £m: SA) from ONS dataset UKEA, pinned to published
+  version v44, whose bytes do not change; release date 2026-06-29. The ONS JSON endpoint lists the series as months,
+  quarters and years; only the periods in observed_period are kept. ONS publishes its data under the Open Government
+  Licence v3.0, as the cpih01 dataset metadata states.'

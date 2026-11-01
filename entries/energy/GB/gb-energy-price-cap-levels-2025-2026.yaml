@@ -1,0 +1,187 @@
+id: gb-energy-price-cap-levels-2025-2026
+title: Great Britain energy price cap, dual fuel Direct Debit level at typical consumption, cap periods from January
+  2025 to December 2026
+kind: rule
+domain: energy
+region: GB
+status: verified
+tier: B
+valid_from: '2025-01-01'
+valid_to: '2026-12-31'
+tags:
+- energy-price-cap
+- ofgem
+- electricity
+- gas
+- step-schedule
+- utilities
+use_cases:
+- utilities-demo
+- household-generation
+- personal-finance
+- pricing
+spec:
+  implementation: almanac.rules.step_schedule
+  parameters:
+    currency: GBP
+    unit: GBP per year, dual fuel, paying by Direct Debit, at Ofgem's typical domestic consumption values
+    steps:
+    - from: '2025-01-01'
+      value: 1738
+      typical_consumption_values: '2023'
+    - from: '2025-04-01'
+      value: 1849
+      typical_consumption_values: '2023'
+    - from: '2025-07-01'
+      value: 1720
+      typical_consumption_values: '2023'
+    - from: '2025-10-01'
+      value: 1755
+      typical_consumption_values: '2023'
+    - from: '2026-01-01'
+      value: 1758
+      typical_consumption_values: '2023'
+    - from: '2026-04-01'
+      value: 1641
+      typical_consumption_values: '2023'
+    - from: '2026-07-01'
+      value: 1663
+      typical_consumption_values: '2026'
+    - from: '2026-10-01'
+      value: 1723
+      typical_consumption_values: '2026'
+  vectors:
+  - input:
+      'on': '2025-01-01'
+    expected: 1738
+    origin: source
+  - input:
+      'on': '2025-09-30'
+    expected: 1720
+    origin: derived
+    note: last day of the July to September 2025 period
+  - input:
+      'on': '2026-10-01'
+    expected: 1723
+    origin: source
+evidence:
+- publisher: Ofgem (Office of Gas and Electricity Markets)
+  title: Ofgem, summary of changes to the energy price cap for the period starting 2025-01-01 (PDF)
+  url: https://www.ofgem.gov.uk/sites/default/files/2024-11/Summary_of_Changes_to_Energy_Price_Cap_1_January_to_31_March_2025.pdf
+  accessed_at: '2026-10-31'
+  locator: table of cap levels by payment method, Direct Debit row, new level
+  value: £1,738
+  unit: currency:GBP
+  snippet: Direct Debit £1,717 £1,738 £21 1.2%
+  source_license: OGL-UK-3.0
+  content_sha256: b0ef5e84c72dfb9268ed464bf03a79df232087f1c6e6f6a36fb5365d98575d7f
+  role: primary
+- publisher: Ofgem (Office of Gas and Electricity Markets)
+  title: Ofgem, summary of changes to the energy price cap for the period starting 2025-04-01 (PDF)
+  url: https://www.ofgem.gov.uk/sites/default/files/2025-02/Summary-of-changes-to-energy-price-cap-1-April-to-30-June-2025_1.pdf
+  accessed_at: '2026-10-31'
+  locator: table of cap levels by payment method, Direct Debit row, new level
+  value: £1,849
+  unit: currency:GBP
+  snippet: Direct Debit £1,738 £1,849 £111 6.4%
+  source_license: OGL-UK-3.0
+  content_sha256: c371e030309708d7aa8685e83cb5d12e7be35fea26b1335b58c3247331ee4a55
+  role: primary
+- publisher: Ofgem (Office of Gas and Electricity Markets)
+  title: Ofgem, summary of changes to the energy price cap for the period starting 2025-07-01 (PDF)
+  url: https://www.ofgem.gov.uk/sites/default/files/2025-05/Summary%20of%20changes%20to%20energy%20price%20cap%201%20July%20to%2030%20September%202025_0.pdf
+  accessed_at: '2026-10-31'
+  locator: table of cap levels by payment method, Direct Debit row, new level
+  value: £1,720
+  unit: currency:GBP
+  snippet: Direct Debit £1,849 £1,720 -£129 -7%
+  source_license: OGL-UK-3.0
+  content_sha256: c884731aea8e4c90f0d1778ea8d9bfcc039dae871f81a485e5908e4a79735182
+  role: primary
+- publisher: Ofgem (Office of Gas and Electricity Markets)
+  title: Ofgem, summary of changes to the energy price cap for the period starting 2025-10-01 (PDF)
+  url: https://www.ofgem.gov.uk/sites/default/files/2025-08/summary-of-changes-to-energy-price-cap-1-october-to-31-december-2025.pdf
+  accessed_at: '2026-10-31'
+  locator: table of cap levels by payment method, Direct Debit row, new level
+  value: £1,755
+  unit: currency:GBP
+  snippet: Direct Debit £1,720 £1,755 £35 2%
+  source_license: OGL-UK-3.0
+  content_sha256: 9b9477921886630791e9cf149e7bbbb7a7cb136a09b10b5913e833cf17af796c
+  role: primary
+- publisher: Ofgem (Office of Gas and Electricity Markets)
+  title: Ofgem, summary of changes to the energy price cap for the period starting 2026-01-01 (PDF)
+  url: https://www.ofgem.gov.uk/sites/default/files/2025-11/Summary-of-changes-to-energy-price-cap-1-January-to-31-March-2026.pdf
+  accessed_at: '2026-10-31'
+  locator: table of cap levels by payment method, Direct Debit row, new level
+  value: £1,758
+  unit: currency:GBP
+  snippet: Direct Debit £1,755 £1,758 £3 0.2%
+  source_license: OGL-UK-3.0
+  content_sha256: 2a54cc6294a679c963bd047ceb67e9468e0b986db6591aa2107bbd3983fb31fd
+  role: primary
+- publisher: Ofgem (Office of Gas and Electricity Markets)
+  title: Ofgem, summary of changes to the energy price cap for the period starting 2026-04-01 (PDF)
+  url: https://www.ofgem.gov.uk/sites/default/files/2026-02/Summary-of-changes-to-energy-price-cap-1-April-to-30-June-2026.pdf
+  accessed_at: '2026-10-31'
+  locator: table of cap levels by payment method, Direct Debit row, new level
+  value: £1,641
+  unit: currency:GBP
+  snippet: Direct Debit £1,758 £1,641 -£117 -7%
+  source_license: OGL-UK-3.0
+  content_sha256: 2b4580f480135b7715b96f186c4d4de755539bcd99f97dae5343ac6a35b37806
+  role: primary
+- publisher: Ofgem (Office of Gas and Electricity Markets)
+  title: Ofgem, summary of changes to the energy price cap for the period starting 2026-07-01 (PDF)
+  url: https://www.ofgem.gov.uk/sites/default/files/2026-06/Summary-of-changes-to-energy-price-cap-1-July-to-30-September-2026-revised-TDCV.pdf
+  accessed_at: '2026-10-31'
+  locator: table of cap levels by payment method, Direct Debit row, new level
+  value: £1,663
+  unit: currency:GBP
+  snippet: Direct Debit £1,477 £1,663 13%
+  source_license: OGL-UK-3.0
+  content_sha256: e426c685f0fa7be3c2b8afba0d037125a3abbf91d4b3ed81d0a5aeecb56b7476
+  role: primary
+- publisher: Ofgem (Office of Gas and Electricity Markets)
+  title: Ofgem, summary of changes to the energy price cap for the period starting 2026-10-01 (PDF)
+  url: https://www.ofgem.gov.uk/sites/default/files/2026-08/Summary-of-changes-to-energy-price-cap-1-October-to-31-December-2026.pdf
+  accessed_at: '2026-10-31'
+  locator: table of cap levels by payment method, Direct Debit row, new level
+  value: £1,723
+  unit: currency:GBP
+  snippet: Direct Debit £1,663 £1,723 4%
+  source_license: OGL-UK-3.0
+  content_sha256: c1709864a2537f0e8384af489046194e9dda7ee04ee6b93c05a90cb39e42f429
+  role: primary
+- publisher: Ofgem (Office of Gas and Electricity Markets)
+  title: Ofgem copyright statement (HTML)
+  url: https://www.ofgem.gov.uk/copyright
+  accessed_at: '2026-10-31'
+  locator: Crown copyright paragraph
+  value: Open Government Licence
+  unit: text
+  snippet: You may use Crown copyright information (not including logos) free of charge in any format or medium
+  source_license: OGL-UK-3.0
+  content_sha256: c18b33fd4ba92e8282cda2a4d38e09c7ac16ac7b5d9b917e983ebcd266c13e9e
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 8
+  tolerance: 0
+- statistic: max
+  expected: 1849
+  tolerance: 0
+- statistic: min
+  expected: 1641
+  tolerance: 0
+notes: The annual bill for a dual fuel household paying by Direct Debit at Ofgem's typical domestic consumption
+  values, as Ofgem's summary of changes document for each quarterly cap period states it, in pounds per year; the
+  cap itself limits unit rates and standing charges, and this figure is Ofgem's headline illustration of it. Each
+  step is the first day of a cap period (January, April, July and October). Ofgem revised its typical domestic consumption
+  values from 1 July 2026, so the levels from that date are on the 2026 values and are not comparable with earlier
+  steps on the 2023 values; each step records which basis applies. Ofgem's copyright page states that its Crown
+  copyright material may be used under the Open Government Licence.

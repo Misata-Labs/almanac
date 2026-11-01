@@ -1,0 +1,139 @@
+id: gb-gdp-quarter-on-quarter-growth-quarterly
+title: UK GDP quarter-on-quarter growth, chained volume measure, seasonally adjusted, latest 24 quarters
+kind: temporal
+domain: economy
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2020-04-01'
+  end: '2026-03-31'
+tags:
+- gdp
+- growth
+- macro
+- ons
+- time-series
+- quarterly
+use_cases:
+- market-sizing
+- financial-planning
+- demand-forecasting
+spec:
+  variable: gdp_quarter_on_quarter_growth_percent
+  unit: percent
+  frequency: quarterly
+  columns: []
+  series:
+  - period: 2020-Q2
+    value: -19.9
+  - period: 2020-Q3
+    value: 17.0
+  - period: 2020-Q4
+    value: 1.4
+  - period: 2021-Q1
+    value: -1.1
+  - period: 2021-Q2
+    value: 7.0
+  - period: 2021-Q3
+    value: 1.7
+  - period: 2021-Q4
+    value: 1.4
+  - period: 2022-Q1
+    value: 1.0
+  - period: 2022-Q2
+    value: 0.6
+  - period: 2022-Q3
+    value: 0.1
+  - period: 2022-Q4
+    value: 0.3
+  - period: 2023-Q1
+    value: 0.1
+  - period: 2023-Q2
+    value: 0.0
+  - period: 2023-Q3
+    value: -0.2
+  - period: 2023-Q4
+    value: -0.3
+  - period: 2024-Q1
+    value: 0.7
+  - period: 2024-Q2
+    value: 0.6
+  - period: 2024-Q3
+    value: 0.2
+  - period: 2024-Q4
+    value: 0.4
+  - period: 2025-Q1
+    value: 0.6
+  - period: 2025-Q2
+    value: 0.1
+  - period: 2025-Q3
+    value: 0.2
+  - period: 2025-Q4
+    value: 0.2
+  - period: 2026-Q1
+    value: 0.6
+evidence:
+- publisher: Office for National Statistics
+  title: ONS time series IHYQ in dataset PN2 (version v45), JSON data endpoint
+  url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/ihyq/pn2/previous/v45/data
+  accessed_at: '2026-10-31'
+  locator: quarters[date=2020 Q2].value
+  value: '-19.9'
+  unit: percent
+  snippet: '"date":"2020 Q2","value":"-19.9","label":"2020 Q2"'
+  source_license: OGL-UK-3.0
+  content_sha256: 53de4912f6fa00c53f57159a9f693dc1cd95d9869ba733e5a6d02c201144ee12
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS time series IHYQ in dataset PN2 (version v45), JSON data endpoint
+  url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/ihyq/pn2/previous/v45/data
+  accessed_at: '2026-10-31'
+  locator: quarters[date=2026 Q1].value
+  value: '0.6'
+  unit: percent
+  snippet: '"date":"2026 Q1","value":"0.6","label":"2026 Q1"'
+  source_license: OGL-UK-3.0
+  content_sha256: 53de4912f6fa00c53f57159a9f693dc1cd95d9869ba733e5a6d02c201144ee12
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS time series IHYQ in dataset PN2 (version v45), JSON data endpoint
+  url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/ihyq/pn2/previous/v45/data
+  accessed_at: '2026-10-31'
+  locator: description.title
+  value: 'Gross Domestic Product: Quarter on Quarter growth: CVM SA %'
+  unit: text
+  snippet: '"datasetId":"PN2","datasetUri":"/economy/grossdomesticproductgdp/datasets/secondestimateofgdp","cdid":"IHYQ"'
+  source_license: OGL-UK-3.0
+  content_sha256: 53de4912f6fa00c53f57159a9f693dc1cd95d9869ba733e5a6d02c201144ee12
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata cpih01 (licence statement for ONS datasets)
+  url: https://api.beta.ons.gov.uk/v1/datasets/cpih01
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: c8d0e2fde94bc0ed865f5e5b237a7b34835371ff71a5b36d460e6bb3aac5d40c
+  role: supporting
+assumed: []
+tests:
+- statistic: value[2020-Q2]
+  expected: -19.9
+  tolerance: 1.0e-09
+- statistic: value[2026-Q1]
+  expected: 0.6
+  tolerance: 1.0e-09
+- statistic: max
+  expected: 17.0
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 24
+  tolerance: 0
+notes: 'Gross domestic product, quarter-on-quarter growth in percent (chained volume measure, seasonally adjusted),
+  UK, quarterly, the latest 24 quarters in the pinned version. Series IHYQ (Gross Domestic Product: Quarter on Quarter
+  growth: CVM SA %) from ONS dataset PN2, pinned to published version v45, whose bytes do not change; release date
+  2026-05-13. The ONS JSON endpoint lists the series as months, quarters and years; only the periods in observed_period
+  are kept. ONS publishes its data under the Open Government Licence v3.0, as the cpih01 dataset metadata states.'

@@ -1,0 +1,269 @@
+id: gb-business-survival-rates-by-region-2019-births
+title: 'UK survival of enterprises born in 2019 by region and country: one- to five-year survival counts and rates'
+kind: rule
+domain: company
+region: GB
+status: verified
+tier: A
+valid_from: '2019-01-01'
+valid_to: '2024-12-31'
+tags:
+- business-demography
+- survival
+- by-region
+- reference-table
+- ons
+use_cases:
+- company-generation
+- kyb-onboarding
+- credit-risk
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    birth_year: 2019
+    rows:
+      North East:
+        births: 9445
+        survival_1y: 8900
+        survival_1y_percent: 94.2
+        survival_2y: 7095
+        survival_2y_percent: 75.1
+        survival_3y: 5430
+        survival_3y_percent: 57.5
+        survival_4y: 4350
+        survival_4y_percent: 46.1
+        survival_5y: 3675
+        survival_5y_percent: 38.9
+      North West:
+        births: 36805
+        survival_1y: 34665
+        survival_1y_percent: 94.2
+        survival_2y: 27420
+        survival_2y_percent: 74.5
+        survival_3y: 20165
+        survival_3y_percent: 54.8
+        survival_4y: 15940
+        survival_4y_percent: 43.3
+        survival_5y: 13455
+        survival_5y_percent: 36.6
+      Yorkshire and The Humber:
+        births: 23400
+        survival_1y: 22135
+        survival_1y_percent: 94.6
+        survival_2y: 17850
+        survival_2y_percent: 76.3
+        survival_3y: 13605
+        survival_3y_percent: 58.1
+        survival_4y: 10975
+        survival_4y_percent: 46.9
+        survival_5y: 9380
+        survival_5y_percent: 40.1
+      East Midlands:
+        births: 23215
+        survival_1y: 22020
+        survival_1y_percent: 94.9
+        survival_2y: 17620
+        survival_2y_percent: 75.9
+        survival_3y: 13600
+        survival_3y_percent: 58.6
+        survival_4y: 10520
+        survival_4y_percent: 45.3
+        survival_5y: 8945
+        survival_5y_percent: 38.5
+      West Midlands:
+        births: 34440
+        survival_1y: 32825
+        survival_1y_percent: 95.3
+        survival_2y: 24255
+        survival_2y_percent: 70.4
+        survival_3y: 15515
+        survival_3y_percent: 45.0
+        survival_4y: 12480
+        survival_4y_percent: 36.2
+        survival_5y: 10535
+        survival_5y_percent: 30.6
+      East:
+        births: 33995
+        survival_1y: 32375
+        survival_1y_percent: 95.2
+        survival_2y: 26150
+        survival_2y_percent: 76.9
+        survival_3y: 19630
+        survival_3y_percent: 57.7
+        survival_4y: 15980
+        survival_4y_percent: 47.0
+        survival_5y: 13745
+        survival_5y_percent: 40.4
+      London:
+        births: 88550
+        survival_1y: 83505
+        survival_1y_percent: 94.3
+        survival_2y: 64890
+        survival_2y_percent: 73.3
+        survival_3y: 49185
+        survival_3y_percent: 55.5
+        survival_4y: 39655
+        survival_4y_percent: 44.8
+        survival_5y: 33785
+        survival_5y_percent: 38.2
+      South East:
+        births: 51560
+        survival_1y: 48935
+        survival_1y_percent: 94.9
+        survival_2y: 39200
+        survival_2y_percent: 76.0
+        survival_3y: 30100
+        survival_3y_percent: 58.4
+        survival_4y: 24140
+        survival_4y_percent: 46.8
+        survival_5y: 20715
+        survival_5y_percent: 40.2
+      South West:
+        births: 23945
+        survival_1y: 22745
+        survival_1y_percent: 95.0
+        survival_2y: 18610
+        survival_2y_percent: 77.7
+        survival_3y: 14600
+        survival_3y_percent: 61.0
+        survival_4y: 11990
+        survival_4y_percent: 50.1
+        survival_5y: 10425
+        survival_5y_percent: 43.5
+      Wales:
+        births: 11745
+        survival_1y: 11120
+        survival_1y_percent: 94.7
+        survival_2y: 8755
+        survival_2y_percent: 74.5
+        survival_3y: 6410
+        survival_3y_percent: 54.6
+        survival_4y: 5200
+        survival_4y_percent: 44.3
+        survival_5y: 4470
+        survival_5y_percent: 38.1
+      Scotland:
+        births: 20680
+        survival_1y: 19590
+        survival_1y_percent: 94.7
+        survival_2y: 15700
+        survival_2y_percent: 75.9
+        survival_3y: 11870
+        survival_3y_percent: 57.4
+        survival_4y: 9605
+        survival_4y_percent: 46.4
+        survival_5y: 8125
+        survival_5y_percent: 39.3
+      Northern Ireland:
+        births: 6045
+        survival_1y: 5325
+        survival_1y_percent: 88.1
+        survival_2y: 4380
+        survival_2y_percent: 72.5
+        survival_3y: 3360
+        survival_3y_percent: 55.6
+        survival_4y: 2890
+        survival_4y_percent: 47.8
+        survival_5y: 2590
+        survival_5y_percent: 42.8
+      Total:
+        births: 363825
+        survival_1y: 344140
+        survival_1y_percent: 94.6
+        survival_2y: 271925
+        survival_2y_percent: 74.7
+        survival_3y: 203470
+        survival_3y_percent: 55.9
+        survival_4y: 163725
+        survival_4y_percent: 45.0
+        survival_5y: 139845
+        survival_5y_percent: 38.4
+  vectors:
+  - input:
+      key: Total
+      column: births
+    expected: 363825
+    origin: source
+  - input:
+      key: Total
+      column: survival_5y
+    expected: 139845
+    origin: source
+  - input:
+      key: London
+      column: survival_1y
+    expected: 83505
+    origin: source
+  - input: Mars
+    expected: false
+    origin: derived
+evidence:
+- publisher: Office for National Statistics
+  title: ONS business demography reference table 2024 (XLSX), Table 4.1
+  url: https://www.ons.gov.uk/file?uri=/businessindustryandtrade/business/activitysizeandlocation/datasets/businessdemographyreferencetable/current/businessdemographyexceltables2024.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 4.1, cohort 2019, row Total, column Births
+  value: 363825
+  unit: count
+  snippet: Table 4.1
+  source_license: OGL-UK-3.0
+  content_sha256: d0687054646be98c0b7ba0f476888111523cc7ead380e07ecf609f0c5e2cde37
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS business demography reference table 2024 (XLSX), Table 4.1
+  url: https://www.ons.gov.uk/file?uri=/businessindustryandtrade/business/activitysizeandlocation/datasets/businessdemographyreferencetable/current/businessdemographyexceltables2024.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 4.1, cohort 2019, row Total, column 5-year survival
+  value: 139845
+  unit: count
+  snippet: 5-year survival
+  source_license: OGL-UK-3.0
+  content_sha256: d0687054646be98c0b7ba0f476888111523cc7ead380e07ecf609f0c5e2cde37
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS business demography reference table 2024 (XLSX), Table 4.1
+  url: https://www.ons.gov.uk/file?uri=/businessindustryandtrade/business/activitysizeandlocation/datasets/businessdemographyreferencetable/current/businessdemographyexceltables2024.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 4.1, cohort 2019, row London, column 1-year survival
+  value: 83505
+  unit: count
+  snippet: Business Demography 2024
+  source_license: OGL-UK-3.0
+  content_sha256: d0687054646be98c0b7ba0f476888111523cc7ead380e07ecf609f0c5e2cde37
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata cpih01 (licence statement for ONS datasets)
+  url: https://api.beta.ons.gov.uk/v1/datasets/cpih01
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: c8d0e2fde94bc0ed865f5e5b237a7b34835371ff71a5b36d460e6bb3aac5d40c
+  role: supporting
+assumed:
+- parameter: rows[*].survival_*y_percent
+  value: published percentage rounded to one decimal
+  method: derived
+  rationale: The workbook stores survival percentages at full floating-point precision; they are rounded to one
+    decimal place here, the counts are copied unchanged.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 13
+  tolerance: 0
+- statistic: max[survival_5y_percent]
+  expected: 43.5
+  tolerance: 1.0e-09
+- statistic: min[survival_1y_percent]
+  expected: 88.1
+  tolerance: 1.0e-09
+notes: 'Survival of enterprises born in 2019 from Table 4.1 of the ONS Business Demography 2024 reference workbook
+  (published 20 November 2025): births and the number and percentage still active one to five years later, for the
+  nine English regions, Wales, Scotland, Northern Ireland and the UK total, keyed by the region name as the workbook
+  prints it. The 2019 cohort is the latest with five-year survival. Counts are control rounded to base 5 by ONS.
+  ONS publishes the workbook under the Open Government Licence v3.0.'

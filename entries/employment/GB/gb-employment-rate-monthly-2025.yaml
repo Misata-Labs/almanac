@@ -1,0 +1,116 @@
+id: gb-employment-rate-monthly-2025
+title: UK employment rate, aged 16 to 64, seasonally adjusted, monthly 2025
+kind: temporal
+domain: employment
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- employment
+- labour
+- ons
+- time-series
+use_cases:
+- hr-analytics
+- workforce-planning
+- person-generation
+spec:
+  variable: employment_rate_percent
+  unit: percent
+  frequency: monthly
+  columns: []
+  series:
+  - period: 2025-01
+    value: 75.1
+  - period: 2025-02
+    value: 75.1
+  - period: 2025-03
+    value: 75.1
+  - period: 2025-04
+    value: 75.2
+  - period: 2025-05
+    value: 75.3
+  - period: 2025-06
+    value: 75.2
+  - period: 2025-07
+    value: 75.1
+  - period: 2025-08
+    value: 75.1
+  - period: 2025-09
+    value: 74.9
+  - period: 2025-10
+    value: 75.1
+  - period: 2025-11
+    value: 75.0
+  - period: 2025-12
+    value: 75.1
+evidence:
+- publisher: Office for National Statistics
+  title: ONS time series LF24 in dataset LMS (version v128), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/timeseries/lf24/lms/previous/v128/data
+  accessed_at: '2026-10-31'
+  locator: months[date=2025 JAN].value
+  value: '75.1'
+  unit: percent
+  snippet: '"date":"2025 JAN","value":"75.1","label":"2024 DEC-FEB"'
+  source_license: OGL-UK-3.0
+  content_sha256: 32c71de625f27615f8d17f76ec42da556acab3d75dac7c841678657a0e9c42ff
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS time series LF24 in dataset LMS (version v128), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/timeseries/lf24/lms/previous/v128/data
+  accessed_at: '2026-10-31'
+  locator: months[date=2025 DEC].value
+  value: '75.1'
+  unit: percent
+  snippet: '"date":"2025 DEC","value":"75.1","label":"2025 NOV-JAN"'
+  source_license: OGL-UK-3.0
+  content_sha256: 32c71de625f27615f8d17f76ec42da556acab3d75dac7c841678657a0e9c42ff
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS time series LF24 in dataset LMS (version v128), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/timeseries/lf24/lms/previous/v128/data
+  accessed_at: '2026-10-31'
+  locator: description.title
+  value: 'Employment rate (aged 16 to 64, seasonally adjusted): %'
+  unit: text
+  snippet: '"datasetId":"LMS","datasetUri":"/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourmarketstatistics","cdid":"LF24"'
+  source_license: OGL-UK-3.0
+  content_sha256: 32c71de625f27615f8d17f76ec42da556acab3d75dac7c841678657a0e9c42ff
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata cpih01 (licence statement for ONS datasets)
+  url: https://api.beta.ons.gov.uk/v1/datasets/cpih01
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: c8d0e2fde94bc0ed865f5e5b237a7b34835371ff71a5b36d460e6bb3aac5d40c
+  role: supporting
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 75.1
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 75.1
+  tolerance: 1.0e-09
+- statistic: max
+  expected: 75.3
+  tolerance: 1.0e-09
+- statistic: min
+  expected: 74.9
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: 'Employment rate (aged 16 to 64, seasonally adjusted), UK, as labelled by month for 2025 in the ONS Labour
+  Force Survey series. Series LF24 (Employment rate (aged 16 to 64, seasonally adjusted): %) from ONS dataset LMS,
+  pinned to published version v128, whose bytes do not change; release date 2026-09-14. The ONS JSON endpoint lists
+  the series as months, quarters and years; only the periods in observed_period are kept. ONS publishes its data
+  under the Open Government Licence v3.0, as the cpih01 dataset metadata states.'

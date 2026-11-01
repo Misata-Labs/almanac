@@ -1,0 +1,117 @@
+id: gb-job-vacancies-monthly-2025
+title: UK job vacancies, all industries, thousands, monthly 2025
+kind: temporal
+domain: employment
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- vacancies
+- labour-demand
+- hiring
+- ons
+- time-series
+use_cases:
+- hr-analytics
+- workforce-planning
+- market-sizing
+spec:
+  variable: vacancies_thousands
+  unit: decimal
+  frequency: monthly
+  columns: []
+  series:
+  - period: 2025-01
+    value: 793.0
+  - period: 2025-02
+    value: 775.0
+  - period: 2025-03
+    value: 759.0
+  - period: 2025-04
+    value: 738.0
+  - period: 2025-05
+    value: 730.0
+  - period: 2025-06
+    value: 727.0
+  - period: 2025-07
+    value: 738.0
+  - period: 2025-08
+    value: 729.0
+  - period: 2025-09
+    value: 728.0
+  - period: 2025-10
+    value: 730.0
+  - period: 2025-11
+    value: 739.0
+  - period: 2025-12
+    value: 734.0
+evidence:
+- publisher: Office for National Statistics
+  title: ONS time series AP2Y in dataset UNEM (version v130), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/timeseries/ap2y/unem/previous/v130/data
+  accessed_at: '2026-10-31'
+  locator: months[date=2025 JAN].value
+  value: '793'
+  unit: decimal
+  snippet: '"date":"2025 JAN","value":"793","label":"2024 DEC-FEB"'
+  source_license: OGL-UK-3.0
+  content_sha256: a97a6671b7c7098bce7f92157e251581736f74dcaa563c890b6242dd3b61774e
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS time series AP2Y in dataset UNEM (version v130), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/timeseries/ap2y/unem/previous/v130/data
+  accessed_at: '2026-10-31'
+  locator: months[date=2025 DEC].value
+  value: '734'
+  unit: decimal
+  snippet: '"date":"2025 DEC","value":"734","label":"2025 NOV-JAN"'
+  source_license: OGL-UK-3.0
+  content_sha256: a97a6671b7c7098bce7f92157e251581736f74dcaa563c890b6242dd3b61774e
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS time series AP2Y in dataset UNEM (version v130), JSON data endpoint
+  url: https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/timeseries/ap2y/unem/previous/v130/data
+  accessed_at: '2026-10-31'
+  locator: description.title
+  value: UK Vacancies (thousands) - Total
+  unit: text
+  snippet: '"datasetId":"UNEM","datasetUri":"/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/claimantcountandvacanciesdataset","cdid":"AP2Y"'
+  source_license: OGL-UK-3.0
+  content_sha256: a97a6671b7c7098bce7f92157e251581736f74dcaa563c890b6242dd3b61774e
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata cpih01 (licence statement for ONS datasets)
+  url: https://api.beta.ons.gov.uk/v1/datasets/cpih01
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: c8d0e2fde94bc0ed865f5e5b237a7b34835371ff71a5b36d460e6bb3aac5d40c
+  role: supporting
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 793.0
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 734.0
+  tolerance: 1.0e-09
+- statistic: max
+  expected: 793.0
+  tolerance: 1.0e-09
+- statistic: min
+  expected: 727.0
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: Number of job vacancies in thousands, UK, all industries, monthly for 2025, from the ONS Vacancy Survey.
+  Series AP2Y (UK Vacancies (thousands) - Total) from ONS dataset UNEM, pinned to published version v130, whose
+  bytes do not change; release date 2026-10-19. The ONS JSON endpoint lists the series as months, quarters and years;
+  only the periods in observed_period are kept. ONS publishes its data under the Open Government Licence v3.0, as
+  the cpih01 dataset metadata states.
