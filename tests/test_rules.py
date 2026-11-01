@@ -258,3 +258,46 @@ def test_lookup_table_rows_and_statistics():
     assert lookup_table.statistic(TABLE, Statistic.parse("value[IND,name]")) == "India"
     with pytest.raises(KeyError):
         lookup_table.lookup(TABLE, "ZZZ")
+
+
+from almanac.rules import luhn, us_federal_holidays, us_vin
+
+VIN = {
+    "character_values": {**{d: int(d) for d in "0123456789"}, "A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6, "G": 7, "H": 8, "J": 1, "K": 2, "L": 3, "M": 4, "N": 5, "P": 7, "R": 9, "S": 2, "T": 3, "U": 4, "V": 5, "W": 6, "X": 7, "Y": 8, "Z": 9},
+    "weights": [8, 7, 6, 5, 4, 3, 2, 10, 0, 9, 8, 7, 6, 5, 4, 3, 2],
+    "modulus": 11,
+}
+US_HOLIDAYS = {
+    "holidays": [{"name": "Independence Day", "month": 7, "day": 4}, {"name": "Labor Day", "month": 9, "weekday": "monday", "ordinal": "first"}, {"name": "Memorial Day", "month": 5, "weekday": "monday", "ordinal": "last"}],
+    "observance": {"saturday": "preceding_friday", "sunday": "following_monday"},
+}
+
+
+def test_luhn_with_and_without_prefix():
+    assert luhn.check_digit("123456789", {"prefix": "80840", "body_length": 9}) == "3"
+    assert luhn.is_valid("1234567893", {"prefix": "80840", "body_length": 9})
+    assert not luhn.is_valid("1234567894", {"prefix": "80840", "body_length": 9})
+    assert luhn.check_digit("7992739871", {}) == "3"
+    with pytest.raises(ValueError):
+        luhn.check_digit("12A", {})
+
+
+def test_vin_check_digit_from_regulation_sample():
+    assert us_vin.check_digit("1G4AH59H45G118341", VIN) == "4"
+    assert us_vin.is_valid("1HGCM82633A004352", VIN)
+    assert not us_vin.is_valid("1HGCM82633A004353", VIN)
+    assert not us_vin.is_valid("1G4AH59H45G1183I1", VIN)
+    with pytest.raises(ValueError):
+        us_vin.check_digit("short", VIN)
+
+
+def test_federal_holiday_observance_shifts():
+    year = us_federal_holidays.holidays(US_HOLIDAYS, 2026)
+    assert next(h for h in year if h["name"] == "Independence Day")["observed"] == "2026-07-03"
+    assert next(h for h in us_federal_holidays.holidays(US_HOLIDAYS, 2027) if h["name"] == "Independence Day")["observed"] == "2027-07-05"
+    assert next(h for h in year if h["name"] == "Labor Day")["date"] == "2026-09-07"
+    assert next(h for h in year if h["name"] == "Memorial Day")["date"] == "2026-05-25"
+    assert us_federal_holidays.is_holiday(date(2026, 7, 3), US_HOLIDAYS)
+    assert not us_federal_holidays.is_holiday(date(2026, 7, 4), US_HOLIDAYS)
+    assert us_federal_holidays.is_holiday(date(2026, 7, 4), US_HOLIDAYS, observed=False)
+    assert us_federal_holidays.statistic(US_HOLIDAYS, Statistic.parse("count[2026]")) == 3

@@ -17,8 +17,11 @@
     "url": "https://github.com/Misata-labs/almanac"
   },
   "keywords": [
+    "49-cfr-565",
     "BR data rules",
+    "DE data rules",
     "EU data rules",
+    "FR data rules",
     "GB data rules",
     "IN data rules",
     "US data rules",
@@ -26,19 +29,27 @@
     "address-generation",
     "age",
     "audit-demo",
+    "automotive",
+    "automotive-demo",
     "bank-holidays",
     "banking",
     "banking-demo",
     "bcb",
     "bis",
+    "by-country",
     "calendar",
     "capacity-planning",
     "cars",
     "category-shares",
+    "cdc",
     "census",
     "check digit",
     "check-character",
     "check-digit",
+    "claims-generation",
+    "clinical-coding",
+    "clinical-records",
+    "cms",
     "cnpj",
     "code-list",
     "collections",
@@ -65,36 +76,48 @@
     "default",
     "demand-forecasting",
     "demographics",
+    "diagnosis-codes",
     "dict",
     "digital",
     "digital-channels",
+    "e164",
     "ecb",
     "economic-activity",
     "economy",
     "education",
+    "electricity",
     "email",
     "employment",
     "end-to-end-id",
+    "energy",
+    "energy-prices",
     "ethnic-group",
     "euro-area",
+    "eurostat",
     "event-timestamps",
     "exchange-rates",
+    "federal-holidays",
     "financial-inclusion",
     "financial-planning",
     "financial-reporting",
     "fintech-demo",
+    "fleet-demo",
     "fx",
     "gst",
     "health",
     "health-demo",
+    "healthcare",
+    "hicp",
     "hmrc",
     "hourly-rates",
+    "house-prices",
     "household-credit",
     "household-generation",
     "household-size",
     "households",
     "housing",
     "hr-analytics",
+    "icd-10-cm",
     "identifier",
     "identifiers",
     "income",
@@ -107,13 +130,16 @@
     "invoicing",
     "ipca",
     "iso-4217",
+    "itu",
     "kyb-onboarding",
     "kyc-onboarding",
     "labour",
+    "land-registry",
     "lending-rates",
     "living-wage",
     "loan-pricing",
     "logistics",
+    "luhn",
     "macro",
     "marital-status",
     "market-sizing",
@@ -123,7 +149,10 @@
     "mortgage-origination",
     "multi-currency-ledger",
     "national-insurance",
+    "nhtsa",
     "nino",
+    "npi",
+    "observed-holidays",
     "official statistics",
     "paye",
     "payment-reference",
@@ -138,12 +167,16 @@
     "person-generation",
     "personal-allowance",
     "personal-finance",
+    "phone-numbers",
     "pix",
     "pix-keys",
     "policy-rate",
     "population",
     "prices",
     "pricing",
+    "property",
+    "property-demo",
+    "provider-identifier",
     "qualifications",
     "rates",
     "receita-federal",
@@ -179,10 +212,15 @@
     "timezone",
     "treasury",
     "txid",
+    "ukhpi",
+    "unemployment",
+    "utilities",
     "utilities-demo",
     "utr",
     "validation",
     "vat",
+    "vehicle",
+    "vin",
     "vrn",
     "workforce-planning",
     "working-days",
@@ -190,7 +228,9 @@
   ],
   "spatialCoverage": [
     "BR",
+    "DE",
     "EU",
+    "FR",
     "GB",
     "IN",
     "US",
@@ -209,6 +249,24 @@
     }
   ],
   "hasPart": [
+    {
+      "@type": "Dataset",
+      "name": "United States vehicle identification number (VIN) check digit, 49 CFR 565.15",
+      "identifier": "us-vin-check-digit",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/automotive/US/us-vin-check-digit.yaml",
+      "temporalCoverage": "2009-04-30 to open",
+      "spatialCoverage": "US",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "National Highway Traffic Safety Administration via the eCFR API"
+        },
+        {
+          "@type": "Organization",
+          "name": "National Highway Traffic Safety Administration"
+        }
+      ]
+    },
     {
       "@type": "Dataset",
       "name": "United Kingdom bank holidays by nation, 2019 to 2028",
@@ -234,6 +292,28 @@
         {
           "@type": "Organization",
           "name": "Government Digital Service (GOV.UK)"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "United States legal public holidays (5 U.S.C. 6103) with Saturday and Sunday observance rules",
+      "identifier": "us-federal-holidays",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/calendar/US/us-federal-holidays.yaml",
+      "temporalCoverage": "2023-12-31 to open",
+      "spatialCoverage": "US",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Office of the Law Revision Counsel via the Government Publishing Office (govinfo)"
+        },
+        {
+          "@type": "Organization",
+          "name": "National Archives and Records Administration, Federal Register codification"
+        },
+        {
+          "@type": "Organization",
+          "name": "Office of Personnel Management via the eCFR API"
         }
       ]
     },
@@ -318,6 +398,48 @@
         {
           "@type": "Organization",
           "name": "SIX Financial Information (ISO 4217 Maintenance Agency)"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Germany population on 1 January 2024 by single year of age (Eurostat demo_pjan)",
+      "identifier": "de-population-by-single-year-of-age-2024",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/DE/de-population-by-single-year-of-age-2024.yaml",
+      "temporalCoverage": "observed 2024-01-01 to 2024-01-01",
+      "spatialCoverage": "DE",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Eurostat"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Population on 1 January 2024 by sex, ten member states (Eurostat demo_pjan)",
+      "identifier": "eu-population-by-sex-2024",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/EU/eu-population-by-sex-2024.yaml",
+      "temporalCoverage": "2024-01-01 to 2024-12-31",
+      "spatialCoverage": "EU",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Eurostat"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "France population on 1 January 2024 by single year of age (Eurostat demo_pjan)",
+      "identifier": "fr-population-by-single-year-of-age-2024",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/FR/fr-population-by-single-year-of-age-2024.yaml",
+      "temporalCoverage": "observed 2024-01-01 to 2024-01-01",
+      "spatialCoverage": "FR",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Eurostat"
         }
       ]
     },
@@ -561,6 +683,34 @@
     },
     {
       "@type": "Dataset",
+      "name": "HICP inflation, annual rate of change, monthly 2025, ten member states",
+      "identifier": "eu-hicp-inflation-by-country-monthly-2025",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/EU/eu-hicp-inflation-by-country-monthly-2025.yaml",
+      "temporalCoverage": "observed 2025-01-01 to 2025-12-31",
+      "spatialCoverage": "EU",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Eurostat"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Unemployment rate, seasonally adjusted, monthly 2025, ten member states",
+      "identifier": "eu-unemployment-rate-monthly-2025",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/EU/eu-unemployment-rate-monthly-2025.yaml",
+      "temporalCoverage": "observed 2025-01-01 to 2025-12-31",
+      "spatialCoverage": "EU",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Eurostat"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
       "name": "UK Consumer Prices Index including owner occupiers' housing costs (CPIH), all items index, monthly 2025",
       "identifier": "gb-cpih-all-items-index-monthly-2025",
       "url": "https://github.com/Misata-labs/almanac/blob/main/entries/economy/GB/gb-cpih-all-items-index-monthly-2025.yaml",
@@ -785,6 +935,48 @@
     },
     {
       "@type": "Dataset",
+      "name": "Household electricity prices including taxes, consumption band 2 500 to 4 999 kWh, 2025-S1, ten member states",
+      "identifier": "eu-household-electricity-prices-2025s1",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/energy/EU/eu-household-electricity-prices-2025s1.yaml",
+      "temporalCoverage": "2025-01-01 to 2025-06-30",
+      "spatialCoverage": "EU",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Eurostat"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "ICD-10-CM FY2026 three-character categories with code counts (1918 categories over 74719 valid codes)",
+      "identifier": "us-icd-10-cm-2026-categories",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/healthcare/US/us-icd-10-cm-2026-categories.yaml",
+      "temporalCoverage": "2025-10-01 to 2026-09-30",
+      "spatialCoverage": "US",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Centers for Disease Control and Prevention, National Center for Health Statistics"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "United States National Provider Identifier (NPI) Luhn check digit with the 80840 card-issuer prefix",
+      "identifier": "us-npi-check-digit",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/healthcare/US/us-npi-check-digit.yaml",
+      "temporalCoverage": "2004-01-23 to open",
+      "spatialCoverage": "US",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Centers for Medicare & Medicaid Services"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
       "name": "Brazil CNPJ check digits (modulus 11) for numeric and alphanumeric registrations",
       "identifier": "br-cnpj-check-digits",
       "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/BR/br-cnpj-check-digits.yaml",
@@ -882,6 +1074,20 @@
         {
           "@type": "Organization",
           "name": "Banco Central do Brasil"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "UK House Price Index: average price, index, annual change and sales volume, monthly 2025",
+      "identifier": "gb-house-price-index-monthly-2025",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/property/GB/gb-house-price-index-monthly-2025.yaml",
+      "temporalCoverage": "observed 2025-01-01 to 2025-12-31",
+      "spatialCoverage": "GB",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "HM Land Registry"
         }
       ]
     },
@@ -994,6 +1200,20 @@
         {
           "@type": "Organization",
           "name": "GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "ITU-T E.164 assigned country calling codes, as listed in ITU Operational Bulletin 991 (2011), 307 codes",
+      "identifier": "global-e164-country-calling-codes-2011",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/telecom/global/global-e164-country-calling-codes-2011.yaml",
+      "temporalCoverage": "2011-11-01 to open",
+      "spatialCoverage": "global",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "International Telecommunication Union (ITU-T)"
         }
       ]
     }

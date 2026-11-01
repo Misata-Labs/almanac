@@ -1,0 +1,69 @@
+id: us-npi-check-digit
+title: United States National Provider Identifier (NPI) Luhn check digit with the 80840 card-issuer prefix
+kind: rule
+domain: healthcare
+region: US
+status: license-review
+tier: B
+valid_from: 2004-01-23
+valid_to: null
+tags: [npi, luhn, check-digit, provider-identifier, cms]
+use_cases: [health-demo, claims-generation, clinical-records, kyb-onboarding]
+spec:
+  implementation: almanac.rules.luhn
+  parameters:
+    body_length: 9
+    prefix: "80840"
+    first_digit_values: [1, 2]
+  vectors:
+    - {input: {body: "123456789"}, expected: "3", origin: source, note: worked example in the CMS note}
+    - {input: "1234567893", expected: true, origin: source}
+    - {input: "1234567890", expected: false, origin: derived, note: wrong check digit}
+    - {input: "123456789", expected: false, origin: derived, note: nine digits only}
+    - {input: "12345678A3", expected: false, origin: derived}
+evidence:
+  - publisher: Centers for Medicare & Medicaid Services
+    title: "Requirements for National Provider Identifier (NPI) and NPI Check Digit (PDF, 23 January 2004)"
+    url: https://www.cms.gov/Regulations-and-Guidance/Administrative-Simplification/NationalProvIdentStand/Downloads/NPIcheckdigit.pdf
+    accessed_at: 2026-10-31
+    locator: "page 1, Requirements for NPI Check Digit"
+    value: "calculated using the Luhn formula for computing the modulus 10"
+    unit: text
+    snippet: "it is preceded by the prefix 80840"
+    source_license: unstated
+    content_sha256: 4c5cbea23c6859735383b523e861ae168e6bf078027d4ec65d77db4073d5cfd3
+  - publisher: Centers for Medicare & Medicaid Services
+    title: "Requirements for National Provider Identifier (NPI) and NPI Check Digit (PDF, 23 January 2004)"
+    url: https://www.cms.gov/Regulations-and-Guidance/Administrative-Simplification/NationalProvIdentStand/Downloads/NPIcheckdigit.pdf
+    accessed_at: 2026-10-31
+    locator: "page 2, example without prefix"
+    value: "NPI with check digit = 1234567893"
+    unit: text
+    snippet: "Add constant 24, to account for the 80840 prefix"
+    source_license: unstated
+    content_sha256: 4c5cbea23c6859735383b523e861ae168e6bf078027d4ec65d77db4073d5cfd3
+  - publisher: Centers for Medicare & Medicaid Services
+    title: "Requirements for National Provider Identifier (NPI) and NPI Check Digit (PDF, 23 January 2004)"
+    url: https://www.cms.gov/Regulations-and-Guidance/Administrative-Simplification/NationalProvIdentStand/Downloads/NPIcheckdigit.pdf
+    accessed_at: 2026-10-31
+    locator: "page 1, Requirements for NPI, items 2 and 4"
+    value: "The NPI will consist of 9 numeric digits followed by one numeric check digit"
+    unit: text
+    snippet: "NPIs will initially be issued with the first digit = 1 or 2"
+    source_license: unstated
+    content_sha256: 4c5cbea23c6859735383b523e861ae168e6bf078027d4ec65d77db4073d5cfd3
+assumed:
+  - parameter: prefix
+    value: "80840"
+    method: derived
+    rationale: The note computes the check digit as if the card-issuer prefix 80840 were present, equivalently by adding the constant 24; the rule prepends the prefix and applies the standard Luhn formula, which the note's two examples both reproduce.
+tests:
+  - {statistic: vector_pass_fraction, expected: 1, tolerance: 0}
+  - {statistic: vector_count, expected: 5, tolerance: 0}
+notes: |
+  The NPI is nine digits plus a Luhn check digit computed over the number with the card-issuer
+  prefix 80840 in front, as the CMS requirements note of 23 January 2004 specifies, with the
+  note's own worked example 123456789 giving 1234567893. NPIs are initially issued with a
+  leading 1 or 2, recorded under first_digit_values for generators. valid_from is the note's
+  date, which is also the publication date of the NPI Final Rule it cites. The PDF states no
+  terms of use, so the entry is held at license-review.

@@ -1,0 +1,101 @@
+id: eu-population-by-sex-2024
+title: Population on 1 January 2024 by sex, ten member states (Eurostat demo_pjan)
+kind: rule
+domain: demographics
+region: EU
+status: verified
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- population
+- sex
+- eurostat
+- reference-table
+use_cases:
+- person-generation
+- customer-segmentation
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: demo_pjan
+    rows:
+      AT:
+        female: 4643918
+        male: 4514832
+        female_share: 0.507047
+      BE:
+        female: 5981093
+        male: 5836003
+        female_share: 0.506139
+      DE:
+        female: 42294114
+        male: 41161931
+        female_share: 0.506783
+      ES:
+        female: 24792824
+        male: 23826871
+        female_share: 0.509934
+      FR:
+        female: 35360111
+        male: 33309192
+        female_share: 0.514933
+      IE:
+        female: 2708306
+        male: 2643375
+        female_share: 0.506066
+      IT:
+        female: 30124502
+        male: 28846728
+        female_share: 0.510834
+      NL:
+        female: 9022174
+        male: 8920768
+        female_share: 0.502826
+      PL:
+        female: 18914999
+        male: 17705971
+        female_share: 0.516507
+      SE:
+        female: 5239188
+        male: 5312519
+        female_share: 0.496525
+  vectors:
+  - input:
+      key: DE
+      column: female
+    expected: 42294114
+    origin: source
+  - input:
+      key: FR
+      column: male
+    expected: 33309192
+    origin: source
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow demo_pjan (population on 1 January by age and sex), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_pjan/A.NR.TOTAL.F+M.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, sex=F, TIME_PERIOD=2024, OBS_VALUE
+  value: '42294114'
+  unit: count
+  snippet: F,DE,2024
+  source_license: CC-BY-4.0
+  content_sha256: 68f5ec7b6150c9f9ff68596c03e85edfa33f0a0d5999ad024050e52e9022294a
+  role: primary
+assumed:
+- parameter: rows[*].female_share
+  value: female / (female + male)
+  method: derived
+  rationale: Eurostat publishes the counts; the share is their ratio.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+notes: Population on 1 January 2024 by sex for ten member states from Eurostat dataflow demo_pjan (age TOTAL). Eurostat's
+  copyright notice states that its data are released under the Creative Commons Attribution 4.0 International licence;
+  the notice page renders dynamically and is referenced rather than hashed.

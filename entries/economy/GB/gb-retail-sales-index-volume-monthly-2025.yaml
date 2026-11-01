@@ -50,16 +50,18 @@ spec:
     value: 102.3
 evidence:
 - publisher: Office for National Statistics
-  title: ONS API, dataset retail-sales-index version 45, observations (chained volume, all retailing excluding automotive
-    fuel, seasonally adjusted, Great Britain)
-  url: https://api.beta.ons.gov.uk/v1/datasets/retail-sales-index/editions/time-series/versions/45/observations?time=*&geography=K03000001&prices=chained-volume-of-retail-sales&seasonaladjustment=seasonal-adjustment&unofficialstandardindustrialclassification=all-retailing-excluding-automotive-fuel
+  title: ONS dataset retail-sales-index version 45, full time-series CSV (v4 format)
+  url: https://download.ons.gov.uk/downloads/datasets/retail-sales-index/editions/time-series/versions/45.csv
   accessed_at: '2026-10-31'
-  locator: observations[Time=Jan-25].observation
-  value: '98.9'
-  unit: decimal
-  snippet: '"id":"Jan-25","label":"Jan-25"'
+  locator: row Time=Jan-25, Great Britain, all retailing excluding automotive fuel, chained volume, seasonally adjusted,
+    column v4_1
+  value: Jan-25,K03000001,Great Britain,all-retailing-excluding-automotive-fuel,All retailing excluding automotive
+    fuel,chained-volume-of-retail-sales
+  unit: text
+  snippet: all-retailing-excluding-automotive-fuel,All retailing excluding automotive fuel,chained-volume-of-retail-sales,Chained
+    volume of retail sales,seasonal-adjustment
   source_license: OGL-UK-3.0
-  content_sha256: bfa37de00f9bdc1c5a06b83019cfb3814146d9a23b60f51d1543efd21a28c08a
+  content_sha256: a74a51712bdf62bd37b398f0fa93791ba9f6037e92358f5b4743ee6453359107
   role: primary
 - publisher: Office for National Statistics
   title: ONS dataset metadata retail-sales-index
@@ -98,6 +100,7 @@ tests:
   expected: 12
   tolerance: 0
 notes: Retail sales index for Great Britain, chained volume measure, all retailing excluding automotive fuel, seasonally
-  adjusted, monthly for 2025, from version 45 of the ONS retail-sales-index dataset through the ONS API observations
-  endpoint (full history returned; other years dropped). The retail-sales-index metadata carries no licence field;
-  ONS publishes its datasets under the Open Government Licence v3.0, as the cpih01 metadata states.
+  adjusted, monthly for 2025, from the full time-series CSV of version 45 of the ONS retail-sales-index dataset
+  (other series and years dropped; the API's observation endpoint is not byte-stable). The retail-sales-index metadata
+  carries no licence field; ONS publishes its datasets under the Open Government Licence v3.0, as the cpih01 metadata
+  states.

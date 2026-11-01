@@ -314,3 +314,19 @@ def test_temporal_columns_must_match_series(schema, web, tmp_path):
         tests=[{"statistic": "count", "expected": 2, "tolerance": 0}],
     )
     assert "model" in _failed(_verify(schema, web, tmp_path, entry))
+
+
+def test_zip_resources_are_searched_by_member_text(web, tmp_path):
+    import io
+    import zipfile
+
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w") as archive:
+        archive.writestr("codes.txt", "A000    Cholera due to Vibrio cholerae 01\n")
+        archive.writestr("notes.pdf", b"%PDF-not-really")
+    url = "https://stats.example.test/codes.zip"
+    web.pages[url] = (buffer.getvalue(), "application/zip")
+    with web.fetcher() as fetcher:
+        resource = fetcher.get(url)
+    assert resource.is_zip
+    assert "== codes.txt ==" in resource.text and "A000" in resource.text

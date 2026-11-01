@@ -1,0 +1,190 @@
+id: us-vin-check-digit
+title: United States vehicle identification number (VIN) check digit, 49 CFR 565.15
+kind: rule
+domain: automotive
+region: US
+status: license-review
+tier: A
+valid_from: '2009-04-30'
+valid_to: null
+tags:
+- vin
+- check-digit
+- vehicle
+- nhtsa
+- 49-cfr-565
+use_cases:
+- insurance
+- fleet-demo
+- automotive-demo
+- claims-generation
+spec:
+  implementation: almanac.rules.us_vin
+  parameters:
+    permitted_letters: ABCDEFGHJKLMNPRSTUVWXYZ
+    character_values:
+      A: 1
+      B: 2
+      C: 3
+      D: 4
+      E: 5
+      F: 6
+      G: 7
+      H: 8
+      J: 1
+      K: 2
+      L: 3
+      M: 4
+      N: 5
+      P: 7
+      R: 9
+      S: 2
+      T: 3
+      U: 4
+      V: 5
+      W: 6
+      X: 7
+      Y: 8
+      Z: 9
+      '0': 0
+      '1': 1
+      '2': 2
+      '3': 3
+      '4': 4
+      '5': 5
+      '6': 6
+      '7': 7
+      '8': 8
+      '9': 9
+    weights:
+    - 8
+    - 7
+    - 6
+    - 5
+    - 4
+    - 3
+    - 2
+    - 10
+    - 0
+    - 9
+    - 8
+    - 7
+    - 6
+    - 5
+    - 4
+    - 3
+    - 2
+    modulus: 11
+    check_position: 9
+  vectors:
+  - input:
+      check_digit_for: 1G4AH59H45G118341
+    expected: '4'
+    origin: source
+    note: 'Table VI sample calculation: products sum to 411, remainder 4'
+  - input: 1G4AH59H45G118341
+    expected: true
+    origin: source
+  - input: 1HGCM82633A004352
+    expected: true
+    origin: source
+    note: 'NHTSA decoder: check digit is correct'
+  - input: 1HGCM82633A004353
+    expected: false
+    origin: source
+    note: 'NHTSA decoder: check digit does not calculate properly'
+  - input: 1G4AH59H45G11834
+    expected: false
+    origin: derived
+    note: sixteen characters
+  - input: 1G4AH59H45G1183I1
+    expected: false
+    origin: derived
+    note: I is not a permitted character
+evidence:
+- publisher: National Highway Traffic Safety Administration via the eCFR API
+  title: 49 CFR part 565, Vehicle Identification Number (VIN) Requirements, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-49.xml?part=565
+  accessed_at: '2026-10-31'
+  locator: section 565.15(c)(1), Table III
+  value: P = 7
+  unit: text
+  snippet: Assigned Values
+  source_license: unstated
+  content_sha256: 5e8eec479c071763be7e4dad0a76f5a7426848bcd429ae722e051132015240de
+  role: primary
+- publisher: National Highway Traffic Safety Administration via the eCFR API
+  title: 49 CFR part 565, Vehicle Identification Number (VIN) Requirements, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-49.xml?part=565
+  accessed_at: '2026-10-31'
+  locator: section 565.15(c)(2), Table IV
+  value: (check digit)
+  unit: text
+  snippet: VIN Position and Weight Factor
+  source_license: unstated
+  content_sha256: 5e8eec479c071763be7e4dad0a76f5a7426848bcd429ae722e051132015240de
+  role: primary
+- publisher: National Highway Traffic Safety Administration via the eCFR API
+  title: 49 CFR part 565, Vehicle Identification Number (VIN) Requirements, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-49.xml?part=565
+  accessed_at: '2026-10-31'
+  locator: section 565.15(c)(5), Table VI
+  value: = 411
+  unit: text
+  snippet: Add the resulting products and divide the total by 11
+  source_license: unstated
+  content_sha256: 5e8eec479c071763be7e4dad0a76f5a7426848bcd429ae722e051132015240de
+  role: primary
+- publisher: National Highway Traffic Safety Administration via the eCFR API
+  title: 49 CFR part 565, Vehicle Identification Number (VIN) Requirements, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-49.xml?part=565
+  accessed_at: '2026-10-31'
+  locator: section 565.13(g)
+  value: '[ABCDEFGHJKLMNPRSTUVWXYZ]'
+  unit: text
+  snippet: Each character in each VIN shall be one of the letters in the set
+  source_license: unstated
+  content_sha256: 5e8eec479c071763be7e4dad0a76f5a7426848bcd429ae722e051132015240de
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC VIN decoder result for 1HGCM82633A004352 (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/1HGCM82633A004352?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ErrorText
+  value: 0 - VIN decoded clean. Check Digit (9th position) is correct
+  unit: text
+  snippet: Check Digit (9th position) is correct
+  source_license: unstated
+  content_sha256: 5bbe2f293edb394f21e10fe8220fb11b30dc7e1614b0a8c2d216c9a27993e6ef
+  role: supporting
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC VIN decoder result for 1HGCM82633A004353 (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/1HGCM82633A004353?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ErrorText
+  value: 1 - Check Digit (9th position) does not calculate properly
+  unit: text
+  snippet: does not calculate properly
+  source_license: unstated
+  content_sha256: 1009810f9aa98c16d8540b14d8d2bcd11d85bc86e55d0d000c02eb25847590ab
+  role: supporting
+assumed:
+- parameter: vectors[0].input
+  value: 1G4AH59H45G118341
+  method: derived
+  rationale: Table VI prints the sample VIN with position nine blank and shows the products for all seventeen positions;
+    the characters are read from the table and the resulting check digit 4 inserted, which reproduces the table's
+    products and total of 411.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 6
+  tolerance: 0
+notes: 'The check digit in position nine of a seventeen-character VIN, as 49 CFR 565.15(c) prescribes: each character
+  takes its numeric value or the letter value of Table III, is multiplied by the position weight of Table IV, the
+  products are summed and divided by 11, and the remainder is the check digit, written X for 10. Letters I, O and
+  Q are not permitted (565.13(g)). The regulation''s own Table VI calculation and two decoder results from NHTSA''s
+  vPIC service supply the vectors. valid_from is the date from which subpart B applies to all vehicles (565.11).
+  US government works carry no copyright, but neither source states terms, so the entry is held at license-review.'

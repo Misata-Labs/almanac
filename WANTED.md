@@ -15,8 +15,19 @@ Already done, for the pattern to copy: `br-cnpj-check-digits`,
 `global-population-by-economy-2024`, `global-central-bank-policy-rates-monthly-2025`,
 the thirteen World Bank reference tables, the ECB, BCB and ONS series,
 `gb-income-tax-bands-2026-27`, `gb-national-minimum-wage-2026-2027`,
-`gb-sic-2007-condensed-codes` and `us-treasury-reporting-rates-of-exchange-2025-12-31`
-each started as a line in this file.
+`gb-sic-2007-condensed-codes`, `us-treasury-reporting-rates-of-exchange-2025-12-31`,
+`us-federal-holidays`, `us-vin-check-digit`, `us-npi-check-digit`,
+`us-icd-10-cm-2026-categories`, `global-e164-country-calling-codes-2011`,
+`gb-house-price-index-monthly-2025` and the Eurostat entries each started as a line
+in this file.
+
+## Blocked by bot protection, worth a manual download
+
+GS1 (GTIN check digit), the Bureau International des Containers (ISO 6346
+check digit), Ofcom numbering data, UNECE UN/LOCODE, the NHS data dictionary
+and USPS Publication 28 all refuse non-browser clients. Download the official
+file by hand, cite its URL and record its hash; the verifier will re-fetch it
+from a machine that is allowed through.
 
 ## Most wanted right now
 
@@ -25,7 +36,6 @@ each started as a line in this file.
 | global-iban-structure | Every bank transfer generator needs it | SWIFT IBAN Registry (the site refuses non-browser clients; download the TXT release by hand and cite its release number) |
 | in-upi-monthly-volume | The largest real-time payment system by volume | NPCI product statistics (download the XLSX by hand) |
 | br-cpf-check-digits | The identifier on every Brazilian customer record | Receita Federal do Brasil |
-| us-federal-holidays | Settlement and payroll calendars for the US | US Office of Personnel Management |
 | global-card-pan-luhn | Card numbers that pass issuer checks | ISO/IEC 7812 registration authority |
 | eu-vat-rates | Invoices across 27 member states | European Commission, Taxation and Customs Union |
 
@@ -40,8 +50,8 @@ each started as a line in this file.
 | in-gstin-format | GSTIN composition and check character | Goods and Services Tax Network |
 | in-ifsc-format | IFSC bank branch code structure | Reserve Bank of India |
 | global-lei-check-digits | Legal Entity Identifier structure and MOD 97-10 check digits | Global Legal Entity Identifier Foundation (api.gleif.org serves stable LEI records; the structure page is HTML) |
-| global-isin-check-digit | ISIN Luhn check digit | Association of National Numbering Agencies (ISO 6166) |
-| gb-nhs-number-check-digit | NHS number modulus 11 check digit | NHS England |
+| global-isin-check-digit | ISIN Luhn check digit | Association of National Numbering Agencies (ISO 6166); the ANNA site has moved, find the current standard page |
+| gb-nhs-number-check-digit | NHS number modulus 11 check digit | NHS England data dictionary (the site refuses non-browser clients; save the page by hand) |
 | gb-postcode-format | Postcode structure as defined for government data exchange | Office for National Statistics or Cabinet Office |
 | us-ssn-issuance-rules | Social Security number structural exclusions since randomisation | US Social Security Administration |
 | us-routing-number-check-digit | ABA routing transit number check digit | Federal Reserve or ABA |
@@ -79,7 +89,6 @@ each started as a line in this file.
 
 | Entry id | What it fixes | Where the official source lives |
 | --- | --- | --- |
-| us-federal-holidays | Federal holidays and observed dates | US Office of Personnel Management |
 | in-gazetted-holidays | Central government gazetted holidays | Ministry of Personnel, Public Grievances and Pensions |
 | br-national-holidays | National holidays and point facultativo days | Ministério da Gestão e da Inovação |
 | global-target2-closing-days | TARGET closing days for euro settlement | European Central Bank (use the ECB Data Portal or a PDF; the website renders dynamically) |

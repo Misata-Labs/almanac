@@ -7,6 +7,8 @@ Run from the repository root:
 
 from __future__ import annotations
 
+import csv
+import io
 import json
 import sys
 from datetime import datetime
@@ -18,13 +20,10 @@ from _common import evidence, fetch, write  # noqa: E402
 API = "https://api.beta.ons.gov.uk/v1/datasets"
 YEAR = 2025
 CPIH_VERSION = f"{API}/cpih01/editions/time-series/versions/67"
-CPIH_URL = f"{CPIH_VERSION}/observations?time=*&geography=K02000001&aggregate=CP00"
+CPIH_URL = "https://download.ons.gov.uk/downloads/datasets/cpih01/editions/time-series/versions/67.csv"
 LICENSE_URL = f"{API}/cpih01"
 RSI_VERSION = f"{API}/retail-sales-index/editions/time-series/versions/45"
-RSI_URL = (
-    f"{RSI_VERSION}/observations?time=*&geography=K03000001&prices=chained-volume-of-retail-sales"
-    "&seasonaladjustment=seasonal-adjustment&unofficialstandardindustrialclassification=all-retailing-excluding-automotive-fuel"
-)
+RSI_URL = "https://download.ons.gov.uk/downloads/datasets/retail-sales-index/editions/time-series/versions/45.csv"
 RSI_META_URL = f"{API}/retail-sales-index"
 PUBLISHER = "Office for National Statistics"
 LICENSE = "OGL-UK-3.0"
@@ -34,12 +33,13 @@ def period(label: str) -> str:
     return datetime.strptime(label, "%b-%y").strftime("%Y-%m")
 
 
+def csv_rows(raw: bytes) -> list[dict]:
+    return list(csv.DictReader(io.StringIO(raw.decode("utf-8-sig"))))
+
+
 def build(raw: bytes, meta_raw: bytes) -> dict:
-    obs = json.loads(raw)["observations"]
-    points = sorted(
-        ({"period": period(o["dimensions"]["Time"]["id"]), "value": float(o["observation"])} for o in obs if o["dimensions"]["Time"]["id"].endswith(f"-{str(YEAR)[2:]}")),
-        key=lambda p: p["period"],
-    )
+    rows = [r for r in csv_rows(raw) if r["uk-only"] == "K02000001" and r["cpih1dim1aggid"] == "CP00" and r["Time"].endswith(f"-{str(YEAR)[2:]}")]
+    points = sorted(({"period": period(r["Time"]), "value": float(r["v4_0"])} for r in rows), key=lambda p: p["period"])
     meta = json.loads(meta_raw)
     first, last = points[0], points[-1]
     first_label = datetime.strptime(first["period"], "%Y-%m").strftime("%b-%y")
@@ -56,7 +56,7 @@ def build(raw: bytes, meta_raw: bytes) -> dict:
         "use_cases": ["pricing", "financial-planning", "contract-indexation"],
         "spec": {"variable": "cpih_index_2015_100", "unit": "decimal", "frequency": "monthly", "columns": [], "series": points},
         "evidence": [
-            evidence(PUBLISHER, "ONS API, dataset cpih01 version 67, observations for CP00 (overall index), United Kingdom", CPIH_URL, f'observations[Time={first_label}].observation', str(first["value"]).rstrip("0").rstrip(".") if first["value"] != int(first["value"]) else str(int(first["value"])), "decimal", f'"id":"{first_label}","label":"{first_label}"}}}},"observation":', LICENSE, raw),
+            evidence(PUBLISHER, "ONS dataset cpih01 version 67, full time-series CSV (v4 format)", CPIH_URL, f"row Time={first_label}, uk-only=K02000001, cpih1dim1aggid=CP00, column v4_0", f"{first_label},{first_label},K02000001,United Kingdom,CP00,Overall Index", "text", f"{first_label},K02000001,United Kingdom,CP00", LICENSE, raw),
             evidence(PUBLISHER, "ONS dataset metadata cpih01 (title and licence)", LICENSE_URL, "license", meta["license"], "text", '"license":"Open Government Licence v3.0"', LICENSE, meta_raw, role="supporting"),
         ],
         "assumed": [],
@@ -67,19 +67,21 @@ def build(raw: bytes, meta_raw: bytes) -> dict:
         ],
         "notes": (
             f"CPIH all-items index (2015 = 100) for the United Kingdom, monthly for {YEAR}, from version 67 of the ONS "
-            "cpih01 dataset through the ONS API observations endpoint, which returns the full history; months outside "
-            f"{YEAR} are dropped. The index is the headline measure of UK consumer price inflation. ONS publishes the "
+            "cpih01 dataset as the full time-series CSV the ONS serves for that version (the API's observation endpoint "
+            f"embeds internal hostnames and is not byte-stable); months outside {YEAR} are dropped. The index is the headline measure of UK consumer price inflation. ONS publishes the "
             "dataset under the Open Government Licence v3.0, as its metadata states."
         ),
     }
 
 
 def build_retail(raw: bytes, meta_raw: bytes, license_raw: bytes) -> dict:
-    obs = json.loads(raw)["observations"]
-    points = sorted(
-        ({"period": period(o["dimensions"]["Time"]["id"]), "value": float(o["observation"])} for o in obs if o["dimensions"]["Time"]["id"].endswith(f"-{str(YEAR)[2:]}")),
-        key=lambda p: p["period"],
-    )
+    rows = [
+        r for r in csv_rows(raw)
+        if r["countries"] == "K03000001" and r["sic-unofficial"] == "all-retailing-excluding-automotive-fuel"
+        and r["type-of-prices"] == "chained-volume-of-retail-sales" and r["seasonal-adjustment"] == "seasonal-adjustment"
+        and r["Time"].endswith(f"-{str(YEAR)[2:]}")
+    ]
+    points = sorted(({"period": period(r["Time"]), "value": float(r["v4_1"])} for r in rows), key=lambda p: p["period"])
     meta = json.loads(meta_raw)
     first, last = points[0], points[-1]
     peak = max(points, key=lambda p: p["value"])
@@ -97,7 +99,7 @@ def build_retail(raw: bytes, meta_raw: bytes, license_raw: bytes) -> dict:
         "use_cases": ["retail-demo", "demand-forecasting", "sales-generation"],
         "spec": {"variable": "retail_sales_volume_index", "unit": "decimal", "frequency": "monthly", "columns": [], "series": points},
         "evidence": [
-            evidence(PUBLISHER, "ONS API, dataset retail-sales-index version 45, observations (chained volume, all retailing excluding automotive fuel, seasonally adjusted, Great Britain)", RSI_URL, f'observations[Time={first_label}].observation', str(first["value"]).rstrip("0").rstrip(".") if first["value"] != int(first["value"]) else str(int(first["value"])), "decimal", f'"id":"{first_label}","label":"{first_label}"', LICENSE, raw),
+            evidence(PUBLISHER, "ONS dataset retail-sales-index version 45, full time-series CSV (v4 format)", RSI_URL, f"row Time={first_label}, Great Britain, all retailing excluding automotive fuel, chained volume, seasonally adjusted, column v4_1", f"{first_label},K03000001,Great Britain,all-retailing-excluding-automotive-fuel,All retailing excluding automotive fuel,chained-volume-of-retail-sales", "text", "all-retailing-excluding-automotive-fuel,All retailing excluding automotive fuel,chained-volume-of-retail-sales,Chained volume of retail sales,seasonal-adjustment", LICENSE, raw),
             evidence(PUBLISHER, "ONS dataset metadata retail-sales-index", RSI_META_URL, "title", meta["title"], "text", '"id":"retail-sales-index"', LICENSE, meta_raw),
             evidence(PUBLISHER, "ONS dataset metadata cpih01 (licence statement for ONS datasets)", LICENSE_URL, "license", "Open Government Licence v3.0", "text", '"license":"Open Government Licence v3.0"', LICENSE, license_raw, role="supporting"),
         ],
@@ -110,8 +112,8 @@ def build_retail(raw: bytes, meta_raw: bytes, license_raw: bytes) -> dict:
         ],
         "notes": (
             f"Retail sales index for Great Britain, chained volume measure, all retailing excluding automotive fuel, "
-            f"seasonally adjusted, monthly for {YEAR}, from version 45 of the ONS retail-sales-index dataset through the "
-            "ONS API observations endpoint (full history returned; other years dropped). The retail-sales-index metadata "
+            f"seasonally adjusted, monthly for {YEAR}, from the full time-series CSV of version 45 of the ONS "
+            "retail-sales-index dataset (other series and years dropped; the API's observation endpoint is not byte-stable). The retail-sales-index metadata "
             "carries no licence field; ONS publishes its datasets under the Open Government Licence v3.0, as the cpih01 "
             "metadata states."
         ),

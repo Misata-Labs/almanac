@@ -11,6 +11,7 @@ from __future__ import annotations
 import hashlib
 import io
 import json
+import zipfile
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -40,12 +41,27 @@ class Resource:
         return self.content.startswith(b"%PDF")
 
     @property
+    def is_zip(self) -> bool:
+        return self.content.startswith(b"PK\x03\x04")
+
+    @property
     def text(self) -> str:
-        """The resource as searchable text: extracted page text for a PDF, decoded bytes otherwise."""
+        """The resource as searchable text: extracted page text for a PDF, text members of a ZIP, decoded bytes otherwise."""
         if self.is_pdf:
             reader = PdfReader(io.BytesIO(self.content))
             return "\n".join(page.extract_text() or "" for page in reader.pages)
+        if self.is_zip:
+            return self._zip_text()
         return self.content.decode("utf-8", errors="replace")
+
+    def _zip_text(self) -> str:
+        """Text members of a ZIP archive (txt, csv, json, xml, yaml), each preceded by its name."""
+        archive = zipfile.ZipFile(io.BytesIO(self.content))
+        parts = []
+        for info in archive.infolist():
+            if info.filename.lower().endswith((".txt", ".csv", ".json", ".xml", ".yaml", ".yml", ".tsv")):
+                parts.append(f"== {info.filename} ==\n" + archive.read(info).decode("utf-8", errors="replace"))
+        return "\n".join(parts)
 
     @property
     def is_machine_readable(self) -> bool:

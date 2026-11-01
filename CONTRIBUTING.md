@@ -46,7 +46,10 @@ confirm a value, leave the entry out.
    (personalised HTML, rotating tokens) cannot be verified and must not be
    cited. Prefer an API response, a CSV, or a PDF from the same publisher.
    PDFs are searched by their extracted text, so take snippets from text the
-   PDF actually contains, not from headings rendered as images.
+   PDF actually contains, not from headings rendered as images. ZIP archives
+   are searched by the text of their .txt, .csv, .json, .xml and .yaml
+   members. XML sources are searched as raw markup, so avoid snippets that
+   contain characters the source writes as entities, such as em dashes.
    Mark an item `role: supporting` when it documents context such as units
    or licence terms rather than a value the spec depends on; supporting items
    may be HTML or PDF even in a tier A entry.
@@ -105,7 +108,9 @@ accounts-payable, tax-filing-demo, audit-demo, financial-reporting,
 multi-currency-ledger, contract-indexation, pricing, retail-demo,
 demand-forecasting, sales-generation, insurance, pensions, health-demo,
 utilities-demo, telecom-demo, digital-channels, logistics,
-capacity-planning, sla-calculation, event-timestamps, crm-demo.
+capacity-planning, sla-calculation, event-timestamps, crm-demo, health-demo,
+claims-generation, clinical-records, fleet-demo, automotive-demo,
+property-demo.
 
 ## Before opening a pull request
 

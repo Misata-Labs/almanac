@@ -91,7 +91,11 @@ uv run almanac applies --on 2026-06-15 --use-case banking-demo
 | **Invoicing, tax and audit** demos | UK VAT rates, India GST slab structure, ISO 4217 minor units, ECB and US Treasury exchange-rate tables, CPIH and IPCA price indices |
 | **Customer, person and household** generation | Twelve Census 2021 marginals, world population weights, female population share, urban share, fertility and life expectancy by economy |
 | **Retail and demand** demos | Retail sales index with its December peak, inflation series, GDP and GDP per capita by economy |
-| **Telecom and digital** demos | Internet users and mobile subscriptions per 100 people by economy, clock-change dates for timestamps |
+| **Telecom and digital** demos | ITU country calling codes, internet users and mobile subscriptions per 100 people by economy, clock-change dates for timestamps |
+| **Healthcare and claims** demos | ICD-10-CM 2026 diagnosis categories with code counts, the NPI Luhn check digit, Census general health, life expectancy by economy |
+| **Insurance, property and fleet** demos | VIN check digit from the federal regulation, UK house price index by month, euro area mortgage rates, Census tenure and car availability |
+| **Energy and utilities** demos | Household electricity prices for ten EU states, Census household size and accommodation type |
+| **Cross-border and EU** demos | Unemployment and inflation by member state, population by sex and by single year of age for Germany and France, US federal holidays for settlement calendars |
 
 The full matrix of use cases to entries is the first table in
 [CATALOGUE.md](CATALOGUE.md).
@@ -132,6 +136,19 @@ See [CATALOGUE.md](CATALOGUE.md) for the generated tables. By domain:
 - **Company and contact**: Companies House company type and status codes, the
   SIC 2007 condensed code list, and the email address pattern HMRC services
   accept.
+- **Healthcare**: ICD-10-CM FY2026 three-character categories with code
+  counts from the CDC archive, and the NPI check digit from the CMS note.
+- **Automotive**: the VIN check digit taken from 49 CFR 565.15 through the
+  eCFR API, with the regulation's own sample and NHTSA decoder results as
+  vectors.
+- **Telecom**: ITU-T E.164 country calling codes from the ITU bulletin.
+- **Property and energy**: UK House Price Index by month from HM Land
+  Registry; household electricity prices for ten member states from Eurostat.
+- **Calendars**: US federal holidays from the statute, executive order and
+  regulation, with the Saturday and Sunday observance rules.
+- **EU demographics and economy**: Eurostat population by sex, single-year
+  age distributions for Germany and France, unemployment and HICP inflation by
+  member state, monthly 2025.
 
 Entries whose source terms are not clearly permissive stay at
 `license-review` and say so. [WANTED.md](WANTED.md) lists what we want next,

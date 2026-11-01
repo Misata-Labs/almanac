@@ -1,0 +1,97 @@
+id: eu-household-electricity-prices-2025s1
+title: Household electricity prices including taxes, consumption band 2 500 to 4 999 kWh, 2025-S1, ten member states
+kind: rule
+domain: energy
+region: EU
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-06-30'
+tags:
+- electricity
+- energy-prices
+- eurostat
+- reference-table
+- utilities
+use_cases:
+- utilities-demo
+- pricing
+- household-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: nrg_pc_204
+    key: S.E7000.KWH2500-4999.KWH.I_TAX.EUR
+    rows:
+      AT:
+        eur_per_kwh: 0.2905
+        period: 2025-S1
+      BE:
+        eur_per_kwh: 0.3571
+        period: 2025-S1
+      DE:
+        eur_per_kwh: 0.3835
+        period: 2025-S1
+      ES:
+        eur_per_kwh: 0.2612
+        period: 2025-S1
+      FR:
+        eur_per_kwh: 0.2671
+        period: 2025-S1
+      IE:
+        eur_per_kwh: 0.3231
+        period: 2025-S1
+      IT:
+        eur_per_kwh: 0.3291
+        period: 2025-S1
+      NL:
+        eur_per_kwh: 0.2385
+        period: 2025-S1
+      PL:
+        eur_per_kwh: 0.2559
+        period: 2025-S1
+      SE:
+        eur_per_kwh: 0.2654
+        period: 2025-S1
+  vectors:
+  - input:
+      key: DE
+      column: eur_per_kwh
+    expected: 0.3835
+    origin: source
+  - input:
+      key: FR
+      column: eur_per_kwh
+    expected: 0.2671
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow nrg_pc_204 (electricity prices for household consumers), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_204/S.E7000.KWH2500-4999.KWH.I_TAX.EUR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025-S1&endPeriod=2025-S1&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, TIME_PERIOD=2025-S1, OBS_VALUE
+  value: '0.3835'
+  unit: decimal
+  snippet: DE,2025-S1
+  source_license: CC-BY-4.0
+  content_sha256: 099036df15783834c6467e3f8ee9ad7b409eefd982eb907534518c8dfd63e02e
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[eur_per_kwh]
+  expected: 0.3835
+  tolerance: 0
+notes: Electricity prices for household consumers, all taxes and levies included, consumption band DC (2 500 to
+  4 999 kWh per year), in euro per kWh for the half-year 2025-S1, from Eurostat dataflow nrg_pc_204. valid_from
+  and valid_to bound the half-year the prices describe. Eurostat's copyright notice states that its data are released
+  under the Creative Commons Attribution 4.0 International licence; the notice page renders dynamically and is referenced
+  rather than hashed.

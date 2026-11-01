@@ -8,8 +8,44 @@
     "entries": "ODbL-1.0",
     "code": "Apache-2.0"
   },
-  "entry_count": 56,
+  "entry_count": 68,
   "entries": [
+    {
+      "id": "us-vin-check-digit",
+      "title": "United States vehicle identification number (VIN) check digit, 49 CFR 565.15",
+      "kind": "rule",
+      "domain": "automotive",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2009-04-30 to open",
+      "publishers": [
+        "National Highway Traffic Safety Administration via the eCFR API",
+        "National Highway Traffic Safety Administration"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "vin",
+        "check-digit",
+        "vehicle",
+        "nhtsa",
+        "49-cfr-565"
+      ],
+      "use_cases": [
+        "insurance",
+        "fleet-demo",
+        "automotive-demo",
+        "claims-generation"
+      ],
+      "path": "entries/automotive/US/us-vin-check-digit.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/automotive/US/us-vin-check-digit.yaml",
+      "valid_from": "2009-04-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.us_vin",
+      "vectors": 6
+    },
     {
       "id": "gb-bank-holidays",
       "title": "United Kingdom bank holidays by nation, 2019 to 2028",
@@ -74,6 +110,42 @@
       "valid_to": "2028-12-31",
       "implementation": "almanac.rules.gb_clock_change",
       "vectors": 4
+    },
+    {
+      "id": "us-federal-holidays",
+      "title": "United States legal public holidays (5 U.S.C. 6103) with Saturday and Sunday observance rules",
+      "kind": "rule",
+      "domain": "calendar",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2023-12-31 to open",
+      "publishers": [
+        "Office of the Law Revision Counsel via the Government Publishing Office (govinfo)",
+        "National Archives and Records Administration, Federal Register codification",
+        "Office of Personnel Management via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "federal-holidays",
+        "calendar",
+        "working-days",
+        "observed-holidays"
+      ],
+      "use_cases": [
+        "payments-scheduling",
+        "payroll-demo",
+        "logistics",
+        "sla-calculation"
+      ],
+      "path": "entries/calendar/US/us-federal-holidays.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/calendar/US/us-federal-holidays.yaml",
+      "valid_from": "2023-12-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.us_federal_holidays",
+      "vectors": 10
     },
     {
       "id": "gb-company-type-and-status-codes",
@@ -274,6 +346,107 @@
       "valid_to": null,
       "implementation": "almanac.rules.currency_minor_units",
       "vectors": 12
+    },
+    {
+      "id": "de-population-by-single-year-of-age-2024",
+      "title": "Germany population on 1 January 2024 by single year of age (Eurostat demo_pjan)",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "DE",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2024-01-01 to 2024-01-01",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "population",
+        "age",
+        "eurostat"
+      ],
+      "use_cases": [
+        "person-generation",
+        "customer-segmentation",
+        "insurance",
+        "pensions"
+      ],
+      "path": "entries/demographics/DE/de-population-by-single-year-of-age-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/DE/de-population-by-single-year-of-age-2024.yaml",
+      "observed_period": {
+        "start": "2024-01-01",
+        "end": "2024-01-01"
+      },
+      "variable": "age"
+    },
+    {
+      "id": "eu-population-by-sex-2024",
+      "title": "Population on 1 January 2024 by sex, ten member states (Eurostat demo_pjan)",
+      "kind": "rule",
+      "domain": "demographics",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "population",
+        "sex",
+        "eurostat",
+        "reference-table"
+      ],
+      "use_cases": [
+        "person-generation",
+        "customer-segmentation",
+        "market-sizing"
+      ],
+      "path": "entries/demographics/EU/eu-population-by-sex-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/EU/eu-population-by-sex-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 2
+    },
+    {
+      "id": "fr-population-by-single-year-of-age-2024",
+      "title": "France population on 1 January 2024 by single year of age (Eurostat demo_pjan)",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "FR",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2024-01-01 to 2024-01-01",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "population",
+        "age",
+        "eurostat"
+      ],
+      "use_cases": [
+        "person-generation",
+        "customer-segmentation",
+        "insurance",
+        "pensions"
+      ],
+      "path": "entries/demographics/FR/fr-population-by-single-year-of-age-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/FR/fr-population-by-single-year-of-age-2024.yaml",
+      "observed_period": {
+        "start": "2024-01-01",
+        "end": "2024-01-01"
+      },
+      "variable": "age"
     },
     {
       "id": "gb-census-2021-accommodation-type",
@@ -842,6 +1015,75 @@
       "variable": "hicp_annual_rate_percent"
     },
     {
+      "id": "eu-hicp-inflation-by-country-monthly-2025",
+      "title": "HICP inflation, annual rate of change, monthly 2025, ten member states",
+      "kind": "temporal",
+      "domain": "economy",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "inflation",
+        "prices",
+        "hicp",
+        "eurostat",
+        "by-country"
+      ],
+      "use_cases": [
+        "pricing",
+        "financial-planning",
+        "contract-indexation"
+      ],
+      "path": "entries/economy/EU/eu-hicp-inflation-by-country-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/EU/eu-hicp-inflation-by-country-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "hicp_annual_rate_percent"
+    },
+    {
+      "id": "eu-unemployment-rate-monthly-2025",
+      "title": "Unemployment rate, seasonally adjusted, monthly 2025, ten member states",
+      "kind": "temporal",
+      "domain": "economy",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "unemployment",
+        "labour",
+        "eurostat",
+        "by-country"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "credit-risk",
+        "market-sizing"
+      ],
+      "path": "entries/economy/EU/eu-unemployment-rate-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/EU/eu-unemployment-rate-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "unemployment_rate_percent"
+    },
+    {
       "id": "gb-cpih-all-items-index-monthly-2025",
       "title": "UK Consumer Prices Index including owner occupiers' housing costs (CPIH), all items index, monthly 2025",
       "kind": "temporal",
@@ -1348,6 +1590,110 @@
       "vectors": 8
     },
     {
+      "id": "eu-household-electricity-prices-2025s1",
+      "title": "Household electricity prices including taxes, consumption band 2 500 to 4 999 kWh, 2025-S1, ten member states",
+      "kind": "rule",
+      "domain": "energy",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-01-01 to 2025-06-30",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "electricity",
+        "energy-prices",
+        "eurostat",
+        "reference-table",
+        "utilities"
+      ],
+      "use_cases": [
+        "utilities-demo",
+        "pricing",
+        "household-generation"
+      ],
+      "path": "entries/energy/EU/eu-household-electricity-prices-2025s1.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/energy/EU/eu-household-electricity-prices-2025s1.yaml",
+      "valid_from": "2025-01-01",
+      "valid_to": "2025-06-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 3
+    },
+    {
+      "id": "us-icd-10-cm-2026-categories",
+      "title": "ICD-10-CM FY2026 three-character categories with code counts (1918 categories over 74719 valid codes)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2025-10-01 to 2026-09-30",
+      "publishers": [
+        "Centers for Disease Control and Prevention, National Center for Health Statistics"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "icd-10-cm",
+        "diagnosis-codes",
+        "clinical-coding",
+        "code-list",
+        "cdc"
+      ],
+      "use_cases": [
+        "health-demo",
+        "insurance",
+        "claims-generation",
+        "clinical-records"
+      ],
+      "path": "entries/healthcare/US/us-icd-10-cm-2026-categories.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/US/us-icd-10-cm-2026-categories.yaml",
+      "valid_from": "2025-10-01",
+      "valid_to": "2026-09-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-npi-check-digit",
+      "title": "United States National Provider Identifier (NPI) Luhn check digit with the 80840 card-issuer prefix",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2004-01-23 to open",
+      "publishers": [
+        "Centers for Medicare & Medicaid Services"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "npi",
+        "luhn",
+        "check-digit",
+        "provider-identifier",
+        "cms"
+      ],
+      "use_cases": [
+        "health-demo",
+        "claims-generation",
+        "clinical-records",
+        "kyb-onboarding"
+      ],
+      "path": "entries/healthcare/US/us-npi-check-digit.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/US/us-npi-check-digit.yaml",
+      "valid_from": "2004-01-23",
+      "valid_to": null,
+      "implementation": "almanac.rules.luhn",
+      "vectors": 5
+    },
+    {
       "id": "br-cnpj-check-digits",
       "title": "Brazil CNPJ check digits (modulus 11) for numeric and alphanumeric registrations",
       "kind": "rule",
@@ -1585,6 +1931,42 @@
         "end": "2026-09-30"
       },
       "variable": "pix_average_ticket_brl"
+    },
+    {
+      "id": "gb-house-price-index-monthly-2025",
+      "title": "UK House Price Index: average price, index, annual change and sales volume, monthly 2025",
+      "kind": "temporal",
+      "domain": "property",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "HM Land Registry"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "house-prices",
+        "property",
+        "ukhpi",
+        "land-registry",
+        "time-series"
+      ],
+      "use_cases": [
+        "mortgage-origination",
+        "insurance",
+        "property-demo",
+        "household-generation"
+      ],
+      "path": "entries/property/GB/gb-house-price-index-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/property/GB/gb-house-price-index-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "average_price_gbp"
     },
     {
       "id": "br-selic-target-rate-changes-2025",
@@ -1849,6 +2231,41 @@
       "valid_from": "2025-09-22",
       "valid_to": null,
       "implementation": "almanac.rules.rate_schedule",
+      "vectors": 6
+    },
+    {
+      "id": "global-e164-country-calling-codes-2011",
+      "title": "ITU-T E.164 assigned country calling codes, as listed in ITU Operational Bulletin 991 (2011), 307 codes",
+      "kind": "rule",
+      "domain": "telecom",
+      "region": "global",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2011-11-01 to open",
+      "publishers": [
+        "International Telecommunication Union (ITU-T)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "e164",
+        "country-codes",
+        "phone-numbers",
+        "itu",
+        "reference-table"
+      ],
+      "use_cases": [
+        "telecom-demo",
+        "person-generation",
+        "crm-demo",
+        "kyc-onboarding"
+      ],
+      "path": "entries/telecom/global/global-e164-country-calling-codes-2011.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/telecom/global/global-e164-country-calling-codes-2011.yaml",
+      "valid_from": "2011-11-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
       "vectors": 6
     }
   ]
