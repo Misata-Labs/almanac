@@ -1,0 +1,109 @@
+id: us-federal-minimum-wage
+title: United States federal minimum wage under the Fair Labor Standards Act, 29 U.S.C. 206(a)(1), steps since 2007
+kind: rule
+domain: employment
+region: US
+status: license-review
+tier: B
+valid_from: '2007-07-24'
+valid_to: null
+tags:
+- minimum-wage
+- flsa
+- step-schedule
+- 29-usc-206
+use_cases:
+- payroll-demo
+- hr-analytics
+- workforce-planning
+spec:
+  implementation: almanac.rules.step_schedule
+  parameters:
+    currency: USD
+    unit: USD per hour
+    youth_opportunity_wage_usd_per_hour: 4.25
+    youth_opportunity_wage_max_days: 90
+    steps:
+    - from: '2007-07-24'
+      value: 5.85
+    - from: '2008-07-24'
+      value: 6.55
+    - from: '2009-07-24'
+      value: 7.25
+  vectors:
+  - input:
+      'on': '2009-07-24'
+    expected: 7.25
+    origin: source
+  - input:
+      'on': '2008-07-24'
+    expected: 6.55
+    origin: source
+  - input:
+      'on': '2026-10-29'
+    expected: 7.25
+    origin: derived
+    note: no later step is enacted in the 2023 edition
+evidence:
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 29 U.S.C. 206, Minimum wage (United States Code 2023 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title29/html/USCODE-2023-title29-chap8-sec206.htm
+  accessed_at: '2026-10-31'
+  locator: subsection (a)(1)(C)
+  value: $7.25
+  unit: currency:USD
+  snippet: $7.25 an hour, beginning 24 months after that 60th day
+  source_license: unstated
+  content_sha256: 548b877894c9318808619a1378a1fe051ad4534121542b170a279421f8c64775
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 29 U.S.C. 206, Minimum wage (United States Code 2023 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title29/html/USCODE-2023-title29-chap8-sec206.htm
+  accessed_at: '2026-10-31'
+  locator: subsection (a)(1)(A)
+  value: $5.85
+  unit: currency:USD
+  snippet: $5.85 an hour, beginning on the 60th day after May 25, 2007
+  source_license: unstated
+  content_sha256: 548b877894c9318808619a1378a1fe051ad4534121542b170a279421f8c64775
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 29 U.S.C. 206, Minimum wage (United States Code 2023 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title29/html/USCODE-2023-title29-chap8-sec206.htm
+  accessed_at: '2026-10-31'
+  locator: subsection (g)(1)
+  value: $4.25
+  unit: currency:USD
+  snippet: a wage which is not less than $4.25 an hour
+  source_license: unstated
+  content_sha256: 548b877894c9318808619a1378a1fe051ad4534121542b170a279421f8c64775
+  role: primary
+assumed:
+- parameter: steps[*].from
+  value:
+  - '2007-07-24'
+  - '2008-07-24'
+  - '2009-07-24'
+  method: derived
+  rationale: 'The statute dates the steps relative to its enactment: the 60th day after the enactment date printed
+    in subsection (a)(1)(A), then 12 and 24 months after that day. The builder computes the calendar dates.'
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+- statistic: value[2009-07-24]
+  expected: 7.25
+  tolerance: 0
+- statistic: max
+  expected: 7.25
+  tolerance: 0
+notes: The federal minimum hourly wage for employees covered by section 6(a)(1) of the Fair Labor Standards Act
+  as the Fair Minimum Wage Act of 2007 set it in three steps, the last of which remains in force in the 2023 edition
+  of the United States Code. The parameters also carry the youth opportunity wage of subsection (g)(1) that may
+  be paid for a limited number of days after hiring. States and territories may set higher or, for the territories
+  named in the section, different rates. US federal statutes carry no copyright, but the govinfo page states no
+  reuse terms, so the licence is recorded as unstated and the entry held at license-review; the HTML form of the
+  source makes the entry tier B.

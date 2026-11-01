@@ -1,0 +1,162 @@
+id: us-flsa-exemption-salary-levels
+title: United States FLSA executive, administrative and professional exemption salary levels, 29 CFR 541.600 and
+  541.601
+kind: rule
+domain: employment
+region: US
+status: license-review
+tier: A
+valid_from: '2026-05-15'
+valid_to: null
+tags:
+- flsa
+- overtime
+- exempt-employees
+- salary-threshold
+- 29-cfr-541
+use_cases:
+- payroll-demo
+- hr-analytics
+- workforce-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: USD
+    rows:
+      standard_salary_weekly:
+        amount_usd: 684
+        period: week
+        section: 541.600(a)
+      territories_salary_weekly:
+        amount_usd: 455
+        period: week
+        section: 541.600(a)
+        scope: Northern Mariana Islands, Guam, Puerto Rico and US Virgin Islands, non-federal employers
+      american_samoa_salary_weekly:
+        amount_usd: 380
+        period: week
+        section: 541.600(a)
+        scope: American Samoa, non-federal employers
+      standard_salary_biweekly:
+        amount_usd: 1368
+        period: two weeks
+        section: 541.600(b)
+      standard_salary_semimonthly:
+        amount_usd: 1482
+        period: half month
+        section: 541.600(b)
+      standard_salary_monthly:
+        amount_usd: 1482
+        period: month
+        section: 541.600(b)
+      computer_employee_hourly:
+        amount_usd: 27.63
+        period: hour
+        section: 541.600(d)
+      highly_compensated_annual:
+        amount_usd: 107432
+        period: year
+        section: 541.601(a)(1)
+  vectors:
+  - input:
+      key: standard_salary_weekly
+      column: amount_usd
+    expected: 684
+    origin: source
+  - input:
+      key: computer_employee_hourly
+      column: amount_usd
+    expected: 27.63
+    origin: source
+  - input:
+      key: highly_compensated_annual
+      column: amount_usd
+    expected: 107432
+    origin: source
+  - input: standard_salary_monthly
+    expected: true
+    origin: source
+  - input: standard_salary_daily
+    expected: false
+    origin: derived
+evidence:
+- publisher: US Department of Labor, Wage and Hour Division via the eCFR API
+  title: 29 CFR part 541, Defining and Delimiting the Exemptions for Executive, Administrative, Professional, Computer
+    and Outside Sales Employees, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-29.xml?part=541
+  accessed_at: '2026-10-31'
+  locator: section 541.600(a)
+  value: $684
+  unit: currency:USD
+  snippet: salary basis at a rate of not less than $684 per week
+  source_license: unstated
+  content_sha256: 8e4581518dbbfa5cfd44f15bb86605f708d576db3818b97b40a5e98daf2c8b3b
+  role: primary
+- publisher: US Department of Labor, Wage and Hour Division via the eCFR API
+  title: 29 CFR part 541, Defining and Delimiting the Exemptions for Executive, Administrative, Professional, Computer
+    and Outside Sales Employees, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-29.xml?part=541
+  accessed_at: '2026-10-31'
+  locator: section 541.600(b)
+  value: $1,482,
+  unit: currency:USD
+  snippet: monthly on a salary basis of not less than $1,482,
+  source_license: unstated
+  content_sha256: 8e4581518dbbfa5cfd44f15bb86605f708d576db3818b97b40a5e98daf2c8b3b
+  role: primary
+- publisher: US Department of Labor, Wage and Hour Division via the eCFR API
+  title: 29 CFR part 541, Defining and Delimiting the Exemptions for Executive, Administrative, Professional, Computer
+    and Outside Sales Employees, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-29.xml?part=541
+  accessed_at: '2026-10-31'
+  locator: section 541.600(d)
+  value: $27.63
+  unit: currency:USD
+  snippet: hourly basis at a rate not less than $27.63 an hour
+  source_license: unstated
+  content_sha256: 8e4581518dbbfa5cfd44f15bb86605f708d576db3818b97b40a5e98daf2c8b3b
+  role: primary
+- publisher: US Department of Labor, Wage and Hour Division via the eCFR API
+  title: 29 CFR part 541, Defining and Delimiting the Exemptions for Executive, Administrative, Professional, Computer
+    and Outside Sales Employees, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-29.xml?part=541
+  accessed_at: '2026-10-31'
+  locator: section 541.601(a)(1)
+  value: $107,432
+  unit: currency:USD
+  snippet: total annual compensation of at least $107,432 is deemed exempt
+  source_license: unstated
+  content_sha256: 8e4581518dbbfa5cfd44f15bb86605f708d576db3818b97b40a5e98daf2c8b3b
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 29 CFR 541.600 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-29.json?section=541.600
+  accessed_at: '2026-10-31'
+  locator: content_versions[*].date, latest
+  value: '2026-05-15'
+  unit: date
+  snippet: '"date":"2026-05-15"'
+  source_license: unstated
+  content_sha256: ec739e5cde1ffafa83b9da4488da376ce4292dce55b94ba68e43a89b57cafcb6
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 8
+  tolerance: 0
+- statistic: value[standard_salary_weekly,amount_usd]
+  expected: 684
+  tolerance: 0
+- statistic: max[amount_usd]
+  expected: 107432
+  tolerance: 0
+notes: 'The minimum salary an employee must be paid to qualify for the executive, administrative or professional
+  exemption from overtime under section 13(a)(1) of the Fair Labor Standards Act, as 29 CFR 541.600 states it in
+  the eCFR text as of 2026-10-29: the standard weekly level, the lower levels for the territories, the equivalent
+  biweekly, semimonthly and monthly amounts, the hourly rate for computer employees and the total annual compensation
+  level for the highly compensated employee test of 541.601. valid_from is the date of the latest version of 541.600
+  in the eCFR versions endpoint. US federal government works carry no copyright, but neither the eCFR API nor the
+  regulation text states reuse terms, so the licence is recorded as unstated and the entry held at license-review.'

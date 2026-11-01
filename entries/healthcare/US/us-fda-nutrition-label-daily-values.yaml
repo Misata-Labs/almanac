@@ -1,0 +1,377 @@
+id: us-fda-nutrition-label-daily-values
+title: United States nutrition label daily values (RDI and DRV) by population group, 21 CFR 101.9(c)(8)(iv) and
+  (c)(9) (35 nutrients)
+kind: rule
+domain: healthcare
+region: US
+status: license-review
+tier: A
+valid_from: '2023-05-24'
+valid_to: null
+tags:
+- nutrition
+- food-labelling
+- daily-values
+- fda
+- reference-table
+- 21-cfr-101
+use_cases:
+- retail-demo
+- health-demo
+- pricing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      Vitamin D:
+        basis: RDI
+        unit: Micrograms (mcg)
+        adults_and_children_4_plus: 20
+        infants_through_12_months: 10
+        children_1_through_3: 15
+        pregnant_and_lactating: 15
+      Calcium:
+        basis: RDI
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 1300
+        infants_through_12_months: 260
+        children_1_through_3: 700
+        pregnant_and_lactating: 1300
+      Iron:
+        basis: RDI
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 18
+        infants_through_12_months: 11
+        children_1_through_3: 7
+        pregnant_and_lactating: 27
+      Potassium:
+        basis: RDI
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 4700
+        infants_through_12_months: 700
+        children_1_through_3: 3000
+        pregnant_and_lactating: 5100
+      Vitamin A:
+        basis: RDI
+        unit: Micrograms RAE (mcg)
+        adults_and_children_4_plus: 900
+        infants_through_12_months: 500
+        children_1_through_3: 300
+        pregnant_and_lactating: 1300
+      Vitamin C:
+        basis: RDI
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 90
+        infants_through_12_months: 50
+        children_1_through_3: 15
+        pregnant_and_lactating: 120
+      Vitamin E:
+        basis: RDI
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 15
+        infants_through_12_months: 5
+        children_1_through_3: 6
+        pregnant_and_lactating: 19
+      Vitamin K:
+        basis: RDI
+        unit: Micrograms (mcg)
+        adults_and_children_4_plus: 120
+        infants_through_12_months: 2.5
+        children_1_through_3: 30
+        pregnant_and_lactating: 90
+      Thiamin:
+        basis: RDI
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 1.2
+        infants_through_12_months: 0.3
+        children_1_through_3: 0.5
+        pregnant_and_lactating: 1.4
+      Riboflavin:
+        basis: RDI
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 1.3
+        infants_through_12_months: 0.4
+        children_1_through_3: 0.5
+        pregnant_and_lactating: 1.6
+      Niacin:
+        basis: RDI
+        unit: Milligrams NE (mg)
+        adults_and_children_4_plus: 16
+        infants_through_12_months: 4
+        children_1_through_3: 6
+        pregnant_and_lactating: 18
+      Vitamin B6:
+        basis: RDI
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 1.7
+        infants_through_12_months: 0.3
+        children_1_through_3: 0.5
+        pregnant_and_lactating: 2.0
+      Folate:
+        basis: RDI
+        unit: Micrograms DFE (mcg)
+        adults_and_children_4_plus: 400
+        infants_through_12_months: 80
+        children_1_through_3: 150
+        pregnant_and_lactating: 600
+      Vitamin B12:
+        basis: RDI
+        unit: Micrograms (mcg)
+        adults_and_children_4_plus: 2.4
+        infants_through_12_months: 0.5
+        children_1_through_3: 0.9
+        pregnant_and_lactating: 2.8
+      Biotin:
+        basis: RDI
+        unit: Micrograms (mcg)
+        adults_and_children_4_plus: 30
+        infants_through_12_months: 6
+        children_1_through_3: 8
+        pregnant_and_lactating: 35
+      Pantothenic acid:
+        basis: RDI
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 5
+        infants_through_12_months: 1.8
+        children_1_through_3: 2
+        pregnant_and_lactating: 7
+      Phosphorus:
+        basis: RDI
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 1250
+        infants_through_12_months: 275
+        children_1_through_3: 460
+        pregnant_and_lactating: 1250
+      Iodine:
+        basis: RDI
+        unit: Micrograms (mcg)
+        adults_and_children_4_plus: 150
+        infants_through_12_months: 130
+        children_1_through_3: 90
+        pregnant_and_lactating: 290
+      Magnesium:
+        basis: RDI
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 420
+        infants_through_12_months: 75
+        children_1_through_3: 80
+        pregnant_and_lactating: 400
+      Zinc:
+        basis: RDI
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 11
+        infants_through_12_months: 3
+        children_1_through_3: 3
+        pregnant_and_lactating: 13
+      Selenium:
+        basis: RDI
+        unit: Micrograms (mcg)
+        adults_and_children_4_plus: 55
+        infants_through_12_months: 20
+        children_1_through_3: 20
+        pregnant_and_lactating: 70
+      Copper:
+        basis: RDI
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 0.9
+        infants_through_12_months: 0.2
+        children_1_through_3: 0.3
+        pregnant_and_lactating: 1.3
+      Manganese:
+        basis: RDI
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 2.3
+        infants_through_12_months: 0.6
+        children_1_through_3: 1.2
+        pregnant_and_lactating: 2.6
+      Chromium:
+        basis: RDI
+        unit: Micrograms (mcg)
+        adults_and_children_4_plus: 35
+        infants_through_12_months: 5.5
+        children_1_through_3: 11
+        pregnant_and_lactating: 45
+      Molybdenum:
+        basis: RDI
+        unit: Micrograms (mcg)
+        adults_and_children_4_plus: 45
+        infants_through_12_months: 3
+        children_1_through_3: 17
+        pregnant_and_lactating: 50
+      Chloride:
+        basis: RDI
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 2300
+        infants_through_12_months: 570
+        children_1_through_3: 1500
+        pregnant_and_lactating: 2300
+      Choline:
+        basis: RDI
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 550
+        infants_through_12_months: 150
+        children_1_through_3: 200
+        pregnant_and_lactating: 550
+      Protein:
+        basis: RDI and DRV
+        unit: Grams (g)
+        adults_and_children_4_plus: 50
+        infants_through_12_months: 11
+        children_1_through_3: 13
+        pregnant_and_lactating: 71
+      Fat:
+        basis: DRV
+        unit: Grams (g)
+        adults_and_children_4_plus: 78
+        infants_through_12_months: 30
+        children_1_through_3: 39
+        pregnant_and_lactating: 78
+      Saturated fat:
+        basis: DRV
+        unit: Grams (g)
+        adults_and_children_4_plus: 20
+        infants_through_12_months: null
+        children_1_through_3: 10
+        pregnant_and_lactating: 20
+      Cholesterol:
+        basis: DRV
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 300
+        infants_through_12_months: null
+        children_1_through_3: 300
+        pregnant_and_lactating: 300
+      Total carbohydrate:
+        basis: DRV
+        unit: Grams (g)
+        adults_and_children_4_plus: 275
+        infants_through_12_months: 95
+        children_1_through_3: 150
+        pregnant_and_lactating: 275
+      Sodium:
+        basis: DRV
+        unit: Milligrams (mg)
+        adults_and_children_4_plus: 2300
+        infants_through_12_months: null
+        children_1_through_3: 1500
+        pregnant_and_lactating: 2300
+      Dietary Fiber:
+        basis: DRV
+        unit: Grams (g)
+        adults_and_children_4_plus: 28
+        infants_through_12_months: null
+        children_1_through_3: 14
+        pregnant_and_lactating: 28
+      Added Sugars:
+        basis: DRV
+        unit: Grams (g)
+        adults_and_children_4_plus: 50
+        infants_through_12_months: null
+        children_1_through_3: 25
+        pregnant_and_lactating: 50
+  vectors:
+  - input:
+      key: Sodium
+      column: adults_and_children_4_plus
+    expected: 2300
+    origin: source
+  - input:
+      key: Calcium
+      column: infants_through_12_months
+    expected: 260
+    origin: source
+  - input:
+      key: Vitamin D
+      column: unit
+    expected: Micrograms (mcg)
+    origin: source
+  - input:
+      key: Protein
+      column: adults_and_children_4_plus
+    expected: 50
+    origin: source
+    note: DRV table
+  - input:
+      key: Protein
+      column: infants_through_12_months
+    expected: 11
+    origin: source
+    note: RDI table
+  - input: Added Sugars
+    expected: true
+    origin: source
+  - input: Caffeine
+    expected: false
+    origin: derived
+evidence:
+- publisher: US Food and Drug Administration via the eCFR API
+  title: 21 CFR part 101, Food Labeling, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-21.xml?part=101
+  accessed_at: '2026-10-31'
+  locator: section 101.9(c)(8)(iv), RDI table, Calcium row
+  value: 1,300
+  unit: integer
+  snippet: Calcium
+  source_license: unstated
+  content_sha256: 626064ecc8ae1cd03c29455f57de3a7c66bcd1f99c4adffafa76a8cde88f6bb9
+  role: primary
+- publisher: US Food and Drug Administration via the eCFR API
+  title: 21 CFR part 101, Food Labeling, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-21.xml?part=101
+  accessed_at: '2026-10-31'
+  locator: section 101.9(c)(9), DRV table, Sodium row
+  value: 2,300
+  unit: integer
+  snippet: Sodium
+  source_license: unstated
+  content_sha256: 626064ecc8ae1cd03c29455f57de3a7c66bcd1f99c4adffafa76a8cde88f6bb9
+  role: primary
+- publisher: US Food and Drug Administration via the eCFR API
+  title: 21 CFR part 101, Food Labeling, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-21.xml?part=101
+  accessed_at: '2026-10-31'
+  locator: section 101.9(c)(9), DRV table, footnote 1
+  value: 2,000
+  unit: integer
+  snippet: Based on the reference caloric intake of 2,000 calories for adults and children aged 4 years and older
+  source_license: unstated
+  content_sha256: 626064ecc8ae1cd03c29455f57de3a7c66bcd1f99c4adffafa76a8cde88f6bb9
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 21 CFR 101.9 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-21.json?section=101.9
+  accessed_at: '2026-10-31'
+  locator: content_versions[*].date, latest
+  value: '2023-05-24'
+  unit: date
+  snippet: '"date":"2023-05-24"'
+  source_license: unstated
+  content_sha256: a399425a6a589fe4f1536ae817b8e0bf8c9875aa8001d301f0f053c61a1fa8a2
+  role: supporting
+assumed:
+- parameter: rows[*]
+  value: footnote markers removed; Protein rows merged
+  method: derived
+  rationale: Table cells carry footnote numbers before some values and after some names and units (for example '1
+    78' and 'Folate 6'); the builder keeps the value and drops the marker. Protein appears in both tables with complementary
+    N/A cells, so its RDI (infants, pregnant and lactating) and DRV (adults, children 1 through 3) figures are merged
+    into one row. N/A becomes null.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 35
+  tolerance: 0
+- statistic: value[Sodium,adults_and_children_4_plus]
+  expected: 2300
+  tolerance: 0
+- statistic: max[adults_and_children_4_plus]
+  expected: 4700
+  tolerance: 0
+notes: The Reference Daily Intakes for vitamins and minerals and the Daily Reference Values for food components
+  on which the percent Daily Value of a US Nutrition Facts label is based, for the four population groups the regulation
+  distinguishes, keyed by nutrient as the two tables in 21 CFR 101.9(c)(8)(iv) and (c)(9) print it in the eCFR text
+  as of 2026-10-29. Adult values rest on a 2,000-calorie reference intake and the children 1 through 3 values on
+  1,000 calories. valid_from is the date of the latest version of 101.9 in the eCFR versions endpoint. US federal
+  government works carry no copyright, but neither the eCFR API nor the regulation text states reuse terms, so the
+  licence is recorded as unstated and the entry held at license-review.

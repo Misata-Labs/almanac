@@ -1,0 +1,160 @@
+id: us-osha-recordkeeping-thresholds
+title: United States OSHA injury and illness recordkeeping and reporting thresholds, 29 CFR 1904
+kind: rule
+domain: employment
+region: US
+status: license-review
+tier: A
+valid_from: '2024-04-01'
+valid_to: null
+tags:
+- osha
+- workplace-safety
+- recordkeeping
+- incident-reporting
+- 29-cfr-1904
+use_cases:
+- hr-analytics
+- workforce-planning
+- sla-calculation
+- event-timestamps
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      size_exemption_max_employees:
+        value: 10
+        unit: employees at all times during the last calendar year
+        section: 1904.1(a)(1)
+      fatality_report_hours:
+        value: 8
+        unit: hours
+        section: 1904.39(a)(1)
+      hospitalization_amputation_eye_loss_report_hours:
+        value: 24
+        unit: hours
+        section: 1904.39(a)(2)
+      fatality_reportable_days_after_incident:
+        value: 30
+        unit: days
+        section: 1904.39(b)(6)
+      hospitalization_reportable_hours_after_incident:
+        value: 24
+        unit: hours
+        section: 1904.39(b)(6)
+      electronic_300a_min_employees_designated_industries:
+        value: 20
+        unit: employees
+        section: 1904.41(a)(1)(i)
+      electronic_300a_max_employees_designated_industries:
+        value: 249
+        unit: employees
+        section: 1904.41(a)(1)(i)
+      electronic_300a_min_employees_all_covered_industries:
+        value: 250
+        unit: employees
+        section: 1904.41(a)(1)(ii)
+      electronic_300_and_301_min_employees_designated_industries:
+        value: 100
+        unit: employees
+        section: 1904.41(a)(2)
+  vectors:
+  - input:
+      key: fatality_report_hours
+      column: value
+    expected: 8
+    origin: source
+  - input:
+      key: size_exemption_max_employees
+      column: value
+    expected: 10
+    origin: source
+  - input:
+      key: electronic_300a_min_employees_all_covered_industries
+      column: value
+    expected: 250
+    origin: source
+  - input: hospitalization_amputation_eye_loss_report_hours
+    expected: true
+    origin: source
+  - input: near_miss_report_hours
+    expected: false
+    origin: derived
+evidence:
+- publisher: Occupational Safety and Health Administration via the eCFR API
+  title: 29 CFR part 1904, Recording and Reporting Occupational Injuries and Illnesses, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-29.xml?part=1904
+  accessed_at: '2026-10-31'
+  locator: section 1904.1(a)(1)
+  value: 10
+  unit: integer
+  snippet: If your company had 10 or fewer employees at all times during the last calendar year
+  source_license: unstated
+  content_sha256: 15b490135189edd204adbf3414141e0e2219996218c2f7663c692c693f92025e
+  role: primary
+- publisher: Occupational Safety and Health Administration via the eCFR API
+  title: 29 CFR part 1904, Recording and Reporting Occupational Injuries and Illnesses, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-29.xml?part=1904
+  accessed_at: '2026-10-31'
+  locator: section 1904.39(a)(1)
+  value: 8
+  unit: integer
+  snippet: Within eight (8) hours after the death of any employee
+  source_license: unstated
+  content_sha256: 15b490135189edd204adbf3414141e0e2219996218c2f7663c692c693f92025e
+  role: primary
+- publisher: Occupational Safety and Health Administration via the eCFR API
+  title: 29 CFR part 1904, Recording and Reporting Occupational Injuries and Illnesses, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-29.xml?part=1904
+  accessed_at: '2026-10-31'
+  locator: section 1904.39(a)(2)
+  value: 24
+  unit: integer
+  snippet: Within twenty-four (24) hours after the in-patient hospitalization
+  source_license: unstated
+  content_sha256: 15b490135189edd204adbf3414141e0e2219996218c2f7663c692c693f92025e
+  role: primary
+- publisher: Occupational Safety and Health Administration via the eCFR API
+  title: 29 CFR part 1904, Recording and Reporting Occupational Injuries and Illnesses, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-29.xml?part=1904
+  accessed_at: '2026-10-31'
+  locator: section 1904.41(a)(1)(ii)
+  value: 250
+  unit: integer
+  snippet: If your establishment had 250 or more employees at any time during the previous calendar year
+  source_license: unstated
+  content_sha256: 15b490135189edd204adbf3414141e0e2219996218c2f7663c692c693f92025e
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 29 CFR 1904.41 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-29.json?section=1904.41
+  accessed_at: '2026-10-31'
+  locator: content_versions[*].date, latest
+  value: '2024-04-01'
+  unit: date
+  snippet: '"date":"2024-04-01"'
+  source_license: unstated
+  content_sha256: d49018e8810898f0b3fdfb4e9e18a06ea8e1fd5893e111d6cf8fc5f7de8be9a4
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 9
+  tolerance: 0
+- statistic: value[fatality_report_hours,value]
+  expected: 8
+  tolerance: 0
+- statistic: max[value]
+  expected: 250
+  tolerance: 0
+notes: 'The numeric thresholds of OSHA''s injury and illness recordkeeping rule: the company size below which routine
+  recordkeeping is not required (1904.1), the hours within which a work-related fatality and an in-patient hospitalization,
+  amputation or loss of an eye must be reported and how long after the incident each remains reportable (1904.39),
+  and the establishment sizes that trigger annual electronic submission of the Form 300A summary and of the Form
+  300 and 301 case data (1904.41). Read from the eCFR text as of 2026-10-29; valid_from is the date of the latest
+  version of 1904.41, the most recently amended of the three sections. US federal government works carry no copyright,
+  but neither the eCFR API nor the regulation text states reuse terms, so the licence is recorded as unstated and
+  the entry held at license-review.'

@@ -1,0 +1,293 @@
+id: us-nhtsa-vpic-vehicle-attribute-codes
+title: 'United States NHTSA vPIC vehicle attribute code lists: vehicle type, body class, primary fuel type and drive
+  type'
+kind: rule
+domain: automotive
+region: US
+status: license-review
+tier: A
+valid_from: '2026-10-31'
+valid_to: null
+tags:
+- vpic
+- nhtsa
+- vehicle-attributes
+- code-list
+- vin-decoding
+use_cases:
+- automotive-demo
+- fleet-demo
+- insurance
+- claims-generation
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      vehicle_type:
+        '1': Motorcycle
+        '2': Passenger Car
+        '3': Truck
+        '5': Bus
+        '6': Trailer
+        '7': Multipurpose Passenger Vehicle (MPV)
+        '9': Low Speed Vehicle (LSV)
+        '10': Incomplete Vehicle
+        '13': Off-Road Vehicle
+      body_class:
+        '1': Convertible/Cabriolet
+        '2': Minivan
+        '3': Coupe
+        '4': Low Speed Vehicle [LSV]/Neighborhood Electric Vehicle [NEV]
+        '5': Hatchback/Liftback/Notchback
+        '6': Motorcycle - Standard
+        '7': Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]
+        '8': Crossover Utility Vehicle [CUV]
+        '9': Van
+        '10': Roadster
+        '11': Truck
+        '12': Motorcycle - Scooter
+        '13': Sedan/Saloon
+        '15': Wagon
+        '16': Bus
+        '60': Pickup
+        '61': Trailer
+        '62': Incomplete - Cutaway
+        '63': Incomplete - Chassis Cab (Single Cab)
+        '64': Incomplete - Glider
+        '65': Incomplete
+        '66': Truck-Tractor
+        '67': Incomplete - Stripped Chassis
+        '68': Streetcar/Trolley
+        '69': Off-Road Vehicle - All-Terrain Vehicle [ATV] (Motorcycle-Style)
+        '70': Incomplete - Chassis Cab (Double Cab)
+        '71': Incomplete - School Bus Chassis
+        '72': Incomplete - Commercial Bus Chassis
+        '73': Bus - School Bus
+        '74': Incomplete - Chassis Cab (Number of Cab Unknown)
+        '75': Incomplete - Transit Bus Chassis
+        '76': Incomplete - Motor Coach Chassis
+        '77': Incomplete - Shuttle Bus Chassis
+        '78': Incomplete - Motor Home Chassis
+        '80': Motorcycle - Sport
+        '81': Motorcycle - Touring/Sport Touring
+        '82': Motorcycle - Cruiser
+        '83': Motorcycle - Three-Wheeled Motorcycle [2 Rear Wheels]
+        '84': Off-Road Vehicle - Dirt Bike/Off-Road
+        '85': Motorcycle - Dual-Sport/Adventure/Supermoto/On-Off Road
+        '86': Off-Road Vehicle - Enduro (Off-road long distance racing)
+        '87': Motorcycle - Small/Minibike
+        '88': Off-Road Vehicle - Go-Kart
+        '90': Motorcycle - Side Car
+        '94': Motorcycle - Custom
+        '95': Cargo Van
+        '97': Off-Road Vehicle - Snowmobile
+        '98': Motorcycle - Street
+        '100': Motorcycle - Enclosed Three Wheeled or Enclosed Autocycle [1 Rear Wheel]
+        '103': Motorcycle - Unenclosed Three Wheeled or Open Autocycle [1 Rear Wheel]
+        '104': Motorcycle - Moped
+        '105': Off-Road Vehicle - Multipurpose Off-Highway Utility Vehicle [MOHUV] or Recreational Off-Highway Vehicle
+          [ROV]
+        '107': Incomplete - Bus Chassis
+        '108': Motorhome
+        '109': Motorcycle - Cross Country
+        '110': Motorcycle - Underbone
+        '111': Step Van/Walk-in Van
+        '112': Incomplete - Commercial Chassis
+        '113': Off-Road Vehicle - Motocross (Off-road short distance, closed track racing)
+        '114': Motorcycle - Competition
+        '116': Incomplete - Trailer Chassis
+        '117': Limousine
+        '119': Sport Utility Truck [SUT]
+        '124': Off-Road Vehicle - Golf Cart
+        '125': Motorcycle - Unknown Body Class
+        '126': Off-Road Vehicle - Farm Equipment
+        '127': Off-Road Vehicle - Construction Equipment
+        '128': Ambulance
+        '129': Street Sweeper
+        '130': Fire Apparatus
+        '131': Motorcycle - Three Wheeled, Unknown Enclosure or Autocycle, Unknown Enclosure
+      fuel_type_primary:
+        '1': Diesel
+        '2': Electric
+        '4': Gasoline
+        '6': Compressed Natural Gas (CNG)
+        '7': Liquefied Natural Gas (LNG)
+        '8': Compressed Hydrogen/Hydrogen
+        '9': Liquefied Petroleum Gas (propane or LPG)
+        '10': Ethanol (E85)
+        '11': Neat Ethanol (E100)
+        '13': Methanol (M85)
+        '14': Neat Methanol (M100)
+        '15': Flexible Fuel Vehicle (FFV)
+        '17': Natural Gas
+        '18': Fuel Cell
+      drive_type:
+        '1': FWD/Front-Wheel Drive
+        '2': 4WD/4-Wheel Drive/4x4
+        '3': AWD/All-Wheel Drive
+        '4': RWD/Rear-Wheel Drive
+        '5': 6x4
+        '6': Other
+        '7': 4x2
+        '8': Glider
+        '9': 6x2
+        '10': 8x8
+        '12': 8x4
+        '13': 6x6
+        '14': 8x6
+        '15': 10x4
+        '16': 10x6
+        '17': 12x4
+        '18': 12x6
+        '19': 14x4
+        '20': 8x2
+        '21': 10x10
+        '22': 14x6
+        '23': 10x8
+        '24': 2WD/4WD
+  vectors:
+  - input:
+      set: vehicle_type
+      value: '2'
+    expected: true
+    origin: source
+    note: Passenger Car
+  - input:
+      set: body_class
+      value: '1'
+    expected: true
+    origin: source
+    note: Convertible/Cabriolet
+  - input:
+      set: fuel_type_primary
+      value: '1'
+    expected: true
+    origin: source
+    note: Diesel
+  - input:
+      set: drive_type
+      value: '1'
+    expected: true
+    origin: source
+    note: FWD/Front-Wheel Drive
+  - input:
+      set: vehicle_type
+      value: '0'
+    expected: false
+    origin: derived
+evidence:
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, GetVehicleVariableValuesList for Vehicle Type (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleVariableValuesList/Vehicle%20Type?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[Id=1].Name
+  value: Motorcycle
+  unit: text
+  snippet: '"Id":1,"Name":"Motorcycle"'
+  source_license: unstated
+  content_sha256: 59a777c4e25ba665bdb210ce047be76426f87d8a634f9607c42d51a8bc45401d
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, GetVehicleVariableValuesList for Vehicle Type (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleVariableValuesList/Vehicle%20Type?format=json
+  accessed_at: '2026-10-31'
+  locator: Count
+  value: 9
+  unit: count
+  snippet: '"Count":9'
+  source_license: unstated
+  content_sha256: 59a777c4e25ba665bdb210ce047be76426f87d8a634f9607c42d51a8bc45401d
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, GetVehicleVariableValuesList for Body Class (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleVariableValuesList/Body%20Class?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[Id=2].Name
+  value: Minivan
+  unit: text
+  snippet: '"Id":2,"Name":"Minivan"'
+  source_license: unstated
+  content_sha256: 77dac4fab060b62c13d671201e41a8e9b0a61e138c7fb2fe2eee6642d4004328
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, GetVehicleVariableValuesList for Body Class (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleVariableValuesList/Body%20Class?format=json
+  accessed_at: '2026-10-31'
+  locator: Count
+  value: 71
+  unit: count
+  snippet: '"Count":71'
+  source_license: unstated
+  content_sha256: 77dac4fab060b62c13d671201e41a8e9b0a61e138c7fb2fe2eee6642d4004328
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, GetVehicleVariableValuesList for Fuel Type - Primary (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleVariableValuesList/Fuel%20Type%20-%20Primary?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[Id=1].Name
+  value: Diesel
+  unit: text
+  snippet: '"Id":1,"Name":"Diesel"'
+  source_license: unstated
+  content_sha256: 1b28847df94f5f4ad42334d1bdbb474a717568a3f6e0bbdf5c30256d537a1305
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, GetVehicleVariableValuesList for Fuel Type - Primary (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleVariableValuesList/Fuel%20Type%20-%20Primary?format=json
+  accessed_at: '2026-10-31'
+  locator: Count
+  value: 14
+  unit: count
+  snippet: '"Count":14'
+  source_license: unstated
+  content_sha256: 1b28847df94f5f4ad42334d1bdbb474a717568a3f6e0bbdf5c30256d537a1305
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, GetVehicleVariableValuesList for Drive Type (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleVariableValuesList/Drive%20Type?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[Id=5].Name
+  value: 6x4
+  unit: text
+  snippet: '"Id":5,"Name":"6x4"'
+  source_license: unstated
+  content_sha256: 4310ba7103a85c2ba1c11de5c8098742d802e2418654c6d3d6a85f10da9ec80d
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, GetVehicleVariableValuesList for Drive Type (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleVariableValuesList/Drive%20Type?format=json
+  accessed_at: '2026-10-31'
+  locator: Count
+  value: 23
+  unit: count
+  snippet: '"Count":23'
+  source_license: unstated
+  content_sha256: 4310ba7103a85c2ba1c11de5c8098742d802e2418654c6d3d6a85f10da9ec80d
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2026-10-31'
+  method: assumed
+  rationale: The vPIC lists carry no effective date; valid_from is the day the lists were fetched, and the lists
+    may grow as NHTSA adds values.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[vehicle_type]
+  expected: 9
+  tolerance: 0
+- statistic: count[body_class]
+  expected: 71
+  tolerance: 0
+- statistic: count[fuel_type_primary]
+  expected: 14
+  tolerance: 0
+- statistic: count[drive_type]
+  expected: 23
+  tolerance: 0
+notes: The closed value lists NHTSA's Product Information Catalog and Vehicle Listing (vPIC) uses for four attributes
+  of a decoded VIN, keyed by the vPIC numeric Id with the published Name as the label. They give a generator the
+  exact vocabulary a vPIC decode returns for vehicle type, body class, primary fuel type and drive type, so synthetic
+  fleet and policy records match what a VIN lookup would produce. US federal government works carry no copyright,
+  but the vPIC API states no reuse terms, so the licence is recorded as unstated and the entry held at license-review.

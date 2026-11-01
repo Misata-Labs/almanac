@@ -1,0 +1,437 @@
+id: us-nhtsa-wmi-manufacturers
+title: United States NHTSA vPIC decode of 20 well-known world manufacturer identifiers (VIN positions 1 to 3)
+kind: rule
+domain: automotive
+region: US
+status: license-review
+tier: A
+valid_from: '2026-10-31'
+valid_to: null
+tags:
+- vin
+- wmi
+- manufacturer
+- nhtsa
+- vpic
+- reference-table
+use_cases:
+- automotive-demo
+- fleet-demo
+- insurance
+- claims-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      1HG:
+        make: HONDA
+        manufacturer: AMERICAN HONDA MOTOR CO., INC.
+        vehicle_type: Passenger Car
+        common_name: Honda
+        parent_company: null
+        available_to_public_from: '2015-01-01'
+      1G1:
+        make: CHEVROLET
+        manufacturer: GENERAL MOTORS LLC
+        vehicle_type: Passenger Car
+        common_name: General Motors
+        parent_company: null
+        available_to_public_from: '2015-01-01'
+      1FA:
+        make: FORD
+        manufacturer: FORD MOTOR COMPANY
+        vehicle_type: Passenger Car
+        common_name: Ford
+        parent_company: null
+        available_to_public_from: '2015-01-01'
+      1FT:
+        make: FORD
+        manufacturer: FORD MOTOR COMPANY
+        vehicle_type: Truck
+        common_name: Ford
+        parent_company: null
+        available_to_public_from: '2015-01-01'
+      1C4:
+        make: DODGE, CHRYSLER, VOLKSWAGEN, JEEP, FIAT, RAM, LANCIA
+        manufacturer: FCA US LLC
+        vehicle_type: Multipurpose Passenger Vehicle (MPV)
+        common_name: Chrysler
+        parent_company: null
+        available_to_public_from: '2015-01-01'
+      1N4:
+        make: NISSAN, INFINITI
+        manufacturer: NISSAN NORTH AMERICA, INC.
+        vehicle_type: Passenger Car
+        common_name: Nissan
+        parent_company: NISSAN MOTOR COMPANY, LTD
+        available_to_public_from: '2015-01-01'
+      2T1:
+        make: TOYOTA
+        manufacturer: TOYOTA MOTOR MANUFACTURING CANADA
+        vehicle_type: Passenger Car
+        common_name: Toyota
+        parent_company: TOYOTA MOTOR CORPORATION
+        available_to_public_from: '2015-01-01'
+      3VW:
+        make: VOLKSWAGEN
+        manufacturer: VOLKSWAGEN DE MEXICO SA DE CV
+        vehicle_type: Passenger Car
+        common_name: Volkswagen
+        parent_company: null
+        available_to_public_from: '2015-01-01'
+      4T1:
+        make: TOYOTA
+        manufacturer: TOYOTA MOTOR MANUFACTURING, KENTUCKY, INC.
+        vehicle_type: Passenger Car
+        common_name: Toyota
+        parent_company: TOYOTA MOTOR CORPORATION
+        available_to_public_from: '2015-01-01'
+      5YJ:
+        make: TESLA
+        manufacturer: TESLA, INC.
+        vehicle_type: Passenger Car
+        common_name: Tesla
+        parent_company: null
+        available_to_public_from: '2015-01-01'
+      JHM:
+        make: HONDA
+        manufacturer: HONDA MOTOR CO., LTD.
+        vehicle_type: Passenger Car
+        common_name: Honda
+        parent_company: null
+        available_to_public_from: '2015-01-01'
+      JTD:
+        make: TOYOTA
+        manufacturer: TOYOTA MOTOR CORPORATION
+        vehicle_type: Passenger Car
+        common_name: Toyota
+        parent_company: null
+        available_to_public_from: '2015-01-01'
+      KMH:
+        make: HYUNDAI, GENESIS
+        manufacturer: HYUNDAI MOTOR CO
+        vehicle_type: Passenger Car
+        common_name: Hyundai
+        parent_company: HYUNDAI MOTOR MANUFACTURING ALABAMA LLC (HMMA)
+        available_to_public_from: '2015-01-01'
+      WBA:
+        make: BMW
+        manufacturer: BMW AG
+        vehicle_type: Passenger Car
+        common_name: BMW
+        parent_company: BMW OF NORTH AMERICA, LLC
+        available_to_public_from: '2015-01-01'
+      WVW:
+        make: VOLKSWAGEN
+        manufacturer: VOLKSWAGEN AG
+        vehicle_type: Passenger Car
+        common_name: Volkswagen
+        parent_company: null
+        available_to_public_from: '2015-01-01'
+      WDD:
+        make: MERCEDES-BENZ
+        manufacturer: MERCEDES-BENZ CARS
+        vehicle_type: Passenger Car
+        common_name: Mercedes-Benz
+        parent_company: MERCEDES-BENZ, AG
+        available_to_public_from: '2015-01-01'
+      WAU:
+        make: AUDI
+        manufacturer: AUDI AG
+        vehicle_type: Passenger Car
+        common_name: Audi
+        parent_company: VOLKSWAGEN AG
+        available_to_public_from: '2015-01-01'
+      SAL:
+        make: LAND ROVER
+        manufacturer: JAGUAR LAND ROVER LIMITED
+        vehicle_type: Multipurpose Passenger Vehicle (MPV)
+        common_name: Jaguar Land Rover
+        parent_company: JAGUAR LAND ROVER LIMITED
+        available_to_public_from: '2015-01-01'
+      YV1:
+        make: VOLVO
+        manufacturer: VOLVO CAR CORPORATION
+        vehicle_type: Passenger Car
+        common_name: Volvo
+        parent_company: null
+        available_to_public_from: '2015-01-01'
+      ZFF:
+        make: FERRARI
+        manufacturer: FERRARI S.P.A.
+        vehicle_type: Passenger Car
+        common_name: Ferrari
+        parent_company: null
+        available_to_public_from: '2015-01-01'
+  vectors:
+  - input:
+      key: 1HG
+      column: make
+    expected: HONDA
+    origin: source
+  - input:
+      key: WBA
+      column: manufacturer
+    expected: BMW AG
+    origin: source
+  - input:
+      key: 1FT
+      column: vehicle_type
+    expected: Truck
+    origin: source
+  - input: 5YJ
+    expected: true
+    origin: source
+  - input: ZZZ
+    expected: false
+    origin: derived
+    note: not among the identifiers kept here
+evidence:
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI 1HG (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/1HG?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: AMERICAN HONDA MOTOR CO., INC.
+  unit: text
+  snippet: '"ManufacturerName":"AMERICAN HONDA MOTOR CO., INC."'
+  source_license: unstated
+  content_sha256: 70724320dbd67d8dd2e7aa8f5becded493bea98be7bd21835c5acb69bdb00811
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI 1G1 (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/1G1?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: GENERAL MOTORS LLC
+  unit: text
+  snippet: '"ManufacturerName":"GENERAL MOTORS LLC"'
+  source_license: unstated
+  content_sha256: 5837062850c99a758126f83952a80ce163aae2936ae74c026596e9fbdd3ab13b
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI 1FA (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/1FA?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: FORD MOTOR COMPANY
+  unit: text
+  snippet: '"ManufacturerName":"FORD MOTOR COMPANY"'
+  source_license: unstated
+  content_sha256: 561258ab23652d8306890017f132dad984abdb2ec95433da496837d075d62420
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI 1FT (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/1FT?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: FORD MOTOR COMPANY
+  unit: text
+  snippet: '"ManufacturerName":"FORD MOTOR COMPANY"'
+  source_license: unstated
+  content_sha256: eb1b33b1f92b591b69d808b3d39e503845672d2cbdef1098f153bb9807088718
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI 1C4 (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/1C4?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: FCA US LLC
+  unit: text
+  snippet: '"ManufacturerName":"FCA US LLC"'
+  source_license: unstated
+  content_sha256: 242a0358dbd3a534df78683d1413b3d86db6c0c91e34e8dc0d4085b6e9797346
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI 1N4 (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/1N4?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: NISSAN NORTH AMERICA, INC.
+  unit: text
+  snippet: '"ManufacturerName":"NISSAN NORTH AMERICA, INC."'
+  source_license: unstated
+  content_sha256: 5ce63448d5c016a1a5789340d0f26a92e35380e78488a291f0530a1e1ea43c28
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI 2T1 (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/2T1?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: TOYOTA MOTOR MANUFACTURING CANADA
+  unit: text
+  snippet: '"ManufacturerName":"TOYOTA MOTOR MANUFACTURING CANADA"'
+  source_license: unstated
+  content_sha256: 57738835db63e0114e85b3b1f17f5e1cb9b18addde9bde2b402f92082bab6ce5
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI 3VW (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/3VW?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: VOLKSWAGEN DE MEXICO SA DE CV
+  unit: text
+  snippet: '"ManufacturerName":"VOLKSWAGEN DE MEXICO SA DE CV"'
+  source_license: unstated
+  content_sha256: 723a565586a2c4b006fb02f8df5fd1e7e03f0553f72d131b3f3b1645e87bd269
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI 4T1 (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/4T1?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: TOYOTA MOTOR MANUFACTURING, KENTUCKY, INC.
+  unit: text
+  snippet: '"ManufacturerName":"TOYOTA MOTOR MANUFACTURING, KENTUCKY, INC."'
+  source_license: unstated
+  content_sha256: e4680cee76eaba9f84cb76b12ca68b2f694f4e887c4d2fbb7ae50dce04898dfb
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI 5YJ (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/5YJ?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: TESLA, INC.
+  unit: text
+  snippet: '"ManufacturerName":"TESLA, INC."'
+  source_license: unstated
+  content_sha256: 0ae0b3fa036959fe2c4ddd088e103ef399f818042bd644fc1d476d505c1be3f2
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI JHM (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/JHM?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: HONDA MOTOR CO., LTD.
+  unit: text
+  snippet: '"ManufacturerName":"HONDA MOTOR CO., LTD."'
+  source_license: unstated
+  content_sha256: e744b3c34751561e5a5ca39daa8be95ed45ab9dbc1110b3ba8d57ebd4292e71f
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI JTD (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/JTD?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: TOYOTA MOTOR CORPORATION
+  unit: text
+  snippet: '"ManufacturerName":"TOYOTA MOTOR CORPORATION"'
+  source_license: unstated
+  content_sha256: 67cd4eb63282fd48b59edab92036c74798ffea0582d39ddec09972f976062d00
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI KMH (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/KMH?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: HYUNDAI MOTOR CO
+  unit: text
+  snippet: '"ManufacturerName":"HYUNDAI MOTOR CO"'
+  source_license: unstated
+  content_sha256: 054e3a18ad46a0e2212c83813920b7abfef84a9ba761722ab8a148ba52dbd7c0
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI WBA (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/WBA?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: BMW AG
+  unit: text
+  snippet: '"ManufacturerName":"BMW AG"'
+  source_license: unstated
+  content_sha256: aefb26fa5347b60c14f8c67a66a2a7f1c6b4793c025963f8a313051d6dccd6c4
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI WVW (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/WVW?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: VOLKSWAGEN AG
+  unit: text
+  snippet: '"ManufacturerName":"VOLKSWAGEN AG"'
+  source_license: unstated
+  content_sha256: 55693ade02802b5a622b00abbe12c1f4ff6fa590b2b749be9101f18226224338
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI WDD (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/WDD?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: MERCEDES-BENZ CARS
+  unit: text
+  snippet: '"ManufacturerName":"MERCEDES-BENZ CARS"'
+  source_license: unstated
+  content_sha256: 695b3fb3a4e9eb140445a9a44d4bf76577ac059503db53911967f3c60a3388aa
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI WAU (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/WAU?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: AUDI AG
+  unit: text
+  snippet: '"ManufacturerName":"AUDI AG"'
+  source_license: unstated
+  content_sha256: 9a5fd8eccce6d9ae41f0004762721d59daa74216a40bd92041931c60350ea8b6
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI SAL (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/SAL?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: JAGUAR LAND ROVER LIMITED
+  unit: text
+  snippet: '"ManufacturerName":"JAGUAR LAND ROVER LIMITED"'
+  source_license: unstated
+  content_sha256: 097280c55477413a1396a97d071290325ef582a6548008adda528ac9b7322615
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI YV1 (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/YV1?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: VOLVO CAR CORPORATION
+  unit: text
+  snippet: '"ManufacturerName":"VOLVO CAR CORPORATION"'
+  source_license: unstated
+  content_sha256: 96020c6f7db7984332ac1a179e7d919e6e74468c2b7589bf4fe202877e154da5
+  role: primary
+- publisher: National Highway Traffic Safety Administration
+  title: vPIC API, DecodeWMI ZFF (JSON)
+  url: https://vpic.nhtsa.dot.gov/api/vehicles/DecodeWMI/ZFF?format=json
+  accessed_at: '2026-10-31'
+  locator: Results[0].ManufacturerName
+  value: FERRARI S.P.A.
+  unit: text
+  snippet: '"ManufacturerName":"FERRARI S.P.A."'
+  source_license: unstated
+  content_sha256: aae1d48822eec3958a2ee4eef72de12240e40d847eac6dcf51d2129bc7da2de1
+  role: primary
+assumed:
+- parameter: rows
+  value: a hand-picked subset of identifiers
+  method: assumed
+  rationale: The identifiers were chosen as widely seen prefixes of passenger car and light truck VINs; the decoded
+    values are copied from the vPIC responses, but the selection is the builder's and is not a complete list of
+    any kind.
+- parameter: valid_from
+  value: '2026-10-31'
+  method: assumed
+  rationale: The decode responses carry creation dates for each record but no effective date for the assignment;
+    valid_from is the fetch date.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 20
+  tolerance: 0
+- statistic: value[JHM,make]
+  expected: HONDA
+  tolerance: 0
+notes: The make, manufacturer and vehicle type NHTSA's vPIC service decodes for a set of common world manufacturer
+  identifiers, the first three characters of a VIN, one API call per identifier. The table lets a generator pair
+  a plausible VIN prefix with the make and vehicle type a decoder would report, while us-vin-check-digit supplies
+  the check digit. Where the vPIC Make field lists several brands the value is kept as published. US federal government
+  works carry no copyright, but the vPIC API states no reuse terms, so the licence is recorded as unstated and the
+  entry held at license-review.

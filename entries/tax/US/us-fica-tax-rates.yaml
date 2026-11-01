@@ -1,0 +1,196 @@
+id: us-fica-tax-rates
+title: 'United States FICA payroll tax rates: Social Security and Medicare, employee and employer, 26 U.S.C. 3101
+  and 3111'
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2014-12-19'
+valid_to: null
+tags:
+- fica
+- payroll-tax
+- social-security
+- medicare
+- 26-usc-3101
+use_cases:
+- payroll-demo
+- tax-filing-demo
+- hr-analytics
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: USD
+    rows:
+      employee_oasdi:
+        rate_percent: 6.2
+        payer: employee
+        section: 3101(a)
+        threshold_usd: null
+      employee_hospital_insurance:
+        rate_percent: 1.45
+        payer: employee
+        section: 3101(b)(1)
+        threshold_usd: null
+      employee_additional_hospital_insurance_joint_return:
+        rate_percent: 0.9
+        payer: employee
+        section: 3101(b)(2)(A)
+        threshold_usd: 250000
+      employee_additional_hospital_insurance_married_filing_separately:
+        rate_percent: 0.9
+        payer: employee
+        section: 3101(b)(2)(B)
+        threshold_usd: 125000
+        threshold_rule: ½ of the dollar amount determined under subparagraph (A)
+      employee_additional_hospital_insurance_other:
+        rate_percent: 0.9
+        payer: employee
+        section: 3101(b)(2)(C)
+        threshold_usd: 200000
+      employer_oasdi:
+        rate_percent: 6.2
+        payer: employer
+        section: 3111(a)
+        threshold_usd: null
+      employer_hospital_insurance:
+        rate_percent: 1.45
+        payer: employer
+        section: 3111(b)
+        threshold_usd: null
+  vectors:
+  - input:
+      key: employee_oasdi
+      column: rate_percent
+    expected: 6.2
+    origin: source
+  - input:
+      key: employer_hospital_insurance
+      column: rate_percent
+    expected: 1.45
+    origin: source
+  - input:
+      key: employee_additional_hospital_insurance_other
+      column: threshold_usd
+    expected: 200000
+    origin: source
+  - input: employee_additional_hospital_insurance_joint_return
+    expected: true
+    origin: source
+  - input: self_employment_oasdi
+    expected: false
+    origin: derived
+    note: self-employment tax is in 26 U.S.C. 1401, not covered here
+evidence:
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 3101, Rate of tax (employee FICA; United States Code 2023 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title26/html/USCODE-2023-title26-subtitleC-chap21-subchapA-sec3101.htm
+  accessed_at: '2026-10-31'
+  locator: subsection (a)
+  value: 6.2 percent
+  unit: percent
+  snippet: a tax equal to 6.2 percent of the wages
+  source_license: unstated
+  content_sha256: 48b204840b02890e73f524489e935b3f55dac6a0c2a5e9203fe3e206d6d2aee8
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 3101, Rate of tax (employee FICA; United States Code 2023 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title26/html/USCODE-2023-title26-subtitleC-chap21-subchapA-sec3101.htm
+  accessed_at: '2026-10-31'
+  locator: subsection (b)(1)
+  value: 1.45 percent
+  unit: percent
+  snippet: a tax equal to 1.45 percent of the wages
+  source_license: unstated
+  content_sha256: 48b204840b02890e73f524489e935b3f55dac6a0c2a5e9203fe3e206d6d2aee8
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 3101, Rate of tax (employee FICA; United States Code 2023 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title26/html/USCODE-2023-title26-subtitleC-chap21-subchapA-sec3101.htm
+  accessed_at: '2026-10-31'
+  locator: subsection (b)(2)
+  value: 0.9 percent
+  unit: percent
+  snippet: a tax equal to 0.9 percent of wages which are received with respect to employment
+  source_license: unstated
+  content_sha256: 48b204840b02890e73f524489e935b3f55dac6a0c2a5e9203fe3e206d6d2aee8
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 3101, Rate of tax (employee FICA; United States Code 2023 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title26/html/USCODE-2023-title26-subtitleC-chap21-subchapA-sec3101.htm
+  accessed_at: '2026-10-31'
+  locator: subsection (b)(2)(A)
+  value: $250,000
+  unit: currency:USD
+  snippet: in the case of a joint return, $250,000
+  source_license: unstated
+  content_sha256: 48b204840b02890e73f524489e935b3f55dac6a0c2a5e9203fe3e206d6d2aee8
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 3111, Rate of tax (employer FICA; United States Code 2023 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title26/html/USCODE-2023-title26-subtitleC-chap21-subchapB-sec3111.htm
+  accessed_at: '2026-10-31'
+  locator: subsection (a)
+  value: 6.2 percent
+  unit: percent
+  snippet: equal to 6.2 percent of the wages (as defined in section 3121(a)) paid by the employer
+  source_license: unstated
+  content_sha256: 07d871e84cce9070b2b244949399da8a3ccfdc85c010cb7dd08c04036ad0063a
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 3111, Rate of tax (employer FICA; United States Code 2023 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title26/html/USCODE-2023-title26-subtitleC-chap21-subchapB-sec3111.htm
+  accessed_at: '2026-10-31'
+  locator: subsection (b)
+  value: 1.45 percent
+  unit: percent
+  snippet: equal to 1.45 percent of the wages (as defined in section 3121(a)) paid by the employer
+  source_license: unstated
+  content_sha256: 07d871e84cce9070b2b244949399da8a3ccfdc85c010cb7dd08c04036ad0063a
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 3101, Rate of tax (employee FICA; United States Code 2023 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title26/html/USCODE-2023-title26-subtitleC-chap21-subchapA-sec3101.htm
+  accessed_at: '2026-10-31'
+  locator: Effective Date of 2014 Amendment note
+  value: Dec. 19, 2014
+  unit: text
+  snippet: effective Dec. 19, 2014, subject to a savings provision
+  source_license: unstated
+  content_sha256: 48b204840b02890e73f524489e935b3f55dac6a0c2a5e9203fe3e206d6d2aee8
+  role: supporting
+assumed:
+- parameter: rows.employee_additional_hospital_insurance_married_filing_separately.threshold_usd
+  value: 125000
+  method: derived
+  rationale: Subparagraph (B) states the threshold as half of the joint-return amount rather than as a figure; threshold_rule
+    keeps the statutory wording.
+- parameter: valid_from
+  value: '2014-12-19'
+  method: derived
+  rationale: The current wording of the rate subsections dates from the 2014 amendment whose effective date the
+    section's notes give; the rates themselves have applied since earlier years, and the additional Medicare tax
+    since taxable years beginning after December 31, 2012.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 7
+  tolerance: 0
+- statistic: value[employee_oasdi,rate_percent]
+  expected: 6.2
+  tolerance: 0
+- statistic: max[threshold_usd]
+  expected: 250000
+  tolerance: 0
+notes: 'The Federal Insurance Contributions Act rates: the old-age, survivors and disability insurance (Social Security)
+  and hospital insurance (Medicare) taxes on wages paid by the employee (26 U.S.C. 3101) and by the employer (26
+  U.S.C. 3111), and the additional hospital insurance tax on an employee''s wages above a filing-status threshold.
+  The statute states no wage base for the Social Security tax; the annual contribution and benefit base is set under
+  42 U.S.C. 430 and published by the Social Security Administration, and is not part of this entry. The married-filing-separately
+  threshold is stated in the statute as half of the joint-return amount; threshold_rule carries that wording and
+  threshold_usd the result. US federal statutes carry no copyright, but the govinfo page states no reuse terms,
+  so the licence is recorded as unstated and the entry held at license-review; the HTML form of the source makes
+  the entry tier B.'

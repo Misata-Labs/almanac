@@ -1,0 +1,156 @@
+id: us-fmla-eligibility-and-leave-thresholds
+title: United States FMLA employer coverage, employee eligibility and leave entitlement thresholds, 29 CFR 825
+kind: rule
+domain: employment
+region: US
+status: license-review
+tier: A
+valid_from: '2016-12-01'
+valid_to: null
+tags:
+- fmla
+- leave
+- eligibility
+- hr-policy
+- 29-cfr-825
+use_cases:
+- hr-analytics
+- workforce-planning
+- payroll-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      employer_coverage_min_employees:
+        value: 50
+        unit: employees for each working day
+        section: 825.104(a)
+      employer_coverage_min_workweeks:
+        value: 20
+        unit: calendar workweeks in the current or preceding calendar year
+        section: 825.104(a)
+      employee_min_months_employed:
+        value: 12
+        unit: months
+        section: 825.110(a)(1)
+      employee_min_hours_of_service:
+        value: 1250
+        unit: hours in the preceding 12 months
+        section: 825.110(a)(2)
+      worksite_min_employees:
+        value: 50
+        unit: employees
+        section: 825.110(a)(3)
+      worksite_radius_miles:
+        value: 75
+        unit: miles
+        section: 825.110(a)(3)
+      break_in_service_years_not_counted:
+        value: 7
+        unit: years
+        section: 825.110(b)(1)
+      leave_entitlement_workweeks:
+        value: 12
+        unit: workweeks per 12-month period
+        section: 825.200(a)
+      servicemember_caregiver_leave_workweeks:
+        value: 26
+        unit: workweeks in a single 12-month period
+        section: 825.200(f)
+  vectors:
+  - input:
+      key: employee_min_hours_of_service
+      column: value
+    expected: 1250
+    origin: source
+  - input:
+      key: leave_entitlement_workweeks
+      column: value
+    expected: 12
+    origin: source
+  - input:
+      key: employer_coverage_min_employees
+      column: value
+    expected: 50
+    origin: source
+  - input: servicemember_caregiver_leave_workweeks
+    expected: true
+    origin: source
+  - input: paid_leave_workweeks
+    expected: false
+    origin: derived
+evidence:
+- publisher: US Department of Labor, Wage and Hour Division via the eCFR API
+  title: 29 CFR part 825, The Family and Medical Leave Act of 1993, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-29.xml?part=825
+  accessed_at: '2026-10-31'
+  locator: section 825.104(a)
+  value: 50
+  unit: integer
+  snippet: who employs 50 or more employees for each working day
+  source_license: unstated
+  content_sha256: c5dd7c200a99559b6f32cc32fec4d4be2c18203ae1482ea006b53bbaa5bf3251
+  role: primary
+- publisher: US Department of Labor, Wage and Hour Division via the eCFR API
+  title: 29 CFR part 825, The Family and Medical Leave Act of 1993, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-29.xml?part=825
+  accessed_at: '2026-10-31'
+  locator: section 825.110(a)(2)
+  value: 1,250
+  unit: integer
+  snippet: Has been employed for at least 1,250 hours of service
+  source_license: unstated
+  content_sha256: c5dd7c200a99559b6f32cc32fec4d4be2c18203ae1482ea006b53bbaa5bf3251
+  role: primary
+- publisher: US Department of Labor, Wage and Hour Division via the eCFR API
+  title: 29 CFR part 825, The Family and Medical Leave Act of 1993, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-29.xml?part=825
+  accessed_at: '2026-10-31'
+  locator: section 825.110(a)(3)
+  value: 75
+  unit: integer
+  snippet: Is employed at a worksite where 50 or more employees are employed by the employer within 75 miles
+  source_license: unstated
+  content_sha256: c5dd7c200a99559b6f32cc32fec4d4be2c18203ae1482ea006b53bbaa5bf3251
+  role: primary
+- publisher: US Department of Labor, Wage and Hour Division via the eCFR API
+  title: 29 CFR part 825, The Family and Medical Leave Act of 1993, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-29.xml?part=825
+  accessed_at: '2026-10-31'
+  locator: section 825.200(a)
+  value: 12
+  unit: integer
+  snippet: limited to a total of 12 workweeks of leave during any 12-month period
+  source_license: unstated
+  content_sha256: c5dd7c200a99559b6f32cc32fec4d4be2c18203ae1482ea006b53bbaa5bf3251
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 29 CFR 825.110 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-29.json?section=825.110
+  accessed_at: '2026-10-31'
+  locator: content_versions[*].date, latest
+  value: '2016-12-01'
+  unit: date
+  snippet: '"date":"2016-12-01"'
+  source_license: unstated
+  content_sha256: da5548e379fbb127d6a9c56c86ddd7fb7692d58eb053cdb99132ced050b217d4
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 9
+  tolerance: 0
+- statistic: value[employee_min_hours_of_service,value]
+  expected: 1250
+  tolerance: 0
+- statistic: max[value]
+  expected: 1250
+  tolerance: 0
+notes: The thresholds that decide whether an employer is covered by the Family and Medical Leave Act, whether an
+  employee is eligible for leave, and how much leave the Act provides, as 29 CFR 825.104, 825.110 and 825.200 state
+  them in the eCFR text as of 2026-10-29. valid_from is the date of the latest version of 825.110 in the eCFR versions
+  endpoint. US federal government works carry no copyright, but neither the eCFR API nor the regulation text states
+  reuse terms, so the licence is recorded as unstated and the entry held at license-review.
