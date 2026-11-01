@@ -19,7 +19,7 @@ def test_entries_exist():
 
 @pytest.mark.parametrize("path", ENTRY_PATHS, ids=[p.stem for p in ENTRY_PATHS])
 def test_entry_passes_offline_checks(schema, path):
-    report = Verifier(schema, None, today=date(2026, 10, 31), sample_size=200_000).verify(read_entry_file(path))
+    report = Verifier(schema, None, today=date.today(), sample_size=200_000).verify(read_entry_file(path))
     failures = [(r.name, r.detail) for r in report.results if r.failed]
     assert not failures, failures
 
