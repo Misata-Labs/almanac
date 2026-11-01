@@ -1,0 +1,466 @@
+id: global-hospital-beds-per-1000-2022
+title: Hospital beds (per 1,000 people), by economy, 2022 (World Bank, 111 economies)
+kind: rule
+domain: healthcare
+region: global
+status: verified
+tier: A
+valid_from: '2022-01-01'
+valid_to: '2022-12-31'
+tags:
+- health
+- hospitals
+- capacity
+- world-bank
+- reference-table
+use_cases:
+- health-demo
+- capacity-planning
+- clinical-records
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    indicator: SH.MED.BEDS.ZS
+    year: 2022
+    variable: hospital_beds_per_1000
+    unit: ratio
+    rows:
+      AFG:
+        name: Afghanistan
+        value: 0.36
+      ARE:
+        name: United Arab Emirates
+        value: 1.87
+      ARG:
+        name: Argentina
+        value: 3.36
+      ARM:
+        name: Armenia
+        value: 4.2
+      ATG:
+        name: Antigua and Barbuda
+        value: 3.44
+      AUT:
+        name: Austria
+        value: 6.7
+      AZE:
+        name: Azerbaijan
+        value: 3.8
+      BEL:
+        name: Belgium
+        value: 5.46
+      BGD:
+        name: Bangladesh
+        value: 1.01
+      BGR:
+        name: Bulgaria
+        value: 8.01
+      BHR:
+        name: Bahrain
+        value: 1.84
+      BHS:
+        name: Bahamas, The
+        value: 2.21
+      BLR:
+        name: Belarus
+        value: 9.93
+      BLZ:
+        name: Belize
+        value: 1.07
+      BOL:
+        name: Bolivia
+        value: 1.39
+      BRB:
+        name: Barbados
+        value: 6.27
+      BRN:
+        name: Brunei Darussalam
+        value: 4.19
+      BTN:
+        name: Bhutan
+        value: 2.19
+      BWA:
+        name: Botswana
+        value: 2.36
+      CAN:
+        name: Canada
+        value: 2.54
+      CHE:
+        name: Switzerland
+        value: 4.41
+      CHL:
+        name: Chile
+        value: 1.95
+      CHN:
+        name: China
+        value: 5.38
+      CPV:
+        name: Cabo Verde
+        value: 2.21
+      CRI:
+        name: Costa Rica
+        value: 1.14
+      CUB:
+        name: Cuba
+        value: 4.32
+      CYP:
+        name: Cyprus
+        value: 2.15
+      CZE:
+        name: Czechia
+        value: 6.54
+      DEU:
+        name: Germany
+        value: 7.64
+      DMA:
+        name: Dominica
+        value: 3.95
+      DNK:
+        name: Denmark
+        value: 2.48
+      DOM:
+        name: Dominican Republic
+        value: 1.51
+      ECU:
+        name: Ecuador
+        value: 1.31
+      ERI:
+        name: Eritrea
+        value: 1.04
+      ESP:
+        name: Spain
+        value: 2.94
+      EST:
+        name: Estonia
+        value: 4.19
+      FIN:
+        name: Finland
+        value: 2.61
+      FRA:
+        name: France
+        value: 5.65
+      GBR:
+        name: United Kingdom
+        value: 2.42
+      GEO:
+        name: Georgia
+        value: 4.72
+      GRC:
+        name: Greece
+        value: 4.27
+      GRD:
+        name: Grenada
+        value: 3.01
+      GTM:
+        name: Guatemala
+        value: 0.44
+      GUY:
+        name: Guyana
+        value: 2.53
+      HND:
+        name: Honduras
+        value: 0.62
+      HRV:
+        name: Croatia
+        value: 5.76
+      HTI:
+        name: Haiti
+        value: 4.68
+      HUN:
+        name: Hungary
+        value: 6.63
+      IDN:
+        name: Indonesia
+        value: 1.4
+      IRL:
+        name: Ireland
+        value: 2.94
+      ISR:
+        name: Israel
+        value: 3.13
+      ITA:
+        name: Italy
+        value: 3.06
+      JAM:
+        name: Jamaica
+        value: 1.71
+      JOR:
+        name: Jordan
+        value: 1.42
+      JPN:
+        name: Japan
+        value: 12.59
+      KGZ:
+        name: Kyrgyz Republic
+        value: 3.9
+      KNA:
+        name: St. Kitts and Nevis
+        value: 3.98
+      KOR:
+        name: Korea, Rep.
+        value: 12.81
+      LAO:
+        name: Lao PDR
+        value: 1.29
+      LBY:
+        name: Libya
+        value: 3.5
+      LCA:
+        name: St. Lucia
+        value: 1.09
+      LKA:
+        name: Sri Lanka
+        value: 3.94
+      LTU:
+        name: Lithuania
+        value: 5.71
+      LUX:
+        name: Luxembourg
+        value: 3.99
+      LVA:
+        name: Latvia
+        value: 5.02
+      MAR:
+        name: Morocco
+        value: 0.73
+      MDA:
+        name: Moldova
+        value: 5.69
+      MEX:
+        name: Mexico
+        value: 1.01
+      MLT:
+        name: Malta
+        value: 4.09
+      MNE:
+        name: Montenegro
+        value: 3.82
+      MNG:
+        name: Mongolia
+        value: 8.75
+      MUS:
+        name: Mauritius
+        value: 3.77
+      MYS:
+        name: Malaysia
+        value: 1.94
+      NIC:
+        name: Nicaragua
+        value: 0.97
+      NLD:
+        name: Netherlands
+        value: 2.42
+      NOR:
+        name: Norway
+        value: 3.35
+      NPL:
+        name: Nepal
+        value: 0.53
+      NZL:
+        name: New Zealand
+        value: 2.57
+      OMN:
+        name: Oman
+        value: 1.05
+      PAN:
+        name: Panama
+        value: 2.07
+      PER:
+        name: Peru
+        value: 1.59
+      POL:
+        name: Poland
+        value: 6.04
+      PRT:
+        name: Portugal
+        value: 3.48
+      PRY:
+        name: Paraguay
+        value: 1.04
+      PSE:
+        name: West Bank and Gaza
+        value: 1.3
+      QAT:
+        name: Qatar
+        value: 1.25
+      ROU:
+        name: Romania
+        value: 7.23
+      RUS:
+        name: Russian Federation
+        value: 6.84
+      RWA:
+        name: Rwanda
+        value: 0.73
+      SAU:
+        name: Saudi Arabia
+        value: 2.44
+      SGP:
+        name: Singapore
+        value: 2.83
+      SLV:
+        name: El Salvador
+        value: 1.2
+      SRB:
+        name: Serbia
+        value: 5.78
+      SUR:
+        name: Suriname
+        value: 2.87
+      SVK:
+        name: Slovak Republic
+        value: 5.65
+      SVN:
+        name: Slovenia
+        value: 4.11
+      SWE:
+        name: Sweden
+        value: 1.9
+      SYC:
+        name: Seychelles
+        value: 2.68
+      TGO:
+        name: Togo
+        value: 0.33
+      THA:
+        name: Thailand
+        value: 2.39
+      TJK:
+        name: Tajikistan
+        value: 4.22
+      TLS:
+        name: Timor-Leste
+        value: 0.39
+      TTO:
+        name: Trinidad and Tobago
+        value: 1.96
+      TUR:
+        name: Turkiye
+        value: 3.01
+      TZA:
+        name: Tanzania
+        value: 0.84
+      UKR:
+        name: Ukraine
+        value: 6.14
+      URY:
+        name: Uruguay
+        value: 2.51
+      USA:
+        name: United States
+        value: 2.68
+      UZB:
+        name: Uzbekistan
+        value: 4.78
+      VCT:
+        name: St. Vincent and the Grenadines
+        value: 3.21
+      YEM:
+        name: Yemen, Rep.
+        value: 0.48
+  vectors:
+  - input:
+      key: AFG
+      column: value
+    expected: 0.36
+    origin: source
+  - input:
+      key: KOR
+      column: value
+    expected: 12.81
+    origin: source
+    note: largest value
+  - input:
+      key: TGO
+      column: value
+    expected: 0.33
+    origin: source
+    note: smallest value
+  - input: AFG
+    expected: true
+    origin: source
+  - input: WLD
+    expected: false
+    origin: derived
+    note: aggregates are excluded
+evidence:
+- publisher: World Bank
+  title: World Development Indicators API, SH.MED.BEDS.ZS (Hospital beds (per 1,000 people)), 2022
+  url: https://api.worldbank.org/v2/country/all/indicator/SH.MED.BEDS.ZS?date=2022&format=json&per_page=400
+  accessed_at: '2026-10-31'
+  locator: rows[countryiso3code=AFG].value
+  value: 0.36
+  unit: ratio
+  snippet: '"countryiso3code":"AFG"'
+  source_license: CC-BY-4.0
+  content_sha256: caa0624d72ea6c034a107d71bd6d123ec6a32febd6d88ffef11daecb37027cde
+  role: primary
+- publisher: World Bank
+  title: World Development Indicators API, SH.MED.BEDS.ZS (Hospital beds (per 1,000 people)), 2022
+  url: https://api.worldbank.org/v2/country/all/indicator/SH.MED.BEDS.ZS?date=2022&format=json&per_page=400
+  accessed_at: '2026-10-31'
+  locator: lastupdated
+  value: '2026-10-08'
+  unit: date
+  snippet: '"lastupdated":'
+  source_license: CC-BY-4.0
+  content_sha256: caa0624d72ea6c034a107d71bd6d123ec6a32febd6d88ffef11daecb37027cde
+  role: primary
+- publisher: World Bank
+  title: World Bank indicator metadata, SH.MED.BEDS.ZS
+  url: https://api.worldbank.org/v2/indicator/SH.MED.BEDS.ZS?format=json
+  accessed_at: '2026-10-31'
+  locator: name
+  value: Hospital beds (per 1,000 people)
+  unit: text
+  snippet: '"id":"SH.MED.BEDS.ZS"'
+  source_license: CC-BY-4.0
+  content_sha256: 7739f9616144297442cdfb76a4bd55210f8ad1789f6f16a28995f05c30368517
+  role: primary
+- publisher: World Bank
+  title: World Bank country API (region classification used to exclude aggregates)
+  url: https://api.worldbank.org/v2/country?format=json&per_page=400
+  accessed_at: '2026-10-31'
+  locator: country[id=IND].region.value
+  value: South Asia
+  unit: text
+  snippet: '"id":"IND"'
+  source_license: CC-BY-4.0
+  content_sha256: c9acf3932785191a649cbc04c3056af4cf64a236e5c3b49d49be25ddb0440bce
+  role: primary
+- publisher: World Bank
+  title: World Bank Data Catalog public licenses
+  url: https://datacatalog.worldbank.org/public-licenses
+  accessed_at: '2026-10-31'
+  locator: Data Access And Licensing
+  value: Creative Commons Attribution 4.0 International license
+  unit: text
+  snippet: The World Bank Group makes data publicly available according to open data standards
+  source_license: CC-BY-4.0
+  content_sha256: c7c9b31441ea4a1fa27990f4b11f385587469c5c2bda4ec4fc7a6561db6d2422
+  role: supporting
+assumed:
+- parameter: rows
+  value: economies only
+  method: derived
+  rationale: Rows whose region is 'Aggregates' in the World Bank country API, and rows without a value for the year,
+    are dropped; everything else is copied unchanged.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 111
+  tolerance: 0
+- statistic: max[value]
+  expected: 12.81
+  tolerance: 0
+- statistic: min[value]
+  expected: 0.33
+  tolerance: 0
+notes: 'Hospital beds (per 1,000 people) for 2022 from the World Development Indicators API (indicator SH.MED.BEDS.ZS,
+  data last updated 2026-10-08), one row per economy keyed by ISO 3166-1 alpha-3 code, with regional and income
+  aggregates removed. 2022 is the most recent year whose coverage is close to the series'' best recent year. Source
+  note from the World Bank: Hospital beds include inpatient beds available in public, private, general, and specialized
+  hospitals and rehabilitation centers. In most cases beds for both acute and chronic care are included. The World
+  Bank licenses its datasets under CC BY 4.0.'

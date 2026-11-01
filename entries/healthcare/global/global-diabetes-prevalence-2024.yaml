@@ -1,0 +1,762 @@
+id: global-diabetes-prevalence-2024
+title: Diabetes prevalence (% of population ages 20 to 79), by economy, 2024 (World Bank, 209 economies)
+kind: rule
+domain: healthcare
+region: global
+status: verified
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- health
+- chronic-disease
+- diabetes
+- world-bank
+- reference-table
+use_cases:
+- claims-generation
+- clinical-records
+- insurance
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    indicator: SH.STA.DIAB.ZS
+    year: 2024
+    variable: diabetes_percent_ages_20_79
+    unit: percent
+    rows:
+      ABW:
+        name: Aruba
+        value: 4.6
+      AFG:
+        name: Afghanistan
+        value: 11.7
+      AGO:
+        name: Angola
+        value: 4.9
+      ALB:
+        name: Albania
+        value: 10.6
+      AND:
+        name: Andorra
+        value: 10.1
+      ARE:
+        name: United Arab Emirates
+        value: 20.7
+      ARG:
+        name: Argentina
+        value: 14
+      ARM:
+        name: Armenia
+        value: 7.7
+      ATG:
+        name: Antigua and Barbuda
+        value: 11.6
+      AUS:
+        name: Australia
+        value: 7.4
+      AUT:
+        name: Austria
+        value: 5.4
+      AZE:
+        name: Azerbaijan
+        value: 10.2
+      BDI:
+        name: Burundi
+        value: 4.3
+      BEL:
+        name: Belgium
+        value: 5.9
+      BEN:
+        name: Benin
+        value: 8.1
+      BFA:
+        name: Burkina Faso
+        value: 4.5
+      BGD:
+        name: Bangladesh
+        value: 13.2
+      BGR:
+        name: Bulgaria
+        value: 7.4
+      BHR:
+        name: Bahrain
+        value: 22.1
+      BHS:
+        name: Bahamas, The
+        value: 8.9
+      BIH:
+        name: Bosnia and Herzegovina
+        value: 10.3
+      BLR:
+        name: Belarus
+        value: 5.1
+      BLZ:
+        name: Belize
+        value: 14.1
+      BMU:
+        name: Bermuda
+        value: 13.4
+      BOL:
+        name: Bolivia
+        value: 3.4
+      BRA:
+        name: Brazil
+        value: 10.6
+      BRB:
+        name: Barbados
+        value: 13.2
+      BRN:
+        name: Brunei Darussalam
+        value: 13.7
+      BTN:
+        name: Bhutan
+        value: 12
+      BWA:
+        name: Botswana
+        value: 4.6
+      CAF:
+        name: Central African Republic
+        value: 7.6
+      CAN:
+        name: Canada
+        value: 7.7
+      CHE:
+        name: Switzerland
+        value: 5.3
+      CHL:
+        name: Chile
+        value: 12.2
+      CHN:
+        name: China
+        value: 11.9
+      CIV:
+        name: Cote d'Ivoire
+        value: 5
+      CMR:
+        name: Cameroon
+        value: 6.9
+      COD:
+        name: Congo, Dem. Rep.
+        value: 7.7
+      COG:
+        name: Congo, Rep.
+        value: 8.1
+      COL:
+        name: Colombia
+        value: 8.4
+      COM:
+        name: Comoros
+        value: 10.8
+      CPV:
+        name: Cabo Verde
+        value: 6.8
+      CRI:
+        name: Costa Rica
+        value: 9.8
+      CUB:
+        name: Cuba
+        value: 9.4
+      CUW:
+        name: Curacao
+        value: 13.4
+      CYM:
+        name: Cayman Islands
+        value: 11.1
+      CYP:
+        name: Cyprus
+        value: 10
+      CZE:
+        name: Czechia
+        value: 7.6
+      DEU:
+        name: Germany
+        value: 7.8
+      DJI:
+        name: Djibouti
+        value: 6.5
+      DMA:
+        name: Dominica
+        value: 12.9
+      DNK:
+        name: Denmark
+        value: 6.4
+      DOM:
+        name: Dominican Republic
+        value: 17.6
+      DZA:
+        name: Algeria
+        value: 17.5
+      ECU:
+        name: Ecuador
+        value: 4.9
+      EGY:
+        name: Egypt, Arab Rep.
+        value: 22.4
+      ERI:
+        name: Eritrea
+        value: 4.4
+      ESP:
+        name: Spain
+        value: 9.7
+      EST:
+        name: Estonia
+        value: 6.9
+      ETH:
+        name: Ethiopia
+        value: 4.4
+      FIN:
+        name: Finland
+        value: 6.9
+      FJI:
+        name: Fiji
+        value: 16.6
+      FRA:
+        name: France
+        value: 6.5
+      FRO:
+        name: Faroe Islands
+        value: 5.3
+      FSM:
+        name: Micronesia, Fed. Sts.
+        value: 19.2
+      GAB:
+        name: Gabon
+        value: 8.5
+      GBR:
+        name: United Kingdom
+        value: 7.4
+      GEO:
+        name: Georgia
+        value: 6.7
+      GHA:
+        name: Ghana
+        value: 2.7
+      GIN:
+        name: Guinea
+        value: 4.6
+      GMB:
+        name: Gambia, The
+        value: 5.5
+      GNB:
+        name: Guinea-Bissau
+        value: 4.8
+      GNQ:
+        name: Equatorial Guinea
+        value: 8.2
+      GRC:
+        name: Greece
+        value: 8
+      GRD:
+        name: Grenada
+        value: 11.3
+      GRL:
+        name: Greenland
+        value: 4.3
+      GTM:
+        name: Guatemala
+        value: 13.2
+      GUM:
+        name: Guam
+        value: 20.3
+      GUY:
+        name: Guyana
+        value: 16.4
+      HKG:
+        name: Hong Kong SAR, China
+        value: 8.2
+      HND:
+        name: Honduras
+        value: 5
+      HRV:
+        name: Croatia
+        value: 10.5
+      HTI:
+        name: Haiti
+        value: 8.5
+      HUN:
+        name: Hungary
+        value: 8.3
+      IDN:
+        name: Indonesia
+        value: 11.3
+      IMN:
+        name: Isle of Man
+        value: 7.5
+      IND:
+        name: India
+        value: 10.5
+      IRL:
+        name: Ireland
+        value: 3.6
+      IRN:
+        name: Iran, Islamic Rep.
+        value: 9
+      IRQ:
+        name: Iraq
+        value: 13.4
+      ISL:
+        name: Iceland
+        value: 6.9
+      ISR:
+        name: Israel
+        value: 10.1
+      ITA:
+        name: Italy
+        value: 7.7
+      JAM:
+        name: Jamaica
+        value: 12.5
+      JOR:
+        name: Jordan
+        value: 20.5
+      JPN:
+        name: Japan
+        value: 8.1
+      KAZ:
+        name: Kazakhstan
+        value: 6.8
+      KEN:
+        name: Kenya
+        value: 3.1
+      KGZ:
+        name: Kyrgyz Republic
+        value: 7.6
+      KHM:
+        name: Cambodia
+        value: 7.5
+      KIR:
+        name: Kiribati
+        value: 24.6
+      KNA:
+        name: St. Kitts and Nevis
+        value: 13.8
+      KOR:
+        name: Korea, Rep.
+        value: 9.6
+      KWT:
+        name: Kuwait
+        value: 25.6
+      LAO:
+        name: Lao PDR
+        value: 6.7
+      LBN:
+        name: Lebanon
+        value: 12.3
+      LBR:
+        name: Liberia
+        value: 9.2
+      LBY:
+        name: Libya
+        value: 15.8
+      LCA:
+        name: St. Lucia
+        value: 11.4
+      LIE:
+        name: Liechtenstein
+        value: 7.2
+      LKA:
+        name: Sri Lanka
+        value: 10.2
+      LSO:
+        name: Lesotho
+        value: 6.2
+      LTU:
+        name: Lithuania
+        value: 7.5
+      LUX:
+        name: Luxembourg
+        value: 5.8
+      LVA:
+        name: Latvia
+        value: 7.1
+      MAC:
+        name: Macao SAR, China
+        value: 8.1
+      MAR:
+        name: Morocco
+        value: 11.9
+      MCO:
+        name: Monaco
+        value: 6.9
+      MDA:
+        name: Moldova
+        value: 6.3
+      MDG:
+        name: Madagascar
+        value: 4.6
+      MDV:
+        name: Maldives
+        value: 9.5
+      MEX:
+        name: Mexico
+        value: 16.4
+      MHL:
+        name: Marshall Islands
+        value: 25.7
+      MKD:
+        name: North Macedonia
+        value: 7.4
+      MLI:
+        name: Mali
+        value: 4.8
+      MLT:
+        name: Malta
+        value: 10
+      MMR:
+        name: Myanmar
+        value: 6.7
+      MNE:
+        name: Montenegro
+        value: 10.7
+      MNG:
+        name: Mongolia
+        value: 10.3
+      MOZ:
+        name: Mozambique
+        value: 3
+      MRT:
+        name: Mauritania
+        value: 5.2
+      MUS:
+        name: Mauritius
+        value: 20.1
+      MWI:
+        name: Malawi
+        value: 5.7
+      MYS:
+        name: Malaysia
+        value: 21.1
+      NAM:
+        name: Namibia
+        value: 5.3
+      NCL:
+        name: New Caledonia
+        value: 22
+      NER:
+        name: Niger
+        value: 4.1
+      NGA:
+        name: Nigeria
+        value: 3
+      NIC:
+        name: Nicaragua
+        value: 10.4
+      NLD:
+        name: Netherlands
+        value: 5
+      NOR:
+        name: Norway
+        value: 4.8
+      NPL:
+        name: Nepal
+        value: 7.7
+      NRU:
+        name: Naoero
+        value: 21.8
+      NZL:
+        name: New Zealand
+        value: 6.7
+      OMN:
+        name: Oman
+        value: 17
+      PAK:
+        name: Pakistan
+        value: 31.4
+      PAN:
+        name: Panama
+        value: 11.1
+      PER:
+        name: Peru
+        value: 6.4
+      PHL:
+        name: Philippines
+        value: 7.5
+      PLW:
+        name: Palau
+        value: 19.3
+      PNG:
+        name: Papua New Guinea
+        value: 14.1
+      POL:
+        name: Poland
+        value: 8.1
+      PRI:
+        name: Puerto Rico (US)
+        value: 10.9
+      PRK:
+        name: Korea, Dem. People's Rep.
+        value: 9.9
+      PRT:
+        name: Portugal
+        value: 10.5
+      PRY:
+        name: Paraguay
+        value: 9.4
+      PSE:
+        name: West Bank and Gaza
+        value: 15.5
+      PYF:
+        name: French Polynesia
+        value: 22.8
+      QAT:
+        name: Qatar
+        value: 24.6
+      ROU:
+        name: Romania
+        value: 7.5
+      RUS:
+        name: Russian Federation
+        value: 5.9
+      RWA:
+        name: Rwanda
+        value: 2.1
+      SAU:
+        name: Saudi Arabia
+        value: 23.1
+      SDN:
+        name: Sudan
+        value: 19
+      SEN:
+        name: Senegal
+        value: 3.8
+      SGP:
+        name: Singapore
+        value: 11.4
+      SLB:
+        name: Solomon Islands
+        value: 12
+      SLE:
+        name: Sierra Leone
+        value: 4.8
+      SLV:
+        name: El Salvador
+        value: 12.7
+      SMR:
+        name: San Marino
+        value: 8.6
+      SOM:
+        name: Somalia, Fed. Rep.
+        value: 5.8
+      SRB:
+        name: Serbia
+        value: 10.5
+      SSD:
+        name: South Sudan
+        value: 4.6
+      STP:
+        name: Sao Tome and Principe
+        value: 12.1
+      SUR:
+        name: Suriname
+        value: 13.8
+      SVK:
+        name: Slovak Republic
+        value: 7.1
+      SVN:
+        name: Slovenia
+        value: 7
+      SWE:
+        name: Sweden
+        value: 5.8
+      SWZ:
+        name: Eswatini
+        value: 7.9
+      SYC:
+        name: Seychelles
+        value: 9.3
+      SYR:
+        name: Syrian Arab Republic
+        value: 19
+      TCD:
+        name: Chad
+        value: 7.3
+      TGO:
+        name: Togo
+        value: 4.8
+      THA:
+        name: Thailand
+        value: 10.2
+      TJK:
+        name: Tajikistan
+        value: 8
+      TKM:
+        name: Turkmenistan
+        value: 7.1
+      TLS:
+        name: Timor-Leste
+        value: 3.2
+      TON:
+        name: Tonga
+        value: 19.6
+      TTO:
+        name: Trinidad and Tobago
+        value: 12.4
+      TUN:
+        name: Tunisia
+        value: 16
+      TUR:
+        name: Turkiye
+        value: 16.5
+      TUV:
+        name: Tuvalu
+        value: 19
+      TZA:
+        name: Tanzania
+        value: 9.8
+      UGA:
+        name: Uganda
+        value: 2.2
+      UKR:
+        name: Ukraine
+        value: 6
+      URY:
+        name: Uruguay
+        value: 7.8
+      USA:
+        name: United States
+        value: 13.7
+      UZB:
+        name: Uzbekistan
+        value: 7.5
+      VCT:
+        name: St. Vincent and the Grenadines
+        value: 8.6
+      VEN:
+        name: Venezuela, RB
+        value: 8.6
+      VIR:
+        name: Virgin Islands (U.S.)
+        value: 9.1
+      VNM:
+        name: Viet Nam
+        value: 3.4
+      VUT:
+        name: Vanuatu
+        value: 19.7
+      WSM:
+        name: Samoa
+        value: 25.4
+      XKX:
+        name: Kosovo
+        value: 10.4
+      YEM:
+        name: Yemen, Rep.
+        value: 5.5
+      ZAF:
+        name: South Africa
+        value: 7.2
+      ZMB:
+        name: Zambia
+        value: 10.3
+      ZWE:
+        name: Zimbabwe
+        value: 1.5
+  vectors:
+  - input:
+      key: IND
+      column: value
+    expected: 10.5
+    origin: source
+  - input:
+      key: PAK
+      column: value
+    expected: 31.4
+    origin: source
+    note: largest value
+  - input:
+      key: ZWE
+      column: value
+    expected: 1.5
+    origin: source
+    note: smallest value
+  - input: IND
+    expected: true
+    origin: source
+  - input: WLD
+    expected: false
+    origin: derived
+    note: aggregates are excluded
+evidence:
+- publisher: World Bank
+  title: World Development Indicators API, SH.STA.DIAB.ZS (Diabetes prevalence (% of population ages 20 to 79)),
+    2024
+  url: https://api.worldbank.org/v2/country/all/indicator/SH.STA.DIAB.ZS?date=2024&format=json&per_page=400
+  accessed_at: '2026-10-31'
+  locator: rows[countryiso3code=IND].value
+  value: 10.5
+  unit: percent
+  snippet: '"countryiso3code":"IND"'
+  source_license: CC-BY-4.0
+  content_sha256: 0ab02f0fbc3f136f87edf9307ce9b1170483dabf79bd8c7a8957d84ca918b67b
+  role: primary
+- publisher: World Bank
+  title: World Development Indicators API, SH.STA.DIAB.ZS (Diabetes prevalence (% of population ages 20 to 79)),
+    2024
+  url: https://api.worldbank.org/v2/country/all/indicator/SH.STA.DIAB.ZS?date=2024&format=json&per_page=400
+  accessed_at: '2026-10-31'
+  locator: lastupdated
+  value: '2026-10-08'
+  unit: date
+  snippet: '"lastupdated":'
+  source_license: CC-BY-4.0
+  content_sha256: 0ab02f0fbc3f136f87edf9307ce9b1170483dabf79bd8c7a8957d84ca918b67b
+  role: primary
+- publisher: World Bank
+  title: World Bank indicator metadata, SH.STA.DIAB.ZS
+  url: https://api.worldbank.org/v2/indicator/SH.STA.DIAB.ZS?format=json
+  accessed_at: '2026-10-31'
+  locator: name
+  value: Diabetes prevalence (% of population ages 20 to 79)
+  unit: text
+  snippet: '"id":"SH.STA.DIAB.ZS"'
+  source_license: CC-BY-4.0
+  content_sha256: 09118a6b43986bfdbeaa1881917ce8e0b51833391be1f944e066f1d9ac82138d
+  role: primary
+- publisher: World Bank
+  title: World Bank country API (region classification used to exclude aggregates)
+  url: https://api.worldbank.org/v2/country?format=json&per_page=400
+  accessed_at: '2026-10-31'
+  locator: country[id=IND].region.value
+  value: South Asia
+  unit: text
+  snippet: '"id":"IND"'
+  source_license: CC-BY-4.0
+  content_sha256: c9acf3932785191a649cbc04c3056af4cf64a236e5c3b49d49be25ddb0440bce
+  role: primary
+- publisher: World Bank
+  title: World Bank Data Catalog public licenses
+  url: https://datacatalog.worldbank.org/public-licenses
+  accessed_at: '2026-10-31'
+  locator: Data Access And Licensing
+  value: Creative Commons Attribution 4.0 International license
+  unit: text
+  snippet: The World Bank Group makes data publicly available according to open data standards
+  source_license: CC-BY-4.0
+  content_sha256: c7c9b31441ea4a1fa27990f4b11f385587469c5c2bda4ec4fc7a6561db6d2422
+  role: supporting
+assumed:
+- parameter: rows
+  value: economies only
+  method: derived
+  rationale: Rows whose region is 'Aggregates' in the World Bank country API, and rows without a value for the year,
+    are dropped; everything else is copied unchanged.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 209
+  tolerance: 0
+- statistic: max[value]
+  expected: 31.4
+  tolerance: 0
+- statistic: min[value]
+  expected: 1.5
+  tolerance: 0
+notes: 'Diabetes prevalence (% of population ages 20 to 79) for 2024 from the World Development Indicators API (indicator
+  SH.STA.DIAB.ZS, data last updated 2026-10-08), one row per economy keyed by ISO 3166-1 alpha-3 code, with regional
+  and income aggregates removed. 2024 is the most recent year whose coverage is close to the series'' best recent
+  year. Source note from the World Bank: Diabetes prevalence refers to the percentage of people ages 20-79 who have
+  type 1 or type 2 diabetes. It is calculated by adjusting to a standard population age-structure. The World Bank
+  licenses its datasets under CC BY 4.0.'
