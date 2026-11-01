@@ -1,0 +1,274 @@
+status: verified
+tier: A
+region: GB
+id: gb-universal-credit-rates-2026-27
+title: Great Britain Universal Credit monthly standard allowances, elements, work allowances and capital limits,
+  2025/26 and 2026/27
+kind: rule
+domain: benefits
+valid_from: '2025-04-06'
+valid_to: '2027-04-05'
+tags:
+- universal-credit
+- benefits
+- welfare
+- monthly-rates
+use_cases:
+- personal-finance
+- household-generation
+- credit-risk
+- collections
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: GBP
+    unit: per monthly assessment period
+    earnings_taper_pence_per_pound: 55
+    childcare_costs_percent_covered: 85
+    assumed_income_per_250_of_capital: 4.35
+    rows:
+      standard_allowance_single_under_25:
+        monthly_2025_26: 316.98
+        monthly_2026_27: 338.58
+        dwp_label: Single under 25
+      standard_allowance_single_25_or_over:
+        monthly_2025_26: 400.14
+        monthly_2026_27: 424.9
+        dwp_label: Single 25 or over
+      standard_allowance_couple_both_under_25:
+        monthly_2025_26: 497.55
+        monthly_2026_27: 528.34
+        dwp_label: Joint claimants both under 25
+      standard_allowance_couple_one_or_both_25_or_over:
+        monthly_2025_26: 628.1
+        monthly_2026_27: 666.97
+        dwp_label: Joint claimants, one or both 25 or over
+      child_element_first_child_born_before_6_april_2017:
+        monthly_2025_26: 339
+        monthly_2026_27: 351.88
+        dwp_label: First child (born prior to 6 April 2017)
+      child_element:
+        monthly_2025_26: 292.81
+        monthly_2026_27: 303.94
+        dwp_label: First child (born on or after 6 April 2017 / second child and subsequent child (where an exception
+          or transitional provision applies))
+      disabled_child_addition_lower:
+        monthly_2025_26: 158.76
+        monthly_2026_27: 164.79
+        dwp_label: Lower rate addition
+      disabled_child_addition_higher:
+        monthly_2025_26: 495.87
+        monthly_2026_27: 514.71
+        dwp_label: Higher rate addition
+      limited_capability_for_work:
+        monthly_2025_26: 158.76
+        monthly_2026_27: 158.76
+        dwp_label: Limited Capability for Work amount
+      limited_capability_for_work_and_work_related_activity:
+        monthly_2025_26: 423.27
+        monthly_2026_27: 217.26
+        dwp_label: Limited Capability for Work and Work-Related Activity amount
+      limited_capability_for_work_and_work_related_activity_pre_2026_or_severe_conditions:
+        monthly_2025_26: 423.27
+        monthly_2026_27: 429.8
+        dwp_label: Limited Capability for Work and Work-Related Activity amount (Pre-2026 claimant, severe conditions
+          criteria claimant or claimant who is terminally ill)
+      carer_element:
+        monthly_2025_26: 201.68
+        monthly_2026_27: 209.34
+        dwp_label: Carer amount
+      childcare_costs_max_one_child:
+        monthly_2025_26: 1031.88
+        monthly_2026_27: 1071.09
+        dwp_label: Maximum for one child
+      childcare_costs_max_two_or_more_children:
+        monthly_2025_26: 1768.94
+        monthly_2026_27: 1836.16
+        dwp_label: Maximum for two or more children
+      non_dependant_housing_cost_contribution:
+        monthly_2025_26: 93.02
+        monthly_2026_27: 96.55
+        dwp_label: Non-dependants’ housing cost contributions
+      work_allowance_higher_no_housing_costs:
+        monthly_2025_26: 684
+        monthly_2026_27: 710
+        dwp_label: Higher work allowance (no housing amount) - One or more dependent children or limited capability
+          for work
+      work_allowance_lower_with_housing_costs:
+        monthly_2025_26: 411
+        monthly_2026_27: 427
+        dwp_label: Lower work allowance - One or more dependent children or limited capability for work
+      capital_upper_limit:
+        monthly_2025_26: 16000
+        monthly_2026_27: 16000
+        dwp_label: Upper limit
+      capital_disregard:
+        monthly_2025_26: 6000
+        monthly_2026_27: 6000
+        dwp_label: Amount disregarded
+  vectors:
+  - input:
+      key: standard_allowance_single_under_25
+      column: monthly_2026_27
+    expected: 338.58
+    origin: source
+  - input:
+      key: standard_allowance_couple_one_or_both_25_or_over
+      column: monthly_2026_27
+    expected: 666.97
+    origin: source
+  - input:
+      key: standard_allowance_single_25_or_over
+      column: monthly_2025_26
+    expected: 400.14
+    origin: source
+  - input:
+      key: child_element
+      column: monthly_2026_27
+    expected: 303.94
+    origin: source
+  - input:
+      key: work_allowance_lower_with_housing_costs
+      column: monthly_2026_27
+    expected: 427
+    origin: source
+  - input:
+      key: capital_upper_limit
+      column: monthly_2026_27
+    expected: 16000
+    origin: source
+  - input: housing_element
+    expected: false
+    origin: derived
+    note: housing costs depend on rent and are not a fixed rate
+evidence:
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'UC Amounts - Standard allowance', Single table
+  value: <td>338.58</td>
+  unit: text
+  snippet: <td>Single under 25</td>
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'UC Amounts - Standard allowance', Couple table
+  value: <td>666.97</td>
+  unit: text
+  snippet: <td>Joint claimants, one or both 25 or over</td>
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Child amounts' table
+  value: <td>303.94</td>
+  unit: text
+  snippet: <td>351.88</td>
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, LCWRA tables
+  value: <td>217.26</td>
+  unit: text
+  snippet: <td>429.80</td>
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Work allowances' table
+  value: <td>710.00</td>
+  unit: text
+  snippet: <td>427.00</td>
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Capital limit - Universal Credit' table
+  value: <td>16000.00</td>
+  unit: text
+  snippet: <td>4.35</td>
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, heading
+  value: Universal Credit (UC) (monthly rates)
+  unit: text
+  snippet: Rates 2026/27
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: GOV.UK content API item for /universal-credit (JSON)
+  url: https://www.gov.uk/api/content/universal-credit
+  accessed_at: '2026-10-31'
+  locator: details.parts[2].body, standard allowance table
+  value: <td>£338.58</td>
+  unit: text
+  snippet: <td>£666.97 (for you both)</td>
+  source_license: OGL-UK-3.0
+  content_sha256: 58440a8a402e73a52f6d1d4d52c464edd72328d65a96c5736a701f611a465cef
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: GOV.UK content API item for /universal-credit (JSON)
+  url: https://www.gov.uk/api/content/universal-credit
+  accessed_at: '2026-10-31'
+  locator: details.parts[3].body, earnings taper
+  value: For every £1 you earn from working, your Universal Credit payment goes down by 55p.
+  unit: text
+  snippet: You can claim back up to 85% of your childcare costs if you’re working.
+  source_license: OGL-UK-3.0
+  content_sha256: 58440a8a402e73a52f6d1d4d52c464edd72328d65a96c5736a701f611a465cef
+  role: primary
+assumed:
+- parameter: valid_from and valid_to
+  value: tax years 6 April to 5 April
+  method: derived
+  rationale: The DWP table labels its columns 'Rates 2025/26' and 'Rates 2026/27' without dates; the windows are
+    taken as the tax years. Uprating of individual benefits takes effect in the first full benefit week of April,
+    which can differ from 6 April by a few days.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 19
+  tolerance: 0
+- statistic: value[standard_allowance_single_under_25,monthly_2026_27]
+  expected: 338.58
+  tolerance: 0
+- statistic: value[carer_element,monthly_2026_27]
+  expected: 209.34
+  tolerance: 0
+- statistic: max[monthly_2026_27]
+  expected: 16000
+  tolerance: 0
+notes: 'Universal Credit amounts per monthly assessment period for 2025/26 and 2026/27 as the DWP ''Benefit and
+  pension rates 2026 to 2027'' publication tables them: the four standard allowances by age and couple status, child
+  elements, disabled child additions, limited capability for work amounts (the LCWRA amount for new claims from
+  April 2026 is lower than the protected pre-2026 amount), carer and childcare elements, work allowances and the
+  capital limits with the assumed income per £250 of capital. GOV.UK''s Universal Credit guide confirms the standard
+  allowances and gives the 55p earnings taper and 85% childcare cover. Each row keeps DWP''s label. Sources are
+  the GOV.UK content API''s JSON for each page, stable between editorial updates; GOV.UK publishes its content under
+  the Open Government Licence v3.0.'

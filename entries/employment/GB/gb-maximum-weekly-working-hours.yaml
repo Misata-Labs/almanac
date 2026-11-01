@@ -1,0 +1,146 @@
+status: license-review
+tier: A
+region: GB
+id: gb-maximum-weekly-working-hours
+title: 'United Kingdom maximum average weekly working time: 48 hours for adult workers and 40 hours for workers
+  under 18 (Working Time Regulations 1998)'
+kind: rule
+domain: employment
+valid_from: '1998-10-01'
+valid_to: null
+tags:
+- working-time
+- working-hours
+- employment-law
+- young-workers
+use_cases:
+- hr-analytics
+- workforce-planning
+- payroll-demo
+- capacity-planning
+spec:
+  implementation: almanac.rules.age_band_rates
+  parameters:
+    unit: hours per week
+    bands:
+    - name: Young worker (under 18)
+      max_age: 17
+    - name: Adult worker (18 and over)
+      min_age: 18
+    categories: []
+    tables:
+    - from: '1998-10-01'
+      rates:
+        Young worker (under 18): 40
+        Adult worker (18 and over): 48
+    adult_reference_period_weeks: 17
+    adult_reference_period_max_weeks_by_agreement: 52
+    adult_opt_out_available: true
+    young_worker_daily_limit_hours: 8
+    young_worker_hours_averaged: false
+  vectors:
+  - input:
+      age: 30
+      'on': '2026-06-01'
+    expected: 48
+    origin: source
+  - input:
+      age: 18
+      'on': '2026-06-01'
+    expected: 48
+    origin: source
+  - input:
+      age: 17
+      'on': '2026-06-01'
+    expected: 40
+    origin: source
+  - input:
+      age: 16
+      'on': '2010-01-01'
+    expected: 40
+    origin: source
+evidence:
+- publisher: Department for Business and Trade (GOV.UK)
+  title: GOV.UK content API item for /maximum-weekly-working-hours (JSON)
+  url: https://www.gov.uk/api/content/maximum-weekly-working-hours
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, overview
+  value: You cannot work more than 48 hours a week on average - normally
+  unit: text
+  snippet: If you’re under 18, you cannot work more than 8 hours a day or 40 hours a week.
+  source_license: OGL-UK-3.0
+  content_sha256: 8f4a06c9fb553e06c48e1a1f0b766d941fc54428f8ce07a15f0281c70b53f546
+  role: primary
+- publisher: Department for Business and Trade (GOV.UK)
+  title: GOV.UK content API item for /maximum-weekly-working-hours (JSON)
+  url: https://www.gov.uk/api/content/maximum-weekly-working-hours
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, reference period
+  value: The 17 week period can be extended to a maximum of 52 weeks
+  unit: text
+  snippet: You cannot work more than 40 hours in any one week.
+  source_license: OGL-UK-3.0
+  content_sha256: 8f4a06c9fb553e06c48e1a1f0b766d941fc54428f8ce07a15f0281c70b53f546
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Working Time Regulations 1998, regulation 4 (legislation.gov.uk XML)
+  url: https://www.legislation.gov.uk/uksi/1998/1833/regulation/4/data.xml
+  accessed_at: '2026-10-31'
+  locator: regulation 4(1), maximum weekly working time
+  value: shall not exceed an average of 48 hours for each seven days
+  unit: text
+  snippet: any period of 17 weeks
+  source_license: unstated
+  content_sha256: e4703e4cf2e8edc952e2890efb1e49c3520a66e92aa8cde8309f315c3a06fc7b
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Working Time Regulations 1998, regulation 4 (legislation.gov.uk XML)
+  url: https://www.legislation.gov.uk/uksi/1998/1833/regulation/4/data.xml
+  accessed_at: '2026-10-31'
+  locator: ukm:SecondaryMetadata, ComingIntoForce
+  value: Date="1998-10-01"
+  unit: text
+  snippet: Made Date="1998-07-30"
+  source_license: unstated
+  content_sha256: e4703e4cf2e8edc952e2890efb1e49c3520a66e92aa8cde8309f315c3a06fc7b
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Working Time Regulations 1998, regulation 5A (legislation.gov.uk XML)
+  url: https://www.legislation.gov.uk/uksi/1998/1833/regulation/5A/data.xml
+  accessed_at: '2026-10-31'
+  locator: regulation 5A(1), maximum working time for young workers
+  value: 40 hours a week.
+  unit: text
+  snippet: eight hours a day
+  source_license: unstated
+  content_sha256: 8a30065ed6a217de66c53f792fd57acf256bdd6e1770cf00c0d4946d99dc62b2
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '1998-10-01'
+  method: derived
+  rationale: The date is when the Working Time Regulations 1998 came into force, as legislation.gov.uk records;
+    regulation 5A for young workers was inserted by a later amendment whose commencement date is not recorded here,
+    so the young worker limit may postdate valid_from.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 1
+  tolerance: 0
+- statistic: rate[Adult worker (18 and over),2026-01-01]
+  expected: 48
+  tolerance: 0
+- statistic: rate[Young worker (under 18),2026-01-01]
+  expected: 40
+  tolerance: 0
+notes: 'The statutory limit on working time in Great Britain: an adult worker''s working time, including overtime,
+  may not exceed an average of 48 hours for each seven days over a 17-week reference period (extendable to 52 weeks
+  by agreement, and adults may opt out in writing); a young worker under 18 may not work more than 8 hours a day
+  or 40 hours a week, with no averaging. Values come from GOV.UK''s guide and from regulations 4 and 5A of the Working
+  Time Regulations 1998 as legislation.gov.uk publishes them in XML. The age_band_rates rule returns the weekly
+  limit for an age. Exceptions for particular occupations are not modelled. The entry stays at license-review because
+  the legislation.gov.uk XML carries no licence statement, although the site publishes legislation under the Open
+  Government Licence v3.0. Sources are the GOV.UK content API''s JSON for each page, stable between editorial updates;
+  GOV.UK publishes its content under the Open Government Licence v3.0.'

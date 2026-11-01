@@ -1,0 +1,188 @@
+id: gb-economic-activity-by-age-group-2025
+title: UK economic activity status (in employment, unemployed, economically inactive) given age group, Labour Force
+  Survey February to April 2025
+kind: conditional
+domain: employment
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2025-02-01'
+  end: '2025-04-30'
+tags:
+- labour-market
+- employment
+- unemployment
+- by-age
+- labour-force-survey
+use_cases:
+- person-generation
+- hr-analytics
+- workforce-planning
+- credit-risk
+- customer-segmentation
+spec:
+  variable: economic_activity_status
+  unit: ratio
+  given: age_group
+  distributions:
+    16-17:
+      family: categorical
+      parameters:
+        shares:
+          in_employment: 0.193636
+          unemployed: 0.07665
+          economically_inactive: 0.729714
+        persons:
+          in_employment: 314398
+          unemployed: 124453
+          economically_inactive: 1184805
+        total: 1623656
+    18-24:
+      family: categorical
+      parameters:
+        shares:
+          in_employment: 0.594
+          unemployed: 0.086606
+          economically_inactive: 0.319394
+        persons:
+          in_employment: 3435825
+          unemployed: 500948
+          economically_inactive: 1847444
+        total: 5784217
+    25-34:
+      family: categorical
+      parameters:
+        shares:
+          in_employment: 0.83907
+          unemployed: 0.036011
+          economically_inactive: 0.124919
+        persons:
+          in_employment: 7675004
+          unemployed: 329396
+          economically_inactive: 1142635
+        total: 9147035
+    35-49:
+      family: categorical
+      parameters:
+        shares:
+          in_employment: 0.857896
+          unemployed: 0.025363
+          economically_inactive: 0.116741
+        persons:
+          in_employment: 11494834
+          unemployed: 339836
+          economically_inactive: 1564196
+        total: 13398866
+    50-64:
+      family: categorical
+      parameters:
+        shares:
+          in_employment: 0.717571
+          unemployed: 0.022262
+          economically_inactive: 0.260167
+        persons:
+          in_employment: 9510267
+          unemployed: 295044
+          economically_inactive: 3448108
+        total: 13253419
+    65+:
+      family: categorical
+      parameters:
+        shares:
+          in_employment: 0.122464
+          unemployed: 0.003891
+          economically_inactive: 0.873644
+        persons:
+          in_employment: 1580707
+          unemployed: 50225
+          economically_inactive: 11276549
+        total: 12907481
+    16-64:
+      family: categorical
+      parameters:
+        shares:
+          in_employment: 0.750577
+          unemployed: 0.036792
+          economically_inactive: 0.212631
+        persons:
+          in_employment: 32430327
+          unemployed: 1589677
+          economically_inactive: 9187188
+        total: 43207192
+    16+:
+      family: categorical
+      parameters:
+        shares:
+          in_employment: 0.606099
+          unemployed: 0.029224
+          economically_inactive: 0.364677
+        persons:
+          in_employment: 34011034
+          unemployed: 1639902
+          economically_inactive: 20463738
+        total: 56114674
+evidence:
+- publisher: Office for National Statistics
+  title: ONS dataset labour-market edition PWT24 version 1, full CSV (v4 format)
+  url: https://download.ons.gov.uk/downloads/datasets/labour-market/editions/PWT24/versions/1.csv
+  accessed_at: '2026-10-31'
+  locator: row Time=Feb-Apr 2025, Levels, In Employment, 25-34, All adults, Seasonally Adjusted, column v4_0
+  value: '7675004'
+  unit: count
+  snippet: 7675004,feb-apr-2025,Feb-Apr 2025,K02000001,United Kingdom,levels,Levels,in-employment,In Employment,25-34,25-34,all-adults,All
+    adults,seasonal-adjustment,Seasonally Adjusted
+  source_license: OGL-UK-3.0
+  content_sha256: 7fc4e0eaeb9f7b7d48ebbfa05cb15a376c5c5fefbe3674dbb0a13a292703972c
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata labour-market (UK Labour Market)
+  url: https://api.beta.ons.gov.uk/v1/datasets/labour-market
+  accessed_at: '2026-10-31'
+  locator: description
+  value: It uses internationally recognised definitions of employment, unemployment and economic activity.
+  unit: text
+  snippet: '"id":"labour-market"'
+  source_license: OGL-UK-3.0
+  content_sha256: 4fbc567ff03be6233770fcdda4992d557ea7678ff4496ee098a6938095f08d4b
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata cpih01 (licence statement for ONS datasets)
+  url: https://api.beta.ons.gov.uk/v1/datasets/cpih01
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: c8d0e2fde94bc0ed865f5e5b237a7b34835371ff71a5b36d460e6bb3aac5d40c
+  role: supporting
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: persons in each status divided by the three statuses' total
+  method: derived
+  rationale: The file publishes seasonally adjusted population levels per status; in employment plus unemployed
+    equals the economically active level, and the three statuses partition the age group's population. Shares are
+    the levels divided by their sum.
+tests:
+- statistic: share[25-34,in_employment]
+  expected: 0.83907
+  tolerance: 0.003
+- statistic: share[65+,economically_inactive]
+  expected: 0.873644
+  tolerance: 0.003
+- statistic: share[16-17,unemployed]
+  expected: 0.07665
+  tolerance: 0.003
+- statistic: sum_of_shares[35-49]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[16+]
+  expected: 1
+  tolerance: 0.0001
+notes: Economic activity status of the UK household population given age group, from the Labour Force Survey levels
+  for the rolling quarter February to April 2025 (all adults, seasonally adjusted) in edition PWT24 of the ONS labour-market
+  dataset. The six age groups partition people aged 16 and over; 16-64 and 16+ are the working-age and whole-population
+  totals. Person counts sit beside the shares. The LFS is a sample survey weighted to population totals. The labour-market
+  metadata carries no licence field; ONS publishes its datasets under the Open Government Licence v3.0, as the cpih01
+  metadata states.

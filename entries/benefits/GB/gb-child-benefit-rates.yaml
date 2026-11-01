@@ -1,0 +1,158 @@
+status: verified
+tier: A
+region: GB
+id: gb-child-benefit-rates
+title: United Kingdom Child Benefit and Guardian's Allowance weekly rates by tax year, 2024/25 to 2026/27
+kind: rule
+domain: benefits
+valid_from: '2024-04-06'
+valid_to: '2027-04-05'
+tags:
+- child-benefit
+- benefits
+- families
+- weekly-rates
+use_cases:
+- household-generation
+- personal-finance
+- financial-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: GBP
+    unit: per week
+    tax_year_runs: 6 April to 5 April
+    rows:
+      2026-27:
+        eldest_or_only_child_weekly: 27.05
+        other_children_weekly: 17.9
+        guardians_allowance_weekly: 22.95
+      2025-26:
+        eldest_or_only_child_weekly: 26.05
+        other_children_weekly: 17.25
+        guardians_allowance_weekly: 22.1
+      2024-25:
+        eldest_or_only_child_weekly: 25.6
+        other_children_weekly: 16.95
+        guardians_allowance_weekly: 21.75
+  vectors:
+  - input:
+      key: 2026-27
+      column: eldest_or_only_child_weekly
+    expected: 27.05
+    origin: source
+  - input:
+      key: 2026-27
+      column: other_children_weekly
+    expected: 17.9
+    origin: source
+  - input:
+      key: 2025-26
+      column: eldest_or_only_child_weekly
+    expected: 26.05
+    origin: source
+  - input:
+      key: 2024-25
+      column: guardians_allowance_weekly
+    expected: 21.75
+    origin: source
+  - input: 2023-24
+    expected: false
+    origin: derived
+    note: earlier years are not tabled by HMRC on this page
+evidence:
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: HMRC 'Child Benefit, Guardian's Allowance and tax credits rates and allowances' HTML publication (GOV.UK
+    content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/rates-and-allowances-tax-credits-child-benefit-and-guardians-allowance/tax-credits-child-benefit-and-guardians-allowance
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Child Benefit rates' table, row Tax year 2026 to 2027
+  value: <td>£27.05
+  unit: text
+  snippet: <td>Tax year 2026 to 2027</td>
+  source_license: OGL-UK-3.0
+  content_sha256: 32405df3a3b5fe5c8dfd3787c7fd65ba9cb2fefe215ebbdcad0cb3779042b74a
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: HMRC 'Child Benefit, Guardian's Allowance and tax credits rates and allowances' HTML publication (GOV.UK
+    content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/rates-and-allowances-tax-credits-child-benefit-and-guardians-allowance/tax-credits-child-benefit-and-guardians-allowance
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Child Benefit rates' table, row Tax year 2025 to 2026
+  value: <td>£26.05</td>
+  unit: text
+  snippet: <td>£17.25</td>
+  source_license: OGL-UK-3.0
+  content_sha256: 32405df3a3b5fe5c8dfd3787c7fd65ba9cb2fefe215ebbdcad0cb3779042b74a
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: HMRC 'Child Benefit, Guardian's Allowance and tax credits rates and allowances' HTML publication (GOV.UK
+    content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/rates-and-allowances-tax-credits-child-benefit-and-guardians-allowance/tax-credits-child-benefit-and-guardians-allowance
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Child Benefit rates' table, row Tax year 2024 to 2025
+  value: <td>£25.60</td>
+  unit: text
+  snippet: <td>£16.95</td>
+  source_license: OGL-UK-3.0
+  content_sha256: 32405df3a3b5fe5c8dfd3787c7fd65ba9cb2fefe215ebbdcad0cb3779042b74a
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: HMRC 'Child Benefit, Guardian's Allowance and tax credits rates and allowances' HTML publication (GOV.UK
+    content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/rates-and-allowances-tax-credits-child-benefit-and-guardians-allowance/tax-credits-child-benefit-and-guardians-allowance
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Guardian’s Allowance rates' table
+  value: <td>£22.95
+  unit: text
+  snippet: Guardian’s Allowance rates
+  source_license: OGL-UK-3.0
+  content_sha256: 32405df3a3b5fe5c8dfd3787c7fd65ba9cb2fefe215ebbdcad0cb3779042b74a
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: HMRC 'Child Benefit, Guardian's Allowance and tax credits rates and allowances' HTML publication (GOV.UK
+    content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/rates-and-allowances-tax-credits-child-benefit-and-guardians-allowance/tax-credits-child-benefit-and-guardians-allowance
+  accessed_at: '2026-10-31'
+  locator: details.body, introduction
+  value: These tables show rates and allowances for Child Benefit and Guardian’s Allowance by tax year (6 April
+    to 5 April).
+  unit: text
+  snippet: rates are shown in the following table.
+  source_license: OGL-UK-3.0
+  content_sha256: 32405df3a3b5fe5c8dfd3787c7fd65ba9cb2fefe215ebbdcad0cb3779042b74a
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /child-benefit (JSON)
+  url: https://www.gov.uk/api/content/child-benefit
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, 'What you’ll get' table
+  value: <td>£27.05</td>
+  unit: text
+  snippet: <td>£17.90 per child</td>
+  source_license: OGL-UK-3.0
+  content_sha256: e7026826aa307c303fabbfd32f757bc71a2e43a085a2cc3e20014c69e3a9ffd9
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+- statistic: value[2026-27,eldest_or_only_child_weekly]
+  expected: 27.05
+  tolerance: 0
+- statistic: value[2026-27,other_children_weekly]
+  expected: 17.9
+  tolerance: 0
+- statistic: value[2025-26,guardians_allowance_weekly]
+  expected: 22.1
+  tolerance: 0
+notes: Weekly Child Benefit rates for the eldest or only child and for each other child, and the weekly Guardian's
+  Allowance, for the tax years 2024 to 2025, 2025 to 2026 and 2026 to 2027, read from HMRC's rates and allowances
+  table and confirmed for 2026 to 2027 by GOV.UK's Child Benefit guide. Rows are keyed by tax year so a generator
+  can date a payment. The High Income Child Benefit Charge is out of scope. Sources are the GOV.UK content API's
+  JSON for each page, stable between editorial updates; GOV.UK publishes its content under the Open Government Licence
+  v3.0.

@@ -1,0 +1,151 @@
+id: gb-company-insolvency-codes
+title: United Kingdom Companies House insolvency case type and insolvency case date type codes
+kind: rule
+domain: company
+region: GB
+status: license-review
+tier: A
+valid_from: '2026-09-11'
+valid_to: null
+tags:
+- companies-house
+- insolvency
+- liquidation
+- code-list
+use_cases:
+- company-generation
+- kyb-onboarding
+- credit-risk
+- collections
+- audit-demo
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      insolvency_case_type:
+        compulsory-liquidation: Compulsory liquidation
+        in-administration: In administration
+        creditors-voluntary-liquidation: Creditors voluntary liquidation
+        members-voluntary-liquidation: Members voluntary liquidation
+        foreign-insolvency: Overseas Winding Up
+        administrative-receiver: Administrative receiver appointed
+        scottish-administrative-receiver: Receiver (Scotland) appointed
+        administration-order: Administration order
+        corporate-voluntary-arrangement: Corporate voluntary arrangement (CVA)
+        receiver-manager: Receiver/Manager appointed
+        corporate-voluntary-arrangement-moratorium: Corporate voluntary arrangement moratorium
+        order-of-court-restructuring-plan: Restructuring plan
+        liquidation-moratorium-commencement-of-moratorium: Commencement of Moratorium
+        liquidation-moratorium-extension-of-moratorium: Moratorium has been ended or extended
+        liquidation-moratorium-early-end-of-moratorium: Early end of Moratorium
+        liquidation-moratorium-end-of-moratorium-by-monitor: End of Moratorium by a Monitor
+        liquidation-moratorium-end-of-moratorium-by-court: End of Moratorium by a Court
+        ? liquidation-moratorium-end-of-moratorium-following-disposal-of-application-for-extension-by-court-or-following-cva-proposal-taking-effect-or-being-withdrawn
+        : End of Moratorium following disposal of application for extension by the court or following CVA proposal
+          taking effect or being withdrawn
+        liquidation-moratorium-court-order-permitting-disposal-of-goods: Court order permitting disposal of property
+          or goods
+        liquidation-moratorium-replacement-or-additonal-monitor-following-court-order: Replacement or additional
+          monitor (following court order)
+        liquidation-moratorium-monitor-ceasing-to-act-following-court-order: Monitor ceasing to act following court
+        moratorium: Moratorium
+      insolvency_case_date_type:
+        wound-up-on: Commencement of winding up
+        petitioned-on: Petition date
+        concluded-winding-up-on: Conclusion of winding up
+        due-to-be-dissolved-on: Due to be dissolved on
+        dissolved-on: Dissolved on
+        administration-started-on: Administration started
+        administration-ended-on: Administration ended
+        administration-discharged-on: Administration discharged
+        instrumented-on: Instrument date
+        moratorium-started-on: Moratorium start date
+        moratorium-ended-on: Moratorium ended on
+        ordered-to-wind-up-on: Ordered to wind up
+        voluntary-arrangement-started-on: Date of meeting to approve CVA
+        voluntary-arrangement-ended-on: Date of completion or termination of CVA
+        declaration-solvent-on: Declaration of solvency sworn on
+  vectors:
+  - input:
+      set: insolvency_case_type
+      value: compulsory-liquidation
+    expected: true
+    origin: source
+  - input:
+      set: insolvency_case_type
+      value: creditors-voluntary-liquidation
+    expected: true
+    origin: source
+  - input:
+      set: insolvency_case_type
+      value: in-administration
+    expected: true
+    origin: source
+  - input:
+      set: insolvency_case_type
+      value: corporate-voluntary-arrangement
+    expected: true
+    origin: source
+  - input:
+      set: insolvency_case_type
+      value: bankruptcy
+    expected: false
+    origin: derived
+    note: a personal insolvency, not a company case type
+  - input:
+      set: insolvency_case_date_type
+      value: wound-up-on
+    expected: true
+    origin: source
+  - input:
+      set: insolvency_case_date_type
+      value: dissolved-on
+    expected: true
+    origin: source
+  - input:
+      set: insolvency_case_date_type
+      value: in-administration
+    expected: false
+    origin: derived
+    note: a case type, not a date type
+evidence:
+- publisher: Companies House
+  title: Companies House API enumerations (companieshouse/api-enumerations constants.yml)
+  url: https://raw.githubusercontent.com/companieshouse/api-enumerations/05067abc50da2c9277bb5d3504187f55e5ec9e24/constants.yml
+  accessed_at: '2026-10-31'
+  locator: line 227, insolvency_case_type (22 codes)
+  value: 'insolvency_case_type:'
+  unit: text
+  snippet: '''compulsory-liquidation'''
+  source_license: unstated
+  content_sha256: 41ad03b4e315a0f216c4399c4c835f7e5ae9e32f00dad35b8e62feb00c570f62
+  role: primary
+- publisher: Companies House
+  title: Companies House API enumerations (companieshouse/api-enumerations constants.yml)
+  url: https://raw.githubusercontent.com/companieshouse/api-enumerations/05067abc50da2c9277bb5d3504187f55e5ec9e24/constants.yml
+  accessed_at: '2026-10-31'
+  locator: line 250, insolvency_case_date_type (15 codes)
+  value: 'insolvency_case_date_type:'
+  unit: text
+  snippet: '''wound-up-on'''
+  source_license: unstated
+  content_sha256: 41ad03b4e315a0f216c4399c4c835f7e5ae9e32f00dad35b8e62feb00c570f62
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[insolvency_case_type]
+  expected: 22
+  tolerance: 0
+- statistic: count[insolvency_case_date_type]
+  expected: 15
+  tolerance: 0
+notes: Insolvency case types classify the proceedings recorded against a company (liquidations, administration,
+  receivership, voluntary arrangements, restructuring plans and the moratorium events); date types name the dated
+  milestones within a case. The code lists are enumerations Companies House publishes for its public API (companieshouse/api-enumerations,
+  commit 05067abc); codes and labels are copied unchanged. The repository carries no licence file, so the entry
+  stays at license-review until the publisher's terms for this file are confirmed; Companies House data is generally
+  released under the Open Government Licence, but that is not stated here. valid_from is the date of the pinned
+  revision; valid_to is open.

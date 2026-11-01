@@ -1,0 +1,184 @@
+status: verified
+tier: A
+region: GB
+id: gb-student-loan-repayment-thresholds-2026-27
+title: United Kingdom student loan and postgraduate loan repayment thresholds and deduction rates by plan type,
+  2026 to 2027
+kind: rule
+domain: employment
+valid_from: '2026-04-06'
+valid_to: '2027-04-05'
+tags:
+- student-loan
+- payroll
+- paye
+- deductions
+use_cases:
+- payroll-demo
+- hr-analytics
+- personal-finance
+- collections
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: 2026-27
+    currency: GBP
+    deduction_basis: percentage of earnings above the threshold
+    interest_rates:
+      plan_1: 4.1
+      plan_4: 4.1
+      plan_5: 4.1
+      postgraduate_loan: 6
+      plan_2: variable, RPI plus up to 3% capped at 6%
+    worked_example:
+      plan: plan_1
+      monthly_income: 2750
+      monthly_repayment: 45.81
+    rows:
+      plan_1:
+        annual_threshold: 26900
+        monthly_threshold: 2241.66
+        weekly_threshold: 517.3
+        deduction_percent: 9
+      plan_2:
+        annual_threshold: 29385
+        monthly_threshold: 2448.75
+        weekly_threshold: 565.09
+        deduction_percent: 9
+      plan_4:
+        annual_threshold: 33795
+        monthly_threshold: 2816.25
+        weekly_threshold: 649.9
+        deduction_percent: 9
+      plan_5:
+        annual_threshold: 25000
+        monthly_threshold: 2083.33
+        weekly_threshold: 480.76
+        deduction_percent: 9
+      postgraduate_loan:
+        annual_threshold: 21000
+        monthly_threshold: 1750
+        weekly_threshold: 403.84
+        deduction_percent: 6
+  vectors:
+  - input:
+      key: plan_1
+      column: annual_threshold
+    expected: 26900
+    origin: source
+  - input:
+      key: plan_2
+      column: monthly_threshold
+    expected: 2448.75
+    origin: source
+  - input:
+      key: plan_5
+      column: weekly_threshold
+    expected: 480.76
+    origin: source
+  - input:
+      key: postgraduate_loan
+      column: deduction_percent
+    expected: 6
+    origin: source
+  - input:
+      key: plan_4
+      column: deduction_percent
+    expected: 9
+    origin: source
+  - input: plan_3
+    expected: false
+    origin: derived
+    note: no plan 3 exists
+evidence:
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Student loan and postgraduate loan recovery' table, plan 1 row
+  value: <td>Employee earnings threshold for student loan plan 1</td>
+  unit: text
+  snippet: £26,900 per year<br>£2,241.66 per month<br>£517.30 per week
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Student loan and postgraduate loan recovery' table, postgraduate row
+  value: <td>Employee earnings threshold for postgraduate loan</td>
+  unit: text
+  snippet: £21,000 per year<br>£1,750 per month<br>£403.84 per week
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Student loan and postgraduate loan recovery' table, deduction rows
+  value: <td>Student loan deductions</td>
+  unit: text
+  snippet: <td>Postgraduate loan deductions</td>
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, opening sentence
+  value: Unless otherwise stated, the following figures apply from 6 April 2026 to 5 April 2027.
+  unit: text
+  snippet: apply from 6 April 2026 to 5 April 2027
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: Student Loans Company (GOV.UK)
+  title: GOV.UK content API item for /repaying-your-student-loan (JSON)
+  url: https://www.gov.uk/api/content/repaying-your-student-loan
+  accessed_at: '2026-10-31'
+  locator: details.parts[3].body, 'How much you repay'
+  value: 9% of your income over the threshold if you’re on Plan 1, 2, 4 or 5
+  unit: text
+  snippet: 6% of your income over the threshold if you’re on a Postgraduate Loan plan
+  source_license: OGL-UK-3.0
+  content_sha256: b1c6122aef71926630f94221db48a73dddfcfd920a05c22b117cfc0733297040
+  role: primary
+- publisher: Student Loans Company (GOV.UK)
+  title: GOV.UK content API item for /repaying-your-student-loan (JSON)
+  url: https://www.gov.uk/api/content/repaying-your-student-loan
+  accessed_at: '2026-10-31'
+  locator: details.parts[3].body, worked example and interest
+  value: 9% of £509 = £45.81
+  unit: text
+  snippet: 4.1% if you’re on Plan 1
+  source_license: OGL-UK-3.0
+  content_sha256: b1c6122aef71926630f94221db48a73dddfcfd920a05c22b117cfc0733297040
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: value[plan_1,annual_threshold]
+  expected: 26900
+  tolerance: 0
+- statistic: value[postgraduate_loan,annual_threshold]
+  expected: 21000
+  tolerance: 0
+- statistic: max[deduction_percent]
+  expected: 9
+  tolerance: 0
+- statistic: min[annual_threshold]
+  expected: 21000
+  tolerance: 0
+notes: Earnings thresholds above which employers deduct student loan repayments through PAYE in the 2026 to 2027
+  tax year, by plan type (Plan 1, 2, 4 and 5 at 9% of earnings above the threshold, Postgraduate Loan at 6%), with
+  the annual, monthly and weekly figures HMRC gives employers. GOV.UK's borrower guide confirms the rates and supplies
+  the interest rates and the worked example kept in the parameters. Sources are the GOV.UK content API's JSON for
+  each page, stable between editorial updates; GOV.UK publishes its content under the Open Government Licence v3.0.

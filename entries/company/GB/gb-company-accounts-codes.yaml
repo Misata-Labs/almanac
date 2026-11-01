@@ -1,0 +1,149 @@
+id: gb-company-accounts-codes
+title: United Kingdom Companies House accounts type, foreign accounts and accounts publication terms codes
+kind: rule
+domain: company
+region: GB
+status: license-review
+tier: A
+valid_from: '2026-09-11'
+valid_to: null
+tags:
+- companies-house
+- accounts
+- filing
+- code-list
+use_cases:
+- company-generation
+- kyb-onboarding
+- financial-reporting
+- audit-demo
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      account_type:
+        'null': 'Null'
+        full: Full
+        small: Small
+        medium: Medium
+        group: Group
+        dormant: Dormant
+        interim: Interim
+        initial: Initial
+        total-exemption-full: Total Exemption Full
+        total-exemption-small: Total Exemption Small
+        partial-exemption: Partial Exemption
+        audit-exemption-subsidiary: Audit Exemption Subsidiary
+        filing-exemption-subsidiary: Filing Exemption Subsidiary
+        micro-entity: Micro Entity
+        no-accounts-type-available: No accounts type available
+        audited-abridged: Audited abridged
+        unaudited-abridged: Unaudited abridged
+      foreign_account_type:
+        accounting-requirements-of-originating-country-apply: Accounting requirements of originating country apply
+        accounting-requirements-of-originating-country-do-not-apply: Accounting requirements of originating country
+          do not apply
+      terms_of_account_publication:
+        accounts-publication-date-supplied-by-company: Accounts publication date supplied by company
+        accounting-publication-date-does-not-need-to-be-supplied-by-company: Accounts publication date does not
+          need to be supplied by company
+        accounting-reference-date-allocated-by-companies-house: Accounting reference date allocated by Companies
+          House
+  vectors:
+  - input:
+      set: account_type
+      value: micro-entity
+    expected: true
+    origin: source
+  - input:
+      set: account_type
+      value: dormant
+    expected: true
+    origin: source
+  - input:
+      set: account_type
+      value: total-exemption-full
+    expected: true
+    origin: source
+  - input:
+      set: account_type
+      value: unaudited-abridged
+    expected: true
+    origin: source
+  - input:
+      set: account_type
+      value: abbreviated
+    expected: false
+    origin: derived
+    note: not in the current list
+  - input:
+      set: foreign_account_type
+      value: accounting-requirements-of-originating-country-apply
+    expected: true
+    origin: source
+  - input:
+      set: terms_of_account_publication
+      value: accounting-reference-date-allocated-by-companies-house
+    expected: true
+    origin: source
+  - input:
+      set: terms_of_account_publication
+      value: full
+    expected: false
+    origin: derived
+    note: an account_type code, not a publication term
+evidence:
+- publisher: Companies House
+  title: Companies House API enumerations (companieshouse/api-enumerations constants.yml)
+  url: https://raw.githubusercontent.com/companieshouse/api-enumerations/05067abc50da2c9277bb5d3504187f55e5ec9e24/constants.yml
+  accessed_at: '2026-10-31'
+  locator: line 168, account_type (17 codes)
+  value: 'account_type:'
+  unit: text
+  snippet: '''null'''
+  source_license: unstated
+  content_sha256: 41ad03b4e315a0f216c4399c4c835f7e5ae9e32f00dad35b8e62feb00c570f62
+  role: primary
+- publisher: Companies House
+  title: Companies House API enumerations (companieshouse/api-enumerations constants.yml)
+  url: https://raw.githubusercontent.com/companieshouse/api-enumerations/05067abc50da2c9277bb5d3504187f55e5ec9e24/constants.yml
+  accessed_at: '2026-10-31'
+  locator: line 161, foreign_account_type (2 codes)
+  value: 'foreign_account_type:'
+  unit: text
+  snippet: '''accounting-requirements-of-originating-country-apply'''
+  source_license: unstated
+  content_sha256: 41ad03b4e315a0f216c4399c4c835f7e5ae9e32f00dad35b8e62feb00c570f62
+  role: primary
+- publisher: Companies House
+  title: Companies House API enumerations (companieshouse/api-enumerations constants.yml)
+  url: https://raw.githubusercontent.com/companieshouse/api-enumerations/05067abc50da2c9277bb5d3504187f55e5ec9e24/constants.yml
+  accessed_at: '2026-10-31'
+  locator: line 164, terms_of_account_publication (3 codes)
+  value: 'terms_of_account_publication:'
+  unit: text
+  snippet: '''accounts-publication-date-supplied-by-company'''
+  source_license: unstated
+  content_sha256: 41ad03b4e315a0f216c4399c4c835f7e5ae9e32f00dad35b8e62feb00c570f62
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[account_type]
+  expected: 17
+  tolerance: 0
+- statistic: count[foreign_account_type]
+  expected: 2
+  tolerance: 0
+- statistic: count[terms_of_account_publication]
+  expected: 3
+  tolerance: 0
+notes: Account types label the kind of annual accounts a company last filed (full, small, micro-entity, dormant,
+  group, exemption variants); the foreign account and publication-terms codes apply to overseas companies with UK
+  establishments. The code lists are enumerations Companies House publishes for its public API (companieshouse/api-enumerations,
+  commit 05067abc); codes and labels are copied unchanged. The repository carries no licence file, so the entry
+  stays at license-review until the publisher's terms for this file are confirmed; Companies House data is generally
+  released under the Open Government Licence, but that is not stated here. valid_from is the date of the pinned
+  revision; valid_to is open.

@@ -1,0 +1,169 @@
+status: verified
+tier: A
+region: GB
+id: gb-state-pension-rates
+title: United Kingdom new State Pension full rate and old State Pension basic rates per week, 2025/26 and 2026/27
+kind: rule
+domain: pensions
+valid_from: '2025-04-06'
+valid_to: '2027-04-05'
+tags:
+- state-pension
+- pensions
+- retirement
+- weekly-rates
+use_cases:
+- pensions
+- personal-finance
+- financial-planning
+- person-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: GBP
+    unit: per week
+    qualifying_years_for_full_new_state_pension: 35
+    deferral_increase_percent_per_year: just under 5.8
+    new_state_pension_uprating_percent_2026_27: 4.7991
+    rows:
+      new_state_pension_full_rate:
+        weekly_2025_26: 230.25
+        weekly_2026_27: 241.3
+        dwp_label: Full rate
+      old_state_pension_category_a_or_b_basic:
+        weekly_2025_26: 176.45
+        weekly_2026_27: 184.9
+        dwp_label: Category A or B basic pension
+      old_state_pension_category_b_lower_basic:
+        weekly_2025_26: 105.7
+        weekly_2026_27: 110.75
+        dwp_label: Category B (lower) basic pension - spouse or civil partner’s insurance
+      old_state_pension_category_c_or_d_non_contributory:
+        weekly_2025_26: 105.7
+        weekly_2026_27: 110.75
+        dwp_label: Category C or D - non-contributory
+      maximum_additional_pension:
+        weekly_2025_26: 222.1
+        weekly_2026_27: 230.54
+        dwp_label: Maximum additional pension (own and inherited)
+  vectors:
+  - input:
+      key: new_state_pension_full_rate
+      column: weekly_2026_27
+    expected: 241.3
+    origin: source
+  - input:
+      key: new_state_pension_full_rate
+      column: weekly_2025_26
+    expected: 230.25
+    origin: source
+  - input:
+      key: old_state_pension_category_a_or_b_basic
+      column: weekly_2026_27
+    expected: 184.9
+    origin: source
+  - input:
+      key: old_state_pension_category_c_or_d_non_contributory
+      column: weekly_2026_27
+    expected: 110.75
+    origin: source
+  - input: pension_credit
+    expected: false
+    origin: derived
+    note: Pension Credit is a separate benefit
+evidence:
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'State Pension', New State Pension table, row Full rate
+  value: <td>241.30</td>
+  unit: text
+  snippet: <td>Full rate</td>
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'State Pension', Old State Pension table, row Category A or B
+  value: <td>184.90</td>
+  unit: text
+  snippet: Category A or B basic pension
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'State Pension', Old State Pension table, rows Category B lower and C or D
+  value: <td>110.75</td>
+  unit: text
+  snippet: Category C or D - non-contributory
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'State Pension', additional pension table
+  value: <td>230.54</td>
+  unit: text
+  snippet: Maximum additional pension (own and inherited)
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: GOV.UK content API item for /new-state-pension (JSON)
+  url: https://www.gov.uk/api/content/new-state-pension
+  accessed_at: '2026-10-31'
+  locator: details.change_history, April 2026 note
+  value: The New State Pension rate has changed from £230.25 per week to £241.30 per week.
+  unit: text
+  snippet: you will need 35 qualifying years to get the full rate of new State Pension
+  source_license: OGL-UK-3.0
+  content_sha256: 4bd861d22d17b2bb8ae09d50c06a66dfbd1707f7c942831efd8bafd009a7407b
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: GOV.UK content API item for /new-state-pension (JSON)
+  url: https://www.gov.uk/api/content/new-state-pension
+  accessed_at: '2026-10-31'
+  locator: details.parts[4].body, deferral
+  value: For every year you delay claiming, your weekly payments increase by just under 5.8%.
+  unit: text
+  snippet: as long as you defer for at least 9 weeks
+  source_license: OGL-UK-3.0
+  content_sha256: 4bd861d22d17b2bb8ae09d50c06a66dfbd1707f7c942831efd8bafd009a7407b
+  role: primary
+assumed:
+- parameter: valid_from and valid_to
+  value: tax years 6 April to 5 April
+  method: derived
+  rationale: The DWP table labels its columns 'Rates 2025/26' and 'Rates 2026/27' without dates; the windows are
+    taken as the tax years. Uprating of individual benefits takes effect in the first full benefit week of April,
+    which can differ from 6 April by a few days.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: value[new_state_pension_full_rate,weekly_2026_27]
+  expected: 241.3
+  tolerance: 0
+- statistic: value[old_state_pension_category_a_or_b_basic,weekly_2025_26]
+  expected: 176.45
+  tolerance: 0
+- statistic: max[weekly_2026_27]
+  expected: 241.3
+  tolerance: 0
+notes: 'Weekly State Pension rates for 2025/26 and 2026/27 from the DWP ''Benefit and pension rates 2026 to 2027''
+  publication: the full rate of the new State Pension (for people reaching State Pension age from 6 April 2016,
+  normally needing 35 qualifying years), the old basic State Pension by category and the maximum additional pension.
+  GOV.UK''s new State Pension guide records the April 2026 change in its change history and gives the deferral increase.
+  Sources are the GOV.UK content API''s JSON for each page, stable between editorial updates; GOV.UK publishes its
+  content under the Open Government Licence v3.0.'

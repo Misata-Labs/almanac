@@ -1,0 +1,159 @@
+status: verified
+tier: A
+region: GB
+id: gb-disability-and-carer-benefit-rates
+title: Great Britain Personal Independence Payment, Attendance Allowance and Carer's Allowance weekly rates, 2025/26
+  and 2026/27
+kind: rule
+domain: benefits
+valid_from: '2025-04-06'
+valid_to: '2027-04-05'
+tags:
+- pip
+- attendance-allowance
+- carers-allowance
+- benefits
+- disability
+- weekly-rates
+use_cases:
+- health-demo
+- insurance
+- personal-finance
+- household-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: GBP
+    unit: per week
+    rows:
+      pip_daily_living_enhanced:
+        weekly_2025_26: 110.4
+        weekly_2026_27: 114.6
+      pip_daily_living_standard:
+        weekly_2025_26: 73.9
+        weekly_2026_27: 76.7
+      pip_mobility_enhanced:
+        weekly_2025_26: 77.05
+        weekly_2026_27: 80
+      pip_mobility_standard:
+        weekly_2025_26: 29.2
+        weekly_2026_27: 30.3
+      attendance_allowance_higher:
+        weekly_2025_26: 110.4
+        weekly_2026_27: 114.6
+      attendance_allowance_lower:
+        weekly_2025_26: 73.9
+        weekly_2026_27: 76.7
+      carers_allowance:
+        weekly_2025_26: 83.3
+        weekly_2026_27: 86.45
+  vectors:
+  - input:
+      key: pip_daily_living_enhanced
+      column: weekly_2026_27
+    expected: 114.6
+    origin: source
+  - input:
+      key: pip_mobility_standard
+      column: weekly_2026_27
+    expected: 30.3
+    origin: source
+  - input:
+      key: attendance_allowance_lower
+      column: weekly_2025_26
+    expected: 73.9
+    origin: source
+  - input:
+      key: carers_allowance
+      column: weekly_2026_27
+    expected: 86.45
+    origin: source
+  - input: disability_living_allowance
+    expected: false
+    origin: derived
+    note: not included in this table
+evidence:
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Personal Independence Payment', daily living table
+  value: <td>114.60</td>
+  unit: text
+  snippet: Daily living component
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Personal Independence Payment', mobility table
+  value: <td>80.00</td>
+  unit: text
+  snippet: Mobility component
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Attendance Allowance' table
+  value: <td>76.70</td>
+  unit: text
+  snippet: Attendance Allowance
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Carer’s Allowance' table
+  value: <td>86.45</td>
+  unit: text
+  snippet: Carer’s Allowance
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, heading
+  value: Weekly rates unless otherwise stated.
+  unit: text
+  snippet: Rates 2026/27
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+assumed:
+- parameter: valid_from and valid_to
+  value: tax years 6 April to 5 April
+  method: derived
+  rationale: The DWP table labels its columns 'Rates 2025/26' and 'Rates 2026/27' without dates; the windows are
+    taken as the tax years. Uprating of individual benefits takes effect in the first full benefit week of April,
+    which can differ from 6 April by a few days.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 7
+  tolerance: 0
+- statistic: value[pip_daily_living_enhanced,weekly_2026_27]
+  expected: 114.6
+  tolerance: 0
+- statistic: value[carers_allowance,weekly_2025_26]
+  expected: 83.3
+  tolerance: 0
+- statistic: max[weekly_2026_27]
+  expected: 114.6
+  tolerance: 0
+notes: Weekly rates of Personal Independence Payment (daily living and mobility components at standard and enhanced
+  rates), Attendance Allowance (higher and lower rates) and Carer's Allowance for 2025/26 and 2026/27, read from
+  the DWP 'Benefit and pension rates 2026 to 2027' publication. The enhanced daily living and higher Attendance
+  Allowance rates coincide, as do the standard daily living and lower Attendance Allowance rates. Sources are the
+  GOV.UK content API's JSON for each page, stable between editorial updates; GOV.UK publishes its content under
+  the Open Government Licence v3.0.

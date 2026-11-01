@@ -1,0 +1,148 @@
+status: verified
+tier: A
+region: GB
+id: gb-jobseekers-allowance-rates
+title: Great Britain New Style (contribution-based) Jobseeker's Allowance weekly personal rates by age, 2025/26
+  and 2026/27
+kind: rule
+domain: benefits
+valid_from: '2025-04-06'
+valid_to: '2027-04-05'
+tags:
+- jobseekers-allowance
+- benefits
+- unemployment
+- weekly-rates
+use_cases:
+- personal-finance
+- household-generation
+- credit-risk
+spec:
+  implementation: almanac.rules.age_band_rates
+  parameters:
+    currency: GBP
+    unit: per week
+    max_duration_days: 182
+    bands:
+    - name: Under 25
+      max_age: 24
+    - name: 25 or over
+      min_age: 25
+    categories: []
+    tables:
+    - from: '2025-04-06'
+      rates:
+        Under 25: 72.9
+        25 or over: 92.05
+    - from: '2026-04-06'
+      rates:
+        Under 25: 75.65
+        25 or over: 95.55
+  vectors:
+  - input:
+      age: 22
+      'on': '2026-06-01'
+    expected: 75.65
+    origin: source
+  - input:
+      age: 25
+      'on': '2026-06-01'
+    expected: 95.55
+    origin: source
+  - input:
+      age: 40
+      'on': '2025-06-01'
+    expected: 92.05
+    origin: source
+  - input:
+      age: 18
+      'on': '2025-04-06'
+    expected: 72.9
+    origin: source
+  - input:
+      age: 24
+      'on': '2026-04-05'
+    expected: 72.9
+    origin: derived
+    note: last day of the 2025/26 table
+evidence:
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Contribution based JSA - Personal Rates' table, row Under 25
+  value: <td>75.65</td>
+  unit: text
+  snippet: Contribution based JSA - Personal Rates
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Contribution based JSA - Personal Rates' table, row 25 or over
+  value: <td>95.55</td>
+  unit: text
+  snippet: <td>25 or over</td>
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, heading
+  value: Weekly rates unless otherwise stated.
+  unit: text
+  snippet: Rates 2025/26
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: GOV.UK content API item for /jobseekers-allowance (JSON)
+  url: https://www.gov.uk/api/content/jobseekers-allowance
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, 'What you’ll get' table
+  value: <td>up to £75.65</td>
+  unit: text
+  snippet: <td>up to £95.55</td>
+  source_license: OGL-UK-3.0
+  content_sha256: e4da8dd7ea16b6d52aaac1f8e423731c6f0ea7d016a33cb52752bf6cb6a3181f
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: GOV.UK content API item for /jobseekers-allowance (JSON)
+  url: https://www.gov.uk/api/content/jobseekers-allowance
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, duration
+  value: for up to 182 days (about 6 months)
+  unit: text
+  snippet: After this you can talk to your work coach about your options.
+  source_license: OGL-UK-3.0
+  content_sha256: e4da8dd7ea16b6d52aaac1f8e423731c6f0ea7d016a33cb52752bf6cb6a3181f
+  role: primary
+assumed:
+- parameter: valid_from and valid_to
+  value: tax years 6 April to 5 April
+  method: derived
+  rationale: The DWP table labels its columns 'Rates 2025/26' and 'Rates 2026/27' without dates; the windows are
+    taken as the tax years. Uprating of individual benefits takes effect in the first full benefit week of April,
+    which can differ from 6 April by a few days.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+- statistic: rate[Under 25,2026-04-06]
+  expected: 75.65
+  tolerance: 0
+- statistic: rate[25 or over,2025-04-06]
+  expected: 92.05
+  tolerance: 0
+notes: Weekly personal rates of New Style (contribution-based) Jobseeker's Allowance by age band for 2025/26 and
+  2026/27 from the DWP 'Benefit and pension rates 2026 to 2027' publication, confirmed by GOV.UK's JSA guide, which
+  also gives the 182-day maximum. The age_band_rates rule returns the rate for an age on a date. Sources are the
+  GOV.UK content API's JSON for each page, stable between editorial updates; GOV.UK publishes its content under
+  the Open Government Licence v3.0.

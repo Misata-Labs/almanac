@@ -1,0 +1,738 @@
+id: global-pm25-air-pollution-exposure-2023
+title: PM2.5 air pollution, mean annual exposure (micrograms per cubic meter), by economy, 2023 (World Bank, 200
+  economies)
+kind: rule
+domain: environment
+region: global
+status: verified
+tier: A
+valid_from: '2023-01-01'
+valid_to: '2023-12-31'
+tags:
+- air-quality
+- pollution
+- health
+- world-bank
+- reference-table
+use_cases:
+- health-demo
+- insurance
+- claims-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    indicator: EN.ATM.PM25.MC.M3
+    year: 2023
+    variable: pm25_micrograms_per_m3
+    unit: decimal
+    rows:
+      AFG:
+        name: Afghanistan
+        value: 37.9483109911724
+      AGO:
+        name: Angola
+        value: 19.9075690536367
+      ALB:
+        name: Albania
+        value: 15.5141032036885
+      AND:
+        name: Andorra
+        value: 8.88302187970813
+      ARE:
+        name: United Arab Emirates
+        value: 57.1867315267375
+      ARG:
+        name: Argentina
+        value: 14.3465949932455
+      ARM:
+        name: Armenia
+        value: 28.5532304553511
+      ASM:
+        name: American Samoa
+        value: 4.32593683167305
+      ATG:
+        name: Antigua and Barbuda
+        value: 8.4161129524253
+      AUS:
+        name: Australia
+        value: 6.41473930057816
+      AUT:
+        name: Austria
+        value: 10.0337620235066
+      AZE:
+        name: Azerbaijan
+        value: 23.7138875571912
+      BDI:
+        name: Burundi
+        value: 35.6918123934643
+      BEL:
+        name: Belgium
+        value: 8.44918716609445
+      BEN:
+        name: Benin
+        value: 39.6565559870988
+      BFA:
+        name: Burkina Faso
+        value: 37.3246424541393
+      BGD:
+        name: Bangladesh
+        value: 69.2525518340174
+      BGR:
+        name: Bulgaria
+        value: 19.6823426211069
+      BHR:
+        name: Bahrain
+        value: 56.5654845582004
+      BHS:
+        name: Bahamas, The
+        value: 5.28191362280586
+      BIH:
+        name: Bosnia and Herzegovina
+        value: 26.0886959562752
+      BLR:
+        name: Belarus
+        value: 11.9843753055171
+      BLZ:
+        name: Belize
+        value: 16.7646615164655
+      BMU:
+        name: Bermuda
+        value: 4.6349320219719
+      BOL:
+        name: Bolivia
+        value: 28.1374394437756
+      BRA:
+        name: Brazil
+        value: 13.3827173243912
+      BRB:
+        name: Barbados
+        value: 10.9080492042776
+      BRN:
+        name: Brunei Darussalam
+        value: 7.56922294285959
+      BTN:
+        name: Bhutan
+        value: 30.0727424508173
+      BWA:
+        name: Botswana
+        value: 13.2435593608353
+      CAF:
+        name: Central African Republic
+        value: 33.2858847106909
+      CAN:
+        name: Canada
+        value: 6.55039237938261
+      CHE:
+        name: Switzerland
+        value: 8.32022270668715
+      CHL:
+        name: Chile
+        value: 23.1032480114662
+      CHN:
+        name: China
+        value: 31.991575365069
+      CIV:
+        name: Cote d'Ivoire
+        value: 20.3873194822538
+      CMR:
+        name: Cameroon
+        value: 55.603592684544
+      COD:
+        name: Congo, Dem. Rep.
+        value: 35.8125021813766
+      COG:
+        name: Congo, Rep.
+        value: 36.5403519085882
+      COL:
+        name: Colombia
+        value: 18.3566187713727
+      COM:
+        name: Comoros
+        value: 10.1727579725379
+      CPV:
+        name: Cabo Verde
+        value: 20.1930112407691
+      CRI:
+        name: Costa Rica
+        value: 17.6979830088429
+      CUB:
+        name: Cuba
+        value: 9.44801581673589
+      CYP:
+        name: Cyprus
+        value: 16.0691610763589
+      CZE:
+        name: Czechia
+        value: 12.7487592084261
+      DEU:
+        name: Germany
+        value: 8.81223056430691
+      DJI:
+        name: Djibouti
+        value: 40.2974292106183
+      DMA:
+        name: Dominica
+        value: 11.5165760747608
+      DNK:
+        name: Denmark
+        value: 7.50264703002735
+      DOM:
+        name: Dominican Republic
+        value: 13.5127642846618
+      DZA:
+        name: Algeria
+        value: 16.5394687279881
+      ECU:
+        name: Ecuador
+        value: 18.6084478897872
+      EGY:
+        name: Egypt, Arab Rep.
+        value: 43.1460553382462
+      ERI:
+        name: Eritrea
+        value: 33.6567997168068
+      ESP:
+        name: Spain
+        value: 10.0808338779581
+      EST:
+        name: Estonia
+        value: 5.91844561892566
+      ETH:
+        name: Ethiopia
+        value: 23.8032820424199
+      FIN:
+        name: Finland
+        value: 4.56663882609005
+      FJI:
+        name: Fiji
+        value: 6.44872096526468
+      FRA:
+        name: France
+        value: 8.22738625697416
+      FSM:
+        name: Micronesia, Fed. Sts.
+        value: 3.51665334908193
+      GAB:
+        name: Gabon
+        value: 31.3215918230835
+      GBR:
+        name: United Kingdom
+        value: 9.46282991802458
+      GEO:
+        name: Georgia
+        value: 18.5711667549529
+      GHA:
+        name: Ghana
+        value: 28.143601284493
+      GIN:
+        name: Guinea
+        value: 27.2639917651602
+      GMB:
+        name: Gambia, The
+        value: 38.265175638788
+      GNB:
+        name: Guinea-Bissau
+        value: 32.2919342603912
+      GNQ:
+        name: Equatorial Guinea
+        value: 42.2208052713627
+      GRC:
+        name: Greece
+        value: 14.118664022908
+      GRD:
+        name: Grenada
+        value: 11.0315429587203
+      GRL:
+        name: Greenland
+        value: 1.63628490009227
+      GTM:
+        name: Guatemala
+        value: 29.6792763049113
+      GUM:
+        name: Guam
+        value: 3.47075894957671
+      GUY:
+        name: Guyana
+        value: 16.9462260034022
+      HND:
+        name: Honduras
+        value: 30.7188969730187
+      HRV:
+        name: Croatia
+        value: 15.7786705432032
+      HTI:
+        name: Haiti
+        value: 15.8127594459366
+      HUN:
+        name: Hungary
+        value: 13.7155825810085
+      IDN:
+        name: Indonesia
+        value: 20.8444642120249
+      IND:
+        name: India
+        value: 54.0522242217331
+      IRL:
+        name: Ireland
+        value: 7.51222073505132
+      IRN:
+        name: Iran, Islamic Rep.
+        value: 40.2453897732326
+      IRQ:
+        name: Iraq
+        value: 49.4713662187955
+      ISL:
+        name: Iceland
+        value: 4.93296364385632
+      ISR:
+        name: Israel
+        value: 21.9008483431459
+      ITA:
+        name: Italy
+        value: 14.291805636343
+      JAM:
+        name: Jamaica
+        value: 21.6535070203861
+      JOR:
+        name: Jordan
+        value: 32.6320116469358
+      JPN:
+        name: Japan
+        value: 11.4519383176575
+      KAZ:
+        name: Kazakhstan
+        value: 19.5961413356991
+      KEN:
+        name: Kenya
+        value: 20.252365609383
+      KGZ:
+        name: Kyrgyz Republic
+        value: 20.1239014514257
+      KHM:
+        name: Cambodia
+        value: 19.4262068786841
+      KIR:
+        name: Kiribati
+        value: 3.86704654760796
+      KNA:
+        name: St. Kitts and Nevis
+        value: 8.87073187526288
+      KOR:
+        name: Korea, Rep.
+        value: 21.8940234142942
+      KWT:
+        name: Kuwait
+        value: 62.3484361793193
+      LAO:
+        name: Lao PDR
+        value: 25.9762899979383
+      LBN:
+        name: Lebanon
+        value: 26.6948532836253
+      LBR:
+        name: Liberia
+        value: 17.9178293051068
+      LBY:
+        name: Libya
+        value: 20.014492731108
+      LCA:
+        name: St. Lucia
+        value: 10.4259042064551
+      LKA:
+        name: Sri Lanka
+        value: 22.6820308390395
+      LSO:
+        name: Lesotho
+        value: 26.4379773450967
+      LTU:
+        name: Lithuania
+        value: 10.7455249948656
+      LUX:
+        name: Luxembourg
+        value: 7.42989857852829
+      LVA:
+        name: Latvia
+        value: 13.0121664059875
+      MAR:
+        name: Morocco
+        value: 18.7206508843713
+      MCO:
+        name: Monaco
+        value: 11.3779821797819
+      MDA:
+        name: Moldova
+        value: 14.9450916480619
+      MDG:
+        name: Madagascar
+        value: 12.3865755564591
+      MDV:
+        name: Maldives
+        value: 11.1624191226985
+      MEX:
+        name: Mexico
+        value: 16.6099613756465
+      MHL:
+        name: Marshall Islands
+        value: 4.10159681023633
+      MKD:
+        name: North Macedonia
+        value: 21.8117148685703
+      MLI:
+        name: Mali
+        value: 35.5240450338273
+      MLT:
+        name: Malta
+        value: 10.8087176501156
+      MMR:
+        name: Myanmar
+        value: 35.0665284656219
+      MNE:
+        name: Montenegro
+        value: 18.4546520922672
+      MNG:
+        name: Mongolia
+        value: 42.6916874423772
+      MNP:
+        name: Northern Mariana Islands
+        value: 2.67817942323547
+      MOZ:
+        name: Mozambique
+        value: 13.7216828951578
+      MRT:
+        name: Mauritania
+        value: 46.5013986975929
+      MUS:
+        name: Mauritius
+        value: 14.0610818595338
+      MWI:
+        name: Malawi
+        value: 16.7211601349048
+      MYS:
+        name: Malaysia
+        value: 15.8650142432827
+      NAM:
+        name: Namibia
+        value: 14.2253008498779
+      NER:
+        name: Niger
+        value: 65.2302894952218
+      NGA:
+        name: Nigeria
+        value: 65.740618883028
+      NIC:
+        name: Nicaragua
+        value: 20.4180839334698
+      NLD:
+        name: Netherlands
+        value: 8.58757364083248
+      NOR:
+        name: Norway
+        value: 5.52141079375347
+      NPL:
+        name: Nepal
+        value: 53.2003436952498
+      NRU:
+        name: Naoero
+        value: 4.83857913426453
+      NZL:
+        name: New Zealand
+        value: 6.88138507182829
+      OMN:
+        name: Oman
+        value: 46.8557577090985
+      PAK:
+        name: Pakistan
+        value: 58.3745179541935
+      PAN:
+        name: Panama
+        value: 15.1210531361735
+      PER:
+        name: Peru
+        value: 31.0938536450575
+      PHL:
+        name: Philippines
+        value: 22.2053003753671
+      PLW:
+        name: Palau
+        value: 4.94109970714801
+      PNG:
+        name: Papua New Guinea
+        value: 14.1117516188413
+      POL:
+        name: Poland
+        value: 16.522574789688
+      PRI:
+        name: Puerto Rico (US)
+        value: 7.83963023115694
+      PRK:
+        name: Korea, Dem. People's Rep.
+        value: 21.7761196310643
+      PRT:
+        name: Portugal
+        value: 8.76550462748695
+      PRY:
+        name: Paraguay
+        value: 15.327993717276
+      PSE:
+        name: West Bank and Gaza
+        value: 22.394098975674
+      QAT:
+        name: Qatar
+        value: 107.758571527846
+      ROU:
+        name: Romania
+        value: 16.007729806639
+      RUS:
+        name: Russian Federation
+        value: 11.5661567768194
+      RWA:
+        name: Rwanda
+        value: 36.0064247681194
+      SAU:
+        name: Saudi Arabia
+        value: 73.5179752363051
+      SDN:
+        name: Sudan
+        value: 37.6123871383607
+      SEN:
+        name: Senegal
+        value: 41.6483649398667
+      SGP:
+        name: Singapore
+        value: 15.1427300261359
+      SLB:
+        name: Solomon Islands
+        value: 9.76639967800624
+      SLE:
+        name: Sierra Leone
+        value: 22.461260523478
+      SLV:
+        name: El Salvador
+        value: 29.5862475987305
+      SMR:
+        name: San Marino
+        value: 12.7360737522911
+      SOM:
+        name: Somalia, Fed. Rep.
+        value: 18.5402586086237
+      SRB:
+        name: Serbia
+        value: 19.3375514552379
+      SSD:
+        name: South Sudan
+        value: 23.674692498997
+      STP:
+        name: Sao Tome and Principe
+        value: 15.1195335259737
+      SUR:
+        name: Suriname
+        value: 15.670163102049
+      SVK:
+        name: Slovak Republic
+        value: 13.7166673872216
+      SVN:
+        name: Slovenia
+        value: 12.5550625384956
+      SWE:
+        name: Sweden
+        value: 5.25938129137927
+      SWZ:
+        name: Eswatini
+        value: 16.7458644287773
+      SYC:
+        name: Seychelles
+        value: 9.25996565809024
+      SYR:
+        name: Syrian Arab Republic
+        value: 32.0552019474512
+      TCD:
+        name: Chad
+        value: 42.9595249298994
+      TGO:
+        name: Togo
+        value: 34.3346739146749
+      THA:
+        name: Thailand
+        value: 23.4870743016258
+      TJK:
+        name: Tajikistan
+        value: 33.3455362132125
+      TKM:
+        name: Turkmenistan
+        value: 31.2475628480692
+      TLS:
+        name: Timor-Leste
+        value: 11.9874398587491
+      TON:
+        name: Tonga
+        value: 4.68916248431247
+      TTO:
+        name: Trinidad and Tobago
+        value: 13.7770653891863
+      TUN:
+        name: Tunisia
+        value: 18.874792802061
+      TUR:
+        name: Turkiye
+        value: 26.4041601035213
+      TUV:
+        name: Tuvalu
+        value: 5.22404813151427
+      TZA:
+        name: Tanzania
+        value: 20.1699588964355
+      UGA:
+        name: Uganda
+        value: 31.2148242708861
+      UKR:
+        name: Ukraine
+        value: 14.854701604932
+      URY:
+        name: Uruguay
+        value: 10.8548023885457
+      USA:
+        name: United States
+        value: 6.96804491055748
+      UZB:
+        name: Uzbekistan
+        value: 32.7713715610547
+      VCT:
+        name: St. Vincent and the Grenadines
+        value: 10.6030079678565
+      VEN:
+        name: Venezuela, RB
+        value: 19.1983096563552
+      VIR:
+        name: Virgin Islands (U.S.)
+        value: 6.7926382310921
+      VNM:
+        name: Viet Nam
+        value: 24.7845479100313
+      VUT:
+        name: Vanuatu
+        value: 6.9939431918878
+      WSM:
+        name: Samoa
+        value: 4.57949918534889
+      YEM:
+        name: Yemen, Rep.
+        value: 46.8359781444582
+      ZAF:
+        name: South Africa
+        value: 27.7247110277789
+      ZMB:
+        name: Zambia
+        value: 20.2430489112714
+      ZWE:
+        name: Zimbabwe
+        value: 15.0254734850511
+  vectors:
+  - input:
+      key: IND
+      column: value
+    expected: 54.0522242217331
+    origin: source
+  - input:
+      key: QAT
+      column: value
+    expected: 107.758571527846
+    origin: source
+    note: largest value
+  - input:
+      key: GRL
+      column: value
+    expected: 1.63628490009227
+    origin: source
+    note: smallest value
+  - input: IND
+    expected: true
+    origin: source
+  - input: WLD
+    expected: false
+    origin: derived
+    note: aggregates are excluded
+evidence:
+- publisher: World Bank
+  title: World Development Indicators API, EN.ATM.PM25.MC.M3 (PM2.5 air pollution, mean annual exposure (micrograms
+    per cubic meter)), 2023
+  url: https://api.worldbank.org/v2/country/all/indicator/EN.ATM.PM25.MC.M3?date=2023&format=json&per_page=400
+  accessed_at: '2026-10-31'
+  locator: rows[countryiso3code=IND].value
+  value: 54.0522242217331
+  unit: decimal
+  snippet: '"countryiso3code":"IND"'
+  source_license: CC-BY-4.0
+  content_sha256: ee02481ff3e7351357b36a12ea5161e0a63c6ad27570a2975a73541f965994b0
+  role: primary
+- publisher: World Bank
+  title: World Development Indicators API, EN.ATM.PM25.MC.M3 (PM2.5 air pollution, mean annual exposure (micrograms
+    per cubic meter)), 2023
+  url: https://api.worldbank.org/v2/country/all/indicator/EN.ATM.PM25.MC.M3?date=2023&format=json&per_page=400
+  accessed_at: '2026-10-31'
+  locator: lastupdated
+  value: '2026-10-08'
+  unit: date
+  snippet: '"lastupdated":'
+  source_license: CC-BY-4.0
+  content_sha256: ee02481ff3e7351357b36a12ea5161e0a63c6ad27570a2975a73541f965994b0
+  role: primary
+- publisher: World Bank
+  title: World Bank indicator metadata, EN.ATM.PM25.MC.M3
+  url: https://api.worldbank.org/v2/indicator/EN.ATM.PM25.MC.M3?format=json
+  accessed_at: '2026-10-31'
+  locator: name
+  value: PM2.5 air pollution, mean annual exposure (micrograms per cubic meter)
+  unit: text
+  snippet: '"id":"EN.ATM.PM25.MC.M3"'
+  source_license: CC-BY-4.0
+  content_sha256: c6a8abe3aa5bbdaa57df11d1375b4d98d82cfc5f3ee02af04f1e9e3f8d2651aa
+  role: primary
+- publisher: World Bank
+  title: World Bank country API (region classification used to exclude aggregates)
+  url: https://api.worldbank.org/v2/country?format=json&per_page=400
+  accessed_at: '2026-10-31'
+  locator: country[id=IND].region.value
+  value: South Asia
+  unit: text
+  snippet: '"id":"IND"'
+  source_license: CC-BY-4.0
+  content_sha256: c9acf3932785191a649cbc04c3056af4cf64a236e5c3b49d49be25ddb0440bce
+  role: primary
+- publisher: World Bank
+  title: World Bank Data Catalog public licenses
+  url: https://datacatalog.worldbank.org/public-licenses
+  accessed_at: '2026-10-31'
+  locator: Data Access And Licensing
+  value: Creative Commons Attribution 4.0 International license
+  unit: text
+  snippet: The World Bank Group makes data publicly available according to open data standards
+  source_license: CC-BY-4.0
+  content_sha256: c7c9b31441ea4a1fa27990f4b11f385587469c5c2bda4ec4fc7a6561db6d2422
+  role: supporting
+assumed:
+- parameter: rows
+  value: economies only
+  method: derived
+  rationale: Rows whose region is 'Aggregates' in the World Bank country API, and rows without a value for the year,
+    are dropped; everything else is copied unchanged.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 200
+  tolerance: 0
+- statistic: max[value]
+  expected: 107.758571527846
+  tolerance: 0
+- statistic: min[value]
+  expected: 1.63628490009227
+  tolerance: 0
+notes: 'PM2.5 air pollution, mean annual exposure (micrograms per cubic meter) for 2023 from the World Development
+  Indicators API (indicator EN.ATM.PM25.MC.M3, data last updated 2026-10-08), one row per economy keyed by ISO 3166-1
+  alpha-3 code, with regional and income aggregates removed. 2023 is the most recent year whose coverage is close
+  to the series'' best recent year. Source note from the World Bank: Population-weighted exposure to ambient PM2.5
+  pollution is defined as the average level of exposure of a nation''s population to concentrations of suspended
+  particles measuring less than 2.5 microns in aerodynamic diameter, which are capable of penetrating deep into
+  the respiratory tract and causing severe health damage. Exposure is calculated by weighting mean annual concentrations
+  of PM2.5 by pop The World Bank licenses its datasets under CC BY 4.0.'

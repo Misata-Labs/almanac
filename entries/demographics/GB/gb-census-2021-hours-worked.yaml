@@ -1,0 +1,100 @@
+id: gb-census-2021-hours-worked
+title: England and Wales usual residents aged 16 and over in employment by hours worked per week, Census 2021
+kind: marginal
+domain: demographics
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2021-03-21'
+  end: '2021-03-21'
+tags:
+- census
+- hours-worked
+- employment
+- part-time
+use_cases:
+- person-generation
+- hr-analytics
+- workforce-planning
+- payroll-demo
+spec:
+  variable: hours_worked
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Does not apply: 0.53398
+        'Part-time: 15 hours or less worked': 0.047906
+        'Part-time: 16 to 30 hours worked': 0.091043
+        'Full-time: 31 to 48 hours worked': 0.275643
+        'Full-time: 49 or more hours worked': 0.051428
+      counts:
+        Does not apply: 31823877
+        'Part-time: 15 hours or less worked': 2855066
+        'Part-time: 16 to 30 hours worked': 5425938
+        'Full-time: 31 to 48 hours worked': 16427651
+        'Full-time: 49 or more hours worked': 3065010
+      total: 59597542
+      option_ids:
+        Does not apply: '-8'
+        'Part-time: 15 hours or less worked': '1'
+        'Part-time: 16 to 30 hours worked': '2'
+        'Full-time: 31 to 48 hours worked': '3'
+        'Full-time: 49 or more hours worked': '4'
+evidence:
+- publisher: Office for National Statistics
+  title: 'Census 2021 observations: usual residents by hours_per_week_worked, by country (ONS API)'
+  url: https://api.beta.ons.gov.uk/v1/population-types/UR/census-observations?area-type=ctry&dimensions=hours_per_week_worked
+  accessed_at: '2026-10-31'
+  locator: observations[ctry=England, hours_per_week_worked="Does not apply"].observation
+  value: 30084834
+  unit: count
+  snippet: '"option":"Does not apply","option_id":"-8"}],"observation":'
+  source_license: OGL-UK-3.0
+  content_sha256: 31c0341a2d2eac5e4093f3812230b7ff616a83362c392951d405a121c2275ea8
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata TS059 (Hours worked)
+  url: https://api.beta.ons.gov.uk/v1/datasets/TS059
+  accessed_at: '2026-10-31'
+  locator: description
+  value: The estimates are as at Census Day, 21 March 2021.
+  unit: text
+  snippet: Census Day, 21 March 2021
+  source_license: OGL-UK-3.0
+  content_sha256: 36146cf0f7873fd4093ee8ef3592d32bc6e53cb120875be418c6f2098d5e31bf
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata, Population Estimates (licence statement)
+  url: https://api.beta.ons.gov.uk/v1/datasets/mid-year-pop-est
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: b0159564676459d73de7bb2bd78b76e67c94b10a6a5f86a6c5c49e31fa68484d
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total over England and Wales
+  method: derived
+  rationale: The API publishes counts per country; England and Wales are summed and each share is the summed count
+    divided by the total. Any 'Does not apply' category is kept so shares describe the full population base.
+tests:
+- statistic: share[Does not apply]
+  expected: 0.53398
+  tolerance: 0.002
+- statistic: 'share[Part-time: 15 hours or less worked]'
+  expected: 0.047906
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Census 2021 usual residents of England and Wales by hours worked from the ONS census observations API (population
+  type UR, dimension hours_per_week_worked, area type country), summed over England and Wales. Category labels are
+  the ONS labels and option_ids keep the ONS codes. Counts sit beside the shares so they can be re-derived. Reference
+  date is Census Day, 21 March 2021. ONS publishes its datasets under the Open Government Licence v3.0, as the licence
+  field of its dataset metadata states; the census observations endpoint itself carries no licence field.

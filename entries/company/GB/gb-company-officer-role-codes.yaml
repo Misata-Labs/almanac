@@ -1,0 +1,147 @@
+id: gb-company-officer-role-codes
+title: United Kingdom Companies House officer role and officer identification type codes
+kind: rule
+domain: company
+region: GB
+status: license-review
+tier: A
+valid_from: '2026-09-11'
+valid_to: null
+tags:
+- companies-house
+- officer-role
+- directors
+- code-list
+use_cases:
+- company-generation
+- kyb-onboarding
+- person-generation
+- audit-demo
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      officer_role:
+        cic-manager: CIC Manager
+        corporate-director: Director
+        corporate-llp-designated-member: LLP Designated Member
+        corporate-llp-member: LLP Member
+        corporate-manager-of-an-eeig: Manager of an EEIG
+        corporate-managing-officer: Managing Officer
+        corporate-member-of-a-management-organ: Member of a Management Organ
+        corporate-member-of-a-supervisory-organ: Member of a Supervisory Organ
+        corporate-member-of-an-administrative-organ: Member of an Administrative Organ
+        corporate-nominee-director: Nominee Director
+        corporate-nominee-secretary: Nominee Secretary
+        corporate-secretary: Secretary
+        director: Director
+        general-partner-in-a-limited-partnership: General partner
+        corporate-general-partner-in-a-limited-partnership: General partner
+        limited-partner-in-a-limited-partnership: Limited partner
+        corporate-limited-partner-in-a-limited-partnership: Limited partner
+        judicial-factor: Judicial Factor
+        llp-designated-member: LLP Designated Member
+        llp-member: LLP Member
+        manager-of-an-eeig: Manager of an EEIG
+        managing-officer: Managing Officer
+        member-of-a-management-organ: Member of a Management Organ
+        member-of-a-supervisory-organ: Member of a Supervisory Organ
+        member-of-an-administrative-organ: Member of an Administrative Organ
+        nominee-director: Nominee Director
+        nominee-secretary: Nominee Secretary
+        person-authorised-to-accept: Person Authorised to Accept
+        person-authorised-to-represent: Person Authorised to Represent
+        person-authorised-to-represent-and-accept: Person Authorised to Represent and Accept
+        receiver-and-manager: Receiver and Manager
+        secretary: Secretary
+      identification_type:
+        non-eea: Non European Economic Area
+        eea: European Economic Area
+        uk-limited-company: UK Limited Company
+        other-corporate-body-or-firm: Other Corporate Body or Firm
+        registered-overseas-entity-corporate-managing-officer: Corporate managing officer
+        limited-partnership-corporate-partner: Limited Partnership Corporate Partner
+  vectors:
+  - input:
+      set: officer_role
+      value: director
+    expected: true
+    origin: source
+  - input:
+      set: officer_role
+      value: secretary
+    expected: true
+    origin: source
+  - input:
+      set: officer_role
+      value: llp-designated-member
+    expected: true
+    origin: source
+  - input:
+      set: officer_role
+      value: corporate-director
+    expected: true
+    origin: source
+  - input:
+      set: officer_role
+      value: chairman
+    expected: false
+    origin: derived
+    note: not a Companies House role code
+  - input:
+      set: identification_type
+      value: uk-limited-company
+    expected: true
+    origin: source
+  - input:
+      set: identification_type
+      value: eea
+    expected: true
+    origin: source
+  - input:
+      set: identification_type
+      value: Director
+    expected: false
+    origin: derived
+    note: a label, not a code, and in the wrong set
+evidence:
+- publisher: Companies House
+  title: Companies House API enumerations (companieshouse/api-enumerations constants.yml)
+  url: https://raw.githubusercontent.com/companieshouse/api-enumerations/05067abc50da2c9277bb5d3504187f55e5ec9e24/constants.yml
+  accessed_at: '2026-10-31'
+  locator: line 186, officer_role (32 codes)
+  value: 'officer_role:'
+  unit: text
+  snippet: '''cic-manager'''
+  source_license: unstated
+  content_sha256: 41ad03b4e315a0f216c4399c4c835f7e5ae9e32f00dad35b8e62feb00c570f62
+  role: primary
+- publisher: Companies House
+  title: Companies House API enumerations (companieshouse/api-enumerations constants.yml)
+  url: https://raw.githubusercontent.com/companieshouse/api-enumerations/05067abc50da2c9277bb5d3504187f55e5ec9e24/constants.yml
+  accessed_at: '2026-10-31'
+  locator: line 2, identification_type (6 codes)
+  value: 'identification_type:'
+  unit: text
+  snippet: '''non-eea'''
+  source_license: unstated
+  content_sha256: 41ad03b4e315a0f216c4399c4c835f7e5ae9e32f00dad35b8e62feb00c570f62
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[officer_role]
+  expected: 32
+  tolerance: 0
+- statistic: count[identification_type]
+  expected: 6
+  tolerance: 0
+notes: Officer roles are the appointment types that appear on a company's officer list (director, secretary, LLP
+  member, nominee and corporate variants, limited partnership partners and the organ memberships used for European
+  entities); identification types describe how a corporate officer is identified. The code lists are enumerations
+  Companies House publishes for its public API (companieshouse/api-enumerations, commit 05067abc); codes and labels
+  are copied unchanged. The repository carries no licence file, so the entry stays at license-review until the publisher's
+  terms for this file are confirmed; Companies House data is generally released under the Open Government Licence,
+  but that is not stated here. valid_from is the date of the pinned revision; valid_to is open.

@@ -1,0 +1,166 @@
+status: license-review
+tier: A
+region: GB
+id: gb-statutory-holiday-entitlement
+title: 'United Kingdom statutory paid holiday entitlement: 5.6 weeks a year capped at 28 days, with the 12.07% accrual
+  rate for irregular hours'
+kind: rule
+domain: employment
+valid_from: '2009-04-01'
+valid_to: null
+tags:
+- holiday-entitlement
+- annual-leave
+- employment-law
+- working-time
+use_cases:
+- hr-analytics
+- workforce-planning
+- payroll-demo
+- capacity-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      statutory_leave_weeks:
+        value: 5.6
+        unit: weeks per leave year
+        basis: regulation 13 (4 weeks) plus regulation 13A (1.6 weeks)
+      basic_leave_weeks:
+        value: 4
+        unit: weeks per leave year
+        basis: regulation 13
+      additional_leave_weeks:
+        value: 1.6
+        unit: weeks per leave year
+        basis: regulation 13A, leave years beginning on or after 1 April 2009
+      maximum_statutory_days:
+        value: 28
+        unit: days per leave year
+        basis: cap on the aggregate of regulations 13 and 13A; a 5-day week gives 28 days
+      irregular_hours_accrual_percent:
+        value: 12.07
+        unit: percent of hours worked in a pay period
+        basis: irregular-hours and part-year workers, leave years from 1 April 2024
+      basic_rate_weeks:
+        value: 1.6
+        unit: weeks per leave year
+        basis: 'regular-hours workers: paid at basic rather than normal pay'
+    worked_example:
+      hours_worked_in_pay_period: 30
+      accrued_hours_before_rounding: 3.621
+      accrued_hours: 4
+  vectors:
+  - input:
+      key: statutory_leave_weeks
+      column: value
+    expected: 5.6
+    origin: source
+  - input:
+      key: maximum_statutory_days
+      column: value
+    expected: 28
+    origin: source
+  - input:
+      key: irregular_hours_accrual_percent
+      column: value
+    expected: 12.07
+    origin: source
+  - input:
+      key: basic_leave_weeks
+      column: value
+    expected: 4
+    origin: source
+  - input: bank_holidays
+    expected: false
+    origin: derived
+    note: bank holidays can count towards the 5.6 weeks but are not a separate entitlement
+evidence:
+- publisher: Department for Business and Trade (GOV.UK)
+  title: GOV.UK content API item for /holiday-entitlement-rights (JSON)
+  url: https://www.gov.uk/api/content/holiday-entitlement-rights
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, entitlement
+  value: are legally entitled to 5.6 weeks’ paid holiday a year (known as statutory leave entitlement or annual
+    leave).
+  unit: text
+  snippet: Most workers who work a 5-day week must receive at least 28 days’ paid annual leave a year.
+  source_license: OGL-UK-3.0
+  content_sha256: 1882e2ac6064dcb068b16aee8d35443c277e7b68e912765ece55298c223edc06
+  role: primary
+- publisher: Department for Business and Trade (GOV.UK)
+  title: GOV.UK content API item for /holiday-entitlement-rights (JSON)
+  url: https://www.gov.uk/api/content/holiday-entitlement-rights
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, irregular-hours accrual
+  value: Their entitlement will be 12.07% of the hours they worked in a pay period.
+  unit: text
+  snippet: they’ll have earned 4 hours leave (30 × 12.07 ÷ 100 = 3.621)
+  source_license: OGL-UK-3.0
+  content_sha256: 1882e2ac6064dcb068b16aee8d35443c277e7b68e912765ece55298c223edc06
+  role: primary
+- publisher: Department for Business and Trade (GOV.UK)
+  title: GOV.UK content API item for /holiday-entitlement-rights (JSON)
+  url: https://www.gov.uk/api/content/holiday-entitlement-rights
+  accessed_at: '2026-10-31'
+  locator: details.parts[2].body, holiday pay
+  value: the remaining 1.6 weeks at a ‘basic’ rate of pay
+  unit: text
+  snippet: at least 4 weeks of the worker’s statutory entitlement at their ‘normal’ rate of pay
+  source_license: OGL-UK-3.0
+  content_sha256: 1882e2ac6064dcb068b16aee8d35443c277e7b68e912765ece55298c223edc06
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Working Time Regulations 1998, regulation 13 (legislation.gov.uk XML)
+  url: https://www.legislation.gov.uk/uksi/1998/1833/regulation/13/data.xml
+  accessed_at: '2026-10-31'
+  locator: regulation 13(1), entitlement to annual leave
+  value: a worker is entitled to four weeks' annual leave in each leave year
+  unit: text
+  snippet: Entitlement to annual leave
+  source_license: unstated
+  content_sha256: 732c301a46c0bd5f69ab45af2c1a7dd8e5ca3289c7fbf698e967d0f1e59d49c4
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Working Time Regulations 1998, regulation 13A (legislation.gov.uk XML)
+  url: https://www.legislation.gov.uk/uksi/1998/1833/regulation/13A/data.xml
+  accessed_at: '2026-10-31'
+  locator: regulation 13A(2)(e) and 13A(3), additional annual leave
+  value: in any leave year beginning on or after 1st April 2009, 1.6 weeks.
+  unit: text
+  snippet: is subject to a maximum of 28 days.
+  source_license: unstated
+  content_sha256: 5d247f7660395d1162a14a37309432ca77ecb7485f4a85aa93bba404c6478647
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2009-04-01'
+  method: derived
+  rationale: Regulation 13A gives 1.6 weeks of additional leave for leave years beginning on or after 1 April 2009,
+    the date from which the 5.6-week total applies; the 12.07% accrual method for irregular-hours workers applies
+    only to leave years beginning on or after 1 April 2024, as its row states.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 6
+  tolerance: 0
+- statistic: value[statutory_leave_weeks,value]
+  expected: 5.6
+  tolerance: 0
+- statistic: value[maximum_statutory_days,value]
+  expected: 28
+  tolerance: 0
+- statistic: max[value]
+  expected: 28
+  tolerance: 0
+notes: 'Statutory paid annual leave in Great Britain: 4 weeks under regulation 13 of the Working Time Regulations
+  1998 plus 1.6 weeks under regulation 13A, 5.6 weeks in all, capped at 28 days, so a five-day-week worker gets
+  28 days and a part-timer gets 5.6 times their working days. Irregular-hours and part-year workers accrue 12.07%
+  of the hours worked in each pay period, rounded up from half an hour, for leave years from 1 April 2024. Values
+  are read from GOV.UK''s holiday entitlement guide and from the regulations as legislation.gov.uk publishes them.
+  The entry is a reference table; it does not compute an individual''s entitlement. It stays at license-review because
+  the legislation.gov.uk XML carries no licence statement, although the site publishes legislation under the Open
+  Government Licence v3.0. Sources are the GOV.UK content API''s JSON for each page, stable between editorial updates;
+  GOV.UK publishes its content under the Open Government Licence v3.0.'

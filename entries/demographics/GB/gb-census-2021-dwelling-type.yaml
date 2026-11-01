@@ -1,0 +1,113 @@
+id: gb-census-2021-dwelling-type
+title: England and Wales households by accommodation and dwelling type (shared or unshared), Census 2021
+kind: marginal
+domain: demographics
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2021-03-21'
+  end: '2021-03-21'
+tags:
+- census
+- households
+- housing
+- dwelling-type
+use_cases:
+- household-generation
+- property-demo
+- insurance
+- utilities-demo
+spec:
+  variable: dwelling_type
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        'Unshared dwelling: Detached whole house or bungalow': 0.232107
+        'Unshared dwelling: Semi-detached house or bungalow': 0.315103
+        'Unshared dwelling: Terraced': 0.231552
+        'Unshared dwelling: In a purpose-built block of flats or tenement': 0.166406
+        'Unshared dwelling: Part of a converted or shared house, including bedsits': 0.033445
+        'Unshared dwelling: Part of another converted building, for example, former school, church or warehouse': 0.00788
+        'Unshared dwelling: In a commercial building, for example, in an office building, hotel or over a shop': 0.008397
+        'Unshared dwelling: A caravan or other mobile or temporary structure': 0.004207
+        Shared dwelling: 0.000903
+      counts:
+        'Unshared dwelling: Detached whole house or bungalow': 5752356
+        'Unshared dwelling: Semi-detached house or bungalow': 7809250
+        'Unshared dwelling: Terraced': 5738588
+        'Unshared dwelling: In a purpose-built block of flats or tenement': 4124074
+        'Unshared dwelling: Part of a converted or shared house, including bedsits': 828870
+        'Unshared dwelling: Part of another converted building, for example, former school, church or warehouse': 195294
+        'Unshared dwelling: In a commercial building, for example, in an office building, hotel or over a shop': 208115
+        'Unshared dwelling: A caravan or other mobile or temporary structure': 104262
+        Shared dwelling: 22389
+      total: 24783198
+      option_ids:
+        'Unshared dwelling: Detached whole house or bungalow': '1'
+        'Unshared dwelling: Semi-detached house or bungalow': '2'
+        'Unshared dwelling: Terraced': '3'
+        'Unshared dwelling: In a purpose-built block of flats or tenement': '4'
+        'Unshared dwelling: Part of a converted or shared house, including bedsits': '5'
+        'Unshared dwelling: Part of another converted building, for example, former school, church or warehouse': '6'
+        'Unshared dwelling: In a commercial building, for example, in an office building, hotel or over a shop': '7'
+        'Unshared dwelling: A caravan or other mobile or temporary structure': '8'
+        Shared dwelling: '9'
+evidence:
+- publisher: Office for National Statistics
+  title: 'Census 2021 observations: households by accom_by_dwelling_type, by country (ONS API)'
+  url: https://api.beta.ons.gov.uk/v1/population-types/HH/census-observations?area-type=ctry&dimensions=accom_by_dwelling_type
+  accessed_at: '2026-10-31'
+  locator: 'observations[ctry=England, accom_by_dwelling_type="Unshared dwelling: Detached whole house or bungalow"].observation'
+  value: 5367976
+  unit: count
+  snippet: '"option":"Unshared dwelling: Detached whole house or bungalow","option_id":"1"}],"observation":'
+  source_license: OGL-UK-3.0
+  content_sha256: 42d4579ce45780fcd1b3821f38c407bf189deb71ece014384ca00effb024010c
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata TS044 (Accommodation type)
+  url: https://api.beta.ons.gov.uk/v1/datasets/TS044
+  accessed_at: '2026-10-31'
+  locator: description
+  value: The estimates are as at Census Day, 21 March 2021.
+  unit: text
+  snippet: Census Day, 21 March 2021
+  source_license: OGL-UK-3.0
+  content_sha256: 32c90836c25a561b4b843b79d8a043b41b1a853a973f2ae6f67b1e4c2e6f2048
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata, Population Estimates (licence statement)
+  url: https://api.beta.ons.gov.uk/v1/datasets/mid-year-pop-est
+  accessed_at: '2026-10-31'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: b0159564676459d73de7bb2bd78b76e67c94b10a6a5f86a6c5c49e31fa68484d
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total over England and Wales
+  method: derived
+  rationale: The API publishes counts per country; England and Wales are summed and each share is the summed count
+    divided by the total. Any 'Does not apply' category is kept so shares describe the full population base.
+tests:
+- statistic: 'share[Unshared dwelling: Semi-detached house or bungalow]'
+  expected: 0.315103
+  tolerance: 0.002
+- statistic: share[Shared dwelling]
+  expected: 0.000903
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Census 2021 households of England and Wales by dwelling type from the ONS census observations API (population
+  type HH, dimension accom_by_dwelling_type, area type country), summed over England and Wales. Category labels
+  are the ONS labels and option_ids keep the ONS codes. Counts sit beside the shares so they can be re-derived.
+  Reference date is Census Day, 21 March 2021. ONS publishes its datasets under the Open Government Licence v3.0,
+  as the licence field of its dataset metadata states; the census observations endpoint itself carries no licence
+  field.

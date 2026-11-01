@@ -1,0 +1,286 @@
+status: verified
+tier: A
+region: GB
+id: gb-statutory-payments-2026-27
+title: United Kingdom statutory maternity, paternity, adoption, shared parental, bereavement, neonatal care and
+  sick pay weekly rates, 2026 to 2027
+kind: rule
+domain: employment
+valid_from: '2026-04-06'
+valid_to: '2027-04-05'
+tags:
+- statutory-pay
+- maternity-pay
+- sick-pay
+- payroll
+- parental-leave
+use_cases:
+- payroll-demo
+- hr-analytics
+- workforce-planning
+- insurance
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: 2026-27
+    currency: GBP
+    unit: per week
+    employer_recovery_percent:
+      standard: 92
+      small_employer: 109
+      small_employer_class_1_limit: 45000
+    rows:
+      statutory_maternity_pay:
+        weekly_rate: 194.32
+        earnings_percent: 90
+        rule: lower of the weekly rate and 90% of average weekly earnings
+        earnings_threshold_weekly: 129
+        first_weeks_at_90_percent: 6
+        max_weeks: 39
+        rate_from: '2026-04-05'
+      statutory_adoption_pay:
+        weekly_rate: 194.32
+        earnings_percent: 90
+        rule: lower of the weekly rate and 90% of average weekly earnings
+        earnings_threshold_weekly: 129
+        first_weeks_at_90_percent: 6
+        max_weeks: null
+        rate_from: '2026-04-06'
+      statutory_paternity_pay:
+        weekly_rate: 194.32
+        earnings_percent: 90
+        rule: lower of the weekly rate and 90% of average weekly earnings
+        earnings_threshold_weekly: 129
+        first_weeks_at_90_percent: 0
+        max_weeks: null
+        rate_from: '2026-04-06'
+      statutory_shared_parental_pay:
+        weekly_rate: 194.32
+        earnings_percent: 90
+        rule: lower of the weekly rate and 90% of average weekly earnings
+        earnings_threshold_weekly: 129
+        first_weeks_at_90_percent: 0
+        max_weeks: null
+        rate_from: '2026-04-06'
+      statutory_parental_bereavement_pay:
+        weekly_rate: 194.32
+        earnings_percent: 90
+        rule: lower of the weekly rate and 90% of average weekly earnings
+        earnings_threshold_weekly: 129
+        first_weeks_at_90_percent: 0
+        max_weeks: null
+        rate_from: '2026-04-06'
+      statutory_neonatal_care_pay:
+        weekly_rate: 194.32
+        earnings_percent: 90
+        rule: lower of the weekly rate and 90% of average weekly earnings
+        earnings_threshold_weekly: 129
+        first_weeks_at_90_percent: 0
+        max_weeks: null
+        rate_from: '2026-04-06'
+      statutory_sick_pay:
+        weekly_rate: 123.25
+        earnings_percent: 80
+        rule: lower of the weekly rate and 80% of average weekly earnings
+        earnings_threshold_weekly: null
+        first_weeks_at_90_percent: 0
+        max_weeks: 28
+        rate_from: '2026-04-06'
+      maternity_allowance:
+        weekly_rate: 194.32
+        earnings_percent: 90
+        rule: lower of the weekly rate and 90% of average weekly earnings
+        earnings_threshold_weekly: 30
+        first_weeks_at_90_percent: 0
+        max_weeks: null
+        rate_from: '2026-04-06'
+  vectors:
+  - input:
+      key: statutory_maternity_pay
+      column: weekly_rate
+    expected: 194.32
+    origin: source
+  - input:
+      key: statutory_maternity_pay
+      column: max_weeks
+    expected: 39
+    origin: source
+  - input:
+      key: statutory_sick_pay
+      column: weekly_rate
+    expected: 123.25
+    origin: source
+  - input:
+      key: statutory_sick_pay
+      column: earnings_percent
+    expected: 80
+    origin: source
+  - input:
+      key: statutory_sick_pay
+      column: max_weeks
+    expected: 28
+    origin: source
+  - input:
+      key: statutory_paternity_pay
+      column: earnings_threshold_weekly
+    expected: 129
+    origin: source
+  - input: statutory_redundancy_pay
+    expected: false
+    origin: derived
+    note: not a weekly statutory payment
+evidence:
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, statutory pay table, SMP remaining weeks row
+  value: £194.32 or 90% of the employee’s average weekly earnings, whichever is lower
+  unit: text
+  snippet: weekly rate for remaining weeks
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, statutory pay table, SMP first 6 weeks row
+  value: <td>90% of the employee’s average weekly earnings</td>
+  unit: text
+  snippet: weekly rate for first 6 weeks
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, statutory pay table, SNCP row
+  value: — weekly rate</td>
+  unit: text
+  snippet: rate applies from 5 April 2026. All other rates apply from 6 April 2026.
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Statutory Sick Pay (SSP)'
+  value: is £123.25 or 80% of the employee’s average weekly earnings, whichever is lower
+  unit: text
+  snippet: Unrounded daily rates
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Statutory payments recovery'
+  value: 109% if your total Class 1 National Insurance for the previous tax year is £45,000 or lower
+  unit: text
+  snippet: You cannot recover Statutory Sick Pay
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Statutory Maternity Pay' table, rows Earnings threshold and Standard rate
+  value: <td>194.32</td>
+  unit: text
+  snippet: Earnings threshold</th>
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Statutory Sick Pay' table, row Standard rate
+  value: <td>123.25</td>
+  unit: text
+  snippet: Weekly rates unless otherwise stated.
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: Department for Work and Pensions (GOV.UK)
+  title: DWP 'Benefit and pension rates 2026 to 2027' HTML publication (GOV.UK content API JSON)
+  url: https://www.gov.uk/api/content/government/publications/benefit-and-pension-rates-2026-to-2027/proposed-benefit-and-pension-rates-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Maternity Allowance' table
+  value: <td>30.00</td>
+  unit: text
+  snippet: Maternity Allowance threshold
+  source_license: OGL-UK-3.0
+  content_sha256: bf3930c2ce957d0db73700d14df285642a9fb83869a7f2c2bd62e039e31ef7c9
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /statutory-sick-pay (JSON)
+  url: https://www.gov.uk/api/content/statutory-sick-pay
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, overview
+  value: It’s paid by your employer for up to 28 weeks.
+  unit: text
+  snippet: You can get up to £123.25 per week Statutory Sick Pay
+  source_license: OGL-UK-3.0
+  content_sha256: 3b7f78963a7a256ba0331b38ef794097a21a521cbad58f7564605275165074f7
+  role: primary
+- publisher: Department for Business and Trade (GOV.UK)
+  title: GOV.UK content API item for /maternity-pay-leave (JSON)
+  url: https://www.gov.uk/api/content/maternity-pay-leave
+  accessed_at: '2026-10-31'
+  locator: details.parts[2].body, 'Pay'
+  value: 'is paid for up to 39 weeks. You get:'
+  unit: text
+  snippet: 90% of your average weekly earnings (before tax) for the first 6 weeks
+  source_license: OGL-UK-3.0
+  content_sha256: 5629ed13010d7b9c5962046b7ad4fb2c7f5d0ff258abff486f80161511386e08
+  role: primary
+- publisher: Department for Business and Trade (GOV.UK)
+  title: GOV.UK content API item for /maternity-pay-leave (JSON)
+  url: https://www.gov.uk/api/content/maternity-pay-leave
+  accessed_at: '2026-10-31'
+  locator: details.parts[3].body, SMP eligibility
+  value: earn on average at least £129 a week
+  unit: text
+  snippet: Statutory Maternity Leave is 52 weeks.
+  source_license: OGL-UK-3.0
+  content_sha256: 5629ed13010d7b9c5962046b7ad4fb2c7f5d0ff258abff486f80161511386e08
+  role: primary
+assumed:
+- parameter: rows[*].earnings_threshold_weekly
+  value: 129
+  method: derived
+  rationale: DWP prints the £129.00 earnings threshold under each statutory parental payment and GOV.UK states it
+    for SMP; the same figure is carried on every parental payment row. SSP has no earnings threshold in the cited
+    sources and is recorded as null.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 8
+  tolerance: 0
+- statistic: value[statutory_maternity_pay,weekly_rate]
+  expected: 194.32
+  tolerance: 0
+- statistic: value[statutory_sick_pay,weekly_rate]
+  expected: 123.25
+  tolerance: 0
+- statistic: value[maternity_allowance,weekly_rate]
+  expected: 194.32
+  tolerance: 0
+- statistic: max[earnings_percent]
+  expected: 90
+  tolerance: 0
+notes: 'Weekly statutory payment rates for the 2026 to 2027 tax year: Statutory Maternity, Adoption, Paternity,
+  Shared Parental, Parental Bereavement and Neonatal Care Pay at £194.32 or 90% of average weekly earnings, whichever
+  is lower (SMP and SAP pay 90% of earnings for the first 6 weeks; SMP runs up to 39 weeks and the SMP rate applies
+  from 5 April 2026); Statutory Sick Pay at £123.25 or 80% of average weekly earnings, whichever is lower, for up
+  to 28 weeks; and Maternity Allowance at the same standard rate with its £30 earnings threshold. The employer recovery
+  percentages are kept as parameters. Sources are the GOV.UK content API''s JSON for each page, stable between editorial
+  updates; GOV.UK publishes its content under the Open Government Licence v3.0.'
