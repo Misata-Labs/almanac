@@ -7,30 +7,33 @@
 
 # Misata Almanac
 
-### The open rulebook of real-world data. Every rule has a receipt.
+### Synthetic data rules for realistic synthetic data. Every rule has a receipt.
 
 Check-digit algorithms, identifier formats, tax rates, bank holidays, currency
 conventions, industry code lists and official statistics, collected in one
 place and traced back to the government body, central bank, regulator or
-standards agency that published them. Built for synthetic data generation,
-test data, demo environments and data validation, and read by the
-[Misata](https://pypi.org/project/misata/) synthetic data engine.
+standards agency that published them. The reference layer for synthetic data
+generation, privacy-safe test data, demo environments and data validation,
+read by the [Misata](https://pypi.org/project/misata/) synthetic data engine.
 
 Created and edited by Muhammed Rasin · Misata Labs
 
 ---
 
-## Why fake data keeps getting caught
+## Why realistic synthetic data needs a rulebook
 
-You have seen the demo that died in the first five minutes. The VAT number
-whose check digits did not add up. The invoice dated on a bank holiday. The
-yen amount with two decimals. The tax code with a leading zero. The Pix
-transaction id with hyphens in it. Nobody notices while you are building. The
-validator notices. The reconciliation job notices. The auditor at EY notices.
+Synthetic data is only as useful as its fidelity. A generated VAT number
+whose check digits do not add up, an invoice dated on a bank holiday, a yen
+amount with two decimals, a tax code with a leading zero, a Pix transaction id
+with hyphens in it: each is a small departure from how real records behave,
+and each one stops a dataset at the first validator, reconciliation job or
+review it meets. Teams building synthetic data for product demos, QA
+environments, analytics prototypes and machine learning need records that
+follow the same rules as production data, without touching production data.
 
-Realistic data is not about clever generators. It is about knowing the rules,
-knowing where they come from, and being able to prove it. That is what an
-almanac is for.
+Fidelity is not a matter of cleverer generators. It comes from knowing the
+rules, knowing where they come from, and being able to prove it. That is what
+an almanac is for.
 
 <p align="center">
   <picture>
@@ -41,8 +44,9 @@ almanac is for.
 
 ## What makes this different
 
-Most "reference data" on the internet is copied from a blog that copied it
-from a wiki that copied it from memory. Nothing here was typed from memory.
+Much of the reference data that synthetic data tools rely on is second-hand:
+copied from a blog, a wiki, or someone's memory. Nothing here was typed from
+memory.
 
 - **Primary sources only.** HM Revenue & Customs, Banco Central do Brasil,
   the European Central Bank, Eurostat, the Office for National Statistics,
@@ -257,17 +261,18 @@ executable tests. It is the reference layer behind the Misata synthetic data
 engine, and it works on its own as a Python library and CLI.
 
 **Who is it for?**
-Anyone who has to make generated data survive contact with reality: synthetic
-data and test data engineers, QA teams, consultancies building client demos,
-fintech and payments teams, data platform teams seeding environments, and AI
-agents that need an authoritative answer to "what does a valid VAT number
-look like" without guessing.
+Anyone producing synthetic data that has to behave like the real thing:
+synthetic data and test data engineers, QA and platform teams seeding
+environments, consultancies building client demonstrations, fintech, payments
+and insurance teams, machine learning teams who need realistic training data
+without personal data, and AI agents that need an authoritative answer to
+"what does a valid VAT number look like" without guessing.
 
-**How is this different from a faker library?**
-Faker-style tools produce plausible-looking values. The Almanac tells you,
-with a receipt, what the real rule is and where it was published, and lets
-you check that it still holds. Use both: let a generator produce the shape,
-let the Almanac make it correct.
+**How is this different from a random data generator?**
+Generators produce values of the right shape. The Almanac supplies the rule
+itself, with a receipt showing where it was published, and lets you check that
+it still holds. The two work together: a generator produces the record, the
+Almanac makes it realistic and verifiable.
 
 **Can I use it without Misata?**
 Yes. `uv sync` and `from almanac.api import Almanac` give you every rule,
@@ -392,4 +397,4 @@ governs the source material, not this repository's restatement of it.
 See `CITATION.cff`. In prose: Muhammed Rasin, *Misata Almanac*, Misata Labs,
 https://github.com/Misata-labs/almanac.
 
-<sub>Keywords: synthetic data, test data generation, data validation rules, check digit algorithms, VAT number validation, CNPJ validation, VIN check digit, NPI check digit, National Insurance number format, bank holidays API, federal holidays, ISO 4217 minor units, exchange rates, income tax bands, minimum wage rates, GST rates, ICD-10-CM codes, SIC codes, census distributions, official statistics, reference data, KYC test data, KYB test data, payroll test data, fintech demo data, Misata.</sub>
+<sub>Keywords: synthetic data rules, realistic synthetic data, synthetic data generation, privacy-safe test data, data validation rules, check digit algorithms, VAT number validation, CNPJ validation, VIN check digit, NPI check digit, National Insurance number format, bank holidays API, federal holidays, ISO 4217 minor units, exchange rates, income tax bands, minimum wage rates, GST rates, ICD-10-CM codes, SIC codes, census distributions, official statistics, reference data, KYC test data, KYB test data, payroll test data, fintech demo data, Misata.</sub>
