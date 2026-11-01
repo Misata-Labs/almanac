@@ -1,0 +1,167 @@
+id: in-income-tax-surcharge-rates-2026-27
+title: India surcharge on income tax by total-income band for individuals, HUFs, AOPs and BOIs, old and new regimes,
+  plus 4% cess, tax year 2026-27
+kind: rule
+domain: tax
+region: IN
+status: license-review
+tier: B
+valid_from: '2026-04-01'
+valid_to: '2027-03-31'
+tags:
+- income-tax
+- surcharge
+- cess
+- finance-bill-2026
+use_cases:
+- payroll-demo
+- hr-analytics
+- personal-finance
+- tax-filing-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: 2026-27
+    currency: INR
+    basis: percentage of income tax, by total income band
+    dividend_and_capital_gains_surcharge_cap_percent: 15
+    health_and_education_cess_percent: 4
+    marginal_relief: true
+    rows:
+      up_to_50_lakh:
+        income_above: 0
+        income_up_to: 5000000
+        old_regime_percent: 0
+        new_regime_percent: 0
+      50_lakh_to_1_crore:
+        income_above: 5000000
+        income_up_to: 10000000
+        old_regime_percent: 10
+        new_regime_percent: 10
+      1_crore_to_2_crore:
+        income_above: 10000000
+        income_up_to: 20000000
+        old_regime_percent: 15
+        new_regime_percent: 15
+      2_crore_to_5_crore:
+        income_above: 20000000
+        income_up_to: 50000000
+        old_regime_percent: 25
+        new_regime_percent: 25
+      above_5_crore:
+        income_above: 50000000
+        income_up_to: null
+        old_regime_percent: 37
+        new_regime_percent: 25
+  vectors:
+  - input:
+      key: 50_lakh_to_1_crore
+      column: old_regime_percent
+    expected: 10
+    origin: source
+  - input:
+      key: above_5_crore
+      column: old_regime_percent
+    expected: 37
+    origin: source
+  - input:
+      key: above_5_crore
+      column: new_regime_percent
+    expected: 25
+    origin: source
+    note: 37% surcharge is not applicable under section 202; restricted to 25%
+  - input:
+      key: 2_crore_to_5_crore
+      column: new_regime_percent
+    expected: 25
+    origin: source
+  - input: up_to_50_lakh
+    expected: true
+    origin: source
+evidence:
+- publisher: Ministry of Finance, Government of India
+  title: Finance Bill, 2026 (Bill No. 16 of 2026, as introduced in Lok Sabha)
+  url: https://www.indiabudget.gov.in/doc/Finance_Bill.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 122, First Schedule Part I-B Paragraph F, Table 1 row 1, clauses (i) and (ii)
+  value: ₹ 5000000 but does not exceed ₹ 10000000, at the rate of 10%;
+  unit: text
+  snippet: Paragraph F Surcharge on income-tax
+  source_license: unstated
+  content_sha256: 5c98701714c4c473bcd097e376124a4c075881836fe92a5fc4615613c09edabf
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Finance Bill, 2026 (Bill No. 16 of 2026, as introduced in Lok Sabha)
+  url: https://www.indiabudget.gov.in/doc/Finance_Bill.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 122, Paragraph F Table 1 row 1, clauses (iii) and (iv)
+  value: ₹ 50000000, at the rate of 37%;
+  unit: text
+  snippet: exceeds ₹ 20000000 but does not exceed ₹ 50000000, at the rate of 25%;
+  source_license: unstated
+  content_sha256: 5c98701714c4c473bcd097e376124a4c075881836fe92a5fc4615613c09edabf
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Finance Bill, 2026 (Bill No. 16 of 2026, as introduced in Lok Sabha)
+  url: https://www.indiabudget.gov.in/doc/Finance_Bill.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 123, Paragraph F Table 1 row 1, clause (vi)
+  value: surcharge on the amount of income -tax computed in respect of that part of income shall not exceed 15%
+  unit: text
+  snippet: where the total income includes any dividend income or capital gains
+  source_license: unstated
+  content_sha256: 5c98701714c4c473bcd097e376124a4c075881836fe92a5fc4615613c09edabf
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 11, paragraph 4.3
+  value: the surcharge shall be restricted to 25%.
+  unit: text
+  snippet: the surcharge at the rate 37% on the income or aggregate of income of such person
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 13, 'Education Cess'
+  value: 4% on the amount of income -tax so computed, inclusive of surcharge
+  unit: text
+  snippet: No marginal relief shall be available in respect of such cess.
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+assumed:
+- parameter: rows.up_to_50_lakh
+  value: 0% in both regimes
+  method: derived
+  rationale: The Finance Bill lists surcharge only for incomes above ₹50 lakh; the nil row is added so a lookup
+    covers every income, as the e-Filing table also shows 'Nil' for that band.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: value[above_5_crore,old_regime_percent]
+  expected: 37
+  tolerance: 0
+- statistic: value[above_5_crore,new_regime_percent]
+  expected: 25
+  tolerance: 0
+- statistic: max[new_regime_percent]
+  expected: 25
+  tolerance: 0
+notes: 'Surcharge on the income tax of individuals, Hindu undivided families, associations of persons (other than
+  those made up only of companies), bodies of individuals and artificial juridical persons for the tax year 2026-27,
+  from Paragraph F of Part I-B of the First Schedule to the Finance Bill, 2026: 10% of tax where total income exceeds
+  ₹50 lakh up to ₹1 crore, 15% up to ₹2 crore, 25% up to ₹5 crore and 37% above ₹5 crore. Under the default regime
+  of section 202 the 37% rate does not apply and the surcharge is capped at 25%, and in both regimes the surcharge
+  on dividend income and capital gains under sections 196 to 198 is capped at 15%. Marginal relief applies at each
+  threshold. The Health and Education Cess of 4% is charged on tax plus surcharge in all cases. Rows hold band boundaries
+  in rupees; the bands are keyed in lakh and crore as the documents express them. The income tax e-filing portal''s
+  help page was consulted but is not cited: its bytes change between fetches.'

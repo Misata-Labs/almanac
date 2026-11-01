@@ -1,0 +1,253 @@
+id: in-consumer-and-wholesale-price-indices-2025-26
+title: India consumer price indices (IW, new series, AL, RL) and wholesale price index, annual 2022-23 to 2024-25
+  and monthly April to December 2025
+kind: rule
+domain: economy
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-04-01'
+valid_to: '2025-12-31'
+tags:
+- prices
+- inflation
+- cpi
+- wpi
+- economic-survey
+use_cases:
+- pricing
+- contract-indexation
+- financial-planning
+- demand-forecasting
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    bases:
+      cpi_iw: 2016=100
+      cpi_ns: 2012=100
+      cpi_al_and_rl: 1986-87=100 to May 2025, 2019=100 from June 2025
+      wpi: 2011-12=100
+    linking_factors:
+      cpi_iw_2016_to_2001: 2.88
+      cpi_al_2019_to_1986_87: 9.69
+      cpi_rl_2019_to_1986_87: 9.78
+    rows:
+      2022-23:
+        cpi_iw: 131
+        cpi_ns_rural: 176
+        cpi_ns_urban: 174
+        cpi_ns_combined: 175
+        cpi_al: 1148
+        cpi_rl: 1160
+        wpi_all_commodities: 153
+        note: average of months
+      2023-24:
+        cpi_iw: 138
+        cpi_ns_rural: 186
+        cpi_ns_urban: 182
+        cpi_ns_combined: 184
+        cpi_al: 1229
+        cpi_rl: 1240
+        wpi_all_commodities: 151
+        note: average of months
+      2024-25:
+        cpi_iw: 143
+        cpi_ns_rural: 195
+        cpi_ns_urban: 190
+        cpi_ns_combined: 193
+        cpi_al: 1302
+        cpi_rl: 1311
+        wpi_all_commodities: 155
+        note: average of months
+      2025-04:
+        cpi_iw: 144
+        cpi_ns_rural: 194
+        cpi_ns_urban: 191
+        cpi_ns_combined: 193
+        cpi_al: 1307
+        cpi_rl: 1320
+        wpi_all_commodities: 154
+        note: month
+      2025-05:
+        cpi_iw: 144
+        cpi_ns_rural: 194
+        cpi_ns_urban: 192
+        cpi_ns_combined: 193
+        cpi_al: 1305
+        cpi_rl: 1319
+        wpi_all_commodities: 154
+        note: month
+      2025-06:
+        cpi_iw: 145
+        cpi_ns_rural: 196
+        cpi_ns_urban: 193
+        cpi_ns_combined: 194
+        cpi_al: 134
+        cpi_rl: 134
+        wpi_all_commodities: 154
+        note: month; CPI-AL and CPI-RL on the 2019=100 base from June 2025
+      2025-07:
+        cpi_iw: 147
+        cpi_ns_rural: 198
+        cpi_ns_urban: 194
+        cpi_ns_combined: 196
+        cpi_al: 135
+        cpi_rl: 136
+        wpi_all_commodities: 154
+        note: month
+      2025-08:
+        cpi_iw: 147
+        cpi_ns_rural: 199
+        cpi_ns_urban: 195
+        cpi_ns_combined: 197
+        cpi_al: 136
+        cpi_rl: 137
+        wpi_all_commodities: 155
+        note: month
+      2025-09:
+        cpi_iw: 147
+        cpi_ns_rural: 199
+        cpi_ns_urban: 195
+        cpi_ns_combined: 197
+        cpi_al: 136
+        cpi_rl: 136
+        wpi_all_commodities: 155
+        note: month
+      2025-10:
+        cpi_iw: 148
+        cpi_ns_rural: 199
+        cpi_ns_urban: 195
+        cpi_ns_combined: 197
+        cpi_al: 136
+        cpi_rl: 137
+        wpi_all_commodities: 155
+        note: month
+      2025-11:
+        cpi_iw: 148
+        cpi_ns_rural: 200
+        cpi_ns_urban: 196
+        cpi_ns_combined: 198
+        cpi_al: 137
+        cpi_rl: 137
+        wpi_all_commodities: 156
+        note: month, provisional
+      2025-12:
+        cpi_iw: null
+        cpi_ns_rural: 200
+        cpi_ns_urban: 196
+        cpi_ns_combined: 198
+        cpi_al: null
+        cpi_rl: null
+        wpi_all_commodities: 157
+        note: month, provisional; CPI-IW, CPI-AL and CPI-RL not yet published
+  vectors:
+  - input:
+      key: 2024-25
+      column: cpi_ns_combined
+    expected: 193
+    origin: source
+  - input:
+      key: 2025-11
+      column: cpi_ns_combined
+    expected: 198
+    origin: source
+  - input:
+      key: 2025-12
+      column: wpi_all_commodities
+    expected: 157
+    origin: source
+  - input:
+      key: 2024-25
+      column: wpi_all_commodities
+    expected: 155
+    origin: source
+  - input:
+      key: 2025-06
+      column: cpi_al
+    expected: 134
+    origin: source
+    note: first month on the 2019=100 base
+  - input: 2026-01
+    expected: false
+    origin: derived
+    note: beyond the appendix
+evidence:
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 4.3: All India Consumer Price Index Numbers'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab4.3.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 1, 'Average of Months', row 2024-25 (columns 1 to 7)
+  value: 2024-25 143 195 190 193 1302 1311
+  unit: text
+  snippet: Average of Months
+  source_license: unstated
+  content_sha256: 2ae5cc73a552dc15a9958a629bb5cba8a1dbddfe0cf9d95169a7dddd19accd17
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 4.3: All India Consumer Price Index Numbers'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab4.3.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 2, 2025-26 monthly rows
+  value: November(P) 148 200 196 198 137 137
+  unit: text
+  snippet: CPI-AL/RL New Series with base 2019=100 was introduced w.e.f. June 2025.
+  source_license: unstated
+  content_sha256: 2ae5cc73a552dc15a9958a629bb5cba8a1dbddfe0cf9d95169a7dddd19accd17
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 4.3: All India Consumer Price Index Numbers'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab4.3.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 2, notes 5, 8 and 9 (linking factors)
+  value: The linking factor of CPI-IW between New Series (base 2016=100) & Old Series (base 2001=100) is 2.88.
+  unit: text
+  snippet: Old Series (base 1986-87=100) is 9.69.
+  source_license: unstated
+  content_sha256: 2ae5cc73a552dc15a9958a629bb5cba8a1dbddfe0cf9d95169a7dddd19accd17
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 4.1: Index Numbers of Wholesale Prices'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab4.1.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 2, 'Average of months' row 2024-25, column 14 (All Commodities)
+  value: 2024-25 193 205 210 162 229 150 143 172 136 136 140 131 155
+  unit: text
+  snippet: Average of months (2011-12 = 100)
+  source_license: unstated
+  content_sha256: 970a7f3d65b99521fe4b507ba37f3fae3fc14a1f7929f490fe88ce0d77b4c97f
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 4.1: Index Numbers of Wholesale Prices'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab4.1.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 2, 2025-26 monthly rows, column 14
+  value: December(P) 194 207 206 171 257 148 146 178 139 137 137 133 157
+  unit: text
+  snippet: 'Source : Office of the Economic Adviser, DPIIT'
+  source_license: unstated
+  content_sha256: 970a7f3d65b99521fe4b507ba37f3fae3fc14a1f7929f490fe88ce0d77b4c97f
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 12
+  tolerance: 0
+- statistic: value[2025-10,cpi_iw]
+  expected: 148
+  tolerance: 0
+- statistic: max[wpi_all_commodities]
+  expected: 157
+  tolerance: 0
+- statistic: min[cpi_ns_rural]
+  expected: 176
+  tolerance: 0
+notes: 'Price index levels from Tables 4.3 and 4.1 of the Statistical Appendix to the Economic Survey 2025-26: the
+  Labour Bureau''s CPI for industrial workers (2016=100), agricultural labourers and rural labourers (1986-87=100
+  until May 2025, 2019=100 from June 2025, hence the drop in level), the NSO''s CPI new series rural, urban and
+  combined (2012=100), and DPIIT''s wholesale price index for all commodities (2011-12=100). Annual rows are averages
+  of months; monthly rows run April to December 2025 with November and December provisional and December published
+  only for CPI new series and WPI. Inflation rates are not tabulated in the appendix and should be derived from
+  these levels year on year. The Survey documents carry no licence statement.'

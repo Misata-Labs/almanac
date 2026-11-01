@@ -1,0 +1,132 @@
+id: in-foreign-exchange-reserves-2025-26
+title: India foreign exchange reserves by component in USD million, end of fiscal years 2022-23 to 2024-25 and end-December
+  2025 (Economic Survey 2025-26)
+kind: rule
+domain: economy
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-04-01'
+valid_to: '2025-12-31'
+tags:
+- reserves
+- fx
+- macro
+- economic-survey
+use_cases:
+- treasury
+- banking-demo
+- financial-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    unit: USD million
+    components: gold, reserve tranche position in the IMF, SDRs, foreign currency assets
+    rows:
+      2022-23:
+        gold: 45200
+        reserve_tranche_position: 5165
+        sdrs: 18392
+        foreign_currency_assets: 509691
+        total: 578449
+        as_at: end of fiscal year
+      2023-24:
+        gold: 52675
+        reserve_tranche_position: 4662
+        sdrs: 18132
+        foreign_currency_assets: 570950
+        total: 646419
+        as_at: end of fiscal year
+      2024-25:
+        gold: 78176
+        reserve_tranche_position: 4423
+        sdrs: 18169
+        foreign_currency_assets: 567557
+        total: 668326
+        as_at: end of fiscal year
+      2025-12:
+        gold: 111262
+        reserve_tranche_position: 4781
+        sdrs: 18795
+        foreign_currency_assets: 552897
+        total: 687734
+        as_at: end of December 2025
+  vectors:
+  - input:
+      key: 2025-12
+      column: total
+    expected: 687734
+    origin: source
+  - input:
+      key: 2024-25
+      column: total
+    expected: 668326
+    origin: source
+  - input:
+      key: 2025-12
+      column: gold
+    expected: 111262
+    origin: source
+  - input:
+      key: 2023-24
+      column: foreign_currency_assets
+    expected: 570950
+    origin: source
+  - input: 2026-03
+    expected: false
+    origin: derived
+    note: not yet published
+evidence:
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 5.1B: Foreign Exchange Reserves (US$ million)'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab5.1b.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 2, row 'December-25', columns 2 to 6
+  value: December-25 111262 4781 18795 552897 687734 380 595 ...
+  unit: text
+  snippet: Table 5.1 B. Foreign Exchange Reserves
+  source_license: unstated
+  content_sha256: 130b01de934149468e07e7ac19c4177140b4cf5657cad3bade959067cddc1fa6
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 5.1B: Foreign Exchange Reserves (US$ million)'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab5.1b.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 2, rows 2022-23 to 2024-25
+  value: 2024-25 78176 4423 18169 567557 668326 866 612 ...
+  unit: text
+  snippet: 2023-24 52675 4662 18132 570950 646419 756 302 ...
+  source_license: unstated
+  content_sha256: 130b01de934149468e07e7ac19c4177140b4cf5657cad3bade959067cddc1fa6
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 5.1B: Foreign Exchange Reserves (US$ million)'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab5.1b.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 2, row 2022-23 and source line
+  value: 2022-23 45200 5165 18392 509691 578449 84 206 ...
+  unit: text
+  snippet: 'Source: Reserve Bank of India. SDRs: Special Drawing Rights'
+  source_license: unstated
+  content_sha256: 130b01de934149468e07e7ac19c4177140b4cf5657cad3bade959067cddc1fa6
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: value[2024-25,gold]
+  expected: 78176
+  tolerance: 0
+- statistic: max[total]
+  expected: 687734
+  tolerance: 0
+notes: 'Foreign exchange reserves from Table 5.1B of the Statistical Appendix to the Economic Survey 2025-26, sourced
+  from the Reserve Bank of India, in US$ million: gold, the reserve tranche position in the IMF, SDRs, foreign currency
+  assets and the total at the end of fiscal years 2022-23 to 2024-25 and at end-December 2025. The table''s IMF
+  drawal and repurchase columns are left out. Foreign currency assets exclude IIFC (UK) bonds, SDRs transferred
+  by the Government to the RBI and SAARC and ACU swap lending, as the table notes. The Survey documents carry no
+  licence statement.'

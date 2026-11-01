@@ -1,0 +1,233 @@
+id: in-gst-penalty-and-prosecution-thresholds-57th-council
+title: India GST prosecution, show cause notice, penalty, pre-deposit and refund thresholds recommended by the 57th
+  GST Council meeting, 8 October 2026
+kind: rule
+domain: tax
+region: IN
+status: license-review
+tier: B
+valid_from: '2026-10-08'
+valid_to: null
+tags:
+- gst
+- penalties
+- prosecution
+- thresholds
+- gst-council-57
+use_cases:
+- invoicing
+- audit-demo
+- tax-filing-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    meeting: 57th GST Council, New Delhi, 8 October 2026
+    currency: INR
+    legal_status: Council recommendations; amendments to the CGST Act, 2017 and Rules are required before they take
+      effect
+    rows:
+      prosecution_threshold_section_132:
+        previous_inr: 10000000
+        recommended_inr: 50000000
+        basis: tax evaded; arrest provisions in section 69 to be omitted
+      general_penalty_maximum_section_125:
+        previous_inr: 25000
+        recommended_inr: 10000
+        basis: maximum general penalty
+      show_cause_notice_minimum_tax:
+        previous_inr: null
+        recommended_inr: 10000
+        basis: CGST + SGST + IGST + cess aggregated, sections 73, 74 and 74A; interest, late fee and penalty excluded
+      reduced_penalty_non_fraud_percent:
+        previous_inr: null
+        recommended_inr: null
+        percent: 5
+        basis: tax plus interest paid within 30 days (section 73) or 60 days (section 74A) of the adjudication order
+      minimum_penalty_non_fraud:
+        previous_inr: 10000
+        recommended_inr: null
+        basis: condition of a minimum penalty removed in non-fraud cases
+      pre_deposit_cap_penalty_only_appeals:
+        previous_inr: null
+        recommended_inr: 400000000
+        basis: ₹20 crore CGST plus ₹20 crore SGST/UTGST, sections 107(6) and 112(8), orders involving penalty only
+      refund_minimum_amount_section_54_14:
+        previous_inr: 1000
+        recommended_inr: 1000
+        basis: applied to the total refund across CGST, SGST/UTGST and IGST together; not applied to exports with
+          payment of tax
+      imprisonment_maximum_above_10_crore_years:
+        previous_inr: null
+        recommended_inr: null
+        years: 5
+        basis: imprisonment or fine or both; minimum six months removed
+      imprisonment_maximum_5_to_10_crore_years:
+        previous_inr: null
+        recommended_inr: null
+        years: 2
+        basis: imprisonment or fine or both
+  vectors:
+  - input:
+      key: prosecution_threshold_section_132
+      column: recommended_inr
+    expected: 50000000
+    origin: source
+  - input:
+      key: prosecution_threshold_section_132
+      column: previous_inr
+    expected: 10000000
+    origin: source
+  - input:
+      key: general_penalty_maximum_section_125
+      column: recommended_inr
+    expected: 10000
+    origin: source
+  - input:
+      key: show_cause_notice_minimum_tax
+      column: recommended_inr
+    expected: 10000
+    origin: source
+  - input:
+      key: pre_deposit_cap_penalty_only_appeals
+      column: recommended_inr
+    expected: 400000000
+    origin: source
+  - input:
+      key: imprisonment_maximum_above_10_crore_years
+      column: years
+    expected: 5
+    origin: source
+evidence:
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: Recommendations of the 57th Meeting of the GST Council, New Delhi, 8 October 2026
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/press_release_0.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 1, headline bullets
+  value: GST Council recommends raising prosecution threshold from ₹ 1 crore to ₹ 5 crore
+  unit: text
+  snippet: GST Council recommends reduction in general penalty from ₹ 25,000 to ₹ 10,000
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 683d39bf7e0bb712450adcc864d5b08b9a503a7a35d98afcbdd5d73ef940759c
+  role: primary
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: Recommendations of the 57th Meeting of the GST Council, New Delhi, 8 October 2026
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/press_release_0.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 1, dateline
+  value: 'Posted On: 08 OCT 2026 7:03PM by PIB Delhi'
+  unit: text
+  snippet: Meeting of the GST Council was held today in New Delhi
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 683d39bf7e0bb712450adcc864d5b08b9a503a7a35d98afcbdd5d73ef940759c
+  role: primary
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: Recommendations of the 57th Meeting of the GST Council, New Delhi, 8 October 2026
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/press_release_0.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 7, paragraph 7.2 item 1
+  value: minimum threshold of Rs. 10,000/- (CGST + SGST + IGST + Cess) for issuance of show cause notices
+  unit: text
+  snippet: no notices will be issued if the tax amount involved is less than Rs. 10,000/-
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 683d39bf7e0bb712450adcc864d5b08b9a503a7a35d98afcbdd5d73ef940759c
+  role: primary
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: Recommendations of the 57th Meeting of the GST Council, New Delhi, 8 October 2026
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/press_release_0.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 8, paragraph 7.2 items 3 and 4
+  value: reduced penalty of 5% in non-fraud cases
+  unit: text
+  snippet: removal of condition of minimum penalty of Rs. 10,000/-, in non-fraud cases.
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 683d39bf7e0bb712450adcc864d5b08b9a503a7a35d98afcbdd5d73ef940759c
+  role: primary
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: Recommendations of the 57th Meeting of the GST Council, New Delhi, 8 October 2026
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/press_release_0.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 8, paragraphs 7.3 and 7.4
+  value: under section 125 of the CGST Act, 2017 from Rs. 25,000/- to Rs. 10,000/-.
+  unit: text
+  snippet: upper limit of ₹ 40 crore (Rs. 20 crore under CGST and Rs. 20 crore under SGST/UTGST)
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 683d39bf7e0bb712450adcc864d5b08b9a503a7a35d98afcbdd5d73ef940759c
+  role: primary
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: Recommendations of the 57th Meeting of the GST Council, New Delhi, 8 October 2026
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/press_release_0.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 7, paragraph 6.2 item 3
+  value: the threshold of Rs. 1000 shall be applicable in respect of total refund amount
+  unit: text
+  snippet: Amendment in section 54(14) of the CGST Act, 2017
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 683d39bf7e0bb712450adcc864d5b08b9a503a7a35d98afcbdd5d73ef940759c
+  role: primary
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: FAQs on recommendations made in the 57th GST Council meeting
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/faqs_on_recommendations_made_in_57th_gst_council_meeting.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 29, questions 13 to 15 (arrest and prosecution)
+  value: exceeds Rs. 5 crore, as against the present threshold of Rs. 1 crore.
+  unit: text
+  snippet: Prosecution may be launched for offences under section 132(1) where the evaded tax amount
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 86b1f2f492760d9f1cd21cf046e5d010af498a8f22abbb2f47abbf9787f4ea4e
+  role: primary
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: FAQs on recommendations made in the 57th GST Council meeting
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/faqs_on_recommendations_made_in_57th_gst_council_meeting.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 30, question 17 (punishment on conviction)
+  value: imprisonment up to five years, or fine, or both;
+  unit: text
+  snippet: 'where the amount involved exceeds Rs. 5 crore but does not exceed Rs. 10 crore: imprisonment up to two
+    years'
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 86b1f2f492760d9f1cd21cf046e5d010af498a8f22abbb2f47abbf9787f4ea4e
+  role: primary
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: FAQs on recommendations made in the 57th GST Council meeting
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/faqs_on_recommendations_made_in_57th_gst_council_meeting.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 25, questions 1 to 3 (minimum threshold for show cause notices)
+  value: Interest, late fee and penalty shall not be included for determining whether the threshold is met.
+  unit: text
+  snippet: The minimum threshold of ₹10,000 shall be determined with reference to the aggregate amount of tax involved
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 86b1f2f492760d9f1cd21cf046e5d010af498a8f22abbb2f47abbf9787f4ea4e
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2026-10-08'
+  method: derived
+  rationale: The date of the Council meeting from the press release dateline; the recommendations require legislative
+    amendment and are not yet in force on that date.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 9
+  tolerance: 0
+- statistic: value[general_penalty_maximum_section_125,previous_inr]
+  expected: 25000
+  tolerance: 0
+- statistic: value[reduced_penalty_non_fraud_percent,percent]
+  expected: 5
+  tolerance: 0
+- statistic: max[recommended_inr]
+  expected: 400000000
+  tolerance: 0
+notes: 'Monetary thresholds the 57th GST Council meeting of 8 October 2026 recommended for the CGST Act, 2017, from
+  the Council Secretariat''s copy of the Ministry of Finance press release and its FAQ: prosecution only where tax
+  evaded exceeds ₹5 crore (previously ₹1 crore) with arrest provisions removed and maximum imprisonment of five
+  years above ₹10 crore and two years between ₹5 crore and ₹10 crore; a minimum of ₹10,000 of tax (all heads together)
+  before a show cause notice under sections 73, 74 or 74A; the maximum general penalty under section 125 cut from
+  ₹25,000 to ₹10,000; a 5% reduced penalty in non-fraud cases paid within 30 or 60 days of the order with the ₹10,000
+  minimum penalty removed; a ₹40 crore cap on pre-deposits for penalty-only appeals; and the ₹1,000 refund floor
+  applied to the combined refund. valid_from is the meeting date; these are recommendations that take legal effect
+  only through amending legislation and notifications, which the press release says will follow, so the entry should
+  be re-dated when they are enacted. The Council''s copyright policy permits reproduction after permission by email,
+  hence license-review.'

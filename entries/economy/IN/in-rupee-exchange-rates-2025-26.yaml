@@ -1,0 +1,189 @@
+id: in-rupee-exchange-rates-2025-26
+title: 'Indian rupee per USD, GBP, EUR, JPY and SDR: fiscal year averages 2022-23 to 2024-25 and monthly April to
+  November 2025 (Economic Survey 2025-26)'
+kind: rule
+domain: economy
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-04-01'
+valid_to: '2025-11-30'
+tags:
+- exchange-rates
+- fx
+- inr
+- economic-survey
+use_cases:
+- multi-currency-ledger
+- treasury
+- payments-demo
+- pricing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    unit: INR per unit of foreign currency
+    rate_type: RBI/FBIL reference rates for USD, GBP, EUR and JPY; FEDAI indicative market rates otherwise
+    rows:
+      2022-23:
+        inr_per_usd: 80.363
+        inr_per_gbp: 96.822
+        inr_per_eur: 83.683
+        inr_per_jpy: 0.594
+        inr_per_sdr: 106.417
+        note: fiscal year average
+      2023-24:
+        inr_per_usd: 82.79
+        inr_per_gbp: 104.047
+        inr_per_eur: 89.802
+        inr_per_jpy: 0.574
+        inr_per_sdr: 110.234
+        note: fiscal year average
+      2024-25:
+        inr_per_usd: 84.576
+        inr_per_gbp: 107.879
+        inr_per_eur: 90.76
+        inr_per_jpy: 0.555
+        inr_per_sdr: 111.896
+        note: fiscal year average
+      2025-04:
+        inr_per_usd: 85.561
+        inr_per_gbp: 112.695
+        inr_per_eur: 96.23
+        inr_per_jpy: 0.595
+        inr_per_sdr: 115.41
+        note: monthly average, provisional
+      2025-05:
+        inr_per_usd: 85.19
+        inr_per_gbp: 113.919
+        inr_per_eur: 96.15
+        inr_per_jpy: 0.589
+        inr_per_sdr: 115.336
+        note: monthly average, provisional
+      2025-06:
+        inr_per_usd: 85.903
+        inr_per_gbp: 116.426
+        inr_per_eur: 98.92
+        inr_per_jpy: 0.595
+        inr_per_sdr: 117.167
+        note: monthly average, provisional
+      2025-07:
+        inr_per_usd: 86.115
+        inr_per_gbp: 116.347
+        inr_per_eur: 100.64
+        inr_per_jpy: 0.587
+        inr_per_sdr: 117.901
+        note: monthly average, provisional
+      2025-08:
+        inr_per_usd: 87.518
+        inr_per_gbp: 117.573
+        inr_per_eur: 101.798
+        inr_per_jpy: 0.593
+        inr_per_sdr: 119.547
+        note: monthly average, provisional
+      2025-09:
+        inr_per_usd: 88.323
+        inr_per_gbp: 119.277
+        inr_per_eur: 103.644
+        inr_per_jpy: 0.597
+        inr_per_sdr: 121.122
+        note: monthly average, provisional
+      2025-10:
+        inr_per_usd: 88.416
+        inr_per_gbp: 118.107
+        inr_per_eur: 102.954
+        inr_per_jpy: 0.584
+        inr_per_sdr: 120.581
+        note: monthly average, provisional
+      2025-11:
+        inr_per_usd: 88.826
+        inr_per_gbp: 116.72
+        inr_per_eur: 102.713
+        inr_per_jpy: 0.572
+        inr_per_sdr: 120.493
+        note: monthly average, provisional
+  vectors:
+  - input:
+      key: 2024-25
+      column: inr_per_usd
+    expected: 84.576
+    origin: source
+  - input:
+      key: 2025-11
+      column: inr_per_usd
+    expected: 88.826
+    origin: source
+  - input:
+      key: 2025-11
+      column: inr_per_eur
+    expected: 102.713
+    origin: source
+  - input:
+      key: 2023-24
+      column: inr_per_gbp
+    expected: 104.047
+    origin: source
+  - input: 2025-12
+    expected: false
+    origin: derived
+    note: the appendix ends at November 2025
+evidence:
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 5.4: Exchange Rate of Rupee vis-a-vis Selected Currencies
+    of the World'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab5.4.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 2, row 2024-25, columns 2 to 5 and 14
+  value: 2024-25 84.576 107.879 90.760 0.555 60.793 2.479 0.005 15.095 4.429 0.061 0.304 2.433 111.896
+  unit: text
+  snippet: Figures of US dollar, Pound sterling, Euro and Japanese yen from May 2012 onwards are RBI's reference
+    rates.
+  source_license: unstated
+  content_sha256: 3ebfd2bd20bbc5325e292abd10632c8ff85637eef552398d919c54078ee5f812
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 5.4: Exchange Rate of Rupee vis-a-vis Selected Currencies
+    of the World'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab5.4.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 2, '2025-26 (P) (Market Rate)' monthly rows, November
+  value: November 88.826 116.720 102.713 0.572 63.200 2.102 0.005 16.641 4.826 0.061 0.316 2.746 120.493
+  unit: text
+  snippet: 2025-26 (P) (Market Rate)c
+  source_license: unstated
+  content_sha256: 3ebfd2bd20bbc5325e292abd10632c8ff85637eef552398d919c54078ee5f812
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 5.4: Exchange Rate of Rupee vis-a-vis Selected Currencies
+    of the World'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab5.4.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 2, rows 2022-23 and 2023-24
+  value: 2023-24 82.790 104.047 89.802 0.574 61.451 3.164 0.005 16.781 4.786 0.063 0.291 2.352 110.234
+  unit: text
+  snippet: 2022-23 80.363 96.822 83.683 0.594 60.755 4.537 0.005 15.597 4.099 0.062 0.361 2.283 106.417
+  source_license: unstated
+  content_sha256: 3ebfd2bd20bbc5325e292abd10632c8ff85637eef552398d919c54078ee5f812
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 11
+  tolerance: 0
+- statistic: value[2025-09,inr_per_usd]
+  expected: 88.323
+  tolerance: 0
+- statistic: max[inr_per_usd]
+  expected: 88.826
+  tolerance: 0
+- statistic: min[inr_per_jpy]
+  expected: 0.555
+  tolerance: 0
+notes: 'Rupees per unit of foreign currency from Table 5.4 of the Statistical Appendix to the Economic Survey 2025-26,
+  sourced by the Ministry of Finance from the Reserve Bank of India: fiscal year averages for 2022-23 to 2024-25
+  and provisional monthly averages for April to November 2025, for the US dollar, pound sterling, euro, yen and
+  the IMF''s SDR. The table notes that dollar, sterling, euro and yen figures from May 2012 are RBI reference rates,
+  disseminated by FBIL from July 2018, and other currencies are FEDAI indicative rates. The Survey documents carry
+  no licence statement.'

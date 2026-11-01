@@ -1,0 +1,144 @@
+id: in-tcs-rates-rationalised-finance-bill-2026
+title: India TCS rates under section 394(1) of the Income-tax Act, 2025 before and after the Finance Bill 2026 rationalisation,
+  from 1 April 2026
+kind: rule
+domain: tax
+region: IN
+status: license-review
+tier: B
+valid_from: '2026-04-01'
+valid_to: null
+tags:
+- tcs
+- withholding
+- finance-bill-2026
+use_cases:
+- tax-filing-demo
+- payments-demo
+- accounts-payable
+- retail-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    section: 394(1) of the Income-tax Act, 2025
+    effective_from: '2026-04-01'
+    rows:
+      alcoholic_liquor_for_human_consumption:
+        current_rate_percent: 1
+        proposed_rate_percent: 2
+        threshold: null
+      tendu_leaves:
+        current_rate_percent: 5
+        proposed_rate_percent: 2
+        threshold: null
+      scrap:
+        current_rate_percent: 1
+        proposed_rate_percent: 2
+        threshold: null
+      minerals_coal_lignite_iron_ore:
+        current_rate_percent: 1
+        proposed_rate_percent: 2
+        threshold: null
+      lrs_remittance_education_or_medical:
+        current_rate_percent: 5
+        proposed_rate_percent: 2
+        threshold: amount or aggregate exceeding ten lakh rupees
+      lrs_remittance_other_purposes:
+        current_rate_percent: 20
+        proposed_rate_percent: 20
+        threshold: amount or aggregate exceeding ten lakh rupees
+      overseas_tour_programme_package:
+        current_rate_percent: 5 up to ten lakh rupees, 20 above
+        proposed_rate_percent: 2
+        threshold: none after the amendment
+  vectors:
+  - input:
+      key: alcoholic_liquor_for_human_consumption
+      column: proposed_rate_percent
+    expected: 2
+    origin: source
+  - input:
+      key: tendu_leaves
+      column: current_rate_percent
+    expected: 5
+    origin: source
+  - input:
+      key: lrs_remittance_other_purposes
+      column: proposed_rate_percent
+    expected: 20
+    origin: source
+  - input:
+      key: overseas_tour_programme_package
+      column: proposed_rate_percent
+    expected: 2
+    origin: source
+  - input: sale_of_motor_vehicle
+    expected: false
+    origin: derived
+    note: only the rows the Memorandum tabulates are included
+evidence:
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 50, 'Rationalisation of TCS rates', paragraph 9 table rows 1 and 2
+  value: 1. Sale of alcoholic liquor for human consumption. 1%. 2%.
+  unit: text
+  snippet: 2. Sale of tendu leaves. 5%. 2%.
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 51, table rows 3 to 5
+  value: (a) 2% for purposes of education or medical treatment;
+  unit: text
+  snippet: (b) 20% for purposes other than education or medical treatment.
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 51, table row 6 and paragraph 9 (commencement)
+  value: The amendment will take effect from the 1st day of April, 2026.
+  unit: text
+  snippet: '[Clause 73]'
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 50, paragraph 8 (overseas tour programme package)
+  value: TCS on sale of overseas tour programme package be collected at 2% irrespective of the amount
+  unit: text
+  snippet: It is further proposed that threshold for applicability of the provision be removed
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 7
+  tolerance: 0
+- statistic: value[scrap,proposed_rate_percent]
+  expected: 2
+  tolerance: 0
+- statistic: value[lrs_remittance_education_or_medical,current_rate_percent]
+  expected: 5
+  tolerance: 0
+notes: 'The TCS rates the Memorandum to the Finance Bill, 2026 tabulates for section 394(1) of the Income-tax Act,
+  2025, before and after the rationalisation proposed with effect from 1 April 2026: liquor, scrap and coal, lignite
+  or iron ore move from 1% to 2%; tendu leaves from 5% to 2%; Liberalised Remittance Scheme remittances above ten
+  lakh rupees for education or medical treatment from 5% to 2% while other purposes stay at 20%; and overseas tour
+  programme packages move from 5% up to ten lakh rupees and 20% above to a flat 2% with no threshold. The rows cover
+  only the receipts the Memorandum tabulates, not the whole TCS schedule. The Memorandum describes the Bill as introduced;
+  whether the Finance Act, 2026 enacted these rates unchanged is not confirmed by these documents.'

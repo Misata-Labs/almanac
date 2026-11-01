@@ -1,0 +1,242 @@
+id: in-union-budget-2026-27-at-a-glance
+title: 'India Union Budget 2026-27 at a glance: Central Government receipts, expenditure and deficits in INR crore
+  (Actuals 2024-25 to BE 2026-27)'
+kind: rule
+domain: economy
+region: IN
+status: license-review
+tier: B
+valid_from: '2026-04-01'
+valid_to: '2027-03-31'
+tags:
+- fiscal
+- budget
+- public-finance
+- macro
+use_cases:
+- financial-planning
+- market-sizing
+- financial-reporting
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    unit: INR crore
+    gdp_estimate_2026_27_crore: 39300393
+    gdp_advance_estimate_2025_26_crore: 35713886
+    rows:
+      revenue_receipts:
+        actuals_2024_25: 3036619
+        be_2025_26: 3420409
+        re_2025_26: 3342323
+        be_2026_27: 3533150
+      tax_revenue_net_to_centre:
+        actuals_2024_25: 2500039
+        be_2025_26: 2837409
+        re_2025_26: 2674661
+        be_2026_27: 2866922
+      non_tax_revenue:
+        actuals_2024_25: 536580
+        be_2025_26: 583000
+        re_2025_26: 667662
+        be_2026_27: 666228
+      capital_receipts:
+        actuals_2024_25: 1616249
+        be_2025_26: 1644936
+        re_2025_26: 1622519
+        be_2026_27: 1814165
+      recovery_of_loans:
+        actuals_2024_25: 24617
+        be_2025_26: 29000
+        re_2025_26: 30190
+        be_2026_27: 38397
+      other_receipts:
+        actuals_2024_25: 17202
+        be_2025_26: 47000
+        re_2025_26: 33837
+        be_2026_27: 80000
+      borrowings_and_other_liabilities:
+        actuals_2024_25: 1574431
+        be_2025_26: 1568936
+        re_2025_26: 1558492
+        be_2026_27: 1695768
+      total_receipts:
+        actuals_2024_25: 4652867
+        be_2025_26: 5065345
+        re_2025_26: 4964842
+        be_2026_27: 5347315
+      total_expenditure:
+        actuals_2024_25: 4652867
+        be_2025_26: 5065345
+        re_2025_26: 4964842
+        be_2026_27: 5347315
+      revenue_expenditure:
+        actuals_2024_25: 3600914
+        be_2025_26: 3944255
+        re_2025_26: 3869087
+        be_2026_27: 4125494
+      interest_payments:
+        actuals_2024_25: 1115575
+        be_2025_26: 1276338
+        re_2025_26: 1274338
+        be_2026_27: 1403972
+      grants_in_aid_for_capital_assets:
+        actuals_2024_25: 272656
+        be_2025_26: 427192
+        re_2025_26: 308151
+        be_2026_27: 492702
+      capital_expenditure:
+        actuals_2024_25: 1051953
+        be_2025_26: 1121090
+        re_2025_26: 1095755
+        be_2026_27: 1221821
+      effective_capital_expenditure:
+        actuals_2024_25: 1324609
+        be_2025_26: 1548282
+        re_2025_26: 1403906
+        be_2026_27: 1714523
+      revenue_deficit:
+        actuals_2024_25: 564296
+        be_2025_26: 523846
+        re_2025_26: 526764
+        be_2026_27: 592344
+        percent_of_gdp_be_2026_27: 1.5
+      effective_revenue_deficit:
+        actuals_2024_25: 291640
+        be_2025_26: 96654
+        re_2025_26: 218613
+        be_2026_27: 99642
+        percent_of_gdp_be_2026_27: 0.3
+      fiscal_deficit:
+        actuals_2024_25: 1574431
+        be_2025_26: 1568936
+        re_2025_26: 1558492
+        be_2026_27: 1695768
+        percent_of_gdp_be_2026_27: 4.3
+      primary_deficit:
+        actuals_2024_25: 458856
+        be_2025_26: 292598
+        re_2025_26: 284154
+        be_2026_27: 291796
+        percent_of_gdp_be_2026_27: 0.7
+  vectors:
+  - input:
+      key: fiscal_deficit
+      column: be_2026_27
+    expected: 1695768
+    origin: source
+  - input:
+      key: fiscal_deficit
+      column: percent_of_gdp_be_2026_27
+    expected: 4.3
+    origin: source
+  - input:
+      key: total_expenditure
+      column: be_2026_27
+    expected: 5347315
+    origin: source
+  - input:
+      key: revenue_receipts
+      column: actuals_2024_25
+    expected: 3036619
+    origin: source
+  - input:
+      key: capital_expenditure
+      column: re_2025_26
+    expected: 1095755
+    origin: source
+  - input: plan_expenditure
+    expected: false
+    origin: derived
+    note: not a line of the table
+evidence:
+- publisher: Ministry of Finance, Government of India
+  title: Budget at a Glance 2026-2027, summary table (bag1.pdf)
+  url: https://www.indiabudget.gov.in/doc/Budget_at_Glance/bag1.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 3, table rows 1 and 8
+  value: 1. Revenue Receipts 3036619 3420409 3342323 3533150
+  unit: text
+  snippet: 8. Total Receipts (1+4) 4652867 5065345 4964842 5347315
+  source_license: unstated
+  content_sha256: 9b6e8f27d7f8b980e029e15bb43b93b80e89b88f825cd662e4d2b32ee2803d53
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Budget at a Glance 2026-2027, summary table (bag1.pdf)
+  url: https://www.indiabudget.gov.in/doc/Budget_at_Glance/bag1.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 3, rows 9 to 14
+  value: 13. On Capital Account 1051953 1121090 1095755 1221821
+  unit: text
+  snippet: 11. Interest Payments 1115575 1276338 1274338 1403972
+  source_license: unstated
+  content_sha256: 9b6e8f27d7f8b980e029e15bb43b93b80e89b88f825cd662e4d2b32ee2803d53
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Budget at a Glance 2026-2027, summary table (bag1.pdf)
+  url: https://www.indiabudget.gov.in/doc/Budget_at_Glance/bag1.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 3, note (i)
+  value: The GDP for FY 2026 -27 is estimated at ₹393,00,393 crore
+  unit: text
+  snippet: which is 10% over the Advance Estimates for FY 2025 -26 of ₹357,13,886 crore released by NSO.
+  source_license: unstated
+  content_sha256: 9b6e8f27d7f8b980e029e15bb43b93b80e89b88f825cd662e4d2b32ee2803d53
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Budget at a Glance 2026-2027, deficit statistics (bag2.pdf)
+  url: https://www.indiabudget.gov.in/doc/Budget_at_Glance/bag2.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 1, 'Deficit Statistics' rows 1 to 4 with percentages of GDP in parentheses
+  value: 1. Fiscal Deficit 1574431 1568936 1558492 1695768
+  unit: text
+  snippet: 4. Primary Deficit 458856 292598 284154 291796
+  source_license: unstated
+  content_sha256: fb6613c724e19a5e374ec96ba74da6f16cc4829942293661e1bbbeeb6f0b23f6
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Budget at a Glance 2026-2027, deficit statistics (bag2.pdf)
+  url: https://www.indiabudget.gov.in/doc/Budget_at_Glance/bag2.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 1, percentages of GDP under the Fiscal Deficit row
+  value: (4.8) (4.4) (4.4) (4.3)
+  unit: text
+  snippet: Figures in parentheses are as a percentage of GDP
+  source_license: unstated
+  content_sha256: fb6613c724e19a5e374ec96ba74da6f16cc4829942293661e1bbbeeb6f0b23f6
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Budget at a Glance 2026-2027, summary table (bag1.pdf)
+  url: https://www.indiabudget.gov.in/doc/Budget_at_Glance/bag1.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 2, paragraph 5
+  value: The total expenditure in Budget Estimates (BE) 2026 -27 is estimated at ₹53,47,315 crore
+  unit: text
+  snippet: effective capital expenditure is ₹17,14,523 crore
+  source_license: unstated
+  content_sha256: 9b6e8f27d7f8b980e029e15bb43b93b80e89b88f825cd662e4d2b32ee2803d53
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 18
+  tolerance: 0
+- statistic: value[total_receipts,be_2026_27]
+  expected: 5347315
+  tolerance: 0
+- statistic: value[primary_deficit,percent_of_gdp_be_2026_27]
+  expected: 0.7
+  tolerance: 0
+- statistic: max[be_2026_27]
+  expected: 5347315
+  tolerance: 0
+notes: 'Headline aggregates of the Union Budget 2026-27 from the Ministry of Finance''s Budget at a Glance: each
+  row is a line of the summary table in ₹ crore with Actuals 2024-25, Budget Estimates 2025-26, Revised Estimates
+  2025-26 and Budget Estimates 2026-27; deficit rows also carry the BE 2026-27 share of GDP from the parentheses.
+  The GDP used for the ratios is ₹3,93,00,393 crore for 2026-27, 10% over the NSO advance estimate of ₹3,57,13,886
+  crore for 2025-26. Total receipts equal total expenditure because borrowings and other liabilities are counted
+  as receipts; the fiscal deficit is expenditure less receipts excluding borrowings. RE 2025-26 is adjusted by ₹9,084
+  crore for amounts receivable from States. Figures are net of States'' share of taxes. The document carries no
+  licence statement.'

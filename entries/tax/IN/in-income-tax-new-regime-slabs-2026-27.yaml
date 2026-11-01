@@ -1,0 +1,174 @@
+id: in-income-tax-new-regime-slabs-2026-27
+title: India income tax slabs, default (new) regime under section 202 of the Income-tax Act, 2025, tax year 2026-27
+kind: rule
+domain: tax
+region: IN
+status: license-review
+tier: B
+valid_from: '2026-04-01'
+valid_to: '2027-03-31'
+tags:
+- income-tax
+- slabs
+- payroll
+- finance-bill-2026
+- new-regime
+use_cases:
+- payroll-demo
+- hr-analytics
+- personal-finance
+- tax-filing-demo
+spec:
+  implementation: almanac.rules.income_tax_bands
+  parameters:
+    tax_year: 2026-27
+    regime: default (section 202 of the Income-tax Act, 2025; section 115BAC(1A) of the Income-tax Act, 1961)
+    currency: INR
+    personal_allowance: 0
+    taper: null
+    bands:
+    - name: nil
+      up_to: 400000
+      rate_percent: 0
+    - name: slab_5
+      up_to: 800000
+      rate_percent: 5
+    - name: slab_10
+      up_to: 1200000
+      rate_percent: 10
+    - name: slab_15
+      up_to: 1600000
+      rate_percent: 15
+    - name: slab_20
+      up_to: 2000000
+      rate_percent: 20
+    - name: slab_25
+      up_to: 2400000
+      rate_percent: 25
+    - name: slab_30
+      up_to: null
+      rate_percent: 30
+  vectors:
+  - input:
+      income: 800000
+    expected: '20000.00'
+    origin: source
+    note: 'e-Filing table: ₹ 20,000 + 10% above ₹ 8,00,000'
+  - input:
+      income: 1200000
+    expected: '60000.00'
+    origin: source
+    note: 'e-Filing table: ₹ 60,000 + 15% above ₹ 12,00,000'
+  - input:
+      income: 1600000
+    expected: '120000.00'
+    origin: source
+    note: 'e-Filing table: ₹ 1,20,000 + 20% above ₹ 16,00,000'
+  - input:
+      income: 2000000
+    expected: '200000.00'
+    origin: source
+    note: 'e-Filing table: ₹ 2,00,000 + 25% above ₹ 20,00,000'
+  - input:
+      income: 2400000
+    expected: '300000.00'
+    origin: source
+    note: 'e-Filing table: ₹ 3,00,000 + 30% above ₹ 24,00,000'
+  - input:
+      income: 400000
+    expected: '0.00'
+    origin: derived
+    note: top of the nil slab
+  - input:
+      income: 3000000
+    expected: '480000.00'
+    origin: derived
+    note: ₹ 3,00,000 plus 30% of ₹ 6,00,000
+evidence:
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 9, 'Tax rates under Part I-B of the First Schedule applicable for the tax year 2026-27', table
+    rows 1 to 4
+  value: 1. Upto ₹ 4,00,000 Nil
+  unit: text
+  snippet: 2. From ₹ 4,00,001 to ₹ 8,00,000 5%
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 9, same table, rows 5 to 7
+  value: 6. From ₹ 20,00,001 to ₹ 24,00,000 25%
+  unit: text
+  snippet: 7. Above ₹ 24,00,000 30%
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 8, paragraph 2 under 'Tax rates under section 202'
+  value: rates specified in section 202 are the default rates
+  unit: text
+  snippet: unless an option is exercised as per provisions of section 202(4)
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Finance Bill, 2026 (Bill No. 16 of 2026, as introduced in Lok Sabha)
+  url: https://www.indiabudget.gov.in/doc/Finance_Bill.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 11, clause 2 table of basic exemption amounts, row 4
+  value: Rs. 4,00,000.
+  unit: text
+  snippet: Assessee whose income is chargeable to tax under section 115BAC(1A) of the said Act.
+  source_license: unstated
+  content_sha256: 5c98701714c4c473bcd097e376124a4c075881836fe92a5fc4615613c09edabf
+  role: supporting
+assumed:
+- parameter: personal_allowance
+  value: 0
+  method: derived
+  rationale: Indian slabs are stated on total income with a nil-rated first slab rather than a separate allowance,
+    so the basic exemption is modelled as the 0% band and the allowance is zero.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 7
+  tolerance: 0
+- statistic: rate[nil]
+  expected: 0
+  tolerance: 0
+- statistic: rate[slab_5]
+  expected: 5
+  tolerance: 0
+- statistic: rate[slab_10]
+  expected: 10
+  tolerance: 0
+- statistic: rate[slab_15]
+  expected: 15
+  tolerance: 0
+- statistic: rate[slab_20]
+  expected: 20
+  tolerance: 0
+- statistic: rate[slab_25]
+  expected: 25
+  tolerance: 0
+- statistic: rate[slab_30]
+  expected: 30
+  tolerance: 0
+notes: 'Slabs of the default regime for the tax year 1 April 2026 to 31 March 2027 as the Memorandum to the Finance
+  Bill, 2026 restates them from section 202 of the Income-tax Act, 2025 (the same rates as section 115BAC(1A) of
+  the 1961 Act for assessment year 2026-27): nil up to ₹4,00,000, then 5%, 10%, 15%, 20% and 25% on successive ₹4,00,000
+  slices and 30% above ₹24,00,000. The Memorandum states no change from the enacted rates. The rule computes tax
+  on total income only; the section 87A-style rebate, standard deduction, surcharge (see in-income-tax-surcharge-rates-2026-27)
+  and the 4% Health and Education Cess are outside it. The e-Filing help page, whose bytes were identical on five
+  fetches, supplies the cumulative amounts used as test vectors. The budget documents carry no licence statement.
+  The income tax e-filing portal''s help page was consulted but is not cited: its bytes change between fetches.'

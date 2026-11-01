@@ -1,0 +1,216 @@
+id: in-gst-registration-and-compliance-thresholds-57th-council
+title: India GST registration, late-fee, ARQP and e-invoicing turnover thresholds recommended by the 57th GST Council
+  meeting, 8 October 2026
+kind: rule
+domain: tax
+region: IN
+status: license-review
+tier: B
+valid_from: '2026-10-08'
+valid_to: null
+tags:
+- gst
+- registration
+- e-invoicing
+- thresholds
+- gst-council-57
+use_cases:
+- invoicing
+- kyb-onboarding
+- company-generation
+- tax-filing-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    meeting: 57th GST Council, New Delhi, 8 October 2026
+    currency: INR
+    legal_status: Council recommendations; amendments to the CGST Act, 2017 and Rules are required before they take
+      effect
+    rows:
+      rule_14a_automatic_registration_itc_pass_through_limit:
+        amount_inr: 250000
+        period: per month
+        scope: applicant not intending to pass on ITC above the limit; automatic registration without officer intervention
+      rule_14b_eco_small_seller_output_tax_limit:
+        amount_inr: 250000
+        period: per month
+        scope: simplified registration for sellers supplying goods only through e-commerce operators, declaring
+          the ECO warehouse as principal place of business; stock transfers excluded
+      automatic_cancellation_phase_1_itc_limit:
+        amount_inr: 250000
+        period: per month
+        scope: cancellation applications in FORM GST REG-16 accepted automatically where ITC passed on never exceeded
+          the limit
+      late_fee_waiver_annual_turnover_limit:
+        amount_inr: 50000000
+        period: preceding financial year
+        scope: late fee on a section 39(1) return waived if filed by the end of the month in which it was due
+      arqp_scheme_aggregate_turnover_limit:
+        amount_inr: 50000000
+        period: preceding financial year
+        scope: optional Annual Return Quarterly Payment scheme for taxpayers supplying only unregistered persons
+          (B2C); approved in principle
+      e_invoicing_rcm_and_import_of_services_turnover_threshold:
+        amount_inr: 50000000
+        period: aggregate annual turnover
+        scope: e-invoicing extended to supplies from unregistered persons under reverse charge and to imports of
+          services for taxpayers at or above the threshold
+      zero_rated_goods_turnover_cap_multiple:
+        amount_inr: null
+        multiple: 1.5
+        period: refund period
+        scope: rule 89(4)(C) restriction of zero-rated goods turnover to 1.5 times the domestic value of like goods
+          is removed
+  vectors:
+  - input:
+      key: rule_14b_eco_small_seller_output_tax_limit
+      column: amount_inr
+    expected: 250000
+    origin: source
+  - input:
+      key: rule_14a_automatic_registration_itc_pass_through_limit
+      column: amount_inr
+    expected: 250000
+    origin: source
+  - input:
+      key: late_fee_waiver_annual_turnover_limit
+      column: amount_inr
+    expected: 50000000
+    origin: source
+  - input:
+      key: e_invoicing_rcm_and_import_of_services_turnover_threshold
+      column: amount_inr
+    expected: 50000000
+    origin: source
+  - input:
+      key: zero_rated_goods_turnover_cap_multiple
+      column: multiple
+    expected: 1.5
+    origin: source
+  - input: composition_scheme_turnover_limit
+    expected: false
+    origin: derived
+    note: the 57th meeting did not change the composition or registration thresholds of sections 10 and 22
+evidence:
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: Recommendations of the 57th Meeting of the GST Council, New Delhi, 8 October 2026
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/press_release_0.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 3, paragraph 1.1 (rule 14A automatic registration)
+  value: ITC more than ₹ 2.5 lakh per month
+  unit: text
+  snippet: automatic registrations, without officer intervention, are being granted by the portal under rule 14A
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 683d39bf7e0bb712450adcc864d5b08b9a503a7a35d98afcbdd5d73ef940759c
+  role: primary
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: Recommendations of the 57th Meeting of the GST Council, New Delhi, 8 October 2026
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/press_release_0.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 4, paragraph 4.1 (rule 14B simplified registration for ECO sellers)
+  value: they intend to pass on ITC not more than ₹ 2.5 lakh per month, excluding stock
+  unit: text
+  snippet: recommended insertion of rule 14B in the CGST Rules, 2017
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 683d39bf7e0bb712450adcc864d5b08b9a503a7a35d98afcbdd5d73ef940759c
+  role: primary
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: Recommendations of the 57th Meeting of the GST Council, New Delhi, 8 October 2026
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/press_release_0.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 4, paragraph 3.1.1 Phase 1 (automatic cancellation)
+  value: where the taxpayer has not passed on ITC exceeding ₹ 2.5 lakh in any of the months since registration
+  unit: text
+  snippet: accepted automatically by the system, once all pending returns are filed and all dues are paid
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 683d39bf7e0bb712450adcc864d5b08b9a503a7a35d98afcbdd5d73ef940759c
+  role: primary
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: Recommendations of the 57th Meeting of the GST Council, New Delhi, 8 October 2026
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/press_release_0.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 11, paragraph 15 (late fee relief)
+  value: for taxpayers with an annual turnover up to Rs. 5 crore in the preceding financial year
+  unit: text
+  snippet: waiver of late fee on delayed filing of return under section 39(1)
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 683d39bf7e0bb712450adcc864d5b08b9a503a7a35d98afcbdd5d73ef940759c
+  role: primary
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: Recommendations of the 57th Meeting of the GST Council, New Delhi, 8 October 2026
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/press_release_0.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 11, paragraph 17 (ARQP concept note)
+  value: equal to or less than Rs. 5 Crore in the preceding financial year
+  unit: text
+  snippet: optional Annual Return Quarterly Payment (ARQP) scheme
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 683d39bf7e0bb712450adcc864d5b08b9a503a7a35d98afcbdd5d73ef940759c
+  role: primary
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: Recommendations of the 57th Meeting of the GST Council, New Delhi, 8 October 2026
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/press_release_0.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 11, paragraph 18 item 4 (e-invoicing)
+  value: for taxpayers having aggregate annual turnover of Rs. 5 crore and above.
+  unit: text
+  snippet: extending e-invoicing to domestic supplies received from an unregistered person where the tax is payable
+    under reverse charge mechanism
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 683d39bf7e0bb712450adcc864d5b08b9a503a7a35d98afcbdd5d73ef940759c
+  role: primary
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: Recommendations of the 57th Meeting of the GST Council, New Delhi, 8 October 2026
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/press_release_0.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 7, paragraph 6.2 item 2 (rule 89(4)(C))
+  value: as 1.5 times the value of like goods domestically supplied.
+  unit: text
+  snippet: Amendment in rule 89(4)(C) of the CGST Rules, 2017
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 683d39bf7e0bb712450adcc864d5b08b9a503a7a35d98afcbdd5d73ef940759c
+  role: primary
+- publisher: GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)
+  title: FAQs on recommendations made in the 57th GST Council meeting
+  url: https://gstcouncil.gov.in/sites/default/files/2026-10/faqs_on_recommendations_made_in_57th_gst_council_meeting.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 8, 'FAQ on Simplified Registration Schemes for ECO Sellers', question 2
+  value: must not exceed Rs. 2.5 lakh per month.
+  unit: text
+  snippet: The total output tax liability comprising Central tax, State or Union territory tax and integrated tax
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 86b1f2f492760d9f1cd21cf046e5d010af498a8f22abbb2f47abbf9787f4ea4e
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2026-10-08'
+  method: derived
+  rationale: The date of the Council meeting from the press release dateline; the recommendations require amendment
+    of the CGST Act and Rules and are not yet in force on that date.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 7
+  tolerance: 0
+- statistic: value[arqp_scheme_aggregate_turnover_limit,amount_inr]
+  expected: 50000000
+  tolerance: 0
+- statistic: max[amount_inr]
+  expected: 50000000
+  tolerance: 0
+- statistic: min[amount_inr]
+  expected: 250000
+  tolerance: 0
+notes: 'Turnover and tax-liability thresholds in the process reforms the 57th GST Council meeting of 8 October 2026
+  recommended: the ₹2.5 lakh per month input tax credit pass-through limit that defines automatic registration under
+  rule 14A, the proposed rule 14B simplified registration for small sellers on e-commerce platforms (ITC passed
+  on, or output tax liability to registered persons, not above ₹2.5 lakh a month), Phase 1 automatic cancellation
+  of registration, late-fee waiver and the in-principle Annual Return Quarterly Payment scheme for turnover up to
+  ₹5 crore, extension of e-invoicing to reverse charge supplies and imports of services for turnover of ₹5 crore
+  and above, and removal of the 1.5 times cap on zero-rated goods turnover in refund computations. The meeting changed
+  no GST rate slab (the 56th meeting''s structure in in-gst-rate-structure stands) and did not revise the registration
+  or composition thresholds of sections 22 and 10, which these documents do not state. valid_from is the meeting
+  date; the measures take effect through later amendments and notifications. The Council''s copyright policy permits
+  reproduction after permission by email, hence license-review.'

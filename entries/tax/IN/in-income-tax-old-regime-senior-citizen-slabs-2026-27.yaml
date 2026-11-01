@@ -1,0 +1,124 @@
+id: in-income-tax-old-regime-senior-citizen-slabs-2026-27
+title: India income tax slabs, old regime for resident individuals aged 60 to 79 (Paragraph A(II), Part I-B, Finance
+  Bill 2026), tax year 2026-27
+kind: rule
+domain: tax
+region: IN
+status: license-review
+tier: B
+valid_from: '2026-04-01'
+valid_to: '2027-03-31'
+tags:
+- income-tax
+- slabs
+- payroll
+- finance-bill-2026
+- old-regime
+- senior-citizen
+use_cases:
+- payroll-demo
+- hr-analytics
+- personal-finance
+- tax-filing-demo
+- pensions
+spec:
+  implementation: almanac.rules.income_tax_bands
+  parameters:
+    tax_year: 2026-27
+    regime: optional old regime, Paragraph A(II) of Part I-B of the First Schedule
+    applies_to: resident individuals aged sixty or more but less than eighty at any time during the tax year
+    currency: INR
+    personal_allowance: 0
+    taper: null
+    bands:
+    - name: nil
+      up_to: 300000
+      rate_percent: 0
+    - name: slab_5
+      up_to: 500000
+      rate_percent: 5
+    - name: slab_20
+      up_to: 1000000
+      rate_percent: 20
+    - name: slab_30
+      up_to: null
+      rate_percent: 30
+  vectors:
+  - input:
+      income: 500000
+    expected: '10000.00'
+    origin: source
+    note: 'Finance Bill: ₹ 10000 plus 20% above ₹ 500000'
+  - input:
+      income: 1000000
+    expected: '110000.00'
+    origin: source
+    note: 'Finance Bill: ₹ 110000 plus 30% above ₹ 1000000'
+  - input:
+      income: 300000
+    expected: '0.00'
+    origin: derived
+    note: top of the nil slab
+evidence:
+- publisher: Ministry of Finance, Government of India
+  title: Finance Bill, 2026 (Bill No. 16 of 2026, as introduced in Lok Sabha)
+  url: https://www.indiabudget.gov.in/doc/Finance_Bill.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 120, First Schedule Part I-B Paragraph A item (II)
+  value: ₹ 10000 plus 20% of the amount by which the total income exceeds ₹ 500000;
+  unit: text
+  snippet: who is of the age of sixty years or more but less than eighty years at any time during the tax year
+  source_license: unstated
+  content_sha256: 5c98701714c4c473bcd097e376124a4c075881836fe92a5fc4615613c09edabf
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Finance Bill, 2026 (Bill No. 16 of 2026, as introduced in Lok Sabha)
+  url: https://www.indiabudget.gov.in/doc/Finance_Bill.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 120, Paragraph A item (II), row (4)
+  value: ₹ 110000 plus 30% of the amount by which the total income exceeds ₹ 1000000.
+  unit: text
+  snippet: 5% of the amount by which the total income exceeds ₹ 300000;
+  source_license: unstated
+  content_sha256: 5c98701714c4c473bcd097e376124a4c075881836fe92a5fc4615613c09edabf
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 10, paragraph 3(ii)
+  value: (1) Upto ₹ 3,00,000 Nil
+  unit: text
+  snippet: (2) From ₹ 3,00,001 to Rs.5,00,000 5%
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+assumed:
+- parameter: personal_allowance
+  value: 0
+  method: derived
+  rationale: Indian slabs are stated on total income with a nil-rated first slab rather than a separate allowance,
+    so the basic exemption is modelled as the 0% band and the allowance is zero.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: rate[nil]
+  expected: 0
+  tolerance: 0
+- statistic: rate[slab_5]
+  expected: 5
+  tolerance: 0
+- statistic: rate[slab_20]
+  expected: 20
+  tolerance: 0
+- statistic: rate[slab_30]
+  expected: 30
+  tolerance: 0
+notes: 'Old-regime slabs for resident senior citizens (sixty to seventy-nine) for the tax year 2026-27: nil up to
+  ₹3,00,000, 5% to ₹5,00,000, 20% to ₹10,00,000 and 30% above, from Paragraph A(II) of Part I-B of the First Schedule
+  to the Finance Bill, 2026. Only the basic exemption differs from the general old-regime slabs. Non-residents use
+  the general slabs regardless of age. Surcharge and cess are separate entries.'

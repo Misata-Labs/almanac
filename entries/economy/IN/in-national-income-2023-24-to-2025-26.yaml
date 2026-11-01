@@ -1,0 +1,132 @@
+id: in-national-income-2023-24-to-2025-26
+title: India gross and net national income, per capita NNI and GDP at current and constant prices, 2023-24 to 2025-26
+  (Economic Survey 2025-26)
+kind: rule
+domain: economy
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-04-01'
+valid_to: '2026-03-31'
+tags:
+- macro
+- national-accounts
+- gdp
+- economic-survey
+use_cases:
+- market-sizing
+- financial-planning
+- customer-segmentation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    series: 2011-12
+    unit: INR crore except per capita in INR
+    constant_price_base: 2011-12
+    rows:
+      2023-24:
+        estimate: 1st RE
+        gni_current_crore: 29710786
+        gni_constant_crore: 17404638
+        nni_current_crore: 26350374
+        nni_constant_crore: 15175671
+        per_capita_nni_current_inr: 188892
+        per_capita_nni_constant_inr: 108786
+        gdp_current_crore: 30122956
+      2024-25:
+        estimate: PE
+        gni_current_crore: 32589848
+        gni_constant_crore: 18523133
+        nni_current_crore: 28909595
+        nni_constant_crore: 16151199
+        per_capita_nni_current_inr: 205324
+        per_capita_nni_constant_inr: 114710
+        gdp_current_crore: 33068145
+      2025-26:
+        estimate: 1st AE
+        gni_current_crore: 35158997
+        gni_constant_crore: 19873388
+        nni_current_crore: 31193630
+        nni_constant_crore: 17327240
+        per_capita_nni_current_inr: 219575
+        per_capita_nni_constant_inr: 121968
+        gdp_current_crore: 35713886
+  vectors:
+  - input:
+      key: 2025-26
+      column: per_capita_nni_current_inr
+    expected: 219575
+    origin: source
+  - input:
+      key: 2024-25
+      column: gni_current_crore
+    expected: 32589848
+    origin: source
+  - input:
+      key: 2025-26
+      column: gdp_current_crore
+    expected: 35713886
+    origin: source
+  - input:
+      key: 2023-24
+      column: nni_constant_crore
+    expected: 15175671
+    origin: source
+  - input: 2026-27
+    expected: false
+    origin: derived
+    note: no estimate published in the appendix
+evidence:
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 1.1: Gross National Income and Net National Income'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab1.1.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 3, row '2025-26 (1st AE)', columns 2 to 7
+  value: 2025-26 (1st AE) 35158997 19873388 31193630 17327240 219575 121968
+  unit: text
+  snippet: Per capita net national income
+  source_license: unstated
+  content_sha256: 42042d804dfb8ea3a97489b98f116f3cc80e647a8bec2644f073e697749d7f57
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 1.1: Gross National Income and Net National Income'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab1.1.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 3, rows '2023-24 (1st RE)' and '2024-25 (PE)'
+  value: 2024-25 (PE) 32589848 18523133 28909595 16151199 205324 114710
+  unit: text
+  snippet: 2023-24 (1st RE) 29710786 17404638 26350374 15175671 188892 108786
+  source_license: unstated
+  content_sha256: 42042d804dfb8ea3a97489b98f116f3cc80e647a8bec2644f073e697749d7f57
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 1.6: Components of Gross Domestic Product at Current
+    Prices'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab1.6.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 3, rows for 2023-24 to 2025-26, column 10 (GDP)
+  value: 2025-26 (1st AE) 21963865 3519836 10711183 516698 576105 7662052 8468883 -766970 35713886
+  unit: text
+  snippet: 2024-25 (PE) 20298413 3303119 9886129 497181 500785 6997830 7766863 -648448 33068145
+  source_license: unstated
+  content_sha256: ed30fe169fde4180fddc622302e7b361e9d4a7e13f9ccdbb04db6beaccfa72ae
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+- statistic: value[2025-26,gni_current_crore]
+  expected: 35158997
+  tolerance: 0
+- statistic: max[per_capita_nni_current_inr]
+  expected: 219575
+  tolerance: 0
+notes: 'National income aggregates from Tables 1.1 and 1.6 of the Statistical Appendix to the Economic Survey 2025-26,
+  compiled by the Ministry of Finance from National Statistical Office estimates in the 2011-12 series: gross and
+  net national income at current and constant prices, per capita net national income, and GDP at current market
+  prices for 2023-24 (first revised estimate), 2024-25 (provisional estimate) and 2025-26 (first advance estimate).
+  The validity window is the latest fiscal year covered. The Survey documents carry no licence statement.'

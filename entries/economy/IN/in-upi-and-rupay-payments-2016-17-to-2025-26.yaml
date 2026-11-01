@@ -1,0 +1,194 @@
+id: in-upi-and-rupay-payments-2016-17-to-2025-26
+title: India UPI and RuPay card payment value and volume by fiscal year, 2016-17 to 2025-26 (April-December) (NPCI
+  via Economic Survey 2025-26)
+kind: rule
+domain: economy
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-04-01'
+valid_to: '2025-12-31'
+tags:
+- upi
+- rupay
+- payments
+- digital-payments
+- economic-survey
+use_cases:
+- payments-demo
+- fintech-demo
+- digital-channels
+- demand-forecasting
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    units: value in INR billion, volume in million transactions
+    rows:
+      2016-17:
+        rupay_pos_value_inr_billion: 289.95
+        rupay_ecom_value_inr_billion: 59.34
+        rupay_pos_volume_million: 195.22
+        rupay_ecom_volume_million: 87.56
+        upi_value_inr_billion: 70
+        upi_volume_million: 18
+        note: full fiscal year
+      2017-18:
+        rupay_pos_value_inr_billion: 488.23
+        rupay_ecom_value_inr_billion: 166.09
+        rupay_pos_volume_million: 459.55
+        rupay_ecom_volume_million: 208.11
+        upi_value_inr_billion: 1098
+        upi_volume_million: 915
+        note: full fiscal year
+      2018-19:
+        rupay_pos_value_inr_billion: 808.23
+        rupay_ecom_value_inr_billion: 366.9
+        rupay_pos_volume_million: 695.02
+        rupay_ecom_volume_million: 432.06
+        upi_value_inr_billion: 8770
+        upi_volume_million: 5392
+        note: full fiscal year
+      2019-20:
+        rupay_pos_value_inr_billion: 1146.81
+        rupay_ecom_value_inr_billion: 610.4
+        rupay_pos_volume_million: 822.59
+        rupay_ecom_volume_million: 658.13
+        upi_value_inr_billion: 21317
+        upi_volume_million: 12519
+        note: full fiscal year
+      2020-21:
+        rupay_pos_value_inr_billion: 1169.38
+        rupay_ecom_value_inr_billion: 926.72
+        rupay_pos_volume_million: 701.99
+        rupay_ecom_volume_million: 679.68
+        upi_value_inr_billion: 41037
+        upi_volume_million: 22331
+        note: full fiscal year
+      2021-22:
+        rupay_pos_value_inr_billion: 1487.12
+        rupay_ecom_value_inr_billion: 965.92
+        rupay_pos_volume_million: 843.9
+        rupay_ecom_volume_million: 672.46
+        upi_value_inr_billion: 84176
+        upi_volume_million: 45968
+        note: full fiscal year
+      2022-23:
+        rupay_pos_value_inr_billion: 1633.68
+        rupay_ecom_value_inr_billion: 813.59
+        rupay_pos_volume_million: 861.07
+        rupay_ecom_volume_million: 403.77
+        upi_value_inr_billion: 139149
+        upi_volume_million: 83714
+        note: full fiscal year
+      2023-24:
+        rupay_pos_value_inr_billion: 1550.16
+        rupay_ecom_value_inr_billion: 897.14
+        rupay_pos_volume_million: 690.91
+        rupay_ecom_volume_million: 273.34
+        upi_value_inr_billion: 199951
+        upi_volume_million: 131129
+        note: full fiscal year
+      2024-25:
+        rupay_pos_value_inr_billion: 1642.13
+        rupay_ecom_value_inr_billion: 1337.43
+        rupay_pos_volume_million: 601.87
+        rupay_ecom_volume_million: 251.24
+        upi_value_inr_billion: 260570
+        upi_volume_million: 185866
+        note: full fiscal year
+      2025-26:
+        rupay_pos_value_inr_billion: 1248.56
+        rupay_ecom_value_inr_billion: 1195.87
+        rupay_pos_volume_million: 421.74
+        rupay_ecom_volume_million: 186.2
+        upi_value_inr_billion: 229530
+        upi_volume_million: 176878
+        note: April to 31 December 2025 only
+  vectors:
+  - input:
+      key: 2024-25
+      column: upi_value_inr_billion
+    expected: 260570
+    origin: source
+  - input:
+      key: 2024-25
+      column: upi_volume_million
+    expected: 185866
+    origin: source
+  - input:
+      key: 2025-26
+      column: upi_volume_million
+    expected: 176878
+    origin: source
+    note: nine months
+  - input:
+      key: 2016-17
+      column: upi_volume_million
+    expected: 18
+    origin: source
+    note: first year of UPI
+  - input:
+      key: 2024-25
+      column: rupay_ecom_value_inr_billion
+    expected: 1337.43
+    origin: source
+  - input: 2015-16
+    expected: false
+    origin: derived
+    note: before the table starts
+evidence:
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 3.6: Rupay cards & UPI Payments'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab3.6.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 1, row 2024-25, columns 2 to 7
+  value: 2024-25 1642.13 1337.43 601.87 251.24 260570 185866
+  unit: text
+  snippet: 'Table 3.6: Rupay cards & UPI Payments'
+  source_license: unstated
+  content_sha256: 6b78d1851750407cf8ad2280d875eb752a85652edf06679ef607e0d89de2d4ed
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 3.6: Rupay cards & UPI Payments'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab3.6.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 1, row 2025-26* and footnote
+  value: 2025-26* 1248.56 1195.87 421.74 186.20 229530 176878
+  unit: text
+  snippet: '*for FY 2025-26 data is till 31st December ''25'
+  source_license: unstated
+  content_sha256: 6b78d1851750407cf8ad2280d875eb752a85652edf06679ef607e0d89de2d4ed
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: 'Economic Survey 2025-26, Statistical Appendix, Table 3.6: Rupay cards & UPI Payments'
+  url: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab3.6.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 1, rows 2016-17 and 2023-24, source line
+  value: 2016-17 289.95 59.34 195.22 87.56 70 18
+  unit: text
+  snippet: 2023-24 1550.16 897.14 690.91 273.34 199951 131129
+  source_license: unstated
+  content_sha256: 6b78d1851750407cf8ad2280d875eb752a85652edf06679ef607e0d89de2d4ed
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: value[2022-23,upi_value_inr_billion]
+  expected: 139149
+  tolerance: 0
+- statistic: max[upi_value_inr_billion]
+  expected: 260570
+  tolerance: 0
+- statistic: max[rupay_pos_volume_million]
+  expected: 861.07
+  tolerance: 0
+notes: 'Annual UPI and RuPay card payment totals from Table 3.6 of the Statistical Appendix to the Economic Survey
+  2025-26, sourced from NPCI: UPI value in ₹ billion and volume in million transactions, and RuPay card value and
+  volume split between point-of-sale and e-commerce, for fiscal years 2016-17 to 2024-25 plus April to December
+  2025. The partial 2025-26 row is not comparable with full years. Monthly UPI statistics on npci.org.in were not
+  reachable from this environment, so the Survey table stands in. The Survey documents carry no licence statement.'

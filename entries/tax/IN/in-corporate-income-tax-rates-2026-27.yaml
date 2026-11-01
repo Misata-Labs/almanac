@@ -1,0 +1,162 @@
+id: in-corporate-income-tax-rates-2026-27
+title: India corporate income tax rates and surcharge for domestic and foreign companies (Paragraphs E and F, Part
+  I-B, Finance Bill 2026), tax year 2026-27
+kind: rule
+domain: tax
+region: IN
+status: license-review
+tier: B
+valid_from: '2026-04-01'
+valid_to: '2027-03-31'
+tags:
+- corporate-tax
+- income-tax
+- surcharge
+- finance-bill-2026
+use_cases:
+- company-generation
+- financial-reporting
+- tax-filing-demo
+- kyb-onboarding
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: 2026-27
+    currency: INR
+    health_and_education_cess_percent: 4
+    marginal_relief: true
+    rows:
+      domestic_turnover_up_to_400_crore:
+        rate_percent: 25
+        condition: total turnover or gross receipts in tax year 2024-25 not exceeding ₹400 crore, section 199 regime
+        surcharge_1_to_10_crore_percent: 7
+        surcharge_above_10_crore_percent: 12
+      domestic_other:
+        rate_percent: 30
+        condition: every other domestic company under Paragraph E of Part I-B
+        surcharge_1_to_10_crore_percent: 7
+        surcharge_above_10_crore_percent: 12
+      domestic_section_200_option:
+        rate_percent: 22
+        condition: optional concessional regime of section 200 of the Income-tax Act, 2025
+        surcharge_1_to_10_crore_percent: 10
+        surcharge_above_10_crore_percent: 10
+      foreign_company:
+        rate_percent: 35
+        condition: company other than a domestic company, income other than that chargeable at special rates
+        surcharge_1_to_10_crore_percent: 2
+        surcharge_above_10_crore_percent: 5
+  vectors:
+  - input:
+      key: domestic_turnover_up_to_400_crore
+      column: rate_percent
+    expected: 25
+    origin: source
+  - input:
+      key: domestic_other
+      column: rate_percent
+    expected: 30
+    origin: source
+  - input:
+      key: domestic_section_200_option
+      column: rate_percent
+    expected: 22
+    origin: source
+  - input:
+      key: foreign_company
+      column: rate_percent
+    expected: 35
+    origin: source
+  - input:
+      key: foreign_company
+      column: surcharge_above_10_crore_percent
+    expected: 5
+    origin: source
+  - input:
+      key: domestic_other
+      column: surcharge_1_to_10_crore_percent
+    expected: 7
+    origin: source
+evidence:
+- publisher: Ministry of Finance, Government of India
+  title: Finance Bill, 2026 (Bill No. 16 of 2026, as introduced in Lok Sabha)
+  url: https://www.indiabudget.gov.in/doc/Finance_Bill.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 121, First Schedule Part I-B Paragraph E item I (domestic company)
+  value: 25% of the total income;
+  unit: text
+  snippet: where its total turnover or the gross receipt in the tax year 2024-25 does not exceed ₹ 400 crores;
+  source_license: unstated
+  content_sha256: 5c98701714c4c473bcd097e376124a4c075881836fe92a5fc4615613c09edabf
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 12, section E 'Companies', paragraphs 1 and 2
+  value: shall be 35% of the total income, on income other than income chargeable at special rates.
+  unit: text
+  snippet: The rate of income -tax rate is 22% in section 200. Surcharge would be at 10% on such tax.
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 12, section E paragraphs 3 and 4 (surcharge)
+  value: Surcharge at the rate of 7% shall continue to be levied in case of a domestic company
+  unit: text
+  snippet: Surcharge at the rate of 5% shall continue to be levied, if the total income of the company other than
+    domestic company
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Finance Bill, 2026 (Bill No. 16 of 2026, as introduced in Lok Sabha)
+  url: https://www.indiabudget.gov.in/doc/Finance_Bill.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 123, Paragraph F Table 1 rows 5 and 6
+  value: 5. Every domestic company.
+  unit: text
+  snippet: 6. Every company, other than a domestic company.
+  source_license: unstated
+  content_sha256: 5c98701714c4c473bcd097e376124a4c075881836fe92a5fc4615613c09edabf
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Finance Bill, 2026 (Bill No. 16 of 2026, as introduced in Lok Sabha)
+  url: https://www.indiabudget.gov.in/doc/Finance_Bill.pdf
+  accessed_at: '2026-11-01'
+  locator: PDF page 123, Paragraph F Table 1 row 6 clause (i)
+  value: 100000000, at the rate of 2%;
+  unit: text
+  snippet: 100000000, at the rate of 5%.
+  source_license: unstated
+  content_sha256: 5c98701714c4c473bcd097e376124a4c075881836fe92a5fc4615613c09edabf
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: value[domestic_turnover_up_to_400_crore,rate_percent]
+  expected: 25
+  tolerance: 0
+- statistic: value[domestic_section_200_option,surcharge_above_10_crore_percent]
+  expected: 10
+  tolerance: 0
+- statistic: max[rate_percent]
+  expected: 35
+  tolerance: 0
+notes: 'Company income tax rates for the tax year 2026-27 from Paragraph E of Part I-B of the First Schedule to
+  the Finance Bill, 2026, as explained in the Memorandum: a domestic company pays 25% where its turnover or gross
+  receipts in tax year 2024-25 did not exceed ₹400 crore and 30% otherwise, or may opt for 22% under section 200
+  of the Income-tax Act, 2025 with a 10% surcharge; a company other than a domestic company pays 35% on income not
+  chargeable at special rates. Surcharge under Paragraph F is 7% (total income above ₹1 crore up to ₹10 crore) and
+  12% (above ₹10 crore) for domestic companies outside the optional regimes, and 2% and 5% for other companies,
+  with marginal relief; the 4% Health and Education Cess applies on tax plus surcharge. The Memorandum records no
+  change from the previous year. Section 201''s regime for new manufacturing companies is not tabulated in these
+  documents and is omitted.'

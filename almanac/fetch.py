@@ -18,7 +18,7 @@ from pathlib import Path
 import httpx
 from pypdf import PdfReader
 
-USER_AGENT = "misata-almanac-verify/0.1 (+https://github.com/Misata-labs/almanac)"
+USER_AGENT = "misata-almanac-verify/0.1"
 DEFAULT_TIMEOUT = 30.0
 
 
