@@ -42,6 +42,7 @@
     "IN data rules",
     "IT data rules",
     "NL data rules",
+    "NO data rules",
     "PL data rules",
     "SE data rules",
     "US data rules",
@@ -74,6 +75,7 @@
     "average-prices",
     "aviation",
     "awe",
+    "baby-names",
     "balance-sheet",
     "bank-holidays",
     "banking",
@@ -94,11 +96,14 @@
     "business-registration",
     "buy-to-let",
     "by-age",
+    "by-birth-year",
     "by-country",
     "by-industry",
     "by-loan-category",
+    "by-province",
     "by-region",
     "by-sector",
+    "by-sex",
     "by-state",
     "calendar",
     "call-report",
@@ -138,6 +143,7 @@
     "cnpj",
     "co2",
     "code-list",
+    "cohort",
     "coicop",
     "collections",
     "companies-house",
@@ -176,6 +182,7 @@
     "credit-transfers",
     "crm-demo",
     "cross-border",
+    "cso",
     "currency",
     "customer-segmentation",
     "daily",
@@ -245,6 +252,7 @@
     "estates",
     "estr",
     "ethnic-group",
+    "ethnicity",
     "eu-silc",
     "eur-usd",
     "euro-area",
@@ -260,6 +268,7 @@
     "fdic",
     "federal-holidays",
     "federal-reserve",
+    "female",
     "fertility",
     "fica",
     "filing",
@@ -269,6 +278,7 @@
     "financial-planning",
     "financial-reporting",
     "fintech-demo",
+    "first-names",
     "fiscal",
     "fiscal-data",
     "fleet-demo",
@@ -294,6 +304,7 @@
     "health-demo",
     "health-spending",
     "healthcare",
+    "healthcare-demo",
     "hicp",
     "high-cost-mortgage",
     "hipaa",
@@ -316,6 +327,7 @@
     "housing",
     "housing-costs",
     "hr-analytics",
+    "hr-demo",
     "hr-policy",
     "ibbi",
     "ibc",
@@ -332,12 +344,14 @@
     "index",
     "industry",
     "industry-codes",
+    "ine",
     "infants",
     "inflation",
     "information",
     "infrastructure",
     "inheritance-tax",
     "inr",
+    "insee",
     "insolvency",
     "insurance",
     "insurers",
@@ -380,6 +394,7 @@
     "luhn",
     "m2m",
     "macro",
+    "male",
     "manufacturer",
     "manufacturing",
     "marital-status",
@@ -388,6 +403,7 @@
     "market-structure",
     "marriage",
     "maternity-pay",
+    "mean-age",
     "medicare",
     "migration",
     "minimum-wage",
@@ -404,6 +420,7 @@
     "motor-insurance",
     "multi-currency-ledger",
     "nace",
+    "names",
     "national-accounts",
     "national-insurance",
     "new-regime",
@@ -414,6 +431,7 @@
     "npi",
     "npl",
     "nps",
+    "nrs",
     "nursing",
     "nutrition",
     "observed-holidays",
@@ -447,6 +465,7 @@
     "penalties",
     "pension-funds",
     "pensions",
+    "people",
     "performance-ratios",
     "person-generation",
     "personal-allowance",
@@ -559,7 +578,9 @@
     "soc-2020",
     "social-security",
     "spending",
+    "ssb",
     "stamp-duty",
+    "statbel",
     "state-pension",
     "states",
     "statistics-of-income",
@@ -571,9 +592,11 @@
     "students",
     "subscribers",
     "surcharge",
+    "surnames",
     "survival",
     "survival-rate",
     "synthetic data",
+    "synthetic-customers",
     "tax",
     "tax-code",
     "tax-filing-demo",
@@ -608,6 +631,7 @@
     "universal-credit",
     "unpaid-care",
     "upi",
+    "us-census-bureau",
     "usage",
     "usd",
     "usd-brl",
@@ -658,6 +682,7 @@
     "IN",
     "IT",
     "NL",
+    "NO",
     "PL",
     "SE",
     "US",
@@ -1706,6 +1731,62 @@
     },
     {
       "@type": "Dataset",
+      "name": "Belgium baby names for boys given region, top 100 of 2025 births (Statbel)",
+      "identifier": "be-baby-names-boys-2025-by-region-top-100",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/BE/be-baby-names-boys-2025-by-region-top-100.yaml",
+      "temporalCoverage": "observed 2025-01-01 to 2025-12-31",
+      "spatialCoverage": "BE",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Statbel"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Belgium baby names for girls given region, top 100 of 2025 births (Statbel)",
+      "identifier": "be-baby-names-girls-2025-by-region-top-100",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/BE/be-baby-names-girls-2025-by-region-top-100.yaml",
+      "temporalCoverage": "observed 2025-01-01 to 2025-12-31",
+      "spatialCoverage": "BE",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Statbel"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Belgium first names of men given province or region, top 50 of the 2026 population (Statbel)",
+      "identifier": "be-first-names-men-2026-by-province-top-50",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/BE/be-first-names-men-2026-by-province-top-50.yaml",
+      "temporalCoverage": "observed 2026-01-01 to 2026-01-01",
+      "spatialCoverage": "BE",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Statbel"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Belgium first names of women given province or region, top 50 of the 2026 population (Statbel)",
+      "identifier": "be-first-names-women-2026-by-province-top-50",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/BE/be-first-names-women-2026-by-province-top-50.yaml",
+      "temporalCoverage": "observed 2026-01-01 to 2026-01-01",
+      "spatialCoverage": "BE",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Statbel"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
       "name": "Belgium population on 1 January 2024 by single year of age (Eurostat demo_pjan)",
       "identifier": "be-population-by-single-year-of-age-2024",
       "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/BE/be-population-by-single-year-of-age-2024.yaml",
@@ -1720,6 +1801,20 @@
     },
     {
       "@type": "Dataset",
+      "name": "Belgium surnames given region, top 300 of the 2026 population (Statbel)",
+      "identifier": "be-surnames-2026-by-region-top-300",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/BE/be-surnames-2026-by-region-top-300.yaml",
+      "temporalCoverage": "observed 2026-01-01 to 2026-01-01",
+      "spatialCoverage": "BE",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Statbel"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
       "name": "Germany population on 1 January 2024 by single year of age (Eurostat demo_pjan)",
       "identifier": "de-population-by-single-year-of-age-2024",
       "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/DE/de-population-by-single-year-of-age-2024.yaml",
@@ -1729,6 +1824,20 @@
         {
           "@type": "Organization",
           "name": "Eurostat"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Spain first names of residents given sex, top 300 with mean age, population census at 01/01/2025 (INE)",
+      "identifier": "es-first-names-2025-top-300-by-sex",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/ES/es-first-names-2025-top-300-by-sex.yaml",
+      "temporalCoverage": "observed 2025-01-01 to 2025-01-01",
+      "spatialCoverage": "ES",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Instituto Nacional de Estadística"
         }
       ]
     },
@@ -1832,6 +1941,34 @@
     },
     {
       "@type": "Dataset",
+      "name": "France first names given sex, top 200 of 2025 births (INSEE fichier des prénoms)",
+      "identifier": "fr-first-names-2025-top-200-by-sex",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/FR/fr-first-names-2025-top-200-by-sex.yaml",
+      "temporalCoverage": "observed 2025-01-01 to 2025-12-31",
+      "spatialCoverage": "FR",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Institut national de la statistique et des études économiques"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "France first names given sex and year of birth, top 50 for 1960 to 2020 by decade (INSEE)",
+      "identifier": "fr-first-names-by-birth-cohort-top-50",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/FR/fr-first-names-by-birth-cohort-top-50.yaml",
+      "temporalCoverage": "observed 1960-01-01 to 2020-12-31",
+      "spatialCoverage": "FR",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Institut national de la statistique et des études économiques"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
       "name": "France population on 1 January 2024 by single year of age (Eurostat demo_pjan)",
       "identifier": "fr-population-by-single-year-of-age-2024",
       "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/FR/fr-population-by-single-year-of-age-2024.yaml",
@@ -1841,6 +1978,62 @@
         {
           "@type": "Organization",
           "name": "Eurostat"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "England and Wales baby names for boys, top 200 of 2024 births (ONS)",
+      "identifier": "gb-baby-names-boys-2024-top-200",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/GB/gb-baby-names-boys-2024-top-200.yaml",
+      "temporalCoverage": "observed 2024-01-01 to 2024-12-31",
+      "spatialCoverage": "GB",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Office for National Statistics"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "England and Wales baby names for boys given region of usual residence, top 10 of 2024 births (ONS)",
+      "identifier": "gb-baby-names-boys-by-region-2024-top-10",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/GB/gb-baby-names-boys-by-region-2024-top-10.yaml",
+      "temporalCoverage": "observed 2024-01-01 to 2024-12-31",
+      "spatialCoverage": "GB",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Office for National Statistics"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "England and Wales baby names for girls, top 200 of 2024 births (ONS)",
+      "identifier": "gb-baby-names-girls-2024-top-200",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/GB/gb-baby-names-girls-2024-top-200.yaml",
+      "temporalCoverage": "observed 2024-01-01 to 2024-12-31",
+      "spatialCoverage": "GB",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Office for National Statistics"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "England and Wales baby names for girls given region of usual residence, top 10 of 2024 births (ONS)",
+      "identifier": "gb-baby-names-girls-by-region-2024-top-10",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/GB/gb-baby-names-girls-by-region-2024-top-10.yaml",
+      "temporalCoverage": "observed 2024-01-01 to 2024-12-31",
+      "spatialCoverage": "GB",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Office for National Statistics"
         }
       ]
     },
@@ -2154,6 +2347,38 @@
     },
     {
       "@type": "Dataset",
+      "name": "Scotland baby names given sex, top 100 of 2024 births (National Records of Scotland)",
+      "identifier": "gb-scotland-baby-names-2024-top-100-by-sex",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/GB/gb-scotland-baby-names-2024-top-100-by-sex.yaml",
+      "temporalCoverage": "observed 2024-01-01 to 2024-12-31",
+      "spatialCoverage": "GB",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "National Records of Scotland"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Ireland baby names given sex, top 100 of 2025 registrations (CSO PxStat VSA50 and VSA60)",
+      "identifier": "ie-baby-names-2025-top-100-by-sex",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/IE/ie-baby-names-2025-top-100-by-sex.yaml",
+      "temporalCoverage": "observed 2025-01-01 to 2025-12-31",
+      "spatialCoverage": "IE",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Central Statistics Office"
+        },
+        {
+          "@type": "Organization",
+          "name": "Government of Ireland open data portal (data.gov.ie)"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
       "name": "Ireland population on 1 January 2024 by single year of age (Eurostat demo_pjan)",
       "identifier": "ie-population-by-single-year-of-age-2024",
       "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/IE/ie-population-by-single-year-of-age-2024.yaml",
@@ -2196,6 +2421,34 @@
     },
     {
       "@type": "Dataset",
+      "name": "Norway first names given sex, top 200 of persons named in 2025 (Statistics Norway table 10467)",
+      "identifier": "no-first-names-born-2025-top-200-by-sex",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/NO/no-first-names-born-2025-top-200-by-sex.yaml",
+      "temporalCoverage": "observed 2025-01-01 to 2025-12-31",
+      "spatialCoverage": "NO",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Statistics Norway"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Norway surnames, top 500 of surnames used by 200 persons or more, 2025 (Statistics Norway table 12891)",
+      "identifier": "no-surnames-2025-top-500",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/NO/no-surnames-2025-top-500.yaml",
+      "temporalCoverage": "observed 2025-01-01 to 2025-12-31",
+      "spatialCoverage": "NO",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Statistics Norway"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
       "name": "Poland population on 1 January 2024 by single year of age (Eurostat demo_pjan)",
       "identifier": "pl-population-by-single-year-of-age-2024",
       "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/PL/pl-population-by-single-year-of-age-2024.yaml",
@@ -2219,6 +2472,34 @@
         {
           "@type": "Organization",
           "name": "Eurostat"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Race and Hispanic origin given surname, top 50 United States surnames, Census 2010 (Census Bureau)",
+      "identifier": "us-census-2010-surname-ethnicity-top-50",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/US/us-census-2010-surname-ethnicity-top-50.yaml",
+      "temporalCoverage": "observed 2010-01-01 to 2010-12-31",
+      "spatialCoverage": "US",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "United States Census Bureau"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "United States surnames, top 1000 by frequency, Census 2010 (Census Bureau)",
+      "identifier": "us-census-2010-surnames-top-1000",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/demographics/US/us-census-2010-surnames-top-1000.yaml",
+      "temporalCoverage": "observed 2010-01-01 to 2010-12-31",
+      "spatialCoverage": "US",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "United States Census Bureau"
         }
       ]
     },
