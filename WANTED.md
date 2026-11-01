@@ -29,12 +29,21 @@ and USPS Publication 28 all refuse non-browser clients. Download the official
 file by hand, cite its URL and record its hash; the verifier will re-fetch it
 from a machine that is allowed through.
 
+Three Indian sources are stable but not yet usable: the TRAI December 2025
+subscription release is an image-only PDF with no extractable text, the IRDAI
+Handbook on Indian Insurance Statistics ships as a ZIP of workbooks that the
+verifier cannot search, and PFRDA subscriber and asset figures are served
+dynamically rather than in the statistics handbook. A reader with the files
+to hand can extend `in-wireless-subscribers-monthly-2025` through December and
+add NPS subscriber counts by sector.
+
 ## Most wanted right now
 
 | Entry id | Why it matters | Where the official source lives |
 | --- | --- | --- |
 | global-iban-structure | Every bank transfer generator needs it | SWIFT IBAN Registry (the site refuses non-browser clients; download the TXT release by hand and cite its release number) |
 | in-upi-monthly-volume | The largest real-time payment system by volume | NPCI product statistics (download the XLSX by hand) |
+| in-nps-subscribers-and-aum-by-sector | Pension demos need the sector split | PFRDA monthly statistics (served dynamically; save the table by hand) |
 | br-cpf-check-digits | The identifier on every Brazilian customer record | Receita Federal do Brasil |
 | global-card-pan-luhn | Card numbers that pass issuer checks | ISO/IEC 7812 registration authority |
 | eu-vat-rates | Invoices across 27 member states | European Commission, Taxation and Customs Union |
