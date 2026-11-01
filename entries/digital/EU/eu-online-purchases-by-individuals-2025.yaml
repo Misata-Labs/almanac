@@ -1,0 +1,122 @@
+id: eu-online-purchases-by-individuals-2025
+title: Individuals who bought or ordered goods or services online, 2025, ten member states
+kind: rule
+domain: digital
+region: EU
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- e-commerce
+- internet
+- digital
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- digital-channels
+- retail-demo
+- customer-segmentation
+- sales-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: isoc_ec_ib20
+    key: A.IND_TOTAL.I_BUY3+I_BLT12.PC_IND.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2025'
+    rows:
+      AT:
+        name: Austria
+        last_12_months_percent: 72.71
+        last_3_months_percent: 65.76
+      BE:
+        name: Belgium
+        last_12_months_percent: 78.53
+        last_3_months_percent: 66.65
+      DE:
+        name: Germany
+        last_12_months_percent: 81.38
+        last_3_months_percent: 70.41
+      ES:
+        name: Spain
+        last_12_months_percent: 70.77
+        last_3_months_percent: 59.65
+      FR:
+        name: France
+        last_12_months_percent: 80.15
+        last_3_months_percent: 70.31
+      IE:
+        name: Ireland
+        last_12_months_percent: 95.05
+        last_3_months_percent: 87.47
+      IT:
+        name: Italy
+        last_12_months_percent: 56.22
+        last_3_months_percent: 43.79
+      NL:
+        name: Netherlands
+        last_12_months_percent: 94.18
+        last_3_months_percent: 86.39
+      PL:
+        name: Poland
+        last_12_months_percent: 69.73
+        last_3_months_percent: 56.59
+      SE:
+        name: Sweden
+        last_12_months_percent: 88.78
+        last_3_months_percent: 80.13
+  vectors:
+  - input:
+      key: DE
+      column: last_3_months_percent
+    expected: 70.41
+    origin: source
+  - input:
+      key: FR
+      column: last_3_months_percent
+    expected: 70.31
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow isoc_ec_ib20 (internet purchases by individuals), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/isoc_ec_ib20/A.IND_TOTAL.I_BUY3+I_BLT12.PC_IND.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, indic_is=I_BUY3, TIME_PERIOD=2025, OBS_VALUE
+  value: '70.41'
+  unit: percent
+  snippet: DE,2025,70.41
+  source_license: CC-BY-4.0
+  content_sha256: 7450b58078721f2ccccfbfbb23739d7519484ced6a522bf9fec373a20aea23e1
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow isoc_ec_ib20 (internet purchases by individuals), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/isoc_ec_ib20/A.IND_TOTAL.I_BUY3+I_BLT12.PC_IND.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, indic_is=I_BUY3, TIME_PERIOD=2025, OBS_VALUE
+  value: '70.31'
+  unit: percent
+  snippet: FR,2025,70.31
+  source_license: CC-BY-4.0
+  content_sha256: 7450b58078721f2ccccfbfbb23739d7519484ced6a522bf9fec373a20aea23e1
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[last_3_months_percent]
+  expected: 87.47
+  tolerance: 0
+notes: Percentage of all individuals who bought or ordered goods or services over the internet for private use in
+  the last three months and in the last twelve months, 2025, ten member states, from Eurostat dataflow isoc_ec_ib20
+  (ICT usage in households and by individuals survey). Rows are keyed by the Eurostat geo code and carry the English
+  country name from the GEO codelist. Eurostat's copyright notice states that its data are released under the Creative
+  Commons Attribution 4.0 International licence; the notice page renders dynamically and is referenced rather than
+  hashed.

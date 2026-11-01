@@ -1,0 +1,138 @@
+id: eu-crude-marriage-and-divorce-rates-2023
+title: Crude marriage and divorce rates, 2023, member states reported by Eurostat
+kind: rule
+domain: demographics
+region: EU
+status: verified
+tier: A
+valid_from: '2023-01-01'
+valid_to: '2023-12-31'
+tags:
+- marriage
+- divorce
+- households
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- person-generation
+- household-generation
+- insurance
+- crm-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: demo_nind
+    key: A.GNUPRT.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2023'
+    rows:
+      AT:
+        name: Austria
+        marriages_per_1000: 5.0
+        divorces_per_1000: 1.6
+      BE:
+        name: Belgium
+        marriages_per_1000: 4.0
+        divorces_per_1000: 1.7
+      DE:
+        name: Germany
+        marriages_per_1000: 4.3
+        divorces_per_1000: null
+      ES:
+        name: Spain
+        marriages_per_1000: 3.5
+        divorces_per_1000: 1.6
+      FR:
+        name: France
+        marriages_per_1000: 3.5
+        divorces_per_1000: null
+      IT:
+        name: Italy
+        marriages_per_1000: 3.1
+        divorces_per_1000: 1.4
+      NL:
+        name: Netherlands
+        marriages_per_1000: 3.8
+        divorces_per_1000: 1.4
+      PL:
+        name: Poland
+        marriages_per_1000: 4.0
+        divorces_per_1000: 1.6
+      SE:
+        name: Sweden
+        marriages_per_1000: 4.2
+        divorces_per_1000: 2.0
+    divorces_per_1000_dataflow: demo_ndivind
+    divorces_per_1000_key: A.GDIVRT.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+  vectors:
+  - input:
+      key: DE
+      column: marriages_per_1000
+    expected: 4.3
+    origin: source
+  - input:
+      key: FR
+      column: marriages_per_1000
+    expected: 3.5
+    origin: source
+  - input:
+      key: ES
+      column: divorces_per_1000
+    expected: 1.6
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow demo_nind (marriage indicators), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_nind/A.GNUPRT.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2023&endPeriod=2023&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, indic_de=GNUPRT, TIME_PERIOD=2023, OBS_VALUE
+  value: '4.3'
+  unit: decimal
+  snippet: DE,2023,4.3
+  source_license: CC-BY-4.0
+  content_sha256: f10351bf172ab9df3ae09c072876e74e21fd7835cfdc22aec1c04b29c1882404
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow demo_nind (marriage indicators), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_nind/A.GNUPRT.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2023&endPeriod=2023&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, indic_de=GNUPRT, TIME_PERIOD=2023, OBS_VALUE
+  value: '3.5'
+  unit: decimal
+  snippet: FR,2023,3.5
+  source_license: CC-BY-4.0
+  content_sha256: f10351bf172ab9df3ae09c072876e74e21fd7835cfdc22aec1c04b29c1882404
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow demo_ndivind (divorce indicators), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_ndivind/A.GDIVRT.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2023&endPeriod=2023&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=ES, indic_de=GDIVRT, TIME_PERIOD=2023, OBS_VALUE
+  value: '1.6'
+  unit: decimal
+  snippet: ES,2023,1.6
+  source_license: CC-BY-4.0
+  content_sha256: 62877cafc428afbdd0d88f0bf69bfb84d18311434ca31a421a5d3e034acb675e
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 9
+  tolerance: 0
+- statistic: max[marriages_per_1000]
+  expected: 5.0
+  tolerance: 0
+notes: 'Crude marriage rate (marriages per 1 000 persons) for 2023 from Eurostat dataflow demo_nind, with the crude
+  divorce rate (divorces per 1 000 persons) for the same year from dataflow demo_ndivind carried as a second column
+  where Eurostat reports it. Countries without a published 2023 marriage rate are omitted and a missing divorce
+  rate is stored as null. Rows are keyed by the Eurostat geo code and carry the English country name from the GEO
+  codelist. Observation flags published with the data: DE marriages_per_1000 break in time series; FR marriages_per_1000
+  provisional; PL marriages_per_1000 estimated, provisional; PL divorces_per_1000 estimated, provisional. Eurostat''s
+  copyright notice states that its data are released under the Creative Commons Attribution 4.0 International licence;
+  the notice page renders dynamically and is referenced rather than hashed.'

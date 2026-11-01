@@ -1,0 +1,123 @@
+id: eu-non-household-electricity-prices-2026s1
+title: Non-household electricity prices, consumption band 500 to 1 999 MWh, 2026-S1, ten member states
+kind: rule
+domain: energy
+region: EU
+status: verified
+tier: A
+valid_from: '2026-01-01'
+valid_to: '2026-06-30'
+tags:
+- electricity
+- energy-prices
+- utilities
+- business
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- utilities-demo
+- pricing
+- company-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: nrg_pc_205
+    key: S.E7000.MWH500-1999.KWH.I_TAX+X_TAX.EUR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: 2026-S1
+    rows:
+      AT:
+        name: Austria
+        eur_per_kwh_including_taxes: 0.2301
+        eur_per_kwh_excluding_taxes: 0.1714
+      BE:
+        name: Belgium
+        eur_per_kwh_including_taxes: 0.23
+        eur_per_kwh_excluding_taxes: 0.1556
+      DE:
+        name: Germany
+        eur_per_kwh_including_taxes: 0.2477
+        eur_per_kwh_excluding_taxes: 0.1572
+      ES:
+        name: Spain
+        eur_per_kwh_including_taxes: 0.1604
+        eur_per_kwh_excluding_taxes: 0.116
+      FR:
+        name: France
+        eur_per_kwh_including_taxes: 0.1848
+        eur_per_kwh_excluding_taxes: 0.1299
+      IE:
+        name: Ireland
+        eur_per_kwh_including_taxes: 0.2902
+        eur_per_kwh_excluding_taxes: 0.2636
+      IT:
+        name: Italy
+        eur_per_kwh_including_taxes: 0.2593
+        eur_per_kwh_excluding_taxes: 0.1744
+      NL:
+        name: Netherlands
+        eur_per_kwh_including_taxes: 0.2453
+        eur_per_kwh_excluding_taxes: 0.163
+      PL:
+        name: Poland
+        eur_per_kwh_including_taxes: 0.2546
+        eur_per_kwh_excluding_taxes: 0.1263
+      SE:
+        name: Sweden
+        eur_per_kwh_including_taxes: 0.1472
+        eur_per_kwh_excluding_taxes: 0.1172
+  vectors:
+  - input:
+      key: DE
+      column: eur_per_kwh_including_taxes
+    expected: 0.2477
+    origin: source
+  - input:
+      key: FR
+      column: eur_per_kwh_including_taxes
+    expected: 0.1848
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow nrg_pc_205 (electricity prices for non-household consumers), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_205/S.E7000.MWH500-1999.KWH.I_TAX+X_TAX.EUR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2026-S1&endPeriod=2026-S1&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, tax=I_TAX, TIME_PERIOD=2026-S1, OBS_VALUE
+  value: '0.2477'
+  unit: decimal
+  snippet: DE,2026-S1,0.2477
+  source_license: CC-BY-4.0
+  content_sha256: ee0d3c9ac8da012fbe9ba3c56b1253ed53a437f77fa6fa6ab2670613a14b7c8a
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow nrg_pc_205 (electricity prices for non-household consumers), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_205/S.E7000.MWH500-1999.KWH.I_TAX+X_TAX.EUR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2026-S1&endPeriod=2026-S1&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, tax=I_TAX, TIME_PERIOD=2026-S1, OBS_VALUE
+  value: '0.1848'
+  unit: decimal
+  snippet: FR,2026-S1,0.1848
+  source_license: CC-BY-4.0
+  content_sha256: ee0d3c9ac8da012fbe9ba3c56b1253ed53a437f77fa6fa6ab2670613a14b7c8a
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[eur_per_kwh_including_taxes]
+  expected: 0.2902
+  tolerance: 0
+notes: 'Electricity prices for non-household consumers, consumption band IC (500 to 1 999 MWh per year), in euro
+  per kWh for the half-year 2026-S1, from Eurostat dataflow nrg_pc_205, both including all taxes and levies and
+  excluding taxes and levies. valid_from and valid_to bound the half-year the prices describe. Rows are keyed by
+  the Eurostat geo code and carry the English country name from the GEO codelist. Observation flags published with
+  the data: DE eur_per_kwh_including_taxes provisional; DE eur_per_kwh_excluding_taxes provisional. Eurostat''s
+  copyright notice states that its data are released under the Creative Commons Attribution 4.0 International licence;
+  the notice page renders dynamically and is referenced rather than hashed.'

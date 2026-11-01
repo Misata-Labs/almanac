@@ -1,0 +1,110 @@
+id: eu-average-household-size-2025
+title: Average number of persons per private household, 2025 survey year, ten member states
+kind: rule
+domain: demographics
+region: EU
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- households
+- household-size
+- eu-silc
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- household-generation
+- person-generation
+- market-sizing
+- utilities-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: ilc_lvph01
+    key: A.AVG.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2025'
+    rows:
+      AT:
+        name: Austria
+        persons_per_household: 2.2
+      BE:
+        name: Belgium
+        persons_per_household: 2.2
+      DE:
+        name: Germany
+        persons_per_household: 2.0
+      ES:
+        name: Spain
+        persons_per_household: 2.5
+      FR:
+        name: France
+        persons_per_household: 2.1
+      IE:
+        name: Ireland
+        persons_per_household: 2.7
+      IT:
+        name: Italy
+        persons_per_household: 2.2
+      NL:
+        name: Netherlands
+        persons_per_household: 2.1
+      PL:
+        name: Poland
+        persons_per_household: 2.8
+      SE:
+        name: Sweden
+        persons_per_household: 2.0
+  vectors:
+  - input:
+      key: DE
+      column: persons_per_household
+    expected: 2.0
+    origin: source
+  - input:
+      key: FR
+      column: persons_per_household
+    expected: 2.1
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow ilc_lvph01 (average household size, EU-SILC survey), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/ilc_lvph01/A.AVG.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, unit=AVG, TIME_PERIOD=2025, OBS_VALUE
+  value: '2.0'
+  unit: decimal
+  snippet: DE,2025,2.0
+  source_license: CC-BY-4.0
+  content_sha256: ac287e14a2da2dc2bd61e67096ec7080592bc7cfdf23d39f07cf84c95025be77
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow ilc_lvph01 (average household size, EU-SILC survey), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/ilc_lvph01/A.AVG.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, unit=AVG, TIME_PERIOD=2025, OBS_VALUE
+  value: '2.1'
+  unit: decimal
+  snippet: FR,2025,2.1
+  source_license: CC-BY-4.0
+  content_sha256: ac287e14a2da2dc2bd61e67096ec7080592bc7cfdf23d39f07cf84c95025be77
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[persons_per_household]
+  expected: 2.8
+  tolerance: 0
+notes: Average number of persons per private household, EU-SILC survey year 2025, ten member states, from Eurostat
+  dataflow ilc_lvph01. Rows are keyed by the Eurostat geo code and carry the English country name from the GEO codelist.
+  Eurostat's copyright notice states that its data are released under the Creative Commons Attribution 4.0 International
+  licence; the notice page renders dynamically and is referenced rather than hashed.

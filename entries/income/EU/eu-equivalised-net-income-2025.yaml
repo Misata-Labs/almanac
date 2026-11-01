@@ -1,0 +1,122 @@
+id: eu-equivalised-net-income-2025
+title: Median and mean equivalised net income, 2025 survey year, ten member states
+kind: rule
+domain: income
+region: EU
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- income
+- eu-silc
+- living-conditions
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- personal-finance
+- customer-segmentation
+- credit-risk
+- household-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: ilc_di03
+    key: A.TOTAL.T.MED_EI+MEAN_EI.EUR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2025'
+    rows:
+      AT:
+        name: Austria
+        mean_eur: 39854
+        median_eur: 36546
+      BE:
+        name: Belgium
+        mean_eur: 33873
+        median_eur: 31299
+      DE:
+        name: Germany
+        mean_eur: 33324
+        median_eur: 28891
+      ES:
+        name: Spain
+        mean_eur: 22943
+        median_eur: 20367
+      FR:
+        name: France
+        mean_eur: 30438
+        median_eur: 26459
+      IE:
+        name: Ireland
+        mean_eur: 39666
+        median_eur: 35138
+      IT:
+        name: Italy
+        mean_eur: 25011
+        median_eur: 22062
+      NL:
+        name: Netherlands
+        mean_eur: 37983
+        median_eur: 34466
+      PL:
+        name: Poland
+        mean_eur: 15588
+        median_eur: 14394
+      SE:
+        name: Sweden
+        mean_eur: 31299
+        median_eur: 28574
+  vectors:
+  - input:
+      key: DE
+      column: median_eur
+    expected: 28891
+    origin: source
+  - input:
+      key: FR
+      column: median_eur
+    expected: 26459
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow ilc_di03 (mean and median income by age and sex, EU-SILC survey), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/ilc_di03/A.TOTAL.T.MED_EI+MEAN_EI.EUR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, statinfo=MED_EI, TIME_PERIOD=2025, OBS_VALUE
+  value: '28891'
+  unit: currency:EUR
+  snippet: DE,2025,28891
+  source_license: CC-BY-4.0
+  content_sha256: 28ccb88b0402b3592c6166ef97067f3230bab16d69a03b6c070d93591ac9fad6
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow ilc_di03 (mean and median income by age and sex, EU-SILC survey), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/ilc_di03/A.TOTAL.T.MED_EI+MEAN_EI.EUR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, statinfo=MED_EI, TIME_PERIOD=2025, OBS_VALUE
+  value: '26459'
+  unit: currency:EUR
+  snippet: FR,2025,26459
+  source_license: CC-BY-4.0
+  content_sha256: 28ccb88b0402b3592c6166ef97067f3230bab16d69a03b6c070d93591ac9fad6
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[median_eur]
+  expected: 36546
+  tolerance: 0
+notes: Median and mean equivalised net income in euro for the whole population, EU-SILC survey year 2025, ten member
+  states, from Eurostat dataflow ilc_di03. EU-SILC income refers to the calendar year before the survey year; valid_from
+  and valid_to bound the survey year under which Eurostat files the figures. Rows are keyed by the Eurostat geo
+  code and carry the English country name from the GEO codelist. Eurostat's copyright notice states that its data
+  are released under the Creative Commons Attribution 4.0 International licence; the notice page renders dynamically
+  and is referenced rather than hashed.

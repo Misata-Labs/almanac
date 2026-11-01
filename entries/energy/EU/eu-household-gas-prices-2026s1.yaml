@@ -1,0 +1,108 @@
+id: eu-household-gas-prices-2026s1
+title: Household natural gas prices including taxes, consumption band 20 to 199 GJ, 2026-S1, nine member states
+kind: rule
+domain: energy
+region: EU
+status: verified
+tier: A
+valid_from: '2026-01-01'
+valid_to: '2026-06-30'
+tags:
+- gas
+- energy-prices
+- utilities
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- utilities-demo
+- pricing
+- household-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: nrg_pc_202
+    key: S.G3000.GJ20-199.KWH.I_TAX.EUR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: 2026-S1
+    rows:
+      AT:
+        name: Austria
+        eur_per_kwh: 0.124
+      BE:
+        name: Belgium
+        eur_per_kwh: 0.0846
+      DE:
+        name: Germany
+        eur_per_kwh: 0.1156
+      ES:
+        name: Spain
+        eur_per_kwh: 0.0787
+      FR:
+        name: France
+        eur_per_kwh: 0.1347
+      IE:
+        name: Ireland
+        eur_per_kwh: 0.1183
+      IT:
+        name: Italy
+        eur_per_kwh: 0.1137
+      NL:
+        name: Netherlands
+        eur_per_kwh: 0.1622
+      SE:
+        name: Sweden
+        eur_per_kwh: 0.2201
+  vectors:
+  - input:
+      key: DE
+      column: eur_per_kwh
+    expected: 0.1156
+    origin: source
+  - input:
+      key: FR
+      column: eur_per_kwh
+    expected: 0.1347
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow nrg_pc_202 (gas prices for household consumers), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_202/S.G3000.GJ20-199.KWH.I_TAX.EUR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2026-S1&endPeriod=2026-S1&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, tax=I_TAX, TIME_PERIOD=2026-S1, OBS_VALUE
+  value: '0.1156'
+  unit: decimal
+  snippet: DE,2026-S1,0.1156
+  source_license: CC-BY-4.0
+  content_sha256: ccb236b93f58494f5da713afc511025bb985341440b0e22d647d48465072e4d9
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow nrg_pc_202 (gas prices for household consumers), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_202/S.G3000.GJ20-199.KWH.I_TAX.EUR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2026-S1&endPeriod=2026-S1&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, tax=I_TAX, TIME_PERIOD=2026-S1, OBS_VALUE
+  value: '0.1347'
+  unit: decimal
+  snippet: FR,2026-S1,0.1347
+  source_license: CC-BY-4.0
+  content_sha256: ccb236b93f58494f5da713afc511025bb985341440b0e22d647d48465072e4d9
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 9
+  tolerance: 0
+- statistic: max[eur_per_kwh]
+  expected: 0.2201
+  tolerance: 0
+notes: Natural gas prices for household consumers, all taxes and levies included, consumption band D2 (20 to 199
+  GJ per year), in euro per kWh for the half-year 2026-S1, from Eurostat dataflow nrg_pc_202. Poland is omitted
+  because Eurostat publishes its observation as confidential (CONF_STATUS C) with no value. valid_from and valid_to
+  bound the half-year the prices describe. Rows are keyed by the Eurostat geo code and carry the English country
+  name from the GEO codelist. Eurostat's copyright notice states that its data are released under the Creative Commons
+  Attribution 4.0 International licence; the notice page renders dynamically and is referenced rather than hashed.

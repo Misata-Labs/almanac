@@ -1,0 +1,237 @@
+id: eu-statutory-monthly-minimum-wages-2026s2
+title: Statutory monthly minimum wages, second half of 2026, all countries reported by Eurostat
+kind: rule
+domain: employment
+region: EU
+status: verified
+tier: A
+valid_from: '2026-07-01'
+valid_to: '2026-12-31'
+tags:
+- minimum-wage
+- wages
+- labour
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- payroll-demo
+- hr-analytics
+- personal-finance
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: earn_mw_cur
+    key: S.EUR+NAC+PPS.
+    period: 2026-S2
+    rows:
+      AL:
+        name: Albania
+        eur: 531
+        national_currency: 50000
+        pps: 705
+      BE:
+        name: Belgium
+        eur: 2234
+        national_currency: 2234
+        pps: 1922
+      BG:
+        name: Bulgaria
+        eur: 620
+        national_currency: 620
+        pps: 993
+      CY:
+        name: Cyprus
+        eur: 1088
+        national_currency: 1088
+        pps: 1220
+      CZ:
+        name: Czechia
+        eur: 923
+        national_currency: 22400
+        pps: 1015
+      DE:
+        name: Germany
+        eur: 2343
+        national_currency: 2343
+        pps: 2164
+      EE:
+        name: Estonia
+        eur: 946
+        national_currency: 946
+        pps: 935
+      EL:
+        name: Greece
+        eur: 1073
+        national_currency: 1073
+        pps: 1229
+      ES:
+        name: Spain
+        eur: 1425
+        national_currency: 1425
+        pps: 1556
+      FR:
+        name: France
+        eur: 1867
+        national_currency: 1867
+        pps: 1692
+      HR:
+        name: Croatia
+        eur: 1050
+        national_currency: 1050
+        pps: 1339
+      HU:
+        name: Hungary
+        eur: 906
+        national_currency: 322800
+        pps: 1048
+      IE:
+        name: Ireland
+        eur: 2391
+        national_currency: 2391
+        pps: 1756
+      LT:
+        name: Lithuania
+        eur: 1153
+        national_currency: 1153
+        pps: 1393
+      LU:
+        name: Luxembourg
+        eur: 2771
+        national_currency: 2771
+        pps: 2108
+      LV:
+        name: Latvia
+        eur: 780
+        national_currency: 780
+        pps: 938
+      MD:
+        name: Moldova
+        eur: 313
+        national_currency: 6300
+        pps: null
+      ME:
+        name: Montenegro
+        eur: 670
+        national_currency: 670
+        pps: 1014
+      MK:
+        name: North Macedonia
+        eur: 624
+        national_currency: 38507
+        pps: 1142
+      MT:
+        name: Malta
+        eur: 994
+        national_currency: 994
+        pps: 1081
+      NL:
+        name: Netherlands
+        eur: 2338
+        national_currency: 2338
+        pps: 2023
+      PL:
+        name: Poland
+        eur: 1119
+        national_currency: 4806
+        pps: 1547
+      PT:
+        name: Portugal
+        eur: 1073
+        national_currency: 1073
+        pps: 1240
+      RO:
+        name: Romania
+        eur: 825
+        national_currency: 4325
+        pps: 1317
+      RS:
+        name: Serbia
+        eur: 743
+        national_currency: 87207
+        pps: 1094
+      SI:
+        name: Slovenia
+        eur: 1482
+        national_currency: 1482
+        pps: 1660
+      SK:
+        name: Slovakia
+        eur: 915
+        national_currency: 915
+        pps: 1074
+      TR:
+        name: Türkiye
+        eur: 621
+        national_currency: 33030
+        pps: null
+      UA:
+        name: Ukraine
+        eur: 169
+        national_currency: 8647
+        pps: null
+      US:
+        name: United States
+        eur: 1103
+        national_currency: 1257
+        pps: 834
+  vectors:
+  - input:
+      key: DE
+      column: eur
+    expected: 2343
+    origin: source
+  - input:
+      key: FR
+      column: eur
+    expected: 1867
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow earn_mw_cur (monthly minimum wages, bi-annual data), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/earn_mw_cur/S.EUR+NAC+PPS.?startPeriod=2026-S2&endPeriod=2026-S2&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, currency=EUR, TIME_PERIOD=2026-S2, OBS_VALUE
+  value: '2343'
+  unit: currency:EUR
+  snippet: DE,2026-S2,2343
+  source_license: CC-BY-4.0
+  content_sha256: b4f121d61d89b756f27302f4cb59501427b6f9b55e34538abd0b1ac88ea36c8d
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow earn_mw_cur (monthly minimum wages, bi-annual data), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/earn_mw_cur/S.EUR+NAC+PPS.?startPeriod=2026-S2&endPeriod=2026-S2&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, currency=EUR, TIME_PERIOD=2026-S2, OBS_VALUE
+  value: '1867'
+  unit: currency:EUR
+  snippet: FR,2026-S2,1867
+  source_license: CC-BY-4.0
+  content_sha256: b4f121d61d89b756f27302f4cb59501427b6f9b55e34538abd0b1ac88ea36c8d
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 30
+  tolerance: 0
+- statistic: max[eur]
+  expected: 2771
+  tolerance: 0
+notes: 'Gross monthly statutory minimum wages in force on 1 July 2026 from Eurostat dataflow earn_mw_cur, in euro,
+  in national currency and in purchasing power standards, for every country Eurostat reports a value for (EU member
+  states plus candidate countries and the United States). Countries Eurostat lists without a value for the period
+  are omitted. valid_from and valid_to bound the half-year the figures describe. Rows are keyed by the Eurostat
+  geo code and carry the English country name from the GEO codelist. Observation flags published with the data:
+  AL pps estimated; BE pps estimated; BG pps estimated; CY pps estimated; CZ pps estimated; DE pps estimated; EE
+  pps estimated; EL pps estimated; ES pps estimated; FR pps estimated; HR pps estimated; HU pps estimated; IE pps
+  estimated; LT pps estimated; LU pps estimated; LV pps estimated; ME pps estimated; MK pps estimated; MT pps estimated;
+  NL pps estimated; PL pps estimated; PT pps estimated; RO pps estimated; RS pps estimated; SI pps estimated; SK
+  pps estimated; US pps estimated. Eurostat''s copyright notice states that its data are released under the Creative
+  Commons Attribution 4.0 International licence; the notice page renders dynamically and is referenced rather than
+  hashed.'

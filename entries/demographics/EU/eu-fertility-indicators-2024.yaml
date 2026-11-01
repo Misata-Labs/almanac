@@ -1,0 +1,144 @@
+id: eu-fertility-indicators-2024
+title: Total fertility rate and mean and median age of women at childbirth, 2024, ten member states
+kind: rule
+domain: demographics
+region: EU
+status: verified
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- fertility
+- births
+- age
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- person-generation
+- household-generation
+- health-demo
+- insurance
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: demo_find
+    key: A.TOTFERRT+AGEMOTH+AGEMOTH1+MEDAGEMOTH.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2024'
+    rows:
+      AT:
+        name: Austria
+        mean_age_at_childbirth: 31.2
+        mean_age_at_first_birth: 30.0
+        median_age_at_childbirth: 31.6
+        total_fertility_rate: 1.31
+      BE:
+        name: Belgium
+        mean_age_at_childbirth: 31.1
+        mean_age_at_first_birth: 29.6
+        median_age_at_childbirth: 31.4
+        total_fertility_rate: 1.44
+      DE:
+        name: Germany
+        mean_age_at_childbirth: 31.3
+        mean_age_at_first_birth: 29.9
+        median_age_at_childbirth: 32.1
+        total_fertility_rate: 1.36
+      ES:
+        name: Spain
+        mean_age_at_childbirth: 32.6
+        mean_age_at_first_birth: 31.5
+        median_age_at_childbirth: 33.6
+        total_fertility_rate: 1.1
+      FR:
+        name: France
+        mean_age_at_childbirth: 31.1
+        mean_age_at_first_birth: 29.3
+        median_age_at_childbirth: 31.4
+        total_fertility_rate: 1.61
+      IE:
+        name: Ireland
+        mean_age_at_childbirth: 32.7
+        mean_age_at_first_birth: 31.2
+        median_age_at_childbirth: 33.7
+        total_fertility_rate: 1.47
+      IT:
+        name: Italy
+        mean_age_at_childbirth: 32.6
+        mean_age_at_first_birth: 31.9
+        median_age_at_childbirth: 33.2
+        total_fertility_rate: 1.18
+      NL:
+        name: Netherlands
+        mean_age_at_childbirth: 31.9
+        mean_age_at_first_birth: 30.5
+        median_age_at_childbirth: 31.9
+        total_fertility_rate: 1.43
+      PL:
+        name: Poland
+        mean_age_at_childbirth: 30.3
+        mean_age_at_first_birth: 28.7
+        median_age_at_childbirth: 31.0
+        total_fertility_rate: 1.14
+      SE:
+        name: Sweden
+        mean_age_at_childbirth: 31.8
+        mean_age_at_first_birth: 30.2
+        median_age_at_childbirth: 32.1
+        total_fertility_rate: 1.43
+  vectors:
+  - input:
+      key: DE
+      column: total_fertility_rate
+    expected: 1.36
+    origin: source
+  - input:
+      key: FR
+      column: total_fertility_rate
+    expected: 1.61
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow demo_find (fertility indicators), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_find/A.TOTFERRT+AGEMOTH+AGEMOTH1+MEDAGEMOTH.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, indic_de=TOTFERRT, TIME_PERIOD=2024, OBS_VALUE
+  value: '1.36'
+  unit: decimal
+  snippet: DE,2024,1.36
+  source_license: CC-BY-4.0
+  content_sha256: bad3f25622b5baebd48864f4a1b6851852350b987bb1da48a7ffe6717a809382
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow demo_find (fertility indicators), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_find/A.TOTFERRT+AGEMOTH+AGEMOTH1+MEDAGEMOTH.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, indic_de=TOTFERRT, TIME_PERIOD=2024, OBS_VALUE
+  value: '1.61'
+  unit: decimal
+  snippet: FR,2024,1.61
+  source_license: CC-BY-4.0
+  content_sha256: bad3f25622b5baebd48864f4a1b6851852350b987bb1da48a7ffe6717a809382
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[total_fertility_rate]
+  expected: 1.61
+  tolerance: 0
+notes: 'Total fertility rate (live births per woman), mean age of women at childbirth, mean age of women at birth
+  of first child and median age of women at childbirth for 2024, ten member states, from Eurostat dataflow demo_find.
+  Rows are keyed by the Eurostat geo code and carry the English country name from the GEO codelist. Observation
+  flags published with the data: FR mean_age_at_childbirth provisional; PL mean_age_at_childbirth estimated, provisional;
+  FR mean_age_at_first_birth provisional; PL mean_age_at_first_birth estimated, provisional; FR total_fertility_rate
+  provisional; PL total_fertility_rate estimated, provisional. Eurostat''s copyright notice states that its data
+  are released under the Creative Commons Attribution 4.0 International licence; the notice page renders dynamically
+  and is referenced rather than hashed.'

@@ -1,0 +1,114 @@
+id: eu-housing-cost-overburden-rate-2025
+title: Housing cost overburden rate, 2025 survey year, ten member states
+kind: rule
+domain: income
+region: EU
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- housing
+- housing-costs
+- eu-silc
+- living-conditions
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- credit-risk
+- mortgage-origination
+- property-demo
+- household-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: ilc_lvho07a
+    key: A.PC.TOTAL.TOTAL.T.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2025'
+    rows:
+      AT:
+        name: Austria
+        percent_of_population: 6.1
+      BE:
+        name: Belgium
+        percent_of_population: 6.7
+      DE:
+        name: Germany
+        percent_of_population: 11.2
+      ES:
+        name: Spain
+        percent_of_population: 7.2
+      FR:
+        name: France
+        percent_of_population: 6.4
+      IE:
+        name: Ireland
+        percent_of_population: 5.3
+      IT:
+        name: Italy
+        percent_of_population: 5.0
+      NL:
+        name: Netherlands
+        percent_of_population: 6.5
+      PL:
+        name: Poland
+        percent_of_population: 4.1
+      SE:
+        name: Sweden
+        percent_of_population: 10.8
+  vectors:
+  - input:
+      key: DE
+      column: percent_of_population
+    expected: 11.2
+    origin: source
+  - input:
+      key: FR
+      column: percent_of_population
+    expected: 6.4
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow ilc_lvho07a (housing cost overburden rate by age, sex and poverty status,
+    EU-SILC survey), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/ilc_lvho07a/A.PC.TOTAL.TOTAL.T.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, rskpovth=TOTAL, TIME_PERIOD=2025, OBS_VALUE
+  value: '11.2'
+  unit: percent
+  snippet: DE,2025,11.2
+  source_license: CC-BY-4.0
+  content_sha256: a8ccaaa31b9b10dd2b8d6147f46ce445367a707a709f351b08e0caa2f18aea0b
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow ilc_lvho07a (housing cost overburden rate by age, sex and poverty status,
+    EU-SILC survey), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/ilc_lvho07a/A.PC.TOTAL.TOTAL.T.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, rskpovth=TOTAL, TIME_PERIOD=2025, OBS_VALUE
+  value: '6.4'
+  unit: percent
+  snippet: FR,2025,6.4
+  source_license: CC-BY-4.0
+  content_sha256: a8ccaaa31b9b10dd2b8d6147f46ce445367a707a709f351b08e0caa2f18aea0b
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[percent_of_population]
+  expected: 11.2
+  tolerance: 0
+notes: Share of the population living in households where total housing costs exceed 40 percent of disposable income,
+  EU-SILC survey year 2025, ten member states, from Eurostat dataflow ilc_lvho07a (all ages, both sexes, whole population).
+  Rows are keyed by the Eurostat geo code and carry the English country name from the GEO codelist. Eurostat's copyright
+  notice states that its data are released under the Creative Commons Attribution 4.0 International licence; the
+  notice page renders dynamically and is referenced rather than hashed.

@@ -1,0 +1,262 @@
+id: eu-new-passenger-car-registrations-by-motor-energy-2025
+title: New passenger car registrations by motor energy, 2025, ten member states
+kind: rule
+domain: automotive
+region: EU
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- vehicles
+- cars
+- registrations
+- electric-vehicles
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- automotive-demo
+- fleet-demo
+- insurance
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: road_eqr_carpda
+    key: A.NR.TOTAL+PET_X_HYB+DIE_X_HYB+ELC+ELC_PET_HYB+ELC_PET_PI+ELC_DIE_HYB+ELC_DIE_PI+LPG+GAS+HYD_FCELL+OTH.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2025'
+    rows:
+      AT:
+        name: Austria
+        diesel_excluding_hybrids: 33004
+        battery_electric: 60651
+        hybrid_diesel: 12837
+        plug_in_hybrid_diesel: 1884
+        hybrid_petrol: 70207
+        plug_in_hybrid_petrol: 26936
+        natural_gas: 0
+        hydrogen_fuel_cell: 0
+        lpg: 0
+        other: 2
+        petrol_excluding_hybrids: 79457
+        total: 284978
+        battery_electric_share: 0.212827
+      BE:
+        name: Belgium
+        diesel_excluding_hybrids: 14481
+        battery_electric: 144003
+        hybrid_diesel: 3805
+        plug_in_hybrid_diesel: 3284
+        hybrid_petrol: 121480
+        plug_in_hybrid_petrol: 34900
+        natural_gas: 0
+        hydrogen_fuel_cell: 2
+        lpg: 3162
+        other: 12
+        petrol_excluding_hybrids: 96912
+        total: 422041
+        battery_electric_share: 0.341206
+      DE:
+        name: Germany
+        diesel_excluding_hybrids: 395022
+        battery_electric: 545142
+        hybrid_diesel: 166219
+        plug_in_hybrid_diesel: 18818
+        hybrid_petrol: 649880
+        plug_in_hybrid_petrol: 292574
+        natural_gas: 3
+        hydrogen_fuel_cell: 55
+        lpg: 12079
+        other: 158
+        petrol_excluding_hybrids: 777641
+        total: 2857591
+        battery_electric_share: 0.19077
+      ES:
+        name: Spain
+        diesel_excluding_hybrids: 109024
+        battery_electric: 105074
+        hybrid_diesel: 45151
+        plug_in_hybrid_diesel: 6771
+        hybrid_petrol: 438074
+        plug_in_hybrid_petrol: 120373
+        natural_gas: 50
+        hydrogen_fuel_cell: 1
+        lpg: 313
+        other: 24
+        petrol_excluding_hybrids: 322225
+        total: 1206838
+        battery_electric_share: 0.087066
+      FR:
+        name: France
+        diesel_excluding_hybrids: 105372
+        battery_electric: 330890
+        hybrid_diesel: 15976
+        plug_in_hybrid_diesel: 1824
+        hybrid_petrol: 707609
+        plug_in_hybrid_petrol: 107945
+        natural_gas: 55849
+        hydrogen_fuel_cell: 311
+        petrol_excluding_hybrids: 364517
+        total: 1690293
+        lpg: null
+        other: null
+        battery_electric_share: 0.195759
+      IE:
+        name: Ireland
+        diesel_excluding_hybrids: 23131
+        battery_electric: 23741
+        hybrid_diesel: 1580
+        plug_in_hybrid_diesel: 500
+        hybrid_petrol: 27669
+        plug_in_hybrid_petrol: 18432
+        hydrogen_fuel_cell: 0
+        other: 1
+        petrol_excluding_hybrids: 32319
+        total: 127372
+        lpg: null
+        natural_gas: null
+        battery_electric_share: 0.186391
+      IT:
+        name: Italy
+        diesel_excluding_hybrids: 151203
+        battery_electric: 94862
+        hybrid_diesel: 73352
+        plug_in_hybrid_diesel: 12524
+        hybrid_petrol: 609374
+        plug_in_hybrid_petrol: 85816
+        natural_gas: 12
+        hydrogen_fuel_cell: 1
+        lpg: 143108
+        other: 5
+        petrol_excluding_hybrids: 380197
+        total: 1550451
+        battery_electric_share: 0.061183
+      NL:
+        name: Netherlands
+        diesel_excluding_hybrids: 3993
+        battery_electric: 155962
+        hybrid_diesel: 0
+        plug_in_hybrid_diesel: 0
+        hybrid_petrol: 102094
+        plug_in_hybrid_petrol: 73445
+        natural_gas: 0
+        hydrogen_fuel_cell: 1
+        lpg: 1366
+        other: 0
+        petrol_excluding_hybrids: 50717
+        total: 387578
+        battery_electric_share: 0.402402
+      PL:
+        name: Poland
+        diesel_excluding_hybrids: 70695
+        battery_electric: 43311
+        hybrid_diesel: 23954
+        plug_in_hybrid_diesel: 6322
+        hybrid_petrol: 104640
+        plug_in_hybrid_petrol: 27619
+        natural_gas: 0
+        hydrogen_fuel_cell: 121
+        lpg: 19056
+        other: 1100
+        petrol_excluding_hybrids: 303686
+        total: 600504
+        battery_electric_share: 0.072124
+      SE:
+        name: Sweden
+        diesel_excluding_hybrids: 18259
+        battery_electric: 99981
+        hybrid_diesel: 0
+        plug_in_hybrid_diesel: 3341
+        hybrid_petrol: 23337
+        plug_in_hybrid_petrol: 69559
+        natural_gas: 4
+        hydrogen_fuel_cell: 3
+        lpg: 0
+        other: 0
+        petrol_excluding_hybrids: 58312
+        total: 274694
+        battery_electric_share: 0.363972
+  vectors:
+  - input:
+      key: DE
+      column: total
+    expected: 2857591
+    origin: source
+  - input:
+      key: FR
+      column: total
+    expected: 1690293
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow road_eqr_carpda (new registrations of passenger cars by type of motor energy),
+    SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/road_eqr_carpda/A.NR.TOTAL+PET_X_HYB+DIE_X_HYB+ELC+ELC_PET_HYB+ELC_PET_PI+ELC_DIE_HYB+ELC_DIE_PI+LPG+GAS+HYD_FCELL+OTH.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, mot_nrg=TOTAL, TIME_PERIOD=2025, OBS_VALUE
+  value: '2857591'
+  unit: count
+  snippet: DE,2025,2857591
+  source_license: CC-BY-4.0
+  content_sha256: e0341b5ab4df84b052e536b44b4fae542eb764cf4dfc85f64e36eec8bf153f23
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow road_eqr_carpda (new registrations of passenger cars by type of motor energy),
+    SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/road_eqr_carpda/A.NR.TOTAL+PET_X_HYB+DIE_X_HYB+ELC+ELC_PET_HYB+ELC_PET_PI+ELC_DIE_HYB+ELC_DIE_PI+LPG+GAS+HYD_FCELL+OTH.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, mot_nrg=TOTAL, TIME_PERIOD=2025, OBS_VALUE
+  value: '1690293'
+  unit: count
+  snippet: FR,2025,1690293
+  source_license: CC-BY-4.0
+  content_sha256: e0341b5ab4df84b052e536b44b4fae542eb764cf4dfc85f64e36eec8bf153f23
+  role: primary
+assumed:
+- parameter: rows[*].battery_electric_share
+  value: battery_electric / total
+  method: derived
+  rationale: Eurostat publishes the counts; the share of battery electric cars in all new registrations is their
+    ratio.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[total]
+  expected: 2857591
+  tolerance: 0
+notes: 'New registrations of passenger cars in 2025 for ten member states from Eurostat dataflow road_eqr_carpda,
+  in number of vehicles: the total and the Eurostat motor energy categories petrol excluding hybrids, diesel excluding
+  hybrids, electricity (battery electric), hybrid electric-petrol, plug-in hybrid petrol-electric, hybrid diesel-electric,
+  plug-in hybrid diesel-electric, LPG, natural gas, hydrogen and fuel cells, and other. The categories kept do not
+  necessarily sum to the total because Eurostat also publishes aggregates and categories not carried here. Rows
+  are keyed by the Eurostat geo code and carry the English country name from the GEO codelist. Observation flags
+  published with the data: IE diesel_excluding_hybrids value imputed by Eurostat or other receiving agencies; PL
+  diesel_excluding_hybrids value imputed by Eurostat or other receiving agencies; IE battery_electric value imputed
+  by Eurostat or other receiving agencies; PL battery_electric value imputed by Eurostat or other receiving agencies;
+  IE hybrid_diesel value imputed by Eurostat or other receiving agencies; IT hybrid_diesel value imputed by Eurostat
+  or other receiving agencies; PL hybrid_diesel value imputed by Eurostat or other receiving agencies; IE plug_in_hybrid_diesel
+  value imputed by Eurostat or other receiving agencies; IT plug_in_hybrid_diesel value imputed by Eurostat or other
+  receiving agencies; NL plug_in_hybrid_diesel value imputed by Eurostat or other receiving agencies; PL plug_in_hybrid_diesel
+  value imputed by Eurostat or other receiving agencies; IE hybrid_petrol value imputed by Eurostat or other receiving
+  agencies; IT hybrid_petrol value imputed by Eurostat or other receiving agencies; NL hybrid_petrol value imputed
+  by Eurostat or other receiving agencies; PL hybrid_petrol value imputed by Eurostat or other receiving agencies;
+  IE plug_in_hybrid_petrol value imputed by Eurostat or other receiving agencies; IT plug_in_hybrid_petrol value
+  imputed by Eurostat or other receiving agencies; NL plug_in_hybrid_petrol value imputed by Eurostat or other receiving
+  agencies; PL plug_in_hybrid_petrol value imputed by Eurostat or other receiving agencies; FR natural_gas break
+  in time series; PL natural_gas value imputed by Eurostat or other receiving agencies; IE hydrogen_fuel_cell value
+  imputed by Eurostat or other receiving agencies; IT hydrogen_fuel_cell value imputed by Eurostat or other receiving
+  agencies; PL hydrogen_fuel_cell value imputed by Eurostat or other receiving agencies; PL lpg value imputed by
+  Eurostat or other receiving agencies; IE other value imputed by Eurostat or other receiving agencies; PL other
+  value imputed by Eurostat or other receiving agencies; IE petrol_excluding_hybrids value imputed by Eurostat or
+  other receiving agencies; PL petrol_excluding_hybrids value imputed by Eurostat or other receiving agencies; IE
+  total value imputed by Eurostat or other receiving agencies. Eurostat''s copyright notice states that its data
+  are released under the Creative Commons Attribution 4.0 International licence; the notice page renders dynamically
+  and is referenced rather than hashed.'

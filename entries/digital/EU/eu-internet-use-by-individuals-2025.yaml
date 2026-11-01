@@ -1,0 +1,131 @@
+id: eu-internet-use-by-individuals-2025
+title: Internet use by individuals, 2025, ten member states
+kind: rule
+domain: digital
+region: EU
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- internet
+- digital
+- connectivity
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- digital-channels
+- telecom-demo
+- customer-segmentation
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: isoc_ci_ifp_iu
+    key: A.I_IU3+I_IUEVR+I_IUX.PC_IND.IND_TOTAL.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2025'
+    rows:
+      AT:
+        name: Austria
+        last_3_months_percent: 95.3
+        ever_used_percent: 96.45
+        never_used_percent: 3.55
+      BE:
+        name: Belgium
+        last_3_months_percent: 96.46
+        ever_used_percent: 97.37
+        never_used_percent: 2.63
+      DE:
+        name: Germany
+        last_3_months_percent: 94.58
+        ever_used_percent: 96.63
+        never_used_percent: 3.37
+      ES:
+        name: Spain
+        last_3_months_percent: 96.34
+        ever_used_percent: 97.25
+        never_used_percent: 2.75
+      FR:
+        name: France
+        last_3_months_percent: 94.98
+        ever_used_percent: 96.7
+        never_used_percent: 3.3
+      IE:
+        name: Ireland
+        last_3_months_percent: 99.78
+        ever_used_percent: 99.8
+        never_used_percent: 0.2
+      IT:
+        name: Italy
+        last_3_months_percent: 90.32
+        ever_used_percent: 92.6
+        never_used_percent: 6.34
+      NL:
+        name: Netherlands
+        last_3_months_percent: 99.71
+        ever_used_percent: 99.75
+        never_used_percent: 0.25
+      PL:
+        name: Poland
+        last_3_months_percent: 89.65
+        ever_used_percent: 91.94
+        never_used_percent: 8.06
+      SE:
+        name: Sweden
+        last_3_months_percent: 98.25
+        ever_used_percent: 99.11
+        never_used_percent: 0.34
+  vectors:
+  - input:
+      key: DE
+      column: last_3_months_percent
+    expected: 94.58
+    origin: source
+  - input:
+      key: FR
+      column: last_3_months_percent
+    expected: 94.98
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow isoc_ci_ifp_iu (individuals, internet use), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/isoc_ci_ifp_iu/A.I_IU3+I_IUEVR+I_IUX.PC_IND.IND_TOTAL.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, indic_is=I_IU3, TIME_PERIOD=2025, OBS_VALUE
+  value: '94.58'
+  unit: percent
+  snippet: DE,2025,94.58
+  source_license: CC-BY-4.0
+  content_sha256: a1e128fe16941ab9633bcbfc2e4a87bdac4cd6ac7f282ef5f0fa3b23d40eccb7
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow isoc_ci_ifp_iu (individuals, internet use), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/isoc_ci_ifp_iu/A.I_IU3+I_IUEVR+I_IUX.PC_IND.IND_TOTAL.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, indic_is=I_IU3, TIME_PERIOD=2025, OBS_VALUE
+  value: '94.98'
+  unit: percent
+  snippet: FR,2025,94.98
+  source_license: CC-BY-4.0
+  content_sha256: a1e128fe16941ab9633bcbfc2e4a87bdac4cd6ac7f282ef5f0fa3b23d40eccb7
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[last_3_months_percent]
+  expected: 99.78
+  tolerance: 0
+notes: Percentage of all individuals who used the internet in the last three months, who have ever used it, and
+  who have never used it, 2025, ten member states, from Eurostat dataflow isoc_ci_ifp_iu (ICT usage in households
+  and by individuals survey). Rows are keyed by the Eurostat geo code and carry the English country name from the
+  GEO codelist. Eurostat's copyright notice states that its data are released under the Creative Commons Attribution
+  4.0 International licence; the notice page renders dynamically and is referenced rather than hashed.

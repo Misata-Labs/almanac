@@ -1,0 +1,133 @@
+id: eu-life-expectancy-at-birth-2024
+title: Life expectancy at birth by sex, 2024, ten member states
+kind: rule
+domain: demographics
+region: EU
+status: verified
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- life-expectancy
+- mortality
+- sex
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- insurance
+- pensions
+- health-demo
+- person-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: demo_mlexpec
+    key: A.YR.T+F+M.Y_LT1.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2024'
+    rows:
+      AT:
+        name: Austria
+        female_years: 84.3
+        male_years: 79.8
+        total_years: 82.1
+      BE:
+        name: Belgium
+        female_years: 84.4
+        male_years: 80.3
+        total_years: 82.4
+      DE:
+        name: Germany
+        female_years: 83.5
+        male_years: 78.9
+        total_years: 81.2
+      ES:
+        name: Spain
+        female_years: 86.5
+        male_years: 81.4
+        total_years: 84.0
+      FR:
+        name: France
+        female_years: 85.8
+        male_years: 80.2
+        total_years: 83.0
+      IE:
+        name: Ireland
+        female_years: 84.7
+        male_years: 81.4
+        total_years: 83.1
+      IT:
+        name: Italy
+        female_years: 85.7
+        male_years: 81.6
+        total_years: 83.7
+      NL:
+        name: Netherlands
+        female_years: 83.3
+        male_years: 80.5
+        total_years: 81.9
+      PL:
+        name: Poland
+        female_years: 82.2
+        male_years: 74.8
+        total_years: 78.5
+      SE:
+        name: Sweden
+        female_years: 85.3
+        male_years: 82.3
+        total_years: 83.8
+  vectors:
+  - input:
+      key: DE
+      column: total_years
+    expected: 81.2
+    origin: source
+  - input:
+      key: FR
+      column: total_years
+    expected: 83.0
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow demo_mlexpec (life expectancy by age and sex), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_mlexpec/A.YR.T+F+M.Y_LT1.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, sex=T, TIME_PERIOD=2024, OBS_VALUE
+  value: '81.2'
+  unit: decimal
+  snippet: DE,2024,81.2
+  source_license: CC-BY-4.0
+  content_sha256: fb8bd420c7b31ee4fd237acbab690808943bc5f2a57710fa7d57f27639d9ff7b
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow demo_mlexpec (life expectancy by age and sex), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_mlexpec/A.YR.T+F+M.Y_LT1.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, sex=T, TIME_PERIOD=2024, OBS_VALUE
+  value: '83.0'
+  unit: decimal
+  snippet: FR,2024,83.0
+  source_license: CC-BY-4.0
+  content_sha256: fb8bd420c7b31ee4fd237acbab690808943bc5f2a57710fa7d57f27639d9ff7b
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[total_years]
+  expected: 84.0
+  tolerance: 0
+notes: 'Life expectancy at birth in years for 2024, total and by sex, for ten member states from Eurostat dataflow
+  demo_mlexpec (age less than 1 year). Rows are keyed by the Eurostat geo code and carry the English country name
+  from the GEO codelist. Observation flags published with the data: FR female_years provisional; PL female_years
+  estimated, provisional; FR male_years provisional; PL male_years estimated, provisional; FR total_years provisional;
+  PL total_years estimated, provisional. Eurostat''s copyright notice states that its data are released under the
+  Creative Commons Attribution 4.0 International licence; the notice page renders dynamically and is referenced
+  rather than hashed.'

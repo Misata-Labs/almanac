@@ -1,0 +1,138 @@
+id: eu-gdp-per-capita-2025
+title: GDP per capita in euro, in purchasing power standards and as an index of the EU average, 2025, ten member
+  states
+kind: rule
+domain: economy
+region: EU
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- gdp
+- national-accounts
+- purchasing-power
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- market-sizing
+- customer-segmentation
+- financial-planning
+- pricing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: nama_10_pc
+    key: A.CP_EUR_HAB+CP_PPS_EU27_2020_HAB+PC_EU27_2020_HAB_MPPS_CP.B1GQ.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2025'
+    rows:
+      AT:
+        name: Austria
+        eur_per_inhabitant: 56300
+        pps_per_inhabitant: 49398.0
+        pps_index_eu27: 118.3
+      BE:
+        name: Belgium
+        eur_per_inhabitant: 53840
+        pps_per_inhabitant: 47597.5
+        pps_index_eu27: 113.9
+      DE:
+        name: Germany
+        eur_per_inhabitant: 54240
+        pps_per_inhabitant: 48621.8
+        pps_index_eu27: 116.4
+      ES:
+        name: Spain
+        eur_per_inhabitant: 34240
+        pps_per_inhabitant: 38161.7
+        pps_index_eu27: 91.4
+      FR:
+        name: France
+        eur_per_inhabitant: 43350
+        pps_per_inhabitant: 40716.0
+        pps_index_eu27: 97.5
+      IE:
+        name: Ireland
+        eur_per_inhabitant: 110150
+        pps_per_inhabitant: 93359.9
+        pps_index_eu27: 223.5
+      IT:
+        name: Italy
+        eur_per_inhabitant: 38430
+        pps_per_inhabitant: 40075.0
+        pps_index_eu27: 95.9
+      NL:
+        name: Netherlands
+        eur_per_inhabitant: 64710
+        pps_per_inhabitant: 55152.1
+        pps_index_eu27: 132.0
+      PL:
+        name: Poland
+        eur_per_inhabitant: 24710
+        pps_per_inhabitant: 33859.2
+        pps_index_eu27: 81.1
+      SE:
+        name: Sweden
+        eur_per_inhabitant: 56250
+        pps_per_inhabitant: 46343.6
+        pps_index_eu27: 110.9
+  vectors:
+  - input:
+      key: DE
+      column: eur_per_inhabitant
+    expected: 54240
+    origin: source
+  - input:
+      key: FR
+      column: eur_per_inhabitant
+    expected: 43350
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow nama_10_pc (main GDP aggregates per capita), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nama_10_pc/A.CP_EUR_HAB+CP_PPS_EU27_2020_HAB+PC_EU27_2020_HAB_MPPS_CP.B1GQ.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, unit=CP_EUR_HAB, TIME_PERIOD=2025, OBS_VALUE
+  value: '54240'
+  unit: currency:EUR
+  snippet: DE,2025,54240
+  source_license: CC-BY-4.0
+  content_sha256: 9cf701ea789ba277d6c312565034a244a285044d47eb7bae15f42759e99e1fa0
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow nama_10_pc (main GDP aggregates per capita), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nama_10_pc/A.CP_EUR_HAB+CP_PPS_EU27_2020_HAB+PC_EU27_2020_HAB_MPPS_CP.B1GQ.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, unit=CP_EUR_HAB, TIME_PERIOD=2025, OBS_VALUE
+  value: '43350'
+  unit: currency:EUR
+  snippet: FR,2025,43350
+  source_license: CC-BY-4.0
+  content_sha256: 9cf701ea789ba277d6c312565034a244a285044d47eb7bae15f42759e99e1fa0
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[eur_per_inhabitant]
+  expected: 110150
+  tolerance: 0
+notes: 'Gross domestic product at current market prices per inhabitant in 2025 for ten member states from Eurostat
+  dataflow nama_10_pc: in euro, in purchasing power standards (PPS, EU27 from 2020) and as a percentage of the EU27
+  average per inhabitant in PPS. Rows are keyed by the Eurostat geo code and carry the English country name from
+  the GEO codelist. Observation flags published with the data: BE eur_per_inhabitant provisional; DE eur_per_inhabitant
+  provisional; ES eur_per_inhabitant provisional; FR eur_per_inhabitant provisional; IT eur_per_inhabitant provisional;
+  NL eur_per_inhabitant provisional; BE pps_per_inhabitant provisional; DE pps_per_inhabitant provisional; ES pps_per_inhabitant
+  provisional; FR pps_per_inhabitant provisional; IT pps_per_inhabitant provisional; NL pps_per_inhabitant provisional;
+  BE pps_index_eu27 provisional; DE pps_index_eu27 provisional; ES pps_index_eu27 provisional; FR pps_index_eu27
+  provisional; IT pps_index_eu27 provisional; NL pps_index_eu27 provisional. Eurostat''s copyright notice states
+  that its data are released under the Creative Commons Attribution 4.0 International licence; the notice page renders
+  dynamically and is referenced rather than hashed.'

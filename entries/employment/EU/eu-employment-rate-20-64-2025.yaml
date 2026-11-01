@@ -1,0 +1,134 @@
+id: eu-employment-rate-20-64-2025
+title: Employment rate of people aged 20 to 64, 2025, ten member states
+kind: rule
+domain: employment
+region: EU
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- employment
+- labour
+- sex
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- hr-analytics
+- workforce-planning
+- person-generation
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: lfsi_emp_a
+    key: A.EMP_LFS.T+F+M.Y20-64.PC_POP.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2025'
+    rows:
+      AT:
+        name: Austria
+        female: 74.2
+        male: 81.0
+        total: 77.6
+      BE:
+        name: Belgium
+        female: 69.3
+        male: 76.4
+        total: 72.8
+      DE:
+        name: Germany
+        female: 77.7
+        male: 84.5
+        total: 81.1
+      ES:
+        name: Spain
+        female: 67.6
+        male: 77.1
+        total: 72.4
+      FR:
+        name: France
+        female: 72.6
+        male: 78.3
+        total: 75.4
+      IE:
+        name: Ireland
+        female: 75.7
+        male: 84.7
+        total: 80.2
+      IT:
+        name: Italy
+        female: 58.0
+        male: 77.1
+        total: 67.6
+      NL:
+        name: Netherlands
+        female: 79.6
+        male: 87.2
+        total: 83.4
+      PL:
+        name: Poland
+        female: 73.2
+        male: 84.5
+        total: 78.8
+      SE:
+        name: Sweden
+        female: 79.8
+        male: 83.7
+        total: 81.8
+  vectors:
+  - input:
+      key: DE
+      column: total
+    expected: 81.1
+    origin: source
+  - input:
+      key: FR
+      column: total
+    expected: 75.4
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow lfsi_emp_a (employment and activity by sex and age, annual data), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/lfsi_emp_a/A.EMP_LFS.T+F+M.Y20-64.PC_POP.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, sex=T, TIME_PERIOD=2025, OBS_VALUE
+  value: '81.1'
+  unit: percent
+  snippet: DE,2025,81.1
+  source_license: CC-BY-4.0
+  content_sha256: 68f4903319f038eea1fdd0304f085bdfe53492b6018f5dd378cded15fa7e1afb
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow lfsi_emp_a (employment and activity by sex and age, annual data), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/lfsi_emp_a/A.EMP_LFS.T+F+M.Y20-64.PC_POP.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, sex=T, TIME_PERIOD=2025, OBS_VALUE
+  value: '75.4'
+  unit: percent
+  snippet: FR,2025,75.4
+  source_license: CC-BY-4.0
+  content_sha256: 68f4903319f038eea1fdd0304f085bdfe53492b6018f5dd378cded15fa7e1afb
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[total]
+  expected: 83.4
+  tolerance: 0
+notes: 'Employment rate in 2025 (employed persons aged 20 to 64 as a percentage of the population of the same age,
+  EU Labour Force Survey) for ten member states, total and by sex, from Eurostat dataflow lfsi_emp_a. Rows are keyed
+  by the Eurostat geo code and carry the English country name from the GEO codelist. Observation flags published
+  with the data: ES female definition differs (see metadata); FR female definition differs (see metadata); ES male
+  definition differs (see metadata); FR male definition differs (see metadata); ES total definition differs (see
+  metadata); FR total definition differs (see metadata). Eurostat''s copyright notice states that its data are released
+  under the Creative Commons Attribution 4.0 International licence; the notice page renders dynamically and is referenced
+  rather than hashed.'
