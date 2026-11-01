@@ -96,6 +96,9 @@ uv run almanac applies --on 2026-06-15 --use-case banking-demo
 | **Insurance, property or fleet data** | The VIN check digit from the federal regulation, UK house prices by month, euro area mortgage rates, Census tenure and car availability |
 | **Retail and demand forecasting demos** | Retail sales index with its December peak, inflation by month and by country, GDP and GDP per capita by economy |
 | **Telecom, energy and utilities demos** | ITU country calling codes, internet and mobile penetration by economy, household electricity prices for ten EU states, clock-change dates |
+| **Value pools: margins, costs, churn and defaults** | After-tax margins by industry from the Census Quarterly Financial Report, FDIC bank performance ratios and size classes, Fed charge-off and delinquency rates, IRS corporation returns by sector, Eurostat enterprise accounts for ten member states with operating rate and personnel-cost share, enterprise birth, death and survival rates, hourly labour cost by section, UK rate of return and business survival |
+| **Behaviour over time** | UK employment, unemployment, vacancies, redundancies and claimant count by month, average weekly earnings, household saving ratio, internet share of retail, energy price cap levels, EU air passengers by month, Indian wireless subscribers and ARPU by quarter |
+| **India: telecom, insurance and insolvency demos** | TRAI subscribers by operator and service area, prepaid versus postpaid split, mobile number portability requests, broadband by provider, IRDAI premium by segment and death-claim outcomes, IBBI corporate insolvency status and recoveries by initiator, Income Tax slabs and GST structure |
 
 The complete map of use cases to entries opens [CATALOGUE.md](CATALOGUE.md).
 
@@ -186,6 +189,31 @@ general health, highest qualification, household size, tenure, car
 availability, accommodation type. Single-year age distributions for Germany
 and France. Population by sex for ten member states. World population weights
 for 217 economies.
+
+**Value pools and behaviour.** The numbers a demo most often has to invent
+and gets wrong: what a company in a given industry actually earns, what it
+pays its people, how often customers default or firms die. After-tax profit
+margins by industry from the Census Bureau's Quarterly Financial Report. FDIC
+quarterly aggregates and performance ratios, institutions by size class,
+charter and state, the largest banks by assets. Federal Reserve charge-off and
+delinquency rates by loan type, consumer credit outstanding and consumer loan
+rates. IRS corporation returns and receipts by sector, individual returns by
+income size. Eurostat enterprise accounts for ten member states by NACE
+section and division with gross operating rate, personnel-cost share and
+value added per person, enterprise births, deaths, churn and survival, hourly
+labour cost and the gender pay gap by section, household consumption
+structure, housing-cost burden, e-commerce sales and road freight load
+factors. UK business births, deaths and survival by industry and region,
+private non-financial corporations' rate of return, household saving ratio,
+monthly labour market series and the energy price cap.
+
+**India.** TRAI wireless and wireline subscribers by operator and licensed
+service area, prepaid and postpaid split, ARPU and minutes of use by quarter,
+porting requests, broadband by provider, pay-DTH by operator. IRDAI registered
+insurers, premium by segment, motor premium by insurer and death-claim
+settlement outcomes. IBBI corporate insolvency admissions by year and sector,
+outcomes and realisation by initiator. Income Tax slabs under both regimes and
+the GST rate structure.
 
 **Healthcare, property, telecom, companies.** ICD-10-CM FY2026 diagnosis
 categories with code counts from the CDC archive. UK House Price Index by
