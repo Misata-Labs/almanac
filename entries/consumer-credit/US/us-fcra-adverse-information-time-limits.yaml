@@ -1,0 +1,152 @@
+id: us-fcra-adverse-information-time-limits
+title: United States Fair Credit Reporting Act time limits on adverse information in consumer reports, 15 U.S.C.
+  1681c(a) and (b)
+kind: rule
+domain: consumer-credit
+region: US
+status: license-review
+tier: B
+valid_from: '2003-12-04'
+valid_to: null
+tags:
+- fcra
+- credit-reports
+- credit-bureau
+- retention-limits
+- 15-usc-1681c
+use_cases:
+- credit-risk
+- collections
+- kyc-onboarding
+- banking-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    exemption_thresholds:
+      credit_transaction_principal_usd: 150000
+      life_insurance_face_amount_usd: 150000
+      employment_annual_salary_usd: 75000
+    rows:
+      bankruptcy_cases:
+        max_years: 10
+        section: 1681c(a)(1)
+      civil_suits_judgments_and_arrest_records:
+        max_years: 7
+        section: 1681c(a)(2)
+        note: or the governing statute of limitations if longer
+      paid_tax_liens:
+        max_years: 7
+        section: 1681c(a)(3)
+      collection_and_charged_off_accounts:
+        max_years: 7
+        section: 1681c(a)(4)
+      other_adverse_items:
+        max_years: 7
+        section: 1681c(a)(5)
+  vectors:
+  - input:
+      key: bankruptcy_cases
+      column: max_years
+    expected: 10
+    origin: source
+  - input:
+      key: collection_and_charged_off_accounts
+      column: max_years
+    expected: 7
+    origin: source
+  - input: other_adverse_items
+    expected: true
+    origin: source
+  - input: criminal_convictions
+    expected: false
+    origin: derived
+    note: records of convictions are excluded from the seven-year limit
+evidence:
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 15 U.S.C. 1681c, Requirements relating to information contained in consumer reports (United States Code
+    2023 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap41-subchapIII-sec1681c.htm
+  accessed_at: '2026-10-31'
+  locator: subsection (a)(1)
+  value: 10 years
+  unit: text
+  snippet: antedate the report by more than 10 years
+  source_license: unstated
+  content_sha256: d6bd0a53dd593cdd4666484037b140c6603f87553fdd200691f745c94a5cb063
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 15 U.S.C. 1681c, Requirements relating to information contained in consumer reports (United States Code
+    2023 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap41-subchapIII-sec1681c.htm
+  accessed_at: '2026-10-31'
+  locator: subsection (a)(4)
+  value: seven years
+  unit: text
+  snippet: Accounts placed for collection or charged to profit and loss which antedate the report by more than seven
+    years
+  source_license: unstated
+  content_sha256: d6bd0a53dd593cdd4666484037b140c6603f87553fdd200691f745c94a5cb063
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 15 U.S.C. 1681c, Requirements relating to information contained in consumer reports (United States Code
+    2023 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap41-subchapIII-sec1681c.htm
+  accessed_at: '2026-10-31'
+  locator: subsection (b)(1)
+  value: $150,000
+  unit: currency:USD
+  snippet: a principal amount of $150,000 or more
+  source_license: unstated
+  content_sha256: d6bd0a53dd593cdd4666484037b140c6603f87553fdd200691f745c94a5cb063
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 15 U.S.C. 1681c, Requirements relating to information contained in consumer reports (United States Code
+    2023 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap41-subchapIII-sec1681c.htm
+  accessed_at: '2026-10-31'
+  locator: subsection (b)(3)
+  value: $75,000
+  unit: currency:USD
+  snippet: reasonably be expected to equal $75,000, or more
+  source_license: unstated
+  content_sha256: d6bd0a53dd593cdd4666484037b140c6603f87553fdd200691f745c94a5cb063
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 15 U.S.C. 1681c, Requirements relating to information contained in consumer reports (United States Code
+    2023 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap41-subchapIII-sec1681c.htm
+  accessed_at: '2026-10-31'
+  locator: subsection (g)(3)(A)
+  value: December 4, 2003
+  unit: text
+  snippet: 3 years after December 4, 2003, with respect to any cash register
+  source_license: unstated
+  content_sha256: d6bd0a53dd593cdd4666484037b140c6603f87553fdd200691f745c94a5cb063
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '2003-12-04'
+  method: derived
+  rationale: The section's amendment history shows its most recent substantive amendment in the 2003 Act (Pub. L.
+    108-159), whose enactment date subsection (g)(3)(A) states; the seven-year and ten-year limits themselves date
+    from earlier amendments, and the exemption amounts from the 1996 amendment.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: value[bankruptcy_cases,max_years]
+  expected: 10
+  tolerance: 0
+- statistic: max[max_years]
+  expected: 10
+  tolerance: 0
+notes: 'How long each category of adverse information may stay in a consumer report under section 605 of the Fair
+  Credit Reporting Act: the longer limit for bankruptcy cases and the common limit for civil judgments, paid tax
+  liens, collection accounts and other adverse items, measured from the dates the statute names. The exemption_thresholds
+  carry the transaction sizes above which subsection (b) lifts these limits. Useful for ageing out tradelines and
+  public records in synthetic credit files. US federal statutes carry no copyright, but the govinfo page states
+  no reuse terms, so the licence is recorded as unstated and the entry held at license-review; the HTML form of
+  the source makes the entry tier B.'

@@ -1,0 +1,96 @@
+id: us-regulation-cc-next-day-availability-amount
+title: United States Regulation CC next-day availability amount for check deposits, 12 CFR 229.10(c)(1)(vii)
+kind: rule
+domain: banking
+region: US
+status: license-review
+tier: A
+valid_from: '2011-07-21'
+valid_to: null
+tags:
+- regulation-cc
+- funds-availability
+- deposits
+- step-schedule
+- 12-cfr-229
+use_cases:
+- banking-demo
+- payments-scheduling
+- payments-demo
+spec:
+  implementation: almanac.rules.step_schedule
+  parameters:
+    currency: USD
+    section: 229.10(c)(1)(vii)
+    before_first_step: 100
+    steps:
+    - from: '2011-07-21'
+      value: 200
+    - from: '2020-07-01'
+      value: 225
+    - from: '2025-07-01'
+      value: 275
+  vectors:
+  - input:
+      'on': '2025-07-01'
+    expected: 275
+    origin: source
+  - input:
+      'on': '2020-07-01'
+    expected: 225
+    origin: source
+  - input:
+      'on': '2026-10-29'
+    expected: 275
+    origin: derived
+    note: eCFR snapshot date
+evidence:
+- publisher: Board of Governors of the Federal Reserve System via the eCFR API
+  title: 12 CFR part 229, Availability of Funds and Collection of Checks (Regulation CC), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=229
+  accessed_at: '2026-10-31'
+  locator: section 229.11(c), 229.10(c)(1)(vii)
+  value: $275
+  unit: currency:USD
+  snippet: the amount is $275.
+  source_license: unstated
+  content_sha256: f4ea58812edfc6182c98bc2827deecb30c48e6edfea53eea8002067039473333
+  role: primary
+- publisher: Board of Governors of the Federal Reserve System via the eCFR API
+  title: 12 CFR part 229, Availability of Funds and Collection of Checks (Regulation CC), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=229
+  accessed_at: '2026-10-31'
+  locator: section 229.11(c), 229.10(c)(1)(vii)
+  value: $225
+  unit: currency:USD
+  snippet: the amount is $225.
+  source_license: unstated
+  content_sha256: f4ea58812edfc6182c98bc2827deecb30c48e6edfea53eea8002067039473333
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 12 CFR 229.11 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-12.json?section=229.11
+  accessed_at: '2026-10-31'
+  locator: content_versions[*].date, latest
+  value: '2025-07-01'
+  unit: date
+  snippet: '"date":"2025-07-01"'
+  source_license: unstated
+  content_sha256: 3cb75e7e84bd3313bcdfaa7769571fa3059f9f0b1ca41e7ad3f3668476df8510
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+- statistic: max
+  expected: 275
+  tolerance: 0
+notes: The portion of a day's check deposits a depositary bank must make available on the next business day regardless
+  of check type, as indexed to the CPI-W every five years under 12 CFR 229.11 and listed by period in 229.11(c)(1)
+  of the eCFR text as of 2026-10-29. The first step is the first period the regulation dates; the amount before
+  it sits in before_first_step. US federal government works carry no copyright, but neither the eCFR API nor the
+  regulation text states reuse terms, so the licence is recorded as unstated and the entry held at license-review.

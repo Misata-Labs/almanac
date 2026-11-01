@@ -1,0 +1,153 @@
+id: us-regulation-z-hoepa-points-and-fees-thresholds
+title: United States Regulation Z high-cost mortgage (HOEPA) points-and-fees thresholds by year, 12 CFR 1026.32(a)(1)(ii),
+  2015 to 2026
+kind: rule
+domain: consumer-credit
+region: US
+status: license-review
+tier: A
+valid_from: '2015-01-01'
+valid_to: null
+tags:
+- regulation-z
+- hoepa
+- high-cost-mortgage
+- points-and-fees
+- 12-cfr-1026
+use_cases:
+- mortgage-origination
+- loan-pricing
+- credit-risk
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: USD
+    points_and_fees_percent_at_or_above_threshold: 5
+    points_and_fees_percent_below_threshold: 8
+    apr_trigger_first_lien_percentage_points: 6.5
+    apr_trigger_subordinate_lien_percentage_points: 8.5
+    prepayment_penalty_max_months: 36
+    prepayment_penalty_max_percent: 2
+    rows:
+      '2015':
+        loan_amount_threshold_usd: 20391
+        points_and_fees_cap_below_threshold_usd: 1020
+      '2016':
+        loan_amount_threshold_usd: 20350
+        points_and_fees_cap_below_threshold_usd: 1017
+      '2017':
+        loan_amount_threshold_usd: 20579
+        points_and_fees_cap_below_threshold_usd: 1029
+      '2018':
+        loan_amount_threshold_usd: 21032
+        points_and_fees_cap_below_threshold_usd: 1052
+      '2019':
+        loan_amount_threshold_usd: 21549
+        points_and_fees_cap_below_threshold_usd: 1077
+      '2020':
+        loan_amount_threshold_usd: 21980
+        points_and_fees_cap_below_threshold_usd: 1099
+      '2021':
+        loan_amount_threshold_usd: 22052
+        points_and_fees_cap_below_threshold_usd: 1103
+      '2022':
+        loan_amount_threshold_usd: 22969
+        points_and_fees_cap_below_threshold_usd: 1148
+      '2023':
+        loan_amount_threshold_usd: 24866
+        points_and_fees_cap_below_threshold_usd: 1243
+      '2024':
+        loan_amount_threshold_usd: 26092
+        points_and_fees_cap_below_threshold_usd: 1305
+      '2025':
+        loan_amount_threshold_usd: 26968
+        points_and_fees_cap_below_threshold_usd: 1348
+      '2026':
+        loan_amount_threshold_usd: 27592
+        points_and_fees_cap_below_threshold_usd: 1380
+  vectors:
+  - input:
+      key: '2026'
+      column: loan_amount_threshold_usd
+    expected: 27592
+    origin: source
+  - input:
+      key: '2026'
+      column: points_and_fees_cap_below_threshold_usd
+    expected: 1380
+    origin: source
+  - input:
+      key: '2015'
+      column: loan_amount_threshold_usd
+    expected: 20391
+    origin: source
+  - input: '2014'
+    expected: false
+    origin: derived
+    note: years before the current adjustment series are not listed
+evidence:
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1026, Truth in Lending (Regulation Z), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1026
+  accessed_at: '2026-10-31'
+  locator: section 1026.32(a)(1)(ii)(A)
+  value: 5 percent
+  unit: percent
+  snippet: 5 percent of the total loan amount for a transaction with a loan amount of $20,000 or more
+  source_license: unstated
+  content_sha256: d4b9040e205b27a1dd300fe0cf26c97eb173bee53cdaec758573a65450e500f0
+  role: primary
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1026, Truth in Lending (Regulation Z), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1026
+  accessed_at: '2026-10-31'
+  locator: Supplement I, comment 32(a)(1)(ii)-1
+  value: $1,380
+  unit: currency:USD
+  snippet: For 2026, $1,380, reflecting
+  source_license: unstated
+  content_sha256: d4b9040e205b27a1dd300fe0cf26c97eb173bee53cdaec758573a65450e500f0
+  role: primary
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1026, Truth in Lending (Regulation Z), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1026
+  accessed_at: '2026-10-31'
+  locator: Supplement I, comment 32(a)(1)(ii)-3
+  value: $27,592
+  unit: currency:USD
+  snippet: For 2026, $27,592, reflecting
+  source_license: unstated
+  content_sha256: d4b9040e205b27a1dd300fe0cf26c97eb173bee53cdaec758573a65450e500f0
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 12 CFR 1026.32 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-12.json?section=1026.32
+  accessed_at: '2026-10-31'
+  locator: content_versions[*].date, latest
+  value: '2017-01-01'
+  unit: date
+  snippet: '"date":"2017-01-01"'
+  source_license: unstated
+  content_sha256: af58418b415cecbba89d5b15d2669ab447e05f341435d0b259f6fcf96a9a6997
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 12
+  tolerance: 0
+- statistic: value[2026,loan_amount_threshold_usd]
+  expected: 27592
+  tolerance: 0
+- statistic: max[points_and_fees_cap_below_threshold_usd]
+  expected: 1380
+  tolerance: 0
+notes: 'The points-and-fees coverage test for high-cost mortgages under the Home Ownership and Equity Protection
+  Act as implemented in 12 CFR 1026.32(a)(1)(ii): a loan is high-cost when points and fees exceed a fixed percentage
+  of the loan amount at or above the indexed loan-amount threshold, or the lesser of a higher percentage and an
+  indexed dollar cap below it. The rows give the two indexed figures for each calendar year as the official interpretation
+  lists them in the eCFR text as of 2026-10-29; the percentages, the APR triggers and the prepayment penalty limits
+  come from the regulation text itself. US federal government works carry no copyright, but neither the eCFR API
+  nor the regulation text states reuse terms, so the licence is recorded as unstated and the entry held at license-review.'

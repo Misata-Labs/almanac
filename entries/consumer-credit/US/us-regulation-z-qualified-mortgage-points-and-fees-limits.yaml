@@ -1,0 +1,203 @@
+id: us-regulation-z-qualified-mortgage-points-and-fees-limits
+title: United States Regulation Z qualified mortgage points-and-fees limits by loan amount tier and year, 12 CFR
+  1026.43(e)(3), 2015 to 2026
+kind: rule
+domain: consumer-credit
+region: US
+status: license-review
+tier: A
+valid_from: '2015-01-01'
+valid_to: null
+tags:
+- regulation-z
+- qualified-mortgage
+- ability-to-repay
+- points-and-fees
+- 12-cfr-1026
+use_cases:
+- mortgage-origination
+- loan-pricing
+- credit-risk
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: USD
+    tier_a_percent_of_loan: 3
+    tier_c_percent_of_loan: 5
+    tier_e_percent_of_loan: 8
+    rows:
+      '2015':
+        tier_a_min_loan_usd: 101953
+        tier_b_min_loan_usd: 61172
+        tier_b_cap_usd: 3059
+        tier_c_min_loan_usd: 20391
+        tier_d_min_loan_usd: 12744
+        tier_d_cap_usd: 1020
+      '2016':
+        tier_a_min_loan_usd: 101749
+        tier_b_min_loan_usd: 61050
+        tier_b_cap_usd: 3052
+        tier_c_min_loan_usd: 20350
+        tier_d_min_loan_usd: 12719
+        tier_d_cap_usd: 1017
+      '2017':
+        tier_a_min_loan_usd: 102894
+        tier_b_min_loan_usd: 61737
+        tier_b_cap_usd: 3087
+        tier_c_min_loan_usd: 20579
+        tier_d_min_loan_usd: 12862
+        tier_d_cap_usd: 1029
+      '2018':
+        tier_a_min_loan_usd: 105158
+        tier_b_min_loan_usd: 63095
+        tier_b_cap_usd: 3155
+        tier_c_min_loan_usd: 21032
+        tier_d_min_loan_usd: 13145
+        tier_d_cap_usd: 1052
+      '2019':
+        tier_a_min_loan_usd: 107747
+        tier_b_min_loan_usd: 64648
+        tier_b_cap_usd: 3232
+        tier_c_min_loan_usd: 21549
+        tier_d_min_loan_usd: 13468
+        tier_d_cap_usd: 1077
+      '2020':
+        tier_a_min_loan_usd: 109898
+        tier_b_min_loan_usd: 65939
+        tier_b_cap_usd: 3297
+        tier_c_min_loan_usd: 21980
+        tier_d_min_loan_usd: 13737
+        tier_d_cap_usd: 1099
+      '2021':
+        tier_a_min_loan_usd: 110260
+        tier_b_min_loan_usd: 66156
+        tier_b_cap_usd: 3308
+        tier_c_min_loan_usd: 22052
+        tier_d_min_loan_usd: 13783
+        tier_d_cap_usd: 1103
+      '2022':
+        tier_a_min_loan_usd: 114847
+        tier_b_min_loan_usd: 68908
+        tier_b_cap_usd: 3445
+        tier_c_min_loan_usd: 22969
+        tier_d_min_loan_usd: 14356
+        tier_d_cap_usd: 1148
+      '2023':
+        tier_a_min_loan_usd: 124331
+        tier_b_min_loan_usd: 74599
+        tier_b_cap_usd: 3730
+        tier_c_min_loan_usd: 24866
+        tier_d_min_loan_usd: 15541
+        tier_d_cap_usd: 1243
+      '2024':
+        tier_a_min_loan_usd: 130461
+        tier_b_min_loan_usd: 78277
+        tier_b_cap_usd: 3914
+        tier_c_min_loan_usd: 26092
+        tier_d_min_loan_usd: 16308
+        tier_d_cap_usd: 1305
+      '2025':
+        tier_a_min_loan_usd: 134841
+        tier_b_min_loan_usd: 80905
+        tier_b_cap_usd: 4045
+        tier_c_min_loan_usd: 26968
+        tier_d_min_loan_usd: 16855
+        tier_d_cap_usd: 1305
+      '2026':
+        tier_a_min_loan_usd: 137958
+        tier_b_min_loan_usd: 82775
+        tier_b_cap_usd: 4139
+        tier_c_min_loan_usd: 27592
+        tier_d_min_loan_usd: 17245
+        tier_d_cap_usd: 1380
+  vectors:
+  - input:
+      key: '2026'
+      column: tier_a_min_loan_usd
+    expected: 137958
+    origin: source
+  - input:
+      key: '2026'
+      column: tier_b_cap_usd
+    expected: 4139
+    origin: source
+  - input:
+      key: '2026'
+      column: tier_d_cap_usd
+    expected: 1380
+    origin: source
+  - input:
+      key: '2015'
+      column: tier_a_min_loan_usd
+    expected: 101953
+    origin: source
+  - input: '2014'
+    expected: false
+    origin: derived
+evidence:
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1026, Truth in Lending (Regulation Z), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1026
+  accessed_at: '2026-10-31'
+  locator: Supplement I, comment 43(e)(3)(ii)-1.12.A
+  value: $137,958
+  unit: currency:USD
+  snippet: 'For a loan amount greater than or equal to $137,958: 3 percent of the total loan amount'
+  source_license: unstated
+  content_sha256: d4b9040e205b27a1dd300fe0cf26c97eb173bee53cdaec758573a65450e500f0
+  role: primary
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1026, Truth in Lending (Regulation Z), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1026
+  accessed_at: '2026-10-31'
+  locator: Supplement I, comment 43(e)(3)(ii)-1.12.B
+  value: $4,139
+  unit: currency:USD
+  snippet: 'but less than $137,958: $4,139'
+  source_license: unstated
+  content_sha256: d4b9040e205b27a1dd300fe0cf26c97eb173bee53cdaec758573a65450e500f0
+  role: primary
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1026, Truth in Lending (Regulation Z), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1026
+  accessed_at: '2026-10-31'
+  locator: Supplement I, comment 43(e)(3)(ii)-1.12.D
+  value: $1,380
+  unit: currency:USD
+  snippet: 'but less than $27,592: $1,380'
+  source_license: unstated
+  content_sha256: d4b9040e205b27a1dd300fe0cf26c97eb173bee53cdaec758573a65450e500f0
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 12 CFR 1026.43 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-12.json?section=1026.43
+  accessed_at: '2026-10-31'
+  locator: content_versions[*].date, latest
+  value: '2026-03-01'
+  unit: date
+  snippet: '"date":"2026-03-01"'
+  source_license: unstated
+  content_sha256: 71d9700019e318992360f4654f5d5e30c418cd65b321a38e70aa7a83fb7041cc
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 12
+  tolerance: 0
+- statistic: value[2026,tier_a_min_loan_usd]
+  expected: 137958
+  tolerance: 0
+- statistic: max[tier_b_cap_usd]
+  expected: 4139
+  tolerance: 0
+notes: 'The points-and-fees limits a covered mortgage must stay within to be a qualified mortgage under 12 CFR 1026.43(e)(3):
+  five tiers by loan amount, with a percentage of the loan amount in tiers A, C and E and a dollar cap in tiers
+  B and D. Tier A applies at or above tier_a_min_loan_usd, tier B from tier_b_min_loan_usd up to it, tier C from
+  tier_c_min_loan_usd, tier D from tier_d_min_loan_usd, and tier E below that. The rows give the inflation-adjusted
+  figures for each calendar year as the official interpretation (comment 43(e)(3)(ii)-1) lists them in the eCFR
+  text as of 2026-10-29; the percentages are the same in every year. US federal government works carry no copyright,
+  but neither the eCFR API nor the regulation text states reuse terms, so the licence is recorded as unstated and
+  the entry held at license-review.'

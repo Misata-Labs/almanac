@@ -1,0 +1,140 @@
+id: us-regulation-e-unauthorized-transfer-liability-limits
+title: United States Regulation E consumer liability limits for unauthorized electronic fund transfers, 12 CFR 1005.6(b)
+kind: rule
+domain: banking
+region: US
+status: license-review
+tier: A
+valid_from: '2017-01-01'
+valid_to: null
+tags:
+- regulation-e
+- electronic-fund-transfers
+- fraud-liability
+- debit-cards
+- 12-cfr-1005
+use_cases:
+- banking-demo
+- payments-demo
+- fintech-demo
+- collections
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      timely_notice_liability_cap_usd:
+        value: 50
+        unit: USD
+        section: 1005.6(b)(1)
+      late_notice_liability_cap_usd:
+        value: 500
+        unit: USD
+        section: 1005.6(b)(2)
+      notice_window_business_days:
+        value: 2
+        unit: business days after learning of loss or theft
+        section: 1005.6(b)(1)
+      periodic_statement_reporting_days:
+        value: 60
+        unit: days after transmittal of the statement
+        section: 1005.6(b)(3)
+  vectors:
+  - input:
+      key: timely_notice_liability_cap_usd
+      column: value
+    expected: 50
+    origin: source
+  - input:
+      key: late_notice_liability_cap_usd
+      column: value
+    expected: 500
+    origin: source
+  - input:
+      key: periodic_statement_reporting_days
+      column: value
+    expected: 60
+    origin: source
+  - input: notice_window_business_days
+    expected: true
+    origin: source
+  - input: chargeback_window_days
+    expected: false
+    origin: derived
+evidence:
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1005, Electronic Fund Transfers (Regulation E), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1005
+  accessed_at: '2026-10-31'
+  locator: section 1005.6(b)(1)
+  value: $50
+  unit: currency:USD
+  snippet: shall not exceed the lesser of $50 or the amount of unauthorized transfers that occur before notice
+  source_license: unstated
+  content_sha256: 0669a14f83f836f4086de21514f3bcd40041784e50c444b415f4d8e1909a10d0
+  role: primary
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1005, Electronic Fund Transfers (Regulation E), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1005
+  accessed_at: '2026-10-31'
+  locator: section 1005.6(b)(2)
+  value: $500
+  unit: currency:USD
+  snippet: shall not exceed the lesser of $500 or the sum of
+  source_license: unstated
+  content_sha256: 0669a14f83f836f4086de21514f3bcd40041784e50c444b415f4d8e1909a10d0
+  role: primary
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1005, Electronic Fund Transfers (Regulation E), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1005
+  accessed_at: '2026-10-31'
+  locator: section 1005.6(b)(3)
+  value: 60
+  unit: integer
+  snippet: within 60 days of the financial institution's transmittal of the statement
+  source_license: unstated
+  content_sha256: 0669a14f83f836f4086de21514f3bcd40041784e50c444b415f4d8e1909a10d0
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 12 CFR 1005.6 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-12.json?section=1005.6
+  accessed_at: '2026-10-31'
+  locator: content_versions[*].date, latest
+  value: '2017-01-01'
+  unit: date
+  snippet: '"date":"2017-01-01"'
+  source_license: unstated
+  content_sha256: cea30f1839012260e409f7ae5712ee39da73dc1b1e12f5750f36ba0e2bd4a896
+  role: supporting
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 15 U.S.C. 1693g, Consumer liability (United States Code 2023 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap41-subchapVI-sec1693g.htm
+  accessed_at: '2026-10-31'
+  locator: subsection (a)(1)
+  value: $50
+  unit: currency:USD
+  snippet: $50; or
+  source_license: unstated
+  content_sha256: 4178045a0e8c2d50107f98afea893b6dc31193525c1358843d7e4eadcdd52048
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: value[late_notice_liability_cap_usd,value]
+  expected: 500
+  tolerance: 0
+- statistic: max[value]
+  expected: 500
+  tolerance: 0
+notes: 'How much a consumer can be held liable for after an unauthorized electronic fund transfer under Regulation
+  E, 12 CFR 1005.6(b): the cap when the institution is told within the notice window after the consumer learns of
+  a lost or stolen access device, the higher cap when it is not, and the number of days after a periodic statement
+  is sent within which an unauthorized transfer must be reported to avoid liability for later transfers. Read from
+  the eCFR text as of 2026-10-29, with the statutory source (15 U.S.C. 1693g) cited as supporting evidence. valid_from
+  is the date of the latest version of 1005.6 in the eCFR versions endpoint. US federal government works carry no
+  copyright, but neither the eCFR API nor the regulation text states reuse terms, so the licence is recorded as
+  unstated and the entry held at license-review.'

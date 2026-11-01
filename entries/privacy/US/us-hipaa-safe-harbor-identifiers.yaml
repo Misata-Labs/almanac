@@ -1,0 +1,147 @@
+id: us-hipaa-safe-harbor-identifiers
+title: 'United States HIPAA de-identification safe harbor: the eighteen identifiers of 45 CFR 164.514(b)(2)'
+kind: rule
+domain: privacy
+region: US
+status: license-review
+tier: A
+valid_from: '2016-12-30'
+valid_to: null
+tags:
+- hipaa
+- de-identification
+- phi
+- safe-harbor
+- code-list
+- 45-cfr-164
+use_cases:
+- health-demo
+- clinical-records
+- claims-generation
+- person-generation
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    zip_code_three_digit_population_threshold: 20000
+    age_aggregation_threshold_years: 89
+    sets:
+      identifiers:
+        A: Names
+        B: All geographic subdivisions smaller than a State
+        C: All elements of dates (except year) for dates directly related to an individual
+        D: Telephone numbers
+        E: Fax numbers
+        F: Electronic mail addresses
+        G: Social security numbers
+        H: Medical record numbers
+        I: Health plan beneficiary numbers
+        J: Account numbers
+        K: Certificate/license numbers
+        L: Vehicle identifiers and serial numbers
+        M: Device identifiers and serial numbers
+        N: Web Universal Resource Locators (URLs)
+        O: Internet Protocol (IP) address numbers
+        P: Biometric identifiers
+        Q: Full face photographic images and any comparable images
+        R: Any other unique identifying number, characteristic, or code
+  vectors:
+  - input:
+      set: identifiers
+      value: A
+    expected: true
+    origin: source
+    note: Names
+  - input:
+      set: identifiers
+      value: G
+    expected: true
+    origin: source
+    note: Social security numbers
+  - input:
+      set: identifiers
+      value: R
+    expected: true
+    origin: source
+    note: Any other unique identifying number, characteristic, or code
+  - input:
+      set: identifiers
+      value: S
+    expected: false
+    origin: derived
+evidence:
+- publisher: US Department of Health and Human Services, Office for Civil Rights via the eCFR API
+  title: 45 CFR part 164, Security and Privacy, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-45.xml?part=164
+  accessed_at: '2026-10-31'
+  locator: section 164.514(b)(2)(i)(A)
+  value: Names
+  unit: text
+  snippet: (A) Names;
+  source_license: unstated
+  content_sha256: df4f20efb681bb06777373f9825fc8529b8b9a7d1c5600b7f06a1ec0e1ab88ba
+  role: primary
+- publisher: US Department of Health and Human Services, Office for Civil Rights via the eCFR API
+  title: 45 CFR part 164, Security and Privacy, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-45.xml?part=164
+  accessed_at: '2026-10-31'
+  locator: section 164.514(b)(2)(i)(G)
+  value: Social security numbers
+  unit: text
+  snippet: (G) Social security numbers;
+  source_license: unstated
+  content_sha256: df4f20efb681bb06777373f9825fc8529b8b9a7d1c5600b7f06a1ec0e1ab88ba
+  role: primary
+- publisher: US Department of Health and Human Services, Office for Civil Rights via the eCFR API
+  title: 45 CFR part 164, Security and Privacy, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-45.xml?part=164
+  accessed_at: '2026-10-31'
+  locator: section 164.514(b)(2)(i)(B)(1)
+  value: 20,000
+  unit: count
+  snippet: contains more than 20,000 people
+  source_license: unstated
+  content_sha256: df4f20efb681bb06777373f9825fc8529b8b9a7d1c5600b7f06a1ec0e1ab88ba
+  role: primary
+- publisher: US Department of Health and Human Services, Office for Civil Rights via the eCFR API
+  title: 45 CFR part 164, Security and Privacy, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-45.xml?part=164
+  accessed_at: '2026-10-31'
+  locator: section 164.514(b)(2)(i)(C)
+  value: 89
+  unit: integer
+  snippet: all ages over 89 and all elements of dates
+  source_license: unstated
+  content_sha256: df4f20efb681bb06777373f9825fc8529b8b9a7d1c5600b7f06a1ec0e1ab88ba
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 45 CFR 164.514 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-45.json?section=164.514
+  accessed_at: '2026-10-31'
+  locator: content_versions[*].date, latest
+  value: '2016-12-30'
+  unit: date
+  snippet: '"date":"2016-12-30"'
+  source_license: unstated
+  content_sha256: b8fc4860a15832bb6882b6f8e3864ceaf66a05ee1010a45ecd1539727445d737
+  role: supporting
+assumed:
+- parameter: sets.identifiers[*]
+  value: label cut at the first qualifying clause
+  method: derived
+  rationale: Each label is the identifier's paragraph text up to the first ', including', ', except' or semicolon,
+    so the long geographic and date paragraphs keep only their head clause; the regulation text is the authority
+    for the full scope.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[identifiers]
+  expected: 18
+  tolerance: 0
+notes: The identifiers a covered entity must remove from health information about an individual (and the individual's
+  relatives, employers and household members) for the information to be de-identified under the safe harbor method
+  of 45 CFR 164.514(b)(2), keyed by the paragraph letter A to R. The parameters also carry the population threshold
+  below which the first three digits of a zip code must be replaced by 000 and the age above which ages must be
+  aggregated. Read from the eCFR text as of 2026-10-29; valid_from is the date of the latest version of 164.514
+  in the eCFR versions endpoint. US federal government works carry no copyright, but neither the eCFR API nor the
+  regulation text states reuse terms, so the licence is recorded as unstated and the entry held at license-review.

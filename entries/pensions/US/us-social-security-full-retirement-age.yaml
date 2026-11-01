@@ -1,0 +1,214 @@
+id: us-social-security-full-retirement-age
+title: United States Social Security full retirement age for old-age, wife's and husband's benefits by date of birth,
+  20 CFR 404.409(a) (13 birth-date ranges)
+kind: rule
+domain: pensions
+region: US
+status: license-review
+tier: A
+valid_from: '2016-12-19'
+valid_to: null
+tags:
+- social-security
+- retirement-age
+- pensions
+- reference-table
+- 20-cfr-404
+use_cases:
+- pensions
+- hr-analytics
+- financial-planning
+- person-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      min/1938-01-01:
+        born_from: null
+        born_to: '1938-01-01'
+        years: 65
+        months: 0
+        age_in_months: 780
+        source_label: Before 1/2/1938
+      1938-01-02/1939-01-01:
+        born_from: '1938-01-02'
+        born_to: '1939-01-01'
+        years: 65
+        months: 2
+        age_in_months: 782
+        source_label: 1/2/1938—1/1/1939
+      1939-01-02/1940-01-01:
+        born_from: '1939-01-02'
+        born_to: '1940-01-01'
+        years: 65
+        months: 4
+        age_in_months: 784
+        source_label: 1/2/1939—1/1/1940
+      1940-01-02/1941-01-01:
+        born_from: '1940-01-02'
+        born_to: '1941-01-01'
+        years: 65
+        months: 6
+        age_in_months: 786
+        source_label: 1/2/1940—1/1/1941
+      1941-01-02/1942-01-01:
+        born_from: '1941-01-02'
+        born_to: '1942-01-01'
+        years: 65
+        months: 8
+        age_in_months: 788
+        source_label: 1/2/1941—1/1/1942
+      1942-01-02/1943-01-01:
+        born_from: '1942-01-02'
+        born_to: '1943-01-01'
+        years: 65
+        months: 10
+        age_in_months: 790
+        source_label: 1/2/1942—1/1/1943
+      1943-01-02/1955-01-01:
+        born_from: '1943-01-02'
+        born_to: '1955-01-01'
+        years: 66
+        months: 0
+        age_in_months: 792
+        source_label: 1/2/1943—1/1/1955
+      1955-01-02/1956-01-01:
+        born_from: '1955-01-02'
+        born_to: '1956-01-01'
+        years: 66
+        months: 2
+        age_in_months: 794
+        source_label: 1/2/1955—1/1/1956
+      1956-01-02/1957-01-01:
+        born_from: '1956-01-02'
+        born_to: '1957-01-01'
+        years: 66
+        months: 4
+        age_in_months: 796
+        source_label: 1/2/1956—1/1/1957
+      1957-01-02/1958-01-01:
+        born_from: '1957-01-02'
+        born_to: '1958-01-01'
+        years: 66
+        months: 6
+        age_in_months: 798
+        source_label: 1/2/1957—1/1/1958
+      1958-01-02/1959-01-01:
+        born_from: '1958-01-02'
+        born_to: '1959-01-01'
+        years: 66
+        months: 8
+        age_in_months: 800
+        source_label: 1/2/1958—1/1/1959
+      1959-01-02/1960-01-01:
+        born_from: '1959-01-02'
+        born_to: '1960-01-01'
+        years: 66
+        months: 10
+        age_in_months: 802
+        source_label: 1/2/1959—1/1/1960
+      1960-01-02/max:
+        born_from: '1960-01-02'
+        born_to: null
+        years: 67
+        months: 0
+        age_in_months: 804
+        source_label: 1/2/1960 and later
+  vectors:
+  - input:
+      key: min/1938-01-01
+      column: years
+    expected: 65
+    origin: source
+    note: Before 1/2/1938
+  - input:
+      key: 1960-01-02/max
+      column: years
+    expected: 67
+    origin: source
+    note: 1/2/1960 and later
+  - input:
+      key: 1955-01-02/1956-01-01
+      column: age_in_months
+    expected: 794
+    origin: source
+    note: 1/2/1955—1/1/1956
+  - input: 1943-01-02/1955-01-01
+    expected: true
+    origin: source
+  - input: 1960-01-02/1961-01-01
+    expected: false
+    origin: derived
+    note: the last range is open-ended
+evidence:
+- publisher: Social Security Administration via the eCFR API
+  title: 20 CFR part 404, Federal Old-Age, Survivors and Disability Insurance, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-20.xml?part=404
+  accessed_at: '2026-10-31'
+  locator: section 404.409(a), table row '1/2/1960 and later'
+  value: 67 years
+  unit: text
+  snippet: 1/2/1960 and later
+  source_license: unstated
+  content_sha256: bdf2ce217abc258f999d54f6df1e2c7f6fa7d22ff10b8d0a3b3fc5b086b2fc50
+  role: primary
+- publisher: Social Security Administration via the eCFR API
+  title: 20 CFR part 404, Federal Old-Age, Survivors and Disability Insurance, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-20.xml?part=404
+  accessed_at: '2026-10-31'
+  locator: section 404.409(a), table row '1/2/1955—1/1/1956'
+  value: 66 years and 2 months
+  unit: text
+  snippet: 66 years and 2 months
+  source_license: unstated
+  content_sha256: bdf2ce217abc258f999d54f6df1e2c7f6fa7d22ff10b8d0a3b3fc5b086b2fc50
+  role: primary
+- publisher: Social Security Administration via the eCFR API
+  title: 20 CFR part 404, Federal Old-Age, Survivors and Disability Insurance, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-20.xml?part=404
+  accessed_at: '2026-10-31'
+  locator: section 404.409(a), table row 'Before 1/2/1938'
+  value: 65 years
+  unit: text
+  snippet: Before 1/2/1938
+  source_license: unstated
+  content_sha256: bdf2ce217abc258f999d54f6df1e2c7f6fa7d22ff10b8d0a3b3fc5b086b2fc50
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 20 CFR 404.409 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-20.json?section=404.409
+  accessed_at: '2026-10-31'
+  locator: content_versions[*].date, latest
+  value: '2016-12-19'
+  unit: date
+  snippet: '"date":"2016-12-19"'
+  source_license: unstated
+  content_sha256: 317390f1f562d78e7080a312ad0c874d081f01e9c57147bd2616f1d9abb891f8
+  role: supporting
+assumed:
+- parameter: rows[*].born_from, rows[*].born_to, rows[*].age_in_months
+  value: ISO dates and total months
+  method: derived
+  rationale: The table gives birth-date ranges as m/d/yyyy pairs; the builder converts them to ISO dates (the open
+    ends become null and the first range ends the day before its printed bound) and adds years times twelve plus
+    months.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 13
+  tolerance: 0
+- statistic: value[1960-01-02/max,age_in_months]
+  expected: 804
+  tolerance: 0
+- statistic: min[age_in_months]
+  expected: 780
+  tolerance: 0
+notes: The age at which unreduced old-age, wife's or husband's Social Security benefits are payable, by the beneficiary's
+  date of birth, as the table in 20 CFR 404.409(a) prints it in the eCFR text as of 2026-10-29. Rows are keyed by
+  the ISO birth-date range (min and max for the open ends) and carry the years and months separately and as a total
+  in months. The separate widow's and widower's table in 404.409(b) is not included. valid_from is the date of the
+  latest version of 404.409 in the eCFR versions endpoint. US federal government works carry no copyright, but neither
+  the eCFR API nor the regulation text states reuse terms, so the licence is recorded as unstated and the entry
+  held at license-review.

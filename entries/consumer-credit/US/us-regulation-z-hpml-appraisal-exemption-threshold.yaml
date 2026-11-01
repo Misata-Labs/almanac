@@ -1,0 +1,116 @@
+id: us-regulation-z-hpml-appraisal-exemption-threshold
+title: United States Regulation Z higher-priced mortgage loan appraisal exemption threshold, 12 CFR 1026.35(c)(2)(ii)
+kind: rule
+domain: consumer-credit
+region: US
+status: license-review
+tier: A
+valid_from: '2014-01-18'
+valid_to: '2026-12-31'
+tags:
+- regulation-z
+- mortgage
+- appraisal
+- step-schedule
+- 12-cfr-1026
+use_cases:
+- mortgage-origination
+- loan-pricing
+- banking-demo
+spec:
+  implementation: almanac.rules.step_schedule
+  parameters:
+    currency: USD
+    section: 35(c)(2)(ii)-3
+    before_first_step: null
+    steps:
+    - from: '2014-01-18'
+      value: 25000
+    - from: '2015-01-01'
+      value: 25500
+    - from: '2016-01-01'
+      value: 25500
+    - from: '2017-01-01'
+      value: 25500
+    - from: '2018-01-01'
+      value: 26000
+    - from: '2019-01-01'
+      value: 26700
+    - from: '2020-01-01'
+      value: 27200
+    - from: '2021-01-01'
+      value: 27200
+    - from: '2022-01-01'
+      value: 28500
+    - from: '2023-01-01'
+      value: 31000
+    - from: '2024-01-01'
+      value: 32400
+    - from: '2025-01-01'
+      value: 33500
+    - from: '2026-01-01'
+      value: 34200
+  vectors:
+  - input:
+      'on': '2026-01-01'
+    expected: 34200
+    origin: source
+  - input:
+      'on': '2025-01-01'
+    expected: 33500
+    origin: source
+  - input:
+      'on': '2014-01-18'
+    expected: 25000
+    origin: source
+evidence:
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1026, Truth in Lending (Regulation Z), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1026
+  accessed_at: '2026-10-31'
+  locator: Supplement I, comment 35(c)(2)(ii)-3
+  value: $34,200
+  unit: currency:USD
+  snippet: From January 1, 2026, through December 31, 2026, the threshold amount is $34,200
+  source_license: unstated
+  content_sha256: d4b9040e205b27a1dd300fe0cf26c97eb173bee53cdaec758573a65450e500f0
+  role: primary
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1026, Truth in Lending (Regulation Z), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1026
+  accessed_at: '2026-10-31'
+  locator: Supplement I, comment 35(c)(2)(ii)-3
+  value: $25,000
+  unit: currency:USD
+  snippet: the threshold amount is $25,000.
+  source_license: unstated
+  content_sha256: d4b9040e205b27a1dd300fe0cf26c97eb173bee53cdaec758573a65450e500f0
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 12 CFR 1026.35 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-12.json?section=1026.35
+  accessed_at: '2026-10-31'
+  locator: content_versions[*].date, latest
+  value: '2026-03-01'
+  unit: date
+  snippet: '"date":"2026-03-01"'
+  source_license: unstated
+  content_sha256: 6ca186f6f31e0e445712be66eafb7c3acb7d0ef3f276a2755a7b3e8b04682b09
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 13
+  tolerance: 0
+- statistic: max
+  expected: 34200
+  tolerance: 0
+notes: The loan amount at or below which a higher-priced mortgage loan is exempt from the appraisal requirements
+  of 12 CFR 1026.35(c), adjusted each January 1 by the change in the CPI-W, as the official interpretation (comment
+  35(c)(2)(ii)-3) lists it by period in the eCFR text as of 2026-10-29. The commentary lists the amount for each
+  calendar year; the last listed year is 2026, which sets valid_to. US federal government works carry no copyright,
+  but neither the eCFR API nor the regulation text states reuse terms, so the licence is recorded as unstated and
+  the entry held at license-review.

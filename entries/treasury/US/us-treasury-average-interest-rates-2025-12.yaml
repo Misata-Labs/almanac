@@ -1,0 +1,170 @@
+id: us-treasury-average-interest-rates-2025-12
+title: Average interest rates on US Treasury securities by security class, 2025-12-31 (17 lines)
+kind: rule
+domain: treasury
+region: US
+status: license-review
+tier: A
+valid_from: '2025-12-01'
+valid_to: '2025-12-31'
+tags:
+- interest-rates
+- treasury-securities
+- public-debt
+- reference-table
+- fiscal-data
+use_cases:
+- treasury
+- loan-pricing
+- financial-planning
+- banking-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    record_date: '2025-12-31'
+    unit: percent per year
+    rows:
+      Treasury Bills:
+        security_type: Marketable
+        avg_interest_rate_percent: 3.86
+        source_line: 1
+      Treasury Notes:
+        security_type: Marketable
+        avg_interest_rate_percent: 3.157
+        source_line: 2
+      Treasury Bonds:
+        security_type: Marketable
+        avg_interest_rate_percent: 3.36
+        source_line: 3
+      Treasury Inflation-Protected Securities (TIPS):
+        security_type: Marketable
+        avg_interest_rate_percent: 0.978
+        source_line: 4
+      Treasury Floating Rate Notes (FRN):
+        security_type: Marketable
+        avg_interest_rate_percent: 3.559
+        source_line: 5
+      Federal Financing Bank:
+        security_type: Marketable
+        avg_interest_rate_percent: 2.389
+        source_line: 6
+      Total Marketable:
+        security_type: Marketable
+        avg_interest_rate_percent: 3.362
+        source_line: 7
+      Domestic Series:
+        security_type: Non-marketable
+        avg_interest_rate_percent: 7.577
+        source_line: 8
+      Special Purpose Vehicle:
+        security_type: Non-marketable
+        avg_interest_rate_percent: 2.762
+        source_line: 9
+      Foreign Series:
+        security_type: Non-marketable
+        avg_interest_rate_percent: 0.0
+        source_line: 10
+      State and Local Government Series:
+        security_type: Non-marketable
+        avg_interest_rate_percent: 3.346
+        source_line: 11
+      United States Savings Securities:
+        security_type: Non-marketable
+        avg_interest_rate_percent: 3.328
+        source_line: 12
+      United States Savings Inflation Securities:
+        security_type: Non-marketable
+        avg_interest_rate_percent: 4.154
+        source_line: 13
+      Government Account Series:
+        security_type: Non-marketable
+        avg_interest_rate_percent: 3.15
+        source_line: 14
+      Government Account Series Inflation Securities:
+        security_type: Non-marketable
+        avg_interest_rate_percent: 1.311
+        source_line: 15
+      Total Non-marketable:
+        security_type: Non-marketable
+        avg_interest_rate_percent: 3.159
+        source_line: 16
+      Total Interest-bearing Debt:
+        security_type: Interest-bearing Debt
+        avg_interest_rate_percent: 3.324
+        source_line: 17
+  vectors:
+  - input:
+      key: Treasury Bills
+      column: avg_interest_rate_percent
+    expected: 3.86
+    origin: source
+  - input:
+      key: Total Interest-bearing Debt
+      column: avg_interest_rate_percent
+    expected: 3.324
+    origin: source
+  - input:
+      key: Treasury Notes
+      column: security_type
+    expected: Marketable
+    origin: source
+  - input: Treasury Bonds
+    expected: true
+    origin: source
+  - input: Treasury Perpetuals
+    expected: false
+    origin: derived
+evidence:
+- publisher: US Department of the Treasury, Bureau of the Fiscal Service
+  title: Fiscal Data API, Average Interest Rates on U.S. Treasury Securities, record_date 2025-12-31
+  url: https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/avg_interest_rates?filter=record_date:eq:2025-12-31&page%5Bsize%5D=100
+  accessed_at: '2026-10-31'
+  locator: data[security_desc="Treasury Bills"].avg_interest_rate_amt
+  value: '3.860'
+  unit: percent
+  snippet: '"security_desc":"Treasury Bills","avg_interest_rate_amt":"3.860"'
+  source_license: unstated
+  content_sha256: cdb4db03aa33f5c83339bc43409ba81cb7ad8a42b734b09a8a47e3c2b2e972d1
+  role: primary
+- publisher: US Department of the Treasury, Bureau of the Fiscal Service
+  title: Fiscal Data API, Average Interest Rates on U.S. Treasury Securities, record_date 2025-12-31
+  url: https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/avg_interest_rates?filter=record_date:eq:2025-12-31&page%5Bsize%5D=100
+  accessed_at: '2026-10-31'
+  locator: data[security_desc="Total Interest-bearing Debt"].avg_interest_rate_amt
+  value: '3.324'
+  unit: percent
+  snippet: '"security_desc":"Total Interest-bearing Debt","avg_interest_rate_amt":"3.324"'
+  source_license: unstated
+  content_sha256: cdb4db03aa33f5c83339bc43409ba81cb7ad8a42b734b09a8a47e3c2b2e972d1
+  role: primary
+- publisher: US Department of the Treasury, Bureau of the Fiscal Service
+  title: Fiscal Data API, Average Interest Rates on U.S. Treasury Securities, record_date 2025-12-31
+  url: https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/avg_interest_rates?filter=record_date:eq:2025-12-31&page%5Bsize%5D=100
+  accessed_at: '2026-10-31'
+  locator: meta.total-count
+  value: 17
+  unit: count
+  snippet: '"total-count":'
+  source_license: unstated
+  content_sha256: cdb4db03aa33f5c83339bc43409ba81cb7ad8a42b734b09a8a47e3c2b2e972d1
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 17
+  tolerance: 0
+- statistic: value[Total Marketable,avg_interest_rate_percent]
+  expected: 3.362
+  tolerance: 0
+- statistic: max[avg_interest_rate_percent]
+  expected: 7.577
+  tolerance: 0
+notes: The average interest rate on each class of outstanding US Treasury securities at 2025-12-31, one row per
+  line of the Treasury's monthly statement (marketable classes, non-marketable classes, their subtotals and the
+  total for all interest-bearing debt), from the Fiscal Data API. Subtotal and total lines are kept as rows because
+  the source publishes them; a generator weighting instruments should use the individual classes. The Fiscal Data
+  dataset pages render their licence section dynamically and were not captured, so the licence is recorded as unstated
+  and the entry held at license-review even though US federal publications are normally free to reuse.
