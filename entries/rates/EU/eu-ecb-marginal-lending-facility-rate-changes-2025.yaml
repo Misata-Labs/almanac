@@ -1,0 +1,97 @@
+id: eu-ecb-marginal-lending-facility-rate-changes-2025
+title: 'ECB marginal lending facility rate: changes decided in 2025'
+kind: rule
+domain: rates
+region: EU
+status: verified
+tier: A
+valid_from: '2025-02-05'
+valid_to: null
+tags:
+- ecb
+- euro-area
+- policy-rate
+- step-schedule
+use_cases:
+- banking-demo
+- treasury
+- loan-pricing
+spec:
+  implementation: almanac.rules.step_schedule
+  parameters:
+    series: FM.B.U2.EUR.4F.KR.MLFR.LEV
+    unit: percent
+    steps:
+    - from: '2025-02-05'
+      value: 3.15
+    - from: '2025-03-12'
+      value: 2.9
+    - from: '2025-04-23'
+      value: 2.65
+    - from: '2025-06-11'
+      value: 2.4
+  vectors:
+  - input:
+      'on': '2025-02-05'
+    expected: 3.15
+    origin: source
+  - input:
+      'on': '2025-06-11'
+    expected: 2.4
+    origin: source
+  - input:
+      'on': '2025-12-31'
+    expected: 2.4
+    origin: derived
+    note: last change still in force at year end
+evidence:
+- publisher: European Central Bank
+  title: ECB Data Portal, series FM.B.U2.EUR.4F.KR.MLFR.LEV (marginal lending facility, date of changes)
+  url: https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.MLFR.LEV?startPeriod=2025-01-01&endPeriod=2025-12-31&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: TIME_PERIOD=2025-02-05, OBS_VALUE
+  value: '3.15'
+  unit: percent
+  snippet: FM.B.U2.EUR.4F.KR.MLFR.LEV,
+  source_license: ECB-free-use-with-attribution
+  content_sha256: 0cc807f5950d2decf6bf6bbfc53f7da82385bce336f632f2c3436fcf95f85676
+  role: primary
+- publisher: European Central Bank
+  title: ECB Data Portal, series FM.B.U2.EUR.4F.KR.MLFR.LEV (marginal lending facility, date of changes)
+  url: https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.MLFR.LEV?startPeriod=2025-01-01&endPeriod=2025-12-31&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: TIME_PERIOD=2025-06-11, OBS_VALUE
+  value: '2.4'
+  unit: percent
+  snippet: ',2025-06-11,2.4,'
+  source_license: ECB-free-use-with-attribution
+  content_sha256: 0cc807f5950d2decf6bf6bbfc53f7da82385bce336f632f2c3436fcf95f85676
+  role: primary
+- publisher: European Central Bank
+  title: ECB Data Portal, series FM.B.U2.EUR.4F.KR.MLFR.LEV (marginal lending facility, date of changes)
+  url: https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.MLFR.LEV?startPeriod=2025-01-01&endPeriod=2025-12-31&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: TITLE
+  value: Marginal lending facility - date of changes (raw data) - Level
+  unit: text
+  snippet: Marginal lending facility - date of changes (raw data) - Level
+  source_license: ECB-free-use-with-attribution
+  content_sha256: 0cc807f5950d2decf6bf6bbfc53f7da82385bce336f632f2c3436fcf95f85676
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: value[2025-12-31]
+  expected: 2.4
+  tolerance: 1.0e-09
+notes: Each change to the ECB marginal lending facility rate decided in 2025, with the date from which the new level
+  applied, from the ECB Data Portal's key-interest-rate series (dates of changes, raw data). The schedule starts
+  at the first change of the year; the level in force before it is not part of this entry. The ECB's website disclaimer
+  states that users may make free use of information obtained from it provided it is reproduced accurately and the
+  ECB is cited as the source; the page renders dynamically, so the clause is carried by the licence identifier ECB-free-use-with-attribution
+  documented in CONTRIBUTING.md.

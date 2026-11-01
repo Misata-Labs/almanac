@@ -1,0 +1,90 @@
+id: br-credit-card-revolving-interest-rate-monthly-2025
+title: Brazil average interest rate on revolving credit card credit for individuals, monthly 2025
+kind: temporal
+domain: rates
+region: BR
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- lending-rates
+- credit-card
+- revolving-credit
+- bcb
+- sgs
+use_cases:
+- banking-demo
+- loan-pricing
+- fintech-demo
+spec:
+  variable: revolving_card_rate_percent
+  unit: percent
+  frequency: monthly
+  columns: []
+  series:
+  - period: 2025-01
+    value: 450.74
+  - period: 2025-02
+    value: 455.66
+  - period: 2025-03
+    value: 457.48
+  - period: 2025-04
+    value: 456.94
+  - period: 2025-05
+    value: 459.84
+  - period: 2025-06
+    value: 454.19
+  - period: 2025-07
+    value: 452.67
+  - period: 2025-08
+    value: 453.64
+  - period: 2025-09
+    value: 448.06
+  - period: 2025-10
+    value: 447.09
+  - period: 2025-11
+    value: 448.37
+  - period: 2025-12
+    value: 442.41
+evidence:
+- publisher: Banco Central do Brasil
+  title: SGS series 22022, Taxa média de juros das operações de crédito com recursos livres - Pessoas físicas -
+    Cartão de crédito rotativo (monthly, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.22022/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=01/01/2025, valor
+  value: '450.74'
+  unit: percent
+  snippet: '{"data":"01/01/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: 908667406c89f9f5e987e3dd47e76e78889a0930ef8e2a362a89f54b9f6576ca
+  role: primary
+- publisher: Banco Central do Brasil
+  title: SGS series 22022, Taxa média de juros das operações de crédito com recursos livres - Pessoas físicas -
+    Cartão de crédito rotativo (monthly, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.22022/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=01/12/2025, valor
+  value: '442.41'
+  unit: percent
+  snippet: '{"data":"01/12/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: 908667406c89f9f5e987e3dd47e76e78889a0930ef8e2a362a89f54b9f6576ca
+  role: primary
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 450.74
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 442.41
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: Average interest rate (percent per year) on revolving credit card balances of individuals (cartão de crédito
+  rotativo) for each month of 2025, from SGS series 22022 of the BCB credit statistics. The BCB open data catalogue
+  (dadosabertos.bcb.gov.br) lists this series under the Open Database License; the catalogue API answers vary between
+  requests, so that record is referenced here rather than hashed as evidence.

@@ -1,0 +1,119 @@
+id: br-personal-loan-interest-rates-monthly-2025
+title: Brazil average interest rates on personal loans to individuals, monthly 2025 (non-payroll and payroll-deducted)
+kind: temporal
+domain: rates
+region: BR
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- lending-rates
+- personal-loans
+- consumer-credit
+- bcb
+- sgs
+use_cases:
+- loan-pricing
+- banking-demo
+- personal-finance
+spec:
+  variable: non_payroll_personal_loan_percent
+  unit: percent
+  frequency: monthly
+  columns:
+  - payroll_deducted_personal_loan_percent
+  series:
+  - period: 2025-01
+    value: 99.89
+    payroll_deducted_personal_loan_percent: 25.12
+  - period: 2025-02
+    value: 106.35
+    payroll_deducted_personal_loan_percent: 25.5
+  - period: 2025-03
+    value: 105.25
+    payroll_deducted_personal_loan_percent: 25.94
+  - period: 2025-04
+    value: 105.87
+    payroll_deducted_personal_loan_percent: 26.96
+  - period: 2025-05
+    value: 104.3
+    payroll_deducted_personal_loan_percent: 26.79
+  - period: 2025-06
+    value: 108.39
+    payroll_deducted_personal_loan_percent: 26.81
+  - period: 2025-07
+    value: 104.55
+    payroll_deducted_personal_loan_percent: 26.49
+  - period: 2025-08
+    value: 103.97
+    payroll_deducted_personal_loan_percent: 26.67
+  - period: 2025-09
+    value: 101.1
+    payroll_deducted_personal_loan_percent: 26.79
+  - period: 2025-10
+    value: 101.12
+    payroll_deducted_personal_loan_percent: 27.19
+  - period: 2025-11
+    value: 111.43
+    payroll_deducted_personal_loan_percent: 27.04
+  - period: 2025-12
+    value: 116.59
+    payroll_deducted_personal_loan_percent: 27.16
+evidence:
+- publisher: Banco Central do Brasil
+  title: SGS series 20742, Taxa média de juros das operações de crédito com recursos livres - Pessoas físicas -
+    Crédito pessoal não consignado (monthly, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.20742/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=01/01/2025, valor
+  value: '99.89'
+  unit: percent
+  snippet: '{"data":"01/01/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: bf425e60b59290c9ef253475dc252dcddb57f6173ca72a8acba20152c778890d
+  role: primary
+- publisher: Banco Central do Brasil
+  title: SGS series 20742, Taxa média de juros das operações de crédito com recursos livres - Pessoas físicas -
+    Crédito pessoal não consignado (monthly, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.20742/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=01/12/2025, valor
+  value: '116.59'
+  unit: percent
+  snippet: '{"data":"01/12/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: bf425e60b59290c9ef253475dc252dcddb57f6173ca72a8acba20152c778890d
+  role: primary
+- publisher: Banco Central do Brasil
+  title: SGS series 20747, Taxa média de juros das operações de crédito com recursos livres - Pessoas físicas -
+    Crédito pessoal consignado total (monthly, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.20747/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=01/12/2025, valor
+  value: '27.16'
+  unit: percent
+  snippet: '{"data":"01/12/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: abe1c9879acbb57a162481e7088232637f53bce0265a3694af8308495dcd6bee
+  role: primary
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 99.89
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 116.59
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+- statistic: column[payroll_deducted_personal_loan_percent,2025-12]
+  expected: 27.16
+  tolerance: 1.0e-09
+notes: Average interest rate (percent per year) on new non-earmarked personal loans to individuals without payroll
+  deduction (crédito pessoal não consignado, SGS 20742) for each month of 2025; the payroll-deducted personal loan
+  rate (crédito pessoal consignado total, SGS 20747) rides along as a column. The BCB open data catalogue (dadosabertos.bcb.gov.br)
+  lists this series under the Open Database License; the catalogue API answers vary between requests, so that record
+  is referenced here rather than hashed as evidence.

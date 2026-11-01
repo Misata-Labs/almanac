@@ -1,0 +1,174 @@
+status: verified
+tier: A
+region: GB
+id: gb-national-insurance-class-1-thresholds-2026-27
+title: United Kingdom Class 1 National Insurance earnings thresholds (weekly, monthly and annual), 2026 to 2027
+kind: rule
+domain: tax
+valid_from: '2026-04-06'
+valid_to: '2027-04-05'
+tags:
+- national-insurance
+- payroll
+- paye
+- thresholds
+use_cases:
+- payroll-demo
+- hr-analytics
+- workforce-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: 2026-27
+    currency: GBP
+    rows:
+      lower_earnings_limit:
+        label: Lower earnings limit
+        weekly: 129
+        monthly: 559
+        annual: 6708
+      primary_threshold:
+        label: Primary threshold
+        weekly: 242
+        monthly: 1048
+        annual: 12570
+      secondary_threshold:
+        label: Secondary threshold
+        weekly: 96
+        monthly: 417
+        annual: 5000
+      freeport_upper_secondary_threshold:
+        label: Freeport upper secondary threshold
+        weekly: 481
+        monthly: 2083
+        annual: 25000
+      investment_zone_upper_secondary_threshold:
+        label: Investment Zone upper secondary threshold
+        weekly: 481
+        monthly: 2083
+        annual: 25000
+      upper_secondary_threshold_under_21:
+        label: Upper secondary threshold (under 21)
+        weekly: 967
+        monthly: 4189
+        annual: 50270
+      apprentice_upper_secondary_threshold:
+        label: Apprentice upper secondary threshold (apprentice under 25)
+        weekly: 967
+        monthly: 4189
+        annual: 50270
+      veterans_upper_secondary_threshold:
+        label: Veterans upper secondary threshold
+        weekly: 967
+        monthly: 4189
+        annual: 50270
+      upper_earnings_limit:
+        label: Upper earnings limit
+        weekly: 967
+        monthly: 4189
+        annual: 50270
+  vectors:
+  - input:
+      key: primary_threshold
+      column: weekly
+    expected: 242
+    origin: source
+  - input:
+      key: upper_earnings_limit
+      column: annual
+    expected: 50270
+    origin: source
+  - input:
+      key: secondary_threshold
+      column: monthly
+    expected: 417
+    origin: source
+  - input:
+      key: lower_earnings_limit
+      column: weekly
+    expected: 129
+    origin: source
+  - input: lower_profits_limit
+    expected: false
+    origin: derived
+    note: a self-employed Class 4 threshold, not a Class 1 row
+evidence:
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Class 1 National Insurance thresholds' table, row Lower earnings limit
+  value: <td>Lower earnings limit</td>
+  unit: text
+  snippet: £129 per week<br>£559 per month<br>£6,708 per year
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Class 1 National Insurance thresholds' table, row Upper earnings limit
+  value: <td>Upper earnings limit</td>
+  unit: text
+  snippet: £967 per week<br>£4,189 per month<br>£50,270 per year
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Class 1 National Insurance thresholds' table, row Secondary threshold
+  value: <td>Secondary threshold</td>
+  unit: text
+  snippet: £96 per week<br>£417 per month<br>£5,000 per year
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, opening sentence
+  value: Unless otherwise stated, the following figures apply from 6 April 2026 to 5 April 2027.
+  unit: text
+  snippet: apply from 6 April 2026 to 5 April 2027
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /national-insurance (JSON)
+  url: https://www.gov.uk/api/content/national-insurance
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, 'Who pays National Insurance'
+  value: an employee earning more than £242 per week from one job
+  unit: text
+  snippet: an employee earning from £129 to £242 a week from one job
+  source_license: OGL-UK-3.0
+  content_sha256: 588725921cf49b151b3a13c93d4a3a5b6ef803252549229648fd1e45990ec81a
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 9
+  tolerance: 0
+- statistic: value[lower_earnings_limit,annual]
+  expected: 6708
+  tolerance: 0
+- statistic: value[primary_threshold,monthly]
+  expected: 1048
+  tolerance: 0
+- statistic: max[weekly]
+  expected: 967
+  tolerance: 0
+notes: 'The nine Class 1 National Insurance earnings thresholds for the 2026 to 2027 tax year as HMRC''s ''Rates
+  and thresholds for employers'' guidance states them, each with its weekly, monthly and annual figure: lower earnings
+  limit, primary threshold, secondary threshold, the Freeport and Investment Zone upper secondary thresholds, the
+  upper secondary thresholds for under-21s, apprentices and veterans, and the upper earnings limit. The thresholds
+  delimit the bands whose rates are in gb-national-insurance-class-1-rates-2026-27. Source is the GOV.UK content
+  API''s JSON for the page, which is stable between editorial updates; GOV.UK publishes its content under the Open
+  Government Licence v3.0.'

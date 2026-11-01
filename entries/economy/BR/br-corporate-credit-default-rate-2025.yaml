@@ -1,0 +1,88 @@
+id: br-corporate-credit-default-rate-2025
+title: Brazil credit portfolio default rate, companies, monthly 2025
+kind: temporal
+domain: economy
+region: BR
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- credit-risk
+- default
+- corporate-credit
+- bcb
+- sgs
+use_cases:
+- credit-risk
+- banking-demo
+- collections
+spec:
+  variable: default_rate_percent
+  unit: percent
+  frequency: monthly
+  columns: []
+  series:
+  - period: 2025-01
+    value: 2.43
+  - period: 2025-02
+    value: 2.52
+  - period: 2025-03
+    value: 2.49
+  - period: 2025-04
+    value: 2.72
+  - period: 2025-05
+    value: 2.67
+  - period: 2025-06
+    value: 2.67
+  - period: 2025-07
+    value: 2.79
+  - period: 2025-08
+    value: 2.85
+  - period: 2025-09
+    value: 2.77
+  - period: 2025-10
+    value: 2.82
+  - period: 2025-11
+    value: 2.75
+  - period: 2025-12
+    value: 2.7
+evidence:
+- publisher: Banco Central do Brasil
+  title: SGS series 21083, Inadimplência da carteira de crédito - Pessoas jurídicas - Total (monthly, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.21083/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=01/01/2025, valor
+  value: '2.43'
+  unit: percent
+  snippet: '{"data":"01/01/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: e58a9f60121c56752ce4a446b272e92a794e2722e6e75c6384771aa790f034ba
+  role: primary
+- publisher: Banco Central do Brasil
+  title: SGS series 21083, Inadimplência da carteira de crédito - Pessoas jurídicas - Total (monthly, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.21083/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=01/12/2025, valor
+  value: '2.70'
+  unit: percent
+  snippet: '{"data":"01/12/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: e58a9f60121c56752ce4a446b272e92a794e2722e6e75c6384771aa790f034ba
+  role: primary
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 2.43
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 2.7
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: Share of the credit portfolio of legal entities (pessoas jurídicas) in arrears, monthly for 2025, from SGS
+  series 21083 of the BCB credit statistics; the companion series for individuals is entry br-household-credit-default-rate-2025.
+  The BCB open data catalogue (dadosabertos.bcb.gov.br) lists this series under the Open Database License; the catalogue
+  API answers vary between requests, so that record is referenced here rather than hashed as evidence.

@@ -1,0 +1,115 @@
+status: verified
+tier: A
+region: GB
+id: gb-corporation-tax-rates
+title: United Kingdom Corporation Tax main rate (25%) and small profits rate (19%) with the marginal relief thresholds
+kind: rule
+domain: tax
+valid_from: '2023-04-01'
+valid_to: null
+tags:
+- corporation-tax
+- tax-rates
+- company-tax
+use_cases:
+- tax-filing-demo
+- financial-reporting
+- company-generation
+- audit-demo
+spec:
+  implementation: almanac.rules.rate_schedule
+  parameters:
+    slabs:
+      main: 25
+      small_profits: 19
+    small_profits_rate_up_to: 50000
+    main_rate_from: 250000
+    marginal_relief_between:
+    - 50000
+    - 250000
+    thresholds_reduced_by:
+    - short accounting periods
+    - number of associated companies
+  vectors:
+  - input: 25
+    expected: true
+    origin: source
+  - input: 19
+    expected: true
+    origin: source
+  - input: 20
+    expected: false
+    origin: derived
+  - input: 26.5
+    expected: false
+    origin: derived
+    note: the effective marginal rate between the thresholds is not a published slab
+evidence:
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /corporation-tax-rates (JSON)
+  url: https://www.gov.uk/api/content/corporation-tax-rates
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, opening sentence
+  value: The Corporation Tax rate for company profits is <em>25%</em>
+  unit: text
+  snippet: If your company made more than £250,000 profit, you’ll pay the main rate of Corporation Tax.
+  source_license: OGL-UK-3.0
+  content_sha256: 043bb95d08cdeb6911c2e04a744462b3c846464da772e61f054f7316cf3f4246
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /corporation-tax-rates (JSON)
+  url: https://www.gov.uk/api/content/corporation-tax-rates
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, small profits rate
+  value: ‘small profits rate’, which is 19%
+  unit: text
+  snippet: If your company made a profit of £50,000 or less
+  source_license: OGL-UK-3.0
+  content_sha256: 043bb95d08cdeb6911c2e04a744462b3c846464da772e61f054f7316cf3f4246
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /corporation-tax-rates (JSON)
+  url: https://www.gov.uk/api/content/corporation-tax-rates
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, previous regime
+  value: From 1 April 2015 to 31 March 2023, a
+  unit: text
+  snippet: The rate you pay on profits from before 1 April 2015 depends on the size of your profits.
+  source_license: OGL-UK-3.0
+  content_sha256: 043bb95d08cdeb6911c2e04a744462b3c846464da772e61f054f7316cf3f4246
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /corporation-tax-rates (JSON)
+  url: https://www.gov.uk/api/content/corporation-tax-rates
+  accessed_at: '2026-10-31'
+  locator: details.parts[2].body, Marginal Relief
+  value: taxable profits from 1 April 2023 are between £50,000 and £250,000
+  unit: text
+  snippet: The £50,000 and £250,000 profit thresholds are proportionately reduced
+  source_license: OGL-UK-3.0
+  content_sha256: 043bb95d08cdeb6911c2e04a744462b3c846464da772e61f054f7316cf3f4246
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2023-04-01'
+  method: derived
+  rationale: GOV.UK states that a single rate applied from 1 April 2015 to 31 March 2023 and that Marginal Relief
+    applies to profits from 1 April 2023, so the two-rate structure starts on 1 April 2023.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+- statistic: slab[main]
+  expected: 25
+  tolerance: 0
+- statistic: slab[small_profits]
+  expected: 19
+  tolerance: 0
+notes: 'Corporation Tax as GOV.UK states it: the main rate of 25% on profits over £250,000, the small profits rate
+  of 19% on profits of £50,000 or less, and Marginal Relief between those thresholds, which are reduced for short
+  accounting periods and shared between associated companies. The structure has applied since 1 April 2023; valid_to
+  is open. Source is the GOV.UK content API''s JSON for the page, which is stable between editorial updates; GOV.UK
+  publishes its content under the Open Government Licence v3.0.'

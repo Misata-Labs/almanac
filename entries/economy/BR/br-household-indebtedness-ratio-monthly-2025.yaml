@@ -1,0 +1,90 @@
+id: br-household-indebtedness-ratio-monthly-2025
+title: Brazil household debt with the financial system as a share of twelve-month income, monthly 2025
+kind: temporal
+domain: economy
+region: BR
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- household-debt
+- indebtedness
+- credit-risk
+- bcb
+- sgs
+use_cases:
+- credit-risk
+- personal-finance
+- household-generation
+spec:
+  variable: household_debt_to_income_percent
+  unit: percent
+  frequency: monthly
+  columns: []
+  series:
+  - period: 2025-01
+    value: 48.64
+  - period: 2025-02
+    value: 48.6
+  - period: 2025-03
+    value: 48.87
+  - period: 2025-04
+    value: 48.93
+  - period: 2025-05
+    value: 48.87
+  - period: 2025-06
+    value: 48.82
+  - period: 2025-07
+    value: 48.78
+  - period: 2025-08
+    value: 48.93
+  - period: 2025-09
+    value: 49.11
+  - period: 2025-10
+    value: 49.46
+  - period: 2025-11
+    value: 49.63
+  - period: 2025-12
+    value: 49.7
+evidence:
+- publisher: Banco Central do Brasil
+  title: SGS series 29037, Endividamento das famílias com o Sistema Financeiro Nacional em relação à renda acumulada
+    dos últimos doze meses (RNDBF) (monthly, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.29037/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=01/01/2025, valor
+  value: '48.64'
+  unit: percent
+  snippet: '{"data":"01/01/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: 5bc2288c844c34696dbe41caf988b360384fe589afdbfb566e4230ab3408775d
+  role: primary
+- publisher: Banco Central do Brasil
+  title: SGS series 29037, Endividamento das famílias com o Sistema Financeiro Nacional em relação à renda acumulada
+    dos últimos doze meses (RNDBF) (monthly, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.29037/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=01/12/2025, valor
+  value: '49.70'
+  unit: percent
+  snippet: '{"data":"01/12/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: 5bc2288c844c34696dbe41caf988b360384fe589afdbfb566e4230ab3408775d
+  role: primary
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 48.64
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 49.7
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: Household debt with the National Financial System as a percentage of gross disposable household income accumulated
+  over the previous twelve months, monthly for 2025, from SGS series 29037. The BCB open data catalogue (dadosabertos.bcb.gov.br)
+  lists this series under the Open Database License; the catalogue API answers vary between requests, so that record
+  is referenced here rather than hashed as evidence.

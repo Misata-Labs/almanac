@@ -1,0 +1,128 @@
+status: verified
+tier: A
+region: GB
+id: gb-dividend-tax-rates-2026-27
+title: United Kingdom tax rates on dividends above the dividend allowance by Income Tax band, 2026 to 2027
+kind: rule
+domain: tax
+valid_from: '2026-04-06'
+valid_to: '2027-04-05'
+tags:
+- dividends
+- income-tax
+- tax-rates
+- investment-income
+use_cases:
+- tax-filing-demo
+- personal-finance
+- financial-planning
+spec:
+  implementation: almanac.rules.rate_schedule
+  parameters:
+    tax_year: 2026-27
+    slabs:
+      basic: 10.75
+      higher: 35.75
+      additional: 39.35
+    dividend_allowance: 500
+    worked_example:
+      dividends: 3000
+      wages: 29570
+      taxable_dividends: 2500
+      rate_percent: 10.75
+  vectors:
+  - input: 10.75
+    expected: true
+    origin: source
+  - input: 35.75
+    expected: true
+    origin: source
+  - input: 39.35
+    expected: true
+    origin: source
+  - input: 8.75
+    expected: false
+    origin: derived
+    note: not a 2026 to 2027 rate
+  - input: 20
+    expected: false
+    origin: derived
+    note: the basic rate on wages, not dividends
+evidence:
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /tax-on-dividends (JSON)
+  url: https://www.gov.uk/api/content/tax-on-dividends
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, rates table, row Basic rate
+  value: <td>10.75%</td>
+  unit: text
+  snippet: This table shows the rates from 6 April 2026 to 5 April 2027.
+  source_license: OGL-UK-3.0
+  content_sha256: cc7b589f63de0c7e79ab8a886b3c023e6b3b97bf09e2f7c64ef5fc290c93a633
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /tax-on-dividends (JSON)
+  url: https://www.gov.uk/api/content/tax-on-dividends
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, rates table, row Higher rate
+  value: <td>35.75%</td>
+  unit: text
+  snippet: Tax rate on dividends over the allowance
+  source_license: OGL-UK-3.0
+  content_sha256: cc7b589f63de0c7e79ab8a886b3c023e6b3b97bf09e2f7c64ef5fc290c93a633
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /tax-on-dividends (JSON)
+  url: https://www.gov.uk/api/content/tax-on-dividends
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, rates table, row Additional rate
+  value: <td>39.35%</td>
+  unit: text
+  snippet: To work out your tax band, add your total dividend income to your other income.
+  source_license: OGL-UK-3.0
+  content_sha256: cc7b589f63de0c7e79ab8a886b3c023e6b3b97bf09e2f7c64ef5fc290c93a633
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /tax-on-dividends (JSON)
+  url: https://www.gov.uk/api/content/tax-on-dividends
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, dividend allowance
+  value: You also get a dividend allowance of £500 each year.
+  unit: text
+  snippet: dividend allowance of £500
+  source_license: OGL-UK-3.0
+  content_sha256: cc7b589f63de0c7e79ab8a886b3c023e6b3b97bf09e2f7c64ef5fc290c93a633
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /tax-on-dividends (JSON)
+  url: https://www.gov.uk/api/content/tax-on-dividends
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, worked example
+  value: 10.75% tax on £2,500 of dividends
+  unit: text
+  snippet: You get £3,000 in dividends and earn £29,570 in wages in the 2026 to 2027 tax year.
+  source_license: OGL-UK-3.0
+  content_sha256: cc7b589f63de0c7e79ab8a886b3c023e6b3b97bf09e2f7c64ef5fc290c93a633
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+- statistic: slab[basic]
+  expected: 10.75
+  tolerance: 0
+- statistic: slab[higher]
+  expected: 35.75
+  tolerance: 0
+- statistic: slab[additional]
+  expected: 39.35
+  tolerance: 0
+notes: 'Tax on dividend income above the £500 dividend allowance for the 2026 to 2027 tax year: basic rate 10.75%,
+  higher rate 35.75%, additional rate 39.35%, the band being found by adding dividend income to other income. Dividends
+  within the Personal Allowance or held in an ISA are untaxed. GOV.UK''s worked example is kept in the parameters.
+  Source is the GOV.UK content API''s JSON for the page, which is stable between editorial updates; GOV.UK publishes
+  its content under the Open Government Licence v3.0.'

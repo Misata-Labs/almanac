@@ -1,0 +1,331 @@
+status: verified
+tier: A
+region: GB
+id: gb-national-insurance-class-1-rates-2026-27
+title: United Kingdom Class 1 National Insurance employee and employer contribution rates by category letter, 2026
+  to 2027
+kind: rule
+domain: tax
+valid_from: '2026-04-06'
+valid_to: '2027-04-05'
+tags:
+- national-insurance
+- payroll
+- paye
+- category-letter
+use_cases:
+- payroll-demo
+- hr-analytics
+- workforce-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: 2026-27
+    unit: percent of earnings in the band
+    band_thresholds_weekly_gbp:
+      lower_earnings_limit: 129
+      primary_threshold: 242
+      secondary_threshold: 96
+      freeport_and_investment_zone_upper_secondary_threshold: 481
+      upper_earnings_limit: 967
+    class_1a_and_1b_percent: 15
+    worked_example:
+      category: A
+      weekly_earnings: 1000
+      employee_contribution: 58.66
+    rows:
+      A:
+        employee_group: All employees apart from those in groups B, C, H, J, M, V and Z in this table
+        employee_lel_to_pt_percent: 0
+        employee_pt_to_uel_percent: 8
+        employee_above_uel_percent: 2
+        employer_st_to_lel_percent: 15
+        employer_lel_to_fust_percent: 15
+        employer_fust_to_uel_percent: 15
+        employer_above_uel_percent: 15
+      B:
+        employee_group: Married women and widows who have a certificate of election form showing they’re entitled
+          to pay reduced National Insurance
+        employee_lel_to_pt_percent: 0
+        employee_pt_to_uel_percent: 1.85
+        employee_above_uel_percent: 2
+        employer_st_to_lel_percent: 15
+        employer_lel_to_fust_percent: 15
+        employer_fust_to_uel_percent: 15
+        employer_above_uel_percent: 15
+      C:
+        employee_group: Employees over the State Pension age
+        employee_lel_to_pt_percent: 0
+        employee_pt_to_uel_percent: 0
+        employee_above_uel_percent: 0
+        employer_st_to_lel_percent: 15
+        employer_lel_to_fust_percent: 15
+        employer_fust_to_uel_percent: 15
+        employer_above_uel_percent: 15
+      D:
+        employee_group: Employees who work in a special tax site within an Investment Zone and can defer National
+          Insurance because they’re already paying it in another job
+        employee_lel_to_pt_percent: 0
+        employee_pt_to_uel_percent: 2
+        employee_above_uel_percent: 2
+        employer_st_to_lel_percent: 0
+        employer_lel_to_fust_percent: 0
+        employer_fust_to_uel_percent: 15
+        employer_above_uel_percent: 15
+      E:
+        employee_group: Married women and widows working in a special tax site within an Investment Zone who have
+          a certificate of election form showing they’re entitled to pay reduced National Insurance
+        employee_lel_to_pt_percent: 0
+        employee_pt_to_uel_percent: 1.85
+        employee_above_uel_percent: 2
+        employer_st_to_lel_percent: 0
+        employer_lel_to_fust_percent: 0
+        employer_fust_to_uel_percent: 15
+        employer_above_uel_percent: 15
+      F:
+        employee_group: All employees who work in a special tax site within a Freeport, apart from those in groups
+          I, L, and S in this table
+        employee_lel_to_pt_percent: 0
+        employee_pt_to_uel_percent: 8
+        employee_above_uel_percent: 2
+        employer_st_to_lel_percent: 0
+        employer_lel_to_fust_percent: 0
+        employer_fust_to_uel_percent: 15
+        employer_above_uel_percent: 15
+      H:
+        employee_group: Apprentices under 25
+        employee_lel_to_pt_percent: 0
+        employee_pt_to_uel_percent: 8
+        employee_above_uel_percent: 2
+        employer_st_to_lel_percent: 0
+        employer_lel_to_fust_percent: 0
+        employer_fust_to_uel_percent: 0
+        employer_above_uel_percent: 15
+      I:
+        employee_group: Married women and widows working in a special tax site within a Freeport who have a certificate
+          of election form showing they’re entitled to pay reduced National Insurance
+        employee_lel_to_pt_percent: 0
+        employee_pt_to_uel_percent: 1.85
+        employee_above_uel_percent: 2
+        employer_st_to_lel_percent: 0
+        employer_lel_to_fust_percent: 0
+        employer_fust_to_uel_percent: 15
+        employer_above_uel_percent: 15
+      J:
+        employee_group: Employees who can defer National Insurance because they’re already paying it in another
+          job
+        employee_lel_to_pt_percent: 0
+        employee_pt_to_uel_percent: 2
+        employee_above_uel_percent: 2
+        employer_st_to_lel_percent: 15
+        employer_lel_to_fust_percent: 15
+        employer_fust_to_uel_percent: 15
+        employer_above_uel_percent: 15
+      K:
+        employee_group: Employees who work in a special tax site within an Investment Zone and are over State Pension
+          age
+        employee_lel_to_pt_percent: 0
+        employee_pt_to_uel_percent: 0
+        employee_above_uel_percent: 0
+        employer_st_to_lel_percent: 0
+        employer_lel_to_fust_percent: 0
+        employer_fust_to_uel_percent: 15
+        employer_above_uel_percent: 15
+      L:
+        employee_group: Employees who work in a special tax site within a Freeport and can defer National Insurance
+          because they’re already paying it in another job
+        employee_lel_to_pt_percent: 0
+        employee_pt_to_uel_percent: 2
+        employee_above_uel_percent: 2
+        employer_st_to_lel_percent: 0
+        employer_lel_to_fust_percent: 0
+        employer_fust_to_uel_percent: 15
+        employer_above_uel_percent: 15
+      M:
+        employee_group: Employees under 21
+        employee_lel_to_pt_percent: 0
+        employee_pt_to_uel_percent: 8
+        employee_above_uel_percent: 2
+        employer_st_to_lel_percent: 0
+        employer_lel_to_fust_percent: 0
+        employer_fust_to_uel_percent: 0
+        employer_above_uel_percent: 15
+      N:
+        employee_group: All employees who work in a special tax site within an Investment Zone, apart from those
+          in groups E, D and K in this table
+        employee_lel_to_pt_percent: 0
+        employee_pt_to_uel_percent: 8
+        employee_above_uel_percent: 2
+        employer_st_to_lel_percent: 0
+        employer_lel_to_fust_percent: 0
+        employer_fust_to_uel_percent: 15
+        employer_above_uel_percent: 15
+      S:
+        employee_group: Employees who work in a special tax site within a Freeport and are over the State Pension
+          age
+        employee_lel_to_pt_percent: 0
+        employee_pt_to_uel_percent: 0
+        employee_above_uel_percent: 0
+        employer_st_to_lel_percent: 0
+        employer_lel_to_fust_percent: 0
+        employer_fust_to_uel_percent: 15
+        employer_above_uel_percent: 15
+      V:
+        employee_group: Employees who are working in their first job since leaving the armed forces (veterans)
+        employee_lel_to_pt_percent: 0
+        employee_pt_to_uel_percent: 8
+        employee_above_uel_percent: 2
+        employer_st_to_lel_percent: 0
+        employer_lel_to_fust_percent: 0
+        employer_fust_to_uel_percent: 0
+        employer_above_uel_percent: 15
+      Z:
+        employee_group: Employees under 21 who can defer National Insurance because they’re already paying it in
+          another job
+        employee_lel_to_pt_percent: 0
+        employee_pt_to_uel_percent: 2
+        employee_above_uel_percent: 2
+        employer_st_to_lel_percent: 0
+        employer_lel_to_fust_percent: 0
+        employer_fust_to_uel_percent: 0
+        employer_above_uel_percent: 15
+  vectors:
+  - input:
+      key: A
+      column: employee_pt_to_uel_percent
+    expected: 8
+    origin: source
+  - input:
+      key: A
+      column: employee_above_uel_percent
+    expected: 2
+    origin: source
+  - input:
+      key: B
+      column: employee_pt_to_uel_percent
+    expected: 1.85
+    origin: source
+  - input:
+      key: C
+      column: employee_pt_to_uel_percent
+    expected: 0
+    origin: source
+    note: nil for employees over State Pension age
+  - input:
+      key: A
+      column: employer_st_to_lel_percent
+    expected: 15
+    origin: source
+  - input:
+      key: M
+      column: employer_fust_to_uel_percent
+    expected: 0
+    origin: source
+    note: 'under 21: employer pays nothing up to the upper secondary threshold'
+  - input:
+      key: H
+      column: employer_above_uel_percent
+    expected: 15
+    origin: source
+  - input: X
+    expected: false
+    origin: derived
+    note: letter X (no contributions due) has no rates row
+evidence:
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Employee (primary) contribution rates' table, row A
+  value: <td>8%</td>
+  unit: text
+  snippet: Earnings above primary threshold up to and including upper earnings limit
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Employer (secondary) contribution rates' table, row H
+  value: <td>H (apprentice under 25)</td>
+  unit: text
+  snippet: Earnings above secondary threshold up to and including lower earnings limit
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: 'details.body, ''Class 1A National Insurance: expenses and benefits'''
+  value: rate on expenses and benefits for 2026 to 2027 is 15%
+  unit: text
+  snippet: Class 1A rate on expenses and benefits
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, opening sentence
+  value: Unless otherwise stated, the following figures apply from 6 April 2026 to 5 April 2027.
+  unit: text
+  snippet: apply from 6 April 2026 to 5 April 2027
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /national-insurance-rates-letters (JSON)
+  url: https://www.gov.uk/api/content/national-insurance-rates-letters
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, worked example for category A
+  value: This means your National Insurance payment will be £58.66 for the week.
+  unit: text
+  snippet: 8% (£58) on your earnings between £242.01 and £967
+  source_license: OGL-UK-3.0
+  content_sha256: 03eecf5a1c503f86c0a4a3c618034c75f7f3f63b3677151496db783e80c3196b
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /national-insurance-rates-letters (JSON)
+  url: https://www.gov.uk/api/content/national-insurance-rates-letters
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, 'Category letter / Employee group' table, row A
+  value: All employees apart from those in groups B, C, H, J, M, V and Z in this table
+  unit: text
+  snippet: Employee group</th>
+  source_license: OGL-UK-3.0
+  content_sha256: 03eecf5a1c503f86c0a4a3c618034c75f7f3f63b3677151496db783e80c3196b
+  role: primary
+assumed:
+- parameter: rows[C|K|S].employee_*_percent
+  value: 0
+  method: derived
+  rationale: HMRC prints 'nil' for employees over State Pension age (letters C, K and S) because no employee contribution
+    is due; the rate is recorded as 0 so a payroll generator can apply it directly.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 16
+  tolerance: 0
+- statistic: value[A,employee_pt_to_uel_percent]
+  expected: 8
+  tolerance: 0
+- statistic: value[H,employer_above_uel_percent]
+  expected: 15
+  tolerance: 0
+- statistic: max[employer_above_uel_percent]
+  expected: 15
+  tolerance: 0
+notes: 'Class 1 National Insurance contribution rates for the 2026 to 2027 tax year by category letter, as HMRC''s
+  ''Rates and thresholds for employers'' guidance publishes them: employee (primary) rates for earnings between
+  the lower earnings limit and primary threshold, between the primary threshold and upper earnings limit, and above
+  the upper earnings limit; employer (secondary) rates for earnings between the secondary threshold and lower earnings
+  limit, up to the Freeport and Investment Zone upper secondary thresholds, up to the upper earnings limit and above
+  it. Each row carries the employee group GOV.UK gives for the letter. Letter X (no contributions) has no rates
+  row. The weekly thresholds that delimit the bands are kept beside the rows; the full threshold table is the entry
+  gb-national-insurance-class-1-thresholds-2026-27. Source is the GOV.UK content API''s JSON for the page, which
+  is stable between editorial updates; GOV.UK publishes its content under the Open Government Licence v3.0.'

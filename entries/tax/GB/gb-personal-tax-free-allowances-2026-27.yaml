@@ -1,0 +1,235 @@
+status: verified
+tier: A
+region: GB
+id: gb-personal-tax-free-allowances-2026-27
+title: 'United Kingdom personal tax-free allowances for 2026 to 2027: Personal, Marriage, savings, dividend, capital
+  gains and ISA allowances'
+kind: rule
+domain: tax
+valid_from: '2026-04-06'
+valid_to: '2027-04-05'
+tags:
+- allowances
+- income-tax
+- savings
+- isa
+- dividends
+- capital-gains-tax
+use_cases:
+- personal-finance
+- financial-planning
+- tax-filing-demo
+- banking-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: 2026-27
+    currency: GBP
+    rows:
+      personal_allowance:
+        value: 12570
+        unit: GBP per year
+        basis: standard Personal Allowance
+      marriage_allowance_transferable:
+        value: 1260
+        unit: GBP per year
+        basis: Personal Allowance a lower-earning spouse or civil partner can transfer
+      marriage_allowance_max_tax_reduction:
+        value: 252
+        unit: GBP per year
+        basis: largest tax saving from the transfer
+      personal_savings_allowance_basic_rate:
+        value: 1000
+        unit: GBP per year
+        basis: basic rate taxpayer
+      personal_savings_allowance_higher_rate:
+        value: 500
+        unit: GBP per year
+        basis: higher rate taxpayer
+      personal_savings_allowance_additional_rate:
+        value: 0
+        unit: GBP per year
+        basis: additional rate taxpayer
+      starting_rate_for_savings:
+        value: 5000
+        unit: GBP per year
+        basis: reduced by £1 for every £1 of other income above the Personal Allowance
+      starting_rate_for_savings_other_income_limit:
+        value: 17570
+        unit: GBP per year
+        basis: other taxable income below which the starting rate applies
+      dividend_allowance:
+        value: 500
+        unit: GBP per year
+        basis: dividend income taxed at 0%
+      capital_gains_annual_exempt_amount:
+        value: 3000
+        unit: GBP per year
+        basis: individuals
+      capital_gains_annual_exempt_amount_trusts:
+        value: 1500
+        unit: GBP per year
+        basis: trusts
+      isa_annual_allowance:
+        value: 20000
+        unit: GBP per tax year
+        basis: all ISAs combined
+      lifetime_isa_annual_limit:
+        value: 4000
+        unit: GBP per tax year
+        basis: counts towards the ISA allowance
+  vectors:
+  - input:
+      key: isa_annual_allowance
+      column: value
+    expected: 20000
+    origin: source
+  - input:
+      key: personal_allowance
+      column: value
+    expected: 12570
+    origin: source
+  - input:
+      key: dividend_allowance
+      column: value
+    expected: 500
+    origin: source
+  - input:
+      key: personal_savings_allowance_additional_rate
+      column: value
+    expected: 0
+    origin: source
+  - input: blind_persons_allowance
+    expected: false
+    origin: derived
+    note: not covered by this table
+evidence:
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, 'England and Northern Ireland' Personal Allowance list
+  value: <li>£12,570 per year</li>
+  unit: text
+  snippet: 'The standard employee personal allowance for the 2026 to 2027 tax year is:'
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /marriage-allowance (JSON)
+  url: https://www.gov.uk/api/content/marriage-allowance
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, opening paragraph
+  value: Marriage Allowance lets you transfer £1,260 of your
+  unit: text
+  snippet: This reduces their tax by up to £252 in the tax year
+  source_license: OGL-UK-3.0
+  content_sha256: 2e205b618d370bc8c346c0c02ffcc564fc4cd85b74eba22c41d9e65ff901ff00
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /apply-tax-free-interest-on-savings (JSON)
+  url: https://www.gov.uk/api/content/apply-tax-free-interest-on-savings
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, Personal Savings Allowance table
+  value: <td>£1,000</td>
+  unit: text
+  snippet: This is your Personal Savings Allowance.
+  source_license: OGL-UK-3.0
+  content_sha256: 24a37c4ce36a29ec4817112b867b7c21df162dbd3444ed8af16c685fa04d196a
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /apply-tax-free-interest-on-savings (JSON)
+  url: https://www.gov.uk/api/content/apply-tax-free-interest-on-savings
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, Personal Savings Allowance table, higher and additional rate rows
+  value: <td>£500</td>
+  unit: text
+  snippet: <td>£0</td>
+  source_license: OGL-UK-3.0
+  content_sha256: 24a37c4ce36a29ec4817112b867b7c21df162dbd3444ed8af16c685fa04d196a
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /apply-tax-free-interest-on-savings (JSON)
+  url: https://www.gov.uk/api/content/apply-tax-free-interest-on-savings
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, starting rate for savings
+  value: you can earn up to £5,000 of interest and not have to pay tax on it
+  unit: text
+  snippet: is less than £17,570
+  source_license: OGL-UK-3.0
+  content_sha256: 24a37c4ce36a29ec4817112b867b7c21df162dbd3444ed8af16c685fa04d196a
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /tax-on-dividends (JSON)
+  url: https://www.gov.uk/api/content/tax-on-dividends
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, dividend allowance
+  value: You also get a dividend allowance of £500 each year.
+  unit: text
+  snippet: dividend allowance of £500
+  source_license: OGL-UK-3.0
+  content_sha256: cc7b589f63de0c7e79ab8a886b3c023e6b3b97bf09e2f7c64ef5fc290c93a633
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /capital-gains-tax (JSON)
+  url: https://www.gov.uk/api/content/capital-gains-tax
+  accessed_at: '2026-10-31'
+  locator: details.parts[2].body, allowances
+  value: <li>£1,500 for trusts</li>
+  unit: text
+  snippet: <li>£3,000</li>
+  source_license: OGL-UK-3.0
+  content_sha256: c03bc49fafaa0a3c5941931f0500b48cf33e27c398d9c02ccf6fb6f5f23caf09
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /individual-savings-accounts (JSON)
+  url: https://www.gov.uk/api/content/individual-savings-accounts
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, overview
+  value: the maximum you can save in ISAs is <em>£20,000</em>
+  unit: text
+  snippet: In the 2026 to 2027 tax year, the maximum you can save in
+  source_license: OGL-UK-3.0
+  content_sha256: 674c7e554bfa89cdbfd2433d21ce7e7a3140e4232ddda7b52a9f02abe1dfefb4
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /individual-savings-accounts (JSON)
+  url: https://www.gov.uk/api/content/individual-savings-accounts
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, Lifetime ISA
+  value: £4,000 in a tax year
+  unit: text
+  snippet: The maximum you can pay in is £4,000 in a tax year.
+  source_license: OGL-UK-3.0
+  content_sha256: 674c7e554bfa89cdbfd2433d21ce7e7a3140e4232ddda7b52a9f02abe1dfefb4
+  role: primary
+assumed:
+- parameter: rows[marriage_allowance_*] and rows[personal_savings_allowance_*, starting_rate_for_savings*]
+  value: attributed to the 2026 to 2027 tax year
+  method: derived
+  rationale: The Marriage Allowance and savings interest pages state current figures without naming the tax year;
+    they were fetched during the 2026 to 2027 tax year, and the Personal Allowance they quote matches the 2026 to
+    2027 figure HMRC dates.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 13
+  tolerance: 0
+- statistic: value[personal_allowance,value]
+  expected: 12570
+  tolerance: 0
+- statistic: value[isa_annual_allowance,value]
+  expected: 20000
+  tolerance: 0
+- statistic: max[value]
+  expected: 20000
+  tolerance: 0
+notes: 'The tax-free allowances an individual has for the 2026 to 2027 tax year, gathered from the GOV.UK pages
+  that state each one: the £12,570 Personal Allowance, the £1,260 Marriage Allowance transfer worth up to £252,
+  the Personal Savings Allowance by band, the £5,000 starting rate for savings, the £500 dividend allowance, the
+  Capital Gains Annual Exempt Amount and the £20,000 ISA allowance with the £4,000 Lifetime ISA limit. Each row
+  names its basis. The tapering of the Personal Allowance above £100,000 is in gb-income-tax-bands-2026-27. Source
+  is the GOV.UK content API''s JSON for the page, which is stable between editorial updates; GOV.UK publishes its
+  content under the Open Government Licence v3.0.'

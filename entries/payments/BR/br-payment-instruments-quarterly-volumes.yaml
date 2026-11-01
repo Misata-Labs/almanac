@@ -1,0 +1,210 @@
+id: br-payment-instruments-quarterly-volumes
+title: Brazil payment transactions by instrument, quarterly counts 2025-Q1 to 2026-Q2
+kind: temporal
+domain: payments
+region: BR
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2026-06-30'
+tags:
+- payments
+- payment-instruments
+- pix
+- cards
+- boleto
+- bcb
+- time-series
+use_cases:
+- payments-demo
+- fintech-demo
+- market-sizing
+spec:
+  variable: pix_thousands
+  unit: count
+  frequency: quarterly
+  columns:
+  - ted_thousands
+  - tec_thousands
+  - cheque_thousands
+  - boleto_thousands
+  - doc_thousands
+  - credit_card_thousands
+  - debit_card_thousands
+  - prepaid_card_thousands
+  - intrabank_transfer_thousands
+  - utility_and_tax_collection_thousands
+  - direct_debit_thousands
+  - atm_withdrawal_thousands
+  series:
+  - period: 2025-Q1
+    value: 17509754.01
+    ted_thousands: 185476.04
+    tec_thousands: 0.0
+    cheque_thousands: 37574.43
+    boleto_thousands: 1380364.52
+    doc_thousands: 0.0
+    credit_card_thousands: 5168196.64
+    debit_card_thousands: 3972384.23
+    prepaid_card_thousands: 1875028.18
+    intrabank_transfer_thousands: 571116.25
+    utility_and_tax_collection_thousands: 701661.53
+    direct_debit_thousands: 2122599.76
+    atm_withdrawal_thousands: 653523.98
+  - period: 2025-Q2
+    value: 19367518.06
+    ted_thousands: 184262.02
+    tec_thousands: 0.0
+    cheque_thousands: 36145.06
+    boleto_thousands: 1392757.36
+    doc_thousands: 0.0
+    credit_card_thousands: 5398420.43
+    debit_card_thousands: 4030175.37
+    prepaid_card_thousands: 1922086.44
+    intrabank_transfer_thousands: 612764.43
+    utility_and_tax_collection_thousands: 663556.68
+    direct_debit_thousands: 2263510.4
+    atm_withdrawal_thousands: 661757.5
+  - period: 2025-Q3
+    value: 20488282.81
+    ted_thousands: 199487.25
+    tec_thousands: 0.0
+    cheque_thousands: 35374.78
+    boleto_thousands: 1416547.34
+    doc_thousands: 0.0
+    credit_card_thousands: 5588669.17
+    debit_card_thousands: 4086373.58
+    prepaid_card_thousands: 1977916.96
+    intrabank_transfer_thousands: 649703.92
+    utility_and_tax_collection_thousands: 664086.74
+    direct_debit_thousands: 2604094.28
+    atm_withdrawal_thousands: 629719.52
+  - period: 2025-Q4
+    value: 22282468.7
+    ted_thousands: 209102.58
+    tec_thousands: 0.0
+    cheque_thousands: 33249.69
+    boleto_thousands: 1405644.26
+    doc_thousands: 0.0
+    credit_card_thousands: 5860752.26
+    debit_card_thousands: 4303573.5
+    prepaid_card_thousands: 2104867.73
+    intrabank_transfer_thousands: 718596.06
+    utility_and_tax_collection_thousands: 653011.89
+    direct_debit_thousands: 2214298.77
+    atm_withdrawal_thousands: 641889.6
+  - period: 2026-Q1
+    value: 21071011.61
+    ted_thousands: 192224.13
+    tec_thousands: 0.0
+    cheque_thousands: 29439.48
+    boleto_thousands: 1336804.54
+    doc_thousands: 0.0
+    credit_card_thousands: 5792304.13
+    debit_card_thousands: 3966315.8
+    prepaid_card_thousands: 1883380.28
+    intrabank_transfer_thousands: 806151.66
+    utility_and_tax_collection_thousands: 675640.55
+    direct_debit_thousands: 2072520.04
+    atm_withdrawal_thousands: 582433.22
+  - period: 2026-Q2
+    value: 22925117.19
+    ted_thousands: 194854.78
+    tec_thousands: 0.0
+    cheque_thousands: 27773.28
+    boleto_thousands: 1365803.07
+    doc_thousands: 0.0
+    credit_card_thousands: 5819055.61
+    debit_card_thousands: 4076645.48
+    prepaid_card_thousands: 1939307.77
+    intrabank_transfer_thousands: 992394.74
+    utility_and_tax_collection_thousands: 678874.19
+    direct_debit_thousands: 2254424.33
+    atm_withdrawal_thousands: 598604.29
+evidence:
+- publisher: Banco Central do Brasil
+  title: Estatísticas de Meios de Pagamentos, MeiosdePagamentosTrimestralDA (Olinda open data API)
+  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/odata/MeiosdePagamentosTrimestralDA(trimestre=@trimestre)?@trimestre='20251'&$format=json
+  accessed_at: '2026-10-31'
+  locator: value[datatrimestre=2025-03-31].quantidadePix
+  value: '17509754.01'
+  unit: count
+  snippet: '"datatrimestre":"2025-03-31"'
+  source_license: ODbL-1.0
+  content_sha256: 3bd38aae7da8063f3eb11640f1a3d74e12bd462bc2c8488a12327c5dfdb9e6d0
+  role: primary
+- publisher: Banco Central do Brasil
+  title: Estatísticas de Meios de Pagamentos, MeiosdePagamentosTrimestralDA (Olinda open data API)
+  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/odata/MeiosdePagamentosTrimestralDA(trimestre=@trimestre)?@trimestre='20251'&$format=json
+  accessed_at: '2026-10-31'
+  locator: value[datatrimestre=2026-06-30].quantidadePix
+  value: '22925117.19'
+  unit: count
+  snippet: '"datatrimestre":"2026-06-30"'
+  source_license: ODbL-1.0
+  content_sha256: 3bd38aae7da8063f3eb11640f1a3d74e12bd462bc2c8488a12327c5dfdb9e6d0
+  role: primary
+- publisher: Banco Central do Brasil
+  title: Estatísticas de Meios de Pagamentos, MeiosdePagamentosTrimestralDA (Olinda open data API)
+  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/odata/MeiosdePagamentosTrimestralDA(trimestre=@trimestre)?@trimestre='20251'&$format=json
+  accessed_at: '2026-10-31'
+  locator: value[datatrimestre=2026-06-30].quantidadeCartaoCredito
+  value: '5819055.61'
+  unit: count
+  snippet: '"quantidadeCartaoCredito"'
+  source_license: ODbL-1.0
+  content_sha256: 3bd38aae7da8063f3eb11640f1a3d74e12bd462bc2c8488a12327c5dfdb9e6d0
+  role: primary
+- publisher: Banco Central do Brasil
+  title: MPV_DadosAbertos service documentation (field descriptions)
+  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/aplicacao
+  accessed_at: '2026-10-31'
+  locator: MeiosdePagamentosTrimestralDA, quantidadePix description
+  value: Quantidade (em milhares) de transações Pix liquidadas trimestralmente no SPI e fora do SPI
+  unit: text
+  snippet: de transações Pix liquidadas trimestralmente
+  source_license: ODbL-1.0
+  content_sha256: 3e678af8205ea0f32e4f20e52b8e36b1ae8da8c963c0bf6fb324a664de0ca8a5
+  role: supporting
+- publisher: Banco Central do Brasil
+  title: MPV_DadosAbertos service documentation (field descriptions)
+  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/aplicacao
+  accessed_at: '2026-10-31'
+  locator: MeiosdePagamentosTrimestralDA, quantidadeCartaoCredito description
+  value: Quantidade (em milhares) de transações realizadas com cartão de crédito trimestralmente
+  unit: text
+  snippet: transações realizadas com cartão de crédito trimestralmente
+  source_license: ODbL-1.0
+  content_sha256: 3e678af8205ea0f32e4f20e52b8e36b1ae8da8c963c0bf6fb324a664de0ca8a5
+  role: supporting
+assumed:
+- parameter: series[*].period
+  value: calendar quarter containing the published quarter-end date (datatrimestre)
+  method: derived
+  rationale: The service labels each row with the last day of the quarter; the entry relabels it as YYYY-Qn so the
+    period reads as a quarter.
+tests:
+- statistic: value[2025-Q1]
+  expected: 17509754.01
+  tolerance: 0
+- statistic: value[2026-Q2]
+  expected: 22925117.19
+  tolerance: 0
+- statistic: column[credit_card_thousands,2026-Q2]
+  expected: 5819055.61
+  tolerance: 0
+- statistic: column[boleto_thousands,2025-Q1]
+  expected: 1380364.52
+  tolerance: 0
+- statistic: count
+  expected: 6
+  tolerance: 0
+notes: 'Quarterly counts of transactions (thousands) by payment instrument from the Banco Central do Brasil payment-instrument
+  statistics (Olinda MPV_DadosAbertos service, quarterly table): Pix as the primary series with TED, TEC, cheques,
+  boletos, DOC, credit, debit and prepaid cards, intrabank transfers, utility and tax collection agreements (convênios),
+  direct debits and ATM withdrawals as columns. The query asks for every quarter from 2025 Q1 onward; the service
+  answered with 6 quarters ending 2026-Q2. The publisher warns that figures for Pix transactions settled outside
+  the SPI can be revised, so a later re-fetch may change the content hash. The BCB open data catalogue (dadosabertos.bcb.gov.br)
+  lists this series under the Open Database License; the catalogue API answers vary between requests, so that record
+  is referenced here rather than hashed as evidence.'

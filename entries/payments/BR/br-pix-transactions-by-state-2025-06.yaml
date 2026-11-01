@@ -1,0 +1,215 @@
+id: br-pix-transactions-by-state-2025-06
+title: Brazil Pix transactions by payer state, share of transaction count, June 2025
+kind: marginal
+domain: payments
+region: BR
+status: verified
+tier: A
+observed_period:
+  start: '2025-06-01'
+  end: '2025-06-30'
+tags:
+- pix
+- geography
+- states
+- category-shares
+- bcb
+use_cases:
+- payments-demo
+- fintech-demo
+- address-generation
+- customer-segmentation
+spec:
+  variable: payer_state
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        pernambuco: 0.044193
+        santa_catarina: 0.027096
+        ceara: 0.042477
+        rio_grande_do_sul: 0.042416
+        sao_paulo: 0.235306
+        parana: 0.061276
+        piaui: 0.015499
+        sergipe: 0.010435
+        acre: 0.004351
+        goias: 0.03495
+        tocantins: 0.007931
+        rio_de_janeiro: 0.084508
+        para: 0.044099
+        minas_gerais: 0.082153
+        bahia: 0.067915
+        rio_grande_do_norte: 0.017635
+        amazonas: 0.024602
+        mato_grosso_do_sul: 0.013568
+        mato_grosso: 0.017186
+        paraiba: 0.01806
+        espirito_santo: 0.019248
+        maranhao: 0.034795
+        alagoas: 0.013756
+        rondonia: 0.008191
+        roraima: 0.00462
+        amapa: 0.005114
+        nao_informado: 0.001099
+        distrito_federal: 0.017522
+      counts:
+        pernambuco: 256247366
+        santa_catarina: 157112340
+        ceara: 246295135
+        rio_grande_do_sul: 245945038
+        sao_paulo: 1364390663
+        parana: 355298197
+        piaui: 89867864
+        sergipe: 60503699
+        acre: 25227474
+        goias: 202655164
+        tocantins: 45985941
+        rio_de_janeiro: 490009741
+        para: 255704212
+        minas_gerais: 476352248
+        bahia: 393797047
+        rio_grande_do_norte: 102254325
+        amazonas: 142648955
+        mato_grosso_do_sul: 78672556
+        mato_grosso: 99653111
+        paraiba: 104717297
+        espirito_santo: 111608908
+        maranhao: 201754865
+        alagoas: 79760956
+        rondonia: 47496043
+        roraima: 26788520
+        amapa: 29650289
+        nao_informado: 6374904
+        distrito_federal: 101597427
+      total: 5798370285
+      source_labels:
+        pernambuco: PERNAMBUCO
+        santa_catarina: SANTA CATARINA
+        ceara: CEARÁ
+        rio_grande_do_sul: RIO GRANDE DO SUL
+        sao_paulo: SÃO PAULO
+        parana: PARANÁ
+        piaui: PIAUÍ
+        sergipe: SERGIPE
+        acre: ACRE
+        goias: GOIÁS
+        tocantins: TOCANTINS
+        rio_de_janeiro: RIO DE JANEIRO
+        para: PARÁ
+        minas_gerais: MINAS GERAIS
+        bahia: BAHIA
+        rio_grande_do_norte: RIO GRANDE DO NORTE
+        amazonas: AMAZONAS
+        mato_grosso_do_sul: MATO GROSSO DO SUL
+        mato_grosso: MATO GROSSO
+        paraiba: PARAÍBA
+        espirito_santo: ESPÍRITO SANTO
+        maranhao: MARANHÃO
+        alagoas: ALAGOAS
+        rondonia: RONDÔNIA
+        roraima: RORAIMA
+        amapa: AMAPÁ
+        nao_informado: NAO INFORMADO
+        distrito_federal: DISTRITO FEDERAL
+      regions:
+        pernambuco: NORDESTE
+        santa_catarina: SUL
+        ceara: NORDESTE
+        rio_grande_do_sul: SUL
+        sao_paulo: SUDESTE
+        parana: SUL
+        piaui: NORDESTE
+        sergipe: NORDESTE
+        acre: NORTE
+        goias: CENTRO-OESTE
+        tocantins: NORTE
+        rio_de_janeiro: SUDESTE
+        para: NORTE
+        minas_gerais: SUDESTE
+        bahia: NORDESTE
+        rio_grande_do_norte: NORDESTE
+        amazonas: NORTE
+        mato_grosso_do_sul: CENTRO-OESTE
+        mato_grosso: CENTRO-OESTE
+        paraiba: NORDESTE
+        espirito_santo: SUDESTE
+        maranhao: NORDESTE
+        alagoas: NORDESTE
+        rondonia: NORTE
+        roraima: NORTE
+        amapa: NORTE
+        nao_informado: Nao informado
+        distrito_federal: CENTRO-OESTE
+evidence:
+- publisher: Banco Central do Brasil
+  title: Estatísticas do Pix, TransacoesPixPorMunicipio (Pix transactions by municipality), 2025-06
+  url: https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/odata/TransacoesPixPorMunicipio(DataBase=@DataBase)?@DataBase='202506'&$filter=AnoMes%20eq%20202506&$select=AnoMes,Municipio_Ibge,Municipio,Estado,Sigla_Regiao,Regiao,VL_PagadorPF,QT_PagadorPF,VL_PagadorPJ,QT_PagadorPJ&$format=json
+  accessed_at: '2026-10-31'
+  locator: value[0] (Municipio TABIRA, PERNAMBUCO).QT_PagadorPF
+  value: 534213
+  unit: count
+  snippet: '"Municipio":"TABIRA"'
+  source_license: ODbL-1.0
+  content_sha256: 6a39b2cd415403ee0eb908ec3e00d16cb25cc6bd5999e2b8c4accb6e0dea2afc
+  role: primary
+- publisher: Banco Central do Brasil
+  title: Estatísticas do Pix, TransacoesPixPorMunicipio (Pix transactions by municipality), 2025-06
+  url: https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/odata/TransacoesPixPorMunicipio(DataBase=@DataBase)?@DataBase='202506'&$filter=AnoMes%20eq%20202506&$select=AnoMes,Municipio_Ibge,Municipio,Estado,Sigla_Regiao,Regiao,VL_PagadorPF,QT_PagadorPF,VL_PagadorPJ,QT_PagadorPJ&$format=json
+  accessed_at: '2026-10-31'
+  locator: value[0] (Municipio TABIRA, PERNAMBUCO).QT_PagadorPJ
+  value: 21066
+  unit: count
+  snippet: '"Estado":"PERNAMBUCO"'
+  source_license: ODbL-1.0
+  content_sha256: 6a39b2cd415403ee0eb908ec3e00d16cb25cc6bd5999e2b8c4accb6e0dea2afc
+  role: primary
+- publisher: Banco Central do Brasil
+  title: Estatísticas do Pix, TransacoesPixPorMunicipio (Pix transactions by municipality), 2025-06
+  url: https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/odata/TransacoesPixPorMunicipio(DataBase=@DataBase)?@DataBase='202506'&$filter=AnoMes%20eq%20202506&$select=AnoMes,Municipio_Ibge,Municipio,Estado,Sigla_Regiao,Regiao,VL_PagadorPF,QT_PagadorPF,VL_PagadorPJ,QT_PagadorPJ&$format=json
+  accessed_at: '2026-10-31'
+  locator: value[*].AnoMes
+  value: 202506
+  unit: integer
+  snippet: '"AnoMes":202506'
+  source_license: ODbL-1.0
+  content_sha256: 6a39b2cd415403ee0eb908ec3e00d16cb25cc6bd5999e2b8c4accb6e0dea2afc
+  role: primary
+- publisher: Banco Central do Brasil
+  title: Pix_DadosAbertos service documentation (field descriptions)
+  url: https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/aplicacao
+  accessed_at: '2026-10-31'
+  locator: TransacoesPixPorMunicipio, QT_PagadorPF description
+  value: Quantidade de transações cujo Pagador é uma pessoa física (PF)
+  unit: text
+  snippet: Quantidade de transações cujo Pagador é uma pessoa física
+  source_license: ODbL-1.0
+  content_sha256: 0b3c1865f4ec1b697e8a82dfa669ca2e0b9c84500976b25d0b927d072ff74ecb
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: sum over municipalities of QT_PagadorPF + QT_PagadorPJ per state / total
+  method: derived
+  rationale: The service publishes transaction counts per municipality split by payer type; counts are summed per
+    state (payer side, natural and legal persons together). Rows the publisher could not assign to a municipality
+    are kept as the category nao_informado.
+tests:
+- statistic: share[sao_paulo]
+  expected: 0.235306
+  tolerance: 0.003
+- statistic: share[rio_de_janeiro]
+  expected: 0.084508
+  tolerance: 0.003
+- statistic: share[nao_informado]
+  expected: 0.001099
+  tolerance: 0.001
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 1.0e-05
+notes: Share of Pix transactions by the payer's state in June 2025, derived from the Banco Central do Brasil Pix
+  statistics service table of transactions by municipality (5571 rows, one month selected with an OData filter and
+  the payer-side columns projected). Keys are ASCII slugs of the state names; the published spelling and region
+  sit under source_labels and regions. The BCB open data catalogue (dadosabertos.bcb.gov.br) lists this series under
+  the Open Database License; the catalogue API answers vary between requests, so that record is referenced here
+  rather than hashed as evidence.

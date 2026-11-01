@@ -1,0 +1,172 @@
+status: verified
+tier: A
+region: GB
+id: gb-national-insurance-category-letters
+title: United Kingdom National Insurance category letters and the employee groups they denote (standard, Freeport
+  and Investment Zone)
+kind: rule
+domain: tax
+valid_from: '2026-04-06'
+valid_to: '2027-04-05'
+tags:
+- national-insurance
+- payroll
+- category-letter
+- code-list
+use_cases:
+- payroll-demo
+- hr-analytics
+- person-generation
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      standard:
+        A: All employees apart from those in groups B, C, H, J, M, V and Z in this table
+        B: Married women and widows who have a certificate of election form showing they’re entitled to pay reduced
+          National Insurance
+        C: Employees over the State Pension age
+        H: Apprentices under 25
+        J: Employees who can defer National Insurance because they’re already paying it in another job
+        M: Employees under 21
+        V: Employees who are working in their first job since leaving the armed forces (veterans)
+        Z: Employees under 21 who can defer National Insurance because they’re already paying it in another job
+        X: Employees who do not have to pay National Insurance, for example because they’re under 16
+      freeport:
+        F: All employees who work in a special tax site within a Freeport, apart from those in groups I, L, and
+          S in this table
+        I: Married women and widows working in a special tax site within a Freeport who have a certificate of election
+          form showing they’re entitled to pay reduced National Insurance
+        L: Employees who work in a special tax site within a Freeport and can defer National Insurance because they’re
+          already paying it in another job
+        S: Employees who work in a special tax site within a Freeport and are over the State Pension age
+      investment_zone:
+        N: All employees who work in a special tax site within an Investment Zone, apart from those in groups E,
+          D and K in this table
+        E: Married women and widows working in a special tax site within an Investment Zone who have a certificate
+          of election form showing they’re entitled to pay reduced National Insurance
+        D: Employees who work in a special tax site within an Investment Zone and can defer National Insurance because
+          they’re already paying it in another job
+        K: Employees who work in a special tax site within an Investment Zone and are over State Pension age
+    default_letter: A
+  vectors:
+  - input:
+      set: standard
+      value: A
+    expected: true
+    origin: source
+  - input:
+      set: standard
+      value: X
+    expected: true
+    origin: source
+  - input:
+      set: standard
+      value: M
+    expected: true
+    origin: source
+  - input:
+      set: freeport
+      value: F
+    expected: true
+    origin: source
+  - input:
+      set: investment_zone
+      value: N
+    expected: true
+    origin: source
+  - input:
+      set: standard
+      value: F
+    expected: false
+    origin: derived
+    note: F is a Freeport letter
+  - input:
+      set: freeport
+      value: f
+    expected: false
+    origin: derived
+    note: letters are upper case
+  - input:
+      set: standard
+      value: G
+    expected: false
+    origin: derived
+evidence:
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /national-insurance-rates-letters (JSON)
+  url: https://www.gov.uk/api/content/national-insurance-rates-letters
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, first 'Category letter / Employee group' table, row A
+  value: All employees apart from those in groups B, C, H, J, M, V and Z in this table
+  unit: text
+  snippet: Most employees have category letter A.
+  source_license: OGL-UK-3.0
+  content_sha256: 03eecf5a1c503f86c0a4a3c618034c75f7f3f63b3677151496db783e80c3196b
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /national-insurance-rates-letters (JSON)
+  url: https://www.gov.uk/api/content/national-insurance-rates-letters
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, Freeport table, row F
+  value: All employees who work in a special tax site within a Freeport, apart from those in groups I, L, and S
+    in this table
+  unit: text
+  snippet: Category letters for eligible employees who work in a special tax site within a Freeport
+  source_license: OGL-UK-3.0
+  content_sha256: 03eecf5a1c503f86c0a4a3c618034c75f7f3f63b3677151496db783e80c3196b
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /national-insurance-rates-letters (JSON)
+  url: https://www.gov.uk/api/content/national-insurance-rates-letters
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, Investment Zone table, row N
+  value: All employees who work in a special tax site within an Investment Zone, apart from those in groups E, D
+    and K in this table
+  unit: text
+  snippet: Category letter X
+  source_license: OGL-UK-3.0
+  content_sha256: 03eecf5a1c503f86c0a4a3c618034c75f7f3f63b3677151496db783e80c3196b
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /national-insurance-rates-letters (JSON)
+  url: https://www.gov.uk/api/content/national-insurance-rates-letters
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, 'Category letter X'
+  value: Employers use category letter X for employees who do not have to pay National Insurance
+  unit: text
+  snippet: for example because they’re under 16
+  source_license: OGL-UK-3.0
+  content_sha256: 03eecf5a1c503f86c0a4a3c618034c75f7f3f63b3677151496db783e80c3196b
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /national-insurance-rates-letters (JSON)
+  url: https://www.gov.uk/api/content/national-insurance-rates-letters
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, rates table heading
+  value: This table shows how much employers deduct from employees’ pay from 6 April 2026 to 5 April 2027.
+  unit: text
+  snippet: Employee National Insurance rates
+  source_license: OGL-UK-3.0
+  content_sha256: 03eecf5a1c503f86c0a4a3c618034c75f7f3f63b3677151496db783e80c3196b
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[standard]
+  expected: 9
+  tolerance: 0
+- statistic: count[freeport]
+  expected: 4
+  tolerance: 0
+- statistic: count[investment_zone]
+  expected: 4
+  tolerance: 0
+notes: 'The National Insurance category letters employers put on payroll, grouped as GOV.UK groups them: the standard
+  letters (A, B, C, H, J, M, V, Z and X for employees who pay nothing), the Freeport special tax site letters (F,
+  I, L, S) and the Investment Zone special tax site letters (N, E, D, K), each with GOV.UK''s description of the
+  employee group. The validity window is the 2026 to 2027 tax year whose rate tables list these letters; the letters
+  themselves are not dated on the page. Source is the GOV.UK content API''s JSON for the page, which is stable between
+  editorial updates; GOV.UK publishes its content under the Open Government Licence v3.0.'

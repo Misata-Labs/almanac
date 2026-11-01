@@ -1,0 +1,200 @@
+status: verified
+tier: A
+region: GB
+id: gb-stamp-duty-land-tax-residential-rates
+title: England and Northern Ireland Stamp Duty Land Tax residential property rates (single main residence) from
+  1 April 2025
+kind: rule
+domain: tax
+valid_from: '2025-04-01'
+valid_to: null
+tags:
+- stamp-duty
+- sdlt
+- property
+- tax-rates
+use_cases:
+- property-demo
+- mortgage-origination
+- tax-filing-demo
+spec:
+  implementation: almanac.rules.income_tax_bands
+  parameters:
+    currency: GBP
+    applies_to: England and Northern Ireland
+    personal_allowance: 0
+    bands:
+    - name: up_to_125000
+      up_to: 125000
+      rate_percent: 0
+      portion: Up to £125,000
+    - name: 125001_to_250000
+      up_to: 250000
+      rate_percent: 2
+      portion: The next £125,000 (the portion from £125,001 to £250,000)
+    - name: 250001_to_925000
+      up_to: 925000
+      rate_percent: 5
+      portion: The next £675,000 (the portion from £250,001 to £925,000)
+    - name: 925001_to_1500000
+      up_to: 1500000
+      rate_percent: 10
+      portion: The next £575,000 (the portion from £925,001 to £1.5 million)
+    - name: above_1500000
+      up_to: null
+      rate_percent: 12
+      portion: The remaining amount (the portion above £1.5 million)
+    first_time_buyer_relief:
+      no_sdlt_up_to: 300000
+      rate_percent_to_500000: 5
+      max_purchase_price: 500000
+      example:
+        price: 500000
+        sdlt: 10000
+    additional_property_surcharge_percent: 5
+    non_uk_resident_surcharge_percent: 2
+  vectors:
+  - input:
+      income: 295000
+    expected: '4750.00'
+    origin: source
+    note: 'GOV.UK example: a house bought for £295,000'
+  - input:
+      income: 260000
+    expected: '3000.00'
+    origin: source
+    note: 'GOV.UK shared ownership example: £260,000 paid in total'
+  - input:
+      income: 280000
+    expected: '4000.00'
+    origin: source
+    note: 'GOV.UK example: market value £280,000 with SDLT paid on the full value'
+  - input:
+      income: 125000
+    expected: '0.00'
+    origin: derived
+    note: the residential threshold
+  - input:
+      income: 1500000
+    expected: '93750.00'
+    origin: derived
+    note: top of the 10% band
+evidence:
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /stamp-duty-land-tax (JSON)
+  url: https://www.gov.uk/api/content/stamp-duty-land-tax
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, residential rates table, first row
+  value: <td>Up to £125,000</td>
+  unit: text
+  snippet: at these rates if, after buying the property, it is the only residential property you own.
+  source_license: OGL-UK-3.0
+  content_sha256: 40def38bcf5f89c0c2d9708c1139c049bfe28eb35cc43d40566888da9840b13f
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /stamp-duty-land-tax (JSON)
+  url: https://www.gov.uk/api/content/stamp-duty-land-tax
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, residential rates table, last row
+  value: <td>The remaining amount (the portion above £1.5 million)</td>
+  unit: text
+  snippet: <td>12%</td>
+  source_license: OGL-UK-3.0
+  content_sha256: 40def38bcf5f89c0c2d9708c1139c049bfe28eb35cc43d40566888da9840b13f
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /stamp-duty-land-tax (JSON)
+  url: https://www.gov.uk/api/content/stamp-duty-land-tax
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, worked example
+  value: = £4,750</li>
+  unit: text
+  snippet: In April 2025 you buy a house for £295,000
+  source_license: OGL-UK-3.0
+  content_sha256: 40def38bcf5f89c0c2d9708c1139c049bfe28eb35cc43d40566888da9840b13f
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /stamp-duty-land-tax (JSON)
+  url: https://www.gov.uk/api/content/stamp-duty-land-tax
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, first-time buyers
+  value: on the portion from £300,001 to £500,000</li>
+  unit: text
+  snippet: up to £300,000</li>
+  source_license: OGL-UK-3.0
+  content_sha256: 40def38bcf5f89c0c2d9708c1139c049bfe28eb35cc43d40566888da9840b13f
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /stamp-duty-land-tax (JSON)
+  url: https://www.gov.uk/api/content/stamp-duty-land-tax
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, additional properties
+  value: You usually pay 5% on top of these rates if you own another residential property.
+  unit: text
+  snippet: You’ll usually pay a 2% surcharge if you’re buying a residential property in England or Northern Ireland.
+  source_license: OGL-UK-3.0
+  content_sha256: 40def38bcf5f89c0c2d9708c1139c049bfe28eb35cc43d40566888da9840b13f
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /stamp-duty-land-tax (JSON)
+  url: https://www.gov.uk/api/content/stamp-duty-land-tax
+  accessed_at: '2026-10-31'
+  locator: details.parts[4].body, shared ownership example
+  value: = £4,000</li>
+  unit: text
+  snippet: You pay £140,000 to buy a 50% share of a property with a market value of £280,000.
+  source_license: OGL-UK-3.0
+  content_sha256: 40def38bcf5f89c0c2d9708c1139c049bfe28eb35cc43d40566888da9840b13f
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/stamp-duty-land-tax-relief-for-land-or-property-transactions (JSON)
+  url: https://www.gov.uk/api/content/guidance/stamp-duty-land-tax-relief-for-land-or-property-transactions
+  accessed_at: '2026-10-31'
+  locator: details.body, first time buyers
+  value: If you bought your first home before 1 April 2025
+  unit: text
+  snippet: the purchase price is no more than £500,000
+  source_license: OGL-UK-3.0
+  content_sha256: b9efbc6133ed84f53af5186c24ea638f1e0a485b3b71012e61d3636942c705a7
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/stamp-duty-land-tax-buying-an-additional-residential-property (JSON)
+  url: https://www.gov.uk/api/content/guidance/stamp-duty-land-tax-buying-an-additional-residential-property
+  accessed_at: '2026-10-31'
+  locator: details.body, 'The higher rates from 1 April 2025'
+  value: The higher rates from 1 April 2025
+  unit: text
+  snippet: with effect from 1 April 2021 the rates increased by 2%.
+  source_license: OGL-UK-3.0
+  content_sha256: edb79b53d00d8fb6605b331e92aebb5cb245ef69666d92fc10b81113065d6375
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2025-04-01'
+  method: derived
+  rationale: The Stamp Duty Land Tax guide does not date its table; HMRC dates the higher rates (these rates plus
+    5%) from 1 April 2025 and states that different first-time buyer relief applied before 1 April 2025, so the
+    standard table is taken to apply from that date.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: rate[up_to_125000]
+  expected: 0
+  tolerance: 0
+- statistic: rate[250001_to_925000]
+  expected: 5
+  tolerance: 0
+- statistic: rate[above_1500000]
+  expected: 12
+  tolerance: 0
+notes: 'Stamp Duty Land Tax on a residential property that will be the buyer''s only home, in England and Northern
+  Ireland: 0% up to £125,000, 2% to £250,000, 5% to £925,000, 10% to £1.5 million and 12% above, charged on each
+  portion of the price. The income_tax_bands rule computes the duty with a zero allowance; GOV.UK''s worked examples
+  are the test vectors. First-time buyer relief (0% to £300,000, 5% to £500,000, unavailable above £500,000), the
+  5% additional-property surcharge and the 2% non-UK-resident surcharge are kept as parameters and are not applied
+  by the rule. Scotland and Wales levy their own taxes. Source is the GOV.UK content API''s JSON for the page, which
+  is stable between editorial updates; GOV.UK publishes its content under the Open Government Licence v3.0.'

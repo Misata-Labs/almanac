@@ -1,0 +1,199 @@
+status: verified
+tier: A
+region: GB
+id: gb-scottish-income-tax-bands-2026-27
+title: Scottish Income Tax rates and bands for the 2026 to 2027 tax year (starter to top rate) with the Personal
+  Allowance taper
+kind: rule
+domain: tax
+valid_from: '2026-04-06'
+valid_to: '2027-04-05'
+tags:
+- income-tax
+- scotland
+- payroll
+- paye
+- personal-allowance
+use_cases:
+- payroll-demo
+- hr-analytics
+- personal-finance
+- financial-planning
+spec:
+  implementation: almanac.rules.income_tax_bands
+  parameters:
+    tax_year: 2026-27
+    currency: GBP
+    personal_allowance: 12570
+    taper:
+      above: 100000
+      ratio: 2
+    tax_code_prefix: S
+    bands:
+    - name: starter
+      up_to: 3967
+      rate_percent: 19
+      income_range_with_standard_allowance: £12,571 to £16,537
+    - name: basic
+      up_to: 16956
+      rate_percent: 20
+      income_range_with_standard_allowance: £16,538 to £29,526
+    - name: intermediate
+      up_to: 31092
+      rate_percent: 21
+      income_range_with_standard_allowance: £29,527 to £43,662
+    - name: higher
+      up_to: 62430
+      rate_percent: 42
+      income_range_with_standard_allowance: £43,663 to £75,000
+    - name: advanced
+      up_to: 125140
+      rate_percent: 45
+      income_range_with_standard_allowance: £75,001 to £125,140
+    - name: top
+      up_to: null
+      rate_percent: 48
+      income_range_with_standard_allowance: over £125,140
+  vectors:
+  - input:
+      income: 12570
+    expected: '0.00'
+    origin: derived
+    note: income equal to the Personal Allowance
+  - input:
+      income: 16537
+    expected: '753.73'
+    origin: derived
+    note: top of the starter rate band
+  - input:
+      income: 30000
+    expected: '3451.07'
+    origin: derived
+  - input:
+      income: 50000
+    expected: '8982.05'
+    origin: derived
+  - input:
+      allowance_for: 125140
+    expected: '0'
+    origin: source
+    note: no Personal Allowance above £125,140
+  - input:
+      allowance_for: 110000
+    expected: '7570'
+    origin: derived
+    note: £1 off for every £2 above £100,000
+evidence:
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, Scotland PAYE tax rate table, row Starter tax rate
+  value: <td>Up to £3,967</td>
+  unit: text
+  snippet: Starter tax rate
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, Scotland PAYE tax rate table, row Advanced tax rate
+  value: <td>From £62,431 to £125,140</td>
+  unit: text
+  snippet: Advanced tax rate
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)
+  url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+  accessed_at: '2026-10-31'
+  locator: details.body, Scotland PAYE tax rate table, row Top tax rate
+  value: <td>Above £125,140</td>
+  unit: text
+  snippet: Top tax rate
+  source_license: OGL-UK-3.0
+  content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /scottish-income-tax (JSON)
+  url: https://www.gov.uk/api/content/scottish-income-tax
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, 2026 to 2027 table, row Starter rate
+  value: <td>£12,571 to £16,537</td>
+  unit: text
+  snippet: The table shows the 2026 to 2027 Scottish Income Tax rates
+  source_license: OGL-UK-3.0
+  content_sha256: 0a034b863fc8943dc13d24b1ccdd5185107d8cbaff008245f427cba6ea05ab12
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /scottish-income-tax (JSON)
+  url: https://www.gov.uk/api/content/scottish-income-tax
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, 2026 to 2027 table, row Higher rate
+  value: <td>£43,663 to £75,000</td>
+  unit: text
+  snippet: <td>42%</td>
+  source_license: OGL-UK-3.0
+  content_sha256: 0a034b863fc8943dc13d24b1ccdd5185107d8cbaff008245f427cba6ea05ab12
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /scottish-income-tax (JSON)
+  url: https://www.gov.uk/api/content/scottish-income-tax
+  accessed_at: '2026-10-31'
+  locator: details.parts[1].body, tax code
+  value: Your tax code will be S1257L if you pay Scottish Income Tax
+  unit: text
+  snippet: earn over £125,140
+  source_license: OGL-UK-3.0
+  content_sha256: 0a034b863fc8943dc13d24b1ccdd5185107d8cbaff008245f427cba6ea05ab12
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /income-tax-rates (JSON)
+  url: https://www.gov.uk/api/content/income-tax-rates
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, 'If you earn more than £100,000'
+  value: allowance is zero if your income is £125,140 or above
+  unit: text
+  snippet: goes down by £1 for every £2
+  source_license: OGL-UK-3.0
+  content_sha256: e6fc3c984516087c06d91b775e3dc15da24491b0e636858fd5f11cef75668c91
+  role: primary
+assumed:
+- parameter: taper
+  value: '{above: 100000, ratio: 2}'
+  method: derived
+  rationale: The Scottish page states only that no Personal Allowance is due above £125,140; the taper of £1 for
+    every £2 above £100,000 is the UK-wide rule GOV.UK states on the Income Tax rates page, cited here.
+- parameter: bands[advanced].up_to
+  value: 125140
+  method: derived
+  rationale: HMRC's PAYE table ends the advanced rate at £125,140 of earnings above the threshold, the point at
+    which the tapered Personal Allowance reaches zero and taxable income equals total income; the GOV.UK range '£75,001
+    to £125,140' assumes a standard allowance that no longer exists at that level, so the two agree only at the
+    lower end.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 6
+  tolerance: 0
+- statistic: rate[starter]
+  expected: 19
+  tolerance: 0
+- statistic: rate[intermediate]
+  expected: 21
+  tolerance: 0
+- statistic: rate[top]
+  expected: 48
+  tolerance: 0
+notes: 'Scottish Income Tax for the 2026 to 2027 tax year: six bands from the 19% starter rate to the 48% top rate,
+  with the band limits above the standard Personal Allowance taken from HMRC''s ''Rates and thresholds for employers''
+  PAYE table for Scotland and the income ranges as GOV.UK''s Scottish Income Tax page prints them; the builder checks
+  each limit up to the higher rate equals the printed range minus £12,570 (the advanced rate ends at £125,140 of
+  taxable income, where the allowance is fully tapered). Dividends and savings interest are taxed at UK rates and
+  are out of scope. Source is the GOV.UK content API''s JSON for the page, which is stable between editorial updates;
+  GOV.UK publishes its content under the Open Government Licence v3.0.'

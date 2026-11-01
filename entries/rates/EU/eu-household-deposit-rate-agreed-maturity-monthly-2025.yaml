@@ -1,0 +1,99 @@
+id: eu-household-deposit-rate-agreed-maturity-monthly-2025
+title: Euro area bank interest rate on household deposits with agreed maturity (new business), monthly 2025
+kind: temporal
+domain: rates
+region: EU
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- deposit-rates
+- savings
+- ecb
+- euro-area
+use_cases:
+- banking-demo
+- personal-finance
+- financial-planning
+spec:
+  variable: household_deposit_rate_percent
+  unit: percent
+  frequency: monthly
+  columns: []
+  series:
+  - period: 2025-01
+    value: 2.33
+  - period: 2025-02
+    value: 2.2
+  - period: 2025-03
+    value: 2.1
+  - period: 2025-04
+    value: 1.97
+  - period: 2025-05
+    value: 1.87
+  - period: 2025-06
+    value: 1.8
+  - period: 2025-07
+    value: 1.76
+  - period: 2025-08
+    value: 1.75
+  - period: 2025-09
+    value: 1.78
+  - period: 2025-10
+    value: 1.8
+  - period: 2025-11
+    value: 1.8
+  - period: 2025-12
+    value: 1.81
+evidence:
+- publisher: European Central Bank
+  title: ECB Data Portal, series MIR.M.U2.B.L22.A.R.A.2250.EUR.N (SDMX CSV)
+  url: https://data-api.ecb.europa.eu/service/data/MIR/M.U2.B.L22.A.R.A.2250.EUR.N?startPeriod=2025-01&endPeriod=2025-12&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: TIME_PERIOD=2025-01, OBS_VALUE
+  value: '2.33'
+  unit: percent
+  snippet: MIR.M.U2.B.L22.A.R.A.2250.EUR.N,
+  source_license: ECB-free-use-with-attribution
+  content_sha256: 28a76b3b84d480086bf2e03f989a00f8efc0cc648a729f730c44d102338ba8fb
+  role: primary
+- publisher: European Central Bank
+  title: ECB Data Portal, series MIR.M.U2.B.L22.A.R.A.2250.EUR.N (SDMX CSV)
+  url: https://data-api.ecb.europa.eu/service/data/MIR/M.U2.B.L22.A.R.A.2250.EUR.N?startPeriod=2025-01&endPeriod=2025-12&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: TIME_PERIOD=2025-12, OBS_VALUE
+  value: '1.81'
+  unit: percent
+  snippet: ',2025-12,1.81,'
+  source_license: ECB-free-use-with-attribution
+  content_sha256: 28a76b3b84d480086bf2e03f989a00f8efc0cc648a729f730c44d102338ba8fb
+  role: primary
+- publisher: European Central Bank
+  title: ECB Data Portal, series MIR.M.U2.B.L22.A.R.A.2250.EUR.N (SDMX CSV)
+  url: https://data-api.ecb.europa.eu/service/data/MIR/M.U2.B.L22.A.R.A.2250.EUR.N?startPeriod=2025-01&endPeriod=2025-12&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: TITLE_COMPL
+  value: Euro area (changing composition), Annualised agreed rate (AAR) / Narrowly defined effectiv
+  unit: text
+  snippet: Bank interest rates on deposits from households with agreed maturity (new business)
+  source_license: ECB-free-use-with-attribution
+  content_sha256: 28a76b3b84d480086bf2e03f989a00f8efc0cc648a729f730c44d102338ba8fb
+  role: primary
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 2.33
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 1.81
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: Annualised agreed rate on new euro-denominated deposits with agreed maturity from households and non-profit
+  institutions serving households in the euro area, all original maturities, monthly for 2025, from the ECB MFI
+  interest rate statistics. The ECB's website disclaimer states that users may make free use of information obtained
+  from it provided it is reproduced accurately and the ECB is cited as the source; the page renders dynamically,
+  so the clause is carried by the licence identifier ECB-free-use-with-attribution documented in CONTRIBUTING.md.

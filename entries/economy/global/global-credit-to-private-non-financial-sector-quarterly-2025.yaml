@@ -1,0 +1,136 @@
+id: global-credit-to-private-non-financial-sector-quarterly-2025
+title: Credit to the private non-financial sector as a percentage of GDP, quarterly 2025 (US, euro area, GB, JP,
+  BR, IN, CH, CA, AU)
+kind: temporal
+domain: economy
+region: global
+status: license-review
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- credit
+- private-debt
+- credit-risk
+- bis
+- time-series
+use_cases:
+- credit-risk
+- banking-demo
+- market-sizing
+spec:
+  variable: us_percent_of_gdp
+  unit: percent
+  frequency: quarterly
+  columns:
+  - au_percent_of_gdp
+  - br_percent_of_gdp
+  - ca_percent_of_gdp
+  - ch_percent_of_gdp
+  - gb_percent_of_gdp
+  - in_percent_of_gdp
+  - jp_percent_of_gdp
+  - xm_percent_of_gdp
+  series:
+  - period: 2025-Q1
+    value: 141.6
+    au_percent_of_gdp: 174.4
+    br_percent_of_gdp: 91.3
+    ca_percent_of_gdp: 217.9
+    ch_percent_of_gdp: 253.3
+    gb_percent_of_gdp: 132.6
+    in_percent_of_gdp: 96.0
+    jp_percent_of_gdp: 171.0
+    xm_percent_of_gdp: 155.3
+  - period: 2025-Q2
+    value: 141.0
+    au_percent_of_gdp: 175.7
+    br_percent_of_gdp: 90.5
+    ca_percent_of_gdp: 217.8
+    ch_percent_of_gdp: 249.5
+    gb_percent_of_gdp: 130.8
+    in_percent_of_gdp: 97.3
+    jp_percent_of_gdp: 170.1
+    xm_percent_of_gdp: 154.5
+  - period: 2025-Q3
+    value: 140.6
+    au_percent_of_gdp: 175.5
+    br_percent_of_gdp: 90.6
+    ca_percent_of_gdp: 218.5
+    ch_percent_of_gdp: 251.0
+    gb_percent_of_gdp: 131.5
+    in_percent_of_gdp: 97.4
+    jp_percent_of_gdp: 171.3
+    xm_percent_of_gdp: 153.7
+  - period: 2025-Q4
+    value: 140.2
+    au_percent_of_gdp: 176.1
+    br_percent_of_gdp: 93.0
+    ca_percent_of_gdp: 218.9
+    ch_percent_of_gdp: 251.9
+    gb_percent_of_gdp: 131.3
+    in_percent_of_gdp: 102.2
+    jp_percent_of_gdp: 173.4
+    xm_percent_of_gdp: 153.3
+evidence:
+- publisher: Bank for International Settlements
+  title: BIS Data Portal, dataflow WS_TC (SDMX CSV)
+  url: https://stats.bis.org/api/v2/data/dataflow/BIS/WS_TC/2.0/Q.US+XM+GB+JP+BR+IN+CH+CA+AU.P.A.M.770.A?startPeriod=2025-01&endPeriod=2025-12&format=csv
+  accessed_at: '2026-10-31'
+  locator: BORROWERS_CTY=US, TIME_PERIOD=2025-Q1, OBS_VALUE
+  value: '141.6'
+  unit: percent
+  snippet: Q,US,P,A,M,770,A,E,1,0,367,United States - Credit to Private non-financial sector from All sectors at
+    Market value - Percentage of GDP - Adjusted for breaks,2025-Q1,141.6,
+  source_license: BIS terms and conditions (statistics subject to 'About BIS statistics' terms)
+  content_sha256: 356e61bc59a9749ef6bcfbcaa0702fdec19337a4bddfd34983bb6dd1f3661105
+  role: primary
+- publisher: Bank for International Settlements
+  title: BIS Data Portal, dataflow WS_TC (SDMX CSV)
+  url: https://stats.bis.org/api/v2/data/dataflow/BIS/WS_TC/2.0/Q.US+XM+GB+JP+BR+IN+CH+CA+AU.P.A.M.770.A?startPeriod=2025-01&endPeriod=2025-12&format=csv
+  accessed_at: '2026-10-31'
+  locator: TITLE_TS for the US series
+  value: United States - Credit to Private non-financial sector from All sectors at Market value - Percentage of
+    GDP - Adjusted for breaks
+  unit: text
+  snippet: United States - Credit to Private non-financial sector from All sectors at Market value - Percentage
+    of GDP - Adjusted for breaks
+  source_license: BIS terms and conditions (statistics subject to 'About BIS statistics' terms)
+  content_sha256: 356e61bc59a9749ef6bcfbcaa0702fdec19337a4bddfd34983bb6dd1f3661105
+  role: primary
+- publisher: Bank for International Settlements
+  title: BIS terms and conditions
+  url: https://www.bis.org/terms_conditions.htm
+  accessed_at: '2026-10-31'
+  locator: Copyright and permissions
+  value: Users may use the statistics published in the BIS Data Portal in accordance with the terms set out under
+    the heading
+  unit: text
+  snippet: Users may use the statistics published in the BIS Data Portal
+  source_license: BIS terms and conditions (statistics subject to 'About BIS statistics' terms)
+  content_sha256: 991b4821e5e5833da10e8634600a3ff080092d8fd84af2ad4f8d8ff151891107
+  role: supporting
+assumed: []
+tests:
+- statistic: value[2025-Q1]
+  expected: 141.6
+  tolerance: 1.0e-09
+- statistic: value[2025-Q4]
+  expected: 140.2
+  tolerance: 1.0e-09
+- statistic: column[au_percent_of_gdp,2025-Q4]
+  expected: 176.1
+  tolerance: 1.0e-09
+- statistic: column[xm_percent_of_gdp,2025-Q1]
+  expected: 155.3
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 4
+  tolerance: 0
+notes: Total credit to the private non-financial sector from all lenders at market value, as a percentage of GDP
+  and adjusted for breaks, quarterly for 2025, from the BIS total credit statistics (dataflow WS_TC version 2.0),
+  with the United States as the primary series and the euro area, United Kingdom, Japan, Brazil, India, Switzerland,
+  Canada and Australia as columns. The BIS general terms permit limited extracts with attribution but refer statistics
+  to a separate 'About BIS statistics' notice that was not fetched, so the entry is held at license-review until
+  those terms are confirmed.

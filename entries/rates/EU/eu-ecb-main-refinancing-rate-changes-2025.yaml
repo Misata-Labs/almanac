@@ -1,0 +1,97 @@
+id: eu-ecb-main-refinancing-rate-changes-2025
+title: 'ECB main refinancing operations rate (fixed rate tenders): changes decided in 2025'
+kind: rule
+domain: rates
+region: EU
+status: verified
+tier: A
+valid_from: '2025-02-05'
+valid_to: null
+tags:
+- ecb
+- euro-area
+- policy-rate
+- step-schedule
+use_cases:
+- banking-demo
+- treasury
+- loan-pricing
+spec:
+  implementation: almanac.rules.step_schedule
+  parameters:
+    series: FM.B.U2.EUR.4F.KR.MRR_FR.LEV
+    unit: percent
+    steps:
+    - from: '2025-02-05'
+      value: 2.9
+    - from: '2025-03-12'
+      value: 2.65
+    - from: '2025-04-23'
+      value: 2.4
+    - from: '2025-06-11'
+      value: 2.15
+  vectors:
+  - input:
+      'on': '2025-02-05'
+    expected: 2.9
+    origin: source
+  - input:
+      'on': '2025-06-11'
+    expected: 2.15
+    origin: source
+  - input:
+      'on': '2025-12-31'
+    expected: 2.15
+    origin: derived
+    note: last change still in force at year end
+evidence:
+- publisher: European Central Bank
+  title: ECB Data Portal, series FM.B.U2.EUR.4F.KR.MRR_FR.LEV (main refinancing operations, date of changes)
+  url: https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.MRR_FR.LEV?startPeriod=2025-01-01&endPeriod=2025-12-31&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: TIME_PERIOD=2025-02-05, OBS_VALUE
+  value: '2.9'
+  unit: percent
+  snippet: FM.B.U2.EUR.4F.KR.MRR_FR.LEV,
+  source_license: ECB-free-use-with-attribution
+  content_sha256: 64688374a5330ce82313c1562b67a466585a4adef81a436ad7b13f7901fff6ab
+  role: primary
+- publisher: European Central Bank
+  title: ECB Data Portal, series FM.B.U2.EUR.4F.KR.MRR_FR.LEV (main refinancing operations, date of changes)
+  url: https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.MRR_FR.LEV?startPeriod=2025-01-01&endPeriod=2025-12-31&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: TIME_PERIOD=2025-06-11, OBS_VALUE
+  value: '2.15'
+  unit: percent
+  snippet: ',2025-06-11,2.15,'
+  source_license: ECB-free-use-with-attribution
+  content_sha256: 64688374a5330ce82313c1562b67a466585a4adef81a436ad7b13f7901fff6ab
+  role: primary
+- publisher: European Central Bank
+  title: ECB Data Portal, series FM.B.U2.EUR.4F.KR.MRR_FR.LEV (main refinancing operations, date of changes)
+  url: https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.MRR_FR.LEV?startPeriod=2025-01-01&endPeriod=2025-12-31&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: TITLE
+  value: Main refinancing operations - fixed rate tenders (fixed rate) (date of changes) - Level
+  unit: text
+  snippet: Main refinancing operations - fixed rate tenders (fixed rate) (date of changes) - Level
+  source_license: ECB-free-use-with-attribution
+  content_sha256: 64688374a5330ce82313c1562b67a466585a4adef81a436ad7b13f7901fff6ab
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: value[2025-12-31]
+  expected: 2.15
+  tolerance: 1.0e-09
+notes: Each change to the fixed rate of the ECB's main refinancing operations decided in 2025, with the date from
+  which the new level applied, from the ECB Data Portal's key-interest-rate series (dates of changes). The schedule
+  starts at the first change of the year; the level in force before it is not part of this entry. The ECB's website
+  disclaimer states that users may make free use of information obtained from it provided it is reproduced accurately
+  and the ECB is cited as the source; the page renders dynamically, so the clause is carried by the licence identifier
+  ECB-free-use-with-attribution documented in CONTRIBUTING.md.

@@ -1,0 +1,129 @@
+status: verified
+tier: A
+region: GB
+id: gb-stamp-duty-land-tax-additional-property-rates
+title: England and Northern Ireland Stamp Duty Land Tax higher rates for additional residential properties from
+  1 April 2025
+kind: rule
+domain: tax
+valid_from: '2025-04-01'
+valid_to: null
+tags:
+- stamp-duty
+- sdlt
+- property
+- tax-rates
+- buy-to-let
+use_cases:
+- property-demo
+- mortgage-origination
+- tax-filing-demo
+spec:
+  implementation: almanac.rules.income_tax_bands
+  parameters:
+    currency: GBP
+    applies_to: England and Northern Ireland
+    personal_allowance: 0
+    bands:
+    - name: up_to_125000
+      up_to: 125000
+      rate_percent: 5
+      portion: Up to £125,000
+    - name: 125001_to_250000
+      up_to: 250000
+      rate_percent: 7
+      portion: The next £125,000 (the portion from £125,001 to £250,000)
+    - name: 250001_to_925000
+      up_to: 925000
+      rate_percent: 10
+      portion: The next £675,000 (the portion from £250,001 to £925,000)
+    - name: 925001_to_1500000
+      up_to: 1500000
+      rate_percent: 15
+      portion: The next £575,000 (the portion from £925,001 to £1.5 million)
+    - name: above_1500000
+      up_to: null
+      rate_percent: 17
+      portion: The remaining amount (the portion above £1.5 million)
+    exempt_below: 40000
+    surcharge_over_standard_rates_percent: 5
+  vectors:
+  - input:
+      income: 300000
+    expected: '20000.00'
+    origin: source
+    note: 'HMRC example: an additional property bought for £300,000 on 1 April 2025'
+  - input:
+      income: 125000
+    expected: '6250.00'
+    origin: derived
+    note: 5% on the whole first band
+  - input:
+      income: 1000000
+    expected: '93750.00'
+    origin: derived
+evidence:
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/stamp-duty-land-tax-buying-an-additional-residential-property (JSON)
+  url: https://www.gov.uk/api/content/guidance/stamp-duty-land-tax-buying-an-additional-residential-property
+  accessed_at: '2026-10-31'
+  locator: details.body, 'The higher rates from 1 April 2025' table, first row
+  value: 5%</td>
+  unit: text
+  snippet: The higher rates from 1 April 2025
+  source_license: OGL-UK-3.0
+  content_sha256: edb79b53d00d8fb6605b331e92aebb5cb245ef69666d92fc10b81113065d6375
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/stamp-duty-land-tax-buying-an-additional-residential-property (JSON)
+  url: https://www.gov.uk/api/content/guidance/stamp-duty-land-tax-buying-an-additional-residential-property
+  accessed_at: '2026-10-31'
+  locator: details.body, 'The higher rates from 1 April 2025' table, last row
+  value: 17%</td>
+  unit: text
+  snippet: The remaining amount (the portion above £1.5 million)
+  source_license: OGL-UK-3.0
+  content_sha256: edb79b53d00d8fb6605b331e92aebb5cb245ef69666d92fc10b81113065d6375
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/stamp-duty-land-tax-buying-an-additional-residential-property (JSON)
+  url: https://www.gov.uk/api/content/guidance/stamp-duty-land-tax-buying-an-additional-residential-property
+  accessed_at: '2026-10-31'
+  locator: details.body, worked example
+  value: = £20,000</p>
+  unit: text
+  snippet: 10% on the final £50,000 = £5,000
+  source_license: OGL-UK-3.0
+  content_sha256: edb79b53d00d8fb6605b331e92aebb5cb245ef69666d92fc10b81113065d6375
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /guidance/stamp-duty-land-tax-buying-an-additional-residential-property (JSON)
+  url: https://www.gov.uk/api/content/guidance/stamp-duty-land-tax-buying-an-additional-residential-property
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Property'
+  value: the property is worth less than £40,000
+  unit: text
+  snippet: The higher rates do not apply to certain people, property and transactions.
+  source_license: OGL-UK-3.0
+  content_sha256: edb79b53d00d8fb6605b331e92aebb5cb245ef69666d92fc10b81113065d6375
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: rate[up_to_125000]
+  expected: 5
+  tolerance: 0
+- statistic: rate[above_1500000]
+  expected: 17
+  tolerance: 0
+notes: 'The higher rates of Stamp Duty Land Tax that apply when buying a residential property in England or Northern
+  Ireland leaves the buyer owning more than one: 5% up to £125,000, 7% to £250,000, 10% to £925,000, 15% to £1.5
+  million and 17% above, each the standard rate plus 5 percentage points, in force from 1 April 2025 as HMRC dates
+  them. Properties worth less than £40,000 are outside the higher rates. HMRC''s worked example is the source vector.
+  Source is the GOV.UK content API''s JSON for the page, which is stable between editorial updates; GOV.UK publishes
+  its content under the Open Government Licence v3.0.'

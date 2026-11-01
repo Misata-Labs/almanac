@@ -1,0 +1,250 @@
+status: verified
+tier: A
+region: GB
+id: gb-inheritance-tax-nil-rate-band
+title: United Kingdom Inheritance Tax nil-rate band by date from 18 March 1986 to 5 April 2031, with the residence
+  nil-rate band and tax rates
+kind: rule
+domain: tax
+valid_from: '1986-03-18'
+valid_to: '2031-04-05'
+tags:
+- inheritance-tax
+- nil-rate-band
+- thresholds
+- estates
+use_cases:
+- financial-planning
+- personal-finance
+- tax-filing-demo
+- insurance
+spec:
+  implementation: almanac.rules.step_schedule
+  parameters:
+    currency: GBP
+    steps:
+    - from: '1986-03-18'
+      to: '1987-03-16'
+      value: 71000
+    - from: '1987-03-17'
+      to: '1988-03-14'
+      value: 90000
+    - from: '1988-03-15'
+      to: '1989-04-05'
+      value: 110000
+    - from: '1989-04-06'
+      to: '1990-04-05'
+      value: 118000
+    - from: '1990-04-06'
+      to: '1991-04-05'
+      value: 128000
+    - from: '1991-04-06'
+      to: '1992-03-09'
+      value: 140000
+    - from: '1992-03-10'
+      to: '1995-04-05'
+      value: 150000
+    - from: '1995-04-06'
+      to: '1996-04-05'
+      value: 154000
+    - from: '1996-04-06'
+      to: '1997-04-05'
+      value: 200000
+    - from: '1997-04-06'
+      to: '1998-04-05'
+      value: 215000
+    - from: '1998-04-06'
+      to: '1999-04-05'
+      value: 223000
+    - from: '1999-04-06'
+      to: '2000-04-05'
+      value: 231000
+    - from: '2000-04-06'
+      to: '2001-04-05'
+      value: 234000
+    - from: '2001-04-06'
+      to: '2002-04-05'
+      value: 242000
+    - from: '2002-04-06'
+      to: '2003-04-05'
+      value: 250000
+    - from: '2003-04-06'
+      to: '2004-04-05'
+      value: 255000
+    - from: '2004-04-06'
+      to: '2005-04-05'
+      value: 263000
+    - from: '2005-04-06'
+      to: '2006-04-05'
+      value: 275000
+    - from: '2006-04-06'
+      to: '2007-04-05'
+      value: 285000
+    - from: '2007-04-06'
+      to: '2008-04-05'
+      value: 300000
+    - from: '2008-04-06'
+      to: '2009-04-05'
+      value: 312000
+    - from: '2009-04-06'
+      to: '2031-04-05'
+      value: 325000
+    residence_nil_rate_band_steps:
+    - from: '2017-04-06'
+      to: '2018-04-05'
+      value: 100000
+    - from: '2018-04-06'
+      to: '2019-04-05'
+      value: 125000
+    - from: '2019-04-06'
+      to: '2020-04-05'
+      value: 150000
+    - from: '2020-04-06'
+      to: '2030-04-05'
+      value: 175000
+    standard_rate_percent: 40
+    reduced_rate_percent_with_10_percent_to_charity: 36
+    gift_taper_relief:
+    - years_between_gift_and_death: 3 to 4 years
+      rate_percent: 32
+    - years_between_gift_and_death: 4 to 5 years
+      rate_percent: 24
+    - years_between_gift_and_death: 5 to 6 years
+      rate_percent: 16
+    - years_between_gift_and_death: 6 to 7 years
+      rate_percent: 8
+    - years_between_gift_and_death: 7 or more
+      rate_percent: 0
+    annual_gift_exemption: 3000
+  vectors:
+  - input:
+      'on': '2026-06-01'
+    expected: 325000
+    origin: source
+  - input:
+      'on': '2008-06-01'
+    expected: 312000
+    origin: source
+  - input:
+      'on': '1990-01-01'
+    expected: 118000
+    origin: source
+  - input:
+      'on': '1986-03-18'
+    expected: 71000
+    origin: source
+    note: first day of the table
+  - input:
+      'on': '2009-04-05'
+    expected: 312000
+    origin: derived
+    note: last day before the £325,000 band
+evidence:
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /government/publications/rates-and-allowances-inheritance-tax-thresholds-and-interest-rates/inheritance-tax-thresholds-and-interest-rates
+    (JSON)
+  url: https://www.gov.uk/api/content/government/publications/rates-and-allowances-inheritance-tax-thresholds-and-interest-rates/inheritance-tax-thresholds-and-interest-rates
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Inheritance Tax thresholds' table, row 6 April 2009
+  value: <td>£325,000</td>
+  unit: text
+  snippet: Inheritance Tax thresholds — from 18 March 1986 to 5 April 2031
+  source_license: OGL-UK-3.0
+  content_sha256: 014865e8161dc95aa6d6c968cce8a3fa8cab60a9e5315e620d2abc4d8837e8a3
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /government/publications/rates-and-allowances-inheritance-tax-thresholds-and-interest-rates/inheritance-tax-thresholds-and-interest-rates
+    (JSON)
+  url: https://www.gov.uk/api/content/government/publications/rates-and-allowances-inheritance-tax-thresholds-and-interest-rates/inheritance-tax-thresholds-and-interest-rates
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Inheritance Tax thresholds' table, row 18 March 1986
+  value: <td>£71,000</td>
+  unit: text
+  snippet: <td>18 March 1986</td>
+  source_license: OGL-UK-3.0
+  content_sha256: 014865e8161dc95aa6d6c968cce8a3fa8cab60a9e5315e620d2abc4d8837e8a3
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /government/publications/rates-and-allowances-inheritance-tax-thresholds-and-interest-rates/inheritance-tax-thresholds-and-interest-rates
+    (JSON)
+  url: https://www.gov.uk/api/content/government/publications/rates-and-allowances-inheritance-tax-thresholds-and-interest-rates/inheritance-tax-thresholds-and-interest-rates
+  accessed_at: '2026-10-31'
+  locator: details.body, 'Inheritance Tax thresholds' table, row 6 April 2008
+  value: <td>£312,000</td>
+  unit: text
+  snippet: <td>6 April 2008</td>
+  source_license: OGL-UK-3.0
+  content_sha256: 014865e8161dc95aa6d6c968cce8a3fa8cab60a9e5315e620d2abc4d8837e8a3
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /government/publications/rates-and-allowances-inheritance-tax-thresholds-and-interest-rates/inheritance-tax-thresholds-and-interest-rates
+    (JSON)
+  url: https://www.gov.uk/api/content/government/publications/rates-and-allowances-inheritance-tax-thresholds-and-interest-rates/inheritance-tax-thresholds-and-interest-rates
+  accessed_at: '2026-10-31'
+  locator: details.body, residence nil rate band table, row 6 April 2020
+  value: <td>£175,000</td>
+  unit: text
+  snippet: Inheritance Tax additional threshold (residence nil rate band) — from 6 April 2017
+  source_license: OGL-UK-3.0
+  content_sha256: 014865e8161dc95aa6d6c968cce8a3fa8cab60a9e5315e620d2abc4d8837e8a3
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /inheritance-tax (JSON)
+  url: https://www.gov.uk/api/content/inheritance-tax
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, rates
+  value: The standard Inheritance Tax rate is 40%.
+  unit: text
+  snippet: reduced rate of 36%
+  source_license: OGL-UK-3.0
+  content_sha256: 9493ff5f465a1975316517c00d45f8d6a52cbd336e72cd4422917a550fcf4aaf
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /inheritance-tax (JSON)
+  url: https://www.gov.uk/api/content/inheritance-tax
+  accessed_at: '2026-10-31'
+  locator: details.parts[2].body, 'Taper relief' table, row 3 to 4 years
+  value: <td>32%</td>
+  unit: text
+  snippet: Years between gift and death
+  source_license: OGL-UK-3.0
+  content_sha256: 9493ff5f465a1975316517c00d45f8d6a52cbd336e72cd4422917a550fcf4aaf
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /inheritance-tax (JSON)
+  url: https://www.gov.uk/api/content/inheritance-tax
+  accessed_at: '2026-10-31'
+  locator: details.parts[2].body, annual exemption
+  value: You can give away a total of £3,000 worth of gifts each tax year
+  unit: text
+  snippet: This is known as your ‘annual exemption’.
+  source_license: OGL-UK-3.0
+  content_sha256: 9493ff5f465a1975316517c00d45f8d6a52cbd336e72cd4422917a550fcf4aaf
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 22
+  tolerance: 0
+- statistic: value[2026-01-01]
+  expected: 325000
+  tolerance: 0
+- statistic: value[1999-06-01]
+  expected: 231000
+  tolerance: 0
+- statistic: min
+  expected: 71000
+  tolerance: 0
+- statistic: max
+  expected: 325000
+  tolerance: 0
+notes: The Inheritance Tax nil-rate band (tax-free threshold) for every period from 18 March 1986, when the tax
+  replaced Capital Transfer Tax, to 5 April 2031, as HMRC's 'Inheritance Tax thresholds and interest rates' table
+  lists it; the step_schedule rule answers the threshold in force on a date. The residence nil-rate band steps from
+  6 April 2017, the 40% standard and 36% charity-reduced rates, the gift taper relief scale and the £3,000 annual
+  exemption are kept as parameters from GOV.UK's Inheritance Tax guide. Source is the GOV.UK content API's JSON
+  for the page, which is stable between editorial updates; GOV.UK publishes its content under the Open Government
+  Licence v3.0.

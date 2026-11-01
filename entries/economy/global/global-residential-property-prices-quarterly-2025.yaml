@@ -1,0 +1,121 @@
+id: global-residential-property-prices-quarterly-2025
+title: Residential property price indices, nominal, quarterly 2025 (US, euro area, GB, JP, BR, IN, CH, CA, AU)
+kind: temporal
+domain: economy
+region: global
+status: license-review
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- property-prices
+- housing
+- bis
+- time-series
+use_cases:
+- property-demo
+- mortgage-origination
+- insurance
+spec:
+  variable: us_index
+  unit: decimal
+  frequency: quarterly
+  columns:
+  - au_index
+  - br_index
+  - ca_index
+  - ch_index
+  - gb_index
+  - in_index
+  - jp_index
+  - xm_index
+  series:
+  - period: 2025-Q1
+    value: 233.4622
+    au_index: 196.5064
+    br_index: 210.8619
+    ca_index: 210.417
+    ch_index: 164.697
+    gb_index: 169.4098
+    in_index: 352.0003
+    jp_index: 145.2121
+    xm_index: 150.2533
+  - period: 2025-Q2
+    value: 233.5267
+    au_index: 199.929
+    br_index: 213.4057
+    ca_index: 210.205
+    ch_index: 167.7727
+    gb_index: 167.9135
+    in_index: 358.9226
+    jp_index: 143.612
+    xm_index: 152.7394
+  - period: 2025-Q3
+    value: 234.1899
+    au_index: 204.7158
+    br_index: 216.0123
+    ca_index: 205.7521
+    ch_index: 169.102
+    gb_index: 171.7373
+    in_index: 361.4927
+    jp_index: 145.4788
+    xm_index: 155.0873
+  - period: 2025-Q4
+    value: 235.1402
+    au_index: 211.7035
+    br_index: 218.7502
+    ca_index: 201.9353
+    ch_index: 169.9661
+    gb_index: 171.7373
+    in_index: 365.9931
+    jp_index: 144.6454
+    xm_index: 155.7779
+evidence:
+- publisher: Bank for International Settlements
+  title: BIS Data Portal, dataflow WS_SPP (SDMX CSV)
+  url: https://stats.bis.org/api/v2/data/dataflow/BIS/WS_SPP/1.0/Q.US+XM+GB+JP+BR+IN+CH+CA+AU.N.628?startPeriod=2025-01&endPeriod=2025-12&format=csv
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=US, TIME_PERIOD=2025-Q1, OBS_VALUE
+  value: '233.4622'
+  unit: decimal
+  snippet: Q,US,N,628,0,,,,2025-Q1,233.4622,
+  source_license: BIS terms and conditions (statistics subject to 'About BIS statistics' terms)
+  content_sha256: 893437c0ef9c8c003e266d92097a757cf757d4c21e9419fd0351b5896f80052e
+  role: primary
+- publisher: Bank for International Settlements
+  title: BIS terms and conditions
+  url: https://www.bis.org/terms_conditions.htm
+  accessed_at: '2026-10-31'
+  locator: Copyright and permissions
+  value: Users may use the statistics published in the BIS Data Portal in accordance with the terms set out under
+    the heading
+  unit: text
+  snippet: Users may use the statistics published in the BIS Data Portal
+  source_license: BIS terms and conditions (statistics subject to 'About BIS statistics' terms)
+  content_sha256: 991b4821e5e5833da10e8634600a3ff080092d8fd84af2ad4f8d8ff151891107
+  role: supporting
+assumed: []
+tests:
+- statistic: value[2025-Q1]
+  expected: 233.4622
+  tolerance: 1.0e-09
+- statistic: value[2025-Q4]
+  expected: 235.1402
+  tolerance: 1.0e-09
+- statistic: column[au_index,2025-Q4]
+  expected: 211.7035
+  tolerance: 1.0e-09
+- statistic: column[xm_index,2025-Q1]
+  expected: 150.2533
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 4
+  tolerance: 0
+notes: Quarterly nominal residential property price indices (2010 = 100) for 2025, from the BIS selected residential
+  property price series (dataflow WS_SPP, unit 628), with the United States as the primary series and the euro area,
+  United Kingdom, Japan, Brazil, India, Switzerland, Canada and Australia as columns. The portal publishes the latest
+  quarter for some economies before the underlying national release; the figures recorded are those served on the
+  access date. The BIS general terms permit limited extracts with attribution but refer statistics to a separate
+  'About BIS statistics' notice that was not fetched, so the entry is held at license-review until those terms are
+  confirmed.

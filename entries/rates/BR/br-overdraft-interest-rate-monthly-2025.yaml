@@ -1,0 +1,90 @@
+id: br-overdraft-interest-rate-monthly-2025
+title: Brazil average interest rate on overdrafts for individuals (cheque especial), monthly 2025
+kind: temporal
+domain: rates
+region: BR
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- lending-rates
+- overdraft
+- consumer-credit
+- bcb
+- sgs
+use_cases:
+- banking-demo
+- loan-pricing
+- personal-finance
+spec:
+  variable: overdraft_rate_percent
+  unit: percent
+  frequency: monthly
+  columns: []
+  series:
+  - period: 2025-01
+    value: 135.54
+  - period: 2025-02
+    value: 142.18
+  - period: 2025-03
+    value: 132.21
+  - period: 2025-04
+    value: 137.36
+  - period: 2025-05
+    value: 134.9
+  - period: 2025-06
+    value: 135.74
+  - period: 2025-07
+    value: 138.19
+  - period: 2025-08
+    value: 138.19
+  - period: 2025-09
+    value: 140.73
+  - period: 2025-10
+    value: 139.11
+  - period: 2025-11
+    value: 140.58
+  - period: 2025-12
+    value: 138.89
+evidence:
+- publisher: Banco Central do Brasil
+  title: SGS series 20741, Taxa média de juros das operações de crédito com recursos livres - Pessoas físicas -
+    Cheque especial (monthly, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.20741/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=01/01/2025, valor
+  value: '135.54'
+  unit: percent
+  snippet: '{"data":"01/01/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: e1f789badf182f2fdb70090d8377e87e13343741a9ba849dbfb6b7e893d16e16
+  role: primary
+- publisher: Banco Central do Brasil
+  title: SGS series 20741, Taxa média de juros das operações de crédito com recursos livres - Pessoas físicas -
+    Cheque especial (monthly, JSON)
+  url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.20741/dados?formato=json&dataInicial=01/01/2025&dataFinal=31/12/2025
+  accessed_at: '2026-10-31'
+  locator: data=01/12/2025, valor
+  value: '138.89'
+  unit: percent
+  snippet: '{"data":"01/12/2025","valor":'
+  source_license: ODbL-1.0
+  content_sha256: e1f789badf182f2fdb70090d8377e87e13343741a9ba849dbfb6b7e893d16e16
+  role: primary
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 135.54
+  tolerance: 1.0e-09
+- statistic: value[2025-12]
+  expected: 138.89
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: Average interest rate (percent per year) on non-earmarked overdraft credit to individuals (cheque especial)
+  for each month of 2025, from SGS series 20741 of the BCB credit statistics. The BCB open data catalogue (dadosabertos.bcb.gov.br)
+  lists this series under the Open Database License; the catalogue API answers vary between requests, so that record
+  is referenced here rather than hashed as evidence.

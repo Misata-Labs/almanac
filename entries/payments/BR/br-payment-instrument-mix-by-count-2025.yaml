@@ -1,0 +1,125 @@
+id: br-payment-instrument-mix-by-count-2025
+title: Brazil payment transactions by instrument, share of transaction count, 2025
+kind: marginal
+domain: payments
+region: BR
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- payments
+- payment-instruments
+- category-shares
+- pix
+- cards
+- bcb
+use_cases:
+- payments-demo
+- fintech-demo
+- sales-generation
+spec:
+  variable: payment_instrument
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        pix: 0.542224
+        ted: 0.005299
+        cheque: 0.000969
+        boleto: 0.038091
+        credit_card: 0.14988
+        debit_card: 0.111596
+        prepaid_card: 0.053644
+        intrabank_transfer: 0.017375
+        utility_and_tax_collection: 0.018261
+        direct_debit: 0.062662
+      counts_thousands:
+        pix: 79648023.58
+        ted: 778327.89
+        cheque: 142343.96
+        boleto: 5595313.48
+        credit_card: 22016038.5
+        debit_card: 16392506.68
+        prepaid_card: 7879899.31
+        intrabank_transfer: 2552180.66
+        utility_and_tax_collection: 2682316.84
+        direct_debit: 9204503.21
+      total_thousands: 146891454.11
+      quarters:
+      - 2025-Q1
+      - 2025-Q2
+      - 2025-Q3
+      - 2025-Q4
+      source_fields:
+        pix: quantidadePix
+        ted: quantidadeTED
+        cheque: quantidadeCheque
+        boleto: quantidadeBoleto
+        credit_card: quantidadeCartaoCredito
+        debit_card: quantidadeCartaoDebito
+        prepaid_card: quantidadeCartaoPrePago
+        intrabank_transfer: quantidadeTransIntrabancaria
+        utility_and_tax_collection: quantidadeConvenios
+        direct_debit: quantidadeDebitoDireto
+evidence:
+- publisher: Banco Central do Brasil
+  title: Estatísticas de Meios de Pagamentos, MeiosdePagamentosTrimestralDA (Olinda open data API)
+  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/odata/MeiosdePagamentosTrimestralDA(trimestre=@trimestre)?@trimestre='20251'&$format=json
+  accessed_at: '2026-10-31'
+  locator: value[datatrimestre=2025-03-31].quantidadePix
+  value: '17509754.01'
+  unit: count
+  snippet: '"datatrimestre":"2025-03-31"'
+  source_license: ODbL-1.0
+  content_sha256: 3bd38aae7da8063f3eb11640f1a3d74e12bd462bc2c8488a12327c5dfdb9e6d0
+  role: primary
+- publisher: Banco Central do Brasil
+  title: Estatísticas de Meios de Pagamentos, MeiosdePagamentosTrimestralDA (Olinda open data API)
+  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/odata/MeiosdePagamentosTrimestralDA(trimestre=@trimestre)?@trimestre='20251'&$format=json
+  accessed_at: '2026-10-31'
+  locator: value[datatrimestre=2025-12-31].quantidadeCartaoDebito
+  value: '4303573.50'
+  unit: count
+  snippet: '"datatrimestre":"2025-12-31"'
+  source_license: ODbL-1.0
+  content_sha256: 3bd38aae7da8063f3eb11640f1a3d74e12bd462bc2c8488a12327c5dfdb9e6d0
+  role: primary
+- publisher: Banco Central do Brasil
+  title: MPV_DadosAbertos service documentation (field descriptions)
+  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/aplicacao
+  accessed_at: '2026-10-31'
+  locator: MeiosdePagamentosTrimestralDA, quantidadePix description
+  value: Quantidade (em milhares) de transações Pix liquidadas trimestralmente no SPI e fora do SPI
+  unit: text
+  snippet: de transações Pix liquidadas trimestralmente
+  source_license: ODbL-1.0
+  content_sha256: 3e678af8205ea0f32e4f20e52b8e36b1ae8da8c963c0bf6fb324a664de0ca8a5
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: sum of the four 2025 quarterly counts per instrument / sum over instruments
+  method: derived
+  rationale: The service publishes quarterly counts per instrument; the shares are their quotient over the year.
+    ATM withdrawals are left out because they are not payments, and instruments with a zero count for the year are
+    left out so every category can be sampled.
+tests:
+- statistic: share[pix]
+  expected: 0.542224
+  tolerance: 0.003
+- statistic: share[credit_card]
+  expected: 0.14988
+  tolerance: 0.003
+- statistic: share[cheque]
+  expected: 0.000969
+  tolerance: 0.001
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 1.0e-05
+notes: Mix of payment instruments by number of transactions in Brazil over the four quarters of 2025, derived from
+  the quarterly payment-instrument statistics of the Banco Central do Brasil (Olinda MPV_DadosAbertos service).
+  Counts are kept in thousands as published. The BCB open data catalogue (dadosabertos.bcb.gov.br) lists this series
+  under the Open Database License; the catalogue API answers vary between requests, so that record is referenced
+  here rather than hashed as evidence.
