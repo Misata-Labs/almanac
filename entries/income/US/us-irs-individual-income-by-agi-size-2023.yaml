@@ -1,0 +1,290 @@
+id: us-irs-individual-income-by-agi-size-2023
+title: 'US individual income tax returns by size of adjusted gross income, tax year 2023: returns by filing status,
+  AGI, average AGI, wages, interest and dividends'
+kind: rule
+domain: income
+region: US
+status: license-review
+tier: A
+valid_from: '2023-01-01'
+valid_to: '2023-12-31'
+tags:
+- income
+- irs
+- statistics-of-income
+- adjusted-gross-income
+- income-bands
+- reference-table
+use_cases:
+- person-generation
+- household-generation
+- customer-segmentation
+- personal-finance
+- payroll-demo
+- tax-filing-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: 2023
+    money_unit: thousands of US dollars except average_agi_usd
+    all_returns:
+      returns: 159949000
+      single_returns: 79879620
+      joint_returns: 54480420
+      head_of_household_returns: 21382000
+      elderly_returns: 42939460
+      agi_usd_thousands: 15234086106
+      salaries_and_wages_returns: 128043220
+      salaries_and_wages_usd_thousands: 10171094747
+      taxable_interest_returns: 55016930
+      taxable_interest_usd_thousands: 311468789
+      ordinary_dividends_returns: 33488590
+      ordinary_dividends_usd_thousands: 497802404
+      average_agi_usd: 95243.4
+    rows:
+      Under $1:
+        bracket_order: 1
+        returns: 2324150
+        single_returns: 1517700
+        joint_returns: 596500
+        head_of_household_returns: 106120
+        elderly_returns: 1015630
+        agi_usd_thousands: -142722222
+        salaries_and_wages_returns: 491620
+        salaries_and_wages_usd_thousands: 23417260
+        taxable_interest_returns: 646120
+        taxable_interest_usd_thousands: 4811505
+        ordinary_dividends_returns: 402320
+        ordinary_dividends_usd_thousands: 3466275
+        average_agi_usd: -61408.35
+      $1 under $10,000:
+        bracket_order: 2
+        returns: 15319070
+        single_returns: 12566600
+        joint_returns: 1417250
+        head_of_household_returns: 1052810
+        elderly_returns: 3979220
+        agi_usd_thousands: 77256907
+        salaries_and_wages_returns: 9456990
+        salaries_and_wages_usd_thousands: 65313298
+        taxable_interest_returns: 3155420
+        taxable_interest_usd_thousands: 2336099
+        ordinary_dividends_returns: 1552000
+        ordinary_dividends_usd_thousands: 2523526
+        average_agi_usd: 5043.19
+      $10,000 under $25,000:
+        bracket_order: 3
+        returns: 25373450
+        single_returns: 16746260
+        joint_returns: 2957150
+        head_of_household_returns: 5178600
+        elderly_returns: 5555560
+        agi_usd_thousands: 437847723
+        salaries_and_wages_returns: 18766460
+        salaries_and_wages_usd_thousands: 327705828
+        taxable_interest_returns: 4254390
+        taxable_interest_usd_thousands: 5411737
+        ordinary_dividends_returns: 2097250
+        ordinary_dividends_usd_thousands: 5824321
+        average_agi_usd: 17256.14
+      $25,000 under $50,000:
+        bracket_order: 4
+        returns: 36030260
+        single_returns: 21324410
+        joint_returns: 6059120
+        head_of_household_returns: 7524650
+        elderly_returns: 7522110
+        agi_usd_thousands: 1333647953
+        salaries_and_wages_returns: 30691260
+        salaries_and_wages_usd_thousands: 1110149026
+        taxable_interest_returns: 7057230
+        taxable_interest_usd_thousands: 10031412
+        ordinary_dividends_returns: 3479960
+        ordinary_dividends_usd_thousands: 11615632
+        average_agi_usd: 37014.66
+      $50,000 under $75,000:
+        bracket_order: 5
+        returns: 24178700
+        single_returns: 12952320
+        joint_returns: 6515640
+        head_of_household_returns: 3764360
+        elderly_returns: 6346760
+        agi_usd_thousands: 1488316474
+        salaries_and_wages_returns: 20600510
+        salaries_and_wages_usd_thousands: 1184058159
+        taxable_interest_returns: 7312690
+        taxable_interest_usd_thousands: 12196381
+        ordinary_dividends_returns: 3845340
+        ordinary_dividends_usd_thousands: 15655843
+        average_agi_usd: 61554.86
+      $75,000 under $100,000:
+        bracket_order: 6
+        returns: 15696120
+        single_returns: 6443330
+        joint_returns: 6981770
+        head_of_household_returns: 1760610
+        elderly_returns: 4974870
+        agi_usd_thousands: 1360619465
+        salaries_and_wages_returns: 13104540
+        salaries_and_wages_usd_thousands: 1021083462
+        taxable_interest_returns: 6526280
+        taxable_interest_usd_thousands: 13399610
+        ordinary_dividends_returns: 3681520
+        ordinary_dividends_usd_thousands: 18310858
+        average_agi_usd: 86685.08
+      $100,000 under $200,000:
+        bracket_order: 7
+        returns: 27532250
+        single_returns: 6484060
+        joint_returns: 18859460
+        head_of_household_returns: 1614770
+        elderly_returns: 9194370
+        agi_usd_thousands: 3808740349
+        salaries_and_wages_returns: 23245250
+        salaries_and_wages_usd_thousands: 2781334070
+        taxable_interest_returns: 15356080
+        taxable_interest_usd_thousands: 44835816
+        ordinary_dividends_returns: 9740550
+        ordinary_dividends_usd_thousands: 74802728
+        average_agi_usd: 138337.42
+      $200,000 under $500,000:
+        bracket_order: 8
+        returns: 10930590
+        single_returns: 1538490
+        joint_returns: 8938240
+        head_of_household_returns: 317440
+        elderly_returns: 3466330
+        agi_usd_thousands: 3148728613
+        salaries_and_wages_returns: 9503620
+        salaries_and_wages_usd_thousands: 2199722079
+        taxable_interest_returns: 8325510
+        taxable_interest_usd_thousands: 53186785
+        ordinary_dividends_returns: 6559790
+        ordinary_dividends_usd_thousands: 102508584
+        average_agi_usd: 288065.75
+      $500,000 under $1,000,000:
+        bracket_order: 9
+        returns: 1765090
+        single_returns: 207810
+        joint_returns: 1490890
+        head_of_household_returns: 43250
+        elderly_returns: 573450
+        agi_usd_thousands: 1185544059
+        salaries_and_wages_returns: 1525050
+        salaries_and_wages_usd_thousands: 706674885
+        taxable_interest_returns: 1610080
+        taxable_interest_usd_thousands: 30061879
+        ordinary_dividends_returns: 1423810
+        ordinary_dividends_usd_thousands: 58350715
+        average_agi_usd: 671662.1
+      $1,000,000 or more:
+        bracket_order: 10
+        returns: 799320
+        single_returns: 98640
+        joint_returns: 664400
+        head_of_household_returns: 19390
+        elderly_returns: 311150
+        agi_usd_thousands: 2536106785
+        salaries_and_wages_returns: 657920
+        salaries_and_wages_usd_thousands: 751636680
+        taxable_interest_returns: 773120
+        taxable_interest_usd_thousands: 135197565
+        ordinary_dividends_returns: 706050
+        ordinary_dividends_usd_thousands: 204743922
+        average_agi_usd: 3172830.39
+  vectors:
+  - input:
+      key: $1,000,000 or more
+      column: returns
+    expected: 799320
+    origin: source
+  - input:
+      key: Under $1
+      column: agi_usd_thousands
+    expected: -142722222
+    origin: source
+  - input:
+      key: $1,000,000 or more
+      column: average_agi_usd
+    expected: 3172830.39
+    origin: derived
+  - input: $25,000 under $50,000
+    expected: true
+    origin: source
+  - input: $10,000,000 or more
+    expected: false
+    origin: derived
+evidence:
+- publisher: Internal Revenue Service, Statistics of Income Division
+  title: SOI Historic Table 2, tax year 2023, United States (23in54us.xlsx)
+  url: https://www.irs.gov/pub/irs-soi/23in54us.xlsx
+  accessed_at: '2026-10-31'
+  locator: Sheet1 row 'Number of returns [1]', column '$1,000,000 or more'
+  value: 799320
+  unit: count
+  snippet: <v>799320</v>
+  source_license: unstated
+  content_sha256: 4bc45f2586fb924c1e0e7818773096bdcf71223b6407120ca058efaed728607a
+  role: primary
+- publisher: Internal Revenue Service, Statistics of Income Division
+  title: SOI Historic Table 2, tax year 2023, United States (23in54us.xlsx)
+  url: https://www.irs.gov/pub/irs-soi/23in54us.xlsx
+  accessed_at: '2026-10-31'
+  locator: Sheet1 row 'Adjusted gross income (AGI) [6]', column '$1,000,000 or more'
+  value: 2536106785
+  unit: currency:USD
+  snippet: <v>2536106785</v>
+  source_license: unstated
+  content_sha256: 4bc45f2586fb924c1e0e7818773096bdcf71223b6407120ca058efaed728607a
+  role: primary
+- publisher: Internal Revenue Service, Statistics of Income Division
+  title: SOI Historic Table 2, tax year 2023, United States (23in54us.xlsx)
+  url: https://www.irs.gov/pub/irs-soi/23in54us.xlsx
+  accessed_at: '2026-10-31'
+  locator: Sheet1 row 'Adjusted gross income (AGI) [6]', column 'All returns'
+  value: 15234086106
+  unit: currency:USD
+  snippet: <t>Adjusted gross income (AGI) [6]</t>
+  source_license: unstated
+  content_sha256: 4bc45f2586fb924c1e0e7818773096bdcf71223b6407120ca058efaed728607a
+  role: primary
+- publisher: Internal Revenue Service, Statistics of Income Division
+  title: SOI Historic Table 2, tax year 2023, United States (23in54us.xlsx)
+  url: https://www.irs.gov/pub/irs-soi/23in54us.xlsx
+  accessed_at: '2026-10-31'
+  locator: Sheet1!A2 (units note)
+  value: Money amounts are in thousands of dollars
+  unit: text
+  snippet: Money amounts are in thousands of dollars
+  source_license: unstated
+  content_sha256: 4bc45f2586fb924c1e0e7818773096bdcf71223b6407120ca058efaed728607a
+  role: supporting
+assumed:
+- parameter: average_agi_usd
+  value: 1000 * agi_usd_thousands / returns
+  method: derived
+  rationale: Mean AGI per return in whole dollars, from the bracket's total AGI (thousands) and number of returns;
+    rounded to cents.
+- parameter: bracket_order
+  value: 1..10
+  method: derived
+  rationale: Position of the bracket from lowest to highest AGI, as the IRS orders the columns.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: value[$1,000,000 or more,returns]
+  expected: 799320
+  tolerance: 0
+- statistic: max[average_agi_usd]
+  expected: 3172830.39
+  tolerance: 0.01
+notes: 'Selected items of the IRS Statistics of Income Historic Table 2 for tax year 2023 (United States file) by
+  size of adjusted gross income: returns in total and by filing status, elderly returns, total AGI, and the number
+  and amount of salaries and wages, taxable interest and ordinary dividends, with a derived average AGI per return.
+  Money amounts are in thousands of dollars as published; the ''Under $1'' bracket has negative total AGI. The all-returns
+  column is kept under parameters.all_returns. The publisher is a US federal body and the resource carries no licence
+  statement, so the licence is recorded as unstated and the entry held at license-review.'

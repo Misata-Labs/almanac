@@ -1,0 +1,124 @@
+id: us-irs-corporation-business-receipts-share-by-sector-2023
+title: US corporation business receipts by industrial sector, tax year 2023 (share of receipts)
+kind: marginal
+domain: business
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2023-01-01'
+  end: '2023-12-31'
+tags:
+- business
+- corporations
+- irs
+- statistics-of-income
+- by-sector
+- categorical
+- revenue
+use_cases:
+- sales-generation
+- market-sizing
+- company-generation
+- invoicing
+spec:
+  variable: sector
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Agriculture, forestry, fishing and hunting: 0.006329
+        Mining: 0.013445
+        Utilities: 0.018798
+        Construction: 0.071011
+        Manufacturing: 0.234727
+        Wholesale trade: 0.175656
+        Retail trade: 0.152522
+        Transportation and warehousing: 0.033129
+        Information: 0.045728
+        Finance and insurance: 0.081781
+        Real estate and rental and leasing: 0.011902
+        Professional, scientific, and technical services: 0.051933
+        Management of companies (holding companies): 0.006758
+        Administrative and support and waste management and remediation services: 0.023133
+        Educational services: 0.001789
+        Health care and social assistance: 0.037406
+        Arts, entertainment, and recreation: 0.005588
+        Accommodation and food services: 0.01939
+        Other services: 0.008974
+      counts:
+        Agriculture, forestry, fishing and hunting: 256102153
+        Mining: 544036525
+        Utilities: 760619269
+        Construction: 2873376867
+        Manufacturing: 9497914458
+        Wholesale trade: 7107690900
+        Retail trade: 6171616958
+        Transportation and warehousing: 1340524981
+        Information: 1850342794
+        Finance and insurance: 3309159604
+        Real estate and rental and leasing: 481584363
+        Professional, scientific, and technical services: 2101405777
+        Management of companies (holding companies): 273436964
+        Administrative and support and waste management and remediation services: 936033684
+        Educational services: 72403583
+        Health care and social assistance: 1513604111
+        Arts, entertainment, and recreation: 226125568
+        Accommodation and food services: 784594043
+        Other services: 363136070
+      total: 40463708672
+evidence:
+- publisher: Internal Revenue Service, Statistics of Income Division
+  title: Corporation Complete Report 2023, Table 1 (23co01ccr.xlsx)
+  url: https://www.irs.gov/pub/irs-soi/23co01ccr.xlsx
+  accessed_at: '2026-10-31'
+  locator: CRTAB01 row Manufacturing, column 5 (business receipts)
+  value: 9497914458
+  unit: currency:USD
+  snippet: <v>9497914458</v>
+  source_license: unstated
+  content_sha256: 9ecef1228f1c8d63907eb7f4650ce4d4b0753ad2f8bd66e2d85da3a03b572c35
+  role: primary
+- publisher: Internal Revenue Service, Statistics of Income Division
+  title: Corporation Complete Report 2023, Table 1 (23co01ccr.xlsx)
+  url: https://www.irs.gov/pub/irs-soi/23co01ccr.xlsx
+  accessed_at: '2026-10-31'
+  locator: CRTAB01 row Educational services, column 5 (business receipts)
+  value: 72403583
+  unit: currency:USD
+  snippet: <v>72403583</v>
+  source_license: unstated
+  content_sha256: 9ecef1228f1c8d63907eb7f4650ce4d4b0753ad2f8bd66e2d85da3a03b572c35
+  role: primary
+- publisher: Internal Revenue Service, Statistics of Income Division
+  title: Corporation Complete Report 2023, Table 1 (23co01ccr.xlsx)
+  url: https://www.irs.gov/pub/irs-soi/23co01ccr.xlsx
+  accessed_at: '2026-10-31'
+  locator: CRTAB01!A4 (row heading)
+  value: Minor industry
+  unit: text
+  snippet: Minor industry
+  source_license: unstated
+  content_sha256: 9ecef1228f1c8d63907eb7f4650ce4d4b0753ad2f8bd66e2d85da3a03b572c35
+  role: supporting
+assumed:
+- parameter: shares
+  value: business_receipts_usd_thousands / sum over sectors
+  method: derived
+  rationale: Shares are each sector's corporation business receipts divided by the sum over the 19 sectors; the
+    sum differs slightly from the table's all-industry total because of rounding in the published estimates.
+tests:
+- statistic: share["Manufacturing"]
+  expected: 0.234727
+  tolerance: 0.003
+- statistic: share["Educational services"]
+  expected: 0.001789
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Distribution of corporation business receipts across the industrial sectors of Table 1 of the IRS Corporation
+  Complete Report for tax year 2023, with the published sector figures beside the derived shares. Sector names are
+  the IRS headings. The publisher is a US federal body and the resource carries no licence statement, so the licence
+  is recorded as unstated and the entry held at license-review.

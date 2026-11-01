@@ -1,0 +1,109 @@
+id: us-irs-individual-returns-by-agi-size-2023
+title: US individual income tax returns by size of adjusted gross income, tax year 2023
+kind: marginal
+domain: income
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2023-01-01'
+  end: '2023-12-31'
+tags:
+- income
+- irs
+- statistics-of-income
+- adjusted-gross-income
+- income-bands
+- categorical
+use_cases:
+- person-generation
+- household-generation
+- customer-segmentation
+- personal-finance
+- credit-risk
+- tax-filing-demo
+spec:
+  variable: agi_bracket
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Under $1: 0.014531
+        $1 under $10,000: 0.095775
+        $10,000 under $25,000: 0.158635
+        $25,000 under $50,000: 0.225261
+        $50,000 under $75,000: 0.151165
+        $75,000 under $100,000: 0.098132
+        $100,000 under $200,000: 0.172131
+        $200,000 under $500,000: 0.068338
+        $500,000 under $1,000,000: 0.011035
+        $1,000,000 or more: 0.004997
+      counts:
+        Under $1: 2324150
+        $1 under $10,000: 15319070
+        $10,000 under $25,000: 25373450
+        $25,000 under $50,000: 36030260
+        $50,000 under $75,000: 24178700
+        $75,000 under $100,000: 15696120
+        $100,000 under $200,000: 27532250
+        $200,000 under $500,000: 10930590
+        $500,000 under $1,000,000: 1765090
+        $1,000,000 or more: 799320
+      total: 159949000
+      published_total: 159949000
+evidence:
+- publisher: Internal Revenue Service, Statistics of Income Division
+  title: SOI Historic Table 2, tax year 2023, United States (23in54us.xlsx)
+  url: https://www.irs.gov/pub/irs-soi/23in54us.xlsx
+  accessed_at: '2026-10-31'
+  locator: Sheet1 row 'Number of returns [1]', column '$25,000 under $50,000'
+  value: 36030260
+  unit: count
+  snippet: <v>36030260</v>
+  source_license: unstated
+  content_sha256: 4bc45f2586fb924c1e0e7818773096bdcf71223b6407120ca058efaed728607a
+  role: primary
+- publisher: Internal Revenue Service, Statistics of Income Division
+  title: SOI Historic Table 2, tax year 2023, United States (23in54us.xlsx)
+  url: https://www.irs.gov/pub/irs-soi/23in54us.xlsx
+  accessed_at: '2026-10-31'
+  locator: Sheet1 row 'Number of returns [1]', column 'All returns'
+  value: 159949000
+  unit: count
+  snippet: <t>Number of returns [1]</t>
+  source_license: unstated
+  content_sha256: 4bc45f2586fb924c1e0e7818773096bdcf71223b6407120ca058efaed728607a
+  role: primary
+- publisher: Internal Revenue Service, Statistics of Income Division
+  title: SOI Historic Table 2, tax year 2023, United States (23in54us.xlsx)
+  url: https://www.irs.gov/pub/irs-soi/23in54us.xlsx
+  accessed_at: '2026-10-31'
+  locator: Sheet1 row 5, last bracket heading
+  value: $1,000,000 or more
+  unit: text
+  snippet: $1,000,000 or more
+  source_license: unstated
+  content_sha256: 4bc45f2586fb924c1e0e7818773096bdcf71223b6407120ca058efaed728607a
+  role: supporting
+assumed:
+- parameter: shares
+  value: returns / sum over brackets
+  method: derived
+  rationale: Shares are each bracket's number of returns divided by the sum over the ten brackets; the published
+    all-returns total is kept beside it and differs only by rounding of the estimates.
+tests:
+- statistic: share["$25,000 under $50,000"]
+  expected: 0.225261
+  tolerance: 0.003
+- statistic: share["$1,000,000 or more"]
+  expected: 0.004997
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Number of individual income tax returns filed for tax year 2023 in each of the ten adjusted gross income
+  brackets of the IRS Statistics of Income Historic Table 2 (United States file), with derived shares. The 'Under
+  $1' bracket holds returns with zero or negative AGI. Bracket labels are the IRS column headings with their line
+  breaks collapsed. The publisher is a US federal body and the resource carries no licence statement, so the licence
+  is recorded as unstated and the entry held at license-review.

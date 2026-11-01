@@ -1,0 +1,124 @@
+id: us-fdic-insured-institutions-by-charter-class-2026q2
+title: FDIC-insured institutions by charter class (BKCLASS), 2026Q2
+kind: marginal
+domain: banking
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2026-06-30'
+  end: '2026-06-30'
+tags:
+- banking
+- fdic
+- charter-class
+- market-structure
+- categorical
+use_cases:
+- banking-demo
+- company-generation
+- kyb-onboarding
+spec:
+  variable: charter_class
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        NM: 0.556457
+        SM: 0.1623
+        N: 0.153489
+        SI: 0.053559
+        SB: 0.046835
+        NC: 0.015303
+        SL: 0.00997
+        OI: 0.002087
+      counts:
+        NM: 2400
+        SM: 700
+        N: 662
+        SI: 231
+        SB: 202
+        NC: 66
+        SL: 43
+        OI: 9
+      total: 4313
+      total_assets_usd_thousands:
+        NM: 3418909759
+        SM: 4729859480
+        N: 17448903991
+        SI: 312354915
+        SB: 531593703
+        NC: 169713002
+        SL: 20588013
+        OI: 121125693
+      names:
+        NM: Commercial bank, state charter, Fed non-member, and supervised by the Federal Deposit Insurance Corporation
+          (FDIC)
+        SM: Commercial bank, state charter, Fed member, and supervised by the Federal Reserve Bank (FRB)
+        N: Commercial bank, national (federal) charter, Fed member, and supervised by the Office of the Comptroller
+          of the Currency (OCC)
+        SI: State chartered stock savings banks, supervised by the FDIC
+        SB: Federal savings banks, federal charter, supervised by the OCC or before July 21,2011 the Office of Thrift
+          Supervision (OTS)
+        NC: Noninsured non-deposit commercial banks and/or trust companies regulated by the OCC, a state, or a territory
+        SL: State chartered stock savings and loan associations, supervised by the FDIC or before July 21,2011 the
+          OTS
+        OI: Insured U.S. branch of a foreign chartered institution (IBA) and supervised by the OCC or FDIC
+evidence:
+- publisher: FDIC
+  title: BankFind Suite financials API, count by BKCLASS, report date 20260630
+  url: https://api.fdic.gov/banks/financials?filters=REPDTE%3A20260630&fields=REPDTE&agg_by=BKCLASS&agg_sum_fields=ASSET&agg_limit=20&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: data[BKCLASS=NM].count
+  value: 2400
+  unit: count
+  snippet: '"BKCLASS":"NM","count":2400'
+  source_license: unstated
+  content_sha256: 19eab5ebc150f24c3ae5853dad259608868fe73c183221e81834509b1024b018
+  role: primary
+- publisher: FDIC
+  title: BankFind Suite financials API, count by BKCLASS, report date 20260630
+  url: https://api.fdic.gov/banks/financials?filters=REPDTE%3A20260630&fields=REPDTE&agg_by=BKCLASS&agg_sum_fields=ASSET&agg_limit=20&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: totals.count
+  value: 4313
+  unit: count
+  snippet: '"totals":{"count":4313'
+  source_license: unstated
+  content_sha256: 19eab5ebc150f24c3ae5853dad259608868fe73c183221e81834509b1024b018
+  role: primary
+- publisher: FDIC
+  title: FDIC financials API field dictionary (risview_properties.yaml)
+  url: https://api.fdic.gov/banks/docs/risview_properties.yaml
+  accessed_at: '2026-10-31'
+  locator: properties.data.properties.BKCLASS.description
+  value: NM
+  unit: text
+  snippet: NM - Commercial bank, state charter, Fed non-member, and supervised by the Federal Deposit Insurance
+    Corporation (FDIC)
+  source_license: unstated
+  content_sha256: b257457e4e821d6a0d9f88ffc4e6e0da80e4ccf67fa394cadb21587b50b23d59
+  role: primary
+assumed:
+- parameter: shares
+  value: count / total
+  method: derived
+  rationale: Shares are the API counts divided by the total number of filers at the report date.
+tests:
+- statistic: share[NM]
+  expected: 0.556457
+  tolerance: 0.003
+- statistic: share[OI]
+  expected: 0.002087
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Institutions filing with the FDIC for the report date 2026-06-30 by charter class code, from the financials
+  endpoint aggregated by BKCLASS. Codes follow the FDIC's definitions in the field dictionary (N national commercial
+  bank, NM state non-member commercial bank, SM state member commercial bank, SB federal savings bank, SI state
+  stock savings bank, SL state savings and loan association, OI insured US branch of a foreign bank, NC non-insured
+  non-deposit commercial bank or trust company); the names map in the parameters carries the full text. Counts and
+  total assets by class sit beside the shares. The publisher is a US federal body and the resource carries no licence
+  statement, so the licence is recorded as unstated and the entry held at license-review.

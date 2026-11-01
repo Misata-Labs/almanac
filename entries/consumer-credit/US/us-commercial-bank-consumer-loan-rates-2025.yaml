@@ -1,0 +1,118 @@
+id: us-commercial-bank-consumer-loan-rates-2025
+title: US commercial bank interest rates on credit card plans, new auto loans and personal loans, quarterly 2025
+  (G.19 terms of credit)
+kind: temporal
+domain: consumer-credit
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2025-02-01'
+  end: '2025-12-31'
+tags:
+- consumer-credit
+- federal-reserve
+- g19
+- interest-rates
+- credit-cards
+- auto-loans
+- quarterly-series
+use_cases:
+- loan-pricing
+- banking-demo
+- automotive-demo
+- personal-finance
+- credit-risk
+spec:
+  variable: credit_card_rate_all_accounts_percent
+  unit: percent
+  frequency: quarterly
+  columns:
+  - credit_card_rate_accounts_assessed_interest_percent
+  - new_auto_loan_72_month_rate_percent
+  - new_auto_loan_60_month_rate_percent
+  - new_auto_loan_48_month_rate_percent
+  - personal_loan_24_month_rate_percent
+  series:
+  - period: 2025-02
+    value: 21.37
+    credit_card_rate_accounts_assessed_interest_percent: 21.91
+    new_auto_loan_72_month_rate_percent: 8.16
+    new_auto_loan_60_month_rate_percent: 8.04
+    new_auto_loan_48_month_rate_percent: 7.71
+    personal_loan_24_month_rate_percent: 11.66
+  - period: 2025-05
+    value: 21.16
+    credit_card_rate_accounts_assessed_interest_percent: 22.25
+    new_auto_loan_72_month_rate_percent: 7.73
+    new_auto_loan_60_month_rate_percent: 7.67
+    new_auto_loan_48_month_rate_percent: 7.63
+    personal_loan_24_month_rate_percent: 11.57
+  - period: 2025-08
+    value: 21.39
+    credit_card_rate_accounts_assessed_interest_percent: 22.83
+    new_auto_loan_72_month_rate_percent: 7.8
+    new_auto_loan_60_month_rate_percent: 7.64
+    new_auto_loan_48_month_rate_percent: 7.51
+    personal_loan_24_month_rate_percent: 11.14
+  - period: 2025-11
+    value: 20.97
+    credit_card_rate_accounts_assessed_interest_percent: 22.3
+    new_auto_loan_72_month_rate_percent: 7.5
+    new_auto_loan_60_month_rate_percent: 7.24
+    new_auto_loan_48_month_rate_percent: 7.62
+    personal_loan_24_month_rate_percent: 11.63
+evidence:
+- publisher: Board of Governors of the Federal Reserve System
+  title: Data Download Program, G.19 package Terms of Credit, 2025
+  url: https://www.federalreserve.gov/datadownload/Output.aspx?rel=G19&series=10264fd36110a9c4906bd99f1daccf29&lastobs=&from=01/01/2025&to=12/31/2025&filetype=csv&label=include&layout=seriescolumn&type=package
+  accessed_at: '2026-10-31'
+  locator: row 2025-11, column RIFSPBCICC_N.M
+  value: '20.97'
+  unit: percent
+  snippet: 2025-11,7.50,7.24,7.62,11.63,20.97,22.30
+  source_license: unstated
+  content_sha256: f1661eb21fbf58d7a11ea2d61cfa1c30e53fe7a21b80b48f32ed8a32f88b22f5
+  role: primary
+- publisher: Board of Governors of the Federal Reserve System
+  title: Data Download Program, G.19 package Terms of Credit, 2025
+  url: https://www.federalreserve.gov/datadownload/Output.aspx?rel=G19&series=10264fd36110a9c4906bd99f1daccf29&lastobs=&from=01/01/2025&to=12/31/2025&filetype=csv&label=include&layout=seriescolumn&type=package
+  accessed_at: '2026-10-31'
+  locator: row 2025-02, column RIFSPBCICC_N.M
+  value: '21.37'
+  unit: percent
+  snippet: 2025-02,8.16,8.04,7.71,11.66,21.37,21.91
+  source_license: unstated
+  content_sha256: f1661eb21fbf58d7a11ea2d61cfa1c30e53fe7a21b80b48f32ed8a32f88b22f5
+  role: primary
+- publisher: Board of Governors of the Federal Reserve System
+  title: Data Download Program, G.19 package Terms of Credit, 2025
+  url: https://www.federalreserve.gov/datadownload/Output.aspx?rel=G19&series=10264fd36110a9c4906bd99f1daccf29&lastobs=&from=01/01/2025&to=12/31/2025&filetype=csv&label=include&layout=seriescolumn&type=package
+  accessed_at: '2026-10-31'
+  locator: Series Description, column RIFSPBCICC_N.M
+  value: Commercial bank interest rate on credit card plans, all accounts; not seasonally adjusted
+  unit: text
+  snippet: Commercial bank interest rate on credit card plans, all accounts; not seasonally adjusted
+  source_license: unstated
+  content_sha256: f1661eb21fbf58d7a11ea2d61cfa1c30e53fe7a21b80b48f32ed8a32f88b22f5
+  role: supporting
+assumed: []
+tests:
+- statistic: value[2025-11]
+  expected: 20.97
+  tolerance: 0.001
+- statistic: value[2025-02]
+  expected: 21.37
+  tolerance: 0.001
+- statistic: column[credit_card_rate_accounts_assessed_interest_percent,2025-11]
+  expected: 22.3
+  tolerance: 0.001
+- statistic: count
+  expected: 4
+  tolerance: 0
+notes: 'Interest rates on credit card plans (all accounts and accounts assessed interest), new-auto instalment loans
+  of 48, 60 and 72 months and 24-month personal loans at commercial banks from the Federal Reserve G.19 release
+  through the Data Download Program''s Terms of Credit package. The series is quarterly: the Board surveys once
+  a quarter and publishes the figure in the month shown, leaving the other months as ND, so the period labels are
+  the months in which the observations fall. Not seasonally adjusted. The publisher is a US federal body and the
+  resource carries no licence statement, so the licence is recorded as unstated and the entry held at license-review.'

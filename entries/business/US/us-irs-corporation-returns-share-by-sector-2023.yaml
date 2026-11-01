@@ -1,0 +1,122 @@
+id: us-irs-corporation-returns-share-by-sector-2023
+title: US corporation income tax returns by industrial sector, tax year 2023 (share of returns)
+kind: marginal
+domain: business
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2023-01-01'
+  end: '2023-12-31'
+tags:
+- business
+- corporations
+- irs
+- statistics-of-income
+- by-sector
+- categorical
+use_cases:
+- company-generation
+- kyb-onboarding
+- customer-segmentation
+spec:
+  variable: sector
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Agriculture, forestry, fishing and hunting: 0.020473
+        Mining: 0.0044
+        Utilities: 0.001117
+        Construction: 0.120094
+        Manufacturing: 0.033733
+        Wholesale trade: 0.053548
+        Retail trade: 0.080068
+        Transportation and warehousing: 0.054621
+        Information: 0.020939
+        Finance and insurance: 0.044663
+        Real estate and rental and leasing: 0.115314
+        Professional, scientific, and technical services: 0.157689
+        Management of companies (holding companies): 0.011254
+        Administrative and support and waste management and remediation services: 0.044871
+        Educational services: 0.009918
+        Health care and social assistance: 0.083953
+        Arts, entertainment, and recreation: 0.024116
+        Accommodation and food services: 0.049888
+        Other services: 0.06934
+      counts:
+        Agriculture, forestry, fishing and hunting: 143958
+        Mining: 30939
+        Utilities: 7856
+        Construction: 844438
+        Manufacturing: 237193
+        Wholesale trade: 376526
+        Retail trade: 563001
+        Transportation and warehousing: 384067
+        Information: 147230
+        Finance and insurance: 314045
+        Real estate and rental and leasing: 810832
+        Professional, scientific, and technical services: 1108790
+        Management of companies (holding companies): 79134
+        Administrative and support and waste management and remediation services: 315513
+        Educational services: 69735
+        Health care and social assistance: 590312
+        Arts, entertainment, and recreation: 169571
+        Accommodation and food services: 350789
+        Other services: 487567
+      total: 7031496
+evidence:
+- publisher: Internal Revenue Service, Statistics of Income Division
+  title: Corporation Complete Report 2023, Table 1 (23co01ccr.xlsx)
+  url: https://www.irs.gov/pub/irs-soi/23co01ccr.xlsx
+  accessed_at: '2026-10-31'
+  locator: CRTAB01 row Professional, scientific, and technical services, column 1 (number of returns)
+  value: 1108790
+  unit: count
+  snippet: <v>1108790</v>
+  source_license: unstated
+  content_sha256: 9ecef1228f1c8d63907eb7f4650ce4d4b0753ad2f8bd66e2d85da3a03b572c35
+  role: primary
+- publisher: Internal Revenue Service, Statistics of Income Division
+  title: Corporation Complete Report 2023, Table 1 (23co01ccr.xlsx)
+  url: https://www.irs.gov/pub/irs-soi/23co01ccr.xlsx
+  accessed_at: '2026-10-31'
+  locator: CRTAB01 row Utilities, column 1 (number of returns)
+  value: 7856
+  unit: count
+  snippet: <v>7856</v>
+  source_license: unstated
+  content_sha256: 9ecef1228f1c8d63907eb7f4650ce4d4b0753ad2f8bd66e2d85da3a03b572c35
+  role: primary
+- publisher: Internal Revenue Service, Statistics of Income Division
+  title: Corporation Complete Report 2023, Table 1 (23co01ccr.xlsx)
+  url: https://www.irs.gov/pub/irs-soi/23co01ccr.xlsx
+  accessed_at: '2026-10-31'
+  locator: CRTAB01!A4 (row heading)
+  value: Minor industry
+  unit: text
+  snippet: Minor industry
+  source_license: unstated
+  content_sha256: 9ecef1228f1c8d63907eb7f4650ce4d4b0753ad2f8bd66e2d85da3a03b572c35
+  role: supporting
+assumed:
+- parameter: shares
+  value: returns / sum over sectors
+  method: derived
+  rationale: Shares are each sector's corporation returns divided by the sum over the 19 sectors; the sum differs
+    slightly from the table's all-industry total because of rounding in the published estimates.
+tests:
+- statistic: share["Professional, scientific, and technical services"]
+  expected: 0.157689
+  tolerance: 0.003
+- statistic: share["Utilities"]
+  expected: 0.001117
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Distribution of corporation returns across the industrial sectors of Table 1 of the IRS Corporation Complete
+  Report for tax year 2023, with the published sector figures beside the derived shares. Sector names are the IRS
+  headings. The publisher is a US federal body and the resource carries no licence statement, so the licence is
+  recorded as unstated and the entry held at license-review.

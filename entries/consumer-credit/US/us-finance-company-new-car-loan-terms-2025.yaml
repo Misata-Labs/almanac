@@ -1,0 +1,104 @@
+id: us-finance-company-new-car-loan-terms-2025
+title: 'US new car loans at finance companies: average finance rate, maturity and amount financed, quarterly 2025
+  (G.19 terms of credit)'
+kind: temporal
+domain: consumer-credit
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2025-03-01'
+  end: '2025-12-31'
+tags:
+- consumer-credit
+- federal-reserve
+- g19
+- auto-loans
+- interest-rates
+- quarterly-series
+use_cases:
+- loan-pricing
+- banking-demo
+- automotive-demo
+- personal-finance
+- credit-risk
+spec:
+  variable: average_finance_rate_percent
+  unit: percent
+  frequency: quarterly
+  columns:
+  - average_maturity_months
+  - average_amount_financed_usd
+  series:
+  - period: 2025-03
+    value: 6.43
+    average_maturity_months: 66.06
+    average_amount_financed_usd: 39918.13
+  - period: 2025-06
+    value: 6.61
+    average_maturity_months: 66.18
+    average_amount_financed_usd: 39867.24
+  - period: 2025-09
+    value: 6.27
+    average_maturity_months: 66.26
+    average_amount_financed_usd: 40802.54
+  - period: 2025-12
+    value: 6.13
+    average_maturity_months: 66.11
+    average_amount_financed_usd: 41742.06
+evidence:
+- publisher: Board of Governors of the Federal Reserve System
+  title: Data Download Program, G.19 package Terms of Credit, 2025
+  url: https://www.federalreserve.gov/datadownload/Output.aspx?rel=G19&series=10264fd36110a9c4906bd99f1daccf29&lastobs=&from=01/01/2025&to=12/31/2025&filetype=csv&label=include&layout=seriescolumn&type=package
+  accessed_at: '2026-10-31'
+  locator: row 2025-12, column RIELPCFAN_N.M
+  value: '6.13'
+  unit: percent
+  snippet: 2025-12,ND,ND,ND,ND,ND,ND
+  source_license: unstated
+  content_sha256: f1661eb21fbf58d7a11ea2d61cfa1c30e53fe7a21b80b48f32ed8a32f88b22f5
+  role: primary
+- publisher: Board of Governors of the Federal Reserve System
+  title: Data Download Program, G.19 package Terms of Credit, 2025
+  url: https://www.federalreserve.gov/datadownload/Output.aspx?rel=G19&series=10264fd36110a9c4906bd99f1daccf29&lastobs=&from=01/01/2025&to=12/31/2025&filetype=csv&label=include&layout=seriescolumn&type=package
+  accessed_at: '2026-10-31'
+  locator: row 2025-03, column RIELPCFAN_N.M
+  value: '6.43'
+  unit: percent
+  snippet: 2025-03,ND,ND,ND,ND,ND,ND
+  source_license: unstated
+  content_sha256: f1661eb21fbf58d7a11ea2d61cfa1c30e53fe7a21b80b48f32ed8a32f88b22f5
+  role: primary
+- publisher: Board of Governors of the Federal Reserve System
+  title: Data Download Program, G.19 package Terms of Credit, 2025
+  url: https://www.federalreserve.gov/datadownload/Output.aspx?rel=G19&series=10264fd36110a9c4906bd99f1daccf29&lastobs=&from=01/01/2025&to=12/31/2025&filetype=csv&label=include&layout=seriescolumn&type=package
+  accessed_at: '2026-10-31'
+  locator: Series Description, column RIELPCFAN_N.M
+  value: Average finance rate of new car loans at finance companies, amount of finance weighted, not seasonally
+    adjusted
+  unit: text
+  snippet: Average finance rate of new car loans at finance companies, amount of finance weighted, not seasonally
+    adjusted
+  source_license: unstated
+  content_sha256: f1661eb21fbf58d7a11ea2d61cfa1c30e53fe7a21b80b48f32ed8a32f88b22f5
+  role: supporting
+assumed: []
+tests:
+- statistic: value[2025-12]
+  expected: 6.13
+  tolerance: 0.001
+- statistic: value[2025-03]
+  expected: 6.43
+  tolerance: 0.001
+- statistic: column[average_maturity_months,2025-12]
+  expected: 66.11
+  tolerance: 0.001
+- statistic: count
+  expected: 4
+  tolerance: 0
+notes: 'Amount-weighted average finance rate, average maturity and average amount financed for new car loans at
+  finance companies from the Federal Reserve G.19 release through the Data Download Program''s Terms of Credit package.
+  The series is quarterly: the Board surveys once a quarter and publishes the figure in the month shown, leaving
+  the other months as ND, so the period labels are the months in which the observations fall. Not seasonally adjusted.
+  The publisher is a US federal body and the resource carries no licence statement, so the licence is recorded as
+  unstated and the entry held at license-review.'

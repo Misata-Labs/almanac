@@ -1,0 +1,418 @@
+id: eu-hourly-labour-cost-by-nace-section-2024
+title: Hourly labour cost by NACE Rev. 2 section and its wage and non-wage split, 2024, ten member states
+kind: rule
+domain: employment
+region: EU
+status: verified
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- labour-cost
+- wages
+- nace
+- labour
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- payroll-demo
+- hr-analytics
+- workforce-planning
+- pricing
+- company-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: lc_lci_lev
+    key: A.EUR.D1_D4_MD5+D11+D12_D4_MD5+D2-D4_MD5_RAT..DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2024'
+    sources:
+    - dataflow: lc_lci_lev
+      key: A.EUR.D1_D4_MD5+D11+D12_D4_MD5+D2-D4_MD5_RAT..DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+      columns:
+      - eur_per_hour_b_s_x_o
+      - eur_per_hour_b_e
+      - eur_per_hour_b_n
+      - eur_per_hour_g_n
+      - eur_per_hour_p_s
+      - eur_per_hour_b
+      - eur_per_hour_c
+      - eur_per_hour_d
+      - eur_per_hour_e
+      - eur_per_hour_f
+      - eur_per_hour_g
+      - eur_per_hour_h
+      - eur_per_hour_i
+      - eur_per_hour_j
+      - eur_per_hour_k
+      - eur_per_hour_l
+      - eur_per_hour_m
+      - eur_per_hour_n
+      - eur_per_hour_o
+      - eur_per_hour_p
+      - eur_per_hour_q
+      - eur_per_hour_r
+      - eur_per_hour_s
+      - wages_eur_per_hour_b_s_x_o
+      - non_wage_eur_per_hour_b_s_x_o
+      - non_wage_share_percent_b_s_x_o
+    rows:
+      AT:
+        name: Austria
+        wages_eur_per_hour_b_s_x_o: 32.1
+        non_wage_eur_per_hour_b_s_x_o: 12.2
+        eur_per_hour_b: 48.9
+        eur_per_hour_b_e: 49.9
+        eur_per_hour_b_n: 44.3
+        eur_per_hour_b_s_x_o: 44.3
+        eur_per_hour_c: 49.3
+        eur_per_hour_d: 68.8
+        eur_per_hour_e: 40.5
+        eur_per_hour_f: 42.5
+        eur_per_hour_g: 40.0
+        eur_per_hour_g_n: 42.1
+        eur_per_hour_h: 41.1
+        eur_per_hour_i: 24.4
+        eur_per_hour_j: 59.0
+        eur_per_hour_k: 66.0
+        eur_per_hour_l: 46.3
+        eur_per_hour_m: 53.2
+        eur_per_hour_n: 33.2
+        eur_per_hour_p: 44.3
+        eur_per_hour_p_s: 44.2
+        eur_per_hour_q: 44.3
+        eur_per_hour_r: 45.4
+        eur_per_hour_s: 42.7
+        non_wage_share_percent_b_s_x_o: 27.5
+        eur_per_hour_o: null
+        wage_share_b_s_x_o: 0.724605
+      BE:
+        name: Belgium
+        wages_eur_per_hour_b_s_x_o: 37.1
+        non_wage_eur_per_hour_b_s_x_o: 11.1
+        eur_per_hour_b: 50.8
+        eur_per_hour_b_e: 51.8
+        eur_per_hour_b_n: 48.0
+        eur_per_hour_b_s_x_o: 48.2
+        eur_per_hour_c: 51.5
+        eur_per_hour_d: 79.0
+        eur_per_hour_e: 41.5
+        eur_per_hour_f: 42.8
+        eur_per_hour_g: 44.2
+        eur_per_hour_g_n: 47.0
+        eur_per_hour_h: 41.9
+        eur_per_hour_i: 33.7
+        eur_per_hour_j: 58.7
+        eur_per_hour_k: 74.4
+        eur_per_hour_l: 43.0
+        eur_per_hour_m: 55.8
+        eur_per_hour_n: 37.5
+        eur_per_hour_p: 69.1
+        eur_per_hour_p_s: 48.7
+        eur_per_hour_q: 39.5
+        eur_per_hour_r: 37.1
+        eur_per_hour_s: 47.3
+        non_wage_share_percent_b_s_x_o: 23.0
+        eur_per_hour_o: null
+        wage_share_b_s_x_o: 0.76971
+      DE:
+        name: Germany
+        wages_eur_per_hour_b_s_x_o: 33.3
+        non_wage_eur_per_hour_b_s_x_o: 10.2
+        eur_per_hour_b: 52.0
+        eur_per_hour_b_e: 48.8
+        eur_per_hour_b_n: 44.2
+        eur_per_hour_b_s_x_o: 43.5
+        eur_per_hour_c: 48.5
+        eur_per_hour_d: 65.2
+        eur_per_hour_e: 40.5
+        eur_per_hour_f: 38.1
+        eur_per_hour_g: 36.3
+        eur_per_hour_g_n: 42.1
+        eur_per_hour_h: 35.1
+        eur_per_hour_i: 26.9
+        eur_per_hour_j: 57.4
+        eur_per_hour_k: 68.5
+        eur_per_hour_l: 46.3
+        eur_per_hour_m: 54.5
+        eur_per_hour_n: 32.2
+        eur_per_hour_o: 44.8
+        eur_per_hour_p: 44.8
+        eur_per_hour_p_s: 41.4
+        eur_per_hour_q: 39.9
+        eur_per_hour_r: 41.0
+        eur_per_hour_s: 37.3
+        non_wage_share_percent_b_s_x_o: 23.5
+        wage_share_b_s_x_o: 0.765517
+      ES:
+        name: Spain
+        wages_eur_per_hour_b_s_x_o: 18.9
+        non_wage_eur_per_hour_b_s_x_o: 6.7
+        eur_per_hour_b: 34.7
+        eur_per_hour_b_e: 27.7
+        eur_per_hour_b_n: 25.0
+        eur_per_hour_b_s_x_o: 25.5
+        eur_per_hour_c: 27.2
+        eur_per_hour_d: 53.2
+        eur_per_hour_e: 26.9
+        eur_per_hour_f: 22.9
+        eur_per_hour_g: 22.4
+        eur_per_hour_g_n: 24.4
+        eur_per_hour_h: 25.0
+        eur_per_hour_i: 17.1
+        eur_per_hour_j: 33.3
+        eur_per_hour_k: 46.8
+        eur_per_hour_l: 30.5
+        eur_per_hour_m: 30.8
+        eur_per_hour_n: 18.5
+        eur_per_hour_o: 29.7
+        eur_per_hour_p: 27.9
+        eur_per_hour_p_s: 27.3
+        eur_per_hour_q: 28.4
+        eur_per_hour_r: 22.5
+        eur_per_hour_s: 20.3
+        non_wage_share_percent_b_s_x_o: 26.0
+        wage_share_b_s_x_o: 0.741176
+      FR:
+        name: France
+        wages_eur_per_hour_b_s_x_o: 29.5
+        non_wage_eur_per_hour_b_s_x_o: 13.9
+        eur_per_hour_b: 42.7
+        eur_per_hour_b_e: 46.3
+        eur_per_hour_b_n: 43.5
+        eur_per_hour_b_s_x_o: 43.4
+        eur_per_hour_c: 45.7
+        eur_per_hour_d: 59.2
+        eur_per_hour_e: 42.5
+        eur_per_hour_f: 38.7
+        eur_per_hour_g: 37.3
+        eur_per_hour_g_n: 43.1
+        eur_per_hour_h: 37.5
+        eur_per_hour_i: 29.3
+        eur_per_hour_j: 57.2
+        eur_per_hour_k: 68.2
+        eur_per_hour_l: 45.2
+        eur_per_hour_m: 54.4
+        eur_per_hour_n: 31.8
+        eur_per_hour_o: null
+        eur_per_hour_p: null
+        eur_per_hour_p_s: 43.0
+        eur_per_hour_q: null
+        eur_per_hour_r: 40.6
+        eur_per_hour_s: null
+        non_wage_share_percent_b_s_x_o: 32.0
+        wage_share_b_s_x_o: 0.679724
+      IE:
+        name: Ireland
+        wages_eur_per_hour_b_s_x_o: 35.2
+        non_wage_eur_per_hour_b_s_x_o: 8.7
+        eur_per_hour_b: 41.2
+        eur_per_hour_b_e: 41.7
+        eur_per_hour_b_n: 40.8
+        eur_per_hour_b_s_x_o: 42.5
+        eur_per_hour_c: 40.8
+        eur_per_hour_d: 67.9
+        eur_per_hour_e: 35.3
+        eur_per_hour_f: 40.2
+        eur_per_hour_g: 31.1
+        eur_per_hour_g_n: 40.5
+        eur_per_hour_h: null
+        eur_per_hour_i: null
+        eur_per_hour_j: 70.1
+        eur_per_hour_k: 60.9
+        eur_per_hour_l: null
+        eur_per_hour_m: 49.2
+        eur_per_hour_n: 32.8
+        eur_per_hour_o: 43.4
+        eur_per_hour_p: 64.3
+        eur_per_hour_p_s: 47.4
+        eur_per_hour_q: 40.7
+        eur_per_hour_r: null
+        eur_per_hour_s: null
+        non_wage_share_percent_b_s_x_o: 20.4
+        wage_share_b_s_x_o: 0.828235
+      IT:
+        name: Italy
+        wages_eur_per_hour_b_s_x_o: 22.4
+        non_wage_eur_per_hour_b_s_x_o: 8.6
+        eur_per_hour_b: 44.6
+        eur_per_hour_b_e: 32.0
+        eur_per_hour_b_n: 30.3
+        eur_per_hour_b_s_x_o: 31.0
+        eur_per_hour_c: 31.7
+        eur_per_hour_d: 43.8
+        eur_per_hour_e: 28.7
+        eur_per_hour_f: 27.4
+        eur_per_hour_g: 28.0
+        eur_per_hour_g_n: 29.5
+        eur_per_hour_h: 27.4
+        eur_per_hour_i: 20.1
+        eur_per_hour_j: 37.4
+        eur_per_hour_k: 55.0
+        eur_per_hour_l: 30.3
+        eur_per_hour_m: 38.2
+        eur_per_hour_n: 19.4
+        eur_per_hour_o: 33.4
+        eur_per_hour_p: 37.7
+        eur_per_hour_p_s: 33.8
+        eur_per_hour_q: 30.7
+        eur_per_hour_r: 47.7
+        eur_per_hour_s: 20.7
+        non_wage_share_percent_b_s_x_o: 27.8
+        wage_share_b_s_x_o: 0.722581
+      NL:
+        name: Netherlands
+        wages_eur_per_hour_b_s_x_o: 34.4
+        non_wage_eur_per_hour_b_s_x_o: 11.0
+        eur_per_hour_b: 66.3
+        eur_per_hour_b_e: 47.8
+        eur_per_hour_b_n: 43.5
+        eur_per_hour_b_s_x_o: 45.2
+        eur_per_hour_c: 47.3
+        eur_per_hour_d: 60.3
+        eur_per_hour_e: 43.5
+        eur_per_hour_f: 44.6
+        eur_per_hour_g: 38.5
+        eur_per_hour_g_n: 42.3
+        eur_per_hour_h: 41.0
+        eur_per_hour_i: 24.5
+        eur_per_hour_j: 58.0
+        eur_per_hour_k: 67.3
+        eur_per_hour_l: 52.8
+        eur_per_hour_m: 55.2
+        eur_per_hour_n: 32.8
+        eur_per_hour_o: 60.0
+        eur_per_hour_p: 54.8
+        eur_per_hour_p_s: 49.9
+        eur_per_hour_q: 48.5
+        eur_per_hour_r: 42.8
+        eur_per_hour_s: 47.2
+        non_wage_share_percent_b_s_x_o: 24.4
+        wage_share_b_s_x_o: 0.761062
+      PL:
+        name: Poland
+        wages_eur_per_hour_b_s_x_o: 14.2
+        non_wage_eur_per_hour_b_s_x_o: 3.1
+        eur_per_hour_b: 29.6
+        eur_per_hour_b_e: 16.6
+        eur_per_hour_b_n: 16.6
+        eur_per_hour_b_s_x_o: 17.3
+        eur_per_hour_c: 15.5
+        eur_per_hour_d: 25.1
+        eur_per_hour_e: 14.8
+        eur_per_hour_f: 14.3
+        eur_per_hour_g: 14.1
+        eur_per_hour_g_n: 16.9
+        eur_per_hour_h: 15.9
+        eur_per_hour_i: 11.5
+        eur_per_hour_j: 26.3
+        eur_per_hour_k: 25.8
+        eur_per_hour_l: 16.0
+        eur_per_hour_m: 21.2
+        eur_per_hour_n: 14.1
+        eur_per_hour_o: 20.7
+        eur_per_hour_p: 21.8
+        eur_per_hour_p_s: 19.8
+        eur_per_hour_q: 18.4
+        eur_per_hour_r: 15.4
+        eur_per_hour_s: 12.3
+        non_wage_share_percent_b_s_x_o: 18.0
+        wage_share_b_s_x_o: 0.820809
+      SE:
+        name: Sweden
+        wages_eur_per_hour_b_s_x_o: 27.5
+        non_wage_eur_per_hour_b_s_x_o: 12.7
+        eur_per_hour_b: 49.9
+        eur_per_hour_b_e: 44.9
+        eur_per_hour_b_n: 43.5
+        eur_per_hour_b_s_x_o: 40.2
+        eur_per_hour_c: 44.5
+        eur_per_hour_d: 53.6
+        eur_per_hour_e: 39.4
+        eur_per_hour_f: 40.3
+        eur_per_hour_g: 39.8
+        eur_per_hour_g_n: 43.4
+        eur_per_hour_h: 35.3
+        eur_per_hour_i: 27.4
+        eur_per_hour_j: 58.3
+        eur_per_hour_k: 68.4
+        eur_per_hour_l: 40.2
+        eur_per_hour_m: 51.3
+        eur_per_hour_n: 32.8
+        eur_per_hour_o: 41.0
+        eur_per_hour_p: 33.0
+        eur_per_hour_p_s: 34.7
+        eur_per_hour_q: 35.9
+        eur_per_hour_r: 32.7
+        eur_per_hour_s: 34.3
+        non_wage_share_percent_b_s_x_o: 31.6
+        wage_share_b_s_x_o: 0.68408
+  vectors:
+  - input:
+      key: DE
+      column: eur_per_hour_b_s_x_o
+    expected: 43.5
+    origin: source
+  - input:
+      key: FR
+      column: eur_per_hour_b_s_x_o
+    expected: 43.4
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow lc_lci_lev (labour cost levels by NACE Rev. 2 activity), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/lc_lci_lev/A.EUR.D1_D4_MD5+D11+D12_D4_MD5+D2-D4_MD5_RAT..DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, lcstruct=D1_D4_MD5, nace_r2=B-S_X_O, TIME_PERIOD=2024, OBS_VALUE
+  value: '43.5'
+  unit: currency:EUR
+  snippet: DE,2024,43.5
+  source_license: CC-BY-4.0
+  content_sha256: eb4bcd70fd9fa7dc8fc9bf720298b4418cb709d1e711036b3ee7cbd4a4f34e17
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow lc_lci_lev (labour cost levels by NACE Rev. 2 activity), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/lc_lci_lev/A.EUR.D1_D4_MD5+D11+D12_D4_MD5+D2-D4_MD5_RAT..DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, lcstruct=D1_D4_MD5, nace_r2=B-S_X_O, TIME_PERIOD=2024, OBS_VALUE
+  value: '43.4'
+  unit: currency:EUR
+  snippet: FR,2024,43.4
+  source_license: CC-BY-4.0
+  content_sha256: eb4bcd70fd9fa7dc8fc9bf720298b4418cb709d1e711036b3ee7cbd4a4f34e17
+  role: primary
+assumed:
+- parameter: rows[*].wage_share_b_s_x_o
+  value: wages_eur_per_hour_b_s_x_o / eur_per_hour_b_s_x_o
+  method: derived
+  rationale: The wage share of hourly labour cost is the published wages-and-salaries component over the published
+    total for B-S_X_O.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[eur_per_hour_b_s_x_o]
+  expected: 48.2
+  tolerance: 0
+notes: 'Hourly labour cost in euro for 2024 from Eurostat dataflow lc_lci_lev (labour cost for the labour cost index:
+  compensation of employees plus taxes minus subsidies), for the whole economy except public administration (B-S_X_O),
+  the aggregates industry except construction (B-E), business economy (B-N), services of the business economy (G-N)
+  and non-market services (P-S), and each NACE section B to S. For B-S_X_O the table also carries the wages-and-salaries
+  and the non-wage components in euro per hour and Eurostat''s published share of non-wage costs in percent; the
+  derived wage share is their complement expressed as a ratio. Belgium reports 2024 as its latest year, which is
+  why the table is built on 2024 rather than the provisional 2025 figures. Rows are keyed by the Eurostat geo code
+  and carry the English country name from the GEO codelist; a cell Eurostat does not publish is stored as null.
+  Observation flags published with the data: provisional (p): AT (wages_eur_per_hour_b_s_x_o, non_wage_eur_per_hour_b_s_x_o,
+  eur_per_hour_b, eur_per_hour_b_e, eur_per_hour_b_n, eur_per_hour_b_s_x_o, eur_per_hour_c, eur_per_hour_d, eur_per_hour_e,
+  eur_per_hour_f, eur_per_hour_g, eur_per_hour_g_n, eur_per_hour_h, eur_per_hour_i, eur_per_hour_j, eur_per_hour_k,
+  eur_per_hour_l, eur_per_hour_m, eur_per_hour_n, eur_per_hour_p, eur_per_hour_p_s, eur_per_hour_q, eur_per_hour_r,
+  eur_per_hour_s, non_wage_share_percent_b_s_x_o). Eurostat''s copyright notice states that its data are released
+  under the Creative Commons Attribution 4.0 International licence; the notice page renders dynamically and is referenced
+  rather than hashed.'

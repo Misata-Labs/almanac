@@ -1,0 +1,231 @@
+id: us-fdic-insured-institutions-quarterly-performance-ratios-2024q3-2026q2
+title: FDIC-insured institutions, industry performance ratios by quarter (ROA, NIM, efficiency, noncurrent, charge-off,
+  cost of funds), 2024Q3 to 2026Q2
+kind: temporal
+domain: banking
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2024-09-30'
+  end: '2026-06-30'
+tags:
+- banking
+- fdic
+- performance-ratios
+- quarterly-series
+- credit-risk
+- profitability
+use_cases:
+- banking-demo
+- credit-risk
+- financial-reporting
+- loan-pricing
+spec:
+  variable: return_on_assets_percent
+  unit: percent
+  frequency: quarterly
+  columns:
+  - net_interest_margin_percent
+  - efficiency_ratio_percent
+  - noncurrent_loan_ratio_percent
+  - net_charge_off_rate_percent
+  - cost_of_funding_earning_assets_percent
+  - provision_to_loans_percent
+  - equity_to_assets_percent
+  - loans_to_deposits_percent
+  series:
+  - period: '2024-09-30'
+    value: 1.0778
+    net_interest_margin_percent: 3.2073
+    efficiency_ratio_percent: 57.1605
+    noncurrent_loan_ratio_percent: 0.9539
+    net_charge_off_rate_percent: 0.6584
+    cost_of_funding_earning_assets_percent: 2.6844
+    provision_to_loans_percent: 0.7417
+    equity_to_assets_percent: 10.0215
+    loans_to_deposits_percent: 66.317
+  - period: '2024-12-31'
+    value: 1.1058
+    net_interest_margin_percent: 3.2803
+    efficiency_ratio_percent: 57.985
+    noncurrent_loan_ratio_percent: 0.9816
+    net_charge_off_rate_percent: 0.697
+    cost_of_funding_earning_assets_percent: 2.5076
+    provision_to_loans_percent: 0.6995
+    equity_to_assets_percent: 9.9429
+    loans_to_deposits_percent: 66.3101
+  - period: '2025-03-31'
+    value: 1.1438
+    net_interest_margin_percent: 3.2169
+    efficiency_ratio_percent: 56.8879
+    noncurrent_loan_ratio_percent: 0.9824
+    net_charge_off_rate_percent: 0.6593
+    cost_of_funding_earning_assets_percent: 2.2629
+    provision_to_loans_percent: 0.6969
+    equity_to_assets_percent: 10.0217
+    loans_to_deposits_percent: 65.8108
+  - period: '2025-06-30'
+    value: 1.1183
+    net_interest_margin_percent: 3.2145
+    efficiency_ratio_percent: 56.098
+    noncurrent_loan_ratio_percent: 0.956
+    net_charge_off_rate_percent: 0.5891
+    cost_of_funding_earning_assets_percent: 2.2506
+    provision_to_loans_percent: 0.913
+    equity_to_assets_percent: 10.092
+    loans_to_deposits_percent: 66.5364
+  - period: '2025-09-30'
+    value: 1.2592
+    net_interest_margin_percent: 3.3279
+    efficiency_ratio_percent: 55.3912
+    noncurrent_loan_ratio_percent: 0.951
+    net_charge_off_rate_percent: 0.6041
+    cost_of_funding_earning_assets_percent: 2.2918
+    provision_to_loans_percent: 0.626
+    equity_to_assets_percent: 10.2072
+    loans_to_deposits_percent: 67.0348
+  - period: '2025-12-31'
+    value: 1.2281
+    net_interest_margin_percent: 3.3761
+    efficiency_ratio_percent: 56.3421
+    noncurrent_loan_ratio_percent: 0.9627
+    net_charge_off_rate_percent: 0.6145
+    cost_of_funding_earning_assets_percent: 2.1403
+    provision_to_loans_percent: 0.6167
+    equity_to_assets_percent: 10.214
+    loans_to_deposits_percent: 67.2475
+  - period: '2026-03-31'
+    value: 1.2275
+    net_interest_margin_percent: 3.2441
+    efficiency_ratio_percent: 56.586
+    noncurrent_loan_ratio_percent: 0.9799
+    net_charge_off_rate_percent: 0.5767
+    cost_of_funding_earning_assets_percent: 1.9773
+    provision_to_loans_percent: 0.6205
+    equity_to_assets_percent: 9.9745
+    loans_to_deposits_percent: 66.8505
+  - period: '2026-06-30'
+    value: 1.3594
+    net_interest_margin_percent: 3.2948
+    efficiency_ratio_percent: 55.9615
+    noncurrent_loan_ratio_percent: 0.9299
+    net_charge_off_rate_percent: 0.5615
+    cost_of_funding_earning_assets_percent: 2.0198
+    provision_to_loans_percent: 0.5486
+    equity_to_assets_percent: 9.8614
+    loans_to_deposits_percent: 67.4388
+evidence:
+- publisher: FDIC
+  title: BankFind Suite financials API, sums by report date
+  url: https://api.fdic.gov/banks/financials?filters=REPDTE%3A%5B20240930%20TO%2020260630%5D&fields=REPDTE&agg_by=REPDTE&agg_sum_fields=ASSET%2CDEP%2CEQ%2CLNLSGR%2CNCLNLS%2CERNAST%2CNETINCQ%2CNIMQ%2CEINTXQ%2CNONIIQ%2CNONIXQ%2CELNATQ%2CNTLNLSQ&agg_limit=8&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: data[REPDTE=20260630].sum_NETINCQ
+  value: 90917000
+  unit: currency:USD
+  snippet: '"sum_NETINCQ":90917000'
+  source_license: unstated
+  content_sha256: 62619d33b7e95e1d3459b05847ec62628ab49876e392262c4388498ceac06610
+  role: primary
+- publisher: FDIC
+  title: BankFind Suite financials API, sums by report date
+  url: https://api.fdic.gov/banks/financials?filters=REPDTE%3A%5B20240930%20TO%2020260630%5D&fields=REPDTE&agg_by=REPDTE&agg_sum_fields=ASSET%2CDEP%2CEQ%2CLNLSGR%2CNCLNLS%2CERNAST%2CNETINCQ%2CNIMQ%2CEINTXQ%2CNONIIQ%2CNONIXQ%2CELNATQ%2CNTLNLSQ&agg_limit=8&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: data[REPDTE=20260630].sum_ASSET
+  value: 26753048556
+  unit: currency:USD
+  snippet: '"sum_ASSET":26753048556'
+  source_license: unstated
+  content_sha256: 62619d33b7e95e1d3459b05847ec62628ab49876e392262c4388498ceac06610
+  role: primary
+- publisher: FDIC
+  title: BankFind Suite financials API, sums by report date
+  url: https://api.fdic.gov/banks/financials?filters=REPDTE%3A%5B20240930%20TO%2020260630%5D&fields=REPDTE&agg_by=REPDTE&agg_sum_fields=ASSET%2CDEP%2CEQ%2CLNLSGR%2CNCLNLS%2CERNAST%2CNETINCQ%2CNIMQ%2CEINTXQ%2CNONIIQ%2CNONIXQ%2CELNATQ%2CNTLNLSQ&agg_limit=8&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: data[REPDTE=20260630].sum_NCLNLS
+  value: 130915571
+  unit: currency:USD
+  snippet: '"sum_NCLNLS":130915571'
+  source_license: unstated
+  content_sha256: 62619d33b7e95e1d3459b05847ec62628ab49876e392262c4388498ceac06610
+  role: primary
+- publisher: FDIC
+  title: BankFind Suite financials API, sums by report date
+  url: https://api.fdic.gov/banks/financials?filters=REPDTE%3A%5B20240930%20TO%2020260630%5D&fields=REPDTE&agg_by=REPDTE&agg_sum_fields=ASSET%2CDEP%2CEQ%2CLNLSGR%2CNCLNLS%2CERNAST%2CNETINCQ%2CNIMQ%2CEINTXQ%2CNONIIQ%2CNONIXQ%2CELNATQ%2CNTLNLSQ&agg_limit=8&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: data[REPDTE=20260630].sum_LNLSGR
+  value: 14078755148
+  unit: currency:USD
+  snippet: '"sum_LNLSGR":14078755148'
+  source_license: unstated
+  content_sha256: 62619d33b7e95e1d3459b05847ec62628ab49876e392262c4388498ceac06610
+  role: primary
+- publisher: FDIC
+  title: FDIC financials API field dictionary (risview_properties.yaml)
+  url: https://api.fdic.gov/banks/docs/risview_properties.yaml
+  accessed_at: '2026-10-31'
+  locator: properties.data.properties.ROA.description
+  value: Net income after taxes and extraordinary items (annualized) as a percent of average total assets.
+  unit: text
+  snippet: Net income after taxes and extraordinary items (annualized) as a percent of average total assets.
+  source_license: unstated
+  content_sha256: b257457e4e821d6a0d9f88ffc4e6e0da80e4ccf67fa394cadb21587b50b23d59
+  role: supporting
+assumed:
+- parameter: return_on_assets_percent
+  value: 100 * 4 * sum_NETINCQ / sum_ASSET
+  method: derived
+  rationale: Quarterly net income annualised by four over end-of-quarter total assets; the FDIC's own ROA uses average
+    assets, which the aggregation endpoint does not return.
+- parameter: net_interest_margin_percent
+  value: 100 * 4 * sum_NIMQ / sum_ERNAST
+  method: derived
+  rationale: Quarterly net interest income annualised over end-of-quarter earning assets.
+- parameter: efficiency_ratio_percent
+  value: 100 * sum_NONIXQ / (sum_NIMQ + sum_NONIIQ)
+  method: derived
+  rationale: Quarterly noninterest expense over quarterly net interest income plus noninterest income.
+- parameter: noncurrent_loan_ratio_percent
+  value: 100 * sum_NCLNLS / sum_LNLSGR
+  method: derived
+  rationale: Noncurrent loans and leases over gross loans and leases, both end-of-quarter balances.
+- parameter: net_charge_off_rate_percent
+  value: 100 * 4 * sum_NTLNLSQ / sum_LNLSGR
+  method: derived
+  rationale: Quarterly net charge-offs annualised over end-of-quarter gross loans and leases.
+- parameter: cost_of_funding_earning_assets_percent
+  value: 100 * 4 * sum_EINTXQ / sum_ERNAST
+  method: derived
+  rationale: Quarterly interest expense annualised over end-of-quarter earning assets.
+- parameter: provision_to_loans_percent
+  value: 100 * 4 * sum_ELNATQ / sum_LNLSGR
+  method: derived
+  rationale: Quarterly provision for credit losses annualised over end-of-quarter gross loans and leases.
+- parameter: equity_to_assets_percent
+  value: 100 * sum_EQ / sum_ASSET
+  method: derived
+  rationale: Equity capital over total assets.
+- parameter: loans_to_deposits_percent
+  value: 100 * sum_LNLSGR / sum_DEP
+  method: derived
+  rationale: Gross loans and leases over total deposits.
+tests:
+- statistic: value[2026-06-30]
+  expected: 1.3594
+  tolerance: 0.0001
+- statistic: column[noncurrent_loan_ratio_percent,2026-06-30]
+  expected: 0.9299
+  tolerance: 0.0001
+- statistic: column[net_interest_margin_percent,2024-09-30]
+  expected: 3.2073
+  tolerance: 0.0001
+- statistic: count
+  expected: 8
+  tolerance: 0
+notes: Industry-wide ratios for all FDIC-insured institutions, computed from the same summed call-report items as
+  us-fdic-insured-institutions-quarterly-aggregates-2024q3-2026q2 with the formulas listed in assumed[]. Every ratio
+  is exact arithmetic on published sums, but the definitions differ from the FDIC Quarterly Banking Profile in using
+  end-of-quarter balances rather than averages as denominators, so the levels are close to but not identical with
+  the FDIC's published industry ratios. Percent values are rounded to four decimals. The publisher is a US federal
+  body and the resource carries no licence statement, so the licence is recorded as unstated and the entry held
+  at license-review.

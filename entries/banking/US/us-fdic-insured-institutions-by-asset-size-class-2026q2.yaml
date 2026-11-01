@@ -1,0 +1,309 @@
+id: us-fdic-insured-institutions-by-asset-size-class-2026q2
+title: 'FDIC-insured institutions by asset-size class, 2026Q2: counts, balance-sheet totals and performance ratios'
+kind: rule
+domain: banking
+region: US
+status: license-review
+tier: A
+valid_from: '2026-06-30'
+valid_to: '2026-06-30'
+tags:
+- banking
+- fdic
+- asset-size
+- reference-table
+- market-structure
+use_cases:
+- banking-demo
+- company-generation
+- market-sizing
+- credit-risk
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    report_date: '2026-06-30'
+    money_unit: thousands of US dollars
+    rows:
+      under_100m:
+        name: Less than $100 million
+        asset_filter: ASSET:[* TO 99999]
+        institutions: 584
+        total_assets_usd_thousands: 35084000
+        total_deposits_usd_thousands: 28102265
+        equity_capital_usd_thousands: 5847744
+        loans_and_leases_usd_thousands: 19229940
+        noncurrent_loans_and_leases_usd_thousands: 248474
+        earning_assets_usd_thousands: 32373452
+        net_income_quarter_usd_thousands: 160594
+        net_interest_income_quarter_usd_thousands: 322013
+        interest_expense_quarter_usd_thousands: 117053
+        noninterest_income_quarter_usd_thousands: 423824
+        noninterest_expense_quarter_usd_thousands: 557899
+        provision_for_credit_losses_quarter_usd_thousands: 6455
+        net_charge_offs_quarter_usd_thousands: 3110
+        return_on_assets_percent: 1.831
+        net_interest_margin_percent: 3.9787
+        efficiency_ratio_percent: 74.8017
+        noncurrent_loan_ratio_percent: 1.2921
+        net_charge_off_rate_percent: 0.0647
+        cost_of_funding_earning_assets_percent: 1.4463
+        provision_to_loans_percent: 0.1343
+        equity_to_assets_percent: 16.6678
+        loans_to_deposits_percent: 68.4284
+        share_of_institutions: 0.135405
+        share_of_assets: 0.001311
+      100m_to_1b:
+        name: $100 million to $1 billion
+        asset_filter: ASSET:[100000 TO 999999]
+        institutions: 2662
+        total_assets_usd_thousands: 1029096572
+        total_deposits_usd_thousands: 865575269
+        equity_capital_usd_thousands: 117973034
+        loans_and_leases_usd_thousands: 694171233
+        noncurrent_loans_and_leases_usd_thousands: 6168486
+        earning_assets_usd_thousands: 964092438
+        net_income_quarter_usd_thousands: 3610032
+        net_interest_income_quarter_usd_thousands: 9645326
+        interest_expense_quarter_usd_thousands: 4204192
+        noninterest_income_quarter_usd_thousands: 3518836
+        noninterest_expense_quarter_usd_thousands: 8589617
+        provision_for_credit_losses_quarter_usd_thousands: 403115
+        net_charge_offs_quarter_usd_thousands: 268952
+        return_on_assets_percent: 1.4032
+        net_interest_margin_percent: 4.0018
+        efficiency_ratio_percent: 65.25
+        noncurrent_loan_ratio_percent: 0.8886
+        net_charge_off_rate_percent: 0.155
+        cost_of_funding_earning_assets_percent: 1.7443
+        provision_to_loans_percent: 0.2323
+        equity_to_assets_percent: 11.4637
+        loans_to_deposits_percent: 80.1977
+        share_of_institutions: 0.617204
+        share_of_assets: 0.038467
+      1b_to_10b:
+        name: $1 billion to $10 billion
+        asset_filter: ASSET:[1000000 TO 9999999]
+        institutions: 902
+        total_assets_usd_thousands: 2527986979
+        total_deposits_usd_thousands: 2080669504
+        equity_capital_usd_thousands: 283540268
+        loans_and_leases_usd_thousands: 1788366864
+        noncurrent_loans_and_leases_usd_thousands: 15733728
+        earning_assets_usd_thousands: 2324339968
+        net_income_quarter_usd_thousands: 9392887
+        net_interest_income_quarter_usd_thousands: 22691317
+        interest_expense_quarter_usd_thousands: 10975614
+        noninterest_income_quarter_usd_thousands: 8192381
+        noninterest_expense_quarter_usd_thousands: 17631995
+        provision_for_credit_losses_quarter_usd_thousands: 1698028
+        net_charge_offs_quarter_usd_thousands: 1294914
+        return_on_assets_percent: 1.4862
+        net_interest_margin_percent: 3.905
+        efficiency_ratio_percent: 57.0916
+        noncurrent_loan_ratio_percent: 0.8798
+        net_charge_off_rate_percent: 0.2896
+        cost_of_funding_earning_assets_percent: 1.8888
+        provision_to_loans_percent: 0.3798
+        equity_to_assets_percent: 11.216
+        loans_to_deposits_percent: 85.9515
+        share_of_institutions: 0.209135
+        share_of_assets: 0.094493
+      10b_to_250b:
+        name: $10 billion to $250 billion
+        asset_filter: ASSET:[10000000 TO 249999999]
+        institutions: 147
+        total_assets_usd_thousands: 6307862236
+        total_deposits_usd_thousands: 5063977274
+        equity_capital_usd_thousands: 666424625
+        loans_and_leases_usd_thousands: 4081274435
+        noncurrent_loans_and_leases_usd_thousands: 44884771
+        earning_assets_usd_thousands: 5583762825
+        net_income_quarter_usd_thousands: 21887953
+        net_interest_income_quarter_usd_thousands: 54593429
+        interest_expense_quarter_usd_thousands: 28655216
+        noninterest_income_quarter_usd_thousands: 24082237
+        noninterest_expense_quarter_usd_thousands: 45061904
+        provision_for_credit_losses_quarter_usd_thousands: 5606626
+        net_charge_offs_quarter_usd_thousands: 5906537
+        return_on_assets_percent: 1.388
+        net_interest_margin_percent: 3.9109
+        efficiency_ratio_percent: 57.2755
+        noncurrent_loan_ratio_percent: 1.0998
+        net_charge_off_rate_percent: 0.5789
+        cost_of_funding_earning_assets_percent: 2.0528
+        provision_to_loans_percent: 0.5495
+        equity_to_assets_percent: 10.565
+        loans_to_deposits_percent: 80.5942
+        share_of_institutions: 0.034083
+        share_of_assets: 0.235781
+      250b_and_over:
+        name: $250 billion or more
+        asset_filter: ASSET:[250000000 TO *]
+        institutions: 18
+        total_assets_usd_thousands: 16853018769
+        total_deposits_usd_thousands: 12838029431
+        equity_capital_usd_thousands: 1564452417
+        loans_and_leases_usd_thousands: 7495712676
+        noncurrent_loans_and_leases_usd_thousands: 63880112
+        earning_assets_usd_thousands: 15069938785
+        net_income_quarter_usd_thousands: 55865534
+        net_interest_income_quarter_usd_thousands: 110228751
+        interest_expense_quarter_usd_thousands: 77106584
+        noninterest_income_quarter_usd_thousands: 62098955
+        noninterest_expense_quarter_usd_thousands: 93691035
+        provision_for_credit_losses_quarter_usd_thousands: 11593444
+        net_charge_offs_quarter_usd_thousands: 12289730
+        return_on_assets_percent: 1.3259
+        net_interest_margin_percent: 2.9258
+        efficiency_ratio_percent: 54.3679
+        noncurrent_loan_ratio_percent: 0.8522
+        net_charge_off_rate_percent: 0.6558
+        cost_of_funding_earning_assets_percent: 2.0466
+        provision_to_loans_percent: 0.6187
+        equity_to_assets_percent: 9.2829
+        loans_to_deposits_percent: 58.3868
+        share_of_institutions: 0.004173
+        share_of_assets: 0.629948
+  vectors:
+  - input:
+      key: under_100m
+      column: institutions
+    expected: 584
+    origin: source
+  - input:
+      key: 250b_and_over
+      column: total_assets_usd_thousands
+    expected: 16853018769
+    origin: source
+  - input:
+      key: 1b_to_10b
+      column: name
+    expected: $1 billion to $10 billion
+    origin: source
+  - input: 10b_to_250b
+    expected: true
+    origin: source
+  - input: over_1t
+    expected: false
+    origin: derived
+evidence:
+- publisher: FDIC
+  title: BankFind Suite financials API, Less than $100 million, report date 20260630
+  url: https://api.fdic.gov/banks/financials?filters=REPDTE%3A20260630%20AND%20ASSET%3A%5B%2A%20TO%2099999%5D&fields=REPDTE&agg_by=REPDTE&agg_sum_fields=ASSET%2CDEP%2CEQ%2CLNLSGR%2CNCLNLS%2CERNAST%2CNETINCQ%2CNIMQ%2CEINTXQ%2CNONIIQ%2CNONIXQ%2CELNATQ%2CNTLNLSQ&agg_limit=1&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: data[0].count
+  value: 584
+  unit: count
+  snippet: '"count":584,"sum_ASSET":35084000'
+  source_license: unstated
+  content_sha256: 6a43e6e342378aa58afcb52ea8afc77ea379db019b8ef794dea6b69a1719d65c
+  role: primary
+- publisher: FDIC
+  title: BankFind Suite financials API, $100 million to $1 billion, report date 20260630
+  url: https://api.fdic.gov/banks/financials?filters=REPDTE%3A20260630%20AND%20ASSET%3A%5B100000%20TO%20999999%5D&fields=REPDTE&agg_by=REPDTE&agg_sum_fields=ASSET%2CDEP%2CEQ%2CLNLSGR%2CNCLNLS%2CERNAST%2CNETINCQ%2CNIMQ%2CEINTXQ%2CNONIIQ%2CNONIXQ%2CELNATQ%2CNTLNLSQ&agg_limit=1&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: data[0].count
+  value: 2662
+  unit: count
+  snippet: '"count":2662,"sum_ASSET":1029096572'
+  source_license: unstated
+  content_sha256: 651ca3a08fe4788c0386dbb8d758caa7883ca5725cf6a3075cd778391f978337
+  role: primary
+- publisher: FDIC
+  title: BankFind Suite financials API, $1 billion to $10 billion, report date 20260630
+  url: https://api.fdic.gov/banks/financials?filters=REPDTE%3A20260630%20AND%20ASSET%3A%5B1000000%20TO%209999999%5D&fields=REPDTE&agg_by=REPDTE&agg_sum_fields=ASSET%2CDEP%2CEQ%2CLNLSGR%2CNCLNLS%2CERNAST%2CNETINCQ%2CNIMQ%2CEINTXQ%2CNONIIQ%2CNONIXQ%2CELNATQ%2CNTLNLSQ&agg_limit=1&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: data[0].count
+  value: 902
+  unit: count
+  snippet: '"count":902,"sum_ASSET":2527986979'
+  source_license: unstated
+  content_sha256: 5bf18802c55d8b7f68f4e1b52372b682fe91c91be3efa45f2497f40492658cf7
+  role: primary
+- publisher: FDIC
+  title: BankFind Suite financials API, $10 billion to $250 billion, report date 20260630
+  url: https://api.fdic.gov/banks/financials?filters=REPDTE%3A20260630%20AND%20ASSET%3A%5B10000000%20TO%20249999999%5D&fields=REPDTE&agg_by=REPDTE&agg_sum_fields=ASSET%2CDEP%2CEQ%2CLNLSGR%2CNCLNLS%2CERNAST%2CNETINCQ%2CNIMQ%2CEINTXQ%2CNONIIQ%2CNONIXQ%2CELNATQ%2CNTLNLSQ&agg_limit=1&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: data[0].count
+  value: 147
+  unit: count
+  snippet: '"count":147,"sum_ASSET":6307862236'
+  source_license: unstated
+  content_sha256: 1e00ed1684a98dbaaf366bda0fade78e76ad4c33b90e98f0f0186252c0310fef
+  role: primary
+- publisher: FDIC
+  title: BankFind Suite financials API, $250 billion or more, report date 20260630
+  url: https://api.fdic.gov/banks/financials?filters=REPDTE%3A20260630%20AND%20ASSET%3A%5B250000000%20TO%20%2A%5D&fields=REPDTE&agg_by=REPDTE&agg_sum_fields=ASSET%2CDEP%2CEQ%2CLNLSGR%2CNCLNLS%2CERNAST%2CNETINCQ%2CNIMQ%2CEINTXQ%2CNONIIQ%2CNONIXQ%2CELNATQ%2CNTLNLSQ&agg_limit=1&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: data[0].count
+  value: 18
+  unit: count
+  snippet: '"count":18,"sum_ASSET":16853018769'
+  source_license: unstated
+  content_sha256: 6235abca2774ee0fd0b989c62d7edca9e1d03577cb9e4079d2ec8888e6e6f328
+  role: primary
+assumed:
+- parameter: share_of_institutions
+  value: institutions / sum over classes
+  method: derived
+  rationale: Shares are computed from the five class counts, which together cover every filer at the report date.
+- parameter: share_of_assets
+  value: total_assets_usd_thousands / sum over classes
+  method: derived
+  rationale: Asset shares are computed from the five class sums.
+- parameter: return_on_assets_percent
+  value: 100 * 4 * sum_NETINCQ / sum_ASSET
+  method: derived
+  rationale: Quarterly net income annualised by four over end-of-quarter total assets; the FDIC's own ROA uses average
+    assets, which the aggregation endpoint does not return.
+- parameter: net_interest_margin_percent
+  value: 100 * 4 * sum_NIMQ / sum_ERNAST
+  method: derived
+  rationale: Quarterly net interest income annualised over end-of-quarter earning assets.
+- parameter: efficiency_ratio_percent
+  value: 100 * sum_NONIXQ / (sum_NIMQ + sum_NONIIQ)
+  method: derived
+  rationale: Quarterly noninterest expense over quarterly net interest income plus noninterest income.
+- parameter: noncurrent_loan_ratio_percent
+  value: 100 * sum_NCLNLS / sum_LNLSGR
+  method: derived
+  rationale: Noncurrent loans and leases over gross loans and leases, both end-of-quarter balances.
+- parameter: net_charge_off_rate_percent
+  value: 100 * 4 * sum_NTLNLSQ / sum_LNLSGR
+  method: derived
+  rationale: Quarterly net charge-offs annualised over end-of-quarter gross loans and leases.
+- parameter: cost_of_funding_earning_assets_percent
+  value: 100 * 4 * sum_EINTXQ / sum_ERNAST
+  method: derived
+  rationale: Quarterly interest expense annualised over end-of-quarter earning assets.
+- parameter: provision_to_loans_percent
+  value: 100 * 4 * sum_ELNATQ / sum_LNLSGR
+  method: derived
+  rationale: Quarterly provision for credit losses annualised over end-of-quarter gross loans and leases.
+- parameter: equity_to_assets_percent
+  value: 100 * sum_EQ / sum_ASSET
+  method: derived
+  rationale: Equity capital over total assets.
+- parameter: loans_to_deposits_percent
+  value: 100 * sum_LNLSGR / sum_DEP
+  method: derived
+  rationale: Gross loans and leases over total deposits.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: value[under_100m,institutions]
+  expected: 584
+  tolerance: 0
+- statistic: max[total_assets_usd_thousands]
+  expected: 16853018769
+  tolerance: 0
+notes: Every FDIC-insured institution filing for the report date 2026-06-30, grouped into the five asset-size classes
+  the FDIC Quarterly Banking Profile uses, with one aggregation query per class (the ASSET filter is recorded in
+  each row; ASSET is in thousands of dollars). Each row carries the number of institutions, summed balance-sheet
+  and single-quarter income items, the derived performance ratios of us-fdic-insured-institutions-quarterly-performance-ratios-2024q3-2026q2
+  and the class's share of institutions and of assets. The publisher is a US federal body and the resource carries
+  no licence statement, so the licence is recorded as unstated and the entry held at license-review.

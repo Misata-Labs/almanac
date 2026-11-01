@@ -1,0 +1,411 @@
+id: eu-enterprise-births-deaths-and-survival-2024
+title: Enterprise birth, death, churn and survival rates, total and by employee size class, 2024, ten member states
+kind: rule
+domain: business
+region: EU
+status: verified
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- business-demography
+- enterprise-births
+- enterprise-deaths
+- survival-rate
+- churn
+- size-class
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- company-generation
+- kyb-onboarding
+- credit-risk
+- market-sizing
+- crm-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: bd_size
+    key: A.TOTAL.TOTAL.ENT_NR+ENT_BRTH_NR+ENT_DTH_NR+ENT_BRTHR_PC+ENT_DTHR_PC+ENT_BRTHR_DTHR_PC.B-S_X_O_S94.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2024'
+    sources:
+    - dataflow: bd_size
+      key: A.TOTAL.TOTAL.ENT_NR+ENT_BRTH_NR+ENT_DTH_NR+ENT_BRTHR_PC+ENT_DTHR_PC+ENT_BRTHR_DTHR_PC.B-S_X_O_S94.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+      columns:
+      - birth_rate_percent
+      - death_rate_percent
+      - churn_rate_percent
+      - active_enterprises
+      - enterprise_births
+      - enterprise_deaths
+    - dataflow: bd_size
+      key: A.Y1+Y2+Y3.TOTAL.ENT_SRVLR_BRTH_PC.B-S_X_O_S94.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+      columns:
+      - survival_rate_1_year_percent
+      - survival_rate_2_year_percent
+      - survival_rate_3_year_percent
+    - dataflow: bd_size
+      key: A.TOTAL.0+1-4+5-9+GE10.ENT_BRTHR_PC+ENT_DTHR_PC+ENT_NR.B-S_X_O_S94.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+      columns:
+      - birth_rate_percent_0_employees
+      - death_rate_percent_0_employees
+      - active_enterprises_0_employees
+      - birth_rate_percent_1_4_employees
+      - death_rate_percent_1_4_employees
+      - active_enterprises_1_4_employees
+      - birth_rate_percent_5_9_employees
+      - death_rate_percent_5_9_employees
+      - active_enterprises_5_9_employees
+      - birth_rate_percent_10_plus_employees
+      - death_rate_percent_10_plus_employees
+      - active_enterprises_10_plus_employees
+    rows:
+      AT:
+        name: Austria
+        churn_rate_percent: 11.6
+        birth_rate_percent: 6.3
+        enterprise_births: 39554
+        death_rate_percent: 5.31
+        enterprise_deaths: 33330
+        active_enterprises: 628058
+        survival_rate_1_year_percent: 92.32
+        survival_rate_2_year_percent: 75.4
+        survival_rate_3_year_percent: 61.16
+        birth_rate_percent_0_employees: 8.54
+        death_rate_percent_0_employees: 6.06
+        active_enterprises_0_employees: 382018
+        birth_rate_percent_1_4_employees: 3.92
+        death_rate_percent_1_4_employees: 5.82
+        active_enterprises_1_4_employees: 163774
+        birth_rate_percent_5_9_employees: 0.99
+        death_rate_percent_5_9_employees: 1.18
+        active_enterprises_5_9_employees: 39917
+        birth_rate_percent_10_plus_employees: 0.27
+        death_rate_percent_10_plus_employees: 0.4
+        active_enterprises_10_plus_employees: 42349
+        zero_employee_share_of_active_enterprises: 0.608253
+      BE:
+        name: Belgium
+        churn_rate_percent: 13.68
+        birth_rate_percent: 8.0
+        enterprise_births: 74529
+        death_rate_percent: 5.67
+        enterprise_deaths: 52848
+        active_enterprises: 931405
+        survival_rate_1_year_percent: 89.69
+        survival_rate_2_year_percent: 79.96
+        survival_rate_3_year_percent: 74.9
+        birth_rate_percent_0_employees: 9.23
+        death_rate_percent_0_employees: 6.89
+        active_enterprises_0_employees: 729925
+        birth_rate_percent_1_4_employees: 4.71
+        death_rate_percent_1_4_employees: 1.73
+        active_enterprises_1_4_employees: 134758
+        birth_rate_percent_5_9_employees: 1.88
+        death_rate_percent_5_9_employees: 0.43
+        active_enterprises_5_9_employees: 31537
+        birth_rate_percent_10_plus_employees: 0.64
+        death_rate_percent_10_plus_employees: 0.17
+        active_enterprises_10_plus_employees: 35185
+        zero_employee_share_of_active_enterprises: 0.783682
+      DE:
+        name: Germany
+        churn_rate_percent: 18.01
+        birth_rate_percent: 7.78
+        enterprise_births: 252090
+        death_rate_percent: 10.23
+        enterprise_deaths: 331590
+        active_enterprises: 3240939
+        survival_rate_1_year_percent: 77.21
+        survival_rate_2_year_percent: 64.88
+        survival_rate_3_year_percent: 57.83
+        birth_rate_percent_0_employees: 13.97
+        death_rate_percent_0_employees: 18.53
+        active_enterprises_0_employees: 1123134
+        birth_rate_percent_1_4_employees: 6.87
+        death_rate_percent_1_4_employees: 9.17
+        active_enterprises_1_4_employees: 1247970
+        birth_rate_percent_5_9_employees: 1.57
+        death_rate_percent_5_9_employees: 1.61
+        active_enterprises_5_9_employees: 400348
+        birth_rate_percent_10_plus_employees: 0.68
+        death_rate_percent_10_plus_employees: 0.56
+        active_enterprises_10_plus_employees: 469487
+        zero_employee_share_of_active_enterprises: 0.346546
+      ES:
+        name: Spain
+        churn_rate_percent: 17.01
+        birth_rate_percent: 9.42
+        enterprise_births: 334789
+        death_rate_percent: 7.59
+        enterprise_deaths: 269592
+        active_enterprises: 3552872
+        survival_rate_1_year_percent: 78.59
+        survival_rate_2_year_percent: 63.09
+        survival_rate_3_year_percent: 53.63
+        birth_rate_percent_0_employees: 13.29
+        death_rate_percent_0_employees: 9.83
+        active_enterprises_0_employees: 1950687
+        birth_rate_percent_1_4_employees: 5.77
+        death_rate_percent_1_4_employees: 5.93
+        active_enterprises_1_4_employees: 1234393
+        birth_rate_percent_5_9_employees: 1.73
+        death_rate_percent_5_9_employees: 1.84
+        active_enterprises_5_9_employees: 190501
+        birth_rate_percent_10_plus_employees: 0.56
+        death_rate_percent_10_plus_employees: 0.64
+        active_enterprises_10_plus_employees: 177291
+        zero_employee_share_of_active_enterprises: 0.549045
+      FR:
+        name: France
+        churn_rate_percent: 25.18
+        birth_rate_percent: 14.23
+        enterprise_births: 799108
+        death_rate_percent: 10.95
+        enterprise_deaths: 615080
+        active_enterprises: 5615765
+        survival_rate_1_year_percent: 78.34
+        survival_rate_2_year_percent: 61.75
+        survival_rate_3_year_percent: 48.94
+        birth_rate_percent_0_employees: 17.54
+        death_rate_percent_0_employees: 13.28
+        active_enterprises_0_employees: 4161830
+        birth_rate_percent_1_4_employees: 6.32
+        death_rate_percent_1_4_employees: 5.76
+        active_enterprises_1_4_employees: 1045186
+        birth_rate_percent_5_9_employees: 1.06
+        death_rate_percent_5_9_employees: 0.79
+        active_enterprises_5_9_employees: 213929
+        birth_rate_percent_10_plus_employees: 0.5
+        death_rate_percent_10_plus_employees: 0.29
+        active_enterprises_10_plus_employees: 194820
+        zero_employee_share_of_active_enterprises: 0.741098
+      IE:
+        name: Ireland
+        churn_rate_percent: 27.69
+        birth_rate_percent: 10.83
+        enterprise_births: 44418
+        death_rate_percent: 16.86
+        enterprise_deaths: 69154
+        active_enterprises: 410205
+        survival_rate_1_year_percent: 78.65
+        survival_rate_2_year_percent: 65.3
+        survival_rate_3_year_percent: 52.69
+        birth_rate_percent_0_employees: 12.72
+        death_rate_percent_0_employees: 4.32
+        active_enterprises_0_employees: 181364
+        birth_rate_percent_1_4_employees: 11.5
+        death_rate_percent_1_4_employees: 35.02
+        active_enterprises_1_4_employees: 172768
+        birth_rate_percent_5_9_employees: 3.64
+        death_rate_percent_5_9_employees: 1.75
+        active_enterprises_5_9_employees: 25296
+        birth_rate_percent_10_plus_employees: 1.85
+        death_rate_percent_10_plus_employees: 1.2
+        active_enterprises_10_plus_employees: 30777
+        zero_employee_share_of_active_enterprises: 0.44213
+      IT:
+        name: Italy
+        churn_rate_percent: 14.36
+        birth_rate_percent: 7.94
+        enterprise_births: 368276
+        death_rate_percent: 6.42
+        enterprise_deaths: 297820
+        active_enterprises: 4639890
+        survival_rate_1_year_percent: 81.3
+        survival_rate_2_year_percent: 68.54
+        survival_rate_3_year_percent: 61.25
+        birth_rate_percent_0_employees: 10.07
+        death_rate_percent_0_employees: 8.18
+        active_enterprises_0_employees: 3084954
+        birth_rate_percent_1_4_employees: 4.69
+        death_rate_percent_1_4_employees: 3.8
+        active_enterprises_1_4_employees: 1112076
+        birth_rate_percent_5_9_employees: 1.47
+        death_rate_percent_5_9_employees: 0.91
+        active_enterprises_5_9_employees: 233138
+        birth_rate_percent_10_plus_employees: 1.0
+        death_rate_percent_10_plus_employees: 0.57
+        active_enterprises_10_plus_employees: 209722
+        zero_employee_share_of_active_enterprises: 0.664877
+      NL:
+        name: Netherlands
+        churn_rate_percent: 14.67
+        birth_rate_percent: 8.16
+        enterprise_births: 197710
+        death_rate_percent: 6.52
+        enterprise_deaths: 158036
+        active_enterprises: 2424297
+        survival_rate_1_year_percent: 95.87
+        survival_rate_2_year_percent: 87.05
+        survival_rate_3_year_percent: 78.11
+        birth_rate_percent_0_employees: 9.11
+        death_rate_percent_0_employees: 7.43
+        active_enterprises_0_employees: 2103955
+        birth_rate_percent_1_4_employees: 2.91
+        death_rate_percent_1_4_employees: 0.87
+        active_enterprises_1_4_employees: 177653
+        birth_rate_percent_5_9_employees: 0.93
+        death_rate_percent_5_9_employees: 0.28
+        active_enterprises_5_9_employees: 57358
+        birth_rate_percent_10_plus_employees: 0.31
+        death_rate_percent_10_plus_employees: 0.08
+        active_enterprises_10_plus_employees: 85331
+        zero_employee_share_of_active_enterprises: 0.867862
+      PL:
+        name: Poland
+        churn_rate_percent: 23.43
+        birth_rate_percent: 11.24
+        enterprise_births: 317162
+        death_rate_percent: 12.19
+        enterprise_deaths: 343959
+        active_enterprises: 2821170
+        survival_rate_1_year_percent: 82.14
+        survival_rate_2_year_percent: 69.76
+        survival_rate_3_year_percent: 58.05
+        birth_rate_percent_0_employees: 13.39
+        death_rate_percent_0_employees: 14.49
+        active_enterprises_0_employees: 1991083
+        birth_rate_percent_1_4_employees: 7.75
+        death_rate_percent_1_4_employees: 8.22
+        active_enterprises_1_4_employees: 605866
+        birth_rate_percent_5_9_employees: 1.82
+        death_rate_percent_5_9_employees: 3.02
+        active_enterprises_5_9_employees: 115101
+        birth_rate_percent_10_plus_employees: 1.45
+        death_rate_percent_10_plus_employees: 2.06
+        active_enterprises_10_plus_employees: 109120
+        zero_employee_share_of_active_enterprises: 0.705765
+      SE:
+        name: Sweden
+        churn_rate_percent: 16.73
+        birth_rate_percent: 9.03
+        enterprise_births: 78869
+        death_rate_percent: 7.7
+        enterprise_deaths: 67289
+        active_enterprises: 873878
+        survival_rate_1_year_percent: 76.26
+        survival_rate_2_year_percent: 70.96
+        survival_rate_3_year_percent: 58.9
+        birth_rate_percent_0_employees: 12.69
+        death_rate_percent_0_employees: 11.16
+        active_enterprises_0_employees: 523043
+        birth_rate_percent_1_4_employees: 4.25
+        death_rate_percent_1_4_employees: 2.86
+        active_enterprises_1_4_employees: 273267
+        birth_rate_percent_5_9_employees: 1.66
+        death_rate_percent_5_9_employees: 1.92
+        active_enterprises_5_9_employees: 36471
+        birth_rate_percent_10_plus_employees: 0.6
+        death_rate_percent_10_plus_employees: 1.04
+        active_enterprises_10_plus_employees: 41097
+        zero_employee_share_of_active_enterprises: 0.598531
+  vectors:
+  - input:
+      key: DE
+      column: birth_rate_percent
+    expected: 7.78
+    origin: source
+  - input:
+      key: FR
+      column: birth_rate_percent
+    expected: 14.23
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow bd_size (business demography by size class and NACE Rev. 2 activity), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/bd_size/A.TOTAL.TOTAL.ENT_NR+ENT_BRTH_NR+ENT_DTH_NR+ENT_BRTHR_PC+ENT_DTHR_PC+ENT_BRTHR_DTHR_PC.B-S_X_O_S94.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, indic_sbs=ENT_BRTHR_PC, TIME_PERIOD=2024, OBS_VALUE
+  value: '7.78'
+  unit: percent
+  snippet: DE,2024,7.78
+  source_license: CC-BY-4.0
+  content_sha256: 18a3a11b68c15b191e5d2ac04fe511cbdb715119a0272f8b425fe6d1d79a0ef9
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow bd_size (business demography by size class and NACE Rev. 2 activity), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/bd_size/A.TOTAL.TOTAL.ENT_NR+ENT_BRTH_NR+ENT_DTH_NR+ENT_BRTHR_PC+ENT_DTHR_PC+ENT_BRTHR_DTHR_PC.B-S_X_O_S94.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, indic_sbs=ENT_BRTHR_PC, TIME_PERIOD=2024, OBS_VALUE
+  value: '14.23'
+  unit: percent
+  snippet: FR,2024,14.23
+  source_license: CC-BY-4.0
+  content_sha256: 18a3a11b68c15b191e5d2ac04fe511cbdb715119a0272f8b425fe6d1d79a0ef9
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow bd_size (business demography by size class and NACE Rev. 2 activity), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/bd_size/A.Y1+Y2+Y3.TOTAL.ENT_SRVLR_BRTH_PC.B-S_X_O_S94.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, age=Y1, TIME_PERIOD=2024, OBS_VALUE
+  value: '77.21'
+  unit: percent
+  snippet: DE,2024,77.21
+  source_license: CC-BY-4.0
+  content_sha256: 60351e869f5b9da7ae3c39b664ba7d72e6d5ccadda9f428715e856407182e7b7
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow bd_size (business demography by size class and NACE Rev. 2 activity), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/bd_size/A.TOTAL.0+1-4+5-9+GE10.ENT_BRTHR_PC+ENT_DTHR_PC+ENT_NR.B-S_X_O_S94.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, sizeclas=0, indic_sbs=ENT_BRTHR_PC, TIME_PERIOD=2024, OBS_VALUE
+  value: '13.97'
+  unit: percent
+  snippet: DE,2024,13.97
+  source_license: CC-BY-4.0
+  content_sha256: 9c895bdd9aa60c3409090f55fac92814ed8335506e2aa64d16ae5d6581bf8a0d
+  role: primary
+assumed:
+- parameter: rows[*].zero_employee_share_of_active_enterprises
+  value: active_enterprises_0_employees / active_enterprises
+  method: derived
+  rationale: The share of the active enterprise population with no employees, from the two published counts.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[birth_rate_percent]
+  expected: 14.23
+  tolerance: 0
+notes: 'Business demography for 2024 from Eurostat dataflow bd_size for the business economy aggregate B-S_X_O_S94:
+  the population of active enterprises, enterprise births and deaths, the birth rate, death rate and churn rate
+  (births plus deaths over active enterprises, in percent), the survival rates of enterprises born one, two and
+  three years earlier (survivors over the births of the birth year, in percent; Eurostat publishes no four- or five-year
+  survival in this flow), and the birth rate, death rate and active population for the four employee size classes
+  zero, 1 to 4, 5 to 9 and 10 or more. Size-class birth and death rates relate the births or deaths in a class to
+  the active enterprises of the same class, so the class counts, not the rates, add up to the totals. Rows are keyed
+  by the Eurostat geo code and carry the English country name from the GEO codelist; a cell Eurostat does not publish
+  is stored as null. Observation flags published with the data: break in time series (b): DE (birth_rate_percent,
+  enterprise_births, active_enterprises, survival_rate_1_year_percent, survival_rate_2_year_percent, survival_rate_3_year_percent,
+  birth_rate_percent_0_employees, active_enterprises_0_employees, birth_rate_percent_1_4_employees, active_enterprises_1_4_employees,
+  birth_rate_percent_5_9_employees, active_enterprises_5_9_employees, birth_rate_percent_10_plus_employees, active_enterprises_10_plus_employees);
+  ES (survival_rate_3_year_percent); FR (survival_rate_2_year_percent, survival_rate_3_year_percent); IT (survival_rate_3_year_percent);
+  SE (survival_rate_2_year_percent). break in time series, provisional (bp): DE (churn_rate_percent, death_rate_percent,
+  enterprise_deaths, death_rate_percent_0_employees, death_rate_percent_1_4_employees, death_rate_percent_5_9_employees,
+  death_rate_percent_10_plus_employees). estimated (e): IE (survival_rate_1_year_percent, survival_rate_2_year_percent,
+  survival_rate_3_year_percent). estimated, provisional (ep): ES (churn_rate_percent, death_rate_percent, enterprise_deaths,
+  death_rate_percent_0_employees, death_rate_percent_1_4_employees, death_rate_percent_5_9_employees, death_rate_percent_10_plus_employees);
+  IT (churn_rate_percent, death_rate_percent, enterprise_deaths, death_rate_percent_0_employees, death_rate_percent_1_4_employees,
+  death_rate_percent_5_9_employees, death_rate_percent_10_plus_employees); PL (churn_rate_percent, death_rate_percent,
+  enterprise_deaths, death_rate_percent_0_employees, death_rate_percent_1_4_employees, death_rate_percent_5_9_employees,
+  death_rate_percent_10_plus_employees). provisional (p): AT (churn_rate_percent, death_rate_percent, enterprise_deaths,
+  death_rate_percent_0_employees, death_rate_percent_1_4_employees, death_rate_percent_5_9_employees, death_rate_percent_10_plus_employees);
+  BE (churn_rate_percent, death_rate_percent, enterprise_deaths, death_rate_percent_0_employees, death_rate_percent_1_4_employees,
+  death_rate_percent_5_9_employees, death_rate_percent_10_plus_employees); FR (churn_rate_percent, death_rate_percent,
+  enterprise_deaths, death_rate_percent_0_employees, death_rate_percent_1_4_employees, death_rate_percent_5_9_employees,
+  death_rate_percent_10_plus_employees); IE (churn_rate_percent, death_rate_percent, enterprise_deaths, death_rate_percent_0_employees,
+  death_rate_percent_1_4_employees, death_rate_percent_5_9_employees, death_rate_percent_10_plus_employees); NL
+  (churn_rate_percent, death_rate_percent, enterprise_deaths, death_rate_percent_0_employees, death_rate_percent_1_4_employees,
+  death_rate_percent_5_9_employees, death_rate_percent_10_plus_employees); SE (churn_rate_percent, death_rate_percent,
+  enterprise_deaths, death_rate_percent_0_employees, death_rate_percent_1_4_employees, death_rate_percent_5_9_employees,
+  death_rate_percent_10_plus_employees). Eurostat''s copyright notice states that its data are released under the
+  Creative Commons Attribution 4.0 International licence; the notice page renders dynamically and is referenced
+  rather than hashed.'
