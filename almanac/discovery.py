@@ -107,7 +107,7 @@ def render_jsonld(almanac: Almanac) -> str:
         "license": "https://opendatacommons.org/licenses/odbl/1-0/",
         "isAccessibleForFree": True,
         "creator": {"@type": "Person", "name": CREATOR},
-        "publisher": {"@type": "Organization", "name": "Misata Labs", "url": REPOSITORY},
+        "publisher": {"@type": "Organization", "name": "Misata Studio", "url": "https://www.misata.studio"},
         "keywords": keywords,
         "spatialCoverage": regions,
         "distribution": [
@@ -136,6 +136,7 @@ def render_llms_txt(almanac: Almanac) -> str:
         "`almanac applies --on YYYY-MM-DD`. Cite entries as: Muhammed Rasin, Misata Almanac, Misata Labs.",
         "",
         f"- Repository: {REPOSITORY}",
+        "- Misata, the synthetic data engine that reads this archive: https://www.misata.studio",
         f"- Manifest (JSON index of every entry): {RAW_BASE}manifest.json",
         f"- Schema: {RAW_BASE}schema/entry.schema.json",
         f"- Catalogue: {RAW_BASE}CATALOGUE.md",

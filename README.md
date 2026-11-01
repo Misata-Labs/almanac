@@ -16,7 +16,7 @@ standards agency that published them. The reference layer for synthetic data
 generation, privacy-safe test data, demo environments and data validation,
 read by the [Misata](https://pypi.org/project/misata/) synthetic data engine.
 
-Created and edited by Muhammed Rasin · Misata Labs
+Created and edited by Muhammed Rasin · [Misata Studio](https://www.misata.studio) · [misata on PyPI](https://pypi.org/project/misata/)
 
 ---
 
@@ -394,7 +394,8 @@ governs the source material, not this repository's restatement of it.
 
 ## Citing
 
-See `CITATION.cff`. In prose: Muhammed Rasin, *Misata Almanac*, Misata Labs,
-https://github.com/Misata-labs/almanac.
+See `CITATION.cff`. In prose: Muhammed Rasin, *Misata Almanac*, Misata Studio,
+https://github.com/Misata-labs/almanac. Misata itself lives at
+https://www.misata.studio.
 
 <sub>Keywords: synthetic data rules, realistic synthetic data, synthetic data generation, privacy-safe test data, data validation rules, check digit algorithms, VAT number validation, CNPJ validation, VIN check digit, NPI check digit, National Insurance number format, bank holidays API, federal holidays, ISO 4217 minor units, exchange rates, income tax bands, minimum wage rates, GST rates, ICD-10-CM codes, SIC codes, census distributions, official statistics, reference data, KYC test data, KYB test data, payroll test data, fintech demo data, Misata.</sub>
