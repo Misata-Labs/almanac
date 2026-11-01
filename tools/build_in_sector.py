@@ -907,7 +907,7 @@ def build_cirp_outcomes_by_initiator(nl: Source) -> dict:
             raise ValueError(f"row {key} does not add up")
     return lookup(
         "in-cirp-outcomes-by-initiator-2026-06",
-        "India CIRP outcomes and creditor realisation by who initiated the process (financial creditors, operational creditors, corporate debtors), cumulative to 30 June 2026 (IBBI)",
+        "India CIRP outcomes and creditor realisation by initiating stakeholder, cumulative to 30 June 2026 (IBBI)",
         "company", rows, "2026-06-30", None,
         [
             {"input": {"key": "financial_creditors", "column": "resolution_plan_approved"}, "expected": 934, "origin": "source"},

@@ -131,7 +131,7 @@ for entry in almanac.select(on=date(2026, 6, 15), region="GB", kind="rule"):
 
 ## What is inside
 
-Two hundred and forty-one entries across twenty-eight domains and sixteen
+Three hundred and thirty-eight entries across thirty-two domains and sixteen
 regions at the time of writing, every one of them passing live verification. The generated
 [CATALOGUE.md](CATALOGUE.md) is the authoritative list; this is the tour.
 
@@ -285,7 +285,7 @@ confessed, with the method. `tests` is what the verifier reproduces.
 [PASS] br-pix-monthly-volume-and-value  (entries/payments/BR/br-pix-monthly-volume-and-value.yaml)
     PASS test column[quantity_thousands,2026-09]  observed 7.89294e+06, expected 7892936.44 ± 0
 ...
-241 passed, 0 failed, 241 entries
+338 passed, 0 failed, 338 entries
 ```
 
 ## Frequently asked questions
