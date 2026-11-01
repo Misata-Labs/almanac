@@ -42,7 +42,15 @@ _NUMERIC = re.compile(r"[\d,]+(?:\.\d+)?%?")
 
 
 def entry(**fields) -> dict:
-    return {"status": "verified", "tier": "A", "region": "GB"} | fields
+    """An entry with region, status and tier placed after the domain, in the order hand-written entries use."""
+    ordered: dict = {}
+    for key, value in fields.items():
+        if key == "status":
+            continue
+        ordered[key] = value
+        if key == "domain":
+            ordered.update({"region": "GB", "status": fields.get("status", "verified"), "tier": "A"})
+    return ordered
 
 
 def rule_tests(*tests: tuple[str, object]) -> list[dict]:

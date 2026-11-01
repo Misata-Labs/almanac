@@ -1,0 +1,132 @@
+id: gb-national-insurance-self-employed-2026-27
+title: 'United Kingdom self-employed National Insurance: Class 4 rates on profits and the Class 2 weekly rate, 2026
+  to 2027'
+kind: rule
+domain: tax
+region: GB
+status: verified
+tier: A
+valid_from: '2026-04-06'
+valid_to: '2027-04-05'
+tags:
+- national-insurance
+- self-employed
+- class-4
+- class-2
+- self-assessment
+use_cases:
+- tax-filing-demo
+- personal-finance
+- financial-planning
+spec:
+  implementation: almanac.rules.income_tax_bands
+  parameters:
+    tax_year: 2026-27
+    currency: GBP
+    personal_allowance: 12570
+    bands:
+    - name: main
+      up_to: 37700
+      rate_percent: 6
+      profits_range: over £12,570 up to £50,270
+    - name: upper
+      up_to: null
+      rate_percent: 2
+      profits_range: over £50,270
+    class_2_weekly_rate: 3.65
+    small_profits_threshold: 7105
+  vectors:
+  - input:
+      income: 12570
+    expected: '0.00'
+    origin: source
+    note: 'GOV.UK: Class 4 is due only on profits of more than £12,570, so nothing is due at the limit'
+  - input:
+      income: 20000
+    expected: '445.80'
+    origin: derived
+  - input:
+      income: 50270
+    expected: '2262.00'
+    origin: derived
+    note: top of the main rate band
+  - input:
+      income: 60000
+    expected: '2456.60'
+    origin: derived
+  - input:
+      allowance_for: 150000
+    expected: '12570'
+    origin: derived
+    note: the lower profits limit does not taper
+evidence:
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /national-insurance (JSON)
+  url: https://www.gov.uk/api/content/national-insurance
+  accessed_at: '2026-10-31'
+  locator: details.parts[3].body, 'If you’re self-employed', Class 4 rates list
+  value: <li>6% on profits over £12,570 up to £50,270</li>
+  unit: text
+  snippet: 'The Class 4 National Insurance rates for tax year 2026 to 2027 are:'
+  source_license: OGL-UK-3.0
+  content_sha256: 588725921cf49b151b3a13c93d4a3a5b6ef803252549229648fd1e45990ec81a
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /national-insurance (JSON)
+  url: https://www.gov.uk/api/content/national-insurance
+  accessed_at: '2026-10-31'
+  locator: details.parts[3].body, 'If you’re self-employed', Class 4 rates list
+  value: <li>2% on profits over £50,270</li>
+  unit: text
+  snippet: you pay Class 4 National Insurance contributions
+  source_license: OGL-UK-3.0
+  content_sha256: 588725921cf49b151b3a13c93d4a3a5b6ef803252549229648fd1e45990ec81a
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /national-insurance (JSON)
+  url: https://www.gov.uk/api/content/national-insurance
+  accessed_at: '2026-10-31'
+  locator: details.parts[3].body, Class 2 rate sentence
+  value: The Class 2 rate for tax year 2026 to 2027 is £3.65 a week.
+  unit: text
+  snippet: You may choose to pay Class 2 National Insurance contributions.
+  source_license: OGL-UK-3.0
+  content_sha256: 588725921cf49b151b3a13c93d4a3a5b6ef803252549229648fd1e45990ec81a
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: GOV.UK content API item for /national-insurance (JSON)
+  url: https://www.gov.uk/api/content/national-insurance
+  accessed_at: '2026-10-31'
+  locator: details.parts[0].body, 'Who pays National Insurance'
+  value: self-employed and your profits are £7,105 or more a year
+  unit: text
+  snippet: self-employed and making a profit of more than £12,570 a year
+  source_license: OGL-UK-3.0
+  content_sha256: 588725921cf49b151b3a13c93d4a3a5b6ef803252549229648fd1e45990ec81a
+  role: primary
+assumed:
+- parameter: personal_allowance and bands[main].up_to
+  value: 12570 and 37700
+  method: derived
+  rationale: GOV.UK states Class 4 as 6% on profits over £12,570 up to £50,270 and 2% above; the rule applies bands
+    to profits above a threshold, so the lower profits limit is carried in personal_allowance and the main band
+    ends at £50,270 minus £12,570.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+- statistic: rate[main]
+  expected: 6
+  tolerance: 0
+- statistic: rate[upper]
+  expected: 2
+  tolerance: 0
+notes: 'Self-employed National Insurance for the 2026 to 2027 tax year as GOV.UK states it: Class 4 at 6% on profits
+  over £12,570 up to £50,270 and 2% above, computed by the income_tax_bands rule with the lower profits limit in
+  the allowance slot; Class 2 is £3.65 a week and voluntary, and profits of £7,105 or more earn Class 2 credit without
+  payment (small profits threshold). The vectors are arithmetic on the published rates. Source is the GOV.UK content
+  API''s JSON for the page, which is stable between editorial updates; GOV.UK publishes its content under the Open
+  Government Licence v3.0.'

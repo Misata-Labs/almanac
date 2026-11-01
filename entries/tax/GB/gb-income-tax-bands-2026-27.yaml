@@ -18,12 +18,14 @@ spec:
     taper: {above: 100000, ratio: 2}
     bands:
       - {name: basic, up_to: 37700, rate_percent: 20, income_range_with_standard_allowance: "£12,571 to £50,270"}
-      - {name: higher, up_to: 112570, rate_percent: 40, income_range_with_standard_allowance: "£50,271 to £125,140"}
+      - {name: higher, up_to: 125140, rate_percent: 40, income_range_with_standard_allowance: "£50,271 to £125,140"}
       - {name: additional, up_to: null, rate_percent: 45, income_range_with_standard_allowance: "over £125,140"}
   vectors:
     - {input: {income: 35000}, expected: "4486.00", origin: source, note: "GOV.UK example: basic rate on £22,430 (£35,000 minus £12,570); thresholds unchanged from the year the example describes"}
     - {input: {income: 12570}, expected: "0.00", origin: derived, note: income equal to the Personal Allowance}
     - {input: {income: 50270}, expected: "7540.00", origin: derived, note: top of the basic rate band}
+    - {input: {income: 125140}, expected: "42516.00", origin: derived, note: "allowance fully tapered; taxable income £125,140 reaches the top of the higher rate band"}
+    - {input: {income: 150000}, expected: "53703.00", origin: derived, note: "£24,860 of taxable income at the additional rate"}
     - {input: {allowance_for: 100000}, expected: "12570", origin: source, note: "taper starts above £100,000"}
     - {input: {allowance_for: 125140}, expected: "0", origin: source, note: "allowance is zero at £125,140"}
     - {input: {allowance_for: 110000}, expected: "7570", origin: derived, note: "£1 off for every £2 above £100,000"}
@@ -78,11 +80,31 @@ evidence:
     snippet: "goes down by £1 for every £2"
     source_license: OGL-UK-3.0
     content_sha256: e6fc3c984516087c06d91b775e3dc15da24491b0e636858fd5f11cef75668c91
+  - publisher: HM Revenue & Customs (GOV.UK)
+    title: "GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)"
+    url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+    accessed_at: 2026-11-01
+    locator: "details.body, PAYE tax rates and thresholds table for England and Northern Ireland"
+    value: "<td>From £37,701 to £125,140</td>"
+    unit: text
+    snippet: "<td>Higher tax rate</td>"
+    source_license: OGL-UK-3.0
+    content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
+  - publisher: HM Revenue & Customs (GOV.UK)
+    title: "GOV.UK content API item for /guidance/rates-and-thresholds-for-employers-2026-to-2027 (JSON)"
+    url: https://www.gov.uk/api/content/guidance/rates-and-thresholds-for-employers-2026-to-2027
+    accessed_at: 2026-11-01
+    locator: "details.body, PAYE tax rates and thresholds table, basic and additional rows"
+    value: "<td>Up to £37,700</td>"
+    unit: text
+    snippet: "<td>Above £125,140</td>"
+    source_license: OGL-UK-3.0
+    content_sha256: aaa2e36fbe3668b61363362250a4697273a7b8394bcdfa6109e1c434c0da9e70
 assumed:
   - parameter: bands[*].up_to
-    value: "37700, 112570, null (taxable income after the allowance)"
+    value: "37700, 125140, null (taxable income after the allowance)"
     method: derived
-    rationale: GOV.UK states the bands as ranges of income assuming the standard Personal Allowance; the rule applies bands to taxable income, so each upper limit is the published income limit minus the £12,570 allowance. The published ranges are kept beside each band.
+    rationale: The bands are applied to taxable income. The limits of £37,700 and £125,140 are the taxable-income thresholds HMRC publishes in its PAYE rates table for England and Northern Ireland; the GOV.UK guide's income ranges assume the standard Personal Allowance and are kept beside each band for reference. The two agree at the basic-rate boundary (£50,270 minus £12,570) and at the additional-rate boundary, where the allowance has tapered to nothing.
 tests:
   - {statistic: vector_pass_fraction, expected: 1, tolerance: 0}
   - {statistic: count, expected: 3, tolerance: 0}
@@ -92,8 +114,9 @@ tests:
 notes: |
   Income Tax for the 2026 to 2027 tax year as GOV.UK states it: standard Personal Allowance
   £12,570, tapered by £1 for every £2 of adjusted net income above £100,000 and gone at
-  £125,140; basic rate 20% on income from £12,571 to £50,270, higher rate 40% to £125,140,
-  additional rate 45% above. Scotland sets its own bands and is not covered. The rule
+  £125,140; basic rate 20% on the first £37,700 of taxable income, higher rate 40% up to
+  £125,140 of taxable income, additional rate 45% above, as HMRC's PAYE rates table states.
+  Scotland sets its own bands and is covered by gb-scottish-income-tax-bands-2026-27. The rule
   computes the allowance and the tax due for an annual income and ignores other allowances
   and reliefs. Source is the GOV.UK content API's JSON for the page, which is stable between
   editorial updates; GOV.UK publishes its content under the Open Government Licence v3.0.

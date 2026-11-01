@@ -128,9 +128,18 @@ for entry in almanac.select(on=date(2026, 6, 15), region="GB", kind="rule"):
 
 ## What is inside
 
-Sixty-eight entries across sixteen domains and eight regions at the time of
-writing, every one of them passing live verification. The generated
+Two hundred and forty-one entries across twenty-eight domains and sixteen
+regions at the time of writing, every one of them passing live verification. The generated
 [CATALOGUE.md](CATALOGUE.md) is the authoritative list; this is the tour.
+
+**Rules from statute and regulation.** US Regulation CC funds-availability
+amounts, Regulation E liability limits, Regulation Z thresholds, FCRA time
+limits, FLSA salary levels, OSHA and FMLA thresholds, the federal minimum wage
+history, Social Security full retirement age, FICA rates, the HIPAA
+safe-harbour identifier list, FDA daily values; UK working-time limits and
+statutory holiday entitlement; UK Scottish income tax, dividend, capital gains,
+corporation, stamp duty and inheritance tax rates; Universal Credit,
+Jobseeker's Allowance, disability and child benefit rates; State Pension rates.
 
 **Identifier validation and check digits.** UK National Insurance numbers,
 Unique Taxpayer References, VAT registration numbers and the PAYE, SDLT and
@@ -161,9 +170,10 @@ US federal holidays from the statute, the executive order and the regulation,
 with the Saturday and Sunday observance rules that payroll and settlement
 systems actually apply.
 
-**Economy, rates and prices.** Thirteen World Bank reference tables by
-economy, from GDP per capita to financial account ownership, plus the region
-and income-group classification. Euro area HICP inflation and mortgage cost of
+**Economy, rates and prices.** Eighty World Bank reference tables by economy,
+from GDP per capita to financial account ownership, health workforce, energy
+access, broadband, education and emissions, plus the region and income-group
+classification. Euro area HICP inflation and mortgage cost of
 borrowing. ECB deposit facility and Selic target rate changes as step
 schedules. Central bank policy rates for nine economies. UK CPIH and retail
 sales indices. Brazil IPCA inflation and household credit default rate.
@@ -247,7 +257,7 @@ confessed, with the method. `tests` is what the verifier reproduces.
 [PASS] br-pix-monthly-volume-and-value  (entries/payments/BR/br-pix-monthly-volume-and-value.yaml)
     PASS test column[quantity_thousands,2026-09]  observed 7.89294e+06, expected 7892936.44 ± 0
 ...
-68 passed, 0 failed, 68 entries
+241 passed, 0 failed, 241 entries
 ```
 
 ## Frequently asked questions

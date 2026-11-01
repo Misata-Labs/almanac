@@ -122,7 +122,7 @@ def build(spec: dict, raw: bytes, constants: dict) -> dict:
     sets = {name: {str(code): str(label) for code, label in constants[name].items()} for name in spec["sets"]}
     items = []
     for name in spec["sets"]:
-        first_code, first_label = next(iter(constants[name].items()))
+        first_code = next(iter(constants[name]))
         items.append(evidence(PUBLISHER, TITLE, URL, f"line {line_of(raw, name)}, {name} ({len(sets[name])} codes)", f"{name}:", "text", f"'{first_code}'", "unstated", raw))
     vectors = [
         {"input": value, "expected": expected, "origin": origin, **({"note": note} if note else {})}

@@ -8,7 +8,7 @@
     "entries": "ODbL-1.0",
     "code": "Apache-2.0"
   },
-  "entry_count": 93,
+  "entry_count": 241,
   "entries": [
     {
       "id": "eu-new-passenger-car-registrations-by-motor-energy-2025",
@@ -48,6 +48,77 @@
       "vectors": 3
     },
     {
+      "id": "us-nhtsa-vpic-vehicle-attribute-codes",
+      "title": "United States NHTSA vPIC vehicle attribute code lists: vehicle type, body class, primary fuel type and drive type",
+      "kind": "rule",
+      "domain": "automotive",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-10-31 to open",
+      "publishers": [
+        "National Highway Traffic Safety Administration"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "vpic",
+        "nhtsa",
+        "vehicle-attributes",
+        "code-list",
+        "vin-decoding"
+      ],
+      "use_cases": [
+        "automotive-demo",
+        "fleet-demo",
+        "insurance",
+        "claims-generation"
+      ],
+      "path": "entries/automotive/US/us-nhtsa-vpic-vehicle-attribute-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/automotive/US/us-nhtsa-vpic-vehicle-attribute-codes.yaml",
+      "valid_from": "2026-10-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 5
+    },
+    {
+      "id": "us-nhtsa-wmi-manufacturers",
+      "title": "United States NHTSA vPIC decode of 20 well-known world manufacturer identifiers (VIN positions 1 to 3)",
+      "kind": "rule",
+      "domain": "automotive",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-10-31 to open",
+      "publishers": [
+        "National Highway Traffic Safety Administration"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "vin",
+        "wmi",
+        "manufacturer",
+        "nhtsa",
+        "vpic",
+        "reference-table"
+      ],
+      "use_cases": [
+        "automotive-demo",
+        "fleet-demo",
+        "insurance",
+        "claims-generation"
+      ],
+      "path": "entries/automotive/US/us-nhtsa-wmi-manufacturers.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/automotive/US/us-nhtsa-wmi-manufacturers.yaml",
+      "valid_from": "2026-10-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
       "id": "us-vin-check-digit",
       "title": "United States vehicle identification number (VIN) check digit, 49 CFR 565.15",
       "kind": "rule",
@@ -82,6 +153,284 @@
       "valid_to": null,
       "implementation": "almanac.rules.us_vin",
       "vectors": 6
+    },
+    {
+      "id": "us-regulation-cc-cash-withdrawal-amount",
+      "title": "United States Regulation CC cash withdrawal amount for check deposits, 12 CFR 229.12(d)",
+      "kind": "rule",
+      "domain": "banking",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2020-07-01 to open",
+      "publishers": [
+        "Board of Governors of the Federal Reserve System via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "regulation-cc",
+        "funds-availability",
+        "deposits",
+        "step-schedule",
+        "12-cfr-229"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-scheduling",
+        "payments-demo"
+      ],
+      "path": "entries/banking/US/us-regulation-cc-cash-withdrawal-amount.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/US/us-regulation-cc-cash-withdrawal-amount.yaml",
+      "valid_from": "2020-07-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.step_schedule",
+      "vectors": 3
+    },
+    {
+      "id": "us-regulation-cc-exception-hold-threshold",
+      "title": "United States Regulation CC large deposit, new account and repeated overdraft threshold, 12 CFR 229.13(a), (b) and (d)",
+      "kind": "rule",
+      "domain": "banking",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2020-07-01 to open",
+      "publishers": [
+        "Board of Governors of the Federal Reserve System via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "regulation-cc",
+        "funds-availability",
+        "deposits",
+        "step-schedule",
+        "12-cfr-229"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-scheduling",
+        "payments-demo"
+      ],
+      "path": "entries/banking/US/us-regulation-cc-exception-hold-threshold.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/US/us-regulation-cc-exception-hold-threshold.yaml",
+      "valid_from": "2020-07-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.step_schedule",
+      "vectors": 3
+    },
+    {
+      "id": "us-regulation-cc-next-day-availability-amount",
+      "title": "United States Regulation CC next-day availability amount for check deposits, 12 CFR 229.10(c)(1)(vii)",
+      "kind": "rule",
+      "domain": "banking",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2011-07-21 to open",
+      "publishers": [
+        "Board of Governors of the Federal Reserve System via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "regulation-cc",
+        "funds-availability",
+        "deposits",
+        "step-schedule",
+        "12-cfr-229"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-scheduling",
+        "payments-demo"
+      ],
+      "path": "entries/banking/US/us-regulation-cc-next-day-availability-amount.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/US/us-regulation-cc-next-day-availability-amount.yaml",
+      "valid_from": "2011-07-21",
+      "valid_to": null,
+      "implementation": "almanac.rules.step_schedule",
+      "vectors": 3
+    },
+    {
+      "id": "us-regulation-e-unauthorized-transfer-liability-limits",
+      "title": "United States Regulation E consumer liability limits for unauthorized electronic fund transfers, 12 CFR 1005.6(b)",
+      "kind": "rule",
+      "domain": "banking",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2017-01-01 to open",
+      "publishers": [
+        "Consumer Financial Protection Bureau via the eCFR API",
+        "Office of the Federal Register via the eCFR API",
+        "Office of the Law Revision Counsel, US House of Representatives, via govinfo"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "regulation-e",
+        "electronic-fund-transfers",
+        "fraud-liability",
+        "debit-cards",
+        "12-cfr-1005"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-demo",
+        "fintech-demo",
+        "collections"
+      ],
+      "path": "entries/banking/US/us-regulation-e-unauthorized-transfer-liability-limits.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/US/us-regulation-e-unauthorized-transfer-liability-limits.yaml",
+      "valid_from": "2017-01-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "gb-child-benefit-rates",
+      "title": "United Kingdom Child Benefit and Guardian's Allowance weekly rates by tax year, 2024/25 to 2026/27",
+      "kind": "rule",
+      "domain": "benefits",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-04-06 to 2027-04-05",
+      "publishers": [
+        "HM Revenue & Customs (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "child-benefit",
+        "benefits",
+        "families",
+        "weekly-rates"
+      ],
+      "use_cases": [
+        "household-generation",
+        "personal-finance",
+        "financial-planning"
+      ],
+      "path": "entries/benefits/GB/gb-child-benefit-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/benefits/GB/gb-child-benefit-rates.yaml",
+      "valid_from": "2024-04-06",
+      "valid_to": "2027-04-05",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "gb-disability-and-carer-benefit-rates",
+      "title": "Great Britain Personal Independence Payment, Attendance Allowance and Carer's Allowance weekly rates, 2025/26 and 2026/27",
+      "kind": "rule",
+      "domain": "benefits",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-04-06 to 2027-04-05",
+      "publishers": [
+        "Department for Work and Pensions (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "pip",
+        "attendance-allowance",
+        "carers-allowance",
+        "benefits",
+        "disability",
+        "weekly-rates"
+      ],
+      "use_cases": [
+        "health-demo",
+        "insurance",
+        "personal-finance",
+        "household-generation"
+      ],
+      "path": "entries/benefits/GB/gb-disability-and-carer-benefit-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/benefits/GB/gb-disability-and-carer-benefit-rates.yaml",
+      "valid_from": "2025-04-06",
+      "valid_to": "2027-04-05",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "gb-jobseekers-allowance-rates",
+      "title": "Great Britain New Style (contribution-based) Jobseeker's Allowance weekly personal rates by age, 2025/26 and 2026/27",
+      "kind": "rule",
+      "domain": "benefits",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-04-06 to 2027-04-05",
+      "publishers": [
+        "Department for Work and Pensions (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "jobseekers-allowance",
+        "benefits",
+        "unemployment",
+        "weekly-rates"
+      ],
+      "use_cases": [
+        "personal-finance",
+        "household-generation",
+        "credit-risk"
+      ],
+      "path": "entries/benefits/GB/gb-jobseekers-allowance-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/benefits/GB/gb-jobseekers-allowance-rates.yaml",
+      "valid_from": "2025-04-06",
+      "valid_to": "2027-04-05",
+      "implementation": "almanac.rules.age_band_rates",
+      "vectors": 5
+    },
+    {
+      "id": "gb-universal-credit-rates-2026-27",
+      "title": "Great Britain Universal Credit monthly standard allowances, elements, work allowances and capital limits, 2025/26 and 2026/27",
+      "kind": "rule",
+      "domain": "benefits",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-04-06 to 2027-04-05",
+      "publishers": [
+        "Department for Work and Pensions (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "universal-credit",
+        "benefits",
+        "welfare",
+        "monthly-rates"
+      ],
+      "use_cases": [
+        "personal-finance",
+        "household-generation",
+        "credit-risk",
+        "collections"
+      ],
+      "path": "entries/benefits/GB/gb-universal-credit-rates-2026-27.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/benefits/GB/gb-universal-credit-rates-2026-27.yaml",
+      "valid_from": "2025-04-06",
+      "valid_to": "2027-04-05",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 7
     },
     {
       "id": "gb-bank-holidays",
@@ -185,6 +534,143 @@
       "vectors": 10
     },
     {
+      "id": "gb-company-accounts-codes",
+      "title": "United Kingdom Companies House accounts type, foreign accounts and accounts publication terms codes",
+      "kind": "rule",
+      "domain": "company",
+      "region": "GB",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-09-11 to open",
+      "publishers": [
+        "Companies House"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "companies-house",
+        "accounts",
+        "filing",
+        "code-list"
+      ],
+      "use_cases": [
+        "company-generation",
+        "kyb-onboarding",
+        "financial-reporting",
+        "audit-demo"
+      ],
+      "path": "entries/company/GB/gb-company-accounts-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/company/GB/gb-company-accounts-codes.yaml",
+      "valid_from": "2026-09-11",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 8
+    },
+    {
+      "id": "gb-company-insolvency-codes",
+      "title": "United Kingdom Companies House insolvency case type and insolvency case date type codes",
+      "kind": "rule",
+      "domain": "company",
+      "region": "GB",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-09-11 to open",
+      "publishers": [
+        "Companies House"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "companies-house",
+        "insolvency",
+        "liquidation",
+        "code-list"
+      ],
+      "use_cases": [
+        "company-generation",
+        "kyb-onboarding",
+        "credit-risk",
+        "collections",
+        "audit-demo"
+      ],
+      "path": "entries/company/GB/gb-company-insolvency-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/company/GB/gb-company-insolvency-codes.yaml",
+      "valid_from": "2026-09-11",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 8
+    },
+    {
+      "id": "gb-company-officer-role-codes",
+      "title": "United Kingdom Companies House officer role and officer identification type codes",
+      "kind": "rule",
+      "domain": "company",
+      "region": "GB",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-09-11 to open",
+      "publishers": [
+        "Companies House"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "companies-house",
+        "officer-role",
+        "directors",
+        "code-list"
+      ],
+      "use_cases": [
+        "company-generation",
+        "kyb-onboarding",
+        "person-generation",
+        "audit-demo"
+      ],
+      "path": "entries/company/GB/gb-company-officer-role-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/company/GB/gb-company-officer-role-codes.yaml",
+      "valid_from": "2026-09-11",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 8
+    },
+    {
+      "id": "gb-company-registration-codes",
+      "title": "United Kingdom Companies House jurisdiction, company subtype, incorporation wording, register type and register location codes",
+      "kind": "rule",
+      "domain": "company",
+      "region": "GB",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-09-11 to open",
+      "publishers": [
+        "Companies House"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "companies-house",
+        "jurisdiction",
+        "registers",
+        "code-list"
+      ],
+      "use_cases": [
+        "company-generation",
+        "kyb-onboarding",
+        "address-generation",
+        "audit-demo"
+      ],
+      "path": "entries/company/GB/gb-company-registration-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/company/GB/gb-company-registration-codes.yaml",
+      "valid_from": "2026-09-11",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 9
+    },
+    {
       "id": "gb-company-type-and-status-codes",
       "title": "United Kingdom Companies House company type and company status codes",
       "kind": "rule",
@@ -252,6 +738,181 @@
       "vectors": 4
     },
     {
+      "id": "us-fcra-adverse-information-time-limits",
+      "title": "United States Fair Credit Reporting Act time limits on adverse information in consumer reports, 15 U.S.C. 1681c(a) and (b)",
+      "kind": "rule",
+      "domain": "consumer-credit",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2003-12-04 to open",
+      "publishers": [
+        "Office of the Law Revision Counsel, US House of Representatives, via govinfo"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "fcra",
+        "credit-reports",
+        "credit-bureau",
+        "retention-limits",
+        "15-usc-1681c"
+      ],
+      "use_cases": [
+        "credit-risk",
+        "collections",
+        "kyc-onboarding",
+        "banking-demo"
+      ],
+      "path": "entries/consumer-credit/US/us-fcra-adverse-information-time-limits.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/consumer-credit/US/us-fcra-adverse-information-time-limits.yaml",
+      "valid_from": "2003-12-04",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "us-regulation-z-exemption-threshold",
+      "title": "United States Regulation Z consumer credit exemption threshold amount, 12 CFR 1026.3(b)",
+      "kind": "rule",
+      "domain": "consumer-credit",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2011-07-21 to 2026-12-31",
+      "publishers": [
+        "Consumer Financial Protection Bureau via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "regulation-z",
+        "truth-in-lending",
+        "exemption-threshold",
+        "step-schedule",
+        "12-cfr-1026"
+      ],
+      "use_cases": [
+        "loan-pricing",
+        "banking-demo",
+        "credit-risk"
+      ],
+      "path": "entries/consumer-credit/US/us-regulation-z-exemption-threshold.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/consumer-credit/US/us-regulation-z-exemption-threshold.yaml",
+      "valid_from": "2011-07-21",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.step_schedule",
+      "vectors": 3
+    },
+    {
+      "id": "us-regulation-z-hoepa-points-and-fees-thresholds",
+      "title": "United States Regulation Z high-cost mortgage (HOEPA) points-and-fees thresholds by year, 12 CFR 1026.32(a)(1)(ii), 2015 to 2026",
+      "kind": "rule",
+      "domain": "consumer-credit",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2015-01-01 to open",
+      "publishers": [
+        "Consumer Financial Protection Bureau via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "regulation-z",
+        "hoepa",
+        "high-cost-mortgage",
+        "points-and-fees",
+        "12-cfr-1026"
+      ],
+      "use_cases": [
+        "mortgage-origination",
+        "loan-pricing",
+        "credit-risk"
+      ],
+      "path": "entries/consumer-credit/US/us-regulation-z-hoepa-points-and-fees-thresholds.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/consumer-credit/US/us-regulation-z-hoepa-points-and-fees-thresholds.yaml",
+      "valid_from": "2015-01-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "us-regulation-z-hpml-appraisal-exemption-threshold",
+      "title": "United States Regulation Z higher-priced mortgage loan appraisal exemption threshold, 12 CFR 1026.35(c)(2)(ii)",
+      "kind": "rule",
+      "domain": "consumer-credit",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2014-01-18 to 2026-12-31",
+      "publishers": [
+        "Consumer Financial Protection Bureau via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "regulation-z",
+        "mortgage",
+        "appraisal",
+        "step-schedule",
+        "12-cfr-1026"
+      ],
+      "use_cases": [
+        "mortgage-origination",
+        "loan-pricing",
+        "banking-demo"
+      ],
+      "path": "entries/consumer-credit/US/us-regulation-z-hpml-appraisal-exemption-threshold.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/consumer-credit/US/us-regulation-z-hpml-appraisal-exemption-threshold.yaml",
+      "valid_from": "2014-01-18",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.step_schedule",
+      "vectors": 3
+    },
+    {
+      "id": "us-regulation-z-qualified-mortgage-points-and-fees-limits",
+      "title": "United States Regulation Z qualified mortgage points-and-fees limits by loan amount tier and year, 12 CFR 1026.43(e)(3), 2015 to 2026",
+      "kind": "rule",
+      "domain": "consumer-credit",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2015-01-01 to open",
+      "publishers": [
+        "Consumer Financial Protection Bureau via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "regulation-z",
+        "qualified-mortgage",
+        "ability-to-repay",
+        "points-and-fees",
+        "12-cfr-1026"
+      ],
+      "use_cases": [
+        "mortgage-origination",
+        "loan-pricing",
+        "credit-risk"
+      ],
+      "path": "entries/consumer-credit/US/us-regulation-z-qualified-mortgage-points-and-fees-limits.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/consumer-credit/US/us-regulation-z-qualified-mortgage-points-and-fees-limits.yaml",
+      "valid_from": "2015-01-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
       "id": "gb-email-address-acceptance",
       "title": "Email address acceptance pattern used by HM Revenue & Customs services",
       "kind": "rule",
@@ -282,6 +943,79 @@
       "valid_to": null,
       "implementation": "almanac.rules.gb_email_address",
       "vectors": 13
+    },
+    {
+      "id": "br-usd-brl-ptax-sell-rate-daily-2025",
+      "title": "Brazil PTAX US dollar sell rate (BRL per USD), daily 2025",
+      "kind": "temporal",
+      "domain": "currency",
+      "region": "BR",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-02 to 2025-12-31",
+      "publishers": [
+        "Banco Central do Brasil"
+      ],
+      "source_licenses": [
+        "ODbL-1.0"
+      ],
+      "tags": [
+        "exchange-rates",
+        "fx",
+        "ptax",
+        "usd-brl",
+        "time-series",
+        "bcb",
+        "sgs"
+      ],
+      "use_cases": [
+        "multi-currency-ledger",
+        "financial-reporting",
+        "treasury"
+      ],
+      "path": "entries/currency/BR/br-usd-brl-ptax-sell-rate-daily-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/currency/BR/br-usd-brl-ptax-sell-rate-daily-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-02",
+        "end": "2025-12-31"
+      },
+      "variable": "brl_per_usd"
+    },
+    {
+      "id": "eu-usd-eur-reference-rate-daily-2025",
+      "title": "ECB euro foreign exchange reference rate, US dollar per euro, daily 2025",
+      "kind": "temporal",
+      "domain": "currency",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "European Central Bank"
+      ],
+      "source_licenses": [
+        "ECB-free-use-with-attribution"
+      ],
+      "tags": [
+        "exchange-rates",
+        "fx",
+        "eur-usd",
+        "time-series",
+        "ecb",
+        "euro-area"
+      ],
+      "use_cases": [
+        "multi-currency-ledger",
+        "financial-reporting",
+        "treasury"
+      ],
+      "path": "entries/currency/EU/eu-usd-eur-reference-rate-daily-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/currency/EU/eu-usd-eur-reference-rate-daily-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "usd_per_eur"
     },
     {
       "id": "us-treasury-reporting-rates-of-exchange-2025-12-31",
@@ -383,6 +1117,76 @@
       "valid_to": null,
       "implementation": "almanac.rules.currency_minor_units",
       "vectors": 12
+    },
+    {
+      "id": "global-nominal-effective-exchange-rates-monthly-2025",
+      "title": "Nominal effective exchange rates, broad basket, monthly 2025 (US, euro area, GB, JP, BR, IN, CH, CA, AU)",
+      "kind": "temporal",
+      "domain": "currency",
+      "region": "global",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Bank for International Settlements"
+      ],
+      "source_licenses": [
+        "BIS terms and conditions (statistics subject to 'About BIS statistics' terms)"
+      ],
+      "tags": [
+        "exchange-rates",
+        "effective-exchange-rate",
+        "fx",
+        "bis",
+        "time-series"
+      ],
+      "use_cases": [
+        "treasury",
+        "financial-reporting",
+        "multi-currency-ledger"
+      ],
+      "path": "entries/currency/global/global-nominal-effective-exchange-rates-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/currency/global/global-nominal-effective-exchange-rates-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "us_neer"
+    },
+    {
+      "id": "global-usd-exchange-rates-monthly-2025",
+      "title": "Exchange rates against the US dollar, monthly averages 2025 (EUR, GBP, JPY, BRL, INR, CHF, CAD, AUD, CNY, MXN per USD)",
+      "kind": "temporal",
+      "domain": "currency",
+      "region": "global",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Bank for International Settlements"
+      ],
+      "source_licenses": [
+        "BIS terms and conditions (statistics subject to 'About BIS statistics' terms)"
+      ],
+      "tags": [
+        "exchange-rates",
+        "fx",
+        "usd",
+        "bis",
+        "time-series"
+      ],
+      "use_cases": [
+        "multi-currency-ledger",
+        "financial-reporting",
+        "treasury"
+      ],
+      "path": "entries/currency/global/global-usd-exchange-rates-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/currency/global/global-usd-exchange-rates-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "eur_per_usd"
     },
     {
       "id": "at-population-by-single-year-of-age-2024",
@@ -867,6 +1671,110 @@
       "variable": "car_or_van_availability"
     },
     {
+      "id": "gb-census-2021-country-of-birth",
+      "title": "England and Wales usual residents by country of birth (60 categories), Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "census",
+        "country-of-birth",
+        "migration",
+        "population"
+      ],
+      "use_cases": [
+        "person-generation",
+        "customer-segmentation",
+        "kyc-onboarding"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-country-of-birth.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-country-of-birth.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "country_of_birth"
+    },
+    {
+      "id": "gb-census-2021-disability",
+      "title": "England and Wales usual residents by disability under the Equality Act, Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "census",
+        "disability",
+        "health",
+        "population"
+      ],
+      "use_cases": [
+        "person-generation",
+        "health-demo",
+        "insurance",
+        "claims-generation"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-disability.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-disability.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "disability"
+    },
+    {
+      "id": "gb-census-2021-dwelling-type",
+      "title": "England and Wales households by accommodation and dwelling type (shared or unshared), Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "census",
+        "households",
+        "housing",
+        "dwelling-type"
+      ],
+      "use_cases": [
+        "household-generation",
+        "property-demo",
+        "insurance",
+        "utilities-demo"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-dwelling-type.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-dwelling-type.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "dwelling_type"
+    },
+    {
       "id": "gb-census-2021-economic-activity",
       "title": "England and Wales usual residents aged 16 and over by economic activity status (12 categories), Census 2021",
       "kind": "marginal",
@@ -898,6 +1806,40 @@
         "end": "2021-03-21"
       },
       "variable": "economic_activity_status"
+    },
+    {
+      "id": "gb-census-2021-economic-activity-detailed",
+      "title": "England and Wales usual residents aged 16 and over by economic activity status in the week before the census (16 categories), Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "census",
+        "economic-activity",
+        "employment",
+        "students"
+      ],
+      "use_cases": [
+        "person-generation",
+        "hr-analytics",
+        "credit-risk"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-economic-activity-detailed.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-economic-activity-detailed.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "economic_activity_last_week"
     },
     {
       "id": "gb-census-2021-ethnic-group",
@@ -966,6 +1908,41 @@
       "variable": "general_health"
     },
     {
+      "id": "gb-census-2021-health-deprivation",
+      "title": "England and Wales households by deprivation in the health and disability dimension, Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "census",
+        "households",
+        "deprivation",
+        "health"
+      ],
+      "use_cases": [
+        "household-generation",
+        "health-demo",
+        "insurance",
+        "customer-segmentation"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-health-deprivation.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-health-deprivation.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "health_deprivation"
+    },
+    {
       "id": "gb-census-2021-highest-qualification",
       "title": "England and Wales usual residents aged 16 and over by highest level of qualification, Census 2021",
       "kind": "marginal",
@@ -996,6 +1973,76 @@
         "end": "2021-03-21"
       },
       "variable": "highest_qualification"
+    },
+    {
+      "id": "gb-census-2021-hours-worked",
+      "title": "England and Wales usual residents aged 16 and over in employment by hours worked per week, Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "census",
+        "hours-worked",
+        "employment",
+        "part-time"
+      ],
+      "use_cases": [
+        "person-generation",
+        "hr-analytics",
+        "workforce-planning",
+        "payroll-demo"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-hours-worked.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-hours-worked.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "hours_worked"
+    },
+    {
+      "id": "gb-census-2021-household-composition",
+      "title": "England and Wales households by household composition (37 categories), Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "census",
+        "households",
+        "household-composition",
+        "families"
+      ],
+      "use_cases": [
+        "household-generation",
+        "person-generation",
+        "customer-segmentation",
+        "insurance"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-household-composition.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-household-composition.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "household_composition"
     },
     {
       "id": "gb-census-2021-household-size",
@@ -1031,6 +2078,41 @@
       "variable": "household_size"
     },
     {
+      "id": "gb-census-2021-industry",
+      "title": "England and Wales usual residents aged 16 and over in employment by industry (88 SIC 2007 divisions), Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "census",
+        "industry",
+        "sic-2007",
+        "employment"
+      ],
+      "use_cases": [
+        "person-generation",
+        "hr-analytics",
+        "workforce-planning",
+        "customer-segmentation"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-industry.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-industry.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "industry"
+    },
+    {
       "id": "gb-census-2021-marital-status",
       "title": "England and Wales usual residents aged 16 and over by marital and civil partnership status, Census 2021",
       "kind": "marginal",
@@ -1062,6 +2144,41 @@
         "end": "2021-03-21"
       },
       "variable": "legal_partnership_status"
+    },
+    {
+      "id": "gb-census-2021-occupation",
+      "title": "England and Wales usual residents aged 16 and over in employment by occupation (105 SOC 2020 minor groups), Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "census",
+        "occupation",
+        "soc-2020",
+        "employment"
+      ],
+      "use_cases": [
+        "person-generation",
+        "hr-analytics",
+        "workforce-planning",
+        "credit-risk"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-occupation.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-occupation.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "occupation"
     },
     {
       "id": "gb-census-2021-religion",
@@ -1161,6 +2278,40 @@
         "end": "2021-03-21"
       },
       "variable": "tenure"
+    },
+    {
+      "id": "gb-census-2021-unpaid-care",
+      "title": "England and Wales usual residents aged 5 and over by provision of unpaid care, Census 2021",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2021-03-21 to 2021-03-21",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "census",
+        "unpaid-care",
+        "carers",
+        "health"
+      ],
+      "use_cases": [
+        "person-generation",
+        "health-demo",
+        "household-generation"
+      ],
+      "path": "entries/demographics/GB/gb-census-2021-unpaid-care.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/GB/gb-census-2021-unpaid-care.yaml",
+      "observed_period": {
+        "start": "2021-03-21",
+        "end": "2021-03-21"
+      },
+      "variable": "unpaid_care"
     },
     {
       "id": "ie-population-by-single-year-of-age-2024",
@@ -1333,6 +2484,140 @@
       "variable": "age"
     },
     {
+      "id": "global-age-dependency-ratio-2024",
+      "title": "Age dependency ratio (% of working-age population), by economy, 2024 (World Bank, 217 economies)",
+      "kind": "rule",
+      "domain": "demographics",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "demographics",
+        "age-structure",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "pensions",
+        "household-generation",
+        "workforce-planning"
+      ],
+      "path": "entries/demographics/global/global-age-dependency-ratio-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/global/global-age-dependency-ratio-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-net-migration-2024",
+      "title": "Net migration, by economy, 2024 (World Bank, 217 economies)",
+      "kind": "rule",
+      "domain": "demographics",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "demographics",
+        "migration",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "person-generation",
+        "workforce-planning",
+        "market-sizing"
+      ],
+      "path": "entries/demographics/global/global-net-migration-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/global/global-net-migration-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-population-0-14-share-2024",
+      "title": "Population ages 0-14 (% of total population), by economy, 2024 (World Bank, 217 economies)",
+      "kind": "rule",
+      "domain": "demographics",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "demographics",
+        "age-structure",
+        "children",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "household-generation",
+        "person-generation",
+        "customer-segmentation"
+      ],
+      "path": "entries/demographics/global/global-population-0-14-share-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/global/global-population-0-14-share-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-population-65-and-above-share-2024",
+      "title": "Population ages 65 and above (% of total population), by economy, 2024 (World Bank, 217 economies)",
+      "kind": "rule",
+      "domain": "demographics",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "demographics",
+        "age-structure",
+        "ageing",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "pensions",
+        "insurance",
+        "person-generation"
+      ],
+      "path": "entries/demographics/global/global-population-65-and-above-share-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/global/global-population-65-and-above-share-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
       "id": "global-population-by-economy-2024",
       "title": "World population by economy, 2024 (World Bank, 217 economies)",
       "kind": "marginal",
@@ -1364,6 +2649,107 @@
         "end": "2024-12-31"
       },
       "variable": "economy_iso3"
+    },
+    {
+      "id": "global-population-density-2024",
+      "title": "Population density (people per sq. km of land area), by economy, 2024 (World Bank, 214 economies)",
+      "kind": "rule",
+      "domain": "demographics",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "demographics",
+        "population",
+        "density",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "address-generation",
+        "logistics",
+        "market-sizing"
+      ],
+      "path": "entries/demographics/global/global-population-density-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/global/global-population-density-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-population-growth-2024",
+      "title": "Population growth (annual %), by economy, 2024 (World Bank, 217 economies)",
+      "kind": "rule",
+      "domain": "demographics",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "demographics",
+        "population",
+        "growth",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "market-sizing",
+        "demand-forecasting",
+        "capacity-planning"
+      ],
+      "path": "entries/demographics/global/global-population-growth-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/global/global-population-growth-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-sex-ratio-at-birth-2024",
+      "title": "Sex ratio at birth (male births per female births), by economy, 2024 (World Bank, 217 economies)",
+      "kind": "rule",
+      "domain": "demographics",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "demographics",
+        "sex",
+        "births",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "person-generation",
+        "clinical-records"
+      ],
+      "path": "entries/demographics/global/global-sex-ratio-at-birth-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/global/global-sex-ratio-at-birth-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
     },
     {
       "id": "eu-internet-use-by-individuals-2025",
@@ -1438,6 +2824,41 @@
       "vectors": 3
     },
     {
+      "id": "br-corporate-credit-default-rate-2025",
+      "title": "Brazil credit portfolio default rate, companies, monthly 2025",
+      "kind": "temporal",
+      "domain": "economy",
+      "region": "BR",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Banco Central do Brasil"
+      ],
+      "source_licenses": [
+        "ODbL-1.0"
+      ],
+      "tags": [
+        "credit-risk",
+        "default",
+        "corporate-credit",
+        "bcb",
+        "sgs"
+      ],
+      "use_cases": [
+        "credit-risk",
+        "banking-demo",
+        "collections"
+      ],
+      "path": "entries/economy/BR/br-corporate-credit-default-rate-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/BR/br-corporate-credit-default-rate-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "default_rate_percent"
+    },
+    {
       "id": "br-household-credit-default-rate-2025",
       "title": "Brazil credit portfolio default rate, individuals, monthly 2025",
       "kind": "temporal",
@@ -1471,6 +2892,41 @@
         "end": "2025-12-31"
       },
       "variable": "default_rate_percent"
+    },
+    {
+      "id": "br-household-indebtedness-ratio-monthly-2025",
+      "title": "Brazil household debt with the financial system as a share of twelve-month income, monthly 2025",
+      "kind": "temporal",
+      "domain": "economy",
+      "region": "BR",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Banco Central do Brasil"
+      ],
+      "source_licenses": [
+        "ODbL-1.0"
+      ],
+      "tags": [
+        "household-debt",
+        "indebtedness",
+        "credit-risk",
+        "bcb",
+        "sgs"
+      ],
+      "use_cases": [
+        "credit-risk",
+        "personal-finance",
+        "household-generation"
+      ],
+      "path": "entries/economy/BR/br-household-indebtedness-ratio-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/BR/br-household-indebtedness-ratio-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "household_debt_to_income_percent"
     },
     {
       "id": "br-ipca-monthly-inflation-2025",
@@ -1611,6 +3067,41 @@
       "variable": "hicp_annual_rate_percent"
     },
     {
+      "id": "eu-hicp-inflation-by-coicop-division-monthly-2025",
+      "title": "Euro area HICP inflation by COICOP division, annual rate of change by month, 2025",
+      "kind": "temporal",
+      "domain": "economy",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "European Central Bank"
+      ],
+      "source_licenses": [
+        "ECB-free-use-with-attribution"
+      ],
+      "tags": [
+        "inflation",
+        "prices",
+        "coicop",
+        "ecb",
+        "euro-area"
+      ],
+      "use_cases": [
+        "pricing",
+        "retail-demo",
+        "financial-planning"
+      ],
+      "path": "entries/economy/EU/eu-hicp-inflation-by-coicop-division-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/EU/eu-hicp-inflation-by-coicop-division-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "hicp_all_items_annual_rate_percent"
+    },
+    {
       "id": "eu-hicp-inflation-by-country-monthly-2025",
       "title": "HICP inflation, annual rate of change, monthly 2025, ten member states",
       "kind": "temporal",
@@ -1680,6 +3171,43 @@
       "variable": "unemployment_rate_percent"
     },
     {
+      "id": "gb-card-spending-index-daily-2023",
+      "title": "UK spending on credit and debit cards, daily index by spending category (aggregate, staple, delayable, social, work-related), 2023",
+      "kind": "temporal",
+      "domain": "economy",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2023-01-01 to 2023-12-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "card-payments",
+        "consumer-spending",
+        "faster-indicators",
+        "daily",
+        "seasonality"
+      ],
+      "use_cases": [
+        "payments-demo",
+        "retail-demo",
+        "demand-forecasting",
+        "fintech-demo",
+        "capacity-planning"
+      ],
+      "path": "entries/economy/GB/gb-card-spending-index-daily-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/GB/gb-card-spending-index-daily-2023.yaml",
+      "observed_period": {
+        "start": "2023-01-01",
+        "end": "2023-12-31"
+      },
+      "variable": "card_spending_index"
+    },
+    {
       "id": "gb-cpih-all-items-index-monthly-2025",
       "title": "UK Consumer Prices Index including owner occupiers' housing costs (CPIH), all items index, monthly 2025",
       "kind": "temporal",
@@ -1707,6 +3235,43 @@
       ],
       "path": "entries/economy/GB/gb-cpih-all-items-index-monthly-2025.yaml",
       "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/GB/gb-cpih-all-items-index-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "cpih_index_2015_100"
+    },
+    {
+      "id": "gb-cpih-divisions-index-monthly-2025",
+      "title": "UK CPIH index by COICOP division (01 food to 12 miscellaneous) beside the all-items index, monthly 2025",
+      "kind": "temporal",
+      "domain": "economy",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "inflation",
+        "prices",
+        "cpih",
+        "coicop",
+        "index"
+      ],
+      "use_cases": [
+        "pricing",
+        "retail-demo",
+        "contract-indexation",
+        "financial-planning",
+        "demand-forecasting"
+      ],
+      "path": "entries/economy/GB/gb-cpih-divisions-index-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/GB/gb-cpih-divisions-index-monthly-2025.yaml",
       "observed_period": {
         "start": "2025-01-01",
         "end": "2025-12-31"
@@ -1748,6 +3313,244 @@
       "variable": "retail_sales_volume_index"
     },
     {
+      "id": "global-agriculture-value-added-share-2024",
+      "title": "Agriculture, forestry, and fishing, value added (% of GDP), by economy, 2024 (World Bank, 187 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "macro",
+        "sector-mix",
+        "agriculture",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "company-generation",
+        "market-sizing"
+      ],
+      "path": "entries/economy/global/global-agriculture-value-added-share-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-agriculture-value-added-share-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-atms-per-100k-adults-2024",
+      "title": "Automated teller machines (ATMs) (per 100,000 adults), by economy, 2024 (World Bank, 151 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "banking",
+        "financial-inclusion",
+        "atm",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "digital-channels",
+        "capacity-planning"
+      ],
+      "path": "entries/economy/global/global-atms-per-100k-adults-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-atms-per-100k-adults-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-bank-branches-per-100k-adults-2024",
+      "title": "Commercial bank branches (per 100,000 adults), by economy, 2024 (World Bank, 153 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "banking",
+        "financial-inclusion",
+        "branches",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "capacity-planning",
+        "address-generation"
+      ],
+      "path": "entries/economy/global/global-bank-branches-per-100k-adults-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-bank-branches-per-100k-adults-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-bank-nonperforming-loans-2024",
+      "title": "Bank nonperforming loans to total gross loans (%), by economy, 2024 (World Bank, 129 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "banking",
+        "credit",
+        "npl",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "credit-risk",
+        "collections",
+        "banking-demo"
+      ],
+      "path": "entries/economy/global/global-bank-nonperforming-loans-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-bank-nonperforming-loans-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-consumer-price-index-2024",
+      "title": "Consumer price index (2010 = 100), by economy, 2024 (World Bank, 175 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "prices",
+        "cpi",
+        "inflation",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "pricing",
+        "contract-indexation",
+        "financial-planning"
+      ],
+      "path": "entries/economy/global/global-consumer-price-index-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-consumer-price-index-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-credit-to-private-non-financial-sector-quarterly-2025",
+      "title": "Credit to the private non-financial sector as a percentage of GDP, quarterly 2025 (US, euro area, GB, JP, BR, IN, CH, CA, AU)",
+      "kind": "temporal",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Bank for International Settlements"
+      ],
+      "source_licenses": [
+        "BIS terms and conditions (statistics subject to 'About BIS statistics' terms)"
+      ],
+      "tags": [
+        "credit",
+        "private-debt",
+        "credit-risk",
+        "bis",
+        "time-series"
+      ],
+      "use_cases": [
+        "credit-risk",
+        "banking-demo",
+        "market-sizing"
+      ],
+      "path": "entries/economy/global/global-credit-to-private-non-financial-sector-quarterly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-credit-to-private-non-financial-sector-quarterly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "us_percent_of_gdp"
+    },
+    {
+      "id": "global-domestic-credit-to-private-sector-2024",
+      "title": "Domestic credit to private sector (% of GDP), by economy, 2024 (World Bank, 148 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "banking",
+        "credit",
+        "financial-depth",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "credit-risk",
+        "loan-pricing"
+      ],
+      "path": "entries/economy/global/global-domestic-credit-to-private-sector-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-domestic-credit-to-private-sector-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
       "id": "global-economy-classification",
       "title": "World Bank economies with ISO codes, region and income group (217 economies)",
       "kind": "rule",
@@ -1779,6 +3582,70 @@
       "valid_to": null,
       "implementation": "almanac.rules.lookup_table",
       "vectors": 4
+    },
+    {
+      "id": "global-exports-share-of-gdp-2024",
+      "title": "Exports of goods and services (% of GDP), by economy, 2024 (World Bank, 172 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "macro",
+        "trade",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "market-sizing",
+        "logistics"
+      ],
+      "path": "entries/economy/global/global-exports-share-of-gdp-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-exports-share-of-gdp-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-fdi-net-inflows-share-of-gdp-2024",
+      "title": "Foreign direct investment, net inflows (% of GDP), by economy, 2024 (World Bank, 194 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "macro",
+        "investment",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "market-sizing",
+        "treasury"
+      ],
+      "path": "entries/economy/global/global-fdi-net-inflows-share-of-gdp-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-fdi-net-inflows-share-of-gdp-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
     },
     {
       "id": "global-female-population-share-2024",
@@ -1903,6 +3770,39 @@
       "vectors": 5
     },
     {
+      "id": "global-gdp-growth-2024",
+      "title": "GDP growth (annual %), by economy, 2024 (World Bank, 200 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "macro",
+        "growth",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "market-sizing",
+        "demand-forecasting",
+        "financial-planning"
+      ],
+      "path": "entries/economy/global/global-gdp-growth-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-gdp-growth-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
       "id": "global-gdp-per-capita-2024",
       "title": "GDP per capita (current US$), by economy, 2024 (World Bank, 200 economies)",
       "kind": "rule",
@@ -1929,6 +3829,171 @@
       ],
       "path": "entries/economy/global/global-gdp-per-capita-2024.yaml",
       "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-gdp-per-capita-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-gdp-per-capita-ppp-2024",
+      "title": "GDP per capita, PPP (current international $), by economy, 2024 (World Bank, 195 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "macro",
+        "income",
+        "ppp",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "market-sizing",
+        "customer-segmentation",
+        "pricing"
+      ],
+      "path": "entries/economy/global/global-gdp-per-capita-ppp-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-gdp-per-capita-ppp-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-gni-per-capita-atlas-2024",
+      "title": "GNI per capita, Atlas method (current US$), by economy, 2024 (World Bank, 198 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "macro",
+        "income",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "market-sizing",
+        "customer-segmentation",
+        "credit-risk"
+      ],
+      "path": "entries/economy/global/global-gni-per-capita-atlas-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-gni-per-capita-atlas-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-gross-savings-share-of-gdp-2024",
+      "title": "Gross savings (% of GDP), by economy, 2024 (World Bank, 149 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "macro",
+        "savings",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "personal-finance",
+        "banking-demo"
+      ],
+      "path": "entries/economy/global/global-gross-savings-share-of-gdp-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-gross-savings-share-of-gdp-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-household-consumption-share-of-gdp-2024",
+      "title": "Households and NPISHs final consumption expenditure (% of GDP), by economy, 2024 (World Bank, 168 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "macro",
+        "consumption",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "retail-demo",
+        "market-sizing",
+        "demand-forecasting"
+      ],
+      "path": "entries/economy/global/global-household-consumption-share-of-gdp-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-household-consumption-share-of-gdp-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-industry-value-added-share-2024",
+      "title": "Industry (including construction), value added (% of GDP), by economy, 2024 (World Bank, 189 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "macro",
+        "sector-mix",
+        "industry",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "company-generation",
+        "market-sizing"
+      ],
+      "path": "entries/economy/global/global-industry-value-added-share-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-industry-value-added-share-2024.yaml",
       "valid_from": "2024-01-01",
       "valid_to": "2024-12-31",
       "implementation": "almanac.rules.lookup_table",
@@ -2061,6 +4126,38 @@
       "vectors": 5
     },
     {
+      "id": "global-merchandise-trade-share-of-gdp-2024",
+      "title": "Merchandise trade (% of GDP), by economy, 2024 (World Bank, 199 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "trade",
+        "macro",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "logistics",
+        "market-sizing"
+      ],
+      "path": "entries/economy/global/global-merchandise-trade-share-of-gdp-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-merchandise-trade-share-of-gdp-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
       "id": "global-mobile-subscriptions-per-100-2024",
       "title": "Mobile cellular subscriptions (per 100 people), by economy, 2024 (World Bank, 151 economies)",
       "kind": "rule",
@@ -2087,6 +4184,241 @@
       "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-mobile-subscriptions-per-100-2024.yaml",
       "valid_from": "2024-01-01",
       "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-new-business-density-2024",
+      "title": "New business density (new registrations per 1,000 people ages 15-64), by economy, 2024 (World Bank, 134 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "business-registration",
+        "entrepreneurship",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "company-generation",
+        "kyb-onboarding",
+        "market-sizing"
+      ],
+      "path": "entries/economy/global/global-new-business-density-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-new-business-density-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-official-exchange-rate-lcu-per-usd-2024",
+      "title": "Official exchange rate (LCU per US$, period average), by economy, 2024 (World Bank, 199 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "exchange-rates",
+        "fx",
+        "currency",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "multi-currency-ledger",
+        "financial-reporting",
+        "treasury"
+      ],
+      "path": "entries/economy/global/global-official-exchange-rate-lcu-per-usd-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-official-exchange-rate-lcu-per-usd-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-ppp-conversion-factor-2024",
+      "title": "PPP conversion factor, GDP (LCU per international $), by economy, 2024 (World Bank, 195 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "ppp",
+        "prices",
+        "currency",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "pricing",
+        "market-sizing",
+        "multi-currency-ledger"
+      ],
+      "path": "entries/economy/global/global-ppp-conversion-factor-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-ppp-conversion-factor-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-remittances-received-share-of-gdp-2024",
+      "title": "Personal remittances, received (% of GDP), by economy, 2024 (World Bank, 162 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "remittances",
+        "payments",
+        "cross-border",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "payments-demo",
+        "fintech-demo",
+        "market-sizing"
+      ],
+      "path": "entries/economy/global/global-remittances-received-share-of-gdp-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-remittances-received-share-of-gdp-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-residential-property-prices-quarterly-2025",
+      "title": "Residential property price indices, nominal, quarterly 2025 (US, euro area, GB, JP, BR, IN, CH, CA, AU)",
+      "kind": "temporal",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Bank for International Settlements"
+      ],
+      "source_licenses": [
+        "BIS terms and conditions (statistics subject to 'About BIS statistics' terms)"
+      ],
+      "tags": [
+        "property-prices",
+        "housing",
+        "bis",
+        "time-series"
+      ],
+      "use_cases": [
+        "property-demo",
+        "mortgage-origination",
+        "insurance"
+      ],
+      "path": "entries/economy/global/global-residential-property-prices-quarterly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-residential-property-prices-quarterly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "us_index"
+    },
+    {
+      "id": "global-services-value-added-share-2024",
+      "title": "Services, value added (% of GDP), by economy, 2024 (World Bank, 189 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "macro",
+        "sector-mix",
+        "services",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "company-generation",
+        "market-sizing"
+      ],
+      "path": "entries/economy/global/global-services-value-added-share-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-services-value-added-share-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-tax-revenue-share-of-gdp-2023",
+      "title": "Tax revenue (% of GDP), by economy, 2023 (World Bank, 111 economies)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2023-01-01 to 2023-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "macro",
+        "tax",
+        "public-finance",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "tax-filing-demo",
+        "market-sizing"
+      ],
+      "path": "entries/economy/global/global-tax-revenue-share-of-gdp-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-tax-revenue-share-of-gdp-2023.yaml",
+      "valid_from": "2023-01-01",
+      "valid_to": "2023-12-31",
       "implementation": "almanac.rules.lookup_table",
       "vectors": 5
     },
@@ -2149,6 +4481,105 @@
       "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/global/global-urban-population-share-2024.yaml",
       "valid_from": "2024-01-01",
       "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-education-expenditure-share-of-gdp-2022",
+      "title": "Government expenditure on education, total (% of GDP), by economy, 2022 (World Bank, 164 economies)",
+      "kind": "rule",
+      "domain": "education",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2022-01-01 to 2022-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "education",
+        "public-finance",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "market-sizing",
+        "financial-planning"
+      ],
+      "path": "entries/education/global/global-education-expenditure-share-of-gdp-2022.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/education/global/global-education-expenditure-share-of-gdp-2022.yaml",
+      "valid_from": "2022-01-01",
+      "valid_to": "2022-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-secondary-enrollment-ratio-2023",
+      "title": "School enrollment, secondary (% gross), by economy, 2023 (World Bank, 147 economies)",
+      "kind": "rule",
+      "domain": "education",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2023-01-01 to 2023-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "education",
+        "secondary",
+        "enrollment",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "person-generation",
+        "household-generation"
+      ],
+      "path": "entries/education/global/global-secondary-enrollment-ratio-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/education/global/global-secondary-enrollment-ratio-2023.yaml",
+      "valid_from": "2023-01-01",
+      "valid_to": "2023-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-tertiary-enrollment-ratio-2023",
+      "title": "School enrollment, tertiary (% gross), by economy, 2023 (World Bank, 128 economies)",
+      "kind": "rule",
+      "domain": "education",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2023-01-01 to 2023-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "education",
+        "tertiary",
+        "enrollment",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "person-generation",
+        "hr-analytics",
+        "workforce-planning"
+      ],
+      "path": "entries/education/global/global-tertiary-enrollment-ratio-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/education/global/global-tertiary-enrollment-ratio-2023.yaml",
+      "valid_from": "2023-01-01",
+      "valid_to": "2023-12-31",
       "implementation": "almanac.rules.lookup_table",
       "vectors": 5
     },
@@ -2260,6 +4691,79 @@
       "variable": "youth_unemployment_rate_percent"
     },
     {
+      "id": "gb-economic-activity-by-age-group-2025",
+      "title": "UK economic activity status (in employment, unemployed, economically inactive) given age group, Labour Force Survey February to April 2025",
+      "kind": "conditional",
+      "domain": "employment",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-02-01 to 2025-04-30",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "labour-market",
+        "employment",
+        "unemployment",
+        "by-age",
+        "labour-force-survey"
+      ],
+      "use_cases": [
+        "person-generation",
+        "hr-analytics",
+        "workforce-planning",
+        "credit-risk",
+        "customer-segmentation"
+      ],
+      "path": "entries/employment/GB/gb-economic-activity-by-age-group-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/GB/gb-economic-activity-by-age-group-2025.yaml",
+      "observed_period": {
+        "start": "2025-02-01",
+        "end": "2025-04-30"
+      },
+      "variable": "economic_activity_status"
+    },
+    {
+      "id": "gb-maximum-weekly-working-hours",
+      "title": "United Kingdom maximum average weekly working time: 48 hours for adult workers and 40 hours for workers under 18 (Working Time Regulations 1998)",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "GB",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "1998-10-01 to open",
+      "publishers": [
+        "Department for Business and Trade (GOV.UK)",
+        "The National Archives (legislation.gov.uk)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0",
+        "unstated"
+      ],
+      "tags": [
+        "working-time",
+        "working-hours",
+        "employment-law",
+        "young-workers"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "workforce-planning",
+        "payroll-demo",
+        "capacity-planning"
+      ],
+      "path": "entries/employment/GB/gb-maximum-weekly-working-hours.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/GB/gb-maximum-weekly-working-hours.yaml",
+      "valid_from": "1998-10-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.age_band_rates",
+      "vectors": 4
+    },
+    {
       "id": "gb-national-minimum-wage-2026-2027",
       "title": "United Kingdom National Minimum Wage and National Living Wage hourly rates from April 2026 and April 2027",
       "kind": "rule",
@@ -2291,6 +4795,489 @@
       "valid_to": null,
       "implementation": "almanac.rules.age_band_rates",
       "vectors": 8
+    },
+    {
+      "id": "gb-statutory-holiday-entitlement",
+      "title": "United Kingdom statutory paid holiday entitlement: 5.6 weeks a year capped at 28 days, with the 12.07% accrual rate for irregular hours",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "GB",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2009-04-01 to open",
+      "publishers": [
+        "Department for Business and Trade (GOV.UK)",
+        "The National Archives (legislation.gov.uk)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0",
+        "unstated"
+      ],
+      "tags": [
+        "holiday-entitlement",
+        "annual-leave",
+        "employment-law",
+        "working-time"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "workforce-planning",
+        "payroll-demo",
+        "capacity-planning"
+      ],
+      "path": "entries/employment/GB/gb-statutory-holiday-entitlement.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/GB/gb-statutory-holiday-entitlement.yaml",
+      "valid_from": "2009-04-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "gb-statutory-payments-2026-27",
+      "title": "United Kingdom statutory maternity, paternity, adoption, shared parental, bereavement, neonatal care and sick pay weekly rates, 2026 to 2027",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-04-06 to 2027-04-05",
+      "publishers": [
+        "HM Revenue & Customs (GOV.UK)",
+        "Department for Work and Pensions (GOV.UK)",
+        "Department for Business and Trade (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "statutory-pay",
+        "maternity-pay",
+        "sick-pay",
+        "payroll",
+        "parental-leave"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-analytics",
+        "workforce-planning",
+        "insurance"
+      ],
+      "path": "entries/employment/GB/gb-statutory-payments-2026-27.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/GB/gb-statutory-payments-2026-27.yaml",
+      "valid_from": "2026-04-06",
+      "valid_to": "2027-04-05",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 7
+    },
+    {
+      "id": "gb-student-loan-repayment-thresholds-2026-27",
+      "title": "United Kingdom student loan and postgraduate loan repayment thresholds and deduction rates by plan type, 2026 to 2027",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-04-06 to 2027-04-05",
+      "publishers": [
+        "HM Revenue & Customs (GOV.UK)",
+        "Student Loans Company (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "student-loan",
+        "payroll",
+        "paye",
+        "deductions"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-analytics",
+        "personal-finance",
+        "collections"
+      ],
+      "path": "entries/employment/GB/gb-student-loan-repayment-thresholds-2026-27.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/GB/gb-student-loan-repayment-thresholds-2026-27.yaml",
+      "valid_from": "2026-04-06",
+      "valid_to": "2027-04-05",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 6
+    },
+    {
+      "id": "us-federal-minimum-wage",
+      "title": "United States federal minimum wage under the Fair Labor Standards Act, 29 U.S.C. 206(a)(1), steps since 2007",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2007-07-24 to open",
+      "publishers": [
+        "Office of the Law Revision Counsel, US House of Representatives, via govinfo"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "minimum-wage",
+        "flsa",
+        "step-schedule",
+        "29-usc-206"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-analytics",
+        "workforce-planning"
+      ],
+      "path": "entries/employment/US/us-federal-minimum-wage.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/US/us-federal-minimum-wage.yaml",
+      "valid_from": "2007-07-24",
+      "valid_to": null,
+      "implementation": "almanac.rules.step_schedule",
+      "vectors": 3
+    },
+    {
+      "id": "us-flsa-exemption-salary-levels",
+      "title": "United States FLSA executive, administrative and professional exemption salary levels, 29 CFR 541.600 and 541.601",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-05-15 to open",
+      "publishers": [
+        "US Department of Labor, Wage and Hour Division via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "flsa",
+        "overtime",
+        "exempt-employees",
+        "salary-threshold",
+        "29-cfr-541"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-analytics",
+        "workforce-planning"
+      ],
+      "path": "entries/employment/US/us-flsa-exemption-salary-levels.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/US/us-flsa-exemption-salary-levels.yaml",
+      "valid_from": "2026-05-15",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-fmla-eligibility-and-leave-thresholds",
+      "title": "United States FMLA employer coverage, employee eligibility and leave entitlement thresholds, 29 CFR 825",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2016-12-01 to open",
+      "publishers": [
+        "US Department of Labor, Wage and Hour Division via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "fmla",
+        "leave",
+        "eligibility",
+        "hr-policy",
+        "29-cfr-825"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "workforce-planning",
+        "payroll-demo"
+      ],
+      "path": "entries/employment/US/us-fmla-eligibility-and-leave-thresholds.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/US/us-fmla-eligibility-and-leave-thresholds.yaml",
+      "valid_from": "2016-12-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-osha-recordkeeping-thresholds",
+      "title": "United States OSHA injury and illness recordkeeping and reporting thresholds, 29 CFR 1904",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2024-04-01 to open",
+      "publishers": [
+        "Occupational Safety and Health Administration via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "osha",
+        "workplace-safety",
+        "recordkeeping",
+        "incident-reporting",
+        "29-cfr-1904"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "workforce-planning",
+        "sla-calculation",
+        "event-timestamps"
+      ],
+      "path": "entries/employment/US/us-osha-recordkeeping-thresholds.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/US/us-osha-recordkeeping-thresholds.yaml",
+      "valid_from": "2024-04-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-employment-in-agriculture-share-2024",
+      "title": "Employment in agriculture (% of total employment) (modeled ILO estimate), by economy, 2024 (World Bank, 182 economies)",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "labour",
+        "sector-mix",
+        "agriculture",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "person-generation",
+        "hr-analytics",
+        "workforce-planning"
+      ],
+      "path": "entries/employment/global/global-employment-in-agriculture-share-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/global/global-employment-in-agriculture-share-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-employment-in-industry-share-2024",
+      "title": "Employment in industry (% of total employment) (modeled ILO estimate), by economy, 2024 (World Bank, 182 economies)",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "labour",
+        "sector-mix",
+        "industry",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "person-generation",
+        "hr-analytics",
+        "workforce-planning"
+      ],
+      "path": "entries/employment/global/global-employment-in-industry-share-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/global/global-employment-in-industry-share-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-employment-in-services-share-2024",
+      "title": "Employment in services (% of total employment) (modeled ILO estimate), by economy, 2024 (World Bank, 182 economies)",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "labour",
+        "sector-mix",
+        "services",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "person-generation",
+        "hr-analytics",
+        "workforce-planning"
+      ],
+      "path": "entries/employment/global/global-employment-in-services-share-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/global/global-employment-in-services-share-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-employment-to-population-ratio-2024",
+      "title": "Employment to population ratio, 15+, total (%) (modeled ILO estimate), by economy, 2024 (World Bank, 182 economies)",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "labour",
+        "employment",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "workforce-planning",
+        "person-generation"
+      ],
+      "path": "entries/employment/global/global-employment-to-population-ratio-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/global/global-employment-to-population-ratio-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-female-labour-force-participation-2024",
+      "title": "Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate), by economy, 2024 (World Bank, 182 economies)",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "labour",
+        "gender",
+        "participation",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "workforce-planning",
+        "person-generation"
+      ],
+      "path": "entries/employment/global/global-female-labour-force-participation-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/global/global-female-labour-force-participation-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-self-employment-share-2024",
+      "title": "Self-employed, total (% of total employment) (modeled ILO estimate), by economy, 2024 (World Bank, 182 economies)",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "labour",
+        "self-employment",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "person-generation",
+        "kyc-onboarding",
+        "credit-risk"
+      ],
+      "path": "entries/employment/global/global-self-employment-share-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/global/global-self-employment-share-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-youth-unemployment-rate-2024",
+      "title": "Unemployment, youth total (% of total labor force ages 15-24) (modeled ILO estimate), by economy, 2024 (World Bank, 182 economies)",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "labour",
+        "unemployment",
+        "youth",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "credit-risk",
+        "person-generation"
+      ],
+      "path": "entries/employment/global/global-youth-unemployment-rate-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/global/global-youth-unemployment-rate-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
     },
     {
       "id": "eu-household-electricity-prices-2025s1",
@@ -2398,6 +5385,309 @@
       "vectors": 3
     },
     {
+      "id": "global-access-to-clean-cooking-fuels-2024",
+      "title": "Access to clean fuels and technologies for cooking (% of population), by economy, 2024 (World Bank, 192 economies)",
+      "kind": "rule",
+      "domain": "energy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "energy",
+        "access",
+        "households",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "utilities-demo",
+        "household-generation"
+      ],
+      "path": "entries/energy/global/global-access-to-clean-cooking-fuels-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/energy/global/global-access-to-clean-cooking-fuels-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-access-to-electricity-2024",
+      "title": "Access to electricity (% of population), by economy, 2024 (World Bank, 215 economies)",
+      "kind": "rule",
+      "domain": "energy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "electricity",
+        "access",
+        "utilities",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "utilities-demo",
+        "market-sizing",
+        "household-generation"
+      ],
+      "path": "entries/energy/global/global-access-to-electricity-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/energy/global/global-access-to-electricity-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-electricity-consumption-per-capita-2024",
+      "title": "Electric power consumption (kWh per capita), by economy, 2024 (World Bank, 149 economies)",
+      "kind": "rule",
+      "domain": "energy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "electricity",
+        "consumption",
+        "utilities",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "utilities-demo",
+        "demand-forecasting",
+        "capacity-planning"
+      ],
+      "path": "entries/energy/global/global-electricity-consumption-per-capita-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/energy/global/global-electricity-consumption-per-capita-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-renewable-electricity-output-share-2021",
+      "title": "Renewable electricity output (% of total electricity output), by economy, 2021 (World Bank, 204 economies)",
+      "kind": "rule",
+      "domain": "energy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2021-01-01 to 2021-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "electricity",
+        "renewables",
+        "utilities",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "utilities-demo",
+        "financial-reporting"
+      ],
+      "path": "entries/energy/global/global-renewable-electricity-output-share-2021.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/energy/global/global-renewable-electricity-output-share-2021.yaml",
+      "valid_from": "2021-01-01",
+      "valid_to": "2021-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-renewable-energy-consumption-share-2021",
+      "title": "Renewable energy consumption (% of total final energy consumption), by economy, 2021 (World Bank, 212 economies)",
+      "kind": "rule",
+      "domain": "energy",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2021-01-01 to 2021-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "energy",
+        "renewables",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "utilities-demo",
+        "financial-reporting"
+      ],
+      "path": "entries/energy/global/global-renewable-energy-consumption-share-2021.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/energy/global/global-renewable-energy-consumption-share-2021.yaml",
+      "valid_from": "2021-01-01",
+      "valid_to": "2021-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-co2-emissions-per-capita-2024",
+      "title": "Carbon dioxide (CO2) emissions excluding LULUCF per capita (t CO2e/capita), by economy, 2024 (World Bank, 203 economies)",
+      "kind": "rule",
+      "domain": "environment",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "emissions",
+        "co2",
+        "climate",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "financial-reporting",
+        "utilities-demo",
+        "logistics"
+      ],
+      "path": "entries/environment/global/global-co2-emissions-per-capita-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/environment/global/global-co2-emissions-per-capita-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-land-area-2024",
+      "title": "Land area (sq. km), by economy, 2024 (World Bank, 214 economies)",
+      "kind": "rule",
+      "domain": "environment",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "geography",
+        "land-area",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "address-generation",
+        "logistics",
+        "market-sizing"
+      ],
+      "path": "entries/environment/global/global-land-area-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/environment/global/global-land-area-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-pm25-air-pollution-exposure-2023",
+      "title": "PM2.5 air pollution, mean annual exposure (micrograms per cubic meter), by economy, 2023 (World Bank, 200 economies)",
+      "kind": "rule",
+      "domain": "environment",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2023-01-01 to 2023-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "air-quality",
+        "pollution",
+        "health",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "health-demo",
+        "insurance",
+        "claims-generation"
+      ],
+      "path": "entries/environment/global/global-pm25-air-pollution-exposure-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/environment/global/global-pm25-air-pollution-exposure-2023.yaml",
+      "valid_from": "2023-01-01",
+      "valid_to": "2023-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-fda-nutrition-label-daily-values",
+      "title": "United States nutrition label daily values (RDI and DRV) by population group, 21 CFR 101.9(c)(8)(iv) and (c)(9) (35 nutrients)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2023-05-24 to open",
+      "publishers": [
+        "US Food and Drug Administration via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "nutrition",
+        "food-labelling",
+        "daily-values",
+        "fda",
+        "reference-table",
+        "21-cfr-101"
+      ],
+      "use_cases": [
+        "retail-demo",
+        "health-demo",
+        "pricing"
+      ],
+      "path": "entries/healthcare/US/us-fda-nutrition-label-daily-values.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/US/us-fda-nutrition-label-daily-values.yaml",
+      "valid_from": "2023-05-24",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 7
+    },
+    {
       "id": "us-icd-10-cm-2026-categories",
       "title": "ICD-10-CM FY2026 three-character categories with code counts (1918 categories over 74719 valid codes)",
       "kind": "rule",
@@ -2427,6 +5717,42 @@
       ],
       "path": "entries/healthcare/US/us-icd-10-cm-2026-categories.yaml",
       "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/US/us-icd-10-cm-2026-categories.yaml",
+      "valid_from": "2025-10-01",
+      "valid_to": "2026-09-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-icd-10-cm-2026-poa-exempt-categories",
+      "title": "ICD-10-CM FY2026 present-on-admission (POA) exempt codes by three-character category (562 categories over 38349 exempt codes)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2025-10-01 to 2026-09-30",
+      "publishers": [
+        "Centers for Disease Control and Prevention, National Center for Health Statistics"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "icd-10-cm",
+        "present-on-admission",
+        "poa",
+        "diagnosis-codes",
+        "clinical-coding",
+        "cdc"
+      ],
+      "use_cases": [
+        "health-demo",
+        "claims-generation",
+        "clinical-records",
+        "insurance"
+      ],
+      "path": "entries/healthcare/US/us-icd-10-cm-2026-poa-exempt-categories.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/US/us-icd-10-cm-2026-poa-exempt-categories.yaml",
       "valid_from": "2025-10-01",
       "valid_to": "2026-09-30",
       "implementation": "almanac.rules.lookup_table",
@@ -2465,6 +5791,480 @@
       "valid_from": "2004-01-23",
       "valid_to": null,
       "implementation": "almanac.rules.luhn",
+      "vectors": 5
+    },
+    {
+      "id": "global-crude-birth-rate-2024",
+      "title": "Birth rate, crude (per 1,000 people), by economy, 2024 (World Bank, 217 economies)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "health",
+        "demographics",
+        "births",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "person-generation",
+        "household-generation",
+        "health-demo"
+      ],
+      "path": "entries/healthcare/global/global-crude-birth-rate-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/global/global-crude-birth-rate-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-crude-death-rate-2024",
+      "title": "Death rate, crude (per 1,000 people), by economy, 2024 (World Bank, 217 economies)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "health",
+        "demographics",
+        "mortality",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "insurance",
+        "pensions",
+        "health-demo"
+      ],
+      "path": "entries/healthcare/global/global-crude-death-rate-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/global/global-crude-death-rate-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-diabetes-prevalence-2024",
+      "title": "Diabetes prevalence (% of population ages 20 to 79), by economy, 2024 (World Bank, 209 economies)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "health",
+        "chronic-disease",
+        "diabetes",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "claims-generation",
+        "clinical-records",
+        "insurance"
+      ],
+      "path": "entries/healthcare/global/global-diabetes-prevalence-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/global/global-diabetes-prevalence-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-health-expenditure-per-capita-2023",
+      "title": "Current health expenditure per capita (current US$), by economy, 2023 (World Bank, 191 economies)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2023-01-01 to 2023-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "health",
+        "health-spending",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "health-demo",
+        "claims-generation",
+        "insurance"
+      ],
+      "path": "entries/healthcare/global/global-health-expenditure-per-capita-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/global/global-health-expenditure-per-capita-2023.yaml",
+      "valid_from": "2023-01-01",
+      "valid_to": "2023-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-health-expenditure-share-of-gdp-2023",
+      "title": "Current health expenditure (% of GDP), by economy, 2023 (World Bank, 192 economies)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2023-01-01 to 2023-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "health",
+        "health-spending",
+        "macro",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "health-demo",
+        "market-sizing"
+      ],
+      "path": "entries/healthcare/global/global-health-expenditure-share-of-gdp-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/global/global-health-expenditure-share-of-gdp-2023.yaml",
+      "valid_from": "2023-01-01",
+      "valid_to": "2023-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-hospital-beds-per-1000-2022",
+      "title": "Hospital beds (per 1,000 people), by economy, 2022 (World Bank, 111 economies)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2022-01-01 to 2022-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "health",
+        "hospitals",
+        "capacity",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "health-demo",
+        "capacity-planning",
+        "clinical-records"
+      ],
+      "path": "entries/healthcare/global/global-hospital-beds-per-1000-2022.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/global/global-hospital-beds-per-1000-2022.yaml",
+      "valid_from": "2022-01-01",
+      "valid_to": "2022-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-infant-mortality-rate-2024",
+      "title": "Mortality rate, infant (per 1,000 live births), by economy, 2024 (World Bank, 196 economies)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "health",
+        "mortality",
+        "infants",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "health-demo",
+        "clinical-records",
+        "insurance"
+      ],
+      "path": "entries/healthcare/global/global-infant-mortality-rate-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/global/global-infant-mortality-rate-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-life-expectancy-female-2024",
+      "title": "Life expectancy at birth, female (years), by economy, 2024 (World Bank, 217 economies)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "health",
+        "demographics",
+        "life-expectancy",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "insurance",
+        "pensions",
+        "person-generation"
+      ],
+      "path": "entries/healthcare/global/global-life-expectancy-female-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/global/global-life-expectancy-female-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-life-expectancy-male-2024",
+      "title": "Life expectancy at birth, male (years), by economy, 2024 (World Bank, 217 economies)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "health",
+        "demographics",
+        "life-expectancy",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "insurance",
+        "pensions",
+        "person-generation"
+      ],
+      "path": "entries/healthcare/global/global-life-expectancy-male-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/global/global-life-expectancy-male-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-nurses-and-midwives-per-1000-2022",
+      "title": "Nurses and midwives (per 1,000 people), by economy, 2022 (World Bank, 126 economies)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2022-01-01 to 2022-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "health",
+        "workforce",
+        "nursing",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "health-demo",
+        "capacity-planning",
+        "hr-analytics"
+      ],
+      "path": "entries/healthcare/global/global-nurses-and-midwives-per-1000-2022.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/global/global-nurses-and-midwives-per-1000-2022.yaml",
+      "valid_from": "2022-01-01",
+      "valid_to": "2022-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-out-of-pocket-health-expenditure-share-2023",
+      "title": "Out-of-pocket expenditure (% of current health expenditure), by economy, 2023 (World Bank, 192 economies)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2023-01-01 to 2023-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "health",
+        "health-spending",
+        "out-of-pocket",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "claims-generation",
+        "insurance",
+        "health-demo"
+      ],
+      "path": "entries/healthcare/global/global-out-of-pocket-health-expenditure-share-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/global/global-out-of-pocket-health-expenditure-share-2023.yaml",
+      "valid_from": "2023-01-01",
+      "valid_to": "2023-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-physicians-per-1000-2022",
+      "title": "Physicians (per 1,000 people), by economy, 2022 (World Bank, 125 economies)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2022-01-01 to 2022-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "health",
+        "workforce",
+        "physicians",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "health-demo",
+        "capacity-planning",
+        "clinical-records"
+      ],
+      "path": "entries/healthcare/global/global-physicians-per-1000-2022.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/global/global-physicians-per-1000-2022.yaml",
+      "valid_from": "2022-01-01",
+      "valid_to": "2022-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-tobacco-use-prevalence-2024",
+      "title": "Prevalence of current tobacco use (% of adults), by economy, 2024 (World Bank, 166 economies)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "health",
+        "risk-factors",
+        "tobacco",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "insurance",
+        "health-demo",
+        "person-generation"
+      ],
+      "path": "entries/healthcare/global/global-tobacco-use-prevalence-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/global/global-tobacco-use-prevalence-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-under-5-mortality-rate-2024",
+      "title": "Mortality rate, under-5 (per 1,000 live births), by economy, 2024 (World Bank, 196 economies)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "health",
+        "mortality",
+        "children",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "health-demo",
+        "clinical-records",
+        "insurance"
+      ],
+      "path": "entries/healthcare/global/global-under-5-mortality-rate-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/global/global-under-5-mortality-rate-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
       "vectors": 5
     },
     {
@@ -2677,6 +6477,179 @@
       "vectors": 3
     },
     {
+      "id": "global-air-passengers-carried-2023",
+      "title": "Air transport, passengers carried, by economy, 2023 (World Bank, 149 economies)",
+      "kind": "rule",
+      "domain": "infrastructure",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2023-01-01 to 2023-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "transport",
+        "aviation",
+        "travel",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "logistics",
+        "capacity-planning",
+        "market-sizing"
+      ],
+      "path": "entries/infrastructure/global/global-air-passengers-carried-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/infrastructure/global/global-air-passengers-carried-2023.yaml",
+      "valid_from": "2023-01-01",
+      "valid_to": "2023-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-basic-drinking-water-access-2024",
+      "title": "People using at least basic drinking water services (% of population), by economy, 2024 (World Bank, 202 economies)",
+      "kind": "rule",
+      "domain": "infrastructure",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "water",
+        "access",
+        "utilities",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "utilities-demo",
+        "household-generation"
+      ],
+      "path": "entries/infrastructure/global/global-basic-drinking-water-access-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/infrastructure/global/global-basic-drinking-water-access-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-logistics-performance-index-2022",
+      "title": "Logistics performance index: Overall (1=low to 5=high), by economy, 2022 (World Bank, 138 economies)",
+      "kind": "rule",
+      "domain": "infrastructure",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2022-01-01 to 2022-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "logistics",
+        "transport",
+        "index",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "logistics",
+        "sla-calculation"
+      ],
+      "path": "entries/infrastructure/global/global-logistics-performance-index-2022.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/infrastructure/global/global-logistics-performance-index-2022.yaml",
+      "valid_from": "2022-01-01",
+      "valid_to": "2022-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "br-payment-instrument-mix-by-count-2025",
+      "title": "Brazil payment transactions by instrument, share of transaction count, 2025",
+      "kind": "marginal",
+      "domain": "payments",
+      "region": "BR",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Banco Central do Brasil"
+      ],
+      "source_licenses": [
+        "ODbL-1.0"
+      ],
+      "tags": [
+        "payments",
+        "payment-instruments",
+        "category-shares",
+        "pix",
+        "cards",
+        "bcb"
+      ],
+      "use_cases": [
+        "payments-demo",
+        "fintech-demo",
+        "sales-generation"
+      ],
+      "path": "entries/payments/BR/br-payment-instrument-mix-by-count-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/BR/br-payment-instrument-mix-by-count-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "payment_instrument"
+    },
+    {
+      "id": "br-payment-instruments-quarterly-volumes",
+      "title": "Brazil payment transactions by instrument, quarterly counts 2025-Q1 to 2026-Q2",
+      "kind": "temporal",
+      "domain": "payments",
+      "region": "BR",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2026-06-30",
+      "publishers": [
+        "Banco Central do Brasil"
+      ],
+      "source_licenses": [
+        "ODbL-1.0"
+      ],
+      "tags": [
+        "payments",
+        "payment-instruments",
+        "pix",
+        "cards",
+        "boleto",
+        "bcb",
+        "time-series"
+      ],
+      "use_cases": [
+        "payments-demo",
+        "fintech-demo",
+        "market-sizing"
+      ],
+      "path": "entries/payments/BR/br-payment-instruments-quarterly-volumes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/BR/br-payment-instruments-quarterly-volumes.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2026-06-30"
+      },
+      "variable": "pix_thousands"
+    },
+    {
       "id": "br-pix-identifier-formats",
       "title": "Brazil Pix identifier formats (txid, EndToEndId, CPF, CNPJ, ISPB, amount)",
       "kind": "rule",
@@ -2780,6 +6753,186 @@
       "variable": "pix_average_ticket_brl"
     },
     {
+      "id": "br-pix-transactions-by-state-2025-06",
+      "title": "Brazil Pix transactions by payer state, share of transaction count, June 2025",
+      "kind": "marginal",
+      "domain": "payments",
+      "region": "BR",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-06-01 to 2025-06-30",
+      "publishers": [
+        "Banco Central do Brasil"
+      ],
+      "source_licenses": [
+        "ODbL-1.0"
+      ],
+      "tags": [
+        "pix",
+        "geography",
+        "states",
+        "category-shares",
+        "bcb"
+      ],
+      "use_cases": [
+        "payments-demo",
+        "fintech-demo",
+        "address-generation",
+        "customer-segmentation"
+      ],
+      "path": "entries/payments/BR/br-pix-transactions-by-state-2025-06.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/BR/br-pix-transactions-by-state-2025-06.yaml",
+      "observed_period": {
+        "start": "2025-06-01",
+        "end": "2025-06-30"
+      },
+      "variable": "payer_state"
+    },
+    {
+      "id": "eu-cashless-payments-by-instrument-annual-2019-2021",
+      "title": "Euro area cashless payment transactions by instrument, annual counts 2019 to 2021",
+      "kind": "temporal",
+      "domain": "payments",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2019-01-01 to 2021-12-31",
+      "publishers": [
+        "European Central Bank"
+      ],
+      "source_licenses": [
+        "ECB-free-use-with-attribution"
+      ],
+      "tags": [
+        "payments",
+        "payment-instruments",
+        "cards",
+        "credit-transfers",
+        "direct-debits",
+        "ecb",
+        "euro-area"
+      ],
+      "use_cases": [
+        "payments-demo",
+        "fintech-demo",
+        "market-sizing"
+      ],
+      "path": "entries/payments/EU/eu-cashless-payments-by-instrument-annual-2019-2021.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/EU/eu-cashless-payments-by-instrument-annual-2019-2021.yaml",
+      "observed_period": {
+        "start": "2019-01-01",
+        "end": "2021-12-31"
+      },
+      "variable": "total_payment_transactions_millions"
+    },
+    {
+      "id": "gb-state-pension-rates",
+      "title": "United Kingdom new State Pension full rate and old State Pension basic rates per week, 2025/26 and 2026/27",
+      "kind": "rule",
+      "domain": "pensions",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-04-06 to 2027-04-05",
+      "publishers": [
+        "Department for Work and Pensions (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "state-pension",
+        "pensions",
+        "retirement",
+        "weekly-rates"
+      ],
+      "use_cases": [
+        "pensions",
+        "personal-finance",
+        "financial-planning",
+        "person-generation"
+      ],
+      "path": "entries/pensions/GB/gb-state-pension-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/pensions/GB/gb-state-pension-rates.yaml",
+      "valid_from": "2025-04-06",
+      "valid_to": "2027-04-05",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-social-security-full-retirement-age",
+      "title": "United States Social Security full retirement age for old-age, wife's and husband's benefits by date of birth, 20 CFR 404.409(a) (13 birth-date ranges)",
+      "kind": "rule",
+      "domain": "pensions",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2016-12-19 to open",
+      "publishers": [
+        "Social Security Administration via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "social-security",
+        "retirement-age",
+        "pensions",
+        "reference-table",
+        "20-cfr-404"
+      ],
+      "use_cases": [
+        "pensions",
+        "hr-analytics",
+        "financial-planning",
+        "person-generation"
+      ],
+      "path": "entries/pensions/US/us-social-security-full-retirement-age.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/pensions/US/us-social-security-full-retirement-age.yaml",
+      "valid_from": "2016-12-19",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-hipaa-safe-harbor-identifiers",
+      "title": "United States HIPAA de-identification safe harbor: the eighteen identifiers of 45 CFR 164.514(b)(2)",
+      "kind": "rule",
+      "domain": "privacy",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2016-12-30 to open",
+      "publishers": [
+        "US Department of Health and Human Services, Office for Civil Rights via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "hipaa",
+        "de-identification",
+        "phi",
+        "safe-harbor",
+        "code-list",
+        "45-cfr-164"
+      ],
+      "use_cases": [
+        "health-demo",
+        "clinical-records",
+        "claims-generation",
+        "person-generation"
+      ],
+      "path": "entries/privacy/US/us-hipaa-safe-harbor-identifiers.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/privacy/US/us-hipaa-safe-harbor-identifiers.yaml",
+      "valid_from": "2016-12-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 4
+    },
+    {
       "id": "gb-house-price-index-monthly-2025",
       "title": "UK House Price Index: average price, index, annual change and sales volume, monthly 2025",
       "kind": "temporal",
@@ -2816,6 +6969,111 @@
       "variable": "average_price_gbp"
     },
     {
+      "id": "br-credit-card-revolving-interest-rate-monthly-2025",
+      "title": "Brazil average interest rate on revolving credit card credit for individuals, monthly 2025",
+      "kind": "temporal",
+      "domain": "rates",
+      "region": "BR",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Banco Central do Brasil"
+      ],
+      "source_licenses": [
+        "ODbL-1.0"
+      ],
+      "tags": [
+        "lending-rates",
+        "credit-card",
+        "revolving-credit",
+        "bcb",
+        "sgs"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "loan-pricing",
+        "fintech-demo"
+      ],
+      "path": "entries/rates/BR/br-credit-card-revolving-interest-rate-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/rates/BR/br-credit-card-revolving-interest-rate-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "revolving_card_rate_percent"
+    },
+    {
+      "id": "br-overdraft-interest-rate-monthly-2025",
+      "title": "Brazil average interest rate on overdrafts for individuals (cheque especial), monthly 2025",
+      "kind": "temporal",
+      "domain": "rates",
+      "region": "BR",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Banco Central do Brasil"
+      ],
+      "source_licenses": [
+        "ODbL-1.0"
+      ],
+      "tags": [
+        "lending-rates",
+        "overdraft",
+        "consumer-credit",
+        "bcb",
+        "sgs"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "loan-pricing",
+        "personal-finance"
+      ],
+      "path": "entries/rates/BR/br-overdraft-interest-rate-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/rates/BR/br-overdraft-interest-rate-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "overdraft_rate_percent"
+    },
+    {
+      "id": "br-personal-loan-interest-rates-monthly-2025",
+      "title": "Brazil average interest rates on personal loans to individuals, monthly 2025 (non-payroll and payroll-deducted)",
+      "kind": "temporal",
+      "domain": "rates",
+      "region": "BR",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Banco Central do Brasil"
+      ],
+      "source_licenses": [
+        "ODbL-1.0"
+      ],
+      "tags": [
+        "lending-rates",
+        "personal-loans",
+        "consumer-credit",
+        "bcb",
+        "sgs"
+      ],
+      "use_cases": [
+        "loan-pricing",
+        "banking-demo",
+        "personal-finance"
+      ],
+      "path": "entries/rates/BR/br-personal-loan-interest-rates-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/rates/BR/br-personal-loan-interest-rates-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "non_payroll_personal_loan_percent"
+    },
+    {
       "id": "br-selic-target-rate-changes-2025",
       "title": "Brazil Selic target rate set by the Copom: levels in force during 2025",
       "kind": "rule",
@@ -2847,6 +7105,40 @@
       "valid_to": "2025-12-31",
       "implementation": "almanac.rules.step_schedule",
       "vectors": 3
+    },
+    {
+      "id": "eu-cost-of-borrowing-corporations-monthly-2025",
+      "title": "Euro area cost of borrowing for non-financial corporations, monthly 2025",
+      "kind": "temporal",
+      "domain": "rates",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "European Central Bank"
+      ],
+      "source_licenses": [
+        "ECB-free-use-with-attribution"
+      ],
+      "tags": [
+        "lending-rates",
+        "corporate-loans",
+        "ecb",
+        "euro-area"
+      ],
+      "use_cases": [
+        "loan-pricing",
+        "banking-demo",
+        "financial-planning"
+      ],
+      "path": "entries/rates/EU/eu-cost-of-borrowing-corporations-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/rates/EU/eu-cost-of-borrowing-corporations-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "corporate_borrowing_rate_percent"
     },
     {
       "id": "eu-ecb-deposit-facility-rate-changes-2025",
@@ -2882,6 +7174,142 @@
       "vectors": 3
     },
     {
+      "id": "eu-ecb-main-refinancing-rate-changes-2025",
+      "title": "ECB main refinancing operations rate (fixed rate tenders): changes decided in 2025",
+      "kind": "rule",
+      "domain": "rates",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-02-05 to open",
+      "publishers": [
+        "European Central Bank"
+      ],
+      "source_licenses": [
+        "ECB-free-use-with-attribution"
+      ],
+      "tags": [
+        "ecb",
+        "euro-area",
+        "policy-rate",
+        "step-schedule"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "treasury",
+        "loan-pricing"
+      ],
+      "path": "entries/rates/EU/eu-ecb-main-refinancing-rate-changes-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/rates/EU/eu-ecb-main-refinancing-rate-changes-2025.yaml",
+      "valid_from": "2025-02-05",
+      "valid_to": null,
+      "implementation": "almanac.rules.step_schedule",
+      "vectors": 3
+    },
+    {
+      "id": "eu-ecb-marginal-lending-facility-rate-changes-2025",
+      "title": "ECB marginal lending facility rate: changes decided in 2025",
+      "kind": "rule",
+      "domain": "rates",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-02-05 to open",
+      "publishers": [
+        "European Central Bank"
+      ],
+      "source_licenses": [
+        "ECB-free-use-with-attribution"
+      ],
+      "tags": [
+        "ecb",
+        "euro-area",
+        "policy-rate",
+        "step-schedule"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "treasury",
+        "loan-pricing"
+      ],
+      "path": "entries/rates/EU/eu-ecb-marginal-lending-facility-rate-changes-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/rates/EU/eu-ecb-marginal-lending-facility-rate-changes-2025.yaml",
+      "valid_from": "2025-02-05",
+      "valid_to": null,
+      "implementation": "almanac.rules.step_schedule",
+      "vectors": 3
+    },
+    {
+      "id": "eu-estr-daily-2025",
+      "title": "Euro short-term rate (€STR), daily 2025",
+      "kind": "temporal",
+      "domain": "rates",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "European Central Bank"
+      ],
+      "source_licenses": [
+        "ECB-free-use-with-attribution"
+      ],
+      "tags": [
+        "money-market",
+        "estr",
+        "benchmark-rate",
+        "time-series",
+        "ecb",
+        "euro-area"
+      ],
+      "use_cases": [
+        "treasury",
+        "banking-demo",
+        "loan-pricing"
+      ],
+      "path": "entries/rates/EU/eu-estr-daily-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/rates/EU/eu-estr-daily-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "estr_percent"
+    },
+    {
+      "id": "eu-household-deposit-rate-agreed-maturity-monthly-2025",
+      "title": "Euro area bank interest rate on household deposits with agreed maturity (new business), monthly 2025",
+      "kind": "temporal",
+      "domain": "rates",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "European Central Bank"
+      ],
+      "source_licenses": [
+        "ECB-free-use-with-attribution"
+      ],
+      "tags": [
+        "deposit-rates",
+        "savings",
+        "ecb",
+        "euro-area"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "personal-finance",
+        "financial-planning"
+      ],
+      "path": "entries/rates/EU/eu-household-deposit-rate-agreed-maturity-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/rates/EU/eu-household-deposit-rate-agreed-maturity-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "household_deposit_rate_percent"
+    },
+    {
       "id": "global-central-bank-policy-rates-monthly-2025",
       "title": "Central bank policy rates, monthly 2025 (US, GB, euro area, JP, BR, IN, CH, CA, AU)",
       "kind": "temporal",
@@ -2913,6 +7341,173 @@
         "end": "2025-12-31"
       },
       "variable": "us_percent"
+    },
+    {
+      "id": "global-deposit-interest-rate-2024",
+      "title": "Deposit interest rate (%), by economy, 2024 (World Bank, 94 economies)",
+      "kind": "rule",
+      "domain": "rates",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "interest-rates",
+        "deposits",
+        "banking",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "personal-finance",
+        "treasury"
+      ],
+      "path": "entries/rates/global/global-deposit-interest-rate-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/rates/global/global-deposit-interest-rate-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-lending-interest-rate-2024",
+      "title": "Lending interest rate (%), by economy, 2024 (World Bank, 91 economies)",
+      "kind": "rule",
+      "domain": "rates",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "interest-rates",
+        "lending",
+        "banking",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "loan-pricing",
+        "banking-demo",
+        "credit-risk"
+      ],
+      "path": "entries/rates/global/global-lending-interest-rate-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/rates/global/global-lending-interest-rate-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "gb-capital-gains-tax-rates-2026-27",
+      "title": "United Kingdom Capital Gains Tax rates and Annual Exempt Amount for gains made from 6 April 2026",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-04-06 to 2027-04-05",
+      "publishers": [
+        "HM Revenue & Customs (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "capital-gains-tax",
+        "tax-rates",
+        "investment-income"
+      ],
+      "use_cases": [
+        "tax-filing-demo",
+        "personal-finance",
+        "financial-planning",
+        "property-demo"
+      ],
+      "path": "entries/tax/GB/gb-capital-gains-tax-rates-2026-27.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/GB/gb-capital-gains-tax-rates-2026-27.yaml",
+      "valid_from": "2026-04-06",
+      "valid_to": "2027-04-05",
+      "implementation": "almanac.rules.rate_schedule",
+      "vectors": 5
+    },
+    {
+      "id": "gb-corporation-tax-rates",
+      "title": "United Kingdom Corporation Tax main rate (25%) and small profits rate (19%) with the marginal relief thresholds",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2023-04-01 to open",
+      "publishers": [
+        "HM Revenue & Customs (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "corporation-tax",
+        "tax-rates",
+        "company-tax"
+      ],
+      "use_cases": [
+        "tax-filing-demo",
+        "financial-reporting",
+        "company-generation",
+        "audit-demo"
+      ],
+      "path": "entries/tax/GB/gb-corporation-tax-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/GB/gb-corporation-tax-rates.yaml",
+      "valid_from": "2023-04-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.rate_schedule",
+      "vectors": 4
+    },
+    {
+      "id": "gb-dividend-tax-rates-2026-27",
+      "title": "United Kingdom tax rates on dividends above the dividend allowance by Income Tax band, 2026 to 2027",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-04-06 to 2027-04-05",
+      "publishers": [
+        "HM Revenue & Customs (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "dividends",
+        "income-tax",
+        "tax-rates",
+        "investment-income"
+      ],
+      "use_cases": [
+        "tax-filing-demo",
+        "personal-finance",
+        "financial-planning"
+      ],
+      "path": "entries/tax/GB/gb-dividend-tax-rates-2026-27.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/GB/gb-dividend-tax-rates-2026-27.yaml",
+      "valid_from": "2026-04-06",
+      "valid_to": "2027-04-05",
+      "implementation": "almanac.rules.rate_schedule",
+      "vectors": 5
     },
     {
       "id": "gb-hmrc-payment-reference-check-characters",
@@ -2980,7 +7575,312 @@
       "valid_from": "2026-04-06",
       "valid_to": "2027-04-05",
       "implementation": "almanac.rules.income_tax_bands",
+      "vectors": 8
+    },
+    {
+      "id": "gb-inheritance-tax-nil-rate-band",
+      "title": "United Kingdom Inheritance Tax nil-rate band by date from 18 March 1986 to 5 April 2031, with the residence nil-rate band and tax rates",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "1986-03-18 to 2031-04-05",
+      "publishers": [
+        "HM Revenue & Customs (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "inheritance-tax",
+        "nil-rate-band",
+        "thresholds",
+        "estates"
+      ],
+      "use_cases": [
+        "financial-planning",
+        "personal-finance",
+        "tax-filing-demo",
+        "insurance"
+      ],
+      "path": "entries/tax/GB/gb-inheritance-tax-nil-rate-band.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/GB/gb-inheritance-tax-nil-rate-band.yaml",
+      "valid_from": "1986-03-18",
+      "valid_to": "2031-04-05",
+      "implementation": "almanac.rules.step_schedule",
+      "vectors": 5
+    },
+    {
+      "id": "gb-national-insurance-category-letters",
+      "title": "United Kingdom National Insurance category letters and the employee groups they denote (standard, Freeport and Investment Zone)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-04-06 to 2027-04-05",
+      "publishers": [
+        "HM Revenue & Customs (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "national-insurance",
+        "payroll",
+        "category-letter",
+        "code-list"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-analytics",
+        "person-generation"
+      ],
+      "path": "entries/tax/GB/gb-national-insurance-category-letters.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/GB/gb-national-insurance-category-letters.yaml",
+      "valid_from": "2026-04-06",
+      "valid_to": "2027-04-05",
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 8
+    },
+    {
+      "id": "gb-national-insurance-class-1-rates-2026-27",
+      "title": "United Kingdom Class 1 National Insurance employee and employer contribution rates by category letter, 2026 to 2027",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-04-06 to 2027-04-05",
+      "publishers": [
+        "HM Revenue & Customs (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "national-insurance",
+        "payroll",
+        "paye",
+        "category-letter"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-analytics",
+        "workforce-planning"
+      ],
+      "path": "entries/tax/GB/gb-national-insurance-class-1-rates-2026-27.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/GB/gb-national-insurance-class-1-rates-2026-27.yaml",
+      "valid_from": "2026-04-06",
+      "valid_to": "2027-04-05",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 8
+    },
+    {
+      "id": "gb-national-insurance-class-1-thresholds-2026-27",
+      "title": "United Kingdom Class 1 National Insurance earnings thresholds (weekly, monthly and annual), 2026 to 2027",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-04-06 to 2027-04-05",
+      "publishers": [
+        "HM Revenue & Customs (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "national-insurance",
+        "payroll",
+        "paye",
+        "thresholds"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-analytics",
+        "workforce-planning"
+      ],
+      "path": "entries/tax/GB/gb-national-insurance-class-1-thresholds-2026-27.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/GB/gb-national-insurance-class-1-thresholds-2026-27.yaml",
+      "valid_from": "2026-04-06",
+      "valid_to": "2027-04-05",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "gb-national-insurance-self-employed-2026-27",
+      "title": "United Kingdom self-employed National Insurance: Class 4 rates on profits and the Class 2 weekly rate, 2026 to 2027",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-04-06 to 2027-04-05",
+      "publishers": [
+        "HM Revenue & Customs (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "national-insurance",
+        "self-employed",
+        "class-4",
+        "class-2",
+        "self-assessment"
+      ],
+      "use_cases": [
+        "tax-filing-demo",
+        "personal-finance",
+        "financial-planning"
+      ],
+      "path": "entries/tax/GB/gb-national-insurance-self-employed-2026-27.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/GB/gb-national-insurance-self-employed-2026-27.yaml",
+      "valid_from": "2026-04-06",
+      "valid_to": "2027-04-05",
+      "implementation": "almanac.rules.income_tax_bands",
+      "vectors": 5
+    },
+    {
+      "id": "gb-personal-tax-free-allowances-2026-27",
+      "title": "United Kingdom personal tax-free allowances for 2026 to 2027: Personal, Marriage, savings, dividend, capital gains and ISA allowances",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-04-06 to 2027-04-05",
+      "publishers": [
+        "HM Revenue & Customs (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "allowances",
+        "income-tax",
+        "savings",
+        "isa",
+        "dividends",
+        "capital-gains-tax"
+      ],
+      "use_cases": [
+        "personal-finance",
+        "financial-planning",
+        "tax-filing-demo",
+        "banking-demo"
+      ],
+      "path": "entries/tax/GB/gb-personal-tax-free-allowances-2026-27.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/GB/gb-personal-tax-free-allowances-2026-27.yaml",
+      "valid_from": "2026-04-06",
+      "valid_to": "2027-04-05",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "gb-scottish-income-tax-bands-2026-27",
+      "title": "Scottish Income Tax rates and bands for the 2026 to 2027 tax year (starter to top rate) with the Personal Allowance taper",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-04-06 to 2027-04-05",
+      "publishers": [
+        "HM Revenue & Customs (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "income-tax",
+        "scotland",
+        "payroll",
+        "paye",
+        "personal-allowance"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-analytics",
+        "personal-finance",
+        "financial-planning"
+      ],
+      "path": "entries/tax/GB/gb-scottish-income-tax-bands-2026-27.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/GB/gb-scottish-income-tax-bands-2026-27.yaml",
+      "valid_from": "2026-04-06",
+      "valid_to": "2027-04-05",
+      "implementation": "almanac.rules.income_tax_bands",
       "vectors": 6
+    },
+    {
+      "id": "gb-stamp-duty-land-tax-additional-property-rates",
+      "title": "England and Northern Ireland Stamp Duty Land Tax higher rates for additional residential properties from 1 April 2025",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-04-01 to open",
+      "publishers": [
+        "HM Revenue & Customs (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "stamp-duty",
+        "sdlt",
+        "property",
+        "tax-rates",
+        "buy-to-let"
+      ],
+      "use_cases": [
+        "property-demo",
+        "mortgage-origination",
+        "tax-filing-demo"
+      ],
+      "path": "entries/tax/GB/gb-stamp-duty-land-tax-additional-property-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/GB/gb-stamp-duty-land-tax-additional-property-rates.yaml",
+      "valid_from": "2025-04-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.income_tax_bands",
+      "vectors": 3
+    },
+    {
+      "id": "gb-stamp-duty-land-tax-residential-rates",
+      "title": "England and Northern Ireland Stamp Duty Land Tax residential property rates (single main residence) from 1 April 2025",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-04-01 to open",
+      "publishers": [
+        "HM Revenue & Customs (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "stamp-duty",
+        "sdlt",
+        "property",
+        "tax-rates"
+      ],
+      "use_cases": [
+        "property-demo",
+        "mortgage-origination",
+        "tax-filing-demo"
+      ],
+      "path": "entries/tax/GB/gb-stamp-duty-land-tax-residential-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/GB/gb-stamp-duty-land-tax-residential-rates.yaml",
+      "valid_from": "2025-04-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.income_tax_bands",
+      "vectors": 5
     },
     {
       "id": "gb-tax-code-format",
@@ -3081,6 +7981,40 @@
       "vectors": 6
     },
     {
+      "id": "us-fica-tax-rates",
+      "title": "United States FICA payroll tax rates: Social Security and Medicare, employee and employer, 26 U.S.C. 3101 and 3111",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2014-12-19 to open",
+      "publishers": [
+        "Office of the Law Revision Counsel, US House of Representatives, via govinfo"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "fica",
+        "payroll-tax",
+        "social-security",
+        "medicare",
+        "26-usc-3101"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "tax-filing-demo",
+        "hr-analytics"
+      ],
+      "path": "entries/tax/US/us-fica-tax-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-fica-tax-rates.yaml",
+      "valid_from": "2014-12-19",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
       "id": "global-e164-country-calling-codes-2011",
       "title": "ITU-T E.164 assigned country calling codes, as listed in ITU Operational Bulletin 991 (2011), 307 codes",
       "kind": "rule",
@@ -3114,6 +8048,73 @@
       "valid_to": null,
       "implementation": "almanac.rules.lookup_table",
       "vectors": 6
+    },
+    {
+      "id": "global-fixed-broadband-subscriptions-per-100-2023",
+      "title": "Fixed broadband subscriptions (per 100 people), by economy, 2023 (World Bank, 169 economies)",
+      "kind": "rule",
+      "domain": "telecom",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2023-01-01 to 2023-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "telecom",
+        "broadband",
+        "digital",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "telecom-demo",
+        "digital-channels",
+        "market-sizing"
+      ],
+      "path": "entries/telecom/global/global-fixed-broadband-subscriptions-per-100-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/telecom/global/global-fixed-broadband-subscriptions-per-100-2023.yaml",
+      "valid_from": "2023-01-01",
+      "valid_to": "2023-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-secure-internet-servers-per-million-2024",
+      "title": "Secure Internet servers (per 1 million people), by economy, 2024 (World Bank, 215 economies)",
+      "kind": "rule",
+      "domain": "telecom",
+      "region": "global",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "digital",
+        "internet",
+        "security",
+        "world-bank",
+        "reference-table"
+      ],
+      "use_cases": [
+        "digital-channels",
+        "telecom-demo"
+      ],
+      "path": "entries/telecom/global/global-secure-internet-servers-per-million-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/telecom/global/global-secure-internet-servers-per-million-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
     },
     {
       "id": "eu-tourism-nights-spent-monthly-2025",
@@ -3150,6 +8151,75 @@
         "end": "2025-12-31"
       },
       "variable": "nights_spent"
+    },
+    {
+      "id": "us-public-debt-to-the-penny-2025",
+      "title": "United States total public debt outstanding, daily (Debt to the Penny), 2025",
+      "kind": "temporal",
+      "domain": "treasury",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2025-01-02 to 2025-12-31",
+      "publishers": [
+        "US Department of the Treasury, Bureau of the Fiscal Service"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "public-debt",
+        "treasury",
+        "daily-series",
+        "fiscal-data"
+      ],
+      "use_cases": [
+        "treasury",
+        "financial-reporting",
+        "financial-planning"
+      ],
+      "path": "entries/treasury/US/us-public-debt-to-the-penny-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/treasury/US/us-public-debt-to-the-penny-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-02",
+        "end": "2025-12-31"
+      },
+      "variable": "total_public_debt_outstanding_usd"
+    },
+    {
+      "id": "us-treasury-average-interest-rates-2025-12",
+      "title": "Average interest rates on US Treasury securities by security class, 2025-12-31 (17 lines)",
+      "kind": "rule",
+      "domain": "treasury",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2025-12-01 to 2025-12-31",
+      "publishers": [
+        "US Department of the Treasury, Bureau of the Fiscal Service"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "interest-rates",
+        "treasury-securities",
+        "public-debt",
+        "reference-table",
+        "fiscal-data"
+      ],
+      "use_cases": [
+        "treasury",
+        "loan-pricing",
+        "financial-planning",
+        "banking-demo"
+      ],
+      "path": "entries/treasury/US/us-treasury-average-interest-rates-2025-12.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/treasury/US/us-treasury-average-interest-rates-2025-12.yaml",
+      "valid_from": "2025-12-01",
+      "valid_to": "2025-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
     }
   ]
 }

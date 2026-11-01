@@ -51,7 +51,15 @@ _UPPER = re.compile(r"to £([\d,\.]+)( million)?")
 
 
 def entry(**fields) -> dict:
-    return {"status": "verified", "tier": "A", "region": "GB", **fields}
+    """An entry with region, status and tier placed after the domain, in the order hand-written entries use."""
+    ordered: dict = {}
+    for key, value in fields.items():
+        if key == "status":
+            continue
+        ordered[key] = value
+        if key == "domain":
+            ordered.update({"region": "GB", "status": fields.get("status", "verified"), "tier": "A"})
+    return ordered
 
 
 def rule_tests(*tests: tuple[str, object]) -> list[dict]:
@@ -268,7 +276,7 @@ def ni_self_employed(intro: Source) -> dict:
         {"name": "upper", "up_to": None, "rate_percent": 2, "profits_range": "over £50,270"},
     ]
     vectors = [
-        {"input": {"income": 12570}, "expected": tax_due(bands, STANDARD_PA, 12570), "origin": "derived", "note": "profits at the lower profits limit"},
+        {"input": {"income": 12570}, "expected": tax_due(bands, STANDARD_PA, 12570), "origin": "source", "note": "GOV.UK: Class 4 is due only on profits of more than £12,570, so nothing is due at the limit"},
         {"input": {"income": 20000}, "expected": tax_due(bands, STANDARD_PA, 20000), "origin": "derived"},
         {"input": {"income": 50270}, "expected": tax_due(bands, STANDARD_PA, 50270), "origin": "derived", "note": "top of the main rate band"},
         {"input": {"income": 60000}, "expected": tax_due(bands, STANDARD_PA, 60000), "origin": "derived"},
