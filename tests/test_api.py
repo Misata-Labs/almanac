@@ -68,3 +68,14 @@ def test_cli_list_show_applies_catalogue(capsys, tmp_path):
 def test_committed_catalogue_is_current(almanac):
     committed = (REPO_ROOT / "CATALOGUE.md").read_text(encoding="utf-8")
     assert committed == render_catalogue(almanac), "run: uv run almanac catalogue --write CATALOGUE.md"
+
+
+def test_bound_rule_call_fills_parameters_by_name(almanac):
+    from datetime import date as _date
+    from decimal import Decimal
+
+    assert almanac.rule("gb-income-tax-bands-2026-27").call("tax_due", 35000) == Decimal("4486.00")
+    assert almanac.rule("br-selic-target-rate-changes-2025").call("value_on", _date(2025, 7, 1)) == 15.0
+    assert almanac.rule("us-vin-check-digit").call("check_digit", "1G4AH59H45G118341") == "4"
+    assert almanac.rule("global-iso4217-currency-minor-units").call("minor_units", "JPY") == 0
+    assert almanac.rule("us-federal-holidays").call("is_holiday", _date(2026, 7, 3)) is True

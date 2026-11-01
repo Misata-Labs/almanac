@@ -7,6 +7,7 @@ id, or bind a rule to its parameters and evaluate values against it.
 
 from __future__ import annotations
 
+import inspect
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -35,9 +36,16 @@ class BoundRule:
         return self.module.evaluate(self.parameters, value)
 
     def call(self, helper: str, *args: Any, **kwargs: Any) -> Any:
-        """Invoke a named helper of the rule module with this entry's parameters supplied."""
+        """Invoke a named helper of the rule module with this entry's parameters supplied.
+
+        Helpers declare a ``parameters`` argument somewhere in their signature;
+        it is slotted into that position so callers pass only the domain arguments.
+        """
         function = getattr(self.module, helper)
-        return function(*args, self.parameters, **kwargs)
+        names = list(inspect.signature(function).parameters)
+        positional = list(args)
+        positional.insert(names.index("parameters") if "parameters" in names else len(positional), self.parameters)
+        return function(*positional, **kwargs)
 
 
 class Almanac:
