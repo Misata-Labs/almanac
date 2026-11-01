@@ -1,0 +1,104 @@
+id: in-pay-dth-subscribers-by-operator-2026q2
+title: India pay DTH active subscribers by operator, 30 June 2026 (TRAI)
+kind: marginal
+domain: telecom
+region: IN
+status: license-review
+tier: B
+observed_period:
+  start: '2026-06-30'
+  end: '2026-06-30'
+tags:
+- telecom
+- broadcasting
+- dth
+- market-share
+- trai
+use_cases:
+- telecom-demo
+- market-sizing
+- customer-segmentation
+spec:
+  variable: dth_operator
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        tata-play: 0.305605
+        bharti-telemedia: 0.279693
+        sun-direct: 0.225133
+        dish-tv: 0.189569
+      counts:
+        tata-play: 14839575
+        bharti-telemedia: 13581317
+        sun-direct: 10932020
+        dish-tv: 9205100
+evidence:
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 124 (Table 5.7), row 1
+  value: 14,839,575
+  unit: count
+  snippet: Tata Play Ltd. 14,839,575
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 124 (Table 5.7), row 2
+  value: 13,581,317
+  unit: count
+  snippet: Bharti Telemedia Ltd. 13,581,317
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 124 (Table 5.7), row 3
+  value: 10,932,020
+  unit: count
+  snippet: Sun Direct TV Pvt. Ltd. 10,932,020
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 124 (Table 5.7), row 4 and total
+  value: 48,558,012
+  unit: count
+  snippet: Dish TV India Ltd. 9,205,100 Total 48,558,012
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total, rounded to six decimals
+  method: derived
+  rationale: The source publishes counts (active subscribers); each share is the category count divided by the sum
+    of the listed counts (4.8558e+07). The counts are kept in distribution.parameters.counts.
+tests:
+- statistic: share[tata-play]
+  expected: 0.305605
+  tolerance: 0.004
+- statistic: share[bharti-telemedia]
+  expected: 0.279693
+  tolerance: 0.004
+- statistic: share[sun-direct]
+  expected: 0.225133
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.002
+notes: Total active subscriber base of the four pay direct-to-home operators as reported to TRAI for 30 June 2026
+  (Table 5.7 of the performance indicators report). DD Free Dish subscribers are not included. Shares are counts
+  divided by the 48,558,012 total. TRAI's website carries no licence statement for its press releases and reports,
+  so the entry stays at license-review.

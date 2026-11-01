@@ -1,0 +1,120 @@
+id: in-cirp-status-2026-06
+title: India corporate insolvency resolution processes by status (withdrawn, settled, resolved, liquidated, ongoing),
+  cumulative to 30 June 2026 (IBBI)
+kind: marginal
+domain: company
+region: IN
+status: license-review
+tier: A
+observed_period:
+  start: '2016-12-01'
+  end: '2026-06-30'
+tags:
+- insolvency
+- cirp
+- ibc
+- corporate-distress
+- ibbi
+use_cases:
+- company-generation
+- credit-risk
+- collections
+- kyb-onboarding
+spec:
+  variable: cirp_status
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        withdrawn_under_section_12a: 0.145429
+        closed_on_appeal_review_or_settled: 0.153829
+        resolution_plan_approved: 0.161903
+        liquidation_ordered: 0.33537
+        ongoing: 0.203469
+      counts:
+        withdrawn_under_section_12a: 1333
+        closed_on_appeal_review_or_settled: 1410
+        resolution_plan_approved: 1484
+        liquidation_ordered: 3074
+        ongoing: 1865
+evidence:
+- publisher: Insolvency and Bankruptcy Board of India
+  title: IBBI Quarterly Newsletter for April-June 2026 (data workbook)
+  url: https://ibbi.gov.in/uploads/publication/18054eb85bc0e7388537b05326192072.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 1, row Admitted
+  value: '9166'
+  unit: count
+  snippet: 'Table 1: Details of CIRP cases as on June 30, 2026'
+  source_license: unstated
+  content_sha256: 3b48f24df27fc51f44de39605559a15babdec8f2ae7864ca067e92f05a82a35b
+  role: primary
+- publisher: Insolvency and Bankruptcy Board of India
+  title: IBBI Quarterly Newsletter for April-June 2026 (data workbook)
+  url: https://ibbi.gov.in/uploads/publication/18054eb85bc0e7388537b05326192072.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 1, row Withdrawn under section 12A
+  value: '1333'
+  unit: count
+  snippet: Withdrawn under section 12A
+  source_license: unstated
+  content_sha256: 3b48f24df27fc51f44de39605559a15babdec8f2ae7864ca067e92f05a82a35b
+  role: primary
+- publisher: Insolvency and Bankruptcy Board of India
+  title: IBBI Quarterly Newsletter for April-June 2026 (data workbook)
+  url: https://ibbi.gov.in/uploads/publication/18054eb85bc0e7388537b05326192072.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 1, row Resolution plans approved
+  value: '1484'
+  unit: count
+  snippet: Resolution plans approved
+  source_license: unstated
+  content_sha256: 3b48f24df27fc51f44de39605559a15babdec8f2ae7864ca067e92f05a82a35b
+  role: primary
+- publisher: Insolvency and Bankruptcy Board of India
+  title: IBBI Quarterly Newsletter for April-June 2026 (data workbook)
+  url: https://ibbi.gov.in/uploads/publication/18054eb85bc0e7388537b05326192072.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 1, row Liquidation orders passed
+  value: '3074'
+  unit: count
+  snippet: Liquidation orders passed
+  source_license: unstated
+  content_sha256: 3b48f24df27fc51f44de39605559a15babdec8f2ae7864ca067e92f05a82a35b
+  role: primary
+- publisher: Insolvency and Bankruptcy Board of India
+  title: IBBI Quarterly Newsletter for April-June 2026 (data workbook)
+  url: https://ibbi.gov.in/uploads/publication/18054eb85bc0e7388537b05326192072.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 1, row Ongoing CIRP cases
+  value: '1865'
+  unit: count
+  snippet: Ongoing CIRP cases
+  source_license: unstated
+  content_sha256: 3b48f24df27fc51f44de39605559a15babdec8f2ae7864ca067e92f05a82a35b
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total, rounded to six decimals
+  method: derived
+  rationale: The source publishes counts (CIRPs); each share is the category count divided by the sum of the listed
+    counts (9166). The counts are kept in distribution.parameters.counts.
+tests:
+- statistic: share[liquidation_ordered]
+  expected: 0.33537
+  tolerance: 0.004
+- statistic: share[ongoing]
+  expected: 0.203469
+  tolerance: 0.004
+- statistic: share[resolution_plan_approved]
+  expected: 0.161903
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.002
+notes: 'Status of the 9,166 corporate insolvency resolution processes admitted under the Insolvency and Bankruptcy
+  Code from its commencement to 30 June 2026, from Table 1 of the data workbook behind IBBI''s quarterly newsletter
+  for April-June 2026: closed by withdrawal under section 12A, closed on appeal, review or settlement, closed by
+  an approved resolution plan, closed by a liquidation order, or still ongoing. Shares are counts divided by 9,166.
+  The workbook is an .xlsx file, so the entry is tier A; IBBI states no licence, so it stays at license-review.'

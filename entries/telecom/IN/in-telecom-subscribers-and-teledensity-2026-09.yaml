@@ -1,0 +1,178 @@
+id: in-telecom-subscribers-and-teledensity-2026-09
+title: India telephone subscribers, urban/rural split and tele-density by segment, end of September 2026 (TRAI)
+kind: rule
+domain: telecom
+region: IN
+status: license-review
+tier: B
+valid_from: '2026-09-30'
+valid_to: null
+tags:
+- telecom
+- subscribers
+- teledensity
+- trai
+- reference-table
+use_cases:
+- telecom-demo
+- market-sizing
+- customer-segmentation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    as_on: '2026-09-30'
+    active_wireless_subscribers_peak_vlr_million: 1212.8
+    mnp_requests_in_month_million: 16.77
+    reporting_operators: 1596
+    rows:
+      wireless:
+        subscribers_million: 1319.19
+        urban_subscribers_million: 764.35
+        rural_subscribers_million: 554.84
+        net_addition_million: 6.94
+        monthly_growth_percent: 0.53
+        urban_share_percent: 57.94
+        rural_share_percent: 42.06
+        teledensity_percent: 92.12
+        urban_teledensity_percent: 147.47
+        rural_teledensity_percent: 60.72
+        teledensity_without_m2m_percent: 82.0
+        broadband_subscribers_million: 1058.79
+        broadband_subscribers_without_m2m_million: 964.98
+      wireline:
+        subscribers_million: 48.74
+        urban_subscribers_million: 43.43
+        rural_subscribers_million: 5.32
+        net_addition_million: 0.29
+        monthly_growth_percent: 0.6
+        urban_share_percent: 89.09
+        rural_share_percent: 10.91
+        teledensity_percent: 3.4
+        urban_teledensity_percent: 8.38
+        rural_teledensity_percent: 0.58
+        teledensity_without_m2m_percent: 3.4
+        broadband_subscribers_million: 48.89
+        broadband_subscribers_without_m2m_million: 48.89
+      total:
+        subscribers_million: 1367.93
+        urban_subscribers_million: 807.78
+        rural_subscribers_million: 560.16
+        net_addition_million: 7.23
+        monthly_growth_percent: 0.53
+        urban_share_percent: 59.05
+        rural_share_percent: 40.95
+        teledensity_percent: 95.52
+        urban_teledensity_percent: 155.85
+        rural_teledensity_percent: 61.3
+        teledensity_without_m2m_percent: 85.41
+        broadband_subscribers_million: 1107.68
+        broadband_subscribers_without_m2m_million: 1013.87
+  vectors:
+  - input:
+      key: wireless
+      column: subscribers_million
+    expected: 1319.19
+    origin: source
+  - input:
+      key: total
+      column: teledensity_percent
+    expected: 95.52
+    origin: source
+  - input:
+      key: wireline
+      column: urban_share_percent
+    expected: 89.09
+    origin: source
+  - input: wireless
+    expected: true
+    origin: source
+  - input: no-such-key
+    expected: false
+    origin: derived
+    note: keys outside the table are absent
+evidence:
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 1, highlights table, row Total Telephone Subscribers (Million)
+  value: '1319.19'
+  unit: count
+  snippet: Total Telephone Subscribers (Million) 1319.19 48.74 1367.93
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 1, highlights table, row Overall Tele-density with M2M
+  value: 95.52%
+  unit: percent
+  snippet: Overall Tele-density @ with M2M cellular mobile connections 92.12% 3.40% 95.52%
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 1, highlights table, row Urban Tele-density
+  value: 147.47%
+  unit: percent
+  snippet: Urban Tele-density@ 147.47% 8.38% 155.85%
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 1, highlights table, row Share of Urban Subscribers
+  value: 57.94%
+  unit: percent
+  snippet: Share of Urban Subscribers 57.94% 89.09% 59.05%
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 1, highlights table, row Broadband Subscribers with M2M
+  value: 1,107.68
+  unit: count
+  snippet: Broadband Subscribers with M2M cellular mobile connections (Million) 1,058.79 48.89 1,107.68
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 16, active subscribers
+  value: '1212.80'
+  unit: count
+  snippet: 1212.80 million wireless (mobile) subscribers were active on the date of peak VLR
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+- statistic: value[total,subscribers_million]
+  expected: 1367.93
+  tolerance: 0
+- statistic: value[wireless,rural_teledensity_percent]
+  expected: 60.72
+  tolerance: 0
+notes: The highlights table on page 1 of TRAI's monthly subscription press release for September 2026, keyed by
+  segment (wireless, wireline, total). Wireless comprises mobile subscribers including M2M cellular connections
+  plus fixed wireless access; tele-density uses the 2011-2036 population projections of the Technical Group on Population
+  Projections. Extra parameters record the active (VLR) wireless base and the month's MNP requests. TRAI's website
+  carries no licence statement for its press releases and reports, so the entry stays at license-review.

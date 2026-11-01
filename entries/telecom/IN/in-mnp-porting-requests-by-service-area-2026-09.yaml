@@ -1,0 +1,141 @@
+id: in-mnp-porting-requests-by-service-area-2026-09
+title: India mobile number portability requests by licensed service area, September 2026
+kind: marginal
+domain: telecom
+region: IN
+status: license-review
+tier: B
+observed_period:
+  start: '2026-09-01'
+  end: '2026-09-30'
+tags:
+- telecom
+- mnp
+- churn
+- service-area
+- trai
+use_cases:
+- telecom-demo
+- customer-segmentation
+- crm-demo
+spec:
+  variable: service_area
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        andhra-pradesh: 0.037887
+        assam: 0.008743
+        bihar: 0.091247
+        delhi: 0.046994
+        gujarat: 0.062388
+        haryana: 0.030399
+        himachal-pradesh: 0.003756
+        jammu-and-kashmir: 0.005496
+        karnataka: 0.041339
+        kerala: 0.01625
+        kolkata: 0.011572
+        madhya-pradesh: 0.094749
+        maharashtra: 0.067211
+        mumbai: 0.018115
+        north-east: 0.002987
+        odisha: 0.01747
+        punjab: 0.025528
+        rajasthan: 0.053949
+        tamil-nadu: 0.030333
+        uttar-pradesh-east: 0.148701
+        uttar-pradesh-west: 0.100211
+        west-bengal: 0.084677
+      counts:
+        andhra-pradesh: 635330
+        assam: 146607
+        bihar: 1530124
+        delhi: 788043
+        gujarat: 1046186
+        haryana: 509753
+        himachal-pradesh: 62982
+        jammu-and-kashmir: 92165
+        karnataka: 693206
+        kerala: 272492
+        kolkata: 194051
+        madhya-pradesh: 1588845
+        maharashtra: 1127057
+        mumbai: 303767
+        north-east: 50081
+        odisha: 292961
+        punjab: 428079
+        rajasthan: 904673
+        tamil-nadu: 508662
+        uttar-pradesh-east: 2493562
+        uttar-pradesh-west: 1680439
+        west-bengal: 1419951
+evidence:
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 18, table Licensed Service Area Wise MNP Status, row Total (Zone-I + Zone-II)
+  value: 16,769,016
+  unit: count
+  snippet: Total (Zone-I + Zone-II) 15,829,976 16,769,016
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 18, same table, row U.P.(East) September-26
+  value: 2,493,562
+  unit: count
+  snippet: U.P.(East) 2,227,586 2,493,562
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 18, same table, row Bihar September-26
+  value: 1,530,124
+  unit: count
+  snippet: Bihar 1,469,902 1,530,124
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 17, section VIII
+  value: '16.77'
+  unit: count
+  snippet: about 16.77 million subscribers submitted their requests for MNP
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total, rounded to six decimals
+  method: derived
+  rationale: The source publishes counts (porting requests); each share is the category count divided by the sum
+    of the listed counts (1.6769e+07). The counts are kept in distribution.parameters.counts.
+tests:
+- statistic: share[uttar-pradesh-east]
+  expected: 0.148701
+  tolerance: 0.004
+- statistic: share[uttar-pradesh-west]
+  expected: 0.100211
+  tolerance: 0.004
+- statistic: share[madhya-pradesh]
+  expected: 0.094749
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.002
+notes: Number of mobile number portability requests submitted in September 2026 in each licensed service area, from
+  the LSA-wise MNP status table on page 18 of the TRAI press release (Zone-I covers northern and western India,
+  Zone-II southern and eastern). Shares are counts divided by the 16,769,016 total and give a churn-by-circle pattern
+  for telecom generators. TRAI's website carries no licence statement for its press releases and reports, so the
+  entry stays at license-review.

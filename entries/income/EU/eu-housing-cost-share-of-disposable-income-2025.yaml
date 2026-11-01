@@ -1,0 +1,145 @@
+id: eu-housing-cost-share-of-disposable-income-2025
+title: Share of housing costs in disposable household income, all households and by poverty status, 2025 survey
+  year, ten member states
+kind: rule
+domain: income
+region: EU
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- housing-costs
+- rent
+- eu-silc
+- living-conditions
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- household-generation
+- personal-finance
+- credit-risk
+- mortgage-origination
+- property-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: ilc_mded01
+    key: A.TOTAL.TOTAL+A_60+B_60.PC.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2025'
+    sources:
+    - dataflow: ilc_mded01
+      key: A.TOTAL.TOTAL+A_60+B_60.PC.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+      columns:
+      - housing_cost_share_percent
+      - housing_cost_share_percent_below_60_median_income
+      - housing_cost_share_percent_above_60_median_income
+    rows:
+      AT:
+        name: Austria
+        housing_cost_share_percent: 17.2
+        housing_cost_share_percent_below_60_median_income: 38.8
+        housing_cost_share_percent_above_60_median_income: 13.2
+      BE:
+        name: Belgium
+        housing_cost_share_percent: 17.6
+        housing_cost_share_percent_below_60_median_income: 34.6
+        housing_cost_share_percent_above_60_median_income: 15.6
+      DE:
+        name: Germany
+        housing_cost_share_percent: 24.1
+        housing_cost_share_percent_below_60_median_income: 43.7
+        housing_cost_share_percent_above_60_median_income: 20.4
+      ES:
+        name: Spain
+        housing_cost_share_percent: 16.0
+        housing_cost_share_percent_below_60_median_income: 33.0
+        housing_cost_share_percent_above_60_median_income: 12.0
+      FR:
+        name: France
+        housing_cost_share_percent: 18.5
+        housing_cost_share_percent_below_60_median_income: 38.3
+        housing_cost_share_percent_above_60_median_income: 14.7
+      IE:
+        name: Ireland
+        housing_cost_share_percent: 16.2
+        housing_cost_share_percent_below_60_median_income: 29.9
+        housing_cost_share_percent_above_60_median_income: 14.1
+      IT:
+        name: Italy
+        housing_cost_share_percent: 14.1
+        housing_cost_share_percent_below_60_median_income: 28.6
+        housing_cost_share_percent_above_60_median_income: 10.8
+      NL:
+        name: Netherlands
+        housing_cost_share_percent: 19.9
+        housing_cost_share_percent_below_60_median_income: 41.8
+        housing_cost_share_percent_above_60_median_income: 16.6
+      PL:
+        name: Poland
+        housing_cost_share_percent: 15.8
+        housing_cost_share_percent_below_60_median_income: 31.6
+        housing_cost_share_percent_above_60_median_income: 13.3
+      SE:
+        name: Sweden
+        housing_cost_share_percent: 24.2
+        housing_cost_share_percent_below_60_median_income: 47.3
+        housing_cost_share_percent_above_60_median_income: 20.2
+  vectors:
+  - input:
+      key: DE
+      column: housing_cost_share_percent
+    expected: 24.1
+    origin: source
+  - input:
+      key: FR
+      column: housing_cost_share_percent
+    expected: 18.5
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow ilc_mded01 (share of housing costs in disposable household income, by type
+    of household and income group, EU-SILC survey), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/ilc_mded01/A.TOTAL.TOTAL+A_60+B_60.PC.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, rskpovth=TOTAL, TIME_PERIOD=2025, OBS_VALUE
+  value: '24.1'
+  unit: percent
+  snippet: DE,2025,24.1
+  source_license: CC-BY-4.0
+  content_sha256: 0107df89f9584f89f5523da03e17b2d129f9ffc136a2b0c4115b24e7775e60d0
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow ilc_mded01 (share of housing costs in disposable household income, by type
+    of household and income group, EU-SILC survey), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/ilc_mded01/A.TOTAL.TOTAL+A_60+B_60.PC.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, rskpovth=TOTAL, TIME_PERIOD=2025, OBS_VALUE
+  value: '18.5'
+  unit: percent
+  snippet: FR,2025,18.5
+  source_license: CC-BY-4.0
+  content_sha256: 0107df89f9584f89f5523da03e17b2d129f9ffc136a2b0c4115b24e7775e60d0
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[housing_cost_share_percent]
+  expected: 24.2
+  tolerance: 0
+notes: Mean share of total housing costs in disposable household income, EU-SILC survey year 2025, from Eurostat
+  dataflow ilc_mded01, for all households and separately for people below and above 60 percent of the median equivalised
+  income (the at-risk-of-poverty threshold). EU-SILC income refers to the calendar year before the survey year;
+  valid_from and valid_to bound the survey year under which Eurostat files the figures. Rows are keyed by the Eurostat
+  geo code and carry the English country name from the GEO codelist; a cell Eurostat does not publish is stored
+  as null. Eurostat's copyright notice states that its data are released under the Creative Commons Attribution
+  4.0 International licence; the notice page renders dynamically and is referenced rather than hashed.

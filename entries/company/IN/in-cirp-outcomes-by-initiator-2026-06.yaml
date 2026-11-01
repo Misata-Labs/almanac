@@ -1,0 +1,163 @@
+id: in-cirp-outcomes-by-initiator-2026-06
+title: India CIRP outcomes and creditor realisation by who initiated the process (financial creditors, operational
+  creditors, corporate debtors), cumulative to 30 June 2026 (IBBI)
+kind: rule
+domain: company
+region: IN
+status: license-review
+tier: A
+valid_from: '2026-06-30'
+valid_to: null
+tags:
+- insolvency
+- cirp
+- recovery
+- ibc
+- ibbi
+- reference-table
+use_cases:
+- credit-risk
+- collections
+- company-generation
+- loan-pricing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    as_on: '2026-06-30'
+    rows:
+      financial_creditors:
+        appeal_review_settled: 466
+        withdrawal_section_12a: 429
+        resolution_plan_approved: 934
+        liquidation_commenced: 1469
+        ongoing: 1134
+        total: 4432
+        realisation_percent_of_liquidation_value: 177.52
+        realisation_percent_of_claims: 30.58
+        average_days_to_closure_of_cirp: 765
+      operational_creditors:
+        appeal_review_settled: 930
+        withdrawal_section_12a: 893
+        resolution_plan_approved: 452
+        liquidation_commenced: 1271
+        ongoing: 616
+        total: 4162
+        realisation_percent_of_liquidation_value: 148.82
+        realisation_percent_of_claims: 24.78
+        average_days_to_closure_of_cirp: 766
+      corporate_debtors:
+        appeal_review_settled: 14
+        withdrawal_section_12a: 11
+        resolution_plan_approved: 94
+        liquidation_commenced: 334
+        ongoing: 114
+        total: 567
+        realisation_percent_of_liquidation_value: 147.19
+        realisation_percent_of_claims: 17.99
+        average_days_to_closure_of_cirp: 632
+      financial_service_providers:
+        appeal_review_settled: 0
+        withdrawal_section_12a: 0
+        resolution_plan_approved: 4
+        liquidation_commenced: 0
+        ongoing: 1
+        total: 5
+        realisation_percent_of_liquidation_value: 134.94
+        realisation_percent_of_claims: 41.41
+        average_days_to_closure_of_cirp: 677
+      total:
+        appeal_review_settled: 1410
+        withdrawal_section_12a: 1333
+        resolution_plan_approved: 1484
+        liquidation_commenced: 3074
+        ongoing: 1865
+        total: 9166
+        realisation_percent_of_liquidation_value: 166.58
+        realisation_percent_of_claims: 30.52
+        average_days_to_closure_of_cirp: 757
+  vectors:
+  - input:
+      key: financial_creditors
+      column: resolution_plan_approved
+    expected: 934
+    origin: source
+  - input:
+      key: operational_creditors
+      column: total
+    expected: 4162
+    origin: source
+  - input:
+      key: total
+      column: realisation_percent_of_claims
+    expected: 30.52
+    origin: source
+  - input: financial_creditors
+    expected: true
+    origin: source
+  - input: no-such-key
+    expected: false
+    origin: derived
+    note: keys outside the table are absent
+evidence:
+- publisher: Insolvency and Bankruptcy Board of India
+  title: IBBI Quarterly Newsletter for April-June 2026 (data workbook)
+  url: https://ibbi.gov.in/uploads/publication/18054eb85bc0e7388537b05326192072.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 4, row Closure by Approval of Resolution Plan
+  value: '934'
+  unit: count
+  snippet: Outcome of CIRPs initiated Stakeholder-wise
+  source_license: unstated
+  content_sha256: 3b48f24df27fc51f44de39605559a15babdec8f2ae7864ca067e92f05a82a35b
+  role: primary
+- publisher: Insolvency and Bankruptcy Board of India
+  title: IBBI Quarterly Newsletter for April-June 2026 (data workbook)
+  url: https://ibbi.gov.in/uploads/publication/18054eb85bc0e7388537b05326192072.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 4, row Total
+  value: '4432'
+  unit: count
+  snippet: CIRPs initiated by
+  source_license: unstated
+  content_sha256: 3b48f24df27fc51f44de39605559a15babdec8f2ae7864ca067e92f05a82a35b
+  role: primary
+- publisher: Insolvency and Bankruptcy Board of India
+  title: IBBI Quarterly Newsletter for April-June 2026 (data workbook)
+  url: https://ibbi.gov.in/uploads/publication/18054eb85bc0e7388537b05326192072.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 4, row Realisation by creditors as % of their Claims, Total column
+  value: '30.52'
+  unit: percent
+  snippet: Realisation by creditors as % of their Claims
+  source_license: unstated
+  content_sha256: 3b48f24df27fc51f44de39605559a15babdec8f2ae7864ca067e92f05a82a35b
+  role: primary
+- publisher: Insolvency and Bankruptcy Board of India
+  title: IBBI Quarterly Newsletter for April-June 2026 (data workbook)
+  url: https://ibbi.gov.in/uploads/publication/18054eb85bc0e7388537b05326192072.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 4, row Average time taken for Closure of CIRP, Total column
+  value: '757'
+  unit: integer
+  snippet: Average time taken for Closure of CIRP
+  source_license: unstated
+  content_sha256: 3b48f24df27fc51f44de39605559a15babdec8f2ae7864ca067e92f05a82a35b
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: value[corporate_debtors,liquidation_commenced]
+  expected: 334
+  tolerance: 0
+- statistic: max[average_days_to_closure_of_cirp]
+  expected: 766
+  tolerance: 0
+notes: Outcome of the 9,166 CIRPs admitted up to 30 June 2026 by the class of applicant that initiated them, from
+  Table 4 of IBBI's April-June 2026 newsletter workbook, with the realisation by creditors in resolved cases as
+  a percentage of liquidation value and of admitted claims, and the average days from commencement to closure. Rows
+  are keyed by initiator; 'total' is the all-India row. Tier A (.xlsx); no licence stated, so license-review.

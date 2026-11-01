@@ -1,0 +1,143 @@
+id: in-registered-insurers-by-type-2025-03
+title: India registered insurers and reinsurers by type and ownership, 31 March 2025 (IRDAI)
+kind: rule
+domain: insurance
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-03-31'
+valid_to: null
+tags:
+- insurance
+- insurers
+- regulator
+- irdai
+- reference-table
+use_cases:
+- insurance
+- company-generation
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      life:
+        public_sector: 1
+        private_sector: 25
+        total: 26
+      general:
+        public_sector: 4
+        private_sector: 21
+        total: 25
+      specialized:
+        public_sector: 2
+        private_sector: 0
+        total: 2
+      health:
+        public_sector: 0
+        private_sector: 8
+        total: 8
+      reinsurer:
+        public_sector: 1
+        private_sector: 12
+        total: 13
+      total:
+        public_sector: 8
+        private_sector: 66
+        total: 74
+  vectors:
+  - input:
+      key: life
+      column: total
+    expected: 26
+    origin: source
+  - input:
+      key: health
+      column: private_sector
+    expected: 8
+    origin: source
+  - input:
+      key: total
+      column: total
+    expected: 74
+    origin: source
+  - input: life
+    expected: true
+    origin: source
+  - input: no-such-key
+    expected: false
+    origin: derived
+    note: keys outside the table are absent
+evidence:
+- publisher: Insurance Regulatory and Development Authority of India
+  title: IRDAI Annual Report 2024-25
+  url: https://irdai.gov.in/documents/37343/366637/%E0%A4%86%E0%A4%88%E0%A4%86%E0%A4%B0%E0%A4%A1%E0%A5%80%E0%A4%8F%E0%A4%86%E0%A4%88+%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%B7%E0%A4%BF%E0%A4%95+%E0%A4%B0%E0%A4%BF%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F+_+IRDAI+Annual+Report+2024-25.pdf/06f02832-66a3-6308-a16f-f46a6640fc93?version=2.0&t=1767598639163&download=true
+  accessed_at: '2026-10-31'
+  locator: PDF page 257 (printed page 25), Table I.18, row Life
+  value: '26'
+  unit: integer
+  snippet: Life 1 25 26
+  source_license: unstated
+  content_sha256: 301eaa018543cca2384a502125e3bdf03c92b78b640e853b314c97b07df13ed7
+  role: primary
+- publisher: Insurance Regulatory and Development Authority of India
+  title: IRDAI Annual Report 2024-25
+  url: https://irdai.gov.in/documents/37343/366637/%E0%A4%86%E0%A4%88%E0%A4%86%E0%A4%B0%E0%A4%A1%E0%A5%80%E0%A4%8F%E0%A4%86%E0%A4%88+%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%B7%E0%A4%BF%E0%A4%95+%E0%A4%B0%E0%A4%BF%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F+_+IRDAI+Annual+Report+2024-25.pdf/06f02832-66a3-6308-a16f-f46a6640fc93?version=2.0&t=1767598639163&download=true
+  accessed_at: '2026-10-31'
+  locator: PDF page 257, Table I.18, row General
+  value: '25'
+  unit: integer
+  snippet: General 4 21 25
+  source_license: unstated
+  content_sha256: 301eaa018543cca2384a502125e3bdf03c92b78b640e853b314c97b07df13ed7
+  role: primary
+- publisher: Insurance Regulatory and Development Authority of India
+  title: IRDAI Annual Report 2024-25
+  url: https://irdai.gov.in/documents/37343/366637/%E0%A4%86%E0%A4%88%E0%A4%86%E0%A4%B0%E0%A4%A1%E0%A5%80%E0%A4%8F%E0%A4%86%E0%A4%88+%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%B7%E0%A4%BF%E0%A4%95+%E0%A4%B0%E0%A4%BF%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F+_+IRDAI+Annual+Report+2024-25.pdf/06f02832-66a3-6308-a16f-f46a6640fc93?version=2.0&t=1767598639163&download=true
+  accessed_at: '2026-10-31'
+  locator: PDF page 257, Table I.18, rows Specialized, Health and Reinsurer
+  value: '13'
+  unit: integer
+  snippet: Specialized 2 - 2 Health - 8 8 Reinsurer 1 12 13
+  source_license: unstated
+  content_sha256: 301eaa018543cca2384a502125e3bdf03c92b78b640e853b314c97b07df13ed7
+  role: primary
+- publisher: Insurance Regulatory and Development Authority of India
+  title: IRDAI Annual Report 2024-25
+  url: https://irdai.gov.in/documents/37343/366637/%E0%A4%86%E0%A4%88%E0%A4%86%E0%A4%B0%E0%A4%A1%E0%A5%80%E0%A4%8F%E0%A4%86%E0%A4%88+%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%B7%E0%A4%BF%E0%A4%95+%E0%A4%B0%E0%A4%BF%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F+_+IRDAI+Annual+Report+2024-25.pdf/06f02832-66a3-6308-a16f-f46a6640fc93?version=2.0&t=1767598639163&download=true
+  accessed_at: '2026-10-31'
+  locator: PDF page 257, Table I.18, row Total
+  value: '74'
+  unit: integer
+  snippet: Total 8 66 74
+  source_license: unstated
+  content_sha256: 301eaa018543cca2384a502125e3bdf03c92b78b640e853b314c97b07df13ed7
+  role: primary
+- publisher: Insurance Regulatory and Development Authority of India
+  title: IRDAI Annual Report 2024-25
+  url: https://irdai.gov.in/documents/37343/366637/%E0%A4%86%E0%A4%88%E0%A4%86%E0%A4%B0%E0%A4%A1%E0%A5%80%E0%A4%8F%E0%A4%86%E0%A4%88+%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%B7%E0%A4%BF%E0%A4%95+%E0%A4%B0%E0%A4%BF%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F+_+IRDAI+Annual+Report+2024-25.pdf/06f02832-66a3-6308-a16f-f46a6640fc93?version=2.0&t=1767598639163&download=true
+  accessed_at: '2026-10-31'
+  locator: PDF page 257, paragraph I.3.1
+  value: '74'
+  unit: integer
+  snippet: the total number of registered insurers and reinsurers is 74
+  source_license: unstated
+  content_sha256: 301eaa018543cca2384a502125e3bdf03c92b78b640e853b314c97b07df13ed7
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 6
+  tolerance: 0
+- statistic: value[general,public_sector]
+  expected: 4
+  tolerance: 0
+notes: Number of registered insurers and reinsurers in India as at 31 March 2025 from Table I.18 of the IRDAI Annual
+  Report 2024-25, by type (life, general, specialized, stand-alone health, reinsurer) and ownership. The table's
+  own note says the count includes Reliance Health Insurance (directed to stop selling new policies in 2019) and
+  Sahara India Life (business transferred to SBI Life in 2023); the narrative in paragraph I.3.1 groups the two
+  specialized insurers with general insurers (27). IRDAI publishes the document without a licence statement, so
+  the entry stays at license-review.

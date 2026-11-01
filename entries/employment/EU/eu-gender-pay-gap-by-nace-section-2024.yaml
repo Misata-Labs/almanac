@@ -1,0 +1,300 @@
+id: eu-gender-pay-gap-by-nace-section-2024
+title: Unadjusted gender pay gap by NACE Rev. 2 section, 2024, ten member states
+kind: rule
+domain: employment
+region: EU
+status: verified
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- gender-pay-gap
+- earnings
+- sex
+- nace
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- hr-analytics
+- payroll-demo
+- person-generation
+- workforce-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: earn_gr_gpgr2
+    key: A.PC.B-S_X_O+B-S+B-N+C+F+G+H+I+J+K+L+M+N+P+Q+R+S.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2024'
+    sources:
+    - dataflow: earn_gr_gpgr2
+      key: A.PC.B-S_X_O+B-S+B-N+C+F+G+H+I+J+K+L+M+N+P+Q+R+S.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+      columns:
+      - gap_percent_b_s_x_o
+      - gap_percent_b_s
+      - gap_percent_b_n
+      - gap_percent_c
+      - gap_percent_f
+      - gap_percent_g
+      - gap_percent_h
+      - gap_percent_i
+      - gap_percent_j
+      - gap_percent_k
+      - gap_percent_l
+      - gap_percent_m
+      - gap_percent_n
+      - gap_percent_p
+      - gap_percent_q
+      - gap_percent_r
+      - gap_percent_s
+    rows:
+      AT:
+        name: Austria
+        gap_percent_b_s_x_o: 17.6
+        gap_percent_b_s: null
+        gap_percent_b_n: 19.7
+        gap_percent_c: 16.7
+        gap_percent_f: 7.4
+        gap_percent_g: 19.5
+        gap_percent_h: 9.5
+        gap_percent_i: 7.2
+        gap_percent_j: 19.9
+        gap_percent_k: 25.6
+        gap_percent_l: 19.5
+        gap_percent_m: 25.7
+        gap_percent_n: 18.6
+        gap_percent_p: 21.3
+        gap_percent_q: 8.6
+        gap_percent_r: 22.7
+        gap_percent_s: 19.7
+      BE:
+        name: Belgium
+        gap_percent_b_s_x_o: 0.7
+        gap_percent_b_s: null
+        gap_percent_b_n: 6.7
+        gap_percent_c: 0.9
+        gap_percent_f: -6.8
+        gap_percent_g: 7.7
+        gap_percent_h: -1.7
+        gap_percent_i: 1.5
+        gap_percent_j: 6.5
+        gap_percent_k: 14.0
+        gap_percent_l: 0.7
+        gap_percent_m: 7.6
+        gap_percent_n: 6.3
+        gap_percent_p: 4.8
+        gap_percent_q: 0.0
+        gap_percent_r: 2.1
+        gap_percent_s: 17.3
+      DE:
+        name: Germany
+        gap_percent_b_s_x_o: 15.6
+        gap_percent_b_s: 14.8
+        gap_percent_b_n: 19.1
+        gap_percent_c: 19.1
+        gap_percent_f: 10.0
+        gap_percent_g: 19.3
+        gap_percent_h: 3.1
+        gap_percent_i: 6.2
+        gap_percent_j: 19.3
+        gap_percent_k: 26.0
+        gap_percent_l: 12.2
+        gap_percent_m: 25.2
+        gap_percent_n: 13.3
+        gap_percent_p: 8.9
+        gap_percent_q: 18.7
+        gap_percent_r: 20.6
+        gap_percent_s: 13.8
+      ES:
+        name: Spain
+        gap_percent_b_s_x_o: 7.3
+        gap_percent_b_s: 7.0
+        gap_percent_b_n: 13.6
+        gap_percent_c: 13.5
+        gap_percent_f: -10.9
+        gap_percent_g: 15.5
+        gap_percent_h: -2.3
+        gap_percent_i: 10.8
+        gap_percent_j: 9.5
+        gap_percent_k: 12.2
+        gap_percent_l: 10.5
+        gap_percent_m: 15.5
+        gap_percent_n: 14.0
+        gap_percent_p: 8.9
+        gap_percent_q: 21.1
+        gap_percent_r: 6.7
+        gap_percent_s: 8.3
+      FR:
+        name: France
+        gap_percent_b_s_x_o: 11.8
+        gap_percent_b_s: 12.2
+        gap_percent_b_n: 11.7
+        gap_percent_c: 10.7
+        gap_percent_f: -11.6
+        gap_percent_g: 15.2
+        gap_percent_h: 1.5
+        gap_percent_i: 4.2
+        gap_percent_j: 11.3
+        gap_percent_k: 31.7
+        gap_percent_l: 15.2
+        gap_percent_m: 16.0
+        gap_percent_n: 6.7
+        gap_percent_p: 9.6
+        gap_percent_q: 8.3
+        gap_percent_r: 17.9
+        gap_percent_s: 3.0
+      IE:
+        name: Ireland
+        gap_percent_b_s_x_o: 8.3
+        gap_percent_b_s: 8.0
+        gap_percent_b_n: 15.1
+        gap_percent_c: null
+        gap_percent_f: null
+        gap_percent_g: null
+        gap_percent_h: null
+        gap_percent_i: null
+        gap_percent_j: null
+        gap_percent_k: null
+        gap_percent_l: null
+        gap_percent_m: null
+        gap_percent_n: null
+        gap_percent_p: null
+        gap_percent_q: null
+        gap_percent_r: null
+        gap_percent_s: null
+      IT:
+        name: Italy
+        gap_percent_b_s_x_o: 5.3
+        gap_percent_b_s: 6.1
+        gap_percent_b_n: 14.7
+        gap_percent_c: 14.4
+        gap_percent_f: 9.1
+        gap_percent_g: 17.1
+        gap_percent_h: 4.9
+        gap_percent_i: 8.3
+        gap_percent_j: 15.5
+        gap_percent_k: 21.8
+        gap_percent_l: 21.0
+        gap_percent_m: 23.4
+        gap_percent_n: 9.3
+        gap_percent_p: 8.8
+        gap_percent_q: 19.8
+        gap_percent_r: 57.2
+        gap_percent_s: 13.8
+      NL:
+        name: Netherlands
+        gap_percent_b_s_x_o: 11.2
+        gap_percent_b_s: 10.1
+        gap_percent_b_n: 16.4
+        gap_percent_c: 13.4
+        gap_percent_f: 6.7
+        gap_percent_g: 20.0
+        gap_percent_h: 9.6
+        gap_percent_i: 9.2
+        gap_percent_j: 13.0
+        gap_percent_k: 21.8
+        gap_percent_l: 12.9
+        gap_percent_m: 16.2
+        gap_percent_n: 7.6
+        gap_percent_p: 3.8
+        gap_percent_q: 16.4
+        gap_percent_r: 16.9
+        gap_percent_s: 10.1
+      PL:
+        name: Poland
+        gap_percent_b_s_x_o: 4.0
+        gap_percent_b_s: 4.1
+        gap_percent_b_n: 11.7
+        gap_percent_c: 13.9
+        gap_percent_f: -10.5
+        gap_percent_g: 19.9
+        gap_percent_h: 6.6
+        gap_percent_i: 8.0
+        gap_percent_j: 24.0
+        gap_percent_k: 28.6
+        gap_percent_l: 9.3
+        gap_percent_m: 16.2
+        gap_percent_n: 1.5
+        gap_percent_p: 7.8
+        gap_percent_q: 12.2
+        gap_percent_r: 7.5
+        gap_percent_s: 19.2
+      SE:
+        name: Sweden
+        gap_percent_b_s_x_o: 11.2
+        gap_percent_b_s: 10.5
+        gap_percent_b_n: 7.4
+        gap_percent_c: 2.0
+        gap_percent_f: -1.1
+        gap_percent_g: 11.3
+        gap_percent_h: -2.4
+        gap_percent_i: 5.8
+        gap_percent_j: 10.0
+        gap_percent_k: 21.1
+        gap_percent_l: 3.3
+        gap_percent_m: 9.2
+        gap_percent_n: 5.7
+        gap_percent_p: 7.0
+        gap_percent_q: 6.6
+        gap_percent_r: 7.1
+        gap_percent_s: 4.4
+  vectors:
+  - input:
+      key: DE
+      column: gap_percent_b_s_x_o
+    expected: 15.6
+    origin: source
+  - input:
+      key: FR
+      column: gap_percent_b_s_x_o
+    expected: 11.8
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow earn_gr_gpgr2 (gender pay gap in unadjusted form by NACE Rev. 2 activity),
+    SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/earn_gr_gpgr2/A.PC.B-S_X_O+B-S+B-N+C+F+G+H+I+J+K+L+M+N+P+Q+R+S.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, nace_r2=B-S_X_O, TIME_PERIOD=2024, OBS_VALUE
+  value: '15.6'
+  unit: percent
+  snippet: DE,2024,15.6
+  source_license: CC-BY-4.0
+  content_sha256: 69d31d37a66942e5954f4608aef4872f80997fa3a9905e6bd981dfec4994a4a0
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow earn_gr_gpgr2 (gender pay gap in unadjusted form by NACE Rev. 2 activity),
+    SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/earn_gr_gpgr2/A.PC.B-S_X_O+B-S+B-N+C+F+G+H+I+J+K+L+M+N+P+Q+R+S.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, nace_r2=B-S_X_O, TIME_PERIOD=2024, OBS_VALUE
+  value: '11.8'
+  unit: percent
+  snippet: FR,2024,11.8
+  source_license: CC-BY-4.0
+  content_sha256: 69d31d37a66942e5954f4608aef4872f80997fa3a9905e6bd981dfec4994a4a0
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[gap_percent_b_s_x_o]
+  expected: 17.6
+  tolerance: 0
+notes: 'Unadjusted gender pay gap for 2024 from Eurostat dataflow earn_gr_gpgr2: the difference between the average
+  gross hourly earnings of men and of women as a percentage of men''s, for industry, construction and services except
+  public administration (B-S_X_O), the whole of B to S, the business economy (B-N) and each section from C to S
+  that Eurostat publishes. Ireland reports only the three aggregates, so its section cells are null. Rows are keyed
+  by the Eurostat geo code and carry the English country name from the GEO codelist; a cell Eurostat does not publish
+  is stored as null. Observation flags published with the data: provisional (p): AT (all published columns); BE
+  (all published columns); DE (all published columns); ES (all published columns); FR (all published columns); IE
+  (all published columns); IT (all published columns); NL (all published columns); SE (all published columns). Eurostat''s
+  copyright notice states that its data are released under the Creative Commons Attribution 4.0 International licence;
+  the notice page renders dynamically and is referenced rather than hashed.'

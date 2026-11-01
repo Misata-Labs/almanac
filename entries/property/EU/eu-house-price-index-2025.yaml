@@ -1,0 +1,173 @@
+id: eu-house-price-index-2025
+title: House price index, annual average rate of change and level (2015 = 100), total, new and existing dwellings,
+  2025, ten member states
+kind: rule
+domain: property
+region: EU
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- house-prices
+- housing
+- property-prices
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- property-demo
+- mortgage-origination
+- insurance
+- financial-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: prc_hpi_a
+    key: A.TOTAL+DW_NEW+DW_EXST.RCH_A_AVG+I15_A_AVG.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2025'
+    sources:
+    - dataflow: prc_hpi_a
+      key: A.TOTAL+DW_NEW+DW_EXST.RCH_A_AVG+I15_A_AVG.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+      columns:
+      - annual_rate_of_change_percent
+      - annual_rate_of_change_percent_new_dwellings
+      - annual_rate_of_change_percent_existing_dwellings
+      - index_2015_100
+      - index_2015_100_new_dwellings
+      - index_2015_100_existing_dwellings
+    rows:
+      AT:
+        name: Austria
+        annual_rate_of_change_percent: 2.5
+        annual_rate_of_change_percent_new_dwellings: 2.7
+        annual_rate_of_change_percent_existing_dwellings: 2.4
+        index_2015_100: 167.06
+        index_2015_100_new_dwellings: 167.64
+        index_2015_100_existing_dwellings: 166.22
+      BE:
+        name: Belgium
+        annual_rate_of_change_percent: 3.2
+        annual_rate_of_change_percent_new_dwellings: 1.8
+        annual_rate_of_change_percent_existing_dwellings: 3.8
+        index_2015_100: 144.86
+        index_2015_100_new_dwellings: 147.59
+        index_2015_100_existing_dwellings: 144.88
+      DE:
+        name: Germany
+        annual_rate_of_change_percent: 3.2
+        annual_rate_of_change_percent_new_dwellings: 3.0
+        annual_rate_of_change_percent_existing_dwellings: 3.2
+        index_2015_100: 152.7
+        index_2015_100_new_dwellings: 150.0
+        index_2015_100_existing_dwellings: 153.0
+      ES:
+        name: Spain
+        annual_rate_of_change_percent: 12.7
+        annual_rate_of_change_percent_new_dwellings: 11.3
+        annual_rate_of_change_percent_existing_dwellings: 13.0
+        index_2015_100: 180.6
+        index_2015_100_new_dwellings: 206.46
+        index_2015_100_existing_dwellings: 176.22
+      FR:
+        name: France
+        annual_rate_of_change_percent: 0.7
+        annual_rate_of_change_percent_new_dwellings: 1.4
+        annual_rate_of_change_percent_existing_dwellings: 0.6
+        index_2015_100: 127.26
+        index_2015_100_new_dwellings: 130.91
+        index_2015_100_existing_dwellings: 126.93
+      IE:
+        name: Ireland
+        annual_rate_of_change_percent: 7.5
+        annual_rate_of_change_percent_new_dwellings: 5.0
+        annual_rate_of_change_percent_existing_dwellings: 8.3
+        index_2015_100: 197.19
+        index_2015_100_new_dwellings: 183.74
+        index_2015_100_existing_dwellings: 200.15
+      IT:
+        name: Italy
+        annual_rate_of_change_percent: 4.0
+        annual_rate_of_change_percent_new_dwellings: 0.7
+        annual_rate_of_change_percent_existing_dwellings: 4.7
+        index_2015_100: 116.2
+        index_2015_100_new_dwellings: 131.9
+        index_2015_100_existing_dwellings: 112.8
+      NL:
+        name: Netherlands
+        annual_rate_of_change_percent: 8.5
+        annual_rate_of_change_percent_new_dwellings: 8.1
+        annual_rate_of_change_percent_existing_dwellings: 8.6
+        index_2015_100: 215.15
+        index_2015_100_new_dwellings: 210.87
+        index_2015_100_existing_dwellings: 215.1
+      PL:
+        name: Poland
+        annual_rate_of_change_percent: 4.9
+        annual_rate_of_change_percent_new_dwellings: 5.7
+        annual_rate_of_change_percent_existing_dwellings: 4.2
+        index_2015_100: 216.8
+        index_2015_100_new_dwellings: 206.84
+        index_2015_100_existing_dwellings: 223.99
+      SE:
+        name: Sweden
+        annual_rate_of_change_percent: 1.0
+        annual_rate_of_change_percent_new_dwellings: -2.2
+        annual_rate_of_change_percent_existing_dwellings: 1.7
+        index_2015_100: 133.41
+        index_2015_100_new_dwellings: 139.11
+        index_2015_100_existing_dwellings: 133.22
+  vectors:
+  - input:
+      key: DE
+      column: annual_rate_of_change_percent
+    expected: 3.2
+    origin: source
+  - input:
+      key: FR
+      column: annual_rate_of_change_percent
+    expected: 0.7
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow prc_hpi_a (house price index, annual data), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/prc_hpi_a/A.TOTAL+DW_NEW+DW_EXST.RCH_A_AVG+I15_A_AVG.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, purchase=TOTAL, unit=RCH_A_AVG, TIME_PERIOD=2025, OBS_VALUE
+  value: '3.2'
+  unit: percent
+  snippet: DE,2025,3.2
+  source_license: CC-BY-4.0
+  content_sha256: d3dd89270a84168d06fd7c67ff61254e1222a4e0ef085d593a04a020ec1015be
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow prc_hpi_a (house price index, annual data), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/prc_hpi_a/A.TOTAL+DW_NEW+DW_EXST.RCH_A_AVG+I15_A_AVG.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, purchase=TOTAL, unit=RCH_A_AVG, TIME_PERIOD=2025, OBS_VALUE
+  value: '0.7'
+  unit: percent
+  snippet: FR,2025,0.7
+  source_license: CC-BY-4.0
+  content_sha256: d3dd89270a84168d06fd7c67ff61254e1222a4e0ef085d593a04a020ec1015be
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[annual_rate_of_change_percent]
+  expected: 12.7
+  tolerance: 0
+notes: 'House price index for 2025 from Eurostat dataflow prc_hpi_a: the annual average rate of change in percent
+  and the annual average index level (2015 = 100) for all dwellings, newly built dwellings and existing dwellings
+  purchased by households. Rows are keyed by the Eurostat geo code and carry the English country name from the GEO
+  codelist; a cell Eurostat does not publish is stored as null. Eurostat''s copyright notice states that its data
+  are released under the Creative Commons Attribution 4.0 International licence; the notice page renders dynamically
+  and is referenced rather than hashed.'

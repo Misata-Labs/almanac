@@ -1,0 +1,144 @@
+id: in-broadband-subscribers-by-provider-2026-09
+title: India broadband subscribers by service provider (top five and others), end of September 2026
+kind: marginal
+domain: telecom
+region: IN
+status: license-review
+tier: B
+observed_period:
+  start: '2026-09-30'
+  end: '2026-09-30'
+tags:
+- telecom
+- broadband
+- market-share
+- trai
+use_cases:
+- telecom-demo
+- market-sizing
+- customer-segmentation
+spec:
+  variable: broadband_provider
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        reliance-jio: 0.488562
+        bharti-airtel: 0.351058
+        vodafone-idea: 0.118265
+        bsnl: 0.025775
+        atria-convergence: 0.002257
+        others: 0.014083
+      counts:
+        reliance-jio: 541.17
+        bharti-airtel: 388.86
+        vodafone-idea: 131.0
+        bsnl: 28.55
+        atria-convergence: 2.5
+        others: 15.6
+evidence:
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 2, table Top five Broadband Service providers, row 1
+  value: '541.17'
+  unit: count
+  snippet: Reliance Jio Infocomm Ltd. 541.17
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 2, same table, row 2
+  value: '388.86'
+  unit: count
+  snippet: Bharti Airtel Ltd. 388.86
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 2, same table, row 3
+  value: '131.00'
+  unit: count
+  snippet: Vodafone Idea Ltd. 131.00
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 2, same table, row 4
+  value: '28.55'
+  unit: count
+  snippet: Bharat Sanchar Nigam Ltd. 28.55
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 2, same table, row 5
+  value: '2.50'
+  unit: count
+  snippet: Atria Convergence Technologies Ltd. 2.50
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 2, same table, market share of top five
+  value: 98.59%
+  unit: percent
+  snippet: Market Share of Top Five Broadband (Wired & Wireless) Service Providers 98.59%
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 2, paragraph I
+  value: '1107.68'
+  unit: count
+  snippet: 1107.68 million at the end of September 2026 with a monthly growth rate of 0.59%
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total, rounded to six decimals
+  method: derived
+  rationale: The source publishes counts (million subscribers); each share is the category count divided by the
+    sum of the listed counts (1107.68). The counts are kept in distribution.parameters.counts.
+- parameter: counts.others
+  value: 15.6
+  method: derived
+  rationale: Total broadband subscribers (1,107.68 million) minus the five listed providers.
+tests:
+- statistic: share[reliance-jio]
+  expected: 0.488562
+  tolerance: 0.004
+- statistic: share[bharti-airtel]
+  expected: 0.351058
+  tolerance: 0.004
+- statistic: share[vodafone-idea]
+  expected: 0.118265
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.002
+notes: Wired plus wireless broadband subscribers of the five largest providers at the end of September 2026 (page
+  2 of the TRAI press release) with the remainder of the 1,107.68 million total assigned to 'others'. The release
+  states the top five hold 98.59% of the market, which the derived shares reproduce. TRAI's website carries no licence
+  statement for its press releases and reports, so the entry stays at license-review.

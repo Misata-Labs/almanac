@@ -1,0 +1,113 @@
+id: in-cirp-admitted-by-sector-2026-06
+title: India corporate insolvency resolution processes admitted by sector of the corporate debtor, cumulative to
+  30 June 2026 (IBBI)
+kind: marginal
+domain: company
+region: IN
+status: license-review
+tier: A
+observed_period:
+  start: '2016-12-01'
+  end: '2026-06-30'
+tags:
+- insolvency
+- cirp
+- sector
+- ibc
+- ibbi
+use_cases:
+- company-generation
+- credit-risk
+- customer-segmentation
+spec:
+  variable: sector
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        manufacturing: 0.364608
+        real-estate-renting-and-business-activities: 0.217761
+        construction: 0.123173
+        wholesale-and-retail-trade: 0.09928
+        hotels-and-restaurants: 0.019856
+        electricity-and-others: 0.026838
+        transport-storage-and-communications: 0.027929
+        others: 0.120554
+      counts:
+        manufacturing: 3342
+        real-estate-renting-and-business-activities: 1996
+        construction: 1129
+        wholesale-and-retail-trade: 910
+        hotels-and-restaurants: 182
+        electricity-and-others: 246
+        transport-storage-and-communications: 256
+        others: 1105
+evidence:
+- publisher: Insolvency and Bankruptcy Board of India
+  title: IBBI Quarterly Newsletter for April-June 2026 (data workbook)
+  url: https://ibbi.gov.in/uploads/publication/18054eb85bc0e7388537b05326192072.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 3, row Manufacturing, column Admitted
+  value: '3342'
+  unit: count
+  snippet: 'Table 3: Sectoral Distribution of CIRPs as on June 30, 2026'
+  source_license: unstated
+  content_sha256: 3b48f24df27fc51f44de39605559a15babdec8f2ae7864ca067e92f05a82a35b
+  role: primary
+- publisher: Insolvency and Bankruptcy Board of India
+  title: IBBI Quarterly Newsletter for April-June 2026 (data workbook)
+  url: https://ibbi.gov.in/uploads/publication/18054eb85bc0e7388537b05326192072.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 3, row Construction, column Admitted
+  value: '1129'
+  unit: count
+  snippet: Construction
+  source_license: unstated
+  content_sha256: 3b48f24df27fc51f44de39605559a15babdec8f2ae7864ca067e92f05a82a35b
+  role: primary
+- publisher: Insolvency and Bankruptcy Board of India
+  title: IBBI Quarterly Newsletter for April-June 2026 (data workbook)
+  url: https://ibbi.gov.in/uploads/publication/18054eb85bc0e7388537b05326192072.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 3, row Hotels, column Admitted
+  value: '182'
+  unit: count
+  snippet: Hotels
+  source_license: unstated
+  content_sha256: 3b48f24df27fc51f44de39605559a15babdec8f2ae7864ca067e92f05a82a35b
+  role: primary
+- publisher: Insolvency and Bankruptcy Board of India
+  title: IBBI Quarterly Newsletter for April-June 2026 (data workbook)
+  url: https://ibbi.gov.in/uploads/publication/18054eb85bc0e7388537b05326192072.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet Table 3, row Total, column Admitted
+  value: '9166'
+  unit: count
+  snippet: Total
+  source_license: unstated
+  content_sha256: 3b48f24df27fc51f44de39605559a15babdec8f2ae7864ca067e92f05a82a35b
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total, rounded to six decimals
+  method: derived
+  rationale: The source publishes counts (CIRPs admitted); each share is the category count divided by the sum of
+    the listed counts (9166). The counts are kept in distribution.parameters.counts.
+tests:
+- statistic: share[manufacturing]
+  expected: 0.364608
+  tolerance: 0.004
+- statistic: share[real-estate-renting-and-business-activities]
+  expected: 0.217761
+  tolerance: 0.004
+- statistic: share[construction]
+  expected: 0.123173
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.002
+notes: Sector of the corporate debtor for the 9,166 CIRPs admitted up to 30 June 2026, from Table 3 of IBBI's April-June
+  2026 newsletter workbook. Only the eight top-level sector groups are used; the workbook also splits manufacturing
+  and real estate/business activities into sub-sectors. IBBI bases the classification on the debtor's corporate
+  identification number. Shares are counts divided by 9,166. Tier A (.xlsx); no licence stated, so license-review.

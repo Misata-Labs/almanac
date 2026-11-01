@@ -1,0 +1,126 @@
+id: in-wireless-mobile-subscribers-by-operator-2026-09
+title: India wireless (mobile) subscribers by access service provider, end of September 2026
+kind: marginal
+domain: telecom
+region: IN
+status: license-review
+tier: B
+observed_period:
+  start: '2026-09-30'
+  end: '2026-09-30'
+tags:
+- telecom
+- mobile
+- market-share
+- operators
+- trai
+use_cases:
+- telecom-demo
+- customer-segmentation
+- market-sizing
+spec:
+  variable: mobile_operator
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        bharti-airtel: 0.380224
+        reliance-communications: 0.0
+        vodafone-idea: 0.153938
+        bsnl: 0.072536
+        mtnl: 0.000114
+        reliance-jio: 0.393188
+      counts:
+        bharti-airtel: 494291213
+        reliance-communications: 23
+        vodafone-idea: 200119470
+        bsnl: 94296332
+        mtnl: 148226
+        reliance-jio: 511144537
+evidence:
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 20, Annexure-II Wireless (Mobile) Subscriber Base, row Total, September 2026 columns
+  value: 1,299,999,801
+  unit: count
+  snippet: Total 491,599,117 494,291,213 32 23 199,569,351 200,119,470
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 20, Annexure-II, row Total, Reliance Jio September 2026
+  value: 511,144,537
+  unit: count
+  snippet: 508,431,905 511,144,537 1,293,425,958 1,299,999,801
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 20, Annexure-II, row Total, BSNL and MTNL September 2026
+  value: 94,296,332
+  unit: count
+  snippet: 93,670,699 94,296,332 154,854 148,226
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 8, market share paragraph
+  value: 7.26%
+  unit: percent
+  snippet: BSNL and MTNL together held a market share of 7.26%
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 11, M2M paragraph
+  value: '88.58'
+  unit: count
+  snippet: Bharti Airtel Limited has the highest number of M2M cellular mobile connections of 88.58 million
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total, rounded to six decimals
+  method: derived
+  rationale: The source publishes counts (subscribers); each share is the category count divided by the sum of the
+    listed counts (1.3e+09). The counts are kept in distribution.parameters.counts.
+- parameter: column assignment
+  value: Bharti Airtel, Reliance Communications, Vodafone Idea, BSNL, MTNL, Reliance Jio
+  method: derived
+  rationale: 'pypdf flattens the Annexure-II header, so operator columns were identified from the body: the MTNL
+    column equals the Delhi plus Mumbai cells, the private/PSU split matches page 8, and the order agrees with Annexure
+    1.1 of TRAI''s quarterly performance indicators report.'
+tests:
+- statistic: share[reliance-jio]
+  expected: 0.393188
+  tolerance: 0.004
+- statistic: share[bharti-airtel]
+  expected: 0.380224
+  tolerance: 0.004
+- statistic: share[vodafone-idea]
+  expected: 0.153938
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.002
+notes: Wireless (mobile) subscribers, including M2M cellular connections, of each access service provider at the
+  end of September 2026 from the 'Total' row of Annexure-II (page 20) of the TRAI press release; FWA subscribers
+  are excluded. Shares are the counts divided by the 1,299,999,801 total and reproduce the 92.74%/7.26% private/PSU
+  split stated on page 8. TRAI's website carries no licence statement for its press releases and reports, so the
+  entry stays at license-review.

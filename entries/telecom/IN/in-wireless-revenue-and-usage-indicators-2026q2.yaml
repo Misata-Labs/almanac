@@ -1,0 +1,298 @@
+id: in-wireless-revenue-and-usage-indicators-2026q2
+title: 'India telecom key indicators for the quarter ending June 2026: ARPU, minutes of usage, data usage, internet
+  subscribers, sector revenue (TRAI)'
+kind: rule
+domain: telecom
+region: IN
+status: license-review
+tier: B
+valid_from: '2026-04-01'
+valid_to: '2026-06-30'
+tags:
+- telecom
+- arpu
+- usage
+- data
+- internet
+- revenue
+- trai
+- reference-table
+use_cases:
+- telecom-demo
+- pricing
+- market-sizing
+- financial-reporting
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    quarter_ending: '2026-06-30'
+    rows:
+      arpu_blended:
+        value: 187.12
+        unit: currency:INR
+        description: Monthly average revenue per user, wireless, all India
+      arpu_prepaid:
+        value: 200.72
+        unit: currency:INR
+        description: Monthly ARPU, prepaid segment
+      arpu_postpaid:
+        value: 114.26
+        unit: currency:INR
+        description: Monthly ARPU, postpaid segment
+      arpu_private_operators:
+        value: 194.9
+        unit: currency:INR
+        description: Monthly ARPU, all private service providers
+      arpu_psu_operators:
+        value: 87.99
+        unit: currency:INR
+        description: Monthly ARPU, public sector operators
+      mou_per_subscriber_per_month:
+        value: 933
+        unit: integer
+        description: Minutes of usage per subscriber per month, blended
+      mou_prepaid:
+        value: 1055
+        unit: integer
+        description: Minutes of usage per prepaid subscriber per month
+      mou_postpaid:
+        value: 279
+        unit: integer
+        description: Minutes of usage per postpaid subscriber per month
+      incoming_mou_per_subscriber:
+        value: 466.37
+        unit: decimal
+        description: Incoming minutes per subscriber per month
+      outgoing_mou_per_subscriber:
+        value: 466.91
+        unit: decimal
+        description: Outgoing minutes per subscriber per month
+      outgoing_sms_per_subscriber:
+        value: 8.79
+        unit: decimal
+        description: Outgoing SMS per subscriber per month
+      prepaid_share_percent:
+        value: 83.88
+        unit: percent
+        description: Prepaid subscribers as a share of wireless subscribers
+      data_usage_gb_per_subscriber_per_month:
+        value: 28.39
+        unit: decimal
+        description: Average wireless data usage per wireless data subscriber per month, GB
+      revenue_per_gb:
+        value: 7.13
+        unit: currency:INR
+        description: Average revenue realisation per GB of wireless data
+      wireless_data_subscribers_million:
+        value: 1045.55
+        unit: count
+        description: Wireless (mobile) data subscribers at quarter end, millions
+      wireless_data_usage_petabytes:
+        value: 84424
+        unit: count
+        description: Total wireless (mobile) data usage during the quarter, PB
+      internet_subscribers_million:
+        value: 1114.17
+        unit: count
+        description: Total internet subscribers at quarter end, millions
+      broadband_subscribers_million:
+        value: 1087.5
+        unit: count
+        description: Broadband internet subscribers, millions
+      narrowband_subscribers_million:
+        value: 26.67
+        unit: count
+        description: Narrowband internet subscribers, millions
+      internet_subscribers_per_100:
+        value: 77.94
+        unit: decimal
+        description: Internet subscribers per 100 population
+      urban_internet_subscribers_per_100:
+        value: 129.03
+        unit: decimal
+        description: Urban internet subscribers per 100 population
+      rural_internet_subscribers_per_100:
+        value: 49.07
+        unit: decimal
+        description: Rural internet subscribers per 100 population
+      gross_revenue_crore:
+        value: 106797
+        unit: currency:INR
+        description: Gross revenue of the telecom service sector in the quarter, INR crore
+      adjusted_gross_revenue_crore:
+        value: 88796
+        unit: currency:INR
+        description: Adjusted gross revenue in the quarter, INR crore
+      licence_fee_crore:
+        value: 7103
+        unit: currency:INR
+        description: Licence fee in the quarter, INR crore
+      pay_dth_subscribers_million:
+        value: 48.56
+        unit: count
+        description: Active subscribers of pay DTH operators, millions
+  vectors:
+  - input:
+      key: arpu_blended
+      column: value
+    expected: 187.12
+    origin: source
+  - input:
+      key: mou_prepaid
+      column: value
+    expected: 1055
+    origin: source
+  - input:
+      key: data_usage_gb_per_subscriber_per_month
+      column: value
+    expected: 28.39
+    origin: source
+  - input: arpu_blended
+    expected: true
+    origin: source
+  - input: no-such-key
+    expected: false
+    origin: derived
+    note: keys outside the table are absent
+evidence:
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 6 (snapshot), Revenue & Usage Parameters
+  value: '187.12'
+  unit: currency:INR
+  snippet: Monthly ARPU of Wireless Service
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 8 (executive summary), paragraph 7
+  value: '200.72'
+  unit: currency:INR
+  snippet: The ARPU per month for the pre-paid segment is
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 8, paragraph 9
+  value: '1055'
+  unit: integer
+  snippet: Prepaid MOU per subscriber is 1055 and Postpaid MOU per subscriber
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 6, Revenue & Usage Parameters
+  value: 28.39 GB
+  unit: decimal
+  snippet: Average Wireless Data Usage per wireless data subscriber per month 28.39 GB
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 88 (Table 2.1), row Share of Prepaid
+  value: 83.88%
+  unit: percent
+  snippet: Share of Prepaid (%) 83.88% 84.67% 87.74%
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 88 (Table 2.1), rows Incoming and Outgoing MOU
+  value: '466.37'
+  unit: decimal
+  snippet: Incoming MOU per subscriber per month. 466.37 479.13 489.39
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 5 (snapshot), Internet/Broadband Subscribers
+  value: 1,114.17
+  unit: count
+  snippet: Total Internet Subscribers 1,114.17 million
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 5, Internet subscribers per 100 population
+  value: '77.94'
+  unit: decimal
+  snippet: Total Internet Subscribers per 100 population 77.94
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 8, paragraph 11
+  value: '1045.55'
+  unit: count
+  snippet: 1045.55 million at the end of June 2026 with quarterly rate of growth of 1.86%
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 97 (Table 3.1), rows GR, AGR and LF for the quarter ending June 2026
+  value: 88,796
+  unit: currency:INR
+  snippet: Adjusted Gross Revenue (AGR) ₹81,325 ₹86,716 ₹88,796
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 6, Broadcasting
+  value: '48.56'
+  unit: count
+  snippet: Number of total active subscribers with pay DTH operators 48.56 million
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 26
+  tolerance: 0
+- statistic: value[arpu_postpaid,value]
+  expected: 114.26
+  tolerance: 0
+- statistic: value[revenue_per_gb,value]
+  expected: 7.13
+  tolerance: 0
+notes: 'Headline indicators for the quarter ending 30 June 2026 from TRAI''s Indian Telecom Services Performance
+  Indicators report (snapshot, executive summary, Table 2.1, Table 3.1), one row per indicator with its unit. ARPU
+  is TRAI''s regulatory measure: quarterly revenue net of interconnect and roaming settlement divided by average
+  subscribers, which the report notes is lower than operators'' own ARPU. Crore values are as printed (1 crore =
+  10 million). TRAI''s website carries no licence statement for its press releases and reports, so the entry stays
+  at license-review.'

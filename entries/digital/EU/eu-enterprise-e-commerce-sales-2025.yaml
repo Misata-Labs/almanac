@@ -1,0 +1,241 @@
+id: eu-enterprise-e-commerce-sales-2025
+title: Enterprises with e-commerce and web sales and the share of turnover they earn online, enterprises with ten
+  or more employees, 2025, ten member states
+kind: rule
+domain: digital
+region: EU
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- e-commerce
+- web-sales
+- enterprises
+- digital
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- digital-channels
+- sales-generation
+- retail-demo
+- company-generation
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: isoc_ec_eseln2
+    key: A.GE10.C10-S951_X_K.E_AESELL+E_ESELL+E_AWSELL+E_AWS_B2BG+E_AWSFOR.PC_ENT.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2025'
+    sources:
+    - dataflow: isoc_ec_eseln2
+      key: A.GE10.C10-S951_X_K.E_AESELL+E_ESELL+E_AWSELL+E_AWS_B2BG+E_AWSFOR.PC_ENT.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+      columns:
+      - enterprises_with_e_commerce_sales_percent
+      - enterprises_with_e_commerce_sales_of_at_least_1_percent_of_turnover_percent
+      - enterprises_with_web_sales_percent
+      - enterprises_with_b2b_or_b2g_web_sales_percent
+      - enterprises_with_web_sales_to_foreign_countries_percent
+    - dataflow: isoc_ec_evaln2
+      key: A.GE10.C10-S951_X_K.E_AWSVAL+E_AWSVAL_B2C+E_AWSVAL_B2BG+E_AWSVAL_COWN+E_AWSVAL_CMP.PC_TURN+PC_AWSVAL.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+      columns:
+      - web_sales_share_of_turnover_percent
+      - b2c_share_of_web_sales_percent
+      - b2b_or_b2g_share_of_web_sales_percent
+      - own_website_or_app_share_of_web_sales_percent
+      - marketplace_share_of_web_sales_percent
+    rows:
+      AT:
+        name: Austria
+        enterprises_with_e_commerce_sales_percent: 29.64
+        enterprises_with_e_commerce_sales_of_at_least_1_percent_of_turnover_percent: 24.08
+        enterprises_with_web_sales_percent: 27.2
+        enterprises_with_b2b_or_b2g_web_sales_percent: 16.26
+        enterprises_with_web_sales_to_foreign_countries_percent: 16.56
+        web_sales_share_of_turnover_percent: 6.77
+        b2c_share_of_web_sales_percent: 49.31
+        b2b_or_b2g_share_of_web_sales_percent: 50.69
+        own_website_or_app_share_of_web_sales_percent: 84.02
+        marketplace_share_of_web_sales_percent: 15.98
+      BE:
+        name: Belgium
+        enterprises_with_e_commerce_sales_percent: 31.83
+        enterprises_with_e_commerce_sales_of_at_least_1_percent_of_turnover_percent: 31.22
+        enterprises_with_web_sales_percent: 26.3
+        enterprises_with_b2b_or_b2g_web_sales_percent: 20.92
+        enterprises_with_web_sales_to_foreign_countries_percent: null
+        web_sales_share_of_turnover_percent: 10.04
+        b2c_share_of_web_sales_percent: 30.97
+        b2b_or_b2g_share_of_web_sales_percent: 69.03
+        own_website_or_app_share_of_web_sales_percent: 86.44
+        marketplace_share_of_web_sales_percent: 13.56
+      DE:
+        name: Germany
+        enterprises_with_e_commerce_sales_percent: 23.11
+        enterprises_with_e_commerce_sales_of_at_least_1_percent_of_turnover_percent: 20.56
+        enterprises_with_web_sales_percent: 20.04
+        enterprises_with_b2b_or_b2g_web_sales_percent: 13.96
+        enterprises_with_web_sales_to_foreign_countries_percent: 9.11
+        web_sales_share_of_turnover_percent: 9.45
+        b2c_share_of_web_sales_percent: 57.98
+        b2b_or_b2g_share_of_web_sales_percent: 41.95
+        own_website_or_app_share_of_web_sales_percent: 80.84
+        marketplace_share_of_web_sales_percent: 19.16
+      ES:
+        name: Spain
+        enterprises_with_e_commerce_sales_percent: 28.62
+        enterprises_with_e_commerce_sales_of_at_least_1_percent_of_turnover_percent: 25.44
+        enterprises_with_web_sales_percent: 26.09
+        enterprises_with_b2b_or_b2g_web_sales_percent: 16.57
+        enterprises_with_web_sales_to_foreign_countries_percent: 8.76
+        web_sales_share_of_turnover_percent: 8.49
+        b2c_share_of_web_sales_percent: 57.77
+        b2b_or_b2g_share_of_web_sales_percent: 42.23
+        own_website_or_app_share_of_web_sales_percent: 83.54
+        marketplace_share_of_web_sales_percent: 16.46
+      FR:
+        name: France
+        enterprises_with_e_commerce_sales_percent: 19.44
+        enterprises_with_e_commerce_sales_of_at_least_1_percent_of_turnover_percent: 16.04
+        enterprises_with_web_sales_percent: 16.93
+        enterprises_with_b2b_or_b2g_web_sales_percent: null
+        enterprises_with_web_sales_to_foreign_countries_percent: null
+        web_sales_share_of_turnover_percent: 4.05
+        b2c_share_of_web_sales_percent: 51.62
+        b2b_or_b2g_share_of_web_sales_percent: 48.38
+        own_website_or_app_share_of_web_sales_percent: 89.76
+        marketplace_share_of_web_sales_percent: 10.24
+      IE:
+        name: Ireland
+        enterprises_with_e_commerce_sales_percent: 36.57
+        enterprises_with_e_commerce_sales_of_at_least_1_percent_of_turnover_percent: 32.17
+        enterprises_with_web_sales_percent: 31.74
+        enterprises_with_b2b_or_b2g_web_sales_percent: 17.32
+        enterprises_with_web_sales_to_foreign_countries_percent: 12.48
+        web_sales_share_of_turnover_percent: 25.15
+        b2c_share_of_web_sales_percent: 25.36
+        b2b_or_b2g_share_of_web_sales_percent: 74.64
+        own_website_or_app_share_of_web_sales_percent: 96.84
+        marketplace_share_of_web_sales_percent: 3.16
+      IT:
+        name: Italy
+        enterprises_with_e_commerce_sales_percent: 20.1
+        enterprises_with_e_commerce_sales_of_at_least_1_percent_of_turnover_percent: 14.75
+        enterprises_with_web_sales_percent: 17.63
+        enterprises_with_b2b_or_b2g_web_sales_percent: 12.08
+        enterprises_with_web_sales_to_foreign_countries_percent: 8.57
+        web_sales_share_of_turnover_percent: 5.34
+        b2c_share_of_web_sales_percent: 40.86
+        b2b_or_b2g_share_of_web_sales_percent: 59.14
+        own_website_or_app_share_of_web_sales_percent: 80.7
+        marketplace_share_of_web_sales_percent: 19.3
+      NL:
+        name: Netherlands
+        enterprises_with_e_commerce_sales_percent: 28.55
+        enterprises_with_e_commerce_sales_of_at_least_1_percent_of_turnover_percent: 23.93
+        enterprises_with_web_sales_percent: 24.66
+        enterprises_with_b2b_or_b2g_web_sales_percent: 18.73
+        enterprises_with_web_sales_to_foreign_countries_percent: 11.77
+        web_sales_share_of_turnover_percent: 11.32
+        b2c_share_of_web_sales_percent: 47.02
+        b2b_or_b2g_share_of_web_sales_percent: 52.98
+        own_website_or_app_share_of_web_sales_percent: 91.02
+        marketplace_share_of_web_sales_percent: 8.98
+      PL:
+        name: Poland
+        enterprises_with_e_commerce_sales_percent: 18.55
+        enterprises_with_e_commerce_sales_of_at_least_1_percent_of_turnover_percent: 14.63
+        enterprises_with_web_sales_percent: 16.81
+        enterprises_with_b2b_or_b2g_web_sales_percent: 13.27
+        enterprises_with_web_sales_to_foreign_countries_percent: 6.91
+        web_sales_share_of_turnover_percent: 6.66
+        b2c_share_of_web_sales_percent: 33.68
+        b2b_or_b2g_share_of_web_sales_percent: 66.32
+        own_website_or_app_share_of_web_sales_percent: 76.65
+        marketplace_share_of_web_sales_percent: 23.35
+      SE:
+        name: Sweden
+        enterprises_with_e_commerce_sales_percent: 36.72
+        enterprises_with_e_commerce_sales_of_at_least_1_percent_of_turnover_percent: 30.72
+        enterprises_with_web_sales_percent: 31.24
+        enterprises_with_b2b_or_b2g_web_sales_percent: 25.4
+        enterprises_with_web_sales_to_foreign_countries_percent: null
+        web_sales_share_of_turnover_percent: 12.45
+        b2c_share_of_web_sales_percent: 49.53
+        b2b_or_b2g_share_of_web_sales_percent: 50.47
+        own_website_or_app_share_of_web_sales_percent: 92.03
+        marketplace_share_of_web_sales_percent: 7.97
+  vectors:
+  - input:
+      key: DE
+      column: enterprises_with_e_commerce_sales_percent
+    expected: 23.11
+    origin: source
+  - input:
+      key: FR
+      column: enterprises_with_e_commerce_sales_percent
+    expected: 19.44
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow isoc_ec_eseln2 (e-commerce sales of enterprises by NACE Rev. 2 activity),
+    SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/isoc_ec_eseln2/A.GE10.C10-S951_X_K.E_AESELL+E_ESELL+E_AWSELL+E_AWS_B2BG+E_AWSFOR.PC_ENT.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, indic_is=E_AESELL, TIME_PERIOD=2025, OBS_VALUE
+  value: '23.11'
+  unit: percent
+  snippet: DE,2025,23.11
+  source_license: CC-BY-4.0
+  content_sha256: 81fd6751c9fb7a57a38ffd83aeeaeebb8ca4967bb5f72e7284d19a181df58917
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow isoc_ec_eseln2 (e-commerce sales of enterprises by NACE Rev. 2 activity),
+    SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/isoc_ec_eseln2/A.GE10.C10-S951_X_K.E_AESELL+E_ESELL+E_AWSELL+E_AWS_B2BG+E_AWSFOR.PC_ENT.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, indic_is=E_AESELL, TIME_PERIOD=2025, OBS_VALUE
+  value: '19.44'
+  unit: percent
+  snippet: FR,2025,19.44
+  source_license: CC-BY-4.0
+  content_sha256: 81fd6751c9fb7a57a38ffd83aeeaeebb8ca4967bb5f72e7284d19a181df58917
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow isoc_ec_evaln2 (value of e-commerce sales by NACE Rev. 2 activity), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/isoc_ec_evaln2/A.GE10.C10-S951_X_K.E_AWSVAL+E_AWSVAL_B2C+E_AWSVAL_B2BG+E_AWSVAL_COWN+E_AWSVAL_CMP.PC_TURN+PC_AWSVAL.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, indic_is=E_AWSVAL, unit=PC_TURN, TIME_PERIOD=2025, OBS_VALUE
+  value: '9.45'
+  unit: percent
+  snippet: DE,2025,9.45
+  source_license: CC-BY-4.0
+  content_sha256: c9abf56bd50b9f6e2c1bb20601e85ff2d6a6c1b0d4e9bdad396bf1fc268f87d3
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[enterprises_with_e_commerce_sales_percent]
+  expected: 36.72
+  tolerance: 0
+notes: 'Enterprise e-commerce for 2025 from the ICT usage in enterprises survey (Eurostat dataflows isoc_ec_eseln2
+  and isoc_ec_evaln2), enterprises with ten or more employees in manufacturing and services (NACE C10 to S95.1 excluding
+  K): the percentage of enterprises with any e-commerce sales, with e-commerce sales of at least one percent of
+  turnover, with web sales (websites, apps or marketplaces), with B2B or B2G web sales and with web sales to other
+  countries; and, from the value flow, the share of total turnover earned through web sales and how web sales split
+  between B2C and B2B or B2G customers and between own websites or apps and marketplaces. France withholds the foreign
+  web sales cell as unreliable, so it is null. Rows are keyed by the Eurostat geo code and carry the English country
+  name from the GEO codelist; a cell Eurostat does not publish is stored as null. Observation flags published with
+  the data: break in time series (b): NL (enterprises_with_web_sales_to_foreign_countries_percent, web_sales_share_of_turnover_percent,
+  b2b_or_b2g_share_of_web_sales_percent, marketplace_share_of_web_sales_percent, own_website_or_app_share_of_web_sales_percent).
+  Eurostat''s copyright notice states that its data are released under the Creative Commons Attribution 4.0 International
+  licence; the notice page renders dynamically and is referenced rather than hashed.'

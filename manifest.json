@@ -8,7 +8,7 @@
     "entries": "ODbL-1.0",
     "code": "Apache-2.0"
   },
-  "entry_count": 241,
+  "entry_count": 338,
   "entries": [
     {
       "id": "eu-new-passenger-car-registrations-by-motor-energy-2025",
@@ -153,6 +153,294 @@
       "valid_to": null,
       "implementation": "almanac.rules.us_vin",
       "vectors": 6
+    },
+    {
+      "id": "us-commercial-bank-charge-off-rates-2024-2025",
+      "title": "US commercial bank net charge-off rates by loan category, seasonally adjusted, quarterly 2024 to 2025",
+      "kind": "temporal",
+      "domain": "banking",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2024-01-01 to 2025-12-31",
+      "publishers": [
+        "Board of Governors of the Federal Reserve System"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "federal-reserve",
+        "charge-offs",
+        "credit-risk",
+        "quarterly-series",
+        "by-loan-category"
+      ],
+      "use_cases": [
+        "credit-risk",
+        "collections",
+        "banking-demo",
+        "loan-pricing"
+      ],
+      "path": "entries/banking/US/us-commercial-bank-charge-off-rates-2024-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/US/us-commercial-bank-charge-off-rates-2024-2025.yaml",
+      "observed_period": {
+        "start": "2024-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "all_loans"
+    },
+    {
+      "id": "us-commercial-bank-delinquency-rates-2024-2025",
+      "title": "US commercial bank delinquency rates by loan category, seasonally adjusted, quarterly 2024 to 2025",
+      "kind": "temporal",
+      "domain": "banking",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2024-01-01 to 2025-12-31",
+      "publishers": [
+        "Board of Governors of the Federal Reserve System"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "federal-reserve",
+        "delinquency",
+        "credit-risk",
+        "quarterly-series",
+        "by-loan-category"
+      ],
+      "use_cases": [
+        "credit-risk",
+        "collections",
+        "banking-demo",
+        "mortgage-origination"
+      ],
+      "path": "entries/banking/US/us-commercial-bank-delinquency-rates-2024-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/US/us-commercial-bank-delinquency-rates-2024-2025.yaml",
+      "observed_period": {
+        "start": "2024-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "all_loans"
+    },
+    {
+      "id": "us-fdic-insured-institutions-by-asset-size-class-2026q2",
+      "title": "FDIC-insured institutions by asset-size class, 2026Q2: counts, balance-sheet totals and performance ratios",
+      "kind": "rule",
+      "domain": "banking",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-06-30 to 2026-06-30",
+      "publishers": [
+        "FDIC"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "fdic",
+        "asset-size",
+        "reference-table",
+        "market-structure"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "company-generation",
+        "market-sizing",
+        "credit-risk"
+      ],
+      "path": "entries/banking/US/us-fdic-insured-institutions-by-asset-size-class-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/US/us-fdic-insured-institutions-by-asset-size-class-2026q2.yaml",
+      "valid_from": "2026-06-30",
+      "valid_to": "2026-06-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-fdic-insured-institutions-by-charter-class-2026q2",
+      "title": "FDIC-insured institutions by charter class (BKCLASS), 2026Q2",
+      "kind": "marginal",
+      "domain": "banking",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2026-06-30 to 2026-06-30",
+      "publishers": [
+        "FDIC"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "fdic",
+        "charter-class",
+        "market-structure",
+        "categorical"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "company-generation",
+        "kyb-onboarding"
+      ],
+      "path": "entries/banking/US/us-fdic-insured-institutions-by-charter-class-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/US/us-fdic-insured-institutions-by-charter-class-2026q2.yaml",
+      "observed_period": {
+        "start": "2026-06-30",
+        "end": "2026-06-30"
+      },
+      "variable": "charter_class"
+    },
+    {
+      "id": "us-fdic-insured-institutions-by-state-2026q2",
+      "title": "FDIC-insured institutions by state of headquarters, 2026Q2 (55 states and territories)",
+      "kind": "marginal",
+      "domain": "banking",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2026-06-30 to 2026-06-30",
+      "publishers": [
+        "FDIC"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "fdic",
+        "by-state",
+        "market-structure",
+        "categorical"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "company-generation",
+        "address-generation"
+      ],
+      "path": "entries/banking/US/us-fdic-insured-institutions-by-state-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/US/us-fdic-insured-institutions-by-state-2026q2.yaml",
+      "observed_period": {
+        "start": "2026-06-30",
+        "end": "2026-06-30"
+      },
+      "variable": "headquarters_state"
+    },
+    {
+      "id": "us-fdic-insured-institutions-quarterly-aggregates-2024q3-2026q2",
+      "title": "FDIC-insured institutions, industry totals by quarter: assets, deposits, loans, income items, 2024Q3 to 2026Q2",
+      "kind": "temporal",
+      "domain": "banking",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2024-09-30 to 2026-06-30",
+      "publishers": [
+        "FDIC"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "fdic",
+        "call-report",
+        "quarterly-series",
+        "balance-sheet",
+        "income-statement"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "financial-reporting",
+        "treasury",
+        "market-sizing"
+      ],
+      "path": "entries/banking/US/us-fdic-insured-institutions-quarterly-aggregates-2024q3-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/US/us-fdic-insured-institutions-quarterly-aggregates-2024q3-2026q2.yaml",
+      "observed_period": {
+        "start": "2024-09-30",
+        "end": "2026-06-30"
+      },
+      "variable": "total_assets_usd_thousands"
+    },
+    {
+      "id": "us-fdic-insured-institutions-quarterly-performance-ratios-2024q3-2026q2",
+      "title": "FDIC-insured institutions, industry performance ratios by quarter (ROA, NIM, efficiency, noncurrent, charge-off, cost of funds), 2024Q3 to 2026Q2",
+      "kind": "temporal",
+      "domain": "banking",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2024-09-30 to 2026-06-30",
+      "publishers": [
+        "FDIC"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "fdic",
+        "performance-ratios",
+        "quarterly-series",
+        "credit-risk",
+        "profitability"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "credit-risk",
+        "financial-reporting",
+        "loan-pricing"
+      ],
+      "path": "entries/banking/US/us-fdic-insured-institutions-quarterly-performance-ratios-2024q3-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/US/us-fdic-insured-institutions-quarterly-performance-ratios-2024q3-2026q2.yaml",
+      "observed_period": {
+        "start": "2024-09-30",
+        "end": "2026-06-30"
+      },
+      "variable": "return_on_assets_percent"
+    },
+    {
+      "id": "us-fdic-largest-banks-by-assets-2026q2",
+      "title": "Largest 25 FDIC-insured institutions by total assets with performance ratios, 2026Q2",
+      "kind": "rule",
+      "domain": "banking",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-06-30 to 2026-06-30",
+      "publishers": [
+        "FDIC"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "fdic",
+        "largest-banks",
+        "reference-table",
+        "performance-ratios"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "company-generation",
+        "credit-risk",
+        "kyb-onboarding"
+      ],
+      "path": "entries/banking/US/us-fdic-largest-banks-by-assets-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/US/us-fdic-largest-banks-by-assets-2026q2.yaml",
+      "valid_from": "2026-06-30",
+      "valid_to": "2026-06-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
     },
     {
       "id": "us-regulation-cc-cash-withdrawal-amount",
@@ -433,6 +721,636 @@
       "vectors": 7
     },
     {
+      "id": "at-enterprise-accounts-by-nace-2024",
+      "title": "Austria enterprise accounts by NACE Rev. 2 section and division with derived operating ratios, 2024 (Eurostat sbs_ovw_act)",
+      "kind": "rule",
+      "domain": "business",
+      "region": "AT",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "structural-business-statistics",
+        "nace",
+        "turnover",
+        "value-added",
+        "operating-margin",
+        "enterprises",
+        "eurostat",
+        "reference-table"
+      ],
+      "use_cases": [
+        "company-generation",
+        "financial-reporting",
+        "market-sizing",
+        "kyb-onboarding",
+        "sales-generation",
+        "credit-risk"
+      ],
+      "path": "entries/business/AT/at-enterprise-accounts-by-nace-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/business/AT/at-enterprise-accounts-by-nace-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "be-enterprise-accounts-by-nace-2024",
+      "title": "Belgium enterprise accounts by NACE Rev. 2 section and division with derived operating ratios, 2024 (Eurostat sbs_ovw_act)",
+      "kind": "rule",
+      "domain": "business",
+      "region": "BE",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "structural-business-statistics",
+        "nace",
+        "turnover",
+        "value-added",
+        "operating-margin",
+        "enterprises",
+        "eurostat",
+        "reference-table"
+      ],
+      "use_cases": [
+        "company-generation",
+        "financial-reporting",
+        "market-sizing",
+        "kyb-onboarding",
+        "sales-generation",
+        "credit-risk"
+      ],
+      "path": "entries/business/BE/be-enterprise-accounts-by-nace-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/business/BE/be-enterprise-accounts-by-nace-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "de-enterprise-accounts-by-nace-2024",
+      "title": "Germany enterprise accounts by NACE Rev. 2 section and division with derived operating ratios, 2024 (Eurostat sbs_ovw_act)",
+      "kind": "rule",
+      "domain": "business",
+      "region": "DE",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "structural-business-statistics",
+        "nace",
+        "turnover",
+        "value-added",
+        "operating-margin",
+        "enterprises",
+        "eurostat",
+        "reference-table"
+      ],
+      "use_cases": [
+        "company-generation",
+        "financial-reporting",
+        "market-sizing",
+        "kyb-onboarding",
+        "sales-generation",
+        "credit-risk"
+      ],
+      "path": "entries/business/DE/de-enterprise-accounts-by-nace-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/business/DE/de-enterprise-accounts-by-nace-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "es-enterprise-accounts-by-nace-2024",
+      "title": "Spain enterprise accounts by NACE Rev. 2 section and division with derived operating ratios, 2024 (Eurostat sbs_ovw_act)",
+      "kind": "rule",
+      "domain": "business",
+      "region": "ES",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "structural-business-statistics",
+        "nace",
+        "turnover",
+        "value-added",
+        "operating-margin",
+        "enterprises",
+        "eurostat",
+        "reference-table"
+      ],
+      "use_cases": [
+        "company-generation",
+        "financial-reporting",
+        "market-sizing",
+        "kyb-onboarding",
+        "sales-generation",
+        "credit-risk"
+      ],
+      "path": "entries/business/ES/es-enterprise-accounts-by-nace-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/business/ES/es-enterprise-accounts-by-nace-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "eu-enterprise-births-deaths-and-survival-2024",
+      "title": "Enterprise birth, death, churn and survival rates, total and by employee size class, 2024, ten member states",
+      "kind": "rule",
+      "domain": "business",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "business-demography",
+        "enterprise-births",
+        "enterprise-deaths",
+        "survival-rate",
+        "churn",
+        "size-class",
+        "eurostat",
+        "reference-table",
+        "by-country"
+      ],
+      "use_cases": [
+        "company-generation",
+        "kyb-onboarding",
+        "credit-risk",
+        "market-sizing",
+        "crm-demo"
+      ],
+      "path": "entries/business/EU/eu-enterprise-births-deaths-and-survival-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/business/EU/eu-enterprise-births-deaths-and-survival-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 3
+    },
+    {
+      "id": "fr-enterprise-accounts-by-nace-2024",
+      "title": "France enterprise accounts by NACE Rev. 2 section and division with derived operating ratios, 2024 (Eurostat sbs_ovw_act)",
+      "kind": "rule",
+      "domain": "business",
+      "region": "FR",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "structural-business-statistics",
+        "nace",
+        "turnover",
+        "value-added",
+        "operating-margin",
+        "enterprises",
+        "eurostat",
+        "reference-table"
+      ],
+      "use_cases": [
+        "company-generation",
+        "financial-reporting",
+        "market-sizing",
+        "kyb-onboarding",
+        "sales-generation",
+        "credit-risk"
+      ],
+      "path": "entries/business/FR/fr-enterprise-accounts-by-nace-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/business/FR/fr-enterprise-accounts-by-nace-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "ie-enterprise-accounts-by-nace-2024",
+      "title": "Ireland enterprise accounts by NACE Rev. 2 section and division with derived operating ratios, 2024 (Eurostat sbs_ovw_act)",
+      "kind": "rule",
+      "domain": "business",
+      "region": "IE",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "structural-business-statistics",
+        "nace",
+        "turnover",
+        "value-added",
+        "operating-margin",
+        "enterprises",
+        "eurostat",
+        "reference-table"
+      ],
+      "use_cases": [
+        "company-generation",
+        "financial-reporting",
+        "market-sizing",
+        "kyb-onboarding",
+        "sales-generation",
+        "credit-risk"
+      ],
+      "path": "entries/business/IE/ie-enterprise-accounts-by-nace-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/business/IE/ie-enterprise-accounts-by-nace-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "it-enterprise-accounts-by-nace-2024",
+      "title": "Italy enterprise accounts by NACE Rev. 2 section and division with derived operating ratios, 2024 (Eurostat sbs_ovw_act)",
+      "kind": "rule",
+      "domain": "business",
+      "region": "IT",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "structural-business-statistics",
+        "nace",
+        "turnover",
+        "value-added",
+        "operating-margin",
+        "enterprises",
+        "eurostat",
+        "reference-table"
+      ],
+      "use_cases": [
+        "company-generation",
+        "financial-reporting",
+        "market-sizing",
+        "kyb-onboarding",
+        "sales-generation",
+        "credit-risk"
+      ],
+      "path": "entries/business/IT/it-enterprise-accounts-by-nace-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/business/IT/it-enterprise-accounts-by-nace-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "nl-enterprise-accounts-by-nace-2024",
+      "title": "Netherlands enterprise accounts by NACE Rev. 2 section and division with derived operating ratios, 2024 (Eurostat sbs_ovw_act)",
+      "kind": "rule",
+      "domain": "business",
+      "region": "NL",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "structural-business-statistics",
+        "nace",
+        "turnover",
+        "value-added",
+        "operating-margin",
+        "enterprises",
+        "eurostat",
+        "reference-table"
+      ],
+      "use_cases": [
+        "company-generation",
+        "financial-reporting",
+        "market-sizing",
+        "kyb-onboarding",
+        "sales-generation",
+        "credit-risk"
+      ],
+      "path": "entries/business/NL/nl-enterprise-accounts-by-nace-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/business/NL/nl-enterprise-accounts-by-nace-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "pl-enterprise-accounts-by-nace-2024",
+      "title": "Poland enterprise accounts by NACE Rev. 2 section and division with derived operating ratios, 2024 (Eurostat sbs_ovw_act)",
+      "kind": "rule",
+      "domain": "business",
+      "region": "PL",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "structural-business-statistics",
+        "nace",
+        "turnover",
+        "value-added",
+        "operating-margin",
+        "enterprises",
+        "eurostat",
+        "reference-table"
+      ],
+      "use_cases": [
+        "company-generation",
+        "financial-reporting",
+        "market-sizing",
+        "kyb-onboarding",
+        "sales-generation",
+        "credit-risk"
+      ],
+      "path": "entries/business/PL/pl-enterprise-accounts-by-nace-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/business/PL/pl-enterprise-accounts-by-nace-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "se-enterprise-accounts-by-nace-2024",
+      "title": "Sweden enterprise accounts by NACE Rev. 2 section and division with derived operating ratios, 2024 (Eurostat sbs_ovw_act)",
+      "kind": "rule",
+      "domain": "business",
+      "region": "SE",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "structural-business-statistics",
+        "nace",
+        "turnover",
+        "value-added",
+        "operating-margin",
+        "enterprises",
+        "eurostat",
+        "reference-table"
+      ],
+      "use_cases": [
+        "company-generation",
+        "financial-reporting",
+        "market-sizing",
+        "kyb-onboarding",
+        "sales-generation",
+        "credit-risk"
+      ],
+      "path": "entries/business/SE/se-enterprise-accounts-by-nace-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/business/SE/se-enterprise-accounts-by-nace-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "us-irs-corporation-business-receipts-share-by-sector-2023",
+      "title": "US corporation business receipts by industrial sector, tax year 2023 (share of receipts)",
+      "kind": "marginal",
+      "domain": "business",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2023-01-01 to 2023-12-31",
+      "publishers": [
+        "Internal Revenue Service, Statistics of Income Division"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "business",
+        "corporations",
+        "irs",
+        "statistics-of-income",
+        "by-sector",
+        "categorical",
+        "revenue"
+      ],
+      "use_cases": [
+        "sales-generation",
+        "market-sizing",
+        "company-generation",
+        "invoicing"
+      ],
+      "path": "entries/business/US/us-irs-corporation-business-receipts-share-by-sector-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/business/US/us-irs-corporation-business-receipts-share-by-sector-2023.yaml",
+      "observed_period": {
+        "start": "2023-01-01",
+        "end": "2023-12-31"
+      },
+      "variable": "sector"
+    },
+    {
+      "id": "us-irs-corporation-returns-by-sector-2023",
+      "title": "US corporation income tax returns by industrial sector, tax year 2023: returns, receipts, cost of goods sold, net income, assets (19 sectors)",
+      "kind": "rule",
+      "domain": "business",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2023-01-01 to 2023-12-31",
+      "publishers": [
+        "Internal Revenue Service, Statistics of Income Division"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "business",
+        "corporations",
+        "irs",
+        "statistics-of-income",
+        "by-sector",
+        "reference-table",
+        "profit-margin"
+      ],
+      "use_cases": [
+        "company-generation",
+        "financial-reporting",
+        "market-sizing",
+        "tax-filing-demo",
+        "sales-generation"
+      ],
+      "path": "entries/business/US/us-irs-corporation-returns-by-sector-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/business/US/us-irs-corporation-returns-by-sector-2023.yaml",
+      "valid_from": "2023-01-01",
+      "valid_to": "2023-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-irs-corporation-returns-share-by-sector-2023",
+      "title": "US corporation income tax returns by industrial sector, tax year 2023 (share of returns)",
+      "kind": "marginal",
+      "domain": "business",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2023-01-01 to 2023-12-31",
+      "publishers": [
+        "Internal Revenue Service, Statistics of Income Division"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "business",
+        "corporations",
+        "irs",
+        "statistics-of-income",
+        "by-sector",
+        "categorical"
+      ],
+      "use_cases": [
+        "company-generation",
+        "kyb-onboarding",
+        "customer-segmentation"
+      ],
+      "path": "entries/business/US/us-irs-corporation-returns-share-by-sector-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/business/US/us-irs-corporation-returns-share-by-sector-2023.yaml",
+      "observed_period": {
+        "start": "2023-01-01",
+        "end": "2023-12-31"
+      },
+      "variable": "sector"
+    },
+    {
+      "id": "us-qfr-manufacturing-after-tax-margin-by-industry-2026q2",
+      "title": "US manufacturing corporations, after-tax profit per dollar of sales by NAICS industry, 2Q 2025 to 2Q 2026 (33 industries, all asset sizes)",
+      "kind": "rule",
+      "domain": "business",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-04-01 to 2026-06-30",
+      "publishers": [
+        "US Census Bureau"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "business",
+        "census",
+        "quarterly-financial-report",
+        "profit-margin",
+        "manufacturing",
+        "by-industry",
+        "reference-table"
+      ],
+      "use_cases": [
+        "company-generation",
+        "financial-reporting",
+        "sales-generation",
+        "market-sizing",
+        "pricing"
+      ],
+      "path": "entries/business/US/us-qfr-manufacturing-after-tax-margin-by-industry-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/business/US/us-qfr-manufacturing-after-tax-margin-by-industry-2026q2.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": "2026-06-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-qfr-nonmanufacturing-after-tax-margin-by-industry-2026q2",
+      "title": "US nonmanufacturing corporations with $50 million or more in assets, after-tax profit per dollar of sales by industry, 2Q 2025 to 2Q 2026 (19 industries)",
+      "kind": "rule",
+      "domain": "business",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-04-01 to 2026-06-30",
+      "publishers": [
+        "US Census Bureau"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "business",
+        "census",
+        "quarterly-financial-report",
+        "profit-margin",
+        "retail",
+        "wholesale",
+        "information",
+        "by-industry",
+        "reference-table"
+      ],
+      "use_cases": [
+        "company-generation",
+        "financial-reporting",
+        "sales-generation",
+        "market-sizing",
+        "pricing"
+      ],
+      "path": "entries/business/US/us-qfr-nonmanufacturing-after-tax-margin-by-industry-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/business/US/us-qfr-nonmanufacturing-after-tax-margin-by-industry-2026q2.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": "2026-06-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
       "id": "gb-bank-holidays",
       "title": "United Kingdom bank holidays by nation, 2019 to 2028",
       "kind": "rule",
@@ -532,6 +1450,115 @@
       "valid_to": null,
       "implementation": "almanac.rules.us_federal_holidays",
       "vectors": 10
+    },
+    {
+      "id": "gb-business-births-deaths-by-industry-2024",
+      "title": "UK business births, deaths and active enterprises by SIC 2007 division, 2024, with birth and death rates",
+      "kind": "rule",
+      "domain": "company",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "business-demography",
+        "births",
+        "deaths",
+        "sic-2007",
+        "by-industry",
+        "reference-table",
+        "ons"
+      ],
+      "use_cases": [
+        "company-generation",
+        "kyb-onboarding",
+        "market-sizing",
+        "credit-risk",
+        "customer-segmentation"
+      ],
+      "path": "entries/company/GB/gb-business-births-deaths-by-industry-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/company/GB/gb-business-births-deaths-by-industry-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "gb-business-births-deaths-by-region-2024",
+      "title": "UK business births, deaths and active enterprises by region and country, 2024, with birth and death rates",
+      "kind": "rule",
+      "domain": "company",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "business-demography",
+        "births",
+        "deaths",
+        "by-region",
+        "reference-table",
+        "ons"
+      ],
+      "use_cases": [
+        "company-generation",
+        "kyb-onboarding",
+        "market-sizing",
+        "credit-risk"
+      ],
+      "path": "entries/company/GB/gb-business-births-deaths-by-region-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/company/GB/gb-business-births-deaths-by-region-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "gb-business-survival-rates-by-region-2019-births",
+      "title": "UK survival of enterprises born in 2019 by region and country: one- to five-year survival counts and rates",
+      "kind": "rule",
+      "domain": "company",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2019-01-01 to 2024-12-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "business-demography",
+        "survival",
+        "by-region",
+        "reference-table",
+        "ons"
+      ],
+      "use_cases": [
+        "company-generation",
+        "kyb-onboarding",
+        "credit-risk",
+        "market-sizing"
+      ],
+      "path": "entries/company/GB/gb-business-survival-rates-by-region-2019-births.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/company/GB/gb-business-survival-rates-by-region-2019-births.yaml",
+      "valid_from": "2019-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
     },
     {
       "id": "gb-company-accounts-codes",
@@ -704,6 +1731,43 @@
       "vectors": 10
     },
     {
+      "id": "gb-pnfc-net-rate-of-return-quarterly",
+      "title": "UK private non-financial corporations' net rate of return, with gross, manufacturing and services rates, latest 24 quarters",
+      "kind": "temporal",
+      "domain": "company",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2019-07-01 to 2025-06-30",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "profitability",
+        "rate-of-return",
+        "corporations",
+        "ons",
+        "time-series",
+        "quarterly"
+      ],
+      "use_cases": [
+        "company-generation",
+        "financial-reporting",
+        "credit-risk",
+        "loan-pricing"
+      ],
+      "path": "entries/company/GB/gb-pnfc-net-rate-of-return-quarterly.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/company/GB/gb-pnfc-net-rate-of-return-quarterly.yaml",
+      "observed_period": {
+        "start": "2019-07-01",
+        "end": "2025-06-30"
+      },
+      "variable": "pnfc_net_rate_of_return_percent"
+    },
+    {
       "id": "gb-sic-2007-condensed-codes",
       "title": "UK Standard Industrial Classification 2007, condensed list used by Companies House (731 codes)",
       "kind": "rule",
@@ -736,6 +1800,226 @@
       "valid_to": null,
       "implementation": "almanac.rules.enumeration",
       "vectors": 4
+    },
+    {
+      "id": "in-cirp-admissions-and-closures-annual-2016-17-to-2025-26",
+      "title": "India corporate insolvency resolution processes admitted and closed per financial year, 2016-17 to 2025-26 (IBBI)",
+      "kind": "temporal",
+      "domain": "company",
+      "region": "IN",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2016-04-01 to 2026-03-31",
+      "publishers": [
+        "Insolvency and Bankruptcy Board of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "insolvency",
+        "cirp",
+        "annual",
+        "time-series",
+        "ibc",
+        "ibbi"
+      ],
+      "use_cases": [
+        "credit-risk",
+        "company-generation",
+        "demand-forecasting"
+      ],
+      "path": "entries/company/IN/in-cirp-admissions-and-closures-annual-2016-17-to-2025-26.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/company/IN/in-cirp-admissions-and-closures-annual-2016-17-to-2025-26.yaml",
+      "observed_period": {
+        "start": "2016-04-01",
+        "end": "2026-03-31"
+      },
+      "variable": "cirps_admitted"
+    },
+    {
+      "id": "in-cirp-admitted-by-sector-2026-06",
+      "title": "India corporate insolvency resolution processes admitted by sector of the corporate debtor, cumulative to 30 June 2026 (IBBI)",
+      "kind": "marginal",
+      "domain": "company",
+      "region": "IN",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2016-12-01 to 2026-06-30",
+      "publishers": [
+        "Insolvency and Bankruptcy Board of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "insolvency",
+        "cirp",
+        "sector",
+        "ibc",
+        "ibbi"
+      ],
+      "use_cases": [
+        "company-generation",
+        "credit-risk",
+        "customer-segmentation"
+      ],
+      "path": "entries/company/IN/in-cirp-admitted-by-sector-2026-06.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/company/IN/in-cirp-admitted-by-sector-2026-06.yaml",
+      "observed_period": {
+        "start": "2016-12-01",
+        "end": "2026-06-30"
+      },
+      "variable": "sector"
+    },
+    {
+      "id": "in-cirp-outcomes-by-initiator-2026-06",
+      "title": "India CIRP outcomes and creditor realisation by who initiated the process (financial creditors, operational creditors, corporate debtors), cumulative to 30 June 2026 (IBBI)",
+      "kind": "rule",
+      "domain": "company",
+      "region": "IN",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-06-30 to open",
+      "publishers": [
+        "Insolvency and Bankruptcy Board of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "insolvency",
+        "cirp",
+        "recovery",
+        "ibc",
+        "ibbi",
+        "reference-table"
+      ],
+      "use_cases": [
+        "credit-risk",
+        "collections",
+        "company-generation",
+        "loan-pricing"
+      ],
+      "path": "entries/company/IN/in-cirp-outcomes-by-initiator-2026-06.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/company/IN/in-cirp-outcomes-by-initiator-2026-06.yaml",
+      "valid_from": "2026-06-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "in-cirp-status-2026-06",
+      "title": "India corporate insolvency resolution processes by status (withdrawn, settled, resolved, liquidated, ongoing), cumulative to 30 June 2026 (IBBI)",
+      "kind": "marginal",
+      "domain": "company",
+      "region": "IN",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2016-12-01 to 2026-06-30",
+      "publishers": [
+        "Insolvency and Bankruptcy Board of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "insolvency",
+        "cirp",
+        "ibc",
+        "corporate-distress",
+        "ibbi"
+      ],
+      "use_cases": [
+        "company-generation",
+        "credit-risk",
+        "collections",
+        "kyb-onboarding"
+      ],
+      "path": "entries/company/IN/in-cirp-status-2026-06.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/company/IN/in-cirp-status-2026-06.yaml",
+      "observed_period": {
+        "start": "2016-12-01",
+        "end": "2026-06-30"
+      },
+      "variable": "cirp_status"
+    },
+    {
+      "id": "us-commercial-bank-consumer-loan-rates-2025",
+      "title": "US commercial bank interest rates on credit card plans, new auto loans and personal loans, quarterly 2025 (G.19 terms of credit)",
+      "kind": "temporal",
+      "domain": "consumer-credit",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2025-02-01 to 2025-12-31",
+      "publishers": [
+        "Board of Governors of the Federal Reserve System"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "consumer-credit",
+        "federal-reserve",
+        "g19",
+        "interest-rates",
+        "credit-cards",
+        "auto-loans",
+        "quarterly-series"
+      ],
+      "use_cases": [
+        "loan-pricing",
+        "banking-demo",
+        "automotive-demo",
+        "personal-finance",
+        "credit-risk"
+      ],
+      "path": "entries/consumer-credit/US/us-commercial-bank-consumer-loan-rates-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/consumer-credit/US/us-commercial-bank-consumer-loan-rates-2025.yaml",
+      "observed_period": {
+        "start": "2025-02-01",
+        "end": "2025-12-31"
+      },
+      "variable": "credit_card_rate_all_accounts_percent"
+    },
+    {
+      "id": "us-consumer-credit-outstanding-monthly-2025",
+      "title": "US consumer credit outstanding, seasonally adjusted, total, revolving and nonrevolving, monthly 2025 (G.19)",
+      "kind": "temporal",
+      "domain": "consumer-credit",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Board of Governors of the Federal Reserve System"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "consumer-credit",
+        "federal-reserve",
+        "g19",
+        "monthly-series",
+        "revolving-credit",
+        "nonrevolving-credit"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "credit-risk",
+        "market-sizing",
+        "financial-planning",
+        "collections"
+      ],
+      "path": "entries/consumer-credit/US/us-consumer-credit-outstanding-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/consumer-credit/US/us-consumer-credit-outstanding-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "total_consumer_credit_usd_millions"
     },
     {
       "id": "us-fcra-adverse-information-time-limits",
@@ -771,6 +2055,44 @@
       "valid_to": null,
       "implementation": "almanac.rules.lookup_table",
       "vectors": 4
+    },
+    {
+      "id": "us-finance-company-new-car-loan-terms-2025",
+      "title": "US new car loans at finance companies: average finance rate, maturity and amount financed, quarterly 2025 (G.19 terms of credit)",
+      "kind": "temporal",
+      "domain": "consumer-credit",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2025-03-01 to 2025-12-31",
+      "publishers": [
+        "Board of Governors of the Federal Reserve System"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "consumer-credit",
+        "federal-reserve",
+        "g19",
+        "auto-loans",
+        "interest-rates",
+        "quarterly-series"
+      ],
+      "use_cases": [
+        "loan-pricing",
+        "banking-demo",
+        "automotive-demo",
+        "personal-finance",
+        "credit-risk"
+      ],
+      "path": "entries/consumer-credit/US/us-finance-company-new-car-loan-terms-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/consumer-credit/US/us-finance-company-new-car-loan-terms-2025.yaml",
+      "observed_period": {
+        "start": "2025-03-01",
+        "end": "2025-12-31"
+      },
+      "variable": "average_finance_rate_percent"
     },
     {
       "id": "us-regulation-z-exemption-threshold",
@@ -2752,6 +4074,44 @@
       "vectors": 5
     },
     {
+      "id": "eu-enterprise-e-commerce-sales-2025",
+      "title": "Enterprises with e-commerce and web sales and the share of turnover they earn online, enterprises with ten or more employees, 2025, ten member states",
+      "kind": "rule",
+      "domain": "digital",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "e-commerce",
+        "web-sales",
+        "enterprises",
+        "digital",
+        "eurostat",
+        "reference-table",
+        "by-country"
+      ],
+      "use_cases": [
+        "digital-channels",
+        "sales-generation",
+        "retail-demo",
+        "company-generation",
+        "market-sizing"
+      ],
+      "path": "entries/digital/EU/eu-enterprise-e-commerce-sales-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/digital/EU/eu-enterprise-e-commerce-sales-2025.yaml",
+      "valid_from": "2025-01-01",
+      "valid_to": "2025-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 3
+    },
+    {
       "id": "eu-internet-use-by-individuals-2025",
       "title": "Internet use by individuals, 2025, ten member states",
       "kind": "rule",
@@ -2961,6 +4321,44 @@
         "end": "2025-12-31"
       },
       "variable": "ipca_monthly_percent"
+    },
+    {
+      "id": "eu-comparative-price-levels-2024",
+      "title": "Comparative price levels of household consumption by purpose and of GDP, EU27 = 100, 2024, ten member states",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "price-levels",
+        "purchasing-power-parities",
+        "prices",
+        "cost-of-living",
+        "eurostat",
+        "reference-table",
+        "by-country"
+      ],
+      "use_cases": [
+        "pricing",
+        "market-sizing",
+        "customer-segmentation",
+        "retail-demo",
+        "financial-planning"
+      ],
+      "path": "entries/economy/EU/eu-comparative-price-levels-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/EU/eu-comparative-price-levels-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 3
     },
     {
       "id": "eu-cost-of-borrowing-house-purchase-monthly-2025",
@@ -3279,6 +4677,79 @@
       "variable": "cpih_index_2015_100"
     },
     {
+      "id": "gb-gdp-quarter-on-quarter-growth-quarterly",
+      "title": "UK GDP quarter-on-quarter growth, chained volume measure, seasonally adjusted, latest 24 quarters",
+      "kind": "temporal",
+      "domain": "economy",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2020-04-01 to 2026-03-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "gdp",
+        "growth",
+        "macro",
+        "ons",
+        "time-series",
+        "quarterly"
+      ],
+      "use_cases": [
+        "market-sizing",
+        "financial-planning",
+        "demand-forecasting"
+      ],
+      "path": "entries/economy/GB/gb-gdp-quarter-on-quarter-growth-quarterly.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/GB/gb-gdp-quarter-on-quarter-growth-quarterly.yaml",
+      "observed_period": {
+        "start": "2020-04-01",
+        "end": "2026-03-31"
+      },
+      "variable": "gdp_quarter_on_quarter_growth_percent"
+    },
+    {
+      "id": "gb-household-saving-ratio-quarterly",
+      "title": "UK households' saving ratio, seasonally adjusted, latest 24 quarters",
+      "kind": "temporal",
+      "domain": "economy",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2020-04-01 to 2026-03-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "saving-ratio",
+        "households",
+        "consumer",
+        "ons",
+        "time-series",
+        "quarterly"
+      ],
+      "use_cases": [
+        "personal-finance",
+        "financial-planning",
+        "banking-demo",
+        "household-generation"
+      ],
+      "path": "entries/economy/GB/gb-household-saving-ratio-quarterly.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/GB/gb-household-saving-ratio-quarterly.yaml",
+      "observed_period": {
+        "start": "2020-04-01",
+        "end": "2026-03-31"
+      },
+      "variable": "household_saving_ratio_percent"
+    },
+    {
       "id": "gb-retail-sales-index-volume-monthly-2025",
       "title": "Great Britain retail sales index, chained volume, all retailing excluding automotive fuel, seasonally adjusted, monthly 2025",
       "kind": "temporal",
@@ -3311,6 +4782,244 @@
         "end": "2025-12-31"
       },
       "variable": "retail_sales_volume_index"
+    },
+    {
+      "id": "in-consumer-and-wholesale-price-indices-2025-26",
+      "title": "India consumer price indices (IW, new series, AL, RL) and wholesale price index, annual 2022-23 to 2024-25 and monthly April to December 2025",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2025-04-01 to 2025-12-31",
+      "publishers": [
+        "Ministry of Finance, Government of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "prices",
+        "inflation",
+        "cpi",
+        "wpi",
+        "economic-survey"
+      ],
+      "use_cases": [
+        "pricing",
+        "contract-indexation",
+        "financial-planning",
+        "demand-forecasting"
+      ],
+      "path": "entries/economy/IN/in-consumer-and-wholesale-price-indices-2025-26.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/IN/in-consumer-and-wholesale-price-indices-2025-26.yaml",
+      "valid_from": "2025-04-01",
+      "valid_to": "2025-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 6
+    },
+    {
+      "id": "in-foreign-exchange-reserves-2025-26",
+      "title": "India foreign exchange reserves by component in USD million, end of fiscal years 2022-23 to 2024-25 and end-December 2025 (Economic Survey 2025-26)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2025-04-01 to 2025-12-31",
+      "publishers": [
+        "Ministry of Finance, Government of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "reserves",
+        "fx",
+        "macro",
+        "economic-survey"
+      ],
+      "use_cases": [
+        "treasury",
+        "banking-demo",
+        "financial-planning"
+      ],
+      "path": "entries/economy/IN/in-foreign-exchange-reserves-2025-26.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/IN/in-foreign-exchange-reserves-2025-26.yaml",
+      "valid_from": "2025-04-01",
+      "valid_to": "2025-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "in-labour-force-indicators-by-state-2025-26-q2",
+      "title": "India LFPR, worker population ratio and unemployment rate (CWS, persons 15+) by state, April-June and July-September 2025 (PLFS via Economic Survey 2025-26)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2025-07-01 to 2025-09-30",
+      "publishers": [
+        "Ministry of Finance, Government of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "labour",
+        "employment",
+        "unemployment",
+        "plfs",
+        "economic-survey"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "workforce-planning",
+        "person-generation",
+        "credit-risk"
+      ],
+      "path": "entries/economy/IN/in-labour-force-indicators-by-state-2025-26-q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/IN/in-labour-force-indicators-by-state-2025-26-q2.yaml",
+      "valid_from": "2025-07-01",
+      "valid_to": "2025-09-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 6
+    },
+    {
+      "id": "in-national-income-2023-24-to-2025-26",
+      "title": "India gross and net national income, per capita NNI and GDP at current and constant prices, 2023-24 to 2025-26 (Economic Survey 2025-26)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2025-04-01 to 2026-03-31",
+      "publishers": [
+        "Ministry of Finance, Government of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "macro",
+        "national-accounts",
+        "gdp",
+        "economic-survey"
+      ],
+      "use_cases": [
+        "market-sizing",
+        "financial-planning",
+        "customer-segmentation"
+      ],
+      "path": "entries/economy/IN/in-national-income-2023-24-to-2025-26.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/IN/in-national-income-2023-24-to-2025-26.yaml",
+      "valid_from": "2025-04-01",
+      "valid_to": "2026-03-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "in-rupee-exchange-rates-2025-26",
+      "title": "Indian rupee per USD, GBP, EUR, JPY and SDR: fiscal year averages 2022-23 to 2024-25 and monthly April to November 2025 (Economic Survey 2025-26)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2025-04-01 to 2025-11-30",
+      "publishers": [
+        "Ministry of Finance, Government of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "exchange-rates",
+        "fx",
+        "inr",
+        "economic-survey"
+      ],
+      "use_cases": [
+        "multi-currency-ledger",
+        "treasury",
+        "payments-demo",
+        "pricing"
+      ],
+      "path": "entries/economy/IN/in-rupee-exchange-rates-2025-26.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/IN/in-rupee-exchange-rates-2025-26.yaml",
+      "valid_from": "2025-04-01",
+      "valid_to": "2025-11-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "in-union-budget-2026-27-at-a-glance",
+      "title": "India Union Budget 2026-27 at a glance: Central Government receipts, expenditure and deficits in INR crore (Actuals 2024-25 to BE 2026-27)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-04-01 to 2027-03-31",
+      "publishers": [
+        "Ministry of Finance, Government of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "fiscal",
+        "budget",
+        "public-finance",
+        "macro"
+      ],
+      "use_cases": [
+        "financial-planning",
+        "market-sizing",
+        "financial-reporting"
+      ],
+      "path": "entries/economy/IN/in-union-budget-2026-27-at-a-glance.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/IN/in-union-budget-2026-27-at-a-glance.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": "2027-03-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 6
+    },
+    {
+      "id": "in-upi-and-rupay-payments-2016-17-to-2025-26",
+      "title": "India UPI and RuPay card payment value and volume by fiscal year, 2016-17 to 2025-26 (April-December) (NPCI via Economic Survey 2025-26)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2025-04-01 to 2025-12-31",
+      "publishers": [
+        "Ministry of Finance, Government of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "upi",
+        "rupay",
+        "payments",
+        "digital-payments",
+        "economic-survey"
+      ],
+      "use_cases": [
+        "payments-demo",
+        "fintech-demo",
+        "digital-channels",
+        "demand-forecasting"
+      ],
+      "path": "entries/economy/IN/in-upi-and-rupay-payments-2016-17-to-2025-26.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/IN/in-upi-and-rupay-payments-2016-17-to-2025-26.yaml",
+      "valid_from": "2025-04-01",
+      "valid_to": "2025-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 6
     },
     {
       "id": "global-agriculture-value-added-share-2024",
@@ -4620,6 +6329,120 @@
       "vectors": 3
     },
     {
+      "id": "eu-gender-pay-gap-by-nace-section-2024",
+      "title": "Unadjusted gender pay gap by NACE Rev. 2 section, 2024, ten member states",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "gender-pay-gap",
+        "earnings",
+        "sex",
+        "nace",
+        "eurostat",
+        "reference-table",
+        "by-country"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "payroll-demo",
+        "person-generation",
+        "workforce-planning"
+      ],
+      "path": "entries/employment/EU/eu-gender-pay-gap-by-nace-section-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/EU/eu-gender-pay-gap-by-nace-section-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 3
+    },
+    {
+      "id": "eu-hourly-earnings-by-sex-and-occupation-group-2022",
+      "title": "Mean and median gross hourly earnings by sex and occupation group, 2022, ten member states",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2022-01-01 to 2022-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "earnings",
+        "wages",
+        "sex",
+        "occupation",
+        "structure-of-earnings-survey",
+        "eurostat",
+        "reference-table",
+        "by-country"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-analytics",
+        "person-generation",
+        "personal-finance",
+        "workforce-planning"
+      ],
+      "path": "entries/employment/EU/eu-hourly-earnings-by-sex-and-occupation-group-2022.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/EU/eu-hourly-earnings-by-sex-and-occupation-group-2022.yaml",
+      "valid_from": "2022-01-01",
+      "valid_to": "2022-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 3
+    },
+    {
+      "id": "eu-hourly-labour-cost-by-nace-section-2024",
+      "title": "Hourly labour cost by NACE Rev. 2 section and its wage and non-wage split, 2024, ten member states",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "labour-cost",
+        "wages",
+        "nace",
+        "labour",
+        "eurostat",
+        "reference-table",
+        "by-country"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-analytics",
+        "workforce-planning",
+        "pricing",
+        "company-generation"
+      ],
+      "path": "entries/employment/EU/eu-hourly-labour-cost-by-nace-section-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/EU/eu-hourly-labour-cost-by-nace-section-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 3
+    },
+    {
       "id": "eu-statutory-monthly-minimum-wages-2026s2",
       "title": "Statutory monthly minimum wages, second half of 2026, all countries reported by Eurostat",
       "kind": "rule",
@@ -4691,6 +6514,78 @@
       "variable": "youth_unemployment_rate_percent"
     },
     {
+      "id": "gb-average-weekly-earnings-total-pay-monthly-2025",
+      "title": "Great Britain average weekly earnings, whole economy, total pay, seasonally adjusted, monthly 2025",
+      "kind": "temporal",
+      "domain": "employment",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "earnings",
+        "wages",
+        "awe",
+        "pay",
+        "ons",
+        "time-series"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-analytics",
+        "personal-finance",
+        "workforce-planning"
+      ],
+      "path": "entries/employment/GB/gb-average-weekly-earnings-total-pay-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/GB/gb-average-weekly-earnings-total-pay-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "average_weekly_earnings_total_pay_gbp"
+    },
+    {
+      "id": "gb-claimant-count-monthly-2025",
+      "title": "UK claimant count, people claiming unemployment-related benefits, seasonally adjusted, thousands, monthly 2025",
+      "kind": "temporal",
+      "domain": "employment",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "claimant-count",
+        "benefits",
+        "labour",
+        "ons",
+        "time-series"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "credit-risk",
+        "market-sizing"
+      ],
+      "path": "entries/employment/GB/gb-claimant-count-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/GB/gb-claimant-count-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "claimant_count_thousands"
+    },
+    {
       "id": "gb-economic-activity-by-age-group-2025",
       "title": "UK economic activity status (in employment, unemployed, economically inactive) given age group, Labour Force Survey February to April 2025",
       "kind": "conditional",
@@ -4726,6 +6621,109 @@
         "end": "2025-04-30"
       },
       "variable": "economic_activity_status"
+    },
+    {
+      "id": "gb-economic-inactivity-rate-monthly-2025",
+      "title": "UK economic inactivity rate, aged 16 to 64, seasonally adjusted, monthly 2025",
+      "kind": "temporal",
+      "domain": "employment",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "economic-inactivity",
+        "labour",
+        "ons",
+        "time-series"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "person-generation",
+        "household-generation"
+      ],
+      "path": "entries/employment/GB/gb-economic-inactivity-rate-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/GB/gb-economic-inactivity-rate-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "economic_inactivity_rate_percent"
+    },
+    {
+      "id": "gb-employment-rate-monthly-2025",
+      "title": "UK employment rate, aged 16 to 64, seasonally adjusted, monthly 2025",
+      "kind": "temporal",
+      "domain": "employment",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "employment",
+        "labour",
+        "ons",
+        "time-series"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "workforce-planning",
+        "person-generation"
+      ],
+      "path": "entries/employment/GB/gb-employment-rate-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/GB/gb-employment-rate-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "employment_rate_percent"
+    },
+    {
+      "id": "gb-job-vacancies-monthly-2025",
+      "title": "UK job vacancies, all industries, thousands, monthly 2025",
+      "kind": "temporal",
+      "domain": "employment",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "vacancies",
+        "labour-demand",
+        "hiring",
+        "ons",
+        "time-series"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "workforce-planning",
+        "market-sizing"
+      ],
+      "path": "entries/employment/GB/gb-job-vacancies-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/GB/gb-job-vacancies-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "vacancies_thousands"
     },
     {
       "id": "gb-maximum-weekly-working-hours",
@@ -4795,6 +6793,41 @@
       "valid_to": null,
       "implementation": "almanac.rules.age_band_rates",
       "vectors": 8
+    },
+    {
+      "id": "gb-redundancy-rate-monthly-2025",
+      "title": "UK redundancy rate per 1,000 employees, seasonally adjusted, monthly 2025",
+      "kind": "temporal",
+      "domain": "employment",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "redundancies",
+        "labour",
+        "attrition",
+        "ons",
+        "time-series"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "workforce-planning",
+        "credit-risk"
+      ],
+      "path": "entries/employment/GB/gb-redundancy-rate-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/GB/gb-redundancy-rate-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "redundancy_rate_per_1000_employees"
     },
     {
       "id": "gb-statutory-holiday-entitlement",
@@ -4903,6 +6936,76 @@
       "valid_to": "2027-04-05",
       "implementation": "almanac.rules.lookup_table",
       "vectors": 6
+    },
+    {
+      "id": "gb-unemployment-rate-monthly-2025",
+      "title": "UK unemployment rate, aged 16 and over, seasonally adjusted, monthly 2025",
+      "kind": "temporal",
+      "domain": "employment",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "unemployment",
+        "labour",
+        "ons",
+        "time-series"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "credit-risk",
+        "market-sizing",
+        "person-generation"
+      ],
+      "path": "entries/employment/GB/gb-unemployment-rate-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/GB/gb-unemployment-rate-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "unemployment_rate_percent"
+    },
+    {
+      "id": "gb-vacancies-per-100-employee-jobs-monthly-2025",
+      "title": "UK job vacancies per 100 employee jobs, all industries, monthly 2025",
+      "kind": "temporal",
+      "domain": "employment",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "vacancies",
+        "labour-demand",
+        "hiring",
+        "ons",
+        "time-series"
+      ],
+      "use_cases": [
+        "hr-analytics",
+        "workforce-planning",
+        "capacity-planning"
+      ],
+      "path": "entries/employment/GB/gb-vacancies-per-100-employee-jobs-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/GB/gb-vacancies-per-100-employee-jobs-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "vacancies_per_100_employee_jobs"
     },
     {
       "id": "us-federal-minimum-wage",
@@ -5385,6 +7488,81 @@
       "vectors": 3
     },
     {
+      "id": "gb-energy-price-cap-levels-2025-2026",
+      "title": "Great Britain energy price cap, dual fuel Direct Debit level at typical consumption, cap periods from January 2025 to December 2026",
+      "kind": "rule",
+      "domain": "energy",
+      "region": "GB",
+      "tier": "B",
+      "status": "verified",
+      "validity": "2025-01-01 to 2026-12-31",
+      "publishers": [
+        "Ofgem (Office of Gas and Electricity Markets)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "energy-price-cap",
+        "ofgem",
+        "electricity",
+        "gas",
+        "step-schedule",
+        "utilities"
+      ],
+      "use_cases": [
+        "utilities-demo",
+        "household-generation",
+        "personal-finance",
+        "pricing"
+      ],
+      "path": "entries/energy/GB/gb-energy-price-cap-levels-2025-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/energy/GB/gb-energy-price-cap-levels-2025-2026.yaml",
+      "valid_from": "2025-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.step_schedule",
+      "vectors": 3
+    },
+    {
+      "id": "gb-road-fuel-pump-prices-weekly-2025",
+      "title": "UK weekly road fuel pump prices, unleaded petrol and diesel, with duty and VAT rates, 2025",
+      "kind": "temporal",
+      "domain": "energy",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-06 to 2025-12-29",
+      "publishers": [
+        "Department for Energy Security and Net Zero (GOV.UK)"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "fuel-prices",
+        "petrol",
+        "diesel",
+        "pump-prices",
+        "fuel-duty",
+        "weekly",
+        "desnz"
+      ],
+      "use_cases": [
+        "fleet-demo",
+        "automotive-demo",
+        "logistics",
+        "pricing",
+        "retail-demo"
+      ],
+      "path": "entries/energy/GB/gb-road-fuel-pump-prices-weekly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/energy/GB/gb-road-fuel-pump-prices-weekly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-06",
+        "end": "2025-12-29"
+      },
+      "variable": "ulsp_pump_price_pence_per_litre"
+    },
+    {
       "id": "global-access-to-clean-cooking-fuels-2024",
       "title": "Access to clean fuels and technologies for cooking (% of population), by economy, 2024 (World Bank, 192 economies)",
       "kind": "rule",
@@ -5650,6 +7828,44 @@
       "valid_to": "2023-12-31",
       "implementation": "almanac.rules.lookup_table",
       "vectors": 5
+    },
+    {
+      "id": "eu-hospital-discharges-and-length-of-stay-2023",
+      "title": "Hospital in-patient discharges, bed-days and average length of stay, total, somatic and psychiatric care, 2023, ten member states",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2023-01-01 to 2023-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "hospital",
+        "length-of-stay",
+        "discharges",
+        "health",
+        "eurostat",
+        "reference-table",
+        "by-country"
+      ],
+      "use_cases": [
+        "health-demo",
+        "claims-generation",
+        "clinical-records",
+        "capacity-planning",
+        "insurance"
+      ],
+      "path": "entries/healthcare/EU/eu-hospital-discharges-and-length-of-stay-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/EU/eu-hospital-discharges-and-length-of-stay-2023.yaml",
+      "valid_from": "2023-01-01",
+      "valid_to": "2023-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 3
     },
     {
       "id": "us-fda-nutrition-label-daily-values",
@@ -6440,6 +8656,44 @@
       "vectors": 3
     },
     {
+      "id": "eu-household-consumption-structure-by-coicop-2020",
+      "title": "Household consumption expenditure by COICOP division, given country, 2020 wave, nine member states (Eurostat hbs_str_t211)",
+      "kind": "conditional",
+      "domain": "income",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2020-01-01 to 2020-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "household-budget-survey",
+        "consumption",
+        "coicop",
+        "spending",
+        "eurostat",
+        "by-country"
+      ],
+      "use_cases": [
+        "household-generation",
+        "personal-finance",
+        "retail-demo",
+        "customer-segmentation",
+        "market-sizing"
+      ],
+      "path": "entries/income/EU/eu-household-consumption-structure-by-coicop-2020.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/income/EU/eu-household-consumption-structure-by-coicop-2020.yaml",
+      "observed_period": {
+        "start": "2020-01-01",
+        "end": "2020-12-31"
+      },
+      "variable": "coicop_division"
+    },
+    {
       "id": "eu-housing-cost-overburden-rate-2025",
       "title": "Housing cost overburden rate, 2025 survey year, ten member states",
       "kind": "rule",
@@ -6475,6 +8729,121 @@
       "valid_to": "2025-12-31",
       "implementation": "almanac.rules.lookup_table",
       "vectors": 3
+    },
+    {
+      "id": "eu-housing-cost-share-of-disposable-income-2025",
+      "title": "Share of housing costs in disposable household income, all households and by poverty status, 2025 survey year, ten member states",
+      "kind": "rule",
+      "domain": "income",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "housing-costs",
+        "rent",
+        "eu-silc",
+        "living-conditions",
+        "eurostat",
+        "reference-table",
+        "by-country"
+      ],
+      "use_cases": [
+        "household-generation",
+        "personal-finance",
+        "credit-risk",
+        "mortgage-origination",
+        "property-demo"
+      ],
+      "path": "entries/income/EU/eu-housing-cost-share-of-disposable-income-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/income/EU/eu-housing-cost-share-of-disposable-income-2025.yaml",
+      "valid_from": "2025-01-01",
+      "valid_to": "2025-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 3
+    },
+    {
+      "id": "us-irs-individual-income-by-agi-size-2023",
+      "title": "US individual income tax returns by size of adjusted gross income, tax year 2023: returns by filing status, AGI, average AGI, wages, interest and dividends",
+      "kind": "rule",
+      "domain": "income",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2023-01-01 to 2023-12-31",
+      "publishers": [
+        "Internal Revenue Service, Statistics of Income Division"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "income",
+        "irs",
+        "statistics-of-income",
+        "adjusted-gross-income",
+        "income-bands",
+        "reference-table"
+      ],
+      "use_cases": [
+        "person-generation",
+        "household-generation",
+        "customer-segmentation",
+        "personal-finance",
+        "payroll-demo",
+        "tax-filing-demo"
+      ],
+      "path": "entries/income/US/us-irs-individual-income-by-agi-size-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/income/US/us-irs-individual-income-by-agi-size-2023.yaml",
+      "valid_from": "2023-01-01",
+      "valid_to": "2023-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-irs-individual-returns-by-agi-size-2023",
+      "title": "US individual income tax returns by size of adjusted gross income, tax year 2023",
+      "kind": "marginal",
+      "domain": "income",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2023-01-01 to 2023-12-31",
+      "publishers": [
+        "Internal Revenue Service, Statistics of Income Division"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "income",
+        "irs",
+        "statistics-of-income",
+        "adjusted-gross-income",
+        "income-bands",
+        "categorical"
+      ],
+      "use_cases": [
+        "person-generation",
+        "household-generation",
+        "customer-segmentation",
+        "personal-finance",
+        "credit-risk",
+        "tax-filing-demo"
+      ],
+      "path": "entries/income/US/us-irs-individual-returns-by-agi-size-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/income/US/us-irs-individual-returns-by-agi-size-2023.yaml",
+      "observed_period": {
+        "start": "2023-01-01",
+        "end": "2023-12-31"
+      },
+      "variable": "agi_bracket"
     },
     {
       "id": "global-air-passengers-carried-2023",
@@ -6573,6 +8942,179 @@
       "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/infrastructure/global/global-logistics-performance-index-2022.yaml",
       "valid_from": "2022-01-01",
       "valid_to": "2022-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "in-life-insurance-individual-death-claims-outcomes-2024-25",
+      "title": "India life insurance individual death claims by outcome (paid, repudiated, rejected, unclaimed, pending), FY 2024-25 (IRDAI)",
+      "kind": "marginal",
+      "domain": "insurance",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2024-04-01 to 2025-03-31",
+      "publishers": [
+        "Insurance Regulatory and Development Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "insurance",
+        "life-insurance",
+        "claims",
+        "irdai"
+      ],
+      "use_cases": [
+        "insurance",
+        "claims-generation"
+      ],
+      "path": "entries/insurance/IN/in-life-insurance-individual-death-claims-outcomes-2024-25.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/insurance/IN/in-life-insurance-individual-death-claims-outcomes-2024-25.yaml",
+      "observed_period": {
+        "start": "2024-04-01",
+        "end": "2025-03-31"
+      },
+      "variable": "claim_outcome"
+    },
+    {
+      "id": "in-life-insurance-premium-by-segment-2024-25",
+      "title": "India life insurers' total premium by segment (life, pension, annuity, health, others), FY 2024-25 (IRDAI)",
+      "kind": "marginal",
+      "domain": "insurance",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2024-04-01 to 2025-03-31",
+      "publishers": [
+        "Insurance Regulatory and Development Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "insurance",
+        "life-insurance",
+        "premium",
+        "product-mix",
+        "irdai"
+      ],
+      "use_cases": [
+        "insurance",
+        "financial-reporting",
+        "market-sizing"
+      ],
+      "path": "entries/insurance/IN/in-life-insurance-premium-by-segment-2024-25.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/insurance/IN/in-life-insurance-premium-by-segment-2024-25.yaml",
+      "observed_period": {
+        "start": "2024-04-01",
+        "end": "2025-03-31"
+      },
+      "variable": "premium_segment"
+    },
+    {
+      "id": "in-motor-insurance-gross-direct-premium-by-insurer-2022-23",
+      "title": "India motor own-damage, motor third-party and total gross direct premium by general insurer, FY 2022-23 (IRDAI audited figures)",
+      "kind": "rule",
+      "domain": "insurance",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2022-04-01 to 2023-03-31",
+      "publishers": [
+        "Insurance Regulatory and Development Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "insurance",
+        "motor-insurance",
+        "premium",
+        "irdai",
+        "reference-table"
+      ],
+      "use_cases": [
+        "insurance",
+        "automotive-demo",
+        "company-generation",
+        "financial-reporting"
+      ],
+      "path": "entries/insurance/IN/in-motor-insurance-gross-direct-premium-by-insurer-2022-23.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/insurance/IN/in-motor-insurance-gross-direct-premium-by-insurer-2022-23.yaml",
+      "valid_from": "2022-04-01",
+      "valid_to": "2023-03-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "in-motor-third-party-premium-market-share-by-insurer-2024-25",
+      "title": "India motor third-party insurance market share by general insurer, FY 2024-25 (IRDAI, 25 insurers)",
+      "kind": "marginal",
+      "domain": "insurance",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2024-04-01 to 2025-03-31",
+      "publishers": [
+        "Insurance Regulatory and Development Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "insurance",
+        "motor-insurance",
+        "third-party",
+        "market-share",
+        "irdai"
+      ],
+      "use_cases": [
+        "insurance",
+        "automotive-demo",
+        "market-sizing",
+        "company-generation"
+      ],
+      "path": "entries/insurance/IN/in-motor-third-party-premium-market-share-by-insurer-2024-25.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/insurance/IN/in-motor-third-party-premium-market-share-by-insurer-2024-25.yaml",
+      "observed_period": {
+        "start": "2024-04-01",
+        "end": "2025-03-31"
+      },
+      "variable": "insurer"
+    },
+    {
+      "id": "in-registered-insurers-by-type-2025-03",
+      "title": "India registered insurers and reinsurers by type and ownership, 31 March 2025 (IRDAI)",
+      "kind": "rule",
+      "domain": "insurance",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2025-03-31 to open",
+      "publishers": [
+        "Insurance Regulatory and Development Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "insurance",
+        "insurers",
+        "regulator",
+        "irdai",
+        "reference-table"
+      ],
+      "use_cases": [
+        "insurance",
+        "company-generation",
+        "market-sizing"
+      ],
+      "path": "entries/insurance/IN/in-registered-insurers-by-type-2025-03.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/insurance/IN/in-registered-insurers-by-type-2025-03.yaml",
+      "valid_from": "2025-03-31",
+      "valid_to": null,
       "implementation": "almanac.rules.lookup_table",
       "vectors": 5
     },
@@ -6860,6 +9402,40 @@
       "vectors": 5
     },
     {
+      "id": "in-nps-pension-funds-and-recordkeeping-agencies-2025-03",
+      "title": "India National Pension System pension funds and central recordkeeping agencies registered with PFRDA, 31 March 2025",
+      "kind": "rule",
+      "domain": "pensions",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2025-03-31 to open",
+      "publishers": [
+        "Pension Fund Regulatory and Development Authority"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "pensions",
+        "nps",
+        "pension-funds",
+        "pfrda",
+        "reference-table"
+      ],
+      "use_cases": [
+        "pensions",
+        "financial-planning",
+        "company-generation"
+      ],
+      "path": "entries/pensions/IN/in-nps-pension-funds-and-recordkeeping-agencies-2025-03.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/pensions/IN/in-nps-pension-funds-and-recordkeeping-agencies-2025-03.yaml",
+      "valid_from": "2025-03-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
       "id": "us-social-security-full-retirement-age",
       "title": "United States Social Security full retirement age for old-age, wife's and husband's benefits by date of birth, 20 CFR 404.409(a) (13 birth-date ranges)",
       "kind": "rule",
@@ -6931,6 +9507,42 @@
       "valid_to": null,
       "implementation": "almanac.rules.enumeration",
       "vectors": 4
+    },
+    {
+      "id": "eu-house-price-index-2025",
+      "title": "House price index, annual average rate of change and level (2015 = 100), total, new and existing dwellings, 2025, ten member states",
+      "kind": "rule",
+      "domain": "property",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "house-prices",
+        "housing",
+        "property-prices",
+        "eurostat",
+        "reference-table",
+        "by-country"
+      ],
+      "use_cases": [
+        "property-demo",
+        "mortgage-origination",
+        "insurance",
+        "financial-planning"
+      ],
+      "path": "entries/property/EU/eu-house-price-index-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/property/EU/eu-house-price-index-2025.yaml",
+      "valid_from": "2025-01-01",
+      "valid_to": "2025-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 3
     },
     {
       "id": "gb-house-price-index-monthly-2025",
@@ -7409,6 +10021,80 @@
       "valid_to": "2024-12-31",
       "implementation": "almanac.rules.lookup_table",
       "vectors": 5
+    },
+    {
+      "id": "gb-internet-sales-share-of-retail-monthly-2025",
+      "title": "Great Britain internet sales as a percentage of total retail sales, monthly 2025",
+      "kind": "temporal",
+      "domain": "retail",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "retail",
+        "e-commerce",
+        "internet-sales",
+        "seasonality",
+        "ons",
+        "time-series"
+      ],
+      "use_cases": [
+        "retail-demo",
+        "digital-channels",
+        "demand-forecasting",
+        "sales-generation"
+      ],
+      "path": "entries/retail/GB/gb-internet-sales-share-of-retail-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/retail/GB/gb-internet-sales-share-of-retail-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "internet_sales_share_percent"
+    },
+    {
+      "id": "gb-rpi-average-prices-2025-01",
+      "title": "UK average retail prices of selected items (RPI average prices), January 2025, pence",
+      "kind": "rule",
+      "domain": "retail",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-01-01 to 2025-01-31",
+      "publishers": [
+        "Office for National Statistics"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "prices",
+        "retail",
+        "rpi",
+        "average-prices",
+        "reference-table",
+        "ons"
+      ],
+      "use_cases": [
+        "retail-demo",
+        "pricing",
+        "sales-generation",
+        "invoicing",
+        "personal-finance"
+      ],
+      "path": "entries/retail/GB/gb-rpi-average-prices-2025-01.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/retail/GB/gb-rpi-average-prices-2025-01.yaml",
+      "valid_from": "2025-01-01",
+      "valid_to": "2025-01-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 3
     },
     {
       "id": "gb-capital-gains-tax-rates-2026-27",
@@ -7948,6 +10634,74 @@
       "vectors": 5
     },
     {
+      "id": "in-corporate-income-tax-rates-2026-27",
+      "title": "India corporate income tax rates and surcharge for domestic and foreign companies (Paragraphs E and F, Part I-B, Finance Bill 2026), tax year 2026-27",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-04-01 to 2027-03-31",
+      "publishers": [
+        "Ministry of Finance, Government of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "corporate-tax",
+        "income-tax",
+        "surcharge",
+        "finance-bill-2026"
+      ],
+      "use_cases": [
+        "company-generation",
+        "financial-reporting",
+        "tax-filing-demo",
+        "kyb-onboarding"
+      ],
+      "path": "entries/tax/IN/in-corporate-income-tax-rates-2026-27.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/IN/in-corporate-income-tax-rates-2026-27.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": "2027-03-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 6
+    },
+    {
+      "id": "in-gst-penalty-and-prosecution-thresholds-57th-council",
+      "title": "India GST prosecution, show cause notice, penalty, pre-deposit and refund thresholds recommended by the 57th GST Council meeting, 8 October 2026",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-10-08 to open",
+      "publishers": [
+        "GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)"
+      ],
+      "source_licenses": [
+        "GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement"
+      ],
+      "tags": [
+        "gst",
+        "penalties",
+        "prosecution",
+        "thresholds",
+        "gst-council-57"
+      ],
+      "use_cases": [
+        "invoicing",
+        "audit-demo",
+        "tax-filing-demo"
+      ],
+      "path": "entries/tax/IN/in-gst-penalty-and-prosecution-thresholds-57th-council.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/IN/in-gst-penalty-and-prosecution-thresholds-57th-council.yaml",
+      "valid_from": "2026-10-08",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 6
+    },
+    {
       "id": "in-gst-rate-structure",
       "title": "India GST rate structure after the 56th GST Council meeting (merit 5%, standard 18%, de-merit 40%)",
       "kind": "rule",
@@ -7979,6 +10733,252 @@
       "valid_to": null,
       "implementation": "almanac.rules.rate_schedule",
       "vectors": 6
+    },
+    {
+      "id": "in-gst-registration-and-compliance-thresholds-57th-council",
+      "title": "India GST registration, late-fee, ARQP and e-invoicing turnover thresholds recommended by the 57th GST Council meeting, 8 October 2026",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-10-08 to open",
+      "publishers": [
+        "GST Council Secretariat (Press Information Bureau release of the Ministry of Finance)"
+      ],
+      "source_licenses": [
+        "GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement"
+      ],
+      "tags": [
+        "gst",
+        "registration",
+        "e-invoicing",
+        "thresholds",
+        "gst-council-57"
+      ],
+      "use_cases": [
+        "invoicing",
+        "kyb-onboarding",
+        "company-generation",
+        "tax-filing-demo"
+      ],
+      "path": "entries/tax/IN/in-gst-registration-and-compliance-thresholds-57th-council.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/IN/in-gst-registration-and-compliance-thresholds-57th-council.yaml",
+      "valid_from": "2026-10-08",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 6
+    },
+    {
+      "id": "in-income-tax-new-regime-slabs-2026-27",
+      "title": "India income tax slabs, default (new) regime under section 202 of the Income-tax Act, 2025, tax year 2026-27",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-04-01 to 2027-03-31",
+      "publishers": [
+        "Ministry of Finance, Government of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "income-tax",
+        "slabs",
+        "payroll",
+        "finance-bill-2026",
+        "new-regime"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-analytics",
+        "personal-finance",
+        "tax-filing-demo"
+      ],
+      "path": "entries/tax/IN/in-income-tax-new-regime-slabs-2026-27.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/IN/in-income-tax-new-regime-slabs-2026-27.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": "2027-03-31",
+      "implementation": "almanac.rules.income_tax_bands",
+      "vectors": 7
+    },
+    {
+      "id": "in-income-tax-old-regime-senior-citizen-slabs-2026-27",
+      "title": "India income tax slabs, old regime for resident individuals aged 60 to 79 (Paragraph A(II), Part I-B, Finance Bill 2026), tax year 2026-27",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-04-01 to 2027-03-31",
+      "publishers": [
+        "Ministry of Finance, Government of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "income-tax",
+        "slabs",
+        "payroll",
+        "finance-bill-2026",
+        "old-regime",
+        "senior-citizen"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-analytics",
+        "personal-finance",
+        "tax-filing-demo",
+        "pensions"
+      ],
+      "path": "entries/tax/IN/in-income-tax-old-regime-senior-citizen-slabs-2026-27.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/IN/in-income-tax-old-regime-senior-citizen-slabs-2026-27.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": "2027-03-31",
+      "implementation": "almanac.rules.income_tax_bands",
+      "vectors": 3
+    },
+    {
+      "id": "in-income-tax-old-regime-slabs-2026-27",
+      "title": "India income tax slabs, old regime for individuals below 60 (Paragraph A, Part I-B, First Schedule, Finance Bill 2026), tax year 2026-27",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-04-01 to 2027-03-31",
+      "publishers": [
+        "Ministry of Finance, Government of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "income-tax",
+        "slabs",
+        "payroll",
+        "finance-bill-2026",
+        "old-regime"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-analytics",
+        "personal-finance",
+        "tax-filing-demo"
+      ],
+      "path": "entries/tax/IN/in-income-tax-old-regime-slabs-2026-27.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/IN/in-income-tax-old-regime-slabs-2026-27.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": "2027-03-31",
+      "implementation": "almanac.rules.income_tax_bands",
+      "vectors": 4
+    },
+    {
+      "id": "in-income-tax-old-regime-super-senior-citizen-slabs-2026-27",
+      "title": "India income tax slabs, old regime for resident individuals aged 80 or more (Paragraph A(III), Part I-B, Finance Bill 2026), tax year 2026-27",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-04-01 to 2027-03-31",
+      "publishers": [
+        "Ministry of Finance, Government of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "income-tax",
+        "slabs",
+        "payroll",
+        "finance-bill-2026",
+        "old-regime",
+        "senior-citizen"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-analytics",
+        "personal-finance",
+        "tax-filing-demo",
+        "pensions"
+      ],
+      "path": "entries/tax/IN/in-income-tax-old-regime-super-senior-citizen-slabs-2026-27.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/IN/in-income-tax-old-regime-super-senior-citizen-slabs-2026-27.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": "2027-03-31",
+      "implementation": "almanac.rules.income_tax_bands",
+      "vectors": 3
+    },
+    {
+      "id": "in-income-tax-surcharge-rates-2026-27",
+      "title": "India surcharge on income tax by total-income band for individuals, HUFs, AOPs and BOIs, old and new regimes, plus 4% cess, tax year 2026-27",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-04-01 to 2027-03-31",
+      "publishers": [
+        "Ministry of Finance, Government of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "income-tax",
+        "surcharge",
+        "cess",
+        "finance-bill-2026"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-analytics",
+        "personal-finance",
+        "tax-filing-demo"
+      ],
+      "path": "entries/tax/IN/in-income-tax-surcharge-rates-2026-27.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/IN/in-income-tax-surcharge-rates-2026-27.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": "2027-03-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "in-tcs-rates-rationalised-finance-bill-2026",
+      "title": "India TCS rates under section 394(1) of the Income-tax Act, 2025 before and after the Finance Bill 2026 rationalisation, from 1 April 2026",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-04-01 to open",
+      "publishers": [
+        "Ministry of Finance, Government of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tcs",
+        "withholding",
+        "finance-bill-2026"
+      ],
+      "use_cases": [
+        "tax-filing-demo",
+        "payments-demo",
+        "accounts-payable",
+        "retail-demo"
+      ],
+      "path": "entries/tax/IN/in-tcs-rates-rationalised-finance-bill-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/IN/in-tcs-rates-rationalised-finance-bill-2026.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
     },
     {
       "id": "us-fica-tax-rates",
@@ -8013,6 +11013,462 @@
       "valid_to": null,
       "implementation": "almanac.rules.lookup_table",
       "vectors": 5
+    },
+    {
+      "id": "in-broadband-subscribers-by-provider-2026-09",
+      "title": "India broadband subscribers by service provider (top five and others), end of September 2026",
+      "kind": "marginal",
+      "domain": "telecom",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2026-09-30 to 2026-09-30",
+      "publishers": [
+        "Telecom Regulatory Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "telecom",
+        "broadband",
+        "market-share",
+        "trai"
+      ],
+      "use_cases": [
+        "telecom-demo",
+        "market-sizing",
+        "customer-segmentation"
+      ],
+      "path": "entries/telecom/IN/in-broadband-subscribers-by-provider-2026-09.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/telecom/IN/in-broadband-subscribers-by-provider-2026-09.yaml",
+      "observed_period": {
+        "start": "2026-09-30",
+        "end": "2026-09-30"
+      },
+      "variable": "broadband_provider"
+    },
+    {
+      "id": "in-mnp-porting-requests-by-service-area-2026-09",
+      "title": "India mobile number portability requests by licensed service area, September 2026",
+      "kind": "marginal",
+      "domain": "telecom",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2026-09-01 to 2026-09-30",
+      "publishers": [
+        "Telecom Regulatory Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "telecom",
+        "mnp",
+        "churn",
+        "service-area",
+        "trai"
+      ],
+      "use_cases": [
+        "telecom-demo",
+        "customer-segmentation",
+        "crm-demo"
+      ],
+      "path": "entries/telecom/IN/in-mnp-porting-requests-by-service-area-2026-09.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/telecom/IN/in-mnp-porting-requests-by-service-area-2026-09.yaml",
+      "observed_period": {
+        "start": "2026-09-01",
+        "end": "2026-09-30"
+      },
+      "variable": "service_area"
+    },
+    {
+      "id": "in-pay-dth-subscribers-by-operator-2026q2",
+      "title": "India pay DTH active subscribers by operator, 30 June 2026 (TRAI)",
+      "kind": "marginal",
+      "domain": "telecom",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2026-06-30 to 2026-06-30",
+      "publishers": [
+        "Telecom Regulatory Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "telecom",
+        "broadcasting",
+        "dth",
+        "market-share",
+        "trai"
+      ],
+      "use_cases": [
+        "telecom-demo",
+        "market-sizing",
+        "customer-segmentation"
+      ],
+      "path": "entries/telecom/IN/in-pay-dth-subscribers-by-operator-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/telecom/IN/in-pay-dth-subscribers-by-operator-2026q2.yaml",
+      "observed_period": {
+        "start": "2026-06-30",
+        "end": "2026-06-30"
+      },
+      "variable": "dth_operator"
+    },
+    {
+      "id": "in-telecom-subscribers-and-teledensity-2026-09",
+      "title": "India telephone subscribers, urban/rural split and tele-density by segment, end of September 2026 (TRAI)",
+      "kind": "rule",
+      "domain": "telecom",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-09-30 to open",
+      "publishers": [
+        "Telecom Regulatory Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "telecom",
+        "subscribers",
+        "teledensity",
+        "trai",
+        "reference-table"
+      ],
+      "use_cases": [
+        "telecom-demo",
+        "market-sizing",
+        "customer-segmentation"
+      ],
+      "path": "entries/telecom/IN/in-telecom-subscribers-and-teledensity-2026-09.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/telecom/IN/in-telecom-subscribers-and-teledensity-2026-09.yaml",
+      "valid_from": "2026-09-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "in-telephone-subscribers-by-connection-type-2026-09",
+      "title": "India telephone subscribers by connection type (consumer SIM, M2M SIM, FWA, wireline), end of September 2026",
+      "kind": "marginal",
+      "domain": "telecom",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2026-09-30 to 2026-09-30",
+      "publishers": [
+        "Telecom Regulatory Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "telecom",
+        "subscribers",
+        "m2m",
+        "fwa",
+        "trai"
+      ],
+      "use_cases": [
+        "telecom-demo",
+        "customer-segmentation"
+      ],
+      "path": "entries/telecom/IN/in-telephone-subscribers-by-connection-type-2026-09.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/telecom/IN/in-telephone-subscribers-by-connection-type-2026-09.yaml",
+      "observed_period": {
+        "start": "2026-09-30",
+        "end": "2026-09-30"
+      },
+      "variable": "connection_type"
+    },
+    {
+      "id": "in-wireless-arpu-quarterly-2025q2-2026q2",
+      "title": "India wireless ARPU, revenue per GB, minutes of usage and SMS per subscriber, quarterly June 2025 to June 2026 (TRAI)",
+      "kind": "temporal",
+      "domain": "telecom",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2025-04-01 to 2026-06-30",
+      "publishers": [
+        "Telecom Regulatory Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "telecom",
+        "arpu",
+        "usage",
+        "quarterly",
+        "time-series",
+        "trai"
+      ],
+      "use_cases": [
+        "telecom-demo",
+        "pricing",
+        "demand-forecasting"
+      ],
+      "path": "entries/telecom/IN/in-wireless-arpu-quarterly-2025q2-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/telecom/IN/in-wireless-arpu-quarterly-2025q2-2026q2.yaml",
+      "observed_period": {
+        "start": "2025-04-01",
+        "end": "2026-06-30"
+      },
+      "variable": "arpu_inr_per_month"
+    },
+    {
+      "id": "in-wireless-mobile-subscribers-by-operator-2026-09",
+      "title": "India wireless (mobile) subscribers by access service provider, end of September 2026",
+      "kind": "marginal",
+      "domain": "telecom",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2026-09-30 to 2026-09-30",
+      "publishers": [
+        "Telecom Regulatory Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "telecom",
+        "mobile",
+        "market-share",
+        "operators",
+        "trai"
+      ],
+      "use_cases": [
+        "telecom-demo",
+        "customer-segmentation",
+        "market-sizing"
+      ],
+      "path": "entries/telecom/IN/in-wireless-mobile-subscribers-by-operator-2026-09.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/telecom/IN/in-wireless-mobile-subscribers-by-operator-2026-09.yaml",
+      "observed_period": {
+        "start": "2026-09-30",
+        "end": "2026-09-30"
+      },
+      "variable": "mobile_operator"
+    },
+    {
+      "id": "in-wireless-mobile-subscribers-by-service-area-2026-09",
+      "title": "India wireless (mobile) subscribers by licensed service area (22 LSAs), end of September 2026",
+      "kind": "marginal",
+      "domain": "telecom",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2026-09-30 to 2026-09-30",
+      "publishers": [
+        "Telecom Regulatory Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "telecom",
+        "mobile",
+        "service-area",
+        "geography",
+        "trai"
+      ],
+      "use_cases": [
+        "telecom-demo",
+        "address-generation",
+        "customer-segmentation"
+      ],
+      "path": "entries/telecom/IN/in-wireless-mobile-subscribers-by-service-area-2026-09.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/telecom/IN/in-wireless-mobile-subscribers-by-service-area-2026-09.yaml",
+      "observed_period": {
+        "start": "2026-09-30",
+        "end": "2026-09-30"
+      },
+      "variable": "service_area"
+    },
+    {
+      "id": "in-wireless-prepaid-postpaid-split-2026q2",
+      "title": "India wireless subscribers by payment mode (prepaid vs postpaid), end of June 2026",
+      "kind": "marginal",
+      "domain": "telecom",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2026-06-30 to 2026-06-30",
+      "publishers": [
+        "Telecom Regulatory Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "telecom",
+        "prepaid",
+        "postpaid",
+        "trai"
+      ],
+      "use_cases": [
+        "telecom-demo",
+        "customer-segmentation",
+        "invoicing"
+      ],
+      "path": "entries/telecom/IN/in-wireless-prepaid-postpaid-split-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/telecom/IN/in-wireless-prepaid-postpaid-split-2026q2.yaml",
+      "observed_period": {
+        "start": "2026-06-30",
+        "end": "2026-06-30"
+      },
+      "variable": "payment_mode"
+    },
+    {
+      "id": "in-wireless-revenue-and-usage-indicators-2026q2",
+      "title": "India telecom key indicators for the quarter ending June 2026: ARPU, minutes of usage, data usage, internet subscribers, sector revenue (TRAI)",
+      "kind": "rule",
+      "domain": "telecom",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-04-01 to 2026-06-30",
+      "publishers": [
+        "Telecom Regulatory Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "telecom",
+        "arpu",
+        "usage",
+        "data",
+        "internet",
+        "revenue",
+        "trai",
+        "reference-table"
+      ],
+      "use_cases": [
+        "telecom-demo",
+        "pricing",
+        "market-sizing",
+        "financial-reporting"
+      ],
+      "path": "entries/telecom/IN/in-wireless-revenue-and-usage-indicators-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/telecom/IN/in-wireless-revenue-and-usage-indicators-2026q2.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": "2026-06-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "in-wireless-revenue-per-subscriber-composition-2026q2",
+      "title": "India wireless revenue per subscriber per month by component (rental, calls, SMS, data, VAS, roaming), quarter ending June 2026",
+      "kind": "marginal",
+      "domain": "telecom",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2026-04-01 to 2026-06-30",
+      "publishers": [
+        "Telecom Regulatory Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "telecom",
+        "arpu",
+        "billing",
+        "revenue-mix",
+        "trai"
+      ],
+      "use_cases": [
+        "telecom-demo",
+        "invoicing",
+        "pricing"
+      ],
+      "path": "entries/telecom/IN/in-wireless-revenue-per-subscriber-composition-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/telecom/IN/in-wireless-revenue-per-subscriber-composition-2026q2.yaml",
+      "observed_period": {
+        "start": "2026-04-01",
+        "end": "2026-06-30"
+      },
+      "variable": "revenue_component"
+    },
+    {
+      "id": "in-wireless-service-area-revenue-and-usage-2026q2",
+      "title": "India wireless prepaid share, ARPU, SMS and minutes of usage by licensed service area, quarter ending June 2026 (TRAI)",
+      "kind": "rule",
+      "domain": "telecom",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-04-01 to 2026-06-30",
+      "publishers": [
+        "Telecom Regulatory Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "telecom",
+        "arpu",
+        "usage",
+        "prepaid",
+        "service-area",
+        "trai",
+        "reference-table"
+      ],
+      "use_cases": [
+        "telecom-demo",
+        "pricing",
+        "customer-segmentation"
+      ],
+      "path": "entries/telecom/IN/in-wireless-service-area-revenue-and-usage-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/telecom/IN/in-wireless-service-area-revenue-and-usage-2026q2.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": "2026-06-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "in-wireless-subscribers-monthly-2025",
+      "title": "India wireless telephone subscribers, monthly January to November 2025 (TRAI press releases)",
+      "kind": "temporal",
+      "domain": "telecom",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2025-01-01 to 2025-11-30",
+      "publishers": [
+        "Telecom Regulatory Authority of India"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "telecom",
+        "subscribers",
+        "monthly",
+        "time-series",
+        "trai"
+      ],
+      "use_cases": [
+        "telecom-demo",
+        "demand-forecasting",
+        "market-sizing"
+      ],
+      "path": "entries/telecom/IN/in-wireless-subscribers-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/telecom/IN/in-wireless-subscribers-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-11-30"
+      },
+      "variable": "wireless_subscribers_million"
     },
     {
       "id": "global-e164-country-calling-codes-2011",
@@ -8151,6 +11607,80 @@
         "end": "2025-12-31"
       },
       "variable": "nights_spent"
+    },
+    {
+      "id": "eu-air-passengers-carried-monthly-2025",
+      "title": "Air passengers carried, all airports, monthly 2025, ten member states",
+      "kind": "temporal",
+      "domain": "transport",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "observed 2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "aviation",
+        "air-passengers",
+        "seasonality",
+        "transport",
+        "eurostat",
+        "by-country"
+      ],
+      "use_cases": [
+        "demand-forecasting",
+        "capacity-planning",
+        "logistics",
+        "sales-generation"
+      ],
+      "path": "entries/transport/EU/eu-air-passengers-carried-monthly-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/transport/EU/eu-air-passengers-carried-monthly-2025.yaml",
+      "observed_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "variable": "passengers_carried"
+    },
+    {
+      "id": "eu-road-freight-transport-2025",
+      "title": "Road freight transport: tonne-kilometres, vehicle-kilometres, tonnes and derived load factors, 2025, ten member states",
+      "kind": "rule",
+      "domain": "transport",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2025-01-01 to 2025-12-31",
+      "publishers": [
+        "Eurostat"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "road-freight",
+        "logistics",
+        "tonne-kilometres",
+        "load-factor",
+        "eurostat",
+        "reference-table",
+        "by-country"
+      ],
+      "use_cases": [
+        "logistics",
+        "fleet-demo",
+        "capacity-planning",
+        "demand-forecasting"
+      ],
+      "path": "entries/transport/EU/eu-road-freight-transport-2025.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/transport/EU/eu-road-freight-transport-2025.yaml",
+      "valid_from": "2025-01-01",
+      "valid_to": "2025-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 3
     },
     {
       "id": "us-public-debt-to-the-penny-2025",

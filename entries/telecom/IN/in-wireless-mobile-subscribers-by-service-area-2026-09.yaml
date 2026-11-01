@@ -1,0 +1,153 @@
+id: in-wireless-mobile-subscribers-by-service-area-2026-09
+title: India wireless (mobile) subscribers by licensed service area (22 LSAs), end of September 2026
+kind: marginal
+domain: telecom
+region: IN
+status: license-review
+tier: B
+observed_period:
+  start: '2026-09-30'
+  end: '2026-09-30'
+tags:
+- telecom
+- mobile
+- service-area
+- geography
+- trai
+use_cases:
+- telecom-demo
+- address-generation
+- customer-segmentation
+spec:
+  variable: service_area
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        andhra-pradesh: 0.06904
+        assam: 0.023125
+        bihar: 0.084311
+        delhi: 0.061108
+        gujarat: 0.057169
+        haryana: 0.021034
+        himachal-pradesh: 0.007311
+        jammu-and-kashmir: 0.011047
+        karnataka: 0.065718
+        kerala: 0.033296
+        kolkata: 0.017836
+        madhya-pradesh: 0.067732
+        maharashtra: 0.081076
+        mumbai: 0.031617
+        north-east: 0.010434
+        odisha: 0.030315
+        punjab: 0.027634
+        rajasthan: 0.053458
+        tamil-nadu: 0.06292
+        uttar-pradesh-east: 0.086692
+        uttar-pradesh-west: 0.051725
+        west-bengal: 0.045402
+      counts:
+        andhra-pradesh: 89751742
+        assam: 30062173
+        bihar: 109603873
+        delhi: 79440979
+        gujarat: 74319929
+        haryana: 27344809
+        himachal-pradesh: 9504254
+        jammu-and-kashmir: 14361534
+        karnataka: 85433133
+        kerala: 43284180
+        kolkata: 23187283
+        madhya-pradesh: 88051240
+        maharashtra: 105398354
+        mumbai: 41102629
+        north-east: 13564401
+        odisha: 39409301
+        punjab: 35924666
+        rajasthan: 69495053
+        tamil-nadu: 81795830
+        uttar-pradesh-east: 112699737
+        uttar-pradesh-west: 67242353
+        west-bengal: 59022348
+evidence:
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 20, Annexure-II, row Uttar Pradesh (East), total September 2026
+  value: 112,699,737
+  unit: count
+  snippet: 112,120,701 112,699,737 579,036
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 20, Annexure-II, row Himachal Pradesh, total September 2026
+  value: 9,504,254
+  unit: count
+  snippet: 9,450,851 9,504,254 53,403
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 20, Annexure-II, row Delhi, total September 2026
+  value: 79,440,979
+  unit: count
+  snippet: 78,365,095 79,440,979 1,075,884
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 20, Annexure-II, row Total
+  value: 1,299,999,801
+  unit: count
+  snippet: 1,293,425,958 1,299,999,801 6,573,843
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 14, note 3 on Delhi coverage
+  value: Ghaziabad & Noida
+  unit: text
+  snippet: Telephone subscriber data for Delhi, includes, apart from the data for the State of Delhi
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total, rounded to six decimals
+  method: derived
+  rationale: The source publishes counts (subscribers); each share is the category count divided by the sum of the
+    listed counts (1.3e+09). The counts are kept in distribution.parameters.counts.
+tests:
+- statistic: share[uttar-pradesh-east]
+  expected: 0.086692
+  tolerance: 0.004
+- statistic: share[bihar]
+  expected: 0.084311
+  tolerance: 0.004
+- statistic: share[maharashtra]
+  expected: 0.081076
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.002
+notes: 'Wireless (mobile) subscribers in each of TRAI''s 22 licensed service areas at the end of September 2026,
+  taken from the ''Total'' column of Annexure-II (page 20). Service areas are not states: Delhi includes Ghaziabad,
+  Noida, Gurgaon and Faridabad, Mumbai and Kolkata are separate from Maharashtra and West Bengal, Uttar Pradesh
+  is split East/West, and North East covers six states (page 14 notes). Shares are counts divided by the 1,299,999,801
+  total. TRAI''s website carries no licence statement for its press releases and reports, so the entry stays at
+  license-review.'

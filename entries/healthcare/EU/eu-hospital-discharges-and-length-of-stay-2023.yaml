@@ -1,0 +1,275 @@
+id: eu-hospital-discharges-and-length-of-stay-2023
+title: Hospital in-patient discharges, bed-days and average length of stay, total, somatic and psychiatric care,
+  2023, ten member states
+kind: rule
+domain: healthcare
+region: EU
+status: verified
+tier: A
+valid_from: '2023-01-01'
+valid_to: '2023-12-31'
+tags:
+- hospital
+- length-of-stay
+- discharges
+- health
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- health-demo
+- claims-generation
+- clinical-records
+- capacity-planning
+- insurance
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: hlth_co_inpagg
+    key: A.TOTAL+SOM+PSY.ALOS+DISCH+DAY_HOSP.NR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2023'
+    sources:
+    - dataflow: hlth_co_inpagg
+      key: A.TOTAL+SOM+PSY.ALOS+DISCH+DAY_HOSP.NR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+      columns:
+      - average_length_of_stay_days
+      - somatic_average_length_of_stay_days
+      - psychiatric_average_length_of_stay_days
+      - discharges
+      - somatic_discharges
+      - psychiatric_discharges
+      - bed_days
+      - somatic_bed_days
+      - psychiatric_bed_days
+    - dataflow: demo_gind
+      key: A.AVG.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+      columns:
+      - average_population
+    rows:
+      AT:
+        name: Austria
+        average_length_of_stay_days: 6.22
+        somatic_average_length_of_stay_days: 5.67
+        psychiatric_average_length_of_stay_days: 19.69
+        discharges: 1761026
+        somatic_discharges: 1691458
+        psychiatric_discharges: 69568
+        bed_days: 10956232
+        somatic_bed_days: 9586661
+        psychiatric_bed_days: 1369571
+        average_population: 9131761
+        discharges_per_100000_inhabitants: 19284.6
+        somatic_discharges_per_100000_inhabitants: 18522.8
+      BE:
+        name: Belgium
+        average_length_of_stay_days: 5.95
+        somatic_average_length_of_stay_days: 5.89
+        psychiatric_average_length_of_stay_days: 9.55
+        discharges: 1739361
+        somatic_discharges: 1711061
+        psychiatric_discharges: 28300
+        bed_days: 10343065
+        somatic_bed_days: 10072866
+        psychiatric_bed_days: 270199
+        average_population: 11779946
+        discharges_per_100000_inhabitants: 14765.4
+        somatic_discharges_per_100000_inhabitants: 14525.2
+      DE:
+        name: Germany
+        average_length_of_stay_days: 7.5
+        somatic_average_length_of_stay_days: 6.3
+        psychiatric_average_length_of_stay_days: 25.6
+        discharges: 16784064
+        somatic_discharges: 15781688
+        psychiatric_discharges: 1002376
+        bed_days: 125326704
+        somatic_bed_days: 99658019
+        psychiatric_bed_days: 25668685
+        average_population: 83287273
+        discharges_per_100000_inhabitants: 20152.0
+        somatic_discharges_per_100000_inhabitants: 18948.5
+      ES:
+        name: Spain
+        average_length_of_stay_days: 6.08
+        somatic_average_length_of_stay_days: 5.84
+        psychiatric_average_length_of_stay_days: 19.4
+        discharges: 5281931
+        somatic_discharges: 5185336
+        psychiatric_discharges: 96595
+        bed_days: 32139225
+        somatic_bed_days: 30265286
+        psychiatric_bed_days: 1873939
+        average_population: 48352528
+        discharges_per_100000_inhabitants: 10923.8
+        somatic_discharges_per_100000_inhabitants: 10724.0
+      FR:
+        name: France
+        average_length_of_stay_days: 5.53
+        somatic_average_length_of_stay_days: 5.53
+        psychiatric_average_length_of_stay_days: null
+        discharges: 9202827
+        somatic_discharges: 9202827
+        psychiatric_discharges: null
+        bed_days: 50874839
+        somatic_bed_days: 50874839
+        psychiatric_bed_days: null
+        average_population: 68552653
+        discharges_per_100000_inhabitants: 13424.5
+        somatic_discharges_per_100000_inhabitants: 13424.5
+      IE:
+        name: Ireland
+        average_length_of_stay_days: 6.0
+        somatic_average_length_of_stay_days: 5.61
+        psychiatric_average_length_of_stay_days: 21.41
+        discharges: 812545
+        somatic_discharges: 792184
+        psychiatric_discharges: 20361
+        bed_days: 4877069
+        somatic_bed_days: 4441235
+        psychiatric_bed_days: 435834
+        average_population: 5311538
+        discharges_per_100000_inhabitants: 15297.7
+        somatic_discharges_per_100000_inhabitants: 14914.4
+      IT:
+        name: Italy
+        average_length_of_stay_days: 7.1
+        somatic_average_length_of_stay_days: 7.0
+        psychiatric_average_length_of_stay_days: 11.73
+        discharges: 5594930
+        somatic_discharges: 5469413
+        psychiatric_discharges: 125517
+        bed_days: 39746846
+        somatic_bed_days: 38274846
+        psychiatric_bed_days: 1472000
+        average_population: 58984216
+        discharges_per_100000_inhabitants: 9485.5
+        somatic_discharges_per_100000_inhabitants: 9272.7
+      NL:
+        name: Netherlands
+        average_length_of_stay_days: null
+        somatic_average_length_of_stay_days: 4.84
+        psychiatric_average_length_of_stay_days: null
+        discharges: null
+        somatic_discharges: 1434859
+        psychiatric_discharges: null
+        bed_days: null
+        somatic_bed_days: 6944339
+        psychiatric_bed_days: null
+        average_population: 17877117
+        discharges_per_100000_inhabitants: null
+        somatic_discharges_per_100000_inhabitants: 8026.2
+      PL:
+        name: Poland
+        average_length_of_stay_days: 5.2
+        somatic_average_length_of_stay_days: 4.3
+        psychiatric_average_length_of_stay_days: 30.1
+        discharges: 7680715
+        somatic_discharges: 7429795
+        psychiatric_discharges: 250920
+        bed_days: 39716356
+        somatic_bed_days: 32163742
+        psychiatric_bed_days: 7552614
+        average_population: 36687353
+        discharges_per_100000_inhabitants: 20935.6
+        somatic_discharges_per_100000_inhabitants: 20251.7
+      SE:
+        name: Sweden
+        average_length_of_stay_days: 5.31
+        somatic_average_length_of_stay_days: 4.47
+        psychiatric_average_length_of_stay_days: 16.1
+        discharges: 1267176
+        somatic_discharges: 1175549
+        psychiatric_discharges: 91627
+        bed_days: 6733655
+        somatic_bed_days: 5258592
+        psychiatric_bed_days: 1475063
+        average_population: 10536632
+        discharges_per_100000_inhabitants: 12026.4
+        somatic_discharges_per_100000_inhabitants: 11156.8
+  vectors:
+  - input:
+      key: DE
+      column: average_length_of_stay_days
+    expected: 7.5
+    origin: source
+  - input:
+      key: FR
+      column: average_length_of_stay_days
+    expected: 5.53
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow hlth_co_inpagg (hospital discharges and length of stay for inpatient curative
+    care), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/hlth_co_inpagg/A.TOTAL+SOM+PSY.ALOS+DISCH+DAY_HOSP.NR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2023&endPeriod=2023&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, hlthcare=TOTAL, indic_he=ALOS, TIME_PERIOD=2023, OBS_VALUE
+  value: '7.50'
+  unit: decimal
+  snippet: DE,2023,7.50
+  source_license: CC-BY-4.0
+  content_sha256: 45ec47fa9024486802e434a213175795956e26d1ba0fc15990c0c664f08f1ed1
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow hlth_co_inpagg (hospital discharges and length of stay for inpatient curative
+    care), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/hlth_co_inpagg/A.TOTAL+SOM+PSY.ALOS+DISCH+DAY_HOSP.NR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2023&endPeriod=2023&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, hlthcare=TOTAL, indic_he=ALOS, TIME_PERIOD=2023, OBS_VALUE
+  value: '5.53'
+  unit: decimal
+  snippet: FR,2023,5.53
+  source_license: CC-BY-4.0
+  content_sha256: 45ec47fa9024486802e434a213175795956e26d1ba0fc15990c0c664f08f1ed1
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow demo_gind (population change, demographic balance and crude rates at national
+    level), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_gind/A.AVG.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2023&endPeriod=2023&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, indic_de=AVG, TIME_PERIOD=2023, OBS_VALUE
+  value: '83287273'
+  unit: count
+  snippet: DE,2023,83287273
+  source_license: CC-BY-4.0
+  content_sha256: 390c9fcbaf8af1c09e77abd5c66075c7fda942931d9550e64b0a67336c0552fd
+  role: primary
+assumed:
+- parameter: rows[*].discharges_per_100000_inhabitants
+  value: discharges * 100000 / average_population
+  method: derived
+  rationale: Eurostat's historical per-100 000 series stops at 2021; the rate is rebuilt from the published discharge
+    count and the average population of the same year.
+- parameter: rows[*].somatic_discharges_per_100000_inhabitants
+  value: somatic_discharges * 100000 / average_population
+  method: derived
+  rationale: Same construction for somatic care, which is the comparable series for countries that exclude psychiatric
+    care.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[average_length_of_stay_days]
+  expected: 7.5
+  tolerance: 0
+notes: 'Hospital in-patient activity for 2023 from Eurostat dataflow hlth_co_inpagg: average length of stay in days,
+  number of discharges and bed-days for all in-patient curative care and separately for somatic and psychiatric
+  care, with the 2023 average population from dataflow demo_gind and the derived discharges per 100 000 inhabitants.
+  The Netherlands reports somatic care only and France reports somatic care as its total, so their psychiatric cells
+  (and the Dutch totals) are null. Rows are keyed by the Eurostat geo code and carry the English country name from
+  the GEO codelist; a cell Eurostat does not publish is stored as null. Observation flags published with the data:
+  break in time series (b): DE (average_population); PL (psychiatric_average_length_of_stay_days, psychiatric_bed_days,
+  psychiatric_discharges, somatic_average_length_of_stay_days, somatic_bed_days, somatic_discharges, average_length_of_stay_days,
+  bed_days, discharges). definition differs (see metadata) (d): BE (psychiatric_average_length_of_stay_days, psychiatric_bed_days,
+  psychiatric_discharges); FR (somatic_average_length_of_stay_days, somatic_bed_days, somatic_discharges, average_length_of_stay_days,
+  bed_days, discharges). provisional (p): ES (psychiatric_average_length_of_stay_days, psychiatric_bed_days, psychiatric_discharges,
+  somatic_average_length_of_stay_days, somatic_bed_days, somatic_discharges, average_length_of_stay_days, bed_days,
+  discharges); FR (average_population). Eurostat''s copyright notice states that its data are released under the
+  Creative Commons Attribution 4.0 International licence; the notice page renders dynamically and is referenced
+  rather than hashed.'

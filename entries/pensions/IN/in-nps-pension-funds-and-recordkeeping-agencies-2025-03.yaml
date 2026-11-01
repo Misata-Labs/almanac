@@ -1,0 +1,161 @@
+id: in-nps-pension-funds-and-recordkeeping-agencies-2025-03
+title: India National Pension System pension funds and central recordkeeping agencies registered with PFRDA, 31
+  March 2025
+kind: rule
+domain: pensions
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-03-31'
+valid_to: null
+tags:
+- pensions
+- nps
+- pension-funds
+- pfrda
+- reference-table
+use_cases:
+- pensions
+- financial-planning
+- company-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    trustee_bank: Axis Bank Ltd.
+    annuity_service_providers_registered: 15
+    rows:
+      aditya-birla-pf:
+        name: Aditya Birla Sun life Pension Management Limited
+        role: pension_fund
+      axis-pf:
+        name: Axis Pension Fund
+        role: pension_fund
+      dsp-pf:
+        name: DSP Pension Fund Managers Private Limited
+        role: pension_fund
+      hdfc-pf:
+        name: HDFC Pension Management Company Limited
+        role: pension_fund
+      icici-pf:
+        name: ICICI Prudential Pension Funds Management Company Limited
+        role: pension_fund
+      kotak-pf:
+        name: Kotak Mahindra Pension Fund Limited
+        role: pension_fund
+      lic-pf:
+        name: LIC Pension Fund Limited
+        role: pension_fund
+      max-life-pf:
+        name: Max Life Pension Fund Management Limited
+        role: pension_fund
+      sbi-pf:
+        name: SBI Pension Funds Private Limited
+        role: pension_fund
+      tata-pf:
+        name: TATA Pension Management Limited
+        role: pension_fund
+      uti-pf:
+        name: UTI Retirement Solution Limited
+        role: pension_fund
+      pcra:
+        name: Protean eGov Technologies Limited
+        role: central_recordkeeping_agency
+      kfin:
+        name: KFin Technologies Limited
+        role: central_recordkeeping_agency
+      cams:
+        name: Computer Age Management Services Limited
+        role: central_recordkeeping_agency
+  vectors:
+  - input:
+      key: sbi-pf
+      column: name
+    expected: SBI Pension Funds Private Limited
+    origin: source
+  - input:
+      key: cams
+      column: role
+    expected: central_recordkeeping_agency
+    origin: source
+  - input:
+      key: hdfc-pf
+      column: role
+    expected: pension_fund
+    origin: source
+  - input: aditya-birla-pf
+    expected: true
+    origin: source
+  - input: no-such-key
+    expected: false
+    origin: derived
+    note: keys outside the table are absent
+evidence:
+- publisher: Pension Fund Regulatory and Development Authority
+  title: Handbook of National Pension System Statistics 2025
+  url: https://www.pfrda.org.in/documents/33652/203559/HoNPSS+2024-25.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 6, Table 2 (list of pension funds), row SBI PF
+  value: SBI Pension Funds Private Limited
+  unit: text
+  snippet: SBI PF SBI Pension Funds Private Limited
+  source_license: unstated
+  content_sha256: 279f99adfa33e207fdeb7cb80b76fd2a4ee69cb7bd01aa2abcf529fb9a548fa2
+  role: primary
+- publisher: Pension Fund Regulatory and Development Authority
+  title: Handbook of National Pension System Statistics 2025
+  url: https://www.pfrda.org.in/documents/33652/203559/HoNPSS+2024-25.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 6, Table 2, row UTI PF and caption
+  value: UTI Retirement Solution Limited
+  unit: text
+  snippet: 'Table 2: List of Pension Funds registered with PFRDA as on 31st March 2025'
+  source_license: unstated
+  content_sha256: 279f99adfa33e207fdeb7cb80b76fd2a4ee69cb7bd01aa2abcf529fb9a548fa2
+  role: primary
+- publisher: Pension Fund Regulatory and Development Authority
+  title: Handbook of National Pension System Statistics 2025
+  url: https://www.pfrda.org.in/documents/33652/203559/HoNPSS+2024-25.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 6, Table 3 (list of CRAs), row CAMS and caption
+  value: Computer Age Management Services Limited
+  unit: text
+  snippet: 'Table 3: List of CRAs registered with PFRDA as on 31st March 2025'
+  source_license: unstated
+  content_sha256: 279f99adfa33e207fdeb7cb80b76fd2a4ee69cb7bd01aa2abcf529fb9a548fa2
+  role: primary
+- publisher: Pension Fund Regulatory and Development Authority
+  title: Handbook of National Pension System Statistics 2025
+  url: https://www.pfrda.org.in/documents/33652/203559/HoNPSS+2024-25.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 18, Overview of NPS Architecture, paragraph (c)
+  value: Ten Pension Fund Managers
+  unit: text
+  snippet: Ten Pension Fund Managers are registered with PFRDA.
+  source_license: unstated
+  content_sha256: 279f99adfa33e207fdeb7cb80b76fd2a4ee69cb7bd01aa2abcf529fb9a548fa2
+  role: primary
+- publisher: Pension Fund Regulatory and Development Authority
+  title: Handbook of National Pension System Statistics 2025
+  url: https://www.pfrda.org.in/documents/33652/203559/HoNPSS+2024-25.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 19, paragraph (f)
+  value: fifteen ASPs
+  unit: text
+  snippet: Currently, there are fifteen ASPs registered with PFRDA.
+  source_license: unstated
+  content_sha256: 279f99adfa33e207fdeb7cb80b76fd2a4ee69cb7bd01aa2abcf529fb9a548fa2
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 14
+  tolerance: 0
+notes: The pension fund managers (Table 2) and central recordkeeping agencies (Table 3) registered with PFRDA as
+  on 31 March 2025, from the Handbook of National Pension System Statistics 2025, keyed by the handbook's own acronyms.
+  Table 2 lists eleven pension funds while the architecture overview on page 18 says ten are registered; both statements
+  are in the same document and the discrepancy is left for the reader. The handbook names Axis Bank as NPS Trustee
+  Bank and says fifteen annuity service providers are registered. PFRDA states no licence for the handbook, so the
+  entry stays at license-review.

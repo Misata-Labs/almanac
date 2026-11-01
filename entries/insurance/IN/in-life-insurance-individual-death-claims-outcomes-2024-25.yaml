@@ -1,0 +1,104 @@
+id: in-life-insurance-individual-death-claims-outcomes-2024-25
+title: India life insurance individual death claims by outcome (paid, repudiated, rejected, unclaimed, pending),
+  FY 2024-25 (IRDAI)
+kind: marginal
+domain: insurance
+region: IN
+status: license-review
+tier: B
+observed_period:
+  start: '2024-04-01'
+  end: '2025-03-31'
+tags:
+- insurance
+- life-insurance
+- claims
+- irdai
+use_cases:
+- insurance
+- claims-generation
+spec:
+  variable: claim_outcome
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        paid: 0.9782
+        repudiated: 0.0101
+        rejected: 0.0066
+        unclaimed: 0.0002
+        pending_at_year_end: 0.0048
+      counts:
+        paid: 1011880
+        repudiated: 10494
+        rejected: 6839
+        unclaimed: 243
+        pending_at_year_end: 4999
+      total_individual_claims: 1034455
+      group_business:
+        total_lives: 1633833
+        paid: 1628641
+        repudiated: 3880
+        rejected: 275
+        pending_at_year_end: 1037
+        paid_percent: 99.68
+evidence:
+- publisher: Insurance Regulatory and Development Authority of India
+  title: IRDAI Annual Report 2024-25
+  url: https://irdai.gov.in/documents/37343/366637/%E0%A4%86%E0%A4%88%E0%A4%86%E0%A4%B0%E0%A4%A1%E0%A5%80%E0%A4%8F%E0%A4%86%E0%A4%88+%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%B7%E0%A4%BF%E0%A4%95+%E0%A4%B0%E0%A4%BF%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F+_+IRDAI+Annual+Report+2024-25.pdf/06f02832-66a3-6308-a16f-f46a6640fc93?version=2.0&t=1767598639163&download=true
+  accessed_at: '2026-10-31'
+  locator: PDF page 250 (printed page 18), Table I.11, Individual Business, number of policies
+  value: 10,11,880
+  unit: count
+  snippet: Individual Number of Policies 10,34,455 10,11,880 10,494 6,839 243 4,999
+  source_license: unstated
+  content_sha256: 301eaa018543cca2384a502125e3bdf03c92b78b640e853b314c97b07df13ed7
+  role: primary
+- publisher: Insurance Regulatory and Development Authority of India
+  title: IRDAI Annual Report 2024-25
+  url: https://irdai.gov.in/documents/37343/366637/%E0%A4%86%E0%A4%88%E0%A4%86%E0%A4%B0%E0%A4%A1%E0%A5%80%E0%A4%8F%E0%A4%86%E0%A4%88+%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%B7%E0%A4%BF%E0%A4%95+%E0%A4%B0%E0%A4%BF%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F+_+IRDAI+Annual+Report+2024-25.pdf/06f02832-66a3-6308-a16f-f46a6640fc93?version=2.0&t=1767598639163&download=true
+  accessed_at: '2026-10-31'
+  locator: PDF page 250, Table I.11, Individual Business, per cent
+  value: '97.82'
+  unit: percent
+  snippet: Business In Per cent 100 97.82 1.01 0.66 0.02 0.48
+  source_license: unstated
+  content_sha256: 301eaa018543cca2384a502125e3bdf03c92b78b640e853b314c97b07df13ed7
+  role: primary
+- publisher: Insurance Regulatory and Development Authority of India
+  title: IRDAI Annual Report 2024-25
+  url: https://irdai.gov.in/documents/37343/366637/%E0%A4%86%E0%A4%88%E0%A4%86%E0%A4%B0%E0%A4%A1%E0%A5%80%E0%A4%8F%E0%A4%86%E0%A4%88+%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%B7%E0%A4%BF%E0%A4%95+%E0%A4%B0%E0%A4%BF%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F+_+IRDAI+Annual+Report+2024-25.pdf/06f02832-66a3-6308-a16f-f46a6640fc93?version=2.0&t=1767598639163&download=true
+  accessed_at: '2026-10-31'
+  locator: PDF page 250, Table I.11, Group Business, number of lives
+  value: 16,28,641
+  unit: count
+  snippet: Group Number of Lives 16,33,833 16,28,641 3,880 275 - 1,037
+  source_license: unstated
+  content_sha256: 301eaa018543cca2384a502125e3bdf03c92b78b640e853b314c97b07df13ed7
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: published percentage / 100
+  method: derived
+  rationale: Table I.11 prints each outcome as a percentage of total claims; the ratios are those percentages divided
+    by 100.
+tests:
+- statistic: share[paid]
+  expected: 0.9782
+  tolerance: 0.004
+- statistic: share[repudiated]
+  expected: 0.0101
+  tolerance: 0.004
+- statistic: share[rejected]
+  expected: 0.0066
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.002
+notes: 'Outcome of individual-business death claims handled by Indian life insurers in FY 2024-25 from Table I.11
+  of the IRDAI Annual Report 2024-25: of 10,34,455 claims (Indian digit grouping, 1,034,455), the shares paid, repudiated
+  (section 45 of the Insurance Act), rejected on policy terms, unclaimed and pending at year end are the published
+  percentages divided by 100 (they sum to 0.9999). The policy counts and the group-business figures (16,33,833 lives,
+  99.68% paid) are kept in parameters. Sahara India Life is excluded by the source. IRDAI publishes the document
+  without a licence statement, so the entry stays at license-review.'

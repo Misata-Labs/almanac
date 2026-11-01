@@ -1,0 +1,266 @@
+id: eu-comparative-price-levels-2024
+title: Comparative price levels of household consumption by purpose and of GDP, EU27 = 100, 2024, ten member states
+kind: rule
+domain: economy
+region: EU
+status: verified
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- price-levels
+- purchasing-power-parities
+- prices
+- cost-of-living
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- pricing
+- market-sizing
+- customer-segmentation
+- retail-demo
+- financial-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: prc_ppp_ind
+    key: A.PLI_EU27_2020.E011+A0101+A0102+A0103+A0104+A0105+A0106+A0107+A0108+A0109+A0110+A0111+A0112+GDP.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2024'
+    sources:
+    - dataflow: prc_ppp_ind
+      key: A.PLI_EU27_2020.E011+A0101+A0102+A0103+A0104+A0105+A0106+A0107+A0108+A0109+A0110+A0111+A0112+GDP.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+      columns:
+      - household_final_consumption
+      - food_and_non_alcoholic_beverages
+      - alcohol_tobacco_and_narcotics
+      - clothing_and_footwear
+      - housing_water_electricity_gas_and_fuels
+      - household_furnishings_and_equipment
+      - health
+      - transport
+      - communication
+      - recreation_and_culture
+      - education
+      - restaurants_and_hotels
+      - miscellaneous_goods_and_services
+      - gross_domestic_product
+    rows:
+      AT:
+        name: Austria
+        household_final_consumption: 112.8
+        food_and_non_alcoholic_beverages: 110.5
+        alcohol_tobacco_and_narcotics: 90.4
+        clothing_and_footwear: 105.7
+        housing_water_electricity_gas_and_fuels: 113.3
+        household_furnishings_and_equipment: 110.6
+        health: 148.4
+        transport: 109.1
+        communication: 111.9
+        recreation_and_culture: 118.3
+        education: 162.8
+        restaurants_and_hotels: 110.0
+        miscellaneous_goods_and_services: 116.4
+        gross_domestic_product: 114.8
+      BE:
+        name: Belgium
+        household_final_consumption: 116.5
+        food_and_non_alcoholic_beverages: 105.3
+        alcohol_tobacco_and_narcotics: 124.2
+        clothing_and_footwear: 98.2
+        housing_water_electricity_gas_and_fuels: 130.8
+        household_furnishings_and_equipment: 104.3
+        health: 120.8
+        transport: 108.4
+        communication: 168.6
+        recreation_and_culture: 106.3
+        education: 153.7
+        restaurants_and_hotels: 124.2
+        miscellaneous_goods_and_services: 112.7
+        gross_domestic_product: 112.3
+      DE:
+        name: Germany
+        household_final_consumption: 108.6
+        food_and_non_alcoholic_beverages: 102.7
+        alcohol_tobacco_and_narcotics: 99.6
+        clothing_and_footwear: 101.2
+        housing_water_electricity_gas_and_fuels: 113.1
+        household_furnishings_and_equipment: 107.1
+        health: 111.9
+        transport: 109.7
+        communication: 136.0
+        recreation_and_culture: 107.0
+        education: 122.0
+        restaurants_and_hotels: 112.1
+        miscellaneous_goods_and_services: 104.0
+        gross_domestic_product: 111.7
+      ES:
+        name: Spain
+        household_final_consumption: 90.9
+        food_and_non_alcoholic_beverages: 95.2
+        alcohol_tobacco_and_narcotics: 86.3
+        clothing_and_footwear: 90.9
+        housing_water_electricity_gas_and_fuels: 96.5
+        household_furnishings_and_equipment: 93.2
+        health: 96.4
+        transport: 87.4
+        communication: 94.6
+        recreation_and_culture: 94.2
+        education: 86.3
+        restaurants_and_hotels: 83.9
+        miscellaneous_goods_and_services: 89.4
+        gross_domestic_product: 89.7
+      FR:
+        name: France
+        household_final_consumption: 111.2
+        food_and_non_alcoholic_beverages: 110.1
+        alcohol_tobacco_and_narcotics: 137.1
+        clothing_and_footwear: 97.8
+        housing_water_electricity_gas_and_fuels: 122.5
+        household_furnishings_and_equipment: 107.7
+        health: 98.9
+        transport: 108.9
+        communication: 82.2
+        recreation_and_culture: 105.7
+        education: 97.3
+        restaurants_and_hotels: 110.0
+        miscellaneous_goods_and_services: 102.1
+        gross_domestic_product: 108.9
+      IE:
+        name: Ireland
+        household_final_consumption: 138.1
+        food_and_non_alcoholic_beverages: 114.5
+        alcohol_tobacco_and_narcotics: 204.5
+        clothing_and_footwear: 100.2
+        housing_water_electricity_gas_and_fuels: 187.3
+        household_furnishings_and_equipment: 110.8
+        health: 178.7
+        transport: 108.7
+        communication: 139.8
+        recreation_and_culture: 113.4
+        education: 119.5
+        restaurants_and_hotels: 129.3
+        miscellaneous_goods_and_services: 137.5
+        gross_domestic_product: 118.4
+      IT:
+        name: Italy
+        household_final_consumption: 97.5
+        food_and_non_alcoholic_beverages: 101.7
+        alcohol_tobacco_and_narcotics: 87.7
+        clothing_and_footwear: 106.9
+        housing_water_electricity_gas_and_fuels: 93.4
+        household_furnishings_and_equipment: 96.6
+        health: 116.6
+        transport: 95.7
+        communication: 85.7
+        recreation_and_culture: 93.9
+        education: 90.3
+        restaurants_and_hotels: 106.9
+        miscellaneous_goods_and_services: 96.6
+        gross_domestic_product: 95.7
+      NL:
+        name: Netherlands
+        household_final_consumption: 116.0
+        food_and_non_alcoholic_beverages: 98.9
+        alcohol_tobacco_and_narcotics: 126.9
+        clothing_and_footwear: 93.0
+        housing_water_electricity_gas_and_fuels: 129.8
+        household_furnishings_and_equipment: 101.1
+        health: 139.8
+        transport: 112.9
+        communication: 134.2
+        recreation_and_culture: 112.4
+        education: 150.3
+        restaurants_and_hotels: 124.6
+        miscellaneous_goods_and_services: 119.7
+        gross_domestic_product: 117.2
+      PL:
+        name: Poland
+        household_final_consumption: 72.2
+        food_and_non_alcoholic_beverages: 86.8
+        alcohol_tobacco_and_narcotics: 82.9
+        clothing_and_footwear: 103.1
+        housing_water_electricity_gas_and_fuels: 49.2
+        household_furnishings_and_equipment: 87.5
+        health: 68.2
+        transport: 79.6
+        communication: 56.1
+        recreation_and_culture: 69.3
+        education: 65.1
+        restaurants_and_hotels: 91.7
+        miscellaneous_goods_and_services: 70.0
+        gross_domestic_product: 71.9
+      SE:
+        name: Sweden
+        household_final_consumption: 115.1
+        food_and_non_alcoholic_beverages: 106.4
+        alcohol_tobacco_and_narcotics: 121.5
+        clothing_and_footwear: 120.6
+        housing_water_electricity_gas_and_fuels: 112.0
+        household_furnishings_and_equipment: 109.4
+        health: 155.8
+        transport: 111.1
+        communication: 143.1
+        recreation_and_culture: 118.0
+        education: 161.8
+        restaurants_and_hotels: 116.7
+        miscellaneous_goods_and_services: 123.1
+        gross_domestic_product: 117.6
+  vectors:
+  - input:
+      key: DE
+      column: household_final_consumption
+    expected: 108.6
+    origin: source
+  - input:
+      key: FR
+      column: household_final_consumption
+    expected: 111.2
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow prc_ppp_ind (purchasing power parities, price level indices, nominal and
+    real expenditures by analytical categories), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/prc_ppp_ind/A.PLI_EU27_2020.E011+A0101+A0102+A0103+A0104+A0105+A0106+A0107+A0108+A0109+A0110+A0111+A0112+GDP.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, ppp_cat=E011, TIME_PERIOD=2024, OBS_VALUE
+  value: '108.6'
+  unit: decimal
+  snippet: DE,2024,108.6
+  source_license: CC-BY-4.0
+  content_sha256: 5db1286a81fde4b678802fd5b7f7311118ce35fa52b528c1cd349201782cfd37
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow prc_ppp_ind (purchasing power parities, price level indices, nominal and
+    real expenditures by analytical categories), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/prc_ppp_ind/A.PLI_EU27_2020.E011+A0101+A0102+A0103+A0104+A0105+A0106+A0107+A0108+A0109+A0110+A0111+A0112+GDP.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, ppp_cat=E011, TIME_PERIOD=2024, OBS_VALUE
+  value: '111.2'
+  unit: decimal
+  snippet: FR,2024,111.2
+  source_license: CC-BY-4.0
+  content_sha256: 5db1286a81fde4b678802fd5b7f7311118ce35fa52b528c1cd349201782cfd37
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[household_final_consumption]
+  expected: 138.1
+  tolerance: 0
+notes: Price level indices for 2024 from Eurostat dataflow prc_ppp_ind (PLI_EU27_2020, EU27 average = 100) for household
+  final consumption expenditure, each of its twelve COICOP purposes (food, alcohol and tobacco, clothing, housing
+  and energy, furnishings, health, transport, communication, recreation, education, restaurants and hotels, miscellaneous)
+  and gross domestic product. A value above 100 means the country is more expensive than the EU average for that
+  basket. Rows are keyed by the Eurostat geo code and carry the English country name from the GEO codelist; a cell
+  Eurostat does not publish is stored as null. Eurostat's copyright notice states that its data are released under
+  the Creative Commons Attribution 4.0 International licence; the notice page renders dynamically and is referenced
+  rather than hashed.

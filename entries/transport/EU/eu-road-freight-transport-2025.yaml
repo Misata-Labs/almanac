@@ -1,0 +1,232 @@
+id: eu-road-freight-transport-2025
+title: 'Road freight transport: tonne-kilometres, vehicle-kilometres, tonnes and derived load factors, 2025, ten
+  member states'
+kind: rule
+domain: transport
+region: EU
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- road-freight
+- logistics
+- tonne-kilometres
+- load-factor
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- logistics
+- fleet-demo
+- capacity-planning
+- demand-forecasting
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: road_go_ta_tott
+    key: A.TOTAL.TOTAL+LOADED+EMPTY+LNAT+LINTL.MIO_TKM+MIO_VKM+THS_T.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2025'
+    sources:
+    - dataflow: road_go_ta_tott
+      key: A.TOTAL.TOTAL+LOADED+EMPTY+LNAT+LINTL.MIO_TKM+MIO_VKM+THS_T.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+      columns:
+      - tonne_km_million_total
+      - tonne_km_million_national
+      - tonne_km_million_international
+      - vehicle_km_million_total
+      - vehicle_km_million_loaded
+      - vehicle_km_million_empty
+      - tonnes_thousand_total
+    rows:
+      AT:
+        name: Austria
+        tonne_km_million_total: 25090.0
+        tonne_km_million_national: 16434.0
+        tonne_km_million_international: 8656.0
+        vehicle_km_million_total: 2632.0
+        vehicle_km_million_loaded: 1752.0
+        vehicle_km_million_empty: 880.0
+        tonnes_thousand_total: 359809.0
+        empty_running_share_of_vehicle_km: 0.334347
+        international_share_of_tonne_km: 0.344998
+        average_load_tonnes_per_loaded_vehicle_km: 14.321
+      BE:
+        name: Belgium
+        tonne_km_million_total: 29374.0
+        tonne_km_million_national: 17731.0
+        tonne_km_million_international: 11644.0
+        vehicle_km_million_total: 2481.0
+        vehicle_km_million_loaded: 2231.0
+        vehicle_km_million_empty: 250.0
+        tonnes_thousand_total: 253873.0
+        empty_running_share_of_vehicle_km: 0.100766
+        international_share_of_tonne_km: 0.396405
+        average_load_tonnes_per_loaded_vehicle_km: 13.166
+      DE:
+        name: Germany
+        tonne_km_million_total: 277374.0
+        tonne_km_million_national: 246912.0
+        tonne_km_million_international: 30462.0
+        vehicle_km_million_total: 27037.0
+        vehicle_km_million_loaded: 20685.0
+        vehicle_km_million_empty: 6351.0
+        tonnes_thousand_total: 2804335.0
+        empty_running_share_of_vehicle_km: 0.2349
+        international_share_of_tonne_km: 0.109823
+        average_load_tonnes_per_loaded_vehicle_km: 13.409
+      ES:
+        name: Spain
+        tonne_km_million_total: 272601.0
+        tonne_km_million_national: 185057.0
+        tonne_km_million_international: 87545.0
+        vehicle_km_million_total: 22062.0
+        vehicle_km_million_loaded: 16774.0
+        vehicle_km_million_empty: 5288.0
+        tonnes_thousand_total: 1670912.0
+        empty_running_share_of_vehicle_km: 0.239688
+        international_share_of_tonne_km: 0.321147
+        average_load_tonnes_per_loaded_vehicle_km: 16.251
+      FR:
+        name: France
+        tonne_km_million_total: 172907.0
+        tonne_km_million_national: 159982.0
+        tonne_km_million_international: 12925.0
+        vehicle_km_million_total: 17251.0
+        vehicle_km_million_loaded: 14276.0
+        vehicle_km_million_empty: 2975.0
+        tonnes_thousand_total: 1558467.0
+        empty_running_share_of_vehicle_km: 0.172454
+        international_share_of_tonne_km: 0.074751
+        average_load_tonnes_per_loaded_vehicle_km: 12.112
+      IE:
+        name: Ireland
+        tonne_km_million_total: 14952.0
+        tonne_km_million_national: 11374.0
+        tonne_km_million_international: 3579.0
+        vehicle_km_million_total: 2103.0
+        vehicle_km_million_loaded: 1403.0
+        vehicle_km_million_empty: 701.0
+        tonnes_thousand_total: 167945.0
+        empty_running_share_of_vehicle_km: 0.333333
+        international_share_of_tonne_km: 0.239366
+        average_load_tonnes_per_loaded_vehicle_km: 10.657
+      IT:
+        name: Italy
+        tonne_km_million_total: 161702.0
+        tonne_km_million_national: 145739.0
+        tonne_km_million_international: 15963.0
+        vehicle_km_million_total: 10273.0
+        vehicle_km_million_loaded: 10273.0
+        vehicle_km_million_empty: null
+        tonnes_thousand_total: 1229160.0
+        empty_running_share_of_vehicle_km: null
+        international_share_of_tonne_km: 0.098719
+        average_load_tonnes_per_loaded_vehicle_km: 15.74
+      NL:
+        name: Netherlands
+        tonne_km_million_total: 61959.0
+        tonne_km_million_national: 33514.0
+        tonne_km_million_international: 28445.0
+        vehicle_km_million_total: 6685.0
+        vehicle_km_million_loaded: 4946.0
+        vehicle_km_million_empty: 1739.0
+        tonnes_thousand_total: 619772.0
+        empty_running_share_of_vehicle_km: 0.260135
+        international_share_of_tonne_km: 0.459094
+        average_load_tonnes_per_loaded_vehicle_km: 12.527
+      PL:
+        name: Poland
+        tonne_km_million_total: 380988.0
+        tonne_km_million_national: 152239.0
+        tonne_km_million_international: 228749.0
+        vehicle_km_million_total: 32425.0
+        vehicle_km_million_loaded: 25067.0
+        vehicle_km_million_empty: 7358.0
+        tonnes_thousand_total: 1647336.0
+        empty_running_share_of_vehicle_km: 0.226924
+        international_share_of_tonne_km: 0.60041
+        average_load_tonnes_per_loaded_vehicle_km: 15.199
+      SE:
+        name: Sweden
+        tonne_km_million_total: 42029.0
+        tonne_km_million_national: 40024.0
+        tonne_km_million_international: 2005.0
+        vehicle_km_million_total: 3180.0
+        vehicle_km_million_loaded: 2659.0
+        vehicle_km_million_empty: 520.0
+        tonnes_thousand_total: 426409.0
+        empty_running_share_of_vehicle_km: 0.163522
+        international_share_of_tonne_km: 0.047705
+        average_load_tonnes_per_loaded_vehicle_km: 15.806
+  vectors:
+  - input:
+      key: DE
+      column: tonne_km_million_total
+    expected: 277374.0
+    origin: source
+  - input:
+      key: FR
+      column: tonne_km_million_total
+    expected: 172907.0
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow road_go_ta_tott (road freight transport by type of operation and type of
+    transport), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/road_go_ta_tott/A.TOTAL.TOTAL+LOADED+EMPTY+LNAT+LINTL.MIO_TKM+MIO_VKM+THS_T.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, tra_oper=TOTAL, unit=MIO_TKM, TIME_PERIOD=2025, OBS_VALUE
+  value: '277374'
+  unit: decimal
+  snippet: DE,2025,277374
+  source_license: CC-BY-4.0
+  content_sha256: 907892ffad037d2d027943ecdff74861890c0dd11eb0c6ea9af99ea26891773a
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow road_go_ta_tott (road freight transport by type of operation and type of
+    transport), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/road_go_ta_tott/A.TOTAL.TOTAL+LOADED+EMPTY+LNAT+LINTL.MIO_TKM+MIO_VKM+THS_T.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2025&endPeriod=2025&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, tra_oper=TOTAL, unit=MIO_TKM, TIME_PERIOD=2025, OBS_VALUE
+  value: '172907'
+  unit: decimal
+  snippet: FR,2025,172907
+  source_license: CC-BY-4.0
+  content_sha256: 907892ffad037d2d027943ecdff74861890c0dd11eb0c6ea9af99ea26891773a
+  role: primary
+assumed:
+- parameter: rows[*].empty_running_share_of_vehicle_km
+  value: vehicle_km_million_empty / vehicle_km_million_total
+  method: derived
+  rationale: Share of all vehicle-kilometres driven empty, from the two published figures.
+- parameter: rows[*].international_share_of_tonne_km
+  value: tonne_km_million_international / tonne_km_million_total
+  method: derived
+  rationale: Share of freight work performed in international transport.
+- parameter: rows[*].average_load_tonnes_per_loaded_vehicle_km
+  value: tonne_km_million_total / vehicle_km_million_loaded
+  method: derived
+  rationale: Mean payload in tonnes while laden, since tonne-kilometres accrue only on loaded journeys.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[tonne_km_million_total]
+  expected: 380988.0
+  tolerance: 0
+notes: 'Road freight transport in 2025 reported by each country to Eurostat dataflow road_go_ta_tott (hire-or-reward
+  and own-account operations together): million tonne-kilometres in total and split into national and international
+  transport, million vehicle-kilometres in total and split into loaded and empty running, and thousand tonnes carried.
+  Derived columns give the empty-running share of vehicle-kilometres, the international share of tonne-kilometres
+  and the average load per loaded vehicle-kilometre. Italy publishes no empty-running figures, so its empty cells
+  and the empty-running share are null. Rows are keyed by the Eurostat geo code and carry the English country name
+  from the GEO codelist; a cell Eurostat does not publish is stored as null. Eurostat''s copyright notice states
+  that its data are released under the Creative Commons Attribution 4.0 International licence; the notice page renders
+  dynamically and is referenced rather than hashed.'

@@ -1,0 +1,375 @@
+id: eu-hourly-earnings-by-sex-and-occupation-group-2022
+title: Mean and median gross hourly earnings by sex and occupation group, 2022, ten member states
+kind: rule
+domain: employment
+region: EU
+status: verified
+tier: A
+valid_from: '2022-01-01'
+valid_to: '2022-12-31'
+tags:
+- earnings
+- wages
+- sex
+- occupation
+- structure-of-earnings-survey
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- payroll-demo
+- hr-analytics
+- person-generation
+- personal-finance
+- workforce-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: earn_ses_hourly
+    key: A.B-S_X_O..TOTAL.TOTAL.T+F+M.MEAN_E_EUR+MED_E_EUR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2022'
+    sources:
+    - dataflow: earn_ses_hourly
+      key: A.B-S_X_O..TOTAL.TOTAL.T+F+M.MEAN_E_EUR+MED_E_EUR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+      columns:
+      - mean_hourly_eur_total_all_occupations
+      - mean_hourly_eur_total_non_manual
+      - mean_hourly_eur_total_skilled_manual
+      - mean_hourly_eur_total_manual
+      - mean_hourly_eur_female_all_occupations
+      - mean_hourly_eur_female_non_manual
+      - mean_hourly_eur_female_skilled_manual
+      - mean_hourly_eur_female_manual
+      - mean_hourly_eur_male_all_occupations
+      - mean_hourly_eur_male_non_manual
+      - mean_hourly_eur_male_skilled_manual
+      - mean_hourly_eur_male_manual
+      - median_hourly_eur_total_all_occupations
+      - median_hourly_eur_total_non_manual
+      - median_hourly_eur_total_skilled_manual
+      - median_hourly_eur_total_manual
+      - median_hourly_eur_female_all_occupations
+      - median_hourly_eur_female_non_manual
+      - median_hourly_eur_female_skilled_manual
+      - median_hourly_eur_female_manual
+      - median_hourly_eur_male_all_occupations
+      - median_hourly_eur_male_non_manual
+      - median_hourly_eur_male_skilled_manual
+      - median_hourly_eur_male_manual
+    rows:
+      AT:
+        name: Austria
+        mean_hourly_eur_total_all_occupations: 20.04
+        mean_hourly_eur_total_non_manual: 22.06
+        mean_hourly_eur_total_skilled_manual: 17.55
+        mean_hourly_eur_total_manual: 15.99
+        mean_hourly_eur_female_all_occupations: 17.66
+        mean_hourly_eur_female_non_manual: 18.82
+        mean_hourly_eur_female_skilled_manual: 14.48
+        mean_hourly_eur_female_manual: 12.58
+        mean_hourly_eur_male_all_occupations: 21.74
+        mean_hourly_eur_male_non_manual: 25.45
+        mean_hourly_eur_male_skilled_manual: 17.89
+        mean_hourly_eur_male_manual: 17.03
+        median_hourly_eur_total_all_occupations: 17.39
+        median_hourly_eur_total_non_manual: 18.95
+        median_hourly_eur_total_skilled_manual: 17.1
+        median_hourly_eur_total_manual: 15.37
+        median_hourly_eur_female_all_occupations: 15.6
+        median_hourly_eur_female_non_manual: 16.88
+        median_hourly_eur_female_skilled_manual: 14.07
+        median_hourly_eur_female_manual: 11.67
+        median_hourly_eur_male_all_occupations: 18.62
+        median_hourly_eur_male_non_manual: 22.11
+        median_hourly_eur_male_skilled_manual: 17.4
+        median_hourly_eur_male_manual: 16.51
+      BE:
+        name: Belgium
+        mean_hourly_eur_total_all_occupations: 26.97
+        mean_hourly_eur_total_non_manual: 29.99
+        mean_hourly_eur_total_skilled_manual: 20.59
+        mean_hourly_eur_total_manual: 19.57
+        mean_hourly_eur_female_all_occupations: 26.87
+        mean_hourly_eur_female_non_manual: 28.89
+        mean_hourly_eur_female_skilled_manual: 19.77
+        mean_hourly_eur_female_manual: 18.51
+        mean_hourly_eur_male_all_occupations: 27.06
+        mean_hourly_eur_male_non_manual: 31.41
+        mean_hourly_eur_male_skilled_manual: 20.67
+        mean_hourly_eur_male_manual: 20.09
+        median_hourly_eur_total_all_occupations: 23.84
+        median_hourly_eur_total_non_manual: 27.03
+        median_hourly_eur_total_skilled_manual: 20.03
+        median_hourly_eur_total_manual: 19.75
+        median_hourly_eur_female_all_occupations: 23.74
+        median_hourly_eur_female_non_manual: 25.95
+        median_hourly_eur_female_skilled_manual: 19.34
+        median_hourly_eur_female_manual: 19.44
+        median_hourly_eur_male_all_occupations: 23.94
+        median_hourly_eur_male_non_manual: 28.69
+        median_hourly_eur_male_skilled_manual: 20.1
+        median_hourly_eur_male_manual: 19.88
+      DE:
+        name: Germany
+        mean_hourly_eur_total_all_occupations: 22.23
+        mean_hourly_eur_total_non_manual: 24.44
+        mean_hourly_eur_total_skilled_manual: 19.07
+        mean_hourly_eur_total_manual: 17.16
+        mean_hourly_eur_female_all_occupations: 19.93
+        mean_hourly_eur_female_non_manual: 21.2
+        mean_hourly_eur_female_skilled_manual: 16.36
+        mean_hourly_eur_female_manual: 13.9
+        mean_hourly_eur_male_all_occupations: 24.23
+        mean_hourly_eur_male_non_manual: 28.43
+        mean_hourly_eur_male_skilled_manual: 19.43
+        mean_hourly_eur_male_manual: 18.36
+        median_hourly_eur_total_all_occupations: 18.94
+        median_hourly_eur_total_non_manual: 20.82
+        median_hourly_eur_total_skilled_manual: 17.84
+        median_hourly_eur_total_manual: 15.45
+        median_hourly_eur_female_all_occupations: 17.83
+        median_hourly_eur_female_non_manual: 19.21
+        median_hourly_eur_female_skilled_manual: 14.37
+        median_hourly_eur_female_manual: 12.23
+        median_hourly_eur_male_all_occupations: 20.15
+        median_hourly_eur_male_non_manual: 24.34
+        median_hourly_eur_male_skilled_manual: 18.23
+        median_hourly_eur_male_manual: 17.01
+      ES:
+        name: Spain
+        mean_hourly_eur_total_all_occupations: 13.43
+        mean_hourly_eur_total_non_manual: 14.82
+        mean_hourly_eur_total_skilled_manual: 11.53
+        mean_hourly_eur_total_manual: 10.5
+        mean_hourly_eur_female_all_occupations: 12.76
+        mean_hourly_eur_female_non_manual: 13.73
+        mean_hourly_eur_female_skilled_manual: 9.76
+        mean_hourly_eur_female_manual: 8.77
+        mean_hourly_eur_male_all_occupations: 14.06
+        mean_hourly_eur_male_non_manual: 16.26
+        mean_hourly_eur_male_skilled_manual: 11.77
+        mean_hourly_eur_male_manual: 11.23
+        median_hourly_eur_total_all_occupations: 11.01
+        median_hourly_eur_total_non_manual: 12.25
+        median_hourly_eur_total_skilled_manual: 10.36
+        median_hourly_eur_total_manual: 9.41
+        median_hourly_eur_female_all_occupations: 10.32
+        median_hourly_eur_female_non_manual: 11.25
+        median_hourly_eur_female_skilled_manual: 8.8
+        median_hourly_eur_female_manual: 8.08
+        median_hourly_eur_male_all_occupations: 11.55
+        median_hourly_eur_male_non_manual: 13.7
+        median_hourly_eur_male_skilled_manual: 10.6
+        median_hourly_eur_male_manual: 10.08
+      FR:
+        name: France
+        mean_hourly_eur_total_all_occupations: 20.13
+        mean_hourly_eur_total_non_manual: 22.52
+        mean_hourly_eur_total_skilled_manual: 15.24
+        mean_hourly_eur_total_manual: 14.16
+        mean_hourly_eur_female_all_occupations: 18.69
+        mean_hourly_eur_female_non_manual: 19.97
+        mean_hourly_eur_female_skilled_manual: 14.24
+        mean_hourly_eur_female_manual: 13.07
+        mean_hourly_eur_male_all_occupations: 21.43
+        mean_hourly_eur_male_non_manual: 25.52
+        mean_hourly_eur_male_skilled_manual: 15.4
+        mean_hourly_eur_male_manual: 14.65
+        median_hourly_eur_total_all_occupations: 16.46
+        median_hourly_eur_total_non_manual: 18.49
+        median_hourly_eur_total_skilled_manual: 14.67
+        median_hourly_eur_total_manual: 13.42
+        median_hourly_eur_female_all_occupations: 15.98
+        median_hourly_eur_female_non_manual: 17.23
+        median_hourly_eur_female_skilled_manual: 13.6
+        median_hourly_eur_female_manual: 12.32
+        median_hourly_eur_male_all_occupations: 16.96
+        median_hourly_eur_male_non_manual: 20.53
+        median_hourly_eur_male_skilled_manual: 14.89
+        median_hourly_eur_male_manual: 14.07
+      IE:
+        name: Ireland
+        mean_hourly_eur_total_all_occupations: 27.31
+        mean_hourly_eur_total_non_manual: 32.9
+        mean_hourly_eur_total_skilled_manual: 18.87
+        mean_hourly_eur_total_manual: 17.9
+        mean_hourly_eur_female_all_occupations: 25.98
+        mean_hourly_eur_female_non_manual: 31.24
+        mean_hourly_eur_female_skilled_manual: 17.88
+        mean_hourly_eur_female_manual: 16.35
+        mean_hourly_eur_male_all_occupations: 28.65
+        mean_hourly_eur_male_non_manual: 34.61
+        mean_hourly_eur_male_skilled_manual: 19.9
+        mean_hourly_eur_male_manual: 19.03
+        median_hourly_eur_total_all_occupations: 20.11
+        median_hourly_eur_total_non_manual: 25.72
+        median_hourly_eur_total_skilled_manual: 15.81
+        median_hourly_eur_total_manual: 14.8
+        median_hourly_eur_female_all_occupations: 19.61
+        median_hourly_eur_female_non_manual: 25.21
+        median_hourly_eur_female_skilled_manual: 15.3
+        median_hourly_eur_female_manual: 13.81
+        median_hourly_eur_male_all_occupations: 20.62
+        median_hourly_eur_male_non_manual: 26.16
+        median_hourly_eur_male_skilled_manual: 16.31
+        median_hourly_eur_male_manual: 15.66
+      IT:
+        name: Italy
+        mean_hourly_eur_total_all_occupations: 16.02
+        mean_hourly_eur_total_non_manual: 18.02
+        mean_hourly_eur_total_skilled_manual: 12.66
+        mean_hourly_eur_total_manual: 11.84
+        mean_hourly_eur_female_all_occupations: 15.67
+        mean_hourly_eur_female_non_manual: 16.9
+        mean_hourly_eur_female_skilled_manual: 10.95
+        mean_hourly_eur_female_manual: 10.33
+        mean_hourly_eur_male_all_occupations: 16.3
+        mean_hourly_eur_male_non_manual: 19.3
+        mean_hourly_eur_male_skilled_manual: 13.03
+        mean_hourly_eur_male_manual: 12.36
+        median_hourly_eur_total_all_occupations: 12.89
+        median_hourly_eur_total_non_manual: 14.78
+        median_hourly_eur_total_skilled_manual: 11.87
+        median_hourly_eur_total_manual: 11.0
+        median_hourly_eur_female_all_occupations: 12.83
+        median_hourly_eur_female_non_manual: 14.43
+        median_hourly_eur_female_skilled_manual: 10.19
+        median_hourly_eur_female_manual: 9.6
+        median_hourly_eur_male_all_occupations: 12.93
+        median_hourly_eur_male_non_manual: 15.2
+        median_hourly_eur_male_skilled_manual: 12.19
+        median_hourly_eur_male_manual: 11.58
+      NL:
+        name: Netherlands
+        mean_hourly_eur_total_all_occupations: 20.95
+        mean_hourly_eur_total_non_manual: 22.92
+        mean_hourly_eur_total_skilled_manual: 17.74
+        mean_hourly_eur_total_manual: 15.02
+        mean_hourly_eur_female_all_occupations: 19.37
+        mean_hourly_eur_female_non_manual: 20.53
+        mean_hourly_eur_female_skilled_manual: 14.73
+        mean_hourly_eur_female_manual: 12.55
+        mean_hourly_eur_male_all_occupations: 22.52
+        mean_hourly_eur_male_non_manual: 26.0
+        mean_hourly_eur_male_skilled_manual: 18.13
+        mean_hourly_eur_male_manual: 16.05
+        median_hourly_eur_total_all_occupations: 18.78
+        median_hourly_eur_total_non_manual: 20.36
+        median_hourly_eur_total_skilled_manual: 17.22
+        median_hourly_eur_total_manual: 14.44
+        median_hourly_eur_female_all_occupations: 18.01
+        median_hourly_eur_female_non_manual: 19.18
+        median_hourly_eur_female_skilled_manual: 14.12
+        median_hourly_eur_female_manual: 13.22
+        median_hourly_eur_male_all_occupations: 19.54
+        median_hourly_eur_male_non_manual: 22.88
+        median_hourly_eur_male_skilled_manual: 17.65
+        median_hourly_eur_male_manual: 15.88
+      PL:
+        name: Poland
+        mean_hourly_eur_total_all_occupations: 8.61
+        mean_hourly_eur_total_non_manual: 9.78
+        mean_hourly_eur_total_skilled_manual: 6.57
+        mean_hourly_eur_total_manual: 6.26
+        mean_hourly_eur_female_all_occupations: 8.25
+        mean_hourly_eur_female_non_manual: 8.98
+        mean_hourly_eur_female_skilled_manual: 5.42
+        mean_hourly_eur_female_manual: 5.11
+        mean_hourly_eur_male_all_occupations: 8.95
+        mean_hourly_eur_male_non_manual: 10.89
+        mean_hourly_eur_male_skilled_manual: 6.82
+        mean_hourly_eur_male_manual: 6.69
+        median_hourly_eur_total_all_occupations: 6.9
+        median_hourly_eur_total_non_manual: 7.94
+        median_hourly_eur_total_skilled_manual: 6.03
+        median_hourly_eur_total_manual: 5.64
+        median_hourly_eur_female_all_occupations: 6.62
+        median_hourly_eur_female_non_manual: 7.57
+        median_hourly_eur_female_skilled_manual: 5.12
+        median_hourly_eur_female_manual: 4.78
+        median_hourly_eur_male_all_occupations: 7.08
+        median_hourly_eur_male_non_manual: 8.54
+        median_hourly_eur_male_skilled_manual: 6.33
+        median_hourly_eur_male_manual: 6.17
+      SE:
+        name: Sweden
+        mean_hourly_eur_total_all_occupations: 21.54
+        mean_hourly_eur_total_non_manual: 22.51
+        mean_hourly_eur_total_skilled_manual: 19.24
+        mean_hourly_eur_total_manual: 18.03
+        mean_hourly_eur_female_all_occupations: 20.37
+        mean_hourly_eur_female_non_manual: 20.94
+        mean_hourly_eur_female_skilled_manual: 17.83
+        mean_hourly_eur_female_manual: 15.53
+        mean_hourly_eur_male_all_occupations: 22.74
+        mean_hourly_eur_male_non_manual: 24.64
+        mean_hourly_eur_male_skilled_manual: 19.45
+        mean_hourly_eur_male_manual: 18.84
+        median_hourly_eur_total_all_occupations: 19.29
+        median_hourly_eur_total_non_manual: 19.95
+        median_hourly_eur_total_skilled_manual: 18.83
+        median_hourly_eur_total_manual: 17.53
+        median_hourly_eur_female_all_occupations: 18.55
+        median_hourly_eur_female_non_manual: 19.04
+        median_hourly_eur_female_skilled_manual: 16.96
+        median_hourly_eur_female_manual: 14.75
+        median_hourly_eur_male_all_occupations: 20.15
+        median_hourly_eur_male_non_manual: 21.63
+        median_hourly_eur_male_skilled_manual: 19.12
+        median_hourly_eur_male_manual: 18.45
+  vectors:
+  - input:
+      key: DE
+      column: mean_hourly_eur_total_all_occupations
+    expected: 22.23
+    origin: source
+  - input:
+      key: FR
+      column: mean_hourly_eur_total_all_occupations
+    expected: 20.13
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow earn_ses_hourly (structure of earnings survey, hourly earnings), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/earn_ses_hourly/A.B-S_X_O..TOTAL.TOTAL.T+F+M.MEAN_E_EUR+MED_E_EUR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2022&endPeriod=2022&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, indic_se=MEAN_E_EUR, sex=T, isco08=TOTAL, TIME_PERIOD=2022, OBS_VALUE
+  value: '22.23'
+  unit: currency:EUR
+  snippet: DE,2022,22.23
+  source_license: CC-BY-4.0
+  content_sha256: d7a08482b54b073e9874565d751e3d73520e97c49ee9c1aba1d75393170400e5
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow earn_ses_hourly (structure of earnings survey, hourly earnings), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/earn_ses_hourly/A.B-S_X_O..TOTAL.TOTAL.T+F+M.MEAN_E_EUR+MED_E_EUR.DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2022&endPeriod=2022&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, indic_se=MEAN_E_EUR, sex=T, isco08=TOTAL, TIME_PERIOD=2022, OBS_VALUE
+  value: '20.13'
+  unit: currency:EUR
+  snippet: FR,2022,20.13
+  source_license: CC-BY-4.0
+  content_sha256: d7a08482b54b073e9874565d751e3d73520e97c49ee9c1aba1d75393170400e5
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: max[mean_hourly_eur_total_all_occupations]
+  expected: 27.31
+  tolerance: 0
+notes: 'Mean and median gross hourly earnings in euro from the 2022 Structure of Earnings Survey (Eurostat dataflow
+  earn_ses_hourly), for industry, construction and services except public administration (NACE B to S excluding
+  O), all working-time arrangements and ages, by sex (total, female, male) and by the ISCO-08 occupation groups
+  Eurostat publishes for this wave: all occupations, non-manual workers (major groups 1 to 5), skilled manual workers
+  (6 to 8) and manual workers (7 to 9). The survey is four-yearly; 2022 is the latest wave. Rows are keyed by the
+  Eurostat geo code and carry the English country name from the GEO codelist; a cell Eurostat does not publish is
+  stored as null. Eurostat''s copyright notice states that its data are released under the Creative Commons Attribution
+  4.0 International licence; the notice page renders dynamically and is referenced rather than hashed.'

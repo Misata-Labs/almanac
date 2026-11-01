@@ -1,0 +1,120 @@
+id: in-wireless-arpu-quarterly-2025q2-2026q2
+title: India wireless ARPU, revenue per GB, minutes of usage and SMS per subscriber, quarterly June 2025 to June
+  2026 (TRAI)
+kind: temporal
+domain: telecom
+region: IN
+status: license-review
+tier: B
+observed_period:
+  start: '2025-04-01'
+  end: '2026-06-30'
+tags:
+- telecom
+- arpu
+- usage
+- quarterly
+- time-series
+- trai
+use_cases:
+- telecom-demo
+- pricing
+- demand-forecasting
+spec:
+  variable: arpu_inr_per_month
+  unit: currency:INR
+  frequency: quarterly
+  columns:
+  - revenue_per_gb_inr
+  - mou_per_subscriber_per_month
+  - outgoing_sms_per_subscriber_per_month
+  series:
+  - period: 2025-Q2
+    value: 181.47
+    revenue_per_gb_inr: 8.51
+    mou_per_subscriber_per_month: 978
+    outgoing_sms_per_subscriber_per_month: 9.93
+  - period: 2025-Q3
+    value: 183.13
+    revenue_per_gb_inr: 8.27
+    mou_per_subscriber_per_month: 963
+    outgoing_sms_per_subscriber_per_month: 10.58
+  - period: 2025-Q4
+    value: 184.98
+    revenue_per_gb_inr: 7.87
+    mou_per_subscriber_per_month: 962
+    outgoing_sms_per_subscriber_per_month: 9.43
+  - period: 2026-Q1
+    value: 184.91
+    revenue_per_gb_inr: 7.51
+    mou_per_subscriber_per_month: 959
+    outgoing_sms_per_subscriber_per_month: 8.4
+  - period: 2026-Q2
+    value: 187.12
+    revenue_per_gb_inr: 7.13
+    mou_per_subscriber_per_month: 933
+    outgoing_sms_per_subscriber_per_month: 8.79
+evidence:
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 95 (Table 2.7), row 1 ARPU
+  value: 181.47 183.13 184.98 184.91 187.12
+  unit: currency:INR
+  snippet: 1. ARPU (₹ Per month) 181.47 183.13 184.98 184.91 187.12
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 95 (Table 2.7), row 2 revenue per GB
+  value: 8.51 8.27 7.87 7.51 7.13
+  unit: currency:INR
+  snippet: 8.51 8.27 7.87 7.51 7.13
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 95 (Table 2.7), row 3 MOU
+  value: 978 963 962 959 933
+  unit: integer
+  snippet: month 978 963 962 959 933
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: The Indian Telecom Services Performance Indicators, April-June 2026 (released 12 October 2026)
+  url: https://www.trai.gov.in/sites/default/files/2026-10/QPIR_12102026.pdf
+  accessed_at: '2026-10-31'
+  locator: PDF page 95 (Table 2.7), row 5 outgoing SMS
+  value: 9.93 10.58 9.43 8.40 8.79
+  unit: decimal
+  snippet: per subscriber per month 9.93 10.58 9.43 8.40 8.79
+  source_license: unstated
+  content_sha256: fefa37efa1565848cea8609f05f06b2e78cd2157ae09f5993d3ae2bc2e19762a
+  role: primary
+assumed: []
+tests:
+- statistic: value[2025-Q2]
+  expected: 181.47
+  tolerance: 1.0e-09
+- statistic: value[2026-Q2]
+  expected: 187.12
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: max
+  expected: 187.12
+  tolerance: 1.0e-09
+notes: 'Trend of key wireless parameters over the five quarters ending June 2025 to June 2026 from Table 2.7 of
+  TRAI''s performance indicators report: monthly ARPU (the series value), average revenue realisation per GB of
+  wireless data, total minutes of usage per subscriber per month and outgoing SMS per subscriber per month. Period
+  labels name the calendar quarter in which each quarter ends. TRAI''s website carries no licence statement for
+  its press releases and reports, so the entry stays at license-review.'

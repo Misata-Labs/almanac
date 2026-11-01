@@ -1,0 +1,103 @@
+id: in-telephone-subscribers-by-connection-type-2026-09
+title: India telephone subscribers by connection type (consumer SIM, M2M SIM, FWA, wireline), end of September 2026
+kind: marginal
+domain: telecom
+region: IN
+status: license-review
+tier: B
+observed_period:
+  start: '2026-09-30'
+  end: '2026-09-30'
+tags:
+- telecom
+- subscribers
+- m2m
+- fwa
+- trai
+use_cases:
+- telecom-demo
+- customer-segmentation
+spec:
+  variable: connection_type
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        consumer_sim: 0.844451
+        m2m_sim: 0.10589
+        fixed_wireless_access: 0.014028
+        wireline: 0.03563
+      counts:
+        consumer_sim: 1155.15
+        m2m_sim: 144.85
+        fixed_wireless_access: 19.19
+        wireline: 48.74
+evidence:
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 13, table Telephone subscriber base at the end of September 2026, row Consumer SIM
+  value: 1,155.15
+  unit: count
+  snippet: Wireless Consumer SIM 1,155.15
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 13, same table, row M2M SIM
+  value: '144.85'
+  unit: count
+  snippet: M2M SIM 144.85
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 13, same table, row FWA
+  value: '19.19'
+  unit: count
+  snippet: FWA 19.19
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+- publisher: Telecom Regulatory Authority of India
+  title: Press Release No. 140/2026, Highlights of Telecom Subscription Data as on 30th September 2026
+  url: https://www.trai.gov.in/sites/default/files/2026-10/PR_No140of2026.pdf
+  accessed_at: '2026-10-31'
+  locator: page 13, same table, rows Wireline and Total
+  value: 1,367.93
+  unit: count
+  snippet: Wireline 48.74 5. Total 1,367.93
+  source_license: unstated
+  content_sha256: c93754524a1f4c29078e651d196b77a06fccd210b4cc62a6e8907d8fdf1c2421
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total, rounded to six decimals
+  method: derived
+  rationale: The source publishes counts (million subscribers); each share is the category count divided by the
+    sum of the listed counts (1367.93). The counts are kept in distribution.parameters.counts.
+tests:
+- statistic: share[consumer_sim]
+  expected: 0.844451
+  tolerance: 0.004
+- statistic: share[m2m_sim]
+  expected: 0.10589
+  tolerance: 0.004
+- statistic: share[wireline]
+  expected: 0.03563
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.002
+notes: 'Composition of India''s 1,367.93 million telephone connections at the end of September 2026 from the summary
+  table on page 13 of TRAI''s press release: consumer mobile SIMs, machine-to-machine SIMs, fixed wireless access
+  and wireline. Shares are the published counts (in millions) divided by their sum. TRAI''s website carries no licence
+  statement for its press releases and reports, so the entry stays at license-review.'
