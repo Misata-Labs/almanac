@@ -1,0 +1,124 @@
+id: eu-cashless-payments-by-instrument-annual-2019-2021
+title: Euro area cashless payment transactions by instrument, annual counts 2019 to 2021
+kind: temporal
+domain: payments
+region: EU
+status: verified
+tier: A
+observed_period:
+  start: '2019-01-01'
+  end: '2021-12-31'
+tags:
+- payments
+- payment-instruments
+- cards
+- credit-transfers
+- direct-debits
+- ecb
+- euro-area
+use_cases:
+- payments-demo
+- fintech-demo
+- market-sizing
+spec:
+  variable: total_payment_transactions_millions
+  unit: count
+  frequency: annual
+  columns:
+  - card_payments_millions
+  - credit_transfers_millions
+  - direct_debits_millions
+  - cheques_millions
+  - e_money_payments_millions
+  series:
+  - period: '2019'
+    value: 97791.57760799999
+    card_payments_millions: 46720.358957000004
+    credit_transfers_millions: 22353.861009
+    direct_debits_millions: 20971.123763
+    cheques_millions: 1873.1721610000002
+    e_money_payments_millions: 4624.8750789999995
+  - period: '2020'
+    value: 101462.278921
+    card_payments_millions: 47971.051272000004
+    credit_transfers_millions: 23095.396869
+    direct_debits_millions: 21902.936099000002
+    cheques_millions: 1383.745416
+    e_money_payments_millions: 6120.986904
+  - period: '2021'
+    value: 114171.87118799999
+    card_payments_millions: 56256.34702500001
+    credit_transfers_millions: 25078.869633000002
+    direct_debits_millions: 23169.301584
+    cheques_millions: 1290.548792
+    e_money_payments_millions: 7434.804627
+evidence:
+- publisher: European Central Bank
+  title: ECB Data Portal, dataset PSS (payments statistics), number of transactions by instrument (SDMX CSV)
+  url: https://data-api.ecb.europa.eu/service/data/PSS/A.U2.F000.I01+I1A+I31+I34+I35+IEM.Z00Z.NT.X0.20.Z0Z.Z?startPeriod=2019&endPeriod=2024&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: KEY=PSS.A.U2.F000.I01.Z00Z.NT.X0.20.Z0Z.Z, TIME_PERIOD=2021, OBS_VALUE
+  value: '114171.87118799999'
+  unit: count
+  snippet: PSS.A.U2.F000.I01.Z00Z.NT.X0.20.Z0Z.Z,A,U2,F000,I01,Z00Z,NT,X0,20,Z0Z,Z,2021,114171.87118799999,
+  source_license: ECB-free-use-with-attribution
+  content_sha256: e828f7259f3b5a3b7dbd5b7ac63fa3c540e094c1c3b860cdd6e142c4fd8d7284
+  role: primary
+- publisher: European Central Bank
+  title: ECB Data Portal, dataset PSS (payments statistics), number of transactions by instrument (SDMX CSV)
+  url: https://data-api.ecb.europa.eu/service/data/PSS/A.U2.F000.I01+I1A+I31+I34+I35+IEM.Z00Z.NT.X0.20.Z0Z.Z?startPeriod=2019&endPeriod=2024&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: KEY=PSS.A.U2.F000.I1A.Z00Z.NT.X0.20.Z0Z.Z, TIME_PERIOD=2021, OBS_VALUE
+  value: '56256.34702500001'
+  unit: count
+  snippet: PSS.A.U2.F000.I1A.Z00Z.NT.X0.20.Z0Z.Z,A,U2,F000,I1A,Z00Z,NT,X0,20,Z0Z,Z,2021,56256.34702500001,
+  source_license: ECB-free-use-with-attribution
+  content_sha256: e828f7259f3b5a3b7dbd5b7ac63fa3c540e094c1c3b860cdd6e142c4fd8d7284
+  role: primary
+- publisher: European Central Bank
+  title: ECB Data Portal, dataset PSS (payments statistics), number of transactions by instrument (SDMX CSV)
+  url: https://data-api.ecb.europa.eu/service/data/PSS/A.U2.F000.I01+I1A+I31+I34+I35+IEM.Z00Z.NT.X0.20.Z0Z.Z?startPeriod=2019&endPeriod=2024&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: TITLE for instrument I1A
+  value: Number of card payments - with cards issued by resident PSPs - from Euro area (changing composition)
+  unit: text
+  snippet: Number of card payments - with cards issued by resident PSPs - from Euro area (changing composition)
+  source_license: ECB-free-use-with-attribution
+  content_sha256: e828f7259f3b5a3b7dbd5b7ac63fa3c540e094c1c3b860cdd6e142c4fd8d7284
+  role: primary
+- publisher: European Central Bank
+  title: ECB Data Portal, dataset PSS (payments statistics), number of transactions by instrument (SDMX CSV)
+  url: https://data-api.ecb.europa.eu/service/data/PSS/A.U2.F000.I01+I1A+I31+I34+I35+IEM.Z00Z.NT.X0.20.Z0Z.Z?startPeriod=2019&endPeriod=2024&format=csvdata
+  accessed_at: '2026-10-31'
+  locator: UNIT_MULT for the I01 series
+  value: '6'
+  unit: integer
+  snippet: ',PURE_NUMB,6'
+  source_license: ECB-free-use-with-attribution
+  content_sha256: e828f7259f3b5a3b7dbd5b7ac63fa3c540e094c1c3b860cdd6e142c4fd8d7284
+  role: primary
+assumed: []
+tests:
+- statistic: value[2019]
+  expected: 97791.57760799999
+  tolerance: 1.0e-06
+- statistic: value[2021]
+  expected: 114171.87118799999
+  tolerance: 1.0e-06
+- statistic: column[card_payments_millions,2021]
+  expected: 56256.34702500001
+  tolerance: 1.0e-06
+- statistic: column[cheques_millions,2019]
+  expected: 1873.1721610000002
+  tolerance: 1.0e-06
+- statistic: count
+  expected: 3
+  tolerance: 0
+notes: 'Annual number of payment transactions involving non-MFIs sent from the euro area (changing composition),
+  in millions (UNIT_MULT 6 in the source), from the ECB payments statistics dataset PSS: all payment services as
+  the primary series, with card payments by cards issued by resident PSPs, credit transfers, direct debits, cheques
+  and e-money payment transactions as columns. The query asked for 2019 to 2024; the portal served 3 years ending
+  2021, the last reference year compiled under the earlier payments statistics methodology. The ECB''s website disclaimer
+  states that users may make free use of information obtained from it provided it is reproduced accurately and the
+  ECB is cited as the source; the page renders dynamically, so the clause is carried by the licence identifier ECB-free-use-with-attribution
+  documented in CONTRIBUTING.md.'
