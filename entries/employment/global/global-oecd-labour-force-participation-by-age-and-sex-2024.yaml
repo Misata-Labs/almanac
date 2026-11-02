@@ -1,0 +1,1100 @@
+id: global-oecd-labour-force-participation-by-age-and-sex-2024
+title: 'Labour force participation rate by country, 2024: ages 15 to 64 by sex and five-year age bands from 15 to
+  74 (OECD)'
+kind: rule
+domain: employment
+region: global
+status: license-review
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- labour-force
+- participation
+- by-age
+- by-sex
+- oecd
+- reference-table
+- by-country
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- workforce-planning
+- person-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1
+    url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1/.LF_RATE....?startPeriod=2024&format=csvfilewithlabels
+    period: '2024'
+    rows:
+      AUS:
+        name: Australia
+        participation_rate_15_64: 80.374
+        participation_rate_men_15_64: 83.674
+        participation_rate_women_15_64: 77.09
+        participation_rate_15_19: 57.945
+        participation_rate_20_24: 82.204
+        participation_rate_25_29: 87.175
+        participation_rate_30_34: 86.18
+        participation_rate_35_39: 87.005
+        participation_rate_40_44: 87.451
+        participation_rate_45_49: 86.24
+        participation_rate_50_54: 84.121
+        participation_rate_55_59: 77.37
+        participation_rate_60_64: 61.657
+        participation_rate_65_69: 35.058
+        participation_rate_70_74: null
+      AUT:
+        name: Austria
+        participation_rate_15_64: 78.172
+        participation_rate_men_15_64: 82.126
+        participation_rate_women_15_64: 74.204
+        participation_rate_15_19: 37.197
+        participation_rate_20_24: 75.415
+        participation_rate_25_29: 86.693
+        participation_rate_30_34: 89.732
+        participation_rate_35_39: 89.276
+        participation_rate_40_44: 91.64
+        participation_rate_45_49: 90.531
+        participation_rate_50_54: 90.215
+        participation_rate_55_59: 83.288
+        participation_rate_60_64: 37.197
+        participation_rate_65_69: 11.302
+        participation_rate_70_74: 5.965
+      BEL:
+        name: Belgium
+        participation_rate_15_64: 70.82
+        participation_rate_men_15_64: 74.825
+        participation_rate_women_15_64: 66.789
+        participation_rate_15_19: 15.524
+        participation_rate_20_24: 48.395
+        participation_rate_25_29: 84.492
+        participation_rate_30_34: 87.416
+        participation_rate_35_39: 86.929
+        participation_rate_40_44: 87.077
+        participation_rate_45_49: 85.567
+        participation_rate_50_54: 82.858
+        participation_rate_55_59: 77.214
+        participation_rate_60_64: 45.42
+        participation_rate_65_69: 8.208
+        participation_rate_70_74: 3.816
+      BGR:
+        name: Bulgaria
+        participation_rate_15_64: 74.027
+        participation_rate_men_15_64: 77.551
+        participation_rate_women_15_64: 70.422
+        participation_rate_15_19: 3.945
+        participation_rate_20_24: 37.539
+        participation_rate_25_29: 80.462
+        participation_rate_30_34: 87.454
+        participation_rate_35_39: 88.706
+        participation_rate_40_44: 89.087
+        participation_rate_45_49: 89.935
+        participation_rate_50_54: 87.395
+        participation_rate_55_59: 83.189
+        participation_rate_60_64: 61.289
+        participation_rate_65_69: 19.056
+        participation_rate_70_74: 5.214
+      BRA:
+        name: Brazil
+        participation_rate_15_64: 71.593
+        participation_rate_men_15_64: 81.348
+        participation_rate_women_15_64: 62.166
+        participation_rate_15_19: 34.875
+        participation_rate_20_24: 74.739
+        participation_rate_25_29: 81.12
+        participation_rate_30_34: 82.363
+        participation_rate_35_39: 83.014
+        participation_rate_40_44: 82.075
+        participation_rate_45_49: 80.027
+        participation_rate_50_54: 73.734
+        participation_rate_55_59: 63.02
+        participation_rate_60_64: 45.619
+        participation_rate_65_69: 27.202
+        participation_rate_70_74: null
+      CAN:
+        name: Canada
+        participation_rate_15_64: 79.819
+        participation_rate_men_15_64: 83.002
+        participation_rate_women_15_64: 76.567
+        participation_rate_15_19: 47.351
+        participation_rate_20_24: 76.424
+        participation_rate_25_29: 87.763
+        participation_rate_30_34: 89.162
+        participation_rate_35_39: 88.971
+        participation_rate_40_44: 89.508
+        participation_rate_45_49: 89.153
+        participation_rate_50_54: 86.71
+        participation_rate_55_59: 78.191
+        participation_rate_60_64: 58.35
+        participation_rate_65_69: 29.214
+        participation_rate_70_74: 14.319
+      CHE:
+        name: Switzerland
+        participation_rate_15_64: 84.114
+        participation_rate_men_15_64: 87.386
+        participation_rate_women_15_64: 80.754
+        participation_rate_15_19: 53.107
+        participation_rate_20_24: 77.694
+        participation_rate_25_29: 90.847
+        participation_rate_30_34: 91.37
+        participation_rate_35_39: 90.959
+        participation_rate_40_44: 91.285
+        participation_rate_45_49: 91.042
+        participation_rate_50_54: 88.911
+        participation_rate_55_59: 85.804
+        participation_rate_60_64: 68.786
+        participation_rate_65_69: 23.789
+        participation_rate_70_74: 12.949
+      CHL:
+        name: Chile
+        participation_rate_15_64: 70.272
+        participation_rate_men_15_64: 78.72
+        participation_rate_women_15_64: 61.796
+        participation_rate_15_19: 10.238
+        participation_rate_20_24: 48.949
+        participation_rate_25_29: 79.513
+        participation_rate_30_34: 85.891
+        participation_rate_35_39: 85.476
+        participation_rate_40_44: 83.983
+        participation_rate_45_49: 81.914
+        participation_rate_50_54: 78.451
+        participation_rate_55_59: 72.587
+        participation_rate_60_64: 61.602
+        participation_rate_65_69: 38.011
+        participation_rate_70_74: 21.393
+      COL:
+        name: Colombia
+        participation_rate_15_64: 70.207
+        participation_rate_men_15_64: 82.008
+        participation_rate_women_15_64: 59.068
+        participation_rate_15_19: 22.404
+        participation_rate_20_24: 66.876
+        participation_rate_25_29: 81.983
+        participation_rate_30_34: 83.836
+        participation_rate_35_39: 84.165
+        participation_rate_40_44: 82.981
+        participation_rate_45_49: 80.98
+        participation_rate_50_54: 76.423
+        participation_rate_55_59: 67.76
+        participation_rate_60_64: 54.768
+        participation_rate_65_69: 39.734
+        participation_rate_70_74: 26.511
+      CRI:
+        name: Costa Rica
+        participation_rate_15_64: 66.077
+        participation_rate_men_15_64: 78.712
+        participation_rate_women_15_64: 53.246
+        participation_rate_15_19: 14.876
+        participation_rate_20_24: 64.311
+        participation_rate_25_29: 78.041
+        participation_rate_30_34: 81.307
+        participation_rate_35_39: 81.067
+        participation_rate_40_44: 79.659
+        participation_rate_45_49: 78.88
+        participation_rate_50_54: 73.594
+        participation_rate_55_59: 62.489
+        participation_rate_60_64: 46.736
+        participation_rate_65_69: 23.299
+        participation_rate_70_74: 12.042
+      CYP:
+        name: Cyprus
+        participation_rate_15_64: 79.466
+        participation_rate_men_15_64: 84.297
+        participation_rate_women_15_64: 74.966
+        participation_rate_15_19: 12.564
+        participation_rate_20_24: 65.877
+        participation_rate_25_29: 86.301
+        participation_rate_30_34: 90.309
+        participation_rate_35_39: 90.804
+        participation_rate_40_44: 89.577
+        participation_rate_45_49: 88.648
+        participation_rate_50_54: 86.873
+        participation_rate_55_59: 79.852
+        participation_rate_60_64: 65.067
+        participation_rate_65_69: 21.86
+        participation_rate_70_74: 8.898
+      CZE:
+        name: Czechia
+        participation_rate_15_64: 77.498
+        participation_rate_men_15_64: 83.052
+        participation_rate_women_15_64: 71.741
+        participation_rate_15_19: 6.901
+        participation_rate_20_24: 50.057
+        participation_rate_25_29: 80.869
+        participation_rate_30_34: 82.113
+        participation_rate_35_39: 88.329
+        participation_rate_40_44: 93.401
+        participation_rate_45_49: 95.734
+        participation_rate_50_54: 94.873
+        participation_rate_55_59: 91.901
+        participation_rate_60_64: 63.985
+        participation_rate_65_69: 18.015
+        participation_rate_70_74: 7.934
+      DEU:
+        name: Germany
+        participation_rate_15_64: 80.232
+        participation_rate_men_15_64: 83.799
+        participation_rate_women_15_64: 76.562
+        participation_rate_15_19: 31.625
+        participation_rate_20_24: 75.156
+        participation_rate_25_29: 86.732
+        participation_rate_30_34: 87.501
+        participation_rate_35_39: 88.06
+        participation_rate_40_44: 89.418
+        participation_rate_45_49: 89.858
+        participation_rate_50_54: 88.196
+        participation_rate_55_59: 85.115
+        participation_rate_60_64: 68.572
+        participation_rate_65_69: 21.541
+        participation_rate_70_74: 9.788
+      DNK:
+        name: Denmark
+        participation_rate_15_64: 82.404
+        participation_rate_men_15_64: 85.064
+        participation_rate_women_15_64: 79.701
+        participation_rate_15_19: 58.217
+        participation_rate_20_24: 79.16
+        participation_rate_25_29: 85.121
+        participation_rate_30_34: 88.28
+        participation_rate_35_39: 88.329
+        participation_rate_40_44: 89.506
+        participation_rate_45_49: 89.863
+        participation_rate_50_54: 87.851
+        participation_rate_55_59: 83.917
+        participation_rate_60_64: 71.517
+        participation_rate_65_69: 31.34
+        participation_rate_70_74: 13.165
+      ESP:
+        name: Spain
+        participation_rate_15_64: 75.867
+        participation_rate_men_15_64: 79.948
+        participation_rate_women_15_64: 71.763
+        participation_rate_15_19: 15.373
+        participation_rate_20_24: 55.573
+        participation_rate_25_29: 83.764
+        participation_rate_30_34: 88.331
+        participation_rate_35_39: 88.825
+        participation_rate_40_44: 89.245
+        participation_rate_45_49: 88.64
+        participation_rate_50_54: 85.757
+        participation_rate_55_59: 78.107
+        participation_rate_60_64: 57.348
+        participation_rate_65_69: 11.523
+        participation_rate_70_74: 1.556
+      EST:
+        name: Estonia
+        participation_rate_15_64: 82.165
+        participation_rate_men_15_64: 82.671
+        participation_rate_women_15_64: 81.659
+        participation_rate_15_19: 17.113
+        participation_rate_20_24: 74.533
+        participation_rate_25_29: 91.077
+        participation_rate_30_34: 92.253
+        participation_rate_35_39: 91.93
+        participation_rate_40_44: 93.665
+        participation_rate_45_49: 92.212
+        participation_rate_50_54: 91.412
+        participation_rate_55_59: 89.315
+        participation_rate_60_64: 72.836
+        participation_rate_65_69: 40.183
+        participation_rate_70_74: 19.31
+      FIN:
+        name: Finland
+        participation_rate_15_64: 79.492
+        participation_rate_men_15_64: 80.544
+        participation_rate_women_15_64: 78.392
+        participation_rate_15_19: 39.411
+        participation_rate_20_24: 70.597
+        participation_rate_25_29: 82.695
+        participation_rate_30_34: 85.88
+        participation_rate_35_39: 88.971
+        participation_rate_40_44: 88.815
+        participation_rate_45_49: 89.424
+        participation_rate_50_54: 88.409
+        participation_rate_55_59: 84.505
+        participation_rate_60_64: 70.841
+        participation_rate_65_69: 21.171
+        participation_rate_70_74: 8.646
+      FRA:
+        name: France
+        participation_rate_15_64: 74.532
+        participation_rate_men_15_64: 77.546
+        participation_rate_women_15_64: 71.616
+        participation_rate_15_19: 19.017
+        participation_rate_20_24: 68.096
+        participation_rate_25_29: 87.287
+        participation_rate_30_34: 88.055
+        participation_rate_35_39: 89.425
+        participation_rate_40_44: 89.026
+        participation_rate_45_49: 89.812
+        participation_rate_50_54: 87.975
+        participation_rate_55_59: 81.577
+        participation_rate_60_64: 45.237
+        participation_rate_65_69: 11.612
+        participation_rate_70_74: 3.275
+      GBR:
+        name: United Kingdom
+        participation_rate_15_64: 78.465
+        participation_rate_men_15_64: 82.086
+        participation_rate_women_15_64: 74.875
+        participation_rate_15_19: 39.437
+        participation_rate_20_24: 72.303
+        participation_rate_25_29: 86.226
+        participation_rate_30_34: 87.626
+        participation_rate_35_39: 87.72
+        participation_rate_40_44: 88.506
+        participation_rate_45_49: 88.096
+        participation_rate_50_54: 84.639
+        participation_rate_55_59: 75.717
+        participation_rate_60_64: 59.715
+        participation_rate_65_69: 27.356
+        participation_rate_70_74: 9.64
+      GRC:
+        name: Greece
+        participation_rate_15_64: 70.476
+        participation_rate_men_15_64: 78.266
+        participation_rate_women_15_64: 62.725
+        participation_rate_15_19: 5.282
+        participation_rate_20_24: 47.751
+        participation_rate_25_29: 82.822
+        participation_rate_30_34: 85.446
+        participation_rate_35_39: 87.375
+        participation_rate_40_44: 86.88
+        participation_rate_45_49: 87.669
+        participation_rate_50_54: 85.135
+        participation_rate_55_59: 72.668
+        participation_rate_60_64: 48.875
+        participation_rate_65_69: 17.405
+        participation_rate_70_74: 2.838
+      HRV:
+        name: Croatia
+        participation_rate_15_64: 71.894
+        participation_rate_men_15_64: 74.89
+        participation_rate_women_15_64: 68.831
+        participation_rate_15_19: 11.028
+        participation_rate_20_24: 50.552
+        participation_rate_25_29: 83.269
+        participation_rate_30_34: 91.722
+        participation_rate_35_39: 93.732
+        participation_rate_40_44: 91.917
+        participation_rate_45_49: 90.546
+        participation_rate_50_54: 79.73
+        participation_rate_55_59: 69.74
+        participation_rate_60_64: 42.052
+        participation_rate_65_69: 8.184
+        participation_rate_70_74: 2.928
+      HUN:
+        name: Hungary
+        participation_rate_15_64: 78.635
+        participation_rate_men_15_64: 82.484
+        participation_rate_women_15_64: 74.712
+        participation_rate_15_19: 8.06
+        participation_rate_20_24: 55.609
+        participation_rate_25_29: 87.124
+        participation_rate_30_34: 91.687
+        participation_rate_35_39: 92.58
+        participation_rate_40_44: 93.241
+        participation_rate_45_49: 92.496
+        participation_rate_50_54: 91.895
+        participation_rate_55_59: 85.518
+        participation_rate_60_64: 58.404
+        participation_rate_65_69: 14.954
+        participation_rate_70_74: 7.422
+      IND:
+        name: India
+        participation_rate_15_64: 59.45
+        participation_rate_men_15_64: 82.071
+        participation_rate_women_15_64: 37.08
+        participation_rate_15_19: 16.323
+        participation_rate_20_24: 50.68
+        participation_rate_25_29: 64.52
+        participation_rate_30_34: 69
+        participation_rate_35_39: 72.828
+        participation_rate_40_44: 74.683
+        participation_rate_45_49: 74.846
+        participation_rate_50_54: 70.824
+        participation_rate_55_59: 66.977
+        participation_rate_60_64: 49.019
+        participation_rate_65_69: 36.698
+        participation_rate_70_74: 21.317
+      IRL:
+        name: Ireland
+        participation_rate_15_64: 77.684
+        participation_rate_men_15_64: 81.851
+        participation_rate_women_15_64: 73.601
+        participation_rate_15_19: 32.669
+        participation_rate_20_24: 77.014
+        participation_rate_25_29: 88.555
+        participation_rate_30_34: 87.962
+        participation_rate_35_39: 88.252
+        participation_rate_40_44: 87.11
+        participation_rate_45_49: 87.98
+        participation_rate_50_54: 84.013
+        participation_rate_55_59: 77.358
+        participation_rate_60_64: 61.09
+        participation_rate_65_69: 28.951
+        participation_rate_70_74: 13.122
+      ISL:
+        name: Iceland
+        participation_rate_15_64: 88.55
+        participation_rate_men_15_64: 91.696
+        participation_rate_women_15_64: 85.074
+        participation_rate_15_19: 75.481
+        participation_rate_20_24: 87.119
+        participation_rate_25_29: 90.164
+        participation_rate_30_34: 93.579
+        participation_rate_35_39: 94.244
+        participation_rate_40_44: 92.441
+        participation_rate_45_49: 90.813
+        participation_rate_50_54: 88.747
+        participation_rate_55_59: 86.165
+        participation_rate_60_64: 79.246
+        participation_rate_65_69: 49.452
+        participation_rate_70_74: 16.837
+      ISR:
+        name: Israel
+        participation_rate_15_64: 71.446
+        participation_rate_men_15_64: 73.041
+        participation_rate_women_15_64: 69.859
+        participation_rate_15_19: 25.546
+        participation_rate_20_24: 65.965
+        participation_rate_25_29: 74.984
+        participation_rate_30_34: 82.434
+        participation_rate_35_39: 84.619
+        participation_rate_40_44: 85.687
+        participation_rate_45_49: 86.022
+        participation_rate_50_54: 83.398
+        participation_rate_55_59: 78.459
+        participation_rate_60_64: 65.409
+        participation_rate_65_69: 42.183
+        participation_rate_70_74: 22.837
+      ITA:
+        name: Italy
+        participation_rate_15_64: 66.607
+        participation_rate_men_15_64: 75.627
+        participation_rate_women_15_64: 57.551
+        participation_rate_15_19: 6.472
+        participation_rate_20_24: 42.839
+        participation_rate_25_29: 70.842
+        participation_rate_30_34: 79.997
+        participation_rate_35_39: 80.857
+        participation_rate_40_44: 81.946
+        participation_rate_45_49: 82.629
+        participation_rate_50_54: 79.494
+        participation_rate_55_59: 72.25
+        participation_rate_60_64: 48.834
+        participation_rate_65_69: 16.507
+        participation_rate_70_74: 4.139
+      JPN:
+        name: Japan
+        participation_rate_15_64: 81.525
+        participation_rate_men_15_64: 86.775
+        participation_rate_women_15_64: 76.109
+        participation_rate_15_19: 22.08
+        participation_rate_20_24: 76.122
+        participation_rate_25_29: 91.538
+        participation_rate_30_34: 89.655
+        participation_rate_35_39: 88.567
+        participation_rate_40_44: 89.542
+        participation_rate_45_49: 89.909
+        participation_rate_50_54: 88.205
+        participation_rate_55_59: 85.207
+        participation_rate_60_64: 76.525
+        participation_rate_65_69: 54.87
+        participation_rate_70_74: 35.577
+      KOR:
+        name: Korea
+        participation_rate_15_64: 71.517
+        participation_rate_men_15_64: 78.921
+        participation_rate_women_15_64: 63.9
+        participation_rate_15_19: 6.93
+        participation_rate_20_24: 48.107
+        participation_rate_25_29: 76.818
+        participation_rate_30_34: 82.997
+        participation_rate_35_39: 81.475
+        participation_rate_40_44: 79.922
+        participation_rate_45_49: 81.36
+        participation_rate_50_54: 80.254
+        participation_rate_55_59: 77.403
+        participation_rate_60_64: 65.814
+        participation_rate_65_69: 53.611
+        participation_rate_70_74: 42.369
+      LTU:
+        name: Lithuania
+        participation_rate_15_64: 79.506
+        participation_rate_men_15_64: 80.73
+        participation_rate_women_15_64: 78.257
+        participation_rate_15_19: 8.019
+        participation_rate_20_24: 66.933
+        participation_rate_25_29: 89.087
+        participation_rate_30_34: 91.853
+        participation_rate_35_39: 93.093
+        participation_rate_40_44: 91.435
+        participation_rate_45_49: 92.609
+        participation_rate_50_54: 86.483
+        participation_rate_55_59: 82.831
+        participation_rate_60_64: 68.847
+        participation_rate_65_69: 29.948
+        participation_rate_70_74: 11.499
+      LUX:
+        name: Luxembourg
+        participation_rate_15_64: 74.471
+        participation_rate_men_15_64: 77.202
+        participation_rate_women_15_64: 71.638
+        participation_rate_15_19: 22.27
+        participation_rate_20_24: 50.837
+        participation_rate_25_29: 86.538
+        participation_rate_30_34: 91.952
+        participation_rate_35_39: 91.903
+        participation_rate_40_44: 92.136
+        participation_rate_45_49: 89.647
+        participation_rate_50_54: 86.485
+        participation_rate_55_59: 71.014
+        participation_rate_60_64: 26.345
+        participation_rate_65_69: 7.767
+        participation_rate_70_74: 4.076
+      LVA:
+        name: Latvia
+        participation_rate_15_64: 76.734
+        participation_rate_men_15_64: 78.938
+        participation_rate_women_15_64: 74.608
+        participation_rate_15_19: 7.833
+        participation_rate_20_24: 65.583
+        participation_rate_25_29: 88.761
+        participation_rate_30_34: 87.861
+        participation_rate_35_39: 88.988
+        participation_rate_40_44: 88.966
+        participation_rate_45_49: 88.697
+        participation_rate_50_54: 83.972
+        participation_rate_55_59: 82.282
+        participation_rate_60_64: 71.631
+        participation_rate_65_69: 31.833
+        participation_rate_70_74: 16.378
+      MEX:
+        name: Mexico
+        participation_rate_15_64: 65.717
+        participation_rate_men_15_64: 81.696
+        participation_rate_women_15_64: 51.474
+        participation_rate_15_19: 29.779
+        participation_rate_20_24: 61.127
+        participation_rate_25_29: 75.715
+        participation_rate_30_34: 77.426
+        participation_rate_35_39: 77.748
+        participation_rate_40_44: 77.492
+        participation_rate_45_49: 75.817
+        participation_rate_50_54: 72.868
+        participation_rate_55_59: 65.853
+        participation_rate_60_64: 48.346
+        participation_rate_65_69: 35.613
+        participation_rate_70_74: 25.885
+      MKD:
+        name: North Macedonia
+        participation_rate_15_64: 65.988
+        participation_rate_men_15_64: 76.19
+        participation_rate_women_15_64: 55.712
+        participation_rate_15_19: 8.446
+        participation_rate_20_24: 50.644
+        participation_rate_25_29: 77.208
+        participation_rate_30_34: 82.525
+        participation_rate_35_39: 83.632
+        participation_rate_40_44: 82.873
+        participation_rate_45_49: 78.966
+        participation_rate_50_54: 72.629
+        participation_rate_55_59: 67.599
+        participation_rate_60_64: 42.606
+        participation_rate_65_69: 7.542
+        participation_rate_70_74: 1.489
+      MLT:
+        name: Malta
+        participation_rate_15_64: 81.783
+        participation_rate_men_15_64: 88.065
+        participation_rate_women_15_64: 74.127
+        participation_rate_15_19: 25.732
+        participation_rate_20_24: 77.944
+        participation_rate_25_29: 95.197
+        participation_rate_30_34: 94.246
+        participation_rate_35_39: 90.746
+        participation_rate_40_44: 92.001
+        participation_rate_45_49: 88.654
+        participation_rate_50_54: 84.457
+        participation_rate_55_59: 75.255
+        participation_rate_60_64: 43.94
+        participation_rate_65_69: 14.553
+        participation_rate_70_74: 5.977
+      NLD:
+        name: Netherlands
+        participation_rate_15_64: 85.485
+        participation_rate_men_15_64: 88.869
+        participation_rate_women_15_64: 82.078
+        participation_rate_15_19: 78.996
+        participation_rate_20_24: 86.902
+        participation_rate_25_29: 90.56
+        participation_rate_30_34: 90.976
+        participation_rate_35_39: 89.663
+        participation_rate_40_44: 89.055
+        participation_rate_45_49: 88.246
+        participation_rate_50_54: 86.993
+        participation_rate_55_59: 83.248
+        participation_rate_60_64: 70.466
+        participation_rate_65_69: 29.114
+        participation_rate_70_74: 10.154
+      NOR:
+        name: Norway
+        participation_rate_15_64: 80.373
+        participation_rate_men_15_64: 82.557
+        participation_rate_women_15_64: 78.1
+        participation_rate_15_19: 58.658
+        participation_rate_20_24: 73.543
+        participation_rate_25_29: 86.43
+        participation_rate_30_34: 88.899
+        participation_rate_35_39: 87.98
+        participation_rate_40_44: 85.906
+        participation_rate_45_49: 85.822
+        participation_rate_50_54: 82.442
+        participation_rate_55_59: 79.251
+        participation_rate_60_64: 69.681
+        participation_rate_65_69: 34.36
+        participation_rate_70_74: 8.595
+      NZL:
+        name: New Zealand
+        participation_rate_15_64: 82.546
+        participation_rate_men_15_64: 85.935
+        participation_rate_women_15_64: 79.157
+        participation_rate_15_19: 50.891
+        participation_rate_20_24: 80.877
+        participation_rate_25_29: 86.727
+        participation_rate_30_34: 88.449
+        participation_rate_35_39: 89.115
+        participation_rate_40_44: 89.481
+        participation_rate_45_49: 89.814
+        participation_rate_50_54: 88.278
+        participation_rate_55_59: 85.159
+        participation_rate_60_64: 75
+        participation_rate_65_69: 48.119
+        participation_rate_70_74: 25.013
+      PER:
+        name: Peru
+        participation_rate_15_64: 75.679
+        participation_rate_men_15_64: 84.036
+        participation_rate_women_15_64: 67.563
+        participation_rate_15_19: 36.486
+        participation_rate_20_24: 68.254
+        participation_rate_25_29: 83.322
+        participation_rate_30_34: 83.975
+        participation_rate_35_39: 85.563
+        participation_rate_40_44: 85.892
+        participation_rate_45_49: 86.53
+        participation_rate_50_54: 85.34
+        participation_rate_55_59: 81.401
+        participation_rate_60_64: 73.156
+        participation_rate_65_69: null
+        participation_rate_70_74: null
+      POL:
+        name: Poland
+        participation_rate_15_64: 74.728
+        participation_rate_men_15_64: 80.06
+        participation_rate_women_15_64: 69.363
+        participation_rate_15_19: 6.353
+        participation_rate_20_24: 59.437
+        participation_rate_25_29: 86.643
+        participation_rate_30_34: 89.441
+        participation_rate_35_39: 89.995
+        participation_rate_40_44: 90.611
+        participation_rate_45_49: 89.002
+        participation_rate_50_54: 85.739
+        participation_rate_55_59: 77.646
+        participation_rate_60_64: 43.887
+        participation_rate_65_69: 12.279
+        participation_rate_70_74: 5.69
+      PRT:
+        name: Portugal
+        participation_rate_15_64: 79.17
+        participation_rate_men_15_64: 81.656
+        participation_rate_women_15_64: 76.809
+        participation_rate_15_19: 12.41
+        participation_rate_20_24: 57.979
+        participation_rate_25_29: 90.44
+        participation_rate_30_34: 92.915
+        participation_rate_35_39: 92.909
+        participation_rate_40_44: 93.297
+        participation_rate_45_49: 91.714
+        participation_rate_50_54: 89.168
+        participation_rate_55_59: 80.873
+        participation_rate_60_64: 61.816
+        participation_rate_65_69: 23.076
+        participation_rate_70_74: 7.429
+      ROU:
+        name: Romania
+        participation_rate_15_64: 67.43
+        participation_rate_men_15_64: 76.346
+        participation_rate_women_15_64: 58.284
+        participation_rate_15_19: 8.746
+        participation_rate_20_24: 43.103
+        participation_rate_25_29: 77.141
+        participation_rate_30_34: 81.312
+        participation_rate_35_39: 82.861
+        participation_rate_40_44: 84.693
+        participation_rate_45_49: 84.026
+        participation_rate_50_54: 81.287
+        participation_rate_55_59: 71.013
+        participation_rate_60_64: 37.412
+        participation_rate_65_69: 5.196
+        participation_rate_70_74: 1.467
+      SVK:
+        name: Slovak Republic
+        participation_rate_15_64: 76.585
+        participation_rate_men_15_64: 80.407
+        participation_rate_women_15_64: 72.68
+        participation_rate_15_19: 6.491
+        participation_rate_20_24: 48.023
+        participation_rate_25_29: 85.111
+        participation_rate_30_34: 89.232
+        participation_rate_35_39: 90.646
+        participation_rate_40_44: 91.885
+        participation_rate_45_49: 93.106
+        participation_rate_50_54: 89.478
+        participation_rate_55_59: 83.56
+        participation_rate_60_64: 53.015
+        participation_rate_65_69: 12.43
+        participation_rate_70_74: 5.038
+      SVN:
+        name: Slovenia
+        participation_rate_15_64: 75.879
+        participation_rate_men_15_64: 78.676
+        participation_rate_women_15_64: 72.804
+        participation_rate_15_19: 14.904
+        participation_rate_20_24: 58.688
+        participation_rate_25_29: 89.306
+        participation_rate_30_34: 92.526
+        participation_rate_35_39: 94.186
+        participation_rate_40_44: 93.854
+        participation_rate_45_49: 93.492
+        participation_rate_50_54: 91.116
+        participation_rate_55_59: 77.947
+        participation_rate_60_64: 37.995
+        participation_rate_65_69: 9.753
+        participation_rate_70_74: 4.331
+      SWE:
+        name: Sweden
+        participation_rate_15_64: 83.831
+        participation_rate_men_15_64: 85.271
+        participation_rate_women_15_64: 82.328
+        participation_rate_15_19: 41.257
+        participation_rate_20_24: 72.968
+        participation_rate_25_29: 86.245
+        participation_rate_30_34: 90.841
+        participation_rate_35_39: 93.347
+        participation_rate_40_44: 93.916
+        participation_rate_45_49: 94.075
+        participation_rate_50_54: 93.81
+        participation_rate_55_59: 90.582
+        participation_rate_60_64: 74.371
+        participation_rate_65_69: 31.149
+        participation_rate_70_74: 11.809
+      THA:
+        name: Thailand
+        participation_rate_15_64: 75.59
+        participation_rate_men_15_64: 82.699
+        participation_rate_women_15_64: 68.741
+        participation_rate_15_19: 11.791
+        participation_rate_20_24: 63.531
+        participation_rate_25_29: 87.277
+        participation_rate_30_34: 89.731
+        participation_rate_35_39: 90.494
+        participation_rate_40_44: 89.721
+        participation_rate_45_49: 88.349
+        participation_rate_50_54: 85.367
+        participation_rate_55_59: 79.014
+        participation_rate_60_64: 58.046
+        participation_rate_65_69: null
+        participation_rate_70_74: null
+      TUR:
+        name: Türkiye
+        participation_rate_15_64: 60.593
+        participation_rate_men_15_64: 78.933
+        participation_rate_women_15_64: 42.06
+        participation_rate_15_19: 32.62
+        participation_rate_20_24: 63.447
+        participation_rate_25_29: 72.303
+        participation_rate_30_34: 71.988
+        participation_rate_35_39: 72.774
+        participation_rate_40_44: 71.774
+        participation_rate_45_49: 68.005
+        participation_rate_50_54: 58.571
+        participation_rate_55_59: 46.988
+        participation_rate_60_64: 34.366
+        participation_rate_65_69: 21.437
+        participation_rate_70_74: 12.977
+      USA:
+        name: United States
+        participation_rate_15_64: 74.923
+        participation_rate_men_15_64: 79.651
+        participation_rate_women_15_64: 70.258
+        participation_rate_15_19: 36.882
+        participation_rate_20_24: 71.506
+        participation_rate_25_29: 82.97
+        participation_rate_30_34: 84.36
+        participation_rate_35_39: 84.835
+        participation_rate_40_44: 84.481
+        participation_rate_45_49: 83.5
+        participation_rate_50_54: 81.061
+        participation_rate_55_59: 73.974
+        participation_rate_60_64: 58.298
+        participation_rate_65_69: 33.41
+        participation_rate_70_74: 19.588
+      ZAF:
+        name: South Africa
+        participation_rate_15_64: 60.46
+        participation_rate_men_15_64: 65.548
+        participation_rate_women_15_64: 55.443
+        participation_rate_15_19: 6.241
+        participation_rate_20_24: 47.337
+        participation_rate_25_29: 71.865
+        participation_rate_30_34: 77.198
+        participation_rate_35_39: 78.861
+        participation_rate_40_44: 79.898
+        participation_rate_45_49: 76.801
+        participation_rate_50_54: 71.469
+        participation_rate_55_59: 60.142
+        participation_rate_60_64: 25.432
+        participation_rate_65_69: 10.536
+        participation_rate_70_74: null
+  vectors:
+  - input:
+      key: DEU
+      column: participation_rate_15_64
+    expected: 80.232
+    origin: source
+  - input:
+      key: FRA
+      column: participation_rate_15_64
+    expected: 74.532
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1 (employment and unemployment
+    by five-year age group and sex, indicators), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1/.LF_RATE....?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, AGE=Y15T64, TIME_PERIOD=2024, OBS_VALUE
+  value: '80.232'
+  unit: percent
+  snippet: DEU,Germany,LF_RATE,Labour force participation rate,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,Y15T64,From
+    15 to 64 years,LF,Labour force,2024,,80.232
+  source_license: unstated
+  content_sha256: 4c33195dd3647aa1b79487c345b5728c5e81d59ebb94ae2a42d39197ec0af53c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1 (employment and unemployment
+    by five-year age group and sex, indicators), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1/.LF_RATE....?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=M, AGE=Y15T64, TIME_PERIOD=2024, OBS_VALUE
+  value: '83.799'
+  unit: percent
+  snippet: DEU,Germany,LF_RATE,Labour force participation rate,PT_POP_SUB,Percentage of population in the same subgroup,M,Male,Y15T64,From
+    15 to 64 years,LF,Labour force,2024,,83.799
+  source_license: unstated
+  content_sha256: 4c33195dd3647aa1b79487c345b5728c5e81d59ebb94ae2a42d39197ec0af53c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1 (employment and unemployment
+    by five-year age group and sex, indicators), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1/.LF_RATE....?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=F, AGE=Y15T64, TIME_PERIOD=2024, OBS_VALUE
+  value: '76.562'
+  unit: percent
+  snippet: DEU,Germany,LF_RATE,Labour force participation rate,PT_POP_SUB,Percentage of population in the same subgroup,F,Female,Y15T64,From
+    15 to 64 years,LF,Labour force,2024,,76.562
+  source_license: unstated
+  content_sha256: 4c33195dd3647aa1b79487c345b5728c5e81d59ebb94ae2a42d39197ec0af53c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1 (employment and unemployment
+    by five-year age group and sex, indicators), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1/.LF_RATE....?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, AGE=Y15T19, TIME_PERIOD=2024, OBS_VALUE
+  value: '31.625'
+  unit: percent
+  snippet: DEU,Germany,LF_RATE,Labour force participation rate,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,Y15T19,From
+    15 to 19 years,LF,Labour force,2024,,31.625
+  source_license: unstated
+  content_sha256: 4c33195dd3647aa1b79487c345b5728c5e81d59ebb94ae2a42d39197ec0af53c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1 (employment and unemployment
+    by five-year age group and sex, indicators), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1/.LF_RATE....?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, AGE=Y20T24, TIME_PERIOD=2024, OBS_VALUE
+  value: '75.156'
+  unit: percent
+  snippet: DEU,Germany,LF_RATE,Labour force participation rate,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,Y20T24,From
+    20 to 24 years,LF,Labour force,2024,,75.156
+  source_license: unstated
+  content_sha256: 4c33195dd3647aa1b79487c345b5728c5e81d59ebb94ae2a42d39197ec0af53c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1 (employment and unemployment
+    by five-year age group and sex, indicators), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1/.LF_RATE....?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, AGE=Y25T29, TIME_PERIOD=2024, OBS_VALUE
+  value: '86.732'
+  unit: percent
+  snippet: DEU,Germany,LF_RATE,Labour force participation rate,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,Y25T29,From
+    25 to 29 years,LF,Labour force,2024,,86.732
+  source_license: unstated
+  content_sha256: 4c33195dd3647aa1b79487c345b5728c5e81d59ebb94ae2a42d39197ec0af53c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1 (employment and unemployment
+    by five-year age group and sex, indicators), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1/.LF_RATE....?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, AGE=Y30T34, TIME_PERIOD=2024, OBS_VALUE
+  value: '87.501'
+  unit: percent
+  snippet: DEU,Germany,LF_RATE,Labour force participation rate,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,Y30T34,From
+    30 to 34 years,LF,Labour force,2024,,87.501
+  source_license: unstated
+  content_sha256: 4c33195dd3647aa1b79487c345b5728c5e81d59ebb94ae2a42d39197ec0af53c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1 (employment and unemployment
+    by five-year age group and sex, indicators), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1/.LF_RATE....?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, AGE=Y35T39, TIME_PERIOD=2024, OBS_VALUE
+  value: '88.06'
+  unit: percent
+  snippet: DEU,Germany,LF_RATE,Labour force participation rate,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,Y35T39,From
+    35 to 39 years,LF,Labour force,2024,,88.06
+  source_license: unstated
+  content_sha256: 4c33195dd3647aa1b79487c345b5728c5e81d59ebb94ae2a42d39197ec0af53c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1 (employment and unemployment
+    by five-year age group and sex, indicators), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1/.LF_RATE....?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, AGE=Y40T44, TIME_PERIOD=2024, OBS_VALUE
+  value: '89.418'
+  unit: percent
+  snippet: DEU,Germany,LF_RATE,Labour force participation rate,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,Y40T44,From
+    40 to 44 years,LF,Labour force,2024,,89.418
+  source_license: unstated
+  content_sha256: 4c33195dd3647aa1b79487c345b5728c5e81d59ebb94ae2a42d39197ec0af53c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1 (employment and unemployment
+    by five-year age group and sex, indicators), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1/.LF_RATE....?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, AGE=Y45T49, TIME_PERIOD=2024, OBS_VALUE
+  value: '89.858'
+  unit: percent
+  snippet: DEU,Germany,LF_RATE,Labour force participation rate,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,Y45T49,From
+    45 to 49 years,LF,Labour force,2024,,89.858
+  source_license: unstated
+  content_sha256: 4c33195dd3647aa1b79487c345b5728c5e81d59ebb94ae2a42d39197ec0af53c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1 (employment and unemployment
+    by five-year age group and sex, indicators), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1/.LF_RATE....?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, AGE=Y50T54, TIME_PERIOD=2024, OBS_VALUE
+  value: '88.196'
+  unit: percent
+  snippet: DEU,Germany,LF_RATE,Labour force participation rate,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,Y50T54,From
+    50 to 54 years,LF,Labour force,2024,,88.196
+  source_license: unstated
+  content_sha256: 4c33195dd3647aa1b79487c345b5728c5e81d59ebb94ae2a42d39197ec0af53c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1 (employment and unemployment
+    by five-year age group and sex, indicators), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1/.LF_RATE....?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, AGE=Y55T59, TIME_PERIOD=2024, OBS_VALUE
+  value: '85.115'
+  unit: percent
+  snippet: DEU,Germany,LF_RATE,Labour force participation rate,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,Y55T59,From
+    55 to 59 years,LF,Labour force,2024,,85.115
+  source_license: unstated
+  content_sha256: 4c33195dd3647aa1b79487c345b5728c5e81d59ebb94ae2a42d39197ec0af53c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1 (employment and unemployment
+    by five-year age group and sex, indicators), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1/.LF_RATE....?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, AGE=Y60T64, TIME_PERIOD=2024, OBS_VALUE
+  value: '68.572'
+  unit: percent
+  snippet: DEU,Germany,LF_RATE,Labour force participation rate,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,Y60T64,From
+    60 to 64 years,LF,Labour force,2024,,68.572
+  source_license: unstated
+  content_sha256: 4c33195dd3647aa1b79487c345b5728c5e81d59ebb94ae2a42d39197ec0af53c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1 (employment and unemployment
+    by five-year age group and sex, indicators), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1/.LF_RATE....?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, AGE=Y65T69, TIME_PERIOD=2024, OBS_VALUE
+  value: '21.541'
+  unit: percent
+  snippet: DEU,Germany,LF_RATE,Labour force participation rate,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,Y65T69,From
+    65 to 69 years,LF,Labour force,2024,,21.541
+  source_license: unstated
+  content_sha256: 4c33195dd3647aa1b79487c345b5728c5e81d59ebb94ae2a42d39197ec0af53c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1 (employment and unemployment
+    by five-year age group and sex, indicators), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_LFS@DF_LFS_INDIC,1.1/.LF_RATE....?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, AGE=Y70T74, TIME_PERIOD=2024, OBS_VALUE
+  value: '9.788'
+  unit: percent
+  snippet: DEU,Germany,LF_RATE,Labour force participation rate,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,Y70T74,From
+    70 to 74 years,LF,Labour force,2024,,9.788
+  source_license: unstated
+  content_sha256: 4c33195dd3647aa1b79487c345b5728c5e81d59ebb94ae2a42d39197ec0af53c
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 49
+  tolerance: 0
+- statistic: value[DEU,participation_rate_15_64]
+  expected: 80.232
+  tolerance: 1.0e-09
+- statistic: max[participation_rate_15_64]
+  expected: 88.55
+  tolerance: 1.0e-09
+- statistic: value[FRA,participation_rate_15_64]
+  expected: 74.532
+  tolerance: 1.0e-09
+notes: 'Labour force as a percentage of the population of the same age and sex from OECD dataflow DF_LFS_INDIC (employment
+  and unemployment by five-year age group and sex, indicators, measure LF_RATE): the 15 to 64 rate for all persons,
+  men and women, and the all-persons rate for each five-year band from 15 to 19 up to 70 to 74. Rows are keyed by
+  ISO 3166-1 alpha-3 code and carry the OECD reference-area label; OECD, EU and G7 aggregates are left out. Values
+  are the 2024 observations of the dataflow. The OECD terms and conditions page could not be fetched byte-stably
+  in this session, so the licence is recorded as unstated and the entry stays at license-review until a reviewer
+  confirms the terms that apply to OECD data.'

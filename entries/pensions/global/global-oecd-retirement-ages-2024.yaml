@@ -1,0 +1,556 @@
+id: global-oecd-retirement-ages-2024
+title: Current and future normal retirement ages and effective labour market exit age by country and sex, 2024 (OECD
+  Pensions at a Glance)
+kind: rule
+domain: pensions
+region: global
+status: license-review
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- retirement-age
+- pensions
+- retirement
+- oecd
+- reference-table
+- by-country
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- pensions
+- hr-analytics
+- workforce-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: OECD.ELS.SPD,DSD_PAG@DF_PAG,1.0
+    url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SPD,DSD_PAG@DF_PAG,1.0/all?startPeriod=2022&format=csvfilewithlabels
+    period: '2024'
+    rows:
+      ARG:
+        name: Argentina
+        current_retirement_age_men: 65
+        current_retirement_age_women: 60
+        future_retirement_age_men: 65
+        future_retirement_age_women: 60
+        effective_labour_market_exit_age_men: null
+        effective_labour_market_exit_age_women: 54.6
+      AUS:
+        name: Australia
+        current_retirement_age_men: 67
+        current_retirement_age_women: 67
+        future_retirement_age_men: 67
+        future_retirement_age_women: 67
+        effective_labour_market_exit_age_men: 64.9
+        effective_labour_market_exit_age_women: 64.4
+      AUT:
+        name: Austria
+        current_retirement_age_men: 65
+        current_retirement_age_women: 60.5
+        future_retirement_age_men: 65
+        future_retirement_age_women: 65
+        effective_labour_market_exit_age_men: 62.7
+        effective_labour_market_exit_age_women: 61.2
+      BEL:
+        name: Belgium
+        current_retirement_age_men: 65
+        current_retirement_age_women: 65
+        future_retirement_age_men: 67
+        future_retirement_age_women: 67
+        effective_labour_market_exit_age_men: 62.4
+        effective_labour_market_exit_age_women: 60.6
+      BGR:
+        name: Bulgaria
+        current_retirement_age_men: 64.6
+        current_retirement_age_women: 62.2
+        future_retirement_age_men: 65
+        future_retirement_age_women: 65
+        effective_labour_market_exit_age_men: 64.8
+        effective_labour_market_exit_age_women: 62.7
+      BRA:
+        name: Brazil
+        current_retirement_age_men: 65
+        current_retirement_age_women: 62
+        future_retirement_age_men: 65
+        future_retirement_age_women: 62
+        effective_labour_market_exit_age_men: 55.8
+        effective_labour_market_exit_age_women: 53.9
+      CAN:
+        name: Canada
+        current_retirement_age_men: 65
+        current_retirement_age_women: 65
+        future_retirement_age_men: 65
+        future_retirement_age_women: 65
+        effective_labour_market_exit_age_men: 65.2
+        effective_labour_market_exit_age_women: 63.2
+      CHE:
+        name: Switzerland
+        current_retirement_age_men: 65
+        current_retirement_age_women: 64
+        future_retirement_age_men: 65
+        future_retirement_age_women: 65
+        effective_labour_market_exit_age_men: 64.2
+        effective_labour_market_exit_age_women: 64.5
+      CHL:
+        name: Chile
+        current_retirement_age_men: 65
+        current_retirement_age_women: 65
+        future_retirement_age_men: 65
+        future_retirement_age_women: 65
+        effective_labour_market_exit_age_men: 69
+        effective_labour_market_exit_age_women: 66.2
+      CHN:
+        name: China (People’s Republic of)
+        current_retirement_age_men: 60
+        current_retirement_age_women: 55
+        future_retirement_age_men: 63
+        future_retirement_age_women: 58
+        effective_labour_market_exit_age_men: null
+        effective_labour_market_exit_age_women: null
+      COL:
+        name: Colombia
+        current_retirement_age_men: 62
+        current_retirement_age_women: 57
+        future_retirement_age_men: 62
+        future_retirement_age_women: 57
+        effective_labour_market_exit_age_men: 67.4
+        effective_labour_market_exit_age_women: 61.2
+      CRI:
+        name: Costa Rica
+        current_retirement_age_men: 65
+        current_retirement_age_women: 63
+        future_retirement_age_men: 65
+        future_retirement_age_women: 63
+        effective_labour_market_exit_age_men: 64.8
+        effective_labour_market_exit_age_women: 59.8
+      CYP:
+        name: Cyprus
+        current_retirement_age_men: 65
+        current_retirement_age_women: 65
+        future_retirement_age_men: 70
+        future_retirement_age_women: 70
+        effective_labour_market_exit_age_men: 65.6
+        effective_labour_market_exit_age_women: 63.1
+      CZE:
+        name: Czechia
+        current_retirement_age_men: 64.2
+        current_retirement_age_women: 64.2
+        future_retirement_age_men: 67
+        future_retirement_age_women: 67
+        effective_labour_market_exit_age_men: 64.2
+        effective_labour_market_exit_age_women: 63
+      DEU:
+        name: Germany
+        current_retirement_age_men: 66.2
+        current_retirement_age_women: 66.2
+        future_retirement_age_men: 67
+        future_retirement_age_women: 67
+        effective_labour_market_exit_age_men: 64.2
+        effective_labour_market_exit_age_women: 63.9
+      DNK:
+        name: Denmark
+        current_retirement_age_men: 67
+        current_retirement_age_women: 67
+        future_retirement_age_men: 74
+        future_retirement_age_women: 74
+        effective_labour_market_exit_age_men: 66.3
+        effective_labour_market_exit_age_women: 63.5
+      ESP:
+        name: Spain
+        current_retirement_age_men: 65
+        current_retirement_age_women: 65
+        future_retirement_age_men: 65
+        future_retirement_age_women: 65
+        effective_labour_market_exit_age_men: 62.4
+        effective_labour_market_exit_age_women: 63
+      EST:
+        name: Estonia
+        current_retirement_age_men: 64.8
+        current_retirement_age_women: 64.8
+        future_retirement_age_men: 71
+        future_retirement_age_women: 71
+        effective_labour_market_exit_age_men: 66.9
+        effective_labour_market_exit_age_women: 67.3
+      FIN:
+        name: Finland
+        current_retirement_age_men: 65
+        current_retirement_age_women: 65
+        future_retirement_age_men: 68
+        future_retirement_age_women: 68
+        effective_labour_market_exit_age_men: 63.5
+        effective_labour_market_exit_age_women: 62.9
+      FRA:
+        name: France
+        current_retirement_age_men: 64.3
+        current_retirement_age_women: 64.3
+        future_retirement_age_men: 65
+        future_retirement_age_women: 65
+        effective_labour_market_exit_age_men: 61.9
+        effective_labour_market_exit_age_women: 62.4
+      GBR:
+        name: United Kingdom
+        current_retirement_age_men: 66
+        current_retirement_age_women: 66
+        future_retirement_age_men: 68
+        future_retirement_age_women: 68
+        effective_labour_market_exit_age_men: 63.8
+        effective_labour_market_exit_age_women: 63.1
+      GRC:
+        name: Greece
+        current_retirement_age_men: 62
+        current_retirement_age_women: 62
+        future_retirement_age_men: 66
+        future_retirement_age_women: 66
+        effective_labour_market_exit_age_men: 63.7
+        effective_labour_market_exit_age_women: 61.9
+      HRV:
+        name: Croatia
+        current_retirement_age_men: 65
+        current_retirement_age_women: 63.5
+        future_retirement_age_men: 63
+        future_retirement_age_women: 63
+        effective_labour_market_exit_age_men: 62.6
+        effective_labour_market_exit_age_women: 62.9
+      HUN:
+        name: Hungary
+        current_retirement_age_men: 65
+        current_retirement_age_women: 62
+        future_retirement_age_men: 65
+        future_retirement_age_women: 62
+        effective_labour_market_exit_age_men: 63.6
+        effective_labour_market_exit_age_women: 62
+      IDN:
+        name: Indonesia
+        current_retirement_age_men: 58
+        current_retirement_age_women: 58
+        future_retirement_age_men: 65
+        future_retirement_age_women: 65
+        effective_labour_market_exit_age_men: null
+        effective_labour_market_exit_age_women: null
+      IND:
+        name: India
+        current_retirement_age_men: 58
+        current_retirement_age_women: 58
+        future_retirement_age_men: 58
+        future_retirement_age_women: 58
+        effective_labour_market_exit_age_men: 56.1
+        effective_labour_market_exit_age_women: 54.8
+      IRL:
+        name: Ireland
+        current_retirement_age_men: 66
+        current_retirement_age_women: 66
+        future_retirement_age_men: 66
+        future_retirement_age_women: 66
+        effective_labour_market_exit_age_men: 66.1
+        effective_labour_market_exit_age_women: 66
+      ISL:
+        name: Iceland
+        current_retirement_age_men: 67
+        current_retirement_age_women: 67
+        future_retirement_age_men: 67
+        future_retirement_age_women: 67
+        effective_labour_market_exit_age_men: 68.7
+        effective_labour_market_exit_age_women: 65.9
+      ISR:
+        name: Israel
+        current_retirement_age_men: 67
+        current_retirement_age_women: 62
+        future_retirement_age_men: 67
+        future_retirement_age_women: 65
+        effective_labour_market_exit_age_men: 67.8
+        effective_labour_market_exit_age_women: 65.7
+      ITA:
+        name: Italy
+        current_retirement_age_men: 64.8
+        current_retirement_age_women: 63.8
+        future_retirement_age_men: 70
+        future_retirement_age_women: 70
+        effective_labour_market_exit_age_men: 64
+        effective_labour_market_exit_age_women: 62.6
+      JPN:
+        name: Japan
+        current_retirement_age_men: 65
+        current_retirement_age_women: 65
+        future_retirement_age_men: 65
+        future_retirement_age_women: 65
+        effective_labour_market_exit_age_men: 66.9
+        effective_labour_market_exit_age_women: 67.4
+      KOR:
+        name: Korea
+        current_retirement_age_men: 63
+        current_retirement_age_women: 63
+        future_retirement_age_men: 65
+        future_retirement_age_women: 65
+        effective_labour_market_exit_age_men: 67.4
+        effective_labour_market_exit_age_women: 69.6
+      LTU:
+        name: Lithuania
+        current_retirement_age_men: 64.7
+        current_retirement_age_women: 64.3
+        future_retirement_age_men: 65
+        future_retirement_age_women: 65
+        effective_labour_market_exit_age_men: 63.5
+        effective_labour_market_exit_age_women: 63.5
+      LUX:
+        name: Luxembourg
+        current_retirement_age_men: 62
+        current_retirement_age_women: 62
+        future_retirement_age_men: 62
+        future_retirement_age_women: 62
+        effective_labour_market_exit_age_men: 60.1
+        effective_labour_market_exit_age_women: 60.3
+      LVA:
+        name: Latvia
+        current_retirement_age_men: 64.8
+        current_retirement_age_women: 64.8
+        future_retirement_age_men: 65
+        future_retirement_age_women: 65
+        effective_labour_market_exit_age_men: 63.6
+        effective_labour_market_exit_age_women: 63.4
+      MEX:
+        name: Mexico
+        current_retirement_age_men: 65
+        current_retirement_age_women: 65
+        future_retirement_age_men: 65
+        future_retirement_age_women: 65
+        effective_labour_market_exit_age_men: 67.8
+        effective_labour_market_exit_age_women: 65.7
+      MLT:
+        name: Malta
+        current_retirement_age_men: 64
+        current_retirement_age_women: 64
+        future_retirement_age_men: 65
+        future_retirement_age_women: 65
+        effective_labour_market_exit_age_men: 62.5
+        effective_labour_market_exit_age_women: 62.5
+      NLD:
+        name: Netherlands
+        current_retirement_age_men: 67
+        current_retirement_age_women: 67
+        future_retirement_age_men: 70
+        future_retirement_age_women: 70
+        effective_labour_market_exit_age_men: 65
+        effective_labour_market_exit_age_women: 64.7
+      NOR:
+        name: Norway
+        current_retirement_age_men: 67
+        current_retirement_age_women: 67
+        future_retirement_age_men: 67
+        future_retirement_age_women: 67
+        effective_labour_market_exit_age_men: 64
+        effective_labour_market_exit_age_women: 63.4
+      NZL:
+        name: New Zealand
+        current_retirement_age_men: 65
+        current_retirement_age_women: 65
+        future_retirement_age_men: 65
+        future_retirement_age_women: 65
+        effective_labour_market_exit_age_men: 66.9
+        effective_labour_market_exit_age_women: 66.9
+      POL:
+        name: Poland
+        current_retirement_age_men: 65
+        current_retirement_age_women: 60
+        future_retirement_age_men: 65
+        future_retirement_age_women: 60
+        effective_labour_market_exit_age_men: 63.7
+        effective_labour_market_exit_age_women: 61.4
+      PRT:
+        name: Portugal
+        current_retirement_age_men: 65.3
+        current_retirement_age_women: 65.3
+        future_retirement_age_men: 68
+        future_retirement_age_women: 68
+        effective_labour_market_exit_age_men: 66.5
+        effective_labour_market_exit_age_women: 64.5
+      ROU:
+        name: Romania
+        current_retirement_age_men: 65
+        current_retirement_age_women: 62.2
+        future_retirement_age_men: 67
+        future_retirement_age_women: 67
+        effective_labour_market_exit_age_men: 63.5
+        effective_labour_market_exit_age_women: 63.3
+      RUS:
+        name: Russia
+        current_retirement_age_men: null
+        current_retirement_age_women: null
+        future_retirement_age_men: null
+        future_retirement_age_women: 60
+        effective_labour_market_exit_age_men: null
+        effective_labour_market_exit_age_women: 53
+      SAU:
+        name: Saudi Arabia
+        current_retirement_age_men: 47
+        current_retirement_age_women: 47
+        future_retirement_age_men: 62
+        future_retirement_age_women: 62
+        effective_labour_market_exit_age_men: null
+        effective_labour_market_exit_age_women: null
+      SVK:
+        name: Slovak Republic
+        current_retirement_age_men: 63.2
+        current_retirement_age_women: 63.2
+        future_retirement_age_men: 69
+        future_retirement_age_women: 69
+        effective_labour_market_exit_age_men: 62.7
+        effective_labour_market_exit_age_women: 61.2
+      SVN:
+        name: Slovenia
+        current_retirement_age_men: 62
+        current_retirement_age_women: 62
+        future_retirement_age_men: 62
+        future_retirement_age_women: 62
+        effective_labour_market_exit_age_men: 60.8
+        effective_labour_market_exit_age_women: 59.5
+      SWE:
+        name: Sweden
+        current_retirement_age_men: 66
+        current_retirement_age_women: 66
+        future_retirement_age_men: 70
+        future_retirement_age_women: 70
+        effective_labour_market_exit_age_men: 65.1
+        effective_labour_market_exit_age_women: 65
+      TUR:
+        name: Türkiye
+        current_retirement_age_men: 52
+        current_retirement_age_women: 49
+        future_retirement_age_men: 65
+        future_retirement_age_women: 63
+        effective_labour_market_exit_age_men: 60.8
+        effective_labour_market_exit_age_women: 60.5
+      USA:
+        name: United States
+        current_retirement_age_men: 66.7
+        current_retirement_age_women: 66.7
+        future_retirement_age_men: 67
+        future_retirement_age_women: 67
+        effective_labour_market_exit_age_men: 67.3
+        effective_labour_market_exit_age_women: 66.7
+      ZAF:
+        name: South Africa
+        current_retirement_age_men: 60
+        current_retirement_age_women: 60
+        future_retirement_age_men: 60
+        future_retirement_age_women: 60
+        effective_labour_market_exit_age_men: 54.1
+        effective_labour_market_exit_age_women: 53
+  vectors:
+  - input:
+      key: DEU
+      column: current_retirement_age_men
+    expected: 66.2
+    origin: source
+  - input:
+      key: FRA
+      column: current_retirement_age_men
+    expected: 64.3
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SPD,DSD_PAG@DF_PAG,1.0 (pensions at a glance), CSV with
+    labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SPD,DSD_PAG@DF_PAG,1.0/all?startPeriod=2022&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=CRPLF22, SEX=M, TIME_PERIOD=2024, OBS_VALUE
+  value: '66.2'
+  unit: decimal
+  snippet: DEU,Germany,A,Annual,CRPLF22,Current retirement age for a person who entered the labour force at age
+    22,Y,Years,M,Male,_Z,Not applicable,_Z,Not applicable,2024,,66.2
+  source_license: unstated
+  content_sha256: 4109a66405a38fc328cb4c0b705b563a3e34f45e345a931c45bd27d43c65591c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SPD,DSD_PAG@DF_PAG,1.0 (pensions at a glance), CSV with
+    labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SPD,DSD_PAG@DF_PAG,1.0/all?startPeriod=2022&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=CRPLF22, SEX=F, TIME_PERIOD=2024, OBS_VALUE
+  value: '66.2'
+  unit: decimal
+  snippet: DEU,Germany,A,Annual,CRPLF22,Current retirement age for a person who entered the labour force at age
+    22,Y,Years,F,Female,_Z,Not applicable,_Z,Not applicable,2024,,66.2
+  source_license: unstated
+  content_sha256: 4109a66405a38fc328cb4c0b705b563a3e34f45e345a931c45bd27d43c65591c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SPD,DSD_PAG@DF_PAG,1.0 (pensions at a glance), CSV with
+    labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SPD,DSD_PAG@DF_PAG,1.0/all?startPeriod=2022&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=FRPLF22, SEX=M, TIME_PERIOD=2024, OBS_VALUE
+  value: '67'
+  unit: decimal
+  snippet: DEU,Germany,A,Annual,FRPLF22,Future retirement age for a person who entered the labour force at age 22,Y,Years,M,Male,_Z,Not
+    applicable,_Z,Not applicable,2024,,67
+  source_license: unstated
+  content_sha256: 4109a66405a38fc328cb4c0b705b563a3e34f45e345a931c45bd27d43c65591c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SPD,DSD_PAG@DF_PAG,1.0 (pensions at a glance), CSV with
+    labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SPD,DSD_PAG@DF_PAG,1.0/all?startPeriod=2022&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=FRPLF22, SEX=F, TIME_PERIOD=2024, OBS_VALUE
+  value: '67'
+  unit: decimal
+  snippet: DEU,Germany,A,Annual,FRPLF22,Future retirement age for a person who entered the labour force at age 22,Y,Years,F,Female,_Z,Not
+    applicable,_Z,Not applicable,2024,,67
+  source_license: unstated
+  content_sha256: 4109a66405a38fc328cb4c0b705b563a3e34f45e345a931c45bd27d43c65591c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SPD,DSD_PAG@DF_PAG,1.0 (pensions at a glance), CSV with
+    labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SPD,DSD_PAG@DF_PAG,1.0/all?startPeriod=2022&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=ELMEA, SEX=M, TIME_PERIOD=2024, OBS_VALUE
+  value: '64.2'
+  unit: decimal
+  snippet: DEU,Germany,A,Annual,ELMEA,Effective labour market exit age,Y,Years,M,Male,_Z,Not applicable,_Z,Not applicable,2024,,64.2
+  source_license: unstated
+  content_sha256: 4109a66405a38fc328cb4c0b705b563a3e34f45e345a931c45bd27d43c65591c
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SPD,DSD_PAG@DF_PAG,1.0 (pensions at a glance), CSV with
+    labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SPD,DSD_PAG@DF_PAG,1.0/all?startPeriod=2022&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=ELMEA, SEX=F, TIME_PERIOD=2024, OBS_VALUE
+  value: '63.9'
+  unit: decimal
+  snippet: DEU,Germany,A,Annual,ELMEA,Effective labour market exit age,Y,Years,F,Female,_Z,Not applicable,_Z,Not
+    applicable,2024,,63.9
+  source_license: unstated
+  content_sha256: 4109a66405a38fc328cb4c0b705b563a3e34f45e345a931c45bd27d43c65591c
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 51
+  tolerance: 0
+- statistic: value[DEU,current_retirement_age_men]
+  expected: 66.2
+  tolerance: 1.0e-09
+- statistic: max[current_retirement_age_men]
+  expected: 67
+  tolerance: 1.0e-09
+- statistic: value[FRA,current_retirement_age_men]
+  expected: 64.3
+  tolerance: 1.0e-09
+notes: 'From OECD dataflow DF_PAG (Pensions at a Glance): the current normal retirement age for a person who entered
+  the labour force at age 22, the future normal retirement age for someone entering at 22 under legislated rules,
+  and the average effective age at which workers leave the labour market, each for men and women. Rows are keyed
+  by ISO 3166-1 alpha-3 code and carry the OECD reference-area label; OECD, EU and G7 aggregates are left out. Values
+  are the 2024 observations of the dataflow. The OECD terms and conditions page could not be fetched byte-stably
+  in this session, so the licence is recorded as unstated and the entry stays at license-review until a reviewer
+  confirms the terms that apply to OECD data.'

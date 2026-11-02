@@ -1,0 +1,402 @@
+id: global-oecd-part-time-employment-share-2024
+title: Part-time employment as a share of total employment by country and sex, 2024, OECD common definition (under
+  30 usual hours)
+kind: rule
+domain: employment
+region: global
+status: license-review
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- part-time
+- working-time
+- hours
+- oecd
+- reference-table
+- by-country
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- workforce-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: OECD.ELS.SAE,DSD_FTPT@DF_FTPT_COMMON_INC,1.0
+    url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_FTPT@DF_FTPT_COMMON_INC,1.0/all?startPeriod=2024&format=csvfilewithlabels
+    period: '2024'
+    rows:
+      AUS:
+        name: Australia
+        part_time_share_of_employment_percent: 24.375
+        part_time_share_men_percent: 15.84
+        part_time_share_women_percent: 33.693
+        part_time_share_of_employees_percent: 23.342
+      AUT:
+        name: Austria
+        part_time_share_of_employment_percent: 21.988
+        part_time_share_men_percent: 9.781
+        part_time_share_women_percent: 35.472
+        part_time_share_of_employees_percent: 21.897
+      BEL:
+        name: Belgium
+        part_time_share_of_employment_percent: 18.153
+        part_time_share_men_percent: 9.822
+        part_time_share_women_percent: 27.482
+        part_time_share_of_employees_percent: 18.889
+      BGR:
+        name: Bulgaria
+        part_time_share_of_employment_percent: 1.182
+        part_time_share_men_percent: 0.934
+        part_time_share_women_percent: 1.453
+        part_time_share_of_employees_percent: 1.147
+      BRA:
+        name: Brazil
+        part_time_share_of_employment_percent: 13.736
+        part_time_share_men_percent: 9.454
+        part_time_share_women_percent: 19.373
+        part_time_share_of_employees_percent: 10.732
+      CAN:
+        name: Canada
+        part_time_share_of_employment_percent: 18.112
+        part_time_share_men_percent: 12.941
+        part_time_share_women_percent: 23.89
+        part_time_share_of_employees_percent: 16.863
+      CHE:
+        name: Switzerland
+        part_time_share_of_employment_percent: 25.484
+        part_time_share_men_percent: 11.846
+        part_time_share_women_percent: 40.789
+        part_time_share_of_employees_percent: 24.093
+      CHL:
+        name: Chile
+        part_time_share_of_employment_percent: 16.597
+        part_time_share_men_percent: 12.378
+        part_time_share_women_percent: 22.205
+        part_time_share_of_employees_percent: 8.097
+      COL:
+        name: Colombia
+        part_time_share_of_employment_percent: 12.747
+        part_time_share_men_percent: 7.72
+        part_time_share_women_percent: 19.85
+        part_time_share_of_employees_percent: 5.533
+      CRI:
+        name: Costa Rica
+        part_time_share_of_employment_percent: 15.234
+        part_time_share_men_percent: 9.054
+        part_time_share_women_percent: 24.912
+        part_time_share_of_employees_percent: 10.159
+      CYP:
+        name: Cyprus
+        part_time_share_of_employment_percent: 7.991
+        part_time_share_men_percent: 5.851
+        part_time_share_women_percent: 10.28
+        part_time_share_of_employees_percent: 5.739
+      CZE:
+        name: Czechia
+        part_time_share_of_employment_percent: 6.822
+        part_time_share_men_percent: 4.162
+        part_time_share_women_percent: 10.014
+        part_time_share_of_employees_percent: 6.382
+      DEU:
+        name: Germany
+        part_time_share_of_employment_percent: 22.584
+        part_time_share_men_percent: 10.893
+        part_time_share_women_percent: 35.782
+        part_time_share_of_employees_percent: 22.498
+      DNK:
+        name: Denmark
+        part_time_share_of_employment_percent: 19.666
+        part_time_share_men_percent: 15.291
+        part_time_share_women_percent: 24.681
+        part_time_share_of_employees_percent: 20.083
+      ESP:
+        name: Spain
+        part_time_share_of_employment_percent: 12.003
+        part_time_share_men_percent: 6.244
+        part_time_share_women_percent: 18.645
+        part_time_share_of_employees_percent: 12.671
+      EST:
+        name: Estonia
+        part_time_share_of_employment_percent: 10.91
+        part_time_share_men_percent: 7.3
+        part_time_share_women_percent: 14.429
+        part_time_share_of_employees_percent: 9.829
+      FIN:
+        name: Finland
+        part_time_share_of_employment_percent: 15.521
+        part_time_share_men_percent: 12.536
+        part_time_share_women_percent: 18.667
+        part_time_share_of_employees_percent: 14.105
+      FRA:
+        name: France
+        part_time_share_of_employment_percent: 13.448
+        part_time_share_men_percent: 7.355
+        part_time_share_women_percent: 19.823
+        part_time_share_of_employees_percent: 12.88
+      GBR:
+        name: United Kingdom
+        part_time_share_of_employment_percent: 21.967
+        part_time_share_men_percent: 12.448
+        part_time_share_women_percent: 32.337
+        part_time_share_of_employees_percent: 20.409
+      GRC:
+        name: Greece
+        part_time_share_of_employment_percent: 7.558
+        part_time_share_men_percent: 4.118
+        part_time_share_women_percent: 12.099
+        part_time_share_of_employees_percent: 8.474
+      HRV:
+        name: Croatia
+        part_time_share_of_employment_percent: 3.074
+        part_time_share_men_percent: 2.347
+        part_time_share_women_percent: 3.888
+        part_time_share_of_employees_percent: 2.501
+      HUN:
+        name: Hungary
+        part_time_share_of_employment_percent: 4.3
+        part_time_share_men_percent: 3.055
+        part_time_share_women_percent: 5.697
+        part_time_share_of_employees_percent: 3.926
+      IRL:
+        name: Ireland
+        part_time_share_of_employment_percent: 19.968
+        part_time_share_men_percent: 10.549
+        part_time_share_women_percent: 30.485
+        part_time_share_of_employees_percent: 20.641
+      ISL:
+        name: Iceland
+        part_time_share_of_employment_percent: 16.941
+        part_time_share_men_percent: 11.216
+        part_time_share_women_percent: 23.864
+        part_time_share_of_employees_percent: 16.899
+      ISR:
+        name: Israel
+        part_time_share_of_employment_percent: 14.743
+        part_time_share_men_percent: 8.739
+        part_time_share_women_percent: 20.949
+        part_time_share_of_employees_percent: 13.979
+      ITA:
+        name: Italy
+        part_time_share_of_employment_percent: 15.959
+        part_time_share_men_percent: 6.852
+        part_time_share_women_percent: 28.23
+        part_time_share_of_employees_percent: 16.821
+      JPN:
+        name: Japan
+        part_time_share_of_employment_percent: 25.753
+        part_time_share_men_percent: 15.382
+        part_time_share_women_percent: 38.399
+        part_time_share_of_employees_percent: null
+      KOR:
+        name: Korea
+        part_time_share_of_employment_percent: 17.466
+        part_time_share_men_percent: 11.686
+        part_time_share_women_percent: 24.807
+        part_time_share_of_employees_percent: null
+      LTU:
+        name: Lithuania
+        part_time_share_of_employment_percent: 4.527
+        part_time_share_men_percent: 3.048
+        part_time_share_women_percent: 6.052
+        part_time_share_of_employees_percent: 4.021
+      LUX:
+        name: Luxembourg
+        part_time_share_of_employment_percent: 12.595
+        part_time_share_men_percent: 6.358
+        part_time_share_women_percent: 19.583
+        part_time_share_of_employees_percent: 11.574
+      LVA:
+        name: Latvia
+        part_time_share_of_employment_percent: 6.087
+        part_time_share_men_percent: 4.005
+        part_time_share_women_percent: 8.107
+        part_time_share_of_employees_percent: 4.776
+      MEX:
+        name: Mexico
+        part_time_share_of_employment_percent: 17.745
+        part_time_share_men_percent: 12.028
+        part_time_share_women_percent: 26.001
+        part_time_share_of_employees_percent: 11.499
+      MKD:
+        name: North Macedonia
+        part_time_share_of_employment_percent: 2.045
+        part_time_share_men_percent: 1.964
+        part_time_share_women_percent: 2.154
+        part_time_share_of_employees_percent: 1.082
+      MLT:
+        name: Malta
+        part_time_share_of_employment_percent: 7.57
+        part_time_share_men_percent: 4.575
+        part_time_share_women_percent: 11.938
+        part_time_share_of_employees_percent: 6.991
+      NLD:
+        name: Netherlands
+        part_time_share_of_employment_percent: 35.002
+        part_time_share_men_percent: 19.738
+        part_time_share_women_percent: 52.038
+        part_time_share_of_employees_percent: 36.527
+      NOR:
+        name: Norway
+        part_time_share_of_employment_percent: 19.638
+        part_time_share_men_percent: 13.545
+        part_time_share_women_percent: 26.425
+        part_time_share_of_employees_percent: 19.131
+      NZL:
+        name: New Zealand
+        part_time_share_of_employment_percent: 19.788
+        part_time_share_men_percent: 11.774
+        part_time_share_women_percent: 28.653
+        part_time_share_of_employees_percent: 17.605
+      POL:
+        name: Poland
+        part_time_share_of_employment_percent: 4.978
+        part_time_share_men_percent: 2.813
+        part_time_share_women_percent: 7.449
+        part_time_share_of_employees_percent: 4.678
+      PRT:
+        name: Portugal
+        part_time_share_of_employment_percent: 5.621
+        part_time_share_men_percent: 3.151
+        part_time_share_women_percent: 8.127
+        part_time_share_of_employees_percent: 5.38
+      ROU:
+        name: Romania
+        part_time_share_of_employment_percent: 1.468
+        part_time_share_men_percent: 1.396
+        part_time_share_women_percent: 1.564
+        part_time_share_of_employees_percent: 0.368
+      SVK:
+        name: Slovak Republic
+        part_time_share_of_employment_percent: 3.808
+        part_time_share_men_percent: 2.443
+        part_time_share_women_percent: 5.365
+        part_time_share_of_employees_percent: 3.889
+      SVN:
+        name: Slovenia
+        part_time_share_of_employment_percent: 7.238
+        part_time_share_men_percent: 5.186
+        part_time_share_women_percent: 9.706
+        part_time_share_of_employees_percent: 6.346
+      SWE:
+        name: Sweden
+        part_time_share_of_employment_percent: 11.387
+        part_time_share_men_percent: 9.168
+        part_time_share_women_percent: 13.83
+        part_time_share_of_employees_percent: 10.507
+      TUR:
+        name: Türkiye
+        part_time_share_of_employment_percent: 11.469
+        part_time_share_men_percent: 8.501
+        part_time_share_women_percent: 17.454
+        part_time_share_of_employees_percent: 6.54
+      USA:
+        name: United States
+        part_time_share_of_employment_percent: null
+        part_time_share_men_percent: null
+        part_time_share_women_percent: null
+        part_time_share_of_employees_percent: 12.392
+      ZAF:
+        name: South Africa
+        part_time_share_of_employment_percent: 10.166
+        part_time_share_men_percent: 7.721
+        part_time_share_women_percent: 13.191
+        part_time_share_of_employees_percent: 8.384
+  vectors:
+  - input:
+      key: DEU
+      column: part_time_share_of_employment_percent
+    expected: 22.584
+    origin: source
+  - input:
+      key: FRA
+      column: part_time_share_of_employment_percent
+    expected: 13.448
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_FTPT@DF_FTPT_COMMON_INC,1.0 (incidence of full-time
+    and part-time employment, OECD-harmonised definition), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_FTPT@DF_FTPT_COMMON_INC,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=EMP, UNIT_MEASURE=PT_POP_SUB, WORK_TIME_ARNGMNT=PT, AGE=_T, JOB_COVERAGE=MAIN,
+    SEX=_T, WORKER_STATUS=_T, TIME_PERIOD=2024, OBS_VALUE
+  value: '22.584'
+  unit: percent
+  snippet: DEU,Germany,EMP,Employment,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,_T,Total,EMP,Employment,MAIN,Main
+    job,_T,Total,PT,Part-time,OECD_DEF,OECD harmonized definition,A,Annual,2024,,22.584
+  source_license: unstated
+  content_sha256: a1233e8c3cfe798f65328c3b97a95bc08dc0b3213a89675aa9381f1b39dddb97
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_FTPT@DF_FTPT_COMMON_INC,1.0 (incidence of full-time
+    and part-time employment, OECD-harmonised definition), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_FTPT@DF_FTPT_COMMON_INC,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=EMP, UNIT_MEASURE=PT_POP_SUB, WORK_TIME_ARNGMNT=PT, AGE=_T, JOB_COVERAGE=MAIN,
+    SEX=M, WORKER_STATUS=_T, TIME_PERIOD=2024, OBS_VALUE
+  value: '10.893'
+  unit: percent
+  snippet: DEU,Germany,EMP,Employment,PT_POP_SUB,Percentage of population in the same subgroup,M,Male,_T,Total,EMP,Employment,MAIN,Main
+    job,_T,Total,PT,Part-time,OECD_DEF,OECD harmonized definition,A,Annual,2024,,10.893
+  source_license: unstated
+  content_sha256: a1233e8c3cfe798f65328c3b97a95bc08dc0b3213a89675aa9381f1b39dddb97
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_FTPT@DF_FTPT_COMMON_INC,1.0 (incidence of full-time
+    and part-time employment, OECD-harmonised definition), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_FTPT@DF_FTPT_COMMON_INC,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=EMP, UNIT_MEASURE=PT_POP_SUB, WORK_TIME_ARNGMNT=PT, AGE=_T, JOB_COVERAGE=MAIN,
+    SEX=F, WORKER_STATUS=_T, TIME_PERIOD=2024, OBS_VALUE
+  value: '35.782'
+  unit: percent
+  snippet: DEU,Germany,EMP,Employment,PT_POP_SUB,Percentage of population in the same subgroup,F,Female,_T,Total,EMP,Employment,MAIN,Main
+    job,_T,Total,PT,Part-time,OECD_DEF,OECD harmonized definition,A,Annual,2024,,35.782
+  source_license: unstated
+  content_sha256: a1233e8c3cfe798f65328c3b97a95bc08dc0b3213a89675aa9381f1b39dddb97
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_FTPT@DF_FTPT_COMMON_INC,1.0 (incidence of full-time
+    and part-time employment, OECD-harmonised definition), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_FTPT@DF_FTPT_COMMON_INC,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=EMP, UNIT_MEASURE=PT_POP_SUB, WORK_TIME_ARNGMNT=PT, AGE=_T, JOB_COVERAGE=MAIN,
+    SEX=_T, WORKER_STATUS=ICSE93_1, TIME_PERIOD=2024, OBS_VALUE
+  value: '22.498'
+  unit: percent
+  snippet: DEU,Germany,EMP,Employment,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,_T,Total,EMP,Employment,MAIN,Main
+    job,ICSE93_1,Employees,PT,Part-time,OECD_DEF,OECD harmonized definition,A,Annual,2024,,22.498
+  source_license: unstated
+  content_sha256: a1233e8c3cfe798f65328c3b97a95bc08dc0b3213a89675aa9381f1b39dddb97
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 46
+  tolerance: 0
+- statistic: value[DEU,part_time_share_of_employment_percent]
+  expected: 22.584
+  tolerance: 1.0e-09
+- statistic: max[part_time_share_of_employment_percent]
+  expected: 35.002
+  tolerance: 1.0e-09
+- statistic: value[FRA,part_time_share_of_employment_percent]
+  expected: 13.448
+  tolerance: 1.0e-09
+notes: Share of people in employment who usually work fewer than 30 hours a week in their main job, the OECD common
+  definition of part-time work, from dataflow DF_FTPT_COMMON_INC (incidence of full-time and part-time employment,
+  percentage of population in the same subgroup), for all workers, men, women and for employees only. Rows are keyed
+  by ISO 3166-1 alpha-3 code and carry the OECD reference-area label; OECD, EU and G7 aggregates are left out. Values
+  are the 2024 observations of the dataflow. The OECD terms and conditions page could not be fetched byte-stably
+  in this session, so the licence is recorded as unstated and the entry stays at license-review until a reviewer
+  confirms the terms that apply to OECD data.

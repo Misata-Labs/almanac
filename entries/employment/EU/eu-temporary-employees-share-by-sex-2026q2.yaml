@@ -1,0 +1,277 @@
+id: eu-temporary-employees-share-by-sex-2026q2
+title: Temporary employees as a percentage of all employees aged 15 to 64, by sex, 2026-Q2, all countries reported
+  by Eurostat
+kind: rule
+domain: employment
+region: EU
+status: verified
+tier: A
+valid_from: '2026-04-01'
+valid_to: '2026-06-30'
+tags:
+- temporary-employment
+- contract-type
+- fixed-term
+- by-sex
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- workforce-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: lfsq_etpga
+    key: Q.PC.T+M+F.Y15-64. (2026-Q2)
+    url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/lfsq_etpga/Q.PC.T+M+F.Y15-64.?startPeriod=2026-Q1&endPeriod=2026-Q2&format=SDMX-CSV
+    rows:
+      AT:
+        name: Austria
+        temporary_share_of_employees_percent: 8.2
+        temporary_share_of_employees_men_percent: 8.2
+        temporary_share_of_employees_women_percent: 8.2
+      BA:
+        name: Bosnia and Herzegovina
+        temporary_share_of_employees_percent: 10.1
+        temporary_share_of_employees_men_percent: 9.3
+        temporary_share_of_employees_women_percent: 11.4
+      BE:
+        name: Belgium
+        temporary_share_of_employees_percent: 12.1
+        temporary_share_of_employees_men_percent: 11.5
+        temporary_share_of_employees_women_percent: 12.8
+      BG:
+        name: Bulgaria
+        temporary_share_of_employees_percent: 2.9
+        temporary_share_of_employees_men_percent: 2.7
+        temporary_share_of_employees_women_percent: 3.1
+      CH:
+        name: Switzerland
+        temporary_share_of_employees_percent: 13.2
+        temporary_share_of_employees_men_percent: 13.4
+        temporary_share_of_employees_women_percent: 13.1
+      CY:
+        name: Cyprus
+        temporary_share_of_employees_percent: 15.9
+        temporary_share_of_employees_men_percent: 12.0
+        temporary_share_of_employees_women_percent: 20.0
+      CZ:
+        name: Czechia
+        temporary_share_of_employees_percent: 8.2
+        temporary_share_of_employees_men_percent: 6.6
+        temporary_share_of_employees_women_percent: 9.9
+      DE:
+        name: Germany
+        temporary_share_of_employees_percent: 11.1
+        temporary_share_of_employees_men_percent: 11.3
+        temporary_share_of_employees_women_percent: 11.0
+      DK:
+        name: Denmark
+        temporary_share_of_employees_percent: 11.3
+        temporary_share_of_employees_men_percent: 10.3
+        temporary_share_of_employees_women_percent: 12.4
+      EA21:
+        name: Euro area – 21 countries (from 2026)
+        temporary_share_of_employees_percent: 13.3
+        temporary_share_of_employees_men_percent: 12.6
+        temporary_share_of_employees_women_percent: 14.1
+      EE:
+        name: Estonia
+        temporary_share_of_employees_percent: 4.0
+        temporary_share_of_employees_men_percent: 4.3
+        temporary_share_of_employees_women_percent: 3.8
+      EL:
+        name: Greece
+        temporary_share_of_employees_percent: 11.3
+        temporary_share_of_employees_men_percent: 9.1
+        temporary_share_of_employees_women_percent: 13.6
+      ES:
+        name: Spain
+        temporary_share_of_employees_percent: 15.2
+        temporary_share_of_employees_men_percent: 13.1
+        temporary_share_of_employees_women_percent: 17.5
+      EU27_2020:
+        name: European Union - 27 countries (from 2020)
+        temporary_share_of_employees_percent: 12.7
+        temporary_share_of_employees_men_percent: 11.9
+        temporary_share_of_employees_women_percent: 13.5
+      FI:
+        name: Finland
+        temporary_share_of_employees_percent: 15.5
+        temporary_share_of_employees_men_percent: 12.9
+        temporary_share_of_employees_women_percent: 18.0
+      FR:
+        name: France
+        temporary_share_of_employees_percent: 15.3
+        temporary_share_of_employees_men_percent: 14.8
+        temporary_share_of_employees_women_percent: 15.7
+      HR:
+        name: Croatia
+        temporary_share_of_employees_percent: 8.4
+        temporary_share_of_employees_men_percent: 7.1
+        temporary_share_of_employees_women_percent: 9.7
+      HU:
+        name: Hungary
+        temporary_share_of_employees_percent: 4.3
+        temporary_share_of_employees_men_percent: 4.1
+        temporary_share_of_employees_women_percent: 4.5
+      IE:
+        name: Ireland
+        temporary_share_of_employees_percent: 6.8
+        temporary_share_of_employees_men_percent: 6.1
+        temporary_share_of_employees_women_percent: 7.5
+      IS:
+        name: Iceland
+        temporary_share_of_employees_percent: 13.1
+        temporary_share_of_employees_men_percent: 13.0
+        temporary_share_of_employees_women_percent: 13.2
+      IT:
+        name: Italy
+        temporary_share_of_employees_percent: 13.9
+        temporary_share_of_employees_men_percent: 12.6
+        temporary_share_of_employees_women_percent: 15.4
+      LT:
+        name: Lithuania
+        temporary_share_of_employees_percent: 2.0
+        temporary_share_of_employees_men_percent: 1.9
+        temporary_share_of_employees_women_percent: 2.2
+      LU:
+        name: Luxembourg
+        temporary_share_of_employees_percent: 9.2
+        temporary_share_of_employees_men_percent: 7.9
+        temporary_share_of_employees_women_percent: 10.5
+      LV:
+        name: Latvia
+        temporary_share_of_employees_percent: 3.9
+        temporary_share_of_employees_men_percent: 4.7
+        temporary_share_of_employees_women_percent: 3.2
+      MK:
+        name: North Macedonia
+        temporary_share_of_employees_percent: 19.2
+        temporary_share_of_employees_men_percent: 19.8
+        temporary_share_of_employees_women_percent: 18.4
+      MT:
+        name: Malta
+        temporary_share_of_employees_percent: 9.6
+        temporary_share_of_employees_men_percent: 10.7
+        temporary_share_of_employees_women_percent: 8.0
+      NL:
+        name: Netherlands
+        temporary_share_of_employees_percent: 26.0
+        temporary_share_of_employees_men_percent: 24.7
+        temporary_share_of_employees_women_percent: 27.3
+      'NO':
+        name: Norway
+        temporary_share_of_employees_percent: 7.6
+        temporary_share_of_employees_men_percent: 6.2
+        temporary_share_of_employees_women_percent: 9.2
+      PL:
+        name: Poland
+        temporary_share_of_employees_percent: 15.2
+        temporary_share_of_employees_men_percent: 14.0
+        temporary_share_of_employees_women_percent: 16.5
+      PT:
+        name: Portugal
+        temporary_share_of_employees_percent: 14.5
+        temporary_share_of_employees_men_percent: 14.9
+        temporary_share_of_employees_women_percent: 14.2
+      RO:
+        name: Romania
+        temporary_share_of_employees_percent: 1.8
+        temporary_share_of_employees_men_percent: 2.5
+        temporary_share_of_employees_women_percent: 0.8
+      RS:
+        name: Serbia
+        temporary_share_of_employees_percent: 17.9
+        temporary_share_of_employees_men_percent: 18.0
+        temporary_share_of_employees_women_percent: 17.8
+      SE:
+        name: Sweden
+        temporary_share_of_employees_percent: 13.8
+        temporary_share_of_employees_men_percent: 12.1
+        temporary_share_of_employees_women_percent: 15.6
+      SI:
+        name: Slovenia
+        temporary_share_of_employees_percent: 10.7
+        temporary_share_of_employees_men_percent: 9.9
+        temporary_share_of_employees_women_percent: 11.5
+      SK:
+        name: Slovakia
+        temporary_share_of_employees_percent: 3.5
+        temporary_share_of_employees_men_percent: 3.5
+        temporary_share_of_employees_women_percent: 3.4
+      TR:
+        name: Türkiye
+        temporary_share_of_employees_percent: 13.0
+        temporary_share_of_employees_men_percent: 13.8
+        temporary_share_of_employees_women_percent: 11.6
+  vectors:
+  - input:
+      key: DE
+      column: temporary_share_of_employees_percent
+    expected: 11.1
+    origin: source
+  - input:
+      key: FR
+      column: temporary_share_of_employees_percent
+    expected: 15.3
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow lfsq_etpga (temporary employees as percentage of the total number of employees,
+    quarterly data), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/lfsq_etpga/Q.PC.T+M+F.Y15-64.?startPeriod=2026-Q1&endPeriod=2026-Q2&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, unit=PC, sex=T, age=Y15-64, TIME_PERIOD=2026-Q2, OBS_VALUE
+  value: '11.1'
+  unit: percent
+  snippet: Q_ETPGA(1.0),11/09/26 11:00:00,Q,PC,T,Y15-64,DE,2026-Q2,11.1
+  source_license: CC-BY-4.0
+  content_sha256: 67d7fc9ebb7c9b5a7c0a8af775b9fff08fe618c99104a40885f138488a5403df
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow lfsq_etpga (temporary employees as percentage of the total number of employees,
+    quarterly data), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/lfsq_etpga/Q.PC.T+M+F.Y15-64.?startPeriod=2026-Q1&endPeriod=2026-Q2&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=FR, unit=PC, sex=F, age=Y15-64, TIME_PERIOD=2026-Q2, OBS_VALUE
+  value: '15.7'
+  unit: percent
+  snippet: Q_ETPGA(1.0),11/09/26 11:00:00,Q,PC,F,Y15-64,FR,2026-Q2,15.7
+  source_license: CC-BY-4.0
+  content_sha256: 67d7fc9ebb7c9b5a7c0a8af775b9fff08fe618c99104a40885f138488a5403df
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 36
+  tolerance: 0
+- statistic: value[DE,temporary_share_of_employees_percent]
+  expected: 11.1
+  tolerance: 1.0e-09
+- statistic: max[temporary_share_of_employees_percent]
+  expected: 26.0
+  tolerance: 1.0e-09
+- statistic: value[FR,temporary_share_of_employees_percent]
+  expected: 15.3
+  tolerance: 1.0e-09
+- statistic: value[FR,temporary_share_of_employees_women_percent]
+  expected: 15.7
+  tolerance: 1.0e-09
+notes: Employees aged 15 to 64 with a temporary contract as a percentage of all employees of that age in 2026-Q2,
+  for all persons, men and women, from Eurostat dataflow lfsq_etpga (quarterly Labour Force Survey). 2026-Q2 is
+  the latest quarter in the fetched range with the widest country coverage. Rows are keyed by the Eurostat geo code
+  and carry the English name from the GEO codelist. Eurostat's copyright notice states that its data are released
+  under the Creative Commons Attribution 4.0 International licence; the notice page renders dynamically and is referenced
+  rather than hashed.

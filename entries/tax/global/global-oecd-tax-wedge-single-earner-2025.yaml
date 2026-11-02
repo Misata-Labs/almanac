@@ -1,0 +1,358 @@
+id: global-oecd-tax-wedge-single-earner-2025
+title: Tax wedge and its components for a single earner without children at the average wage, by country, 2025 (OECD
+  Taxing Wages)
+kind: rule
+domain: tax
+region: global
+status: license-review
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- tax-wedge
+- social-contributions
+- payroll-tax
+- income-tax
+- oecd
+- reference-table
+- by-country
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- personal-finance
+- tax-filing-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: OECD.CTP.TPS,DSD_TAX_WAGES_DECOMP@DF_TW_DECOMP,2.1
+    url: https://sdmx.oecd.org/public/rest/data/OECD.CTP.TPS,DSD_TAX_WAGES_DECOMP@DF_TW_DECOMP,2.1/.AV_TW+NPATR+EESSC+ERSSC_PT..S_C0.AW100..A?startPeriod=2025&format=csvfilewithlabels
+    period: '2025'
+    rows:
+      AUS:
+        name: Australia
+        average_tax_wedge_percent_of_labour_costs: 27.9043442
+        net_personal_average_tax_rate_percent: 23.52327144
+        employee_social_security_percent_of_labour_costs: 0
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 5.72863516
+      AUT:
+        name: Austria
+        average_tax_wedge_percent_of_labour_costs: 47.08842873
+        net_personal_average_tax_rate_percent: 32.48029978
+        employee_social_security_percent_of_labour_costs: 14.0485413
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 21.63535813
+      BEL:
+        name: Belgium
+        average_tax_wedge_percent_of_labour_costs: 52.48219559
+        net_personal_average_tax_rate_percent: 39.54784923
+        employee_social_security_percent_of_labour_costs: 11.00030371
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 21.39600692
+      CAN:
+        name: Canada
+        average_tax_wedge_percent_of_labour_costs: 32.12286777
+        net_personal_average_tax_rate_percent: 25.60872087
+        employee_social_security_percent_of_labour_costs: 6.17919649
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 8.75660021
+      CHE:
+        name: Switzerland
+        average_tax_wedge_percent_of_labour_costs: 22.97942722
+        net_personal_average_tax_rate_percent: 18.05011057
+        employee_social_security_percent_of_labour_costs: 6.01503759
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 6.01503759
+      CHL:
+        name: Chile
+        average_tax_wedge_percent_of_labour_costs: 7.45851876
+        net_personal_average_tax_rate_percent: 7.11148821
+        employee_social_security_percent_of_labour_costs: 6.97384807
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 0.373599
+      COL:
+        name: Colombia
+        average_tax_wedge_percent_of_labour_costs: 0
+        net_personal_average_tax_rate_percent: 0
+        employee_social_security_percent_of_labour_costs: 0
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 0
+      CRI:
+        name: Costa Rica
+        average_tax_wedge_percent_of_labour_costs: 27.65857633
+        net_personal_average_tax_rate_percent: 9.84923077
+        employee_social_security_percent_of_labour_costs: 7.90350856
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 19.75506778
+      CZE:
+        name: Czechia
+        average_tax_wedge_percent_of_labour_costs: 41.20021964
+        net_personal_average_tax_rate_percent: 21.32589388
+        employee_social_security_percent_of_labour_costs: 8.6696562
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 25.26158445
+      DEU:
+        name: Germany
+        average_tax_wedge_percent_of_labour_costs: 49.26314669
+        net_personal_average_tax_rate_percent: 38.6770806
+        employee_social_security_percent_of_labour_costs: 17.75515076
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 17.26282145
+      DNK:
+        name: Denmark
+        average_tax_wedge_percent_of_labour_costs: 35.75701271
+        net_personal_average_tax_rate_percent: 35.32758666
+        employee_social_security_percent_of_labour_costs: 0
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 0.66400189
+      ESP:
+        name: Spain
+        average_tax_wedge_percent_of_labour_costs: 41.44407811
+        net_personal_average_tax_rate_percent: 23.54353278
+        employee_social_security_percent_of_labour_costs: 4.96285517
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 23.4127288
+      EST:
+        name: Estonia
+        average_tax_wedge_percent_of_labour_costs: 42.6367713
+        net_personal_average_tax_rate_percent: 23.248
+        employee_social_security_percent_of_labour_costs: 1.19581465
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 25.26158445
+      FIN:
+        name: Finland
+        average_tax_wedge_percent_of_labour_costs: 42.47990817
+        net_personal_average_tax_rate_percent: 30.71129739
+        employee_social_security_percent_of_labour_costs: 7.91525642
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 16.98489125
+      FRA:
+        name: France
+        average_tax_wedge_percent_of_labour_costs: 47.17806103
+        net_personal_average_tax_rate_percent: 27.97939909
+        employee_social_security_percent_of_labour_costs: 8.29477946
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 26.657181
+      GBR:
+        name: United Kingdom
+        average_tax_wedge_percent_of_labour_costs: 32.37888222
+        net_personal_average_tax_rate_percent: 23.14163621
+        employee_social_security_percent_of_labour_costs: 4.91946087
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 12.01853065
+      GRC:
+        name: Greece
+        average_tax_wedge_percent_of_labour_costs: 39.33703001
+        net_personal_average_tax_rate_percent: 26.11856884
+        employee_social_security_percent_of_labour_costs: 10.9779128
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 17.8914525
+      HUN:
+        name: Hungary
+        average_tax_wedge_percent_of_labour_costs: 41.15044248
+        net_personal_average_tax_rate_percent: 33.5
+        employee_social_security_percent_of_labour_costs: 16.37168142
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 11.50442478
+      IRL:
+        name: Ireland
+        average_tax_wedge_percent_of_labour_costs: 32.63278622
+        net_personal_average_tax_rate_percent: 25.10450008
+        employee_social_security_percent_of_labour_costs: 3.68787947
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 10.05172026
+      ISL:
+        name: Iceland
+        average_tax_wedge_percent_of_labour_costs: 31.51410003
+        net_personal_average_tax_rate_percent: 27.16524538
+        employee_social_security_percent_of_labour_costs: 0.10657899
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 5.97085096
+      ISR:
+        name: Israel
+        average_tax_wedge_percent_of_labour_costs: 26.06830784
+        net_personal_average_tax_rate_percent: 21.43267692
+        employee_social_security_percent_of_labour_costs: 8.2526181
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 5.90020219
+      ITA:
+        name: Italy
+        average_tax_wedge_percent_of_labour_costs: 45.75738988
+        net_personal_average_tax_rate_percent: 28.62757361
+        employee_social_security_percent_of_labour_costs: 7.2123423
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 24.000608
+      JPN:
+        name: Japan
+        average_tax_wedge_percent_of_labour_costs: 33.12004244
+        net_personal_average_tax_rate_percent: 22.64664109
+        employee_social_security_percent_of_labour_costs: 12.70966626
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 13.53968528
+      KOR:
+        name: Korea
+        average_tax_wedge_percent_of_labour_costs: 24.8495704
+        net_personal_average_tax_rate_percent: 16.53486863
+        employee_social_security_percent_of_labour_costs: 8.46725396
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 9.96188664
+      LTU:
+        name: Lithuania
+        average_tax_wedge_percent_of_labour_costs: 39.79424467
+        net_personal_average_tax_rate_percent: 38.71656165
+        employee_social_security_percent_of_labour_costs: 19.15708812
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 1.75852245
+      LUX:
+        name: Luxembourg
+        average_tax_wedge_percent_of_labour_costs: 40.16038902
+        net_personal_average_tax_rate_percent: 31.99228212
+        employee_social_security_percent_of_labour_costs: 10.82737259
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 12.01055873
+      LVA:
+        name: Latvia
+        average_tax_wedge_percent_of_labour_costs: 40.13677117
+        net_personal_average_tax_rate_percent: 26.00290609
+        employee_social_security_percent_of_labour_costs: 8.49444038
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 19.10056778
+      MEX:
+        name: Mexico
+        average_tax_wedge_percent_of_labour_costs: 21.65106642
+        net_personal_average_tax_rate_percent: 13.17486548
+        employee_social_security_percent_of_labour_costs: 1.28540812
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 9.76238158
+      NLD:
+        name: Netherlands
+        average_tax_wedge_percent_of_labour_costs: 35.93925998
+        net_personal_average_tax_rate_percent: 27.86495186
+        employee_social_security_percent_of_labour_costs: 8.89727198
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 11.19332187
+      NOR:
+        name: Norway
+        average_tax_wedge_percent_of_labour_costs: 36.39153257
+        net_personal_average_tax_rate_percent: 28.1224318
+        employee_social_security_percent_of_labour_costs: 6.81415929
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 11.50442478
+      NZL:
+        name: New Zealand
+        average_tax_wedge_percent_of_labour_costs: 20.81493385
+        net_personal_average_tax_rate_percent: 20.81493385
+        employee_social_security_percent_of_labour_costs: 0
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 0
+      POL:
+        name: Poland
+        average_tax_wedge_percent_of_labour_costs: 35.02612298
+        net_personal_average_tax_rate_percent: 24.43553697
+        employee_social_security_percent_of_labour_costs: 15.32751228
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 14.01529977
+      PRT:
+        name: Portugal
+        average_tax_wedge_percent_of_labour_costs: 39.33739062
+        net_personal_average_tax_rate_percent: 24.93002089
+        employee_social_security_percent_of_labour_costs: 8.88888889
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 19.19191919
+      SVK:
+        name: Slovak Republic
+        average_tax_wedge_percent_of_labour_costs: 42.71832143
+        net_personal_average_tax_rate_percent: 24.27362093
+        employee_social_security_percent_of_labour_costs: 10.13615734
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 24.3570348
+      SVN:
+        name: Slovenia
+        average_tax_wedge_percent_of_labour_costs: 45.29516177
+        net_personal_average_tax_rate_percent: 36.21415863
+        employee_social_security_percent_of_labour_costs: 20.63955156
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 14.23670669
+      SWE:
+        name: Sweden
+        average_tax_wedge_percent_of_labour_costs: 41.13584337
+        net_personal_average_tax_rate_percent: 22.64074134
+        employee_social_security_percent_of_labour_costs: 5.32729163
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 23.90806523
+      TUR:
+        name: Türkiye
+        average_tax_wedge_percent_of_labour_costs: 40.33430107
+        net_personal_average_tax_rate_percent: 29.28421363
+        employee_social_security_percent_of_labour_costs: 12.6560918
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 15.62605467
+      USA:
+        name: United States
+        average_tax_wedge_percent_of_labour_costs: 29.97706635
+        net_personal_average_tax_rate_percent: 24.31429528
+        employee_social_security_percent_of_labour_costs: 7.07763037
+        employer_social_security_and_payroll_tax_percent_of_labour_costs: 7.48195592
+  vectors:
+  - input:
+      key: DEU
+      column: average_tax_wedge_percent_of_labour_costs
+    expected: 49.26314669
+    origin: source
+  - input:
+      key: FRA
+      column: average_tax_wedge_percent_of_labour_costs
+    expected: 47.17806103
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.CTP.TPS,DSD_TAX_WAGES_DECOMP@DF_TW_DECOMP,2.1 (labour taxation,
+    tax wedge decompositions), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.CTP.TPS,DSD_TAX_WAGES_DECOMP@DF_TW_DECOMP,2.1/.AV_TW+NPATR+EESSC+ERSSC_PT..S_C0.AW100..A?startPeriod=2025&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, HOUSEHOLD_TYPE=S_C0, INCOME_PRINCIPAL=AW100, MEASURE=AV_TW, UNIT_MEASURE=PT_COS_LB, TIME_PERIOD=2025,
+    OBS_VALUE
+  value: '49.26314669'
+  unit: percent
+  snippet: DEU,Germany,AV_TW,Average tax wedge,PT_COS_LB,Percentage of labour costs,S_C0,"Single person, no children",AW100,100%
+    of average wage,_Z,Not applicable,A,Annual,2025,,49.26314669
+  source_license: unstated
+  content_sha256: 3076305dbb30750950523b6bd94edac531f29634be451ebabc651fd49278d0a9
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.CTP.TPS,DSD_TAX_WAGES_DECOMP@DF_TW_DECOMP,2.1 (labour taxation,
+    tax wedge decompositions), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.CTP.TPS,DSD_TAX_WAGES_DECOMP@DF_TW_DECOMP,2.1/.AV_TW+NPATR+EESSC+ERSSC_PT..S_C0.AW100..A?startPeriod=2025&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, HOUSEHOLD_TYPE=S_C0, INCOME_PRINCIPAL=AW100, MEASURE=NPATR, UNIT_MEASURE=PT_WG_EARN_G,
+    TIME_PERIOD=2025, OBS_VALUE
+  value: '38.6770806'
+  unit: percent
+  snippet: DEU,Germany,NPATR,Net personal average tax rate,PT_WG_EARN_G,Percentage of gross wage earnings,S_C0,"Single
+    person, no children",AW100,100% of average wage,_Z,Not applicable,A,Annual,2025,,38.6770806
+  source_license: unstated
+  content_sha256: 3076305dbb30750950523b6bd94edac531f29634be451ebabc651fd49278d0a9
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.CTP.TPS,DSD_TAX_WAGES_DECOMP@DF_TW_DECOMP,2.1 (labour taxation,
+    tax wedge decompositions), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.CTP.TPS,DSD_TAX_WAGES_DECOMP@DF_TW_DECOMP,2.1/.AV_TW+NPATR+EESSC+ERSSC_PT..S_C0.AW100..A?startPeriod=2025&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, HOUSEHOLD_TYPE=S_C0, INCOME_PRINCIPAL=AW100, MEASURE=EESSC, UNIT_MEASURE=PT_COS_LB, TIME_PERIOD=2025,
+    OBS_VALUE
+  value: '17.75515076'
+  unit: percent
+  snippet: DEU,Germany,EESSC,Employee social security contributions,PT_COS_LB,Percentage of labour costs,S_C0,"Single
+    person, no children",AW100,100% of average wage,_Z,Not applicable,A,Annual,2025,,17.75515076
+  source_license: unstated
+  content_sha256: 3076305dbb30750950523b6bd94edac531f29634be451ebabc651fd49278d0a9
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.CTP.TPS,DSD_TAX_WAGES_DECOMP@DF_TW_DECOMP,2.1 (labour taxation,
+    tax wedge decompositions), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.CTP.TPS,DSD_TAX_WAGES_DECOMP@DF_TW_DECOMP,2.1/.AV_TW+NPATR+EESSC+ERSSC_PT..S_C0.AW100..A?startPeriod=2025&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, HOUSEHOLD_TYPE=S_C0, INCOME_PRINCIPAL=AW100, MEASURE=ERSSC_PT, UNIT_MEASURE=PT_COS_LB,
+    TIME_PERIOD=2025, OBS_VALUE
+  value: '17.26282145'
+  unit: percent
+  snippet: DEU,Germany,ERSSC_PT,Employer social security contributions and payroll taxes,PT_COS_LB,Percentage of
+    labour costs,S_C0,"Single person, no children",AW100,100% of average wage,_Z,Not applicable,A,Annual,2025,,17.26282145
+  source_license: unstated
+  content_sha256: 3076305dbb30750950523b6bd94edac531f29634be451ebabc651fd49278d0a9
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 38
+  tolerance: 0
+- statistic: value[DEU,average_tax_wedge_percent_of_labour_costs]
+  expected: 49.26314669
+  tolerance: 1.0e-09
+- statistic: max[average_tax_wedge_percent_of_labour_costs]
+  expected: 52.48219559
+  tolerance: 1.0e-09
+- statistic: value[FRA,average_tax_wedge_percent_of_labour_costs]
+  expected: 47.17806103
+  tolerance: 1.0e-09
+notes: 'OECD Taxing Wages decomposition (dataflow DF_TW_DECOMP) for a single person without children earning 100
+  percent of the average wage: the average tax wedge as a percentage of total labour costs, the net personal average
+  tax rate as a percentage of gross wage earnings, and employee social security contributions and employer contributions
+  plus payroll taxes as percentages of labour costs. Labour costs minus the tax wedge is take-home pay, so the row
+  turns a gross-salary value into an employer cost and a net salary. Rows are keyed by ISO 3166-1 alpha-3 code and
+  carry the OECD reference-area label; OECD, EU and G7 aggregates are left out. Values are the 2025 observations
+  of the dataflow. The OECD terms and conditions page could not be fetched byte-stably in this session, so the licence
+  is recorded as unstated and the entry stays at license-review until a reviewer confirms the terms that apply to
+  OECD data.'

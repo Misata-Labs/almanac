@@ -1,0 +1,419 @@
+id: global-oecd-temporary-employment-share-2024
+title: Temporary employment as a share of employees by country, 2024, by sex and for young and prime-age workers
+  (OECD)
+kind: rule
+domain: employment
+region: global
+status: license-review
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- temporary-employment
+- contract-type
+- fixed-term
+- oecd
+- reference-table
+- by-country
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- workforce-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: OECD.ELS.SAE,DSD_TEMP@DF_TEMP_I,1.0
+    url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TEMP@DF_TEMP_I,1.0/all?startPeriod=2024&format=csvfilewithlabels
+    period: '2024'
+    rows:
+      AUT:
+        name: Austria
+        temporary_share_of_employees_percent: 8.445
+        temporary_share_men_percent: 8.53
+        temporary_share_women_percent: 8.356
+        temporary_share_15_24_percent: 33.708
+        temporary_share_25_54_percent: 5.638
+      BEL:
+        name: Belgium
+        temporary_share_of_employees_percent: 9.958
+        temporary_share_men_percent: 8.892
+        temporary_share_women_percent: 11.066
+        temporary_share_15_24_percent: 51.988
+        temporary_share_25_54_percent: 6.723
+      BGR:
+        name: Bulgaria
+        temporary_share_of_employees_percent: 2.977
+        temporary_share_men_percent: 3.132
+        temporary_share_women_percent: 2.813
+        temporary_share_15_24_percent: 8.122
+        temporary_share_25_54_percent: 2.67
+      CAN:
+        name: Canada
+        temporary_share_of_employees_percent: 11.24
+        temporary_share_men_percent: 10.328
+        temporary_share_women_percent: 12.2
+        temporary_share_15_24_percent: 29.108
+        temporary_share_25_54_percent: 8.065
+      CHE:
+        name: Switzerland
+        temporary_share_of_employees_percent: 12.96
+        temporary_share_men_percent: 12.841
+        temporary_share_women_percent: 13.089
+        temporary_share_15_24_percent: 53.704
+        temporary_share_25_54_percent: 7.45
+      CHL:
+        name: Chile
+        temporary_share_of_employees_percent: 25.164
+        temporary_share_men_percent: 25.026
+        temporary_share_women_percent: 25.355
+        temporary_share_15_24_percent: 42.746
+        temporary_share_25_54_percent: 24.489
+      COL:
+        name: Colombia
+        temporary_share_of_employees_percent: 24.319
+        temporary_share_men_percent: 23.628
+        temporary_share_women_percent: 25.202
+        temporary_share_15_24_percent: 32.253
+        temporary_share_25_54_percent: 24.279
+      CRI:
+        name: Costa Rica
+        temporary_share_of_employees_percent: 4.338
+        temporary_share_men_percent: 5.091
+        temporary_share_women_percent: 3.266
+        temporary_share_15_24_percent: 6.203
+        temporary_share_25_54_percent: 3.898
+      CYP:
+        name: Cyprus
+        temporary_share_of_employees_percent: 13.888
+        temporary_share_men_percent: 10.205
+        temporary_share_women_percent: 17.688
+        temporary_share_15_24_percent: 21.068
+        temporary_share_25_54_percent: 14.99
+      CZE:
+        name: Czechia
+        temporary_share_of_employees_percent: 8.213
+        temporary_share_men_percent: 6.493
+        temporary_share_women_percent: 10.107
+        temporary_share_15_24_percent: 33.796
+        temporary_share_25_54_percent: 6.363
+      DEU:
+        name: Germany
+        temporary_share_of_employees_percent: 11.397
+        temporary_share_men_percent: 11.533
+        temporary_share_women_percent: 11.25
+        temporary_share_15_24_percent: 48.341
+        temporary_share_25_54_percent: 8.281
+      DNK:
+        name: Denmark
+        temporary_share_of_employees_percent: 12.459
+        temporary_share_men_percent: 11.658
+        temporary_share_women_percent: 13.319
+        temporary_share_15_24_percent: 37.385
+        temporary_share_25_54_percent: 9.396
+      ESP:
+        name: Spain
+        temporary_share_of_employees_percent: 15.885
+        temporary_share_men_percent: 13.549
+        temporary_share_women_percent: 18.382
+        temporary_share_15_24_percent: 44.282
+        temporary_share_25_54_percent: 15.156
+      EST:
+        name: Estonia
+        temporary_share_of_employees_percent: 3.831
+        temporary_share_men_percent: 4.188
+        temporary_share_women_percent: 3.513
+        temporary_share_15_24_percent: 14.848
+        temporary_share_25_54_percent: 3.019
+      FIN:
+        name: Finland
+        temporary_share_of_employees_percent: 16.174
+        temporary_share_men_percent: 13.75
+        temporary_share_women_percent: 18.483
+        temporary_share_15_24_percent: 44.914
+        temporary_share_25_54_percent: 13.282
+      FRA:
+        name: France
+        temporary_share_of_employees_percent: 15.399
+        temporary_share_men_percent: 14.975
+        temporary_share_women_percent: 15.818
+        temporary_share_15_24_percent: 55.317
+        temporary_share_25_54_percent: 11.128
+      GBR:
+        name: United Kingdom
+        temporary_share_of_employees_percent: 4.733
+        temporary_share_men_percent: 4.527
+        temporary_share_women_percent: 4.942
+        temporary_share_15_24_percent: 12.558
+        temporary_share_25_54_percent: 3.493
+      GRC:
+        name: Greece
+        temporary_share_of_employees_percent: 9.558
+        temporary_share_men_percent: 7.756
+        temporary_share_women_percent: 11.606
+        temporary_share_15_24_percent: 20.44
+        temporary_share_25_54_percent: 9.037
+      HRV:
+        name: Croatia
+        temporary_share_of_employees_percent: 9.249
+        temporary_share_men_percent: 7.837
+        temporary_share_women_percent: 10.688
+        temporary_share_15_24_percent: 33.819
+        temporary_share_25_54_percent: 7.724
+      HUN:
+        name: Hungary
+        temporary_share_of_employees_percent: 4.803
+        temporary_share_men_percent: 5.164
+        temporary_share_women_percent: 4.419
+        temporary_share_15_24_percent: 12.547
+        temporary_share_25_54_percent: 4.133
+      IRL:
+        name: Ireland
+        temporary_share_of_employees_percent: 7.088
+        temporary_share_men_percent: 6.41
+        temporary_share_women_percent: 7.758
+        temporary_share_15_24_percent: 26.739
+        temporary_share_25_54_percent: 4.531
+      ISL:
+        name: Iceland
+        temporary_share_of_employees_percent: 10.91
+        temporary_share_men_percent: 9.586
+        temporary_share_women_percent: 12.375
+        temporary_share_15_24_percent: null
+        temporary_share_25_54_percent: null
+      ITA:
+        name: Italy
+        temporary_share_of_employees_percent: 14.692
+        temporary_share_men_percent: 13.506
+        temporary_share_women_percent: 16.122
+        temporary_share_15_24_percent: 52.566
+        temporary_share_25_54_percent: 14.254
+      JPN:
+        name: Japan
+        temporary_share_of_employees_percent: 14.622
+        temporary_share_men_percent: 10.886
+        temporary_share_women_percent: 19.033
+        temporary_share_15_24_percent: 15.405
+        temporary_share_25_54_percent: 9.049
+      KOR:
+        name: Korea
+        temporary_share_of_employees_percent: 26.899
+        temporary_share_men_percent: 23.838
+        temporary_share_women_percent: 30.461
+        temporary_share_15_24_percent: 36.187
+        temporary_share_25_54_percent: 18.551
+      LTU:
+        name: Lithuania
+        temporary_share_of_employees_percent: 1.675
+        temporary_share_men_percent: 1.711
+        temporary_share_women_percent: 1.64
+        temporary_share_15_24_percent: 4.625
+        temporary_share_25_54_percent: 1.354
+      LUX:
+        name: Luxembourg
+        temporary_share_of_employees_percent: 9.484
+        temporary_share_men_percent: 8.908
+        temporary_share_women_percent: 10.126
+        temporary_share_15_24_percent: 41.792
+        temporary_share_25_54_percent: 7.925
+      LVA:
+        name: Latvia
+        temporary_share_of_employees_percent: 2.349
+        temporary_share_men_percent: 2.798
+        temporary_share_women_percent: 1.935
+        temporary_share_15_24_percent: 7.918
+        temporary_share_25_54_percent: 1.865
+      MKD:
+        name: North Macedonia
+        temporary_share_of_employees_percent: 19
+        temporary_share_men_percent: 20.42
+        temporary_share_women_percent: 17.269
+        temporary_share_15_24_percent: 42.775
+        temporary_share_25_54_percent: 18.355
+      MLT:
+        name: Malta
+        temporary_share_of_employees_percent: 9.663
+        temporary_share_men_percent: 10.391
+        temporary_share_women_percent: 8.682
+        temporary_share_15_24_percent: 22.877
+        temporary_share_25_54_percent: 8.667
+      NLD:
+        name: Netherlands
+        temporary_share_of_employees_percent: 26.372
+        temporary_share_men_percent: 24.659
+        temporary_share_women_percent: 28.122
+        temporary_share_15_24_percent: 61.42
+        temporary_share_25_54_percent: 20.717
+      NOR:
+        name: Norway
+        temporary_share_of_employees_percent: 8.368
+        temporary_share_men_percent: 6.785
+        temporary_share_women_percent: 10.075
+        temporary_share_15_24_percent: 25.607
+        temporary_share_25_54_percent: 6.435
+      NZL:
+        name: New Zealand
+        temporary_share_of_employees_percent: 7.012
+        temporary_share_men_percent: 5.921
+        temporary_share_women_percent: 8.125
+        temporary_share_15_24_percent: 17.953
+        temporary_share_25_54_percent: 4.72
+      PER:
+        name: Peru
+        temporary_share_of_employees_percent: 78.833
+        temporary_share_men_percent: 78.9
+        temporary_share_women_percent: 78.739
+        temporary_share_15_24_percent: 96.52
+        temporary_share_25_54_percent: 78.37
+      POL:
+        name: Poland
+        temporary_share_of_employees_percent: 15.143
+        temporary_share_men_percent: 13.995
+        temporary_share_women_percent: 16.334
+        temporary_share_15_24_percent: 54.895
+        temporary_share_25_54_percent: 12.494
+      PRT:
+        name: Portugal
+        temporary_share_of_employees_percent: 15.896
+        temporary_share_men_percent: 15.695
+        temporary_share_women_percent: 16.089
+        temporary_share_15_24_percent: 53.289
+        temporary_share_25_54_percent: 15.132
+      ROU:
+        name: Romania
+        temporary_share_of_employees_percent: 1.792
+        temporary_share_men_percent: 2.356
+        temporary_share_women_percent: 1.087
+        temporary_share_15_24_percent: 7.277
+        temporary_share_25_54_percent: 1.659
+      SVK:
+        name: Slovak Republic
+        temporary_share_of_employees_percent: 4.196
+        temporary_share_men_percent: 3.889
+        temporary_share_women_percent: 4.496
+        temporary_share_15_24_percent: 29.695
+        temporary_share_25_54_percent: 2.895
+      SVN:
+        name: Slovenia
+        temporary_share_of_employees_percent: 10.95
+        temporary_share_men_percent: 9.985
+        temporary_share_women_percent: 12.015
+        temporary_share_15_24_percent: 56.227
+        temporary_share_25_54_percent: 7.198
+      SWE:
+        name: Sweden
+        temporary_share_of_employees_percent: 13.473
+        temporary_share_men_percent: 12.366
+        temporary_share_women_percent: 14.598
+        temporary_share_15_24_percent: 50.913
+        temporary_share_25_54_percent: 8.786
+      TUR:
+        name: Türkiye
+        temporary_share_of_employees_percent: 11.76
+        temporary_share_men_percent: 12.71
+        temporary_share_women_percent: 9.884
+        temporary_share_15_24_percent: 28.494
+        temporary_share_25_54_percent: 7.907
+  vectors:
+  - input:
+      key: DEU
+      column: temporary_share_of_employees_percent
+    expected: 11.397
+    origin: source
+  - input:
+      key: FRA
+      column: temporary_share_of_employees_percent
+    expected: 15.399
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_TEMP@DF_TEMP_I,1.0 (employment by permanency of
+    the job, incidence), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TEMP@DF_TEMP_I,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=EMP_TEMP, WORKER_STATUS=ICSE93_1, SEX=_T, AGE=_T, TIME_PERIOD=2024, OBS_VALUE
+  value: '11.397'
+  unit: percent
+  snippet: DEU,Germany,EMP_TEMP,Temporary employment,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,_T,Total,ICSE93_1,Employees,A,Annual,2024,,11.397
+  source_license: unstated
+  content_sha256: c38fbc823f52463a2448789a8a725391aa3cf650cb3c034125dd9b54facfa687
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_TEMP@DF_TEMP_I,1.0 (employment by permanency of
+    the job, incidence), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TEMP@DF_TEMP_I,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=EMP_TEMP, WORKER_STATUS=ICSE93_1, SEX=M, AGE=_T, TIME_PERIOD=2024, OBS_VALUE
+  value: '11.533'
+  unit: percent
+  snippet: DEU,Germany,EMP_TEMP,Temporary employment,PT_POP_SUB,Percentage of population in the same subgroup,M,Male,_T,Total,ICSE93_1,Employees,A,Annual,2024,,11.533
+  source_license: unstated
+  content_sha256: c38fbc823f52463a2448789a8a725391aa3cf650cb3c034125dd9b54facfa687
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_TEMP@DF_TEMP_I,1.0 (employment by permanency of
+    the job, incidence), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TEMP@DF_TEMP_I,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=EMP_TEMP, WORKER_STATUS=ICSE93_1, SEX=F, AGE=_T, TIME_PERIOD=2024, OBS_VALUE
+  value: '11.25'
+  unit: percent
+  snippet: DEU,Germany,EMP_TEMP,Temporary employment,PT_POP_SUB,Percentage of population in the same subgroup,F,Female,_T,Total,ICSE93_1,Employees,A,Annual,2024,,11.25
+  source_license: unstated
+  content_sha256: c38fbc823f52463a2448789a8a725391aa3cf650cb3c034125dd9b54facfa687
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_TEMP@DF_TEMP_I,1.0 (employment by permanency of
+    the job, incidence), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TEMP@DF_TEMP_I,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=EMP_TEMP, WORKER_STATUS=ICSE93_1, SEX=_T, AGE=Y15T24, TIME_PERIOD=2024, OBS_VALUE
+  value: '48.341'
+  unit: percent
+  snippet: DEU,Germany,EMP_TEMP,Temporary employment,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,Y15T24,From
+    15 to 24 years,ICSE93_1,Employees,A,Annual,2024,,48.341
+  source_license: unstated
+  content_sha256: c38fbc823f52463a2448789a8a725391aa3cf650cb3c034125dd9b54facfa687
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_TEMP@DF_TEMP_I,1.0 (employment by permanency of
+    the job, incidence), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TEMP@DF_TEMP_I,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=EMP_TEMP, WORKER_STATUS=ICSE93_1, SEX=_T, AGE=Y25T54, TIME_PERIOD=2024, OBS_VALUE
+  value: '8.281'
+  unit: percent
+  snippet: DEU,Germany,EMP_TEMP,Temporary employment,PT_POP_SUB,Percentage of population in the same subgroup,_T,Total,Y25T54,From
+    25 to 54 years,ICSE93_1,Employees,A,Annual,2024,,8.281
+  source_license: unstated
+  content_sha256: c38fbc823f52463a2448789a8a725391aa3cf650cb3c034125dd9b54facfa687
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 41
+  tolerance: 0
+- statistic: value[DEU,temporary_share_of_employees_percent]
+  expected: 11.397
+  tolerance: 1.0e-09
+- statistic: max[temporary_share_of_employees_percent]
+  expected: 78.833
+  tolerance: 1.0e-09
+- statistic: value[FRA,temporary_share_of_employees_percent]
+  expected: 15.399
+  tolerance: 1.0e-09
+notes: Share of employees whose job is temporary (fixed-term, agency or other non-permanent contract) from OECD
+  dataflow DF_TEMP_I (employment by permanency of the job, incidence, percentage of employees in the same subgroup),
+  for all employees, men, women and the 15 to 24 and 25 to 54 age bands. The complement of each share is the permanent-contract
+  share. Rows are keyed by ISO 3166-1 alpha-3 code and carry the OECD reference-area label; OECD, EU and G7 aggregates
+  are left out. Values are the 2024 observations of the dataflow. The OECD terms and conditions page could not be
+  fetched byte-stably in this session, so the licence is recorded as unstated and the entry stays at license-review
+  until a reviewer confirms the terms that apply to OECD data.

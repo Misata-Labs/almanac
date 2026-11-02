@@ -1,0 +1,352 @@
+id: global-oecd-employment-protection-index-2024
+title: Strictness of employment protection legislation by country, 2024, OECD indicators version 4 on a 0 to 6 scale
+kind: rule
+domain: employment
+region: global
+status: license-review
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- employment-protection
+- dismissal
+- labour-law
+- oecd
+- reference-table
+- by-country
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- workforce-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: OECD.ELS.JAI,DSD_EPL@DF_EPL,1.0
+    url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.JAI,DSD_EPL@DF_EPL,1.0/all?startPeriod=2023&format=csvfilewithlabels
+    period: '2024'
+    rows:
+      ARG:
+        name: Argentina
+        regular_contracts_individual_and_collective_dismissals: 2.5987003
+        regular_contracts_individual_dismissals: 2.6235118
+        collective_dismissals_additional_provisions: 2.5366712
+        temporary_contracts: null
+      AUS:
+        name: Australia
+        regular_contracts_individual_and_collective_dismissals: 1.7000779
+        regular_contracts_individual_dismissals: 1.6555059
+        collective_dismissals_additional_provisions: 1.8115079
+        temporary_contracts: 1.2777778
+      AUT:
+        name: Austria
+        regular_contracts_individual_and_collective_dismissals: 1.9434878
+        regular_contracts_individual_dismissals: 1.8058035
+        collective_dismissals_additional_provisions: 2.2876985
+        temporary_contracts: 1.6944444
+      BEL:
+        name: Belgium
+        regular_contracts_individual_and_collective_dismissals: 2.5911174
+        regular_contracts_individual_dismissals: 2.5630581
+        collective_dismissals_additional_provisions: 2.6612654
+        temporary_contracts: 1.611111
+      CAN:
+        name: Canada
+        regular_contracts_individual_and_collective_dismissals: 1.0178068
+        regular_contracts_individual_dismissals: 0.94974703
+        collective_dismissals_additional_provisions: 1.1879563
+        temporary_contracts: 0.22833334
+      CHE:
+        name: Switzerland
+        regular_contracts_individual_and_collective_dismissals: 1.6069735
+        regular_contracts_individual_dismissals: 1.5736607
+        collective_dismissals_additional_provisions: 1.6902556
+        temporary_contracts: 1.2043651
+      CHL:
+        name: Chile
+        regular_contracts_individual_and_collective_dismissals: 2.3417659
+        regular_contracts_individual_dismissals: 2.4538691
+        collective_dismissals_additional_provisions: 2.0615079
+        temporary_contracts: 1.861111
+      COL:
+        name: Colombia
+        regular_contracts_individual_and_collective_dismissals: 1.4358112
+        regular_contracts_individual_dismissals: 1.3876488
+        collective_dismissals_additional_provisions: 1.556217
+        temporary_contracts: 1.5416666
+      CRI:
+        name: Costa Rica
+        regular_contracts_individual_and_collective_dismissals: 0.63690478
+        regular_contracts_individual_dismissals: 0.63690478
+        collective_dismissals_additional_provisions: 0.63690478
+        temporary_contracts: 2.2222223
+      CZE:
+        name: Czechia
+        regular_contracts_individual_and_collective_dismissals: 3.0252621
+        regular_contracts_individual_dismissals: 3.017113
+        collective_dismissals_additional_provisions: 3.0456347
+        temporary_contracts: 1.6666666
+      DEU:
+        name: Germany
+        regular_contracts_individual_and_collective_dismissals: 2.3324111
+        regular_contracts_individual_dismissals: 2.2219121
+        collective_dismissals_additional_provisions: 2.6086586
+        temporary_contracts: 1.361111
+      DNK:
+        name: Denmark
+        regular_contracts_individual_and_collective_dismissals: 1.937693
+        regular_contracts_individual_dismissals: 1.8415179
+        collective_dismissals_additional_provisions: 2.1781306
+        temporary_contracts: 1.5555556
+      ESP:
+        name: Spain
+        regular_contracts_individual_and_collective_dismissals: 2.4305141
+        regular_contracts_individual_dismissals: 2.4309895
+        collective_dismissals_additional_provisions: 2.4293253
+        temporary_contracts: 2.90873
+      EST:
+        name: Estonia
+        regular_contracts_individual_and_collective_dismissals: 1.9342227
+        regular_contracts_individual_dismissals: 1.8932292
+        collective_dismissals_additional_provisions: 2.0367062
+        temporary_contracts: 2.2777777
+      FIN:
+        name: Finland
+        regular_contracts_individual_and_collective_dismissals: 2.4797511
+        regular_contracts_individual_dismissals: 2.3716516
+        collective_dismissals_additional_provisions: 2.75
+        temporary_contracts: 1.4166666
+      FRA:
+        name: France
+        regular_contracts_individual_and_collective_dismissals: 2.6759372
+        regular_contracts_individual_dismissals: 2.445677
+        collective_dismissals_additional_provisions: 3.2515874
+        temporary_contracts: 2.6785715
+      GBR:
+        name: United Kingdom
+        regular_contracts_individual_and_collective_dismissals: 1.9017237
+        regular_contracts_individual_dismissals: 1.7393973
+        collective_dismissals_additional_provisions: 2.3075397
+        temporary_contracts: 0.40277776
+      GRC:
+        name: Greece
+        regular_contracts_individual_and_collective_dismissals: 2.3214011
+        regular_contracts_individual_dismissals: 2.3325894
+        collective_dismissals_additional_provisions: 2.2934303
+        temporary_contracts: 2.1944444
+      HUN:
+        name: Hungary
+        regular_contracts_individual_and_collective_dismissals: 1.8923346
+        regular_contracts_individual_dismissals: 1.7758557
+        collective_dismissals_additional_provisions: 2.1835318
+        temporary_contracts: 1.5833334
+      IRL:
+        name: Ireland
+        regular_contracts_individual_and_collective_dismissals: 2.1731946
+        regular_contracts_individual_dismissals: 2.032552
+        collective_dismissals_additional_provisions: 2.5248015
+        temporary_contracts: 0.84722221
+      ISL:
+        name: Iceland
+        regular_contracts_individual_and_collective_dismissals: 2.2030895
+        regular_contracts_individual_dismissals: 2.1527777
+        collective_dismissals_additional_provisions: 2.3288691
+        temporary_contracts: 1.0694444
+      ISR:
+        name: Israel
+        regular_contracts_individual_and_collective_dismissals: 2.8320932
+        regular_contracts_individual_dismissals: 2.9069941
+        collective_dismissals_additional_provisions: 2.6448412
+        temporary_contracts: 1.0972222
+      ITA:
+        name: Italy
+        regular_contracts_individual_and_collective_dismissals: 2.8555663
+        regular_contracts_individual_dismissals: 2.7235863
+        collective_dismissals_additional_provisions: 3.1855159
+        temporary_contracts: 1.7916666
+      JPN:
+        name: Japan
+        regular_contracts_individual_and_collective_dismissals: 2.0809152
+        regular_contracts_individual_dismissals: 2.0984004
+        collective_dismissals_additional_provisions: 2.0372024
+        temporary_contracts: 1.3154762
+      KOR:
+        name: Korea
+        regular_contracts_individual_and_collective_dismissals: 2.3502338
+        regular_contracts_individual_dismissals: 2.3653274
+        collective_dismissals_additional_provisions: 2.3125
+        temporary_contracts: 1.8346355
+      LTU:
+        name: Lithuania
+        regular_contracts_individual_and_collective_dismissals: 1.848945
+        regular_contracts_individual_dismissals: 1.8254278
+        collective_dismissals_additional_provisions: 1.9077381
+        temporary_contracts: 1.4305556
+      LUX:
+        name: Luxembourg
+        regular_contracts_individual_and_collective_dismissals: 2.5418367
+        regular_contracts_individual_dismissals: 2.4954762
+        collective_dismissals_additional_provisions: 2.6577382
+        temporary_contracts: 2.8055556
+      LVA:
+        name: Latvia
+        regular_contracts_individual_and_collective_dismissals: 2.7081208
+        regular_contracts_individual_dismissals: 2.6354167
+        collective_dismissals_additional_provisions: 2.8898809
+        temporary_contracts: 1.236111
+      MEX:
+        name: Mexico
+        regular_contracts_individual_and_collective_dismissals: 2.4308035
+        regular_contracts_individual_dismissals: 2.3816965
+        collective_dismissals_additional_provisions: 2.5535715
+        temporary_contracts: 2.875
+      NLD:
+        name: Netherlands
+        regular_contracts_individual_and_collective_dismissals: 2.8808725
+        regular_contracts_individual_dismissals: 2.8498883
+        collective_dismissals_additional_provisions: 2.9583333
+        temporary_contracts: 1.1170635
+      NOR:
+        name: Norway
+        regular_contracts_individual_and_collective_dismissals: 2.3734853
+        regular_contracts_individual_dismissals: 2.2728796
+        collective_dismissals_additional_provisions: 2.625
+        temporary_contracts: 2.5277777
+      NZL:
+        name: New Zealand
+        regular_contracts_individual_and_collective_dismissals: 2.2226827
+        regular_contracts_individual_dismissals: 2.1927083
+        collective_dismissals_additional_provisions: 2.2976191
+        temporary_contracts: 0.8611111
+      POL:
+        name: Poland
+        regular_contracts_individual_and_collective_dismissals: 2.4210324
+        regular_contracts_individual_dismissals: 2.3950891
+        collective_dismissals_additional_provisions: 2.4858906
+        temporary_contracts: 1.7222222
+      PRT:
+        name: Portugal
+        regular_contracts_individual_and_collective_dismissals: 2.9610438
+        regular_contracts_individual_dismissals: 2.9787946
+        collective_dismissals_additional_provisions: 2.9166667
+        temporary_contracts: 2.2790799
+      SVK:
+        name: Slovak Republic
+        regular_contracts_individual_and_collective_dismissals: 2.330605
+        regular_contracts_individual_dismissals: 2.2775297
+        collective_dismissals_additional_provisions: 2.4632936
+        temporary_contracts: 2.0833333
+      SVN:
+        name: Slovenia
+        regular_contracts_individual_and_collective_dismissals: 2.3221097
+        regular_contracts_individual_dismissals: 2.1808035
+        collective_dismissals_additional_provisions: 2.6753747
+        temporary_contracts: 1.5059524
+      SWE:
+        name: Sweden
+        regular_contracts_individual_and_collective_dismissals: 2.5098815
+        regular_contracts_individual_dismissals: 2.4329612
+        collective_dismissals_additional_provisions: 2.7021825
+        temporary_contracts: 1.236111
+      TUR:
+        name: Türkiye
+        regular_contracts_individual_and_collective_dismissals: 2.9496608
+        regular_contracts_individual_dismissals: 2.8474703
+        collective_dismissals_additional_provisions: 3.2051368
+        temporary_contracts: 3.25
+      USA:
+        name: United States
+        regular_contracts_individual_and_collective_dismissals: 0.76577598
+        regular_contracts_individual_dismissals: 0.74822921
+        collective_dismissals_additional_provisions: 0.80964285
+        temporary_contracts: 0.2638889
+  vectors:
+  - input:
+      key: DEU
+      column: regular_contracts_individual_and_collective_dismissals
+    expected: 2.3324111
+    origin: source
+  - input:
+      key: FRA
+      column: regular_contracts_individual_and_collective_dismissals
+    expected: 2.6759372
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.JAI,DSD_EPL@DF_EPL,1.0 (strictness of employment protection),
+    CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.JAI,DSD_EPL@DF_EPL,1.0/all?startPeriod=2023&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=EPL_OV, VERSION=VERSION4, TIME_PERIOD=2024, OBS_VALUE
+  value: '2.3324111'
+  unit: decimal
+  snippet: DEU,Germany,EPL_OV,Individual and collective dismissals (regular contracts),0_TO_6,0-6 scale,VERSION4,Version
+    4 (2013-2019),2024,,2.3324111
+  source_license: unstated
+  content_sha256: 13ac295bf6b90e5671c3ee6993120cb66415590bf11d5a554f5cb97bc8bb9257
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.JAI,DSD_EPL@DF_EPL,1.0 (strictness of employment protection),
+    CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.JAI,DSD_EPL@DF_EPL,1.0/all?startPeriod=2023&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=EPL_R, VERSION=VERSION4, TIME_PERIOD=2024, OBS_VALUE
+  value: '2.2219121'
+  unit: decimal
+  snippet: DEU,Germany,EPL_R,Individual dismissals (regular contracts),0_TO_6,0-6 scale,VERSION4,Version 4 (2013-2019),2024,,2.2219121
+  source_license: unstated
+  content_sha256: 13ac295bf6b90e5671c3ee6993120cb66415590bf11d5a554f5cb97bc8bb9257
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.JAI,DSD_EPL@DF_EPL,1.0 (strictness of employment protection),
+    CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.JAI,DSD_EPL@DF_EPL,1.0/all?startPeriod=2023&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=EPL_CD, VERSION=VERSION4, TIME_PERIOD=2024, OBS_VALUE
+  value: '2.6086586'
+  unit: decimal
+  snippet: DEU,Germany,EPL_CD,Collective dismissals,0_TO_6,0-6 scale,VERSION4,Version 4 (2013-2019),2024,,2.6086586
+  source_license: unstated
+  content_sha256: 13ac295bf6b90e5671c3ee6993120cb66415590bf11d5a554f5cb97bc8bb9257
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.JAI,DSD_EPL@DF_EPL,1.0 (strictness of employment protection),
+    CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.JAI,DSD_EPL@DF_EPL,1.0/all?startPeriod=2023&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, MEASURE=EPL_T, VERSION=VERSION4, TIME_PERIOD=2024, OBS_VALUE
+  value: '1.361111'
+  unit: decimal
+  snippet: DEU,Germany,EPL_T,Temporary contracts,0_TO_6,0-6 scale,VERSION4,Version 4 (2013-2019),2024,,1.361111
+  source_license: unstated
+  content_sha256: 13ac295bf6b90e5671c3ee6993120cb66415590bf11d5a554f5cb97bc8bb9257
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 39
+  tolerance: 0
+- statistic: value[DEU,regular_contracts_individual_and_collective_dismissals]
+  expected: 2.3324111
+  tolerance: 1.0e-09
+- statistic: max[regular_contracts_individual_and_collective_dismissals]
+  expected: 3.0252621
+  tolerance: 1.0e-09
+- statistic: value[FRA,regular_contracts_individual_and_collective_dismissals]
+  expected: 2.6759372
+  tolerance: 1.0e-09
+notes: 'OECD indicators of the strictness of employment protection legislation (dataflow DF_EPL, version 4 methodology,
+  scale 0 least restrictive to 6 most restrictive): regular contracts against individual and collective dismissals,
+  regular contracts against individual dismissals only, the additional provisions for collective dismissals, and
+  the regulation of temporary contracts. Rows are keyed by ISO 3166-1 alpha-3 code and carry the OECD reference-area
+  label; OECD, EU and G7 aggregates are left out. Values are the 2024 observations of the dataflow. The OECD terms
+  and conditions page could not be fetched byte-stably in this session, so the licence is recorded as unstated and
+  the entry stays at license-review until a reviewer confirms the terms that apply to OECD data.'

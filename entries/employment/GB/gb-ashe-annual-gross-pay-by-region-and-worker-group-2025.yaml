@@ -1,0 +1,881 @@
+id: gb-ashe-annual-gross-pay-by-region-and-worker-group-2025
+title: UK gross annual pay percentiles by region and country of work, by sex and full-time or part-time, April 2025
+  (ONS ASHE)
+kind: rule
+domain: employment
+region: GB
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- pay
+- earnings
+- ashe
+- percentiles
+- by-region
+- by-sex
+- ons
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- person-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataset: NM_99_1
+    pay: Annual pay - gross
+    url: https://www.nomisweb.co.uk/api/v01/dataset/NM_99_1.data.csv?geography=2092957697,2092957698,2092957699,2013265921...2013265932&date=2025&sex=5...9&item=1,2,4,6,8,13,15&pay=5,7&measures=20100&select=geography_code,geography_name,date_name,sex_name,item_name,pay_name,obs_value,obs_status_name
+    key_format: <ONS geography code>:<group>
+    groups:
+    - all
+    - full_time
+    - men
+    - part_time
+    - women
+    rows:
+      E12000001:all:
+        area: North East
+        group: all
+        employee_jobs: 837000
+        median: 29266
+        mean: 33164
+        p10: 10727
+        p25: 20252
+        p75: 41339
+        p90: 56226
+      E12000001:full_time:
+        area: North East
+        group: full_time
+        employee_jobs: 588000
+        median: 34403
+        mean: 39859
+        p10: 23284
+        p25: 27082
+        p75: 46220
+        p90: 61420
+      E12000001:men:
+        area: North East
+        group: men
+        employee_jobs: 408000
+        median: 33804
+        mean: 38623
+        p10: 15178
+        p25: 25470
+        p75: 46840
+        p90: 63586
+      E12000001:part_time:
+        area: North East
+        group: part_time
+        employee_jobs: 249000
+        median: 14813
+        mean: 17328
+        p10: 4587
+        p25: 9519
+        p75: 21084
+        p90: 29585
+      E12000001:women:
+        area: North East
+        group: women
+        employee_jobs: 429000
+        median: 25480
+        mean: 27969
+        p10: 8971
+        p25: 16009
+        p75: 35062
+        p90: 48099
+      E12000002:all:
+        area: North West
+        group: all
+        employee_jobs: 2719000
+        median: 31489
+        mean: 36680
+        p10: 11656
+        p25: 21418
+        p75: 45948
+        p90: 63864
+      E12000002:full_time:
+        area: North West
+        group: full_time
+        employee_jobs: 1986000
+        median: 37361
+        mean: 43731
+        p10: 23400
+        p25: 27992
+        p75: 51167
+        p90: 70142
+      E12000002:men:
+        area: North West
+        group: men
+        employee_jobs: 1309000
+        median: 36972
+        mean: 43347
+        p10: 16112
+        p25: 26332
+        p75: 52604
+        p90: 73161
+      E12000002:part_time:
+        area: North West
+        group: part_time
+        employee_jobs: 733000
+        median: 14596
+        mean: 17581
+        p10: 4768
+        p25: 9809
+        p75: 21277
+        p90: 31336
+      E12000002:women:
+        area: North West
+        group: women
+        employee_jobs: 1411000
+        median: 26987
+        mean: 30493
+        p10: 9871
+        p25: 17002
+        p75: 39188
+        p90: 52918
+      E12000003:all:
+        area: Yorkshire and The Humber
+        group: all
+        employee_jobs: 1961000
+        median: 30486
+        mean: 34691
+        p10: 11266
+        p25: 20894
+        p75: 43113
+        p90: 59954
+      E12000003:full_time:
+        area: Yorkshire and The Humber
+        group: full_time
+        employee_jobs: 1402000
+        median: 35682
+        mean: 41318
+        p10: 23397
+        p25: 27690
+        p75: 48430
+        p90: 65286
+      E12000003:men:
+        area: Yorkshire and The Humber
+        group: men
+        employee_jobs: 968000
+        median: 35666
+        mean: 41017
+        p10: 16895
+        p25: 26499
+        p75: 49633
+        p90: 67627
+      E12000003:part_time:
+        area: Yorkshire and The Humber
+        group: part_time
+        employee_jobs: 559000
+        median: 14846
+        mean: 18064
+        p10: 4806
+        p25: 9688
+        p75: 21566
+        p90: 32918
+      E12000003:women:
+        area: Yorkshire and The Humber
+        group: women
+        employee_jobs: 993000
+        median: 25674
+        mean: 28525
+        p10: 9100
+        p25: 15979
+        p75: 36471
+        p90: 50019
+      E12000004:all:
+        area: East Midlands
+        group: all
+        employee_jobs: 1704000
+        median: 30000
+        mean: 34118
+        p10: 11008
+        p25: 20112
+        p75: 42918
+        p90: 58581
+      E12000004:full_time:
+        area: East Midlands
+        group: full_time
+        employee_jobs: 1217000
+        median: 35600
+        mean: 41178
+        p10: 23135
+        p25: 27413
+        p75: 48196
+        p90: 63883
+      E12000004:men:
+        area: East Midlands
+        group: men
+        employee_jobs: 850000
+        median: 35686
+        mean: 40594
+        p10: 15546
+        p25: 26302
+        p75: 49075
+        p90: 66801
+      E12000004:part_time:
+        area: East Midlands
+        group: part_time
+        employee_jobs: 488000
+        median: 14174
+        mean: 16499
+        p10: 4139
+        p25: 9199
+        p75: 20223
+        p90: 29776
+      E12000004:women:
+        area: East Midlands
+        group: women
+        employee_jobs: 854000
+        median: 25199
+        mean: 27671
+        p10: 8400
+        p25: 15317
+        p75: 35448
+        p90: 49235
+      E12000005:all:
+        area: West Midlands
+        group: all
+        employee_jobs: 2057000
+        median: 31360
+        mean: 36629
+        p10: 11239
+        p25: 21429
+        p75: 45672
+        p90: 62238
+      E12000005:full_time:
+        area: West Midlands
+        group: full_time
+        employee_jobs: 1508000
+        median: 37064
+        mean: 43722
+        p10: 23279
+        p25: 27951
+        p75: 50611
+        p90: 68285
+      E12000005:men:
+        area: West Midlands
+        group: men
+        employee_jobs: 1055000
+        median: 37193
+        mean: 43863
+        p10: 17021
+        p25: 27095
+        p75: 52231
+        p90: 70964
+      E12000005:part_time:
+        area: West Midlands
+        group: part_time
+        employee_jobs: 549000
+        median: 14291
+        mean: 17163
+        p10: 4545
+        p25: 9270
+        p75: 21107
+        p90: 31321
+      E12000005:women:
+        area: West Midlands
+        group: women
+        employee_jobs: 1002000
+        median: 25864
+        mean: 29014
+        p10: 8782
+        p25: 16130
+        p75: 37161
+        p90: 50981
+      E12000006:all:
+        area: East
+        group: all
+        employee_jobs: 2177000
+        median: 31513
+        mean: 37633
+        p10: 9932
+        p25: 19793
+        p75: 46749
+        p90: 67033
+      E12000006:full_time:
+        area: East
+        group: full_time
+        employee_jobs: 1537000
+        median: 38597
+        mean: 46540
+        p10: 23694
+        p25: 29110
+        p75: 52984
+        p90: 74962
+      E12000006:men:
+        area: East
+        group: men
+        employee_jobs: 1084000
+        median: 38276
+        mean: 45997
+        p10: 14357
+        p25: 27063
+        p75: 54187
+        p90: 77578
+      E12000006:part_time:
+        area: East
+        group: part_time
+        employee_jobs: 640000
+        median: 13787
+        mean: 16255
+        p10: 3818
+        p25: 8590
+        p75: 20495
+        p90: 29060
+      E12000006:women:
+        area: East
+        group: women
+        employee_jobs: 1093000
+        median: 25674
+        mean: 29342
+        p10: 7725
+        p25: 15000
+        p75: 37933
+        p90: 52805
+      E12000007:all:
+        area: London
+        group: all
+        employee_jobs: 3871000
+        median: 43190
+        mean: 60673
+        p10: 13708
+        p25: 28529
+        p75: 66503
+        p90: 105982
+      E12000007:full_time:
+        area: London
+        group: full_time
+        employee_jobs: 3076000
+        median: 49692
+        mean: 70275
+        p10: 27418
+        p25: 35424
+        p75: 73667
+        p90: 115775
+      E12000007:men:
+        area: London
+        group: men
+        employee_jobs: 1961000
+        median: 49181
+        mean: 71751
+        p10: 17575
+        p25: 32321
+        p75: 77401
+        p90: 124452
+      E12000007:part_time:
+        area: London
+        group: part_time
+        employee_jobs: 795000
+        median: 15960
+        mean: 23519
+        p10: 5563
+        p25: 10247
+        p75: 27469
+        p90: 44959
+      E12000007:women:
+        area: London
+        group: women
+        employee_jobs: 1910000
+        median: 38376
+        mean: 49300
+        p10: 12000
+        p25: 24741
+        p75: 56663
+        p90: 85998
+      E12000008:all:
+        area: South East
+        group: all
+        employee_jobs: 3317000
+        median: 33499
+        mean: 39559
+        p10: 11087
+        p25: 22154
+        p75: 48942
+        p90: 70416
+      E12000008:full_time:
+        area: South East
+        group: full_time
+        employee_jobs: 2436000
+        median: 39983
+        mean: 47619
+        p10: 24138
+        p25: 29704
+        p75: 55000
+        p90: 77370
+      E12000008:men:
+        area: South East
+        group: men
+        employee_jobs: 1658000
+        median: 39882
+        mean: 47188
+        p10: 15839
+        p25: 28146
+        p75: 56533
+        p90: 80662
+      E12000008:part_time:
+        area: South East
+        group: part_time
+        employee_jobs: 881000
+        median: 14331
+        mean: 17269
+        p10: 4579
+        p25: 9336
+        p75: 21809
+        p90: 31968
+      E12000008:women:
+        area: South East
+        group: women
+        employee_jobs: 1659000
+        median: 27742
+        mean: 31936
+        p10: 9096
+        p25: 16756
+        p75: 40766
+        p90: 56782
+      E12000009:all:
+        area: South West
+        group: all
+        employee_jobs: 2075000
+        median: 31047
+        mean: 35904
+        p10: 10766
+        p25: 20702
+        p75: 44663
+        p90: 62293
+      E12000009:full_time:
+        area: South West
+        group: full_time
+        employee_jobs: 1443000
+        median: 37195
+        mean: 43852
+        p10: 23936
+        p25: 28631
+        p75: 50000
+        p90: 68482
+      E12000009:men:
+        area: South West
+        group: men
+        employee_jobs: 1034000
+        median: 36778
+        mean: 42975
+        p10: 15853
+        p25: 26834
+        p75: 50744
+        p90: 71447
+      E12000009:part_time:
+        area: South West
+        group: part_time
+        employee_jobs: 632000
+        median: 14695
+        mean: 17741
+        p10: 4588
+        p25: 9491
+        p75: 22082
+        p90: 32842
+      E12000009:women:
+        area: South West
+        group: women
+        employee_jobs: 1040000
+        median: 26000
+        mean: 28875
+        p10: 8545
+        p25: 15447
+        p75: 37048
+        p90: 50961
+      E92000001:all:
+        area: England
+        group: all
+        employee_jobs: 20719000
+        median: 33142
+        mean: 41100
+        p10: 11439
+        p25: 22187
+        p75: 48820
+        p90: 71090
+      E92000001:full_time:
+        area: England
+        group: full_time
+        employee_jobs: 15193000
+        median: 39298
+        mean: 49446
+        p10: 23990
+        p25: 29359
+        p75: 54788
+        p90: 78917
+      E92000001:men:
+        area: England
+        group: men
+        employee_jobs: 10327000
+        median: 38823
+        mean: 49019
+        p10: 16019
+        p25: 27500
+        p75: 55817
+        p90: 82013
+      E92000001:part_time:
+        area: England
+        group: part_time
+        employee_jobs: 5525000
+        median: 14594
+        mean: 18151
+        p10: 4638
+        p25: 9518
+        p75: 21925
+        p90: 33137
+      E92000001:women:
+        area: England
+        group: women
+        employee_jobs: 10392000
+        median: 27865
+        mean: 33230
+        p10: 9319
+        p25: 16989
+        p75: 41254
+        p90: 58212
+      K02000001:all:
+        area: United Kingdom
+        group: all
+        employee_jobs: 24897000
+        median: 32890
+        mean: 40269
+        p10: 11425
+        p25: 22060
+        p75: 48283
+        p90: 69381
+      K02000001:full_time:
+        area: United Kingdom
+        group: full_time
+        employee_jobs: 18154000
+        median: 39039
+        mean: 48512
+        p10: 23990
+        p25: 29262
+        p75: 54009
+        p90: 76903
+      K02000001:men:
+        area: United Kingdom
+        group: men
+        employee_jobs: 12266000
+        median: 38466
+        mean: 47975
+        p10: 16143
+        p25: 27335
+        p75: 55000
+        p90: 80049
+      K02000001:part_time:
+        area: United Kingdom
+        group: part_time
+        employee_jobs: 6743000
+        median: 14713
+        mean: 18079
+        p10: 4683
+        p25: 9522
+        p75: 22002
+        p90: 33061
+      K02000001:women:
+        area: United Kingdom
+        group: women
+        employee_jobs: 12632000
+        median: 27850
+        mean: 32787
+        p10: 9307
+        p25: 16966
+        p75: 41030
+        p90: 57215
+      K03000001:all:
+        area: Great Britain
+        group: all
+        employee_jobs: 24029000
+        median: 32972
+        mean: 40439
+        p10: 11456
+        p25: 22112
+        p75: 48408
+        p90: 69750
+      K03000001:full_time:
+        area: Great Britain
+        group: full_time
+        employee_jobs: 17532000
+        median: 39119
+        mean: 48703
+        p10: 24000
+        p25: 29306
+        p75: 54163
+        p90: 77257
+      K03000001:men:
+        area: Great Britain
+        group: men
+        employee_jobs: 11852000
+        median: 38603
+        mean: 48205
+        p10: 16195
+        p25: 27403
+        p75: 55187
+        p90: 80450
+      K03000001:part_time:
+        area: Great Britain
+        group: part_time
+        employee_jobs: 6497000
+        median: 14741
+        mean: 18137
+        p10: 4700
+        p25: 9562
+        p75: 22024
+        p90: 33130
+      K03000001:women:
+        area: Great Britain
+        group: women
+        employee_jobs: 12177000
+        median: 27865
+        mean: 32880
+        p10: 9356
+        p25: 16992
+        p75: 41079
+        p90: 57329
+      N92000002:all:
+        area: Northern Ireland
+        group: all
+        employee_jobs: 868000
+        median: 31084
+        mean: 35571
+        p10: 10233
+        p25: 20924
+        p75: 44531
+        p90: 61143
+      N92000002:full_time:
+        area: Northern Ireland
+        group: full_time
+        employee_jobs: 622000
+        median: 37052
+        mean: 43113
+        p10: 23198
+        p25: 28235
+        p75: 50197
+        p90: 67518
+      N92000002:men:
+        area: Northern Ireland
+        group: men
+        employee_jobs: 413000
+        median: 35042
+        mean: 41389
+        p10: 15063
+        p25: 25779
+        p75: 48955
+        p90: 68583
+      N92000002:part_time:
+        area: Northern Ireland
+        group: part_time
+        employee_jobs: 247000
+        median: 14019
+        mean: 16539
+        p10: 4273
+        p25: 8380
+        p75: 21403
+        p90: 31561
+      N92000002:women:
+        area: Northern Ireland
+        group: women
+        employee_jobs: 455000
+        median: 27527
+        mean: 30287
+        p10: 7929
+        p25: 15982
+        p75: 40222
+        p90: 54529
+      S92000003:all:
+        area: Scotland
+        group: all
+        employee_jobs: 2161000
+        median: 32775
+        mean: 37642
+        p10: 11842
+        p25: 22293
+        p75: 47512
+        p90: 63901
+      S92000003:full_time:
+        area: Scotland
+        group: full_time
+        employee_jobs: 1534000
+        median: 39719
+        mean: 45586
+        p10: 24591
+        p25: 29635
+        p75: 52500
+        p90: 71307
+      S92000003:men:
+        area: Scotland
+        group: men
+        employee_jobs: 990000
+        median: 38739
+        mean: 44335
+        p10: 17053
+        p25: 27463
+        p75: 53582
+        p90: 73936
+      S92000003:part_time:
+        area: Scotland
+        group: part_time
+        employee_jobs: 627000
+        median: 15609
+        mean: 18215
+        p10: 5504
+        p25: 10142
+        p75: 23231
+        p90: 33647
+      S92000003:women:
+        area: Scotland
+        group: women
+        employee_jobs: 1171000
+        median: 28769
+        mean: 31986
+        p10: 9902
+        p25: 17441
+        p75: 41616
+        p90: 54888
+      W92000004:all:
+        area: Wales
+        group: all
+        employee_jobs: 1150000
+        median: 30245
+        mean: 33788
+        p10: 10979
+        p25: 20687
+        p75: 42708
+        p90: 56068
+      W92000004:full_time:
+        area: Wales
+        group: full_time
+        employee_jobs: 806000
+        median: 35796
+        mean: 40626
+        p10: 23621
+        p25: 27865
+        p75: 47569
+        p90: 60628
+      W92000004:men:
+        area: Wales
+        group: men
+        employee_jobs: 536000
+        median: 35119
+        mean: 39665
+        p10: 16702
+        p25: 25962
+        p75: 47997
+        p90: 62885
+      W92000004:part_time:
+        area: Wales
+        group: part_time
+        employee_jobs: 344000
+        median: 15136
+        mean: 17779
+        p10: 4238
+        p25: 9467
+        p75: 21778
+        p90: 31299
+      W92000004:women:
+        area: Wales
+        group: women
+        employee_jobs: 614000
+        median: 26061
+        mean: 28662
+        p10: 8996
+        p25: 16202
+        p75: 37632
+        p90: 49690
+  vectors:
+  - input:
+      key: K02000001:all
+      column: median
+    expected: 32890
+    origin: source
+  - input:
+      key: E12000007:full_time
+      column: median
+    expected: 49692
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Office for National Statistics
+  title: Nomis API, dataset NM_99_1 (Annual Survey of Hours and Earnings, workplace analysis), CSV
+  url: https://www.nomisweb.co.uk/api/v01/dataset/NM_99_1.data.csv?geography=2092957697,2092957698,2092957699,2013265921...2013265932&date=2025&sex=5...9&item=1,2,4,6,8,13,15&pay=5,7&measures=20100&select=geography_code,geography_name,date_name,sex_name,item_name,pay_name,obs_value,obs_status_name
+  accessed_at: '2026-10-31'
+  locator: GEOGRAPHY_CODE=K02000001, SEX_NAME=Total, ITEM_NAME=Median, PAY_NAME=Annual pay - gross, OBS_VALUE
+  value: '32890'
+  unit: currency:GBP
+  snippet: K02000001","United Kingdom","2025","Total","Median","Annual pay - gross",32890
+  source_license: OGL-UK-3.0
+  content_sha256: 9ce6f4d3048d4b58ff18f0673d8997075ee24136126d276686fd74d4753bcbc5
+  role: primary
+- publisher: Office for National Statistics
+  title: Nomis API, dataset NM_99_1 (Annual Survey of Hours and Earnings, workplace analysis), CSV
+  url: https://www.nomisweb.co.uk/api/v01/dataset/NM_99_1.data.csv?geography=2092957697,2092957698,2092957699,2013265921...2013265932&date=2025&sex=5...9&item=1,2,4,6,8,13,15&pay=5,7&measures=20100&select=geography_code,geography_name,date_name,sex_name,item_name,pay_name,obs_value,obs_status_name
+  accessed_at: '2026-10-31'
+  locator: GEOGRAPHY_CODE=E12000007, SEX_NAME=Full Time Workers, ITEM_NAME=90 percentile, PAY_NAME=Annual pay -
+    gross, OBS_VALUE
+  value: '115775'
+  unit: currency:GBP
+  snippet: E12000007","London","2025","Full Time Workers","90 percentile","Annual pay - gross",115775
+  source_license: OGL-UK-3.0
+  content_sha256: 9ce6f4d3048d4b58ff18f0673d8997075ee24136126d276686fd74d4753bcbc5
+  role: primary
+- publisher: Office for National Statistics
+  title: Nomis API, dataset NM_99_1 (Annual Survey of Hours and Earnings, workplace analysis), CSV
+  url: https://www.nomisweb.co.uk/api/v01/dataset/NM_99_1.data.csv?geography=2092957697,2092957698,2092957699,2013265921...2013265932&date=2025&sex=5...9&item=1,2,4,6,8,13,15&pay=5,7&measures=20100&select=geography_code,geography_name,date_name,sex_name,item_name,pay_name,obs_value,obs_status_name
+  accessed_at: '2026-10-31'
+  locator: GEOGRAPHY_CODE=W92000004, SEX_NAME=Female, ITEM_NAME=Mean, PAY_NAME=Annual pay - gross, OBS_VALUE
+  value: '28662'
+  unit: currency:GBP
+  snippet: W92000004","Wales","2025","Female","Mean","Annual pay - gross",28662
+  source_license: OGL-UK-3.0
+  content_sha256: 9ce6f4d3048d4b58ff18f0673d8997075ee24136126d276686fd74d4753bcbc5
+  role: primary
+- publisher: Office for National Statistics
+  title: Nomis API, dataset NM_99_1 (Annual Survey of Hours and Earnings, workplace analysis), CSV
+  url: https://www.nomisweb.co.uk/api/v01/dataset/NM_99_1.data.csv?geography=2092957697,2092957698,2092957699,2013265921...2013265932&date=2025&sex=5...9&item=1,2,4,6,8,13,15&pay=5,7&measures=20100&select=geography_code,geography_name,date_name,sex_name,item_name,pay_name,obs_value,obs_status_name
+  accessed_at: '2026-10-31'
+  locator: GEOGRAPHY_CODE=K02000001, SEX_NAME=Total, ITEM_NAME=Number of jobs, PAY_NAME=Annual pay - gross, OBS_VALUE
+  value: '24897000'
+  unit: count
+  snippet: K02000001","United Kingdom","2025","Total","Number of jobs","Annual pay - gross",24897000
+  source_license: OGL-UK-3.0
+  content_sha256: 9ce6f4d3048d4b58ff18f0673d8997075ee24136126d276686fd74d4753bcbc5
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 75
+  tolerance: 0
+- statistic: value[K02000001:all,median]
+  expected: 32890
+  tolerance: 1.0e-09
+- statistic: max[median]
+  expected: 49692
+  tolerance: 1.0e-09
+- statistic: value[E12000007:full_time,p90]
+  expected: 115775
+  tolerance: 1.0e-09
+- statistic: max[p90]
+  expected: 124452
+  tolerance: 1.0e-09
+- statistic: value[W92000004:women,mean]
+  expected: 28662
+  tolerance: 1.0e-09
+notes: 'Gross annual pay of employee jobs in the April 2025 Annual Survey of Hours and Earnings, workplace-based,
+  from the ONS dataset NM_99_1 served by Nomis: the number of employee jobs, the median, the mean and the 10th,
+  25th, 75th and 90th percentiles, for each combination of area and worker group. Areas are the United Kingdom,
+  Great Britain, England, Wales, Scotland, Northern Ireland and the nine English regions (15 in all); groups are
+  all employees, men, women, full-time and part-time. Rows are keyed ''<ONS geography code>:<group>'', for example
+  K02000001:all. 0 cells that ONS suppresses as statistically unreliable are null. The 2025 figures are the latest
+  Nomis serves; ONS also publishes 2026 provisional ASHE tables only as ZIP archives of spreadsheets, which the
+  verifier cannot read. valid_from and valid_to bound the survey year; the ASHE reference date is in April. ONS
+  publishes ASHE under the Open Government Licence v3.0.'

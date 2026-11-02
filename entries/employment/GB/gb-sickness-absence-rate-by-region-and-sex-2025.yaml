@@ -1,0 +1,179 @@
+id: gb-sickness-absence-rate-by-region-and-sex-2025
+title: UK sickness absence rate by region and country of work and by sex, 2025 (ONS LFS)
+kind: rule
+domain: employment
+region: GB
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- sickness-absence
+- absence
+- by-region
+- by-sex
+- ons
+- hr
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- insurance
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    year: 2025
+    source_tables:
+    - Table 9
+    - Table 20
+    rows:
+      United Kingdom:
+        all_persons_2025: 2.0
+        all_persons_2024: 2.0
+        men_2025: 1.7
+        women_2025: 2.4
+      Great Britain:
+        all_persons_2025: 2.0
+        all_persons_2024: 2.0
+        men_2025: 1.7
+        women_2025: 2.4
+      England:
+        all_persons_2025: 2.0
+        all_persons_2024: 2.0
+        men_2025: 1.7
+        women_2025: 2.3
+      North East:
+        all_persons_2025: 2.2
+        all_persons_2024: 1.7
+        men_2025: 1.7
+        women_2025: 2.8
+      North West:
+        all_persons_2025: 2.1
+        all_persons_2024: 2.3
+        men_2025: 1.8
+        women_2025: 2.4
+      Yorkshire and The Humber:
+        all_persons_2025: 2.4
+        all_persons_2024: 2.2
+        men_2025: 2.0
+        women_2025: 2.8
+      East Midlands:
+        all_persons_2025: 2.1
+        all_persons_2024: 2.0
+        men_2025: 1.8
+        women_2025: 2.5
+      West Midlands:
+        all_persons_2025: 1.8
+        all_persons_2024: 2.1
+        men_2025: 1.6
+        women_2025: 2.2
+      East:
+        all_persons_2025: 2.0
+        all_persons_2024: 1.5
+        men_2025: 1.9
+        women_2025: 2.0
+      London:
+        all_persons_2025: 1.5
+        all_persons_2024: 1.5
+        men_2025: 1.0
+        women_2025: 2.1
+      South East:
+        all_persons_2025: 2.0
+        all_persons_2024: 2.1
+        men_2025: 1.8
+        women_2025: 2.3
+      South West:
+        all_persons_2025: 2.1
+        all_persons_2024: 2.4
+        men_2025: 1.8
+        women_2025: 2.5
+      Wales:
+        all_persons_2025: 1.9
+        all_persons_2024: 2.3
+        men_2025: 1.6
+        women_2025: 2.3
+      Scotland:
+        all_persons_2025: 2.3
+        all_persons_2024: 2.3
+        men_2025: 2.0
+        women_2025: 2.6
+      Northern Ireland:
+        all_persons_2025: 2.2
+        all_persons_2024: 2.3
+        men_2025: 2.0
+        women_2025: 2.4
+  vectors:
+  - input:
+      key: United Kingdom
+      column: all_persons_2025
+    expected: 2.0
+    origin: source
+  - input:
+      key: London
+      column: all_persons_2025
+    expected: 1.5
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Office for National Statistics
+  title: 'Sickness absence in the UK labour market: 2025 (XLSX dataset)'
+  url: https://www.ons.gov.uk/file?uri=/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/sicknessabsenceinthelabourmarket/2025/sicknessabsence2025.xlsx
+  accessed_at: '2026-10-31'
+  locator: Table 9!B5 (sickness absence rate 2025, United Kingdom)
+  value: 2
+  unit: percent
+  snippet: <c r="B5" s="106"><v>2</v></c>
+  source_license: OGL-UK-3.0
+  content_sha256: 3dc547c84b70a4d4a3c65841ead2cfafa6f8a10ced2810a8b7608803519f45de
+  role: primary
+- publisher: Office for National Statistics
+  title: 'Sickness absence in the UK labour market: 2025 (XLSX dataset)'
+  url: https://www.ons.gov.uk/file?uri=/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/sicknessabsenceinthelabourmarket/2025/sicknessabsence2025.xlsx
+  accessed_at: '2026-10-31'
+  locator: Table 9!B14 (sickness absence rate 2025, London)
+  value: 1.5
+  unit: percent
+  snippet: <c r="B14" s="113"><v>1.5</v></c>
+  source_license: OGL-UK-3.0
+  content_sha256: 3dc547c84b70a4d4a3c65841ead2cfafa6f8a10ced2810a8b7608803519f45de
+  role: primary
+- publisher: Office for National Statistics
+  title: 'Sickness absence in the UK labour market: 2025 (XLSX dataset)'
+  url: https://www.ons.gov.uk/file?uri=/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/sicknessabsenceinthelabourmarket/2025/sicknessabsence2025.xlsx
+  accessed_at: '2026-10-31'
+  locator: Table 20!B35 (sickness absence rate 2025, women, Scotland)
+  value: 2.6
+  unit: percent
+  snippet: <c r="B35" s="106"><v>2.6</v></c>
+  source_license: OGL-UK-3.0
+  content_sha256: 3dc547c84b70a4d4a3c65841ead2cfafa6f8a10ced2810a8b7608803519f45de
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 15
+  tolerance: 0
+- statistic: value[Scotland,women_2025]
+  expected: 2.6
+  tolerance: 1.0e-09
+- statistic: max[women_2025]
+  expected: 2.8
+  tolerance: 1.0e-09
+- statistic: value[United Kingdom,men_2025]
+  expected: 1.7
+  tolerance: 1.0e-09
+- statistic: max[men_2025]
+  expected: 2.0
+  tolerance: 1.0e-09
+notes: Percentage of working hours lost to sickness or injury in 2025 by UK region and country for all workers,
+  with the 2024 rate, and for men and women (Tables 9 and 20 of the ONS sickness absence workbook). The United Kingdom,
+  Great Britain and England totals are kept beside the nine English regions, Wales, Scotland and Northern Ireland;
+  the '[note 15]' markers on the aggregate labels are removed from the keys. ONS publishes the dataset under the
+  Open Government Licence v3.0 and labels it official statistics in development.

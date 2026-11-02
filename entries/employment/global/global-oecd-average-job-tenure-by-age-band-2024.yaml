@@ -1,0 +1,463 @@
+id: global-oecd-average-job-tenure-by-age-band-2024
+title: 'Average job tenure in years by country, 2024: dependent employment by age band and sex, and all employment
+  (OECD)'
+kind: rule
+domain: employment
+region: global
+status: license-review
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- tenure
+- job-tenure
+- length-of-service
+- oecd
+- reference-table
+- by-country
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- workforce-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: OECD.ELS.SAE,DSD_TENURE@DF_TENURE_AVE,1.0
+    url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TENURE@DF_TENURE_AVE,1.0/all?startPeriod=2024&format=csvfilewithlabels
+    period: '2024'
+    rows:
+      AUT:
+        name: Austria
+        average_tenure_years_all_ages: 9.733
+        average_tenure_years_15_24: 1.892
+        average_tenure_years_25_54: 8.685
+        average_tenure_years_55_64: 19.308
+        average_tenure_years_men: 10.347
+        average_tenure_years_women: 9.091
+        average_tenure_years_all_employment: 10.356
+      BEL:
+        name: Belgium
+        average_tenure_years_all_ages: 10.531
+        average_tenure_years_15_24: 1.491
+        average_tenure_years_25_54: 9.14
+        average_tenure_years_55_64: 20.665
+        average_tenure_years_men: 10.586
+        average_tenure_years_women: 10.473
+        average_tenure_years_all_employment: 11.032
+      BGR:
+        name: Bulgaria
+        average_tenure_years_all_ages: 9.575
+        average_tenure_years_15_24: 2.087
+        average_tenure_years_25_54: 8.601
+        average_tenure_years_55_64: 13.562
+        average_tenure_years_men: 9.568
+        average_tenure_years_women: 9.582
+        average_tenure_years_all_employment: 9.909
+      BRA:
+        name: Brazil
+        average_tenure_years_all_ages: 7.033
+        average_tenure_years_15_24: 3.428
+        average_tenure_years_25_54: 6.744
+        average_tenure_years_55_64: 13.419
+        average_tenure_years_men: 7.125
+        average_tenure_years_women: 6.928
+        average_tenure_years_all_employment: 8.241
+      CHE:
+        name: Switzerland
+        average_tenure_years_all_ages: 7.589
+        average_tenure_years_15_24: 1.874
+        average_tenure_years_25_54: 6.603
+        average_tenure_years_55_64: 14.384
+        average_tenure_years_men: 8.043
+        average_tenure_years_women: 7.097
+        average_tenure_years_all_employment: 8.306
+      CYP:
+        name: Cyprus
+        average_tenure_years_all_ages: 9.34
+        average_tenure_years_15_24: 1.308
+        average_tenure_years_25_54: 7.801
+        average_tenure_years_55_64: 17.964
+        average_tenure_years_men: 9.884
+        average_tenure_years_women: 8.777
+        average_tenure_years_all_employment: 9.771
+      CZE:
+        name: Czechia
+        average_tenure_years_all_ages: 10.731
+        average_tenure_years_15_24: 1.789
+        average_tenure_years_25_54: 9.605
+        average_tenure_years_55_64: 17.321
+        average_tenure_years_men: 11.156
+        average_tenure_years_women: 10.263
+        average_tenure_years_all_employment: 11.229
+      DEU:
+        name: Germany
+        average_tenure_years_all_ages: 10.115
+        average_tenure_years_15_24: 1.772
+        average_tenure_years_25_54: 8.305
+        average_tenure_years_55_64: 18.763
+        average_tenure_years_men: 10.334
+        average_tenure_years_women: 9.878
+        average_tenure_years_all_employment: 10.621
+      DNK:
+        name: Denmark
+        average_tenure_years_all_ages: 7.147
+        average_tenure_years_15_24: 1.477
+        average_tenure_years_25_54: 5.91
+        average_tenure_years_55_64: 13.683
+        average_tenure_years_men: 7.417
+        average_tenure_years_women: 6.855
+        average_tenure_years_all_employment: 7.662
+      ESP:
+        name: Spain
+        average_tenure_years_all_ages: 9.686
+        average_tenure_years_15_24: 1.127
+        average_tenure_years_25_54: 8.141
+        average_tenure_years_55_64: 18.48
+        average_tenure_years_men: 9.866
+        average_tenure_years_women: 9.492
+        average_tenure_years_all_employment: 10.303
+      EST:
+        name: Estonia
+        average_tenure_years_all_ages: 8.134
+        average_tenure_years_15_24: 1.354
+        average_tenure_years_25_54: 6.766
+        average_tenure_years_55_64: 13.178
+        average_tenure_years_men: 7.749
+        average_tenure_years_women: 8.478
+        average_tenure_years_all_employment: 8.435
+      FIN:
+        name: Finland
+        average_tenure_years_all_ages: 8.282
+        average_tenure_years_15_24: 1.138
+        average_tenure_years_25_54: 6.948
+        average_tenure_years_55_64: 16.155
+        average_tenure_years_men: 8.515
+        average_tenure_years_women: 8.056
+        average_tenure_years_all_employment: 8.901
+      FRA:
+        name: France
+        average_tenure_years_all_ages: 10.283
+        average_tenure_years_15_24: 1.308
+        average_tenure_years_25_54: 9.235
+        average_tenure_years_55_64: 19.65
+        average_tenure_years_men: 10.207
+        average_tenure_years_women: 10.357
+        average_tenure_years_all_employment: 10.203
+      GBR:
+        name: United Kingdom
+        average_tenure_years_all_ages: 9.337
+        average_tenure_years_15_24: 2.001
+        average_tenure_years_25_54: 8.58
+        average_tenure_years_55_64: 16.04
+        average_tenure_years_men: 9.499
+        average_tenure_years_women: 9.174
+        average_tenure_years_all_employment: 10.101
+      GRC:
+        name: Greece
+        average_tenure_years_all_ages: 10.907
+        average_tenure_years_15_24: 1.268
+        average_tenure_years_25_54: 9.569
+        average_tenure_years_55_64: 19.351
+        average_tenure_years_men: 11.414
+        average_tenure_years_women: 10.32
+        average_tenure_years_all_employment: 13.241
+      HRV:
+        name: Croatia
+        average_tenure_years_all_ages: 10.849
+        average_tenure_years_15_24: 1.745
+        average_tenure_years_25_54: 9.424
+        average_tenure_years_55_64: 20.526
+        average_tenure_years_men: 10.73
+        average_tenure_years_women: 10.97
+        average_tenure_years_all_employment: 11.099
+      HUN:
+        name: Hungary
+        average_tenure_years_all_ages: 8.941
+        average_tenure_years_15_24: 1.708
+        average_tenure_years_25_54: 8.103
+        average_tenure_years_55_64: 14.589
+        average_tenure_years_men: 9.09
+        average_tenure_years_women: 8.783
+        average_tenure_years_all_employment: 9.398
+      IRL:
+        name: Ireland
+        average_tenure_years_all_ages: 8.213
+        average_tenure_years_15_24: 1.456
+        average_tenure_years_25_54: 7.614
+        average_tenure_years_55_64: 16.144
+        average_tenure_years_men: 8.039
+        average_tenure_years_women: 8.385
+        average_tenure_years_all_employment: 9.377
+      ISL:
+        name: Iceland
+        average_tenure_years_all_ages: 6.974
+        average_tenure_years_15_24: 1.649
+        average_tenure_years_25_54: 6.078
+        average_tenure_years_55_64: 13.701
+        average_tenure_years_men: 7.1
+        average_tenure_years_women: 6.835
+        average_tenure_years_all_employment: 7.596
+      ITA:
+        name: Italy
+        average_tenure_years_all_ages: 11.79
+        average_tenure_years_15_24: 1.766
+        average_tenure_years_25_54: 9.866
+        average_tenure_years_55_64: 20.043
+        average_tenure_years_men: 12.03
+        average_tenure_years_women: 11.5
+        average_tenure_years_all_employment: 12.903
+      KOR:
+        name: Korea
+        average_tenure_years_all_ages: 6.382
+        average_tenure_years_15_24: 0.865
+        average_tenure_years_25_54: 6.514
+        average_tenure_years_55_64: 8.727
+        average_tenure_years_men: 7.329
+        average_tenure_years_women: 5.276
+        average_tenure_years_all_employment: null
+      LTU:
+        name: Lithuania
+        average_tenure_years_all_ages: 9.095
+        average_tenure_years_15_24: 1.394
+        average_tenure_years_25_54: 7.591
+        average_tenure_years_55_64: 14.351
+        average_tenure_years_men: 8.265
+        average_tenure_years_women: 9.899
+        average_tenure_years_all_employment: 9.215
+      LUX:
+        name: Luxembourg
+        average_tenure_years_all_ages: 10.282
+        average_tenure_years_15_24: 1.674
+        average_tenure_years_25_54: 9.202
+        average_tenure_years_55_64: 21.918
+        average_tenure_years_men: 10.39
+        average_tenure_years_women: 10.16
+        average_tenure_years_all_employment: 10.409
+      LVA:
+        name: Latvia
+        average_tenure_years_all_ages: 9.138
+        average_tenure_years_15_24: 1.394
+        average_tenure_years_25_54: 7.798
+        average_tenure_years_55_64: 13.6
+        average_tenure_years_men: 8.375
+        average_tenure_years_women: 9.854
+        average_tenure_years_all_employment: 9.561
+      MLT:
+        name: Malta
+        average_tenure_years_all_ages: 7.352
+        average_tenure_years_15_24: 1.89
+        average_tenure_years_25_54: 6.766
+        average_tenure_years_55_64: 15.987
+        average_tenure_years_men: 7.616
+        average_tenure_years_women: 6.996
+        average_tenure_years_all_employment: 7.974
+      NLD:
+        name: Netherlands
+        average_tenure_years_all_ages: 8.055
+        average_tenure_years_15_24: 1.6
+        average_tenure_years_25_54: 7.184
+        average_tenure_years_55_64: 16.543
+        average_tenure_years_men: 8.401
+        average_tenure_years_women: 7.702
+        average_tenure_years_all_employment: 8.648
+      NOR:
+        name: Norway
+        average_tenure_years_all_ages: 7.481
+        average_tenure_years_15_24: 1.386
+        average_tenure_years_25_54: 6.298
+        average_tenure_years_55_64: 15.903
+        average_tenure_years_men: 7.585
+        average_tenure_years_women: 7.37
+        average_tenure_years_all_employment: 7.742
+      POL:
+        name: Poland
+        average_tenure_years_all_ages: 9.934
+        average_tenure_years_15_24: 1.681
+        average_tenure_years_25_54: 8.957
+        average_tenure_years_55_64: 18.412
+        average_tenure_years_men: 10.051
+        average_tenure_years_women: 9.812
+        average_tenure_years_all_employment: 10.808
+      PRT:
+        name: Portugal
+        average_tenure_years_all_ages: 11.417
+        average_tenure_years_15_24: 1.333
+        average_tenure_years_25_54: 9.451
+        average_tenure_years_55_64: 20.596
+        average_tenure_years_men: 11.146
+        average_tenure_years_women: 11.675
+        average_tenure_years_all_employment: 11.96
+      ROU:
+        name: Romania
+        average_tenure_years_all_ages: 9.783
+        average_tenure_years_15_24: 2.251
+        average_tenure_years_25_54: 9.304
+        average_tenure_years_55_64: 14.387
+        average_tenure_years_men: 9.67
+        average_tenure_years_women: 9.923
+        average_tenure_years_all_employment: 10.221
+      SVK:
+        name: Slovak Republic
+        average_tenure_years_all_ages: 10.698
+        average_tenure_years_15_24: 1.859
+        average_tenure_years_25_54: 9.559
+        average_tenure_years_55_64: 17.377
+        average_tenure_years_men: 10.811
+        average_tenure_years_women: 10.586
+        average_tenure_years_all_employment: 10.955
+      SVN:
+        name: Slovenia
+        average_tenure_years_all_ages: 11.346
+        average_tenure_years_15_24: 1.688
+        average_tenure_years_25_54: 10.142
+        average_tenure_years_55_64: 20.709
+        average_tenure_years_men: 11.238
+        average_tenure_years_women: 11.466
+        average_tenure_years_all_employment: 11.948
+      SWE:
+        name: Sweden
+        average_tenure_years_all_ages: 8.222
+        average_tenure_years_15_24: 1.396
+        average_tenure_years_25_54: 6.658
+        average_tenure_years_55_64: 16.394
+        average_tenure_years_men: 8.188
+        average_tenure_years_women: 8.257
+        average_tenure_years_all_employment: 8.82
+      TUR:
+        name: Türkiye
+        average_tenure_years_all_ages: 5.638
+        average_tenure_years_15_24: 0.96
+        average_tenure_years_25_54: 6.149
+        average_tenure_years_55_64: 10.64
+        average_tenure_years_men: 5.829
+        average_tenure_years_women: 5.261
+        average_tenure_years_all_employment: 8.055
+  vectors:
+  - input:
+      key: DEU
+      column: average_tenure_years_all_ages
+    expected: 10.115
+    origin: source
+  - input:
+      key: FRA
+      column: average_tenure_years_all_ages
+    expected: 10.283
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_TENURE@DF_TENURE_AVE,1.0 (employment by job tenure
+    intervals, average job tenure), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TENURE@DF_TENURE_AVE,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, TENURE=TOTD, MEASURE=TENURE_EMP_DEP, AGE=_T, TIME_PERIOD=2024, OBS_VALUE
+  value: '10.115'
+  unit: decimal
+  snippet: DEU,Germany,TENURE_EMP_DEP,Dependent employment tenure,Y,Years,_T,Total,_T,Total,TOTD,Total declared,A,Annual,2024,,10.115
+  source_license: unstated
+  content_sha256: 1b669ce1c80cf1a2e8b4814e946486011446473892e256106406b3adc6259d58
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_TENURE@DF_TENURE_AVE,1.0 (employment by job tenure
+    intervals, average job tenure), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TENURE@DF_TENURE_AVE,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, TENURE=TOTD, MEASURE=TENURE_EMP_DEP, AGE=Y15T24, TIME_PERIOD=2024, OBS_VALUE
+  value: '1.772'
+  unit: decimal
+  snippet: DEU,Germany,TENURE_EMP_DEP,Dependent employment tenure,Y,Years,_T,Total,Y15T24,From 15 to 24 years,TOTD,Total
+    declared,A,Annual,2024,,1.772
+  source_license: unstated
+  content_sha256: 1b669ce1c80cf1a2e8b4814e946486011446473892e256106406b3adc6259d58
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_TENURE@DF_TENURE_AVE,1.0 (employment by job tenure
+    intervals, average job tenure), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TENURE@DF_TENURE_AVE,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, TENURE=TOTD, MEASURE=TENURE_EMP_DEP, AGE=Y25T54, TIME_PERIOD=2024, OBS_VALUE
+  value: '8.305'
+  unit: decimal
+  snippet: DEU,Germany,TENURE_EMP_DEP,Dependent employment tenure,Y,Years,_T,Total,Y25T54,From 25 to 54 years,TOTD,Total
+    declared,A,Annual,2024,,8.305
+  source_license: unstated
+  content_sha256: 1b669ce1c80cf1a2e8b4814e946486011446473892e256106406b3adc6259d58
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_TENURE@DF_TENURE_AVE,1.0 (employment by job tenure
+    intervals, average job tenure), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TENURE@DF_TENURE_AVE,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, TENURE=TOTD, MEASURE=TENURE_EMP_DEP, AGE=Y55T64, TIME_PERIOD=2024, OBS_VALUE
+  value: '18.763'
+  unit: decimal
+  snippet: DEU,Germany,TENURE_EMP_DEP,Dependent employment tenure,Y,Years,_T,Total,Y55T64,From 55 to 64 years,TOTD,Total
+    declared,A,Annual,2024,,18.763
+  source_license: unstated
+  content_sha256: 1b669ce1c80cf1a2e8b4814e946486011446473892e256106406b3adc6259d58
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_TENURE@DF_TENURE_AVE,1.0 (employment by job tenure
+    intervals, average job tenure), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TENURE@DF_TENURE_AVE,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=M, TENURE=TOTD, MEASURE=TENURE_EMP_DEP, AGE=_T, TIME_PERIOD=2024, OBS_VALUE
+  value: '10.334'
+  unit: decimal
+  snippet: DEU,Germany,TENURE_EMP_DEP,Dependent employment tenure,Y,Years,M,Male,_T,Total,TOTD,Total declared,A,Annual,2024,,10.334
+  source_license: unstated
+  content_sha256: 1b669ce1c80cf1a2e8b4814e946486011446473892e256106406b3adc6259d58
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_TENURE@DF_TENURE_AVE,1.0 (employment by job tenure
+    intervals, average job tenure), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TENURE@DF_TENURE_AVE,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=F, TENURE=TOTD, MEASURE=TENURE_EMP_DEP, AGE=_T, TIME_PERIOD=2024, OBS_VALUE
+  value: '9.878'
+  unit: decimal
+  snippet: DEU,Germany,TENURE_EMP_DEP,Dependent employment tenure,Y,Years,F,Female,_T,Total,TOTD,Total declared,A,Annual,2024,,9.878
+  source_license: unstated
+  content_sha256: 1b669ce1c80cf1a2e8b4814e946486011446473892e256106406b3adc6259d58
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_TENURE@DF_TENURE_AVE,1.0 (employment by job tenure
+    intervals, average job tenure), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TENURE@DF_TENURE_AVE,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, SEX=_T, TENURE=TOTD, MEASURE=TENURE_EMP, AGE=_T, TIME_PERIOD=2024, OBS_VALUE
+  value: '10.621'
+  unit: decimal
+  snippet: DEU,Germany,TENURE_EMP,Employment tenure,Y,Years,_T,Total,_T,Total,TOTD,Total declared,A,Annual,2024,,10.621
+  source_license: unstated
+  content_sha256: 1b669ce1c80cf1a2e8b4814e946486011446473892e256106406b3adc6259d58
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 34
+  tolerance: 0
+- statistic: value[DEU,average_tenure_years_all_ages]
+  expected: 10.115
+  tolerance: 1.0e-09
+- statistic: max[average_tenure_years_all_ages]
+  expected: 11.79
+  tolerance: 1.0e-09
+- statistic: value[FRA,average_tenure_years_all_ages]
+  expected: 10.283
+  tolerance: 1.0e-09
+notes: Average length of time workers have been with their current employer, in years, from OECD dataflow DF_TENURE_AVE
+  (job tenure intervals, average job tenure, total declared tenure). The dependent-employment measure is given for
+  all ages, for the 15 to 24, 25 to 54 and 55 to 64 age bands and for men and women; the all-employment measure,
+  which includes the self-employed, is the last column. Rows are keyed by ISO 3166-1 alpha-3 code and carry the
+  OECD reference-area label; OECD, EU and G7 aggregates are left out. Values are the 2024 observations of the dataflow.
+  The OECD terms and conditions page could not be fetched byte-stably in this session, so the licence is recorded
+  as unstated and the entry stays at license-review until a reviewer confirms the terms that apply to OECD data.

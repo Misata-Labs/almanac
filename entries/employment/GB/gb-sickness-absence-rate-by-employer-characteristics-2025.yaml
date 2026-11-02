@@ -1,0 +1,172 @@
+id: gb-sickness-absence-rate-by-employer-characteristics-2025
+title: UK sickness absence rate by sector, workforce size, employment pattern and classification, 2025 and 2024
+  (ONS LFS)
+kind: rule
+domain: employment
+region: GB
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- sickness-absence
+- absence
+- employer
+- ons
+- hr
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- insurance
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    year: 2025
+    source_tables:
+    - Table 11
+    - Table 13
+    - Table 14
+    - Table 15
+    - Table 17
+    rows:
+      public_sector:
+        label: Public sector
+        group: sector
+        rate_2025: 2.9
+        rate_2024: 2.9
+      private_sector:
+        label: Private Sector
+        group: public_sector_organisation
+        rate_2025: 1.7
+        rate_2024: 1.8
+      central_government:
+        label: Central Government
+        group: public_sector_organisation
+        rate_2025: 1.9
+        rate_2024: 1.8
+      local_government:
+        label: Local Government
+        group: public_sector_organisation
+        rate_2025: 2.8
+        rate_2024: 2.8
+      health:
+        label: Health
+        group: public_sector_organisation
+        rate_2025: 4.0
+        rate_2024: 3.5
+      employee:
+        label: Employee
+        group: employment_classification
+        rate_2025: 2.0
+        rate_2024: 2.0
+      self_employed:
+        label: Self-Employed
+        group: employment_classification
+        rate_2025: 1.7
+        rate_2024: 1.8
+      less_than_25_employees:
+        label: Less than 25 employees
+        group: workforce_size
+        rate_2025: 1.7
+        rate_2024: 1.8
+      25_49_employees:
+        label: 25-49 employees
+        group: workforce_size
+        rate_2025: 1.5
+        rate_2024: 2.0
+      50_499_employees:
+        label: 50-499 employees
+        group: workforce_size
+        rate_2025: 2.2
+        rate_2024: 2.1
+      500_or_more_employees:
+        label: 500 or more employees
+        group: workforce_size
+        rate_2025: 2.3
+        rate_2024: 2.3
+      full_time:
+        label: Full-time
+        group: employment_pattern
+        rate_2025: 1.9
+        rate_2024: 1.9
+      part_time:
+        label: Part-time
+        group: employment_pattern
+        rate_2025: 2.8
+        rate_2024: 2.6
+  vectors:
+  - input:
+      key: public_sector
+      column: rate_2025
+    expected: 2.9
+    origin: source
+  - input:
+      key: part_time
+      column: rate_2025
+    expected: 2.8
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Office for National Statistics
+  title: 'Sickness absence in the UK labour market: 2025 (XLSX dataset)'
+  url: https://www.ons.gov.uk/file?uri=/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/sicknessabsenceinthelabourmarket/2025/sicknessabsence2025.xlsx
+  accessed_at: '2026-10-31'
+  locator: Table 11!B35 (sickness absence rate 2025, public sector)
+  value: 2.9
+  unit: percent
+  snippet: <c r="B35" s="106"><v>2.9</v></c>
+  source_license: OGL-UK-3.0
+  content_sha256: 3dc547c84b70a4d4a3c65841ead2cfafa6f8a10ced2810a8b7608803519f45de
+  role: primary
+- publisher: Office for National Statistics
+  title: 'Sickness absence in the UK labour market: 2025 (XLSX dataset)'
+  url: https://www.ons.gov.uk/file?uri=/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/sicknessabsenceinthelabourmarket/2025/sicknessabsence2025.xlsx
+  accessed_at: '2026-10-31'
+  locator: Table 17!C35 (sickness absence rate 2025, part-time)
+  value: 2.8
+  unit: percent
+  snippet: <c r="C35" s="113"><v>2.8</v></c>
+  source_license: OGL-UK-3.0
+  content_sha256: 3dc547c84b70a4d4a3c65841ead2cfafa6f8a10ced2810a8b7608803519f45de
+  role: primary
+- publisher: Office for National Statistics
+  title: 'Sickness absence in the UK labour market: 2025 (XLSX dataset)'
+  url: https://www.ons.gov.uk/file?uri=/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/sicknessabsenceinthelabourmarket/2025/sicknessabsence2025.xlsx
+  accessed_at: '2026-10-31'
+  locator: Table 15!E27 (sickness absence rate 2025, 500 or more employees)
+  value: 2.3
+  unit: percent
+  snippet: <c r="E27" s="106"><v>2.2999999999999998</v></c>
+  source_license: OGL-UK-3.0
+  content_sha256: 3dc547c84b70a4d4a3c65841ead2cfafa6f8a10ced2810a8b7608803519f45de
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 13
+  tolerance: 0
+- statistic: value[500_or_more_employees,rate_2025]
+  expected: 2.3
+  tolerance: 1.0e-09
+- statistic: max[rate_2025]
+  expected: 4.0
+  tolerance: 1.0e-09
+- statistic: value[private_sector,rate_2024]
+  expected: 1.8
+  tolerance: 1.0e-09
+- statistic: max[rate_2024]
+  expected: 3.5
+  tolerance: 1.0e-09
+notes: Percentage of working hours lost to sickness or injury in 2025 and 2024 by public versus private sector (Table
+  11), by large public sector organisation type against the private sector (Table 13), employees versus self-employed
+  (Table 14), workforce size band (Table 15) and full-time versus part-time (Table 17), from the ONS sickness absence
+  workbook. Rows are keyed by a slug of the column heading; the group column names the table each row came from.
+  ONS publishes the dataset under the Open Government Licence v3.0 and labels it official statistics in development.

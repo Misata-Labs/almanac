@@ -1,0 +1,881 @@
+id: gb-ashe-hourly-gross-pay-by-region-and-worker-group-2025
+title: UK gross hourly pay percentiles by region and country of work, by sex and full-time or part-time, April 2025
+  (ONS ASHE)
+kind: rule
+domain: employment
+region: GB
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- pay
+- earnings
+- ashe
+- percentiles
+- by-region
+- by-sex
+- ons
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- person-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataset: NM_99_1
+    pay: Hourly pay - gross
+    url: https://www.nomisweb.co.uk/api/v01/dataset/NM_99_1.data.csv?geography=2092957697,2092957698,2092957699,2013265921...2013265932&date=2025&sex=5...9&item=1,2,4,6,8,13,15&pay=5,7&measures=20100&select=geography_code,geography_name,date_name,sex_name,item_name,pay_name,obs_value,obs_status_name
+    key_format: <ONS geography code>:<group>
+    groups:
+    - all
+    - full_time
+    - men
+    - part_time
+    - women
+    rows:
+      E12000001:all:
+        area: North East
+        group: all
+        employee_jobs: 977000
+        median: 15.91
+        mean: 19.67
+        p10: 12.25
+        p25: 13.13
+        p75: 21.98
+        p90: 29.69
+      E12000001:full_time:
+        area: North East
+        group: full_time
+        employee_jobs: 676000
+        median: 17.31
+        mean: 20.28
+        p10: 12.63
+        p25: 13.98
+        p75: 23.58
+        p90: 31.15
+      E12000001:men:
+        area: North East
+        group: men
+        employee_jobs: 472000
+        median: 16.92
+        mean: 20.61
+        p10: 12.35
+        p25: 13.52
+        p75: 23.6
+        p90: 32.69
+      E12000001:part_time:
+        area: North East
+        group: part_time
+        employee_jobs: 302000
+        median: 13.39
+        mean: 16.89
+        p10: null
+        p25: 12.31
+        p75: 16.67
+        p90: 25.02
+      E12000001:women:
+        area: North East
+        group: women
+        employee_jobs: 505000
+        median: 15.15
+        mean: 18.62
+        p10: 12.21
+        p25: 12.83
+        p75: 20.15
+        p90: 27.36
+      E12000002:all:
+        area: North West
+        group: all
+        employee_jobs: 3167000
+        median: 17.3
+        mean: 21.64
+        p10: 12.36
+        p25: 13.48
+        p75: 24.89
+        p90: 34.28
+      E12000002:full_time:
+        area: North West
+        group: full_time
+        employee_jobs: 2290000
+        median: 19.1
+        mean: 22.32
+        p10: 12.77
+        p25: 14.49
+        p75: 26.52
+        p90: 36.06
+      E12000002:men:
+        area: North West
+        group: men
+        employee_jobs: 1545000
+        median: 18.71
+        mean: 22.97
+        p10: 12.49
+        p25: 14.03
+        p75: 26.77
+        p90: 37.63
+      E12000002:part_time:
+        area: North West
+        group: part_time
+        employee_jobs: 877000
+        median: 13.75
+        mean: 17.93
+        p10: 12.21
+        p25: 12.47
+        p75: 18.78
+        p90: 28.11
+      E12000002:women:
+        area: North West
+        group: women
+        employee_jobs: 1622000
+        median: 16.06
+        mean: 20.13
+        p10: 12.31
+        p25: 13.13
+        p75: 23.15
+        p90: 31.34
+      E12000003:all:
+        area: Yorkshire and The Humber
+        group: all
+        employee_jobs: 2241000
+        median: 16.58
+        mean: 20.69
+        p10: 12.31
+        p25: 13.31
+        p75: 23.31
+        p90: 32.39
+      E12000003:full_time:
+        area: Yorkshire and The Humber
+        group: full_time
+        employee_jobs: 1574000
+        median: 18.04
+        mean: 21.15
+        p10: 12.75
+        p25: 14.23
+        p75: 24.64
+        p90: 33.88
+      E12000003:men:
+        area: Yorkshire and The Humber
+        group: men
+        employee_jobs: 1112000
+        median: 17.78
+        mean: 21.91
+        p10: 12.49
+        p25: 13.89
+        p75: 25.13
+        p90: 35.53
+      E12000003:part_time:
+        area: Yorkshire and The Humber
+        group: part_time
+        employee_jobs: 666000
+        median: 13.72
+        mean: 18.38
+        p10: 12.21
+        p25: 12.41
+        p75: 18.66
+        p90: 27.92
+      E12000003:women:
+        area: Yorkshire and The Humber
+        group: women
+        employee_jobs: 1129000
+        median: 15.54
+        mean: 19.22
+        p10: 12.25
+        p25: 13.0
+        p75: 21.43
+        p90: 29.37
+      E12000004:all:
+        area: East Midlands
+        group: all
+        employee_jobs: 1943000
+        median: 16.23
+        mean: 20.19
+        p10: 12.3
+        p25: 13.24
+        p75: 23.0
+        p90: 31.1
+      E12000004:full_time:
+        area: East Midlands
+        group: full_time
+        employee_jobs: 1362000
+        median: 17.78
+        mean: 20.81
+        p10: 12.63
+        p25: 14.06
+        p75: 24.38
+        p90: 32.63
+      E12000004:men:
+        area: East Midlands
+        group: men
+        employee_jobs: 970000
+        median: 17.49
+        mean: 21.26
+        p10: 12.49
+        p25: 13.84
+        p75: 24.53
+        p90: 33.73
+      E12000004:part_time:
+        area: East Midlands
+        group: part_time
+        employee_jobs: 581000
+        median: 13.68
+        mean: 17.02
+        p10: 12.21
+        p25: 12.41
+        p75: 17.78
+        p90: 26.32
+      E12000004:women:
+        area: East Midlands
+        group: women
+        employee_jobs: 973000
+        median: 15.16
+        mean: 18.85
+        p10: 12.22
+        p25: 12.84
+        p75: 21.04
+        p90: 28.77
+      E12000005:all:
+        area: West Midlands
+        group: all
+        employee_jobs: 2348000
+        median: 17.06
+        mean: 21.25
+        p10: 12.3
+        p25: 13.39
+        p75: 24.27
+        p90: 33.51
+      E12000005:full_time:
+        area: West Midlands
+        group: full_time
+        employee_jobs: 1705000
+        median: 18.64
+        mean: 21.89
+        p10: 12.7
+        p25: 14.35
+        p75: 25.85
+        p90: 35.28
+      E12000005:men:
+        area: West Midlands
+        group: men
+        employee_jobs: 1210000
+        median: 18.48
+        mean: 22.67
+        p10: 12.49
+        p25: 14.08
+        p75: 26.3
+        p90: 36.62
+      E12000005:part_time:
+        area: West Midlands
+        group: part_time
+        employee_jobs: 644000
+        median: 13.65
+        mean: 17.7
+        p10: 12.21
+        p25: 12.36
+        p75: 18.43
+        p90: 27.19
+      E12000005:women:
+        area: West Midlands
+        group: women
+        employee_jobs: 1139000
+        median: 15.54
+        mean: 19.42
+        p10: 12.22
+        p25: 12.96
+        p75: 22.12
+        p90: 29.68
+      E12000006:all:
+        area: East
+        group: all
+        employee_jobs: 2508000
+        median: 17.56
+        mean: 22.36
+        p10: 12.38
+        p25: 13.57
+        p75: 25.07
+        p90: 35.41
+      E12000006:full_time:
+        area: East
+        group: full_time
+        employee_jobs: 1730000
+        median: 19.41
+        mean: 23.22
+        p10: 12.9
+        p25: 14.78
+        p75: 27.12
+        p90: 37.79
+      E12000006:men:
+        area: East
+        group: men
+        employee_jobs: 1255000
+        median: 18.93
+        mean: 23.89
+        p10: 12.51
+        p25: 14.18
+        p75: 27.28
+        p90: 38.59
+      E12000006:part_time:
+        area: East
+        group: part_time
+        employee_jobs: 778000
+        median: 14.0
+        mean: 18.07
+        p10: 12.21
+        p25: 12.5
+        p75: 19.52
+        p90: 28.31
+      E12000006:women:
+        area: East
+        group: women
+        employee_jobs: 1253000
+        median: 16.27
+        mean: 20.43
+        p10: 12.29
+        p25: 13.14
+        p75: 23.32
+        p90: 31.79
+      E12000007:all:
+        area: London
+        group: all
+        employee_jobs: 4606000
+        median: 23.42
+        mean: 30.94
+        p10: 13.34
+        p25: 16.25
+        p75: 35.29
+        p90: 53.2
+      E12000007:full_time:
+        area: London
+        group: full_time
+        employee_jobs: 3651000
+        median: 25.44
+        mean: 31.88
+        p10: 14.37
+        p25: 17.89
+        p75: 37.73
+        p90: 56.2
+      E12000007:men:
+        area: London
+        group: men
+        employee_jobs: 2352000
+        median: 25.08
+        mean: 33.71
+        p10: 13.59
+        p25: 16.77
+        p75: 39.27
+        p90: 60.67
+      E12000007:part_time:
+        area: London
+        group: part_time
+        employee_jobs: 955000
+        median: 15.9
+        mean: 23.37
+        p10: 12.21
+        p25: 13.15
+        p75: 25.0
+        p90: 38.07
+      E12000007:women:
+        area: London
+        group: women
+        employee_jobs: 2253000
+        median: 22.04
+        mean: 27.73
+        p10: 13.18
+        p25: 15.8
+        p75: 31.75
+        p90: 45.72
+      E12000008:all:
+        area: South East
+        group: all
+        employee_jobs: 3861000
+        median: 18.23
+        mean: 22.82
+        p10: 12.48
+        p25: 13.89
+        p75: 26.22
+        p90: 36.93
+      E12000008:full_time:
+        area: South East
+        group: full_time
+        employee_jobs: 2788000
+        median: 20.03
+        mean: 23.68
+        p10: 13.02
+        p25: 15.17
+        p75: 28.05
+        p90: 39.23
+      E12000008:men:
+        area: South East
+        group: men
+        employee_jobs: 1939000
+        median: 19.88
+        mean: 24.38
+        p10: 12.61
+        p25: 14.65
+        p75: 28.61
+        p90: 40.76
+      E12000008:part_time:
+        area: South East
+        group: part_time
+        employee_jobs: 1073000
+        median: 14.18
+        mean: 17.95
+        p10: 12.21
+        p25: 12.53
+        p75: 19.98
+        p90: 28.52
+      E12000008:women:
+        area: South East
+        group: women
+        employee_jobs: 1922000
+        median: 16.66
+        mean: 20.9
+        p10: 12.37
+        p25: 13.42
+        p75: 24.15
+        p90: 32.27
+      E12000009:all:
+        area: South West
+        group: all
+        employee_jobs: 2391000
+        median: 17.06
+        mean: 21.3
+        p10: 12.4
+        p25: 13.52
+        p75: 24.14
+        p90: 33.89
+      E12000009:full_time:
+        area: South West
+        group: full_time
+        employee_jobs: 1645000
+        median: 18.65
+        mean: 21.93
+        p10: 12.85
+        p25: 14.52
+        p75: 25.72
+        p90: 35.61
+      E12000009:men:
+        area: South West
+        group: men
+        employee_jobs: 1198000
+        median: 18.38
+        mean: 22.65
+        p10: 12.55
+        p25: 14.24
+        p75: 26.28
+        p90: 37.43
+      E12000009:part_time:
+        area: South West
+        group: part_time
+        employee_jobs: 746000
+        median: 14.18
+        mean: 18.38
+        p10: 12.21
+        p25: 12.5
+        p75: 19.85
+        p90: 28.55
+      E12000009:women:
+        area: South West
+        group: women
+        employee_jobs: 1193000
+        median: 15.9
+        mean: 19.64
+        p10: 12.3
+        p25: 13.13
+        p75: 22.42
+        p90: 29.75
+      E92000001:all:
+        area: England
+        group: all
+        employee_jobs: 24041000
+        median: 18.09
+        mean: 23.38
+        p10: 12.44
+        p25: 13.8
+        p75: 26.34
+        p90: 37.91
+      E92000001:full_time:
+        area: England
+        group: full_time
+        employee_jobs: 17419000
+        median: 19.88
+        mean: 24.22
+        p10: 12.97
+        p25: 14.97
+        p75: 28.33
+        p90: 40.21
+      E92000001:men:
+        area: England
+        group: men
+        employee_jobs: 12052000
+        median: 19.49
+        mean: 24.98
+        p10: 12.58
+        p25: 14.45
+        p75: 28.68
+        p90: 41.81
+      E92000001:part_time:
+        area: England
+        group: part_time
+        employee_jobs: 6622000
+        median: 14.1
+        mean: 18.68
+        p10: 12.21
+        p25: 12.5
+        p75: 19.75
+        p90: 29.08
+      E92000001:women:
+        area: England
+        group: women
+        employee_jobs: 11989000
+        median: 16.77
+        mean: 21.45
+        p10: 12.33
+        p25: 13.33
+        p75: 24.25
+        p90: 33.54
+      K02000001:all:
+        area: United Kingdom
+        group: all
+        employee_jobs: 28890000
+        median: 17.96
+        mean: 23.06
+        p10: 12.44
+        p25: 13.77
+        p75: 26.07
+        p90: 37.16
+      K02000001:full_time:
+        area: United Kingdom
+        group: full_time
+        employee_jobs: 20807000
+        median: 19.74
+        mean: 23.89
+        p10: 12.96
+        p25: 14.93
+        p75: 27.89
+        p90: 39.35
+      K02000001:men:
+        area: United Kingdom
+        group: men
+        employee_jobs: 14328000
+        median: 19.26
+        mean: 24.58
+        p10: 12.56
+        p25: 14.38
+        p75: 28.11
+        p90: 40.91
+      K02000001:part_time:
+        area: United Kingdom
+        group: part_time
+        employee_jobs: 8083000
+        median: 14.11
+        mean: 18.53
+        p10: 12.21
+        p25: 12.5
+        p75: 19.72
+        p90: 28.97
+      K02000001:women:
+        area: United Kingdom
+        group: women
+        employee_jobs: 14562000
+        median: 16.71
+        mean: 21.27
+        p10: 12.33
+        p25: 13.34
+        p75: 24.16
+        p90: 33.01
+      K03000001:all:
+        area: Great Britain
+        group: all
+        employee_jobs: 27771000
+        median: 18.03
+        mean: 23.17
+        p10: 12.45
+        p25: 13.8
+        p75: 26.19
+        p90: 37.42
+      K03000001:full_time:
+        area: Great Britain
+        group: full_time
+        employee_jobs: 20020000
+        median: 19.81
+        mean: 24.01
+        p10: 12.97
+        p25: 14.97
+        p75: 28.02
+        p90: 39.61
+      K03000001:men:
+        area: Great Britain
+        group: men
+        employee_jobs: 13796000
+        median: 19.37
+        mean: 24.71
+        p10: 12.57
+        p25: 14.42
+        p75: 28.33
+        p90: 41.14
+      K03000001:part_time:
+        area: Great Britain
+        group: part_time
+        employee_jobs: 7751000
+        median: 14.13
+        mean: 18.61
+        p10: 12.21
+        p25: 12.5
+        p75: 19.8
+        p90: 29.04
+      K03000001:women:
+        area: Great Britain
+        group: women
+        employee_jobs: 13975000
+        median: 16.78
+        mean: 21.35
+        p10: 12.34
+        p25: 13.35
+        p75: 24.23
+        p90: 33.22
+      N92000002:all:
+        area: Northern Ireland
+        group: all
+        employee_jobs: 1119000
+        median: 16.28
+        mean: 20.31
+        p10: 12.28
+        p25: 13.34
+        p75: 23.08
+        p90: 30.8
+      N92000002:full_time:
+        area: Northern Ireland
+        group: full_time
+        employee_jobs: 787000
+        median: 17.93
+        mean: 21.03
+        p10: 12.71
+        p25: 14.28
+        p75: 24.67
+        p90: 32.09
+      N92000002:men:
+        area: Northern Ireland
+        group: men
+        employee_jobs: 531000
+        median: 17.02
+        mean: 21.25
+        p10: 12.31
+        p25: 13.7
+        p75: 24.07
+        p90: 32.77
+      N92000002:part_time:
+        area: Northern Ireland
+        group: part_time
+        employee_jobs: 332000
+        median: 13.42
+        mean: 16.69
+        p10: 12.0
+        p25: 12.33
+        p75: 17.36
+        p90: 27.0
+      N92000002:women:
+        area: Northern Ireland
+        group: women
+        employee_jobs: 587000
+        median: 15.62
+        mean: 19.28
+        p10: 12.25
+        p25: 13.13
+        p75: 22.59
+        p90: 29.2
+      S92000003:all:
+        area: Scotland
+        group: all
+        employee_jobs: 2442000
+        median: 18.39
+        mean: 22.65
+        p10: 12.54
+        p25: 14.02
+        p75: 26.27
+        p90: 35.26
+      S92000003:full_time:
+        area: Scotland
+        group: full_time
+        employee_jobs: 1711000
+        median: 20.26
+        mean: 23.53
+        p10: 13.1
+        p25: 15.3
+        p75: 27.7
+        p90: 37.63
+      S92000003:men:
+        area: Scotland
+        group: men
+        employee_jobs: 1136000
+        median: 19.42
+        mean: 23.82
+        p10: 12.6
+        p25: 14.48
+        p75: 27.7
+        p90: 38.79
+      S92000003:part_time:
+        area: Scotland
+        group: part_time
+        employee_jobs: 731000
+        median: 14.7
+        mean: 18.46
+        p10: 12.21
+        p25: 12.6
+        p75: 20.69
+        p90: 29.24
+      S92000003:women:
+        area: Scotland
+        group: women
+        employee_jobs: 1306000
+        median: 17.51
+        mean: 21.42
+        p10: 12.5
+        p25: 13.8
+        p75: 25.21
+        p90: 31.75
+      W92000004:all:
+        area: Wales
+        group: all
+        employee_jobs: 1288000
+        median: 16.61
+        mean: 20.24
+        p10: 12.35
+        p25: 13.4
+        p75: 23.24
+        p90: 31.25
+      W92000004:full_time:
+        area: Wales
+        group: full_time
+        employee_jobs: 889000
+        median: 18.18
+        mean: 20.77
+        p10: 12.74
+        p25: 14.27
+        p75: 24.32
+        p90: 32.21
+      W92000004:men:
+        area: Wales
+        group: men
+        employee_jobs: 608000
+        median: 17.51
+        mean: 20.99
+        p10: 12.46
+        p25: 13.86
+        p75: 24.08
+        p90: 32.96
+      W92000004:part_time:
+        area: Wales
+        group: part_time
+        employee_jobs: 399000
+        median: 14.0
+        mean: 17.84
+        p10: 12.21
+        p25: 12.5
+        p75: 18.96
+        p90: 27.5
+      W92000004:women:
+        area: Wales
+        group: women
+        employee_jobs: 679000
+        median: 15.81
+        mean: 19.43
+        p10: 12.29
+        p25: 13.11
+        p75: 22.26
+        p90: 29.56
+  vectors:
+  - input:
+      key: K02000001:all
+      column: median
+    expected: 17.96
+    origin: source
+  - input:
+      key: E12000007:full_time
+      column: median
+    expected: 25.44
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Office for National Statistics
+  title: Nomis API, dataset NM_99_1 (Annual Survey of Hours and Earnings, workplace analysis), CSV
+  url: https://www.nomisweb.co.uk/api/v01/dataset/NM_99_1.data.csv?geography=2092957697,2092957698,2092957699,2013265921...2013265932&date=2025&sex=5...9&item=1,2,4,6,8,13,15&pay=5,7&measures=20100&select=geography_code,geography_name,date_name,sex_name,item_name,pay_name,obs_value,obs_status_name
+  accessed_at: '2026-10-31'
+  locator: GEOGRAPHY_CODE=K02000001, SEX_NAME=Total, ITEM_NAME=Median, PAY_NAME=Hourly pay - gross, OBS_VALUE
+  value: '17.96'
+  unit: currency:GBP
+  snippet: K02000001","United Kingdom","2025","Total","Median","Hourly pay - gross",17.96
+  source_license: OGL-UK-3.0
+  content_sha256: 9ce6f4d3048d4b58ff18f0673d8997075ee24136126d276686fd74d4753bcbc5
+  role: primary
+- publisher: Office for National Statistics
+  title: Nomis API, dataset NM_99_1 (Annual Survey of Hours and Earnings, workplace analysis), CSV
+  url: https://www.nomisweb.co.uk/api/v01/dataset/NM_99_1.data.csv?geography=2092957697,2092957698,2092957699,2013265921...2013265932&date=2025&sex=5...9&item=1,2,4,6,8,13,15&pay=5,7&measures=20100&select=geography_code,geography_name,date_name,sex_name,item_name,pay_name,obs_value,obs_status_name
+  accessed_at: '2026-10-31'
+  locator: GEOGRAPHY_CODE=E12000007, SEX_NAME=Full Time Workers, ITEM_NAME=90 percentile, PAY_NAME=Hourly pay -
+    gross, OBS_VALUE
+  value: '56.20'
+  unit: currency:GBP
+  snippet: E12000007","London","2025","Full Time Workers","90 percentile","Hourly pay - gross",56.20
+  source_license: OGL-UK-3.0
+  content_sha256: 9ce6f4d3048d4b58ff18f0673d8997075ee24136126d276686fd74d4753bcbc5
+  role: primary
+- publisher: Office for National Statistics
+  title: Nomis API, dataset NM_99_1 (Annual Survey of Hours and Earnings, workplace analysis), CSV
+  url: https://www.nomisweb.co.uk/api/v01/dataset/NM_99_1.data.csv?geography=2092957697,2092957698,2092957699,2013265921...2013265932&date=2025&sex=5...9&item=1,2,4,6,8,13,15&pay=5,7&measures=20100&select=geography_code,geography_name,date_name,sex_name,item_name,pay_name,obs_value,obs_status_name
+  accessed_at: '2026-10-31'
+  locator: GEOGRAPHY_CODE=W92000004, SEX_NAME=Female, ITEM_NAME=Mean, PAY_NAME=Hourly pay - gross, OBS_VALUE
+  value: '19.43'
+  unit: currency:GBP
+  snippet: W92000004","Wales","2025","Female","Mean","Hourly pay - gross",19.43
+  source_license: OGL-UK-3.0
+  content_sha256: 9ce6f4d3048d4b58ff18f0673d8997075ee24136126d276686fd74d4753bcbc5
+  role: primary
+- publisher: Office for National Statistics
+  title: Nomis API, dataset NM_99_1 (Annual Survey of Hours and Earnings, workplace analysis), CSV
+  url: https://www.nomisweb.co.uk/api/v01/dataset/NM_99_1.data.csv?geography=2092957697,2092957698,2092957699,2013265921...2013265932&date=2025&sex=5...9&item=1,2,4,6,8,13,15&pay=5,7&measures=20100&select=geography_code,geography_name,date_name,sex_name,item_name,pay_name,obs_value,obs_status_name
+  accessed_at: '2026-10-31'
+  locator: GEOGRAPHY_CODE=K02000001, SEX_NAME=Total, ITEM_NAME=Number of jobs, PAY_NAME=Hourly pay - gross, OBS_VALUE
+  value: '28890000'
+  unit: count
+  snippet: K02000001","United Kingdom","2025","Total","Number of jobs","Hourly pay - gross",28890000
+  source_license: OGL-UK-3.0
+  content_sha256: 9ce6f4d3048d4b58ff18f0673d8997075ee24136126d276686fd74d4753bcbc5
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 75
+  tolerance: 0
+- statistic: value[K02000001:all,median]
+  expected: 17.96
+  tolerance: 1.0e-09
+- statistic: max[median]
+  expected: 25.44
+  tolerance: 1.0e-09
+- statistic: value[E12000007:full_time,p90]
+  expected: 56.2
+  tolerance: 1.0e-09
+- statistic: max[p90]
+  expected: 60.67
+  tolerance: 1.0e-09
+- statistic: value[W92000004:women,mean]
+  expected: 19.43
+  tolerance: 1.0e-09
+notes: 'Gross hourly pay of employee jobs in the April 2025 Annual Survey of Hours and Earnings, workplace-based,
+  from the ONS dataset NM_99_1 served by Nomis: the number of employee jobs, the median, the mean and the 10th,
+  25th, 75th and 90th percentiles, for each combination of area and worker group. Areas are the United Kingdom,
+  Great Britain, England, Wales, Scotland, Northern Ireland and the nine English regions (15 in all); groups are
+  all employees, men, women, full-time and part-time. Rows are keyed ''<ONS geography code>:<group>'', for example
+  K02000001:all. 1 cells that ONS suppresses as statistically unreliable are null. The 2025 figures are the latest
+  Nomis serves; ONS also publishes 2026 provisional ASHE tables only as ZIP archives of spreadsheets, which the
+  verifier cannot read. valid_from and valid_to bound the survey year; the ASHE reference date is in April. ONS
+  publishes ASHE under the Open Government Licence v3.0.'

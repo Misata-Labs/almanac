@@ -1,0 +1,150 @@
+id: de-social-insurance-contribution-rates-2025
+title: 'Germany statutory social insurance contribution rates in force from 1 January 2025: pension, health, long-term
+  care and unemployment insurance'
+kind: rule
+domain: tax
+region: DE
+status: license-review
+tier: A
+valid_from: '2025-01-01'
+valid_to: null
+tags:
+- social-contributions
+- payroll
+- social-insurance
+- statute
+- reference-table
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- personal-finance
+- tax-filing-demo
+spec:
+  implementation: almanac.rules.rate_schedule
+  parameters:
+    slabs:
+      pension: 18.6
+      health_general: 14.6
+      health_reduced: 14.0
+      long_term_care: 3.6
+      unemployment: 2.6
+    unit: percent of contributory earnings
+    legal_basis:
+      pension: Beitragssatzverordnung 2018 (BSV 2018), § 1
+      health_general: SGB V § 241 Allgemeiner Beitragssatz
+      health_reduced: SGB V § 243 Ermäßigter Beitragssatz
+      long_term_care: Pflege-Beitragssatz-Anpassungsverordnung 2025 (PBAV 2025), § 1
+      unemployment: SGB III § 341 Beitragssatz und Beitragsbemessung
+    sources:
+      sgb_5: https://www.gesetze-im-internet.de/sgb_5/xml.zip
+      bsv_2018: https://www.gesetze-im-internet.de/bsv_2018/xml.zip
+      sgb_3: https://www.gesetze-im-internet.de/sgb_3/xml.zip
+      pbav_2025: https://www.gesetze-im-internet.de/pbav_2025/xml.zip
+  vectors:
+  - input: 14.6
+    expected: true
+    origin: source
+  - input: 18.6
+    expected: true
+    origin: source
+  - input: 3.6
+    expected: true
+    origin: source
+  - input: 12.5
+    expected: false
+    origin: derived
+evidence:
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, BSV 2018 (XML archive)
+  url: https://www.gesetze-im-internet.de/bsv_2018/xml.zip
+  accessed_at: '2026-10-31'
+  locator: Beitragssatzverordnung 2018 (BSV 2018), § 1, text
+  value: 18,6
+  unit: text
+  snippet: in der allgemeinen Rentenversicherung 18,6 Prozent
+  source_license: unstated
+  content_sha256: 2dab81bc8fac0db6f49d0bb48faa5d7d4e9c225d27c5f03ab28fbce9618fc40b
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, SGB 5 (XML archive)
+  url: https://www.gesetze-im-internet.de/sgb_5/xml.zip
+  accessed_at: '2026-10-31'
+  locator: SGB V § 241 Allgemeiner Beitragssatz, text
+  value: 14,6
+  unit: text
+  snippet: Der allgemeine Beitragssatz beträgt 14,6 Prozent
+  source_license: unstated
+  content_sha256: 56d63e5272eaa96d7e3e6c2d196047e646617769c60b585cc0ffc21ede0c2b7a
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, SGB 5 (XML archive)
+  url: https://www.gesetze-im-internet.de/sgb_5/xml.zip
+  accessed_at: '2026-10-31'
+  locator: SGB V § 243 Ermäßigter Beitragssatz, text
+  value: 14,0
+  unit: text
+  snippet: Der ermäßigte Beitragssatz beträgt 14,0 Prozent
+  source_license: unstated
+  content_sha256: 56d63e5272eaa96d7e3e6c2d196047e646617769c60b585cc0ffc21ede0c2b7a
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, PBAV 2025 (XML archive)
+  url: https://www.gesetze-im-internet.de/pbav_2025/xml.zip
+  accessed_at: '2026-10-31'
+  locator: Pflege-Beitragssatz-Anpassungsverordnung 2025 (PBAV 2025), § 1, text
+  value: 3,6
+  unit: text
+  snippet: zum 1. Januar 2025 auf 3,6 Prozent
+  source_license: unstated
+  content_sha256: c8b18ebbe9882f996939dd8e9d6ab1ce7676c047d658d0c3ca3d6a7a742c9894
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, SGB 3 (XML archive)
+  url: https://www.gesetze-im-internet.de/sgb_3/xml.zip
+  accessed_at: '2026-10-31'
+  locator: SGB III § 341 Beitragssatz und Beitragsbemessung, text
+  value: 2,6
+  unit: text
+  snippet: Der Beitragssatz beträgt 2,6 Prozent
+  source_license: unstated
+  content_sha256: 1d9f9e33dc71b2b053273efe762eabdadcdcfa6c1ae6f1aa253fee38ecbb423b
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, SGB 5 (XML archive)
+  url: https://www.gesetze-im-internet.de/sgb_5/xml.zip
+  accessed_at: '2026-10-31'
+  locator: SGB V § 249 Absatz 1, text
+  value: jeweils zur Hälfte
+  unit: text
+  snippet: tragen die nach dem Arbeitsentgelt zu bemessenden Beiträge jeweils zur Hälfte
+  source_license: unstated
+  content_sha256: 56d63e5272eaa96d7e3e6c2d196047e646617769c60b585cc0ffc21ede0c2b7a
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: slab[health_general]
+  expected: 14.6
+  tolerance: 0
+- statistic: slab[unemployment]
+  expected: 2.6
+  tolerance: 0
+notes: 'Percentage contribution rates of the German statutory social insurance read from the consolidated laws on
+  Gesetze im Internet: the general pension insurance rate fixed by the Beitragssatzverordnung 2018, the general
+  and reduced statutory health insurance rates (SGB V, the reduced rate applies to members without sickness-benefit
+  entitlement; a fund-specific supplementary rate under SGB V § 242 comes on top and is not in this entry), the
+  long-term care insurance rate set from 1 January 2025 by the PBAV 2025 (surcharges and reductions by number of
+  children under SGB XI § 55 are not in this entry), and the unemployment insurance rate (SGB III). SGB V § 249
+  states that employee and employer each bear half of the earnings-based health contributions. The pension rate
+  of the BSV 2018 was set for 2018 and continues under SGB VI § 158(4) through annual announcements in the Bundesgesetzblatt
+  that are not on this site, so a reviewer should confirm no later ordinance changed it. valid_from is the day the
+  long-term care rate took effect; the other rates were already in force. Gesetze im Internet carries no licence
+  statement, so the licence is recorded as unstated.'

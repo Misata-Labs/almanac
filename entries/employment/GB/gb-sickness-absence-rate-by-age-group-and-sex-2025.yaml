@@ -1,0 +1,133 @@
+id: gb-sickness-absence-rate-by-age-group-and-sex-2025
+title: UK sickness absence rate by age group and sex, 2025, with 2024 comparison (ONS LFS)
+kind: rule
+domain: employment
+region: GB
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- sickness-absence
+- absence
+- by-age
+- by-sex
+- ons
+- hr
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- insurance
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    year: 2025
+    source_tables:
+    - Table 8
+    - Table 19
+    rows:
+      16-24:
+        label: aged 16 to 24
+        all_persons_2025: 1.3
+        men_2025: 1.4
+        women_2025: 1.2
+        all_persons_2024: 1.3
+      25-34:
+        label: aged 25 to 34
+        all_persons_2025: 1.5
+        men_2025: 1.1
+        women_2025: 2.1
+        all_persons_2024: 1.6
+      35-49:
+        label: aged 35 to 49
+        all_persons_2025: 1.7
+        men_2025: 1.4
+        women_2025: 2.1
+        all_persons_2024: 1.7
+      50-64:
+        label: aged 50 to 64
+        all_persons_2025: 2.8
+        men_2025: 2.5
+        women_2025: 3.2
+        all_persons_2024: 2.8
+      65 and over:
+        label: aged 65 and over
+        all_persons_2025: 3.3
+        men_2025: 3.3
+        women_2025: 3.2
+        all_persons_2024: 3.1
+  vectors:
+  - input:
+      key: 16-24
+      column: all_persons_2025
+    expected: 1.3
+    origin: source
+  - input:
+      key: 25-34
+      column: all_persons_2025
+    expected: 1.5
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Office for National Statistics
+  title: 'Sickness absence in the UK labour market: 2025 (XLSX dataset)'
+  url: https://www.ons.gov.uk/file?uri=/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/sicknessabsenceinthelabourmarket/2025/sicknessabsence2025.xlsx
+  accessed_at: '2026-10-31'
+  locator: Table 8!B35 (sickness absence rate 2025, aged 16 to 24)
+  value: 1.3
+  unit: percent
+  snippet: <c r="B35" s="113"><v>1.3</v></c>
+  source_license: OGL-UK-3.0
+  content_sha256: 3dc547c84b70a4d4a3c65841ead2cfafa6f8a10ced2810a8b7608803519f45de
+  role: primary
+- publisher: Office for National Statistics
+  title: 'Sickness absence in the UK labour market: 2025 (XLSX dataset)'
+  url: https://www.ons.gov.uk/file?uri=/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/sicknessabsenceinthelabourmarket/2025/sicknessabsence2025.xlsx
+  accessed_at: '2026-10-31'
+  locator: Table 19!B9 (sickness absence rate 2025, men, 65 and over)
+  value: 3.3
+  unit: percent
+  snippet: <c r="B9" s="106"><v>3.3</v></c>
+  source_license: OGL-UK-3.0
+  content_sha256: 3dc547c84b70a4d4a3c65841ead2cfafa6f8a10ced2810a8b7608803519f45de
+  role: primary
+- publisher: Office for National Statistics
+  title: 'Sickness absence in the UK labour market: 2025 (XLSX dataset)'
+  url: https://www.ons.gov.uk/file?uri=/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/sicknessabsenceinthelabourmarket/2025/sicknessabsence2025.xlsx
+  accessed_at: '2026-10-31'
+  locator: Table 19!B12 (sickness absence rate 2025, women, 16-24)
+  value: 1.2
+  unit: percent
+  snippet: <c r="B12" s="106"><v>1.2</v></c>
+  source_license: OGL-UK-3.0
+  content_sha256: 3dc547c84b70a4d4a3c65841ead2cfafa6f8a10ced2810a8b7608803519f45de
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: value[65 and over,men_2025]
+  expected: 3.3
+  tolerance: 1.0e-09
+- statistic: max[men_2025]
+  expected: 3.3
+  tolerance: 1.0e-09
+- statistic: value[16-24,women_2025]
+  expected: 1.2
+  tolerance: 1.0e-09
+- statistic: max[women_2025]
+  expected: 3.2
+  tolerance: 1.0e-09
+notes: Percentage of working hours lost to sickness or injury in 2025 by age band for all workers (Table 8) and
+  for men and women separately (Table 19), with the 2024 all-worker rate alongside, from the ONS sickness absence
+  workbook. Rows are keyed by the age band as the workbook labels it. ONS publishes the dataset under the Open Government
+  Licence v3.0 and labels it official statistics in development.

@@ -1,0 +1,932 @@
+id: global-ilo-average-weekly-hours-worked-latest
+title: Average weekly hours actually worked per employed person by economy, sex and broad sector, latest year since
+  2024 (ILOSTAT)
+kind: rule
+domain: employment
+region: global
+status: license-review
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2025-12-31'
+tags:
+- hours
+- working-time
+- weekly-hours
+- ilostat
+- reference-table
+- by-country
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- workforce-planning
+- capacity-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    indicator: HOW_TEMP_SEX_ECO_NB_A
+    url: https://rplumber.ilo.org/data/indicator/?id=HOW_TEMP_SEX_ECO_NB_A&timefrom=2024&format=.csv
+    rows:
+      AGO:
+        year: 2025
+        weekly_hours_all: 43.45
+        weekly_hours_men: 45.05
+        weekly_hours_women: 41.9
+        weekly_hours_agriculture: 35.86
+        weekly_hours_industry: 49.43
+        weekly_hours_services: 50.11
+      ALB:
+        year: 2024
+        weekly_hours_all: 41.33
+        weekly_hours_men: 43.16
+        weekly_hours_women: 39.12
+        weekly_hours_agriculture: 35.49
+        weekly_hours_industry: 45.58
+        weekly_hours_services: 44.37
+      ARE:
+        year: 2025
+        weekly_hours_all: 50.54
+        weekly_hours_men: 50.53
+        weekly_hours_women: 50.61
+        weekly_hours_agriculture: 58.52
+        weekly_hours_industry: 51.4
+        weekly_hours_services: 50.03
+      ARG:
+        year: 2025
+        weekly_hours_all: 36.57
+        weekly_hours_men: 40.18
+        weekly_hours_women: 31.94
+        weekly_hours_agriculture: 42.62
+        weekly_hours_industry: 38.99
+        weekly_hours_services: 36.07
+      AUT:
+        year: 2025
+        weekly_hours_all: 33.46
+        weekly_hours_men: 36.72
+        weekly_hours_women: 29.68
+        weekly_hours_agriculture: 41.48
+        weekly_hours_industry: 35.51
+        weekly_hours_services: 32.44
+      BEL:
+        year: 2025
+        weekly_hours_all: 34.31
+        weekly_hours_men: 36.86
+        weekly_hours_women: 31.37
+        weekly_hours_agriculture: 45.52
+        weekly_hours_industry: 36.86
+        weekly_hours_services: 33.57
+      BGD:
+        year: 2024
+        weekly_hours_all: 46.73
+        weekly_hours_men: 50.57
+        weekly_hours_women: 32.1
+        weekly_hours_agriculture: 37.5
+        weekly_hours_industry: 53.01
+        weekly_hours_services: 51.18
+      BGR:
+        year: 2025
+        weekly_hours_all: 38.69
+        weekly_hours_men: 38.85
+        weekly_hours_women: 38.51
+        weekly_hours_agriculture: 38.91
+        weekly_hours_industry: 38.9
+        weekly_hours_services: 38.59
+      BIH:
+        year: 2025
+        weekly_hours_all: 40.74
+        weekly_hours_men: 41.05
+        weekly_hours_women: 40.22
+        weekly_hours_agriculture: 38.88
+        weekly_hours_industry: 41.14
+        weekly_hours_services: 40.74
+      BLR:
+        year: 2025
+        weekly_hours_all: 3.88
+        weekly_hours_men: 3.95
+        weekly_hours_women: 3.82
+        weekly_hours_agriculture: 3.95
+        weekly_hours_industry: 3.97
+        weekly_hours_services: 3.83
+      BLZ:
+        year: 2025
+        weekly_hours_all: 38.84
+        weekly_hours_men: 40.61
+        weekly_hours_women: 36.33
+        weekly_hours_agriculture: 36.02
+        weekly_hours_industry: 38.8
+        weekly_hours_services: 39.38
+      BOL:
+        year: 2025
+        weekly_hours_all: 37.31
+        weekly_hours_men: 40.72
+        weekly_hours_women: 33.57
+        weekly_hours_agriculture: 37.12
+        weekly_hours_industry: 39.07
+        weekly_hours_services: 36.68
+      BRA:
+        year: 2025
+        weekly_hours_all: 38.86
+        weekly_hours_men: 40.55
+        weekly_hours_women: 36.64
+        weekly_hours_agriculture: 37.63
+        weekly_hours_industry: 40.01
+        weekly_hours_services: 38.66
+      BRN:
+        year: 2025
+        weekly_hours_all: 45.17
+        weekly_hours_men: 46.18
+        weekly_hours_women: 43.6
+        weekly_hours_agriculture: 41.57
+        weekly_hours_industry: 46.98
+        weekly_hours_services: 44.67
+      BWA:
+        year: 2024
+        weekly_hours_all: 42.92
+        weekly_hours_men: 44.9
+        weekly_hours_women: 40.81
+        weekly_hours_agriculture: 40.32
+        weekly_hours_industry: 45.09
+        weekly_hours_services: 43.32
+      CAN:
+        year: 2025
+        weekly_hours_all: 34.8
+        weekly_hours_men: 37.07
+        weekly_hours_women: 32.16
+        weekly_hours_agriculture: 42.74
+        weekly_hours_industry: 39.35
+        weekly_hours_services: 33.59
+      CHE:
+        year: 2025
+        weekly_hours_all: 35.23
+        weekly_hours_men: 39.16
+        weekly_hours_women: 30.7
+        weekly_hours_agriculture: 43.38
+        weekly_hours_industry: 38.84
+        weekly_hours_services: 34.09
+      CHL:
+        year: 2025
+        weekly_hours_all: 38.94
+        weekly_hours_men: 40.72
+        weekly_hours_women: 36.52
+        weekly_hours_agriculture: 39.14
+        weekly_hours_industry: 39.79
+        weekly_hours_services: 38.66
+      COL:
+        year: 2025
+        weekly_hours_all: 42.77
+        weekly_hours_men: 45.07
+        weekly_hours_women: 39.49
+        weekly_hours_agriculture: 40.25
+        weekly_hours_industry: 43.68
+        weekly_hours_services: 43.04
+      CRI:
+        year: 2025
+        weekly_hours_all: 42.88
+        weekly_hours_men: 45.2
+        weekly_hours_women: 39.21
+        weekly_hours_agriculture: 44.63
+        weekly_hours_industry: 45.39
+        weekly_hours_services: 41.97
+      CYP:
+        year: 2025
+        weekly_hours_all: 37.67
+        weekly_hours_men: 38.85
+        weekly_hours_women: 36.31
+        weekly_hours_agriculture: 42.71
+        weekly_hours_industry: 37.45
+        weekly_hours_services: 37.58
+      CZE:
+        year: 2025
+        weekly_hours_all: 37.44
+        weekly_hours_men: 38.91
+        weekly_hours_women: 35.69
+        weekly_hours_agriculture: 40.23
+        weekly_hours_industry: 38.26
+        weekly_hours_services: 36.86
+      DEU:
+        year: 2025
+        weekly_hours_all: 33.53
+        weekly_hours_men: 36.79
+        weekly_hours_women: 29.73
+        weekly_hours_agriculture: 38.12
+        weekly_hours_industry: 36.43
+        weekly_hours_services: 32.42
+      DJI:
+        year: 2025
+        weekly_hours_all: 44.52
+        weekly_hours_men: 45.03
+        weekly_hours_women: 43.3
+        weekly_hours_agriculture: 33.79
+        weekly_hours_industry: 44.71
+        weekly_hours_services: 45.19
+      DNK:
+        year: 2025
+        weekly_hours_all: 33.16
+        weekly_hours_men: 35.12
+        weekly_hours_women: 30.84
+        weekly_hours_agriculture: 38.19
+        weekly_hours_industry: 35.84
+        weekly_hours_services: 32.46
+      DOM:
+        year: 2025
+        weekly_hours_all: 40.42
+        weekly_hours_men: 41.99
+        weekly_hours_women: 38.23
+        weekly_hours_agriculture: 37.05
+        weekly_hours_industry: 40.18
+        weekly_hours_services: 40.79
+      ECU:
+        year: 2025
+        weekly_hours_all: 34.13
+        weekly_hours_men: 36.28
+        weekly_hours_women: 31.03
+        weekly_hours_agriculture: 29.56
+        weekly_hours_industry: 36.59
+        weekly_hours_services: 36.23
+      EGY:
+        year: 2024
+        weekly_hours_all: 45.12
+        weekly_hours_men: 46.14
+        weekly_hours_women: 39.95
+        weekly_hours_agriculture: 40.67
+        weekly_hours_industry: 45.96
+        weekly_hours_services: 46.24
+      ESP:
+        year: 2025
+        weekly_hours_all: 36.42
+        weekly_hours_men: 38.43
+        weekly_hours_women: 34.07
+        weekly_hours_agriculture: 41.29
+        weekly_hours_industry: 38.28
+        weekly_hours_services: 35.7
+      EST:
+        year: 2025
+        weekly_hours_all: 36.18
+        weekly_hours_men: 37.61
+        weekly_hours_women: 34.72
+        weekly_hours_agriculture: 38.64
+        weekly_hours_industry: 37.54
+        weekly_hours_services: 35.59
+      FIN:
+        year: 2025
+        weekly_hours_all: 34.15
+        weekly_hours_men: 35.98
+        weekly_hours_women: 32.11
+        weekly_hours_agriculture: 39.3
+        weekly_hours_industry: 36.95
+        weekly_hours_services: 33.13
+      FJI:
+        year: 2024
+        weekly_hours_all: 37.33
+        weekly_hours_men: 37.51
+        weekly_hours_women: 37
+        weekly_hours_agriculture: 25.99
+        weekly_hours_industry: 41.68
+        weekly_hours_services: 40.59
+      FRA:
+        year: 2025
+        weekly_hours_all: 35.71
+        weekly_hours_men: 37.74
+        weekly_hours_women: 33.5
+        weekly_hours_agriculture: 46.69
+        weekly_hours_industry: 36.99
+        weekly_hours_services: 35.05
+      GAB:
+        year: 2024
+        weekly_hours_all: 46.31
+        weekly_hours_men: 48.89
+        weekly_hours_women: 42.87
+        weekly_hours_agriculture: 40.66
+        weekly_hours_industry: 45.9
+        weekly_hours_services: 47.61
+      GBR:
+        year: 2025
+        weekly_hours_all: 34.92
+        weekly_hours_men: 37.87
+        weekly_hours_women: 31.67
+        weekly_hours_agriculture: 43.59
+        weekly_hours_industry: 38.89
+        weekly_hours_services: 34.08
+      GEO:
+        year: 2025
+        weekly_hours_all: 40.01
+        weekly_hours_men: 41.95
+        weekly_hours_women: 37.52
+        weekly_hours_agriculture: 29.18
+        weekly_hours_industry: 42.92
+        weekly_hours_services: 41.6
+      GHA:
+        year: 2024
+        weekly_hours_all: 35.53
+        weekly_hours_men: 36.77
+        weekly_hours_women: 34.47
+        weekly_hours_agriculture: 29.55
+        weekly_hours_industry: 37.39
+        weekly_hours_services: 39.66
+      GMB:
+        year: 2025
+        weekly_hours_all: 43.55
+        weekly_hours_men: 49.62
+        weekly_hours_women: 35.83
+        weekly_hours_agriculture: 35.4
+        weekly_hours_industry: 45.46
+        weekly_hours_services: 45.4
+      GRC:
+        year: 2025
+        weekly_hours_all: 39.52
+        weekly_hours_men: 41.22
+        weekly_hours_women: 37.3
+        weekly_hours_agriculture: 42.28
+        weekly_hours_industry: 40.52
+        weekly_hours_services: 38.97
+      GTM:
+        year: 2025
+        weekly_hours_all: 42.86
+        weekly_hours_men: 46.59
+        weekly_hours_women: 36.94
+        weekly_hours_agriculture: 39.07
+        weekly_hours_industry: 43.87
+        weekly_hours_services: 43.75
+      GUY:
+        year: 2024
+        weekly_hours_all: 45.83
+        weekly_hours_men: 48.68
+        weekly_hours_women: 41.27
+        weekly_hours_agriculture: 42.36
+        weekly_hours_industry: 49.59
+        weekly_hours_services: 44.65
+      HND:
+        year: 2025
+        weekly_hours_all: 43.71
+        weekly_hours_men: 44.84
+        weekly_hours_women: 42
+        weekly_hours_agriculture: 35.19
+        weekly_hours_industry: 43.66
+        weekly_hours_services: 47.1
+      HRV:
+        year: 2025
+        weekly_hours_all: 37.65
+        weekly_hours_men: 38.26
+        weekly_hours_women: 36.93
+        weekly_hours_agriculture: 37.81
+        weekly_hours_industry: 37.69
+        weekly_hours_services: 37.62
+      HUN:
+        year: 2025
+        weekly_hours_all: 37.29
+        weekly_hours_men: 37.99
+        weekly_hours_women: 36.45
+        weekly_hours_agriculture: 38.39
+        weekly_hours_industry: 37.55
+        weekly_hours_services: 37.1
+      IDN:
+        year: 2024
+        weekly_hours_all: 38.2
+        weekly_hours_men: 40.17
+        weekly_hours_women: 35.21
+        weekly_hours_agriculture: 29.13
+        weekly_hours_industry: 41.45
+        weekly_hours_services: 41.95
+      IND:
+        year: 2025
+        weekly_hours_all: 45.45
+        weekly_hours_men: 49.6
+        weekly_hours_women: 36.31
+        weekly_hours_agriculture: 36.88
+        weekly_hours_industry: 48.22
+        weekly_hours_services: 54.07
+      IRL:
+        year: 2025
+        weekly_hours_all: 34.74
+        weekly_hours_men: 38
+        weekly_hours_women: 30.89
+        weekly_hours_agriculture: 45.15
+        weekly_hours_industry: 38.53
+        weekly_hours_services: 33.24
+      IRN:
+        year: 2024
+        weekly_hours_all: 46.78
+        weekly_hours_men: 48.62
+        weekly_hours_women: 36.99
+        weekly_hours_agriculture: 42.13
+        weekly_hours_industry: 45.69
+        weekly_hours_services: 48.61
+      ISL:
+        year: 2025
+        weekly_hours_all: 35.73
+        weekly_hours_men: 38.39
+        weekly_hours_women: 32.48
+        weekly_hours_agriculture: 52.97
+        weekly_hours_industry: 38.93
+        weekly_hours_services: 34.05
+      ISR:
+        year: 2024
+        weekly_hours_all: 37.74
+        weekly_hours_men: 40.67
+        weekly_hours_women: 34.56
+        weekly_hours_agriculture: 43.5
+        weekly_hours_industry: 40.52
+        weekly_hours_services: 37.16
+      ITA:
+        year: 2025
+        weekly_hours_all: 36.07
+        weekly_hours_men: 38.45
+        weekly_hours_women: 32.8
+        weekly_hours_agriculture: 40.06
+        weekly_hours_industry: 38.24
+        weekly_hours_services: 35.03
+      JAM:
+        year: 2024
+        weekly_hours_all: 39.27
+        weekly_hours_men: 38.91
+        weekly_hours_women: 39.79
+        weekly_hours_agriculture: 29.87
+        weekly_hours_industry: 41.52
+        weekly_hours_services: 40.21
+      JOR:
+        year: 2024
+        weekly_hours_all: 48.13
+        weekly_hours_men: 48.23
+        weekly_hours_women: 47.69
+        weekly_hours_agriculture: 45.55
+        weekly_hours_industry: 45.39
+        weekly_hours_services: 48.82
+      KHM:
+        year: 2025
+        weekly_hours_all: 39.48
+        weekly_hours_men: 40.25
+        weekly_hours_women: 38.63
+        weekly_hours_agriculture: 25.03
+        weekly_hours_industry: 48.18
+        weekly_hours_services: 43.97
+      KOR:
+        year: 2025
+        weekly_hours_all: 38.49
+        weekly_hours_men: 41.01
+        weekly_hours_women: 35.35
+        weekly_hours_agriculture: 33.11
+        weekly_hours_industry: 41.02
+        weekly_hours_services: 38.21
+      KOS:
+        year: 2024
+        weekly_hours_all: 42.25
+        weekly_hours_men: 43.03
+        weekly_hours_women: 40.18
+        weekly_hours_agriculture: 41.34
+        weekly_hours_industry: 43.95
+        weekly_hours_services: 41.64
+      LCA:
+        year: 2025
+        weekly_hours_all: 39.75
+        weekly_hours_men: 40.17
+        weekly_hours_women: 39.28
+        weekly_hours_agriculture: 38.02
+        weekly_hours_industry: 39.46
+        weekly_hours_services: 40.01
+      LKA:
+        year: 2024
+        weekly_hours_all: 43.02
+        weekly_hours_men: 44.73
+        weekly_hours_women: 39.47
+        weekly_hours_agriculture: 35.5
+        weekly_hours_industry: 43.38
+        weekly_hours_services: 46.78
+      LSO:
+        year: 2024
+        weekly_hours_all: 49.26
+        weekly_hours_men: 50.6
+        weekly_hours_women: 47.7
+        weekly_hours_agriculture: 48.42
+        weekly_hours_industry: 47.24
+        weekly_hours_services: 50.37
+      LTU:
+        year: 2025
+        weekly_hours_all: 38.67
+        weekly_hours_men: 39.3
+        weekly_hours_women: 38.01
+        weekly_hours_agriculture: 38.81
+        weekly_hours_industry: 39.48
+        weekly_hours_services: 38.37
+      LUX:
+        year: 2025
+        weekly_hours_all: 35.58
+        weekly_hours_men: 37.45
+        weekly_hours_women: 33.28
+        weekly_hours_agriculture: null
+        weekly_hours_industry: 37.05
+        weekly_hours_services: 35.51
+      LVA:
+        year: 2025
+        weekly_hours_all: 38.1
+        weekly_hours_men: 38.85
+        weekly_hours_women: 37.37
+        weekly_hours_agriculture: 39.15
+        weekly_hours_industry: 39.02
+        weekly_hours_services: 37.74
+      MDA:
+        year: 2025
+        weekly_hours_all: 39.42
+        weekly_hours_men: 40.37
+        weekly_hours_women: 38.42
+        weekly_hours_agriculture: 40.62
+        weekly_hours_industry: 39.73
+        weekly_hours_services: 39.01
+      MEX:
+        year: 2025
+        weekly_hours_all: 42.09
+        weekly_hours_men: 44.95
+        weekly_hours_women: 37.95
+        weekly_hours_agriculture: 37.68
+        weekly_hours_industry: 43.83
+        weekly_hours_services: 42.35
+      MKD:
+        year: 2025
+        weekly_hours_all: 39.39
+        weekly_hours_men: 39.9
+        weekly_hours_women: 38.68
+        weekly_hours_agriculture: 38.96
+        weekly_hours_industry: 39.68
+        weekly_hours_services: 39.32
+      MLI:
+        year: 2024
+        weekly_hours_all: 42.29
+        weekly_hours_men: 45.29
+        weekly_hours_women: 37.39
+        weekly_hours_agriculture: 40.88
+        weekly_hours_industry: 46.17
+        weekly_hours_services: 43.33
+      MLT:
+        year: 2025
+        weekly_hours_all: 37.71
+        weekly_hours_men: 39.19
+        weekly_hours_women: 35.51
+        weekly_hours_agriculture: 44.4
+        weekly_hours_industry: 38.49
+        weekly_hours_services: 37.48
+      MNE:
+        year: 2024
+        weekly_hours_all: 42.86
+        weekly_hours_men: 43.66
+        weekly_hours_women: 41.83
+        weekly_hours_agriculture: 44.01
+        weekly_hours_industry: 43.46
+        weekly_hours_services: 42.64
+      MNG:
+        year: 2025
+        weekly_hours_all: 46.94
+        weekly_hours_men: 49.13
+        weekly_hours_women: 44.25
+        weekly_hours_agriculture: 51.23
+        weekly_hours_industry: 48.91
+        weekly_hours_services: 44.08
+      MUS:
+        year: 2024
+        weekly_hours_all: 38.34
+        weekly_hours_men: 40.12
+        weekly_hours_women: 35.89
+        weekly_hours_agriculture: 32.31
+        weekly_hours_industry: 38.55
+        weekly_hours_services: 38.69
+      MWI:
+        year: 2024
+        weekly_hours_all: 28.03
+        weekly_hours_men: 31.39
+        weekly_hours_women: 24.31
+        weekly_hours_agriculture: 21.19
+        weekly_hours_industry: 34.28
+        weekly_hours_services: 35.56
+      NGA:
+        year: 2024
+        weekly_hours_all: 33.5
+        weekly_hours_men: 34.97
+        weekly_hours_women: 31.85
+        weekly_hours_agriculture: 26.17
+        weekly_hours_industry: 37.48
+        weekly_hours_services: 39.31
+      NLD:
+        year: 2025
+        weekly_hours_all: 31.03
+        weekly_hours_men: 34.54
+        weekly_hours_women: 26.97
+        weekly_hours_agriculture: 40.43
+        weekly_hours_industry: 35.54
+        weekly_hours_services: 30.19
+      NOR:
+        year: 2025
+        weekly_hours_all: 33.44
+        weekly_hours_men: 35.64
+        weekly_hours_women: 30.86
+        weekly_hours_agriculture: 37.88
+        weekly_hours_industry: 36.6
+        weekly_hours_services: 32.64
+      NRU:
+        year: 2024
+        weekly_hours_all: 34.44
+        weekly_hours_men: 35.27
+        weekly_hours_women: 33.52
+        weekly_hours_agriculture: null
+        weekly_hours_industry: 35.07
+        weekly_hours_services: 34.25
+      PAK:
+        year: 2025
+        weekly_hours_all: 46.77
+        weekly_hours_men: 50.08
+        weekly_hours_women: 35.72
+        weekly_hours_agriculture: 41.24
+        weekly_hours_industry: 47.99
+        weekly_hours_services: 50.35
+      PAN:
+        year: 2025
+        weekly_hours_all: 36.36
+        weekly_hours_men: 37.62
+        weekly_hours_women: 34.67
+        weekly_hours_agriculture: 26.28
+        weekly_hours_industry: 36.22
+        weekly_hours_services: 38.25
+      PER:
+        year: 2025
+        weekly_hours_all: 39.67
+        weekly_hours_men: 42.44
+        weekly_hours_women: 36.28
+        weekly_hours_agriculture: 32.88
+        weekly_hours_industry: 41.66
+        weekly_hours_services: 41.83
+      PHL:
+        year: 2025
+        weekly_hours_all: 40.89
+        weekly_hours_men: 41.06
+        weekly_hours_women: 40.64
+        weekly_hours_agriculture: null
+        weekly_hours_industry: null
+        weekly_hours_services: null
+      POL:
+        year: 2025
+        weekly_hours_all: 38.93
+        weekly_hours_men: 40.25
+        weekly_hours_women: 37.31
+        weekly_hours_agriculture: 41.74
+        weekly_hours_industry: 39.61
+        weekly_hours_services: 38.32
+      PRT:
+        year: 2025
+        weekly_hours_all: 37.68
+        weekly_hours_men: 39.15
+        weekly_hours_women: 36.14
+        weekly_hours_agriculture: 39.54
+        weekly_hours_industry: 38.62
+        weekly_hours_services: 37.3
+      PRY:
+        year: 2025
+        weekly_hours_all: 41.77
+        weekly_hours_men: 43.95
+        weekly_hours_women: 38.75
+        weekly_hours_agriculture: 33.6
+        weekly_hours_industry: 44.07
+        weekly_hours_services: 42.66
+      PSE:
+        year: 2025
+        weekly_hours_all: 41.9
+        weekly_hours_men: 43.32
+        weekly_hours_women: 35.69
+        weekly_hours_agriculture: 38.47
+        weekly_hours_industry: 40.76
+        weekly_hours_services: 42.79
+      ROU:
+        year: 2025
+        weekly_hours_all: 38.25
+        weekly_hours_men: 38.44
+        weekly_hours_women: 37.99
+        weekly_hours_agriculture: 37.39
+        weekly_hours_industry: 38.23
+        weekly_hours_services: 38.41
+      RUS:
+        year: 2025
+        weekly_hours_all: 38.99
+        weekly_hours_men: 39.7
+        weekly_hours_women: 38.25
+        weekly_hours_agriculture: 34.79
+        weekly_hours_industry: 39.76
+        weekly_hours_services: 39.03
+      RWA:
+        year: 2025
+        weekly_hours_all: 29.2
+        weekly_hours_men: 31.92
+        weekly_hours_women: 26.04
+        weekly_hours_agriculture: 21.27
+        weekly_hours_industry: 29.93
+        weekly_hours_services: 36.11
+      SEN:
+        year: 2025
+        weekly_hours_all: 47.3
+        weekly_hours_men: 49.5
+        weekly_hours_women: 41.51
+        weekly_hours_agriculture: 40.48
+        weekly_hours_industry: 47.89
+        weekly_hours_services: 49.59
+      SLV:
+        year: 2025
+        weekly_hours_all: 42.4
+        weekly_hours_men: 43.98
+        weekly_hours_women: 40.32
+        weekly_hours_agriculture: 35.12
+        weekly_hours_industry: 42.37
+        weekly_hours_services: 44.04
+      SRB:
+        year: 2025
+        weekly_hours_all: 40.37
+        weekly_hours_men: 41.17
+        weekly_hours_women: 39.34
+        weekly_hours_agriculture: 42.1
+        weekly_hours_industry: 40.91
+        weekly_hours_services: 39.74
+      SVK:
+        year: 2025
+        weekly_hours_all: 37.59
+        weekly_hours_men: 38.55
+        weekly_hours_women: 36.41
+        weekly_hours_agriculture: 38.53
+        weekly_hours_industry: 38.32
+        weekly_hours_services: 37.15
+      SVN:
+        year: 2025
+        weekly_hours_all: 38.3
+        weekly_hours_men: 39.22
+        weekly_hours_women: 37.15
+        weekly_hours_agriculture: 38.27
+        weekly_hours_industry: 38.7
+        weekly_hours_services: 38.14
+      SWE:
+        year: 2025
+        weekly_hours_all: 34.78
+        weekly_hours_men: 36.13
+        weekly_hours_women: 33.22
+        weekly_hours_agriculture: 35.98
+        weekly_hours_industry: 36.94
+        weekly_hours_services: 34.3
+      SWZ:
+        year: 2025
+        weekly_hours_all: 39.57
+        weekly_hours_men: 42.55
+        weekly_hours_women: 36.21
+        weekly_hours_agriculture: 38.6
+        weekly_hours_industry: 38.96
+        weekly_hours_services: 40.63
+      SYC:
+        year: 2025
+        weekly_hours_all: 40.65
+        weekly_hours_men: 42.32
+        weekly_hours_women: 38.93
+        weekly_hours_agriculture: 45.33
+        weekly_hours_industry: 41.46
+        weekly_hours_services: 40.39
+      THA:
+        year: 2025
+        weekly_hours_all: 42.41
+        weekly_hours_men: 42.52
+        weekly_hours_women: 42.29
+        weekly_hours_agriculture: 35.31
+        weekly_hours_industry: 46.36
+        weekly_hours_services: 44.63
+      TON:
+        year: 2025
+        weekly_hours_all: 34.12
+        weekly_hours_men: 34.81
+        weekly_hours_women: 33.37
+        weekly_hours_agriculture: 24.88
+        weekly_hours_industry: 34.58
+        weekly_hours_services: 36.47
+      TUR:
+        year: 2025
+        weekly_hours_all: 42.06
+        weekly_hours_men: 43.74
+        weekly_hours_women: 38.61
+        weekly_hours_agriculture: 36.75
+        weekly_hours_industry: 42.95
+        weekly_hours_services: 42.89
+      TZA:
+        year: 2025
+        weekly_hours_all: 42.01
+        weekly_hours_men: 45.61
+        weekly_hours_women: 38.11
+        weekly_hours_agriculture: 34.84
+        weekly_hours_industry: 49.49
+        weekly_hours_services: 52.56
+      URY:
+        year: 2025
+        weekly_hours_all: 36.11
+        weekly_hours_men: 39.15
+        weekly_hours_women: 32.36
+        weekly_hours_agriculture: 42.39
+        weekly_hours_industry: 37.87
+        weekly_hours_services: 34.99
+      USA:
+        year: 2025
+        weekly_hours_all: 37.54
+        weekly_hours_men: 39.4
+        weekly_hours_women: 35.42
+        weekly_hours_agriculture: 39.51
+        weekly_hours_industry: 40.39
+        weekly_hours_services: 36.82
+      VNM:
+        year: 2024
+        weekly_hours_all: 41.85
+        weekly_hours_men: 42.55
+        weekly_hours_women: 41.06
+        weekly_hours_agriculture: 33.38
+        weekly_hours_industry: 46.8
+        weekly_hours_services: 43.34
+      VUT:
+        year: 2025
+        weekly_hours_all: 24.37
+        weekly_hours_men: 25.73
+        weekly_hours_women: 22.78
+        weekly_hours_agriculture: 16.93
+        weekly_hours_industry: 24.62
+        weekly_hours_services: 27.12
+      ZAF:
+        year: 2025
+        weekly_hours_all: 42.42
+        weekly_hours_men: 44.21
+        weekly_hours_women: 40.09
+        weekly_hours_agriculture: 44.73
+        weekly_hours_industry: 42.14
+        weekly_hours_services: 42.32
+      ZMB:
+        year: 2024
+        weekly_hours_all: 42.91
+        weekly_hours_men: 44.17
+        weekly_hours_women: 40.94
+        weekly_hours_agriculture: 33.25
+        weekly_hours_industry: 45.36
+        weekly_hours_services: 46.97
+      ZWE:
+        year: 2025
+        weekly_hours_all: 46.52
+        weekly_hours_men: 49.1
+        weekly_hours_women: 42.83
+        weekly_hours_agriculture: 43.3
+        weekly_hours_industry: 47.08
+        weekly_hours_services: 47.84
+  vectors:
+  - input:
+      key: DEU
+      column: weekly_hours_all
+    expected: 33.53
+    origin: source
+  - input:
+      key: MEX
+      column: weekly_hours_all
+    expected: 42.09
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator HOW_TEMP_SEX_ECO_NB_A (average weekly hours actually worked per
+    employed person by sex and economic activity), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=HOW_TEMP_SEX_ECO_NB_A&timefrom=2024&format=.csv
+  accessed_at: '2026-10-31'
+  locator: ref_area=DEU, sex=SEX_T, classif1=ECO_SECTOR_TOTAL, time=2025, obs_value
+  value: '33.53'
+  unit: decimal
+  snippet: DEU","BA:2242","HOW_TEMP_SEX_ECO_NB","SEX_T","ECO_SECTOR_TOTAL","2025",33.53
+  source_license: unstated
+  content_sha256: 0b4dfa9f5fe895957a9e756075296fe9fc6122b1667d455da2174cfe58ee409c
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator HOW_TEMP_SEX_ECO_NB_A (average weekly hours actually worked per
+    employed person by sex and economic activity), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=HOW_TEMP_SEX_ECO_NB_A&timefrom=2024&format=.csv
+  accessed_at: '2026-10-31'
+  locator: ref_area=MEX, sex=SEX_T, classif1=ECO_SECTOR_TOTAL, time=2025, obs_value
+  value: '42.09'
+  unit: decimal
+  snippet: MEX","BA:463","HOW_TEMP_SEX_ECO_NB","SEX_T","ECO_SECTOR_TOTAL","2025",42.09
+  source_license: unstated
+  content_sha256: 0b4dfa9f5fe895957a9e756075296fe9fc6122b1667d455da2174cfe58ee409c
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 105
+  tolerance: 0
+- statistic: value[DEU,weekly_hours_all]
+  expected: 33.53
+  tolerance: 1.0e-09
+- statistic: max[weekly_hours_all]
+  expected: 50.54
+  tolerance: 1.0e-09
+- statistic: value[MEX,weekly_hours_women]
+  expected: 37.95
+  tolerance: 1.0e-09
+notes: Average weekly hours actually worked per employed person for 105 economies from ILOSTAT indicator HOW_TEMP_SEX_ECO_NB
+  (by sex and economic activity), for all persons, men, women and the agriculture, industry and services broad sectors
+  where published, each row at the latest year the economy reports since 2024. Rows are keyed by ISO 3166-1 alpha-3
+  code. The ILOSTAT terms-of-use page could not be fetched byte-stably in this session, so the licence is recorded
+  as unstated and the entry stays at license-review until a reviewer confirms the terms that apply to ILOSTAT data.

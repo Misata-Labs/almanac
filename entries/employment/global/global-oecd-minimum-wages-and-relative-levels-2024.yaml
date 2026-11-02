@@ -1,0 +1,378 @@
+id: global-oecd-minimum-wages-and-relative-levels-2024
+title: 'Statutory minimum wages by country, 2024: annual, monthly and hourly levels in national currency and ratio
+  to mean and median wages (OECD)'
+kind: rule
+domain: employment
+region: global
+status: license-review
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- minimum-wage
+- wages
+- pay
+- oecd
+- reference-table
+- by-country
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- personal-finance
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: OECD.ELS.SAE,DSD_EARNINGS@MIN2AVE,1.0
+    url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_EARNINGS@MIN2AVE,1.0/all?startPeriod=2024&format=csvfilewithlabels
+    period: '2024'
+    levels_dataflow: OECD.ELS.SAE,DSD_EARNINGS@MW_CURP,1.0
+    levels_url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_EARNINGS@MW_CURP,1.0/all?startPeriod=2024&format=csvfilewithlabels
+    rows:
+      AUS:
+        name: Australia
+        minimum_to_mean_wage_percent: 44.5496154987329
+        minimum_to_median_wage_percent: 53.8764705882353
+        minimum_wage_annual: 46766
+        currency: AUD
+        minimum_wage_monthly: null
+        minimum_wage_hourly: 23.67
+      BEL:
+        name: Belgium
+        minimum_to_mean_wage_percent: 43.0776749676577
+        minimum_to_median_wage_percent: 47.6226051533204
+        minimum_wage_annual: 24576.26
+        currency: EUR
+        minimum_wage_monthly: 2048
+        minimum_wage_hourly: null
+      BGR:
+        name: Bulgaria
+        minimum_to_mean_wage_percent: 37.6096241228932
+        minimum_to_median_wage_percent: 51.4136589076318
+        minimum_wage_annual: 5724.51
+        currency: EUR
+        minimum_wage_monthly: 477.04
+        minimum_wage_hourly: 34.24
+      CAN:
+        name: Canada
+        minimum_to_mean_wage_percent: 43.1637749341383
+        minimum_to_median_wage_percent: 49.907063197026
+        minimum_wage_annual: 33488
+        currency: CAD
+        minimum_wage_monthly: null
+        minimum_wage_hourly: 16.1
+      CHL:
+        name: Chile
+        minimum_to_mean_wage_percent: 44.8261081213955
+        minimum_to_median_wage_percent: 69.5380626734505
+        minimum_wage_annual: 5460000
+        currency: CLP
+        minimum_wage_monthly: 455000
+        minimum_wage_hourly: null
+      COL:
+        name: Colombia
+        minimum_to_mean_wage_percent: 56.9716121152167
+        minimum_to_median_wage_percent: 92.3076923076923
+        minimum_wage_annual: 18200000
+        currency: COP
+        minimum_wage_monthly: 1300000
+        minimum_wage_hourly: null
+      CRI:
+        name: Costa Rica
+        minimum_to_mean_wage_percent: 70.1717311091645
+        minimum_to_median_wage_percent: 87.1116235861407
+        minimum_wage_annual: 4661923.76
+        currency: CRC
+        minimum_wage_monthly: 358609.52
+        minimum_wage_hourly: null
+      CZE:
+        name: Czechia
+        minimum_to_mean_wage_percent: 38.621873467386
+        minimum_to_median_wage_percent: 45.2781371280724
+        minimum_wage_annual: 226800
+        currency: CZK
+        minimum_wage_monthly: 18900
+        minimum_wage_hourly: 112.5
+      DEU:
+        name: Germany
+        minimum_to_mean_wage_percent: 44.4568581882474
+        minimum_to_median_wage_percent: 50.1291334016893
+        minimum_wage_annual: 24648
+        currency: EUR
+        minimum_wage_monthly: 2054
+        minimum_wage_hourly: 12.41
+      ESP:
+        name: Spain
+        minimum_to_mean_wage_percent: 46.1661809699871
+        minimum_to_median_wage_percent: 55.2026937197825
+        minimum_wage_annual: 15876
+        currency: EUR
+        minimum_wage_monthly: 1323
+        minimum_wage_hourly: 8.28
+      EST:
+        name: Estonia
+        minimum_to_mean_wage_percent: 35.7462454734476
+        minimum_to_median_wage_percent: 41.8480050597442
+        minimum_wage_annual: 9840
+        currency: EUR
+        minimum_wage_monthly: 820
+        minimum_wage_hourly: 4.86
+      FRA:
+        name: France
+        minimum_to_mean_wage_percent: 50.4200708577537
+        minimum_to_median_wage_percent: 62.4800099592974
+        minimum_wage_annual: 21272.8
+        currency: EUR
+        minimum_wage_monthly: 1772.73
+        minimum_wage_hourly: 11.69
+      GBR:
+        name: United Kingdom
+        minimum_to_mean_wage_percent: 50.9576837416481
+        minimum_to_median_wage_percent: 61.1111111111111
+        minimum_wage_annual: 23265
+        currency: GBP
+        minimum_wage_monthly: null
+        minimum_wage_hourly: 11.19
+      GRC:
+        name: Greece
+        minimum_to_mean_wage_percent: 39.0885297058213
+        minimum_to_median_wage_percent: 48.7458189496007
+        minimum_wage_annual: 11444.97
+        currency: EUR
+        minimum_wage_monthly: 953.75
+        minimum_wage_hourly: null
+      HRV:
+        name: Croatia
+        minimum_to_mean_wage_percent: 44.6053180895043
+        minimum_to_median_wage_percent: 52.0184087243261
+        minimum_wage_annual: 10800
+        currency: EUR
+        minimum_wage_monthly: 840
+        minimum_wage_hourly: null
+      HUN:
+        name: Hungary
+        minimum_to_mean_wage_percent: 38.838119656093
+        minimum_to_median_wage_percent: 47.9599063811123
+        minimum_wage_annual: 3201600
+        currency: HUF
+        minimum_wage_monthly: 266800
+        minimum_wage_hourly: 1534
+      IRL:
+        name: Ireland
+        minimum_to_mean_wage_percent: 37.9117146882987
+        minimum_to_median_wage_percent: 50.1138942791167
+        minimum_wage_annual: 26416
+        currency: EUR
+        minimum_wage_monthly: null
+        minimum_wage_hourly: 12.7
+      ISR:
+        name: Israel
+        minimum_to_mean_wage_percent: 38.4736870416478
+        minimum_to_median_wage_percent: 49.2079599558909
+        minimum_wage_annual: 69632.43
+        currency: ILS
+        minimum_wage_monthly: 5802.7
+        minimum_wage_hourly: 31.71
+      JPN:
+        name: Japan
+        minimum_to_mean_wage_percent: 40.6732624775859
+        minimum_to_median_wage_percent: 46.7912462485877
+        minimum_wage_annual: 2111720
+        currency: JPY
+        minimum_wage_monthly: null
+        minimum_wage_hourly: 1015.25
+      KOR:
+        name: Korea
+        minimum_to_mean_wage_percent: 47.8520296371704
+        minimum_to_median_wage_percent: 60.5047040195049
+        minimum_wage_annual: 24728880
+        currency: KRW
+        minimum_wage_monthly: 2060740
+        minimum_wage_hourly: 9860
+      LTU:
+        name: Lithuania
+        minimum_to_mean_wage_percent: 40.4574909055989
+        minimum_to_median_wage_percent: 48.4118449167791
+        minimum_wage_annual: 11088
+        currency: EUR
+        minimum_wage_monthly: 924
+        minimum_wage_hourly: 5.65
+      LUX:
+        name: Luxembourg
+        minimum_to_mean_wage_percent: 45.1502286359384
+        minimum_to_median_wage_percent: 55.9343277853962
+        minimum_wage_annual: 30851.16
+        currency: EUR
+        minimum_wage_monthly: 2571
+        minimum_wage_hourly: 14.86
+      LVA:
+        name: Latvia
+        minimum_to_mean_wage_percent: 38.7769569312935
+        minimum_to_median_wage_percent: 45.7071408724646
+        minimum_wage_annual: 8400
+        currency: EUR
+        minimum_wage_monthly: 700
+        minimum_wage_hourly: null
+      MEX:
+        name: Mexico
+        minimum_to_mean_wage_percent: 59.1685019468925
+        minimum_to_median_wage_percent: 73.6963854577045
+        minimum_wage_annual: 64721.8
+        currency: MXN
+        minimum_wage_monthly: null
+        minimum_wage_hourly: null
+      NLD:
+        name: Netherlands
+        minimum_to_mean_wage_percent: 40.1049569119931
+        minimum_to_median_wage_percent: 47.6784149634452
+        minimum_wage_annual: 27242
+        currency: EUR
+        minimum_wage_monthly: 2102
+        minimum_wage_hourly: null
+      NZL:
+        name: New Zealand
+        minimum_to_mean_wage_percent: 55.3846153846154
+        minimum_to_median_wage_percent: 65.6784492588369
+        minimum_wage_annual: 47918
+        currency: NZD
+        minimum_wage_monthly: null
+        minimum_wage_hourly: 23.04
+      POL:
+        name: Poland
+        minimum_to_mean_wage_percent: 46.5785312719606
+        minimum_to_median_wage_percent: 58.3750756866847
+        minimum_wage_annual: 51252
+        currency: PLN
+        minimum_wage_monthly: 4271
+        minimum_wage_hourly: null
+      PRT:
+        name: Portugal
+        minimum_to_mean_wage_percent: 42.1203749578493
+        minimum_to_median_wage_percent: 58.1579989150619
+        minimum_wage_annual: 11480
+        currency: EUR
+        minimum_wage_monthly: 956.7
+        minimum_wage_hourly: null
+      ROU:
+        name: Romania
+        minimum_to_mean_wage_percent: 41.45571960826
+        minimum_to_median_wage_percent: 56.7458811261118
+        minimum_wage_annual: 42000
+        currency: RON
+        minimum_wage_monthly: 3500
+        minimum_wage_hourly: null
+      SVK:
+        name: Slovak Republic
+        minimum_to_mean_wage_percent: 42.471477571379
+        minimum_to_median_wage_percent: 50.3418885457437
+        minimum_wage_annual: 9000
+        currency: EUR
+        minimum_wage_monthly: 750
+        minimum_wage_hourly: 4.31
+      SVN:
+        name: Slovenia
+        minimum_to_mean_wage_percent: 50.8620017855069
+        minimum_to_median_wage_percent: 60.8290013408671
+        minimum_wage_annual: 15047
+        currency: EUR
+        minimum_wage_monthly: 1253.9
+        minimum_wage_hourly: null
+      TUR:
+        name: Türkiye
+        minimum_to_mean_wage_percent: 29.2577259400318
+        minimum_to_median_wage_percent: 51.2831740390591
+        minimum_wage_annual: 240030
+        currency: TRY
+        minimum_wage_monthly: 20002.5
+        minimum_wage_hourly: null
+      USA:
+        name: United States
+        minimum_to_mean_wage_percent: 17.6613885505481
+        minimum_to_median_wage_percent: 25.0172532781228
+        minimum_wage_annual: 15080
+        currency: USD
+        minimum_wage_monthly: null
+        minimum_wage_hourly: 7.25
+  vectors:
+  - input:
+      key: DEU
+      column: minimum_to_mean_wage_percent
+    expected: 44.4568581882474
+    origin: source
+  - input:
+      key: FRA
+      column: minimum_to_mean_wage_percent
+    expected: 50.4200708577537
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_EARNINGS@MIN2AVE,1.0 (minimum relative to average
+    wages of full-time workers), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_EARNINGS@MIN2AVE,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, AGGREGATION_OPERATION=MEAN, TIME_PERIOD=2024, OBS_VALUE
+  value: '44.4568581882474'
+  unit: percent
+  snippet: DEU,Germany,MR_WG_FT,Minimum relative to average wages of full-time workers,PT_WG_A_SAL_FT,Percentage
+    of average wage of full-time employees,_Z,Not applicable,_Z,Not applicable,MEAN,Mean,_Z,Not applicable,2024,,44.4568581882474
+  source_license: unstated
+  content_sha256: a60d6cf69c07244601882e9fb0844ede362e0568279f4bad6b533c1dade1a6e6
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_EARNINGS@MIN2AVE,1.0 (minimum relative to average
+    wages of full-time workers), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_EARNINGS@MIN2AVE,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, AGGREGATION_OPERATION=MEDIAN, TIME_PERIOD=2024, OBS_VALUE
+  value: '50.1291334016893'
+  unit: percent
+  snippet: DEU,Germany,MR_WG_FT,Minimum relative to average wages of full-time workers,PT_WG_A_SAL_FT,Percentage
+    of average wage of full-time employees,_Z,Not applicable,_Z,Not applicable,MEDIAN,Median,_Z,Not applicable,2024,,50.1291334016893
+  source_license: unstated
+  content_sha256: a60d6cf69c07244601882e9fb0844ede362e0568279f4bad6b533c1dade1a6e6
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_EARNINGS@MW_CURP,1.0 (minimum wages at current prices
+    in national currency units), CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_EARNINGS@MW_CURP,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=FRA, PAY_PERIOD=A, TIME_PERIOD=2024, OBS_VALUE
+  value: '21272.8'
+  unit: decimal
+  snippet: FRA,France,SM_WG,Statutory minimum wages,EUR,Euro,A,Annual,V,Current prices,_Z,Not applicable,_Z,Not
+    applicable,2024,,21272.8
+  source_license: unstated
+  content_sha256: b7236ddab0e60e22cf898e01f47f5539dcca3d79b288e0ac0e6a1261e288d0b6
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 33
+  tolerance: 0
+- statistic: value[DEU,minimum_to_mean_wage_percent]
+  expected: 44.4568581882474
+  tolerance: 1.0e-09
+- statistic: max[minimum_to_mean_wage_percent]
+  expected: 70.1717311091645
+  tolerance: 1.0e-09
+- statistic: value[FRA,minimum_to_mean_wage_percent]
+  expected: 50.4200708577537
+  tolerance: 1.0e-09
+- statistic: value[FRA,minimum_wage_annual]
+  expected: 21272.8
+  tolerance: 1.0e-09
+notes: Minimum wages relative to the mean and median wages of full-time workers (OECD dataflow MIN2AVE, percent)
+  joined with the statutory minimum wage at current prices in national currency (dataflow MW_CURP) per year, per
+  month and per hour where the OECD publishes that pay period. Rows are keyed by ISO 3166-1 alpha-3 code and carry
+  the OECD reference-area label; OECD, EU and G7 aggregates are left out. Values are the 2024 observations of the
+  dataflow. The OECD terms and conditions page could not be fetched byte-stably in this session, so the licence
+  is recorded as unstated and the entry stays at license-review until a reviewer confirms the terms that apply to
+  OECD data.

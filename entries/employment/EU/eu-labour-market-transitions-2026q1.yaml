@@ -1,0 +1,484 @@
+id: eu-labour-market-transitions-2026q1
+title: Quarterly labour market transitions between employment, unemployment and inactivity, 2026-Q1, all countries
+  reported by Eurostat
+kind: rule
+domain: employment
+region: EU
+status: verified
+tier: A
+valid_from: '2026-01-01'
+valid_to: '2026-03-31'
+tags:
+- labour-market-transitions
+- churn
+- unemployment
+- flows
+- eurostat
+- reference-table
+- by-country
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- workforce-planning
+- credit-risk
+- collections
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: lfsi_long_q
+    key: Q..NSA..T. (2026-Q1)
+    url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/lfsi_long_q/Q..NSA..T.?startPeriod=2026-Q1&endPeriod=2026-Q1&format=SDMX-CSV
+    rows:
+      AT:
+        name: Austria
+        employed_to_employed: 4283
+        employed_to_unemployed: 90
+        employed_to_inactive: 133
+        unemployed_to_employed: 72
+        unemployed_to_unemployed: 148
+        unemployed_to_inactive: 51
+        inactive_to_employed: 102
+        inactive_to_unemployed: 64
+        inactive_to_inactive: 1947
+      BA:
+        name: Bosnia and Herzegovina
+        employed_to_employed: 1228
+        employed_to_unemployed: 7
+        employed_to_inactive: null
+        unemployed_to_employed: null
+        unemployed_to_unemployed: 151
+        unemployed_to_inactive: null
+        inactive_to_employed: 2
+        inactive_to_unemployed: null
+        inactive_to_inactive: 1187
+      BE:
+        name: Belgium
+        employed_to_employed: 4928
+        employed_to_unemployed: 57
+        employed_to_inactive: 164
+        unemployed_to_employed: 72
+        unemployed_to_unemployed: 199
+        unemployed_to_inactive: 80
+        inactive_to_employed: 131
+        inactive_to_unemployed: 88
+        inactive_to_inactive: 3042
+      BG:
+        name: Bulgaria
+        employed_to_employed: 2876
+        employed_to_unemployed: 7
+        employed_to_inactive: 25
+        unemployed_to_employed: 9
+        unemployed_to_unemployed: 58
+        unemployed_to_inactive: 29
+        inactive_to_employed: 22
+        inactive_to_unemployed: 32
+        inactive_to_inactive: 1746
+      CH:
+        name: Switzerland
+        employed_to_employed: 4658
+        employed_to_unemployed: 60
+        employed_to_inactive: 149
+        unemployed_to_employed: 64
+        unemployed_to_unemployed: 154
+        unemployed_to_inactive: 38
+        inactive_to_employed: 106
+        inactive_to_unemployed: 52
+        inactive_to_inactive: 1486
+      CY:
+        name: Cyprus
+        employed_to_employed: 497
+        employed_to_unemployed: 3
+        employed_to_inactive: 7
+        unemployed_to_employed: 5
+        unemployed_to_unemployed: 15
+        unemployed_to_inactive: 2
+        inactive_to_employed: 5
+        inactive_to_unemployed: 4
+        inactive_to_inactive: 200
+      CZ:
+        name: Czechia
+        employed_to_employed: 5176
+        employed_to_unemployed: 29
+        employed_to_inactive: 40
+        unemployed_to_employed: 29
+        unemployed_to_unemployed: 104
+        unemployed_to_inactive: 25
+        inactive_to_employed: 50
+        inactive_to_unemployed: 38
+        inactive_to_inactive: 2401
+      DE:
+        name: Germany
+        employed_to_employed: 40875
+        employed_to_unemployed: 420
+        employed_to_inactive: 1434
+        unemployed_to_employed: 377
+        unemployed_to_unemployed: 868
+        unemployed_to_inactive: 412
+        inactive_to_employed: 917
+        inactive_to_unemployed: 451
+        inactive_to_inactive: 16704
+      DK:
+        name: Denmark
+        employed_to_employed: 2913
+        employed_to_unemployed: 85
+        employed_to_inactive: 67
+        unemployed_to_employed: 74
+        unemployed_to_unemployed: 95
+        unemployed_to_inactive: 39
+        inactive_to_employed: 74
+        inactive_to_unemployed: 63
+        inactive_to_inactive: 1040
+      EA21:
+        name: Euro area – 21 countries (from 2026)
+        employed_to_employed: 159165
+        employed_to_unemployed: 2303
+        employed_to_inactive: 3885
+        unemployed_to_employed: 2270
+        unemployed_to_unemployed: 5988
+        unemployed_to_inactive: 2678
+        inactive_to_employed: 2973
+        inactive_to_unemployed: 3230
+        inactive_to_inactive: 84520
+      EE:
+        name: Estonia
+        employed_to_employed: 663
+        employed_to_unemployed: 11
+        employed_to_inactive: 14
+        unemployed_to_employed: 10
+        unemployed_to_unemployed: 27
+        unemployed_to_inactive: 10
+        inactive_to_employed: 13
+        inactive_to_unemployed: 14
+        inactive_to_inactive: 246
+      EL:
+        name: Greece
+        employed_to_employed: 4221
+        employed_to_unemployed: 59
+        employed_to_inactive: 62
+        unemployed_to_employed: 16
+        unemployed_to_unemployed: 305
+        unemployed_to_inactive: 74
+        inactive_to_employed: 26
+        inactive_to_unemployed: 144
+        inactive_to_inactive: 2823
+      ES:
+        name: Spain
+        employed_to_employed: 21239
+        employed_to_unemployed: 624
+        employed_to_inactive: 585
+        unemployed_to_employed: 567
+        unemployed_to_unemployed: 1401
+        unemployed_to_inactive: 533
+        inactive_to_employed: 464
+        inactive_to_unemployed: 681
+        inactive_to_inactive: 12080
+      EU27_2020:
+        name: European Union - 27 countries (from 2020)
+        employed_to_employed: 201315
+        employed_to_unemployed: 2690
+        employed_to_inactive: 4485
+        unemployed_to_employed: 2655
+        unemployed_to_unemployed: 7365
+        unemployed_to_inactive: 3060
+        inactive_to_employed: 3438
+        inactive_to_unemployed: 3746
+        inactive_to_inactive: 107234
+      FI:
+        name: Finland
+        employed_to_employed: 2428
+        employed_to_unemployed: 53
+        employed_to_inactive: 97
+        unemployed_to_employed: 41
+        unemployed_to_unemployed: 181
+        unemployed_to_inactive: 55
+        inactive_to_employed: 67
+        inactive_to_unemployed: 73
+        inactive_to_inactive: 1157
+      FR:
+        name: France
+        employed_to_employed: 28115
+        employed_to_unemployed: 577
+        employed_to_inactive: 507
+        unemployed_to_employed: 678
+        unemployed_to_unemployed: 1450
+        unemployed_to_inactive: 447
+        inactive_to_employed: 521
+        inactive_to_unemployed: 613
+        inactive_to_inactive: 16321
+      HR:
+        name: Croatia
+        employed_to_employed: 1659
+        employed_to_unemployed: 16
+        employed_to_inactive: 23
+        unemployed_to_employed: 16
+        unemployed_to_unemployed: 62
+        unemployed_to_inactive: 11
+        inactive_to_employed: 27
+        inactive_to_unemployed: 21
+        inactive_to_inactive: 1118
+      HU:
+        name: Hungary
+        employed_to_employed: 4514
+        employed_to_unemployed: 48
+        employed_to_inactive: 81
+        unemployed_to_employed: 36
+        unemployed_to_unemployed: 135
+        unemployed_to_inactive: 42
+        inactive_to_employed: 77
+        inactive_to_unemployed: 43
+        inactive_to_inactive: 2147
+      IE:
+        name: Ireland
+        employed_to_employed: 2678
+        employed_to_unemployed: 35
+        employed_to_inactive: 99
+        unemployed_to_employed: 34
+        unemployed_to_unemployed: 64
+        unemployed_to_inactive: 30
+        inactive_to_employed: 59
+        inactive_to_unemployed: 43
+        inactive_to_inactive: 1075
+      IS:
+        name: Iceland
+        employed_to_employed: 209
+        employed_to_unemployed: 5
+        employed_to_inactive: 7
+        unemployed_to_employed: null
+        unemployed_to_unemployed: 7
+        unemployed_to_inactive: null
+        inactive_to_employed: 6
+        inactive_to_unemployed: 4
+        inactive_to_inactive: 48
+      IT:
+        name: Italy
+        employed_to_employed: 23683
+        employed_to_unemployed: 78
+        employed_to_inactive: 255
+        unemployed_to_employed: 94
+        unemployed_to_unemployed: 573
+        unemployed_to_inactive: 736
+        inactive_to_employed: 286
+        inactive_to_unemployed: 713
+        inactive_to_inactive: 17697
+      LT:
+        name: Lithuania
+        employed_to_employed: 1393
+        employed_to_unemployed: 30
+        employed_to_inactive: 30
+        unemployed_to_employed: 37
+        unemployed_to_unemployed: 54
+        unemployed_to_inactive: 16
+        inactive_to_employed: 25
+        inactive_to_unemployed: 33
+        inactive_to_inactive: 595
+      LU:
+        name: Luxembourg
+        employed_to_employed: 308
+        employed_to_unemployed: 4
+        employed_to_inactive: 9
+        unemployed_to_employed: 8
+        unemployed_to_unemployed: 13
+        unemployed_to_inactive: 4
+        inactive_to_employed: 12
+        inactive_to_unemployed: 8
+        inactive_to_inactive: 164
+      LV:
+        name: Latvia
+        employed_to_employed: 836
+        employed_to_unemployed: 7
+        employed_to_inactive: 40
+        unemployed_to_employed: 13
+        unemployed_to_unemployed: 30
+        unemployed_to_inactive: 21
+        inactive_to_employed: 22
+        inactive_to_unemployed: 30
+        inactive_to_inactive: 367
+      MK:
+        name: North Macedonia
+        employed_to_employed: 691
+        employed_to_unemployed: 7
+        employed_to_inactive: 10
+        unemployed_to_employed: 7
+        unemployed_to_unemployed: 79
+        unemployed_to_inactive: 6
+        inactive_to_employed: 9
+        inactive_to_unemployed: 4
+        inactive_to_inactive: 579
+      NL:
+        name: Netherlands
+        employed_to_employed: 9523
+        employed_to_unemployed: 133
+        employed_to_inactive: 211
+        unemployed_to_employed: 133
+        unemployed_to_unemployed: 163
+        unemployed_to_inactive: 100
+        inactive_to_employed: 159
+        inactive_to_unemployed: 133
+        inactive_to_inactive: 2897
+      'NO':
+        name: Norway
+        employed_to_employed: 2783
+        employed_to_unemployed: 29
+        employed_to_inactive: 90
+        unemployed_to_employed: 33
+        unemployed_to_unemployed: 66
+        unemployed_to_inactive: 29
+        inactive_to_employed: 70
+        inactive_to_unemployed: 52
+        inactive_to_inactive: 1033
+      PL:
+        name: Poland
+        employed_to_employed: 16991
+        employed_to_unemployed: 93
+        employed_to_inactive: 207
+        unemployed_to_employed: 80
+        unemployed_to_unemployed: 358
+        unemployed_to_inactive: 128
+        inactive_to_employed: 103
+        inactive_to_unemployed: 128
+        inactive_to_inactive: 9414
+      PT:
+        name: Portugal
+        employed_to_employed: 5118
+        employed_to_unemployed: 74
+        employed_to_inactive: 115
+        unemployed_to_employed: 73
+        unemployed_to_unemployed: 199
+        unemployed_to_inactive: 54
+        inactive_to_employed: 77
+        inactive_to_unemployed: 74
+        inactive_to_inactive: 2379
+      RO:
+        name: Romania
+        employed_to_employed: 7506
+        employed_to_unemployed: 52
+        employed_to_inactive: 89
+        unemployed_to_employed: 62
+        unemployed_to_unemployed: 386
+        unemployed_to_inactive: 66
+        inactive_to_employed: 89
+        inactive_to_unemployed: 99
+        inactive_to_inactive: 6019
+      RS:
+        name: Serbia
+        employed_to_employed: 2689
+        employed_to_unemployed: 42
+        employed_to_inactive: 78
+        unemployed_to_employed: 47
+        unemployed_to_unemployed: 137
+        unemployed_to_inactive: 93
+        inactive_to_employed: 74
+        inactive_to_unemployed: 98
+        inactive_to_inactive: 1720
+      SE:
+        name: Sweden
+        employed_to_employed: 5049
+        employed_to_unemployed: 81
+        employed_to_inactive: 117
+        unemployed_to_employed: 105
+        unemployed_to_unemployed: 299
+        unemployed_to_inactive: 81
+        inactive_to_employed: 70
+        inactive_to_unemployed: 144
+        inactive_to_inactive: 1693
+      SI:
+        name: Slovenia
+        employed_to_employed: 942
+        employed_to_unemployed: 10
+        employed_to_inactive: 41
+        unemployed_to_employed: 9
+        unemployed_to_unemployed: 24
+        unemployed_to_inactive: 9
+        inactive_to_employed: 33
+        inactive_to_unemployed: 9
+        inactive_to_inactive: 499
+      SK:
+        name: Slovakia
+        employed_to_employed: 2573
+        employed_to_unemployed: 15
+        employed_to_inactive: 33
+        unemployed_to_employed: 4
+        unemployed_to_unemployed: 146
+        unemployed_to_inactive: null
+        inactive_to_employed: 1
+        inactive_to_unemployed: null
+        inactive_to_inactive: 1346
+      TR:
+        name: Türkiye
+        employed_to_employed: 29072
+        employed_to_unemployed: 946
+        employed_to_inactive: 2475
+        unemployed_to_employed: 747
+        unemployed_to_unemployed: 1106
+        unemployed_to_inactive: 1064
+        inactive_to_employed: 1514
+        inactive_to_unemployed: 905
+        inactive_to_inactive: 25393
+  vectors:
+  - input:
+      key: DE
+      column: employed_to_unemployed
+    expected: 420
+    origin: source
+  - input:
+      key: ES
+      column: employed_to_unemployed
+    expected: 624
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow lfsi_long_q (labour market transitions, quarterly data), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/lfsi_long_q/Q..NSA..T.?startPeriod=2026-Q1&endPeriod=2026-Q1&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=DE, unit=PC_EMP, s_adj=NSA, wstatus=EMP_UNE, sex=T, TIME_PERIOD=2026-Q1, OBS_VALUE
+  value: '1.0'
+  unit: percent
+  snippet: Q(1.0
+  source_license: CC-BY-4.0
+  content_sha256: 47946f43d5f0ec9527dcfa1ea46bfcbf339aa71a3a55c175d4f247f4caa59933
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow lfsi_long_q (labour market transitions, quarterly data), SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/lfsi_long_q/Q..NSA..T.?startPeriod=2026-Q1&endPeriod=2026-Q1&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: geo=ES, unit=PC_UNE, s_adj=NSA, wstatus=UNE_EMP, sex=T, TIME_PERIOD=2026-Q1, OBS_VALUE
+  value: '0.0'
+  unit: percent
+  snippet: Q(1.0),10/09/26 23:00:00,Q,PC_EMP,NSA,UNE_EMP,T,ES,2026-Q1,0.0
+  source_license: CC-BY-4.0
+  content_sha256: 47946f43d5f0ec9527dcfa1ea46bfcbf339aa71a3a55c175d4f247f4caa59933
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 35
+  tolerance: 0
+- statistic: value[DE,employed_to_unemployed]
+  expected: 420
+  tolerance: 1.0e-09
+- statistic: max[employed_to_unemployed]
+  expected: 2690
+  tolerance: 1.0e-09
+- statistic: value[ES,employed_to_unemployed]
+  expected: 624
+  tolerance: 1.0e-09
+- statistic: value[ES,unemployed_to_employed]
+  expected: 567
+  tolerance: 1.0e-09
+notes: Share of people in each labour status in the previous quarter who were employed, unemployed or inactive in
+  2026-Q1, both sexes, not seasonally adjusted, from Eurostat dataflow lfsi_long_q. The three columns starting from
+  a status are percentages of the people who held that status a quarter earlier (units PC_EMP, PC_UNE and PC_INAC
+  respectively), so each triple sums to about one hundred; employed_to_unemployed and employed_to_inactive together
+  give a quarterly job-separation probability for a synthetic workforce. Rows are keyed by the Eurostat geo code
+  and carry the English name from the GEO codelist. Eurostat's copyright notice states that its data are released
+  under the Creative Commons Attribution 4.0 International licence; the notice page renders dynamically and is referenced
+  rather than hashed.

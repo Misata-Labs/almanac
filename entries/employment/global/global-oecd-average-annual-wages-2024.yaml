@@ -1,0 +1,295 @@
+id: global-oecd-average-annual-wages-2024
+title: 'Average annual wages by country, 2024: constant-price USD PPP and current-price national currency (OECD)'
+kind: rule
+domain: employment
+region: global
+status: license-review
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- wages
+- pay
+- earnings
+- average-wage
+- oecd
+- reference-table
+- by-country
+use_cases:
+- payroll-demo
+- hr-demo
+- workforce-planning-demo
+- synthetic-employees
+- hr-analytics
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: OECD.ELS.SAE,DSD_EARNINGS@AV_AN_WAGE,1.0
+    url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_EARNINGS@AV_AN_WAGE,1.0/all?startPeriod=2024&format=csvfilewithlabels
+    period: '2024'
+    rows:
+      AUS:
+        name: Australia
+        usd_ppp_constant_prices: 71238.235
+        national_currency_current_prices: 101160.92
+        currency: AUD
+      AUT:
+        name: Austria
+        usd_ppp_constant_prices: 77703.016
+        national_currency_current_prices: 56745.367
+        currency: EUR
+      BEL:
+        name: Belgium
+        usd_ppp_constant_prices: 78614.158
+        national_currency_current_prices: 59327.036
+        currency: EUR
+      BGR:
+        name: Bulgaria
+        usd_ppp_constant_prices: null
+        national_currency_current_prices: 28138.92
+        currency: BGN
+      CAN:
+        name: Canada
+        usd_ppp_constant_prices: 67767.556
+        national_currency_current_prices: 83486.039
+        currency: CAD
+      CHE:
+        name: Switzerland
+        usd_ppp_constant_prices: 92160.548
+        national_currency_current_prices: 97726.92
+        currency: CHF
+      COL:
+        name: Colombia
+        usd_ppp_constant_prices: 30133.361
+        national_currency_current_prices: 47790272
+        currency: COP
+      CRI:
+        name: Costa Rica
+        usd_ppp_constant_prices: 44430.678
+        national_currency_current_prices: null
+        currency: null
+      CZE:
+        name: Czechia
+        usd_ppp_constant_prices: 41953.664
+        national_currency_current_prices: 597223.46
+        currency: CZK
+      DEU:
+        name: Germany
+        usd_ppp_constant_prices: 74854.088
+        national_currency_current_prices: 52476.531
+        currency: EUR
+      DNK:
+        name: Denmark
+        usd_ppp_constant_prices: 77882.527
+        national_currency_current_prices: 526247.26
+        currency: DKK
+      ESP:
+        name: Spain
+        usd_ppp_constant_prices: 57082.887
+        national_currency_current_prices: 33767.131
+        currency: EUR
+      EST:
+        name: Estonia
+        usd_ppp_constant_prices: 40458.375
+        national_currency_current_prices: 26381.359
+        currency: EUR
+      FIN:
+        name: Finland
+        usd_ppp_constant_prices: 62393.061
+        national_currency_current_prices: 49471.847
+        currency: EUR
+      FRA:
+        name: France
+        usd_ppp_constant_prices: 59864.791
+        national_currency_current_prices: 43559.379
+        currency: EUR
+      GBR:
+        name: United Kingdom
+        usd_ppp_constant_prices: 65842.034
+        national_currency_current_prices: 44649.849
+        currency: GBP
+      GRC:
+        name: Greece
+        usd_ppp_constant_prices: 32502.756
+        national_currency_current_prices: 18225.537
+        currency: EUR
+      HRV:
+        name: Croatia
+        usd_ppp_constant_prices: null
+        national_currency_current_prices: 22879.727
+        currency: EUR
+      HUN:
+        name: Hungary
+        usd_ppp_constant_prices: 37852.184
+        national_currency_current_prices: 7326363.9
+        currency: HUF
+      IRL:
+        name: Ireland
+        usd_ppp_constant_prices: 68849.165
+        national_currency_current_prices: 61306.354
+        currency: EUR
+      ISL:
+        name: Iceland
+        usd_ppp_constant_prices: 79051.4322285775
+        national_currency_current_prices: 12558957.0599022
+        currency: ISK
+      ISR:
+        name: Israel
+        usd_ppp_constant_prices: 57134.889
+        national_currency_current_prices: 203990.33
+        currency: ILS
+      ITA:
+        name: Italy
+        usd_ppp_constant_prices: 53243.036
+        national_currency_current_prices: 33842.465
+        currency: EUR
+      JPN:
+        name: Japan
+        usd_ppp_constant_prices: 50421.41
+        national_currency_current_prices: 5062497.1
+        currency: JPY
+      KOR:
+        name: Korea
+        usd_ppp_constant_prices: 60908.807
+        national_currency_current_prices: 52642946
+        currency: KRW
+      LTU:
+        name: Lithuania
+        usd_ppp_constant_prices: 54865.033
+        national_currency_current_prices: 29130.508
+        currency: EUR
+      LUX:
+        name: Luxembourg
+        usd_ppp_constant_prices: 97462.05
+        national_currency_current_prices: 83294.011
+        currency: EUR
+      LVA:
+        name: Latvia
+        usd_ppp_constant_prices: 43265.355
+        national_currency_current_prices: 23052.696
+        currency: EUR
+      MEX:
+        name: Mexico
+        usd_ppp_constant_prices: 24139.675
+        national_currency_current_prices: 264032.69
+        currency: MXN
+      NLD:
+        name: Netherlands
+        usd_ppp_constant_prices: 78682.989
+        national_currency_current_prices: 58922.444
+        currency: EUR
+      NOR:
+        name: Norway
+        usd_ppp_constant_prices: 72294.026
+        national_currency_current_prices: 700176.38
+        currency: NOK
+      NZL:
+        name: New Zealand
+        usd_ppp_constant_prices: 60468.692
+        national_currency_current_prices: 90093.826
+        currency: NZD
+      POL:
+        name: Poland
+        usd_ppp_constant_prices: 46916.197
+        national_currency_current_prices: 93227.563
+        currency: PLN
+      PRT:
+        name: Portugal
+        usd_ppp_constant_prices: 44144.449
+        national_currency_current_prices: 24748.542
+        currency: EUR
+      ROU:
+        name: Romania
+        usd_ppp_constant_prices: null
+        national_currency_current_prices: 98201.92
+        currency: RON
+      SVK:
+        name: Slovak Republic
+        usd_ppp_constant_prices: 37247.747
+        national_currency_current_prices: 20230.028
+        currency: EUR
+      SVN:
+        name: Slovenia
+        usd_ppp_constant_prices: 60079.148
+        national_currency_current_prices: 35006.009
+        currency: EUR
+      SWE:
+        name: Sweden
+        usd_ppp_constant_prices: 60905.178
+        national_currency_current_prices: 527269.47
+        currency: SEK
+      TUR:
+        name: Türkiye
+        usd_ppp_constant_prices: 57274.919
+        national_currency_current_prices: 742960.89
+        currency: TRY
+      USA:
+        name: United States
+        usd_ppp_constant_prices: 85546.027
+        national_currency_current_prices: 83354.601
+        currency: USD
+  vectors:
+  - input:
+      key: DEU
+      column: usd_ppp_constant_prices
+    expected: 74854.088
+    origin: source
+  - input:
+      key: FRA
+      column: usd_ppp_constant_prices
+    expected: 59864.791
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_EARNINGS@AV_AN_WAGE,1.0 (average annual wages),
+    CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_EARNINGS@AV_AN_WAGE,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, UNIT_MEASURE=USD_PPP, PRICE_BASE=Q, TIME_PERIOD=2024, OBS_VALUE
+  value: '74854.088'
+  unit: currency:USD
+  snippet: DEU,Germany,WG,Wages,USD_PPP,"US dollars, PPP converted",A,Annual,Q,Constant prices,MEAN,Mean,_Z,Not
+    applicable,2024,,74854.088
+  source_license: unstated
+  content_sha256: 2cf62a8c73cb506d556dbb47656998e0afda4d54134ee286cc84e0d3e7025bb0
+  role: primary
+- publisher: Organisation for Economic Co-operation and Development
+  title: OECD Data Explorer SDMX API, dataflow OECD.ELS.SAE,DSD_EARNINGS@AV_AN_WAGE,1.0 (average annual wages),
+    CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_EARNINGS@AV_AN_WAGE,1.0/all?startPeriod=2024&format=csvfilewithlabels
+  accessed_at: '2026-10-31'
+  locator: REF_AREA=DEU, PRICE_BASE=V, TIME_PERIOD=2024, OBS_VALUE
+  value: '52476.531'
+  unit: decimal
+  snippet: DEU,Germany,WG,Wages,EUR,Euro,A,Annual,V,Current prices,MEAN,Mean,_Z,Not applicable,2024,,52476.531
+  source_license: unstated
+  content_sha256: 2cf62a8c73cb506d556dbb47656998e0afda4d54134ee286cc84e0d3e7025bb0
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 40
+  tolerance: 0
+- statistic: value[DEU,usd_ppp_constant_prices]
+  expected: 74854.088
+  tolerance: 1.0e-09
+- statistic: max[usd_ppp_constant_prices]
+  expected: 97462.05
+  tolerance: 1.0e-09
+- statistic: value[FRA,usd_ppp_constant_prices]
+  expected: 59864.791
+  tolerance: 1.0e-09
+notes: 'Average annual wages per full-time equivalent employee from the OECD earnings dataflow AV_AN_WAGE: the constant-price
+  series converted at purchasing power parities (US dollars, PPP converted, constant prices) and the current-price
+  series in national currency units. The currency column names the national currency the second column is expressed
+  in. Rows are keyed by ISO 3166-1 alpha-3 code and carry the OECD reference-area label; OECD, EU and G7 aggregates
+  are left out. Values are the 2024 observations of the dataflow. The OECD terms and conditions page could not be
+  fetched byte-stably in this session, so the licence is recorded as unstated and the entry stays at license-review
+  until a reviewer confirms the terms that apply to OECD data.'
