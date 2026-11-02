@@ -1,0 +1,165 @@
+id: us-hmda-loan-applications-by-loan-purpose-2024
+title: HMDA 2024 loan and application records by loan purpose, with loan-amount sums and means
+kind: marginal
+domain: consumer-credit
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+tags:
+- lending
+- mortgage
+- hmda
+- loan-sizes
+- by-loan-purpose
+use_cases:
+- lending-demo
+- mortgage-origination
+- loan-pricing
+- credit-risk
+spec:
+  variable: loan_purpose
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        1 Home purchase: 0.536569
+        2 Home improvement: 0.098342
+        31 Refinancing: 0.107707
+        32 Cash-out refinancing: 0.141691
+        4 Other purpose: 0.114029
+        5 Not applicable: 0.001663
+      counts:
+        1 Home purchase: 6577902
+        2 Home improvement: 1205589
+        31 Refinancing: 1320403
+        32 Cash-out refinancing: 1737013
+        4 Other purpose: 1397909
+        5 Not applicable: 20383
+      total: 12259199
+      loan_amount_sum_usd:
+        1 Home purchase: 2473075680000.0
+        2 Home improvement: 143876845000.0
+        31 Refinancing: 563085075000.0
+        32 Cash-out refinancing: 499699905000.0
+        4 Other purpose: 177258625000.0
+        5 Not applicable: 8436395000.0
+      mean_loan_amount_usd:
+        1 Home purchase: 375967.24
+        2 Home improvement: 119341.54
+        31 Refinancing: 426449.41
+        32 Cash-out refinancing: 287677.7
+        4 Other purpose: 126802.69
+        5 Not applicable: 413893.69
+      labels:
+        '1': Home purchase
+        '2': Home improvement
+        '31': Refinancing
+        '32': Cash-out refinancing
+        '4': Other purpose
+        '5': Not applicable
+evidence:
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, loan_purposes=1
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&loan_purposes=1
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 6577902
+  unit: count
+  snippet: '{"count":6577902,"sum":2.47307568E12,"loan_purposes":"1"}'
+  source_license: unstated
+  content_sha256: 0f6088dec70b6457890e8bf413a41eec30df36827b311d43898cd42413ebcd49
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, loan_purposes=2
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&loan_purposes=2
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 1205589
+  unit: count
+  snippet: '{"count":1205589,"sum":1.43876845E11,"loan_purposes":"2"}'
+  source_license: unstated
+  content_sha256: 55d27610037daabe0f68fbad2e246a101269fe1e9ae470fe6a02605e1a847648
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, loan_purposes=31
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&loan_purposes=31
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 1320403
+  unit: count
+  snippet: '{"count":1320403,"sum":5.63085075E11,"loan_purposes":"31"}'
+  source_license: unstated
+  content_sha256: 81c011f86ba986dfb2ac082063c0a9c0011d1623b810ef79cd7779a76bbfc873
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, loan_purposes=32
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&loan_purposes=32
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 1737013
+  unit: count
+  snippet: '{"count":1737013,"sum":4.99699905E11,"loan_purposes":"32"}'
+  source_license: unstated
+  content_sha256: 3ddcdfcbbec94352c4853f41013658bdc758d61a8bd1bfe96f71cbf5c2e6c8a3
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, loan_purposes=4
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&loan_purposes=4
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 1397909
+  unit: count
+  snippet: '{"count":1397909,"sum":1.77258625E11,"loan_purposes":"4"}'
+  source_license: unstated
+  content_sha256: 7ac0491f60b72fcfcbfd4c29352c0043fac2cbb1d59673c72eb93a4901f0db2e
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, loan_purposes=5
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&loan_purposes=5
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 20383
+  unit: count
+  snippet: '{"count":20383,"sum":8.436395E9,"loan_purposes":"5"}'
+  source_license: unstated
+  content_sha256: 814b5493b1ba0d85f330a1e3d879dbff690d4319311cb6777a293c3b11ff5c29
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA Filing Instructions Guide for data collected in 2024
+  url: https://ffiec.cfpb.gov/documentation/fig/2024/overview
+  accessed_at: '2026-10-31'
+  locator: Data specifications, Loan Purpose, code list
+  value: Home purchase
+  unit: text
+  snippet: Code 1—Home purchase
+  source_license: unstated
+  content_sha256: 0e443022aec1f7a8e701238b4b49383b9280a896dc677c87ff5ea3e1f9316072
+  role: supporting
+assumed:
+- parameter: shares
+  value: counts / total
+  method: derived
+  rationale: Shares are the published counts divided by their sum over the listed categories.
+- parameter: mean_loan_amount_usd
+  value: loan_amount_sum_usd / counts
+  method: derived
+  rationale: The API returns count and sum; the mean is their quotient.
+tests:
+- statistic: share["1 Home purchase"]
+  expected: 0.536569
+  tolerance: 0.003
+- statistic: share["5 Not applicable"]
+  expected: 0.001663
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: 'Loan/application register records reported under HMDA for 2024, nationwide, by loan purpose: one data browser
+  aggregation query per code, giving the record count and the sum of the loan amount field in dollars. Category
+  labels are ''<code> <description>'' with descriptions from the 2024 Filing Instructions Guide. mean_loan_amount_usd
+  is the sum divided by the count. The publisher is a US federal body and the resource carries no licence statement,
+  so the licence is recorded as unstated and the entry held at license-review.'

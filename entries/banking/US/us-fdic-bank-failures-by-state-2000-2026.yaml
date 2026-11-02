@@ -1,0 +1,176 @@
+id: us-fdic-bank-failures-by-state-2000-2026
+title: FDIC-insured institution failures by state, 2000 to 2026 (46 states)
+kind: marginal
+domain: banking
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2000-01-01'
+  end: '2026-10-31'
+tags:
+- banking
+- fdic
+- bank-failures
+- failure-events
+- by-state
+use_cases:
+- banking-demo
+- credit-risk
+- company-generation
+- event-timestamps
+- address-generation
+spec:
+  variable: state
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        GA: 0.159933
+        FL: 0.127946
+        IL: 0.119529
+        CA: 0.077441
+        MN: 0.040404
+        WA: 0.031987
+        AZ: 0.026936
+        MO: 0.026936
+        MI: 0.023569
+        TX: 0.023569
+        KS: 0.021886
+        NV: 0.021886
+        PA: 0.018519
+        WI: 0.018519
+        CO: 0.016835
+        MD: 0.016835
+        SC: 0.016835
+        OH: 0.015152
+        UT: 0.015152
+        NC: 0.013468
+        NJ: 0.013468
+        OK: 0.013468
+        AL: 0.011785
+        NY: 0.011785
+        OR: 0.011785
+        TN: 0.011785
+        VA: 0.010101
+        AR: 0.006734
+        IA: 0.006734
+        IN: 0.006734
+        LA: 0.006734
+        NE: 0.006734
+        PR: 0.006734
+        KY: 0.005051
+        MS: 0.005051
+        NM: 0.005051
+        SD: 0.005051
+        CT: 0.003367
+        DE: 0.003367
+        ID: 0.003367
+        WV: 0.003367
+        HI: 0.001684
+        MA: 0.001684
+        NH: 0.001684
+        RI: 0.001684
+        WY: 0.001684
+      counts:
+        GA: 95
+        FL: 76
+        IL: 71
+        CA: 46
+        MN: 24
+        WA: 19
+        AZ: 16
+        MO: 16
+        MI: 14
+        TX: 14
+        KS: 13
+        NV: 13
+        PA: 11
+        WI: 11
+        CO: 10
+        MD: 10
+        SC: 10
+        OH: 9
+        UT: 9
+        NC: 8
+        NJ: 8
+        OK: 8
+        AL: 7
+        NY: 7
+        OR: 7
+        TN: 7
+        VA: 6
+        AR: 4
+        IA: 4
+        IN: 4
+        LA: 4
+        NE: 4
+        PR: 4
+        KY: 3
+        MS: 3
+        NM: 3
+        SD: 3
+        CT: 2
+        DE: 2
+        ID: 2
+        WV: 2
+        HI: 1
+        MA: 1
+        NH: 1
+        RI: 1
+        WY: 1
+      total: 594
+evidence:
+- publisher: FDIC
+  title: BankFind Suite failures API, count by PSTALP
+  url: https://api.fdic.gov/banks/failures?filters=FAILYR%3A%5B2000%20TO%202026%5D&fields=PSTALP&agg_by=PSTALP&agg_limit=100&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: data[PSTALP=GA].count
+  value: 95
+  unit: count
+  snippet: '"PSTALP":"GA","count":95'
+  source_license: unstated
+  content_sha256: 81f4ec03c54368a59ad5e5585d4d21f8848d38629f9470c3bfff17412ba16e44
+  role: primary
+- publisher: FDIC
+  title: BankFind Suite failures API, count by PSTALP
+  url: https://api.fdic.gov/banks/failures?filters=FAILYR%3A%5B2000%20TO%202026%5D&fields=PSTALP&agg_by=PSTALP&agg_limit=100&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: data[PSTALP=WY].count
+  value: 1
+  unit: count
+  snippet: '"PSTALP":"WY","count":1'
+  source_license: unstated
+  content_sha256: 81f4ec03c54368a59ad5e5585d4d21f8848d38629f9470c3bfff17412ba16e44
+  role: primary
+- publisher: FDIC
+  title: BankFind Suite failures API, count by PSTALP
+  url: https://api.fdic.gov/banks/failures?filters=FAILYR%3A%5B2000%20TO%202026%5D&fields=PSTALP&agg_by=PSTALP&agg_limit=100&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: totals.count
+  value: 594
+  unit: count
+  snippet: '"totals":{"count":594'
+  source_license: unstated
+  content_sha256: 81f4ec03c54368a59ad5e5585d4d21f8848d38629f9470c3bfff17412ba16e44
+  role: primary
+assumed:
+- parameter: shares
+  value: counts / total
+  method: derived
+  rationale: Shares are the published counts divided by their sum over the listed categories.
+tests:
+- statistic: share["GA"]
+  expected: 0.159933
+  tolerance: 0.003
+- statistic: share["WY"]
+  expected: 0.001684
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Failures and assistance transactions since 2000 by the state of the failed institution (the API's PSTALP
+  postal abbreviation), from the failures endpoint aggregated by PSTALP, ordered from most to fewest. The observed
+  period ends at the build date because 2026 failures to that date are included. The publisher is a US federal body
+  and the resource carries no licence statement, so the licence is recorded as unstated and the entry held at license-review.

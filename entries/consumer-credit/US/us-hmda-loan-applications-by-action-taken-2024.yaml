@@ -1,0 +1,197 @@
+id: us-hmda-loan-applications-by-action-taken-2024
+title: HMDA 2024 loan and application records by action taken, with loan-amount sums and means
+kind: marginal
+domain: consumer-credit
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+tags:
+- lending
+- mortgage
+- hmda
+- loan-sizes
+- by-action-taken
+use_cases:
+- lending-demo
+- mortgage-origination
+- loan-pricing
+- credit-risk
+spec:
+  variable: action_taken
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        1 Loan originated: 0.505505
+        2 Application approved but not accepted: 0.029466
+        3 Application denied: 0.171582
+        4 Application withdrawn by applicant: 0.125479
+        5 File closed for incompleteness: 0.04747
+        6 Purchased loan: 0.104126
+        7 Preapproval request denied: 0.003859
+        8 Preapproval request approved but not accepted: 0.012512
+      counts:
+        1 Loan originated: 6197085
+        2 Application approved but not accepted: 361232
+        3 Application denied: 2103462
+        4 Application withdrawn by applicant: 1538273
+        5 File closed for incompleteness: 581940
+        6 Purchased loan: 1276504
+        7 Preapproval request denied: 47312
+        8 Preapproval request approved but not accepted: 153391
+      total: 12259199
+      loan_amount_sum_usd:
+        1 Loan originated: 2041219935000.0
+        2 Application approved but not accepted: 95148540000.0
+        3 Application denied: 444673410000.0
+        4 Application withdrawn by applicant: 536222855000.0
+        5 File closed for incompleteness: 134570370000.0
+        6 Purchased loan: 535322110000.0
+        7 Preapproval request denied: 15168990000.0
+        8 Preapproval request approved but not accepted: 63106315000.0
+      mean_loan_amount_usd:
+        1 Loan originated: 329383.89
+        2 Application approved but not accepted: 263400.09
+        3 Application denied: 211400.73
+        4 Application withdrawn by applicant: 348587.58
+        5 File closed for incompleteness: 231244.41
+        6 Purchased loan: 419365.79
+        7 Preapproval request denied: 320616.12
+        8 Preapproval request approved but not accepted: 411408.2
+      labels:
+        '1': Loan originated
+        '2': Application approved but not accepted
+        '3': Application denied
+        '4': Application withdrawn by applicant
+        '5': File closed for incompleteness
+        '6': Purchased loan
+        '7': Preapproval request denied
+        '8': Preapproval request approved but not accepted
+evidence:
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, actions_taken=1
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&actions_taken=1
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 6197085
+  unit: count
+  snippet: '{"count":6197085,"sum":2.041219935E12,"actions_taken":"1"}'
+  source_license: unstated
+  content_sha256: 6f02108dd0c95b3b2c3629f0c071f1874580c8ff41f0516bbf6d1d5b09bf8fc0
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, actions_taken=2
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&actions_taken=2
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 361232
+  unit: count
+  snippet: '{"count":361232,"sum":9.514854E10,"actions_taken":"2"}'
+  source_license: unstated
+  content_sha256: 20ea5f1dc3eb60eef590a4929f0541f3df29a748a7762c5dc72668f1bbbe5fbb
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, actions_taken=3
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&actions_taken=3
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 2103462
+  unit: count
+  snippet: '{"count":2103462,"sum":4.4467341E11,"actions_taken":"3"}'
+  source_license: unstated
+  content_sha256: c5c8a5510fa1a4f50c63085b1ec64e38cc6e53dea3895aa1623764067bf54638
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, actions_taken=4
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&actions_taken=4
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 1538273
+  unit: count
+  snippet: '{"count":1538273,"sum":5.36222855E11,"actions_taken":"4"}'
+  source_license: unstated
+  content_sha256: 4bedd875b2b1b3c956d7edbfcb8de04f3f30bafb5a5a6d28f2496eaa60032e05
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, actions_taken=5
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&actions_taken=5
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 581940
+  unit: count
+  snippet: '{"count":581940,"sum":1.3457037E11,"actions_taken":"5"}'
+  source_license: unstated
+  content_sha256: 09181ffe38548d8d5c3da3c863276666b5c1f484b277526eb46aeb3305624d30
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, actions_taken=6
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&actions_taken=6
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 1276504
+  unit: count
+  snippet: '{"count":1276504,"sum":5.3532211E11,"actions_taken":"6"}'
+  source_license: unstated
+  content_sha256: 1fd6ab550aeb5e422f4a0f2469d49a91221be9bd23e0e459bb31459d8e4de7f2
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, actions_taken=7
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&actions_taken=7
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 47312
+  unit: count
+  snippet: '{"count":47312,"sum":1.516899E10,"actions_taken":"7"}'
+  source_license: unstated
+  content_sha256: ed8ebd8fd37da5d92cfd5b9792f2d496a5399fd6cdcc3151bff2564e063502d0
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, actions_taken=8
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&actions_taken=8
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 153391
+  unit: count
+  snippet: '{"count":153391,"sum":6.3106315E10,"actions_taken":"8"}'
+  source_license: unstated
+  content_sha256: b9112b3c46e8006570222104c88dddc461d0954dbf858ea6fe4d9875bfd13981
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA Filing Instructions Guide for data collected in 2024
+  url: https://ffiec.cfpb.gov/documentation/fig/2024/overview
+  accessed_at: '2026-10-31'
+  locator: Data specifications, Action Taken, code list
+  value: Loan originated
+  unit: text
+  snippet: Code 1—Loan originated
+  source_license: unstated
+  content_sha256: 0e443022aec1f7a8e701238b4b49383b9280a896dc677c87ff5ea3e1f9316072
+  role: supporting
+assumed:
+- parameter: shares
+  value: counts / total
+  method: derived
+  rationale: Shares are the published counts divided by their sum over the listed categories.
+- parameter: mean_loan_amount_usd
+  value: loan_amount_sum_usd / counts
+  method: derived
+  rationale: The API returns count and sum; the mean is their quotient.
+tests:
+- statistic: share["1 Loan originated"]
+  expected: 0.505505
+  tolerance: 0.003
+- statistic: share["7 Preapproval request denied"]
+  expected: 0.003859
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: 'Loan/application register records reported under HMDA for 2024, nationwide, by action taken: one data browser
+  aggregation query per code, giving the record count and the sum of the loan amount field in dollars. Category
+  labels are ''<code> <description>'' with descriptions from the 2024 Filing Instructions Guide. mean_loan_amount_usd
+  is the sum divided by the count. The publisher is a US federal body and the resource carries no licence statement,
+  so the licence is recorded as unstated and the entry held at license-review.'

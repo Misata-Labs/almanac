@@ -1,0 +1,362 @@
+id: us-scf-2025-before-tax-family-income-by-family-characteristic
+title: 'Survey of Consumer Finances 2025: median and mean before-tax family income, share that saved and share of
+  families, by characteristic'
+kind: rule
+domain: income
+region: US
+status: license-review
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- income
+- wealth
+- survey-of-consumer-finances
+- households
+- value-pool
+- family-income
+- by-income-percentile
+- by-age
+use_cases:
+- personal-finance
+- household-generation
+- customer-segmentation
+- lending-demo
+- financial-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: group/characteristic
+    survey_year: 2025
+    money_unit: thousands of US dollars, nominal
+    groups:
+    - age_of_reference_person_years
+    - current_occupation_of_reference_person
+    - current_work_status_of_reference_person
+    - education_of_reference_person
+    - family_structure
+    - housing_status
+    - percentile_of_income
+    - percentile_of_net_worth
+    - race_or_ethnicity_of_respondent
+    source_table: 1. Before-tax family income, percentage of families that saved, and distribution of families,
+      by selected characteristics of families, 2001–2025 surveys
+    rows:
+      all_families:
+        characteristic: All families
+        median_usd_thousands: 82.162
+        mean_usd_thousands: 144.63
+        percent_of_families_that_saved: 53.3995
+        percent_of_families: 100
+      percentile_of_income/less_than_20:
+        characteristic: Less than 20
+        median_usd_thousands: 22.595
+        mean_usd_thousands: 22.438
+        percent_of_families_that_saved: 30.5417
+        percent_of_families: 20
+      percentile_of_income/20_39_9:
+        characteristic: 20-39.9
+        median_usd_thousands: 49.297
+        mean_usd_thousands: 49.525
+        percent_of_families_that_saved: 41.7433
+        percent_of_families: 19.994
+      percentile_of_income/40_59_9:
+        characteristic: 40-59.9
+        median_usd_thousands: 82.162
+        mean_usd_thousands: 82.699
+        percent_of_families_that_saved: 51.3909
+        percent_of_families: 20.003
+      percentile_of_income/60_79_9:
+        characteristic: 60-79.9
+        median_usd_thousands: 130.432
+        mean_usd_thousands: 133.437
+        percent_of_families_that_saved: 65.5712
+        percent_of_families: 19.994
+      percentile_of_income/80_89_9:
+        characteristic: 80-89.9
+        median_usd_thousands: 204.378
+        mean_usd_thousands: 206.786
+        percent_of_families_that_saved: 73.7836
+        percent_of_families: 10.008
+      percentile_of_income/90_100:
+        characteristic: 90-100
+        median_usd_thousands: 400.541
+        mean_usd_thousands: 663.17
+        percent_of_families_that_saved: 81.6993
+        percent_of_families: 10.001
+      age_of_reference_person_years/less_than_35:
+        characteristic: Less than 35
+        median_usd_thousands: 67.784
+        mean_usd_thousands: 89.027
+        percent_of_families_that_saved: 57.0555
+        percent_of_families: 19.596
+      age_of_reference_person_years/35_44:
+        characteristic: 35-44
+        median_usd_thousands: 97.568
+        mean_usd_thousands: 139.367
+        percent_of_families_that_saved: 52.0588
+        percent_of_families: 17.322
+      age_of_reference_person_years/45_54:
+        characteristic: 45-54
+        median_usd_thousands: 108.865
+        mean_usd_thousands: 186.903
+        percent_of_families_that_saved: 50.5235
+        percent_of_families: 16.154
+      age_of_reference_person_years/55_64:
+        characteristic: 55-64
+        median_usd_thousands: 92.432
+        mean_usd_thousands: 196.35
+        percent_of_families_that_saved: 54.4237
+        percent_of_families: 17.201
+      age_of_reference_person_years/65_74:
+        characteristic: 65-74
+        median_usd_thousands: 69.838
+        mean_usd_thousands: 136.93
+        percent_of_families_that_saved: 52.1722
+        percent_of_families: 16.318
+      age_of_reference_person_years/75_or_more:
+        characteristic: 75 or more
+        median_usd_thousands: 66.757
+        mean_usd_thousands: 124.79
+        percent_of_families_that_saved: 53.4329
+        percent_of_families: 13.409
+      family_structure/single_with_child_ren:
+        characteristic: Single with child(ren)
+        median_usd_thousands: 49.297
+        mean_usd_thousands: 65.302
+        percent_of_families_that_saved: 38.2667
+        percent_of_families: 11.892
+      family_structure/single_no_child_age_less_than_55:
+        characteristic: Single, no child, age less than 55
+        median_usd_thousands: 51.351
+        mean_usd_thousands: 64.993
+        percent_of_families_that_saved: 51.5934
+        percent_of_families: 14.347
+      family_structure/single_no_child_age_55_or_more:
+        characteristic: Single, no child, age 55 or more
+        median_usd_thousands: 45.189
+        mean_usd_thousands: 71.788
+        percent_of_families_that_saved: 43.4471
+        percent_of_families: 18.337
+      family_structure/couple_with_child_ren:
+        characteristic: Couple with child(ren)
+        median_usd_thousands: 128.378
+        mean_usd_thousands: 210.689
+        percent_of_families_that_saved: 56.2601
+        percent_of_families: 27.072
+      family_structure/couple_no_child:
+        characteristic: Couple, no child
+        median_usd_thousands: 118.108
+        mean_usd_thousands: 202.237
+        percent_of_families_that_saved: 64.3662
+        percent_of_families: 28.352
+      education_of_reference_person/no_high_school_diploma:
+        characteristic: No high school diploma
+        median_usd_thousands: 35.946
+        mean_usd_thousands: 52.257
+        percent_of_families_that_saved: 31.6775
+        percent_of_families: 8.481
+      education_of_reference_person/high_school_diploma:
+        characteristic: High school diploma
+        median_usd_thousands: 60.595
+        mean_usd_thousands: 82.72
+        percent_of_families_that_saved: 45.5872
+        percent_of_families: 24.407
+      education_of_reference_person/some_college:
+        characteristic: Some college
+        median_usd_thousands: 69.838
+        mean_usd_thousands: 95.846
+        percent_of_families_that_saved: 48.6664
+        percent_of_families: 26.044
+      education_of_reference_person/college_degree:
+        characteristic: College degree
+        median_usd_thousands: 129.405
+        mean_usd_thousands: 231.438
+        percent_of_families_that_saved: 65.5299
+        percent_of_families: 41.068
+      race_or_ethnicity_of_respondent/white_non_hispanic:
+        characteristic: White non-Hispanic
+        median_usd_thousands: 95.514
+        mean_usd_thousands: 169.769
+        percent_of_families_that_saved: 57.9289
+        percent_of_families: 60.637
+      race_or_ethnicity_of_respondent/black_or_african_american_non_hispanic:
+        characteristic: Black or African-American non-hispanic
+        median_usd_thousands: 49.297
+        mean_usd_thousands: 73.554
+        percent_of_families_that_saved: 41.0756
+        percent_of_families: 13.86
+      race_or_ethnicity_of_respondent/hispanic_or_latino:
+        characteristic: Hispanic or Latino
+        median_usd_thousands: 66.757
+        mean_usd_thousands: 94.727
+        percent_of_families_that_saved: 44.4131
+        percent_of_families: 11.822
+      race_or_ethnicity_of_respondent/other_or_multiple_race:
+        characteristic: Other or Multiple Race
+        median_usd_thousands: 81.135
+        mean_usd_thousands: 148.339
+        percent_of_families_that_saved: 53.5747
+        percent_of_families: 13.68
+      current_work_status_of_reference_person/working_for_someone_else:
+        characteristic: Working for someone else
+        median_usd_thousands: 95.514
+        mean_usd_thousands: 141.01
+        percent_of_families_that_saved: 57.2046
+        percent_of_families: 54.901
+      current_work_status_of_reference_person/self_employed:
+        characteristic: Self-employed
+        median_usd_thousands: 93.459
+        mean_usd_thousands: 262.601
+        percent_of_families_that_saved: 54.1751
+        percent_of_families: 12.11
+      current_work_status_of_reference_person/retired:
+        characteristic: Retired
+        median_usd_thousands: 60.595
+        mean_usd_thousands: 111.15
+        percent_of_families_that_saved: 48.9686
+        percent_of_families: 28.004
+      current_work_status_of_reference_person/other_not_working:
+        characteristic: Other not working
+        median_usd_thousands: 43.135
+        mean_usd_thousands: 85.999
+        percent_of_families_that_saved: 34.5011
+        percent_of_families: 4.985
+      current_occupation_of_reference_person/managerial_or_professional:
+        characteristic: Managerial or professional
+        median_usd_thousands: 120.162
+        mean_usd_thousands: 220.637
+        percent_of_families_that_saved: 62.208
+        percent_of_families: 33.217
+      current_occupation_of_reference_person/technical_sales_or_services:
+        characteristic: Technical, sales, or services
+        median_usd_thousands: 77.027
+        mean_usd_thousands: 113.074
+        percent_of_families_that_saved: 52.3189
+        percent_of_families: 17.415
+      current_occupation_of_reference_person/other_occupation:
+        characteristic: Other occupation
+        median_usd_thousands: 81.135
+        mean_usd_thousands: 99.124
+        percent_of_families_that_saved: 50.0124
+        percent_of_families: 16.378
+      current_occupation_of_reference_person/retired_or_other_not_working:
+        characteristic: Retired or other not working
+        median_usd_thousands: 56.486
+        mean_usd_thousands: 107.349
+        percent_of_families_that_saved: 46.7822
+        percent_of_families: 32.989
+      housing_status/owner:
+        characteristic: Owner
+        median_usd_thousands: 108.865
+        mean_usd_thousands: 183.654
+        percent_of_families_that_saved: 58.2622
+        percent_of_families: 65.565
+      housing_status/renter_or_other:
+        characteristic: Renter or other
+        median_usd_thousands: 50.324
+        mean_usd_thousands: 70.328
+        percent_of_families_that_saved: 44.1409
+        percent_of_families: 34.435
+      percentile_of_net_worth/less_than_25:
+        characteristic: Less than 25
+        median_usd_thousands: 39.027
+        mean_usd_thousands: 49.184
+        percent_of_families_that_saved: 33.9867
+        percent_of_families: 24.998
+      percentile_of_net_worth/25_49_9:
+        characteristic: 25-49.9
+        median_usd_thousands: 67.784
+        mean_usd_thousands: 79.718
+        percent_of_families_that_saved: 48.364
+        percent_of_families: 24.999
+      percentile_of_net_worth/50_74_9:
+        characteristic: 50-74.9
+        median_usd_thousands: 99.622
+        mean_usd_thousands: 109.588
+        percent_of_families_that_saved: 56.8008
+        percent_of_families: 24.998
+      percentile_of_net_worth/75_89_9:
+        characteristic: 75-89.9
+        median_usd_thousands: 152
+        mean_usd_thousands: 184.258
+        percent_of_families_that_saved: 69.7403
+        percent_of_families: 15
+      percentile_of_net_worth/90_100:
+        characteristic: 90-100
+        median_usd_thousands: 309.135
+        mean_usd_thousands: 573.413
+        percent_of_families_that_saved: 81.4857
+        percent_of_families: 10.006
+  vectors:
+  - input:
+      key: all_families
+      column: median_usd_thousands
+    expected: 82.162
+    origin: source
+  - input:
+      key: age_of_reference_person_years/less_than_35
+      column: mean_usd_thousands
+    expected: 89.027
+    origin: source
+  - input: all_families
+    expected: true
+    origin: source
+  - input: age_of_reference_person_years/less_than_18
+    expected: false
+    origin: derived
+evidence:
+- publisher: Board of Governors of the Federal Reserve System
+  title: Survey of Consumer Finances 2025, historical tables workbook, sheet 'Table 1 01-25'
+  url: https://www.federalreserve.gov/econres/files/scf2025_tables_public_nominal_historical.xlsx
+  accessed_at: '2026-10-31'
+  locator: row All families, 2025 median_usd_thousands
+  value: '82.162000000000006'
+  unit: currency:USD
+  snippet: <v>82.162000000000006</v>
+  source_license: unstated
+  content_sha256: 56342033ff0db43701530122d3153d2f64b0f318e3c314262b15919e34478065
+  role: primary
+- publisher: Board of Governors of the Federal Reserve System
+  title: Survey of Consumer Finances 2025, historical tables workbook, sheet 'Table 1 01-25'
+  url: https://www.federalreserve.gov/econres/files/scf2025_tables_public_nominal_historical.xlsx
+  accessed_at: '2026-10-31'
+  locator: row Less than 35, 2025 mean
+  value: '89.027000000000001'
+  unit: currency:USD
+  snippet: <v>89.027000000000001</v>
+  source_license: unstated
+  content_sha256: 56342033ff0db43701530122d3153d2f64b0f318e3c314262b15919e34478065
+  role: primary
+- publisher: Board of Governors of the Federal Reserve System
+  title: Survey of Consumer Finances 2025, historical tables workbook, sheet 'Table 1 01-25'
+  url: https://www.federalreserve.gov/econres/files/scf2025_tables_public_nominal_historical.xlsx
+  accessed_at: '2026-10-31'
+  locator: table title cell
+  value: Thousands of dollars
+  unit: text
+  snippet: Thousands of dollars
+  source_license: unstated
+  content_sha256: 56342033ff0db43701530122d3153d2f64b0f318e3c314262b15919e34478065
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 41
+  tolerance: 0
+- statistic: max[median_usd_thousands]
+  expected: 400.541
+  tolerance: 0
+notes: Median and mean before-tax family income, the percentage of families that saved and the percentage of families
+  in each group for the 2025 survey by family characteristic, from the Federal Reserve's SCF historical tables workbook
+  (1. Before-tax family income, percentage of families that saved, and distribution of families, by selected characteristics
+  of families, 2001–2025 surveys). Rows are keyed 'group/characteristic' using the table's own group headings (age_of_reference_person_years,
+  current_occupation_of_reference_person, current_work_status_of_reference_person, education_of_reference_person,
+  family_structure, housing_status, percentile_of_income, percentile_of_net_worth, race_or_ethnicity_of_respondent);
+  'all_families' is the overall row. The Survey of Consumer Finances is a triennial household survey; figures are
+  nominal thousands of US dollars for the 2025 survey (income refers to the previous calendar year). The publisher
+  is a US federal body and the resource carries no licence statement, so the licence is recorded as unstated and
+  the entry held at license-review.

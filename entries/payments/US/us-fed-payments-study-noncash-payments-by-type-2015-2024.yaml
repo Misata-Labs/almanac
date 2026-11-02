@@ -1,0 +1,470 @@
+id: us-fed-payments-study-noncash-payments-by-type-2015-2024
+title: 'Federal Reserve Payments Study: noncash payments by type, number, value and average payment, 2015, 2018,
+  2021 and 2024'
+kind: rule
+domain: payments
+region: US
+status: license-review
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- payments
+- federal-reserve
+- payments-study
+- cards
+- ach
+- checks
+- value-pool
+use_cases:
+- payments-demo
+- fintech-demo
+- banking-demo
+- market-sizing
+- fraud-detection-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: payment type path
+    years:
+    - 2015
+    - 2018
+    - 2021
+    - 2024
+    units:
+      number: billions of payments
+      value: trillions of US dollars
+      average: US dollars per payment
+    rows:
+      total:
+        payment_type: Total
+        number_billions_2015: 142.416237
+        value_usd_trillions_2015: 83.992253
+        average_usd_2015: 589.766
+        number_billions_2018: 172.641472
+        value_usd_trillions_2018: 96.263913
+        average_usd_2018: 557.5944
+        number_billions_2021: 204.758726
+        value_usd_trillions_2021: 129.634241
+        average_usd_2021: 633.1073
+        number_billions_2024: 236.610506
+        value_usd_trillions_2024: 140.007842
+        average_usd_2024: 591.7228
+      cards:
+        payment_type: Cards
+        number_billions_2015: 101.538168
+        value_usd_trillions_2015: 5.520665
+        average_usd_2015: 54.3703
+        number_billions_2018: 131.164785
+        value_usd_trillions_2018: 7.074823
+        average_usd_2018: 53.9384
+        number_billions_2021: 157.679297
+        value_usd_trillions_2021: 9.430894
+        average_usd_2021: 59.8106
+        number_billions_2024: 187.715409
+        value_usd_trillions_2024: 11.498657
+        average_usd_2024: 61.2558
+      cards/debit:
+        payment_type: Debit cards
+        number_billions_2015: 67.846827
+        value_usd_trillions_2015: 2.468963
+        average_usd_2015: 36.3903
+        number_billions_2018: 86.576052
+        value_usd_trillions_2018: 3.102039
+        average_usd_2018: 35.8302
+        number_billions_2021: 106.72866
+        value_usd_trillions_2021: 4.559437
+        average_usd_2021: 42.7199
+        number_billions_2024: 120.56978
+        value_usd_trillions_2024: 4.991251
+        average_usd_2024: 41.3972
+      cards/debit/non_prepaid:
+        payment_type: Non-prepaid
+        number_billions_2015: 56.611157
+        value_usd_trillions_2015: 2.176473
+        average_usd_2015: 38.446
+        number_billions_2018: 72.657862
+        value_usd_trillions_2018: 2.749431
+        average_usd_2018: 37.8408
+        number_billions_2021: 87.805841
+        value_usd_trillions_2021: 3.937578
+        average_usd_2021: 44.8441
+        number_billions_2024: 99.284024
+        value_usd_trillions_2024: 4.341619
+        average_usd_2024: 43.7293
+      cards/debit/prepaid:
+        payment_type: Prepaid
+        number_billions_2015: 11.23567
+        value_usd_trillions_2015: 0.29249
+        average_usd_2015: 26.0323
+        number_billions_2018: 13.91819
+        value_usd_trillions_2018: 0.352607
+        average_usd_2018: 25.3343
+        number_billions_2021: 18.922818
+        value_usd_trillions_2021: 0.621859
+        average_usd_2021: 32.8629
+        number_billions_2024: 21.285757
+        value_usd_trillions_2024: 0.649632
+        average_usd_2024: 30.5196
+      cards/debit/prepaid/general_purpose:
+        payment_type: General purpose
+        number_billions_2015: 4.25466
+        value_usd_trillions_2015: 0.148095
+        average_usd_2015: 34.8078
+        number_billions_2018: 6.019215
+        value_usd_trillions_2018: 0.190381
+        average_usd_2018: 31.6289
+        number_billions_2021: 8.964178
+        value_usd_trillions_2021: 0.375408
+        average_usd_2021: 41.8787
+        number_billions_2024: 11.817812
+        value_usd_trillions_2024: 0.425652
+        average_usd_2024: 36.0178
+      cards/debit/prepaid/private_label:
+        payment_type: Private label
+        number_billions_2015: 4.368668
+        value_usd_trillions_2015: 0.069346
+        average_usd_2015: 15.8734
+        number_billions_2018: 5.567666
+        value_usd_trillions_2018: 0.100143
+        average_usd_2018: 17.9865
+        number_billions_2021: 5.198919
+        value_usd_trillions_2021: 0.082178
+        average_usd_2021: 15.8067
+        number_billions_2024: 6.734947
+        value_usd_trillions_2024: 0.113884
+        average_usd_2024: 16.9095
+      cards/debit/prepaid/ebt:
+        payment_type: Electronic benefits transfer (EBT)
+        number_billions_2015: 2.612341
+        value_usd_trillions_2015: 0.075049
+        average_usd_2015: 28.7288
+        number_billions_2018: 2.33131
+        value_usd_trillions_2018: 0.062084
+        average_usd_2018: 26.6304
+        number_billions_2021: 4.759721
+        value_usd_trillions_2021: 0.164273
+        average_usd_2021: 34.5132
+        number_billions_2024: 2.732997
+        value_usd_trillions_2024: 0.110096
+        average_usd_2024: 40.2838
+      cards/credit:
+        payment_type: Credit cards
+        number_billions_2015: 33.691341
+        value_usd_trillions_2015: 3.051702
+        average_usd_2015: 90.5782
+        number_billions_2018: 44.588733
+        value_usd_trillions_2018: 3.972785
+        average_usd_2018: 89.0984
+        number_billions_2021: 50.950637
+        value_usd_trillions_2021: 4.871457
+        average_usd_2021: 95.6113
+        number_billions_2024: 67.145629
+        value_usd_trillions_2024: 6.507406
+        average_usd_2024: 96.9148
+      cards/credit/general_purpose:
+        payment_type: General purpose
+        number_billions_2015: 31.017816
+        value_usd_trillions_2015: 2.803067
+        average_usd_2015: 90.3696
+        number_billions_2018: 40.923501
+        value_usd_trillions_2018: 3.643581
+        average_usd_2018: 89.034
+        number_billions_2021: 47.804199
+        value_usd_trillions_2021: 4.524911
+        average_usd_2021: 94.6551
+        number_billions_2024: 64.284525
+        value_usd_trillions_2024: 6.169783
+        average_usd_2024: 95.9762
+      cards/credit/private_label:
+        payment_type: Private label
+        number_billions_2015: 2.673525
+        value_usd_trillions_2015: 0.248635
+        average_usd_2015: 92.9991
+        number_billions_2018: 3.665232
+        value_usd_trillions_2018: 0.329204
+        average_usd_2018: 89.818
+        number_billions_2021: 3.146438
+        value_usd_trillions_2021: 0.346546
+        average_usd_2021: 110.1391
+        number_billions_2024: 2.861104
+        value_usd_trillions_2024: 0.337623
+        average_usd_2024: 118.0045
+      ach:
+        payment_type: Automated clearinghouse (ACH)
+        number_billions_2015: 23.884574
+        value_usd_trillions_2015: 52.418781
+        average_usd_2015: 2194.6709
+        number_billions_2018: 27.978574
+        value_usd_trillions_2018: 64.167
+        average_usd_2018: 2293.4335
+        number_billions_2021: 36.029471
+        value_usd_trillions_2021: 93.833757
+        average_usd_2021: 2604.3612
+        number_billions_2024: 39.681405
+        value_usd_trillions_2024: 104.060899
+        average_usd_2024: 2622.4097
+      ach/credit_transfers:
+        payment_type: Credit transfers
+        number_billions_2015: 10.181963
+        value_usd_trillions_2015: 33.133543
+        average_usd_2015: 3254.1409
+        number_billions_2018: 12.212601
+        value_usd_trillions_2018: 42.04131
+        average_usd_2018: 3442.4534
+        number_billions_2021: 16.948488
+        value_usd_trillions_2021: 62.557332
+        average_usd_2021: 3691.0273
+        number_billions_2024: 17.330596
+        value_usd_trillions_2024: 67.258596
+        average_usd_2024: 3880.9164
+      ach/debit_transfers:
+        payment_type: Debit transfers
+        number_billions_2015: 13.702611
+        value_usd_trillions_2015: 19.285238
+        average_usd_2015: 1407.4134
+        number_billions_2018: 15.765973
+        value_usd_trillions_2018: 22.12569
+        average_usd_2018: 1403.3825
+        number_billions_2021: 19.080983
+        value_usd_trillions_2021: 31.276426
+        average_usd_2021: 1639.1412
+        number_billions_2024: 22.350808
+        value_usd_trillions_2024: 36.802303
+        average_usd_2024: 1646.5759
+      ach/network:
+        payment_type: Network
+        number_billions_2015: 19.28534
+        value_usd_trillions_2015: 41.639462
+        average_usd_2015: 2159.1251
+        number_billions_2018: 22.943663
+        value_usd_trillions_2018: 51.252685
+        average_usd_2018: 2233.8492
+        number_billions_2021: 29.081129
+        value_usd_trillions_2021: 72.623272
+        average_usd_2021: 2497.2645
+        number_billions_2024: 33.531262
+        value_usd_trillions_2024: 86.181846
+        average_usd_2024: 2570.1939
+      ach/network/credit_transfers:
+        payment_type: Credit transfers
+        number_billions_2015: 8.034349
+        value_usd_trillions_2015: 26.776582
+        average_usd_2015: 3332.763
+        number_billions_2018: 9.516995
+        value_usd_trillions_2018: 33.419807
+        average_usd_2018: 3511.5925
+        number_billions_2021: 12.722989
+        value_usd_trillions_2021: 47.254861
+        average_usd_2021: 3714.1321
+        number_billions_2024: 14.72452
+        value_usd_trillions_2024: 56.847906
+        average_usd_2024: 3860.7647
+      ach/network/debit_transfers:
+        payment_type: Debit transfers
+        number_billions_2015: 11.250991
+        value_usd_trillions_2015: 14.862881
+        average_usd_2015: 1321.0286
+        number_billions_2018: 13.426669
+        value_usd_trillions_2018: 17.832879
+        average_usd_2018: 1328.1685
+        number_billions_2021: 16.35814
+        value_usd_trillions_2021: 25.368412
+        average_usd_2021: 1550.8127
+        number_billions_2024: 18.806742
+        value_usd_trillions_2024: 29.333939
+        average_usd_2024: 1559.7566
+      ach/on_us:
+        payment_type: On-us
+        number_billions_2015: 4.599234
+        value_usd_trillions_2015: 10.779319
+        average_usd_2015: 2343.7204
+        number_billions_2018: 5.034911
+        value_usd_trillions_2018: 12.914315
+        average_usd_2018: 2564.954
+        number_billions_2021: 6.948342
+        value_usd_trillions_2021: 21.210485
+        average_usd_2021: 3052.5965
+        number_billions_2024: 6.150143
+        value_usd_trillions_2024: 17.879053
+        average_usd_2024: 2907.0957
+      ach/on_us/credit_transfers:
+        payment_type: Credit transfers
+        number_billions_2015: 2.147614
+        value_usd_trillions_2015: 6.356961
+        average_usd_2015: 2960.0111
+        number_billions_2018: 2.695606
+        value_usd_trillions_2018: 8.621503
+        average_usd_2018: 3198.3538
+        number_billions_2021: 4.225499
+        value_usd_trillions_2021: 15.302471
+        average_usd_2021: 3621.4587
+        number_billions_2024: 2.606077
+        value_usd_trillions_2024: 10.41069
+        average_usd_2024: 3994.7751
+      ach/on_us/debit_transfers:
+        payment_type: Debit transfers
+        number_billions_2015: 2.45162
+        value_usd_trillions_2015: 4.422358
+        average_usd_2015: 1803.8512
+        number_billions_2018: 2.339305
+        value_usd_trillions_2018: 4.292812
+        average_usd_2018: 1835.0804
+        number_billions_2021: 2.722843
+        value_usd_trillions_2021: 5.908014
+        average_usd_2021: 2169.7961
+        number_billions_2024: 3.544066
+        value_usd_trillions_2024: 7.468364
+        average_usd_2024: 2107.2867
+      checks:
+        payment_type: Checks
+        number_billions_2015: 16.993495
+        value_usd_trillions_2015: 26.052807
+        average_usd_2015: 1533.1047
+        number_billions_2018: 13.498113
+        value_usd_trillions_2018: 25.022089
+        average_usd_2018: 1853.7472
+        number_billions_2021: 11.049959
+        value_usd_trillions_2021: 26.36959
+        average_usd_2021: 2386.3971
+        number_billions_2024: 9.213692
+        value_usd_trillions_2024: 24.448286
+        average_usd_2024: 2653.4732
+      checks/interbank:
+        payment_type: Interbank
+        number_billions_2015: 12.745705
+        value_usd_trillions_2015: 18.22352
+        average_usd_2015: 1429.7773
+        number_billions_2018: 9.786216
+        value_usd_trillions_2018: 17.659999
+        average_usd_2018: 1804.5788
+        number_billions_2021: 8.367716
+        value_usd_trillions_2021: 18.978078
+        average_usd_2021: 2268.0117
+        number_billions_2024: 7.061311
+        value_usd_trillions_2024: 18.131188
+        average_usd_2024: 2567.6801
+      checks/on_us:
+        payment_type: On-us
+        number_billions_2015: 4.24779
+        value_usd_trillions_2015: 7.829287
+        average_usd_2015: 1843.1437
+        number_billions_2018: 3.711896
+        value_usd_trillions_2018: 7.36209
+        average_usd_2018: 1983.3771
+        number_billions_2021: 2.682243
+        value_usd_trillions_2021: 7.391512
+        average_usd_2021: 2755.7209
+        number_billions_2024: 2.152381
+        value_usd_trillions_2024: 6.317098
+        average_usd_2024: 2934.9346
+      additional/checks_written:
+        payment_type: Checks written
+        number_billions_2015: 19.073536
+        value_usd_trillions_2015: 26.548283
+        average_usd_2015: 1391.891
+        number_billions_2018: 15.020823
+        value_usd_trillions_2018: 25.423189
+        average_usd_2018: 1692.5296
+        number_billions_2021: 11.946761
+        value_usd_trillions_2021: 26.663887
+        average_usd_2021: 2231.8926
+        number_billions_2024: 9.716867
+        value_usd_trillions_2024: 24.724424
+        average_usd_2024: 2544.4853
+      additional/checks_converted_to_ach:
+        payment_type: Checks converted to ACH
+        number_billions_2015: 2.080041
+        value_usd_trillions_2015: 0.495476
+        average_usd_2015: 238.2052
+        number_billions_2018: 1.522711
+        value_usd_trillions_2018: 0.4011
+        average_usd_2018: 263.4116
+        number_billions_2021: 0.896802
+        value_usd_trillions_2021: 0.294298
+        average_usd_2021: 328.1635
+        number_billions_2024: 0.503174
+        value_usd_trillions_2024: 0.276139
+        average_usd_2024: 548.7933
+      additional/atm_cash_withdrawals:
+        payment_type: ATM cash withdrawals
+        number_billions_2015: 5.244072
+        value_usd_trillions_2015: 0.70083
+        average_usd_2015: 133.6423
+        number_billions_2018: 4.677145
+        value_usd_trillions_2018: 0.724218
+        average_usd_2018: 154.8418
+        number_billions_2021: 3.759892
+        value_usd_trillions_2021: 0.760495
+        average_usd_2021: 202.2653
+        number_billions_2024: 3.410844
+        value_usd_trillions_2024: 0.715926
+        average_usd_2024: 209.8969
+  vectors:
+  - input:
+      key: total
+      column: number_billions_2024
+    expected: 236.610506
+    origin: source
+  - input:
+      key: ach
+      column: value_usd_trillions_2024
+    expected: 104.060899
+    origin: source
+  - input: cards/credit/general_purpose
+    expected: true
+    origin: source
+  - input: wire
+    expected: false
+    origin: derived
+evidence:
+- publisher: Board of Governors of the Federal Reserve System
+  title: Federal Reserve Payments Study, 2025 initial data release workbook, Table 1
+  url: https://www.federalreserve.gov/publications/images/FRPS_CY2024_IDR_data.xlsx
+  accessed_at: '2026-10-31'
+  locator: row Total, 2024 Number (billions)
+  value: '236.61050644456699'
+  unit: count
+  snippet: <v>236.61050644456699</v>
+  source_license: unstated
+  content_sha256: 80de11021703564450611b5fc00f0b101eebe9307cc24f843b60d87869c1cad6
+  role: primary
+- publisher: Board of Governors of the Federal Reserve System
+  title: Federal Reserve Payments Study, 2025 initial data release workbook, Table 1
+  url: https://www.federalreserve.gov/publications/images/FRPS_CY2024_IDR_data.xlsx
+  accessed_at: '2026-10-31'
+  locator: row Automated clearinghouse (ACH), 2024 Value ($ trillions)
+  value: '104.060899121288'
+  unit: currency:USD
+  snippet: <v>104.060899121288</v>
+  source_license: unstated
+  content_sha256: 80de11021703564450611b5fc00f0b101eebe9307cc24f843b60d87869c1cad6
+  role: primary
+- publisher: Board of Governors of the Federal Reserve System
+  title: Federal Reserve Payments Study, 2025 initial data release workbook, Table 1
+  url: https://www.federalreserve.gov/publications/images/FRPS_CY2024_IDR_data.xlsx
+  accessed_at: '2026-10-31'
+  locator: table title
+  value: Table 1. Noncash payments, 2015, 2018, 2021, and 2024
+  unit: text
+  snippet: Table 1. Noncash payments, 2015, 2018, 2021, and 2024
+  source_license: unstated
+  content_sha256: 80de11021703564450611b5fc00f0b101eebe9307cc24f843b60d87869c1cad6
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 26
+  tolerance: 0
+- statistic: max[average_usd_2024]
+  expected: 3994.7751
+  tolerance: 0
+notes: 'Table 1 of the Federal Reserve Payments Study''s 2025 initial data release: number (billions), value (trillions
+  of US dollars) and average value (dollars) of noncash payments by instrument for the calendar years 2015, 2018,
+  2021 and 2024. Rows are keyed by a path that follows the table''s nesting (cards, debit and credit, prepaid types;
+  ACH credit and debit transfers, network and on-us; interbank and on-us checks; additional estimates). Figures
+  are the study''s estimates, unrounded. The publisher is a US federal body and the resource carries no licence
+  statement, so the licence is recorded as unstated and the entry held at license-review.'

@@ -1,0 +1,194 @@
+id: us-nyfed-household-debt-per-capita-by-product-selected-states-2026q2
+title: Household debt per capita by loan product, 11 selected states and the US, thousands of US dollars, 2026Q2
+  (New York Fed)
+kind: rule
+domain: consumer-credit
+region: US
+status: license-review
+tier: A
+valid_from: '2026-04-01'
+valid_to: '2026-06-30'
+tags:
+- consumer-credit
+- household-debt
+- new-york-fed
+- consumer-credit-panel
+- by-state
+- selected-states
+- reference-table
+- per-capita
+use_cases:
+- lending-demo
+- credit-risk
+- collections
+- banking-demo
+- personal-finance
+- address-generation
+- customer-segmentation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: state postal abbreviation, or US for the national figure
+    money_unit: thousands of US dollars per capita
+    quarter: 2026Q2
+    columns_in_source_order:
+    - mortgage_usd_thousands
+    - he_revolving_usd_thousands
+    - auto_loan_usd_thousands
+    - credit_card_usd_thousands
+    - student_loan_usd_thousands
+    - other_usd_thousands
+    rows:
+      AZ:
+        mortgage_usd_thousands: 53.43
+        he_revolving_usd_thousands: 1.57
+        auto_loan_usd_thousands: 6.03
+        credit_card_usd_thousands: 4.62
+        student_loan_usd_thousands: 5.1
+        other_usd_thousands: 1.94
+      CA:
+        mortgage_usd_thousands: 68.75
+        he_revolving_usd_thousands: 1.72
+        auto_loan_usd_thousands: 5.34
+        credit_card_usd_thousands: 4.9
+        student_loan_usd_thousands: 4.75
+        other_usd_thousands: 1.57
+      FL:
+        mortgage_usd_thousands: 42.39
+        he_revolving_usd_thousands: 1.53
+        auto_loan_usd_thousands: 6.69
+        credit_card_usd_thousands: 4.92
+        student_loan_usd_thousands: 5.16
+        other_usd_thousands: 2.12
+      IL:
+        mortgage_usd_thousands: 36.93
+        he_revolving_usd_thousands: 1.05
+        auto_loan_usd_thousands: 5.07
+        credit_card_usd_thousands: 4.24
+        student_loan_usd_thousands: 5.98
+        other_usd_thousands: 1.49
+      MI:
+        mortgage_usd_thousands: 31.27
+        he_revolving_usd_thousands: 1.38
+        auto_loan_usd_thousands: 4.87
+        credit_card_usd_thousands: 3.63
+        student_loan_usd_thousands: 5.93
+        other_usd_thousands: 1.64
+      NJ:
+        mortgage_usd_thousands: 48.23
+        he_revolving_usd_thousands: 1.84
+        auto_loan_usd_thousands: 5.03
+        credit_card_usd_thousands: 4.79
+        student_loan_usd_thousands: 6.78
+        other_usd_thousands: 1.52
+      NV:
+        mortgage_usd_thousands: 52.67
+        he_revolving_usd_thousands: 1.25
+        auto_loan_usd_thousands: 6.36
+        credit_card_usd_thousands: 4.9
+        student_loan_usd_thousands: 4.7
+        other_usd_thousands: 2.18
+      NY:
+        mortgage_usd_thousands: 39.46
+        he_revolving_usd_thousands: 1.55
+        auto_loan_usd_thousands: 4.28
+        credit_card_usd_thousands: 4.79
+        student_loan_usd_thousands: 6.18
+        other_usd_thousands: 1.42
+      OH:
+        mortgage_usd_thousands: 28.21
+        he_revolving_usd_thousands: 1.8
+        auto_loan_usd_thousands: 5.31
+        credit_card_usd_thousands: 3.53
+        student_loan_usd_thousands: 5.95
+        other_usd_thousands: 1.58
+      PA:
+        mortgage_usd_thousands: 30.89
+        he_revolving_usd_thousands: 2.09
+        auto_loan_usd_thousands: 5.22
+        credit_card_usd_thousands: 3.83
+        student_loan_usd_thousands: 6.68
+        other_usd_thousands: 1.78
+      TX:
+        mortgage_usd_thousands: 39.19
+        he_revolving_usd_thousands: 0.43
+        auto_loan_usd_thousands: 8.24
+        credit_card_usd_thousands: 4.53
+        student_loan_usd_thousands: 5.37
+        other_usd_thousands: 2.34
+      US:
+        mortgage_usd_thousands: 44.34
+        he_revolving_usd_thousands: 1.55
+        auto_loan_usd_thousands: 5.79
+        credit_card_usd_thousands: 4.27
+        student_loan_usd_thousands: 5.58
+        other_usd_thousands: 1.92
+  vectors:
+  - input:
+      key: CA
+      column: mortgage_usd_thousands
+    expected: 68.75
+    origin: source
+  - input:
+      key: CA
+      column: other_usd_thousands
+    expected: 1.57
+    origin: source
+  - input: CA
+    expected: true
+    origin: source
+  - input: ZZ
+    expected: false
+    origin: derived
+evidence:
+- publisher: Federal Reserve Bank of New York
+  title: Household Debt and Credit Report 2026Q2 data workbook, sheet 'Page 33 Data'
+  url: https://www.newyorkfed.org/medialibrary/interactives/householdcredit/data/xls/HHD_C_Report_2026Q2.xlsx
+  accessed_at: '2026-10-31'
+  locator: row CA, column Mortgage
+  value: '68.75'
+  unit: decimal
+  snippet: <v>68.75</v>
+  source_license: unstated
+  content_sha256: ddfba16b87e187848ed591a1283f310188e7bdeebe5cf409b70a35b058d99237
+  role: primary
+- publisher: Federal Reserve Bank of New York
+  title: Household Debt and Credit Report 2026Q2 data workbook, sheet 'Page 33 Data'
+  url: https://www.newyorkfed.org/medialibrary/interactives/householdcredit/data/xls/HHD_C_Report_2026Q2.xlsx
+  accessed_at: '2026-10-31'
+  locator: row CA, column Other
+  value: '1.57'
+  unit: decimal
+  snippet: <v>1.57</v>
+  source_license: unstated
+  content_sha256: ddfba16b87e187848ed591a1283f310188e7bdeebe5cf409b70a35b058d99237
+  role: primary
+- publisher: Federal Reserve Bank of New York
+  title: Household Debt and Credit Report 2026Q2 data workbook, sheet 'Page 33 Data'
+  url: https://www.newyorkfed.org/medialibrary/interactives/householdcredit/data/xls/HHD_C_Report_2026Q2.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet title cell
+  value: Composition of Debt Balance per Capita* by State (2026 Q2)
+  unit: text
+  snippet: Composition of Debt Balance per Capita* by State (2026 Q2)
+  source_license: unstated
+  content_sha256: ddfba16b87e187848ed591a1283f310188e7bdeebe5cf409b70a35b058d99237
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 12
+  tolerance: 0
+- statistic: max[mortgage_usd_thousands]
+  expected: 68.75
+  tolerance: 0
+notes: 'Debt balance per capita (per person with a credit report) at 2026Q2 for the eleven states the report follows
+  (AZ, CA, FL, IL, MI, NJ, NV, NY, OH, PA, TX) and the US as a whole, split by loan product as the report''s ''Composition
+  of Debt Balance per Capita by State'' page publishes it, in thousands of US dollars. Columns in the page''s order:
+  Mortgage, HE Revolving, Auto Loan, Credit Card, Student Loan, Other. Source: the Quarterly Report on Household
+  Debt and Credit data workbook, built from the New York Fed Consumer Credit Panel / Equifax, a nationally representative
+  5 percent sample of credit-report data. The publisher is a US federal body and the resource carries no licence
+  statement, so the licence is recorded as unstated and the entry held at license-review.'

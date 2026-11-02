@@ -1,0 +1,185 @@
+id: us-fema-disaster-declarations-by-state-fy2024-fy2026
+title: FEMA disaster declarations by state or territory, FY2024 to FY2026
+kind: marginal
+domain: insurance
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2023-10-01'
+  end: '2026-09-30'
+tags:
+- claims
+- fema
+- disasters
+- insurance
+- by-state
+use_cases:
+- insurance-demo
+- claims-generation
+- event-timestamps
+- capacity-planning
+- address-generation
+spec:
+  variable: state
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        OK: 0.075269
+        CA: 0.062366
+        OR: 0.062366
+        WA: 0.047312
+        TX: 0.043011
+        NM: 0.032258
+        NV: 0.032258
+        AK: 0.030108
+        FL: 0.027957
+        KS: 0.027957
+        MT: 0.027957
+        KY: 0.023656
+        NC: 0.023656
+        NE: 0.023656
+        UT: 0.023656
+        AZ: 0.021505
+        CO: 0.021505
+        HI: 0.021505
+        MO: 0.021505
+        SC: 0.021505
+        WV: 0.019355
+        AR: 0.017204
+        GA: 0.017204
+        TN: 0.017204
+        ID: 0.015054
+        ND: 0.015054
+        NY: 0.015054
+        SD: 0.015054
+        VT: 0.015054
+        GU: 0.012903
+        MP: 0.012903
+        MS: 0.012903
+        WY: 0.012903
+        IA: 0.010753
+        LA: 0.010753
+        NH: 0.010753
+        CT: 0.008602
+        IN: 0.008602
+        VA: 0.008602
+        ME: 0.006452
+        MI: 0.006452
+        MN: 0.006452
+        PR: 0.006452
+        RI: 0.006452
+        VI: 0.006452
+        WI: 0.006452
+        AL: 0.004301
+        IL: 0.004301
+        MA: 0.004301
+        OH: 0.004301
+        DC: 0.002151
+        DE: 0.002151
+        MD: 0.002151
+        NJ: 0.002151
+        PA: 0.002151
+      disasters:
+        OK: 35
+        CA: 29
+        OR: 29
+        WA: 22
+        TX: 20
+        NM: 15
+        NV: 15
+        AK: 14
+        FL: 13
+        KS: 13
+        MT: 13
+        KY: 11
+        NC: 11
+        NE: 11
+        UT: 11
+        AZ: 10
+        CO: 10
+        HI: 10
+        MO: 10
+        SC: 10
+        WV: 9
+        AR: 8
+        GA: 8
+        TN: 8
+        ID: 7
+        ND: 7
+        NY: 7
+        SD: 7
+        VT: 7
+        GU: 6
+        MP: 6
+        MS: 6
+        WY: 6
+        IA: 5
+        LA: 5
+        NH: 5
+        CT: 4
+        IN: 4
+        VA: 4
+        ME: 3
+        MI: 3
+        MN: 3
+        PR: 3
+        RI: 3
+        VI: 3
+        WI: 3
+        AL: 2
+        IL: 2
+        MA: 2
+        OH: 2
+        DC: 1
+        DE: 1
+        MD: 1
+        NJ: 1
+        PA: 1
+      total: 465
+evidence:
+- publisher: Federal Emergency Management Agency
+  title: OpenFEMA Disaster Declarations Summaries v2, fyDeclared >= 2024 (CSV)
+  url: https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries?$filter=fyDeclared%20ge%202024&$format=csv&$allrecords=true
+  accessed_at: '2026-10-31'
+  locator: row femaDeclarationString=FM-5669-OK
+  value: '5669'
+  unit: text
+  snippet: FM-5669-OK,5669,OK,FM,2026-08-13T00:00:00.000Z,2026,Fire
+  source_license: unstated
+  content_sha256: ca16fb9ae384227d4427696167e832877653c1c575816c4ad738beba0d38492d
+  role: primary
+- publisher: Federal Emergency Management Agency
+  title: OpenFEMA Disaster Declarations Summaries v2, fyDeclared >= 2024 (CSV)
+  url: https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries?$filter=fyDeclared%20ge%202024&$format=csv&$allrecords=true
+  accessed_at: '2026-10-31'
+  locator: header row
+  value: state
+  unit: text
+  snippet: femaDeclarationString,disasterNumber,state,declarationType,declarationDate,fyDeclared,incidentType
+  source_license: unstated
+  content_sha256: ca16fb9ae384227d4427696167e832877653c1c575816c4ad738beba0d38492d
+  role: primary
+assumed:
+- parameter: shares
+  value: disasters / total
+  method: derived
+  rationale: Shares are distinct disaster counts divided by their sum over the listed categories.
+tests:
+- statistic: share["OK"]
+  expected: 0.075269
+  tolerance: 0.003
+- statistic: share["PA"]
+  expected: 0.002151
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Distinct disasters declared in fiscal years 2024 to 2027 by state or territory, counted from the OpenFEMA
+  Disaster Declarations Summaries filtered to fyDeclared >= 2024 (one row per designated area, disasters counted
+  once). A disaster spanning several state or territory values is counted under each. OpenFEMA datasets are refreshed
+  as declarations and assistance totals change, so the content hash tracks the day's file. The publisher is a US
+  federal body and the resource carries no licence statement, so the licence is recorded as unstated and the entry
+  held at license-review.

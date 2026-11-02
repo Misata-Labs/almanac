@@ -1,0 +1,276 @@
+id: us-scf-2025-family-net-worth-by-family-characteristic
+title: 'Survey of Consumer Finances 2025: median and mean family net worth by family characteristic'
+kind: rule
+domain: income
+region: US
+status: license-review
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- income
+- wealth
+- survey-of-consumer-finances
+- households
+- value-pool
+- net-worth
+- by-income-percentile
+- by-age
+use_cases:
+- personal-finance
+- household-generation
+- customer-segmentation
+- lending-demo
+- financial-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: group/characteristic
+    survey_year: 2025
+    money_unit: thousands of US dollars, nominal
+    groups:
+    - age_of_reference_person_years
+    - current_occupation_of_reference_person
+    - current_work_status_of_reference_person
+    - education_of_reference_person
+    - family_structure
+    - housing_status
+    - percentile_of_income
+    - percentile_of_net_worth
+    - race_or_ethnicity_of_respondent
+    source_table: 4. Family net worth, by selected characteristics of families, 1989–2025 surveys
+    rows:
+      all_families:
+        characteristic: All families
+        median_usd_thousands: 216.1
+        mean_usd_thousands: 1232
+      percentile_of_income/less_than_20:
+        characteristic: Less than 20
+        median_usd_thousands: 12.84
+        mean_usd_thousands: 145.33
+      percentile_of_income/20_39_9:
+        characteristic: 20-39.9
+        median_usd_thousands: 80
+        mean_usd_thousands: 254.58
+      percentile_of_income/40_59_9:
+        characteristic: 40-59.9
+        median_usd_thousands: 203.1
+        mean_usd_thousands: 462.27
+      percentile_of_income/60_79_9:
+        characteristic: 60-79.9
+        median_usd_thousands: 385.5
+        mean_usd_thousands: 803.49
+      percentile_of_income/80_89_9:
+        characteristic: 80-89.9
+        median_usd_thousands: 818
+        mean_usd_thousands: 1421.45
+      percentile_of_income/90_100:
+        characteristic: 90-100
+        median_usd_thousands: 3624.6
+        mean_usd_thousands: 7565.79
+      age_of_reference_person_years/less_than_35:
+        characteristic: Less than 35
+        median_usd_thousands: 32.82
+        mean_usd_thousands: 135.72
+      age_of_reference_person_years/35_44:
+        characteristic: 35-44
+        median_usd_thousands: 156
+        mean_usd_thousands: 669.31
+      age_of_reference_person_years/45_54:
+        characteristic: 45-54
+        median_usd_thousands: 254.67
+        mean_usd_thousands: 1243.61
+      age_of_reference_person_years/55_64:
+        characteristic: 55-64
+        median_usd_thousands: 411.34
+        mean_usd_thousands: 1871.02
+      age_of_reference_person_years/65_74:
+        characteristic: 65-74
+        median_usd_thousands: 431.9
+        mean_usd_thousands: 1870.92
+      age_of_reference_person_years/75_or_more:
+        characteristic: 75 or more
+        median_usd_thousands: 504.6
+        mean_usd_thousands: 1949.71
+      family_structure/single_with_child_ren:
+        characteristic: Single with child(ren)
+        median_usd_thousands: 45.9
+        mean_usd_thousands: 299.91
+      family_structure/single_no_child_age_less_than_55:
+        characteristic: Single, no child, age less than 55
+        median_usd_thousands: 25.38
+        mean_usd_thousands: 175.11
+      family_structure/single_no_child_age_55_or_more:
+        characteristic: Single, no child, age 55 or more
+        median_usd_thousands: 192.3
+        mean_usd_thousands: 830.44
+      family_structure/couple_with_child_ren:
+        characteristic: Couple with child(ren)
+        median_usd_thousands: 333.6
+        mean_usd_thousands: 1509.03
+      family_structure/couple_no_child:
+        characteristic: Couple, no child
+        median_usd_thousands: 469.5
+        mean_usd_thousands: 2152.94
+      education_of_reference_person/no_high_school_diploma:
+        characteristic: No high school diploma
+        median_usd_thousands: 18.7
+        mean_usd_thousands: 293.88
+      education_of_reference_person/high_school_diploma:
+        characteristic: High school diploma
+        median_usd_thousands: 106.71
+        mean_usd_thousands: 470.03
+      education_of_reference_person/some_college:
+        characteristic: Some college
+        median_usd_thousands: 181.5
+        mean_usd_thousands: 661.35
+      education_of_reference_person/college_degree:
+        characteristic: College degree
+        median_usd_thousands: 505.03
+        mean_usd_thousands: 2240.46
+      race_or_ethnicity_of_respondent/white_non_hispanic:
+        characteristic: White non-Hispanic
+        median_usd_thousands: 332.12
+        mean_usd_thousands: 1682.38
+      race_or_ethnicity_of_respondent/black_or_african_american_non_hispanic:
+        characteristic: Black or African-American non-hispanic
+        median_usd_thousands: 36.42
+        mean_usd_thousands: 242.49
+      race_or_ethnicity_of_respondent/hispanic_or_latino:
+        characteristic: Hispanic or Latino
+        median_usd_thousands: 79.9
+        mean_usd_thousands: 334.84
+      race_or_ethnicity_of_respondent/other_or_multiple_race:
+        characteristic: Other or Multiple Race
+        median_usd_thousands: 205
+        mean_usd_thousands: 1013.5
+      current_work_status_of_reference_person/working_for_someone_else:
+        characteristic: Working for someone else
+        median_usd_thousands: 156
+        mean_usd_thousands: 681.17
+      current_work_status_of_reference_person/self_employed:
+        characteristic: Self-employed
+        median_usd_thousands: 575.1
+        mean_usd_thousands: 3469.98
+      current_work_status_of_reference_person/retired:
+        characteristic: Retired
+        median_usd_thousands: 380.9
+        mean_usd_thousands: 1485.52
+      current_work_status_of_reference_person/other_not_working:
+        characteristic: Other not working
+        median_usd_thousands: 16.9
+        mean_usd_thousands: 437.6
+      current_occupation_of_reference_person/managerial_or_professional:
+        characteristic: Managerial or professional
+        median_usd_thousands: 295.3
+        mean_usd_thousands: 1869.92
+      current_occupation_of_reference_person/technical_sales_or_services:
+        characteristic: Technical, sales, or services
+        median_usd_thousands: 151.57
+        mean_usd_thousands: 567.08
+      current_occupation_of_reference_person/other_occupation:
+        characteristic: Other occupation
+        median_usd_thousands: 108.16
+        mean_usd_thousands: 453.55
+      current_occupation_of_reference_person/retired_or_other_not_working:
+        characteristic: Retired or other not working
+        median_usd_thousands: 297.6
+        mean_usd_thousands: 1327.15
+      housing_status/owner:
+        characteristic: Owner
+        median_usd_thousands: 459
+        mean_usd_thousands: 1798.41
+      housing_status/renter_or_other:
+        characteristic: Renter or other
+        median_usd_thousands: 10.55
+        mean_usd_thousands: 153.53
+      percentile_of_net_worth/less_than_25:
+        characteristic: Less than 25
+        median_usd_thousands: 1.69
+        mean_usd_thousands: -3.93
+      percentile_of_net_worth/25_49_9:
+        characteristic: 25-49.9
+        median_usd_thousands: 100.5
+        mean_usd_thousands: 109.09
+      percentile_of_net_worth/50_74_9:
+        characteristic: 50-74.9
+        median_usd_thousands: 405.82
+        mean_usd_thousands: 432.37
+      percentile_of_net_worth/75_89_9:
+        characteristic: 75-89.9
+        median_usd_thousands: 1265.74
+        mean_usd_thousands: 1397.2
+      percentile_of_net_worth/90_100:
+        characteristic: 90-100
+        median_usd_thousands: 4926.5
+        mean_usd_thousands: 8875.48
+  vectors:
+  - input:
+      key: all_families
+      column: median_usd_thousands
+    expected: 216.1
+    origin: source
+  - input:
+      key: age_of_reference_person_years/less_than_35
+      column: mean_usd_thousands
+    expected: 135.72
+    origin: source
+  - input: all_families
+    expected: true
+    origin: source
+  - input: age_of_reference_person_years/less_than_18
+    expected: false
+    origin: derived
+evidence:
+- publisher: Board of Governors of the Federal Reserve System
+  title: Survey of Consumer Finances 2025, historical tables workbook, sheet 'Table 4'
+  url: https://www.federalreserve.gov/econres/files/scf2025_tables_public_nominal_historical.xlsx
+  accessed_at: '2026-10-31'
+  locator: row All families, 2025 median_usd_thousands
+  value: '216.1'
+  unit: currency:USD
+  snippet: <v>216.1</v>
+  source_license: unstated
+  content_sha256: 56342033ff0db43701530122d3153d2f64b0f318e3c314262b15919e34478065
+  role: primary
+- publisher: Board of Governors of the Federal Reserve System
+  title: Survey of Consumer Finances 2025, historical tables workbook, sheet 'Table 4'
+  url: https://www.federalreserve.gov/econres/files/scf2025_tables_public_nominal_historical.xlsx
+  accessed_at: '2026-10-31'
+  locator: row Less than 35, 2025 mean
+  value: '135.72'
+  unit: currency:USD
+  snippet: <v>135.72</v>
+  source_license: unstated
+  content_sha256: 56342033ff0db43701530122d3153d2f64b0f318e3c314262b15919e34478065
+  role: primary
+- publisher: Board of Governors of the Federal Reserve System
+  title: Survey of Consumer Finances 2025, historical tables workbook, sheet 'Table 4'
+  url: https://www.federalreserve.gov/econres/files/scf2025_tables_public_nominal_historical.xlsx
+  accessed_at: '2026-10-31'
+  locator: table title cell
+  value: Thousands of dollars
+  unit: text
+  snippet: Thousands of dollars
+  source_license: unstated
+  content_sha256: 56342033ff0db43701530122d3153d2f64b0f318e3c314262b15919e34478065
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 41
+  tolerance: 0
+- statistic: max[median_usd_thousands]
+  expected: 4926.5
+  tolerance: 0
+notes: Median and mean family net worth for the 2025 survey by family characteristic, from the Federal Reserve's
+  SCF historical tables workbook (4. Family net worth, by selected characteristics of families, 1989–2025 surveys).
+  Rows are keyed 'group/characteristic' using the table's own group headings (age_of_reference_person_years, current_occupation_of_reference_person,
+  current_work_status_of_reference_person, education_of_reference_person, family_structure, housing_status, percentile_of_income,
+  percentile_of_net_worth, race_or_ethnicity_of_respondent); 'all_families' is the overall row. The Survey of Consumer
+  Finances is a triennial household survey; figures are nominal thousands of US dollars for the 2025 survey (income
+  refers to the previous calendar year). The publisher is a US federal body and the resource carries no licence
+  statement, so the licence is recorded as unstated and the entry held at license-review.

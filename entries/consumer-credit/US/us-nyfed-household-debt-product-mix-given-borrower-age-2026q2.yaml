@@ -1,0 +1,222 @@
+id: us-nyfed-household-debt-product-mix-given-borrower-age-2026q2
+title: Household debt balance mix by loan product given borrower age group, 2026Q2 (New York Fed)
+kind: conditional
+domain: consumer-credit
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2026-04-01'
+  end: '2026-06-30'
+tags:
+- consumer-credit
+- household-debt
+- new-york-fed
+- consumer-credit-panel
+- by-age
+- by-loan-type
+- conditional
+use_cases:
+- lending-demo
+- credit-risk
+- collections
+- banking-demo
+- personal-finance
+- customer-segmentation
+- person-generation
+spec:
+  variable: loan_product
+  unit: ratio
+  given: age_group
+  distributions:
+    age_18_29:
+      family: categorical
+      parameters:
+        shares:
+          auto_loans: 0.185916
+          credit_card: 0.073314
+          mortgage: 0.431988
+          heloc: 0.002008
+          student_loans: 0.277921
+          other: 0.028854
+        balance_usd_trillions:
+          auto_loans: 0.2049
+          credit_card: 0.0808
+          mortgage: 0.4761
+          heloc: 0.002213
+          student_loans: 0.3063
+          other: 0.0318
+        total_usd_trillions: 1.1021
+    age_30_39:
+      family: categorical
+      parameters:
+        shares:
+          auto_loans: 0.095529
+          credit_card: 0.055782
+          mortgage: 0.684791
+          heloc: 0.008502
+          student_loans: 0.131162
+          other: 0.024235
+        balance_usd_trillions:
+          auto_loans: 0.3807
+          credit_card: 0.2223
+          mortgage: 2.729
+          heloc: 0.03388
+          student_loans: 0.5227
+          other: 0.09658
+        total_usd_trillions: 3.9852
+    age_40_49:
+      family: categorical
+      parameters:
+        shares:
+          auto_loans: 0.082977
+          credit_card: 0.059895
+          mortgage: 0.730179
+          heloc: 0.021905
+          student_loans: 0.077723
+          other: 0.027321
+        balance_usd_trillions:
+          auto_loans: 0.4091
+          credit_card: 0.2953
+          mortgage: 3.6
+          heloc: 0.108
+          student_loans: 0.3832
+          other: 0.1347
+        total_usd_trillions: 4.9303
+    age_50_59:
+      family: categorical
+      parameters:
+        shares:
+          auto_loans: 0.084988
+          credit_card: 0.067695
+          mortgage: 0.720488
+          heloc: 0.031949
+          student_loans: 0.062931
+          other: 0.031949
+        balance_usd_trillions:
+          auto_loans: 0.3514
+          credit_card: 0.2799
+          mortgage: 2.979
+          heloc: 0.1321
+          student_loans: 0.2602
+          other: 0.1321
+        total_usd_trillions: 4.1347
+    age_60_69:
+      family: categorical
+      parameters:
+        shares:
+          auto_loans: 0.082206
+          credit_card: 0.077959
+          mortgage: 0.718039
+          heloc: 0.038403
+          student_loans: 0.046538
+          other: 0.036856
+        balance_usd_trillions:
+          auto_loans: 0.2284
+          credit_card: 0.2166
+          mortgage: 1.995
+          heloc: 0.1067
+          student_loans: 0.1293
+          other: 0.1024
+        total_usd_trillions: 2.7784
+    age_70_plus:
+      family: categorical
+      parameters:
+        shares:
+          auto_loans: 0.074806
+          credit_card: 0.091992
+          mortgage: 0.729328
+          heloc: 0.041931
+          student_loans: 0.02367
+          other: 0.038273
+        balance_usd_trillions:
+          auto_loans: 0.1358
+          credit_card: 0.167
+          mortgage: 1.324
+          heloc: 0.07612
+          student_loans: 0.04297
+          other: 0.06948
+        total_usd_trillions: 1.8154
+evidence:
+- publisher: Federal Reserve Bank of New York
+  title: Household Debt and Credit Report 2026Q2 data workbook, sheet 'Page 21 Data'
+  url: https://www.newyorkfed.org/medialibrary/interactives/householdcredit/data/xls/HHD_C_Report_2026Q2.xlsx
+  accessed_at: '2026-10-31'
+  locator: row Mortgage, column 40-49
+  value: '3.6'
+  unit: decimal
+  snippet: <v>3.6</v>
+  source_license: unstated
+  content_sha256: ddfba16b87e187848ed591a1283f310188e7bdeebe5cf409b70a35b058d99237
+  role: primary
+- publisher: Federal Reserve Bank of New York
+  title: Household Debt and Credit Report 2026Q2 data workbook, sheet 'Page 21 Data'
+  url: https://www.newyorkfed.org/medialibrary/interactives/householdcredit/data/xls/HHD_C_Report_2026Q2.xlsx
+  accessed_at: '2026-10-31'
+  locator: row Credit Card, column 18-29
+  value: '8.0799999999999997E-2'
+  unit: decimal
+  snippet: <v>8.0799999999999997E-2</v>
+  source_license: unstated
+  content_sha256: ddfba16b87e187848ed591a1283f310188e7bdeebe5cf409b70a35b058d99237
+  role: primary
+- publisher: Federal Reserve Bank of New York
+  title: Household Debt and Credit Report 2026Q2 data workbook, sheet 'Page 21 Data'
+  url: https://www.newyorkfed.org/medialibrary/interactives/householdcredit/data/xls/HHD_C_Report_2026Q2.xlsx
+  accessed_at: '2026-10-31'
+  locator: sheet title cell
+  value: Debt Share by Product Type and Age (2026Q2)
+  unit: text
+  snippet: Debt Share by Product Type and Age (2026Q2)
+  source_license: unstated
+  content_sha256: ddfba16b87e187848ed591a1283f310188e7bdeebe5cf409b70a35b058d99237
+  role: supporting
+assumed:
+- parameter: shares
+  value: balance / total within age group
+  method: derived
+  rationale: The page publishes balances in trillions of dollars by product and age; shares divide each product
+    by the age group's total.
+tests:
+- statistic: share[age_18_29,mortgage]
+  expected: 0.431988
+  tolerance: 0.003
+- statistic: sum_of_shares[age_18_29]
+  expected: 1
+  tolerance: 0.0001
+- statistic: share[age_30_39,mortgage]
+  expected: 0.684791
+  tolerance: 0.003
+- statistic: sum_of_shares[age_30_39]
+  expected: 1
+  tolerance: 0.0001
+- statistic: share[age_40_49,mortgage]
+  expected: 0.730179
+  tolerance: 0.003
+- statistic: sum_of_shares[age_40_49]
+  expected: 1
+  tolerance: 0.0001
+- statistic: share[age_50_59,mortgage]
+  expected: 0.720488
+  tolerance: 0.003
+- statistic: sum_of_shares[age_50_59]
+  expected: 1
+  tolerance: 0.0001
+- statistic: share[age_60_69,mortgage]
+  expected: 0.718039
+  tolerance: 0.003
+- statistic: sum_of_shares[age_60_69]
+  expected: 1
+  tolerance: 0.0001
+- statistic: share[age_70_plus,mortgage]
+  expected: 0.729328
+  tolerance: 0.003
+- statistic: sum_of_shares[age_70_plus]
+  expected: 1
+  tolerance: 0.0001
+notes: 'Composition of outstanding household debt by loan product within each borrower age group at 2026Q2, from
+  the report''s ''Debt Share by Product Type and Age'' page, which publishes balances in trillions of US dollars.
+  Balances are kept beside the shares. Use it to assign a product mix to a synthetic borrower of a given age. Source:
+  the Quarterly Report on Household Debt and Credit data workbook, built from the New York Fed Consumer Credit Panel
+  / Equifax, a nationally representative 5 percent sample of credit-report data. The publisher is a US federal body
+  and the resource carries no licence statement, so the licence is recorded as unstated and the entry held at license-review.'

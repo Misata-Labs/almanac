@@ -1,0 +1,133 @@
+id: us-hmda-loan-applications-by-loan-type-2024
+title: HMDA 2024 loan and application records by loan type, with loan-amount sums and means
+kind: marginal
+domain: consumer-credit
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+tags:
+- lending
+- mortgage
+- hmda
+- loan-sizes
+- by-loan-type
+use_cases:
+- lending-demo
+- mortgage-origination
+- loan-pricing
+- credit-risk
+spec:
+  variable: loan_type
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        1 Conventional (not insured or guaranteed by FHA, VA, RHS, or FSA): 0.757892
+        2 Federal Housing Administration insured (FHA): 0.152854
+        3 Veterans Affairs guaranteed (VA): 0.083081
+        4 USDA Rural Housing Service or Farm Service Agency guaranteed (RHS or FSA): 0.006173
+      counts:
+        1 Conventional (not insured or guaranteed by FHA, VA, RHS, or FSA): 9291143
+        2 Federal Housing Administration insured (FHA): 1873873
+        3 Veterans Affairs guaranteed (VA): 1018511
+        4 USDA Rural Housing Service or Farm Service Agency guaranteed (RHS or FSA): 75672
+      total: 12259199
+      loan_amount_sum_usd:
+        1 Conventional (not insured or guaranteed by FHA, VA, RHS, or FSA): 2903474315000.0
+        2 Federal Housing Administration insured (FHA): 565878285000.0
+        3 Veterans Affairs guaranteed (VA): 382388685000.0
+        4 USDA Rural Housing Service or Farm Service Agency guaranteed (RHS or FSA): 13691240000.0
+      mean_loan_amount_usd:
+        1 Conventional (not insured or guaranteed by FHA, VA, RHS, or FSA): 312499.15
+        2 Federal Housing Administration insured (FHA): 301983.26
+        3 Veterans Affairs guaranteed (VA): 375438.93
+        4 USDA Rural Housing Service or Farm Service Agency guaranteed (RHS or FSA): 180928.75
+      labels:
+        '1': Conventional (not insured or guaranteed by FHA, VA, RHS, or FSA)
+        '2': Federal Housing Administration insured (FHA)
+        '3': Veterans Affairs guaranteed (VA)
+        '4': USDA Rural Housing Service or Farm Service Agency guaranteed (RHS or FSA)
+evidence:
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, loan_types=1
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&loan_types=1
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 9291143
+  unit: count
+  snippet: '{"count":9291143,"sum":2.903474315E12,"loan_types":"1"}'
+  source_license: unstated
+  content_sha256: 60beb2fa6c63ccaea54668dee039400125578d7bccc39e1761b55e44572696e9
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, loan_types=2
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&loan_types=2
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 1873873
+  unit: count
+  snippet: '{"count":1873873,"sum":5.65878285E11,"loan_types":"2"}'
+  source_license: unstated
+  content_sha256: 6d4b177e625541601b34f6b49bce431d9cadf08581dfd15778a363a1ff37b231
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, loan_types=3
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&loan_types=3
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 1018511
+  unit: count
+  snippet: '{"count":1018511,"sum":3.82388685E11,"loan_types":"3"}'
+  source_license: unstated
+  content_sha256: 933017ccced0c0514f7627588a2d74eee9187836686c6a1b9ed167814073f75f
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA data browser API, nationwide aggregation, 2024, loan_types=4
+  url: https://ffiec.cfpb.gov/v2/data-browser-api/view/nationwide/aggregations?years=2024&loan_types=4
+  accessed_at: '2026-10-31'
+  locator: aggregations[0].count
+  value: 75672
+  unit: count
+  snippet: '{"count":75672,"sum":1.369124E10,"loan_types":"4"}'
+  source_license: unstated
+  content_sha256: 659f011930d27993a76af9d2a00bc59d199ff8218ea2760247fe0c8c13ba013b
+  role: primary
+- publisher: Federal Financial Institutions Examination Council (HMDA data browser, CFPB)
+  title: HMDA Filing Instructions Guide for data collected in 2024
+  url: https://ffiec.cfpb.gov/documentation/fig/2024/overview
+  accessed_at: '2026-10-31'
+  locator: Data specifications, Loan Type, code list
+  value: Conventional (not insured or guaranteed by FHA, VA, RHS, or FSA)
+  unit: text
+  snippet: Code 1—Conventional (not insured or guaranteed by FHA, VA, RHS, or FSA)
+  source_license: unstated
+  content_sha256: 0e443022aec1f7a8e701238b4b49383b9280a896dc677c87ff5ea3e1f9316072
+  role: supporting
+assumed:
+- parameter: shares
+  value: counts / total
+  method: derived
+  rationale: Shares are the published counts divided by their sum over the listed categories.
+- parameter: mean_loan_amount_usd
+  value: loan_amount_sum_usd / counts
+  method: derived
+  rationale: The API returns count and sum; the mean is their quotient.
+tests:
+- statistic: share["1 Conventional (not insured or guaranteed by FHA, VA, RHS, or FSA)"]
+  expected: 0.757892
+  tolerance: 0.003
+- statistic: share["4 USDA Rural Housing Service or Farm Service Agency guaranteed (RHS or FSA)"]
+  expected: 0.006173
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: 'Loan/application register records reported under HMDA for 2024, nationwide, by loan type: one data browser
+  aggregation query per code, giving the record count and the sum of the loan amount field in dollars. Category
+  labels are ''<code> <description>'' with descriptions from the 2024 Filing Instructions Guide. mean_loan_amount_usd
+  is the sum divided by the count. The publisher is a US federal body and the resource carries no licence statement,
+  so the licence is recorded as unstated and the entry held at license-review.'

@@ -1,0 +1,144 @@
+id: us-fdic-bank-failures-per-year-2000-2025
+title: FDIC-insured institution failures per year, 2000 to 2025
+kind: temporal
+domain: banking
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2000-01-01'
+  end: '2025-12-31'
+tags:
+- banking
+- fdic
+- bank-failures
+- failure-events
+- annual-series
+use_cases:
+- banking-demo
+- credit-risk
+- company-generation
+- event-timestamps
+spec:
+  variable: bank_failures
+  unit: count
+  frequency: annual
+  columns: []
+  series:
+  - period: '2000'
+    value: 7
+  - period: '2001'
+    value: 4
+  - period: '2002'
+    value: 11
+  - period: '2003'
+    value: 3
+  - period: '2004'
+    value: 4
+  - period: '2005'
+    value: 0
+  - period: '2006'
+    value: 0
+  - period: '2007'
+    value: 3
+  - period: '2008'
+    value: 30
+  - period: '2009'
+    value: 148
+  - period: '2010'
+    value: 157
+  - period: '2011'
+    value: 92
+  - period: '2012'
+    value: 51
+  - period: '2013'
+    value: 24
+  - period: '2014'
+    value: 18
+  - period: '2015'
+    value: 8
+  - period: '2016'
+    value: 5
+  - period: '2017'
+    value: 8
+  - period: '2018'
+    value: 0
+  - period: '2019'
+    value: 4
+  - period: '2020'
+    value: 4
+  - period: '2021'
+    value: 0
+  - period: '2022'
+    value: 0
+  - period: '2023'
+    value: 5
+  - period: '2024'
+    value: 2
+  - period: '2025'
+    value: 2
+evidence:
+- publisher: FDIC
+  title: BankFind Suite failures API, count by FAILYR
+  url: https://api.fdic.gov/banks/failures?filters=FAILYR%3A%5B2000%20TO%202026%5D&fields=FAILYR&agg_by=FAILYR&agg_limit=100&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: data[FAILYR=2010].count
+  value: 157
+  unit: count
+  snippet: '"FAILYR":"2010","count":157'
+  source_license: unstated
+  content_sha256: 0ef40ffc369a7497064005e4c97d9c8c5113024167b143f727fe6f8b09c54fb1
+  role: primary
+- publisher: FDIC
+  title: BankFind Suite failures API, count by FAILYR
+  url: https://api.fdic.gov/banks/failures?filters=FAILYR%3A%5B2000%20TO%202026%5D&fields=FAILYR&agg_by=FAILYR&agg_limit=100&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: data[FAILYR=2025].count
+  value: 2
+  unit: count
+  snippet: '"FAILYR":"2025","count":2'
+  source_license: unstated
+  content_sha256: 0ef40ffc369a7497064005e4c97d9c8c5113024167b143f727fe6f8b09c54fb1
+  role: primary
+- publisher: FDIC
+  title: BankFind Suite failures API, count by FAILYR
+  url: https://api.fdic.gov/banks/failures?filters=FAILYR%3A%5B2000%20TO%202026%5D&fields=FAILYR&agg_by=FAILYR&agg_limit=100&limit=1&format=json
+  accessed_at: '2026-10-31'
+  locator: totals.count
+  value: 594
+  unit: count
+  snippet: '"totals":{"count":594'
+  source_license: unstated
+  content_sha256: 0ef40ffc369a7497064005e4c97d9c8c5113024167b143f727fe6f8b09c54fb1
+  role: primary
+assumed:
+- parameter: zero years
+  value:
+  - '2005'
+  - '2006'
+  - '2018'
+  - '2021'
+  - '2022'
+  method: derived
+  rationale: Years absent from the FAILYR aggregation had no failures and are written as 0.
+tests:
+- statistic: value[2025]
+  expected: 2
+  tolerance: 0
+- statistic: value[2000]
+  expected: 7
+  tolerance: 0
+- statistic: count
+  expected: 26
+  tolerance: 0
+- statistic: value[2010]
+  expected: 157
+  tolerance: 0
+- statistic: max
+  expected: 157
+  tolerance: 0
+notes: Number of FDIC-insured institutions that failed or received assistance in each calendar year from 2000 to
+  2025, from the failures endpoint aggregated by FAILYR. The aggregation omits years with no failures, so 2005,
+  2006, 2018, 2021, 2022 are written as zero. The query's filter also covers 2026, whose partial count is left out
+  of the series because the year is not complete. The peak year was 2010. The publisher is a US federal body and
+  the resource carries no licence statement, so the licence is recorded as unstated and the entry held at license-review.
