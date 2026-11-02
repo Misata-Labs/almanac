@@ -1,0 +1,181 @@
+id: us-hcpcs-level-ii-2026q4-sections
+title: HCPCS Level II alpha-numeric sections with code counts, October 2026 quarterly update (17 sections, 7448
+  active codes)
+kind: rule
+domain: healthcare
+region: US
+status: license-review
+tier: A
+valid_from: '2026-10-01'
+valid_to: '2026-12-31'
+tags:
+- healthcare
+- claims
+- hcpcs
+- code-list
+- procedures
+- supplies
+use_cases:
+- healthcare-demo
+- claims-test-data
+- payer-demo
+- claims-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    release: October 2026
+    code_pattern: ^[A-V][0-9]{4}$
+    active_codes: 7448
+    codes: 8770
+    rows:
+      A:
+        codes: 870
+        active_codes: 861
+        first_code: A0021
+        first_code_description: Ambulance service, outside state per mile, transport (medicaid only)
+      B:
+        codes: 51
+        active_codes: 50
+        first_code: B4034
+        first_code_description: Enteral feeding supply kit; syringe fed, per day, includes but not limited to
+      C:
+        codes: 622
+        active_codes: 382
+        first_code: C1052
+        first_code_description: Hemostatic agent, gastrointestinal, topical
+      E:
+        codes: 673
+        active_codes: 666
+        first_code: E0100
+        first_code_description: Cane, includes canes of all materials, adjustable or fixed, with tip
+      G:
+        codes: 2011
+        active_codes: 1276
+        first_code: G0008
+        first_code_description: Administration of influenza virus vaccine
+      H:
+        codes: 94
+        active_codes: 94
+        first_code: H0001
+        first_code_description: Alcohol and/or drug assessment
+      J:
+        codes: 1255
+        active_codes: 1112
+        first_code: J0013
+        first_code_description: Esketamine, nasal spray, 1 mg
+      K:
+        codes: 175
+        active_codes: 142
+        first_code: K0001
+        first_code_description: Standard wheelchair
+      L:
+        codes: 943
+        active_codes: 935
+        first_code: L0112
+        first_code_description: Cranial cervical orthosis, congenital torticollis type, with or without soft
+      M:
+        codes: 506
+        active_codes: 451
+        first_code: M0001
+        first_code_description: Advancing cancer care mips value pathways
+      P:
+        codes: 59
+        active_codes: 58
+        first_code: P2028
+        first_code_description: Cephalin floculation, blood
+      Q:
+        codes: 644
+        active_codes: 589
+        first_code: Q0035
+        first_code_description: Cardiokymography
+      R:
+        codes: 3
+        active_codes: 3
+        first_code: R0070
+        first_code_description: Transportation of portable x-ray equipment and personnel to home or nursing
+      S:
+        codes: 533
+        active_codes: 505
+        first_code: S0012
+        first_code_description: Butorphanol tartrate, nasal spray, 25 mg
+      T:
+        codes: 114
+        active_codes: 114
+        first_code: T1000
+        first_code_description: Private duty / independent nursing service(s) - licensed, up to 15 minutes
+      U:
+        codes: 5
+        active_codes: 2
+        first_code: U0001
+        first_code_description: Cdc 2019 novel coronavirus (2019-ncov) real-time rt-pcr diagnostic panel
+      V:
+        codes: 212
+        active_codes: 208
+        first_code: V2020
+        first_code_description: Frames, purchases
+  vectors:
+  - input:
+      key: A
+      column: first_code
+    expected: A0021
+    origin: source
+  - input:
+      key: J
+      column: codes
+    expected: 1255
+    origin: source
+    note: drugs administered other than oral method
+  - input: D
+    expected: false
+    origin: derived
+    note: dental D codes are not in the CMS file
+evidence:
+- publisher: Centers for Medicare & Medicaid Services
+  title: HCPCS October 2026 quarterly update archive, alpha-numeric file (HCPC2026_OCT_ANWEB_09232026.txt)
+  url: https://www.cms.gov/files/zip/october-2026-alpha-numeric-hcpcs-file.zip
+  accessed_at: '2026-10-31'
+  locator: HCPC2026_OCT_ANWEB_09232026.txt, first procedure record
+  value: A0021
+  unit: text
+  snippet: A0021001003Ambulance service, outside state per mile, transport (medicaid only)
+  source_license: unstated
+  content_sha256: 08c2202fa92c1d1fb6f31b808b61c767bc487954f6930b6a0f8d09c89af5992f
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services
+  title: HCPCS October 2026 quarterly update archive, record layout (HCPC2026_recordlayout.txt)
+  url: https://www.cms.gov/files/zip/october-2026-alpha-numeric-hcpcs-file.zip
+  accessed_at: '2026-10-31'
+  locator: HCPC2026_recordlayout.txt, field 29 HCPCS Termination Date
+  value: Last date for which a procedure or modifier code may be used by Medicare providers
+  unit: text
+  snippet: Last date for which a procedure or modifier code may be used by Medicare providers
+  source_license: unstated
+  content_sha256: 08c2202fa92c1d1fb6f31b808b61c767bc487954f6930b6a0f8d09c89af5992f
+  role: supporting
+assumed:
+- parameter: rows[*].codes and rows[*].active_codes
+  value: counts of procedure records per leading letter
+  method: derived
+  rationale: Counted from the first-line procedure records (record identification code 3); a code is active when
+    its termination date is blank.
+- parameter: code_pattern
+  value: ^[A-V][0-9]{4}$
+  method: derived
+  rationale: Shape observed across every procedure record in the file; the layout describes Level II codes as five-position
+    alpha-numeric codes.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 17
+  tolerance: 0
+- statistic: max[codes]
+  expected: 2011
+  tolerance: 0
+notes: The alphabetic sections of HCPCS Level II as released in the October 2026 quarterly update, with the number
+  of codes in each section, how many have no termination date, and the first code and its long description, read
+  from the fixed-width alpha-numeric file in the CMS archive. The file holds the CMS-maintained Level II codes (A
+  to V) and not the AMA's CPT Level I codes or the ADA's dental codes. A synthetic claim generator can use the section
+  counts to spread supply, drug and service codes realistically. data.cms.gov and cms.gov publish these files without
+  a licence statement, so the entry is held at license-review.

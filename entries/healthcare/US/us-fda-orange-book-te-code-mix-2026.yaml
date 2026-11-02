@@ -1,0 +1,131 @@
+id: us-fda-orange-book-te-code-mix-2026
+title: FDA Orange Book products by therapeutic equivalence code, October 2026 (48865 products)
+kind: marginal
+domain: healthcare
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2026-10-09'
+  end: '2026-10-09'
+tags:
+- healthcare
+- drugs
+- orange-book
+- fda
+- therapeutic-equivalence
+- generics
+use_cases:
+- healthcare-demo
+- pharma-demo
+- claims-test-data
+spec:
+  variable: te_code
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        AA: 0.021488
+        AB: 0.305781
+        AB1: 0.012217
+        AB1,AB2: 0.000246
+        AB1,AB2,AB3: 0.000737
+        AB1,AB2,AB3,AB4: 0.001473
+        AB1,AB3: 0.000225
+        AB2: 0.006508
+        AB3: 0.002681
+        AB4: 0.000614
+        AN: 0.00264
+        AO: 0.001494
+        AP: 0.078277
+        AP1: 0.001371
+        AP2: 0.000778
+        AP3: 4.1e-05
+        AT: 0.01056
+        AT1: 0.000921
+        AT2: 0.00043
+        AT3: 0.000184
+        BC: 2.0e-05
+        BD: 4.1e-05
+        BP: 0.000102
+        BS: 2.0e-05
+        BX: 0.001003
+        not_rated: 0.550148
+      counts:
+        AA: 1050
+        AB: 14942
+        AB1: 597
+        AB1,AB2: 12
+        AB1,AB2,AB3: 36
+        AB1,AB2,AB3,AB4: 72
+        AB1,AB3: 11
+        AB2: 318
+        AB3: 131
+        AB4: 30
+        AN: 129
+        AO: 73
+        AP: 3825
+        AP1: 67
+        AP2: 38
+        AP3: 2
+        AT: 516
+        AT1: 45
+        AT2: 21
+        AT3: 9
+        BC: 1
+        BD: 2
+        BP: 5
+        BS: 1
+        BX: 49
+        not_rated: 26883
+      total: 48865
+evidence:
+- publisher: U.S. Food and Drug Administration
+  title: Orange Book data files (products.txt)
+  url: https://www.fda.gov/media/76860/download
+  accessed_at: '2026-10-31'
+  locator: products.txt, first product row, DF;Route
+  value: AEROSOL, FOAM;RECTAL
+  unit: text
+  snippet: BUDESONIDE~AEROSOL, FOAM;RECTAL~BUDESONIDE~PADAGIS ISRAEL~2MG/ACTUATION~A~215328~001~AB
+  source_license: unstated
+  content_sha256: c2088c7a36db1930a152b63db23e7a995c471bf4b18c960b1d28190580984e4d
+  role: primary
+- publisher: U.S. Food and Drug Administration
+  title: Orange Book data files (products.txt)
+  url: https://www.fda.gov/media/76860/download
+  accessed_at: '2026-10-31'
+  locator: products.txt, header row
+  value: TE_Code
+  unit: text
+  snippet: Ingredient~DF;Route~Trade_Name~Applicant~Strength~Appl_Type~Appl_No~Product_No~TE_Code~Approval_Date~RLD~RS~Type~Applicant_Full_Name
+  source_license: unstated
+  content_sha256: c2088c7a36db1930a152b63db23e7a995c471bf4b18c960b1d28190580984e4d
+  role: primary
+assumed:
+- parameter: distribution.parameters.counts
+  value: products per TE_Code value
+  method: derived
+  rationale: Counted over every row of products.txt; a blank code (discontinued or single-source products) is labelled
+    not_rated.
+- parameter: distribution.parameters.shares
+  value: counts / total
+  method: derived
+  rationale: Shares are each category's count over the sum of all categories in the table.
+tests:
+- statistic: share[not_rated]
+  expected: 0.550148
+  tolerance: 0.004
+- statistic: share[AB]
+  expected: 0.305781
+  tolerance: 0.004
+- statistic: share[AP]
+  expected: 0.078277
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: How the products in the October 2026 FDA Orange Book split by therapeutic equivalence code (AB, AP, AA and
+  so on, with not_rated for blank codes). Useful for synthetic formulary and generic-substitution data. The files
+  are republished monthly and carry no licence statement.

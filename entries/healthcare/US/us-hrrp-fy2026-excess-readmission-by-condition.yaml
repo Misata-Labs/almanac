@@ -1,0 +1,182 @@
+id: us-hrrp-fy2026-excess-readmission-by-condition
+title: 'Hospital Readmissions Reduction Program FY2026 excess readmission ratios by condition: hospitals, mean,
+  penalty share and peer-group medians'
+kind: rule
+domain: healthcare
+region: US
+status: license-review
+tier: A
+valid_from: '2025-10-01'
+valid_to: '2026-09-30'
+tags:
+- healthcare
+- hospitals
+- readmissions
+- hrrp
+- medicare
+- quality
+use_cases:
+- healthcare-demo
+- claims-test-data
+- payer-demo
+- clinical-records
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    fiscal_year: 2026
+    data_period: July 2021 to June 2024
+    conditions:
+      AMI: acute myocardial infarction
+      COPD: chronic obstructive pulmonary disease
+      HF: heart failure
+      pneumonia: pneumonia
+      CABG: coronary artery bypass graft surgery
+      THA/TKA: elective primary total hip or knee arthroplasty
+    rows:
+      AMI:
+        hospitals_with_err: 2633
+        mean_err: 1.0012
+        median_err: 0.9973
+        min_err: 0.6839
+        max_err: 1.2639
+        penalised_hospitals: 882
+        penalised_share: 0.335
+        peer_group_1_median_err: 0.9961
+        peer_group_2_median_err: 0.9964
+        peer_group_3_median_err: 0.9953
+        peer_group_4_median_err: 0.997
+        peer_group_5_median_err: 1.0018
+      COPD:
+        hospitals_with_err: 2814
+        mean_err: 1.0008
+        median_err: 0.9971
+        min_err: 0.8681
+        max_err: 1.2545
+        penalised_hospitals: 1142
+        penalised_share: 0.4058
+        peer_group_1_median_err: 0.9965
+        peer_group_2_median_err: 0.9965
+        peer_group_3_median_err: 0.9935
+        peer_group_4_median_err: 0.9962
+        peer_group_5_median_err: 1.002
+      HF:
+        hospitals_with_err: 2816
+        mean_err: 1.0017
+        median_err: 0.9984
+        min_err: 0.7137
+        max_err: 1.3606
+        penalised_hospitals: 1292
+        penalised_share: 0.4588
+        peer_group_1_median_err: 0.9929
+        peer_group_2_median_err: 0.9922
+        peer_group_3_median_err: 0.9949
+        peer_group_4_median_err: 1.0005
+        peer_group_5_median_err: 1.0164
+      pneumonia:
+        hospitals_with_err: 2842
+        mean_err: 1.0018
+        median_err: 0.9965
+        min_err: 0.7967
+        max_err: 1.4255
+        penalised_hospitals: 1322
+        penalised_share: 0.4652
+        peer_group_1_median_err: 0.9908
+        peer_group_2_median_err: 0.9892
+        peer_group_3_median_err: 0.9932
+        peer_group_4_median_err: 0.9957
+        peer_group_5_median_err: 1.0101
+      CABG:
+        hospitals_with_err: 1050
+        mean_err: 1.0039
+        median_err: 0.9977
+        min_err: 0.7434
+        max_err: 1.4237
+        penalised_hospitals: 438
+        penalised_share: 0.4171
+        peer_group_1_median_err: 0.9964
+        peer_group_2_median_err: 1.0008
+        peer_group_3_median_err: 0.9934
+        peer_group_4_median_err: 1.0091
+        peer_group_5_median_err: 0.9991
+      THA/TKA:
+        hospitals_with_err: 2525
+        mean_err: 1.007
+        median_err: 0.9922
+        min_err: 0.4698
+        max_err: 1.6297
+        penalised_hospitals: 706
+        penalised_share: 0.2796
+        peer_group_1_median_err: 0.9939
+        peer_group_2_median_err: 0.9918
+        peer_group_3_median_err: 0.9907
+        peer_group_4_median_err: 0.9954
+        peer_group_5_median_err: 0.9905
+  vectors:
+  - input:
+      key: AMI
+      column: peer_group_2_median_err
+    expected: 0.9964
+    origin: source
+  - input:
+      key: HF
+      column: hospitals_with_err
+    expected: 2816
+    origin: source
+  - input: stroke
+    expected: false
+    origin: derived
+evidence:
+- publisher: Centers for Medicare & Medicaid Services
+  title: FY 2026 HRRP supplemental data file (FR FY 2026.txt)
+  url: https://www.cms.gov/files/zip/fy2026-hospital-readmissions-reduction-program-supplemental-data-file.zip
+  accessed_at: '2026-10-31'
+  locator: FR FY 2026.txt, Hospital CCN 010001, Peer group median ERR for AMI
+  value: '0.9964'
+  unit: ratio
+  snippet: 273 0.9370 0.9964 N 0.0273
+  source_license: unstated
+  content_sha256: 53558a8d8ed42b33b708ab0c2896c3a1b3642950f1ba1839a82455769ff2be8b
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services
+  title: FY 2026 HRRP supplemental data file (FR FY 2026.txt)
+  url: https://www.cms.gov/files/zip/fy2026-hospital-readmissions-reduction-program-supplemental-data-file.zip
+  accessed_at: '2026-10-31'
+  locator: FR FY 2026.txt, column headings
+  value: ERR for THA/TKA
+  unit: text
+  snippet: Number of eligible discharges for THA/TKA ERR for THA/TKA Peer group median ERR for THA/TKA
+  source_license: unstated
+  content_sha256: 53558a8d8ed42b33b708ab0c2896c3a1b3642950f1ba1839a82455769ff2be8b
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services
+  title: FY 2026 HRRP supplemental data file, variable descriptions (Variable Description.txt)
+  url: https://www.cms.gov/files/zip/fy2026-hospital-readmissions-reduction-program-supplemental-data-file.zip
+  accessed_at: '2026-10-31'
+  locator: Variable Description.txt, ERR
+  value: excess readmission ratio
+  unit: text
+  snippet: The ratio of the predicted readmission rate to the expected readmission rate for a given measure
+  source_license: unstated
+  content_sha256: 53558a8d8ed42b33b708ab0c2896c3a1b3642950f1ba1839a82455769ff2be8b
+  role: supporting
+assumed:
+- parameter: rows[*].hospitals_with_err, mean_err, median_err, min_err, max_err, penalised_hospitals, penalised_share
+  value: summaries over hospitals with a reported ERR
+  method: derived
+  rationale: Computed from the hospital rows of the supplemental file; the peer group median ERR columns are copied
+    from the file, where every hospital in a peer group carries the same value.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 6
+  tolerance: 0
+- statistic: max[hospitals_with_err]
+  expected: 2842
+  tolerance: 0
+notes: For each of the six Hospital Readmissions Reduction Program measures, how many hospitals had an excess readmission
+  ratio (ERR) in the fiscal 2026 program, the mean, median and range of those ratios, the share of hospitals penalised
+  on the measure, and the peer-group median ERR thresholds CMS used for the five dual-eligibility peer groups, from
+  the final rule supplemental data file. ERR is predicted over expected readmissions, so 1.0 is average performance.
+  data.cms.gov and cms.gov publish these files without a licence statement, so the entry is held at license-review.

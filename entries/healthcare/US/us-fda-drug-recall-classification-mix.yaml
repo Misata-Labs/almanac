@@ -1,0 +1,93 @@
+id: us-fda-drug-recall-classification-mix
+title: FDA drug enforcement reports by recall classification, 2012 to 2026 (18048 reports)
+kind: marginal
+domain: healthcare
+region: US
+status: verified
+tier: A
+observed_period:
+  start: '2012-06-20'
+  end: '2026-10-21'
+tags:
+- healthcare
+- drugs
+- recalls
+- fda
+- enforcement
+use_cases:
+- healthcare-demo
+- pharma-demo
+- claims-test-data
+spec:
+  variable: recall_classification
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Class II: 0.80768
+        Class I: 0.096964
+        Class III: 0.095246
+        Not Yet Classified: 0.000111
+      counts:
+        Class II: 14577
+        Class I: 1750
+        Class III: 1719
+        Not Yet Classified: 2
+      total: 18048
+evidence:
+- publisher: U.S. Food and Drug Administration
+  title: openFDA drug enforcement endpoint, count of classification
+  url: https://api.fda.gov/drug/enforcement.json?count=classification.exact&limit=1000
+  accessed_at: '2026-10-31'
+  locator: results[term=Class II].count
+  value: 14577
+  unit: count
+  snippet: '"term": "Class II",'
+  source_license: CC0-1.0
+  content_sha256: bde0536007152aa0b0884a155f2c422dda323497b3456fde1025080a0e46e44f
+  role: primary
+- publisher: U.S. Food and Drug Administration
+  title: openFDA drug enforcement endpoint, count of classification
+  url: https://api.fda.gov/drug/enforcement.json?count=classification.exact&limit=1000
+  accessed_at: '2026-10-31'
+  locator: meta.last_updated
+  value: '2026-10-21'
+  unit: date
+  snippet: '"last_updated":'
+  source_license: CC0-1.0
+  content_sha256: bde0536007152aa0b0884a155f2c422dda323497b3456fde1025080a0e46e44f
+  role: primary
+- publisher: U.S. Food and Drug Administration
+  title: openFDA licence statement
+  url: https://open.fda.gov/license/
+  accessed_at: '2026-10-31'
+  locator: License section
+  value: CC0
+  unit: text
+  snippet: related materials on openFDA is public domain and made available with a
+  source_license: CC0-1.0
+  content_sha256: 7fda0041a24f8d7139a1781d4462ae39643a2ee6f3b0f079946c989a8e1982d2
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: counts / total
+  method: derived
+  rationale: Shares are each category's count over the sum of all categories in the table.
+tests:
+- statistic: share[Class II]
+  expected: 0.80768
+  tolerance: 0.004
+- statistic: share[Class I]
+  expected: 0.096964
+  tolerance: 0.004
+- statistic: share[Class III]
+  expected: 0.095246
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: How FDA drug recalls in the enforcement reports since June 2012 split between Class I (reasonable probability
+  of serious harm), Class II and Class III, counted by the openFDA drug enforcement endpoint as of 2026-10-21. Each
+  count is one product on one recall event. The split gives synthetic recall records a realistic severity mix. openFDA
+  states that its data is public domain under a CC0 1.0 Universal dedication (supporting evidence).

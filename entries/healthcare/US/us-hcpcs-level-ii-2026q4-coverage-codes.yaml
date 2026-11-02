@@ -1,0 +1,90 @@
+id: us-hcpcs-level-ii-2026q4-coverage-codes
+title: HCPCS Level II active codes by Medicare coverage code, October 2026 quarterly update (7448 codes)
+kind: marginal
+domain: healthcare
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2026-10-01'
+  end: '2026-10-31'
+tags:
+- healthcare
+- claims
+- hcpcs
+- coverage
+- medicare
+use_cases:
+- healthcare-demo
+- claims-test-data
+- payer-demo
+- claims-generation
+spec:
+  variable: coverage_code
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        carrier_judgment: 0.610365
+        special_coverage_instructions: 0.252685
+        not_payable_by_medicare: 0.1058
+        non_covered_by_medicare: 0.012487
+        non_covered_by_statute: 0.018663
+      counts:
+        carrier_judgment: 4546
+        special_coverage_instructions: 1882
+        not_payable_by_medicare: 788
+        non_covered_by_medicare: 93
+        non_covered_by_statute: 139
+      total: 7448
+evidence:
+- publisher: Centers for Medicare & Medicaid Services
+  title: HCPCS October 2026 quarterly update archive, alpha-numeric file (HCPC2026_OCT_ANWEB_09232026.txt)
+  url: https://www.cms.gov/files/zip/october-2026-alpha-numeric-hcpcs-file.zip
+  accessed_at: '2026-10-31'
+  locator: HCPC2026_OCT_ANWEB_09232026.txt, first procedure record
+  value: A0021
+  unit: text
+  snippet: A0021001003Ambulance service, outside state per mile, transport (medicaid only)
+  source_license: unstated
+  content_sha256: 08c2202fa92c1d1fb6f31b808b61c767bc487954f6930b6a0f8d09c89af5992f
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services
+  title: HCPCS October 2026 quarterly update archive, record layout (HCPC2026_recordlayout.txt)
+  url: https://www.cms.gov/files/zip/october-2026-alpha-numeric-hcpcs-file.zip
+  accessed_at: '2026-10-31'
+  locator: HCPC2026_recordlayout.txt, field 16 HCPCS Coverage Code
+  value: C = Carrier judgment
+  unit: text
+  snippet: C = Carrier judgment
+  source_license: unstated
+  content_sha256: 08c2202fa92c1d1fb6f31b808b61c767bc487954f6930b6a0f8d09c89af5992f
+  role: supporting
+assumed:
+- parameter: distribution.parameters.counts
+  value: codes per coverage code among codes without a termination date
+  method: derived
+  rationale: Counted from position 230 of the first-line procedure records whose termination date is blank; labels
+    follow the record layout's code list.
+- parameter: distribution.parameters.shares
+  value: counts / total
+  method: derived
+  rationale: Shares are each category's count over the sum of all categories in the table.
+tests:
+- statistic: share[carrier_judgment]
+  expected: 0.610365
+  tolerance: 0.004
+- statistic: share[special_coverage_instructions]
+  expected: 0.252685
+  tolerance: 0.004
+- statistic: share[not_payable_by_medicare]
+  expected: 0.1058
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: 'How active HCPCS Level II codes split by the Medicare coverage code carried in the October 2026 alpha-numeric
+  file: carrier judgment, special coverage instructions, not payable by Medicare, non-covered by Medicare, and non-covered
+  by statute. Useful for deciding whether a synthetic line item is payable. data.cms.gov and cms.gov publish these
+  files without a licence statement, so the entry is held at license-review.'

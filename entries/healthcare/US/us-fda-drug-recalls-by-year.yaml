@@ -1,0 +1,110 @@
+id: us-fda-drug-recalls-by-year
+title: FDA drug enforcement report entries per year, 2013 to 2025
+kind: temporal
+domain: healthcare
+region: US
+status: verified
+tier: A
+observed_period:
+  start: '2013-01-01'
+  end: '2025-12-31'
+tags:
+- healthcare
+- drugs
+- recalls
+- fda
+- time-series
+use_cases:
+- healthcare-demo
+- pharma-demo
+- claims-test-data
+- capacity-planning
+spec:
+  variable: enforcement_reports
+  unit: count
+  frequency: annual
+  columns: []
+  series:
+  - period: '2013'
+    value: 1377.0
+  - period: '2014'
+    value: 1562.0
+  - period: '2015'
+    value: 2020.0
+  - period: '2016'
+    value: 1254.0
+  - period: '2017'
+    value: 1073.0
+  - period: '2018'
+    value: 1426.0
+  - period: '2019'
+    value: 2152.0
+  - period: '2020'
+    value: 1035.0
+  - period: '2021'
+    value: 1016.0
+  - period: '2022'
+    value: 1349.0
+  - period: '2023'
+    value: 1252.0
+  - period: '2024'
+    value: 657.0
+  - period: '2025'
+    value: 765.0
+evidence:
+- publisher: U.S. Food and Drug Administration
+  title: openFDA drug enforcement endpoint, count of report_date
+  url: https://api.fda.gov/drug/enforcement.json?count=report_date&limit=1000
+  accessed_at: '2026-10-31'
+  locator: results[time=20120620].count
+  value: 14
+  unit: count
+  snippet: '"time": "20120620",'
+  source_license: CC0-1.0
+  content_sha256: a29d7f69c334b4c4d20e7c5bbc0e8473d3a8b4e394f94999ac5f377400a69052
+  role: primary
+- publisher: U.S. Food and Drug Administration
+  title: openFDA drug enforcement endpoint, count of report_date
+  url: https://api.fda.gov/drug/enforcement.json?count=report_date&limit=1000
+  accessed_at: '2026-10-31'
+  locator: meta.last_updated
+  value: '2026-10-21'
+  unit: date
+  snippet: '"last_updated":'
+  source_license: CC0-1.0
+  content_sha256: a29d7f69c334b4c4d20e7c5bbc0e8473d3a8b4e394f94999ac5f377400a69052
+  role: primary
+- publisher: U.S. Food and Drug Administration
+  title: openFDA licence statement
+  url: https://open.fda.gov/license/
+  accessed_at: '2026-10-31'
+  locator: License section
+  value: CC0
+  unit: text
+  snippet: related materials on openFDA is public domain and made available with a
+  source_license: CC0-1.0
+  content_sha256: 7fda0041a24f8d7139a1781d4462ae39643a2ee6f3b0f079946c989a8e1982d2
+  role: supporting
+assumed:
+- parameter: series
+  value: sum of weekly report_date counts per calendar year
+  method: derived
+  rationale: openFDA counts entries per weekly enforcement report date; the entry sums them by year and drops 2012
+    and the current year because they are partial.
+tests:
+- statistic: value[2013]
+  expected: 1377.0
+  tolerance: 1.0e-09
+- statistic: value[2025]
+  expected: 765.0
+  tolerance: 1.0e-09
+- statistic: max
+  expected: 2152.0
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 13
+  tolerance: 0
+notes: The number of drug product entries in FDA weekly enforcement reports per calendar year, summed from the openFDA
+  drug enforcement endpoint's per-date counts as of 2026-10-21. A synthetic pharmacovigilance or recall feed can
+  use it to set annual volume. openFDA states that its data is public domain under a CC0 1.0 Universal dedication
+  (supporting evidence).

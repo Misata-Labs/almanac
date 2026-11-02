@@ -1,0 +1,109 @@
+id: us-fda-ndc-product-type-mix-2026
+title: FDA National Drug Code directory products by product type, openFDA snapshot of 2026-10-30 (11 categories)
+kind: marginal
+domain: healthcare
+region: US
+status: verified
+tier: A
+observed_period:
+  start: '2026-10-30'
+  end: '2026-10-30'
+tags:
+- healthcare
+- drugs
+- ndc
+- fda
+- product-type
+use_cases:
+- healthcare-demo
+- pharma-demo
+- claims-test-data
+- clinical-records
+spec:
+  variable: product_type
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        HUMAN PRESCRIPTION DRUG: 0.412839
+        HUMAN OTC DRUG: 0.411682
+        BULK INGREDIENT: 0.113807
+        DRUG FOR FURTHER PROCESSING: 0.04124
+        NON-STANDARDIZED ALLERGENIC: 0.015895
+        PLASMA DERIVATIVE: 0.002279
+        VACCINE: 0.001092
+        STANDARDIZED ALLERGENIC: 0.00089
+        CELLULAR THERAPY: 0.000159
+        LICENSED VACCINE BULK INTERMEDIATE: 7.2e-05
+        ANIMAL DRUG FOR FURTHER PROCESSING: 4.3e-05
+      counts:
+        HUMAN PRESCRIPTION DRUG: 57061
+        HUMAN OTC DRUG: 56901
+        BULK INGREDIENT: 15730
+        DRUG FOR FURTHER PROCESSING: 5700
+        NON-STANDARDIZED ALLERGENIC: 2197
+        PLASMA DERIVATIVE: 315
+        VACCINE: 151
+        STANDARDIZED ALLERGENIC: 123
+        CELLULAR THERAPY: 22
+        LICENSED VACCINE BULK INTERMEDIATE: 10
+        ANIMAL DRUG FOR FURTHER PROCESSING: 6
+      total: 138216
+evidence:
+- publisher: U.S. Food and Drug Administration
+  title: openFDA drug NDC endpoint, count of product_type.exact
+  url: https://api.fda.gov/drug/ndc.json?count=product_type.exact&limit=1000
+  accessed_at: '2026-10-31'
+  locator: results[term=HUMAN PRESCRIPTION DRUG].count
+  value: 57061
+  unit: count
+  snippet: '"term": "HUMAN PRESCRIPTION DRUG",'
+  source_license: CC0-1.0
+  content_sha256: d3d64cef5c4ea58512134636d454fef3411356f479f072b9291801cda5777abe
+  role: primary
+- publisher: U.S. Food and Drug Administration
+  title: openFDA drug NDC endpoint, count of product_type.exact
+  url: https://api.fda.gov/drug/ndc.json?count=product_type.exact&limit=1000
+  accessed_at: '2026-10-31'
+  locator: meta.last_updated
+  value: '2026-10-30'
+  unit: date
+  snippet: '"last_updated":'
+  source_license: CC0-1.0
+  content_sha256: d3d64cef5c4ea58512134636d454fef3411356f479f072b9291801cda5777abe
+  role: primary
+- publisher: U.S. Food and Drug Administration
+  title: openFDA licence statement
+  url: https://open.fda.gov/license/
+  accessed_at: '2026-10-31'
+  locator: License section
+  value: CC0
+  unit: text
+  snippet: related materials on openFDA is public domain and made available with a
+  source_license: CC0-1.0
+  content_sha256: 7fda0041a24f8d7139a1781d4462ae39643a2ee6f3b0f079946c989a8e1982d2
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: counts / total
+  method: derived
+  rationale: Shares are each category's count over the sum of all categories in the table.
+tests:
+- statistic: share[HUMAN PRESCRIPTION DRUG]
+  expected: 0.412839
+  tolerance: 0.004
+- statistic: share[HUMAN OTC DRUG]
+  expected: 0.411682
+  tolerance: 0.004
+- statistic: share[BULK INGREDIENT]
+  expected: 0.113807
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: How the product listings in the FDA National Drug Code directory split by product type, counted by the openFDA
+  drug NDC endpoint's count query over its snapshot of 2026-10-30. A product listed with several values of the field
+  counts once under each. The counts weight the product type of a synthetic drug product; openFDA refreshes the
+  snapshot regularly, so re-run the builder to track it. openFDA states that its data is public domain under a CC0
+  1.0 Universal dedication (supporting evidence).

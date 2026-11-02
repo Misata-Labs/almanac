@@ -1,0 +1,147 @@
+id: us-live-births-by-month-2023-2024
+title: United States provisional live births, deaths and infant deaths by month, 2023-01 to 2024-06 (NCHS VSRR)
+kind: temporal
+domain: healthcare
+region: US
+status: verified
+tier: A
+observed_period:
+  start: '2023-01-01'
+  end: '2024-06-30'
+tags:
+- healthcare
+- births
+- deaths
+- vital-statistics
+- cdc
+- time-series
+- seasonality
+use_cases:
+- healthcare-demo
+- claims-test-data
+- payer-demo
+- person-generation
+- event-timestamps
+- clinical-records
+spec:
+  variable: live_births
+  unit: count
+  frequency: monthly
+  columns:
+  - deaths
+  - infant_deaths
+  series:
+  - period: 2023-01
+    value: 299000.0
+    deaths: 289000.0
+    infant_deaths: 1700.0
+  - period: 2023-02
+    value: 271000.0
+    deaths: 249000.0
+    infant_deaths: 1500.0
+  - period: 2023-03
+    value: 299000.0
+    deaths: 269000.0
+    infant_deaths: 1800.0
+  - period: 2023-04
+    value: 279000.0
+    deaths: 252000.0
+    infant_deaths: 1700.0
+  - period: 2023-05
+    value: 299000.0
+    deaths: 253000.0
+    infant_deaths: 1700.0
+  - period: 2023-06
+    value: 303000.0
+    deaths: 241000.0
+    infant_deaths: 1700.0
+  - period: 2023-07
+    value: 312000.0
+    deaths: 247000.0
+    infant_deaths: 1700.0
+  - period: 2023-08
+    value: 322000.0
+    deaths: 250000.0
+    infant_deaths: 1700.0
+  - period: 2023-09
+    value: 305000.0
+    deaths: 245000.0
+    infant_deaths: 1600.0
+  - period: 2023-10
+    value: 309000.0
+    deaths: 259000.0
+    infant_deaths: 1700.0
+  - period: 2023-11
+    value: 298000.0
+    deaths: 258000.0
+    infant_deaths: 1600.0
+  - period: 2023-12
+    value: 297000.0
+    deaths: 284000.0
+    infant_deaths: 1700.0
+  - period: 2024-01
+    value: 297000.0
+    deaths: 295000.0
+    infant_deaths: 1700.0
+  - period: 2024-02
+    value: 283000.0
+    deaths: 255000.0
+    infant_deaths: 1600.0
+  - period: 2024-03
+    value: 298000.0
+    deaths: 263000.0
+    infant_deaths: 1700.0
+  - period: 2024-04
+    value: 289000.0
+    deaths: 249000.0
+    infant_deaths: 1600.0
+  - period: 2024-05
+    value: 302000.0
+    deaths: 249000.0
+    infant_deaths: 1700.0
+  - period: 2024-06
+    value: 291000.0
+    deaths: 239000.0
+    infant_deaths: 1600.0
+evidence:
+- publisher: Centers for Disease Control and Prevention, National Center for Health Statistics
+  title: VSRR State and National Provisional Counts for Live Births, Deaths, and Infant Deaths (Socrata CSV export)
+  url: https://data.cdc.gov/resource/hmz2-vwda.csv?$limit=100000&$order=:id
+  accessed_at: '2026-10-31'
+  locator: state=UNITED STATES, year=2023, month=January, indicator=Number of Live Births, data_value
+  value: 299000
+  unit: count
+  snippet: '"UNITED STATES","2023","January","Monthly","Number of Live Births","299000"'
+  source_license: public-domain
+  content_sha256: e51a2aafcb6286b95e107fd17b34409e8bdf78d29212b228e93c9c73b666a386
+  role: primary
+- publisher: Centers for Disease Control and Prevention, National Center for Health Statistics
+  title: data.cdc.gov view metadata for hmz2-vwda
+  url: https://data.cdc.gov/api/views/hmz2-vwda.json
+  accessed_at: '2026-10-31'
+  locator: license.name
+  value: Public Domain U.S. Government
+  unit: text
+  snippet: '"name" : "Public Domain U.S. Government"'
+  source_license: public-domain
+  content_sha256: 0d1940558e3a0d3e34ff994ceb3f7da5544f9499a90be9ed25b0afe55e286324
+  role: supporting
+assumed: []
+tests:
+- statistic: value[2023-01]
+  expected: 299000.0
+  tolerance: 1.0e-09
+- statistic: value[2024-06]
+  expected: 291000.0
+  tolerance: 1.0e-09
+- statistic: max
+  expected: 322000.0
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 18
+  tolerance: 0
+notes: Provisional monthly counts of live births, deaths and infant deaths for the United States from the NCHS Vital
+  Statistics Rapid Release, read from the data.cdc.gov export of the state and national provisional counts with
+  a fixed row order. Counts are rounded by NCHS. The month-to-month shape sets the seasonality of synthetic birth
+  and death events. The data.cdc.gov view metadata records the licence as Public Domain U.S. Government (supporting
+  evidence).

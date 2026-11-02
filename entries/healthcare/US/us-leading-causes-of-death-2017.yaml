@@ -1,0 +1,113 @@
+id: us-leading-causes-of-death-2017
+title: United States deaths by leading cause, 2017 (NCHS, ten leading causes and all other causes)
+kind: marginal
+domain: healthcare
+region: US
+status: verified
+tier: A
+observed_period:
+  start: '2017-01-01'
+  end: '2017-12-31'
+tags:
+- healthcare
+- deaths
+- causes-of-death
+- vital-statistics
+- cdc
+use_cases:
+- healthcare-demo
+- claims-test-data
+- payer-demo
+- insurance
+- clinical-records
+spec:
+  variable: cause_of_death
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Heart disease: 0.230125
+        Cancer: 0.21294
+        Unintentional injuries: 0.0604
+        CLRD: 0.05694
+        Stroke: 0.052029
+        Alzheimer's disease: 0.04315
+        Diabetes: 0.029701
+        Influenza and pneumonia: 0.019787
+        Kidney disease: 0.017996
+        Suicide: 0.016767
+        Other causes: 0.260164
+      counts:
+        Heart disease: 647457
+        Cancer: 599108
+        Unintentional injuries: 169936
+        CLRD: 160201
+        Stroke: 146383
+        Alzheimer's disease: 121404
+        Diabetes: 83564
+        Influenza and pneumonia: 55672
+        Kidney disease: 50633
+        Suicide: 47173
+        Other causes: 731972
+      total: 2813503
+evidence:
+- publisher: Centers for Disease Control and Prevention, National Center for Health Statistics
+  title: 'NCHS Leading Causes of Death: United States (Socrata CSV export)'
+  url: https://data.cdc.gov/resource/bi63-dtpu.csv?$limit=100000&$order=:id
+  accessed_at: '2026-10-31'
+  locator: year=2017, cause_name=Unintentional injuries, state=United States, deaths
+  value: 169936
+  unit: count
+  snippet: '"2017","Accidents (unintentional injuries) (V01-X59,Y85-Y86)","Unintentional injuries","United States","169936","49.4"'
+  source_license: public-domain
+  content_sha256: 100dcece26a94277d28e9ec2ae9620a4a58ed6ae21bcbace8dfbb07470bf9d7a
+  role: primary
+- publisher: Centers for Disease Control and Prevention, National Center for Health Statistics
+  title: 'NCHS Leading Causes of Death: United States (Socrata CSV export)'
+  url: https://data.cdc.gov/resource/bi63-dtpu.csv?$limit=100000&$order=:id
+  accessed_at: '2026-10-31'
+  locator: year=2017, cause_name=All causes, state=United States, deaths
+  value: 2813503
+  unit: count
+  snippet: '"2017","All Causes","All causes","United States","2813503"'
+  source_license: public-domain
+  content_sha256: 100dcece26a94277d28e9ec2ae9620a4a58ed6ae21bcbace8dfbb07470bf9d7a
+  role: primary
+- publisher: Centers for Disease Control and Prevention, National Center for Health Statistics
+  title: data.cdc.gov view metadata for bi63-dtpu
+  url: https://data.cdc.gov/api/views/bi63-dtpu.json
+  accessed_at: '2026-10-31'
+  locator: license.name
+  value: Public Domain U.S. Government
+  unit: text
+  snippet: '"name" : "Public Domain U.S. Government"'
+  source_license: public-domain
+  content_sha256: 1655f11293f8bd11b2ca44ec6b4087844d754eeaef5b1201d4de0fa48c755ccc
+  role: supporting
+assumed:
+- parameter: distribution.parameters.counts[Other causes]
+  value: all causes minus the ten named causes
+  method: derived
+  rationale: NCHS publishes the ten leading causes and the all-cause total; the remainder is their difference.
+- parameter: distribution.parameters.shares
+  value: counts / total
+  method: derived
+  rationale: Shares are each category's count over the sum of all categories in the table.
+tests:
+- statistic: share[Other causes]
+  expected: 0.260164
+  tolerance: 0.004
+- statistic: share[Heart disease]
+  expected: 0.230125
+  tolerance: 0.004
+- statistic: share[Cancer]
+  expected: 0.21294
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Deaths in the United States in 2017 by the ten leading causes NCHS publishes in its leading causes of death
+  series, with every other cause collected into one remainder, so the shares sum to all deaths. 2017 is the last
+  year in the data.cdc.gov series. The cause weights give synthetic mortality or claims data a realistic diagnosis
+  mix. The data.cdc.gov view metadata records the licence as Public Domain U.S. Government (supporting evidence).

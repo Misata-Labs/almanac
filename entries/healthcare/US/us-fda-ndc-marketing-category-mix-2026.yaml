@@ -1,0 +1,120 @@
+id: us-fda-ndc-marketing-category-mix-2026
+title: FDA National Drug Code directory products by marketing category (application type), openFDA snapshot of 2026-10-30
+  (16 categories)
+kind: marginal
+domain: healthcare
+region: US
+status: verified
+tier: A
+observed_period:
+  start: '2026-10-30'
+  end: '2026-10-30'
+tags:
+- healthcare
+- drugs
+- ndc
+- fda
+- marketing-category
+use_cases:
+- healthcare-demo
+- pharma-demo
+- claims-test-data
+- clinical-records
+spec:
+  variable: marketing_category
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        ANDA: 0.368749
+        OTC MONOGRAPH DRUG: 0.264535
+        BULK INGREDIENT: 0.099178
+        UNAPPROVED HOMEOPATHIC: 0.096537
+        NDA: 0.053554
+        DRUG FOR FURTHER PROCESSING: 0.042593
+        BLA: 0.029794
+        UNAPPROVED DRUG OTHER: 0.016221
+        BULK INGREDIENT FOR HUMAN PRESCRIPTION COMPOUNDING: 0.013956
+        NDA AUTHORIZED GENERIC: 0.008559
+        UNAPPROVED MEDICAL GAS: 0.002091
+        OTC MONOGRAPH FINAL: 0.001563
+        OTC MONOGRAPH NOT FINAL: 0.001201
+        EXPORT ONLY: 0.001013
+        UNAPPROVED DRUG FOR USE IN DRUG SHORTAGE: 0.000434
+        EMERGENCY USE AUTHORIZATION: 2.2e-05
+      counts:
+        ANDA: 50967
+        OTC MONOGRAPH DRUG: 36563
+        BULK INGREDIENT: 13708
+        UNAPPROVED HOMEOPATHIC: 13343
+        NDA: 7402
+        DRUG FOR FURTHER PROCESSING: 5887
+        BLA: 4118
+        UNAPPROVED DRUG OTHER: 2242
+        BULK INGREDIENT FOR HUMAN PRESCRIPTION COMPOUNDING: 1929
+        NDA AUTHORIZED GENERIC: 1183
+        UNAPPROVED MEDICAL GAS: 289
+        OTC MONOGRAPH FINAL: 216
+        OTC MONOGRAPH NOT FINAL: 166
+        EXPORT ONLY: 140
+        UNAPPROVED DRUG FOR USE IN DRUG SHORTAGE: 60
+        EMERGENCY USE AUTHORIZATION: 3
+      total: 138216
+evidence:
+- publisher: U.S. Food and Drug Administration
+  title: openFDA drug NDC endpoint, count of marketing_category
+  url: https://api.fda.gov/drug/ndc.json?count=marketing_category&limit=1000
+  accessed_at: '2026-10-31'
+  locator: results[term=ANDA].count
+  value: 50967
+  unit: count
+  snippet: '"term": "ANDA",'
+  source_license: CC0-1.0
+  content_sha256: b3db4cf9f84cb397a970040281361ed7bd9823814c584f7a7def1113d1ee1b44
+  role: primary
+- publisher: U.S. Food and Drug Administration
+  title: openFDA drug NDC endpoint, count of marketing_category
+  url: https://api.fda.gov/drug/ndc.json?count=marketing_category&limit=1000
+  accessed_at: '2026-10-31'
+  locator: meta.last_updated
+  value: '2026-10-30'
+  unit: date
+  snippet: '"last_updated":'
+  source_license: CC0-1.0
+  content_sha256: b3db4cf9f84cb397a970040281361ed7bd9823814c584f7a7def1113d1ee1b44
+  role: primary
+- publisher: U.S. Food and Drug Administration
+  title: openFDA licence statement
+  url: https://open.fda.gov/license/
+  accessed_at: '2026-10-31'
+  locator: License section
+  value: CC0
+  unit: text
+  snippet: related materials on openFDA is public domain and made available with a
+  source_license: CC0-1.0
+  content_sha256: 7fda0041a24f8d7139a1781d4462ae39643a2ee6f3b0f079946c989a8e1982d2
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: counts / total
+  method: derived
+  rationale: Shares are each category's count over the sum of all categories in the table.
+tests:
+- statistic: share[ANDA]
+  expected: 0.368749
+  tolerance: 0.004
+- statistic: share[OTC MONOGRAPH DRUG]
+  expected: 0.264535
+  tolerance: 0.004
+- statistic: share[BULK INGREDIENT]
+  expected: 0.099178
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: How the product listings in the FDA National Drug Code directory split by marketing category (application
+  type), counted by the openFDA drug NDC endpoint's count query over its snapshot of 2026-10-30. A product listed
+  with several values of the field counts once under each. The counts weight the marketing category (application
+  type) of a synthetic drug product; openFDA refreshes the snapshot regularly, so re-run the builder to track it.
+  openFDA states that its data is public domain under a CC0 1.0 Universal dedication (supporting evidence).

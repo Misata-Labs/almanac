@@ -1,0 +1,238 @@
+id: us-hcup-most-expensive-inpatient-conditions-2022
+title: The 20 most expensive conditions treated in US hospitals by aggregate cost, all payers, 2022 (HCUP Statistical
+  Brief 316, Table 1)
+kind: rule
+domain: healthcare
+region: US
+status: license-review
+tier: B
+valid_from: '2022-01-01'
+valid_to: '2022-12-31'
+tags:
+- healthcare
+- hospitals
+- claims
+- diagnoses
+- ccsr
+- hcup
+- costs
+use_cases:
+- healthcare-demo
+- claims-test-data
+- payer-demo
+- claims-generation
+- clinical-records
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    year: 2022
+    classification: CCSR for ICD-10-CM principal diagnosis
+    all_stays:
+      aggregate_cost_usd_millions: 548481
+      stays_thousands: 32892
+    rows:
+      INF002:
+        rank: 1
+        condition: Septicemia
+        aggregate_cost_usd_millions: 60016
+        national_cost_percent: 10.9
+        stays_thousands: 2421
+        stays_percent: 7.4
+      PNL001:
+        rank: 2
+        condition: Liveborn
+        aggregate_cost_usd_millions: 19581
+        national_cost_percent: 3.6
+        stays_thousands: 3488
+        stays_percent: 10.6
+      CIR019:
+        rank: 3
+        condition: Heart failure
+        aggregate_cost_usd_millions: 18236
+        national_cost_percent: 3.3
+        stays_thousands: 1098
+        stays_percent: 3.3
+      CIR009:
+        rank: 4
+        condition: Acute myocardial infarction
+        aggregate_cost_usd_millions: 16332
+        national_cost_percent: 3.0
+        stays_thousands: 582
+        stays_percent: 1.8
+      INF012:
+        rank: 5
+        condition: Coronavirus disease 2019 (COVID-19)
+        aggregate_cost_usd_millions: 16038
+        national_cost_percent: 2.9
+        stays_thousands: 823
+        stays_percent: 2.5
+      MUS011:
+        rank: 6
+        condition: Spondylopathies/spondyloarthropathy
+        aggregate_cost_usd_millions: 14002
+        national_cost_percent: 2.6
+        stays_thousands: 447
+        stays_percent: 1.4
+      END003:
+        rank: 7
+        condition: Diabetes mellitus with complication
+        aggregate_cost_usd_millions: 10945
+        national_cost_percent: 2.0
+        stays_thousands: 687
+        stays_percent: 2.1
+      CIR020:
+        rank: 8
+        condition: Cerebral infarction
+        aggregate_cost_usd_millions: 10940
+        national_cost_percent: 2.0
+        stays_thousands: 542
+        stays_percent: 1.6
+      CIR017:
+        rank: 9
+        condition: Cardiac dysrhythmias
+        aggregate_cost_usd_millions: 9913
+        national_cost_percent: 1.8
+        stays_thousands: 596
+        stays_percent: 1.8
+      RSP012:
+        rank: 10
+        condition: Respiratory failure; insufficiency; arrest
+        aggregate_cost_usd_millions: 9538
+        national_cost_percent: 1.7
+        stays_thousands: 433
+        stays_percent: 1.3
+      CIR011:
+        rank: 11
+        condition: Coronary atherosclerosis/oth heart disease
+        aggregate_cost_usd_millions: 9300
+        national_cost_percent: 1.7
+        stays_thousands: 294
+        stays_percent: 0.9
+      INJ037:
+        rank: 12
+        condition: Complic-oth surg/med care, init encounter
+        aggregate_cost_usd_millions: 7968
+        national_cost_percent: 1.5
+        stays_thousands: 341
+        stays_percent: 1.0
+      INJ006:
+        rank: 13
+        condition: Fracture of neck of femur, init encounter
+        aggregate_cost_usd_millions: 7656
+        national_cost_percent: 1.4
+        stays_thousands: 338
+        stays_percent: 1.0
+      CIR003:
+        rank: 14
+        condition: Nonrheumatic and unspecified valve disorders
+        aggregate_cost_usd_millions: 7649
+        national_cost_percent: 1.4
+        stays_thousands: 150
+        stays_percent: 0.5
+      RSP002:
+        rank: 15
+        condition: Pneumonia
+        aggregate_cost_usd_millions: 7648
+        national_cost_percent: 1.4
+        stays_thousands: 547
+        stays_percent: 1.7
+      GEN002:
+        rank: 16
+        condition: Acute and unspecified renal failure
+        aggregate_cost_usd_millions: 6573
+        national_cost_percent: 1.2
+        stays_thousands: 497
+        stays_percent: 1.5
+      INJ008:
+        rank: 17
+        condition: TBI; concussion, init encounter
+        aggregate_cost_usd_millions: 6491
+        national_cost_percent: 1.2
+        stays_thousands: 218
+        stays_percent: 0.7
+      INJ005:
+        rank: 18
+        condition: Fracture of lower limb, init encounter
+        aggregate_cost_usd_millions: 6216
+        national_cost_percent: 1.1
+        stays_thousands: 227
+        stays_percent: 0.7
+      INJ033:
+        rank: 19
+        condition: Complic-cardiovasc device, init encounter
+        aggregate_cost_usd_millions: 6022
+        national_cost_percent: 1.1
+        stays_thousands: 170
+        stays_percent: 0.5
+      MUS006:
+        rank: 20
+        condition: Osteoarthritis
+        aggregate_cost_usd_millions: 5618
+        national_cost_percent: 1.0
+        stays_thousands: 277
+        stays_percent: 0.8
+  vectors:
+  - input:
+      key: INF002
+      column: aggregate_cost_usd_millions
+    expected: 60016
+    origin: source
+  - input:
+      key: INF002
+      column: stays_thousands
+    expected: 2421
+    origin: source
+  - input:
+      key: CIR019
+      column: condition
+    expected: Heart failure
+    origin: source
+  - input: XXX000
+    expected: false
+    origin: derived
+evidence:
+- publisher: Agency for Healthcare Research and Quality
+  title: 'HCUP Statistical Brief 316: National Inpatient Hospital Costs, the Most Expensive Conditions by Payer,
+    2022'
+  url: https://hcup-us.ahrq.gov/reports/statbriefs/sb316-most-expensive-conditions-by-payer-2022.pdf
+  accessed_at: '2026-10-31'
+  locator: page 3, Table 1, rank 1
+  value: 60,016
+  unit: currency:USD
+  snippet: '1 INF002: Septicemia* 60,016 10.9 2,421 7.4'
+  source_license: unstated
+  content_sha256: b92917d674bdfba1074b84e9748f2ad5c091950c7f762e715b8eee06cf5e550c
+  role: primary
+- publisher: Agency for Healthcare Research and Quality
+  title: 'HCUP Statistical Brief 316: National Inpatient Hospital Costs, the Most Expensive Conditions by Payer,
+    2022'
+  url: https://hcup-us.ahrq.gov/reports/statbriefs/sb316-most-expensive-conditions-by-payer-2022.pdf
+  accessed_at: '2026-10-31'
+  locator: page 3, Table 1, total for all stays
+  value: 548,481
+  unit: currency:USD
+  snippet: Total for all stays 548,481 100.0 32,892 100.0
+  source_license: unstated
+  content_sha256: b92917d674bdfba1074b84e9748f2ad5c091950c7f762e715b8eee06cf5e550c
+  role: primary
+assumed:
+- parameter: all_stays
+  value: totals row of Table 1
+  method: derived
+  rationale: Aggregate cost in millions of dollars and stays in thousands are copied from the table's final row;
+    the PDF is read by text extraction.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 20
+  tolerance: 0
+- statistic: max[aggregate_cost_usd_millions]
+  expected: 60016
+  tolerance: 0
+notes: 'Table 1 of AHRQ''s HCUP Statistical Brief 316: the twenty CCSR principal diagnosis categories with the highest
+  aggregate hospital costs across all payers in 2022, with each one''s aggregate cost in millions of dollars, share
+  of national inpatient costs, number of stays in thousands and share of stays, from the National Inpatient Sample.
+  Costs are hospital costs, not charges or payments. The table is the natural weight for the principal diagnosis
+  of a synthetic inpatient stay. The brief is a PDF, so the entry is tier B; AHRQ states no licence on the file.'

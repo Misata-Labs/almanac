@@ -1,0 +1,202 @@
+id: us-pfs-2026-office-visit-rvus
+title: Medicare physician fee schedule relative value units and national payment for office visit codes 99202 to
+  99215, October 2026 release
+kind: rule
+domain: healthcare
+region: US
+status: license-review
+tier: A
+valid_from: '2026-10-01'
+valid_to: '2026-12-31'
+tags:
+- healthcare
+- claims
+- medicare
+- physician-fee-schedule
+- rvu
+- evaluation-and-management
+use_cases:
+- healthcare-demo
+- claims-test-data
+- payer-demo
+- claims-generation
+- pricing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    release: RVU26D (October 2026)
+    conversion_factor_usd: 33.4009
+    payment_formula: total RVU x conversion factor, before geographic adjustment
+    rows:
+      '99202':
+        status_code: A
+        work_rvu: 0.93
+        nonfacility_pe_rvu: 1.25
+        facility_pe_rvu: 0.23
+        malpractice_rvu: 0.07
+        nonfacility_total_rvu: 2.25
+        facility_total_rvu: 1.23
+        global_period: XXX
+        nonfacility_national_payment_usd: 75.15
+        facility_national_payment_usd: 41.08
+      '99203':
+        status_code: A
+        work_rvu: 1.6
+        nonfacility_pe_rvu: 1.76
+        facility_pe_rvu: 0.38
+        malpractice_rvu: 0.16
+        nonfacility_total_rvu: 3.52
+        facility_total_rvu: 2.14
+        global_period: XXX
+        nonfacility_national_payment_usd: 117.57
+        facility_national_payment_usd: 71.48
+      '99204':
+        status_code: A
+        work_rvu: 2.6
+        nonfacility_pe_rvu: 2.47
+        facility_pe_rvu: 0.66
+        malpractice_rvu: 0.24
+        nonfacility_total_rvu: 5.31
+        facility_total_rvu: 3.5
+        global_period: XXX
+        nonfacility_national_payment_usd: 177.36
+        facility_national_payment_usd: 116.9
+      '99205':
+        status_code: A
+        work_rvu: 3.5
+        nonfacility_pe_rvu: 3.23
+        facility_pe_rvu: 0.94
+        malpractice_rvu: 0.36
+        nonfacility_total_rvu: 7.09
+        facility_total_rvu: 4.8
+        global_period: XXX
+        nonfacility_national_payment_usd: 236.81
+        facility_national_payment_usd: 160.32
+      '99211':
+        status_code: A
+        work_rvu: 0.18
+        nonfacility_pe_rvu: 0.54
+        facility_pe_rvu: 0.04
+        malpractice_rvu: 0.01
+        nonfacility_total_rvu: 0.73
+        facility_total_rvu: 0.23
+        global_period: XXX
+        nonfacility_national_payment_usd: 24.38
+        facility_national_payment_usd: 7.68
+      '99212':
+        status_code: A
+        work_rvu: 0.7
+        nonfacility_pe_rvu: 1.02
+        facility_pe_rvu: 0.17
+        malpractice_rvu: 0.06
+        nonfacility_total_rvu: 1.78
+        facility_total_rvu: 0.93
+        global_period: XXX
+        nonfacility_national_payment_usd: 59.45
+        facility_national_payment_usd: 31.06
+      '99213':
+        status_code: A
+        work_rvu: 1.3
+        nonfacility_pe_rvu: 1.46
+        facility_pe_rvu: 0.33
+        malpractice_rvu: 0.09
+        nonfacility_total_rvu: 2.85
+        facility_total_rvu: 1.72
+        global_period: XXX
+        nonfacility_national_payment_usd: 95.19
+        facility_national_payment_usd: 57.45
+      '99214':
+        status_code: A
+        work_rvu: 1.92
+        nonfacility_pe_rvu: 2.0
+        facility_pe_rvu: 0.47
+        malpractice_rvu: 0.14
+        nonfacility_total_rvu: 4.06
+        facility_total_rvu: 2.53
+        global_period: XXX
+        nonfacility_national_payment_usd: 135.61
+        facility_national_payment_usd: 84.5
+      '99215':
+        status_code: A
+        work_rvu: 2.8
+        nonfacility_pe_rvu: 2.75
+        facility_pe_rvu: 0.75
+        malpractice_rvu: 0.21
+        nonfacility_total_rvu: 5.76
+        facility_total_rvu: 3.76
+        global_period: XXX
+        nonfacility_national_payment_usd: 192.39
+        facility_national_payment_usd: 125.59
+  vectors:
+  - input:
+      key: '99213'
+      column: work_rvu
+    expected: 1.3
+    origin: source
+  - input:
+      key: '99213'
+      column: nonfacility_total_rvu
+    expected: 2.85
+    origin: source
+  - input:
+      key: '99214'
+      column: malpractice_rvu
+    expected: 0.14
+    origin: source
+  - input:
+      key: '99205'
+      column: facility_pe_rvu
+    expected: 0.94
+    origin: source
+  - input: '99201'
+    expected: false
+    origin: derived
+    note: deleted code, not in the subset
+evidence:
+- publisher: Centers for Medicare & Medicaid Services
+  title: RVU26D national physician fee schedule relative value file, October 2026 release (PPRRVU2026_Oct_nonQPP.csv)
+  url: https://www.cms.gov/files/zip/rvu26d-updated-08-26-2026.zip
+  accessed_at: '2026-10-31'
+  locator: PPRRVU2026_Oct_nonQPP.csv, row HCPCS 99213, WORK RVU
+  value: 1.3
+  unit: ratio
+  snippet: 99213,,Office o/p est low 20 min,A,,1.30,1.46,,0.33,,0.09,2.85,1.72
+  source_license: unstated
+  content_sha256: 521ff0f4ecbf13b5d99dc1dc04d9f82e5361e55c6b4b6b3033043598bf8406e6
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services
+  title: RVU26D national physician fee schedule relative value file, October 2026 release (PPRRVU2026_Oct_nonQPP.csv)
+  url: https://www.cms.gov/files/zip/rvu26d-updated-08-26-2026.zip
+  accessed_at: '2026-10-31'
+  locator: PPRRVU2026_Oct_nonQPP.csv, CONV FACTOR column
+  value: 33.4009
+  unit: currency:USD
+  snippet: RELEASED 08/26/2026
+  source_license: unstated
+  content_sha256: 521ff0f4ecbf13b5d99dc1dc04d9f82e5361e55c6b4b6b3033043598bf8406e6
+  role: primary
+assumed:
+- parameter: rows[*].nonfacility_national_payment_usd and rows[*].facility_national_payment_usd
+  value: total RVU x conversion factor, rounded to cents
+  method: derived
+  rationale: The file carries the RVUs and the conversion factor; the national payment amount is their product before
+    the geographic practice cost index adjustment, which the fee schedule applies per locality.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 9
+  tolerance: 0
+- statistic: max[work_rvu]
+  expected: 3.5
+  tolerance: 0
+- statistic: min[work_rvu]
+  expected: 0.18
+  tolerance: 0
+notes: Work, practice expense (facility and non-facility), malpractice and total relative value units for the new
+  and established patient office or outpatient visit codes 99202 to 99215 from the RVU26D release of the Medicare
+  physician fee schedule relative value file, with the conversion factor from the same file and the national payment
+  amounts derived from them. Descriptions are omitted because CPT descriptors are copyrighted by the American Medical
+  Association; the codes themselves anchor the most common professional claim lines. data.cms.gov and cms.gov publish
+  these files without a licence statement, so the entry is held at license-review.

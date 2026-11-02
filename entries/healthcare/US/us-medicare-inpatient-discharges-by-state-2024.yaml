@@ -1,0 +1,172 @@
+id: us-medicare-inpatient-discharges-by-state-2024
+title: Medicare fee-for-service inpatient discharges by state of the hospital, 2024 (51 states and territories)
+kind: marginal
+domain: healthcare
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+tags:
+- healthcare
+- claims
+- hospitals
+- medicare
+- by-state
+use_cases:
+- healthcare-demo
+- claims-test-data
+- payer-demo
+- claims-generation
+- address-generation
+spec:
+  variable: hospital_state
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Alabama: 0.014752
+        Alaska: 0.002057
+        Arizona: 0.019992
+        Arkansas: 0.011186
+        California: 0.094862
+        Colorado: 0.010948
+        Connecticut: 0.010721
+        Delaware: 0.004605
+        District of Columbia: 0.003058
+        Florida: 0.085499
+        Georgia: 0.026976
+        Hawaii: 0.002521
+        Idaho: 0.003741
+        Illinois: 0.043644
+        Indiana: 0.022463
+        Iowa: 0.009392
+        Kansas: 0.010729
+        Kentucky: 0.015105
+        Louisiana: 0.013487
+        Maine: 0.003234
+        Maryland: 0.024498
+        Massachusetts: 0.033121
+        Michigan: 0.027558
+        Minnesota: 0.014925
+        Mississippi: 0.011313
+        Missouri: 0.021827
+        Montana: 0.003401
+        Nebraska: 0.006751
+        Nevada: 0.008619
+        New Hampshire: 0.005174
+        New Jersey: 0.033477
+        New Mexico: 0.004255
+        New York: 0.061951
+        North Carolina: 0.029466
+        North Dakota: 0.003104
+        Ohio: 0.036689
+        Oklahoma: 0.014372
+        Oregon: 0.008378
+        Pennsylvania: 0.045784
+        Rhode Island: 0.002781
+        South Carolina: 0.01841
+        South Dakota: 0.004003
+        Tennessee: 0.023269
+        Texas: 0.069921
+        Utah: 0.005438
+        Vermont: 0.00168
+        Virginia: 0.02972
+        Washington: 0.017414
+        West Virginia: 0.007409
+        Wisconsin: 0.014969
+        Wyoming: 0.001353
+      counts:
+        Alabama: 101145
+        Alaska: 14107
+        Arizona: 137071
+        Arkansas: 76696
+        California: 650416
+        Colorado: 75063
+        Connecticut: 73506
+        Delaware: 31575
+        District of Columbia: 20969
+        Florida: 586220
+        Georgia: 184959
+        Hawaii: 17282
+        Idaho: 25650
+        Illinois: 299241
+        Indiana: 154014
+        Iowa: 64396
+        Kansas: 73565
+        Kentucky: 103569
+        Louisiana: 92475
+        Maine: 22172
+        Maryland: 167967
+        Massachusetts: 227094
+        Michigan: 188948
+        Minnesota: 102332
+        Mississippi: 77570
+        Missouri: 149657
+        Montana: 23318
+        Nebraska: 46288
+        Nevada: 59098
+        New Hampshire: 35475
+        New Jersey: 229530
+        New Mexico: 29174
+        New York: 424764
+        North Carolina: 202030
+        North Dakota: 21283
+        Ohio: 251556
+        Oklahoma: 98540
+        Oregon: 57446
+        Pennsylvania: 313912
+        Rhode Island: 19065
+        South Carolina: 126226
+        South Dakota: 27446
+        Tennessee: 159544
+        Texas: 479410
+        Utah: 37282
+        Vermont: 11516
+        Virginia: 203775
+        Washington: 119398
+        West Virginia: 50799
+        Wisconsin: 102632
+        Wyoming: 9274
+      total: 6856440
+evidence:
+- publisher: Centers for Medicare & Medicaid Services
+  title: Medicare Inpatient Hospitals - by Geography and Service, 2024 (state rows)
+  url: https://data.cms.gov/sites/default/files/2026-04/4517a6a1-adeb-4345-9f3d-a95391a470db/MUP_INP_RY26_P03_V10_DY24_Geo.CSV
+  accessed_at: '2026-10-31'
+  locator: Rndrng_Prvdr_Geo_Lvl=State, Rndrng_Prvdr_Geo_Desc=Alabama, DRG_Cd=001, Tot_Dschrgs
+  value: 18
+  unit: count
+  snippet: State,01,Alabama,001,HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM WITH MCC,18
+  source_license: unstated
+  content_sha256: 5a969e72a231f70f8087cf8f3efce329369c02d9069ddfbe2765122fb5411728
+  role: primary
+assumed:
+- parameter: distribution.parameters.counts
+  value: sum of Tot_Dschrgs over DRG rows per state
+  method: derived
+  rationale: The file lists discharges per state and DRG; the state totals are their sums and omit DRG rows CMS
+    suppressed for fewer than eleven discharges.
+- parameter: distribution.parameters.shares
+  value: counts / total
+  method: derived
+  rationale: Shares are each category's count over the sum of all categories in the table.
+tests:
+- statistic: share[California]
+  expected: 0.094862
+  tolerance: 0.004
+- statistic: share[Florida]
+  expected: 0.085499
+  tolerance: 0.004
+- statistic: share[Texas]
+  expected: 0.069921
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Where Medicare fee-for-service inpatient discharges in calendar 2024 took place, by the state or territory
+  of the rendering hospital, summed from the state and DRG rows of the CMS Medicare Inpatient Hospitals by Geography
+  and Service file. Use it to weight the hospital state on synthetic inpatient claims. data.cms.gov and cms.gov
+  publish these files without a licence statement, so the entry is held at license-review.

@@ -1,0 +1,195 @@
+id: us-hospital-enrollments-by-state-2026
+title: Medicare-enrolled hospital practice locations by state, September 2026 (9138 enrolment records)
+kind: marginal
+domain: healthcare
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2026-09-29'
+  end: '2026-09-29'
+tags:
+- healthcare
+- hospitals
+- medicare
+- enrollment
+- by-state
+- providers
+use_cases:
+- healthcare-demo
+- claims-test-data
+- payer-demo
+- address-generation
+- company-generation
+spec:
+  variable: state
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        AK: 0.004487
+        AL: 0.019917
+        AR: 0.019151
+        AS: 0.000109
+        AZ: 0.016962
+        CA: 0.060298
+        CO: 0.017619
+        CT: 0.006785
+        DC: 0.00186
+        DE: 0.00186
+        FL: 0.0406
+        GA: 0.02889
+        GU: 0.000219
+        HI: 0.003721
+        IA: 0.024622
+        ID: 0.009849
+        IL: 0.0348
+        IN: 0.024951
+        KS: 0.029109
+        KY: 0.020026
+        LA: 0.033815
+        MA: 0.014992
+        MD: 0.006347
+        ME: 0.006675
+        MI: 0.029109
+        MN: 0.025498
+        MO: 0.023419
+        MP: 0.000109
+        MS: 0.021339
+        MT: 0.012257
+        NC: 0.020573
+        ND: 0.009521
+        NE: 0.018713
+        NH: 0.006128
+        NJ: 0.014336
+        NM: 0.007879
+        NV: 0.008426
+        NY: 0.035128
+        OH: 0.034581
+        OK: 0.024622
+        OR: 0.01149
+        PA: 0.035456
+        PR: 0.007551
+        RI: 0.002626
+        SC: 0.013132
+        SD: 0.011709
+        TN: 0.022105
+        TX: 0.086671
+        UT: 0.008864
+        VA: 0.018166
+        VI: 0.000219
+        VT: 0.003174
+        WA: 0.016853
+        WI: 0.025607
+        WV: 0.010834
+        WY: 0.006238
+      counts:
+        AK: 41
+        AL: 182
+        AR: 175
+        AS: 1
+        AZ: 155
+        CA: 551
+        CO: 161
+        CT: 62
+        DC: 17
+        DE: 17
+        FL: 371
+        GA: 264
+        GU: 2
+        HI: 34
+        IA: 225
+        ID: 90
+        IL: 318
+        IN: 228
+        KS: 266
+        KY: 183
+        LA: 309
+        MA: 137
+        MD: 58
+        ME: 61
+        MI: 266
+        MN: 233
+        MO: 214
+        MP: 1
+        MS: 195
+        MT: 112
+        NC: 188
+        ND: 87
+        NE: 171
+        NH: 56
+        NJ: 131
+        NM: 72
+        NV: 77
+        NY: 321
+        OH: 316
+        OK: 225
+        OR: 105
+        PA: 324
+        PR: 69
+        RI: 24
+        SC: 120
+        SD: 107
+        TN: 202
+        TX: 792
+        UT: 81
+        VA: 166
+        VI: 2
+        VT: 29
+        WA: 154
+        WI: 234
+        WV: 99
+        WY: 57
+      total: 9138
+evidence:
+- publisher: Centers for Medicare & Medicaid Services
+  title: Hospital Enrollments, extract of 29 September 2026
+  url: https://data.cms.gov/sites/default/files/2026-10/961708ac-2136-43cb-9587-ac64af23b6ab/Hospital_Enrollments_2026.09.29.csv
+  accessed_at: '2026-10-31'
+  locator: row ENROLLMENT ID O20020812000015, PROVIDER TYPE TEXT
+  value: PART A PROVIDER - HOSPITAL
+  unit: text
+  snippet: O20020812000015,TN,00-09,PART A PROVIDER - HOSPITAL
+  source_license: unstated
+  content_sha256: 5f02975f05a043cc367c59fd1f8bee870264826173751ef81da61624e9e281a5
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services
+  title: Hospital Enrollments, extract of 29 September 2026 (column headings)
+  url: https://data.cms.gov/sites/default/files/2026-10/961708ac-2136-43cb-9587-ac64af23b6ab/Hospital_Enrollments_2026.09.29.csv
+  accessed_at: '2026-10-31'
+  locator: header row
+  value: PROPRIETARY NONPROFIT
+  unit: text
+  snippet: '"ENROLLMENT ID","ENROLLMENT STATE","PROVIDER TYPE CODE","PROVIDER TYPE TEXT"'
+  source_license: unstated
+  content_sha256: 5f02975f05a043cc367c59fd1f8bee870264826173751ef81da61624e9e281a5
+  role: primary
+assumed:
+- parameter: distribution.parameters.counts
+  value: enrolment records per practice-location state
+  method: derived
+  rationale: Counted from the STATE column of the extract; a hospital with several practice locations contributes
+    one record per location.
+- parameter: distribution.parameters.shares
+  value: counts / total
+  method: derived
+  rationale: Shares are each category's count over the sum of all categories in the table.
+tests:
+- statistic: share[TX]
+  expected: 0.086671
+  tolerance: 0.004
+- statistic: share[CA]
+  expected: 0.060298
+  tolerance: 0.004
+- statistic: share[FL]
+  expected: 0.0406
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Where the hospitals, critical access hospitals and rural emergency hospitals enrolled in Medicare are located,
+  counted from the CMS Hospital Enrollments extract of 29 September 2026 by the state of the practice location.
+  The file holds one record per enrolment and practice location, so multi-site systems weigh more than once. Use
+  it to place synthetic providers. data.cms.gov and cms.gov publish these files without a licence statement, so
+  the entry is held at license-review.

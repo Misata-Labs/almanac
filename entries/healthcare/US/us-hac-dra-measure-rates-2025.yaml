@@ -1,0 +1,133 @@
+id: us-hac-dra-measure-rates-2025
+title: 'Deficit Reduction Act hospital-acquired condition measures: hospitals, mean and maximum rate and share with
+  a zero rate, 2025 release'
+kind: rule
+domain: healthcare
+region: US
+status: license-review
+tier: A
+valid_from: '2022-07-01'
+valid_to: '2024-06-30'
+tags:
+- healthcare
+- hospitals
+- quality
+- hospital-acquired-conditions
+- medicare
+use_cases:
+- healthcare-demo
+- claims-test-data
+- payer-demo
+- clinical-records
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    measurement_period: 3Q2022 to 2Q2024
+    rate_unit: as published in the Rate column
+    hospital_rows: 12120
+    rows:
+      Foreign Object Retained After Surgery:
+        measure: Foreign Object Retained After Surgery
+        hospitals: 3030
+        hospitals_with_rate: 3030
+        mean_rate: 0.0121
+        max_rate: 1.541
+        share_with_zero_rate: 0.9347
+        footnoted: 4
+      Air Embolism:
+        measure: Air Embolism
+        hospitals: 3030
+        hospitals_with_rate: 3030
+        mean_rate: 0.0009
+        max_rate: 0.374
+        share_with_zero_rate: 0.9921
+        footnoted: 1
+      Blood Incompatibility:
+        measure: Blood Incompatibility
+        hospitals: 3030
+        hospitals_with_rate: 3030
+        mean_rate: 0.0002
+        max_rate: 0.113
+        share_with_zero_rate: 0.997
+        footnoted: 0
+      Falls and Trauma:
+        measure: Falls and Trauma (Includes fractures, dislocations, intracranial injuries, crushing injuries, burns,
+          other injuries)
+        hospitals: 3030
+        hospitals_with_rate: 3030
+        mean_rate: 0.3325
+        max_rate: 16.0
+        share_with_zero_rate: 0.4551
+        footnoted: 4
+  vectors:
+  - input:
+      key: Falls and Trauma
+      column: hospitals
+    expected: 3030
+    origin: source
+  - input:
+      key: Air Embolism
+      column: measure
+    expected: Air Embolism
+    origin: source
+  - input: Pressure Ulcer
+    expected: false
+    origin: derived
+evidence:
+- publisher: Centers for Medicare & Medicaid Services
+  title: Deficit Reduction Act Hospital-Acquired Condition Measures, 2025 (API page)
+  url: https://data.cms.gov/data-api/v1/dataset/01edb62e-5c45-4f43-8c91-16cba21cbb74/data?size=5000&offset=0
+  accessed_at: '2026-10-31'
+  locator: first record, Provider_ID=010001, Rate
+  value: '0'
+  unit: decimal
+  snippet: '"Provider_ID":"010001","Measure":"Foreign Object Retained After Surgery"'
+  source_license: unstated
+  content_sha256: 0a48f5d33229914a61e9d858541c6bb9db6a2c997dc7ec09fc3b5aa82b4903a2
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services
+  title: Deficit Reduction Act Hospital-Acquired Condition Measures, 2025 (API page)
+  url: https://data.cms.gov/data-api/v1/dataset/01edb62e-5c45-4f43-8c91-16cba21cbb74/data?size=5000&offset=5000
+  accessed_at: '2026-10-31'
+  locator: first record, Provider_ID=190308, Rate
+  value: '0'
+  unit: decimal
+  snippet: '"Provider_ID":"190308","Measure":"Foreign Object Retained After Surgery"'
+  source_license: unstated
+  content_sha256: f4938fe3bf64496a4eaf159c88332ac8f6715b42136ea520dbb4dece74812caa
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services
+  title: Deficit Reduction Act Hospital-Acquired Condition Measures, 2025 (API page)
+  url: https://data.cms.gov/data-api/v1/dataset/01edb62e-5c45-4f43-8c91-16cba21cbb74/data?size=5000&offset=10000
+  accessed_at: '2026-10-31'
+  locator: first record, Provider_ID=440218, Rate
+  value: '0'
+  unit: decimal
+  snippet: '"Provider_ID":"440218","Measure":"Foreign Object Retained After Surgery"'
+  source_license: unstated
+  content_sha256: 958be6bbc2a8bdca5bd0d262abd3f99e1c4f8db1b28895c60c3e7da8f53ebcf8
+  role: primary
+assumed:
+- parameter: rows[*].mean_rate, max_rate, share_with_zero_rate, hospitals, hospitals_with_rate, footnoted
+  value: summaries over hospital rows per measure
+  method: derived
+  rationale: The dataset lists one rate per hospital and measure, fetched in three API pages; the entry summarises
+    them and keeps the measure names unchanged.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: max[mean_rate]
+  expected: 0.3325
+  tolerance: 0
+notes: The four Deficit Reduction Act hospital-acquired condition measures that CMS reports per hospital (foreign
+  object retained after surgery, air embolism, blood incompatibility, and falls and trauma) with the number of hospitals,
+  the mean and maximum rate and the share of hospitals with a zero rate over the measurement period, from the 2025
+  release of the Deficit Reduction Act Hospital-Acquired Condition Measures dataset on data.cms.gov. Rates are kept
+  in the unit CMS publishes them in; the dataset's dictionary page renders in the browser and its unit could not
+  be confirmed from a stable resource, so check it before labelling rates. The high share of zero rates gives a
+  synthetic hospital quality profile realistic sparsity. data.cms.gov and cms.gov publish these files without a
+  licence statement, so the entry is held at license-review.

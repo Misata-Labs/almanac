@@ -1,0 +1,292 @@
+id: us-hcup-ed-visit-costs-by-patient-characteristic-2021
+title: 'Treat-and-release emergency department visits: aggregate cost, average cost per visit and visits by age,
+  sex, payer, income, residence and disposition, 2021'
+kind: rule
+domain: healthcare
+region: US
+status: license-review
+tier: B
+valid_from: '2021-01-01'
+valid_to: '2021-12-31'
+tags:
+- healthcare
+- emergency-department
+- claims
+- costs
+- hcup
+- payer-mix
+use_cases:
+- healthcare-demo
+- claims-test-data
+- payer-demo
+- claims-generation
+- clinical-records
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    year: 2021
+    source_table: HCUP Statistical Brief 311, Table 1
+    groups:
+    - age_group
+    - all
+    - community_income
+    - discharge_status
+    - payer
+    - residence
+    - sex
+    rows:
+      total:
+        group: all
+        label: Total
+        aggregate_cost_usd_billions: 80.3
+        cost_percent: 100.0
+        average_cost_per_visit_usd: 750
+        visits_millions: 107.4
+        visits_percent: 100.0
+      '0_17':
+        group: age_group
+        label: 0–17
+        aggregate_cost_usd_billions: 8.7
+        cost_percent: 10.8
+        average_cost_per_visit_usd: 440
+        visits_millions: 19.8
+        visits_percent: 18.5
+      '18_44':
+        group: age_group
+        label: 18–44
+        aggregate_cost_usd_billions: 28.8
+        cost_percent: 35.7
+        average_cost_per_visit_usd: 660
+        visits_millions: 43.4
+        visits_percent: 40.4
+      '45_64':
+        group: age_group
+        label: 45–64
+        aggregate_cost_usd_billions: 22.2
+        cost_percent: 27.4
+        average_cost_per_visit_usd: 880
+        visits_millions: 25.2
+        visits_percent: 23.4
+      '65':
+        group: age_group
+        label: 65+
+        aggregate_cost_usd_billions: 21.1
+        cost_percent: 26.1
+        average_cost_per_visit_usd: 1110
+        visits_millions: 19.0
+        visits_percent: 17.7
+      female:
+        group: sex
+        label: Female
+        aggregate_cost_usd_billions: 44.5
+        cost_percent: 55.1
+        average_cost_per_visit_usd: 760
+        visits_millions: 58.7
+        visits_percent: 54.7
+      male:
+        group: sex
+        label: Male
+        aggregate_cost_usd_billions: 36.2
+        cost_percent: 44.9
+        average_cost_per_visit_usd: 740
+        visits_millions: 48.6
+        visits_percent: 45.3
+      medicare:
+        group: payer
+        label: Medicare
+        aggregate_cost_usd_billions: 22.5
+        cost_percent: 27.9
+        average_cost_per_visit_usd: 1040
+        visits_millions: 21.5
+        visits_percent: 20.1
+      medicaid:
+        group: payer
+        label: Medicaid
+        aggregate_cost_usd_billions: 21.4
+        cost_percent: 26.6
+        average_cost_per_visit_usd: 600
+        visits_millions: 35.6
+        visits_percent: 33.2
+      private_insurance:
+        group: payer
+        label: Private insurance
+        aggregate_cost_usd_billions: 25.9
+        cost_percent: 32.1
+        average_cost_per_visit_usd: 790
+        visits_millions: 32.8
+        visits_percent: 30.6
+      self_pay_no_charge:
+        group: payer
+        label: Self-pay/No charge
+        aggregate_cost_usd_billions: 7.6
+        cost_percent: 9.5
+        average_cost_per_visit_usd: 610
+        visits_millions: 12.5
+        visits_percent: 11.7
+      other:
+        group: payer
+        label: Other
+        aggregate_cost_usd_billions: 3.2
+        cost_percent: 4.0
+        average_cost_per_visit_usd: 690
+        visits_millions: 4.7
+        visits_percent: 4.4
+      quartile_1_lowest:
+        group: community_income
+        label: Quartile 1 (lowest)
+        aggregate_cost_usd_billions: 24.4
+        cost_percent: 30.8
+        average_cost_per_visit_usd: 670
+        visits_millions: 36.7
+        visits_percent: 34.7
+      quartile_2:
+        group: community_income
+        label: Quartile 2
+        aggregate_cost_usd_billions: 20.3
+        cost_percent: 25.6
+        average_cost_per_visit_usd: 720
+        visits_millions: 28.2
+        visits_percent: 26.8
+      quartile_3:
+        group: community_income
+        label: Quartile 3
+        aggregate_cost_usd_billions: 18.7
+        cost_percent: 23.5
+        average_cost_per_visit_usd: 810
+        visits_millions: 23.1
+        visits_percent: 21.9
+      quartile_4_highest:
+        group: community_income
+        label: Quartile 4 (highest)
+        aggregate_cost_usd_billions: 15.9
+        cost_percent: 20.1
+        average_cost_per_visit_usd: 910
+        visits_millions: 17.5
+        visits_percent: 16.6
+      large_metropolitan_area:
+        group: residence
+        label: Large metropolitan area
+        aggregate_cost_usd_billions: 42.0
+        cost_percent: 52.4
+        average_cost_per_visit_usd: 790
+        visits_millions: 53.2
+        visits_percent: 49.9
+      small_metropolitan_area:
+        group: residence
+        label: Small metropolitan area
+        aggregate_cost_usd_billions: 23.7
+        cost_percent: 29.5
+        average_cost_per_visit_usd: 700
+        visits_millions: 33.7
+        visits_percent: 31.6
+      micropolitan_areas:
+        group: residence
+        label: Micropolitan areas
+        aggregate_cost_usd_billions: 8.4
+        cost_percent: 10.5
+        average_cost_per_visit_usd: 710
+        visits_millions: 11.8
+        visits_percent: 11.1
+      rural_area:
+        group: residence
+        label: Rural area
+        aggregate_cost_usd_billions: 6.1
+        cost_percent: 7.6
+        average_cost_per_visit_usd: 770
+        visits_millions: 7.9
+        visits_percent: 7.4
+      routine_discharge:
+        group: discharge_status
+        label: Routine discharge
+        aggregate_cost_usd_billions: 71.1
+        cost_percent: 87.9
+        average_cost_per_visit_usd: 710
+        visits_millions: 99.7
+        visits_percent: 92.8
+      transfer:
+        group: discharge_status
+        label: Transfer
+        aggregate_cost_usd_billions: 6.6
+        cost_percent: 8.2
+        average_cost_per_visit_usd: 1560
+        visits_millions: 4.2
+        visits_percent: 3.9
+      all_other_dispositions:
+        group: discharge_status
+        label: All other dispositions‡
+        aggregate_cost_usd_billions: 3.1
+        cost_percent: 3.9
+        average_cost_per_visit_usd: 900
+        visits_millions: 3.5
+        visits_percent: 3.2
+  vectors:
+  - input:
+      key: total
+      column: average_cost_per_visit_usd
+    expected: 750
+    origin: source
+  - input:
+      key: medicare
+      column: average_cost_per_visit_usd
+    expected: 1040
+    origin: source
+  - input:
+      key: medicare
+      column: visits_percent
+    expected: 20.1
+    origin: source
+  - input:
+      key: '65'
+      column: aggregate_cost_usd_billions
+    expected: 21.1
+    origin: source
+  - input: tricare
+    expected: false
+    origin: derived
+evidence:
+- publisher: Agency for Healthcare Research and Quality
+  title: 'HCUP Statistical Brief 311: Costs of Treat-and-Release Emergency Department Visits in the United States,
+    2021'
+  url: https://hcup-us.ahrq.gov/reports/statbriefs/sb311-ED-visit-costs-2021.pdf
+  accessed_at: '2026-10-31'
+  locator: page 3, Table 1, Total row
+  value: 750
+  unit: currency:USD
+  snippet: Total 80.3 100.0 750 107.4 100.0
+  source_license: unstated
+  content_sha256: 9e9de553a0cb598d19b280e96a197910acf9e68bbf698a38a3d163960bcafbb7
+  role: primary
+- publisher: Agency for Healthcare Research and Quality
+  title: 'HCUP Statistical Brief 311: Costs of Treat-and-Release Emergency Department Visits in the United States,
+    2021'
+  url: https://hcup-us.ahrq.gov/reports/statbriefs/sb311-ED-visit-costs-2021.pdf
+  accessed_at: '2026-10-31'
+  locator: page 3, Table 1, Medicare row
+  value: 1,040
+  unit: currency:USD
+  snippet: Medicare 22.5 27.9 1,040 21.5 20.1
+  source_license: unstated
+  content_sha256: 9e9de553a0cb598d19b280e96a197910acf9e68bbf698a38a3d163960bcafbb7
+  role: primary
+assumed:
+- parameter: rows[*].group
+  value: table section each row sits under
+  method: derived
+  rationale: Table 1 groups its rows under headings; the group column records the heading and the keys are lower-cased
+    labels.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 23
+  tolerance: 0
+- statistic: max[average_cost_per_visit_usd]
+  expected: 1560
+  tolerance: 0
+notes: 'Table 1 of AHRQ''s HCUP Statistical Brief 311: aggregate costs in billions of dollars, share of costs, average
+  cost per visit, visits in millions and share of visits for treat-and-release emergency department visits in 2021,
+  by patient age group, sex, primary expected payer, community income quartile, residence location and discharge
+  status, from the Nationwide Emergency Department Sample. Costs are hospital costs rather than charges. The payer
+  and age rows weight and price synthetic ED encounters. The brief is a PDF, so the entry is tier B; AHRQ states
+  no licence on the file.'

@@ -1,0 +1,94 @@
+id: us-medicare-inpatient-beneficiaries-by-race-2024
+title: Medicare fee-for-service inpatient beneficiaries by race, summed over 3044 hospitals, 2024
+kind: marginal
+domain: healthcare
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+tags:
+- healthcare
+- claims
+- hospitals
+- medicare
+- patient-mix
+- race
+use_cases:
+- healthcare-demo
+- claims-test-data
+- payer-demo
+- person-generation
+- clinical-records
+spec:
+  variable: race
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        white: 0.80898
+        black: 0.093735
+        asian_pacific_islander: 0.023446
+        hispanic: 0.060276
+        native_american: 0.004786
+        other: 0.008778
+      counts:
+        white: 4050375
+        black: 469309
+        asian_pacific_islander: 117387
+        hispanic: 301787
+        native_american: 23960
+        other: 43950
+      total: 5006768
+evidence:
+- publisher: Centers for Medicare & Medicaid Services
+  title: Medicare Inpatient Hospitals - by Provider, 2024
+  url: https://data.cms.gov/sites/default/files/2026-04/d9525c59-002b-45b3-af22-c81061a62dcd/mup_inp_ry26_p04_v10_dy24_prv.csv
+  accessed_at: '2026-10-31'
+  locator: Rndrng_Prvdr_CCN=010001, Tot_Benes
+  value: 3177
+  unit: count
+  snippet: 010001,Southeast Health Medical Center,1108 Ross Clark Circle,Dothan,36301,AL
+  source_license: unstated
+  content_sha256: c8c556451429e3517efa4dd2c7cc9b707b2344af42ff96c284221ad1062dc705
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services
+  title: Medicare Inpatient Hospitals - by Provider, 2024 (column headings)
+  url: https://data.cms.gov/sites/default/files/2026-04/d9525c59-002b-45b3-af22-c81061a62dcd/mup_inp_ry26_p04_v10_dy24_prv.csv
+  accessed_at: '2026-10-31'
+  locator: header row
+  value: Bene_Race_Wht_Cnt
+  unit: text
+  snippet: Bene_Race_Wht_Cnt,Bene_Race_Black_Cnt,Bene_Race_API_Cnt,Bene_Race_Hspnc_Cnt,Bene_Race_NatInd_Cnt,Bene_Race_Othr_Cnt
+  source_license: unstated
+  content_sha256: c8c556451429e3517efa4dd2c7cc9b707b2344af42ff96c284221ad1062dc705
+  role: primary
+assumed:
+- parameter: distribution.parameters.counts
+  value: column sums over all hospitals
+  method: derived
+  rationale: CMS publishes the counts per hospital; 8397 hospital cells are blank (suppressed for fewer than eleven
+    beneficiaries) and count as zero.
+- parameter: distribution.parameters.shares
+  value: counts / total
+  method: derived
+  rationale: Shares are each category's count over the sum of all categories in the table.
+tests:
+- statistic: share[white]
+  expected: 0.80898
+  tolerance: 0.004
+- statistic: share[black]
+  expected: 0.093735
+  tolerance: 0.004
+- statistic: share[hispanic]
+  expected: 0.060276
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: The race mix of beneficiaries with a Medicare fee-for-service inpatient stay in calendar 2024, summed over
+  every hospital in the CMS Medicare Inpatient Hospitals by Provider file. A beneficiary admitted to two hospitals
+  is counted at each, so the totals describe hospital-beneficiary pairs rather than unique people. data.cms.gov
+  and cms.gov publish these files without a licence statement, so the entry is held at license-review.

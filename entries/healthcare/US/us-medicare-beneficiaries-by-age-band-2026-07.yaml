@@ -1,0 +1,95 @@
+id: us-medicare-beneficiaries-by-age-band-2026-07
+title: Medicare beneficiaries by age band, July 2026 (national)
+kind: marginal
+domain: healthcare
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2026-07-01'
+  end: '2026-07-31'
+tags:
+- healthcare
+- medicare
+- enrollment
+- age
+- payer
+use_cases:
+- healthcare-demo
+- claims-test-data
+- payer-demo
+- person-generation
+spec:
+  variable: age_band
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        under_25: 0.001147
+        25_to_44: 0.019788
+        45_to_64: 0.073693
+        65_to_69: 0.246606
+        70_to_74: 0.242028
+        75_to_79: 0.190889
+        80_to_84: 0.121013
+        85_to_89: 0.06523
+        90_to_94: 0.028664
+        95_and_over: 0.010941
+      counts:
+        under_25: 81129
+        25_to_44: 1399771
+        45_to_64: 5212814
+        65_to_69: 17444074
+        70_to_74: 17120253
+        75_to_79: 13502875
+        80_to_84: 8560040
+        85_to_89: 4614146
+        90_to_94: 2027593
+        95_and_over: 773929
+      total: 70736624
+evidence:
+- publisher: Centers for Medicare & Medicaid Services
+  title: Medicare Monthly Enrollment, July 2026 (API, state and national totals)
+  url: https://data.cms.gov/data-api/v1/dataset/d7fabe1e-d19b-4333-9eff-e80e0643f2fd/data?filter%5BYEAR%5D=2026&filter%5BMONTH%5D=July&filter%5BBENE_COUNTY_DESC%5D=Total&size=500
+  accessed_at: '2026-10-31'
+  locator: BENE_GEO_LVL=National, AGE_65_TO_69_BENES
+  value: 17444074
+  unit: count
+  snippet: '"YEAR":"2026","MONTH":"July","BENE_GEO_LVL":"National","BENE_STATE_ABRVTN":"US"'
+  source_license: unstated
+  content_sha256: 561fb84db75f0e3948f156590e16154d4f5e52ba9255eec2bb4923967a91fa39
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services
+  title: Medicare Monthly Enrollment, July 2026 (API, state and national totals)
+  url: https://data.cms.gov/data-api/v1/dataset/d7fabe1e-d19b-4333-9eff-e80e0643f2fd/data?filter%5BYEAR%5D=2026&filter%5BMONTH%5D=July&filter%5BBENE_COUNTY_DESC%5D=Total&size=500
+  accessed_at: '2026-10-31'
+  locator: BENE_GEO_LVL=National, AGE_LT_25_BENES
+  value: 81129
+  unit: count
+  snippet: '"AGE_LT_25_BENES":"81129"'
+  source_license: unstated
+  content_sha256: 561fb84db75f0e3948f156590e16154d4f5e52ba9255eec2bb4923967a91fa39
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: counts / total
+  method: derived
+  rationale: Shares are each category's count over the sum of all categories in the table.
+tests:
+- statistic: share[65_to_69]
+  expected: 0.246606
+  tolerance: 0.004
+- statistic: share[70_to_74]
+  expected: 0.242028
+  tolerance: 0.004
+- statistic: share[75_to_79]
+  expected: 0.190889
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: The age of Medicare beneficiaries in July 2026 in the ten bands CMS publishes nationally in the Medicare
+  Monthly Enrollment dataset. Beneficiaries under 65 are entitled through disability or end-stage renal disease;
+  the bands weight the age of a synthetic Medicare member. data.cms.gov and cms.gov publish these files without
+  a licence statement, so the entry is held at license-review.

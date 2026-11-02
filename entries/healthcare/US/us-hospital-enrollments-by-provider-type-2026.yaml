@@ -1,0 +1,86 @@
+id: us-hospital-enrollments-by-provider-type-2026
+title: 'Medicare-enrolled hospital records by provider type: hospital, critical access hospital, rural emergency
+  hospital, September 2026'
+kind: marginal
+domain: healthcare
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2026-09-29'
+  end: '2026-09-29'
+tags:
+- healthcare
+- hospitals
+- medicare
+- enrollment
+- provider-type
+use_cases:
+- healthcare-demo
+- claims-test-data
+- payer-demo
+- company-generation
+spec:
+  variable: provider_type
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        critical_access_hospital: 0.300175
+        hospital: 0.693587
+        rural_emergency_hospital: 0.006238
+      counts:
+        critical_access_hospital: 2743
+        hospital: 6338
+        rural_emergency_hospital: 57
+      total: 9138
+evidence:
+- publisher: Centers for Medicare & Medicaid Services
+  title: Hospital Enrollments, extract of 29 September 2026
+  url: https://data.cms.gov/sites/default/files/2026-10/961708ac-2136-43cb-9587-ac64af23b6ab/Hospital_Enrollments_2026.09.29.csv
+  accessed_at: '2026-10-31'
+  locator: row ENROLLMENT ID O20020812000015, PROVIDER TYPE TEXT
+  value: PART A PROVIDER - HOSPITAL
+  unit: text
+  snippet: O20020812000015,TN,00-09,PART A PROVIDER - HOSPITAL
+  source_license: unstated
+  content_sha256: 5f02975f05a043cc367c59fd1f8bee870264826173751ef81da61624e9e281a5
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services
+  title: Hospital Enrollments, extract of 29 September 2026 (column headings)
+  url: https://data.cms.gov/sites/default/files/2026-10/961708ac-2136-43cb-9587-ac64af23b6ab/Hospital_Enrollments_2026.09.29.csv
+  accessed_at: '2026-10-31'
+  locator: header row
+  value: PROPRIETARY NONPROFIT
+  unit: text
+  snippet: '"ENROLLMENT ID","ENROLLMENT STATE","PROVIDER TYPE CODE","PROVIDER TYPE TEXT"'
+  source_license: unstated
+  content_sha256: 5f02975f05a043cc367c59fd1f8bee870264826173751ef81da61624e9e281a5
+  role: primary
+assumed:
+- parameter: distribution.parameters.counts
+  value: enrolment records per PROVIDER TYPE TEXT
+  method: derived
+  rationale: Counted from the extract; labels shorten the file's Part A provider type texts.
+- parameter: distribution.parameters.shares
+  value: counts / total
+  method: derived
+  rationale: Shares are each category's count over the sum of all categories in the table.
+tests:
+- statistic: share[hospital]
+  expected: 0.693587
+  tolerance: 0.004
+- statistic: share[critical_access_hospital]
+  expected: 0.300175
+  tolerance: 0.004
+- statistic: share[rural_emergency_hospital]
+  expected: 0.006238
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: How Medicare hospital enrolment records split between general hospitals, critical access hospitals and rural
+  emergency hospitals in the CMS Hospital Enrollments extract of 29 September 2026. Gives a synthetic provider directory
+  the right mix of facility types. data.cms.gov and cms.gov publish these files without a licence statement, so
+  the entry is held at license-review.
