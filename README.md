@@ -86,16 +86,19 @@ uv run almanac applies --on 2026-06-15 --use-case banking-demo
 
 | You are building… | Reach for |
 | --- | --- |
-| **A payroll or HR demo** | UK Income Tax bands with the tapered Personal Allowance, National Minimum Wage by age band and date, National Insurance number and tax code formats, Census economic activity and qualifications |
-| **A banking, lending or treasury demo** | Selic and ECB deposit-rate step schedules, policy rates for nine economies, euro area mortgage cost of borrowing, Brazil household credit default rate, financial account ownership by economy |
+| **A payroll or HR demo** | UK Income Tax bands with the tapered Personal Allowance, National Minimum Wage by age band and date, ASHE pay percentiles by region and worker group, SOC 2020 occupations, sickness absence by age, occupation and industry, OECD wages, tenure, hours and tax wedges, ILO earnings by occupation, US General Schedule pay grids, German social insurance rates, public holidays for ten countries |
+| **A banking, lending or treasury demo** | Selic and ECB deposit-rate step schedules, policy rates for nine economies, the daily US Treasury par yield curve, HMDA mortgage applications by outcome, purpose and loan type, New York Fed household debt by type, delinquency and borrower age, credit scores at origination, every US bank failure since 2000, Survey of Consumer Finances income and net worth |
 | **A payments or fintech demo** | Pix identifier formats, monthly Pix volume and average ticket, Pix key-type mix, HMRC payment reference check characters, bank holidays for settlement calendars |
 | **KYC, KYB or customer onboarding test data** | CNPJ and UTR check digits, VAT registration number validation, Companies House company types and statuses, SIC 2007 codes, the email pattern HMRC accepts, World Bank economy classification |
 | **Invoicing, tax or audit test data** | UK VAT rates, India GST slab structure, ISO 4217 minor units, ECB and US Treasury exchange-rate tables, CPIH and IPCA price indices |
-| **Synthetic customers, people and households** | Twelve Census 2021 marginals for England and Wales, single-year age distributions for Germany and France, world population weights, fertility and life expectancy by economy |
-| **Healthcare and claims test data** | ICD-10-CM 2026 diagnosis categories with code counts, the NPI Luhn check digit, Census general health, life expectancy by economy |
-| **Insurance, property or fleet data** | The VIN check digit from the federal regulation, UK house prices by month, euro area mortgage rates, Census tenure and car availability |
+| **Synthetic customers, people and households** | First names by sex, region and birth cohort for England and Wales, Scotland, France, Ireland, Belgium, Spain and Norway, US Census surnames with ethnicity shares, Census 2021 marginals, single-year age distributions, world population weights |
+| **Healthcare and claims test data** | MS-DRG FY2026 relative weights and lengths of stay, Medicare inpatient payments by DRG, outpatient APCs, top physician services, Part B and Part D drug spending, HCPCS Level II sections, office-visit RVUs, readmission penalties, Medicare enrolment, NDC and Orange Book product mixes, ICD-10-CM categories, the NPI check digit |
+| **Insurance, property or fleet data** | FEMA disaster declarations and assistance per disaster as a severity pool, FHFA house price indices by state, UK house prices, the VIN check digit, EPA fuel economy by vehicle class, licensed vehicles by body type, fuel and make, MOT failure rates and defect mix |
 | **Retail and demand forecasting demos** | Retail sales index with its December peak, inflation by month and by country, GDP and GDP per capita by economy |
 | **Telecom, energy and utilities demos** | ITU country calling codes, internet and mobile penetration by economy, household electricity prices for ten EU states, clock-change dates |
+| **Addresses, geography and product catalogues** | US state, county and CBSA codes, ZIP Code Tabulation Areas by prefix, Census places, French regions, départements and communes, NUTS 2024 with urban-rural typologies, Japanese postal codes, IANA time zones, UN M49 areas, ISO 639 languages, NAICS, ISIC, COICOP and COFOG structures |
+| **Customer service and complaints** | CFPB consumer complaints by product, issue, company, response, channel, state and month, issue given product, response given product, timely-response share |
+| **Fleet, mobility and telematics** | US fatal crashes by month, weekday, hour, weather and light, GB collisions by severity, hour and speed limit, driver and vehicle age in collisions, road traffic by vehicle and road type, NHTSA recalls, FAA aircraft registry and airports, rail, air and port volumes |
 | **Value pools: margins, costs, churn and defaults** | After-tax margins by industry from the Census Quarterly Financial Report, FDIC bank performance ratios and size classes, Fed charge-off and delinquency rates, IRS corporation returns by sector, Eurostat enterprise accounts for ten member states with operating rate and personnel-cost share, enterprise birth, death and survival rates, hourly labour cost by section, UK rate of return and business survival |
 | **Behaviour over time** | UK employment, unemployment, vacancies, redundancies and claimant count by month, average weekly earnings, household saving ratio, internet share of retail, energy price cap levels, EU air passengers by month, Indian wireless subscribers and ARPU by quarter |
 | **India: telecom, insurance and insolvency demos** | TRAI subscribers by operator and service area, prepaid versus postpaid split, mobile number portability requests, broadband by provider, IRDAI premium by segment and death-claim outcomes, IBBI corporate insolvency status and recoveries by initiator, Income Tax slabs and GST structure |
@@ -131,7 +134,7 @@ for entry in almanac.select(on=date(2026, 6, 15), region="GB", kind="rule"):
 
 ## What is inside
 
-Three hundred and thirty-eight entries across thirty-two domains and sixteen
+Five hundred and thirty-nine entries across thirty-five domains and twenty-two
 regions at the time of writing, every one of them passing live verification. The generated
 [CATALOGUE.md](CATALOGUE.md) is the authoritative list; this is the tour.
 
@@ -172,6 +175,12 @@ endpoint. The British Summer Time clock-change rule with its published dates.
 US federal holidays from the statute, the executive order and the regulation,
 with the Saturday and Sunday observance rules that payroll and settlement
 systems actually apply.
+Public holidays for Japan from the Cabinet Office since 1955, France
+metropolitan, Alsace-Moselle and overseas zones, Hong Kong, Australia by state
+and territory, Singapore with observed days, Spain by autonomous community,
+India's central government list with restricted holidays, and the statutory
+rest days of Mexico, Belgium and Ireland. One shared engine answers whether a
+day is a holiday, the next business day, and N business days ahead.
 
 **Economy, rates and prices.** Eighty World Bank reference tables by economy,
 from GDP per capita to financial account ownership, health workforce, energy
@@ -189,6 +198,58 @@ general health, highest qualification, household size, tenure, car
 availability, accommodation type. Single-year age distributions for Germany
 and France. Population by sex for ten member states. World population weights
 for 217 economies.
+
+**People and names.** First-name distributions from seven statistical
+offices: ONS for England and Wales nationally and by region, National Records
+of Scotland, INSEE by sex and by birth cohort from 1960, CSO Ireland, Statbel
+by region and province, INE with the mean age of each name, and Statistics
+Norway. Surnames from the US Census Bureau with race and Hispanic-origin
+shares per name, Statbel and Statistics Norway.
+
+**Geography and code lists.** US state, county, CBSA and place codes with
+land area and internal points, ZIP Code Tabulation Areas, the CBSA delineation
+file. INSEE's official geographic code for regions, départements and communes.
+NUTS 2024 codes and NUTS-3 typologies from Eurostat. Australian postal areas
+and Japanese postal codes from their official publishers. IANA time zones
+pinned to a release, UN M49 areas with development flags, ISO 639 languages,
+NAICS 2022, ISIC Rev.4 and Rev.5, COICOP 2018 and COFOG.
+
+**Healthcare and claims.** The MS-DRG FY2026 relative weights table with
+geometric and arithmetic mean length of stay. Medicare inpatient discharges
+and payments by DRG and state, outpatient APCs, the top physician services,
+Part B and Part D drug spending, HCPCS Level II sections and coverage codes,
+office-visit RVUs, readmission penalties by condition, Medicare enrolment by
+state and age. FDA drug product mixes by dosage form, route and marketing
+category, recalls by class and year. CDC births by month and year and the
+leading causes of death. AHRQ costliest inpatient conditions and emergency
+department costs by patient characteristic.
+
+**Lending, complaints and disasters.** CFPB complaints cut every way a
+customer-service demo needs. HMDA mortgage applications by outcome, purpose
+and type. The New York Fed household debt workbook: balances, delinquency
+buckets, transitions into serious delinquency by age, credit scores at
+origination. Every US bank failure since 2000 with assets and estimated loss.
+FEMA declarations by year, type and state, and assistance per disaster. FHFA
+house prices by state and division, the Treasury par yield curve, the Federal
+Reserve Payments Study and the Survey of Consumer Finances.
+
+**Work and pay.** The SOC 2020 occupation list, ASHE annual and hourly pay
+percentiles by region and worker group, sickness absence by age, region,
+occupation, industry and employer type. OECD wages, minimum wages, tenure,
+temporary and part-time shares, unemployment duration, protection indices,
+retirement ages, tax wedges and hours. ILO earnings by occupation, informal
+employment and hours for around a hundred economies. Eurostat vacancy rates,
+labour market flows and minimum wage history. US General Schedule pay and
+locality grids. German social insurance contribution rates from statute.
+
+**Roads, vehicles and aviation.** NHTSA fatal crash distributions by month,
+weekday, hour, weather and light, and by state. GB road collisions from
+STATS19 by severity, time, conditions and speed limit, with driver and
+vehicle age. Licensed vehicles by body type, fuel and make, new registrations
+by fuel, road traffic by vehicle and road type, MOT results and defect mix.
+EPA fuel economy by class, NHTSA recalls, the FAA aircraft registry and
+airport facilities with runway lengths, border crossings, rail passengers,
+airport passengers, car stock by age and port freight.
 
 **Value pools and behaviour.** The numbers a demo most often has to invent
 and gets wrong: what a company in a given industry actually earns, what it
@@ -285,7 +346,7 @@ confessed, with the method. `tests` is what the verifier reproduces.
 [PASS] br-pix-monthly-volume-and-value  (entries/payments/BR/br-pix-monthly-volume-and-value.yaml)
     PASS test column[quantity_thousands,2026-09]  observed 7.89294e+06, expected 7892936.44 ± 0
 ...
-338 passed, 0 failed, 338 entries
+539 passed, 0 failed, 539 entries
 ```
 
 ## Frequently asked questions
