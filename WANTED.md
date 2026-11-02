@@ -43,6 +43,7 @@ add NPS subscriber counts by sector.
 | --- | --- | --- |
 | global-iban-structure | Every bank transfer generator needs it | SWIFT IBAN Registry (the site refuses non-browser clients; download the TXT release by hand and cite its release number) |
 | in-upi-monthly-volume | The largest real-time payment system by volume | NPCI product statistics (download the XLSX by hand) |
+| be-legal-public-holidays | Payroll and settlement calendars for Belgium | Royal decree of 18 April 1974 on the Belgian law database or a stable FPS Employment file (the ministry pages re-render with rotating tokens, so their hashes drift) |
 | in-nps-subscribers-and-aum-by-sector | Pension demos need the sector split | PFRDA monthly statistics (served dynamically; save the table by hand) |
 | br-cpf-check-digits | The identifier on every Brazilian customer record | Receita Federal do Brasil |
 | global-card-pan-luhn | Card numbers that pass issuer checks | ISO/IEC 7812 registration authority |

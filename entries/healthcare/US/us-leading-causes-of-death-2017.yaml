@@ -3,7 +3,7 @@ title: United States deaths by leading cause, 2017 (NCHS, ten leading causes and
 kind: marginal
 domain: healthcare
 region: US
-status: verified
+status: license-review
 tier: A
 observed_period:
   start: '2017-01-01'
@@ -60,7 +60,7 @@ evidence:
   value: 169936
   unit: count
   snippet: '"2017","Accidents (unintentional injuries) (V01-X59,Y85-Y86)","Unintentional injuries","United States","169936","49.4"'
-  source_license: public-domain
+  source_license: unstated
   content_sha256: 100dcece26a94277d28e9ec2ae9620a4a58ed6ae21bcbace8dfbb07470bf9d7a
   role: primary
 - publisher: Centers for Disease Control and Prevention, National Center for Health Statistics
@@ -71,20 +71,9 @@ evidence:
   value: 2813503
   unit: count
   snippet: '"2017","All Causes","All causes","United States","2813503"'
-  source_license: public-domain
+  source_license: unstated
   content_sha256: 100dcece26a94277d28e9ec2ae9620a4a58ed6ae21bcbace8dfbb07470bf9d7a
   role: primary
-- publisher: Centers for Disease Control and Prevention, National Center for Health Statistics
-  title: data.cdc.gov view metadata for bi63-dtpu
-  url: https://data.cdc.gov/api/views/bi63-dtpu.json
-  accessed_at: '2026-10-31'
-  locator: license.name
-  value: Public Domain U.S. Government
-  unit: text
-  snippet: '"name" : "Public Domain U.S. Government"'
-  source_license: public-domain
-  content_sha256: 1655f11293f8bd11b2ca44ec6b4087844d754eeaef5b1201d4de0fa48c755ccc
-  role: supporting
 assumed:
 - parameter: distribution.parameters.counts[Other causes]
   value: all causes minus the ten named causes
@@ -110,4 +99,6 @@ tests:
 notes: Deaths in the United States in 2017 by the ten leading causes NCHS publishes in its leading causes of death
   series, with every other cause collected into one remainder, so the shares sum to all deaths. 2017 is the last
   year in the data.cdc.gov series. The cause weights give synthetic mortality or claims data a realistic diagnosis
-  mix. The data.cdc.gov view metadata records the licence as Public Domain U.S. Government (supporting evidence).
+  mix. data.cdc.gov labels these datasets Public Domain U.S. Government only in view metadata that carries live
+  view and download counters, so the statement cannot be pinned by a content hash and the licence is recorded as
+  unstated.

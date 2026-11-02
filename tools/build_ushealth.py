@@ -24,7 +24,7 @@ import sys
 import zipfile
 from collections import Counter, defaultdict
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common import evidence, fetch, write  # noqa: E402
@@ -37,7 +37,6 @@ CDC = "Centers for Disease Control and Prevention, National Center for Health St
 AHRQ = "Agency for Healthcare Research and Quality"
 UNSTATED = "unstated"
 CC0 = "CC0-1.0"
-PUBLIC_DOMAIN = "public-domain"
 
 CMS_API = "https://data.cms.gov/data-api/v1/dataset"
 URLS = {
@@ -62,11 +61,13 @@ PHYSICIAN_PAGES = [f"{CMS_API}/6fea9d79-0129-4e4c-b1b8-23cd86a4f435/data?filter%
 HAC_PAGES = [f"{CMS_API}/01edb62e-5c45-4f43-8c91-16cba21cbb74/data?size=5000&offset={offset}" for offset in (0, 5000, 10000)]
 OPENFDA = "https://api.fda.gov/drug"
 CDC_RESOURCE = "https://data.cdc.gov/resource"
-CDC_VIEW = "https://data.cdc.gov/api/views"
 
 CMS_NOTE = " data.cms.gov and cms.gov publish these files without a licence statement, so the entry is held at license-review."
 OPENFDA_NOTE = " openFDA states that its data is public domain under a CC0 1.0 Universal dedication (supporting evidence)."
-CDC_NOTE = " The data.cdc.gov view metadata records the licence as Public Domain U.S. Government (supporting evidence)."
+CDC_NOTE = (
+    " data.cdc.gov labels these datasets Public Domain U.S. Government only in view metadata that carries live view and"
+    " download counters, so the statement cannot be pinned by a content hash and the licence is recorded as unstated."
+)
 USE_CASES = ["healthcare-demo", "claims-test-data", "payer-demo"]
 PHARMA_USE_CASES = ["healthcare-demo", "pharma-demo", "claims-test-data"]
 
@@ -344,7 +345,7 @@ def inpatient_beneficiary_mix(raw: bytes) -> list[dict]:
             ("2024-01-01", "2024-12-31"),
             [
                 cite(CMS, "Medicare Inpatient Hospitals - by Provider, 2024", URLS["inp_prv"], f"Rndrng_Prvdr_CCN={first['Rndrng_Prvdr_CCN']}, Tot_Benes", int(first["Tot_Benes"]), "count", f"{first['Rndrng_Prvdr_CCN']},{first['Rndrng_Prvdr_Org_Name']},{first['Rndrng_Prvdr_St']},{first['Rndrng_Prvdr_City']},{first['Rndrng_Prvdr_Zip5']},{first['Rndrng_Prvdr_State_Abrvtn']}", UNSTATED, raw),
-                cite(CMS, "Medicare Inpatient Hospitals - by Provider, 2024 (column headings)", URLS["inp_prv"], "header row", list(columns.values())[0], "text", ",".join(columns.values()), UNSTATED, raw),
+                cite(CMS, "Medicare Inpatient Hospitals - by Provider, 2024 (column headings)", URLS["inp_prv"], "header row", next(iter(columns.values())), "text", ",".join(columns.values()), UNSTATED, raw),
             ],
             [{"parameter": "distribution.parameters.counts", "value": "column sums over all hospitals", "method": "derived", "rationale": f"CMS publishes the counts per hospital; {suppressed} hospital cells are blank (suppressed for fewer than eleven beneficiaries) and count as zero."}],
             f"The {variable.replace('_', ' ')} mix of beneficiaries with a Medicare fee-for-service inpatient stay in calendar 2024, summed over every hospital in the CMS Medicare Inpatient Hospitals by Provider file. A beneficiary admitted to two hospitals is counted at each, so the totals describe hospital-beneficiary pairs rather than unique people." + CMS_NOTE,
@@ -988,14 +989,10 @@ def orange_book_entries(raw: bytes) -> list[dict]:
 # CDC NCHS births and causes of death
 
 
-def cdc_license_item(view_id: str, raw: bytes) -> dict:
-    return cite(CDC, f"data.cdc.gov view metadata for {view_id}", f"{CDC_VIEW}/{view_id}.json", "license.name", "Public Domain U.S. Government", "text", '"name" : "Public Domain U.S. Government"', PUBLIC_DOMAIN, raw, role="supporting")
-
-
 MONTHS = {m: i for i, m in enumerate(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], start=1)}
 
 
-def births_by_month(raw: bytes, view_raw: bytes) -> dict:
+def births_by_month(raw: bytes) -> dict:
     url = f"{CDC_RESOURCE}/hmz2-vwda.csv?$limit=100000&$order=:id"
     rows = [r for r in rows_of(raw) if r["state"] == "UNITED STATES" and r["period"] == "Monthly"]
     by_period: dict[str, dict[str, float]] = defaultdict(dict)
@@ -1014,18 +1011,17 @@ def births_by_month(raw: bytes, view_raw: bytes) -> dict:
         ["deaths", "infant_deaths"],
         (f"{series[0]['period']}-01", "2024-06-30"),
         [
-            cite(CDC, "VSRR State and National Provisional Counts for Live Births, Deaths, and Infant Deaths (Socrata CSV export)", url, f"state=UNITED STATES, year={first['year']}, month={first['month']}, indicator=Number of Live Births, data_value", int(first["data_value"]), "count", f'"UNITED STATES","{first["year"]}","{first["month"]}","Monthly","Number of Live Births","{first["data_value"]}"', PUBLIC_DOMAIN, raw),
-            cdc_license_item("hmz2-vwda", view_raw),
+            cite(CDC, "VSRR State and National Provisional Counts for Live Births, Deaths, and Infant Deaths (Socrata CSV export)", url, f"state=UNITED STATES, year={first['year']}, month={first['month']}, indicator=Number of Live Births, data_value", int(first["data_value"]), "count", f'"UNITED STATES","{first["year"]}","{first["month"]}","Monthly","Number of Live Births","{first["data_value"]}"', UNSTATED, raw),
         ],
         [],
         "Provisional monthly counts of live births, deaths and infant deaths for the United States from the NCHS Vital Statistics Rapid Release, read from the data.cdc.gov export of the state and national provisional counts with a fixed row order. Counts are rounded by NCHS. The month-to-month shape sets the seasonality of synthetic birth and death events." + CDC_NOTE,
         ["healthcare", "births", "deaths", "vital-statistics", "cdc", "time-series", "seasonality"],
         USE_CASES + ["person-generation", "event-timestamps", "clinical-records"],
-        "verified",
+        "license-review",
     )
 
 
-def births_by_year(raw: bytes, view_raw: bytes) -> dict:
+def births_by_year(raw: bytes) -> dict:
     url = f"{CDC_RESOURCE}/e6fc-ccez.csv?$limit=100000&$order=:id"
     rows = sorted(rows_of(raw), key=lambda r: r["year"])
     series = [{"period": r["year"], "value": float(r["birth_number"]), "general_fertility_rate": float(r["general_fertility_rate"]), "crude_birth_rate": float(r["crude_birth_rate"])} for r in rows]
@@ -1040,18 +1036,17 @@ def births_by_year(raw: bytes, view_raw: bytes) -> dict:
         ["general_fertility_rate", "crude_birth_rate"],
         (f"{rows[0]['year']}-01-01", f"{rows[-1]['year']}-12-31"),
         [
-            cite(CDC, "NCHS Births and General Fertility Rates: United States (Socrata CSV export)", url, f"year={first['year']}, birth_number", int(first["birth_number"]), "count", f'"{first["year"]}","{first["birth_number"]}","{first["general_fertility_rate"]}","{first["crude_birth_rate"]}"', PUBLIC_DOMAIN, raw),
-            cdc_license_item("e6fc-ccez", view_raw),
+            cite(CDC, "NCHS Births and General Fertility Rates: United States (Socrata CSV export)", url, f"year={first['year']}, birth_number", int(first["birth_number"]), "count", f'"{first["year"]}","{first["birth_number"]}","{first["general_fertility_rate"]}","{first["crude_birth_rate"]}"', UNSTATED, raw),
         ],
         [],
         "Annual births in the United States with the general fertility rate (births per 1,000 women aged 15 to 44) and the crude birth rate (per 1,000 population) from the NCHS national vital statistics series on data.cdc.gov. A long run of official birth counts for ageing a synthetic population or back-filling birth years." + CDC_NOTE,
         ["healthcare", "births", "fertility", "vital-statistics", "cdc", "time-series"],
         USE_CASES + ["person-generation", "household-generation"],
-        "verified",
+        "license-review",
     )
 
 
-def leading_causes(raw: bytes, view_raw: bytes) -> dict:
+def leading_causes(raw: bytes) -> dict:
     url = f"{CDC_RESOURCE}/bi63-dtpu.csv?$limit=100000&$order=:id"
     rows = rows_of(raw)
     latest = max(r["year"] for r in rows)
@@ -1067,15 +1062,14 @@ def leading_causes(raw: bytes, view_raw: bytes) -> dict:
         counts,
         (f"{latest}-01-01", f"{latest}-12-31"),
         [
-            cite(CDC, "NCHS Leading Causes of Death: United States (Socrata CSV export)", url, f"year={latest}, cause_name={first['cause_name']}, state=United States, deaths", int(first["deaths"]), "count", f'"{latest}","{first["_113_cause_name"]}","{first["cause_name"]}","United States","{first["deaths"]}","{first["aadr"]}"', PUBLIC_DOMAIN, raw),
-            cite(CDC, "NCHS Leading Causes of Death: United States (Socrata CSV export)", url, f"year={latest}, cause_name=All causes, state=United States, deaths", int(all_causes["deaths"]), "count", f'"{latest}","All Causes","All causes","United States","{all_causes["deaths"]}"', PUBLIC_DOMAIN, raw),
-            cdc_license_item("bi63-dtpu", view_raw),
+            cite(CDC, "NCHS Leading Causes of Death: United States (Socrata CSV export)", url, f"year={latest}, cause_name={first['cause_name']}, state=United States, deaths", int(first["deaths"]), "count", f'"{latest}","{first["_113_cause_name"]}","{first["cause_name"]}","United States","{first["deaths"]}","{first["aadr"]}"', UNSTATED, raw),
+            cite(CDC, "NCHS Leading Causes of Death: United States (Socrata CSV export)", url, f"year={latest}, cause_name=All causes, state=United States, deaths", int(all_causes["deaths"]), "count", f'"{latest}","All Causes","All causes","United States","{all_causes["deaths"]}"', UNSTATED, raw),
         ],
         [{"parameter": "distribution.parameters.counts[Other causes]", "value": "all causes minus the ten named causes", "method": "derived", "rationale": "NCHS publishes the ten leading causes and the all-cause total; the remainder is their difference."}],
         f"Deaths in the United States in {latest} by the ten leading causes NCHS publishes in its leading causes of death series, with every other cause collected into one remainder, so the shares sum to all deaths. {latest} is the last year in the data.cdc.gov series. The cause weights give synthetic mortality or claims data a realistic diagnosis mix." + CDC_NOTE,
         ["healthcare", "deaths", "causes-of-death", "vital-statistics", "cdc"],
         USE_CASES + ["insurance", "clinical-records"],
-        "verified",
+        "license-review",
     )
 
 
@@ -1187,9 +1181,9 @@ def main() -> int:
         write(entry)
     for entry in orange_book_entries(fetch(URLS["orange_book"])):
         write(entry)
-    write(births_by_month(fetch(f"{CDC_RESOURCE}/hmz2-vwda.csv?$limit=100000&$order=:id"), fetch(f"{CDC_VIEW}/hmz2-vwda.json")))
-    write(births_by_year(fetch(f"{CDC_RESOURCE}/e6fc-ccez.csv?$limit=100000&$order=:id"), fetch(f"{CDC_VIEW}/e6fc-ccez.json")))
-    write(leading_causes(fetch(f"{CDC_RESOURCE}/bi63-dtpu.csv?$limit=100000&$order=:id"), fetch(f"{CDC_VIEW}/bi63-dtpu.json")))
+    write(births_by_month(fetch(f"{CDC_RESOURCE}/hmz2-vwda.csv?$limit=100000&$order=:id")))
+    write(births_by_year(fetch(f"{CDC_RESOURCE}/e6fc-ccez.csv?$limit=100000&$order=:id")))
+    write(leading_causes(fetch(f"{CDC_RESOURCE}/bi63-dtpu.csv?$limit=100000&$order=:id")))
     write(hcup_expensive_conditions(fetch(URLS["hcup_sb316"])))
     write(hcup_ed_costs(fetch(URLS["hcup_sb311"])))
     return 0

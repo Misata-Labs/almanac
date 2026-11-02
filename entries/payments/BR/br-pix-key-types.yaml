@@ -28,8 +28,8 @@ spec:
         cnpj: 16326395
       total: 1007956446
       holders:
-        PJ: 51244340
         PF: 956712106
+        PJ: 51244340
       source_labels:
         random_evp: Aleatória
         phone: Celular
@@ -39,25 +39,25 @@ spec:
 evidence:
 - publisher: Banco Central do Brasil
   title: Estatísticas do Pix, ChavesPix (keys by participant, holder type and key type), 2026-09-30
-  url: https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/odata/ChavesPix(Data=@Data)?@Data='2026-09-30'&$format=json
+  url: https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/odata/ChavesPix(Data=@Data)?@Data='2026-09-30'&$filter=Data%20eq%202026-09-30&$orderby=ISPB,NaturezaUsuario,TipoChave&$format=json
   accessed_at: '2026-10-31'
-  locator: value[0] (ISPB 03645752, Celular).qtdChaves
-  value: 296
+  locator: value[0] (ISPB 00000000, Aleatória).qtdChaves
+  value: 9494564
   unit: count
-  snippet: '"ISPB":"03645752"'
+  snippet: '"ISPB":"00000000"'
   source_license: ODbL-1.0
-  content_sha256: 382e07df92815ef786f1516f1e30eddbb4981a71b34b35754f91195522c23b3c
+  content_sha256: 4ee32368cdd4db4ed93dacbf697709753980d3d4d4b1e683e675f715be9393fe
   role: primary
 - publisher: Banco Central do Brasil
   title: Estatísticas do Pix, ChavesPix (keys by participant, holder type and key type), 2026-09-30
-  url: https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/odata/ChavesPix(Data=@Data)?@Data='2026-09-30'&$format=json
+  url: https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/odata/ChavesPix(Data=@Data)?@Data='2026-09-30'&$filter=Data%20eq%202026-09-30&$orderby=ISPB,NaturezaUsuario,TipoChave&$format=json
   accessed_at: '2026-10-31'
   locator: value[*].Data
   value: '2026-09-30'
   unit: date
   snippet: '"Data":"2026-09-30"'
   source_license: ODbL-1.0
-  content_sha256: 382e07df92815ef786f1516f1e30eddbb4981a71b34b35754f91195522c23b3c
+  content_sha256: 4ee32368cdd4db4ed93dacbf697709753980d3d4d4b1e683e675f715be9393fe
   role: primary
 assumed:
 - parameter: distribution.parameters.shares

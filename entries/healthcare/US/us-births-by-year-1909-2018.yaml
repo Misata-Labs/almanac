@@ -3,7 +3,7 @@ title: United States births, general fertility rate and crude birth rate by year
 kind: temporal
 domain: healthcare
 region: US
-status: verified
+status: license-review
 tier: A
 observed_period:
   start: '1909-01-01'
@@ -478,20 +478,9 @@ evidence:
   value: 2718000
   unit: count
   snippet: '"1909","2718000","126.8","30.0"'
-  source_license: public-domain
+  source_license: unstated
   content_sha256: 21e456d5d253d4c4d5a639894c2a62b1309e75713057fe076ddafb77c35a1733
   role: primary
-- publisher: Centers for Disease Control and Prevention, National Center for Health Statistics
-  title: data.cdc.gov view metadata for e6fc-ccez
-  url: https://data.cdc.gov/api/views/e6fc-ccez.json
-  accessed_at: '2026-10-31'
-  locator: license.name
-  value: Public Domain U.S. Government
-  unit: text
-  snippet: '"name" : "Public Domain U.S. Government"'
-  source_license: public-domain
-  content_sha256: 6812ca65be9878e634a8ccf30cf1bd93cf2413d5b8d187fbecd45de9c38b89d7
-  role: supporting
 assumed: []
 tests:
 - statistic: value[1909]
@@ -508,5 +497,6 @@ tests:
   tolerance: 0
 notes: Annual births in the United States with the general fertility rate (births per 1,000 women aged 15 to 44)
   and the crude birth rate (per 1,000 population) from the NCHS national vital statistics series on data.cdc.gov.
-  A long run of official birth counts for ageing a synthetic population or back-filling birth years. The data.cdc.gov
-  view metadata records the licence as Public Domain U.S. Government (supporting evidence).
+  A long run of official birth counts for ageing a synthetic population or back-filling birth years. data.cdc.gov
+  labels these datasets Public Domain U.S. Government only in view metadata that carries live view and download
+  counters, so the statement cannot be pinned by a content hash and the licence is recorded as unstated.

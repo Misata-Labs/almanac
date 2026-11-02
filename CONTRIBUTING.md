@@ -45,6 +45,12 @@ confirm a value, leave the entry out.
    Fetch twice and compare the hashes: a page that changes on every request
    (personalised HTML, rotating tokens) cannot be verified and must not be
    cited. Prefer an API response, a CSV, or a PDF from the same publisher.
+   Matching hashes a few seconds apart are necessary but not enough. Catalogue
+   records that carry view or download counters or a nightly modification
+   time, pages whose asset links carry a cache-busting suffix, and queries
+   whose date parameter means "from this date onward" all change within a
+   day. Pin a query to exactly one period with a filter and an explicit sort
+   order, and cite a licence only from a document that does not move.
    PDFs are searched by their extracted text, so take snippets from text the
    PDF actually contains, not from headings rendered as images. ZIP archives
    are searched by the text of their .txt, .csv, .json, .xml and .yaml

@@ -134,7 +134,7 @@ for entry in almanac.select(on=date(2026, 6, 15), region="GB", kind="rule"):
 
 ## What is inside
 
-Five hundred and fifty-eight entries across thirty-five domains and twenty-seven
+Five hundred and fifty-seven entries across thirty-five domains and twenty-seven
 regions at the time of writing, every one of them passing live verification. The generated
 [CATALOGUE.md](CATALOGUE.md) is the authoritative list; this is the tour.
 
@@ -190,7 +190,7 @@ Public holidays for Japan from the Cabinet Office since 1955, France
 metropolitan, Alsace-Moselle and overseas zones, Hong Kong, Australia by state
 and territory, Singapore with observed days, Spain by autonomous community,
 India's central government list with restricted holidays, and the statutory
-rest days of Mexico, Belgium and Ireland. One shared engine answers whether a
+rest days of Mexico and Ireland. One shared engine answers whether a
 day is a holiday, the next business day, and N business days ahead.
 
 **Economy, rates and prices.** Eighty World Bank reference tables by economy,
@@ -357,7 +357,7 @@ confessed, with the method. `tests` is what the verifier reproduces.
 [PASS] br-pix-monthly-volume-and-value  (entries/payments/BR/br-pix-monthly-volume-and-value.yaml)
     PASS test column[quantity_thousands,2026-09]  observed 7.89294e+06, expected 7892936.44 ± 0
 ...
-558 passed, 0 failed, 558 entries
+557 passed, 0 failed, 557 entries
 ```
 
 ## Frequently asked questions

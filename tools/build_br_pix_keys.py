@@ -15,7 +15,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common import evidence, fetch, write  # noqa: E402
 
 SNAPSHOT = "2026-09-30"
-DATA_URL = f"https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/odata/ChavesPix(Data=@Data)?@Data='{SNAPSHOT}'&$format=json"
+# The Data parameter returns every month from the given date onward, so the filter pins one snapshot
+# and the explicit ordering keeps the response byte-stable.
+DATA_URL = (
+    "https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/odata/ChavesPix(Data=@Data)"
+    f"?@Data='{SNAPSHOT}'&$filter=Data%20eq%20{SNAPSHOT}&$orderby=ISPB,NaturezaUsuario,TipoChave&$format=json"
+)
 LICENSE_URL = "https://dadosabertos.bcb.gov.br/api/3/action/package_show?id=pix"
 PUBLISHER = "Banco Central do Brasil"
 LICENSE = "ODbL-1.0"
@@ -23,7 +28,7 @@ KEY_LABELS = {"Aleatória": "random_evp", "Celular": "phone", "CPF": "cpf", "e-m
 
 
 def build(raw: bytes) -> dict:
-    rows = json.loads(raw)["value"]
+    rows = [row for row in json.loads(raw)["value"] if row["Data"] == SNAPSHOT]
     counts: dict[str, int] = {}
     holders: dict[str, int] = {}
     for row in rows:

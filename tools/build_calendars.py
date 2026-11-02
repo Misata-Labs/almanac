@@ -2,8 +2,7 @@
 
 Each entry is a ``almanac.rules.holiday_list`` rule: a dated list read from a
 government feed (Japan, France, Hong Kong, Australia, Singapore, Spain, India)
-or a recurring list read from a statute or ministry page (Mexico, Belgium,
-Ireland). Every date comes from the fetched resource; nothing is typed in.
+or a recurring list read from a statute (Mexico, Ireland). Every date comes from the fetched resource; nothing is typed in.
 Run from the repository root:
 
     uv run python tools/build_calendars.py
@@ -18,14 +17,15 @@ import json
 import re
 import sys
 from collections import defaultdict
+from collections.abc import Iterable
 from datetime import date, datetime
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 from pypdf import PdfReader
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _common import ACCESSED, evidence, fetch, write  # noqa: E402
+from _common import evidence, fetch, write  # noqa: E402
 
 TAGS = ["calendar", "holidays", "business-days"]
 USE_CASES = ["payroll-demo", "settlement-calendar", "scheduling-demo", "logistics-demo"]
@@ -47,8 +47,6 @@ ES_PDF = "https://www.boe.es/boe/dias/2025/10/28/pdfs/BOE-A-2025-21667.pdf"
 ES_INHABILES_XML = "https://www.boe.es/diario_boe/xml.php?id=BOE-A-2025-23702"
 IN_PDF = "https://cag.gov.in/uploads/media/Holiday-List-2026-069521fe6f358d0-89936988.pdf"
 MX_PDF = "https://www.diputados.gob.mx/LeyesBiblio/pdf/LFT.pdf"
-BE_FR = "https://emploi.belgique.be/fr/themes/jours-feries-et-conges/jours-feries"
-BE_NL = "https://werk.belgie.be/nl/themas/feestdagen-en-verloven/feestdagen"
 IE_ACT = "https://revisedacts.lawreform.ie/eli/1997/act/20/revised/en/html"
 IE_SI = "https://www.irishstatutebook.ie/eli/2022/si/50/made/en/html"
 
@@ -83,7 +81,7 @@ def checked(item: dict[str, Any], raw: bytes) -> dict[str, Any]:
 
 def html_text(raw: bytes) -> str:
     text = raw.decode("utf-8", errors="replace")
-    text = re.sub(r"<(script|style).*?</\1>", " ", text, flags=re.S)
+    text = re.sub(r"<(script|style).*?</\1>", " ", text, flags=re.DOTALL)
     return collapse(html.unescape(re.sub(r"<[^>]+>", " ", text)))
 
 
@@ -472,8 +470,8 @@ def parse_spain(xml_raw: bytes) -> tuple[int, list[dict[str, Any]], list[str]]:
     header_ids = re.findall(r'<th axis="comunidad"[^>]*id="(header\w+)"', table)
     regions = [ES_REGIONS[h] for h in header_ids]
     records, month = [], 0
-    for row in re.findall(r"<tr>(.*?)</tr>", table, re.S):
-        cells = [html.unescape(re.sub("<[^>]+>", "", c)).strip() for c in re.findall(r"<td[^>]*>(.*?)</td>", row, re.S)]
+    for row in re.findall(r"<tr>(.*?)</tr>", table, re.DOTALL):
+        cells = [html.unescape(re.sub("<[^>]+>", "", c)).strip() for c in re.findall(r"<td[^>]*>(.*?)</td>", row, re.DOTALL)]
         if not cells:
             continue
         label, markers = cells[0], cells[1:]
@@ -662,20 +660,8 @@ def build_mexico(pdf_raw: bytes) -> dict[str, Any]:
     )
 
 
-# --- Belgium ---------------------------------------------------------------------------------------
+# --- Easter-based movable feasts -------------------------------------------------------------------
 
-BE_HOLIDAYS = [
-    {"name": "1er janvier", "month": 1, "day": 1},
-    {"name": "Lundi de Pâques", "easter_offset": 1},
-    {"name": "1er mai (Fête du travail)", "month": 5, "day": 1},
-    {"name": "Ascension", "easter_offset": 39},
-    {"name": "Lundi de Pentecôte", "easter_offset": 50},
-    {"name": "21 juillet (Fête nationale)", "month": 7, "day": 21},
-    {"name": "15 août (Assomption)", "month": 8, "day": 15},
-    {"name": "1er novembre (Toussaint)", "month": 11, "day": 1},
-    {"name": "11 novembre (Armistice)", "month": 11, "day": 11},
-    {"name": "25 décembre (Noël)", "month": 12, "day": 25},
-]
 EASTER_ASSUMPTION = {
     "parameter": "easter_offset",
     "value": "Easter Sunday from the Gregorian computus; Easter Monday +1, Ascension +39, Whit Monday +50",
@@ -695,56 +681,6 @@ def check_easter_offsets(metropole_raw: bytes) -> None:
             expected = holiday_list.easter(int(day[:4])) + holiday_list.timedelta(days=offsets[name])
             if expected.isoformat() != day:
                 raise ValueError(f"computus disagrees with the published {name} {day}")
-
-
-def build_belgium(fr_raw: bytes, nl_raw: bytes) -> dict[str, Any]:
-    fr_text, nl_text = html_text(fr_raw), html_text(nl_raw)
-    fr_list = re.search(r"Quels sont les jours fériés légaux \? (.*?) Dans certaines branches", fr_text).group(1)
-    nl_list = re.search(r"Welke zijn de wettelijke feestdagen \? (.*?) In sommige bedrijfstakken", nl_text).group(1)
-    for phrase in ("1er janvier", "lundi de Pâques", "1er mai", "L'Ascension", "lundi de Pentecôte", "21 juillet", "15 août", "1er novembre", "11 novembre", "25 décembre"):
-        if phrase not in fr_list:
-            raise ValueError(f"Belgian list changed: {phrase!r} missing")
-    if len(re.findall(r",|\.", fr_list)) < len(BE_HOLIDAYS) or nl_list.count(",") + 1 != len(BE_HOLIDAYS):
-        raise ValueError("Belgian list no longer has ten entries")
-    from almanac.rules import holiday_list
-
-    parameters = {"holidays": BE_HOLIDAYS}
-    by_name = {r["name"]: r["date"] for r in holiday_list.holidays_in(parameters, 2026)}
-    vectors = [
-        {"input": {"year": 2026}, "expected": [{"date": r["date"], "name": r["name"]} for r in holiday_list.holidays_in(parameters, 2026)], "origin": "derived", "note": "the ten legal holidays applied to 2026"},
-        {"input": by_name["Ascension"], "expected": True, "origin": "derived", "note": "Ascension 2026, the Thursday 39 days after Easter Sunday"},
-        {"input": by_name["Lundi de Pentecôte"], "expected": True, "origin": "derived"},
-        {"input": "2026-07-21", "expected": True, "origin": "source"},
-        {"input": "2026-04-03", "expected": False, "origin": "derived", "note": "Good Friday is not a Belgian legal holiday"},
-        {"input": {"op": "next_business_day", "date": "2026-05-01"}, "expected": "2026-05-04", "origin": "derived", "note": "1 May 2026 is a Friday"},
-    ]
-    return entry(
-        id="be-jours-feries-legaux",
-        title="Belgium: the ten legal public holidays (jours fériés légaux / wettelijke feestdagen)",
-        region="BE",
-        tier="B",
-        valid_from=ACCESSED.isoformat(),
-        valid_to=None,
-        extra_tags=["jours-feries", "feestdagen"],
-        parameters=parameters,
-        vectors=vectors,
-        evidence=[
-            checked(evidence("SPF Emploi, Travail et Concertation sociale (Federal Public Service Employment, Labour and Social Dialogue)", "Jours fériés (thème Jours fériés et congés)", BE_FR, "section 'Quels sont les jours fériés légaux ?'", "Le lundi de Pentecôte", "text", "Le 21 juillet (Fête nationale)", UNSTATED, fr_raw), fr_raw),
-            checked(evidence("FOD Werkgelegenheid, Arbeid en Sociaal Overleg (Federal Public Service Employment, Labour and Social Dialogue)", "Feestdagen (thema Feestdagen en verloven)", BE_NL, "section 'Welke zijn de wettelijke feestdagen ?'", "Pinkstermaandag", "text", "21 juli (nationale feestdag)", UNSTATED, nl_raw), nl_raw),
-        ],
-        assumed=[
-            EASTER_ASSUMPTION,
-            {"parameter": "valid_from", "value": ACCESSED.isoformat(), "method": "assumed", "rationale": "The ministry page states the list without an effective date; valid_from records the day the page was fetched. The underlying Royal Decree of 18 April 1974 is not cited here."},
-        ],
-        tests=[{"statistic": "count[2026]", "expected": len(BE_HOLIDAYS), "tolerance": 0}, {"statistic": "count[2027]", "expected": len(BE_HOLIDAYS), "tolerance": 0}],
-        notes=(
-            "The ten legal public holidays as the Federal Public Service Employment lists them in French and Dutch: 1 January, "
-            "Easter Monday, 1 May, Ascension, Whit Monday, 21 July, 15 August, 1 November, 11 November and 25 December. "
-            "Replacement days for holidays falling on a Sunday or a non-working day, which the same pages describe, are "
-            "decided per sector or employer and are not modelled. The builder re-reads the lists on each run and stops if "
-            "any of the ten entries is missing."
-        ),
-    )
 
 
 # --- Ireland ---------------------------------------------------------------------------------------
@@ -834,7 +770,6 @@ def main() -> int:
     write(build_spain(fetch(ES_XML), fetch(ES_PDF), fetch(ES_INHABILES_XML)))
     write(build_india(fetch(IN_PDF)))
     write(build_mexico(fetch(MX_PDF)))
-    write(build_belgium(fetch(BE_FR), fetch(BE_NL)))
     write(build_ireland(fetch(IE_ACT), fetch(IE_SI)))
     return 0
 

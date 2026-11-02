@@ -3,7 +3,7 @@ title: Ireland baby names given sex, top 100 of 2025 registrations (CSO PxStat V
 kind: conditional
 domain: demographics
 region: IE
-status: verified
+status: license-review
 tier: A
 observed_period:
   start: '2025-01-01'
@@ -466,17 +466,6 @@ evidence:
   source_license: CC-BY-4.0
   content_sha256: bd72b96a02bca8e7bcc0ac8273aa4c19c17ef86caae20647b171fbc330d7f96a
   role: primary
-- publisher: Government of Ireland open data portal (data.gov.ie)
-  title: CKAN package metadata for CSO table VSA50 (licence statement)
-  url: https://data.gov.ie/api/3/action/package_show?id=vsa50-boys-names-in-ireland-with-3-or-more-occurrences
-  accessed_at: '2026-10-31'
-  locator: result.license_id
-  value: CC-BY-4.0
-  unit: text
-  snippet: '"license_id": "CC-BY-4.0"'
-  source_license: CC-BY-4.0
-  content_sha256: e978c4ac1758503f9ba39ed9090c5f40ada9645260648154fccf792deaebe6d7
-  role: supporting
 assumed:
 - parameter: shares
   value: count / sum of counts over the listed names
@@ -504,4 +493,5 @@ tests:
 notes: The 100 most common first names registered for boys (table VSA50) and girls (table VSA60) in Ireland in 2025,
   with the published counts and shares renormalised within each list. The CSO publishes names with three or more
   occurrences; the whole PxStat cube from 1964 is the cited resource because the API serves no per-year slice at
-  a stable URL. The data.gov.ie catalogue record for the table states the CC BY 4.0 licence.
+  a stable URL. The data.gov.ie catalogue record for the table names CC BY 4.0, but the record is rewritten nightly
+  and cannot be pinned by a content hash, so the entry is held for licence review.

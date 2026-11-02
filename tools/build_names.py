@@ -38,7 +38,6 @@ INSEE_DOC_URL = "https://www.insee.fr/fr/statistiques/8595130"
 INSEE_LICENSE_URL = "https://www.insee.fr/fr/information/2008466"
 CSO_BOYS_URL = "https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/VSA50/CSV/1.0/en"
 CSO_GIRLS_URL = "https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/VSA60/CSV/1.0/en"
-CSO_LICENSE_URL = "https://data.gov.ie/api/3/action/package_show?id=vsa50-boys-names-in-ireland-with-3-or-more-occurrences"
 STATBEL_BASE = "https://statbel.fgov.be/sites/default/files/files/documents/bevolking/5.10%20Namen%20en%20voornamen"
 STATBEL_BOYS_URL = f"{STATBEL_BASE}/5.10.%203%20Voornamen%20meisjes%20en%20jongens/Firstnames_Boys_1995-.xlsx"
 STATBEL_GIRLS_URL = f"{STATBEL_BASE}/5.10.%203%20Voornamen%20meisjes%20en%20jongens/Firstnames_Girls_1995-.xlsx"
@@ -508,7 +507,7 @@ def cso_top_line(raw: bytes, statistic: str, year: str, name: str) -> str:
     raise ValueError(f"no line for {name} in {year}")
 
 
-def cso_by_sex(boys_raw: bytes, girls_raw: bytes, license_raw: bytes, year: str, top: int) -> dict:
+def cso_by_sex(boys_raw: bytes, girls_raw: bytes, year: str, top: int) -> dict:
     sources = {"male": ("VSA50", CSO_BOYS_URL, boys_raw, "Boys"), "female": ("VSA60", CSO_GIRLS_URL, girls_raw, "Girls")}
     distributions, items = {}, []
     for label, (table, url, raw, word) in sources.items():
@@ -518,7 +517,6 @@ def cso_by_sex(boys_raw: bytes, girls_raw: bytes, license_raw: bytes, year: str,
         distributions[label] = categorical(counts, full_list_total=total, coverage=round(sum(counts.values()) / total, SHARE_DIGITS))
         first = next(iter(counts))
         items.append(evidence("Central Statistics Office", f"PxStat table {table}, {word} Names in Ireland with 3 or More Occurrences (CSV)", url, f"STATISTIC={table}C01, Year={year}, {word} Names={first}, VALUE", counts[first], "count", cso_top_line(raw, f"{table}C01", year, first), CC_BY, raw))
-    items.append(evidence("Government of Ireland open data portal (data.gov.ie)", "CKAN package metadata for CSO table VSA50 (licence statement)", CSO_LICENSE_URL, "result.license_id", "CC-BY-4.0", "text", '"license_id": "CC-BY-4.0"', CC_BY, license_raw, role="supporting"))
     return entry(
         f"ie-baby-names-{year}-top-{top}-by-sex",
         f"Ireland baby names given sex, top {top} of {year} registrations (CSO PxStat VSA50 and VSA60)",
@@ -534,8 +532,10 @@ def cso_by_sex(boys_raw: bytes, girls_raw: bytes, license_raw: bytes, year: str,
         f"The {top} most common first names registered for boys (table VSA50) and girls (table VSA60) in Ireland in {year}, with "
         "the published counts and shares renormalised within each list. The CSO publishes names with three or more occurrences; "
         "the whole PxStat cube from 1964 is the cited resource because the API serves no per-year slice at a stable URL. "
-        "The data.gov.ie catalogue record for the table states the CC BY 4.0 licence.",
+        "The data.gov.ie catalogue record for the table names CC BY 4.0, but the record is rewritten nightly and cannot be "
+        "pinned by a content hash, so the entry is held for licence review.",
         ["first-names", "baby-names", "cso", "by-sex"],
+        status="license-review",
     )
 
 
@@ -792,7 +792,7 @@ def main() -> int:
     write(insee_by_sex(insee_raw, insee_doc, insee_license, "2025", 200))
     write(insee_by_cohort(insee_raw, insee_doc, insee_license, [str(y) for y in range(1960, 2021, 10)], 50))
 
-    write(cso_by_sex(fetch(CSO_BOYS_URL), fetch(CSO_GIRLS_URL), fetch(CSO_LICENSE_URL), "2025", 100))
+    write(cso_by_sex(fetch(CSO_BOYS_URL), fetch(CSO_GIRLS_URL), "2025", 100))
 
     statbel_license = fetch(STATBEL_LICENSE_URL)
     for url, sex in ((STATBEL_BOYS_URL, "boys"), (STATBEL_GIRLS_URL, "girls")):

@@ -3,7 +3,7 @@ title: United States provisional live births, deaths and infant deaths by month,
 kind: temporal
 domain: healthcare
 region: US
-status: verified
+status: license-review
 tier: A
 observed_period:
   start: '2023-01-01'
@@ -112,20 +112,9 @@ evidence:
   value: 299000
   unit: count
   snippet: '"UNITED STATES","2023","January","Monthly","Number of Live Births","299000"'
-  source_license: public-domain
+  source_license: unstated
   content_sha256: e51a2aafcb6286b95e107fd17b34409e8bdf78d29212b228e93c9c73b666a386
   role: primary
-- publisher: Centers for Disease Control and Prevention, National Center for Health Statistics
-  title: data.cdc.gov view metadata for hmz2-vwda
-  url: https://data.cdc.gov/api/views/hmz2-vwda.json
-  accessed_at: '2026-10-31'
-  locator: license.name
-  value: Public Domain U.S. Government
-  unit: text
-  snippet: '"name" : "Public Domain U.S. Government"'
-  source_license: public-domain
-  content_sha256: 0d1940558e3a0d3e34ff994ceb3f7da5544f9499a90be9ed25b0afe55e286324
-  role: supporting
 assumed: []
 tests:
 - statistic: value[2023-01]
@@ -143,5 +132,6 @@ tests:
 notes: Provisional monthly counts of live births, deaths and infant deaths for the United States from the NCHS Vital
   Statistics Rapid Release, read from the data.cdc.gov export of the state and national provisional counts with
   a fixed row order. Counts are rounded by NCHS. The month-to-month shape sets the seasonality of synthetic birth
-  and death events. The data.cdc.gov view metadata records the licence as Public Domain U.S. Government (supporting
-  evidence).
+  and death events. data.cdc.gov labels these datasets Public Domain U.S. Government only in view metadata that
+  carries live view and download counters, so the statement cannot be pinned by a content hash and the licence is
+  recorded as unstated.
