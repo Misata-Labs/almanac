@@ -1,0 +1,889 @@
+id: global-isic-rev4-structure
+title: 'UN ISIC Rev.4 structure: sections, divisions, groups and classes with titles'
+kind: rule
+domain: business
+region: global
+status: license-review
+tier: A
+valid_from: '2026-10-31'
+valid_to: null
+tags:
+- geography
+- codes
+- reference
+- isic
+- industry-codes
+- code-list
+- classification
+use_cases:
+- synthetic-addresses
+- synthetic-companies
+- product-catalogue
+- data-quality-validation
+- company-generation
+- kyb-onboarding
+- customer-segmentation
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      section:
+        A: Agriculture, forestry and fishing
+        B: Mining and quarrying
+        C: Manufacturing
+        D: Electricity, gas, steam and air conditioning supply
+        E: Water supply; sewerage, waste management and remediation activities
+        F: Construction
+        G: Wholesale and retail trade; repair of motor vehicles and motorcycles
+        H: Transportation and storage
+        I: Accommodation and food service activities
+        J: Information and communication
+        K: Financial and insurance activities
+        L: Real estate activities
+        M: Professional, scientific and technical activities
+        N: Administrative and support service activities
+        O: Public administration and defence; compulsory social security
+        P: Education
+        Q: Human health and social work activities
+        R: Arts, entertainment and recreation
+        S: Other service activities
+        T: Activities of households as employers; undifferentiated goods- and services-producing activities of households
+          for own use
+        U: Activities of extraterritorial organizations and bodies
+      division:
+        '01': Crop and animal production, hunting and related service activities
+        '02': Forestry and logging
+        '03': Fishing and aquaculture
+        '05': Mining of coal and lignite
+        '06': Extraction of crude petroleum and natural gas
+        '07': Mining of metal ores
+        08: Other mining and quarrying
+        09: Mining support service activities
+        '10': Manufacture of food products
+        '11': Manufacture of beverages
+        '12': Manufacture of tobacco products
+        '13': Manufacture of textiles
+        '14': Manufacture of wearing apparel
+        '15': Manufacture of leather and related products
+        '16': Manufacture of wood and of products of wood and cork, except furniture; manufacture of articles of
+          straw and plaiting materials
+        '17': Manufacture of paper and paper products
+        '18': Printing and reproduction of recorded media
+        '19': Manufacture of coke and refined petroleum products
+        '20': Manufacture of chemicals and chemical products
+        '21': Manufacture of basic pharmaceutical products and pharmaceutical preparations
+        '22': Manufacture of rubber and plastics products
+        '23': Manufacture of other non-metallic mineral products
+        '24': Manufacture of basic metals
+        '25': Manufacture of fabricated metal products, except machinery and equipment
+        '26': Manufacture of computer, electronic and optical products
+        '27': Manufacture of electrical equipment
+        '28': Manufacture of machinery and equipment n.e.c.
+        '29': Manufacture of motor vehicles, trailers and semi-trailers
+        '30': Manufacture of other transport equipment
+        '31': Manufacture of furniture
+        '32': Other manufacturing
+        '33': Repair and installation of machinery and equipment
+        '35': Electricity, gas, steam and air conditioning supply
+        '36': Water collection, treatment and supply
+        '37': Sewerage
+        '38': Waste collection, treatment and disposal activities; materials recovery
+        '39': Remediation activities and other waste management services
+        '41': Construction of buildings
+        '42': Civil engineering
+        '43': Specialized construction activities
+        '45': Wholesale and retail trade and repair of motor vehicles and motorcycles
+        '46': Wholesale trade, except of motor vehicles and motorcycles
+        '47': Retail trade, except of motor vehicles and motorcycles
+        '49': Land transport and transport via pipelines
+        '50': Water transport
+        '51': Air transport
+        '52': Warehousing and support activities for transportation
+        '53': Postal and courier activities
+        '55': Accommodation
+        '56': Food and beverage service activities
+        '58': Publishing activities
+        '59': Motion picture, video and television programme production, sound recording and music publishing activities
+        '60': Programming and broadcasting activities
+        '61': Telecommunications
+        '62': Computer programming, consultancy and related activities
+        '63': Information service activities
+        '64': Financial service activities, except insurance and pension funding
+        '65': Insurance, reinsurance and pension funding, except compulsory social security
+        '66': Activities auxiliary to financial service and insurance activities
+        '68': Real estate activities
+        '69': Legal and accounting activities
+        '70': Activities of head offices; management consultancy activities
+        '71': Architectural and engineering activities; technical testing and analysis
+        '72': Scientific research and development
+        '73': Advertising and market research
+        '74': Other professional, scientific and technical activities
+        '75': Veterinary activities
+        '77': Rental and leasing activities
+        '78': Employment activities
+        '79': Travel agency, tour operator, reservation service and related activities
+        '80': Security and investigation activities
+        '81': Services to buildings and landscape activities
+        '82': Office administrative, office support and other business support activities
+        '84': Public administration and defence; compulsory social security
+        '85': Education
+        '86': Human health activities
+        '87': Residential care activities
+        '88': Social work activities without accommodation
+        '90': Creative, arts and entertainment activities
+        '91': Libraries, archives, museums and other cultural activities
+        '92': Gambling and betting activities
+        '93': Sports activities and amusement and recreation activities
+        '94': Activities of membership organizations
+        '95': Repair of computers and personal and household goods
+        '96': Other personal service activities
+        '97': Activities of households as employers of domestic personnel
+        '98': Undifferentiated goods- and services-producing activities of private households for own use
+        '99': Activities of extraterritorial organizations and bodies
+      group:
+        '011': Growing of non-perennial crops
+        '012': Growing of perennial crops
+        '013': Plant propagation
+        '014': Animal production
+        '015': Mixed farming
+        '016': Support activities to agriculture and post-harvest crop activities
+        '017': Hunting, trapping and related service activities
+        '021': Silviculture and other forestry activities
+        '022': Logging
+        '023': Gathering of non-wood forest products
+        '024': Support services to forestry
+        '031': Fishing
+        '032': Aquaculture
+        '051': Mining of hard coal
+        '052': Mining of lignite
+        '061': Extraction of crude petroleum
+        '062': Extraction of natural gas
+        '071': Mining of iron ores
+        '072': Mining of non-ferrous metal ores
+        081: Quarrying of stone, sand and clay
+        089: Mining and quarrying n.e.c.
+        091: Support activities for petroleum and natural gas extraction
+        099: Support activities for other mining and quarrying
+        '101': Processing and preserving of meat
+        '102': Processing and preserving of fish, crustaceans and molluscs
+        '103': Processing and preserving of fruit and vegetables
+        '104': Manufacture of vegetable and animal oils and fats
+        '105': Manufacture of dairy products
+        '106': Manufacture of grain mill products, starches and starch products
+        '107': Manufacture of other food products
+        '108': Manufacture of prepared animal feeds
+        '110': Manufacture of beverages
+        '120': Manufacture of tobacco products
+        '131': Spinning, weaving and finishing of textiles
+        '139': Manufacture of other textiles
+        '141': Manufacture of wearing apparel, except fur apparel
+        '142': Manufacture of articles of fur
+        '143': Manufacture of knitted and crocheted apparel
+        '151': Tanning and dressing of leather; manufacture of luggage, handbags, saddlery and harness; dressing
+          and dyeing of fur
+        '152': Manufacture of footwear
+        '161': Sawmilling and planing of wood
+        '162': Manufacture of products of wood, cork, straw and plaiting materials
+        '170': Manufacture of paper and paper products
+        '181': Printing and service activities related to printing
+        '182': Reproduction of recorded media
+        '191': Manufacture of coke oven products
+        '192': Manufacture of refined petroleum products
+        '201': Manufacture of basic chemicals, fertilizers and nitrogen compounds, plastics and synthetic rubber
+          in primary forms
+        '202': Manufacture of other chemical products
+        '203': Manufacture of man-made fibres
+        '210': Manufacture of pharmaceuticals, medicinal chemical and botanical products
+        '221': Manufacture of rubber products
+        '222': Manufacture of plastics products
+        '231': Manufacture of glass and glass products
+        '239': Manufacture of non-metallic mineral products n.e.c.
+        '241': Manufacture of basic iron and steel
+        '242': Manufacture of basic precious and other non-ferrous metals
+        '243': Casting of metals
+        '251': Manufacture of structural metal products, tanks, reservoirs and steam generators
+        '252': Manufacture of weapons and ammunition
+        '259': Manufacture of other fabricated metal products; metalworking service activities
+        '261': Manufacture of electronic components and boards
+        '262': Manufacture of computers and peripheral equipment
+        '263': Manufacture of communication equipment
+        '264': Manufacture of consumer electronics
+        '265': Manufacture of measuring, testing, navigating and control equipment; watches and clocks
+        '266': Manufacture of irradiation, electromedical and electrotherapeutic equipment
+        '267': Manufacture of optical instruments and photographic equipment
+        '268': Manufacture of magnetic and optical media
+        '271': Manufacture of electric motors, generators, transformers and electricity distribution and control
+          apparatus
+        '272': Manufacture of batteries and accumulators
+        '273': Manufacture of wiring and wiring devices
+        '274': Manufacture of electric lighting equipment
+        '275': Manufacture of domestic appliances
+        '279': Manufacture of other electrical equipment
+        '281': Manufacture of general-purpose machinery
+        '282': Manufacture of special-purpose machinery
+        '291': Manufacture of motor vehicles
+        '292': Manufacture of bodies (coachwork) for motor vehicles; manufacture of trailers and semi-trailers
+        '293': Manufacture of parts and accessories for motor vehicles
+        '301': Building of ships and boats
+        '302': Manufacture of railway locomotives and rolling stock
+        '303': Manufacture of air and spacecraft and related machinery
+        '304': Manufacture of military fighting vehicles
+        '309': Manufacture of transport equipment n.e.c.
+        '310': Manufacture of furniture
+        '321': Manufacture of jewellery, bijouterie and related articles
+        '322': Manufacture of musical instruments
+        '323': Manufacture of sports goods
+        '324': Manufacture of games and toys
+        '325': Manufacture of medical and dental instruments and supplies
+        '329': Other manufacturing n.e.c.
+        '331': Repair of fabricated metal products, machinery and equipment
+        '332': Installation of industrial machinery and equipment
+        '351': Electric power generation, transmission and distribution
+        '352': Manufacture of gas; distribution of gaseous fuels through mains
+        '353': Steam and air conditioning supply
+        '360': Water collection, treatment and supply
+        '370': Sewerage
+        '381': Waste collection
+        '382': Waste treatment and disposal
+        '383': Materials recovery
+        '390': Remediation activities and other waste management services
+        '410': Construction of buildings
+        '421': Construction of roads and railways
+        '422': Construction of utility projects
+        '429': Construction of other civil engineering projects
+        '431': Demolition and site preparation
+        '432': Electrical, plumbing and other construction installation activities
+        '433': Building completion and finishing
+        '439': Other specialized construction activities
+        '451': Sale of motor vehicles
+        '452': Maintenance and repair of motor vehicles
+        '453': Sale of motor vehicle parts and accessories
+        '454': Sale, maintenance and repair of motorcycles and related parts and accessories
+        '461': Wholesale on a fee or contract basis
+        '462': Wholesale of agricultural raw materials and live animals
+        '463': Wholesale of food, beverages and tobacco
+        '464': Wholesale of household goods
+        '465': Wholesale of machinery, equipment and supplies
+        '466': Other specialized wholesale
+        '469': Non-specialized wholesale trade
+        '471': Retail sale in non-specialized stores
+        '472': Retail sale of food, beverages and tobacco in specialized stores
+        '473': Retail sale of automotive fuel in specialized stores
+        '474': Retail sale of information and communications equipment in specialized stores
+        '475': Retail sale of other household equipment in specialized stores
+        '476': Retail sale of cultural and recreation goods in specialized stores
+        '477': Retail sale of other goods in specialized stores
+        '478': Retail sale via stalls and markets
+        '479': Retail trade not in stores, stalls or markets
+        '491': Transport via railways
+        '492': Other land transport
+        '493': Transport via pipeline
+        '501': Sea and coastal water transport
+        '502': Inland water transport
+        '511': Passenger air transport
+        '512': Freight air transport
+        '521': Warehousing and storage
+        '522': Support activities for transportation
+        '531': Postal activities
+        '532': Courier activities
+        '551': Short term accommodation activities
+        '552': Camping grounds, recreational vehicle parks and trailer parks
+        '559': Other accommodation
+        '561': Restaurants and mobile food service activities
+        '562': Event catering and other food service activities
+        '563': Beverage serving activities
+        '581': Publishing of books, periodicals and other publishing activities
+        '582': Software publishing
+        '591': Motion picture, video and television programme activities
+        '592': Sound recording and music publishing activities
+        '601': Radio broadcasting
+        '602': Television programming and broadcasting activities
+        '611': Wired telecommunications activities
+        '612': Wireless telecommunications activities
+        '613': Satellite telecommunications activities
+        '619': Other telecommunications activities
+        '620': Computer programming, consultancy and related activities
+        '631': Data processing, hosting and related activities; web portals
+        '639': Other information service activities
+        '641': Monetary intermediation
+        '642': Activities of holding companies
+        '643': Trusts, funds and similar financial entities
+        '649': Other financial service activities, except insurance and pension funding activities
+        '651': Insurance
+        '652': Reinsurance
+        '653': Pension funding
+        '661': Activities auxiliary to financial service activities, except insurance and pension funding
+        '662': Activities auxiliary to insurance and pension funding
+        '663': Fund management activities
+        '681': Real estate activities with own or leased property
+        '682': Real estate activities on a fee or contract basis
+        '691': Legal activities
+        '692': Accounting, bookkeeping and auditing activities; tax consultancy
+        '701': Activities of head offices
+        '702': Management consultancy activities
+        '711': Architectural and engineering activities and related technical consultancy
+        '712': Technical testing and analysis
+        '721': Research and experimental development on natural sciences and engineering
+        '722': Research and experimental development on social sciences and humanities
+        '731': Advertising
+        '732': Market research and public opinion polling
+        '741': Specialized design activities
+        '742': Photographic activities
+        '749': Other professional, scientific and technical activities n.e.c.
+        '750': Veterinary activities
+        '771': Renting and leasing of motor vehicles
+        '772': Renting and leasing of personal and household goods
+        '773': Renting and leasing of other machinery, equipment and tangible goods
+        '774': Leasing of intellectual property and similar products, except copyrighted works
+        '781': Activities of employment placement agencies
+        '782': Temporary employment agency activities
+        '783': Other human resources provision
+        '791': Travel agency and tour operator activities
+        '799': Other reservation service and related activities
+        '801': Private security activities
+        '802': Security systems service activities
+        '803': Investigation activities
+        '811': Combined facilities support activities
+        '812': Cleaning activities
+        '813': Landscape care and maintenance service activities
+        '821': Office administrative and support activities
+        '822': Activities of call centres
+        '823': Organization of conventions and trade shows
+        '829': Business support service activities n.e.c.
+        '841': Administration of the State and the economic and social policy of the community
+        '842': Provision of services to the community as a whole
+        '843': Compulsory social security activities
+        '851': Pre-primary and primary education
+        '852': Secondary education
+        '853': Higher education
+        '854': Other education
+        '855': Educational support activities
+        '861': Hospital activities
+        '862': Medical and dental practice activities
+        '869': Other human health activities
+        '871': Residential nursing care facilities
+        '872': Residential care activities for mental retardation, mental health and substance abuse
+        '873': Residential care activities for the elderly and disabled
+        '879': Other residential care activities
+        '881': Social work activities without accommodation for the elderly and disabled
+        '889': Other social work activities without accommodation
+        '900': Creative, arts and entertainment activities
+        '910': Libraries, archives, museums and other cultural activities
+        '920': Gambling and betting activities
+        '931': Sports activities
+        '932': Other amusement and recreation activities
+        '941': Activities of business, employers and professional membership organizations
+        '942': Activities of trade unions
+        '949': Activities of other membership organizations
+        '951': Repair of computers and communication equipment
+        '952': Repair of personal and household goods
+        '960': Other personal service activities
+        '970': Activities of households as employers of domestic personnel
+        '981': Undifferentiated goods-producing activities of private households for own use
+        '982': Undifferentiated service-producing activities of private households for own use
+        '990': Activities of extraterritorial organizations and bodies
+      class:
+        '0111': Growing of cereals (except rice), leguminous crops and oil seeds
+        '0112': Growing of rice
+        '0113': Growing of vegetables and melons, roots and tubers
+        '0114': Growing of sugar cane
+        '0115': Growing of tobacco
+        '0116': Growing of fibre crops
+        0119: Growing of other non-perennial crops
+        '0121': Growing of grapes
+        '0122': Growing of tropical and subtropical fruits
+        '0123': Growing of citrus fruits
+        '0124': Growing of pome fruits and stone fruits
+        '0125': Growing of other tree and bush fruits and nuts
+        '0126': Growing of oleaginous fruits
+        '0127': Growing of beverage crops
+        0128: Growing of spices, aromatic, drug and pharmaceutical crops
+        0129: Growing of other perennial crops
+        '0130': Plant propagation
+        '0141': Raising of cattle and buffaloes
+        '0142': Raising of horses and other equines
+        '0143': Raising of camels and camelids
+        '0144': Raising of sheep and goats
+        '0145': Raising of swine/pigs
+        '0146': Raising of poultry
+        0149: Raising of other animals
+        '0150': Mixed farming
+        '0161': Support activities for crop production
+        '0162': Support activities for animal production
+        '0163': Post-harvest crop activities
+        '0164': Seed processing for propagation
+        '0170': Hunting, trapping and related service activities
+        '0210': Silviculture and other forestry activities
+        '0220': Logging
+        '0230': Gathering of non-wood forest products
+        '0240': Support services to forestry
+        '0311': Marine fishing
+        '0312': Freshwater fishing
+        '0321': Marine aquaculture
+        '0322': Freshwater aquaculture
+        '0510': Mining of hard coal
+        '0520': Mining of lignite
+        '0610': Extraction of crude petroleum
+        '0620': Extraction of natural gas
+        '0710': Mining of iron ores
+        '0721': Mining of uranium and thorium ores
+        0729: Mining of other non-ferrous metal ores
+        0810: Quarrying of stone, sand and clay
+        0891: Mining of chemical and fertilizer minerals
+        0892: Extraction of peat
+        0893: Extraction of salt
+        0899: Other mining and quarrying n.e.c.
+        0910: Support activities for petroleum and natural gas extraction
+        0990: Support activities for other mining and quarrying
+        '1010': Processing and preserving of meat
+        '1020': Processing and preserving of fish, crustaceans and molluscs
+        '1030': Processing and preserving of fruit and vegetables
+        '1040': Manufacture of vegetable and animal oils and fats
+        '1050': Manufacture of dairy products
+        '1061': Manufacture of grain mill products
+        '1062': Manufacture of starches and starch products
+        '1071': Manufacture of bakery products
+        '1072': Manufacture of sugar
+        '1073': Manufacture of cocoa, chocolate and sugar confectionery
+        '1074': Manufacture of macaroni, noodles, couscous and similar farinaceous products
+        '1075': Manufacture of prepared meals and dishes
+        '1079': Manufacture of other food products n.e.c.
+        '1080': Manufacture of prepared animal feeds
+        '1101': Distilling, rectifying and blending of spirits
+        '1102': Manufacture of wines
+        '1103': Manufacture of malt liquors and malt
+        '1104': Manufacture of soft drinks; production of mineral waters and other bottled waters
+        '1200': Manufacture of tobacco products
+        '1311': Preparation and spinning of textile fibres
+        '1312': Weaving of textiles
+        '1313': Finishing of textiles
+        '1391': Manufacture of knitted and crocheted fabrics
+        '1392': Manufacture of made-up textile articles, except apparel
+        '1393': Manufacture of carpets and rugs
+        '1394': Manufacture of cordage, rope, twine and netting
+        '1399': Manufacture of other textiles n.e.c.
+        '1410': Manufacture of wearing apparel, except fur apparel
+        '1420': Manufacture of articles of fur
+        '1430': Manufacture of knitted and crocheted apparel
+        '1511': Tanning and dressing of leather; dressing and dyeing of fur
+        '1512': Manufacture of luggage, handbags and the like, saddlery and harness
+        '1520': Manufacture of footwear
+        '1610': Sawmilling and planing of wood
+        '1621': Manufacture of veneer sheets and wood-based panels
+        '1622': Manufacture of builders' carpentry and joinery
+        '1623': Manufacture of wooden containers
+        '1629': Manufacture of other products of wood; manufacture of articles of cork, straw and plaiting materials
+        '1701': Manufacture of pulp, paper and paperboard
+        '1702': Manufacture of corrugated paper and paperboard and of containers of paper and paperboard
+        '1709': Manufacture of other articles of paper and paperboard
+        '1811': Printing
+        '1812': Service activities related to printing
+        '1820': Reproduction of recorded media
+        '1910': Manufacture of coke oven products
+        '1920': Manufacture of refined petroleum products
+        '2011': Manufacture of basic chemicals
+        '2012': Manufacture of fertilizers and nitrogen compounds
+        '2013': Manufacture of plastics and synthetic rubber in primary forms
+        '2021': Manufacture of pesticides and other agrochemical products
+        '2022': Manufacture of paints, varnishes and similar coatings, printing ink and mastics
+        '2023': Manufacture of soap and detergents, cleaning and polishing preparations, perfumes and toilet preparations
+        '2029': Manufacture of other chemical products n.e.c.
+        '2030': Manufacture of man-made fibres
+        '2100': Manufacture of pharmaceuticals, medicinal chemical and botanical products
+        '2211': Manufacture of rubber tyres and tubes; retreading and rebuilding of rubber tyres
+        '2219': Manufacture of other rubber products
+        '2220': Manufacture of plastics products
+        '2310': Manufacture of glass and glass products
+        '2391': Manufacture of refractory products
+        '2392': Manufacture of clay building materials
+        '2393': Manufacture of other porcelain and ceramic products
+        '2394': Manufacture of cement, lime and plaster
+        '2395': Manufacture of articles of concrete, cement and plaster
+        '2396': Cutting, shaping and finishing of stone
+        '2399': Manufacture of other non-metallic mineral products n.e.c.
+        '2410': Manufacture of basic iron and steel
+        '2420': Manufacture of basic precious and other non-ferrous metals
+        '2431': Casting of iron and steel
+        '2432': Casting of non-ferrous metals
+        '2511': Manufacture of structural metal products
+        '2512': Manufacture of tanks, reservoirs and containers of metal
+        '2513': Manufacture of steam generators, except central heating hot water boilers
+        '2520': Manufacture of weapons and ammunition
+        '2591': Forging, pressing, stamping and roll-forming of metal; powder metallurgy
+        '2592': Treatment and coating of metals; machining
+        '2593': Manufacture of cutlery, hand tools and general hardware
+        '2599': Manufacture of other fabricated metal products n.e.c.
+        '2610': Manufacture of electronic components and boards
+        '2620': Manufacture of computers and peripheral equipment
+        '2630': Manufacture of communication equipment
+        '2640': Manufacture of consumer electronics
+        '2651': Manufacture of measuring, testing, navigating and control equipment
+        '2652': Manufacture of watches and clocks
+        '2660': Manufacture of irradiation, electromedical and electrotherapeutic equipment
+        '2670': Manufacture of optical instruments and photographic equipment
+        '2680': Manufacture of magnetic and optical media
+        '2710': Manufacture of electric motors, generators, transformers and electricity distribution and control
+          apparatus
+        '2720': Manufacture of batteries and accumulators
+        '2731': Manufacture of fibre optic cables
+        '2732': Manufacture of other electronic and electric wires and cables
+        '2733': Manufacture of wiring devices
+        '2740': Manufacture of electric lighting equipment
+        '2750': Manufacture of domestic appliances
+        '2790': Manufacture of other electrical equipment
+        '2811': Manufacture of engines and turbines, except aircraft, vehicle and cycle engines
+        '2812': Manufacture of fluid power equipment
+        '2813': Manufacture of other pumps, compressors, taps and valves
+        '2814': Manufacture of bearings, gears, gearing and driving elements
+        '2815': Manufacture of ovens, furnaces and furnace burners
+        '2816': Manufacture of lifting and handling equipment
+        '2817': Manufacture of office machinery and equipment (except computers and peripheral equipment)
+        '2818': Manufacture of power-driven hand tools
+        '2819': Manufacture of other general-purpose machinery
+        '2821': Manufacture of agricultural and forestry machinery
+        '2822': Manufacture of metal-forming machinery and machine tools
+        '2823': Manufacture of machinery for metallurgy
+        '2824': Manufacture of machinery for mining, quarrying and construction
+        '2825': Manufacture of machinery for food, beverage and tobacco processing
+        '2826': Manufacture of machinery for textile, apparel and leather production
+        '2829': Manufacture of other special-purpose machinery
+        '2910': Manufacture of motor vehicles
+        '2920': Manufacture of bodies (coachwork) for motor vehicles; manufacture of trailers and semi-trailers
+        '2930': Manufacture of parts and accessories for motor vehicles
+        '3011': Building of ships and floating structures
+        '3012': Building of pleasure and sporting boats
+        '3020': Manufacture of railway locomotives and rolling stock
+        '3030': Manufacture of air and spacecraft and related machinery
+        '3040': Manufacture of military fighting vehicles
+        '3091': Manufacture of motorcycles
+        '3092': Manufacture of bicycles and invalid carriages
+        '3099': Manufacture of other transport equipment n.e.c.
+        '3100': Manufacture of furniture
+        '3211': Manufacture of jewellery and related articles
+        '3212': Manufacture of imitation jewellery and related articles
+        '3220': Manufacture of musical instruments
+        '3230': Manufacture of sports goods
+        '3240': Manufacture of games and toys
+        '3250': Manufacture of medical and dental instruments and supplies
+        '3290': Other manufacturing n.e.c.
+        '3311': Repair of fabricated metal products
+        '3312': Repair of machinery
+        '3313': Repair of electronic and optical equipment
+        '3314': Repair of electrical equipment
+        '3315': Repair of transport equipment, except motor vehicles
+        '3319': Repair of other equipment
+        '3320': Installation of industrial machinery and equipment
+        '3510': Electric power generation, transmission and distribution
+        '3520': Manufacture of gas; distribution of gaseous fuels through mains
+        '3530': Steam and air conditioning supply
+        '3600': Water collection, treatment and supply
+        '3700': Sewerage
+        '3811': Collection of non-hazardous waste
+        '3812': Collection of hazardous waste
+        '3821': Treatment and disposal of non-hazardous waste
+        '3822': Treatment and disposal of hazardous waste
+        '3830': Materials recovery
+        '3900': Remediation activities and other waste management services
+        '4100': Construction of buildings
+        '4210': Construction of roads and railways
+        '4220': Construction of utility projects
+        '4290': Construction of other civil engineering projects
+        '4311': Demolition
+        '4312': Site preparation
+        '4321': Electrical installation
+        '4322': Plumbing, heat and air-conditioning installation
+        '4329': Other construction installation
+        '4330': Building completion and finishing
+        '4390': Other specialized construction activities
+        '4510': Sale of motor vehicles
+        '4520': Maintenance and repair of motor vehicles
+        '4530': Sale of motor vehicle parts and accessories
+        '4540': Sale, maintenance and repair of motorcycles and related parts and accessories
+        '4610': Wholesale on a fee or contract basis
+        '4620': Wholesale of agricultural raw materials and live animals
+        '4630': Wholesale of food, beverages and tobacco
+        '4641': Wholesale of textiles, clothing and footwear
+        '4649': Wholesale of other household goods
+        '4651': Wholesale of computers, computer peripheral equipment and software
+        '4652': Wholesale of electronic and telecommunications equipment and parts
+        '4653': Wholesale of agricultural machinery, equipment and supplies
+        '4659': Wholesale of other machinery and equipment
+        '4661': Wholesale of solid, liquid and gaseous fuels and related products
+        '4662': Wholesale of metals and metal ores
+        '4663': Wholesale of construction materials, hardware, plumbing and heating equipment and supplies
+        '4669': Wholesale of waste and scrap and other products n.e.c.
+        '4690': Non-specialized wholesale trade
+        '4711': Retail sale in non-specialized stores with food, beverages or tobacco predominating
+        '4719': Other retail sale in non-specialized stores
+        '4721': Retail sale of food in specialized stores
+        '4722': Retail sale of beverages in specialized stores
+        '4723': Retail sale of tobacco products in specialized stores
+        '4730': Retail sale of automotive fuel in specialized stores
+        '4741': Retail sale of computers, peripheral units, software and telecommunications equipment in specialized
+          stores
+        '4742': Retail sale of audio and video equipment in specialized stores
+        '4751': Retail sale of textiles in specialized stores
+        '4752': Retail sale of hardware, paints and glass in specialized stores
+        '4753': Retail sale of carpets, rugs, wall and floor coverings in specialized stores
+        '4759': Retail sale of electrical household appliances, furniture, lighting equipment and other household
+          articles in specialized stores
+        '4761': Retail sale of books, newspapers and stationary in specialized stores
+        '4762': Retail sale of music and video recordings in specialized stores
+        '4763': Retail sale of sporting equipment in specialized stores
+        '4764': Retail sale of games and toys in specialized stores
+        '4771': Retail sale of clothing, footwear and leather articles in specialized stores
+        '4772': Retail sale of pharmaceutical and medical goods, cosmetic and toilet articles in specialized stores
+        '4773': Other retail sale of new goods in specialized stores
+        '4774': Retail sale of second-hand goods
+        '4781': Retail sale via stalls and markets of food, beverages and tobacco products
+        '4782': Retail sale via stalls and markets of textiles, clothing and footwear
+        '4789': Retail sale via stalls and markets of other goods
+        '4791': Retail sale via mail order houses or via Internet
+        '4799': Other retail sale not in stores, stalls or markets
+        '4911': Passenger rail transport, interurban
+        '4912': Freight rail transport
+        '4921': Urban and suburban passenger land transport
+        '4922': Other passenger land transport
+        '4923': Freight transport by road
+        '4930': Transport via pipeline
+        '5011': Sea and coastal passenger water transport
+        '5012': Sea and coastal freight water transport
+        '5021': Inland passenger water transport
+        '5022': Inland freight water transport
+        '5110': Passenger air transport
+        '5120': Freight air transport
+        '5210': Warehousing and storage
+        '5221': Service activities incidental to land transportation
+        '5222': Service activities incidental to water transportation
+        '5223': Service activities incidental to air transportation
+        '5224': Cargo handling
+        '5229': Other transportation support activities
+        '5310': Postal activities
+        '5320': Courier activities
+        '5510': Short term accommodation activities
+        '5520': Camping grounds, recreational vehicle parks and trailer parks
+        '5590': Other accommodation
+        '5610': Restaurants and mobile food service activities
+        '5621': Event catering
+        '5629': Other food service activities
+        '5630': Beverage serving activities
+        '5811': Book publishing
+        '5812': Publishing of directories and mailing lists
+        '5813': Publishing of newspapers, journals and periodicals
+        '5819': Other publishing activities
+        '5820': Software publishing
+        '5911': Motion picture, video and television programme production activities
+        '5912': Motion picture, video and television programme post-production activities
+        '5913': Motion picture, video and television programme distribution activities
+        '5914': Motion picture projection activities
+        '5920': Sound recording and music publishing activities
+        '6010': Radio broadcasting
+        '6020': Television programming and broadcasting activities
+        '6110': Wired telecommunications activities
+        '6120': Wireless telecommunications activities
+        '6130': Satellite telecommunications activities
+        '6190': Other telecommunications activities
+        '6201': Computer programming activities
+        '6202': Computer consultancy and computer facilities management activities
+        '6209': Other information technology and computer service activities
+        '6311': Data processing, hosting and related activities
+        '6312': Web portals
+        '6391': News agency activities
+        '6399': Other information service activities n.e.c.
+        '6411': Central banking
+        '6419': Other monetary intermediation
+        '6420': Activities of holding companies
+        '6430': Trusts, funds and similar financial entities
+        '6491': Financial leasing
+        '6492': Other credit granting
+        '6499': Other financial service activities, except insurance and pension funding activities, n.e.c.
+        '6511': Life insurance
+        '6512': Non-life insurance
+        '6520': Reinsurance
+        '6530': Pension funding
+        '6611': Administration of financial markets
+        '6612': Security and commodity contracts brokerage
+        '6619': Other activities auxiliary to financial service activities
+        '6621': Risk and damage evaluation
+        '6622': Activities of insurance agents and brokers
+        '6629': Other activities auxiliary to insurance and pension funding
+        '6630': Fund management activities
+        '6810': Real estate activities with own or leased property
+        '6820': Real estate activities on a fee or contract basis
+        '6910': Legal activities
+        '6920': Accounting, bookkeeping and auditing activities; tax consultancy
+        '7010': Activities of head offices
+        '7020': Management consultancy activities
+        '7110': Architectural and engineering activities and related technical consultancy
+        '7120': Technical testing and analysis
+        '7210': Research and experimental development on natural sciences and engineering
+        '7220': Research and experimental development on social sciences and humanities
+        '7310': Advertising
+        '7320': Market research and public opinion polling
+        '7410': Specialized design activities
+        '7420': Photographic activities
+        '7490': Other professional, scientific and technical activities n.e.c.
+        '7500': Veterinary activities
+        '7710': Renting and leasing of motor vehicles
+        '7721': Renting and leasing of recreational and sports goods
+        '7722': Renting of video tapes and disks
+        '7729': Renting and leasing of other personal and household goods
+        '7730': Renting and leasing of other machinery, equipment and tangible goods
+        '7740': Leasing of intellectual property and similar products, except copyrighted works
+        '7810': Activities of employment placement agencies
+        '7820': Temporary employment agency activities
+        '7830': Other human resources provision
+        '7911': Travel agency activities
+        '7912': Tour operator activities
+        '7990': Other reservation service and related activities
+        '8010': Private security activities
+        '8020': Security systems service activities
+        '8030': Investigation activities
+        '8110': Combined facilities support activities
+        '8121': General cleaning of buildings
+        '8129': Other building and industrial cleaning activities
+        '8130': Landscape care and maintenance service activities
+        '8211': Combined office administrative service activities
+        '8219': Photocopying, document preparation and other specialized office support activities
+        '8220': Activities of call centres
+        '8230': Organization of conventions and trade shows
+        '8291': Activities of collection agencies and credit bureaus
+        '8292': Packaging activities
+        '8299': Other business support service activities n.e.c.
+        '8411': General public administration activities
+        '8412': Regulation of the activities of providing health care, education, cultural services and other social
+          services, excluding social security
+        '8413': Regulation of and contribution to more efficient operation of businesses
+        '8421': Foreign affairs
+        '8422': Defence activities
+        '8423': Public order and safety activities
+        '8430': Compulsory social security activities
+        '8510': Pre-primary and primary education
+        '8521': General secondary education
+        '8522': Technical and vocational secondary education
+        '8530': Higher education
+        '8541': Sports and recreation education
+        '8542': Cultural education
+        '8549': Other education n.e.c.
+        '8550': Educational support activities
+        '8610': Hospital activities
+        '8620': Medical and dental practice activities
+        '8690': Other human health activities
+        '8710': Residential nursing care facilities
+        '8720': Residential care activities for mental retardation, mental health and substance abuse
+        '8730': Residential care activities for the elderly and disabled
+        '8790': Other residential care activities
+        '8810': Social work activities without accommodation for the elderly and disabled
+        '8890': Other social work activities without accommodation
+        '9000': Creative, arts and entertainment activities
+        '9101': Library and archives activities
+        '9102': Museums activities and operation of historical sites and buildings
+        '9103': Botanical and zoological gardens and nature reserves activities
+        '9200': Gambling and betting activities
+        '9311': Operation of sports facilities
+        '9312': Activities of sports clubs
+        '9319': Other sports activities
+        '9321': Activities of amusement parks and theme parks
+        '9329': Other amusement and recreation activities n.e.c.
+        '9411': Activities of business and employers membership organizations
+        '9412': Activities of professional membership organizations
+        '9420': Activities of trade unions
+        '9491': Activities of religious organizations
+        '9492': Activities of political organizations
+        '9499': Activities of other membership organizations n.e.c.
+        '9511': Repair of computers and peripheral equipment
+        '9512': Repair of communication equipment
+        '9521': Repair of consumer electronics
+        '9522': Repair of household appliances and home and garden equipment
+        '9523': Repair of footwear and leather goods
+        '9524': Repair of furniture and home furnishings
+        '9529': Repair of other personal and household goods
+        '9601': Washing and (dry-) cleaning of textile and fur products
+        '9602': Hairdressing and other beauty treatment
+        '9603': Funeral and related activities
+        '9609': Other personal service activities n.e.c.
+        '9700': Activities of households as employers of domestic personnel
+        '9810': Undifferentiated goods-producing activities of private households for own use
+        '9820': Undifferentiated service-producing activities of private households for own use
+        '9900': Activities of extraterritorial organizations and bodies
+  vectors:
+  - input:
+      set: section
+      value: A
+    expected: true
+    origin: source
+  - input:
+      set: division
+      value: '01'
+    expected: true
+    origin: source
+  - input:
+      set: group
+      value: '011'
+    expected: true
+    origin: source
+  - input:
+      set: class
+      value: '0111'
+    expected: true
+    origin: source
+  - input:
+      set: section
+      value: '9999'
+    expected: false
+    origin: derived
+  - input:
+      set: class
+      value: '0111'
+    expected: true
+    origin: source
+evidence:
+- publisher: United Nations Statistics Division
+  title: ISIC Rev.4 English structure (text)
+  url: https://unstats.un.org/unsd/classifications/Econ/Download/In%20Text/ISIC_Rev_4_english_structure.Txt
+  accessed_at: '2026-10-31'
+  locator: row 0111
+  value: '0111'
+  unit: text
+  snippet: '"0111","Growing of cereals (except rice), leguminous crops and oil seeds"'
+  source_license: unstated
+  content_sha256: 18b645efc5a0b001fda5852cfd0690eb579011651e405631e50cb2d271ee2cc6
+  role: primary
+- publisher: United Nations Statistics Division
+  title: ISIC Rev.4 English structure (text)
+  url: https://unstats.un.org/unsd/classifications/Econ/Download/In%20Text/ISIC_Rev_4_english_structure.Txt
+  accessed_at: '2026-10-31'
+  locator: row A
+  value: A
+  unit: text
+  snippet: '"A","Agriculture, forestry and fishing"'
+  source_license: unstated
+  content_sha256: 18b645efc5a0b001fda5852cfd0690eb579011651e405631e50cb2d271ee2cc6
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2026-10-31'
+  method: assumed
+  rationale: The file carries no application or publication date; valid_from is the day it was fetched.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[section]
+  expected: 21
+  tolerance: 0
+- statistic: count[division]
+  expected: 88
+  tolerance: 0
+- statistic: count[group]
+  expected: 238
+  tolerance: 0
+- statistic: count[class]
+  expected: 419
+  tolerance: 0
+notes: 'The International Standard Industrial Classification of All Economic Activities, Revision 4, as the UN Statistics
+  Division''s structure file lists it: one-letter sections, two-digit divisions, three-digit groups and four-digit
+  classes, each with its English title, sorted into one enumeration set per level. Non-breaking spaces inside titles
+  are written as ordinary spaces. The publisher states no licence on the file, so the licence is recorded as unstated
+  and the entry held at license-review. The file carries no application or publication date; valid_from is the day
+  it was fetched.'

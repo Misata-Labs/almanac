@@ -1,0 +1,384 @@
+id: us-census-places-2020-by-state
+title: Number of 2020-vintage places per state, split into incorporated places and census designated places
+kind: rule
+domain: geography
+region: US
+status: license-review
+tier: A
+valid_from: '2020-01-01'
+valid_to: null
+tags:
+- geography
+- codes
+- reference
+- places
+- census
+- weights
+- by-state
+use_cases:
+- synthetic-addresses
+- synthetic-companies
+- product-catalogue
+- data-quality-validation
+- address-generation
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: USPS state abbreviation
+    place_types:
+      CENSUS DESIGNATED PLACE: 12454
+      INCORPORATED PLACE: 19734
+    rows:
+      AK:
+        fips: '02'
+        places: 355
+        incorporated_places: 149
+        census_designated_places: 206
+      AL:
+        fips: '01'
+        places: 593
+        incorporated_places: 462
+        census_designated_places: 131
+      AR:
+        fips: '05'
+        places: 626
+        incorporated_places: 501
+        census_designated_places: 125
+      AS:
+        fips: '60'
+        places: 77
+        incorporated_places: 77
+        census_designated_places: 0
+      AZ:
+        fips: '04'
+        places: 467
+        incorporated_places: 91
+        census_designated_places: 376
+      CA:
+        fips: '06'
+        places: 1611
+        incorporated_places: 482
+        census_designated_places: 1129
+      CO:
+        fips: 08
+        places: 482
+        incorporated_places: 272
+        census_designated_places: 210
+      CT:
+        fips: 09
+        places: 215
+        incorporated_places: 30
+        census_designated_places: 185
+      DC:
+        fips: '11'
+        places: 1
+        incorporated_places: 1
+        census_designated_places: 0
+      DE:
+        fips: '10'
+        places: 79
+        incorporated_places: 57
+        census_designated_places: 22
+      FL:
+        fips: '12'
+        places: 955
+        incorporated_places: 412
+        census_designated_places: 543
+      GA:
+        fips: '13'
+        places: 675
+        incorporated_places: 538
+        census_designated_places: 137
+      GU:
+        fips: '66'
+        places: 57
+        incorporated_places: 0
+        census_designated_places: 57
+      HI:
+        fips: '15'
+        places: 163
+        incorporated_places: 0
+        census_designated_places: 163
+      IA:
+        fips: '19'
+        places: 1028
+        incorporated_places: 942
+        census_designated_places: 86
+      ID:
+        fips: '16'
+        places: 237
+        incorporated_places: 201
+        census_designated_places: 36
+      IL:
+        fips: '17'
+        places: 1466
+        incorporated_places: 1298
+        census_designated_places: 168
+      IN:
+        fips: '18'
+        places: 696
+        incorporated_places: 567
+        census_designated_places: 129
+      KS:
+        fips: '20'
+        places: 740
+        incorporated_places: 626
+        census_designated_places: 114
+      KY:
+        fips: '21'
+        places: 555
+        incorporated_places: 420
+        census_designated_places: 135
+      LA:
+        fips: '22'
+        places: 488
+        incorporated_places: 304
+        census_designated_places: 184
+      MA:
+        fips: '25'
+        places: 248
+        incorporated_places: 58
+        census_designated_places: 190
+      MD:
+        fips: '24'
+        places: 536
+        incorporated_places: 157
+        census_designated_places: 379
+      ME:
+        fips: '23'
+        places: 155
+        incorporated_places: 23
+        census_designated_places: 132
+      MI:
+        fips: '26'
+        places: 745
+        incorporated_places: 533
+        census_designated_places: 212
+      MN:
+        fips: '27'
+        places: 913
+        incorporated_places: 853
+        census_designated_places: 60
+      MO:
+        fips: '29'
+        places: 1082
+        incorporated_places: 948
+        census_designated_places: 134
+      MP:
+        fips: '69'
+        places: 135
+        incorporated_places: 135
+        census_designated_places: 0
+      MS:
+        fips: '28'
+        places: 428
+        incorporated_places: 299
+        census_designated_places: 129
+      MT:
+        fips: '30'
+        places: 497
+        incorporated_places: 128
+        census_designated_places: 369
+      NC:
+        fips: '37'
+        places: 776
+        incorporated_places: 553
+        census_designated_places: 223
+      ND:
+        fips: '38'
+        places: 406
+        incorporated_places: 357
+        census_designated_places: 49
+      NE:
+        fips: '31'
+        places: 590
+        incorporated_places: 529
+        census_designated_places: 61
+      NH:
+        fips: '33'
+        places: 100
+        incorporated_places: 13
+        census_designated_places: 87
+      NJ:
+        fips: '34'
+        places: 701
+        incorporated_places: 324
+        census_designated_places: 377
+      NM:
+        fips: '35'
+        places: 527
+        incorporated_places: 105
+        census_designated_places: 422
+      NV:
+        fips: '32'
+        places: 133
+        incorporated_places: 19
+        census_designated_places: 114
+      NY:
+        fips: '36'
+        places: 1293
+        incorporated_places: 596
+        census_designated_places: 697
+      OH:
+        fips: '39'
+        places: 1265
+        incorporated_places: 926
+        census_designated_places: 339
+      OK:
+        fips: '40'
+        places: 843
+        incorporated_places: 595
+        census_designated_places: 248
+      OR:
+        fips: '41'
+        places: 426
+        incorporated_places: 241
+        census_designated_places: 185
+      PA:
+        fips: '42'
+        places: 1888
+        incorporated_places: 1013
+        census_designated_places: 875
+      PR:
+        fips: '72'
+        places: 292
+        incorporated_places: 0
+        census_designated_places: 292
+      RI:
+        fips: '44'
+        places: 36
+        incorporated_places: 8
+        census_designated_places: 28
+      SC:
+        fips: '45'
+        places: 475
+        incorporated_places: 271
+        census_designated_places: 204
+      SD:
+        fips: '46'
+        places: 486
+        incorporated_places: 311
+        census_designated_places: 175
+      TN:
+        fips: '47'
+        places: 504
+        incorporated_places: 345
+        census_designated_places: 159
+      TX:
+        fips: '48'
+        places: 1860
+        incorporated_places: 1223
+        census_designated_places: 637
+      UT:
+        fips: '49'
+        places: 333
+        incorporated_places: 254
+        census_designated_places: 79
+      VA:
+        fips: '51'
+        places: 672
+        incorporated_places: 228
+        census_designated_places: 444
+      VI:
+        fips: '78'
+        places: 10
+        incorporated_places: 3
+        census_designated_places: 7
+      VT:
+        fips: '50'
+        places: 180
+        incorporated_places: 42
+        census_designated_places: 138
+      WA:
+        fips: '53'
+        places: 639
+        incorporated_places: 281
+        census_designated_places: 358
+      WI:
+        fips: '55'
+        places: 804
+        incorporated_places: 602
+        census_designated_places: 202
+      WV:
+        fips: '54'
+        places: 439
+        incorporated_places: 232
+        census_designated_places: 207
+      WY:
+        fips: '56'
+        places: 205
+        incorporated_places: 99
+        census_designated_places: 106
+  vectors:
+  - input: CA
+    expected: true
+    origin: source
+  - input: AL
+    expected: true
+    origin: source
+  - input: ZZ
+    expected: false
+    origin: derived
+  - input:
+      key: CA
+      column: places
+    expected: 1611
+    origin: source
+  - input:
+      key: AL
+      column: fips
+    expected: '01'
+    origin: source
+evidence:
+- publisher: United States Census Bureau
+  title: 2020 national place codes (national_place2020.txt)
+  url: https://www2.census.gov/geo/docs/reference/codes2020/national_place2020.txt
+  accessed_at: '2026-10-31'
+  locator: row CA|06|44000
+  value: Los Angeles city
+  unit: text
+  snippet: CA|06|44000|02410877|Los Angeles city|INCORPORATED PLACE|C1|A|Los Angeles County
+  source_license: unstated
+  content_sha256: 302ff3cf031217aca032d89f42c0dd93611a76d72ab2036944fa40d5c23c6613
+  role: primary
+- publisher: United States Census Bureau
+  title: 2020 national place codes (national_place2020.txt)
+  url: https://www2.census.gov/geo/docs/reference/codes2020/national_place2020.txt
+  accessed_at: '2026-10-31'
+  locator: row AL|01|00124
+  value: Abbeville city
+  unit: text
+  snippet: AL|01|00124|02403054|Abbeville city|INCORPORATED PLACE|C1|A|Henry County
+  source_license: unstated
+  content_sha256: 302ff3cf031217aca032d89f42c0dd93611a76d72ab2036944fa40d5c23c6613
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2020-01-01'
+  method: assumed
+  rationale: The file carries no application date of its own; valid_from is the first day of the vintage its name
+    announces. The vintage is codes2020.
+- parameter: rows[*] and place_types
+  value: row counts of national_place2020.txt grouped by STATE and TYPE
+  method: derived
+  rationale: The file lists individual places; the per-state figures are counts of its rows.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 56
+  tolerance: 0
+- statistic: value["CA","places"]
+  expected: 1611
+  tolerance: 0
+- statistic: value["AL","incorporated_places"]
+  expected: 462
+  tolerance: 0
+notes: Counts of rows in the Census Bureau's 2020 national place file per state, with the split between INCORPORATED
+  PLACE and CENSUS DESIGNATED PLACE rows; place_types records every TYPE value in the file with its national count.
+  The counts give a generator the weight of each state when choosing a place at random. The Census Bureau publishes
+  the file without a licence statement, so the licence is recorded as unstated and the entry held at license-review.
+  The file carries no application date of its own; valid_from is the first day of the vintage its name announces.
+  The vintage is 2020.

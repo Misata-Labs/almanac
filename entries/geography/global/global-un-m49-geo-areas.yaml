@@ -1,0 +1,3079 @@
+id: global-un-m49-geo-areas
+title: UN M49 geographic area codes with continental region, sub-region and intermediate region, and LDC, LLDC and
+  SIDS flags
+kind: rule
+domain: geography
+region: global
+status: license-review
+tier: A
+valid_from: '2026-10-31'
+valid_to: null
+tags:
+- geography
+- codes
+- reference
+- un-m49
+- country-codes
+- regions
+- code-list
+use_cases:
+- synthetic-addresses
+- synthetic-companies
+- product-catalogue
+- data-quality-validation
+- address-generation
+- customer-segmentation
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: M49 code, zero-padded to three digits
+    rows:
+      '001':
+        m49: 1
+        name: World
+        type: Region
+        region: null
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '002':
+        m49: 2
+        name: Africa
+        type: Region
+        region: null
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '004':
+        m49: 4
+        name: Afghanistan
+        type: Country
+        region: Asia
+        sub_region: Southern Asia
+        intermediate_region: null
+        ldc: true
+        lldc: true
+        sids: false
+      '005':
+        m49: 5
+        name: South America
+        type: Region
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      008:
+        m49: 8
+        name: Albania
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      009:
+        m49: 9
+        name: Oceania
+        type: Region
+        region: null
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '010':
+        m49: 10
+        name: Antarctica
+        type: Country
+        region: null
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '011':
+        m49: 11
+        name: Western Africa
+        type: Region
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '012':
+        m49: 12
+        name: Algeria
+        type: Country
+        region: Africa
+        sub_region: Northern Africa
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '013':
+        m49: 13
+        name: Central America
+        type: Region
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '014':
+        m49: 14
+        name: Eastern Africa
+        type: Region
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '015':
+        m49: 15
+        name: Northern Africa
+        type: Region
+        region: Africa
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '016':
+        m49: 16
+        name: American Samoa
+        type: Country
+        region: Oceania
+        sub_region: Polynesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '017':
+        m49: 17
+        name: Middle Africa
+        type: Region
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      018:
+        m49: 18
+        name: Southern Africa
+        type: Region
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      019:
+        m49: 19
+        name: Americas
+        type: Region
+        region: null
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '020':
+        m49: 20
+        name: Andorra
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '021':
+        m49: 21
+        name: Northern America
+        type: Region
+        region: Americas
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '024':
+        m49: 24
+        name: Angola
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Middle Africa
+        ldc: true
+        lldc: false
+        sids: false
+      028:
+        m49: 28
+        name: Antigua and Barbuda
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      029:
+        m49: 29
+        name: Caribbean
+        type: Region
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '030':
+        m49: 30
+        name: Eastern Asia
+        type: Region
+        region: Asia
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '031':
+        m49: 31
+        name: Azerbaijan
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: true
+        sids: false
+      '032':
+        m49: 32
+        name: Argentina
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: South America
+        ldc: false
+        lldc: false
+        sids: false
+      '034':
+        m49: 34
+        name: Southern Asia
+        type: Region
+        region: Asia
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '035':
+        m49: 35
+        name: South-Eastern Asia
+        type: Region
+        region: Asia
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '036':
+        m49: 36
+        name: Australia
+        type: Country
+        region: Oceania
+        sub_region: Australia and New Zealand
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      039:
+        m49: 39
+        name: Southern Europe
+        type: Region
+        region: Europe
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '040':
+        m49: 40
+        name: Austria
+        type: Country
+        region: Europe
+        sub_region: Western Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '044':
+        m49: 44
+        name: Bahamas
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      048:
+        m49: 48
+        name: Bahrain
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '050':
+        m49: 50
+        name: Bangladesh
+        type: Country
+        region: Asia
+        sub_region: Southern Asia
+        intermediate_region: null
+        ldc: true
+        lldc: false
+        sids: false
+      '051':
+        m49: 51
+        name: Armenia
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: true
+        sids: false
+      '052':
+        m49: 52
+        name: Barbados
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '053':
+        m49: 53
+        name: Australia and New Zealand
+        type: Region
+        region: Oceania
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '054':
+        m49: 54
+        name: Melanesia
+        type: Region
+        region: Oceania
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '056':
+        m49: 56
+        name: Belgium
+        type: Country
+        region: Europe
+        sub_region: Western Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '057':
+        m49: 57
+        name: Micronesia
+        type: Region
+        region: Oceania
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '060':
+        m49: 60
+        name: Bermuda
+        type: Country
+        region: Americas
+        sub_region: Northern America
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '061':
+        m49: 61
+        name: Polynesia
+        type: Region
+        region: Oceania
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '064':
+        m49: 64
+        name: Bhutan
+        type: Country
+        region: Asia
+        sub_region: Southern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: true
+        sids: false
+      068:
+        m49: 68
+        name: Bolivia (Plurinational State of)
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: South America
+        ldc: false
+        lldc: true
+        sids: false
+      '070':
+        m49: 70
+        name: Bosnia and Herzegovina
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '072':
+        m49: 72
+        name: Botswana
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Southern Africa
+        ldc: false
+        lldc: true
+        sids: false
+      '074':
+        m49: 74
+        name: Bouvet Island
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: South America
+        ldc: false
+        lldc: false
+        sids: false
+      '076':
+        m49: 76
+        name: Brazil
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: South America
+        ldc: false
+        lldc: false
+        sids: false
+      084:
+        m49: 84
+        name: Belize
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Central America
+        ldc: false
+        lldc: false
+        sids: true
+      086:
+        m49: 86
+        name: British Indian Ocean Territory
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: false
+        lldc: false
+        sids: false
+      090:
+        m49: 90
+        name: Solomon Islands
+        type: Country
+        region: Oceania
+        sub_region: Melanesia
+        intermediate_region: null
+        ldc: true
+        lldc: false
+        sids: true
+      092:
+        m49: 92
+        name: British Virgin Islands
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      096:
+        m49: 96
+        name: Brunei Darussalam
+        type: Country
+        region: Asia
+        sub_region: South-Eastern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '100':
+        m49: 100
+        name: Bulgaria
+        type: Country
+        region: Europe
+        sub_region: Eastern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '104':
+        m49: 104
+        name: Myanmar
+        type: Country
+        region: Asia
+        sub_region: South-Eastern Asia
+        intermediate_region: null
+        ldc: true
+        lldc: false
+        sids: false
+      '108':
+        m49: 108
+        name: Burundi
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: true
+        lldc: true
+        sids: false
+      '112':
+        m49: 112
+        name: Belarus
+        type: Country
+        region: Europe
+        sub_region: Eastern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '116':
+        m49: 116
+        name: Cambodia
+        type: Country
+        region: Asia
+        sub_region: South-Eastern Asia
+        intermediate_region: null
+        ldc: true
+        lldc: false
+        sids: false
+      '120':
+        m49: 120
+        name: Cameroon
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Middle Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '124':
+        m49: 124
+        name: Canada
+        type: Country
+        region: Americas
+        sub_region: Northern America
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '132':
+        m49: 132
+        name: Cabo Verde
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: false
+        lldc: false
+        sids: true
+      '136':
+        m49: 136
+        name: Cayman Islands
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: false
+      '140':
+        m49: 140
+        name: Central African Republic
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Middle Africa
+        ldc: true
+        lldc: true
+        sids: false
+      '142':
+        m49: 142
+        name: Asia
+        type: Region
+        region: null
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '143':
+        m49: 143
+        name: Central Asia
+        type: Region
+        region: Asia
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '144':
+        m49: 144
+        name: Sri Lanka
+        type: Country
+        region: Asia
+        sub_region: Southern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '145':
+        m49: 145
+        name: Western Asia
+        type: Region
+        region: Asia
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '148':
+        m49: 148
+        name: Chad
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Middle Africa
+        ldc: true
+        lldc: true
+        sids: false
+      '150':
+        m49: 150
+        name: Europe
+        type: Region
+        region: null
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '151':
+        m49: 151
+        name: Eastern Europe
+        type: Region
+        region: Europe
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '152':
+        m49: 152
+        name: Chile
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: South America
+        ldc: false
+        lldc: false
+        sids: false
+      '154':
+        m49: 154
+        name: Northern Europe
+        type: Region
+        region: Europe
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '155':
+        m49: 155
+        name: Western Europe
+        type: Region
+        region: Europe
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '156':
+        m49: 156
+        name: China
+        type: Country
+        region: Asia
+        sub_region: Eastern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '158':
+        m49: 158
+        name: Other non-specified areas in Eastern Asia
+        type: Country
+        region: Asia
+        sub_region: Eastern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '162':
+        m49: 162
+        name: Christmas Island
+        type: Country
+        region: Oceania
+        sub_region: Australia and New Zealand
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '166':
+        m49: 166
+        name: Cocos (Keeling) Islands
+        type: Country
+        region: Oceania
+        sub_region: Australia and New Zealand
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '170':
+        m49: 170
+        name: Colombia
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: South America
+        ldc: false
+        lldc: false
+        sids: false
+      '174':
+        m49: 174
+        name: Comoros
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: true
+        lldc: false
+        sids: true
+      '175':
+        m49: 175
+        name: Mayotte
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '178':
+        m49: 178
+        name: Congo
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Middle Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '180':
+        m49: 180
+        name: Democratic Republic of the Congo
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Middle Africa
+        ldc: true
+        lldc: false
+        sids: false
+      '184':
+        m49: 184
+        name: Cook Islands
+        type: Country
+        region: Oceania
+        sub_region: Polynesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '188':
+        m49: 188
+        name: Costa Rica
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Central America
+        ldc: false
+        lldc: false
+        sids: false
+      '191':
+        m49: 191
+        name: Croatia
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '192':
+        m49: 192
+        name: Cuba
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '196':
+        m49: 196
+        name: Cyprus
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '202':
+        m49: 202
+        name: Sub-Saharan Africa
+        type: Region
+        region: Africa
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '203':
+        m49: 203
+        name: Czechia
+        type: Country
+        region: Europe
+        sub_region: Eastern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '204':
+        m49: 204
+        name: Benin
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: true
+        lldc: false
+        sids: false
+      '208':
+        m49: 208
+        name: Denmark
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '212':
+        m49: 212
+        name: Dominica
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '214':
+        m49: 214
+        name: Dominican Republic
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '218':
+        m49: 218
+        name: Ecuador
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: South America
+        ldc: false
+        lldc: false
+        sids: false
+      '222':
+        m49: 222
+        name: El Salvador
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Central America
+        ldc: false
+        lldc: false
+        sids: false
+      '226':
+        m49: 226
+        name: Equatorial Guinea
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Middle Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '231':
+        m49: 231
+        name: Ethiopia
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: true
+        lldc: true
+        sids: false
+      '232':
+        m49: 232
+        name: Eritrea
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: true
+        lldc: false
+        sids: false
+      '233':
+        m49: 233
+        name: Estonia
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '234':
+        m49: 234
+        name: Faroe Islands
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '238':
+        m49: 238
+        name: Falkland Islands (Malvinas)
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: South America
+        ldc: false
+        lldc: false
+        sids: false
+      '239':
+        m49: 239
+        name: South Georgia and the South Sandwich Islands
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: South America
+        ldc: false
+        lldc: false
+        sids: false
+      '242':
+        m49: 242
+        name: Fiji
+        type: Country
+        region: Oceania
+        sub_region: Melanesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '246':
+        m49: 246
+        name: Finland
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '248':
+        m49: 248
+        name: Åland Islands
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '250':
+        m49: 250
+        name: France
+        type: Country
+        region: Europe
+        sub_region: Western Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '254':
+        m49: 254
+        name: French Guiana
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: South America
+        ldc: false
+        lldc: false
+        sids: false
+      '258':
+        m49: 258
+        name: French Polynesia
+        type: Country
+        region: Oceania
+        sub_region: Polynesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '260':
+        m49: 260
+        name: French Southern Territories
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '262':
+        m49: 262
+        name: Djibouti
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: true
+        lldc: false
+        sids: false
+      '266':
+        m49: 266
+        name: Gabon
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Middle Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '268':
+        m49: 268
+        name: Georgia
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '270':
+        m49: 270
+        name: Gambia
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: true
+        lldc: false
+        sids: false
+      '275':
+        m49: 275
+        name: State of Palestine
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '276':
+        m49: 276
+        name: Germany
+        type: Country
+        region: Europe
+        sub_region: Western Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '288':
+        m49: 288
+        name: Ghana
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '292':
+        m49: 292
+        name: Gibraltar
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '296':
+        m49: 296
+        name: Kiribati
+        type: Country
+        region: Oceania
+        sub_region: Micronesia
+        intermediate_region: null
+        ldc: true
+        lldc: false
+        sids: true
+      '300':
+        m49: 300
+        name: Greece
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '304':
+        m49: 304
+        name: Greenland
+        type: Country
+        region: Americas
+        sub_region: Northern America
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '308':
+        m49: 308
+        name: Grenada
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '312':
+        m49: 312
+        name: Guadeloupe
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: false
+      '316':
+        m49: 316
+        name: Guam
+        type: Country
+        region: Oceania
+        sub_region: Micronesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '320':
+        m49: 320
+        name: Guatemala
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Central America
+        ldc: false
+        lldc: false
+        sids: false
+      '324':
+        m49: 324
+        name: Guinea
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: true
+        lldc: false
+        sids: false
+      '328':
+        m49: 328
+        name: Guyana
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: South America
+        ldc: false
+        lldc: false
+        sids: true
+      '332':
+        m49: 332
+        name: Haiti
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: true
+        lldc: false
+        sids: true
+      '334':
+        m49: 334
+        name: Heard Island and McDonald Islands
+        type: Country
+        region: Oceania
+        sub_region: Australia and New Zealand
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '336':
+        m49: 336
+        name: Holy See
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '340':
+        m49: 340
+        name: Honduras
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Central America
+        ldc: false
+        lldc: false
+        sids: false
+      '344':
+        m49: 344
+        name: China, Hong Kong Special Administrative Region
+        type: Country
+        region: Asia
+        sub_region: Eastern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '348':
+        m49: 348
+        name: Hungary
+        type: Country
+        region: Europe
+        sub_region: Eastern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '352':
+        m49: 352
+        name: Iceland
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '356':
+        m49: 356
+        name: India
+        type: Country
+        region: Asia
+        sub_region: Southern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '360':
+        m49: 360
+        name: Indonesia
+        type: Country
+        region: Asia
+        sub_region: South-Eastern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '364':
+        m49: 364
+        name: Iran (Islamic Republic of)
+        type: Country
+        region: Asia
+        sub_region: Southern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '368':
+        m49: 368
+        name: Iraq
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '369':
+        m49: 369
+        name: Iraq (Central Iraq)
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '370':
+        m49: 370
+        name: Iraq (Kurdistan Region)
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '372':
+        m49: 372
+        name: Ireland
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '376':
+        m49: 376
+        name: Israel
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '380':
+        m49: 380
+        name: Italy
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '384':
+        m49: 384
+        name: Côte d'Ivoire
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '388':
+        m49: 388
+        name: Jamaica
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '392':
+        m49: 392
+        name: Japan
+        type: Country
+        region: Asia
+        sub_region: Eastern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '398':
+        m49: 398
+        name: Kazakhstan
+        type: Country
+        region: Asia
+        sub_region: Central Asia
+        intermediate_region: null
+        ldc: false
+        lldc: true
+        sids: false
+      '400':
+        m49: 400
+        name: Jordan
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '404':
+        m49: 404
+        name: Kenya
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '408':
+        m49: 408
+        name: Democratic People's Republic of Korea
+        type: Country
+        region: Asia
+        sub_region: Eastern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '410':
+        m49: 410
+        name: Republic of Korea
+        type: Country
+        region: Asia
+        sub_region: Eastern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '412':
+        m49: 412
+        name: Kosovo
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '414':
+        m49: 414
+        name: Kuwait
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '417':
+        m49: 417
+        name: Kyrgyzstan
+        type: Country
+        region: Asia
+        sub_region: Central Asia
+        intermediate_region: null
+        ldc: false
+        lldc: true
+        sids: false
+      '418':
+        m49: 418
+        name: Lao People's Democratic Republic
+        type: Country
+        region: Asia
+        sub_region: South-Eastern Asia
+        intermediate_region: null
+        ldc: true
+        lldc: true
+        sids: false
+      '419':
+        m49: 419
+        name: Latin America and the Caribbean
+        type: Region
+        region: Americas
+        sub_region: null
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '422':
+        m49: 422
+        name: Lebanon
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '426':
+        m49: 426
+        name: Lesotho
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Southern Africa
+        ldc: true
+        lldc: true
+        sids: false
+      '428':
+        m49: 428
+        name: Latvia
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '430':
+        m49: 430
+        name: Liberia
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: true
+        lldc: false
+        sids: false
+      '434':
+        m49: 434
+        name: Libya
+        type: Country
+        region: Africa
+        sub_region: Northern Africa
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '438':
+        m49: 438
+        name: Liechtenstein
+        type: Country
+        region: Europe
+        sub_region: Western Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '440':
+        m49: 440
+        name: Lithuania
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '442':
+        m49: 442
+        name: Luxembourg
+        type: Country
+        region: Europe
+        sub_region: Western Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '446':
+        m49: 446
+        name: China, Macao Special Administrative Region
+        type: Country
+        region: Asia
+        sub_region: Eastern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '450':
+        m49: 450
+        name: Madagascar
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: true
+        lldc: false
+        sids: false
+      '454':
+        m49: 454
+        name: Malawi
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: true
+        lldc: true
+        sids: false
+      '458':
+        m49: 458
+        name: Malaysia
+        type: Country
+        region: Asia
+        sub_region: South-Eastern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '462':
+        m49: 462
+        name: Maldives
+        type: Country
+        region: Asia
+        sub_region: Southern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '466':
+        m49: 466
+        name: Mali
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: true
+        lldc: true
+        sids: false
+      '470':
+        m49: 470
+        name: Malta
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '474':
+        m49: 474
+        name: Martinique
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: false
+      '478':
+        m49: 478
+        name: Mauritania
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: true
+        lldc: false
+        sids: false
+      '480':
+        m49: 480
+        name: Mauritius
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: false
+        lldc: false
+        sids: true
+      '484':
+        m49: 484
+        name: Mexico
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Central America
+        ldc: false
+        lldc: false
+        sids: false
+      '492':
+        m49: 492
+        name: Monaco
+        type: Country
+        region: Europe
+        sub_region: Western Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '496':
+        m49: 496
+        name: Mongolia
+        type: Country
+        region: Asia
+        sub_region: Eastern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: true
+        sids: false
+      '498':
+        m49: 498
+        name: Republic of Moldova
+        type: Country
+        region: Europe
+        sub_region: Eastern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: true
+        sids: false
+      '499':
+        m49: 499
+        name: Montenegro
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '500':
+        m49: 500
+        name: Montserrat
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '504':
+        m49: 504
+        name: Morocco
+        type: Country
+        region: Africa
+        sub_region: Northern Africa
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '508':
+        m49: 508
+        name: Mozambique
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: true
+        lldc: false
+        sids: false
+      '512':
+        m49: 512
+        name: Oman
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '516':
+        m49: 516
+        name: Namibia
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Southern Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '520':
+        m49: 520
+        name: Naoero
+        type: Country
+        region: Oceania
+        sub_region: Micronesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '524':
+        m49: 524
+        name: Nepal
+        type: Country
+        region: Asia
+        sub_region: Southern Asia
+        intermediate_region: null
+        ldc: true
+        lldc: true
+        sids: false
+      '528':
+        m49: 528
+        name: Netherlands (Kingdom of the)
+        type: Country
+        region: Europe
+        sub_region: Western Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '530':
+        m49: 530
+        name: Netherlands Antilles  [former]
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: false
+      '531':
+        m49: 531
+        name: Curaçao
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '533':
+        m49: 533
+        name: Aruba
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '534':
+        m49: 534
+        name: Sint Maarten (Dutch part)
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '535':
+        m49: 535
+        name: Bonaire, Sint Eustatius and Saba
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '540':
+        m49: 540
+        name: New Caledonia
+        type: Country
+        region: Oceania
+        sub_region: Melanesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '548':
+        m49: 548
+        name: Vanuatu
+        type: Country
+        region: Oceania
+        sub_region: Melanesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '554':
+        m49: 554
+        name: New Zealand
+        type: Country
+        region: Oceania
+        sub_region: Australia and New Zealand
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '558':
+        m49: 558
+        name: Nicaragua
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Central America
+        ldc: false
+        lldc: false
+        sids: false
+      '562':
+        m49: 562
+        name: Niger
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: true
+        lldc: true
+        sids: false
+      '566':
+        m49: 566
+        name: Nigeria
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '570':
+        m49: 570
+        name: Niue
+        type: Country
+        region: Oceania
+        sub_region: Polynesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '574':
+        m49: 574
+        name: Norfolk Island
+        type: Country
+        region: Oceania
+        sub_region: Australia and New Zealand
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '578':
+        m49: 578
+        name: Norway
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '580':
+        m49: 580
+        name: Northern Mariana Islands
+        type: Country
+        region: Oceania
+        sub_region: Micronesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '581':
+        m49: 581
+        name: United States Minor Outlying Islands
+        type: Country
+        region: Oceania
+        sub_region: Micronesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '583':
+        m49: 583
+        name: Micronesia (Federated States of)
+        type: Country
+        region: Oceania
+        sub_region: Micronesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '584':
+        m49: 584
+        name: Marshall Islands
+        type: Country
+        region: Oceania
+        sub_region: Micronesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '585':
+        m49: 585
+        name: Palau
+        type: Country
+        region: Oceania
+        sub_region: Micronesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '586':
+        m49: 586
+        name: Pakistan
+        type: Country
+        region: Asia
+        sub_region: Southern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '591':
+        m49: 591
+        name: Panama
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Central America
+        ldc: false
+        lldc: false
+        sids: false
+      '598':
+        m49: 598
+        name: Papua New Guinea
+        type: Country
+        region: Oceania
+        sub_region: Melanesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '600':
+        m49: 600
+        name: Paraguay
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: South America
+        ldc: false
+        lldc: true
+        sids: false
+      '604':
+        m49: 604
+        name: Peru
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: South America
+        ldc: false
+        lldc: false
+        sids: false
+      '608':
+        m49: 608
+        name: Philippines
+        type: Country
+        region: Asia
+        sub_region: South-Eastern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '612':
+        m49: 612
+        name: Pitcairn
+        type: Country
+        region: Oceania
+        sub_region: Polynesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '616':
+        m49: 616
+        name: Poland
+        type: Country
+        region: Europe
+        sub_region: Eastern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '620':
+        m49: 620
+        name: Portugal
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '624':
+        m49: 624
+        name: Guinea-Bissau
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: true
+        lldc: false
+        sids: true
+      '626':
+        m49: 626
+        name: Timor-Leste
+        type: Country
+        region: Asia
+        sub_region: South-Eastern Asia
+        intermediate_region: null
+        ldc: true
+        lldc: false
+        sids: true
+      '630':
+        m49: 630
+        name: Puerto Rico
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '634':
+        m49: 634
+        name: Qatar
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '638':
+        m49: 638
+        name: Réunion
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '642':
+        m49: 642
+        name: Romania
+        type: Country
+        region: Europe
+        sub_region: Eastern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '643':
+        m49: 643
+        name: Russian Federation
+        type: Country
+        region: Europe
+        sub_region: Eastern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '646':
+        m49: 646
+        name: Rwanda
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: true
+        lldc: true
+        sids: false
+      '652':
+        m49: 652
+        name: Saint Barthélemy
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: false
+      '654':
+        m49: 654
+        name: Saint Helena
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '655':
+        m49: 655
+        name: Ascension
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '659':
+        m49: 659
+        name: Saint Kitts and Nevis
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '660':
+        m49: 660
+        name: Anguilla
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '662':
+        m49: 662
+        name: Saint Lucia
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '663':
+        m49: 663
+        name: Saint Martin (French Part)
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: false
+      '666':
+        m49: 666
+        name: Saint Pierre and Miquelon
+        type: Country
+        region: Americas
+        sub_region: Northern America
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '670':
+        m49: 670
+        name: Saint Vincent and the Grenadines
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '674':
+        m49: 674
+        name: San Marino
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '678':
+        m49: 678
+        name: Sao Tome and Principe
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Middle Africa
+        ldc: false
+        lldc: false
+        sids: true
+      '680':
+        m49: 680
+        name: Sark
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '682':
+        m49: 682
+        name: Saudi Arabia
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '686':
+        m49: 686
+        name: Senegal
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: true
+        lldc: false
+        sids: false
+      '688':
+        m49: 688
+        name: Serbia
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '690':
+        m49: 690
+        name: Seychelles
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: false
+        lldc: false
+        sids: true
+      '694':
+        m49: 694
+        name: Sierra Leone
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: true
+        lldc: false
+        sids: false
+      '702':
+        m49: 702
+        name: Singapore
+        type: Country
+        region: Asia
+        sub_region: South-Eastern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '703':
+        m49: 703
+        name: Slovakia
+        type: Country
+        region: Europe
+        sub_region: Eastern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '704':
+        m49: 704
+        name: Viet Nam
+        type: Country
+        region: Asia
+        sub_region: South-Eastern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '705':
+        m49: 705
+        name: Slovenia
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '706':
+        m49: 706
+        name: Somalia
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: true
+        lldc: false
+        sids: false
+      '710':
+        m49: 710
+        name: South Africa
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Southern Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '716':
+        m49: 716
+        name: Zimbabwe
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: false
+        lldc: true
+        sids: false
+      '724':
+        m49: 724
+        name: Spain
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '728':
+        m49: 728
+        name: South Sudan
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: true
+        lldc: true
+        sids: false
+      '729':
+        m49: 729
+        name: Sudan
+        type: Country
+        region: Africa
+        sub_region: Northern Africa
+        intermediate_region: null
+        ldc: true
+        lldc: false
+        sids: false
+      '732':
+        m49: 732
+        name: Western Sahara
+        type: Country
+        region: Africa
+        sub_region: Northern Africa
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '736':
+        m49: 736
+        name: Sudan [former]
+        type: Country
+        region: Africa
+        sub_region: Northern Africa
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '740':
+        m49: 740
+        name: Suriname
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: South America
+        ldc: false
+        lldc: false
+        sids: true
+      '744':
+        m49: 744
+        name: Svalbard and Jan Mayen Islands
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '748':
+        m49: 748
+        name: Eswatini
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Southern Africa
+        ldc: false
+        lldc: true
+        sids: false
+      '752':
+        m49: 752
+        name: Sweden
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '756':
+        m49: 756
+        name: Switzerland
+        type: Country
+        region: Europe
+        sub_region: Western Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '760':
+        m49: 760
+        name: Syrian Arab Republic
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '762':
+        m49: 762
+        name: Tajikistan
+        type: Country
+        region: Asia
+        sub_region: Central Asia
+        intermediate_region: null
+        ldc: false
+        lldc: true
+        sids: false
+      '764':
+        m49: 764
+        name: Thailand
+        type: Country
+        region: Asia
+        sub_region: South-Eastern Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '768':
+        m49: 768
+        name: Togo
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: true
+        lldc: false
+        sids: false
+      '772':
+        m49: 772
+        name: Tokelau
+        type: Country
+        region: Oceania
+        sub_region: Polynesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '776':
+        m49: 776
+        name: Tonga
+        type: Country
+        region: Oceania
+        sub_region: Polynesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '780':
+        m49: 780
+        name: Trinidad and Tobago
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '784':
+        m49: 784
+        name: United Arab Emirates
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '788':
+        m49: 788
+        name: Tunisia
+        type: Country
+        region: Africa
+        sub_region: Northern Africa
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '792':
+        m49: 792
+        name: Türkiye
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '795':
+        m49: 795
+        name: Turkmenistan
+        type: Country
+        region: Asia
+        sub_region: Central Asia
+        intermediate_region: null
+        ldc: false
+        lldc: true
+        sids: false
+      '796':
+        m49: 796
+        name: Turks and Caicos Islands
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: false
+      '798':
+        m49: 798
+        name: Tuvalu
+        type: Country
+        region: Oceania
+        sub_region: Polynesia
+        intermediate_region: null
+        ldc: true
+        lldc: false
+        sids: true
+      '800':
+        m49: 800
+        name: Uganda
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: true
+        lldc: true
+        sids: false
+      '804':
+        m49: 804
+        name: Ukraine
+        type: Country
+        region: Europe
+        sub_region: Eastern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '807':
+        m49: 807
+        name: North Macedonia
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: true
+        sids: false
+      '818':
+        m49: 818
+        name: Egypt
+        type: Country
+        region: Africa
+        sub_region: Northern Africa
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '826':
+        m49: 826
+        name: United Kingdom of Great Britain and Northern Ireland
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '827':
+        m49: 827
+        name: United Kingdom (England and Wales)
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '828':
+        m49: 828
+        name: United Kingdom (Northern Ireland)
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '829':
+        m49: 829
+        name: United Kingdom (Scotland)
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '830':
+        m49: 830
+        name: Channel Islands
+        type: Region
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '831':
+        m49: 831
+        name: Guernsey
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '832':
+        m49: 832
+        name: Jersey
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '833':
+        m49: 833
+        name: Isle of Man
+        type: Country
+        region: Europe
+        sub_region: Northern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '834':
+        m49: 834
+        name: United Republic of Tanzania
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: true
+        lldc: false
+        sids: false
+      '835':
+        m49: 835
+        name: United Republic of Tanzania (Mainland)
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '836':
+        m49: 836
+        name: United Republic of Tanzania (Zanzibar)
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: false
+        lldc: false
+        sids: false
+      '840':
+        m49: 840
+        name: United States of America
+        type: Country
+        region: Americas
+        sub_region: Northern America
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '850':
+        m49: 850
+        name: United States Virgin Islands
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: Caribbean
+        ldc: false
+        lldc: false
+        sids: true
+      '854':
+        m49: 854
+        name: Burkina Faso
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Western Africa
+        ldc: true
+        lldc: true
+        sids: false
+      '858':
+        m49: 858
+        name: Uruguay
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: South America
+        ldc: false
+        lldc: false
+        sids: false
+      '860':
+        m49: 860
+        name: Uzbekistan
+        type: Country
+        region: Asia
+        sub_region: Central Asia
+        intermediate_region: null
+        ldc: false
+        lldc: true
+        sids: false
+      '862':
+        m49: 862
+        name: Venezuela (Bolivarian Republic of)
+        type: Country
+        region: Americas
+        sub_region: Latin America and the Caribbean
+        intermediate_region: South America
+        ldc: false
+        lldc: false
+        sids: false
+      '876':
+        m49: 876
+        name: Wallis and Futuna Islands
+        type: Country
+        region: Oceania
+        sub_region: Polynesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '882':
+        m49: 882
+        name: Samoa
+        type: Country
+        region: Oceania
+        sub_region: Polynesia
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: true
+      '887':
+        m49: 887
+        name: Yemen
+        type: Country
+        region: Asia
+        sub_region: Western Asia
+        intermediate_region: null
+        ldc: true
+        lldc: false
+        sids: false
+      '890':
+        m49: 890
+        name: Yugoslavia [former]
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '891':
+        m49: 891
+        name: Serbia and Montenegro [former]
+        type: Country
+        region: Europe
+        sub_region: Southern Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+      '894':
+        m49: 894
+        name: Zambia
+        type: Country
+        region: Africa
+        sub_region: Sub-Saharan Africa
+        intermediate_region: Eastern Africa
+        ldc: true
+        lldc: true
+        sids: false
+      '99041':
+        m49: 99041
+        name: Belgium and Luxembourg
+        type: Other areas
+        region: Europe
+        sub_region: Western Europe
+        intermediate_region: null
+        ldc: false
+        lldc: false
+        sids: false
+  vectors:
+  - input: '004'
+    expected: true
+    origin: source
+  - input: '826'
+    expected: true
+    origin: source
+  - input: '002'
+    expected: true
+    origin: source
+  - input: '999'
+    expected: false
+    origin: derived
+  - input:
+      key: '004'
+      column: name
+    expected: Afghanistan
+    origin: source
+  - input:
+      key: '004'
+      column: region
+    expected: Asia
+    origin: source
+  - input:
+      key: '004'
+      column: ldc
+    expected: true
+    origin: source
+evidence:
+- publisher: United Nations Statistics Division
+  title: SDG Global Database API, GeoArea/List (JSON)
+  url: https://unstats.un.org/SDGAPI/v1/sdg/GeoArea/List
+  accessed_at: '2026-10-31'
+  locator: element geoAreaCode 4
+  value: Afghanistan
+  unit: text
+  snippet: '"geoAreaCode":"4","geoAreaName":"Afghanistan"'
+  source_license: unstated
+  content_sha256: 80fd4f8501bdb2cf102ac27dd3d03e4f869e5186ff785accf46e082045b8c0cd
+  role: primary
+- publisher: United Nations Statistics Division
+  title: SDG Global Database API, GeoArea/Tree (JSON)
+  url: https://unstats.un.org/SDGAPI/v1/sdg/GeoArea/Tree
+  accessed_at: '2026-10-31'
+  locator: node geoAreaCode 4 under World (total) by continental regions
+  value: Afghanistan
+  unit: text
+  snippet: '"geoAreaCode":4,"geoAreaName":"Afghanistan","type":"Country"'
+  source_license: unstated
+  content_sha256: 9037b020ebb67f977cea7a5504a3cf2a0f470022565cc6a8120a89d278c3010e
+  role: primary
+- publisher: United Nations Statistics Division
+  title: SDG Global Database API, GeoArea/Tree (JSON)
+  url: https://unstats.un.org/SDGAPI/v1/sdg/GeoArea/Tree
+  accessed_at: '2026-10-31'
+  locator: root node
+  value: World (total) by continental regions
+  unit: text
+  snippet: '"geoAreaName":"World (total) by continental regions"'
+  source_license: unstated
+  content_sha256: 9037b020ebb67f977cea7a5504a3cf2a0f470022565cc6a8120a89d278c3010e
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2026-10-31'
+  method: assumed
+  rationale: The file carries no application or publication date; valid_from is the day it was fetched.
+- parameter: rows keys
+  value: M49 code zero-padded to three digits
+  method: derived
+  rationale: The API serialises codes as integers; M49 codes are conventionally written with three digits.
+- parameter: rows[*].ldc, lldc, sids
+  value: membership of the LDC, LLDC and SIDS tree roots
+  method: derived
+  rationale: Each flag is true when the country appears under that root of GeoArea/Tree.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 295
+  tolerance: 0
+- statistic: value["004","name"]
+  expected: Afghanistan
+  tolerance: 0
+- statistic: value["826","sub_region"]
+  expected: Northern Europe
+  tolerance: 0
+- statistic: value["001","type"]
+  expected: Region
+  tolerance: 0
+notes: 'The UN Statistics Division''s SDG Global Database API exposes the M49 geographic areas: GeoArea/List gives
+  every code and name, GeoArea/Tree nests them under several roots. Rows are taken from the ''World (total) by continental
+  regions'' root, with the ancestor Region names recorded as region, sub_region and intermediate_region, and the
+  LDC, LLDC and SIDS roots set the three flags. The API returns codes without leading zeros; keys are zero-padded
+  to the three-digit M49 form and the raw integer is kept in m49. The publisher states no licence on the file, so
+  the licence is recorded as unstated and the entry held at license-review. The file carries no application or publication
+  date; valid_from is the day it was fetched.'

@@ -1,0 +1,403 @@
+id: jp-japanpost-postal-codes-by-prefecture
+title: 'Japan Post postal code file summarised by prefecture: prefecture names, rows, distinct seven-digit codes
+  and municipalities'
+kind: rule
+domain: geography
+region: JP
+status: license-review
+tier: A
+valid_from: '2026-10-31'
+valid_to: null
+tags:
+- geography
+- codes
+- reference
+- postal-codes
+- japan-post
+- prefectures
+- weights
+- japan
+use_cases:
+- synthetic-addresses
+- synthetic-companies
+- product-catalogue
+- data-quality-validation
+- address-generation
+- logistics
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: two-digit prefecture JIS code
+    source_member: utf_ken_all.csv
+    rows:
+      '01':
+        prefecture: 北海道
+        prefecture_kana: ホッカイドウ
+        rows: 8190
+        postal_codes: 7974
+        municipalities: 188
+      '02':
+        prefecture: 青森県
+        prefecture_kana: アオモリケン
+        rows: 2512
+        postal_codes: 2033
+        municipalities: 40
+      '03':
+        prefecture: 岩手県
+        prefecture_kana: イワテケン
+        rows: 2074
+        postal_codes: 1918
+        municipalities: 33
+      '04':
+        prefecture: 宮城県
+        prefecture_kana: ミヤギケン
+        rows: 3420
+        postal_codes: 2870
+        municipalities: 39
+      '05':
+        prefecture: 秋田県
+        prefecture_kana: アキタケン
+        rows: 2161
+        postal_codes: 2156
+        municipalities: 25
+      '06':
+        prefecture: 山形県
+        prefecture_kana: ヤマガタケン
+        rows: 1965
+        postal_codes: 1957
+        municipalities: 35
+      '07':
+        prefecture: 福島県
+        prefecture_kana: フクシマケン
+        rows: 3973
+        postal_codes: 3642
+        municipalities: 59
+      08:
+        prefecture: 茨城県
+        prefecture_kana: イバラキケン
+        rows: 2869
+        postal_codes: 2867
+        municipalities: 44
+      09:
+        prefecture: 栃木県
+        prefecture_kana: トチギケン
+        rows: 1837
+        postal_codes: 1836
+        municipalities: 25
+      '10':
+        prefecture: 群馬県
+        prefecture_kana: グンマケン
+        rows: 1501
+        postal_codes: 1499
+        municipalities: 35
+      '11':
+        prefecture: 埼玉県
+        prefecture_kana: サイタマケン
+        rows: 2980
+        postal_codes: 2972
+        municipalities: 72
+      '12':
+        prefecture: 千葉県
+        prefecture_kana: チバケン
+        rows: 3610
+        postal_codes: 3603
+        municipalities: 59
+      '13':
+        prefecture: 東京都
+        prefecture_kana: トウキョウト
+        rows: 4164
+        postal_codes: 4161
+        municipalities: 62
+      '14':
+        prefecture: 神奈川県
+        prefecture_kana: カナガワケン
+        rows: 2302
+        postal_codes: 2299
+        municipalities: 58
+      '15':
+        prefecture: 新潟県
+        prefecture_kana: ニイガタケン
+        rows: 5487
+        postal_codes: 5399
+        municipalities: 37
+      '16':
+        prefecture: 富山県
+        prefecture_kana: トヤマケン
+        rows: 3261
+        postal_codes: 2980
+        municipalities: 15
+      '17':
+        prefecture: 石川県
+        prefecture_kana: イシカワケン
+        rows: 2567
+        postal_codes: 2482
+        municipalities: 19
+      '18':
+        prefecture: 福井県
+        prefecture_kana: フクイケン
+        rows: 2265
+        postal_codes: 2133
+        municipalities: 17
+      '19':
+        prefecture: 山梨県
+        prefecture_kana: ヤマナシケン
+        rows: 949
+        postal_codes: 945
+        municipalities: 27
+      '20':
+        prefecture: 長野県
+        prefecture_kana: ナガノケン
+        rows: 1711
+        postal_codes: 1695
+        municipalities: 77
+      '21':
+        prefecture: 岐阜県
+        prefecture_kana: ギフケン
+        rows: 3378
+        postal_codes: 3349
+        municipalities: 42
+      '22':
+        prefecture: 静岡県
+        prefecture_kana: シズオカケン
+        rows: 2949
+        postal_codes: 2888
+        municipalities: 39
+      '23':
+        prefecture: 愛知県
+        prefecture_kana: アイチケン
+        rows: 7735
+        postal_codes: 7247
+        municipalities: 69
+      '24':
+        prefecture: 三重県
+        prefecture_kana: ミエケン
+        rows: 2481
+        postal_codes: 2457
+        municipalities: 29
+      '25':
+        prefecture: 滋賀県
+        prefecture_kana: シガケン
+        rows: 1854
+        postal_codes: 1842
+        municipalities: 19
+      '26':
+        prefecture: 京都府
+        prefecture_kana: キョウトフ
+        rows: 6457
+        postal_codes: 6433
+        municipalities: 36
+      '27':
+        prefecture: 大阪府
+        prefecture_kana: オオサカフ
+        rows: 3847
+        postal_codes: 3834
+        municipalities: 72
+      '28':
+        prefecture: 兵庫県
+        prefecture_kana: ヒョウゴケン
+        rows: 5228
+        postal_codes: 5182
+        municipalities: 49
+      '29':
+        prefecture: 奈良県
+        prefecture_kana: ナラケン
+        rows: 1930
+        postal_codes: 1906
+        municipalities: 39
+      '30':
+        prefecture: 和歌山県
+        prefecture_kana: ワカヤマケン
+        rows: 1604
+        postal_codes: 1600
+        municipalities: 30
+      '31':
+        prefecture: 鳥取県
+        prefecture_kana: トットリケン
+        rows: 1398
+        postal_codes: 1392
+        municipalities: 19
+      '32':
+        prefecture: 島根県
+        prefecture_kana: シマネケン
+        rows: 1183
+        postal_codes: 1179
+        municipalities: 19
+      '33':
+        prefecture: 岡山県
+        prefecture_kana: オカヤマケン
+        rows: 2192
+        postal_codes: 2182
+        municipalities: 30
+      '34':
+        prefecture: 広島県
+        prefecture_kana: ヒロシマケン
+        rows: 2161
+        postal_codes: 2125
+        municipalities: 30
+      '35':
+        prefecture: 山口県
+        prefecture_kana: ヤマグチケン
+        rows: 1804
+        postal_codes: 1675
+        municipalities: 19
+      '36':
+        prefecture: 徳島県
+        prefecture_kana: トクシマケン
+        rows: 1408
+        postal_codes: 961
+        municipalities: 24
+      '37':
+        prefecture: 香川県
+        prefecture_kana: カガワケン
+        rows: 713
+        postal_codes: 710
+        municipalities: 17
+      '38':
+        prefecture: 愛媛県
+        prefecture_kana: エヒメケン
+        rows: 1751
+        postal_codes: 1743
+        municipalities: 20
+      '39':
+        prefecture: 高知県
+        prefecture_kana: コウチケン
+        rows: 1697
+        postal_codes: 1692
+        municipalities: 34
+      '40':
+        prefecture: 福岡県
+        prefecture_kana: フクオカケン
+        rows: 3312
+        postal_codes: 3307
+        municipalities: 72
+      '41':
+        prefecture: 佐賀県
+        prefecture_kana: サガケン
+        rows: 871
+        postal_codes: 869
+        municipalities: 20
+      '42':
+        prefecture: 長崎県
+        prefecture_kana: ナガサキケン
+        rows: 1895
+        postal_codes: 1893
+        municipalities: 21
+      '43':
+        prefecture: 熊本県
+        prefecture_kana: クマモトケン
+        rows: 1894
+        postal_codes: 1861
+        municipalities: 49
+      '44':
+        prefecture: 大分県
+        prefecture_kana: オオイタケン
+        rows: 1851
+        postal_codes: 1845
+        municipalities: 18
+      '45':
+        prefecture: 宮崎県
+        prefecture_kana: ミヤザキケン
+        rows: 876
+        postal_codes: 876
+        municipalities: 26
+      '46':
+        prefecture: 鹿児島県
+        prefecture_kana: カゴシマケン
+        rows: 1456
+        postal_codes: 1453
+        municipalities: 43
+      '47':
+        prefecture: 沖縄県
+        prefecture_kana: オキナワケン
+        rows: 804
+        postal_codes: 802
+        municipalities: 41
+  vectors:
+  - input: '01'
+    expected: true
+    origin: source
+  - input: '13'
+    expected: true
+    origin: source
+  - input: '47'
+    expected: true
+    origin: source
+  - input: '48'
+    expected: false
+    origin: derived
+  - input:
+      key: '13'
+      column: prefecture
+    expected: 東京都
+    origin: source
+  - input:
+      key: '01'
+      column: prefecture_kana
+    expected: ホッカイドウ
+    origin: source
+evidence:
+- publisher: Japan Post Co., Ltd.
+  title: Postal code data, all prefectures, UTF-8 (utf_ken_all.zip)
+  url: https://www.post.japanpost.jp/service/search/zipcode/download/utf/zip/utf_ken_all.zip
+  accessed_at: '2026-10-31'
+  locator: utf_ken_all.csv, first row for JIS code 13101
+  value: '1000000'
+  unit: text
+  snippet: 13101,"100 ","1000000","トウキョウト","チヨダク","イカニケイサイガナイバアイ","東京都","千代田区","以下に掲載がない場合",0,0,0,0,0,0
+  source_license: unstated
+  content_sha256: db92fcf624bb7280e6f51900aebe03adeafbd168796e59412dbc22a80abb85b9
+  role: primary
+- publisher: Japan Post Co., Ltd.
+  title: Postal code data, all prefectures, UTF-8 (utf_ken_all.zip)
+  url: https://www.post.japanpost.jp/service/search/zipcode/download/utf/zip/utf_ken_all.zip
+  accessed_at: '2026-10-31'
+  locator: utf_ken_all.csv, first row
+  value: '0600000'
+  unit: text
+  snippet: 01101,"060 ","0600000","ホッカイドウ","サッポロシチュウオウク","イカニケイサイガナイバアイ","北海道","札幌市中央区","以下に掲載がない場合",0,0,0,0,0,0
+  source_license: unstated
+  content_sha256: db92fcf624bb7280e6f51900aebe03adeafbd168796e59412dbc22a80abb85b9
+  role: primary
+- publisher: Japan Post Co., Ltd.
+  title: Postal code data download readme
+  url: https://www.post.japanpost.jp/service/search/zipcode/download/readme.html
+  accessed_at: '2026-10-31'
+  locator: section 使用・再配布・移植・改良について
+  value: 著作権を主張しません
+  unit: text
+  snippet: 郵便番号データに限っては日本郵便株式会社は著作権を主張しません
+  source_license: unstated
+  content_sha256: baa69157b60a06d36787edb62bd1cb34905f7e21a001ecbb03616dfbc5548752
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '2026-10-31'
+  method: assumed
+  rationale: The file carries no application or publication date; valid_from is the day it was fetched.
+- parameter: rows[*]
+  value: row, distinct postal code and distinct municipality counts per prefecture
+  method: derived
+  rationale: The file lists individual town rows; the per-prefecture figures are counts over rows sharing the first
+    two JIS digits.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 47
+  tolerance: 0
+- statistic: value["13","prefecture"]
+  expected: 東京都
+  tolerance: 0
+- statistic: value["01","rows"]
+  expected: 8190
+  tolerance: 0
+notes: 'Japan Post''s utf_ken_all.csv lists 124527 rows of town-level postal codes, one per town area, with the
+  all-Japan local government (JIS X0401/X0402) code, the seven-digit postal code and the prefecture, municipality
+  and town names in half-width katakana and in kanji. This entry groups the rows by the first two digits of the
+  JIS code (the prefecture): the prefecture''s kanji and katakana names, the number of rows, of distinct postal
+  codes and of distinct municipality codes. The companion entry keeps the full rows for two central Tokyo wards.
+  Japan Post''s readme states that it claims no copyright over the postal code data and that it may be distributed
+  freely; that is not an SPDX licence, so the licence is recorded as unstated and the entry held at license-review.
+  The file carries no application or publication date; valid_from is the day it was fetched.'

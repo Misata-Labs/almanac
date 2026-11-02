@@ -1,0 +1,186 @@
+id: fr-insee-cog-2025-regions
+title: 'France régions in the Code officiel géographique 2025: region code, name, chef-lieu commune code and name-type
+  code'
+kind: rule
+domain: geography
+region: FR
+status: license-review
+tier: A
+valid_from: '2025-01-01'
+valid_to: null
+tags:
+- geography
+- codes
+- reference
+- insee
+- cog
+- regions
+- code-list
+- france
+use_cases:
+- synthetic-addresses
+- synthetic-companies
+- product-catalogue
+- data-quality-validation
+- address-generation
+- customer-segmentation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: REG region code
+    source_member: v_region_2025.csv
+    rows:
+      '01':
+        name: Guadeloupe
+        chef_lieu: '97105'
+        tncc: '3'
+      '02':
+        name: Martinique
+        chef_lieu: '97209'
+        tncc: '3'
+      '03':
+        name: Guyane
+        chef_lieu: '97302'
+        tncc: '3'
+      '04':
+        name: La Réunion
+        chef_lieu: '97411'
+        tncc: '0'
+      '06':
+        name: Mayotte
+        chef_lieu: '97611'
+        tncc: '0'
+      '11':
+        name: Île-de-France
+        chef_lieu: '75056'
+        tncc: '1'
+      '24':
+        name: Centre-Val de Loire
+        chef_lieu: '45234'
+        tncc: '2'
+      '27':
+        name: Bourgogne-Franche-Comté
+        chef_lieu: '21231'
+        tncc: '0'
+      '28':
+        name: Normandie
+        chef_lieu: '76540'
+        tncc: '0'
+      '32':
+        name: Hauts-de-France
+        chef_lieu: '59350'
+        tncc: '4'
+      '44':
+        name: Grand Est
+        chef_lieu: '67482'
+        tncc: '2'
+      '52':
+        name: Pays de la Loire
+        chef_lieu: '44109'
+        tncc: '4'
+      '53':
+        name: Bretagne
+        chef_lieu: '35238'
+        tncc: '0'
+      '75':
+        name: Nouvelle-Aquitaine
+        chef_lieu: '33063'
+        tncc: '3'
+      '76':
+        name: Occitanie
+        chef_lieu: '31555'
+        tncc: '1'
+      '84':
+        name: Auvergne-Rhône-Alpes
+        chef_lieu: '69123'
+        tncc: '1'
+      '93':
+        name: Provence-Alpes-Côte d'Azur
+        chef_lieu: '13055'
+        tncc: '0'
+      '94':
+        name: Corse
+        chef_lieu: 2A004
+        tncc: '0'
+  vectors:
+  - input: '01'
+    expected: true
+    origin: source
+  - input: '11'
+    expected: true
+    origin: source
+  - input: '84'
+    expected: true
+    origin: source
+  - input: '99'
+    expected: false
+    origin: derived
+  - input:
+      key: '11'
+      column: name
+    expected: Île-de-France
+    origin: source
+  - input:
+      key: '01'
+      column: chef_lieu
+    expected: '97105'
+    origin: source
+evidence:
+- publisher: Institut national de la statistique et des études économiques (INSEE)
+  title: Code officiel géographique 2025, ensemble des fichiers CSV (ZIP)
+  url: https://www.insee.fr/fr/statistiques/fichier/8377162/cog_ensemble_2025_csv.zip
+  accessed_at: '2026-10-31'
+  locator: v_region_2025.csv, row REG 01
+  value: Guadeloupe
+  unit: text
+  snippet: '"01","97105","3","GUADELOUPE","Guadeloupe","Guadeloupe"'
+  source_license: etalab-2.0
+  content_sha256: 89329a7fc6669e215f90d557b123a7eb83cb926cdb769946b1a9a8bf19bc12d9
+  role: primary
+- publisher: Institut national de la statistique et des études économiques (INSEE)
+  title: Code officiel géographique 2025, ensemble des fichiers CSV (ZIP)
+  url: https://www.insee.fr/fr/statistiques/fichier/8377162/cog_ensemble_2025_csv.zip
+  accessed_at: '2026-10-31'
+  locator: v_region_2025.csv, row REG 11
+  value: Île-de-France
+  unit: text
+  snippet: '"11","75056","1","ILE DE FRANCE","Île-de-France","Île-de-France"'
+  source_license: etalab-2.0
+  content_sha256: 89329a7fc6669e215f90d557b123a7eb83cb926cdb769946b1a9a8bf19bc12d9
+  role: primary
+- publisher: Institut national de la statistique et des études économiques (INSEE)
+  title: Conditions générales d'utilisation du site insee.fr
+  url: https://www.insee.fr/fr/information/2008466
+  accessed_at: '2026-10-31'
+  locator: section Réutilisation des informations publiques
+  value: Licence Ouverte / Open Licence version 2.0
+  unit: text
+  snippet: Licence Ouverte / Open Licence version 2.0 (Etalab).
+  source_license: etalab-2.0
+  content_sha256: df50278ce8a7036424cfafb68978ce440869ebde1ee6da85f2fa1469afffeb58
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '2025-01-01'
+  method: assumed
+  rationale: The file carries no application date of its own; valid_from is the first day of the vintage its name
+    announces. The vintage is COG 2025.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 18
+  tolerance: 0
+- statistic: value["11","name"]
+  expected: Île-de-France
+  tolerance: 0
+- statistic: value["84","chef_lieu"]
+  expected: '69123'
+  tolerance: 0
+notes: The 18 régions of the Code officiel géographique 2025 (13 metropolitan and 5 overseas), keyed by the two-character
+  REG code, with the name as INSEE writes it (LIBELLE), the commune code of the chef-lieu and INSEE's TNCC article
+  code, which says which article and apostrophe the name takes. The Code officiel géographique describes the geography
+  in force on 1 January of its year, which sets valid_from. INSEE's conditions-of-use page states that its data
+  are released under the Licence Ouverte / Open Licence 2.0 (Etalab); that identifier is not on the verifier's permissive
+  list, so the entry is held at license-review.

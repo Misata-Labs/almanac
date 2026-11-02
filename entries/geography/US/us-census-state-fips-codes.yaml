@@ -1,0 +1,330 @@
+id: us-census-state-fips-codes
+title: United States state, District of Columbia and outlying area FIPS codes, USPS abbreviations, names and GNIS
+  identifiers
+kind: rule
+domain: geography
+region: US
+status: license-review
+tier: A
+valid_from: '2026-10-31'
+valid_to: null
+tags:
+- geography
+- codes
+- reference
+- fips
+- states
+- census
+- code-list
+use_cases:
+- synthetic-addresses
+- synthetic-companies
+- product-catalogue
+- data-quality-validation
+- address-generation
+- customer-segmentation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: USPS state abbreviation
+    rows:
+      AL:
+        fips: '01'
+        name: Alabama
+        gnis: 01779775
+      AK:
+        fips: '02'
+        name: Alaska
+        gnis: 01785533
+      AZ:
+        fips: '04'
+        name: Arizona
+        gnis: 01779777
+      AR:
+        fips: '05'
+        name: Arkansas
+        gnis: 00068085
+      CA:
+        fips: '06'
+        name: California
+        gnis: 01779778
+      CO:
+        fips: 08
+        name: Colorado
+        gnis: 01779779
+      CT:
+        fips: 09
+        name: Connecticut
+        gnis: 01779780
+      DE:
+        fips: '10'
+        name: Delaware
+        gnis: 01779781
+      DC:
+        fips: '11'
+        name: District of Columbia
+        gnis: 01702382
+      FL:
+        fips: '12'
+        name: Florida
+        gnis: 00294478
+      GA:
+        fips: '13'
+        name: Georgia
+        gnis: '01705317'
+      HI:
+        fips: '15'
+        name: Hawaii
+        gnis: 01779782
+      ID:
+        fips: '16'
+        name: Idaho
+        gnis: 01779783
+      IL:
+        fips: '17'
+        name: Illinois
+        gnis: 01779784
+      IN:
+        fips: '18'
+        name: Indiana
+        gnis: 00448508
+      IA:
+        fips: '19'
+        name: Iowa
+        gnis: 01779785
+      KS:
+        fips: '20'
+        name: Kansas
+        gnis: 00481813
+      KY:
+        fips: '21'
+        name: Kentucky
+        gnis: 01779786
+      LA:
+        fips: '22'
+        name: Louisiana
+        gnis: 01629543
+      ME:
+        fips: '23'
+        name: Maine
+        gnis: 01779787
+      MD:
+        fips: '24'
+        name: Maryland
+        gnis: 01714934
+      MA:
+        fips: '25'
+        name: Massachusetts
+        gnis: 00606926
+      MI:
+        fips: '26'
+        name: Michigan
+        gnis: 01779789
+      MN:
+        fips: '27'
+        name: Minnesota
+        gnis: 00662849
+      MS:
+        fips: '28'
+        name: Mississippi
+        gnis: 01779790
+      MO:
+        fips: '29'
+        name: Missouri
+        gnis: 01779791
+      MT:
+        fips: '30'
+        name: Montana
+        gnis: 00767982
+      NE:
+        fips: '31'
+        name: Nebraska
+        gnis: 01779792
+      NV:
+        fips: '32'
+        name: Nevada
+        gnis: 01779793
+      NH:
+        fips: '33'
+        name: New Hampshire
+        gnis: 01779794
+      NJ:
+        fips: '34'
+        name: New Jersey
+        gnis: 01779795
+      NM:
+        fips: '35'
+        name: New Mexico
+        gnis: 00897535
+      NY:
+        fips: '36'
+        name: New York
+        gnis: 01779796
+      NC:
+        fips: '37'
+        name: North Carolina
+        gnis: '01027616'
+      ND:
+        fips: '38'
+        name: North Dakota
+        gnis: 01779797
+      OH:
+        fips: '39'
+        name: Ohio
+        gnis: 01085497
+      OK:
+        fips: '40'
+        name: Oklahoma
+        gnis: 01102857
+      OR:
+        fips: '41'
+        name: Oregon
+        gnis: '01155107'
+      PA:
+        fips: '42'
+        name: Pennsylvania
+        gnis: 01779798
+      RI:
+        fips: '44'
+        name: Rhode Island
+        gnis: 01219835
+      SC:
+        fips: '45'
+        name: South Carolina
+        gnis: 01779799
+      SD:
+        fips: '46'
+        name: South Dakota
+        gnis: 01785534
+      TN:
+        fips: '47'
+        name: Tennessee
+        gnis: 01325873
+      TX:
+        fips: '48'
+        name: Texas
+        gnis: 01779801
+      UT:
+        fips: '49'
+        name: Utah
+        gnis: 01455989
+      VT:
+        fips: '50'
+        name: Vermont
+        gnis: 01779802
+      VA:
+        fips: '51'
+        name: Virginia
+        gnis: 01779803
+      WA:
+        fips: '53'
+        name: Washington
+        gnis: 01779804
+      WV:
+        fips: '54'
+        name: West Virginia
+        gnis: 01779805
+      WI:
+        fips: '55'
+        name: Wisconsin
+        gnis: 01779806
+      WY:
+        fips: '56'
+        name: Wyoming
+        gnis: 01779807
+      AS:
+        fips: '60'
+        name: American Samoa
+        gnis: 01802701
+      GU:
+        fips: '66'
+        name: Guam
+        gnis: 01802705
+      MP:
+        fips: '69'
+        name: Northern Mariana Islands
+        gnis: 01779809
+      PR:
+        fips: '72'
+        name: Puerto Rico
+        gnis: 01779808
+      UM:
+        fips: '74'
+        name: U.S. Minor Outlying Islands
+        gnis: 01878752
+      VI:
+        fips: '78'
+        name: U.S. Virgin Islands
+        gnis: 01802710
+  vectors:
+  - input: AL
+    expected: true
+    origin: source
+  - input: CA
+    expected: true
+    origin: source
+  - input: PR
+    expected: true
+    origin: source
+  - input: ZZ
+    expected: false
+    origin: derived
+  - input:
+      key: AL
+      column: fips
+    expected: '01'
+    origin: source
+  - input:
+      key: CA
+      column: name
+    expected: California
+    origin: source
+evidence:
+- publisher: United States Census Bureau
+  title: State FIPS codes (state.txt)
+  url: https://www2.census.gov/geo/docs/reference/state.txt
+  accessed_at: '2026-10-31'
+  locator: row AL
+  value: '01'
+  unit: text
+  snippet: 01|AL|Alabama|01779775
+  source_license: unstated
+  content_sha256: bea4e03f71a1fa0045ae732aabad11fa541e5932b071c2369bb0d325e8cba5a0
+  role: primary
+- publisher: United States Census Bureau
+  title: State FIPS codes (state.txt)
+  url: https://www2.census.gov/geo/docs/reference/state.txt
+  accessed_at: '2026-10-31'
+  locator: row CA
+  value: California
+  unit: text
+  snippet: 06|CA|California|01779778
+  source_license: unstated
+  content_sha256: bea4e03f71a1fa0045ae732aabad11fa541e5932b071c2369bb0d325e8cba5a0
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2026-10-31'
+  method: assumed
+  rationale: The file carries no application or publication date; valid_from is the day it was fetched.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 57
+  tolerance: 0
+- statistic: value["AL","fips"]
+  expected: '01'
+  tolerance: 0
+- statistic: value["CA","fips"]
+  expected: '06'
+  tolerance: 0
+- statistic: value["PR","name"]
+  expected: Puerto Rico
+  tolerance: 0
+notes: The Census Bureau's state.txt lists the two-digit FIPS state code, USPS abbreviation, name and GNIS (ANSI)
+  identifier for the states, the District of Columbia and the outlying areas. Rows are keyed by the USPS abbreviation.
+  The Census Bureau publishes the file without a licence statement, so the licence is recorded as unstated and the
+  entry held at license-review. The file carries no application or publication date; valid_from is the day it was
+  fetched.
