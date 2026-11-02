@@ -1,0 +1,224 @@
+id: gb-licensed-vehicles-fuel-given-body-type-2026q2
+title: Great Britain licensed vehicles by fuel type given body type, end of 2026 Q2 (DfT/DVLA VEH0120)
+kind: conditional
+domain: automotive
+region: GB
+status: verified
+tier: A
+tags:
+- vehicles
+- dvla
+- vehicle-licensing
+- transport
+- fuel-type
+- body-type
+use_cases:
+- fleet-demo
+- insurance-demo
+- telematics-demo
+- automotive-demo
+- utilities-demo
+observed_period:
+  start: '2026-06-30'
+  end: '2026-06-30'
+spec:
+  variable: fuel_type
+  unit: ratio
+  given: body_type
+  distributions:
+    cars:
+      family: categorical
+      parameters:
+        shares:
+          Petrol: 0.542468
+          Diesel: 0.27459
+          Hybrid electric (petrol): 0.090282
+          Battery electric: 0.058677
+          Plug-in hybrid electric (petrol): 0.029235
+          Hybrid electric (diesel): 0.003393
+          Gas: 0.000739
+          Plug-in hybrid electric (diesel): 0.00032
+          Range extended electric: 0.000286
+          Other fuel types: 6.0e-06
+          Fuel cell electric: 4.0e-06
+        counts:
+          Petrol: 18333733
+          Diesel: 9280274
+          Hybrid electric (petrol): 3051246
+          Battery electric: 1983087
+          Plug-in hybrid electric (petrol): 988066
+          Hybrid electric (diesel): 114674
+          Gas: 24969
+          Plug-in hybrid electric (diesel): 10825
+          Range extended electric: 9664
+          Other fuel types: 213
+          Fuel cell electric: 124
+        total: 33796875
+    light_goods_vehicles:
+      family: categorical
+      parameters:
+        shares:
+          Diesel: 0.93357
+          Petrol: 0.031908
+          Battery electric: 0.026273
+          Plug-in hybrid electric (petrol): 0.003993
+          Hybrid electric (petrol): 0.002654
+          Gas: 0.000632
+          Hybrid electric (diesel): 0.00049
+          Range extended electric: 0.000369
+          Other fuel types: 0.000111
+          Fuel cell electric: 1.0e-06
+          Plug-in hybrid electric (diesel): 0.0
+        counts:
+          Diesel: 4480030
+          Petrol: 153123
+          Battery electric: 126080
+          Plug-in hybrid electric (petrol): 19161
+          Hybrid electric (petrol): 12736
+          Gas: 3032
+          Hybrid electric (diesel): 2350
+          Range extended electric: 1769
+          Other fuel types: 532
+          Fuel cell electric: 3
+          Plug-in hybrid electric (diesel): 0
+        total: 4798816
+    motorcycles:
+      family: categorical
+      parameters:
+        shares:
+          Petrol: 0.990238
+          Battery electric: 0.009287
+          Diesel: 0.000426
+          Gas: 4.3e-05
+          Other fuel types: 5.0e-06
+          Fuel cell electric: 1.0e-06
+          Hybrid electric (petrol): 1.0e-06
+          Plug-in hybrid electric (petrol): 0.0
+        counts:
+          Petrol: 1440208
+          Battery electric: 13507
+          Diesel: 619
+          Gas: 63
+          Other fuel types: 7
+          Fuel cell electric: 1
+          Hybrid electric (petrol): 1
+          Plug-in hybrid electric (petrol): 0
+        total: 1454406
+    other_vehicles:
+      family: categorical
+      parameters:
+        shares:
+          Diesel: 0.705059
+          Battery electric: 0.171341
+          Petrol: 0.105703
+          Range extended electric: 0.012774
+          Gas: 0.002785
+          Other fuel types: 0.00204
+          Plug-in hybrid electric (petrol): 0.000158
+          Hybrid electric (petrol): 8.1e-05
+          Hybrid electric (diesel): 5.7e-05
+          Fuel cell electric: 2.0e-06
+        counts:
+          Diesel: 590383
+          Battery electric: 143473
+          Petrol: 88511
+          Range extended electric: 10696
+          Gas: 2332
+          Other fuel types: 1708
+          Plug-in hybrid electric (petrol): 132
+          Hybrid electric (petrol): 68
+          Hybrid electric (diesel): 48
+          Fuel cell electric: 2
+        total: 837353
+    heavy_goods_vehicles:
+      family: categorical
+      parameters:
+        shares:
+          Diesel: 0.986266
+          Gas: 0.007603
+          Battery electric: 0.003186
+          Petrol: 0.002851
+          Other fuel types: 9.2e-05
+          Hybrid electric (diesel): 2.0e-06
+          Fuel cell electric: 0.0
+        counts:
+          Diesel: 506403
+          Gas: 3904
+          Battery electric: 1636
+          Petrol: 1464
+          Other fuel types: 47
+          Hybrid electric (diesel): 1
+          Fuel cell electric: 0
+        total: 513455
+    buses_and_coaches:
+      family: categorical
+      parameters:
+        shares:
+          Diesel: 0.912595
+          Battery electric: 0.061909
+          Petrol: 0.022124
+          Gas: 0.002881
+          Fuel cell electric: 0.000253
+          Hybrid electric (diesel): 0.000181
+          Hybrid electric (petrol): 2.9e-05
+          Other fuel types: 1.4e-05
+          Plug-in hybrid electric (petrol): 1.4e-05
+        counts:
+          Diesel: 126389
+          Battery electric: 8574
+          Petrol: 3064
+          Gas: 399
+          Fuel cell electric: 35
+          Hybrid electric (diesel): 25
+          Hybrid electric (petrol): 4
+          Other fuel types: 2
+          Plug-in hybrid electric (petrol): 2
+        total: 138494
+evidence:
+- publisher: Department for Transport
+  title: 'DfT vehicle licensing statistics data file VEH0120_GB: licensed and SORN vehicles by body type, make,
+    model and fuel, quarterly'
+  url: https://assets.publishing.service.gov.uk/media/6aad4b12ce3f006bd4346ccf/df_VEH0120_GB.csv
+  accessed_at: '2026-10-31'
+  locator: row Cars / ABARTH / 500E / Battery electric / Licensed, column 2026 Q2
+  value: '348'
+  unit: count
+  snippet: Cars,ABARTH,ABARTH 500,500E,Battery electric,Licensed,348
+  source_license: OGL-UK-3.0
+  content_sha256: afdc4feb04a9577c84080926e06769fe60fc8d0a445df1032a95ec2bb7766a92
+  role: primary
+- publisher: Department for Transport
+  title: 'DfT vehicle licensing statistics data file VEH0120_GB: licensed and SORN vehicles by body type, make,
+    model and fuel, quarterly'
+  url: https://assets.publishing.service.gov.uk/media/6aad4b12ce3f006bd4346ccf/df_VEH0120_GB.csv
+  accessed_at: '2026-10-31'
+  locator: row Cars / ABARTH / 500E / Battery electric / Licensed, column Fuel
+  value: Battery electric
+  unit: text
+  snippet: Cars,ABARTH,ABARTH 500,500E,Battery electric,Licensed,348
+  source_license: OGL-UK-3.0
+  content_sha256: afdc4feb04a9577c84080926e06769fe60fc8d0a445df1032a95ec2bb7766a92
+  role: primary
+assumed:
+- parameter: distributions[*].parameters.counts
+  value: sum of the 2026 Q2 column over licensed rows grouped by BodyType then Fuel
+  method: derived
+  rationale: The file lists vehicle counts per make, model and fuel; the fuel totals within a body type are their
+    sums.
+tests:
+- statistic: share[cars,"Petrol"]
+  expected: 0.542468
+  tolerance: 0.005
+- statistic: sum_of_shares[cars]
+  expected: 1
+  tolerance: 0.0001
+- statistic: share[buses_and_coaches,"Diesel"]
+  expected: 0.912595
+  tolerance: 0.005
+- statistic: sum_of_shares[buses_and_coaches]
+  expected: 1
+  tolerance: 0.0001
+notes: 'Vehicles licensed in Great Britain at the end of 2026 Q2 from the DfT and DVLA vehicle licensing statistics
+  data file VEH0120_GB (rows per body type, make, model and fuel; SORN rows excluded). Conditioning keys are the
+  body types in snake case (cars, light_goods_vehicles, motorcycles, other_vehicles, heavy_goods_vehicles, buses_and_coaches).
+  Published under the Open Government Licence v3.0 (GOV.UK). '

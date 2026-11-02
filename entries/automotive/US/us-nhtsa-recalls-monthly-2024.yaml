@@ -1,0 +1,192 @@
+id: us-nhtsa-recalls-monthly-2024
+title: United States safety recall campaigns received by NHTSA per month and type, 2024, with units potentially
+  affected
+kind: temporal
+domain: automotive
+region: US
+status: license-review
+tier: A
+tags:
+- recalls
+- nhtsa
+- vehicle-safety
+- by-month
+- transport
+- vehicles
+use_cases:
+- fleet-demo
+- automotive-demo
+- event-timestamps
+- claims-generation
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+spec:
+  variable: recall_campaigns
+  unit: count
+  frequency: monthly
+  columns:
+  - child_seat
+  - child_seat_units
+  - equipment
+  - equipment_units
+  - tire
+  - tire_units
+  - vehicle
+  - vehicle_units
+  series:
+  - period: 2024-01
+    value: 64
+    child_seat: 0
+    child_seat_units: 0
+    equipment: 6
+    equipment_units: 25415
+    tire: 0
+    tire_units: 0
+    vehicle: 58
+    vehicle_units: 4581612
+  - period: 2024-02
+    value: 118
+    child_seat: 0
+    child_seat_units: 0
+    equipment: 14
+    equipment_units: 1900496
+    tire: 0
+    tire_units: 0
+    vehicle: 104
+    vehicle_units: 4125759
+  - period: 2024-03
+    value: 88
+    child_seat: 0
+    child_seat_units: 0
+    equipment: 10
+    equipment_units: 76790
+    tire: 1
+    tire_units: 673000
+    vehicle: 77
+    vehicle_units: 1483418
+  - period: 2024-04
+    value: 67
+    child_seat: 0
+    child_seat_units: 0
+    equipment: 4
+    equipment_units: 4459
+    tire: 2
+    tire_units: 982
+    vehicle: 61
+    vehicle_units: 879415
+  - period: 2024-05
+    value: 87
+    child_seat: 0
+    child_seat_units: 0
+    equipment: 8
+    equipment_units: 126334
+    tire: 1
+    tire_units: 194
+    vehicle: 78
+    vehicle_units: 846726
+  - period: 2024-06
+    value: 123
+    child_seat: 0
+    child_seat_units: 0
+    equipment: 13
+    equipment_units: 187571
+    tire: 1
+    tire_units: 9
+    vehicle: 109
+    vehicle_units: 3142177
+  - period: 2024-07
+    value: 77
+    child_seat: 0
+    child_seat_units: 0
+    equipment: 8
+    equipment_units: 15693
+    tire: 0
+    tire_units: 0
+    vehicle: 69
+    vehicle_units: 3143207
+  - period: 2024-08
+    value: 89
+    child_seat: 0
+    child_seat_units: 0
+    equipment: 11
+    equipment_units: 100071
+    tire: 2
+    tire_units: 147030
+    vehicle: 76
+    vehicle_units: 1351328
+  - period: 2024-09
+    value: 87
+    child_seat: 0
+    child_seat_units: 0
+    equipment: 7
+    equipment_units: 188917
+    tire: 1
+    tire_units: 332
+    vehicle: 79
+    vehicle_units: 2537383
+  - period: 2024-10
+    value: 105
+    child_seat: 0
+    child_seat_units: 0
+    equipment: 10
+    equipment_units: 768828
+    tire: 2
+    tire_units: 3139
+    vehicle: 93
+    vehicle_units: 4088185
+  - period: 2024-11
+    value: 91
+    child_seat: 2
+    child_seat_units: 610072
+    equipment: 8
+    equipment_units: 133480
+    tire: 1
+    tire_units: 150
+    vehicle: 80
+    vehicle_units: 1702558
+  - period: 2024-12
+    value: 77
+    child_seat: 0
+    child_seat_units: 0
+    equipment: 10
+    equipment_units: 149546
+    tire: 1
+    tire_units: 541632
+    vehicle: 66
+    vehicle_units: 1484598
+evidence:
+- publisher: National Highway Traffic Safety Administration
+  title: NHTSA Recalls Data, Socrata dataset 6axg-epim on data.transportation.gov (SoQL CSV export)
+  url: https://data.transportation.gov/resource/6axg-epim.csv?$select=date_trunc_ym(report_received_date)%20as%20month,recall_type,count(nhtsa_id),sum(potentially_affected)&$group=month,recall_type&$order=month,recall_type&$where=report_received_date%20between%20%272024-01-01T00:00:00%27%20and%20%272024-12-31T23:59:59%27
+  accessed_at: '2026-10-31'
+  locator: row month=2024-01-01T00:00:00.000, recall_type=Equipment, count_nhtsa_id
+  value: '6'
+  unit: count
+  snippet: '"2024-01-01T00:00:00.000","Equipment","6","25415"'
+  source_license: unstated
+  content_sha256: 3169d160d0b0be7c4f339fa155611a47632217cd3bf1decbe669850318efac95
+  role: primary
+assumed:
+- parameter: series[*].value
+  value: sum of the per-type counts of the month
+  method: derived
+  rationale: The query returns one row per month and recall type; the series value is their sum, the columns keep
+    each type and its units potentially affected.
+tests:
+- statistic: value[2024-01]
+  expected: 64
+  tolerance: 1.0e-09
+- statistic: value[2024-12]
+  expected: 77
+  tolerance: 1.0e-09
+- statistic: column[child_seat,2024-12]
+  expected: 0
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: Recall campaigns by the month NHTSA received the Part 573 report in 2024, split by recall type (vehicle,
+  equipment, tire, child seat), each with the sum of units potentially affected, from a SoQL aggregate query on
+  the NHTSA Recalls Data dataset. The dataset's Socrata metadata declares the licence as Public Domain, which has
+  no SPDX identifier in this repository, so the licence is recorded as unstated and the entry held at license-review.

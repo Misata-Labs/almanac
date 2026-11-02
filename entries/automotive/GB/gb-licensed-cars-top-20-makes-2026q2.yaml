@@ -1,0 +1,168 @@
+id: gb-licensed-cars-top-20-makes-2026q2
+title: Great Britain licensed cars, top 20 makes by number licensed at the end of 2026 Q2 (DfT/DVLA VEH0120)
+kind: rule
+domain: automotive
+region: GB
+status: verified
+tier: A
+tags:
+- vehicles
+- dvla
+- vehicle-licensing
+- transport
+- makes
+- cars
+- reference-table
+use_cases:
+- fleet-demo
+- insurance-demo
+- telematics-demo
+- automotive-demo
+valid_from: '2026-04-01'
+valid_to: '2026-06-30'
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    source: VEH0120_GB
+    quarter: 2026 Q2
+    licensed_cars_total: 33796875
+    rows:
+      FORD:
+        rank: 1
+        licensed_cars: 3615010
+        share_of_licensed_cars: 0.106963
+      VOLKSWAGEN:
+        rank: 2
+        licensed_cars: 2937243
+        share_of_licensed_cars: 0.086909
+      VAUXHALL:
+        rank: 3
+        licensed_cars: 2486163
+        share_of_licensed_cars: 0.073562
+      BMW:
+        rank: 4
+        licensed_cars: 2067127
+        share_of_licensed_cars: 0.061163
+      AUDI:
+        rank: 5
+        licensed_cars: 1995404
+        share_of_licensed_cars: 0.059041
+      TOYOTA:
+        rank: 6
+        licensed_cars: 1793092
+        share_of_licensed_cars: 0.053055
+      MERCEDES:
+        rank: 7
+        licensed_cars: 1713617
+        share_of_licensed_cars: 0.050703
+      NISSAN:
+        rank: 8
+        licensed_cars: 1707953
+        share_of_licensed_cars: 0.050536
+      KIA:
+        rank: 9
+        licensed_cars: 1297947
+        share_of_licensed_cars: 0.038404
+      PEUGEOT:
+        rank: 10
+        licensed_cars: 1227184
+        share_of_licensed_cars: 0.036311
+      HYUNDAI:
+        rank: 11
+        licensed_cars: 1162138
+        share_of_licensed_cars: 0.034386
+      SKODA:
+        rank: 12
+        licensed_cars: 1005752
+        share_of_licensed_cars: 0.029759
+      LAND ROVER:
+        rank: 13
+        licensed_cars: 933150
+        share_of_licensed_cars: 0.027611
+      MINI:
+        rank: 14
+        licensed_cars: 904018
+        share_of_licensed_cars: 0.026749
+      HONDA:
+        rank: 15
+        licensed_cars: 900084
+        share_of_licensed_cars: 0.026632
+      RENAULT:
+        rank: 16
+        licensed_cars: 890268
+        share_of_licensed_cars: 0.026342
+      CITROEN:
+        rank: 17
+        licensed_cars: 781664
+        share_of_licensed_cars: 0.023128
+      VOLVO:
+        rank: 18
+        licensed_cars: 761964
+        share_of_licensed_cars: 0.022545
+      SEAT:
+        rank: 19
+        licensed_cars: 600813
+        share_of_licensed_cars: 0.017777
+      FIAT:
+        rank: 20
+        licensed_cars: 593331
+        share_of_licensed_cars: 0.017556
+  vectors:
+  - input:
+      key: FORD
+      column: licensed_cars
+    expected: 3615010
+    origin: source
+  - input:
+      key: VOLKSWAGEN
+      column: licensed_cars
+    expected: 2937243
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Department for Transport
+  title: 'DfT vehicle licensing statistics data file VEH0120_GB: licensed and SORN vehicles by body type, make,
+    model and fuel, quarterly'
+  url: https://assets.publishing.service.gov.uk/media/6aad4b12ce3f006bd4346ccf/df_VEH0120_GB.csv
+  accessed_at: '2026-10-31'
+  locator: row Cars / ABARTH / 500E / Battery electric / Licensed, column 2026 Q2
+  value: '348'
+  unit: count
+  snippet: Cars,ABARTH,ABARTH 500,500E,Battery electric,Licensed,348
+  source_license: OGL-UK-3.0
+  content_sha256: afdc4feb04a9577c84080926e06769fe60fc8d0a445df1032a95ec2bb7766a92
+  role: primary
+- publisher: Department for Transport
+  title: 'DfT vehicle licensing statistics data file VEH0120_GB: licensed and SORN vehicles by body type, make,
+    model and fuel, quarterly'
+  url: https://assets.publishing.service.gov.uk/media/6aad4b12ce3f006bd4346ccf/df_VEH0120_GB.csv
+  accessed_at: '2026-10-31'
+  locator: row Cars / ABARTH / 500E / Battery electric / Licensed, column Make
+  value: ABARTH
+  unit: text
+  snippet: Cars,ABARTH,ABARTH 500,500E,Battery electric,Licensed,348
+  source_license: OGL-UK-3.0
+  content_sha256: afdc4feb04a9577c84080926e06769fe60fc8d0a445df1032a95ec2bb7766a92
+  role: primary
+assumed:
+- parameter: rows
+  value: sum of the 2026 Q2 column over licensed Cars rows grouped by Make, top 20 by count
+  method: derived
+  rationale: The file lists counts per make and model; make totals are their sums and the share divides by the total
+    of all licensed cars.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 20
+  tolerance: 0
+- statistic: max[licensed_cars]
+  expected: 3615010.0
+  tolerance: 1.0e-09
+notes: 'Vehicles licensed in Great Britain at the end of 2026 Q2 from the DfT and DVLA vehicle licensing statistics
+  data file VEH0120_GB (rows per body type, make, model and fuel; SORN rows excluded). Rows are keyed by the make
+  exactly as DVLA spells it (upper case) and carry rank, count and share of all licensed cars. Published under the
+  Open Government Licence v3.0 (GOV.UK). '

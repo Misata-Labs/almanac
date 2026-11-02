@@ -1,0 +1,81 @@
+id: us-fars-fatal-crashes-by-light-condition-2023
+title: United States fatal crashes by light condition at the crash, 2023 (NHTSA FARS)
+kind: marginal
+domain: transport
+region: US
+status: license-review
+tier: A
+tags:
+- fars
+- nhtsa
+- road-safety
+- fatal-crashes
+- transport
+- telematics
+- light-conditions
+use_cases:
+- telematics-demo
+- insurance-demo
+- claims-generation
+- event-timestamps
+- fleet-demo
+observed_period:
+  start: '2023-01-01'
+  end: '2023-12-31'
+spec:
+  variable: light_condition
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Daylight: 0.446477
+        Dark - Not Lighted: 0.271519
+        Dark - Lighted: 0.218671
+        Dusk: 0.026053
+        Dawn: 0.019249
+        Dark - Unknown Lighting: 0.011703
+        Reported as Unknown: 0.003601
+        Not Reported: 0.002277
+        Other: 0.00045
+      counts:
+        Daylight: 16863
+        Dark - Not Lighted: 10255
+        Dark - Lighted: 8259
+        Dusk: 984
+        Dawn: 727
+        Dark - Unknown Lighting: 442
+        Reported as Unknown: 136
+        Not Reported: 86
+        Other: 17
+      total: 37769
+evidence:
+- publisher: National Highway Traffic Safety Administration
+  title: FARS 2023 National CSV (accident.csv), Fatality Analysis Reporting System
+  url: https://static.nhtsa.gov/nhtsa/downloads/FARS/2023/National/FARS2023NationalCSV.zip
+  accessed_at: '2026-10-31'
+  locator: accident.csv, record ST_CASE=10001, column LGT_CONDNAME
+  value: Dark - Not Lighted
+  unit: text
+  snippet: 1,Alabama,10001,0,0,1,1,0,1,1,13,BUTLER (13),0,NOT APPLICABLE,1,January
+  source_license: unstated
+  content_sha256: edde841eb493e55751961b36bac2d1ce8750f601cb8e6e183a525723bb62bab0
+  role: primary
+assumed:
+- parameter: distribution.parameters.counts
+  value: records grouped by LGT_CONDNAME
+  method: derived
+  rationale: Each record of accident.csv is one fatal crash; counts are records grouped by LGT_CONDNAME, shares
+    are counts over the number of crashes kept.
+tests:
+- statistic: share["Daylight"]
+  expected: 0.446477
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Fatal motor-vehicle crashes in the United States in 2023 from the NHTSA Fatality Analysis Reporting System
+  National CSV release (accident.csv, one record per crash). The published counts sit beside the derived shares.
+  Categories are the LGT_CONDNAME values of the file. The publisher states no licence on the file itself, so the
+  licence is recorded as unstated and the entry held at license-review even though US federal publications are normally
+  free to reuse.

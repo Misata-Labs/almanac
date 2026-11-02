@@ -1,0 +1,117 @@
+id: gb-vehicles-in-road-collisions-by-type-2024
+title: Great Britain vehicles involved in reported road collisions by vehicle type, 2024 (DfT STATS19)
+kind: marginal
+domain: transport
+region: GB
+status: verified
+tier: A
+tags:
+- road-safety
+- collisions
+- stats19
+- dft
+- transport
+- telematics
+- vehicle-type
+use_cases:
+- telematics-demo
+- insurance-demo
+- claims-generation
+- event-timestamps
+- fleet-demo
+- automotive-demo
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+spec:
+  variable: vehicle_type
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Car: 0.685333
+        Pedal cycle: 0.083713
+        Van / Goods vehicle 3.5 tonnes mgw and under: 0.061223
+        Motorcycle over 50cc and up to 125cc: 0.048309
+        Motorcycle over 500cc: 0.024566
+        Bus or coach (17 or more passenger seats): 0.017138
+        Taxi / Private hire car: 0.015879
+        Goods vehicle 7.5 tonnes mgw & over: 0.013531
+        Motorcycle cycle over 125cc and up to 500cc: 0.010305
+        Personal Powered Transporter: 0.007378
+        Other vehicle: 0.006485
+        Motorcycle 50cc and under: 0.004659
+        Goods vehicle over 3.5 tonnes mgw and under 7.5 tonnes mgw: 0.004212
+        Goods vehicle - unknown weight: 0.003945
+        Motorcycle - cc unknown: 0.003417
+        Electric Motorcycle: 0.002289
+        Agricultural vehicle (include diggers etc): 0.002207
+        Mobility scooter: 0.001744
+        Minibus (8-16 passenger seats): 0.001651
+        Unknown (self-reported only): 0.001504
+        Ridden horse: 0.000387
+        Tram / Light rail: 0.000125
+      counts:
+        Car: 125764
+        Pedal cycle: 15362
+        Van / Goods vehicle 3.5 tonnes mgw and under: 11235
+        Motorcycle over 50cc and up to 125cc: 8865
+        Motorcycle over 500cc: 4508
+        Bus or coach (17 or more passenger seats): 3145
+        Taxi / Private hire car: 2914
+        Goods vehicle 7.5 tonnes mgw & over: 2483
+        Motorcycle cycle over 125cc and up to 500cc: 1891
+        Personal Powered Transporter: 1354
+        Other vehicle: 1190
+        Motorcycle 50cc and under: 855
+        Goods vehicle over 3.5 tonnes mgw and under 7.5 tonnes mgw: 773
+        Goods vehicle - unknown weight: 724
+        Motorcycle - cc unknown: 627
+        Electric Motorcycle: 420
+        Agricultural vehicle (include diggers etc): 405
+        Mobility scooter: 320
+        Minibus (8-16 passenger seats): 303
+        Unknown (self-reported only): 276
+        Ridden horse: 71
+        Tram / Light rail: 23
+      total: 183508
+evidence:
+- publisher: Department for Transport
+  title: 'DfT road safety data: dft-road-casualty-statistics-vehicle-2024.csv (STATS19 vehicles involved, Great
+    Britain)'
+  url: https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-vehicle-2024.csv
+  accessed_at: '2026-10-31'
+  locator: record collision_index=2024010507996, vehicle_reference=1, column vehicle_type
+  value: '9'
+  unit: text
+  snippet: 2024010507996,2024,010507996,1,9,9,99,99
+  source_license: OGL-UK-3.0
+  content_sha256: 1a60f65f07a44454bc03c63b35d6741f41c9dfbb05a26753406aef8bff4ae6cd
+  role: primary
+- publisher: Department for Transport
+  title: 'DfT STATS20 2024 specification: instructions for the completion of road collision reports (PDF)'
+  url: https://assets.publishing.service.gov.uk/media/6925a35433d088f6d5da2cf0/STATS20_2024_specification.pdf
+  accessed_at: '2026-10-31'
+  locator: page 49, 2.5 Type of vehicle
+  value: Pedal cycle
+  unit: text
+  snippet: 01 Pedal cycle
+  source_license: OGL-UK-3.0
+  content_sha256: 6f9e37a8be30ef4bb66fb03ae7e59d650542618e0158c5059e3a4fdb0ea47539
+  role: supporting
+assumed:
+- parameter: distribution.parameters.counts
+  value: records grouped by vehicle_type, labelled from STATS20 section 2.5; codes outside the list dropped
+  method: derived
+  rationale: Each record is one vehicle involved in a collision; the code labels come from the STATS20 specification.
+tests:
+- statistic: share["Car"]
+  expected: 0.685333
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: 'Vehicles involved in personal-injury road collisions reported to the police in Great Britain in 2024, from
+  the DfT road safety open data (STATS19) vehicle file, one record per vehicle. Published under the Open Government
+  Licence v3.0 (GOV.UK). '

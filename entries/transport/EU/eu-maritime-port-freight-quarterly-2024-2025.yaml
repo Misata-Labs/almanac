@@ -1,0 +1,153 @@
+id: eu-maritime-port-freight-quarterly-2024-2025
+title: Gross weight of goods handled in main ports per quarter in thousand tonnes, 2024-Q1 to 2025-Q4, member states
+  reported by Eurostat (mar_go_qm)
+kind: temporal
+domain: transport
+region: EU
+status: verified
+tier: A
+tags:
+- maritime
+- ports
+- freight
+- shipping
+- logistics
+- eurostat
+- by-country
+- by-quarter
+- transport
+use_cases:
+- logistics-demo
+- demand-forecasting
+- capacity-planning
+observed_period:
+  start: '2024-01-01'
+  end: '2025-12-31'
+spec:
+  variable: port_freight_thousand_tonnes_de
+  unit: decimal
+  frequency: quarterly
+  columns:
+  - be
+  - es
+  - fr
+  - ie
+  - it
+  - nl
+  - pl
+  - se
+  series:
+  - period: 2024-Q1
+    value: 66028.0
+    be: 70247.0
+    es: 109916.0
+    fr: 66813.0
+    ie: 11989.0
+    it: 96739.0
+    nl: 134380.0
+    pl: 29689.0
+    se: 40658.0
+  - period: 2024-Q2
+    value: 68507.0
+    be: 72123.0
+    es: 118186.0
+    fr: 66549.0
+    ie: 12117.0
+    it: 98793.0
+    nl: 136607.0
+    pl: 31104.0
+    se: 41167.0
+  - period: 2024-Q3
+    value: 67931.0
+    be: 66034.0
+    es: 110842.0
+    fr: 62863.0
+    ie: 12189.0
+    it: 95129.0
+    nl: 133435.0
+    pl: 30545.0
+    se: 39058.0
+  - period: 2024-Q4
+    value: 67302.0
+    be: 65965.0
+    es: 109881.0
+    fr: 65554.0
+    ie: 11940.0
+    it: 97309.0
+    nl: 133136.0
+    pl: 30283.0
+    se: 39402.0
+  - period: 2025-Q1
+    value: 68141.0
+    be: 67885.0
+    es: 108353.0
+    fr: 65314.0
+    ie: 12715.0
+    it: 97220.0
+    nl: 128659.0
+    pl: 29187.0
+    se: 39219.0
+  - period: 2025-Q2
+    value: 71415.0
+    be: 69245.0
+    es: 111728.0
+    fr: 66004.0
+    ie: 13563.0
+    it: 102114.0
+    nl: 134418.0
+    pl: 30812.0
+    se: 39686.0
+  - period: 2025-Q3
+    value: 70998.0
+    be: 64371.0
+    es: 110774.0
+    fr: 67726.0
+    ie: 12564.0
+    it: 102302.0
+    nl: 136743.0
+    pl: 32082.0
+    se: 39186.0
+  - period: 2025-Q4
+    value: 69056.0
+    be: 64444.0
+    es: 112802.0
+    fr: 69993.0
+    ie: 13193.0
+    it: 102235.0
+    nl: 135557.0
+    pl: 32667.0
+    se: 38163.0
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow mar_go_qm (gross weight of goods handled in main ports, quarterly data),
+    SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/mar_go_qm/Q.TOTAL.TOTAL.THS_T.DE+FR+IT+ES+NL+PL+SE+BE+IE?startPeriod=2024-Q1&endPeriod=2025-Q4&format=SDMX-CSV
+  accessed_at: '2026-10-31'
+  locator: rep_mar=DE, TIME_PERIOD=2024-Q1, OBS_VALUE
+  value: '66028'
+  unit: decimal
+  snippet: THS_T,DE,2024-Q1,66028
+  source_license: CC-BY-4.0
+  content_sha256: b56bf1687a1a6cf2af6bf8a34858f99d30e1b9036443f7dcaeeddef96c3233f8
+  role: primary
+assumed: []
+tests:
+- statistic: value[2024-Q1]
+  expected: 66028.0
+  tolerance: 1.0e-09
+- statistic: value[2025-Q4]
+  expected: 69056.0
+  tolerance: 1.0e-09
+- statistic: column[be,2025-Q4]
+  expected: 64444.0
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 8
+  tolerance: 0
+notes: Quarterly gross weight of goods handled in main ports (all directions, national and international traffic,
+  thousand tonnes) from Eurostat dataflow mar_go_qm for the maritime member states of the Almanac's Eurostat set
+  with every quarter of the window published; Germany is the series value and the other countries ride along as
+  columns keyed by the lower-case reporting-country code (dimension rep_mar). Austria is not a reporting country
+  of the dataflow (the API rejects its code), so it is left out. Eurostat's copyright notice states that its data
+  are released under the Creative Commons Attribution 4.0 International licence; the notice page renders dynamically
+  and is referenced rather than hashed.

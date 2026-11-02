@@ -1,0 +1,89 @@
+id: us-fars-fatal-crashes-by-weather-2023
+title: United States fatal crashes by atmospheric conditions at the crash, 2023 (NHTSA FARS)
+kind: marginal
+domain: transport
+region: US
+status: license-review
+tier: A
+tags:
+- fars
+- nhtsa
+- road-safety
+- fatal-crashes
+- transport
+- telematics
+- weather
+use_cases:
+- telematics-demo
+- insurance-demo
+- claims-generation
+- event-timestamps
+- fleet-demo
+observed_period:
+  start: '2023-01-01'
+  end: '2023-12-31'
+spec:
+  variable: weather_condition
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Clear: 0.741958
+        Cloudy: 0.129101
+        Rain: 0.070508
+        Not Reported: 0.03344
+        Fog, Smog, Smoke: 0.010564
+        Snow: 0.005878
+        Reported as Unknown: 0.003601
+        Severe Crosswinds: 0.001191
+        Sleet or Hail: 0.001191
+        Blowing Snow: 0.000953
+        Other: 0.000927
+        Freezing Rain or Drizzle: 0.00045
+        Blowing Sand, Soil, Dirt: 0.000238
+      counts:
+        Clear: 28023
+        Cloudy: 4876
+        Rain: 2663
+        Not Reported: 1263
+        Fog, Smog, Smoke: 399
+        Snow: 222
+        Reported as Unknown: 136
+        Severe Crosswinds: 45
+        Sleet or Hail: 45
+        Blowing Snow: 36
+        Other: 35
+        Freezing Rain or Drizzle: 17
+        Blowing Sand, Soil, Dirt: 9
+      total: 37769
+evidence:
+- publisher: National Highway Traffic Safety Administration
+  title: FARS 2023 National CSV (accident.csv), Fatality Analysis Reporting System
+  url: https://static.nhtsa.gov/nhtsa/downloads/FARS/2023/National/FARS2023NationalCSV.zip
+  accessed_at: '2026-10-31'
+  locator: accident.csv, record ST_CASE=10001, column WEATHERNAME
+  value: Clear
+  unit: text
+  snippet: 1,Alabama,10001,0,0,1,1,0,1,1,13,BUTLER (13),0,NOT APPLICABLE,1,January
+  source_license: unstated
+  content_sha256: edde841eb493e55751961b36bac2d1ce8750f601cb8e6e183a525723bb62bab0
+  role: primary
+assumed:
+- parameter: distribution.parameters.counts
+  value: records grouped by WEATHERNAME
+  method: derived
+  rationale: Each record of accident.csv is one fatal crash; counts are records grouped by WEATHERNAME, shares are
+    counts over the number of crashes kept.
+tests:
+- statistic: share["Clear"]
+  expected: 0.741958
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Fatal motor-vehicle crashes in the United States in 2023 from the NHTSA Fatality Analysis Reporting System
+  National CSV release (accident.csv, one record per crash). The published counts sit beside the derived shares.
+  Categories are the WEATHERNAME values of the file, including the not-reported and reported-as-unknown codes. The
+  publisher states no licence on the file itself, so the licence is recorded as unstated and the entry held at license-review
+  even though US federal publications are normally free to reuse.

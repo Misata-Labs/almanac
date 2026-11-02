@@ -1,0 +1,92 @@
+id: us-faa-registered-aircraft-by-type-2025
+title: United States registered civil aircraft by aircraft type, end of 2025 (FAA registry)
+kind: marginal
+domain: transport
+region: US
+status: license-review
+tier: A
+tags:
+- aviation
+- aircraft
+- faa
+- registry
+- transport
+- aircraft-type
+use_cases:
+- travel-demo
+- fleet-demo
+- insurance-demo
+- logistics-demo
+observed_period:
+  start: '2025-12-31'
+  end: '2025-12-31'
+spec:
+  variable: aircraft_type
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Fixed wing single engine: 0.711149
+        Fixed wing multi engine: 0.158972
+        Rotorcraft: 0.082428
+        Balloon: 0.016862
+        Glider: 0.015709
+        Powered Parachute: 0.006156
+        Hybrid Lift: 0.00385
+        Weight-shift-control: 0.00341
+        Gyroplane: 0.00125
+        Blimp/Dirigible: 0.000159
+        Other: 5.5e-05
+      counts:
+        Fixed wing single engine: 219605
+        Fixed wing multi engine: 49091
+        Rotorcraft: 25454
+        Balloon: 5207
+        Glider: 4851
+        Powered Parachute: 1901
+        Hybrid Lift: 1189
+        Weight-shift-control: 1053
+        Gyroplane: 386
+        Blimp/Dirigible: 49
+        Other: 17
+      total: 308803
+evidence:
+- publisher: Federal Aviation Administration
+  title: FAA Releasable Aircraft Database, yearly archive 2025 (MASTER.txt in ReleasableAircraft.2025.zip)
+  url: https://registry.faa.gov/database/yearly/ReleasableAircraft.2025.zip
+  accessed_at: '2026-10-31'
+  locator: MASTER.txt, record N-NUMBER=100, column TYPE AIRCRAFT
+  value: '4'
+  unit: text
+  snippet: 7100510,17003,1940,1,BENE MARY D
+  source_license: unstated
+  content_sha256: e4983ec1313caf9e45ebef1c8fda3a8f2d581419cbe2839b1d83ea74875b5f86
+  role: primary
+- publisher: Federal Aviation Administration
+  title: FAA Aircraft Registration Database record layout (ardata.pdf)
+  url: https://registry.faa.gov/database/ardata.pdf
+  accessed_at: '2026-10-31'
+  locator: page 5, Type Aircraft
+  value: Glider
+  unit: text
+  snippet: 249 1 1 - Glider
+  source_license: unstated
+  content_sha256: 075c2e4c4f48860c6e77e44964a291c96fc4735a566e717dff5f416be2bc86fd
+  role: supporting
+assumed:
+- parameter: distribution.parameters.counts
+  value: MASTER.txt records grouped by TYPE AIRCRAFT, labelled from the record layout
+  method: derived
+  rationale: Each record is one registered aircraft; the code labels come from the Type Aircraft list in ardata.pdf.
+tests:
+- statistic: share["Fixed wing single engine"]
+  expected: 0.711149
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Aircraft on the FAA civil aircraft registry at the end of 2025, from the yearly archive of the Releasable
+  Aircraft Database (MASTER.txt, one record per registered aircraft). Categories are the Type Aircraft labels of
+  the FAA record layout. The publisher states no licence on the file itself, so the licence is recorded as unstated
+  and the entry held at license-review even though US federal publications are normally free to reuse.

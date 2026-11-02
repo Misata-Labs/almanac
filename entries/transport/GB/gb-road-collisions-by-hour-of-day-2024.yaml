@@ -1,0 +1,109 @@
+id: gb-road-collisions-by-hour-of-day-2024
+title: Great Britain reported road collisions by hour of the day, 2024 (DfT STATS19)
+kind: marginal
+domain: transport
+region: GB
+status: verified
+tier: A
+tags:
+- road-safety
+- collisions
+- stats19
+- dft
+- transport
+- telematics
+- by-hour
+- time-of-day
+use_cases:
+- telematics-demo
+- insurance-demo
+- claims-generation
+- event-timestamps
+- fleet-demo
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+spec:
+  variable: collision_hour
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        '00': 0.016309
+        '01': 0.010542
+        '02': 0.007669
+        '03': 0.006361
+        '04': 0.005846
+        '05': 0.009314
+        '06': 0.019579
+        '07': 0.040237
+        08: 0.065424
+        09: 0.044171
+        '10': 0.043804
+        '11': 0.05074
+        '12': 0.05609
+        '13': 0.058874
+        '14': 0.063759
+        '15': 0.082515
+        '16': 0.08409
+        '17': 0.087033
+        '18': 0.070932
+        '19': 0.054257
+        '20': 0.038364
+        '21': 0.033519
+        '22': 0.028724
+        '23': 0.021847
+      counts:
+        '00': 1646
+        '01': 1064
+        '02': 774
+        '03': 642
+        '04': 590
+        '05': 940
+        '06': 1976
+        '07': 4061
+        08: 6603
+        09: 4458
+        '10': 4421
+        '11': 5121
+        '12': 5661
+        '13': 5942
+        '14': 6435
+        '15': 8328
+        '16': 8487
+        '17': 8784
+        '18': 7159
+        '19': 5476
+        '20': 3872
+        '21': 3383
+        '22': 2899
+        '23': 2205
+      total: 100927
+evidence:
+- publisher: Department for Transport
+  title: 'DfT road safety data: dft-road-casualty-statistics-collision-2024.csv (STATS19 collisions, Great Britain)'
+  url: https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-collision-2024.csv
+  accessed_at: '2026-10-31'
+  locator: record collision_index=202417H100324, column time
+  value: '19:30'
+  unit: text
+  snippet: 202417H100324,2024,17H100324,449865,528767,-1.22869,54.65155,17,2,1,5,12/01/2024,6,19:30
+  source_license: OGL-UK-3.0
+  content_sha256: 32a78f4662e309160f37b1ea2b82017e85e07b62a022d680da7140e88706a17c
+  role: primary
+assumed:
+- parameter: distribution.parameters.counts
+  value: records grouped by the hour of the time column (hh:mm)
+  method: derived
+  rationale: Each record is one collision with a time of day; 0 records without a well-formed time are excluded.
+tests:
+- statistic: share["17"]
+  expected: 0.087033
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: 'Personal-injury road collisions reported to the police in Great Britain in 2024 from the DfT road safety
+  open data (STATS19) collision file, one record per collision. Categories are the two-digit hour of the 24-hour
+  clock. Published under the Open Government Licence v3.0 (GOV.UK). '

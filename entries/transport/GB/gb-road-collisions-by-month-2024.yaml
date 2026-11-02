@@ -1,0 +1,85 @@
+id: gb-road-collisions-by-month-2024
+title: Great Britain reported road collisions by month of the year, 2024 (DfT STATS19)
+kind: marginal
+domain: transport
+region: GB
+status: verified
+tier: A
+tags:
+- road-safety
+- collisions
+- stats19
+- dft
+- transport
+- telematics
+- seasonality
+- by-month
+use_cases:
+- telematics-demo
+- insurance-demo
+- claims-generation
+- event-timestamps
+- fleet-demo
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+spec:
+  variable: collision_month
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        January: 0.082248
+        February: 0.074678
+        March: 0.077412
+        April: 0.075758
+        May: 0.089005
+        June: 0.089807
+        July: 0.084269
+        August: 0.081158
+        September: 0.087568
+        October: 0.089857
+        November: 0.088371
+        December: 0.07987
+      counts:
+        January: 8301
+        February: 7537
+        March: 7813
+        April: 7646
+        May: 8983
+        June: 9064
+        July: 8505
+        August: 8191
+        September: 8838
+        October: 9069
+        November: 8919
+        December: 8061
+      total: 100927
+evidence:
+- publisher: Department for Transport
+  title: 'DfT road safety data: dft-road-casualty-statistics-collision-2024.csv (STATS19 collisions, Great Britain)'
+  url: https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-collision-2024.csv
+  accessed_at: '2026-10-31'
+  locator: record collision_index=202417H100324, column date
+  value: 12/01/2024
+  unit: text
+  snippet: 202417H100324,2024,17H100324,449865,528767,-1.22869,54.65155,17,2,1,5,12/01/2024,6,19:30
+  source_license: OGL-UK-3.0
+  content_sha256: 32a78f4662e309160f37b1ea2b82017e85e07b62a022d680da7140e88706a17c
+  role: primary
+assumed:
+- parameter: distribution.parameters.counts
+  value: records grouped by the month of the date column (dd/mm/yyyy)
+  method: derived
+  rationale: Each record is one collision dated in the date column; months are read from that date.
+tests:
+- statistic: share["October"]
+  expected: 0.089857
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: 'Personal-injury road collisions reported to the police in Great Britain in 2024 from the DfT road safety
+  open data (STATS19) collision file, one record per collision. Categories are English month names in calendar order.
+  Published under the Open Government Licence v3.0 (GOV.UK). '

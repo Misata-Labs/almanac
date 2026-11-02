@@ -1,0 +1,134 @@
+id: gb-mot-test-results-by-vehicle-class-2024-25
+title: 'Great Britain MOT test results by class of vehicle, financial year 2024 to 2025: tests, fails and fail rates
+  (DVSA)'
+kind: rule
+domain: automotive
+region: GB
+status: verified
+tier: A
+tags:
+- mot
+- dvsa
+- vehicle-inspection
+- pass-rate
+- reference-table
+- transport
+- vehicles
+use_cases:
+- fleet-demo
+- automotive-demo
+- insurance-demo
+- telematics-demo
+valid_from: '2024-04-01'
+valid_to: '2025-03-31'
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    source: dvsa-mot-01
+    financial_year: 2024 to 2025
+    period: Total
+    rows:
+      Classes 1 & 2:
+        class_description: 'Classes 1 & 2: Motorcycles'
+        tests: 999625
+        pass_after_rectification: 54710
+        fails: 85233
+        initial_fail_rate_percent: 14.0
+        final_fail_rate_percent: 8.53
+        tests_failed_with_dangerous_item: 43835
+        initial_fail_rate_dangerous_item_percent: 4.39
+      Classes 3 & 4:
+        class_description: 'Classes 3 & 4: Cars, vans and passenger vehicles with up to 12 seats'
+        tests: 33128617
+        pass_after_rectification: 1793797
+        fails: 7509465
+        initial_fail_rate_percent: 28.08
+        final_fail_rate_percent: 22.67
+        tests_failed_with_dangerous_item: 2551781
+        initial_fail_rate_dangerous_item_percent: 7.7
+      Class 5:
+        class_description: 'Class 5: Private passenger vehicles with more than 12 seats'
+        tests: 41423
+        pass_after_rectification: 1877
+        fails: 8984
+        initial_fail_rate_percent: 26.22
+        final_fail_rate_percent: 21.69
+        tests_failed_with_dangerous_item: 2647
+        initial_fail_rate_dangerous_item_percent: 6.39
+      Class 7:
+        class_description: 'Class 7: Goods vehicles between 3,000 and 3,500 kg gross vehicle weight'
+        tests: 1059382
+        pass_after_rectification: 73736
+        fails: 300281
+        initial_fail_rate_percent: 35.31
+        final_fail_rate_percent: 28.34
+        tests_failed_with_dangerous_item: 103207
+        initial_fail_rate_dangerous_item_percent: 9.74
+      Total:
+        class_description: Total
+        tests: 35229047
+        pass_after_rectification: 1924120
+        fails: 7903963
+        initial_fail_rate_percent: 27.9
+        final_fail_rate_percent: 22.44
+        tests_failed_with_dangerous_item: 2701470
+        initial_fail_rate_dangerous_item_percent: 7.67
+  vectors:
+  - input:
+      key: Classes 1 & 2
+      column: tests
+    expected: 999625
+    origin: source
+  - input:
+      key: Classes 3 & 4
+      column: tests
+    expected: 33128617
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Driver and Vehicle Standards Agency
+  title: 'DVSA MOT testing data for Great Britain, table 01: MOT test results by class of vehicle (CSV)'
+  url: https://assets.publishing.service.gov.uk/media/6a6cbc31cceb23e8678977c3/dvsa-mot-01-mot-test-results-by-class-of-vehicle.csv
+  accessed_at: '2026-10-31'
+  locator: 'row 2024 to 2025 / Total / Classes 1 & 2: Motorcycles, column Initial fail rate'
+  value: 14.0
+  unit: percent
+  snippet: 2024 to 2025,Total,
+  source_license: OGL-UK-3.0
+  content_sha256: c8ea1cdd735c034f08f829b9d40656144464bb9931f1c777ea2c29f7a1101866
+  role: primary
+- publisher: Driver and Vehicle Standards Agency
+  title: 'DVSA MOT testing data for Great Britain, table 01: MOT test results by class of vehicle (CSV)'
+  url: https://assets.publishing.service.gov.uk/media/6a6cbc31cceb23e8678977c3/dvsa-mot-01-mot-test-results-by-class-of-vehicle.csv
+  accessed_at: '2026-10-31'
+  locator: 'row 2024 to 2025 / Total / Classes 1 & 2: Motorcycles, column Tests'
+  value: 999,625
+  unit: text
+  snippet: '"999,625"'
+  source_license: OGL-UK-3.0
+  content_sha256: c8ea1cdd735c034f08f829b9d40656144464bb9931f1c777ea2c29f7a1101866
+  role: primary
+assumed:
+- parameter: rows[*].tests, fails and pass_after_rectification
+  value: published figures with thousands separators removed
+  method: derived
+  rationale: Counts are published as quoted strings with comma separators; they are stored as integers.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: max[tests]
+  expected: 35229047.0
+  tolerance: 1.0e-09
+notes: 'MOT test outcomes for the financial year 2024 to 2025 (rows with Period Total) by test class from DVSA table
+  01: tests conducted, passes after rectification at the test station, fails, the initial and final fail rates in
+  percent, and the tests failed with at least one dangerous item. The table also carries 2025 to 2026, but its Total
+  rows there do not reconcile with the sum of its quarters and its dangerous-item columns exceed the test counts
+  for some classes, so the last internally consistent financial year is used. Rows are keyed by the class label
+  (Classes 1 & 2, Classes 3 & 4, Class 5, Class 7) and carry the full class description. Published under the Open
+  Government Licence v3.0 (GOV.UK). '

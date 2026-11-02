@@ -1,0 +1,109 @@
+id: us-bts-border-crossings-by-measure-given-border-2024
+title: United States inbound border crossings by measure given border (Canada or Mexico), 2024 (BTS)
+kind: conditional
+domain: transport
+region: US
+status: license-review
+tier: A
+tags:
+- border-crossings
+- bts
+- logistics
+- customs
+- transport
+- mobility
+use_cases:
+- logistics-demo
+- travel-demo
+- demand-forecasting
+- fleet-demo
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+spec:
+  variable: measure
+  unit: ratio
+  given: border
+  distributions:
+    us_canada_border:
+      family: categorical
+      parameters:
+        shares:
+          Buses: 0.000675
+          Bus Passengers: 0.014373
+          Pedestrians: 0.003621
+          Personal Vehicle Passengers: 0.600131
+          Personal Vehicles: 0.302561
+          Train Passengers: 0.00394
+          Trains: 0.00028
+          Trucks: 0.074418
+        counts:
+          Buses: 50334
+          Bus Passengers: 1072076
+          Pedestrians: 270109
+          Personal Vehicle Passengers: 44762365
+          Personal Vehicles: 22567329
+          Train Passengers: 293893
+          Trains: 20913
+          Trucks: 5550630
+        total: 74587649
+    us_mexico_border:
+      family: categorical
+      parameters:
+        shares:
+          Buses: 0.000517
+          Bus Passengers: 0.008294
+          Pedestrians: 0.157985
+          Personal Vehicle Passengers: 0.517268
+          Personal Vehicles: 0.287416
+          Train Passengers: 2.0e-06
+          Trains: 4.3e-05
+          Trucks: 0.028475
+        counts:
+          Buses: 138187
+          Bus Passengers: 2218751
+          Pedestrians: 42261430
+          Personal Vehicle Passengers: 138370646
+          Personal Vehicles: 76884566
+          Train Passengers: 418
+          Trains: 11394
+          Trucks: 7617207
+        total: 267502599
+evidence:
+- publisher: Bureau of Transportation Statistics
+  title: BTS Border Crossing Entry Data, Socrata dataset keg4-3bc2 on data.bts.gov (SoQL CSV export)
+  url: https://data.bts.gov/resource/keg4-3bc2.csv?$select=border,measure,sum(value)&$group=border,measure&$order=border,measure&$where=date%3E=%272024-01-01T00:00:00%27%20AND%20date%3C%272025-01-01T00:00:00%27
+  accessed_at: '2026-10-31'
+  locator: row border=US-Canada Border, measure=Buses, sum_value
+  value: '50334'
+  unit: count
+  snippet: '"US-Canada Border","Buses","50334"'
+  source_license: unstated
+  content_sha256: 5ad160a87c8fb998c2830f804c61891d72b09803b3d4bf0c6b04b75ebebcf7c1
+  role: primary
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: sum_value of a measure / sum over the measures of the border
+  method: derived
+  rationale: The query returns annual totals per border and measure; shares are each measure over the sum of all
+    measures at that border, which mixes vehicle, container and person counts and is meant as a mix of record types
+    rather than a physical ratio.
+tests:
+- statistic: share[us_canada_border,"Personal Vehicle Passengers"]
+  expected: 0.600131
+  tolerance: 0.005
+- statistic: sum_of_shares[us_canada_border]
+  expected: 1
+  tolerance: 0.0001
+- statistic: share[us_mexico_border,"Personal Vehicle Passengers"]
+  expected: 0.517268
+  tolerance: 0.005
+- statistic: sum_of_shares[us_mexico_border]
+  expected: 1
+  tolerance: 0.0001
+notes: Inbound crossings at US land ports of entry in 2024 as published by BTS from US Customs and Border Protection
+  counts, queried with a SoQL aggregate on the Border Crossing Entry Data dataset. Measures count vehicles, containers
+  and people separately (for example Trucks and Personal Vehicle Passengers), so they are not additive across measures.
+  Conditioning keys are us_canada_border and us_mexico_border. The dataset's Socrata metadata declares the licence
+  as Public Domain, which has no SPDX identifier in this repository, so the licence is recorded as unstated and
+  the entry held at license-review.

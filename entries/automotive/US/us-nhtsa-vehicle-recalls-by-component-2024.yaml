@@ -1,0 +1,225 @@
+id: us-nhtsa-vehicle-recalls-by-component-2024
+title: 'United States vehicle safety recalls by component, report received in 2024: campaigns and units potentially
+  affected (NHTSA)'
+kind: rule
+domain: automotive
+region: US
+status: license-review
+tier: A
+tags:
+- recalls
+- nhtsa
+- vehicle-safety
+- components
+- reference-table
+- transport
+- vehicles
+use_cases:
+- fleet-demo
+- automotive-demo
+- insurance-demo
+- claims-generation
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataset: 6axg-epim
+    query: $select=component,count(nhtsa_id),sum(potentially_affected)&$group=component&$order=component&$where=report_received_date%20between%20%272024-01-01T00:00:00%27%20and%20%272024-12-31T23:59:59%27%20AND%20recall_type=%27Vehicle%27
+    year: 2024
+    rows:
+      AIR BAGS:
+        recalls: 49
+        potentially_affected_units: 2769577
+        share_of_recalls: 0.051579
+      BACK OVER PREVENTION:
+        recalls: 40
+        potentially_affected_units: 2750225
+        share_of_recalls: 0.042105
+      CHILD SEAT:
+        recalls: 3
+        potentially_affected_units: 422
+        share_of_recalls: 0.003158
+      COMMUNICATION:
+        recalls: 1
+        potentially_affected_units: 21
+        share_of_recalls: 0.001053
+      ELECTRICAL SYSTEM:
+        recalls: 203
+        potentially_affected_units: 7688068
+        share_of_recalls: 0.213684
+      ELECTRONIC STABILITY CONTROL (ESC):
+        recalls: 9
+        potentially_affected_units: 1549587
+        share_of_recalls: 0.009474
+      ENGINE:
+        recalls: 2
+        potentially_affected_units: 85254
+        share_of_recalls: 0.002105
+      ENGINE AND ENGINE COOLING:
+        recalls: 29
+        potentially_affected_units: 371791
+        share_of_recalls: 0.030526
+      EQUIPMENT:
+        recalls: 152
+        potentially_affected_units: 354850
+        share_of_recalls: 0.16
+      EQUIPMENT ADAPTIVE/MOBILITY:
+        recalls: 7
+        potentially_affected_units: 5056
+        share_of_recalls: 0.007368
+      EXTERIOR LIGHTING:
+        recalls: 43
+        potentially_affected_units: 356326
+        share_of_recalls: 0.045263
+      FORWARD COLLISION AVOIDANCE:
+        recalls: 4
+        potentially_affected_units: 10449
+        share_of_recalls: 0.004211
+      FUEL/PROPULSION SYSTEM:
+        recalls: 1
+        potentially_affected_units: 1545
+        share_of_recalls: 0.001053
+      FUEL SYSTEM, DIESEL:
+        recalls: 11
+        potentially_affected_units: 303724
+        share_of_recalls: 0.011579
+      FUEL SYSTEM, GASOLINE:
+        recalls: 22
+        potentially_affected_units: 1406478
+        share_of_recalls: 0.023158
+      FUEL SYSTEM, OTHER:
+        recalls: 5
+        potentially_affected_units: 183
+        share_of_recalls: 0.005263
+      HYBRID PROPULSION SYSTEM:
+        recalls: 2
+        potentially_affected_units: 19516
+        share_of_recalls: 0.002105
+      LANE DEPARTURE:
+        recalls: 1
+        potentially_affected_units: 844
+        share_of_recalls: 0.001053
+      LATCHES/LOCKS/LINKAGES:
+        recalls: 11
+        potentially_affected_units: 914286
+        share_of_recalls: 0.011579
+      PARKING BRAKE:
+        recalls: 13
+        potentially_affected_units: 34870
+        share_of_recalls: 0.013684
+      POWER TRAIN:
+        recalls: 39
+        potentially_affected_units: 2562822
+        share_of_recalls: 0.041053
+      SEAT BELTS:
+        recalls: 21
+        potentially_affected_units: 273168
+        share_of_recalls: 0.022105
+      SEATS:
+        recalls: 29
+        potentially_affected_units: 514041
+        share_of_recalls: 0.030526
+      SERVICE BRAKES:
+        recalls: 2
+        potentially_affected_units: 16738
+        share_of_recalls: 0.002105
+      SERVICE BRAKES, AIR:
+        recalls: 13
+        potentially_affected_units: 13347
+        share_of_recalls: 0.013684
+      SERVICE BRAKES, ELECTRIC:
+        recalls: 2
+        potentially_affected_units: 153128
+        share_of_recalls: 0.002105
+      SERVICE BRAKES, HYDRAULIC:
+        recalls: 28
+        potentially_affected_units: 1125078
+        share_of_recalls: 0.029474
+      SERVICE BRAKES, HYDRAULIC; AUTOHOLD BRAKE SYSTEM/BRAKE HOLD:
+        recalls: 1
+        potentially_affected_units: 7745
+        share_of_recalls: 0.001053
+      STEERING:
+        recalls: 58
+        potentially_affected_units: 2217665
+        share_of_recalls: 0.061053
+      STRUCTURE:
+        recalls: 57
+        potentially_affected_units: 2526984
+        share_of_recalls: 0.06
+      SUSPENSION:
+        recalls: 28
+        potentially_affected_units: 30002
+        share_of_recalls: 0.029474
+      TIRES:
+        recalls: 18
+        potentially_affected_units: 738011
+        share_of_recalls: 0.018947
+      TRACTION CONTROL SYSTEM:
+        recalls: 1
+        potentially_affected_units: 26776
+        share_of_recalls: 0.001053
+      TRAILER HITCHES:
+        recalls: 8
+        potentially_affected_units: 2674
+        share_of_recalls: 0.008421
+      VEHICLE SPEED CONTROL:
+        recalls: 4
+        potentially_affected_units: 5994
+        share_of_recalls: 0.004211
+      VISIBILITY:
+        recalls: 25
+        potentially_affected_units: 526143
+        share_of_recalls: 0.026316
+      WHEELS:
+        recalls: 8
+        potentially_affected_units: 2978
+        share_of_recalls: 0.008421
+  vectors:
+  - input:
+      key: AIR BAGS
+      column: recalls
+    expected: 49
+    origin: source
+  - input:
+      key: WHEELS
+      column: recalls
+    expected: 8
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: National Highway Traffic Safety Administration
+  title: NHTSA Recalls Data, Socrata dataset 6axg-epim on data.transportation.gov (SoQL CSV export)
+  url: https://data.transportation.gov/resource/6axg-epim.csv?$select=component,count(nhtsa_id),sum(potentially_affected)&$group=component&$order=component&$where=report_received_date%20between%20%272024-01-01T00:00:00%27%20and%20%272024-12-31T23:59:59%27%20AND%20recall_type=%27Vehicle%27
+  accessed_at: '2026-10-31'
+  locator: row component=AIR BAGS, count_nhtsa_id
+  value: '49'
+  unit: count
+  snippet: '"AIR BAGS","49","2769577"'
+  source_license: unstated
+  content_sha256: 8d6c4e69a6d6beeec2e02f9091f4f8de09b3e375438181bbeb321ce5bdd60699
+  role: primary
+assumed:
+- parameter: rows[*].share_of_recalls
+  value: recalls / sum of recalls over components
+  method: derived
+  rationale: The query returns counts per component; the share is each count over their sum.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 37
+  tolerance: 0
+- statistic: max[recalls]
+  expected: 203.0
+  tolerance: 1.0e-09
+notes: Vehicle recall campaigns (recall_type Vehicle) whose Part 573 report NHTSA received in 2024, grouped by the
+  affected component, with the number of campaigns and the sum of units potentially affected, from a SoQL aggregate
+  query on the NHTSA Recalls Data dataset. A campaign naming several components is counted under each. Rows are
+  keyed by the component text exactly as the dataset spells it. The dataset's Socrata metadata declares the licence
+  as Public Domain, which has no SPDX identifier in this repository, so the licence is recorded as unstated and
+  the entry held at license-review.

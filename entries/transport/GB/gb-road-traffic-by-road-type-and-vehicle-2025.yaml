@@ -1,0 +1,120 @@
+id: gb-road-traffic-by-road-type-and-vehicle-2025
+title: Great Britain road traffic in billion vehicle miles by road type, rural or urban, and vehicle type, 2025
+  (DfT TRA0104)
+kind: rule
+domain: transport
+region: GB
+status: verified
+tier: A
+tags:
+- road-traffic
+- vehicle-miles
+- dft
+- transport
+- telematics
+- road-type
+- reference-table
+use_cases:
+- telematics-demo
+- fleet-demo
+- logistics-demo
+- capacity-planning
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    source: TRA0104
+    year: 2025
+    unit: billion vehicle miles
+    rows:
+      motorway_all:
+        road_type: Motorway
+        rural_urban: All
+        cars_and_taxis: 50.8
+        light_commercial_vehicles: 13.0
+        heavy_goods_vehicles: 7.7
+        motorcycles: 0.2
+        buses_and_coaches: 0.2
+        all_motor_vehicles: 71.9
+      minor_road_rural:
+        road_type: Minor Road
+        rural_urban: Rural
+        cars_and_taxis: 38.7
+        light_commercial_vehicles: 10.9
+        heavy_goods_vehicles: 0.7
+        motorcycles: 0.4
+        buses_and_coaches: 0.3
+        all_motor_vehicles: 51.1
+      minor_road_urban:
+        road_type: Minor Road
+        rural_urban: Urban
+        cars_and_taxis: 55.7
+        light_commercial_vehicles: 9.9
+        heavy_goods_vehicles: 0.5
+        motorcycles: 1.1
+        buses_and_coaches: 0.6
+        all_motor_vehicles: 68.0
+      all_roads_all:
+        road_type: All Roads
+        rural_urban: All
+        cars_and_taxis: 262.4
+        light_commercial_vehicles: 58.8
+        heavy_goods_vehicles: 16.3
+        motorcycles: 3.0
+        buses_and_coaches: 2.0
+        all_motor_vehicles: 342.6
+  vectors:
+  - input:
+      key: motorway_all
+      column: all_motor_vehicles
+    expected: 71.9
+    origin: source
+  - input:
+      key: all_roads_all
+      column: all_motor_vehicles
+    expected: 342.6
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: Department for Transport
+  title: 'DfT road traffic statistics table TRA0104: road traffic (vehicle miles) by vehicle type and road class
+    in Great Britain, annual (ODS)'
+  url: https://assets.publishing.service.gov.uk/media/6a0b7be9f7c2e79c33db9143/tra0104-miles-by-vehicle-and-road-type.ods
+  accessed_at: '2026-10-31'
+  locator: sheet TRA0104, row Motorway / All / All / All Motor Vehicles, column 2025
+  value: '71.9'
+  unit: decimal
+  snippet: office:value="71.9"
+  source_license: OGL-UK-3.0
+  content_sha256: bf91bde1a7666dd3e8698dafe27e7bb158f15f8b05a647871e97ff9d4d811381
+  role: primary
+- publisher: Department for Transport
+  title: 'DfT road traffic statistics table TRA0104: road traffic (vehicle miles) by vehicle type and road class
+    in Great Britain, annual (ODS)'
+  url: https://assets.publishing.service.gov.uk/media/6a0b7be9f7c2e79c33db9143/tra0104-miles-by-vehicle-and-road-type.ods
+  accessed_at: '2026-10-31'
+  locator: sheet TRA0104, row All Roads / All / All / Cars and Taxis, column 2025
+  value: '262.4'
+  unit: decimal
+  snippet: office:value="262.4"
+  source_license: OGL-UK-3.0
+  content_sha256: bf91bde1a7666dd3e8698dafe27e7bb158f15f8b05a647871e97ff9d4d811381
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: max[all_motor_vehicles]
+  expected: 342.6
+  tolerance: 1.0e-09
+notes: 'Motor vehicle traffic in 2025 in billion vehicle miles by road type (motorway, rural and urban A roads and
+  minor roads, all roads) and vehicle type from DfT table TRA0104, rows with Road Management All. Rows are keyed
+  by road type and rural-urban classification in snake case; vehicle types are columns. Published under the Open
+  Government Licence v3.0 (GOV.UK). '

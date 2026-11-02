@@ -1,0 +1,117 @@
+id: gb-mot-initial-failure-defects-by-category-classes-3-4-2024-25
+title: Great Britain MOT initial failure defects by category, classes 3 and 4 (cars and vans), financial year 2024
+  to 2025 (DVSA)
+kind: marginal
+domain: automotive
+region: GB
+status: verified
+tier: A
+tags:
+- mot
+- dvsa
+- vehicle-inspection
+- defects
+- transport
+- vehicles
+use_cases:
+- fleet-demo
+- automotive-demo
+- claims-generation
+- insurance-demo
+observed_period:
+  start: '2024-04-01'
+  end: '2025-03-31'
+spec:
+  variable: defect_category
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Body, chassis, structure: 0.06189
+        Brakes: 0.157653
+        Buses and coaches supplementary tests: 0.0
+        Identification of the vehicle: 0.006052
+        Lamps, reflectors and electrical equipment: 0.244143
+        Motorcycle brakes: 0.0
+        Motorcycle lamps and reflectors: 0.0
+        Motorcycle tyres: 0.0
+        Noise, emissions and leaks: 0.056619
+        Road Wheels: 0.007224
+        Seat belt installation check: 9.8e-05
+        Seat belts and supplementary restraint systems: 0.015814
+        Speedometer and speed limiter: 9.8e-05
+        Steering: 0.034166
+        Suspension: 0.189282
+        Tyres: 0.125537
+        Visibility: 0.077606
+        Average defects per Initial Test Failure: 0.023819
+      published_percent_of_defects:
+        Body, chassis, structure: 6.34
+        Brakes: 16.15
+        Buses and coaches supplementary tests: 0.0
+        Identification of the vehicle: 0.62
+        Lamps, reflectors and electrical equipment: 25.01
+        Motorcycle brakes: 0.0
+        Motorcycle lamps and reflectors: 0.0
+        Motorcycle tyres: 0.0
+        Noise, emissions and leaks: 5.8
+        Road Wheels: 0.74
+        Seat belt installation check: 0.01
+        Seat belts and supplementary restraint systems: 1.62
+        Speedometer and speed limiter: 0.01
+        Steering: 3.5
+        Suspension: 19.39
+        Tyres: 12.86
+        Visibility: 7.95
+        Average defects per Initial Test Failure: 2.44
+      percent_of_tests:
+        Body, chassis, structure: 3.41
+        Brakes: 6.63
+        Buses and coaches supplementary tests: 0.0
+        Identification of the vehicle: 0.34
+        Lamps, reflectors and electrical equipment: 10.89
+        Motorcycle brakes: 0.0
+        Motorcycle lamps and reflectors: 0.0
+        Motorcycle tyres: 0.0
+        Noise, emissions and leaks: 3.15
+        Road Wheels: 0.38
+        Seat belt installation check: 0.01
+        Seat belts and supplementary restraint systems: 0.97
+        Speedometer and speed limiter: 0.0
+        Steering: 1.97
+        Suspension: 8.73
+        Tyres: 6.39
+        Visibility: 4.54
+        Overall Initial Failure Rate: 28.08
+        Average defects per Initial Test Failure: null
+evidence:
+- publisher: Driver and Vehicle Standards Agency
+  title: 'DVSA MOT testing data for Great Britain, table 03: MOT class 3 and 4 vehicles, initial failures by defect
+    category (CSV)'
+  url: https://assets.publishing.service.gov.uk/media/6a6cbc4c8319ab05f7caa2e7/dvsa-mot-03-mot-class-3-and-4-vehicles-initial-failures-by-defect-category.csv
+  accessed_at: '2026-10-31'
+  locator: row 2024 to 2025 / Total / Lamps, reflectors and electrical equipment, column Overall % of defects
+  value: 25.01
+  unit: percent
+  snippet: 2024 to 2025,Total,"Lamps, reflectors and electrical equipment"
+  source_license: OGL-UK-3.0
+  content_sha256: adab07e3971e9568e7fcdbcfb107ef2d73028af677799dcb551e33cb1b821210
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: Overall % of defects / sum over categories
+  method: derived
+  rationale: DVSA publishes the percentage of all defects falling in each category; the shares renormalise those
+    percentages to sum to one.
+tests:
+- statistic: share["Lamps, reflectors and electrical equipment"]
+  expected: 0.244143
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: 'Defects recorded at initial MOT failures of class 3 and 4 vehicles (cars, vans and passenger vehicles with
+  up to 12 seats) in financial year 2024 to 2025 by defect category from DVSA table 03, with the published percentage
+  of defects and percentage of tests beside the derived shares. Published under the Open Government Licence v3.0
+  (GOV.UK). '

@@ -1,0 +1,155 @@
+id: gb-rail-passenger-journeys-annual-2000-26
+title: Great Britain national rail passenger journeys in millions per financial year, 2000/01 to 2025/26 (ORR table
+  1220)
+kind: temporal
+domain: transport
+region: GB
+status: license-review
+tier: A
+tags:
+- rail
+- passenger-journeys
+- orr
+- transport
+- mobility
+use_cases:
+- travel-demo
+- demand-forecasting
+- capacity-planning
+observed_period:
+  start: '2000-04-01'
+  end: '2026-03-31'
+spec:
+  variable: rail_passenger_journeys_million
+  unit: decimal
+  frequency: annual
+  columns:
+  - provisional
+  series:
+  - period: 2000/01
+    value: 961.666
+    provisional: 0
+  - period: 2001/02
+    value: 964.374
+    provisional: 0
+  - period: 2002/03
+    value: 980.511
+    provisional: 0
+  - period: 2003/04
+    value: 1016.813
+    provisional: 0
+  - period: 2004/05
+    value: 1044.566
+    provisional: 0
+  - period: 2005/06
+    value: 1081.747
+    provisional: 0
+  - period: 2006/07
+    value: 1150.271
+    provisional: 0
+  - period: 2007/08
+    value: 1223.235
+    provisional: 0
+  - period: 2008/09
+    value: 1271.935
+    provisional: 0
+  - period: 2009/10
+    value: 1264.168
+    provisional: 0
+  - period: 2010/11
+    value: 1350.664
+    provisional: 0
+  - period: 2011/12
+    value: 1456.276
+    provisional: 0
+  - period: 2012/13
+    value: 1497.671
+    provisional: 0
+  - period: 2013/14
+    value: 1583.381
+    provisional: 0
+  - period: 2014/15
+    value: 1650.407
+    provisional: 0
+  - period: 2015/16
+    value: 1713.519
+    provisional: 0
+  - period: 2016/17
+    value: 1727.476
+    provisional: 0
+  - period: 2017/18
+    value: 1703.998
+    provisional: 0
+  - period: 2018/19
+    value: 1752.983
+    provisional: 0
+  - period: 2019/20
+    value: 1738.74
+    provisional: 0
+  - period: 2020/21
+    value: 387.885
+    provisional: 1
+  - period: 2021/22
+    value: 990.062
+    provisional: 1
+  - period: 2022/23
+    value: 1384.752
+    provisional: 1
+  - period: 2023/24
+    value: 1612.028
+    provisional: 1
+  - period: 2024/25
+    value: 1728.704
+    provisional: 1
+  - period: 2025/26
+    value: 1829.468
+    provisional: 1
+evidence:
+- publisher: Office of Rail and Road
+  title: 'ORR data portal table 1220: passenger journeys, Great Britain (ODS)'
+  url: https://dataportal.orr.gov.uk/media/1652/table-1220-passenger-journeys.ods
+  accessed_at: '2026-10-31'
+  locator: sheet 1220_Passenger_journeys, row 2025/26, Passenger journeys (million)
+  value: '1829.4682927767301'
+  unit: decimal
+  snippet: office:value="1829.4682927767301"
+  source_license: unstated
+  content_sha256: 4c279741df9d542514acbe3def2bdb88c56db1b0246223ffa2bde672b54c869c
+  role: primary
+- publisher: Office of Rail and Road
+  title: 'ORR data portal table 1220: passenger journeys, Great Britain (ODS)'
+  url: https://dataportal.orr.gov.uk/media/1652/table-1220-passenger-journeys.ods
+  accessed_at: '2026-10-31'
+  locator: sheet 1220_Passenger_journeys, row 2000/01, Passenger journeys (million)
+  value: '961.66593900099997'
+  unit: decimal
+  snippet: office:value="961.66593900099997"
+  source_license: unstated
+  content_sha256: 4c279741df9d542514acbe3def2bdb88c56db1b0246223ffa2bde672b54c869c
+  role: primary
+assumed:
+- parameter: series[*].value
+  value: published value rounded to three decimals
+  method: derived
+  rationale: The workbook stores unrounded floating-point values and displays one decimal; three decimals are kept.
+- parameter: series[*].provisional
+  value: 1 where the row label carries [p]
+  method: derived
+  rationale: ORR marks provisional years with [p] in the period label.
+tests:
+- statistic: value[2000/01]
+  expected: 961.666
+  tolerance: 1.0e-09
+- statistic: value[2025/26]
+  expected: 1829.468
+  tolerance: 1.0e-09
+- statistic: column[provisional,2025/26]
+  expected: 1
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 26
+  tolerance: 0
+notes: Passenger journeys on Great Britain's national rail network (franchised and open access operators, excluding
+  Eurostar, Underground and light rail) per financial year April to March from ORR table 1220, from the 2000/01
+  financial year. The provisional column flags years ORR marks [p]. The ORR data portal page and workbook carry
+  no licence statement, so the licence is recorded as unstated and the entry held at license-review.

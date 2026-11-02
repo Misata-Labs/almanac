@@ -1,0 +1,139 @@
+id: gb-road-collisions-speed-limit-given-severity-2024
+title: 'Great Britain reported road collisions: speed limit of the road given collision severity, 2024 (DfT STATS19)'
+kind: conditional
+domain: transport
+region: GB
+status: verified
+tier: A
+tags:
+- road-safety
+- collisions
+- stats19
+- dft
+- transport
+- telematics
+- speed-limit
+- severity
+use_cases:
+- telematics-demo
+- insurance-demo
+- claims-generation
+- event-timestamps
+- fleet-demo
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+spec:
+  variable: speed_limit_mph
+  unit: ratio
+  given: collision_severity
+  distributions:
+    Fatal:
+      family: categorical
+      parameters:
+        shares:
+          '20': 0.070573
+          '30': 0.284953
+          '40': 0.110519
+          '50': 0.090546
+          '60': 0.31225
+          '70': 0.131158
+        counts:
+          '20': 106
+          '30': 428
+          '40': 166
+          '50': 136
+          '60': 469
+          '70': 197
+        total: 1502
+    Serious:
+      family: categorical
+      parameters:
+        shares:
+          '20': 0.163244
+          '30': 0.475303
+          '40': 0.093864
+          '50': 0.04952
+          '60': 0.166384
+          '70': 0.051685
+        counts:
+          '20': 3847
+          '30': 11201
+          '40': 2212
+          '50': 1167
+          '60': 3921
+          '70': 1218
+        total: 23566
+    Slight:
+      family: categorical
+      parameters:
+        shares:
+          '20': 0.196794
+          '30': 0.509228
+          '40': 0.086625
+          '50': 0.044492
+          '60': 0.109668
+          '70': 0.053193
+        counts:
+          '20': 14928
+          '30': 38628
+          '40': 6571
+          '50': 3375
+          '60': 8319
+          '70': 4035
+        total: 75856
+evidence:
+- publisher: Department for Transport
+  title: 'DfT road safety data: dft-road-casualty-statistics-collision-2024.csv (STATS19 collisions, Great Britain)'
+  url: https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-collision-2024.csv
+  accessed_at: '2026-10-31'
+  locator: record collision_index=202417H100324, column speed_limit
+  value: '50'
+  unit: text
+  snippet: 202417H100324,2024,17H100324,449865,528767,-1.22869,54.65155,17,2,1,5,12/01/2024,6,19:30
+  source_license: OGL-UK-3.0
+  content_sha256: 32a78f4662e309160f37b1ea2b82017e85e07b62a022d680da7140e88706a17c
+  role: primary
+- publisher: Department for Transport
+  title: 'DfT road safety data: dft-road-casualty-statistics-collision-2024.csv (STATS19 collisions, Great Britain)'
+  url: https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-collision-2024.csv
+  accessed_at: '2026-10-31'
+  locator: record collision_index=202417H100324, column collision_severity
+  value: '2'
+  unit: text
+  snippet: 202417H100324,2024,17H100324,449865,528767,-1.22869,54.65155,17,2,1,5,12/01/2024,6,19:30
+  source_license: OGL-UK-3.0
+  content_sha256: 32a78f4662e309160f37b1ea2b82017e85e07b62a022d680da7140e88706a17c
+  role: primary
+- publisher: Department for Transport
+  title: 'DfT STATS20 2024 specification: instructions for the completion of road collision reports (PDF)'
+  url: https://assets.publishing.service.gov.uk/media/6925a35433d088f6d5da2cf0/STATS20_2024_specification.pdf
+  accessed_at: '2026-10-31'
+  locator: page 18, 1.4a Legacy collision severity
+  value: Fatal
+  unit: text
+  snippet: 1 Fatal
+  source_license: OGL-UK-3.0
+  content_sha256: 6f9e37a8be30ef4bb66fb03ae7e59d650542618e0158c5059e3a4fdb0ea47539
+  role: supporting
+assumed:
+- parameter: distributions[*].parameters.counts
+  value: records grouped by collision_severity then speed_limit; records with a missing speed limit dropped
+  method: derived
+  rationale: Each record is one collision on a road with the stated speed limit in miles per hour.
+tests:
+- statistic: share[Fatal,"60"]
+  expected: 0.31225
+  tolerance: 0.005
+- statistic: sum_of_shares[Fatal]
+  expected: 1
+  tolerance: 0.0001
+- statistic: share[Slight,"30"]
+  expected: 0.509228
+  tolerance: 0.005
+- statistic: sum_of_shares[Slight]
+  expected: 1
+  tolerance: 0.0001
+notes: 'Personal-injury road collisions reported to the police in Great Britain in 2024 from the DfT road safety
+  open data (STATS19) collision file, one record per collision. Conditioning keys are Fatal, Serious and Slight;
+  categories are the speed limit in mph. Published under the Open Government Licence v3.0 (GOV.UK). '

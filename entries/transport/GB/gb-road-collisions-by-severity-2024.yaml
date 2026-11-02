@@ -1,0 +1,78 @@
+id: gb-road-collisions-by-severity-2024
+title: Great Britain reported road collisions by severity (fatal, serious, slight), 2024 (DfT STATS19)
+kind: marginal
+domain: transport
+region: GB
+status: verified
+tier: A
+tags:
+- road-safety
+- collisions
+- stats19
+- dft
+- transport
+- telematics
+- severity
+use_cases:
+- telematics-demo
+- insurance-demo
+- claims-generation
+- event-timestamps
+- fleet-demo
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+spec:
+  variable: collision_severity
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Fatal: 0.014882
+        Serious: 0.233505
+        Slight: 0.751613
+      counts:
+        Fatal: 1502
+        Serious: 23567
+        Slight: 75858
+      total: 100927
+evidence:
+- publisher: Department for Transport
+  title: 'DfT road safety data: dft-road-casualty-statistics-collision-2024.csv (STATS19 collisions, Great Britain)'
+  url: https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-collision-2024.csv
+  accessed_at: '2026-10-31'
+  locator: record collision_index=202417H100324, column collision_severity
+  value: '2'
+  unit: text
+  snippet: 202417H100324,2024,17H100324,449865,528767,-1.22869,54.65155,17,2,1,5,12/01/2024,6,19:30
+  source_license: OGL-UK-3.0
+  content_sha256: 32a78f4662e309160f37b1ea2b82017e85e07b62a022d680da7140e88706a17c
+  role: primary
+- publisher: Department for Transport
+  title: 'DfT STATS20 2024 specification: instructions for the completion of road collision reports (PDF)'
+  url: https://assets.publishing.service.gov.uk/media/6925a35433d088f6d5da2cf0/STATS20_2024_specification.pdf
+  accessed_at: '2026-10-31'
+  locator: page 18, 1.4a Legacy collision severity
+  value: Fatal
+  unit: text
+  snippet: 1 Fatal
+  source_license: OGL-UK-3.0
+  content_sha256: 6f9e37a8be30ef4bb66fb03ae7e59d650542618e0158c5059e3a4fdb0ea47539
+  role: supporting
+assumed:
+- parameter: distribution.parameters.counts
+  value: records grouped by collision_severity, labelled from STATS20 section 1.4a
+  method: derived
+  rationale: Each record is one collision; severity codes 1, 2 and 3 are Fatal, Serious and Slight in the STATS20
+    specification.
+tests:
+- statistic: share["Slight"]
+  expected: 0.751613
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: 'Personal-injury road collisions reported to the police in Great Britain in 2024 from the DfT road safety
+  open data (STATS19) collision file, one record per collision. Categories are the legacy severity labels. Published
+  under the Open Government Licence v3.0 (GOV.UK). '

@@ -1,0 +1,82 @@
+id: gb-licensed-vehicles-by-body-type-2026q2
+title: Great Britain licensed vehicles by body type, end of 2026 Q2 (DfT/DVLA VEH0120)
+kind: marginal
+domain: automotive
+region: GB
+status: verified
+tier: A
+tags:
+- vehicles
+- dvla
+- vehicle-licensing
+- transport
+- body-type
+use_cases:
+- fleet-demo
+- insurance-demo
+- telematics-demo
+- automotive-demo
+observed_period:
+  start: '2026-06-30'
+  end: '2026-06-30'
+spec:
+  variable: body_type
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Cars: 0.81361
+        Light goods vehicles: 0.115524
+        Motorcycles: 0.035013
+        Other vehicles: 0.020158
+        Heavy goods vehicles: 0.012361
+        Buses and coaches: 0.003334
+      counts:
+        Cars: 33796875
+        Light goods vehicles: 4798816
+        Motorcycles: 1454406
+        Other vehicles: 837353
+        Heavy goods vehicles: 513455
+        Buses and coaches: 138494
+      total: 41539399
+evidence:
+- publisher: Department for Transport
+  title: 'DfT vehicle licensing statistics data file VEH0120_GB: licensed and SORN vehicles by body type, make,
+    model and fuel, quarterly'
+  url: https://assets.publishing.service.gov.uk/media/6aad4b12ce3f006bd4346ccf/df_VEH0120_GB.csv
+  accessed_at: '2026-10-31'
+  locator: row Cars / ABARTH / 500E / Battery electric / Licensed, column 2026 Q2
+  value: '348'
+  unit: count
+  snippet: Cars,ABARTH,ABARTH 500,500E,Battery electric,Licensed,348
+  source_license: OGL-UK-3.0
+  content_sha256: afdc4feb04a9577c84080926e06769fe60fc8d0a445df1032a95ec2bb7766a92
+  role: primary
+- publisher: Department for Transport
+  title: 'DfT vehicle licensing statistics data file VEH0120_GB: licensed and SORN vehicles by body type, make,
+    model and fuel, quarterly'
+  url: https://assets.publishing.service.gov.uk/media/6aad4b12ce3f006bd4346ccf/df_VEH0120_GB.csv
+  accessed_at: '2026-10-31'
+  locator: row Cars / ABARTH / 500E / Battery electric / Licensed, column BodyType
+  value: Cars
+  unit: text
+  snippet: Cars,ABARTH,ABARTH 500,500E,Battery electric,Licensed,348
+  source_license: OGL-UK-3.0
+  content_sha256: afdc4feb04a9577c84080926e06769fe60fc8d0a445df1032a95ec2bb7766a92
+  role: primary
+assumed:
+- parameter: distribution.parameters.counts
+  value: sum of the 2026 Q2 column over licensed rows grouped by BodyType
+  method: derived
+  rationale: The file lists vehicle counts per make and model; the body-type totals are their sums.
+tests:
+- statistic: share["Cars"]
+  expected: 0.81361
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: 'Vehicles licensed in Great Britain at the end of 2026 Q2 from the DfT and DVLA vehicle licensing statistics
+  data file VEH0120_GB (rows per body type, make, model and fuel; SORN rows excluded). Published under the Open
+  Government Licence v3.0 (GOV.UK). '

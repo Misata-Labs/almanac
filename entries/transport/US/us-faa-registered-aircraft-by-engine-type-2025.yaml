@@ -1,0 +1,94 @@
+id: us-faa-registered-aircraft-by-engine-type-2025
+title: United States registered civil aircraft by engine type, end of 2025 (FAA registry)
+kind: marginal
+domain: transport
+region: US
+status: license-review
+tier: A
+tags:
+- aviation
+- aircraft
+- faa
+- registry
+- transport
+- engine-type
+use_cases:
+- travel-demo
+- fleet-demo
+- insurance-demo
+- logistics-demo
+observed_period:
+  start: '2025-12-31'
+  end: '2025-12-31'
+spec:
+  variable: engine_type
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Reciprocating: 0.678122
+        Turbo-fan: 0.086855
+        4 Cycle: 0.06894
+        Turbo-prop: 0.045181
+        Electric: 0.038947
+        Turbo-shaft: 0.031172
+        None: 0.029401
+        2 Cycle: 0.016156
+        Turbo-jet: 0.004951
+        Rotary: 0.000246
+        Unknown: 1.6e-05
+        Ramjet: 1.3e-05
+      counts:
+        Reciprocating: 209406
+        Turbo-fan: 26821
+        4 Cycle: 21289
+        Turbo-prop: 13952
+        Electric: 12027
+        Turbo-shaft: 9626
+        None: 9079
+        2 Cycle: 4989
+        Turbo-jet: 1529
+        Rotary: 76
+        Unknown: 5
+        Ramjet: 4
+      total: 308803
+evidence:
+- publisher: Federal Aviation Administration
+  title: FAA Releasable Aircraft Database, yearly archive 2025 (MASTER.txt in ReleasableAircraft.2025.zip)
+  url: https://registry.faa.gov/database/yearly/ReleasableAircraft.2025.zip
+  accessed_at: '2026-10-31'
+  locator: MASTER.txt, record N-NUMBER=100, column TYPE ENGINE
+  value: '1'
+  unit: text
+  snippet: 7100510,17003,1940,1,BENE MARY D
+  source_license: unstated
+  content_sha256: e4983ec1313caf9e45ebef1c8fda3a8f2d581419cbe2839b1d83ea74875b5f86
+  role: primary
+- publisher: Federal Aviation Administration
+  title: FAA Aircraft Registration Database record layout (ardata.pdf)
+  url: https://registry.faa.gov/database/ardata.pdf
+  accessed_at: '2026-10-31'
+  locator: page 5, Type Engine
+  value: None
+  unit: text
+  snippet: 251-252 2 0 - None
+  source_license: unstated
+  content_sha256: 075c2e4c4f48860c6e77e44964a291c96fc4735a566e717dff5f416be2bc86fd
+  role: supporting
+assumed:
+- parameter: distribution.parameters.counts
+  value: MASTER.txt records grouped by TYPE ENGINE, labelled from the record layout
+  method: derived
+  rationale: Each record is one registered aircraft; the code labels come from the Type Engine list in ardata.pdf.
+tests:
+- statistic: share["Reciprocating"]
+  expected: 0.678122
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Aircraft on the FAA civil aircraft registry at the end of 2025, from the yearly archive of the Releasable
+  Aircraft Database (MASTER.txt, one record per registered aircraft). Categories are the Type Engine labels of the
+  FAA record layout. The publisher states no licence on the file itself, so the licence is recorded as unstated
+  and the entry held at license-review even though US federal publications are normally free to reuse.

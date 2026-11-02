@@ -1,0 +1,77 @@
+id: us-fars-fatal-crashes-by-day-of-week-2023
+title: United States fatal crashes by day of the week, 2023 (NHTSA FARS)
+kind: marginal
+domain: transport
+region: US
+status: license-review
+tier: A
+tags:
+- fars
+- nhtsa
+- road-safety
+- fatal-crashes
+- transport
+- telematics
+- by-day-of-week
+use_cases:
+- telematics-demo
+- insurance-demo
+- claims-generation
+- event-timestamps
+- fleet-demo
+observed_period:
+  start: '2023-01-01'
+  end: '2023-12-31'
+spec:
+  variable: crash_day_of_week
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Sunday: 0.16029
+        Monday: 0.128995
+        Tuesday: 0.121581
+        Wednesday: 0.128518
+        Thursday: 0.131695
+        Friday: 0.154174
+        Saturday: 0.174746
+      counts:
+        Sunday: 6054
+        Monday: 4872
+        Tuesday: 4592
+        Wednesday: 4854
+        Thursday: 4974
+        Friday: 5823
+        Saturday: 6600
+      total: 37769
+evidence:
+- publisher: National Highway Traffic Safety Administration
+  title: FARS 2023 National CSV (accident.csv), Fatality Analysis Reporting System
+  url: https://static.nhtsa.gov/nhtsa/downloads/FARS/2023/National/FARS2023NationalCSV.zip
+  accessed_at: '2026-10-31'
+  locator: accident.csv, record ST_CASE=10001, column DAY_WEEKNAME
+  value: Wednesday
+  unit: text
+  snippet: 1,Alabama,10001,0,0,1,1,0,1,1,13,BUTLER (13),0,NOT APPLICABLE,1,January
+  source_license: unstated
+  content_sha256: edde841eb493e55751961b36bac2d1ce8750f601cb8e6e183a525723bb62bab0
+  role: primary
+assumed:
+- parameter: distribution.parameters.counts
+  value: records grouped by DAY_WEEKNAME
+  method: derived
+  rationale: Each record of accident.csv is one fatal crash; counts are records grouped by DAY_WEEKNAME, shares
+    are counts over the number of crashes kept.
+tests:
+- statistic: share["Saturday"]
+  expected: 0.174746
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Fatal motor-vehicle crashes in the United States in 2023 from the NHTSA Fatality Analysis Reporting System
+  National CSV release (accident.csv, one record per crash). The published counts sit beside the derived shares.
+  Categories are the DAY_WEEKNAME values of the file, Sunday first as FARS codes them (DAY_WEEK 1 to 7). The publisher
+  states no licence on the file itself, so the licence is recorded as unstated and the entry held at license-review
+  even though US federal publications are normally free to reuse.

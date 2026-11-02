@@ -1,0 +1,166 @@
+id: us-faa-landing-facilities-ownership-by-site-type-2026-10
+title: 'United States landing facilities: ownership code given NASR site type, cycle effective 2026-10-29 (FAA)'
+kind: conditional
+domain: transport
+region: US
+status: license-review
+tier: A
+tags:
+- aviation
+- airports
+- faa
+- nasr
+- transport
+- infrastructure
+- ownership
+- site-type
+use_cases:
+- travel-demo
+- logistics-demo
+- fleet-demo
+- address-generation
+observed_period:
+  start: '2026-10-29'
+  end: '2026-10-29'
+spec:
+  variable: ownership_type_code
+  unit: ratio
+  given: site_type_code
+  distributions:
+    A:
+      family: categorical
+      parameters:
+        shares:
+          PR: 0.668766
+          PU: 0.314595
+          MA: 0.007231
+          MR: 0.004743
+          MN: 0.004354
+          CG: 0.000311
+        counts:
+          PR: 8601
+          PU: 4046
+          MA: 93
+          MR: 61
+          MN: 56
+          CG: 4
+        total: 12861
+        site_type_facilities: 12861
+        public_use_facilities: 4733
+    H:
+      family: categorical
+      parameters:
+        shares:
+          PR: 0.877387
+          PU: 0.105272
+          MR: 0.013312
+          MN: 0.002452
+          MA: 0.000876
+          CG: 0.000701
+        counts:
+          PR: 5009
+          PU: 601
+          MR: 76
+          MN: 14
+          MA: 5
+          CG: 4
+        total: 5709
+        site_type_facilities: 5709
+        public_use_facilities: 57
+    C:
+      family: categorical
+      parameters:
+        shares:
+          PR: 0.736655
+          PU: 0.261566
+          MR: 0.001779
+        counts:
+          PR: 414
+          PU: 147
+          MR: 1
+        total: 562
+        site_type_facilities: 562
+        public_use_facilities: 224
+    U:
+      family: categorical
+      parameters:
+        shares:
+          PR: 0.990654
+          PU: 0.009346
+        counts:
+          PR: 106
+          PU: 1
+        total: 107
+        site_type_facilities: 107
+        public_use_facilities: 3
+    G:
+      family: categorical
+      parameters:
+        shares:
+          PR: 0.944444
+          PU: 0.055556
+        counts:
+          PR: 34
+          PU: 2
+        total: 36
+        site_type_facilities: 36
+        public_use_facilities: 4
+    B:
+      family: categorical
+      parameters:
+        shares:
+          PR: 1.0
+        counts:
+          PR: 12
+        total: 12
+        site_type_facilities: 12
+        public_use_facilities: 1
+evidence:
+- publisher: Federal Aviation Administration
+  title: FAA NASR 28-day subscription, airport CSV extract effective 2026-10-29 (APT_BASE.csv and APT_RWY.csv)
+  url: https://nfdc.faa.gov/webContent/28DaySub/extra/29_Oct_2026_APT_CSV.zip
+  accessed_at: '2026-10-31'
+  locator: APT_BASE.csv, record SITE_NO=00103. (0J0), column SITE_TYPE_CODE
+  value: A
+  unit: text
+  snippet: '"2026/10/29","00103.","A","AL","0J0","ABBEVILLE","US","ASO","JAN","ALABAMA"'
+  source_license: unstated
+  content_sha256: 6e1e422f483d44cc8a38a1c97cf98e97588a6fc3fa857b39b5bdcbcfe8331154
+  role: primary
+- publisher: Federal Aviation Administration
+  title: FAA NASR 28-day subscription, airport CSV extract effective 2026-10-29 (APT_BASE.csv and APT_RWY.csv)
+  url: https://nfdc.faa.gov/webContent/28DaySub/extra/29_Oct_2026_APT_CSV.zip
+  accessed_at: '2026-10-31'
+  locator: APT_BASE.csv, record SITE_NO=00103. (0J0), column OWNERSHIP_TYPE_CODE
+  value: PU
+  unit: text
+  snippet: '"2026/10/29","00103.","A","AL","0J0","ABBEVILLE","US","ASO","JAN","ALABAMA"'
+  source_license: unstated
+  content_sha256: 6e1e422f483d44cc8a38a1c97cf98e97588a6fc3fa857b39b5bdcbcfe8331154
+  role: primary
+assumed:
+- parameter: distributions[*].parameters.counts
+  value: APT_BASE.csv records with COUNTRY_CODE US grouped by SITE_TYPE_CODE then OWNERSHIP_TYPE_CODE
+  method: derived
+  rationale: Each APT_BASE.csv record is one landing facility; the codes are kept as published (site type A airport,
+    H heliport, C seaplane base, G gliderport, U ultralight, B balloonport; ownership PU publicly owned, PR privately
+    owned, MA Air Force, MN Navy, MR Army, CG Coast Guard, as the APT DATA LAYOUT PDF inside the same archive defines
+    them).
+tests:
+- statistic: share[A,"PR"]
+  expected: 0.668766
+  tolerance: 0.005
+- statistic: sum_of_shares[A]
+  expected: 1
+  tolerance: 0.0001
+- statistic: share[B,"PR"]
+  expected: 1.0
+  tolerance: 0.005
+- statistic: sum_of_shares[B]
+  expected: 1
+  tolerance: 0.0001
+notes: Landing facilities in the FAA National Airspace System Resources (NASR) airport file for the 28-day cycle
+  effective 2026-10-29. Site type codes condition the ownership-type distribution; facility counts per site type
+  are carried as site_type_facilities. Codes are the NASR codes as published; the layout PDF inside the archive
+  defines them. The publisher states no licence on the file itself, so the licence is recorded as unstated and the
+  entry held at license-review even though US federal publications are normally free to reuse.

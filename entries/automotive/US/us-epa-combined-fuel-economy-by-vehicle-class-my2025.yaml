@@ -1,0 +1,270 @@
+id: us-epa-combined-fuel-economy-by-vehicle-class-my2025
+title: United States model year 2025 combined fuel economy (MPG) summary by EPA vehicle class (fuel economy data)
+kind: rule
+domain: automotive
+region: US
+status: license-review
+tier: A
+tags:
+- fuel-economy
+- epa
+- vehicles
+- model-year
+- transport
+- mpg
+- reference-table
+- vehicle-class
+use_cases:
+- fleet-demo
+- automotive-demo
+- telematics-demo
+- insurance-demo
+- pricing
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    source: vehicles.csv
+    model_year: 2025
+    field: comb08
+    rows:
+      Compact Cars:
+        configurations: 111
+        conventional_configurations: 76
+        electric_configurations: 35
+        combined_mpg_mean: 29.16
+        combined_mpg_median: 28.5
+        combined_mpg_min: 17
+        combined_mpg_max: 74
+        electric_combined_mpge_mean: 90
+      Large Cars:
+        configurations: 74
+        conventional_configurations: 43
+        electric_configurations: 31
+        combined_mpg_mean: 25.09
+        combined_mpg_median: 24.0
+        combined_mpg_min: 14
+        combined_mpg_max: 48
+        electric_combined_mpge_mean: 98.61
+      Midsize Cars:
+        configurations: 117
+        conventional_configurations: 92
+        electric_configurations: 25
+        combined_mpg_mean: 29.97
+        combined_mpg_median: 27.0
+        combined_mpg_min: 14
+        combined_mpg_max: 57
+        electric_combined_mpge_mean: 103.48
+      Midsize Station Wagons:
+        configurations: 8
+        conventional_configurations: 6
+        electric_configurations: 2
+        combined_mpg_mean: 21.33
+        combined_mpg_median: 24.0
+        combined_mpg_min: 13
+        combined_mpg_max: 25
+        electric_combined_mpge_mean: 87
+      Minicompact Cars:
+        configurations: 33
+        conventional_configurations: 31
+        electric_configurations: 2
+        combined_mpg_mean: 20.29
+        combined_mpg_median: 19.0
+        combined_mpg_min: 16
+        combined_mpg_max: 30
+        electric_combined_mpge_mean: 113
+      Minivan - 2WD:
+        configurations: 8
+        conventional_configurations: 7
+        electric_configurations: 1
+        combined_mpg_mean: 26.57
+        combined_mpg_median: 22.0
+        combined_mpg_min: 21
+        combined_mpg_max: 36
+        electric_combined_mpge_mean: 83
+      Minivan - 4WD:
+        configurations: 3
+        conventional_configurations: 2
+        electric_configurations: 1
+        combined_mpg_mean: 27.5
+        combined_mpg_median: 27.5
+        combined_mpg_min: 20
+        combined_mpg_max: 35
+        electric_combined_mpge_mean: 80
+      Small Pickup Trucks 2WD:
+        configurations: 4
+        conventional_configurations: 4
+        electric_configurations: 0
+        combined_mpg_mean: 26.5
+        combined_mpg_median: 23.0
+        combined_mpg_min: 22
+        combined_mpg_max: 38
+        electric_combined_mpge_mean: null
+      Small Pickup Trucks 4WD:
+        configurations: 9
+        conventional_configurations: 9
+        electric_configurations: 0
+        combined_mpg_mean: 23.67
+        combined_mpg_median: 21.0
+        combined_mpg_min: 20
+        combined_mpg_max: 37
+        electric_combined_mpge_mean: null
+      Small Sport Utility Vehicle 2WD:
+        configurations: 95
+        conventional_configurations: 62
+        electric_configurations: 33
+        combined_mpg_mean: 29.98
+        combined_mpg_median: 28.0
+        combined_mpg_min: 21
+        combined_mpg_max: 61
+        electric_combined_mpge_mean: 108.39
+      Small Sport Utility Vehicle 4WD:
+        configurations: 233
+        conventional_configurations: 183
+        electric_configurations: 50
+        combined_mpg_mean: 25.63
+        combined_mpg_median: 25.0
+        combined_mpg_min: 14
+        combined_mpg_max: 43
+        electric_combined_mpge_mean: 95.26
+      Small Station Wagons:
+        configurations: 24
+        conventional_configurations: 23
+        electric_configurations: 1
+        combined_mpg_mean: 26.91
+        combined_mpg_median: 28.0
+        combined_mpg_min: 20
+        combined_mpg_max: 38
+        electric_combined_mpge_mean: 81
+      Special Purpose Vehicle 2WD:
+        configurations: 5
+        conventional_configurations: 4
+        electric_configurations: 1
+        combined_mpg_mean: 22.25
+        combined_mpg_median: 22.0
+        combined_mpg_min: 16
+        combined_mpg_max: 29
+        electric_combined_mpge_mean: 85
+      Special Purpose Vehicle 4WD:
+        configurations: 6
+        conventional_configurations: 2
+        electric_configurations: 4
+        combined_mpg_mean: 15
+        combined_mpg_median: 15.0
+        combined_mpg_min: 15
+        combined_mpg_max: 15
+        electric_combined_mpge_mean: 73.25
+      Standard Pickup Trucks 2WD:
+        configurations: 25
+        conventional_configurations: 23
+        electric_configurations: 2
+        combined_mpg_mean: 20.48
+        combined_mpg_median: 20.0
+        combined_mpg_min: 17
+        combined_mpg_max: 26
+        electric_combined_mpge_mean: 80
+      Standard Pickup Trucks 4WD:
+        configurations: 109
+        conventional_configurations: 70
+        electric_configurations: 39
+        combined_mpg_mean: 18.17
+        combined_mpg_median: 17.0
+        combined_mpg_min: 12
+        combined_mpg_max: 24
+        electric_combined_mpge_mean: 72.74
+      Standard Sport Utility Vehicle 2WD:
+        configurations: 50
+        conventional_configurations: 38
+        electric_configurations: 12
+        combined_mpg_mean: 20.97
+        combined_mpg_median: 21.0
+        combined_mpg_min: 16
+        combined_mpg_max: 36
+        electric_combined_mpge_mean: 95.67
+      Standard Sport Utility Vehicle 4WD:
+        configurations: 238
+        conventional_configurations: 158
+        electric_configurations: 80
+        combined_mpg_mean: 19.77
+        combined_mpg_median: 19.0
+        combined_mpg_min: 12
+        combined_mpg_max: 35
+        electric_combined_mpge_mean: 81.64
+      Subcompact Cars:
+        configurations: 69
+        conventional_configurations: 64
+        electric_configurations: 5
+        combined_mpg_mean: 23.12
+        combined_mpg_median: 22.5
+        combined_mpg_min: 12
+        combined_mpg_max: 32
+        electric_combined_mpge_mean: 85.4
+      Two Seaters:
+        configurations: 52
+        conventional_configurations: 50
+        electric_configurations: 2
+        combined_mpg_mean: 19.24
+        combined_mpg_median: 19.0
+        combined_mpg_min: 9
+        combined_mpg_max: 29
+        electric_combined_mpge_mean: 52
+  vectors:
+  - input:
+      key: Two Seaters
+      column: combined_mpg_mean
+    expected: 19.24
+    origin: source
+  - input:
+      key: Standard Sport Utility Vehicle 4WD
+      column: combined_mpg_mean
+    expected: 19.77
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: US Environmental Protection Agency and US Department of Energy (fueleconomy.gov)
+  title: fueleconomy.gov EPA vehicle data, vehicles.csv (all model years, zip)
+  url: https://www.fueleconomy.gov/feg/epadata/vehicles.csv.zip
+  accessed_at: '2026-10-31'
+  locator: vehicles.csv, row id=47695 (BMW Z4 sDrive30i), column VClass
+  value: Two Seaters
+  unit: text
+  snippet: BMW,Z4 sDrive30i,N,false,0,0,0,0.0,0.0,0.0,0.0,Automatic (S8),32.3,0.0,47.6,0.0,Two Seaters,2025,-2750,Z4,,,T,,,,,,BMX,
+  source_license: unstated
+  content_sha256: 33d32caa0343cdb11c47be631e8a80b7ed7c351ee8503646a4e96485bd67b22f
+  role: primary
+- publisher: US Environmental Protection Agency and US Department of Energy (fueleconomy.gov)
+  title: fueleconomy.gov EPA vehicle data, vehicles.csv (all model years, zip)
+  url: https://www.fueleconomy.gov/feg/epadata/vehicles.csv.zip
+  accessed_at: '2026-10-31'
+  locator: vehicles.csv, row id=47695 (BMW Z4 sDrive30i), column comb08
+  value: '28'
+  unit: integer
+  snippet: BMW,Z4 sDrive30i,N,false,0,0,0,0.0,0.0,0.0,0.0,Automatic (S8),32.3,0.0,47.6,0.0,Two Seaters,2025,-2750,Z4,,,T,,,,,,BMX,
+  source_license: unstated
+  content_sha256: 33d32caa0343cdb11c47be631e8a80b7ed7c351ee8503646a4e96485bd67b22f
+  role: primary
+assumed:
+- parameter: rows[*].combined_mpg_*
+  value: mean, median, min and max of comb08 over the class's rows with fuelType other than Electricity
+  method: derived
+  rationale: comb08 is the combined label fuel economy of each configuration; the conventional group includes hybrids
+    and plug-in hybrids, which raise the class maxima. Battery electric vehicles report MPG-equivalent and are summarised
+    separately as electric_combined_mpge_mean.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 20
+  tolerance: 0
+- statistic: max[combined_mpg_mean]
+  expected: 29.98
+  tolerance: 1.0e-09
+notes: Model year 2025 vehicles listed in the EPA fuel economy dataset (vehicles.csv, one row per vehicle configuration
+  tested for the fuel economy label). Counts are rows, not sales, so the shares describe the model line-up rather
+  than the fleet. Rows are keyed by the EPA VClass text and summarise the comb08 (combined) rating of the class's
+  configurations. The publisher states no licence on the file itself, so the licence is recorded as unstated and
+  the entry held at license-review even though US federal publications are normally free to reuse.

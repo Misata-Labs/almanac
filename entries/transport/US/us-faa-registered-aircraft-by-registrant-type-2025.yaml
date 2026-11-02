@@ -1,0 +1,89 @@
+id: us-faa-registered-aircraft-by-registrant-type-2025
+title: United States registered civil aircraft by registrant type, end of 2025 (FAA registry)
+kind: marginal
+domain: transport
+region: US
+status: license-review
+tier: A
+tags:
+- aviation
+- aircraft
+- faa
+- registry
+- transport
+- registrant-type
+- ownership
+use_cases:
+- travel-demo
+- fleet-demo
+- insurance-demo
+- logistics-demo
+- company-generation
+observed_period:
+  start: '2025-12-31'
+  end: '2025-12-31'
+spec:
+  variable: registrant_type
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Individual: 0.419798
+        LLC: 0.270745
+        Corporation: 0.190024
+        Co-Owned: 0.084674
+        Government: 0.01813
+        Partnership: 0.010234
+        Non Citizen Corporation: 0.006333
+        Non Citizen Co-Owned: 6.2e-05
+      counts:
+        Individual: 129458
+        LLC: 83493
+        Corporation: 58600
+        Co-Owned: 26112
+        Government: 5591
+        Partnership: 3156
+        Non Citizen Corporation: 1953
+        Non Citizen Co-Owned: 19
+      total: 308382
+evidence:
+- publisher: Federal Aviation Administration
+  title: FAA Releasable Aircraft Database, yearly archive 2025 (MASTER.txt in ReleasableAircraft.2025.zip)
+  url: https://registry.faa.gov/database/yearly/ReleasableAircraft.2025.zip
+  accessed_at: '2026-10-31'
+  locator: MASTER.txt, record N-NUMBER=100, column TYPE REGISTRANT
+  value: '1'
+  unit: text
+  snippet: 7100510,17003,1940,1,BENE MARY D
+  source_license: unstated
+  content_sha256: e4983ec1313caf9e45ebef1c8fda3a8f2d581419cbe2839b1d83ea74875b5f86
+  role: primary
+- publisher: Federal Aviation Administration
+  title: FAA Aircraft Registration Database record layout (ardata.pdf)
+  url: https://registry.faa.gov/database/ardata.pdf
+  accessed_at: '2026-10-31'
+  locator: page 1, Type Registrant
+  value: Individual
+  unit: text
+  snippet: 57 1 1 - Individual
+  source_license: unstated
+  content_sha256: 075c2e4c4f48860c6e77e44964a291c96fc4735a566e717dff5f416be2bc86fd
+  role: supporting
+assumed:
+- parameter: distribution.parameters.counts
+  value: MASTER.txt records grouped by TYPE REGISTRANT, blank dropped, labelled from the record layout
+  method: derived
+  rationale: Each record is one registered aircraft; the code labels come from the Type Registrant list in ardata.pdf.
+tests:
+- statistic: share["Individual"]
+  expected: 0.419798
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Aircraft on the FAA civil aircraft registry at the end of 2025, from the yearly archive of the Releasable
+  Aircraft Database (MASTER.txt, one record per registered aircraft). Categories are the Type Registrant labels
+  of the FAA record layout (individual, partnership, corporation, co-owned, government, LLC, non-citizen corporation,
+  non-citizen co-owned). The publisher states no licence on the file itself, so the licence is recorded as unstated
+  and the entry held at license-review even though US federal publications are normally free to reuse.

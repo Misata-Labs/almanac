@@ -1,0 +1,70 @@
+id: us-epa-vehicle-configurations-by-drive-type-my2025
+title: United States model year 2025 vehicle configurations by drive type (EPA fuel economy data)
+kind: marginal
+domain: automotive
+region: US
+status: license-review
+tier: A
+tags:
+- fuel-economy
+- epa
+- vehicles
+- model-year
+- transport
+- drive-type
+use_cases:
+- fleet-demo
+- automotive-demo
+- telematics-demo
+- insurance-demo
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+spec:
+  variable: drive_type
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        All-Wheel Drive: 0.47447
+        Rear-Wheel Drive: 0.180676
+        4-Wheel Drive: 0.147683
+        Front-Wheel Drive: 0.145326
+        Part-time 4-Wheel Drive: 0.051846
+      counts:
+        All-Wheel Drive: 604
+        Rear-Wheel Drive: 230
+        4-Wheel Drive: 188
+        Front-Wheel Drive: 185
+        Part-time 4-Wheel Drive: 66
+      total: 1273
+evidence:
+- publisher: US Environmental Protection Agency and US Department of Energy (fueleconomy.gov)
+  title: fueleconomy.gov EPA vehicle data, vehicles.csv (all model years, zip)
+  url: https://www.fueleconomy.gov/feg/epadata/vehicles.csv.zip
+  accessed_at: '2026-10-31'
+  locator: vehicles.csv, row id=47695 (BMW Z4 sDrive30i), column drive
+  value: Rear-Wheel Drive
+  unit: text
+  snippet: BMW,Z4 sDrive30i,N,false,0,0,0,0.0,0.0,0.0,0.0,Automatic (S8),32.3,0.0,47.6,0.0,Two Seaters,2025,-2750,Z4,,,T,,,,,,BMX,
+  source_license: unstated
+  content_sha256: 33d32caa0343cdb11c47be631e8a80b7ed7c351ee8503646a4e96485bd67b22f
+  role: primary
+assumed:
+- parameter: distribution.parameters.counts
+  value: rows with year=2025 grouped by drive, blank drive dropped
+  method: derived
+  rationale: Counts are rows of vehicles.csv for the model year grouped by the drive column.
+tests:
+- statistic: share["All-Wheel Drive"]
+  expected: 0.47447
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Model year 2025 vehicles listed in the EPA fuel economy dataset (vehicles.csv, one row per vehicle configuration
+  tested for the fuel economy label). Counts are rows, not sales, so the shares describe the model line-up rather
+  than the fleet. Categories are the drive values of the file. The publisher states no licence on the file itself,
+  so the licence is recorded as unstated and the entry held at license-review even though US federal publications
+  are normally free to reuse.

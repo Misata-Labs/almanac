@@ -1,0 +1,88 @@
+id: us-fars-fatal-crashes-by-month-2023
+title: United States fatal crashes by month of the year, 2023 (NHTSA FARS)
+kind: marginal
+domain: transport
+region: US
+status: license-review
+tier: A
+tags:
+- fars
+- nhtsa
+- road-safety
+- fatal-crashes
+- transport
+- telematics
+- seasonality
+- by-month
+use_cases:
+- telematics-demo
+- insurance-demo
+- claims-generation
+- event-timestamps
+- fleet-demo
+observed_period:
+  start: '2023-01-01'
+  end: '2023-12-31'
+spec:
+  variable: crash_month
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        January: 0.073552
+        February: 0.070057
+        March: 0.07387
+        April: 0.081231
+        May: 0.08552
+        June: 0.084831
+        July: 0.090153
+        August: 0.090683
+        September: 0.090445
+        October: 0.093357
+        November: 0.082396
+        December: 0.083905
+      counts:
+        January: 2778
+        February: 2646
+        March: 2790
+        April: 3068
+        May: 3230
+        June: 3204
+        July: 3405
+        August: 3425
+        September: 3416
+        October: 3526
+        November: 3112
+        December: 3169
+      total: 37769
+evidence:
+- publisher: National Highway Traffic Safety Administration
+  title: FARS 2023 National CSV (accident.csv), Fatality Analysis Reporting System
+  url: https://static.nhtsa.gov/nhtsa/downloads/FARS/2023/National/FARS2023NationalCSV.zip
+  accessed_at: '2026-10-31'
+  locator: accident.csv, record ST_CASE=10001, column MONTHNAME
+  value: January
+  unit: text
+  snippet: 1,Alabama,10001,0,0,1,1,0,1,1,13,BUTLER (13),0,NOT APPLICABLE,1,January
+  source_license: unstated
+  content_sha256: edde841eb493e55751961b36bac2d1ce8750f601cb8e6e183a525723bb62bab0
+  role: primary
+assumed:
+- parameter: distribution.parameters.counts
+  value: records grouped by MONTHNAME
+  method: derived
+  rationale: Each record of accident.csv is one fatal crash; counts are records grouped by MONTHNAME, shares are
+    counts over the number of crashes kept.
+tests:
+- statistic: share["October"]
+  expected: 0.093357
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Fatal motor-vehicle crashes in the United States in 2023 from the NHTSA Fatality Analysis Reporting System
+  National CSV release (accident.csv, one record per crash). The published counts sit beside the derived shares.
+  Categories are the MONTHNAME values of the file in calendar order. The publisher states no licence on the file
+  itself, so the licence is recorded as unstated and the entry held at license-review even though US federal publications
+  are normally free to reuse.
