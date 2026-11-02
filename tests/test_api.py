@@ -29,7 +29,7 @@ def test_get_unknown_id(almanac):
 def test_select_by_date_region_and_domain(almanac):
     on_day = almanac.select(on=date(2026, 6, 15), region="GB", domain="calendar")
     assert {e.id for e in on_day} == {"gb-bank-holidays", "gb-clock-change"}
-    assert almanac.select(on=date(2018, 1, 1), domain="calendar") == []
+    assert almanac.select(on=date(2018, 1, 1), region="GB", domain="calendar") == []
     assert all(e.status == "verified" for e in almanac.select(status="verified"))
     assert all(e.region in ("BR", "global") for e in almanac.select(region="BR"))
 

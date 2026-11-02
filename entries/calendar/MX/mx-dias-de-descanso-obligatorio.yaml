@@ -1,0 +1,158 @@
+id: mx-dias-de-descanso-obligatorio
+title: 'Mexico: statutory rest days (días de descanso obligatorio) under article 74 of the Ley Federal del Trabajo'
+kind: rule
+domain: calendar
+region: MX
+status: license-review
+tier: B
+valid_from: '2024-09-30'
+valid_to: null
+tags:
+- calendar
+- holidays
+- business-days
+- ley-federal-del-trabajo
+- descanso-obligatorio
+use_cases:
+- payroll-demo
+- settlement-calendar
+- scheduling-demo
+- logistics-demo
+spec:
+  implementation: almanac.rules.holiday_list
+  parameters:
+    holidays:
+    - name: 1o. de enero
+      month: 1
+      day: 1
+      fraction: I
+    - name: Primer lunes de febrero (5 de febrero)
+      month: 2
+      weekday: monday
+      ordinal: first
+      fraction: II
+    - name: Tercer lunes de marzo (21 de marzo)
+      month: 3
+      weekday: monday
+      ordinal: third
+      fraction: III
+    - name: 1o. de mayo
+      month: 5
+      day: 1
+      fraction: IV
+    - name: 16 de septiembre
+      month: 9
+      day: 16
+      fraction: V
+    - name: Tercer lunes de noviembre (20 de noviembre)
+      month: 11
+      weekday: monday
+      ordinal: third
+      fraction: VI
+    - name: 25 de diciembre
+      month: 12
+      day: 25
+      fraction: VIII
+  vectors:
+  - input:
+      year: 2026
+    expected:
+    - date: '2026-01-01'
+      name: 1o. de enero
+    - date: '2026-02-02'
+      name: Primer lunes de febrero (5 de febrero)
+    - date: '2026-03-16'
+      name: Tercer lunes de marzo (21 de marzo)
+    - date: '2026-05-01'
+      name: 1o. de mayo
+    - date: '2026-09-16'
+      name: 16 de septiembre
+    - date: '2026-11-16'
+      name: Tercer lunes de noviembre (20 de noviembre)
+    - date: '2026-12-25'
+      name: 25 de diciembre
+    origin: derived
+    note: article 74 applied to 2026
+  - input: '2026-02-02'
+    expected: true
+    origin: derived
+    note: first Monday of February 2026
+  - input: '2026-02-05'
+    expected: false
+    origin: derived
+    note: 5 February itself is commemorated on the Monday
+  - input: '2026-11-16'
+    expected: true
+    origin: derived
+    note: third Monday of November 2026
+  - input: '2026-09-16'
+    expected: true
+    origin: source
+  - input:
+      op: next_business_day
+      date: '2026-12-25'
+    expected: '2026-12-28'
+    origin: derived
+    note: 25 December 2026 is a Friday
+evidence:
+- publisher: Cámara de Diputados del H. Congreso de la Unión (Leyes Biblio)
+  title: Ley Federal del Trabajo, texto vigente (Última Reforma DOF 14-05-2026)
+  url: https://www.diputados.gob.mx/LeyesBiblio/pdf/LFT.pdf
+  accessed_at: '2026-10-31'
+  locator: page 23, Artículo 74
+  value: Son días de descanso obligatorio
+  unit: text
+  snippet: El tercer lunes de noviembre en conmemoración del 20 de noviembre
+  source_license: unstated
+  content_sha256: 12f09393a1951a91c3f57f579bf611b034edf1a5f78cdbfb828e23ff3a9acbf7
+  role: primary
+- publisher: Cámara de Diputados del H. Congreso de la Unión (Leyes Biblio)
+  title: Ley Federal del Trabajo, texto vigente (Última Reforma DOF 14-05-2026)
+  url: https://www.diputados.gob.mx/LeyesBiblio/pdf/LFT.pdf
+  accessed_at: '2026-10-31'
+  locator: page 23, Artículo 74, fracción II
+  value: El primer lunes de febrero en conmemoración del 5 de febrero
+  unit: text
+  snippet: El tercer lunes de marzo en conmemoración del 21 de marzo
+  source_license: unstated
+  content_sha256: 12f09393a1951a91c3f57f579bf611b034edf1a5f78cdbfb828e23ff3a9acbf7
+  role: primary
+- publisher: Cámara de Diputados del H. Congreso de la Unión (Leyes Biblio)
+  title: Ley Federal del Trabajo, texto vigente (Última Reforma DOF 14-05-2026)
+  url: https://www.diputados.gob.mx/LeyesBiblio/pdf/LFT.pdf
+  accessed_at: '2026-10-31'
+  locator: page 23, Artículo 74, fracción VII
+  value: Fracción reformada DOF 30-09-2024
+  unit: text
+  snippet: de cada seis años, cuando corresponda a la transmisión del Poder Ejecutivo
+  source_license: unstated
+  content_sha256: 12f09393a1951a91c3f57f579bf611b034edf1a5f78cdbfb828e23ff3a9acbf7
+  role: primary
+assumed:
+- parameter: holidays
+  value: fractions VII and IX omitted
+  method: derived
+  rationale: Fraction VII (1 October every six years when the federal executive changes) and fraction IX (election
+    days set by electoral law) depend on events outside the statute's own text, so the rule models only the seven
+    fixed and ordinal-weekday rest days.
+- parameter: valid_from
+  value: '2024-09-30'
+  method: derived
+  rationale: The date of the most recent reform of article 74 printed in the consolidated text; the seven modelled
+    fractions predate it.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[2026]
+  expected: 7
+  tolerance: 0
+- statistic: count[2027]
+  expected: 7
+  tolerance: 0
+notes: 'Article 74 of the Ley Federal del Trabajo lists the days of obligatory rest: 1 January, the first Monday
+  of February (for 5 February), the third Monday of March (for 21 March), 1 May, 16 September, the third Monday
+  of November (for 20 November), 25 December, plus 1 October every six years at the change of federal executive
+  and election days. The builder reads the consolidated text the Chamber of Deputies publishes and checks every
+  modelled fraction''s wording before writing the entry. The weekend is the default Saturday and Sunday; the law
+  itself sets one rest day per six of work (article 69) rather than a weekend.'

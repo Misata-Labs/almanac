@@ -1,0 +1,148 @@
+id: be-jours-feries-legaux
+title: 'Belgium: the ten legal public holidays (jours fériés légaux / wettelijke feestdagen)'
+kind: rule
+domain: calendar
+region: BE
+status: license-review
+tier: B
+valid_from: '2026-10-31'
+valid_to: null
+tags:
+- calendar
+- holidays
+- business-days
+- jours-feries
+- feestdagen
+use_cases:
+- payroll-demo
+- settlement-calendar
+- scheduling-demo
+- logistics-demo
+spec:
+  implementation: almanac.rules.holiday_list
+  parameters:
+    holidays:
+    - name: 1er janvier
+      month: 1
+      day: 1
+    - name: Lundi de Pâques
+      easter_offset: 1
+    - name: 1er mai (Fête du travail)
+      month: 5
+      day: 1
+    - name: Ascension
+      easter_offset: 39
+    - name: Lundi de Pentecôte
+      easter_offset: 50
+    - name: 21 juillet (Fête nationale)
+      month: 7
+      day: 21
+    - name: 15 août (Assomption)
+      month: 8
+      day: 15
+    - name: 1er novembre (Toussaint)
+      month: 11
+      day: 1
+    - name: 11 novembre (Armistice)
+      month: 11
+      day: 11
+    - name: 25 décembre (Noël)
+      month: 12
+      day: 25
+  vectors:
+  - input:
+      year: 2026
+    expected:
+    - date: '2026-01-01'
+      name: 1er janvier
+    - date: '2026-04-06'
+      name: Lundi de Pâques
+    - date: '2026-05-01'
+      name: 1er mai (Fête du travail)
+    - date: '2026-05-14'
+      name: Ascension
+    - date: '2026-05-25'
+      name: Lundi de Pentecôte
+    - date: '2026-07-21'
+      name: 21 juillet (Fête nationale)
+    - date: '2026-08-15'
+      name: 15 août (Assomption)
+    - date: '2026-11-01'
+      name: 1er novembre (Toussaint)
+    - date: '2026-11-11'
+      name: 11 novembre (Armistice)
+    - date: '2026-12-25'
+      name: 25 décembre (Noël)
+    origin: derived
+    note: the ten legal holidays applied to 2026
+  - input: '2026-05-14'
+    expected: true
+    origin: derived
+    note: Ascension 2026, the Thursday 39 days after Easter Sunday
+  - input: '2026-05-25'
+    expected: true
+    origin: derived
+  - input: '2026-07-21'
+    expected: true
+    origin: source
+  - input: '2026-04-03'
+    expected: false
+    origin: derived
+    note: Good Friday is not a Belgian legal holiday
+  - input:
+      op: next_business_day
+      date: '2026-05-01'
+    expected: '2026-05-04'
+    origin: derived
+    note: 1 May 2026 is a Friday
+evidence:
+- publisher: SPF Emploi, Travail et Concertation sociale (Federal Public Service Employment, Labour and Social Dialogue)
+  title: Jours fériés (thème Jours fériés et congés)
+  url: https://emploi.belgique.be/fr/themes/jours-feries-et-conges/jours-feries
+  accessed_at: '2026-10-31'
+  locator: section 'Quels sont les jours fériés légaux ?'
+  value: Le lundi de Pentecôte
+  unit: text
+  snippet: Le 21 juillet (Fête nationale)
+  source_license: unstated
+  content_sha256: 48b21216538446bd7c9946db3d7ed4ecec24e71b5252351dbaf3afbd31a8edc3
+  role: primary
+- publisher: FOD Werkgelegenheid, Arbeid en Sociaal Overleg (Federal Public Service Employment, Labour and Social
+    Dialogue)
+  title: Feestdagen (thema Feestdagen en verloven)
+  url: https://werk.belgie.be/nl/themas/feestdagen-en-verloven/feestdagen
+  accessed_at: '2026-10-31'
+  locator: section 'Welke zijn de wettelijke feestdagen ?'
+  value: Pinkstermaandag
+  unit: text
+  snippet: 21 juli (nationale feestdag)
+  source_license: unstated
+  content_sha256: 22e5ed5c08e267c1deba287757a3dcbdb7e67cf9b75de03035398bc0dc3b32db
+  role: primary
+assumed:
+- parameter: easter_offset
+  value: Easter Sunday from the Gregorian computus; Easter Monday +1, Ascension +39, Whit Monday +50
+  method: derived
+  rationale: The source names the movable feasts without dates. The rule computes Easter Sunday with the standard
+    Gregorian algorithm, and the offsets reproduce every Lundi de Pâques, Ascension and Lundi de Pentecôte date
+    in the etalab jours fériés list for 2006 to 2031 (checked by the builder and by tests/test_calendars.py).
+- parameter: valid_from
+  value: '2026-10-31'
+  method: assumed
+  rationale: The ministry page states the list without an effective date; valid_from records the day the page was
+    fetched. The underlying Royal Decree of 18 April 1974 is not cited here.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[2026]
+  expected: 10
+  tolerance: 0
+- statistic: count[2027]
+  expected: 10
+  tolerance: 0
+notes: 'The ten legal public holidays as the Federal Public Service Employment lists them in French and Dutch: 1
+  January, Easter Monday, 1 May, Ascension, Whit Monday, 21 July, 15 August, 1 November, 11 November and 25 December.
+  Replacement days for holidays falling on a Sunday or a non-working day, which the same pages describe, are decided
+  per sector or employer and are not modelled. The builder re-reads the lists on each run and stops if any of the
+  ten entries is missing.'

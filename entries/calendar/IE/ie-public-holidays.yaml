@@ -1,0 +1,190 @@
+id: ie-public-holidays
+title: 'Ireland: public holidays under the Organisation of Working Time Act 1997 Second Schedule and S.I. No. 50/2022'
+kind: rule
+domain: calendar
+region: IE
+status: license-review
+tier: B
+valid_from: '2023-01-01'
+valid_to: null
+tags:
+- calendar
+- holidays
+- business-days
+- public-holidays
+- working-time
+use_cases:
+- payroll-demo
+- settlement-calendar
+- scheduling-demo
+- logistics-demo
+spec:
+  implementation: almanac.rules.holiday_list
+  parameters:
+    holidays:
+    - name: New Year's Day (the 1st day of January)
+      month: 1
+      day: 1
+      paragraph: 1(f)
+    - name: St. Brigid's Day (first Monday in February, or 1 February when a Friday)
+      month: 2
+      weekday: monday
+      ordinal: first
+      fixed_if_weekday:
+        day: 1
+        weekday: friday
+      paragraph: 1(g), S.I. No. 50/2022
+    - name: St. Patrick's Day
+      month: 3
+      day: 17
+      paragraph: 1(c)
+    - name: Easter Monday
+      easter_offset: 1
+      paragraph: 1(d)
+    - name: First Monday in May
+      month: 5
+      weekday: monday
+      ordinal: first
+      paragraph: 1(d)
+    - name: First Monday in June
+      month: 6
+      weekday: monday
+      ordinal: first
+      paragraph: 1(d)
+    - name: First Monday in August
+      month: 8
+      weekday: monday
+      ordinal: first
+      paragraph: 1(d)
+    - name: Last Monday in October
+      month: 10
+      weekday: monday
+      ordinal: last
+      paragraph: 1(e)
+    - name: Christmas Day
+      month: 12
+      day: 25
+      paragraph: 1(a)
+    - name: St. Stephen's Day
+      month: 12
+      day: 26
+      paragraph: 1(b)
+  vectors:
+  - input:
+      year: 2026
+    expected:
+    - date: '2026-01-01'
+      name: New Year's Day (the 1st day of January)
+    - date: '2026-02-02'
+      name: St. Brigid's Day (first Monday in February, or 1 February when a Friday)
+    - date: '2026-03-17'
+      name: St. Patrick's Day
+    - date: '2026-04-06'
+      name: Easter Monday
+    - date: '2026-05-04'
+      name: First Monday in May
+    - date: '2026-06-01'
+      name: First Monday in June
+    - date: '2026-08-03'
+      name: First Monday in August
+    - date: '2026-10-26'
+      name: Last Monday in October
+    - date: '2026-12-25'
+      name: Christmas Day
+    - date: '2026-12-26'
+      name: St. Stephen's Day
+    origin: derived
+    note: the schedule applied to 2026
+  - input: '2023-02-06'
+    expected: true
+    origin: source
+    note: the first St. Brigid's Day holiday named in the regulations
+  - input: '2030-02-01'
+    expected: true
+    origin: derived
+    note: 1 February 2030 is a Friday, so the fixed date applies
+  - input: '2030-02-04'
+    expected: false
+    origin: derived
+    note: the first Monday of February 2030 is not a holiday because the Friday rule applied
+  - input: '2026-04-06'
+    expected: true
+    origin: derived
+    note: Easter Monday 2026
+  - input: '2026-04-03'
+    expected: false
+    origin: derived
+    note: Good Friday is not a public holiday under the Act
+  - input:
+      op: next_business_day
+      date: '2026-12-25'
+    expected: '2026-12-28'
+    origin: derived
+    note: St. Stephen's Day 2026 is a Saturday; the Monday is the next business day
+evidence:
+- publisher: Law Reform Commission of Ireland (Revised Acts)
+  title: 'Organisation of Working Time Act 1997, revised, Second Schedule: Public Holidays'
+  url: https://revisedacts.lawreform.ie/eli/1997/act/20/revised/en/html
+  accessed_at: '2026-10-31'
+  locator: Second Schedule, paragraph 1(d) and 1(e)
+  value: the last Monday in October
+  unit: text
+  snippet: Easter Monday, the first Monday in May, the first Monday in June and the first Monday in August
+  source_license: unstated
+  content_sha256: ef7cb8e4c8900d07eaf8fae5cbbe3050ef84f4ae899fc75db50d6ce8344f9738
+  role: primary
+- publisher: Law Reform Commission of Ireland (Revised Acts)
+  title: 'Organisation of Working Time Act 1997, revised, Second Schedule: Public Holidays'
+  url: https://revisedacts.lawreform.ie/eli/1997/act/20/revised/en/html
+  accessed_at: '2026-10-31'
+  locator: Second Schedule, paragraph 1(f) and 1(g)
+  value: the 1st day of January
+  unit: text
+  snippet: any other day or days prescribed for the purposes of this paragraph
+  source_license: unstated
+  content_sha256: ef7cb8e4c8900d07eaf8fae5cbbe3050ef84f4ae899fc75db50d6ce8344f9738
+  role: primary
+- publisher: Office of the Attorney General, electronic Irish Statute Book
+  title: S.I. No. 50/2022, Organisation of Working Time Act 1997 (Public Holiday) Regulations 2022, explanatory
+    note
+  url: https://www.irishstatutebook.ie/eli/2022/si/50/made/en/html
+  accessed_at: '2026-10-31'
+  locator: explanatory note
+  value: the first Monday in every February
+  unit: text
+  snippet: except where the 1st day of February happens to fall on a Friday
+  source_license: unstated
+  content_sha256: e147ef0a025de98f2e7b459bdf5f88cbe81082e7e81afa763ca49972a1138c8f
+  role: primary
+assumed:
+- parameter: easter_offset
+  value: Easter Sunday from the Gregorian computus; Easter Monday +1, Ascension +39, Whit Monday +50
+  method: derived
+  rationale: The source names the movable feasts without dates. The rule computes Easter Sunday with the standard
+    Gregorian algorithm, and the offsets reproduce every Lundi de Pâques, Ascension and Lundi de Pentecôte date
+    in the etalab jours fériés list for 2006 to 2031 (checked by the builder and by tests/test_calendars.py).
+- parameter: holidays
+  value: 25 December, 26 December and 17 March
+  method: assumed
+  rationale: The schedule names Christmas Day, St. Stephen's Day and St. Patrick's Day without calendar dates; the
+    rule uses the dates on which those feasts are kept.
+- parameter: holidays
+  value: once-off 18 March 2022 holiday omitted
+  method: derived
+  rationale: S.I. No. 50/2022 also prescribed a single public holiday on 18 March 2022; a recurring list cannot
+    carry it, and it predates valid_from.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[2026]
+  expected: 10
+  tolerance: 0
+- statistic: count[2030]
+  expected: 10
+  tolerance: 0
+notes: 'The nine public holidays of the Second Schedule to the Organisation of Working Time Act 1997 as revised
+  by the Law Reform Commission, plus St. Brigid''s Day prescribed under paragraph 1(g) by S.I. No. 50/2022: the
+  first Monday in February, or 1 February when that is a Friday. valid_from is the start of the year of the first
+  St. Brigid''s Day holiday the regulations name. The Church-holiday substitution an employer may make under paragraph
+  3 is not modelled.'

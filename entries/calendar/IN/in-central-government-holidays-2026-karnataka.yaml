@@ -1,0 +1,184 @@
+id: in-central-government-holidays-2026-karnataka
+title: 'India: closed and restricted holidays for Central Government offices in Karnataka, 2026 (CAG office list)'
+kind: rule
+domain: calendar
+region: IN
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- calendar
+- holidays
+- business-days
+- gazetted-holidays
+- restricted-holidays
+- central-government
+use_cases:
+- payroll-demo
+- settlement-calendar
+- scheduling-demo
+- logistics-demo
+spec:
+  implementation: almanac.rules.holiday_list
+  parameters:
+    holidays:
+    - date: '2026-01-14'
+      name: Makara Sankranthi
+    - date: '2026-01-26'
+      name: Republic Day
+    - date: '2026-03-19'
+      name: Ugadi
+    - date: '2026-03-21'
+      name: Id-ul-Fitr
+    - date: '2026-03-31'
+      name: Mahavir Jayanthi
+    - date: '2026-04-03'
+      name: Good Friday
+    - date: '2026-05-01'
+      name: Buddha Purnima
+    - date: '2026-05-27'
+      name: Id-ul-Zuha (Bakrid)
+    - date: '2026-06-26'
+      name: Muharram
+    - date: '2026-08-15'
+      name: Independence Day
+    - date: '2026-08-26'
+      name: Milad-Un-Nabi / Id- E-Milad
+    - date: '2026-09-14'
+      name: Ganesh Chaturthi
+    - date: '2026-10-02'
+      name: Mahatma Gandhi's Birthday
+    - date: '2026-10-20'
+      name: Dussehra (Vijayadashami)
+    - date: '2026-11-08'
+      name: Diwali (Deepavali)
+    - date: '2026-11-24'
+      name: Guru Nanak's Birthday
+    - date: '2026-12-25'
+      name: Christmas Day
+    restricted_holidays:
+    - date: '2026-01-01'
+      name: New Year's Day
+    - date: '2026-01-03'
+      name: Hazarat Ali's Birthday*
+    - date: '2026-01-23'
+      name: Basant Panchami / Sri Panchami
+    - date: '2026-02-01'
+      name: Guru Ravidas's Birthday
+    - date: '2026-02-12'
+      name: Birthday of Swami Dayananda Saraswati
+    - date: '2026-02-15'
+      name: Maha Shivaratri
+    - date: '2026-02-19'
+      name: Shivaji Jayanti
+    - date: '2026-03-03'
+      name: Holika Dahan / Dolyatra
+    - date: '2026-03-04'
+      name: Holi
+    - date: '2026-03-26'
+      name: Ram Navami
+    - date: '2026-04-05'
+      name: Easter Sunday
+    - date: '2026-04-14'
+      name: Vaisakhi / Tamil New Year
+    - date: '2026-05-09'
+      name: Birthday of Rabindranath Tagore
+    - date: '2026-07-16'
+      name: Rath Yatra
+    - date: '2026-08-26'
+      name: Onam / Thiru Onam Day
+    - date: '2026-08-28'
+      name: Varamahalakshmi Vrata
+    - date: '2026-08-28'
+      name: Raksha Bandhan
+    - date: '2026-09-04'
+      name: Janmashtami
+    - date: '2026-10-18'
+      name: Dussehra (Saptami)
+    - date: '2026-10-19'
+      name: Dussehra (Ashtami)
+    - date: '2026-10-20'
+      name: Dussehra (Navami)
+    - date: '2026-10-26'
+      name: Maharishi Valmiki's Birthday
+    - date: '2026-11-01'
+      name: Kannada Rajyotsava
+    - date: '2026-11-08'
+      name: Naraka Chaturdashi
+    - date: '2026-11-09'
+      name: Govardhan Puja
+    - date: '2026-11-11'
+      name: Bhai Duj
+    - date: '2026-11-15'
+      name: Guru Teg Bahadur's Martyrdom Day
+    - date: '2026-12-24'
+      name: Christmas Eve
+  vectors:
+  - input: '2026-01-26'
+    expected: true
+    origin: source
+  - input: '2026-12-25'
+    expected: true
+    origin: source
+  - input: '2026-11-08'
+    expected: true
+    origin: source
+  - input: '2026-01-01'
+    expected: false
+    origin: source
+    note: a restricted holiday is optional and not a closed day
+  - input:
+      op: is_business_day
+      date: '2026-12-25'
+    expected: false
+    origin: derived
+    note: a listed holiday is not a business day
+  - input:
+      op: next_business_day
+      date: '2026-12-25'
+    expected: '2026-12-28'
+    origin: derived
+    note: first weekday after the holiday that is not itself listed
+evidence:
+- publisher: Office of the Comptroller and Auditor General of India (cag.gov.in)
+  title: 'Holiday List 2026: holidays to be observed in Central Government offices in Karnataka'
+  url: https://cag.gov.in/uploads/media/Holiday-List-2026-069521fe6f358d0-89936988.pdf
+  accessed_at: '2026-10-31'
+  locator: page 1, Annexure I
+  value: 26/01/2026
+  unit: date
+  snippet: HOLIDAYS TO BE OBSERVED IN CENTRAL GOVERNMENT OFFICES IN KARNATAKA DURING THE YEAR 2026
+  source_license: unstated
+  content_sha256: 1a6725164d0a83c2f87628a20855a59c4d6b7bd9b73ec3d6dd3a61f3318c1986
+  role: primary
+- publisher: Office of the Comptroller and Auditor General of India (cag.gov.in)
+  title: 'Holiday List 2026: holidays to be observed in Central Government offices in Karnataka'
+  url: https://cag.gov.in/uploads/media/Holiday-List-2026-069521fe6f358d0-89936988.pdf
+  accessed_at: '2026-10-31'
+  locator: page 2, Annexure II
+  value: 01/01/2026
+  unit: date
+  snippet: LIST OF RESTRICTED HOLIDAYS FOR THE CALENDAR YEAR 2026
+  source_license: unstated
+  content_sha256: 1a6725164d0a83c2f87628a20855a59c4d6b7bd9b73ec3d6dd3a61f3318c1986
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[2026]
+  expected: 17
+  tolerance: 0
+- statistic: list_length[restricted_holidays]
+  expected: 28
+  tolerance: 0
+notes: The 17 closed (gazetted) holidays in Annexure I and the 28 restricted holidays in Annexure II of the 2026
+  holiday list published by the Comptroller and Auditor General of India for Central Government offices in Karnataka.
+  Central Government holiday lists derive from the Department of Personnel and Training office memorandum for the
+  year (fourteen compulsory holidays plus three chosen by the Central Government Employees Welfare Coordination
+  Committee of each state), and the DoPT circular host was unreachable when this entry was built, so this office
+  list stands in for it and the regional choices are Karnataka's. Only the closed holidays enter the business-day
+  rule; restricted holidays are kept under restricted_holidays. Dates for Id-ul-Fitr, Id-ul-Zuha, Muharram and Id-e-Milad
+  can move with the lunar sighting.
