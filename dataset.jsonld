@@ -34,9 +34,12 @@
     "AU data rules",
     "BE data rules",
     "BR data rules",
+    "CH data rules",
     "DE data rules",
+    "DK data rules",
     "ES data rules",
     "EU data rules",
+    "FI data rules",
     "FR data rules",
     "GB data rules",
     "HK data rules",
@@ -44,6 +47,7 @@
     "IN data rules",
     "IT data rules",
     "JP data rules",
+    "LT data rules",
     "MX data rules",
     "NL data rules",
     "NO data rules",
@@ -51,7 +55,10 @@
     "SE data rules",
     "SG data rules",
     "US data rules",
+    "ZA data rules",
     "ability-to-repay",
+    "abn",
+    "abr",
     "abs",
     "absence",
     "access",
@@ -66,6 +73,7 @@
     "age-structure",
     "ageing",
     "agriculture",
+    "ahv",
     "air-passengers",
     "air-quality",
     "aircraft",
@@ -80,6 +88,7 @@
     "arpu",
     "asgs",
     "ashe",
+    "asmens-kodas",
     "asset-size",
     "atm",
     "attendance-allowance",
@@ -92,6 +101,7 @@
     "average-prices",
     "average-wage",
     "aviation",
+    "avs",
     "awe",
     "baby-names",
     "balance-sheet",
@@ -112,6 +122,8 @@
     "branches",
     "broadband",
     "broadcasting",
+    "brreg",
+    "bsn",
     "bts",
     "budget",
     "business",
@@ -242,6 +254,7 @@
     "cpf",
     "cpi",
     "cpih",
+    "cpr",
     "credit",
     "credit-bureau",
     "credit-card",
@@ -318,9 +331,11 @@
     "economy",
     "education",
     "effective-exchange-rate",
+    "ein",
     "electric-vehicles",
     "electricity",
     "electronic-fund-transfers",
+    "elfproef",
     "eligibility",
     "email",
     "emergency-department",
@@ -425,6 +440,7 @@
     "health-spending",
     "healthcare",
     "healthcare-demo",
+    "henkilotunnus",
     "hicp",
     "high-cost-mortgage",
     "hipaa",
@@ -463,6 +479,7 @@
     "icd-10-cm",
     "identifier",
     "identifiers",
+    "idnr",
     "ile-de-france",
     "ilostat",
     "incident-reporting",
@@ -504,6 +521,8 @@
     "iso-3166",
     "iso-4217",
     "iso-639",
+    "iso-7064",
+    "itin",
     "itu",
     "japan",
     "japan-post",
@@ -513,6 +532,7 @@
     "jours-feries",
     "jurisdiction",
     "kyb-onboarding",
+    "kyc",
     "kyc-onboarding",
     "labour",
     "labour-cost",
@@ -588,7 +608,9 @@
     "names",
     "nasr",
     "national-accounts",
+    "national-id",
     "national-insurance",
+    "national-number",
     "ndc",
     "net-worth",
     "new-regime",
@@ -597,6 +619,7 @@
     "nhtsa",
     "nil-rate-band",
     "nino",
+    "nip",
     "nonrevolving-credit",
     "npi",
     "npl",
@@ -618,6 +641,7 @@
     "operating-margin",
     "operators",
     "orange-book",
+    "organisasjonsnummer",
     "originations",
     "orr",
     "osha",
@@ -628,6 +652,7 @@
     "overdraft",
     "overtime",
     "ownership",
+    "pan",
     "parental-leave",
     "part-b",
     "part-d",
@@ -666,6 +691,8 @@
     "personal-allowance",
     "personal-finance",
     "personal-loans",
+    "personnummer",
+    "pesel",
     "petrol",
     "pfrda",
     "pharma-demo",
@@ -690,6 +717,7 @@
     "postcodes",
     "postpaid",
     "ppp",
+    "pps",
     "prefectures",
     "premium",
     "prepaid",
@@ -764,6 +792,7 @@
     "revenue",
     "revenue-mix",
     "revolving-credit",
+    "rijksregisternummer",
     "risk-factors",
     "road-freight",
     "road-safety",
@@ -806,6 +835,8 @@
     "sic-2007",
     "sick-pay",
     "sickness-absence",
+    "siren",
+    "siret",
     "site-type",
     "size-class",
     "sla",
@@ -815,9 +846,12 @@
     "social-contributions",
     "social-insurance",
     "social-security",
+    "social-security-number",
     "speed-limit",
     "spending",
+    "ssa",
     "ssb",
+    "ssn",
     "stamp-duty",
     "statbel",
     "state-pension",
@@ -827,6 +861,7 @@
     "statute",
     "statutory-pay",
     "step-schedule",
+    "steuer-id",
     "structural-business-statistics",
     "structure-of-earnings-survey",
     "student-loan",
@@ -880,6 +915,7 @@
     "travel-demo",
     "treasury",
     "treasury-securities",
+    "trn",
     "truth-in-lending",
     "turnover",
     "txid",
@@ -943,6 +979,7 @@
     "workplace-safety",
     "world-bank",
     "wpi",
+    "y-tunnus",
     "yield-curve",
     "young-workers",
     "youth",
@@ -954,9 +991,12 @@
     "AU",
     "BE",
     "BR",
+    "CH",
     "DE",
+    "DK",
     "ES",
     "EU",
+    "FI",
     "FR",
     "GB",
     "HK",
@@ -964,6 +1004,7 @@
     "IN",
     "IT",
     "JP",
+    "LT",
     "MX",
     "NL",
     "NO",
@@ -971,6 +1012,7 @@
     "SE",
     "SG",
     "US",
+    "ZA",
     "global"
   ],
   "distribution": [
@@ -6692,6 +6734,38 @@
     },
     {
       "@type": "Dataset",
+      "name": "Australian Business Number (ABN) modulus 89 check digits",
+      "identifier": "au-abn-check-digits",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/AU/au-abn-check-digits.yaml",
+      "temporalCoverage": "2026-10-31 to open",
+      "spatialCoverage": "AU",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Australian Business Register (Australian Taxation Office)"
+        },
+        {
+          "@type": "Organization",
+          "name": "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Belgium national register number: birth date, order number and modulus 97 control number",
+      "identifier": "be-national-register-number",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/BE/be-national-register-number.yaml",
+      "temporalCoverage": "2016-05-15 to open",
+      "spatialCoverage": "BE",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Registre national (SPF Intérieur)"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
       "name": "Brazil CNPJ check digits (modulus 11) for numeric and alphanumeric registrations",
       "identifier": "br-cnpj-check-digits",
       "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/BR/br-cnpj-check-digits.yaml",
@@ -6705,6 +6779,88 @@
         {
           "@type": "Organization",
           "name": "SERPRO (Serviço Federal de Processamento de Dados)"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Switzerland AHV number (Versichertennummer): 13 digits with country code 756 and control digit",
+      "identifier": "ch-ahv-number-format",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/CH/ch-ahv-number-format.yaml",
+      "temporalCoverage": "2007-12-01 to open",
+      "spatialCoverage": "CH",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Swiss Federal Chancellery (Fedlex)"
+        },
+        {
+          "@type": "Organization",
+          "name": "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Germany steuerliche Identifikationsnummer (IdNr): structure rules and ISO 7064 check digit",
+      "identifier": "de-steuer-id-check-digit",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/DE/de-steuer-id-check-digit.yaml",
+      "temporalCoverage": "2026-09-02 to open",
+      "spatialCoverage": "DE",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "ELSTER (Bayerisches Landesamt für Steuern)"
+        },
+        {
+          "@type": "Organization",
+          "name": "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Denmark CPR number (personnummer): birth date, century from serial, modulus 11 control",
+      "identifier": "dk-cpr-number",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/DK/dk-cpr-number.yaml",
+      "temporalCoverage": "2008-07-01 to open",
+      "spatialCoverage": "DK",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "CPR-kontoret (Danish Civil Registration System office)"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Finland personal identity code (henkilötunnus) century signs and business ID format",
+      "identifier": "fi-personal-identity-code-format",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/FI/fi-personal-identity-code-format.yaml",
+      "temporalCoverage": "2026-10-31 to open",
+      "spatialCoverage": "FI",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "France SIREN and SIRET identifiers: nine-digit legal unit and fourteen-digit establishment numbers",
+      "identifier": "fr-siren-siret-format",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/FR/fr-siren-siret-format.yaml",
+      "temporalCoverage": "2025-10-21 to open",
+      "spatialCoverage": "FR",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Institut national de la statistique et des études économiques (INSEE)"
+        },
+        {
+          "@type": "Organization",
+          "name": "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
         }
       ]
     },
@@ -6747,6 +6903,202 @@
         {
           "@type": "Organization",
           "name": "HM Revenue & Customs"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Ireland tax reference number (PPS-based TRN) and charity CHY number formats",
+      "identifier": "ie-tax-reference-number-format",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/IE/ie-tax-reference-number-format.yaml",
+      "temporalCoverage": "2026-10-31 to open",
+      "spatialCoverage": "IE",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "India Permanent Account Number (PAN) format and holder-type codes",
+      "identifier": "in-pan-format",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/IN/in-pan-format.yaml",
+      "temporalCoverage": "2026-10-31 to open",
+      "spatialCoverage": "IN",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Lithuania personal code (asmens kodas) two-pass modulus 11 check digit",
+      "identifier": "lt-personal-code-check-digit",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/LT/lt-personal-code-check-digit.yaml",
+      "temporalCoverage": "2026-10-31 to open",
+      "spatialCoverage": "LT",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Netherlands citizen service number (BSN) eleven test (elfproef)",
+      "identifier": "nl-bsn-elfproef",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/NL/nl-bsn-elfproef.yaml",
+      "temporalCoverage": "2019-12-13 to open",
+      "spatialCoverage": "NL",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+        },
+        {
+          "@type": "Organization",
+          "name": "Rijksdienst voor Identiteitsgegevens (RvIG)"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Norway organisation number (organisasjonsnummer) modulus 11 check digit",
+      "identifier": "no-organisasjonsnummer-check-digit",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/NO/no-organisasjonsnummer-check-digit.yaml",
+      "temporalCoverage": "2023-12-13 to open",
+      "spatialCoverage": "NO",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Brønnøysundregistrene"
+        },
+        {
+          "@type": "Organization",
+          "name": "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Poland tax identification number (NIP) modulus 11 check digit",
+      "identifier": "pl-nip-check-digit",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/PL/pl-nip-check-digit.yaml",
+      "temporalCoverage": "2026-10-31 to open",
+      "spatialCoverage": "PL",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Poland PESEL number: century-coded birth month, sex digit and check digit",
+      "identifier": "pl-pesel-check-digit",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/PL/pl-pesel-check-digit.yaml",
+      "temporalCoverage": "2026-10-31 to open",
+      "spatialCoverage": "PL",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Ministerstwo Cyfryzacji (gov.pl)"
+        },
+        {
+          "@type": "Organization",
+          "name": "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Sweden personnummer: birth date, birth number and modulus 10 check digit",
+      "identifier": "se-personnummer-check-digit",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/SE/se-personnummer-check-digit.yaml",
+      "temporalCoverage": "1967-01-01 to open",
+      "spatialCoverage": "SE",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Statistiska centralbyrån (Statistics Sweden)"
+        },
+        {
+          "@type": "Organization",
+          "name": "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "United States employer identification number (EIN): 00-0000000 form and valid prefixes by IRS campus",
+      "identifier": "us-ein-prefixes",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/US/us-ein-prefixes.yaml",
+      "temporalCoverage": "2026-04-09 to open",
+      "spatialCoverage": "US",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Internal Revenue Service"
+        },
+        {
+          "@type": "Organization",
+          "name": "Internal Revenue Service via the eCFR API"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "United States individual taxpayer identification number (ITIN): nine digits beginning with 9",
+      "identifier": "us-itin-format",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/US/us-itin-format.yaml",
+      "temporalCoverage": "2026-10-29 to open",
+      "spatialCoverage": "US",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Internal Revenue Service via the eCFR API"
+        },
+        {
+          "@type": "Organization",
+          "name": "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "United States Social Security number: 000-00-0000 form and never-assigned values",
+      "identifier": "us-ssn-format",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/US/us-ssn-format.yaml",
+      "temporalCoverage": "2011-06-23 to open",
+      "spatialCoverage": "US",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "Social Security Administration"
+        },
+        {
+          "@type": "Organization",
+          "name": "Internal Revenue Service via the eCFR API"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "South Africa identity number: birth date, sex range, citizenship digit and Luhn check digit",
+      "identifier": "za-identity-number",
+      "url": "https://github.com/Misata-labs/almanac/blob/main/entries/identifiers/ZA/za-identity-number.yaml",
+      "temporalCoverage": "2026-10-31 to open",
+      "spatialCoverage": "ZA",
+      "creator": [
+        {
+          "@type": "Organization",
+          "name": "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
         }
       ]
     },

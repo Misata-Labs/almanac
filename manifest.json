@@ -8,7 +8,7 @@
     "entries": "ODbL-1.0",
     "code": "Apache-2.0"
   },
-  "entry_count": 539,
+  "entry_count": 558,
   "entries": [
     {
       "id": "eu-new-passenger-car-registrations-by-motor-energy-2025",
@@ -14438,6 +14438,77 @@
       "vectors": 5
     },
     {
+      "id": "au-abn-check-digits",
+      "title": "Australian Business Number (ABN) modulus 89 check digits",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "AU",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-10-31 to open",
+      "publishers": [
+        "Australian Business Register (Australian Taxation Office)",
+        "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "abn",
+        "abr"
+      ],
+      "use_cases": [
+        "kyb-onboarding",
+        "company-generation",
+        "invoicing",
+        "data-quality-validation"
+      ],
+      "path": "entries/identifiers/AU/au-abn-check-digits.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/AU/au-abn-check-digits.yaml",
+      "valid_from": "2026-10-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.au_abn",
+      "vectors": 5
+    },
+    {
+      "id": "be-national-register-number",
+      "title": "Belgium national register number: birth date, order number and modulus 97 control number",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "BE",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2016-05-15 to open",
+      "publishers": [
+        "Registre national (SPF Intérieur)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "rijksregisternummer",
+        "national-number"
+      ],
+      "use_cases": [
+        "kyc-onboarding",
+        "person-generation",
+        "payroll-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/identifiers/BE/be-national-register-number.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/BE/be-national-register-number.yaml",
+      "valid_from": "2016-05-15",
+      "valid_to": null,
+      "implementation": "almanac.rules.be_national_number",
+      "vectors": 7
+    },
+    {
       "id": "br-cnpj-check-digits",
       "title": "Brazil CNPJ check digits (modulus 11) for numeric and alphanumeric registrations",
       "kind": "rule",
@@ -14471,6 +14542,188 @@
       "valid_to": null,
       "implementation": "almanac.rules.br_cnpj",
       "vectors": 6
+    },
+    {
+      "id": "ch-ahv-number-format",
+      "title": "Switzerland AHV number (Versichertennummer): 13 digits with country code 756 and control digit",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "CH",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2007-12-01 to open",
+      "publishers": [
+        "Swiss Federal Chancellery (Fedlex)",
+        "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "ahv",
+        "avs",
+        "social-security-number"
+      ],
+      "use_cases": [
+        "kyc-onboarding",
+        "person-generation",
+        "payroll-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/identifiers/CH/ch-ahv-number-format.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/CH/ch-ahv-number-format.yaml",
+      "valid_from": "2007-12-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.ch_ahv_number",
+      "vectors": 5
+    },
+    {
+      "id": "de-steuer-id-check-digit",
+      "title": "Germany steuerliche Identifikationsnummer (IdNr): structure rules and ISO 7064 check digit",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "DE",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-09-02 to open",
+      "publishers": [
+        "ELSTER (Bayerisches Landesamt für Steuern)",
+        "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "steuer-id",
+        "idnr",
+        "iso-7064"
+      ],
+      "use_cases": [
+        "kyc-onboarding",
+        "person-generation",
+        "payroll-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/identifiers/DE/de-steuer-id-check-digit.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/DE/de-steuer-id-check-digit.yaml",
+      "valid_from": "2026-09-02",
+      "valid_to": null,
+      "implementation": "almanac.rules.de_steuer_id",
+      "vectors": 15
+    },
+    {
+      "id": "dk-cpr-number",
+      "title": "Denmark CPR number (personnummer): birth date, century from serial, modulus 11 control",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "DK",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2008-07-01 to open",
+      "publishers": [
+        "CPR-kontoret (Danish Civil Registration System office)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "cpr",
+        "personnummer"
+      ],
+      "use_cases": [
+        "kyc-onboarding",
+        "person-generation",
+        "payroll-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/identifiers/DK/dk-cpr-number.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/DK/dk-cpr-number.yaml",
+      "valid_from": "2008-07-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.dk_cpr",
+      "vectors": 7
+    },
+    {
+      "id": "fi-personal-identity-code-format",
+      "title": "Finland personal identity code (henkilötunnus) century signs and business ID format",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "FI",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-10-31 to open",
+      "publishers": [
+        "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "henkilotunnus",
+        "y-tunnus"
+      ],
+      "use_cases": [
+        "kyc-onboarding",
+        "person-generation",
+        "payroll-demo",
+        "data-quality-validation",
+        "kyb-onboarding"
+      ],
+      "path": "entries/identifiers/FI/fi-personal-identity-code-format.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/FI/fi-personal-identity-code-format.yaml",
+      "valid_from": "2026-10-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.fi_hetu",
+      "vectors": 8
+    },
+    {
+      "id": "fr-siren-siret-format",
+      "title": "France SIREN and SIRET identifiers: nine-digit legal unit and fourteen-digit establishment numbers",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "FR",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2025-10-21 to open",
+      "publishers": [
+        "Institut national de la statistique et des études économiques (INSEE)",
+        "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "siren",
+        "siret",
+        "insee"
+      ],
+      "use_cases": [
+        "kyb-onboarding",
+        "company-generation",
+        "invoicing",
+        "data-quality-validation"
+      ],
+      "path": "entries/identifiers/FR/fr-siren-siret-format.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/FR/fr-siren-siret-format.yaml",
+      "valid_from": "2025-10-21",
+      "valid_to": null,
+      "implementation": "almanac.rules.fr_siret",
+      "vectors": 5
     },
     {
       "id": "gb-nino-format",
@@ -14572,6 +14825,433 @@
       "valid_to": null,
       "implementation": "almanac.rules.gb_vrn",
       "vectors": 7
+    },
+    {
+      "id": "ie-tax-reference-number-format",
+      "title": "Ireland tax reference number (PPS-based TRN) and charity CHY number formats",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "IE",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-10-31 to open",
+      "publishers": [
+        "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "pps",
+        "trn"
+      ],
+      "use_cases": [
+        "kyc-onboarding",
+        "person-generation",
+        "payroll-demo",
+        "data-quality-validation",
+        "kyb-onboarding"
+      ],
+      "path": "entries/identifiers/IE/ie-tax-reference-number-format.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/IE/ie-tax-reference-number-format.yaml",
+      "valid_from": "2026-10-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.ie_pps",
+      "vectors": 6
+    },
+    {
+      "id": "in-pan-format",
+      "title": "India Permanent Account Number (PAN) format and holder-type codes",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-10-31 to open",
+      "publishers": [
+        "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "pan",
+        "tax-identifier"
+      ],
+      "use_cases": [
+        "kyc-onboarding",
+        "person-generation",
+        "payroll-demo",
+        "data-quality-validation",
+        "kyb-onboarding"
+      ],
+      "path": "entries/identifiers/IN/in-pan-format.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/IN/in-pan-format.yaml",
+      "valid_from": "2026-10-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.in_pan",
+      "vectors": 6
+    },
+    {
+      "id": "lt-personal-code-check-digit",
+      "title": "Lithuania personal code (asmens kodas) two-pass modulus 11 check digit",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "LT",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-10-31 to open",
+      "publishers": [
+        "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "asmens-kodas"
+      ],
+      "use_cases": [
+        "kyc-onboarding",
+        "person-generation",
+        "payroll-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/identifiers/LT/lt-personal-code-check-digit.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/LT/lt-personal-code-check-digit.yaml",
+      "valid_from": "2026-10-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.weighted_modulus",
+      "vectors": 4
+    },
+    {
+      "id": "nl-bsn-elfproef",
+      "title": "Netherlands citizen service number (BSN) eleven test (elfproef)",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "NL",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2019-12-13 to open",
+      "publishers": [
+        "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes",
+        "Rijksdienst voor Identiteitsgegevens (RvIG)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "bsn",
+        "elfproef"
+      ],
+      "use_cases": [
+        "kyc-onboarding",
+        "person-generation",
+        "payroll-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/identifiers/NL/nl-bsn-elfproef.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/NL/nl-bsn-elfproef.yaml",
+      "valid_from": "2019-12-13",
+      "valid_to": null,
+      "implementation": "almanac.rules.weighted_modulus",
+      "vectors": 9
+    },
+    {
+      "id": "no-organisasjonsnummer-check-digit",
+      "title": "Norway organisation number (organisasjonsnummer) modulus 11 check digit",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "NO",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2023-12-13 to open",
+      "publishers": [
+        "Brønnøysundregistrene",
+        "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "organisasjonsnummer",
+        "brreg"
+      ],
+      "use_cases": [
+        "kyb-onboarding",
+        "company-generation",
+        "invoicing",
+        "data-quality-validation"
+      ],
+      "path": "entries/identifiers/NO/no-organisasjonsnummer-check-digit.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/NO/no-organisasjonsnummer-check-digit.yaml",
+      "valid_from": "2023-12-13",
+      "valid_to": null,
+      "implementation": "almanac.rules.weighted_modulus",
+      "vectors": 5
+    },
+    {
+      "id": "pl-nip-check-digit",
+      "title": "Poland tax identification number (NIP) modulus 11 check digit",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "PL",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-10-31 to open",
+      "publishers": [
+        "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "nip",
+        "tax-identifier"
+      ],
+      "use_cases": [
+        "kyb-onboarding",
+        "company-generation",
+        "invoicing",
+        "data-quality-validation"
+      ],
+      "path": "entries/identifiers/PL/pl-nip-check-digit.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/PL/pl-nip-check-digit.yaml",
+      "valid_from": "2026-10-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.weighted_modulus",
+      "vectors": 4
+    },
+    {
+      "id": "pl-pesel-check-digit",
+      "title": "Poland PESEL number: century-coded birth month, sex digit and check digit",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "PL",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-10-31 to open",
+      "publishers": [
+        "Ministerstwo Cyfryzacji (gov.pl)",
+        "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "pesel"
+      ],
+      "use_cases": [
+        "kyc-onboarding",
+        "person-generation",
+        "payroll-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/identifiers/PL/pl-pesel-check-digit.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/PL/pl-pesel-check-digit.yaml",
+      "valid_from": "2026-10-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.pl_pesel",
+      "vectors": 6
+    },
+    {
+      "id": "se-personnummer-check-digit",
+      "title": "Sweden personnummer: birth date, birth number and modulus 10 check digit",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "SE",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "1967-01-01 to open",
+      "publishers": [
+        "Statistiska centralbyrån (Statistics Sweden)",
+        "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "personnummer",
+        "luhn"
+      ],
+      "use_cases": [
+        "kyc-onboarding",
+        "person-generation",
+        "payroll-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/identifiers/SE/se-personnummer-check-digit.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/SE/se-personnummer-check-digit.yaml",
+      "valid_from": "1967-01-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.se_personnummer",
+      "vectors": 6
+    },
+    {
+      "id": "us-ein-prefixes",
+      "title": "United States employer identification number (EIN): 00-0000000 form and valid prefixes by IRS campus",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-04-09 to open",
+      "publishers": [
+        "Internal Revenue Service",
+        "Internal Revenue Service via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "ein",
+        "irs"
+      ],
+      "use_cases": [
+        "kyb-onboarding",
+        "company-generation",
+        "invoicing",
+        "data-quality-validation"
+      ],
+      "path": "entries/identifiers/US/us-ein-prefixes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/US/us-ein-prefixes.yaml",
+      "valid_from": "2026-04-09",
+      "valid_to": null,
+      "implementation": "almanac.rules.us_ein",
+      "vectors": 7
+    },
+    {
+      "id": "us-itin-format",
+      "title": "United States individual taxpayer identification number (ITIN): nine digits beginning with 9",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-10-29 to open",
+      "publishers": [
+        "Internal Revenue Service via the eCFR API",
+        "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "itin",
+        "irs"
+      ],
+      "use_cases": [
+        "kyc-onboarding",
+        "person-generation",
+        "payroll-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/identifiers/US/us-itin-format.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/US/us-itin-format.yaml",
+      "valid_from": "2026-10-29",
+      "valid_to": null,
+      "implementation": "almanac.rules.us_tin_format",
+      "vectors": 5
+    },
+    {
+      "id": "us-ssn-format",
+      "title": "United States Social Security number: 000-00-0000 form and never-assigned values",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2011-06-23 to open",
+      "publishers": [
+        "Social Security Administration",
+        "Internal Revenue Service via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "ssn",
+        "ssa"
+      ],
+      "use_cases": [
+        "kyc-onboarding",
+        "person-generation",
+        "payroll-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/identifiers/US/us-ssn-format.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/US/us-ssn-format.yaml",
+      "valid_from": "2011-06-23",
+      "valid_to": null,
+      "implementation": "almanac.rules.us_tin_format",
+      "vectors": 9
+    },
+    {
+      "id": "za-identity-number",
+      "title": "South Africa identity number: birth date, sex range, citizenship digit and Luhn check digit",
+      "kind": "rule",
+      "domain": "identifiers",
+      "region": "ZA",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-10-31 to open",
+      "publishers": [
+        "OECD Global Forum on Transparency and Exchange of Information for Tax Purposes"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "identifiers",
+        "check-digit",
+        "kyc",
+        "luhn",
+        "national-id"
+      ],
+      "use_cases": [
+        "kyc-onboarding",
+        "person-generation",
+        "payroll-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/identifiers/ZA/za-identity-number.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/identifiers/ZA/za-identity-number.yaml",
+      "valid_from": "2026-10-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.za_id",
+      "vectors": 8
     },
     {
       "id": "eu-equivalised-net-income-2025",

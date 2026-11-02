@@ -89,7 +89,7 @@ uv run almanac applies --on 2026-06-15 --use-case banking-demo
 | **A payroll or HR demo** | UK Income Tax bands with the tapered Personal Allowance, National Minimum Wage by age band and date, ASHE pay percentiles by region and worker group, SOC 2020 occupations, sickness absence by age, occupation and industry, OECD wages, tenure, hours and tax wedges, ILO earnings by occupation, US General Schedule pay grids, German social insurance rates, public holidays for ten countries |
 | **A banking, lending or treasury demo** | Selic and ECB deposit-rate step schedules, policy rates for nine economies, the daily US Treasury par yield curve, HMDA mortgage applications by outcome, purpose and loan type, New York Fed household debt by type, delinquency and borrower age, credit scores at origination, every US bank failure since 2000, Survey of Consumer Finances income and net worth |
 | **A payments or fintech demo** | Pix identifier formats, monthly Pix volume and average ticket, Pix key-type mix, HMRC payment reference check characters, bank holidays for settlement calendars |
-| **KYC, KYB or customer onboarding test data** | CNPJ and UTR check digits, VAT registration number validation, Companies House company types and statuses, SIC 2007 codes, the email pattern HMRC accepts, World Bank economy classification |
+| **KYC, KYB or customer onboarding test data** | Personal and business identifiers for sixteen countries: Australian ABN, Polish PESEL and NIP, Danish CPR, German tax ID, Belgian national number, Dutch BSN, Norwegian organisation number, Lithuanian personal code, Swedish personnummer, South African ID, US SSN, ITIN and EIN prefixes, French SIREN and SIRET, Swiss AHV, Indian PAN, Irish TRN, Finnish identity code, plus CNPJ and UTR check digits, VAT registration number validation, Companies House company types and statuses, SIC 2007 codes, the email pattern HMRC accepts, World Bank economy classification |
 | **Invoicing, tax or audit test data** | UK VAT rates, India GST slab structure, ISO 4217 minor units, ECB and US Treasury exchange-rate tables, CPIH and IPCA price indices |
 | **Synthetic customers, people and households** | First names by sex, region and birth cohort for England and Wales, Scotland, France, Ireland, Belgium, Spain and Norway, US Census surnames with ethnicity shares, Census 2021 marginals, single-year age distributions, world population weights |
 | **Healthcare and claims test data** | MS-DRG FY2026 relative weights and lengths of stay, Medicare inpatient payments by DRG, outpatient APCs, top physician services, Part B and Part D drug spending, HCPCS Level II sections, office-visit RVUs, readmission penalties, Medicare enrolment, NDC and Orange Book product mixes, ICD-10-CM categories, the NPI check digit |
@@ -134,7 +134,7 @@ for entry in almanac.select(on=date(2026, 6, 15), region="GB", kind="rule"):
 
 ## What is inside
 
-Five hundred and thirty-nine entries across thirty-five domains and twenty-two
+Five hundred and fifty-eight entries across thirty-five domains and twenty-seven
 regions at the time of writing, every one of them passing live verification. The generated
 [CATALOGUE.md](CATALOGUE.md) is the authoritative list; this is the tour.
 
@@ -156,6 +156,17 @@ example. The US vehicle identification number check digit lifted from
 49 CFR 565.15 through the eCFR API, with NHTSA's decoder confirming the
 vectors. The National Provider Identifier check digit from the CMS note that
 defines it.
+Nineteen more national identifiers, each from its own issuing body or the
+OECD's tax identification sheets: the Australian Business Number from the
+Australian Business Register's worked example, PESEL and NIP, the Danish CPR
+number from CPR-kontoret, the German tax identification number with all six
+ELSTER examples, the Belgian national register number, the Dutch BSN eleven
+test with the population register's own test persons, Norwegian organisation
+numbers, Lithuanian personal codes, the Swedish personnummer from Statistics
+Sweden, South African identity numbers, US SSN, ITIN and EIN prefix rules from
+the regulation and the IRS, and the formats of SIREN, SIRET, AHV, PAN, the
+Irish tax reference and the Finnish identity code. Two generic engines,
+weighted modulus and ISO 7064 MOD 11,10, sit underneath them.
 
 **Payments and currency.** Pix identifier formats from the Banco Central do
 Brasil API specification, monthly Pix volume with the derived average ticket,
@@ -346,7 +357,7 @@ confessed, with the method. `tests` is what the verifier reproduces.
 [PASS] br-pix-monthly-volume-and-value  (entries/payments/BR/br-pix-monthly-volume-and-value.yaml)
     PASS test column[quantity_thousands,2026-09]  observed 7.89294e+06, expected 7892936.44 ± 0
 ...
-539 passed, 0 failed, 539 entries
+558 passed, 0 failed, 558 entries
 ```
 
 ## Frequently asked questions
