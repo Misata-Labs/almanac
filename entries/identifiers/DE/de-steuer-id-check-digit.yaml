@@ -1,0 +1,159 @@
+id: de-steuer-id-check-digit
+title: 'Germany steuerliche Identifikationsnummer (IdNr): structure rules and ISO 7064 check digit'
+kind: rule
+domain: identifiers
+region: DE
+status: license-review
+tier: B
+valid_from: '2026-09-02'
+valid_to: null
+tags:
+- identifiers
+- check-digit
+- kyc
+- steuer-id
+- idnr
+- iso-7064
+use_cases:
+- kyc-onboarding
+- person-generation
+- payroll-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.de_steuer_id
+  parameters:
+    check_digit:
+      modulus: 11
+      radix: 10
+      body_length: 10
+    repeat_counts:
+    - 2
+    - 3
+    allow_leading_zero: false
+  vectors:
+  - input:
+      body: 0247629135
+    expected: '8'
+    origin: source
+    note: Tabelle 2-1 example
+  - input:
+      body: '8609574271'
+    expected: '9'
+    origin: source
+    note: Tabelle 2-1 example
+  - input:
+      body: '4703689281'
+    expected: '6'
+    origin: source
+    note: Tabelle 2-1 example
+  - input:
+      body: '6592997048'
+    expected: '9'
+    origin: source
+    note: Tabelle 2-1 example
+  - input:
+      body: '5754928501'
+    expected: '7'
+    origin: source
+    note: Tabelle 2-1 example
+  - input:
+      body: '2576813141'
+    expected: '1'
+    origin: source
+    note: Tabelle 2-1 example
+  - input: '86095742719'
+    expected: true
+    origin: source
+  - input: '47036892816'
+    expected: true
+    origin: source
+  - input: '65929970489'
+    expected: true
+    origin: source
+  - input: '57549285017'
+    expected: true
+    origin: source
+  - input: '25768131411'
+    expected: true
+    origin: source
+  - input: 02476291358
+    expected: false
+    origin: derived
+    note: 'test identification number: leading zero is reserved for test numbers'
+  - input: '12345678903'
+    expected: false
+    origin: derived
+    note: no repeated digit in the first ten
+  - input: '86095742718'
+    expected: false
+    origin: derived
+    note: check digit altered
+  - input: '11123456780'
+    expected: false
+    origin: derived
+    note: a digit repeated three times in consecutive positions
+evidence:
+- publisher: ELSTER (Bayerisches Landesamt für Steuern)
+  title: Prüfung der Steuer- und Steueridentifikationsnummer (PDF, Stand 2 September 2026)
+  url: https://download.elster.de/download/schnittstellen/Pruefung_der_Steuer_und_Steueridentifikatsnummer.pdf
+  accessed_at: '2026-10-31'
+  locator: page 6, section 2.2 Aufbau der Steueridentifikationsnummer
+  value: Prüfziffer
+  unit: text
+  snippet: In den ersten 10 Stellen der Identifikationsnummer muss genau eine Ziffer doppelt
+  source_license: unstated
+  content_sha256: e9ce08500544af6c56c8fbd1cf483a1f582220e642647ebfb5ac45dac1bf7f3c
+  role: primary
+- publisher: ELSTER (Bayerisches Landesamt für Steuern)
+  title: Prüfung der Steuer- und Steueridentifikationsnummer (PDF, Stand 2 September 2026)
+  url: https://download.elster.de/download/schnittstellen/Pruefung_der_Steuer_und_Steueridentifikatsnummer.pdf
+  accessed_at: '2026-10-31'
+  locator: page 7, Tabelle 2-1
+  value: '86095742719'
+  unit: text
+  snippet: Beispiel für eine Steueridentifikationsnummer
+  source_license: unstated
+  content_sha256: e9ce08500544af6c56c8fbd1cf483a1f582220e642647ebfb5ac45dac1bf7f3c
+  role: primary
+- publisher: ELSTER (Bayerisches Landesamt für Steuern)
+  title: Prüfung der Steuer- und Steueridentifikationsnummer (PDF, Stand 2 September 2026)
+  url: https://download.elster.de/download/schnittstellen/Pruefung_der_Steuer_und_Steueridentifikatsnummer.pdf
+  accessed_at: '2026-10-31'
+  locator: page 8, Algorithmus zur Berechnung der Prüfziffer
+  value: const int n = 11;
+  unit: text
+  snippet: 'Algorithmus zur Berechnung der Prüfziffer:'
+  source_license: unstated
+  content_sha256: e9ce08500544af6c56c8fbd1cf483a1f582220e642647ebfb5ac45dac1bf7f3c
+  role: primary
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'Germany: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/germany-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, TIN structure
+  value: 10 digits plus one check digit
+  unit: text
+  snippet: 'TINs are comprised of 11 digits: 10 digits plus one check digit.'
+  source_license: unstated
+  content_sha256: 499855325f4ea2e649162332435e0e398d565b3f5cf85e1fec2625b35b7b66c3
+  role: supporting
+assumed:
+- parameter: repeat_rule
+  value: three equal digits may not stand in three consecutive positions
+  method: derived
+  rationale: The document says three equal digits may never stand in directly consecutive positions, yet its own
+    example 65929970489 has two of its three 9s side by side; the rule is read as forbidding a run of three, which
+    every published example satisfies.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 15
+  tolerance: 0
+notes: 'The German tax identification number as the ELSTER interface documentation specifies it: eleven digits,
+  no leading zero outside test numbers, exactly one digit in the first ten occurring twice or three times, and an
+  eleventh check digit from the ISO 7064 MOD 11,10 fold printed in the document (moduli read from its code). All
+  six examples of Tabelle 2-1 are vectors; the first is a test number with a leading zero. The document is dated
+  2 September 2026, which is valid_from, and states that all rights are reserved, so the entry is held at license-review;
+  only facts and the publisher''s examples are restated.'

@@ -1,0 +1,102 @@
+id: ie-tax-reference-number-format
+title: Ireland tax reference number (PPS-based TRN) and charity CHY number formats
+kind: rule
+domain: identifiers
+region: IE
+status: license-review
+tier: B
+valid_from: '2026-10-31'
+valid_to: null
+tags:
+- identifiers
+- check-digit
+- kyc
+- pps
+- trn
+use_cases:
+- kyc-onboarding
+- person-generation
+- payroll-demo
+- data-quality-validation
+- kyb-onboarding
+spec:
+  implementation: almanac.rules.ie_pps
+  parameters:
+    patterns: &id001
+      trn: '[0-9]{7}[A-Z]{1,2}'
+      chy: CHY ?[0-9]{1,5}
+  vectors:
+  - input:
+      kind: trn
+      value: 1234567T
+    expected: true
+    origin: source
+  - input:
+      kind: trn
+      value: 1497955KA
+    expected: true
+    origin: source
+  - input:
+      kind: chy
+      value: CHY 1234
+    expected: true
+    origin: source
+  - input:
+      kind: trn
+      value: 123456T
+    expected: false
+    origin: derived
+    note: six digits
+  - input:
+      kind: trn
+      value: 1234567TAB
+    expected: false
+    origin: derived
+    note: three letters
+  - input:
+      kind: chy
+      value: CHY 123456
+    expected: false
+    origin: derived
+    note: six digits
+evidence:
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'Ireland: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/ireland-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, TIN structure, TRN
+  value: 1497955KA
+  unit: text
+  snippet: 'Explanation: 7 digits + either 1 or 2 letters.'
+  source_license: unstated
+  content_sha256: 53ad466efa5c9c0d585481fef7807e0765e66683b81fc5435971ccfbf993e9f4
+  role: primary
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'Ireland: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/ireland-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, TIN structure, CHY number
+  value: CHY 1234
+  unit: text
+  snippet: The letters CHY followed by between 1 and 5 digits.
+  source_license: unstated
+  content_sha256: 53ad466efa5c9c0d585481fef7807e0765e66683b81fc5435971ccfbf993e9f4
+  role: primary
+assumed:
+- parameter: patterns
+  value: *id001
+  method: derived
+  rationale: 'Regular expressions restating the sheet''s descriptions: 7 digits plus one or two letters, and CHY
+    followed by 1 to 5 digits (with the optional space its example shows).'
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 6
+  tolerance: 0
+notes: 'Ireland''s tax reference number for individuals and entities (the PPS number for individuals) as Ireland
+  describes it in its OECD tax identification number sheet: seven digits followed by one or two letters, with no
+  restriction stated on the letters; charities carry CHY followed by one to five digits. The check-letter arithmetic
+  is not in the sheet, so the rule checks shape only. The sheet carries no date or licence statement, so valid_from
+  is the access date and the entry is held at license-review.'

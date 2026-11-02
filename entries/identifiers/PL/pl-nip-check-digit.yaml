@@ -1,0 +1,91 @@
+id: pl-nip-check-digit
+title: Poland tax identification number (NIP) modulus 11 check digit
+kind: rule
+domain: identifiers
+region: PL
+status: license-review
+tier: B
+valid_from: '2026-10-31'
+valid_to: null
+tags:
+- identifiers
+- check-digit
+- kyc
+- nip
+- tax-identifier
+use_cases:
+- kyb-onboarding
+- company-generation
+- invoicing
+- data-quality-validation
+spec:
+  implementation: almanac.rules.weighted_modulus
+  parameters:
+    weights:
+    - 6
+    - 5
+    - 7
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    modulus: 11
+    check: remainder
+    remainder_map:
+      '10': null
+  vectors:
+  - input: '2234567895'
+    expected: true
+    origin: source
+    note: 'OECD sheet sample: weighted sum 236, 236 % 11 = 5'
+  - input:
+      body: '223456789'
+    expected: '5'
+    origin: source
+  - input: '2234567896'
+    expected: false
+    origin: derived
+    note: check digit altered
+  - input:
+      body: '900000000'
+    expected: null
+    origin: derived
+    note: weighted sum 54 leaves remainder 10, so no valid number exists
+evidence:
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'Poland: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/poland-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, 2.2 TIN structure, rule
+  value: '2234567895'
+  unit: text
+  snippet: 4. Check digit = remainder (if remainder = 10, the TIN is
+  source_license: unstated
+  content_sha256: 035e88e98689332f66f287b8a4a80e69e654d21b0c344efea3e0a4ac95d97a4c
+  role: primary
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'Poland: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/poland-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, 2.2 TIN structure, sample
+  value: 236% 11=5;
+  unit: text
+  snippet: 12+10+21+8+15+24+35+48+63=236;
+  source_license: unstated
+  content_sha256: 035e88e98689332f66f287b8a4a80e69e654d21b0c344efea3e0a4ac95d97a4c
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 4
+  tolerance: 0
+notes: 'The ten-digit Polish tax identification number (NIP) as Poland describes it in its OECD tax identification
+  number sheet: nine digits weighted 6 5 7 2 3 4 5 6 7, summed and reduced modulo 11; the remainder is the check
+  digit and a remainder of 10 means the number is not valid. Weights are read from the sheet and its sample 2234567895
+  supplies the source vectors. The sheet carries no date or licence statement, so valid_from is the access date
+  and the entry is held at license-review.'

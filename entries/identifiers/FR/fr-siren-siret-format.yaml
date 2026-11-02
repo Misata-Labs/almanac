@@ -1,0 +1,103 @@
+id: fr-siren-siret-format
+title: 'France SIREN and SIRET identifiers: nine-digit legal unit and fourteen-digit establishment numbers'
+kind: rule
+domain: identifiers
+region: FR
+status: license-review
+tier: B
+valid_from: '2025-10-21'
+valid_to: null
+tags:
+- identifiers
+- check-digit
+- kyc
+- siren
+- siret
+- insee
+use_cases:
+- kyb-onboarding
+- company-generation
+- invoicing
+- data-quality-validation
+spec:
+  implementation: almanac.rules.fr_siret
+  parameters:
+    siren_length: 9
+    nic_length: 5
+  vectors:
+  - input:
+      kind: siren
+      value: 999 999 999
+    expected: true
+    origin: source
+    note: format printed in the OECD sheet
+  - input:
+      kind: siret
+      value: 999 999 999 99999
+    expected: true
+    origin: source
+    note: format printed in the OECD sheet
+  - input:
+      siren_of: 999 999 999 99999
+    expected: '999999999'
+    origin: derived
+    note: the SIRET begins with the SIREN
+  - input:
+      kind: siren
+      value: '12345678'
+    expected: false
+    origin: derived
+    note: eight digits
+  - input:
+      kind: siret
+      value: '123456789'
+    expected: false
+    origin: derived
+    note: a SIREN is not a SIRET
+evidence:
+- publisher: Institut national de la statistique et des études économiques (INSEE)
+  title: 'Définition: Numéro Siren'
+  url: https://www.insee.fr/fr/metadonnees/definition/c2047
+  accessed_at: '2026-10-31'
+  locator: définition
+  value: neuf chiffres
+  unit: text
+  snippet: Le numéro SIREN est un identifiant de neuf chiffres attribué à chaque unité légale.
+  source_license: unstated
+  content_sha256: 7dc335b75419a6c6e518d7dce64d56f58871678d8cd118dd273fdb6486409a31
+  role: primary
+- publisher: Institut national de la statistique et des études économiques (INSEE)
+  title: 'Définition: Numéro Siret'
+  url: https://www.insee.fr/fr/metadonnees/definition/c1841
+  accessed_at: '2026-10-31'
+  locator: définition
+  value: 14 chiffres
+  unit: text
+  snippet: Cet identifiant numérique de 14 chiffres est articulé en deux parties
+  source_license: unstated
+  content_sha256: 92e5a9dff6c7231805144cd7c60b6ac8b6201f0377e1bfd6fc54ad02a667f56c
+  role: primary
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'France: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/france-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, TIN structure for entities
+  value: (format 999 999 999 99999).
+  unit: text
+  snippet: The numéro SIRET consists in 14 numerals
+  source_license: unstated
+  content_sha256: 998630198153412513731577d18f58e15847e01402d1545f8442c07f7c5b4daf
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 5
+  tolerance: 0
+notes: 'INSEE''s definitions: the SIREN is nine digits identifying a legal unit, the first eight without meaning
+  and the ninth a check digit; the SIRET is fourteen digits, the SIREN followed by the NIC, a four-digit order number
+  and a check digit over the whole SIRET. INSEE''s definition pages do not state the check-digit arithmetic, so
+  the rule checks lengths and composition only. valid_from is the later of the two pages'' update dates; neither
+  states a licence, so the entry is held at license-review.'

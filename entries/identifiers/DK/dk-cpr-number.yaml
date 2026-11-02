@@ -1,0 +1,199 @@
+id: dk-cpr-number
+title: 'Denmark CPR number (personnummer): birth date, century from serial, modulus 11 control'
+kind: rule
+domain: identifiers
+region: DK
+status: license-review
+tier: B
+valid_from: '2008-07-01'
+valid_to: null
+tags:
+- identifiers
+- check-digit
+- kyc
+- cpr
+- personnummer
+use_cases:
+- kyc-onboarding
+- person-generation
+- payroll-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.dk_cpr
+  parameters:
+    weights:
+    - 4
+    - 3
+    - 2
+    - 7
+    - 6
+    - 5
+    - 4
+    - 3
+    - 2
+    modulus: 11
+    centuries:
+    - serial_first_digit: '0'
+      year_from: 0
+      year_to: 99
+      century: 1900
+    - serial_first_digit: '1'
+      year_from: 0
+      year_to: 99
+      century: 1900
+    - serial_first_digit: '2'
+      year_from: 0
+      year_to: 99
+      century: 1900
+    - serial_first_digit: '3'
+      year_from: 0
+      year_to: 99
+      century: 1900
+    - serial_first_digit: '4'
+      year_from: 0
+      year_to: 36
+      century: 2000
+    - serial_first_digit: '4'
+      year_from: 37
+      year_to: 99
+      century: 1900
+    - serial_first_digit: '5'
+      year_from: 0
+      year_to: 57
+      century: 2000
+    - serial_first_digit: '5'
+      year_from: 58
+      year_to: 99
+      century: 1800
+    - serial_first_digit: '6'
+      year_from: 0
+      year_to: 57
+      century: 2000
+    - serial_first_digit: '6'
+      year_from: 58
+      year_to: 99
+      century: 1800
+    - serial_first_digit: '7'
+      year_from: 0
+      year_to: 57
+      century: 2000
+    - serial_first_digit: '7'
+      year_from: 58
+      year_to: 99
+      century: 1800
+    - serial_first_digit: '8'
+      year_from: 0
+      year_to: 57
+      century: 2000
+    - serial_first_digit: '8'
+      year_from: 58
+      year_to: 99
+      century: 1800
+    - serial_first_digit: '9'
+      year_from: 0
+      year_to: 36
+      century: 2000
+    - serial_first_digit: '9'
+      year_from: 37
+      year_to: 99
+      century: 1900
+  vectors:
+  - input:
+      body: 070761428
+    expected: '5'
+    origin: source
+    note: 'CPR-kontoret worked example: products sum to 149, remainder 6, 11 - 6 = 5'
+  - input:
+      modulus_check: 0707614285
+    expected: true
+    origin: source
+    note: 'control calculation: weighted sum 154 divides by 11'
+  - input: 070761-4285
+    expected: true
+    origin: source
+    note: the example written with its hyphen
+  - input:
+      birth_date_of: 0707614285
+    expected: '1961-07-07'
+    origin: derived
+    note: serial 4xxx with year 61 falls in the 1937-1999 row
+  - input:
+      sex_of: 0707614285
+    expected: male
+    origin: derived
+    note: odd last digit
+  - input:
+      modulus_check: 0707614286
+    expected: false
+    origin: derived
+    note: last digit altered
+  - input:
+      birth_date_of: '0101205002'
+    expected: '2020-01-01'
+    origin: derived
+    note: serial 5xxx with year 20 falls in the 2000-2057 row
+evidence:
+- publisher: CPR-kontoret (Danish Civil Registration System office)
+  title: Personnummeret i CPR-systemet (PDF, 1 July 2008)
+  url: https://www.cpr.dk/media/12066/personnummeret-i-cpr.pdf
+  accessed_at: '2026-10-31'
+  locator: 'page 10, Bilag: Beregning af kontrolciffer'
+  value: 07 07 61-428 5
+  unit: text
+  snippet: 149 delt med 11 giver 13 med en rest på 6
+  source_license: unstated
+  content_sha256: 996eb1ac579e33fd25bc44e2c0c715ffc3f93308f15b8c90ca82e2d0ad416ffb
+  role: primary
+- publisher: CPR-kontoret (Danish Civil Registration System office)
+  title: Personnummeret i CPR-systemet (PDF, 1 July 2008)
+  url: https://www.cpr.dk/media/12066/personnummeret-i-cpr.pdf
+  accessed_at: '2026-10-31'
+  locator: page 10, Kontrolberegning af et nummer med kontrolciffer
+  value: 154 delt med 11 giver 14 og ingen rest.
+  unit: text
+  snippet: Kontrolberegning af et nummer med kontrolciffer
+  source_license: unstated
+  content_sha256: 996eb1ac579e33fd25bc44e2c0c715ffc3f93308f15b8c90ca82e2d0ad416ffb
+  role: primary
+- publisher: CPR-kontoret (Danish Civil Registration System office)
+  title: Personnummeret i CPR-systemet (PDF, 1 July 2008)
+  url: https://www.cpr.dk/media/12066/personnummeret-i-cpr.pdf
+  accessed_at: '2026-10-31'
+  locator: pages 5 to 7, century table
+  value: 2000 - 2057
+  unit: text
+  snippet: Personnummerets opbygning
+  source_license: unstated
+  content_sha256: 996eb1ac579e33fd25bc44e2c0c715ffc3f93308f15b8c90ca82e2d0ad416ffb
+  role: primary
+- publisher: CPR-kontoret (Danish Civil Registration System office)
+  title: Personnummeret i CPR-systemet (PDF, 1 July 2008)
+  url: https://www.cpr.dk/media/12066/personnummeret-i-cpr.pdf
+  accessed_at: '2026-10-31'
+  locator: page 3, numbers without control digit
+  value: Personnumre til kvinder uden kontrolciffer
+  unit: text
+  snippet: Hvis der fremkom-
+  source_license: unstated
+  content_sha256: 996eb1ac579e33fd25bc44e2c0c715ffc3f93308f15b8c90ca82e2d0ad416ffb
+  role: supporting
+assumed:
+- parameter: centuries[].century
+  value: first year of the table's year range minus the two-digit year it starts from
+  method: derived
+  rationale: The table gives year ranges such as 1858 - 1899 for the two-digit years 58 - 99; the century offset
+    is their difference.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 7
+  tolerance: 0
+notes: 'The Danish personal identification number as the CPR office describes it: DDMMYY, then a four-digit serial
+  whose last digit is even for women and odd for men; the serial''s first digit together with the two-digit year
+  fixes the century (the table rows are read from the PDF). Numbers were first assigned so that the ten digits weighted
+  4 3 2 7 6 5 4 3 2 1 sum to a multiple of 11, and a remainder of 1 leaves no usable control digit. Once those ran
+  out for a birth date, the office assigns numbers without the control digit, so the default evaluation checks only
+  that the date and century resolve; the modulus check is exposed separately for generators that want the older
+  construction. valid_from is the document date; the PDF states no licence, so the entry is held at license-review.'

@@ -1,0 +1,108 @@
+id: be-national-register-number
+title: 'Belgium national register number: birth date, order number and modulus 97 control number'
+kind: rule
+domain: identifiers
+region: BE
+status: license-review
+tier: B
+valid_from: '2016-05-15'
+valid_to: null
+tags:
+- identifiers
+- check-digit
+- kyc
+- rijksregisternummer
+- national-number
+use_cases:
+- kyc-onboarding
+- person-generation
+- payroll-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.be_national_number
+  parameters:
+    modulus: 97
+    prefix_by_birth_period:
+      1800-1999: ''
+      2000-: '2'
+  vectors:
+  - input:
+      body: '420122051'
+      period: 1800-1999
+    expected: '81'
+    origin: source
+    note: TI000 example 42.01.22.051-81
+  - input: 42.01.22.051-81
+    expected: true
+    origin: source
+  - input: 40 00 01 001-33
+    expected: true
+    origin: source
+    note: TI000 example for an incomplete birth date
+  - input:
+      sex_of: 42.01.22.051-81
+    expected: male
+    origin: source
+    note: 'TI000: homme, né le 22 janvier 1942'
+  - input:
+      body: '010203001'
+      period: 2000-
+    expected: '70'
+    origin: derived
+    note: 2 prefixed for a birth in 2001
+  - input:
+      birth_period_of: '01020300170'
+    expected: 2000-
+    origin: derived
+  - input: 42.01.22.051-82
+    expected: false
+    origin: derived
+    note: control number altered
+evidence:
+- publisher: Registre national (SPF Intérieur)
+  title: TI000 Numéro d'identification (PDF, version 15.05.2016)
+  url: https://www.rijksregister.fgov.be/sites/default/files/documents/fr/registre-national/instructions/liste-TI/TI000_Numero-identification.pdf
+  accessed_at: '2026-10-31'
+  locator: page 1, composition of the number
+  value: 42.01.22.051-81
+  unit: text
+  snippet: on divise le nombre de neuf chiffres constitué par juxtaposition de la date de naissance et du
+  source_license: unstated
+  content_sha256: b8a3f8aadf14c1b088a7572448dddec8c00fe961e47efe0e86bc5f4e86e9c8fa
+  role: primary
+- publisher: Registre national (SPF Intérieur)
+  title: TI000 Numéro d'identification (PDF, version 15.05.2016)
+  url: https://www.rijksregister.fgov.be/sites/default/files/documents/fr/registre-national/instructions/liste-TI/TI000_Numero-identification.pdf
+  accessed_at: '2026-10-31'
+  locator: page 2, incomplete birth date
+  value: 40 00 01 001-33
+  unit: text
+  snippet: Date de naissance incomplète
+  source_license: unstated
+  content_sha256: b8a3f8aadf14c1b088a7572448dddec8c00fe961e47efe0e86bc5f4e86e9c8fa
+  role: primary
+- publisher: Registre national (SPF Intérieur)
+  title: Le fichier RN (PDF)
+  url: https://www.ibz.rrn.fgov.be/sites/default/files/documents/fr/registre-national/fichier-rn/fichier-RN.pdf
+  accessed_at: '2026-10-31'
+  locator: chapter IV, calcul du nombre de contrôle
+  value: pour les personnes nées en 20xx
+  unit: text
+  snippet: Division par 97 du nombre de 10 chiffres constitué par la juxtaposition du chiffre 2
+  source_license: unstated
+  content_sha256: 673f13b627e83e12ac1b831f3e9d2f72dd5be7b31712329e00aa7e8323d78fec
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 7
+  tolerance: 0
+notes: 'The Belgian national register number as the National Register describes it: YYMMDD, a three-digit order
+  number (odd for men, even for women) and a control number equal to 97 minus the remainder of the nine digits divided
+  by 97; for people born from 2000 the digit 2 is put in front before dividing. Because the control number depends
+  on the birth period, the rule reports which period reproduces it. TI000 also prints the example 40 00 00 955-81,
+  which the stated arithmetic does not reproduce, so it is not used as a vector. valid_from is the TI000 version
+  date; neither PDF states a licence, so the entry is held at license-review.'

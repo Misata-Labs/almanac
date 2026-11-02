@@ -1,0 +1,129 @@
+id: us-ssn-format
+title: 'United States Social Security number: 000-00-0000 form and never-assigned values'
+kind: rule
+domain: identifiers
+region: US
+status: license-review
+tier: B
+valid_from: '2011-06-23'
+valid_to: null
+tags:
+- identifiers
+- check-digit
+- kyc
+- ssn
+- ssa
+use_cases:
+- kyc-onboarding
+- person-generation
+- payroll-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.us_tin_format
+  parameters:
+    area_forbidden:
+    - '000'
+    - '666'
+    area_forbidden_ranges:
+    - - '900'
+      - '999'
+    group_forbidden:
+    - '00'
+    serial_forbidden:
+    - '0000'
+  vectors:
+  - input:
+      area: '000'
+    expected: false
+    origin: source
+    note: 'POMS RM 10201.035: area 000'
+  - input:
+      area: '666'
+    expected: false
+    origin: source
+    note: 'POMS RM 10201.035: area 666'
+  - input:
+      area: '900'
+    expected: false
+    origin: source
+    note: 'POMS RM 10201.035: the 900 series'
+  - input: 234-00-5678
+    expected: false
+    origin: source
+    note: group 00 is never assigned
+  - input: 234-56-0000
+    expected: false
+    origin: source
+    note: serial 0000 is never assigned
+  - input:
+      area: '987'
+    expected: false
+    origin: derived
+    note: inside the 900 series
+  - input: 234-56-7890
+    expected: true
+    origin: derived
+    note: no never-assigned group
+  - input: '234567890'
+    expected: true
+    origin: derived
+    note: the same number without hyphens
+  - input: 234-56-789
+    expected: false
+    origin: derived
+    note: eight digits
+evidence:
+- publisher: Social Security Administration
+  title: POMS RM 10201.035 Invalid Social Security Numbers (SSNs)
+  url: https://secure.ssa.gov/poms.nsf/lnx/0110201035
+  accessed_at: '2026-10-31'
+  locator: section B, procedure for identifying invalid SSNs
+  value: former area number
+  unit: text
+  snippet: The first three digits (former area number) as
+  source_license: unstated
+  content_sha256: afe2ca3034dbb1441b3a664cda03b6100499ebe9cebb49d14672c9a223ec7c89
+  role: primary
+- publisher: Social Security Administration
+  title: POMS RM 10201.035 Invalid Social Security Numbers (SSNs)
+  url: https://secure.ssa.gov/poms.nsf/lnx/0110201035
+  accessed_at: '2026-10-31'
+  locator: section B, group and serial
+  value: former serial number
+  unit: text
+  snippet: The second group of two digits (former group number) as
+  source_license: unstated
+  content_sha256: afe2ca3034dbb1441b3a664cda03b6100499ebe9cebb49d14672c9a223ec7c89
+  role: primary
+- publisher: Internal Revenue Service via the eCFR API
+  title: 26 CFR 301.6109-1, Identifying numbers, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-26.xml?section=301.6109-1
+  accessed_at: '2026-10-31'
+  locator: section 301.6109-1(a)(1)(i)
+  value: 000-00-0000
+  unit: text
+  snippet: Social security numbers take the form 000-00-0000.
+  source_license: unstated
+  content_sha256: 13c36dcb7c4ef5633f9209e5a85c6d412b764541698fb21fd4437813d3cd6e82
+  role: primary
+assumed:
+- parameter: area_forbidden_ranges
+  value:
+  - - '900'
+    - '999'
+  method: derived
+  rationale: The manual names the 900 series; it is stored as the inclusive range of three-digit areas beginning
+    with 9.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 9
+  tolerance: 0
+notes: 'The nine-digit Social Security number in the form the Treasury regulation gives (000-00-0000) with the values
+  the Social Security Administration''s operations manual names as never assigned: area 000, 666 or anything in
+  the 900 series, group 00 and serial 0000. A number that passes may still never have been issued; only a Numident
+  query confirms assignment. Since randomisation the area and group carry no geographic or sequential meaning, so
+  generators should draw them uniformly from the permitted values. valid_from is the manual section''s effective
+  date; US government works carry no copyright, but neither source states terms, so the entry is held at license-review.'

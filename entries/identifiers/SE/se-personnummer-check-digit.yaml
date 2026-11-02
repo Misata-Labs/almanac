@@ -1,0 +1,107 @@
+id: se-personnummer-check-digit
+title: 'Sweden personnummer: birth date, birth number and modulus 10 check digit'
+kind: rule
+domain: identifiers
+region: SE
+status: license-review
+tier: B
+valid_from: '1967-01-01'
+valid_to: null
+tags:
+- identifiers
+- check-digit
+- kyc
+- personnummer
+- luhn
+use_cases:
+- kyc-onboarding
+- person-generation
+- payroll-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.se_personnummer
+  parameters:
+    luhn: {}
+  vectors:
+  - input:
+      body: '640823323'
+    expected: '4'
+    origin: source
+    note: 'SCB worked example: digit sum 36, 10 - 6 = 4'
+  - input: 640823-3234
+    expected: true
+    origin: source
+  - input: '196408233234'
+    expected: true
+    origin: source
+    note: the twelve-digit register form of the same example
+  - input: 640823-3235
+    expected: false
+    origin: derived
+    note: check digit altered
+  - input: 640823+3234
+    expected: true
+    origin: derived
+    note: the plus separator the OECD sheet lists
+  - input: '6408233234'
+    expected: true
+    origin: derived
+    note: ten digits without separator
+evidence:
+- publisher: Statistiska centralbyrån (Statistics Sweden)
+  title: Personnummer, Bakgrundsfakta 2016:1 (PDF)
+  url: https://www.scb.se/contentassets/8d9d985ca9c84c6e8d879cc89a8ae479/ov9999_2016a01_br_be96br1601.pdf
+  accessed_at: '2026-10-31'
+  locator: section 1.4.3 Kontrollsiffra
+  value: 640823-3234
+  unit: text
+  snippet: Kontrollsiffran bestäms enligt den s.k. modulus-10-metoden med vikterna 1 och 2.
+  source_license: unstated
+  content_sha256: 0130300f1bf17498d732f8f086c20ffb063758d2a5692941d847016139f9f85c
+  role: primary
+- publisher: Statistiska centralbyrån (Statistics Sweden)
+  title: Personnummer, Bakgrundsfakta 2016:1 (PDF)
+  url: https://www.scb.se/contentassets/8d9d985ca9c84c6e8d879cc89a8ae479/ov9999_2016a01_br_be96br1601.pdf
+  accessed_at: '2026-10-31'
+  locator: section 1.4.2, register storage
+  value: '196408233234'
+  unit: text
+  snippet: 'lagras på följande sätt:'
+  source_license: unstated
+  content_sha256: 0130300f1bf17498d732f8f086c20ffb063758d2a5692941d847016139f9f85c
+  role: primary
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'Sweden: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/sweden-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, TIN structure
+  value: 999999+9999
+  unit: text
+  snippet: natural person who is or has been resident in Sweden
+  source_license: unstated
+  content_sha256: 2f8137204e23445cd9db75f493aa30261dcd5a1c80f2fdefe84d4d2e8841a80d
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '1967-01-01'
+  method: derived
+  rationale: SCB gives only the year 1967 for the introduction of the check digit; the first day of that year is
+    used.
+- parameter: luhn
+  value: standard Luhn over the nine digits
+  method: derived
+  rationale: Alternate weights 2 and 1 starting from the first of nine digits, with product digits summed and the
+    result subtracted from 10, is exactly the Luhn computation the shared luhn rule implements.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 6
+  tolerance: 0
+notes: 'The Swedish personal identity number as Statistics Sweden documents it: YYMMDD, a three-digit birth number
+  and a check digit introduced in 1967. The nine digits are multiplied alternately by 2 and 1, the digits of the
+  products are added, and the check digit is 10 minus the last digit of that sum (0 when the result is 10), which
+  is the Luhn formula. Registers store the twelve-digit form with the century. SCB notes that its example is fictitious.
+  valid_from is the start of the year the check digit was introduced; the PDF states no licence, so the entry is
+  held at license-review.'

@@ -1,0 +1,121 @@
+id: nl-bsn-elfproef
+title: Netherlands citizen service number (BSN) eleven test (elfproef)
+kind: rule
+domain: identifiers
+region: NL
+status: license-review
+tier: B
+valid_from: '2019-12-13'
+valid_to: null
+tags:
+- identifiers
+- check-digit
+- kyc
+- bsn
+- elfproef
+use_cases:
+- kyc-onboarding
+- person-generation
+- payroll-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.weighted_modulus
+  parameters:
+    weights:
+    - 9
+    - 8
+    - 7
+    - 6
+    - 5
+    - 4
+    - 3
+    - 2
+    modulus: 11
+    check: remainder
+    remainder_map:
+      '10': null
+  vectors:
+  - input: '123456789'
+    expected: false
+    origin: source
+    note: 'RvIG test A.1: Nummer is geen BSN'
+  - input: '999990068'
+    expected: true
+    origin: source
+    note: 'RvIG test A.2: Nummer is een BSN'
+  - input: '999990019'
+    expected: true
+    origin: source
+    note: BSN of an RvIG test person
+  - input: '999990160'
+    expected: true
+    origin: source
+    note: BSN of an RvIG test person
+  - input: '999994396'
+    expected: true
+    origin: source
+    note: BSN of an RvIG test person
+  - input: '999994931'
+    expected: true
+    origin: source
+    note: BSN of an RvIG test person
+  - input:
+      body: '99999006'
+    expected: '8'
+    origin: derived
+  - input: '999990069'
+    expected: false
+    origin: derived
+    note: check digit altered
+  - input:
+      body: '60000000'
+    expected: null
+    origin: derived
+    note: weighted sum 54 leaves remainder 10, so no BSN exists
+evidence:
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'Netherlands: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/netherlands-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, validation rule and check digit
+  value: If remainder = 10, the TIN is not valid.
+  unit: text
+  snippet: Check digit (N9) = remainder from above algorithm
+  source_license: unstated
+  content_sha256: 330025ae98a02089653ad666fe47cfbfb6638cf2ddc863b5760c951998dfc29b
+  role: primary
+- publisher: Rijksdienst voor Identiteitsgegevens (RvIG)
+  title: Aansluiting testen en toetsen BSN (PDF, version 1.5, 13-12-2019)
+  url: https://www.rvig.nl/sites/default/files/2023-05/Aansluiting%20testen%20en%20toetsen%20BSN.pdf
+  accessed_at: '2026-10-31'
+  locator: page 12, Bijlage A, tests A.1 and A.2
+  value: '999990068'
+  unit: text
+  snippet: Nummer is geen BSN
+  source_license: unstated
+  content_sha256: 2095052c80f3e3939c453a5af414869935ea838c5c03bf4ae64e9d365ee18ca1
+  role: primary
+- publisher: Rijksdienst voor Identiteitsgegevens (RvIG)
+  title: 'Beheervoorziening BSN, Use Case Specificatie 27: Genereren nummers (PDF)'
+  url: https://rvig.nl/sites/default/files/2023-05/uc27-genereren-nummers.pdf
+  accessed_at: '2026-10-31'
+  locator: section 1.2.3 Genereer nieuw nummer
+  value: elfproef
+  unit: text
+  snippet: In 1 op 11 gevallen is dit niet
+  source_license: unstated
+  content_sha256: b7a129ac0a11c362dec5f5c718adacb2bbe1af634bec3dee42066dc7e965b5db
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 9
+  tolerance: 0
+notes: 'The nine-digit Dutch BSN: the first eight digits weighted 9 down to 2 and summed, the remainder modulo 11
+  is the ninth digit, and a remainder of 10 means no BSN can be formed (the Dutch OECD sheet). RvIG, which issues
+  the numbers, generates eight random digits and appends the ninth so that the eleven test holds, retrying in the
+  1 in 11 cases where that is impossible. The source vectors are RvIG''s connection-test cases and the BSNs of its
+  test persons. valid_from is the test document''s date; no source states a licence, so the entry is held at license-review.'

@@ -1,0 +1,129 @@
+id: za-identity-number
+title: 'South Africa identity number: birth date, sex range, citizenship digit and Luhn check digit'
+kind: rule
+domain: identifiers
+region: ZA
+status: license-review
+tier: B
+valid_from: '2026-10-31'
+valid_to: null
+tags:
+- identifiers
+- check-digit
+- kyc
+- luhn
+- national-id
+use_cases:
+- kyc-onboarding
+- person-generation
+- payroll-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.za_id
+  parameters:
+    sex_ranges:
+      female:
+      - 0
+      - 4999
+      male:
+      - 5000
+      - 9999
+    citizenship_codes:
+      '0': South African Citizen
+      '1': permanent resident
+      '2': refugee
+    luhn: {}
+  vectors:
+  - input:
+      encode_birth_date: '1994-05-10'
+    expected: '940510'
+    origin: source
+    note: 'OECD sheet: 10 May 1994 is displayed as 940510'
+  - input:
+      sex_of: '9405105001087'
+    expected: male
+    origin: derived
+    note: sequence 5001 is in the male range
+  - input:
+      sex_of: '9405104999083'
+    expected: female
+    origin: derived
+    note: sequence 4999 is in the female range
+  - input:
+      citizenship_of: '9405105001087'
+    expected: South African Citizen
+    origin: derived
+  - input:
+      body: '940510500108'
+    expected: '7'
+    origin: derived
+    note: Luhn over the first twelve digits
+  - input: '9405105001087'
+    expected: true
+    origin: derived
+  - input: '9405105001088'
+    expected: false
+    origin: derived
+    note: check digit altered
+  - input: '9405105001381'
+    expected: false
+    origin: derived
+    note: citizenship digit 3 is not defined
+evidence:
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'South Africa: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/south-africa-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, 1. The South African Identity Number
+  value: 'YYMMDDSSSSCAZ:'
+  unit: text
+  snippet: The first 6 digits (YYMMDD) are the date of birth. 10 May 1994 is displayed as 940510.
+  source_license: unstated
+  content_sha256: e4a2cb7a7d472a40bcb89a3e3790bc69ad3541045193f39a81876cbc600b05a4
+  role: primary
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'South Africa: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/south-africa-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, sequence digits
+  value: 0000-4999
+  unit: text
+  snippet: Females are assigned numbers in the range
+  source_license: unstated
+  content_sha256: e4a2cb7a7d472a40bcb89a3e3790bc69ad3541045193f39a81876cbc600b05a4
+  role: primary
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'South Africa: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/south-africa-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, citizenship digit
+  value: 2 denoting refugee
+  unit: text
+  snippet: The next digit (C) indicates the South African citizen status with 0 denoting South African Citizen.
+  source_license: unstated
+  content_sha256: e4a2cb7a7d472a40bcb89a3e3790bc69ad3541045193f39a81876cbc600b05a4
+  role: primary
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'South Africa: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/south-africa-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, check digit
+  value: Luhn algorithm
+  unit: text
+  snippet: The last digit (Z) is a checksum digit
+  source_license: unstated
+  content_sha256: e4a2cb7a7d472a40bcb89a3e3790bc69ad3541045193f39a81876cbc600b05a4
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 8
+  tolerance: 0
+notes: 'The thirteen-digit South African identity number as South Africa describes it in its OECD tax identification
+  number sheet: YYMMDD, four sequence digits whose range encodes sex, a citizenship digit, one further digit the
+  sheet labels A without explaining, and a Luhn check digit. The sheet prints no complete number, so beyond the
+  date-encoding example every vector is derived by applying the stated rules to a constructed number. It carries
+  no date or licence statement, so valid_from is the access date and the entry is held at license-review.'

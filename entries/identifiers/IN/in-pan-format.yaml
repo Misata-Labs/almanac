@@ -1,0 +1,111 @@
+id: in-pan-format
+title: India Permanent Account Number (PAN) format and holder-type codes
+kind: rule
+domain: identifiers
+region: IN
+status: license-review
+tier: B
+valid_from: '2026-10-31'
+valid_to: null
+tags:
+- identifiers
+- check-digit
+- kyc
+- pan
+- tax-identifier
+use_cases:
+- kyc-onboarding
+- person-generation
+- payroll-demo
+- data-quality-validation
+- kyb-onboarding
+spec:
+  implementation: almanac.rules.in_pan
+  parameters:
+    holder_types:
+      P: Individual
+      F: Firm
+      C: Company
+      H: HUF
+      A: AOP
+      T: TRUST
+      B: Body of Individuals
+      L: Local Authority
+      J: Artificial Juridical Person
+      G: Government
+    sequence_range:
+    - 1
+    - 9999
+  vectors:
+  - input: AFZPK7190K
+    expected: true
+    origin: source
+    note: the typical PAN in the OECD sheet
+  - input:
+      holder_type_of: AFZPK7190K
+    expected: Individual
+    origin: source
+    note: P stands for Individual
+  - input:
+      holder_type_of: AFZCK7190K
+    expected: Company
+    origin: derived
+  - input: AFZXK7190K
+    expected: false
+    origin: derived
+    note: X is not a holder-type code
+  - input: AFZPK0000K
+    expected: false
+    origin: derived
+    note: sequence runs from 0001
+  - input: AFZPK7190
+    expected: false
+    origin: derived
+    note: nine characters
+evidence:
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'India: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/india-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, TIN structure
+  value: AFZPK7190K.
+  unit: text
+  snippet: A typical PAN is AFZPK7190K.
+  source_license: unstated
+  content_sha256: 5de52268d708f69be91eafd21e88dec0d18718f9f93bba3f6440c43565382e8a
+  role: primary
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'India: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/india-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, fourth character
+  value: stands for Individual,
+  unit: text
+  snippet: Fourth character of PAN represents the status of PAN holder
+  source_license: unstated
+  content_sha256: 5de52268d708f69be91eafd21e88dec0d18718f9f93bba3f6440c43565382e8a
+  role: primary
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'India: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/india-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, last character
+  value: alphabetic check digit.
+  unit: text
+  snippet: Next four characters i.e. "7190" in the above PAN are sequential number running from 0001 to 9999.
+  source_license: unstated
+  content_sha256: 5de52268d708f69be91eafd21e88dec0d18718f9f93bba3f6440c43565382e8a
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 6
+  tolerance: 0
+notes: 'The ten-character PAN as India describes it in its OECD tax identification number sheet: a three-letter
+  series, a holder-type letter (codes read from the sheet), the first letter of the holder''s surname or name, a
+  sequence from 0001 to 9999 and an alphabetic check character whose arithmetic the sheet does not give. The rule
+  checks shape and holder type only. The sheet carries no date or licence statement, so valid_from is the access
+  date and the entry is held at license-review.'

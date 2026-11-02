@@ -1,0 +1,109 @@
+id: no-organisasjonsnummer-check-digit
+title: Norway organisation number (organisasjonsnummer) modulus 11 check digit
+kind: rule
+domain: identifiers
+region: 'NO'
+status: license-review
+tier: B
+valid_from: '2023-12-13'
+valid_to: null
+tags:
+- identifiers
+- check-digit
+- kyc
+- organisasjonsnummer
+- brreg
+use_cases:
+- kyb-onboarding
+- company-generation
+- invoicing
+- data-quality-validation
+spec:
+  implementation: almanac.rules.weighted_modulus
+  parameters:
+    weights:
+    - 3
+    - 2
+    - 7
+    - 6
+    - 5
+    - 4
+    - 3
+    - 2
+    modulus: 11
+    check: complement
+    remainder_map:
+      '0': 0
+      '1': null
+  vectors:
+  - input: '974760673'
+    expected: true
+    origin: source
+    note: the Brønnøysund Register Centre's own organisation number as printed on the page
+  - input:
+      body: '97476067'
+    expected: '3'
+    origin: derived
+  - input:
+      body: '10000004'
+    expected: '0'
+    origin: derived
+    note: weighted sum 11 divides evenly, so the check digit is 0
+  - input:
+      body: '10000013'
+    expected: null
+    origin: derived
+    note: remainder 1 would need check digit 10, so the number is invalid
+  - input: '974760674'
+    expected: false
+    origin: derived
+    note: check digit altered
+evidence:
+- publisher: Brønnøysundregistrene
+  title: Om organisasjonsnummeret
+  url: https://www.brreg.no/om-oss/registrene-vare/om-enhetsregisteret/organisasjonsnummeret/
+  accessed_at: '2026-10-31'
+  locator: section Teknisk oppbygging av organisasjonsnummeret
+  value: 974 760 673
+  unit: text
+  snippet: Etter dette blir vektene 3, 2, 7, 6, 5, 4, 3 og 2 regnet fra første siffer.
+  source_license: unstated
+  content_sha256: 72c03016a2870e0d340770caba4e6bc4de6b005d5dbff458aa0ebbdafdf1a2b7
+  role: primary
+- publisher: Brønnøysundregistrene
+  title: Om organisasjonsnummeret
+  url: https://www.brreg.no/om-oss/registrene-vare/om-enhetsregisteret/organisasjonsnummeret/
+  accessed_at: '2026-10-31'
+  locator: section Modulus 11
+  value: Hvis kontrollsifferet blir 10 (rest = 1) er organisasjonsnummeret ugyldig.
+  unit: text
+  snippet: Hvis divisjonen går opp (rest = 0) blir kontrollsifferet 0.
+  source_license: unstated
+  content_sha256: 72c03016a2870e0d340770caba4e6bc4de6b005d5dbff458aa0ebbdafdf1a2b7
+  role: primary
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'Norway: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/norway-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, legal entities
+  value: modulus 11 check digit
+  unit: text
+  snippet: The organisation number (TIN) is a nine digit number.
+  source_license: unstated
+  content_sha256: 36fb995cb325ab9e2984351e48c19f1dbffabc02fb25c24e7d323763f35f9d0a
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 5
+  tolerance: 0
+notes: 'The nine-digit Norwegian organisation number as the Brønnøysund Register Centre describes it: eight digits
+  weighted 3 2 7 6 5 4 3 2 from the first digit, the sum divided by 11 and the remainder subtracted from 11; a remainder
+  of 0 gives check digit 0 and a remainder of 1 means the number is invalid. The page''s worked example shows only
+  its totals and also says the weights run from right to left, which contradicts the preceding sentence; reading
+  them from the first digit reproduces the register''s own number printed on the page, which is the source vector,
+  and matches Norway''s OECD sheet. valid_from is the page''s last-updated date; no licence is stated, so the entry
+  is held at license-review.'

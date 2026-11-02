@@ -1,0 +1,98 @@
+id: ch-ahv-number-format
+title: 'Switzerland AHV number (Versichertennummer): 13 digits with country code 756 and control digit'
+kind: rule
+domain: identifiers
+region: CH
+status: license-review
+tier: A
+valid_from: '2007-12-01'
+valid_to: null
+tags:
+- identifiers
+- check-digit
+- kyc
+- ahv
+- avs
+- social-security-number
+use_cases:
+- kyc-onboarding
+- person-generation
+- payroll-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.ch_ahv_number
+  parameters:
+    country_code: '756'
+  vectors:
+  - input: 756.1234.5678.97
+    expected: true
+    origin: source
+    note: the model number in the OECD sheet
+  - input:
+      parts_of: 756.1234.5678.97
+    expected:
+      country_code: '756'
+      number: '123456789'
+      control_digit: '7'
+    origin: derived
+  - input: '7561234567897'
+    expected: true
+    origin: derived
+    note: without dots
+  - input: 757.1234.5678.97
+    expected: false
+    origin: derived
+    note: another country code
+  - input: 756.1234.5678.9
+    expected: false
+    origin: derived
+    note: twelve digits
+evidence:
+- publisher: Swiss Federal Chancellery (Fedlex)
+  title: Verordnung über die Alters- und Hinterlassenenversicherung (AHVV), SR 831.101, version of 1 January 2025
+    (XML)
+  url: https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/1185_1183_1185/20250101/de/xml/fedlex-data-admin-ch-eli-cc-63-1185_1183_1185-20250101-de-xml-1.xml
+  accessed_at: '2026-10-31'
+  locator: Art. 133 AHV-Nummer
+  value: '756'
+  unit: text
+  snippet: 'Die AHV-Nummer ist 13-stellig. Sie setzt sich zusammen aus:'
+  source_license: unstated
+  content_sha256: 0d829ed7bbd67cdb00c5fcf9c191a53d479c0b84628c18aab8692e3c8520f16c
+  role: primary
+- publisher: Swiss Federal Chancellery (Fedlex)
+  title: Verordnung über die Alters- und Hinterlassenenversicherung (AHVV), SR 831.101, version of 1 January 2025
+    (XML)
+  url: https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/1185_1183_1185/20250101/de/xml/fedlex-data-admin-ch-eli-cc-63-1185_1183_1185-20250101-de-xml-1.xml
+  accessed_at: '2026-10-31'
+  locator: Art. 133, footnote on the version in force
+  value: in Kraft seit 1. Dez. 2007
+  unit: text
+  snippet: einer Kontrollziffer.
+  source_license: unstated
+  content_sha256: 0d829ed7bbd67cdb00c5fcf9c191a53d479c0b84628c18aab8692e3c8520f16c
+  role: supporting
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'Switzerland: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/switzerland-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, individuals
+  value: 756.1234.5678.97
+  unit: text
+  snippet: The current OASI Number was introduced in 2008.
+  source_license: unstated
+  content_sha256: d37cd9ac540dfa3e5b98337ad47c2f6c04196fb07e02e52432e5b96f0aeeebbf
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 5
+  tolerance: 0
+notes: 'The Swiss social security number as Art. 133 AHVV defines it: thirteen digits made of the country code 756,
+  a nine-digit number that reveals nothing about the person, and a control digit; the dotted grouping is the one
+  Switzerland''s OECD sheet shows. The ordinance does not state the control digit''s arithmetic, so the rule checks
+  composition only. valid_from is the date the article''s current wording entered into force; the law publisher
+  states no licence for the XML, so the entry is held at license-review.'

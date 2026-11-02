@@ -1,0 +1,119 @@
+id: fi-personal-identity-code-format
+title: Finland personal identity code (henkilötunnus) century signs and business ID format
+kind: rule
+domain: identifiers
+region: FI
+status: license-review
+tier: B
+valid_from: '2026-10-31'
+valid_to: null
+tags:
+- identifiers
+- check-digit
+- kyc
+- henkilotunnus
+- y-tunnus
+use_cases:
+- kyc-onboarding
+- person-generation
+- payroll-demo
+- data-quality-validation
+- kyb-onboarding
+spec:
+  implementation: almanac.rules.fi_hetu
+  parameters:
+    century_signs:
+      '1800':
+      - +
+      '1900':
+      - '-'
+      - Y
+      - X
+      - W
+      - V
+      - U
+      '2000':
+      - A
+      - B
+      - C
+      - D
+      - E
+      - F
+    business_id_pattern: '[0-9]{7}-[0-9]'
+  vectors:
+  - input:
+      century_of: +
+    expected: 1800
+    origin: source
+  - input:
+      century_of: Y
+    expected: 1900
+    origin: source
+  - input:
+      century_of: A
+    expected: 2000
+    origin: source
+  - input:
+      business_id: 1234567-8
+    expected: true
+    origin: source
+    note: the form the OECD sheet prints
+  - input: 010190-123K
+    expected: true
+    origin: derived
+  - input: 010105A1234
+    expected: true
+    origin: derived
+  - input: 010190Z123K
+    expected: false
+    origin: derived
+    note: Z is not a century sign
+  - input:
+      business_id: '12345678'
+    expected: false
+    origin: derived
+    note: no hyphen
+evidence:
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'Finland: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/finland-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, individuals
+  value: letter A, B, C, D, E, F means born in 2000 or after that.
+  unit: text
+  snippet: The 7th character (+, - or a letter) represents the century of birth
+  source_license: unstated
+  content_sha256: 8ce18c0ca879f3f10c8133c01727d1c20166db726cead569bfff694dfe8d7f59
+  role: primary
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'Finland: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/finland-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, legal persons
+  value: 1234567-8.
+  unit: text
+  snippet: For legal persons, it consists of seven digits, a dash and a control mark
+  source_license: unstated
+  content_sha256: 8ce18c0ca879f3f10c8133c01727d1c20166db726cead569bfff694dfe8d7f59
+  role: primary
+assumed:
+- parameter: business_id_pattern
+  value: '[0-9]{7}-[0-9]'
+  method: derived
+  rationale: Restates the sheet's description of seven digits, a dash and a control mark, shown as 1234567-8.
+- parameter: personal code shape
+  value: 6 digits, century sign, 3 digits, one character from 0-9 or A-Z
+  method: derived
+  rationale: The sheet calls the last character alphanumeric; upper-case letters and digits are accepted.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 8
+  tolerance: 0
+notes: 'Finland''s personal identity code as Finland describes it in its OECD tax identification number sheet: six
+  digits of birth date, a century sign (+ for the 1800s; a hyphen or Y, X, W, V, U for the 1900s; A to F from 2000),
+  three digits and one alphanumeric control character. Business IDs are seven digits, a hyphen and a control digit.
+  The control arithmetic is not in the sheet, so the rule checks shape and decodes the century. The sheet carries
+  no date or licence statement, so valid_from is the access date and the entry is held at license-review.'

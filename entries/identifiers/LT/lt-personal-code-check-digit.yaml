@@ -1,0 +1,113 @@
+id: lt-personal-code-check-digit
+title: Lithuania personal code (asmens kodas) two-pass modulus 11 check digit
+kind: rule
+domain: identifiers
+region: LT
+status: license-review
+tier: B
+valid_from: '2026-10-31'
+valid_to: null
+tags:
+- identifiers
+- check-digit
+- kyc
+- asmens-kodas
+use_cases:
+- kyc-onboarding
+- person-generation
+- payroll-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.weighted_modulus
+  parameters:
+    weights:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 1
+    fallback_weights:
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 1
+    - 2
+    - 3
+    retry_remainder: 10
+    modulus: 11
+    check: remainder
+    remainder_map:
+      '10': 0
+  vectors:
+  - input:
+      body: '3330924006'
+    expected: '4'
+    origin: source
+    note: 'OECD sheet sample: first pass 109 mod 11 = 10, second pass 169 mod 11 = 4'
+  - input: '33309240064'
+    expected: true
+    origin: source
+  - input: '10101010005'
+    expected: true
+    origin: source
+    note: structure sample in the OECD sheet
+  - input: '33309240065'
+    expected: false
+    origin: derived
+    note: check digit altered
+evidence:
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'Lithuania: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/lithuania-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, natural persons, check digit rule
+  value: if remainder is 10, control number C11 = 0.
+  unit: text
+  snippet: 5. If remainder is 10, calculate a new check digit
+  source_license: unstated
+  content_sha256: 4a601cc6e686b0469a2aa36cd710a15157b17f416d416b80a41bd7f5c010febf
+  role: primary
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'Lithuania: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/lithuania-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, natural persons, sample calculation
+  value: '33309240064'
+  unit: text
+  snippet: 169 MOD 11 = 4 (i.e. C11)
+  source_license: unstated
+  content_sha256: 4a601cc6e686b0469a2aa36cd710a15157b17f416d416b80a41bd7f5c010febf
+  role: primary
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'Lithuania: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/lithuania-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, natural persons, structure sample
+  value: '10101010005'
+  unit: text
+  snippet: C1 Can only take the value 1 to 6.
+  source_license: unstated
+  content_sha256: 4a601cc6e686b0469a2aa36cd710a15157b17f416d416b80a41bd7f5c010febf
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 4
+  tolerance: 0
+notes: 'The eleven-digit Lithuanian personal code, which Lithuania uses as its tax identification number: ten digits
+  weighted 1 to 9 then 1 and reduced modulo 11; if the remainder is 10 the digits are reweighted 3 to 9 then 1 to
+  3, and a second remainder of 10 gives check digit 0. The weight tables and the worked sample come from Lithuania''s
+  OECD tax identification number sheet. It carries no date or licence statement, so valid_from is the access date
+  and the entry is held at license-review.'

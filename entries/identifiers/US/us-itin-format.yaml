@@ -1,0 +1,81 @@
+id: us-itin-format
+title: 'United States individual taxpayer identification number (ITIN): nine digits beginning with 9'
+kind: rule
+domain: identifiers
+region: US
+status: license-review
+tier: B
+valid_from: '2026-10-29'
+valid_to: null
+tags:
+- identifiers
+- check-digit
+- kyc
+- itin
+- irs
+use_cases:
+- kyc-onboarding
+- person-generation
+- payroll-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.us_tin_format
+  parameters:
+    area_required_prefix: '9'
+  vectors:
+  - input:
+      mask: 9xx-xx-xxxx
+    expected: true
+    origin: source
+    note: the format the OECD sheet prints
+  - input:
+      mask: 000-00-0000
+    expected: false
+    origin: derived
+    note: the general taxpayer number form without the leading 9
+  - input: 912-70-1234
+    expected: true
+    origin: derived
+  - input: 812-70-1234
+    expected: false
+    origin: derived
+    note: does not begin with 9
+  - input: 912-70-123
+    expected: false
+    origin: derived
+    note: eight digits
+evidence:
+- publisher: Internal Revenue Service via the eCFR API
+  title: 26 CFR 301.6109-1, Identifying numbers, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-26.xml?section=301.6109-1
+  accessed_at: '2026-10-31'
+  locator: section 301.6109-1(a)(1)(i)
+  value: 000-00-0000
+  unit: text
+  snippet: also take the form 000-00-0000 but include a specific number or numbers designated by the IRS.
+  source_license: unstated
+  content_sha256: 13c36dcb7c4ef5633f9209e5a85c6d412b764541698fb21fd4437813d3cd6e82
+  role: primary
+- publisher: OECD Global Forum on Transparency and Exchange of Information for Tax Purposes
+  title: 'United States: Information on Tax Identification Numbers (PDF)'
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/aeoi/united-states-tin.pdf
+  accessed_at: '2026-10-31'
+  locator: Section II, TIN structure
+  value: 9xx-xx-xxxx.
+  unit: text
+  snippet: 'begins with the number 9 and is in the following format:'
+  source_license: unstated
+  content_sha256: 994b11a44fe6356b3f3fcb22976e40417fd810a6010dcb4556ea7a1ffd2d7929
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 5
+  tolerance: 0
+notes: The ITIN takes the Social Security number form 000-00-0000 with digits the IRS designates (26 CFR 301.6109-1);
+  the United States' OECD tax identification number sheet states that it always begins with 9 and prints the mask
+  9xx-xx-xxxx. Further restrictions on the middle digits are not stated in these sources and are not enforced. valid_from
+  is the date of the regulation version cited; neither source states terms, so the entry is held at license-review.
