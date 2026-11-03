@@ -1,0 +1,262 @@
+id: in-labour-code-establishment-size-thresholds
+title: 'India Labour Codes establishment-size thresholds: EPF 20, ESIC 10, gratuity 10, bonus 20, standing orders
+  300 and more'
+kind: rule
+domain: employment
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-11-21'
+valid_to: null
+tags:
+- india
+- payroll
+- labour-law
+- compliance
+- applicability
+- headcount
+use_cases:
+- payroll-demo
+- hr-demo
+- hr-analytics
+- compliance-demo
+- company-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      provident_fund_chapter:
+        threshold: 20
+        counts: employees
+        law: Code on Social Security, First Schedule, Chapter III
+      esic_chapter:
+        threshold: 10
+        counts: persons (other than a seasonal factory)
+        law: Code on Social Security, First Schedule, Chapter IV
+      gratuity_shops_and_establishments:
+        threshold: 10
+        counts: employees on any day of the preceding twelve months
+        law: Code on Social Security, First Schedule, Chapter V
+      maternity_benefit_shops_and_establishments:
+        threshold: 10
+        counts: employees on any day of the preceding twelve months
+        law: Code on Social Security, First Schedule, Chapter VI
+      creche_facility:
+        threshold: 50
+        counts: employees
+        law: Code on Social Security s 67(1)
+      bonus_chapter:
+        threshold: 20
+        counts: persons on any day of the accounting year
+        law: Code on Wages s 38(2)
+      standing_orders_chapter:
+        threshold: 300
+        counts: workers on any day of the preceding twelve months
+        law: Industrial Relations Code s 28(1)
+      layoff_retrenchment_closure_permission_chapter:
+        threshold: 300
+        counts: workers on average per working day in the preceding twelve months
+        law: Industrial Relations Code s 77(1)
+      layoff_compensation_sections:
+        threshold: 50
+        counts: workers on average per working day in the preceding calendar month
+        law: Industrial Relations Code s 65(1)(a)
+      closure_notice_section:
+        threshold: 50
+        counts: workers on any day in the preceding twelve months
+        law: Industrial Relations Code s 74(1) proviso (i)
+      supervisor_worker_wage_limit:
+        threshold: 18000
+        counts: rupees of wages per month; supervisors above it are not workers
+        law: Industrial Relations Code s 2(zr)(iv)
+  vectors:
+  - input:
+      key: provident_fund_chapter
+      column: threshold
+    expected: 20
+    origin: source
+  - input:
+      key: esic_chapter
+      column: threshold
+    expected: 10
+    origin: source
+  - input:
+      key: standing_orders_chapter
+      column: threshold
+    expected: 300
+    origin: source
+  - input:
+      key: supervisor_worker_wage_limit
+      column: threshold
+    expected: 18000
+    origin: source
+  - input:
+      key: creche_facility
+      column: threshold
+    expected: 50
+    origin: source
+evidence:
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 97, First Schedule, Chapter III
+  value: twenty or more
+  unit: text
+  snippet: Fund Every establishment in which twenty or more employees are employed.
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 97, First Schedule, Chapter IV
+  value: ten or more
+  unit: text
+  snippet: 'Every establishment in which ten or more persons are employed other than a seasonal factory:'
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 97, First Schedule, Chapters V and VI
+  value: (b) every shop or establishment in which ten or more employees are employed
+  unit: text
+  snippet: (b) every shop or establishment in which ten or more employees are employed, or were employed, on any
+    day of the preceding twelve
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 51, section 67(1)
+  value: fifty employees
+  unit: text
+  snippet: Every establishment to which this Chapter applies, in which fifty employees
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 20, section 38(2)
+  value: twenty or more persons
+  unit: text
+  snippet: the provisions of this Chapter shall apply to such establishment in which twenty or more persons are
+    employed
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 23, section 28(1)
+  value: three hundred or more than three hundred workers
+  unit: text
+  snippet: establishment wherein three hundred or more than three hundred workers, are employed, or were
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 43, section 77(1)
+  value: not less than three hundred workers
+  unit: text
+  snippet: intermittently) in which not less than three hundred workers, or such higher number of workers as may
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 38, section 65(1)(a)
+  value: less than fifty workers
+  unit: text
+  snippet: to industrial establishments in which less than fifty workers on an average per working day
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 41, section 74(1), proviso (i)
+  value: less than fifty workers are employed
+  unit: text
+  snippet: an industrial establishment in which less than fifty workers are employed or were employed
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 13, section 2(zr)(iv)
+  value: eighteen thousand rupees per month
+  unit: text
+  snippet: employed in a supervisory capacity drawing wages exceeding eighteen thousand rupees per month
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 11
+  tolerance: 0
+- statistic: value[provident_fund_chapter,threshold]
+  expected: 20
+  tolerance: 0
+- statistic: value[esic_chapter,threshold]
+  expected: 10
+  tolerance: 0
+- statistic: value[gratuity_shops_and_establishments,threshold]
+  expected: 10
+  tolerance: 0
+- statistic: value[maternity_benefit_shops_and_establishments,threshold]
+  expected: 10
+  tolerance: 0
+- statistic: value[creche_facility,threshold]
+  expected: 50
+  tolerance: 0
+- statistic: value[bonus_chapter,threshold]
+  expected: 20
+  tolerance: 0
+- statistic: value[standing_orders_chapter,threshold]
+  expected: 300
+  tolerance: 0
+- statistic: value[layoff_retrenchment_closure_permission_chapter,threshold]
+  expected: 300
+  tolerance: 0
+- statistic: value[layoff_compensation_sections,threshold]
+  expected: 50
+  tolerance: 0
+- statistic: value[closure_notice_section,threshold]
+  expected: 50
+  tolerance: 0
+- statistic: value[supervisor_worker_wage_limit,threshold]
+  expected: 18000
+  tolerance: 0
+notes: Headcount and wage thresholds at which the Labour Codes (in force from 21 November 2025) start to apply,
+  for generating establishments with consistent compliance obligations. Under the Code on Social Security the provident
+  fund chapter covers establishments employing twenty or more, the ESIC chapter ten or more persons (and any establishment
+  in a notified hazardous occupation, even with one employee), gratuity and maternity benefit every factory, mine,
+  plantation and every shop or establishment with ten or more employees, and a crèche is required at fifty employees.
+  Bonus under the Code on Wages applies at twenty persons. Under the Industrial Relations Code, standing orders
+  are required at three hundred workers; establishments with three hundred or more need Government permission to
+  lay off, retrench or close (Chapter X); lay-off compensation and the sixty-day closure notice do not apply below
+  fifty workers; and a supervisor drawing more than eighteen thousand rupees a month is not a 'worker'. Each Code
+  lets the appropriate Government vary several of these by notification, and the counting basis differs (employees,
+  persons or workers; any day or a daily average), as the ``counts`` column records.

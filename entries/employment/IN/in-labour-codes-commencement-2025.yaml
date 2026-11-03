@@ -1,0 +1,201 @@
+id: in-labour-codes-commencement-2025
+title: 'India Labour Codes in force from 21 November 2025: Code on Wages, IR Code, Social Security Code and OSH
+  Code'
+kind: rule
+domain: employment
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-11-21'
+valid_to: null
+tags:
+- india
+- payroll
+- labour-law
+- compliance
+- labour-codes
+- commencement
+use_cases:
+- payroll-demo
+- hr-demo
+- hr-analytics
+- compliance-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      code_on_wages_2019:
+        act: Act No. 29 of 2019
+        in_force_from: '2025-11-21'
+        notification: S.O. 5322(E)
+        repeals: Payment of Wages Act, 1936; Minimum Wages Act, 1948; Payment of Bonus Act, 1965; Equal Remuneration
+          Act, 1976
+      industrial_relations_code_2020:
+        act: Act No. 35 of 2020
+        in_force_from: '2025-11-21'
+        notification: S.O. 5320(E)
+        repeals: Trade Unions Act, 1926; Industrial Employment (Standing Orders) Act, 1946; Industrial Disputes
+          Act, 1947
+      code_on_social_security_2020:
+        act: Act No. 36 of 2020
+        in_force_from: '2025-11-21'
+        notification: S.O. 5319(E)
+        repeals: nine enactments, among them the Employees' State Insurance Act, 1948, the EPF Act, 1952, the Maternity
+          Benefit Act, 1961 and the Payment of Gratuity Act, 1972
+      occupational_safety_health_code_2020:
+        act: Act No. 37 of 2020
+        in_force_from: '2025-11-21'
+        notification: S.O. 5321(E)
+        repeals: thirteen enactments, among them the Factories Act, 1948, the Mines Act, 1952 and the Contract Labour
+          (Regulation and Abolition) Act, 1970
+  vectors:
+  - input:
+      key: code_on_wages_2019
+      column: notification
+    expected: S.O. 5322(E)
+    origin: source
+  - input:
+      key: code_on_social_security_2020
+      column: notification
+    expected: S.O. 5319(E)
+    origin: source
+  - input:
+      key: industrial_relations_code_2020
+      column: in_force_from
+    expected: '2025-11-21'
+    origin: source
+  - input:
+      key: occupational_safety_health_code_2020
+      column: act
+    expected: Act No. 37 of 2020
+    origin: source
+  - input: code_on_wages_2019
+    expected: true
+    origin: source
+evidence:
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 5, footnote 1 to section 1(3)
+  value: S.O. 5322 (E)
+  unit: text
+  snippet: vide notification no. S.O. 5322 (E), dated 21st November, 2025
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 8, footnote 1 to section 1(3)
+  value: S.O. 5319 (E)
+  unit: text
+  snippet: vide notification no. S.O. 5319 (E), dated 21st November, 2025
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 7, footnote 1 to section 1(3)
+  value: S.O. 5320(E)
+  unit: text
+  snippet: vide Notifn. No. S.O. 5320(E), dated 21st November
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Occupational Safety, Health and Working Conditions Code, 2020 (Act No. 37 of 2020), India Code text
+    as on 28 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/3a7333e5-1f94-4f64-aff7-be67c0e63435/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 8, footnote 1 to section 1(3)
+  value: S.O. 5321 (E)
+  unit: text
+  snippet: vide Notifn. No. S.O. 5321 (E), dated 21st day of November, 2025
+  source_license: unstated
+  content_sha256: d72c3c51f58617de86d457c17fda6f73e16bf53eacb637012998df4ebf2ae214
+  role: primary
+- publisher: Legislative Department, Ministry of Law and Justice (India Code)
+  title: The Industrial Relations Code (Amendment) Act, 2026 (No. 1 of 2026), Gazette of India Extraordinary
+  url: https://indiacode.gov.in/server/api/core/bitstreams/9d6c106a-1510-4122-b4f1-9c24bf37666e/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 1, section 1(2)
+  value: 21st day of November, 2025
+  unit: text
+  snippet: It shall be deemed to have come into force from the 21st day of November, 2025.
+  source_license: unstated
+  content_sha256: 865c2e9e0af58c05c0aed680152692fb7f5ffa58702e34ad0fe02d8262351608
+  role: primary
+- publisher: Legislative Department, Ministry of Law and Justice (India Code)
+  title: The Industrial Relations Code (Amendment) Act, 2026 (No. 1 of 2026), Gazette of India Extraordinary
+  url: https://indiacode.gov.in/server/api/core/bitstreams/9d6c106a-1510-4122-b4f1-9c24bf37666e/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 2, section 2, substituted section 104(1)
+  value: the Industrial Disputes Act, 1947
+  unit: text
+  snippet: the Industrial Employment (Standing Orders) Act, 1946; and
+  source_license: unstated
+  content_sha256: 865c2e9e0af58c05c0aed680152692fb7f5ffa58702e34ad0fe02d8262351608
+  role: supporting
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 96, section 164(1), repeal
+  value: The Payment of Gratuity Act, 1972 (39 of 1972);
+  unit: text
+  snippet: The Employees' Provident Funds and Miscellaneous Provisions Act, 1952 (19 of 1952);
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: supporting
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 30, section 69(1), repeal
+  value: the Payment of Bonus Act, 1965 (21 of 1965)
+  unit: text
+  snippet: the Payment of Bonus Act, 1965 (21 of 1965) and the Equal Remuneration Act, 1976 (25 of 1976) are hereby
+    repealed.
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: supporting
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Occupational Safety, Health and Working Conditions Code, 2020 (Act No. 37 of 2020), India Code text
+    as on 28 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/3a7333e5-1f94-4f64-aff7-be67c0e63435/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 74, section 143(1), repeal
+  value: (a) The Factories Act, 1948 (63 of 1948);
+  unit: text
+  snippet: (h) The Contract Labour (Regulation and Abolition) Act, 1970 (37 of 1970);
+  source_license: unstated
+  content_sha256: d72c3c51f58617de86d457c17fda6f73e16bf53eacb637012998df4ebf2ae214
+  role: supporting
+assumed:
+- parameter: rows.*.repeals
+  value: summary of the repeal sections
+  method: derived
+  rationale: Condensed from the repeal provision of each Code (section 69 of the Code on Wages, section 104 of the
+    IR Code as substituted in 2026, section 164 of the Social Security Code, section 143 of the OSH Code) to orient
+    a reader; not used by any vector.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+notes: 'The four Labour Codes, enacted in 2019 and 2020, were brought into force on 21 November 2025 by four notifications
+  of that date in the Gazette of India: S.O. 5322(E) for the Code on Wages, S.O. 5320(E) for the Industrial Relations
+  Code, S.O. 5319(E) for the Code on Social Security and S.O. 5321(E) for the Occupational Safety, Health and Working
+  Conditions Code. India Code''s consolidated texts record each notification in a footnote to section 1(3). A few
+  provisions came into force earlier (parts of the Code on Wages on 18 December 2020 and section 142 of the Social
+  Security Code on 3 May 2021) and some remain to be notified, as the footnotes list. The Industrial Relations Code
+  (Amendment) Act, 2026 is deemed in force from the same date and restates the repeal of the Trade Unions, Standing
+  Orders and Industrial Disputes Acts. The ''repeals'' column names the Acts each Code''s repeal section lists (in
+  part, for the two Codes that repeal nine and thirteen Acts); payroll records dated on or after 21 November 2025
+  should cite the Codes rather than the repealed Acts. India Code states no reuse licence.'

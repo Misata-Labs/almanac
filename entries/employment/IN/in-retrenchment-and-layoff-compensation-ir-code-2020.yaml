@@ -1,0 +1,180 @@
+id: in-retrenchment-and-layoff-compensation-ir-code-2020
+title: India IR Code 2020 retrenchment compensation (15 days' average pay a year), re-skilling fund credit and 50%
+  lay-off pay
+kind: rule
+domain: employment
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-11-21'
+valid_to: null
+tags:
+- india
+- payroll
+- labour-law
+- compliance
+- retrenchment
+- end-of-service
+- lay-off
+use_cases:
+- payroll-demo
+- hr-demo
+- hr-analytics
+- compliance-demo
+spec:
+  implementation: almanac.rules.in_labour_codes
+  parameters:
+    formula: retrenchment
+    currency: INR
+    qualifying_months: 12
+    notice: one month's notice in writing, or wages for the notice period in lieu
+    days_per_year: 15
+    part_year_months_above: 6
+    reskilling_fund_days: 15
+    reskilling_credit_within_days: 45
+    layoff_compensation_percent: 50
+    layoff_days_after_which_compensation_may_stop_by_agreement: 45
+  vectors:
+  - input:
+      component: compensation
+      average_daily_pay: 1000
+      years: 1
+      months: 0
+    expected: '15000.00'
+    origin: source
+    note: fifteen days' average pay for one completed year
+  - input:
+      component: compensation
+      average_daily_pay: 1000
+      years: 3
+      months: 7
+    expected: '60000.00'
+    origin: derived
+    note: part year above six months counts
+  - input:
+      component: compensation
+      average_daily_pay: 1000
+      years: 3
+      months: 6
+    expected: '45000.00'
+    origin: derived
+  - input:
+      component: compensation
+      average_daily_pay: 1000
+      years: 0
+      months: 11
+    expected: '0.00'
+    origin: derived
+    note: below one year of continuous service
+  - input:
+      component: reskilling_fund
+      daily_wage: 800
+    expected: '12000.00'
+    origin: source
+    note: fifteen days wages last drawn
+  - input:
+      component: layoff_daily
+      daily_basic_and_dearness: 600
+    expected: '300.00'
+    origin: source
+    note: fifty per cent. of basic wages and dearness allowance
+evidence:
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 40, section 70
+  value: not less than one year
+  unit: text
+  snippet: who has been in continuous service for not less than one year under an employer shall be retrenched by
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 40, section 70(a)
+  value: one month ’s notice
+  unit: text
+  snippet: the worker has been given one month ’s notice in writing indicating the reasons for
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 40, section 70(b)
+  value: fifteen days' average pay
+  unit: text
+  snippet: to fifteen days' average pay, or average pay of such days as may be notified by the appropriate
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 40, section 70(b)
+  value: in excess of six months
+  unit: text
+  snippet: for every completed year of continuous service or an y part thereof in excess of six
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 47, section 83(3)
+  value: within forty-five days
+  unit: text
+  snippet: The fund shall be utilised by crediting fifteen days wages last drawn by the worker to his account
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 40, section 67
+  value: fifty per cent. of the total of the basic wages and dearness allowance
+  unit: text
+  snippet: fifty per cent. of the total of the basic wages and dearness allowance that would have been payable to
+    him,
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 40, section 67, first proviso
+  value: first forty-five days
+  unit: text
+  snippet: 'the first forty-five days, if there is an agreement to that effect between the worker and the employer:'
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: parameter[days_per_year]
+  expected: 15
+  tolerance: 0
+- statistic: parameter[layoff_compensation_percent]
+  expected: 50
+  tolerance: 0
+notes: Exit payments under Chapters IX and XI of the Industrial Relations Code, 2020, in force from 21 November
+  2025 (replacing the Industrial Disputes Act, 1947). A worker with at least one year of continuous service may
+  be retrenched only after one month's written notice (or wages in lieu) and on payment of compensation of fifteen
+  days' average pay for every completed year of continuous service or part above six months (section 70). The employer
+  also pays fifteen days' wages last drawn into the worker re-skilling fund, which credits that sum to the worker
+  within forty-five days (section 83). A laid-off worker with a year's service is paid fifty per cent. of basic
+  wages and dearness allowance for each day of lay-off other than weekly holidays; by agreement the payment may
+  stop after forty-five days in twelve months (section 67). Sections 67 to 69 do not apply to establishments averaging
+  fewer than fifty workers or covered by Chapter X (three hundred or more), see in-labour-code-establishment-size-thresholds.
+  Average pay is defined in the Code and is passed in as a daily amount.

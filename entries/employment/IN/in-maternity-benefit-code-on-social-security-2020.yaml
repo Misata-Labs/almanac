@@ -1,0 +1,175 @@
+id: in-maternity-benefit-code-on-social-security-2020
+title: 'India maternity benefit under Code on Social Security 2020: 26 weeks (12 from the third child), 80-day qualifying
+  period'
+kind: rule
+domain: employment
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-11-21'
+valid_to: null
+tags:
+- india
+- payroll
+- labour-law
+- compliance
+- maternity
+- leave
+use_cases:
+- payroll-demo
+- hr-demo
+- hr-analytics
+- compliance-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      maximum_benefit_weeks:
+        value: 26
+        provision: s 60(3)
+      maximum_weeks_before_expected_delivery:
+        value: 8
+        provision: s 60(3)
+      maximum_benefit_weeks_two_or_more_surviving_children:
+        value: 12
+        provision: s 60(3) first proviso
+      maximum_weeks_before_delivery_two_or_more_children:
+        value: 6
+        provision: s 60(3) first proviso
+      adoption_or_commissioning_mother_weeks:
+        value: 12
+        provision: s 60(4), child below three months
+      qualifying_days_worked_in_preceding_twelve_months:
+        value: 80
+        provision: s 60(2)
+      nursing_breaks_per_day:
+        value: 2
+        provision: s 66, until the child is fifteen months old
+    rate: average daily wage for the period of actual absence
+  vectors:
+  - input:
+      key: maximum_benefit_weeks
+      column: value
+    expected: 26
+    origin: source
+  - input:
+      key: qualifying_days_worked_in_preceding_twelve_months
+      column: value
+    expected: 80
+    origin: source
+  - input:
+      key: adoption_or_commissioning_mother_weeks
+      column: value
+    expected: 12
+    origin: source
+  - input:
+      key: maximum_weeks_before_expected_delivery
+      column: value
+    expected: 8
+    origin: source
+evidence:
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 49, section 60(1)
+  value: the average daily wage
+  unit: text
+  snippet: the payment of maternity benefit at the rate of the average daily wage for the period of her actual absence,
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 49, section 60(2)
+  value: not less than eighty days
+  unit: text
+  snippet: of the employer from whom she claims maternity benefit, for a period of not less than eighty days in
+    the
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 49, section 60(3)
+  value: six weeks of which not more than eight weeks
+  unit: text
+  snippet: 'six weeks of which not more than eight weeks shall precede the expected date of her delivery:'
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 50, section 60(3), first proviso
+  value: twelve weeks of which not more than six weeks
+  unit: text
+  snippet: surviving children shall be twelve weeks of which not more than six weeks shall precede the date of her
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 50, section 60(4)
+  value: below the age of three months
+  unit: text
+  snippet: A woman who legally adopts a child below the age of three months or a commissioning mother
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 51, section 66
+  value: fifteen months
+  unit: text
+  snippet: such duration as may be prescribed by the Central Government, for nursing the child until the child attains
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 7
+  tolerance: 0
+- statistic: value[maximum_benefit_weeks,value]
+  expected: 26
+  tolerance: 0
+- statistic: value[maximum_weeks_before_expected_delivery,value]
+  expected: 8
+  tolerance: 0
+- statistic: value[maximum_benefit_weeks_two_or_more_surviving_children,value]
+  expected: 12
+  tolerance: 0
+- statistic: value[maximum_weeks_before_delivery_two_or_more_children,value]
+  expected: 6
+  tolerance: 0
+- statistic: value[adoption_or_commissioning_mother_weeks,value]
+  expected: 12
+  tolerance: 0
+- statistic: value[qualifying_days_worked_in_preceding_twelve_months,value]
+  expected: 80
+  tolerance: 0
+- statistic: value[nursing_breaks_per_day,value]
+  expected: 2
+  tolerance: 0
+notes: Maternity benefit under Chapter VI of the Code on Social Security, 2020 (in force from 21 November 2025,
+  replacing the Maternity Benefit Act, 1961). A woman who has actually worked at least eighty days for the employer
+  in the twelve months before her expected delivery is paid her average daily wage for up to twenty-six weeks, of
+  which no more than eight may precede the expected delivery; with two or more surviving children the maximum is
+  twelve weeks, no more than six before delivery. An adopting mother of a child under three months, or a commissioning
+  mother, gets twelve weeks from hand-over. On return she is allowed two nursing breaks a day until the child is
+  fifteen months old. The chapter applies to factories, mines and plantations and to shops and establishments with
+  ten or more employees (see in-labour-code-establishment-size-thresholds). Establishments covered by the ESIC chapter
+  pay maternity benefit through ESIC instead.

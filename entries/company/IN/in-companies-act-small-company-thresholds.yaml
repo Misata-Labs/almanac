@@ -1,0 +1,157 @@
+id: in-companies-act-small-company-thresholds
+title: 'India Companies Act 2013 s 2(85) small company: paid-up capital up to ₹4 crore and turnover up to ₹40 crore
+  (2022 rules)'
+kind: rule
+domain: company
+region: IN
+status: license-review
+tier: B
+valid_from: '2022-09-15'
+valid_to: null
+tags:
+- india
+- companies-act
+- company-size
+- compliance
+use_cases:
+- company-generation
+- kyb-onboarding
+- compliance-demo
+- financial-reporting
+spec:
+  implementation: almanac.rules.in_companies_act
+  parameters:
+    formula: small_company
+    currency: INR
+    paid_up_capital_ceiling: 40000000
+    turnover_ceiling: 400000000
+    statutory_default_ceilings:
+      paid_up_capital: 5000000
+      turnover: 20000000
+    statutory_maximum_ceilings:
+      paid_up_capital: 100000000
+      turnover: 1000000000
+    turnover_basis: profit and loss account for the immediately preceding financial year
+    excluded_flags:
+    - holding_or_subsidiary
+    - section_8_company
+    - special_act_company
+  vectors:
+  - input:
+      paid_up_capital: 40000000
+      turnover: 400000000
+    expected: true
+    origin: source
+    note: at the ceilings of rupees four crore and forty crore
+  - input:
+      paid_up_capital: 40000001
+      turnover: 100000000
+    expected: false
+    origin: derived
+  - input:
+      paid_up_capital: 10000000
+      turnover: 410000000
+    expected: false
+    origin: derived
+  - input:
+      paid_up_capital: 10000000
+      turnover: 50000000
+      holding_or_subsidiary: true
+    expected: false
+    origin: source
+    note: 'proviso (A): not a holding or subsidiary company'
+  - input:
+      paid_up_capital: 10000000
+      turnover: 50000000
+      public_company: true
+    expected: false
+    origin: source
+    note: a company other than a public company
+  - input:
+      paid_up_capital: 10000000
+      turnover: 50000000
+      section_8_company: true
+    expected: false
+    origin: source
+evidence:
+- publisher: Ministry of Corporate Affairs, Government of India (via India Code)
+  title: The Companies Act, 2013 (Act No. 18 of 2013), India Code text as on 1 September 2026
+  url: https://indiacode.gov.in/server/api/core/bitstreams/95902c38-5947-4457-a431-5062e234cab0/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 27, section 2(85)
+  value: “small company” means a company, other than a public company,—
+  unit: text
+  snippet: “small company” means a company, other than a public company,—
+  source_license: unstated
+  content_sha256: 5786935b5fa67608ccfafc313e58b5be59cf7744351f7b1089cc78610c234785
+  role: primary
+- publisher: Ministry of Corporate Affairs, Government of India (via India Code)
+  title: The Companies Act, 2013 (Act No. 18 of 2013), India Code text as on 1 September 2026
+  url: https://indiacode.gov.in/server/api/core/bitstreams/95902c38-5947-4457-a431-5062e234cab0/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 28, section 2(85)(i)
+  value: fifty lakh rupees
+  unit: text
+  snippet: paid-up share capital of which does not exceed fifty lakh rupees or such higher amount as may
+  source_license: unstated
+  content_sha256: 5786935b5fa67608ccfafc313e58b5be59cf7744351f7b1089cc78610c234785
+  role: primary
+- publisher: Ministry of Corporate Affairs, Government of India (via India Code)
+  title: The Companies Act, 2013 (Act No. 18 of 2013), India Code text as on 1 September 2026
+  url: https://indiacode.gov.in/server/api/core/bitstreams/95902c38-5947-4457-a431-5062e234cab0/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 28, section 2(85)(ii)
+  value: two crore rupees
+  unit: text
+  snippet: does not exceed two crore rupees or such higher amount as may be prescribed which shall not be more than
+  source_license: unstated
+  content_sha256: 5786935b5fa67608ccfafc313e58b5be59cf7744351f7b1089cc78610c234785
+  role: primary
+- publisher: Ministry of Corporate Affairs, Government of India (via India Code)
+  title: The Companies Act, 2013 (Act No. 18 of 2013), India Code text as on 1 September 2026
+  url: https://indiacode.gov.in/server/api/core/bitstreams/95902c38-5947-4457-a431-5062e234cab0/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 28, section 2(85), proviso
+  value: (A) a holding company or a subsidiary company;
+  unit: text
+  snippet: (A) a holding company or a subsidiary company; (B) a company registered under section 8; or
+  source_license: unstated
+  content_sha256: 5786935b5fa67608ccfafc313e58b5be59cf7744351f7b1089cc78610c234785
+  role: primary
+- publisher: Ministry of Corporate Affairs, Government of India (via India Code)
+  title: G.S.R. 700(E), Companies (Specification of Definitions Details) Amendment Rules, 2022, 15 September 2022
+  url: https://indiacode.gov.in/server/api/core/bitstreams/e14dc377-81a3-4275-9440-d56f6d9fb3ce/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 2, rule 2(1)(t) as substituted
+  value: rupees four crore and rupees forty crore
+  unit: text
+  snippet: paid up capital and turnover of the small company shall not exceed rupees four crore and rupees forty
+    crore
+  source_license: unstated
+  content_sha256: bb590caf9ef7e4dd4cf548ae6be32bab14323a3b0aa4cdc4be89157060bf5f49
+  role: primary
+assumed:
+- parameter: valid_to
+  value: null
+  method: derived
+  rationale: Left open because no later amendment of rule 2(1)(t) could be fetched; the ministry and gazette sites
+    that would publish one were unreachable.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: parameter[paid_up_capital_ceiling]
+  expected: 40000000
+  tolerance: 0
+- statistic: parameter[turnover_ceiling]
+  expected: 400000000
+  tolerance: 0
+notes: Small company test of section 2(85) of the Companies Act, 2013 (India Code text as on 1 September 2026).
+  A company other than a public company is small if its paid-up share capital does not exceed fifty lakh rupees
+  and its turnover for the preceding financial year does not exceed two crore rupees, or such higher amounts as
+  are prescribed up to ten crore and one hundred crore rupees; holding and subsidiary companies, section 8 companies
+  and companies under a special Act are never small. The Companies (Specification of Definitions Details) Amendment
+  Rules, 2022 (G.S.R. 700(E), 15 September 2022) prescribe ₹4 crore and ₹40 crore, the latest amendment India Code
+  holds. Any later amendment to rule 2(1)(t) would be published by the Ministry of Corporate Affairs or the eGazette,
+  neither of which could be reached; check before relying on these ceilings for dates after 2025. Amounts are in
+  rupees.

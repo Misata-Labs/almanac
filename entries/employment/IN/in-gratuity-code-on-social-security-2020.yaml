@@ -1,0 +1,237 @@
+id: in-gratuity-code-on-social-security-2020
+title: 'India gratuity under Code on Social Security s 53: 15 days'' wages a year on a 26-day month, 5-year rule,
+  ₹20 lakh ceiling'
+kind: rule
+domain: employment
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-11-21'
+valid_to: null
+tags:
+- india
+- payroll
+- labour-law
+- compliance
+- gratuity
+- end-of-service
+use_cases:
+- payroll-demo
+- hr-demo
+- hr-analytics
+- compliance-demo
+- pensions
+spec:
+  implementation: almanac.rules.in_labour_codes
+  parameters:
+    formula: gratuity
+    currency: INR
+    days_per_year: 15
+    month_divisor: 26
+    part_year_months_above: 6
+    qualifying_years: 5
+    working_journalist_qualifying_years: 3
+    reasons_without_qualifying_service:
+    - death
+    - disablement
+    - fixed_term_expiry
+    fixed_term_qualifying_years: 1
+    seasonal_days_per_season: 7
+    ceiling: 2000000
+  vectors:
+  - input:
+      monthly_wage: 26000
+      years: 5
+      months: 0
+      reason: resignation
+    expected: '75000.00'
+    origin: source
+    note: monthly wage divided by twenty-six and multiplied by fifteen, for five completed years
+  - input:
+      monthly_wage: 52000
+      years: 5
+      months: 7
+      reason: superannuation
+    expected: '180000.00'
+    origin: derived
+    note: a part year above six months counts as a year
+  - input:
+      monthly_wage: 52000
+      years: 5
+      months: 6
+      reason: superannuation
+    expected: '150000.00'
+    origin: derived
+  - input:
+      monthly_wage: 52000
+      years: 4
+      months: 11
+      reason: resignation
+    expected: '0.00'
+    origin: derived
+    note: below five years of continuous service
+  - input:
+      monthly_wage: 26000
+      years: 1
+      months: 6
+      reason: fixed_term_expiry
+    expected: '22500.00'
+    origin: derived
+    note: pro rata for a fixed-term employee after one year
+  - input:
+      monthly_wage: 26000
+      years: 0
+      months: 11
+      reason: fixed_term_expiry
+    expected: '0.00'
+    origin: derived
+  - input:
+      monthly_wage: 26000
+      years: 2
+      months: 3
+      reason: death
+    expected: '33750.00'
+    origin: derived
+    note: pro rata, no qualifying service on death
+  - input:
+      monthly_wage: 500000
+      years: 30
+      months: 0
+      reason: superannuation
+    expected: '2000000.00'
+    origin: source
+    note: capped at twenty lakh rupees
+evidence:
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 44, section 53(1)
+  value: not less than five years
+  unit: text
+  snippet: after he has rendered continuous service for not less than five years,—
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 44, section 53(1), second proviso
+  value: expiration of fixed term employment
+  unit: text
+  snippet: the termination of the employment of any employee is due to death or disablement or expiration of fixed
+    term employment
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 45, section 53(2)
+  value: fifteen days' wages
+  unit: text
+  snippet: the employer shall pay gratuity to an employee at the rate of fifteen days' wages or such number of days
+    as may be notified
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 45, section 53(2), third proviso
+  value: pro rata basis
+  unit: text
+  snippet: fixed term employment or a deceased employee, the employer shall pay gratuity on pro rata basis.
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 45, section 53, Explanation 3
+  value: dividing the monthly rate of wages last drawn by
+  unit: text
+  snippet: him by twenty-six and multiplying the quotient by fifteen.
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 45, section 53(2), second proviso
+  value: seven days' wages
+  unit: text
+  snippet: 'the employer shall pay the gratuity at the rate of seven days'' wages for each season:'
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 9, section 2(o), proviso (c)
+  value: eligible for gratuity
+  unit: text
+  snippet: he shall be eligible for gratuity if he renders service under the contract for a period of one year;
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: Notifications S.O. 1419(E) and S.O. 1420(E) of 29 March 2018 under the Payment of Gratuity Act, 1972
+  url: https://indiacode.gov.in/server/api/core/bitstreams/c1e116f5-07c9-4647-bab3-39c7484f3942/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 2, S.O. 1420(E)
+  value: twenty lakh rupees
+  unit: text
+  snippet: under the said Act shall not exceed twenty lakh rupees.
+  source_license: unstated
+  content_sha256: d2aece96464dfe2bac2c52c78b5e5041d9d4556be9be2c8892335a7539542d3d
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 96, section 164(2)(a), savings
+  value: notification (including the notifications issued by the States)
+  unit: text
+  snippet: notification (including the notifications issued by the States), scheme, appointment, order
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: supporting
+assumed:
+- parameter: pro_rata_method
+  value: exact months of service divided by twelve
+  method: derived
+  rationale: The Code says fixed-term and deceased employees are paid 'on pro rata basis' without a formula; the
+    rule pro-rates the annual fifteen days by the months served.
+- parameter: ceiling
+  value: 2000000
+  method: derived
+  rationale: No ceiling notified under section 53(3) of the Code was found on India Code; the 2018 ceiling under
+    the repealed 1972 Act is carried forward on the strength of the savings clause in section 164(2).
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: parameter[ceiling]
+  expected: 2000000
+  tolerance: 0
+- statistic: parameter[month_divisor]
+  expected: 26
+  tolerance: 0
+notes: Gratuity under Chapter V of the Code on Social Security, 2020 (in force from 21 November 2025, replacing
+  the Payment of Gratuity Act, 1972). It is payable on superannuation, retirement, resignation, death, disablement
+  or expiry of a fixed term after at least five years of continuous service (three for working journalists); the
+  five-year condition does not apply on death, disablement or expiry of a fixed term, and section 2(o) of the Industrial
+  Relations Code makes a fixed-term worker eligible after one year under the contract. The amount is fifteen days'
+  wages for every completed year or part above six months, on the last wages drawn; a monthly-rated employee's fifteen
+  days' wages are the monthly wage divided by twenty-six and multiplied by fifteen (Explanation 3), seasonal workers
+  get seven days a season, and fixed-term and deceased employees are paid pro rata. Section 53(3) caps the total
+  at an amount the Central Government notifies; the cap cited is the twenty lakh rupees notified under the 1972
+  Act in 2018 (S.O. 1420(E)), which section 164(2) keeps in force under the Code until replaced. Wages here are
+  wages as defined in the Code (see in-code-on-wages-wage-definition-50-percent-rule).

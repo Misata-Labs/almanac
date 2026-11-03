@@ -1,0 +1,220 @@
+id: in-companies-act-csr-applicability-and-spend
+title: 'India Companies Act s 135 CSR: applies at ₹500 crore net worth, ₹1,000 crore turnover or ₹5 crore profit;
+  spend 2%'
+kind: rule
+domain: company
+region: IN
+status: license-review
+tier: B
+valid_from: '2021-01-22'
+valid_to: null
+tags:
+- india
+- companies-act
+- csr
+- compliance
+use_cases:
+- company-generation
+- kyb-onboarding
+- compliance-demo
+- financial-reporting
+- audit-demo
+spec:
+  implementation: almanac.rules.in_companies_act
+  parameters:
+    formula: csr
+    currency: INR
+    applicability_thresholds:
+      net_worth: 5000000000
+      turnover: 10000000000
+      net_profit: 50000000
+    applicability_year: immediately preceding financial year
+    spend_percent: 2
+    averaging_years: 3
+    committee_exemption_ceiling: 5000000
+    unspent_transfer_to_schedule_vii_fund_months: 6
+    ongoing_project_unspent_account_transfer_days: 30
+    penalty: twice the amount to be transferred or one crore rupees, whichever is less
+  vectors:
+  - input:
+      net_worth: 1000000000
+      turnover: 2000000000
+      net_profit: 50000000
+      preceding_net_profits:
+      - 50000000
+      - 40000000
+      - 30000000
+    expected:
+      applies: true
+      obligation: '800000.00'
+      committee_required: false
+    origin: source
+    note: net profit of rupees five crore meets the threshold; 2% of the three-year average
+  - input:
+      net_worth: 9000000000
+      turnover: 20000000000
+      net_profit: 400000000
+      preceding_net_profits:
+      - 400000000
+      - 300000000
+      - 200000000
+    expected:
+      applies: true
+      obligation: '6000000.00'
+      committee_required: true
+    origin: derived
+    note: an obligation above fifty lakh needs a CSR committee
+  - input:
+      net_worth: 4990000000
+      turnover: 9990000000
+      net_profit: 40000000
+      preceding_net_profits:
+      - 40000000
+      - 40000000
+      - 40000000
+    expected:
+      applies: false
+      obligation: '0.00'
+      committee_required: false
+    origin: derived
+  - input:
+      net_worth: 6000000000
+      turnover: 1000000000
+      net_profit: 10000000
+      preceding_net_profits:
+      - 10000000
+      - 20000000
+      - 30000000
+    expected:
+      applies: true
+      obligation: '400000.00'
+      committee_required: false
+    origin: derived
+    note: obligation up to fifty lakh needs no committee
+  - input:
+      net_worth: 100000000
+      turnover: 10000000000
+      net_profit: -10000000
+      preceding_net_profits:
+      - -50000000
+      - 10000000
+      - 10000000
+    expected:
+      applies: true
+      obligation: '0.00'
+      committee_required: false
+    origin: derived
+    note: a negative average gives no spend
+  - input:
+      net_worth: 6000000000
+      turnover: 1000000000
+      net_profit: 100000000
+      preceding_net_profits:
+      - 100000000
+    expected:
+      applies: true
+      obligation: '2000000.00'
+      committee_required: false
+    origin: derived
+    note: a company with fewer than three years uses the years it has
+evidence:
+- publisher: Ministry of Corporate Affairs, Government of India (via India Code)
+  title: The Companies Act, 2013 (Act No. 18 of 2013), India Code text as on 1 September 2026
+  url: https://indiacode.gov.in/server/api/core/bitstreams/95902c38-5947-4457-a431-5062e234cab0/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 93, section 135(1)
+  value: net worth of rupees five hundred
+  unit: text
+  snippet: Every company having net worth of rupees five hundred crore or more, or turnover of rupees one thousand
+    crore or more
+  source_license: unstated
+  content_sha256: 5786935b5fa67608ccfafc313e58b5be59cf7744351f7b1089cc78610c234785
+  role: primary
+- publisher: Ministry of Corporate Affairs, Government of India (via India Code)
+  title: The Companies Act, 2013 (Act No. 18 of 2013), India Code text as on 1 September 2026
+  url: https://indiacode.gov.in/server/api/core/bitstreams/95902c38-5947-4457-a431-5062e234cab0/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 93, section 135(1)
+  value: a net profit of rupees five crore or more
+  unit: text
+  snippet: or a net profit of rupees five crore or more
+  source_license: unstated
+  content_sha256: 5786935b5fa67608ccfafc313e58b5be59cf7744351f7b1089cc78610c234785
+  role: primary
+- publisher: Ministry of Corporate Affairs, Government of India (via India Code)
+  title: The Companies Act, 2013 (Act No. 18 of 2013), India Code text as on 1 September 2026
+  url: https://indiacode.gov.in/server/api/core/bitstreams/95902c38-5947-4457-a431-5062e234cab0/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 94, section 135(5)
+  value: at least two per cent. of the average net profits
+  unit: text
+  snippet: in every financial year, at least two per cent. of the average net profits of the company made during
+    the
+  source_license: unstated
+  content_sha256: 5786935b5fa67608ccfafc313e58b5be59cf7744351f7b1089cc78610c234785
+  role: primary
+- publisher: Ministry of Corporate Affairs, Government of India (via India Code)
+  title: The Companies Act, 2013 (Act No. 18 of 2013), India Code text as on 1 September 2026
+  url: https://indiacode.gov.in/server/api/core/bitstreams/95902c38-5947-4457-a431-5062e234cab0/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 94, section 135(5)
+  value: three immediately preceding financial years
+  unit: text
+  snippet: three immediately preceding financial years,
+  source_license: unstated
+  content_sha256: 5786935b5fa67608ccfafc313e58b5be59cf7744351f7b1089cc78610c234785
+  role: primary
+- publisher: Ministry of Corporate Affairs, Government of India (via India Code)
+  title: The Companies Act, 2013 (Act No. 18 of 2013), India Code text as on 1 September 2026
+  url: https://indiacode.gov.in/server/api/core/bitstreams/95902c38-5947-4457-a431-5062e234cab0/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 95, section 135(9)
+  value: fifty lakh
+  unit: text
+  snippet: Where the amount to be spent by a company under sub -section (5) does not exceed fifty lakh
+  source_license: unstated
+  content_sha256: 5786935b5fa67608ccfafc313e58b5be59cf7744351f7b1089cc78610c234785
+  role: primary
+- publisher: Ministry of Corporate Affairs, Government of India (via India Code)
+  title: The Companies Act, 2013 (Act No. 18 of 2013), India Code text as on 1 September 2026
+  url: https://indiacode.gov.in/server/api/core/bitstreams/95902c38-5947-4457-a431-5062e234cab0/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 95, section 135(7)
+  value: one crore rupees, whichever is less
+  unit: text
+  snippet: may be, or one crore rupees, whichever is less, and every officer of the company who is in default shall
+    be
+  source_license: unstated
+  content_sha256: 5786935b5fa67608ccfafc313e58b5be59cf7744351f7b1089cc78610c234785
+  role: primary
+- publisher: Ministry of Corporate Affairs, Government of India (via India Code)
+  title: The Companies Act, 2013 (Act No. 18 of 2013), India Code text as on 1 September 2026
+  url: https://indiacode.gov.in/server/api/core/bitstreams/95902c38-5947-4457-a431-5062e234cab0/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 95, footnote to section 135(7) and (9)
+  value: Ins. by s. 27, ibid. (w.e.f. 22-1-2021).
+  unit: text
+  snippet: Ins. by s. 27, ibid. (w.e.f. 22-1-2021).
+  source_license: unstated
+  content_sha256: 5786935b5fa67608ccfafc313e58b5be59cf7744351f7b1089cc78610c234785
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: parameter[spend_percent]
+  expected: 2
+  tolerance: 0
+- statistic: parameter[committee_exemption_ceiling]
+  expected: 5000000
+  tolerance: 0
+notes: Corporate social responsibility under section 135 of the Companies Act, 2013 (India Code text as on 1 September
+  2026). A company with net worth of ₹500 crore or more, turnover of ₹1,000 crore or more or net profit of ₹5 crore
+  or more in the immediately preceding financial year must spend in each year at least 2% of its average net profits
+  of the three immediately preceding financial years (or the years since incorporation, if fewer), net profit being
+  computed under section 198. A CSR committee of the Board is needed unless the amount to be spent does not exceed
+  ₹50 lakh (sub-section (9), in force from 22 January 2021, which is why the entry starts on that date). Unspent
+  amounts go to a Schedule VII fund within six months of the year end, or for ongoing projects to an Unspent CSR
+  Account within thirty days; default draws a penalty of twice the amount or ₹1 crore, whichever is less. The rule
+  returns applicability, the minimum spend (never negative) and whether a committee is required; amounts in rupees.

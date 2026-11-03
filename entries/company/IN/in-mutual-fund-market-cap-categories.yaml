@@ -1,0 +1,141 @@
+id: in-mutual-fund-market-cap-categories
+title: 'India SEBI large, mid and small cap definition for mutual funds: ranks 1-100, 101-250 and 251 onwards by
+  market cap'
+kind: rule
+domain: company
+region: IN
+status: license-review
+tier: B
+valid_from: '2017-10-06'
+valid_to: null
+tags:
+- india
+- sebi
+- mutual-funds
+- market-cap
+use_cases:
+- fintech-demo
+- banking-demo
+- company-generation
+- compliance-demo
+spec:
+  implementation: almanac.rules.in_market_cap_category
+  parameters:
+    basis: full market capitalisation, AMFI list updated every six months on end-June and end-December data
+    rebalance_within_months: 1
+    bands:
+    - name: large_cap
+      from_rank: 1
+      to_rank: 100
+    - name: mid_cap
+      from_rank: 101
+      to_rank: 250
+    - name: small_cap
+      from_rank: 251
+      to_rank: null
+  vectors:
+  - input:
+      rank: 1
+    expected: large_cap
+    origin: source
+  - input:
+      rank: 100
+    expected: large_cap
+    origin: source
+  - input:
+      rank: 101
+    expected: mid_cap
+    origin: source
+  - input:
+      rank: 250
+    expected: mid_cap
+    origin: source
+  - input:
+      rank: 251
+    expected: small_cap
+    origin: source
+  - input:
+      rank: 1200
+    expected: small_cap
+    origin: derived
+evidence:
+- publisher: Securities and Exchange Board of India
+  title: SEBI circular SEBI/HO/IMD/DF3/CIR/P/2017/114, Categorization and Rationalization of Mutual Fund Schemes,
+    6 October 2017
+  url: https://www.sebi.gov.in/sebi_data/attachdocs/oct-2017/1509103633344.pdf
+  accessed_at: '2026-11-03'
+  locator: PDF page 2, paragraph 7(a)
+  value: 'Large Cap: 1st -100th company'
+  unit: text
+  snippet: 'a. Large Cap: 1st -100th company in terms of full market capitalization'
+  source_license: unstated
+  content_sha256: b5f327f89d77d2f85ccb331b868add0674db26719b96b0ef6ee0cc7a5860e227
+  role: primary
+- publisher: Securities and Exchange Board of India
+  title: SEBI circular SEBI/HO/IMD/DF3/CIR/P/2017/114, Categorization and Rationalization of Mutual Fund Schemes,
+    6 October 2017
+  url: https://www.sebi.gov.in/sebi_data/attachdocs/oct-2017/1509103633344.pdf
+  accessed_at: '2026-11-03'
+  locator: PDF page 2, paragraph 7(b)
+  value: 'Mid Cap: 101st -250th company'
+  unit: text
+  snippet: 'b. Mid Cap: 101st -250th company in terms of full market capitalization'
+  source_license: unstated
+  content_sha256: b5f327f89d77d2f85ccb331b868add0674db26719b96b0ef6ee0cc7a5860e227
+  role: primary
+- publisher: Securities and Exchange Board of India
+  title: SEBI circular SEBI/HO/IMD/DF3/CIR/P/2017/114, Categorization and Rationalization of Mutual Fund Schemes,
+    6 October 2017
+  url: https://www.sebi.gov.in/sebi_data/attachdocs/oct-2017/1509103633344.pdf
+  accessed_at: '2026-11-03'
+  locator: PDF page 2, paragraph 7(c)
+  value: 'Small Cap: 251st company onwards'
+  unit: text
+  snippet: 'c. Small Cap: 251st company onwards in terms of full market capitalization'
+  source_license: unstated
+  content_sha256: b5f327f89d77d2f85ccb331b868add0674db26719b96b0ef6ee0cc7a5860e227
+  role: primary
+- publisher: Securities and Exchange Board of India
+  title: SEBI circular SEBI/HO/IMD/DF3/CIR/P/2017/114, Categorization and Rationalization of Mutual Fund Schemes,
+    6 October 2017
+  url: https://www.sebi.gov.in/sebi_data/attachdocs/oct-2017/1509103633344.pdf
+  accessed_at: '2026-11-03'
+  locator: PDF page 2, paragraph 8(c)
+  value: every six months
+  unit: text
+  snippet: every six months based on the data as on the end of June and December of each
+  source_license: unstated
+  content_sha256: b5f327f89d77d2f85ccb331b868add0674db26719b96b0ef6ee0cc7a5860e227
+  role: primary
+- publisher: Securities and Exchange Board of India
+  title: SEBI circular SEBI/HO/IMD/DF3/CIR/P/2017/114, Categorization and Rationalization of Mutual Fund Schemes,
+    6 October 2017
+  url: https://www.sebi.gov.in/sebi_data/attachdocs/oct-2017/1509103633344.pdf
+  accessed_at: '2026-11-03'
+  locator: PDF page 2, paragraph 9
+  value: within a period of one month
+  unit: text
+  snippet: portfolios (if required) in line with updated list, within a period of one month.
+  source_license: unstated
+  content_sha256: b5f327f89d77d2f85ccb331b868add0674db26719b96b0ef6ee0cc7a5860e227
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+- statistic: last_rank[mid_cap]
+  expected: 250
+  tolerance: 0
+notes: 'SEBI''s definition of the equity investment universe for mutual fund schemes, from section II of the circular
+  on categorisation and rationalisation of mutual fund schemes dated 6 October 2017: large cap is the 1st to 100th
+  company by full market capitalisation, mid cap the 101st to 250th and small cap the 251st onwards. Funds use the
+  single list AMFI prepares every six months from end-June and end-December data, averaging across exchanges where
+  a stock is listed on more than one, and rebalance within a month of each update. SEBI''s Master Circular for Mutual
+  Funds of 20 March 2026 restates the same ranks in paragraph 3.9 (applying them to entities, so listed REITs are
+  ranked too); that 7 MB file could not be downloaded reliably within the verifier''s time limit, so the 2017 circular
+  is cited. Use the rule to label generated listed companies or fund holdings. SEBI states no reuse licence for
+  the document.'

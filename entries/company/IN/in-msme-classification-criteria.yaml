@@ -1,0 +1,240 @@
+id: in-msme-classification-criteria
+title: India MSME classification by investment and turnover ceilings, 2020 criteria and the revision from 1 April
+  2025
+kind: rule
+domain: company
+region: IN
+status: license-review
+tier: B
+valid_from: '2020-07-01'
+valid_to: null
+tags:
+- india
+- msme
+- compliance
+- company-size
+use_cases:
+- company-generation
+- kyb-onboarding
+- loan-pricing
+- credit-risk
+- invoicing-demo
+- compliance-demo
+spec:
+  implementation: almanac.rules.in_msme
+  parameters:
+    currency: INR
+    unit: rupees
+    exports_excluded_from_turnover: true
+    schedules:
+    - from: '2020-07-01'
+      notification: S.O. 2119(E), 26 June 2020
+      ceilings:
+        micro:
+          investment: 10000000
+          turnover: 50000000
+        small:
+          investment: 100000000
+          turnover: 500000000
+        medium:
+          investment: 500000000
+          turnover: 2500000000
+    - from: '2025-04-01'
+      notification: S.O. 1364(E), 21 March 2025
+      ceilings:
+        micro:
+          investment: 25000000
+          turnover: 100000000
+        small:
+          investment: 250000000
+          turnover: 1000000000
+        medium:
+          investment: 1250000000
+          turnover: 5000000000
+  vectors:
+  - input:
+      investment: 25000000
+      turnover: 100000000
+      'on': '2025-06-30'
+    expected: micro
+    origin: source
+    note: at the 2025 micro ceilings of Rs. 2.5 crore and Rs. 10 crore
+  - input:
+      investment: 1250000000
+      turnover: 5000000000
+      'on': '2025-06-30'
+    expected: medium
+    origin: source
+  - input:
+      investment: 10000000
+      turnover: 50000000
+      'on': '2021-01-01'
+    expected: micro
+    origin: source
+    note: at the 2020 micro ceilings
+  - input:
+      investment: 10000000
+      turnover: 60000000
+      'on': '2021-01-01'
+    expected: small
+    origin: source
+    note: crossing either ceiling moves the enterprise to the next higher category
+  - input:
+      investment: 20000000
+      turnover: 80000000
+      'on': '2025-03-31'
+    expected: small
+    origin: derived
+  - input:
+      investment: 20000000
+      turnover: 80000000
+      'on': '2025-04-01'
+    expected: micro
+    origin: derived
+    note: the same enterprise under the revised ceilings
+  - input:
+      investment: 300000000
+      turnover: 500000000
+      'on': '2026-01-01'
+    expected: medium
+    origin: derived
+  - input:
+      investment: 1000000000
+      turnover: 6000000000
+      'on': '2026-01-01'
+    expected: not_msme
+    origin: derived
+evidence:
+- publisher: Ministry of Micro, Small and Medium Enterprises, Government of India
+  title: 'What''s MSME: revised classification applicable from 1 April 2025 (Ministry of MSME website content record)'
+  url: https://www.msme.gov.in/cms/wp-json/wp/v2/pages_detailed_data/12332
+  accessed_at: '2026-11-03'
+  locator: '''What''s MSME'' content, heading'
+  value: Revised Classification applicable w.e.f 1st April 2025
+  unit: text
+  snippet: Revised Classification applicable w.e.f 1st April 2025
+  source_license: unstated
+  content_sha256: 57ed4cc806de997c42fe3033ab554e3a27b989a1fa6b3979ffa594c3dcdcab4f
+  role: primary
+- publisher: Ministry of Micro, Small and Medium Enterprises, Government of India
+  title: 'What''s MSME: revised classification applicable from 1 April 2025 (Ministry of MSME website content record)'
+  url: https://www.msme.gov.in/cms/wp-json/wp/v2/pages_detailed_data/12332
+  accessed_at: '2026-11-03'
+  locator: classification table, Micro column
+  value: Not more than Rs. 2.5 crore and Annual Turnover not more than Rs. 10 crore
+  unit: text
+  snippet: Not more than Rs. 2.5 crore and Annual Turnover not more than Rs. 10 crore
+  source_license: unstated
+  content_sha256: 57ed4cc806de997c42fe3033ab554e3a27b989a1fa6b3979ffa594c3dcdcab4f
+  role: primary
+- publisher: Ministry of Micro, Small and Medium Enterprises, Government of India
+  title: 'What''s MSME: revised classification applicable from 1 April 2025 (Ministry of MSME website content record)'
+  url: https://www.msme.gov.in/cms/wp-json/wp/v2/pages_detailed_data/12332
+  accessed_at: '2026-11-03'
+  locator: classification table, Small column
+  value: Not more than Rs. 25 crore and Annual Turnover not more than Rs. 100 crore
+  unit: text
+  snippet: Not more than Rs. 25 crore and Annual Turnover not more than Rs. 100 crore
+  source_license: unstated
+  content_sha256: 57ed4cc806de997c42fe3033ab554e3a27b989a1fa6b3979ffa594c3dcdcab4f
+  role: primary
+- publisher: Ministry of Micro, Small and Medium Enterprises, Government of India
+  title: 'What''s MSME: revised classification applicable from 1 April 2025 (Ministry of MSME website content record)'
+  url: https://www.msme.gov.in/cms/wp-json/wp/v2/pages_detailed_data/12332
+  accessed_at: '2026-11-03'
+  locator: classification table, Medium column
+  value: Not more than Rs. 125 crore and Annual Turnover not more than Rs. 500 crore
+  unit: text
+  snippet: Not more than Rs. 125 crore and Annual Turnover not more than Rs. 500 crore
+  source_license: unstated
+  content_sha256: 57ed4cc806de997c42fe3033ab554e3a27b989a1fa6b3979ffa594c3dcdcab4f
+  role: primary
+- publisher: Ministry of Micro, Small and Medium Enterprises, Government of India
+  title: 'What''s MSME: revised classification applicable from 1 April 2025 (Ministry of MSME website content record)'
+  url: https://www.msme.gov.in/cms/wp-json/wp/v2/pages_detailed_data/12332
+  accessed_at: '2026-11-03'
+  locator: link to the notification
+  value: Notification-S.O-no-1364-E-dated-21.03.2025
+  unit: text
+  snippet: Notification-S.O-no-1364-E-dated-21.03.2025-Revised-Definition.pdf
+  source_license: unstated
+  content_sha256: 57ed4cc806de997c42fe3033ab554e3a27b989a1fa6b3979ffa594c3dcdcab4f
+  role: supporting
+- publisher: Ministry of Micro, Small and Medium Enterprises, Government of India
+  title: Notification S.O. 2119(E) of 26 June 2020 on the classification of micro, small and medium enterprises
+  url: https://indiacode.gov.in/server/api/core/bitstreams/e6bb2cb5-9cac-469f-a5a9-787191ab5e44/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 5, paragraph 1(i)
+  value: one crore rupees
+  unit: text
+  snippet: exceed one crore rupees and turnover does not exceed five crore rupees;
+  source_license: unstated
+  content_sha256: c16926306831173937f887307bdcdfcb8b280fbec91b3cb8181408a64e8347ab
+  role: primary
+- publisher: Ministry of Micro, Small and Medium Enterprises, Government of India
+  title: Notification S.O. 2119(E) of 26 June 2020 on the classification of micro, small and medium enterprises
+  url: https://indiacode.gov.in/server/api/core/bitstreams/e6bb2cb5-9cac-469f-a5a9-787191ab5e44/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 5, paragraph 1(ii) and (iii)
+  value: two hundred and fifty crore rupees
+  unit: text
+  snippet: exceed fifty crore rupees and turnover does not exceed two hundred and fifty crore rupees.
+  source_license: unstated
+  content_sha256: c16926306831173937f887307bdcdfcb8b280fbec91b3cb8181408a64e8347ab
+  role: primary
+- publisher: Ministry of Micro, Small and Medium Enterprises, Government of India
+  title: Notification S.O. 2119(E) of 26 June 2020 on the classification of micro, small and medium enterprises
+  url: https://indiacode.gov.in/server/api/core/bitstreams/e6bb2cb5-9cac-469f-a5a9-787191ab5e44/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 5, paragraph 3(2)
+  value: next higher category
+  unit: text
+  snippet: criteria of investment or turnover, it will cease to exist in that category and be placed in the next
+    higher category
+  source_license: unstated
+  content_sha256: c16926306831173937f887307bdcdfcb8b280fbec91b3cb8181408a64e8347ab
+  role: primary
+- publisher: Ministry of Micro, Small and Medium Enterprises, Government of India
+  title: Notification S.O. 2119(E) of 26 June 2020 on the classification of micro, small and medium enterprises
+  url: https://indiacode.gov.in/server/api/core/bitstreams/e6bb2cb5-9cac-469f-a5a9-787191ab5e44/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 6, paragraph 5(1)
+  value: Exports of goods or services or both
+  unit: text
+  snippet: Exports of goods or services or both, shall be excluded while calculating the turnover of any
+  source_license: unstated
+  content_sha256: c16926306831173937f887307bdcdfcb8b280fbec91b3cb8181408a64e8347ab
+  role: primary
+assumed:
+- parameter: schedules.*.ceilings
+  value: crore amounts converted to rupees
+  method: derived
+  rationale: The sources state ceilings in crore of rupees; the rule stores them in rupees at 1 crore = 10,000,000
+    so inputs can be plain rupee amounts.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+- statistic: ceiling[2025-04-01,micro,investment]
+  expected: 25000000
+  tolerance: 0
+- statistic: ceiling[2025-04-01,medium,turnover]
+  expected: 5000000000
+  tolerance: 0
+- statistic: ceiling[2020-07-01,small,turnover]
+  expected: 500000000
+  tolerance: 0
+notes: 'Classification of enterprises under section 7 of the Micro, Small and Medium Enterprises Development Act,
+  2006. From 1 July 2020 (S.O. 2119(E)) an enterprise is micro if investment in plant and machinery or equipment
+  does not exceed ₹1 crore and turnover ₹5 crore, small up to ₹10 crore and ₹50 crore, and medium up to ₹50 crore
+  and ₹250 crore. The Ministry of MSME''s site records the revision applicable from 1 April 2025, citing S.O. 1364(E)
+  of 21 March 2025: micro up to ₹2.5 crore and ₹10 crore, small up to ₹25 crore and ₹100 crore, medium up to ₹125
+  crore and ₹500 crore. The criteria are composite: an enterprise exceeding either ceiling of its category moves
+  to the next one, so the rule returns the smallest category whose ceilings it meets on both, or not_msme above
+  the medium ceilings. Exports are excluded from turnover, and all GSTINs under one PAN count as one enterprise.
+  The 2025 notification PDF itself is hosted on dcmsme.gov.in, which could not be reached; the 2025 ceilings are
+  cited from the Ministry''s content-management record (JSON), whose text matched on repeated fetches. Amounts are
+  in rupees (1 crore = 10,000,000).'

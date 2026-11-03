@@ -1,0 +1,147 @@
+id: in-code-on-wages-bonus-limits
+title: 'India Code on Wages s 26 statutory bonus: minimum 8 1/3% of wages or ₹100, maximum 20%, paid within eight
+  months'
+kind: rule
+domain: employment
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-11-21'
+valid_to: null
+tags:
+- india
+- payroll
+- labour-law
+- compliance
+- bonus
+use_cases:
+- payroll-demo
+- hr-demo
+- hr-analytics
+- compliance-demo
+spec:
+  implementation: almanac.rules.in_labour_codes
+  parameters:
+    formula: bonus
+    currency: INR
+    minimum_rate_fraction:
+    - 1
+    - 12
+    minimum_rate_text: eight and one-third per cent. of the wages earned
+    minimum_amount: 100
+    maximum_percent: 20
+    minimum_days_worked_in_year: 30
+    applies_to_establishments_employing: 20
+    payment_within_months_of_year_end: 8
+    eligibility_wage_ceiling: null
+  vectors:
+  - input:
+      wages_earned: 1000
+    expected:
+      minimum: '100.00'
+      maximum: '200.00'
+    origin: source
+    note: one hundred rupees where higher than 8 1/3% of wages
+  - input:
+      wages_earned: 120000
+    expected:
+      minimum: '10000.00'
+      maximum: '24000.00'
+    origin: derived
+  - input:
+      wages_earned: 216000
+    expected:
+      minimum: '18000.00'
+      maximum: '43200.00'
+    origin: derived
+  - input:
+      wages_earned: 300
+    expected:
+      minimum: '100.00'
+      maximum: '100.00'
+    origin: derived
+    note: the floor exceeds 20% of very low wages
+evidence:
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 15, section 26(1)
+  value: eight and one-third per cent.
+  unit: text
+  snippet: calculated at the rate of eight and one-third per cent. of the wages earned by the employee or one hundred
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 15, section 26(1)
+  value: at least thirty days work
+  unit: text
+  snippet: who has put in at least thirty days work in an accounting year, an annual minimum bonus
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 15, section 26(3)
+  value: subject to a maximum of twenty per cent. of such wages
+  unit: text
+  snippet: accounting year, subject to a maximum of twenty per cent. of such wages.
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 20, section 38(2)
+  value: twenty or more persons
+  unit: text
+  snippet: the provisions of this Chapter shall apply to such establishment in which twenty or more persons are
+    employed
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 19, section 39(1)
+  value: eight months
+  unit: text
+  snippet: 'period of eight months from the close of the accounting year:'
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+assumed:
+- parameter: minimum_rate_fraction
+  value:
+  - 1
+  - 12
+  method: derived
+  rationale: Eight and one-third per cent. is exactly one-twelfth, which keeps the minimum bonus exact in decimal
+    arithmetic.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: parameter[maximum_percent]
+  expected: 20
+  tolerance: 0
+- statistic: parameter[minimum_amount]
+  expected: 100
+  tolerance: 0
+notes: Chapter IV of the Code on Wages, 2019 (successor to the Payment of Bonus Act, 1965, in force from 21 November
+  2025) requires every establishment employing twenty or more persons to pay each eligible employee who worked at
+  least thirty days in the accounting year a minimum bonus of eight and one-third per cent. of wages earned or one
+  hundred rupees, whichever is higher, regardless of allocable surplus; where the allocable surplus is larger, bonus
+  rises in proportion to wages up to twenty per cent. Bonus is due within eight months of the close of the accounting
+  year. Eligibility is limited to employees drawing wages up to an amount the appropriate Government notifies, and
+  bonus for employees above a notified calculation ceiling is computed as if their wage were that ceiling or the
+  minimum wage; neither amount is stated in the Code, so ``eligibility_wage_ceiling`` is left empty. The rule returns
+  the minimum and maximum bonus for a year's wages.

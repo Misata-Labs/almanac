@@ -1,0 +1,163 @@
+id: in-tds-contractor-and-professional-fee-rates-2026-27
+title: India TDS on contract work (1%/2%) and professional or technical fees (2%/10%), Income-tax Act 2025 s 393(1),
+  from 2026-27
+kind: rule
+domain: tax
+region: IN
+status: license-review
+tier: B
+valid_from: '2026-04-01'
+valid_to: null
+tags:
+- india
+- tax
+- tds
+- income-tax-act-2025
+- compliance
+use_cases:
+- tax-demo
+- tax-filing-demo
+- invoicing-demo
+- accounts-payable
+- compliance-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      work_contract_individual_or_huf:
+        rate_percent: 1
+        provision: Income-tax Act, 2025 s 393(1) Table Sl. No. 6(i)
+        payee: individual or Hindu undivided family
+      work_contract_other_payee:
+        rate_percent: 2
+        provision: s 393(1) Table Sl. No. 6(i)
+        payee: any other person
+      fees_technical_services_film_royalty_call_centre:
+        rate_percent: 2
+        provision: s 393(1) Table Sl. No. 6(iii)
+        payee: fees for technical services, film royalty, or a payee operating a call centre
+      fees_professional_services_other:
+        rate_percent: 10
+        provision: s 393(1) Table Sl. No. 6(iii)
+        payee: other professional or technical fees
+      individual_or_huf_payer_work_commission_professional:
+        rate_percent: 2
+        provision: s 393(1) Table Sl. No. 6(ii)
+        payee: work, commission or brokerage, or professional services paid by an individual or HUF not otherwise
+          covered
+    supply_of_manpower: included in 'work' (section 402(47)) from 1 April 2026, so taxed under Sl. No. 6(i)
+  vectors:
+  - input:
+      key: work_contract_individual_or_huf
+      column: rate_percent
+    expected: 1
+    origin: source
+  - input:
+      key: work_contract_other_payee
+      column: rate_percent
+    expected: 2
+    origin: source
+  - input:
+      key: fees_technical_services_film_royalty_call_centre
+      column: rate_percent
+    expected: 2
+    origin: source
+  - input:
+      key: fees_professional_services_other
+      column: rate_percent
+    expected: 10
+    origin: source
+  - input:
+      key: individual_or_huf_payer_work_commission_professional
+      column: rate_percent
+    expected: 2
+    origin: source
+evidence:
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-03'
+  locator: PDF page 21, 'Application of TDS on supply of manpower', paragraph 1
+  value: deduction of 1% when payment is made to individual or HUF and 2% in other cases.
+  unit: text
+  snippet: deduction of 1% when payment is made to individual or HUF and 2% in other cases.
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-03'
+  locator: PDF page 21, same section, paragraph 2
+  value: 10% in other
+  unit: text
+  snippet: cinematographic films or to the business engaged in operation of call centre and 10% in other
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-03'
+  locator: PDF page 21, same section, paragraph 2
+  value: rate of deduction of 2%
+  unit: text
+  snippet: case of fees paid for professional or technical services. It provides for rate of deduction of 2%
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-03'
+  locator: PDF page 21, same section, paragraph 3
+  value: provides for rate of deduction of 2% for such payments.
+  unit: text
+  snippet: provides for rate of deduction of 2% for such payments.
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+- publisher: Ministry of Finance, Government of India
+  title: Memorandum Explaining the Provisions in the Finance Bill, 2026
+  url: https://www.indiabudget.gov.in/doc/memo.pdf
+  accessed_at: '2026-11-03'
+  locator: PDF page 21, same section, paragraphs 5 and 6
+  value: The amendment will take effect from the 1st day of April, 2026.
+  unit: text
+  snippet: it is proposed to include it under the ambit of “work” in section 402(47)
+  source_license: unstated
+  content_sha256: 78f81425565e23b16424b113d6a91e13292d912a8d55b75c5387f195159f3416
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: value[work_contract_individual_or_huf,rate_percent]
+  expected: 1
+  tolerance: 0
+- statistic: value[work_contract_other_payee,rate_percent]
+  expected: 2
+  tolerance: 0
+- statistic: value[fees_technical_services_film_royalty_call_centre,rate_percent]
+  expected: 2
+  tolerance: 0
+- statistic: value[fees_professional_services_other,rate_percent]
+  expected: 10
+  tolerance: 0
+- statistic: value[individual_or_huf_payer_work_commission_professional,rate_percent]
+  expected: 2
+  tolerance: 0
+notes: 'Tax deduction at source on payments to resident contractors and for professional or technical fees under
+  section 393(1) of the Income-tax Act, 2025, which applies from the tax year 2026-27, as the Memorandum to the
+  Finance Bill, 2026 restates them: work contracts 1% where the payee is an individual or Hindu undivided family
+  and 2% otherwise (Table Sl. No. 6(i)); fees for technical services, royalty for cinematographic films and payments
+  to call-centre businesses 2%, other professional fees 10% (Sl. No. 6(iii)); and 2% where an individual or HUF
+  not otherwise required to deduct pays for work, commission or brokerage or professional services (Sl. No. 6(ii)).
+  The Bill adds supply of manpower to the meaning of ''work'' from 1 April 2026, so manpower contracts take the
+  1%/2% contract rates. Per-payment and annual thresholds, the higher rate without a PAN and the other TDS heads
+  (interest, rent, commission, purchase of goods, partner payments) are in the Act''s section 393 tables, which
+  could not be fetched, and are not in this entry. The Memorandum states no licence.'

@@ -1,0 +1,151 @@
+id: in-code-on-wages-wage-definition-50-percent-rule
+title: 'India Code on Wages s 2(y) wage definition: excluded allowances above half of total remuneration count as
+  wages'
+kind: rule
+domain: employment
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-11-21'
+valid_to: null
+tags:
+- india
+- payroll
+- labour-law
+- compliance
+- wages
+- salary-structure
+use_cases:
+- payroll-demo
+- hr-demo
+- hr-analytics
+- compliance-demo
+spec:
+  implementation: almanac.rules.in_labour_codes
+  parameters:
+    formula: code_wages
+    currency: INR
+    included_components:
+    - basic pay
+    - dearness allowance
+    - retaining allowance
+    excluded_components_counted_against_limit:
+    - statutory bonus not part of the terms of employment
+    - value of house accommodation, light, water, medical attendance or other amenity
+    - employer contribution to pension or provident fund and interest on it
+    - conveyance allowance or travelling concession
+    - sums to defray special expenses of the employment
+    - house rent allowance
+    - remuneration under an award or settlement
+    - overtime allowance
+    - commission
+    excluded_components_outside_limit:
+    - gratuity on termination
+    - retrenchment compensation, retirement benefit or ex gratia on termination
+    excluded_share_limit_percent: 50
+    in_kind_share_limit_percent: 15
+  vectors:
+  - input:
+      included: 50000
+      excluded: 50000
+    expected: '50000.00'
+    origin: source
+    note: excluded payments of exactly one-half of all remuneration are not added back
+  - input:
+      included: 40000
+      excluded: 60000
+    expected: '50000.00'
+    origin: derived
+    note: ₹10,000 of the excluded ₹60,000 lies above half of ₹1,00,000 and is added to wages
+  - input:
+      included: 25000
+      excluded: 75000
+    expected: '50000.00'
+    origin: derived
+  - input:
+      included: 60000
+      excluded: 40000
+    expected: '60000.00'
+    origin: derived
+    note: excluded payments below the limit leave wages unchanged
+  - input:
+      included: 15000
+      excluded: 0
+    expected: '15000.00'
+    origin: derived
+evidence:
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 7, section 2(y)
+  value: (i) basic pay;
+  unit: text
+  snippet: includes, — (i) basic pay; (ii) dearness allowance; and (iii) retaining allowance, if any,
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 8, section 2(y), first proviso
+  value: exceeds one-half
+  unit: text
+  snippet: if payments made by the employer to the employee under clauses (a) to (i) exceeds one-half, or such other
+    per cent.
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 8, section 2(y), first proviso
+  value: shall be deemed as remuneration
+  unit: text
+  snippet: the amount which exceeds such one-half, or the per cent. so notified, shall be deemed as remuneration
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 8, section 2(y), Explanation
+  value: fifteen per cent.
+  unit: text
+  snippet: kind which does not exceed fifteen per cent. of the total wages payable to him
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 7, section 2(y)(f) and (h)
+  value: (f) house rent allowance;
+  unit: text
+  snippet: (f) house rent allowance;
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: parameter[excluded_share_limit_percent]
+  expected: 50
+  tolerance: 0
+notes: 'Section 2(y) of the Code on Wages, 2019, in force from 21 November 2025, defines wages as basic pay, dearness
+  allowance and retaining allowance, and excludes a list of payments: statutory bonus, amenities, employer provident
+  fund and pension contributions, conveyance, special-expense reimbursements, house rent allowance, award payments,
+  overtime, commission, gratuity and retrenchment or retirement payments. The first proviso caps the exclusions:
+  where the payments under clauses (a) to (i) exceed one-half (or another notified share) of all remuneration, the
+  excess is deemed remuneration and added to wages. The rule takes the sum of included components and the sum of
+  clause (a) to (i) exclusions and returns the wage. Wages so computed drive provident fund, gratuity and bonus
+  calculations, so a synthetic salary structure with a low basic pay and large allowances should be checked here.
+  The Explanation separately counts remuneration in kind up to 15% of total wages as wages; the second proviso brings
+  conveyance, house rent, award pay and overtime back in for equal-wage and payment-of-wages purposes. Gratuity
+  and retrenchment payments (clauses (j) and (k)) are outside the cap and should be left out of ``excluded``.'

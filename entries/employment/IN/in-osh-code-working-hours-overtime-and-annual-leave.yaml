@@ -1,0 +1,226 @@
+id: in-osh-code-working-hours-overtime-and-annual-leave
+title: India OSH Code 2020 working hours, weekly holiday, double-rate overtime and annual leave accrual (1 day per
+  20 worked)
+kind: rule
+domain: employment
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-11-21'
+valid_to: null
+tags:
+- india
+- payroll
+- labour-law
+- compliance
+- working-time
+- overtime
+- annual-leave
+use_cases:
+- payroll-demo
+- hr-demo
+- hr-analytics
+- compliance-demo
+- workforce-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      daily_working_hours_max:
+        value: 8
+        unit: hours per day
+        provision: OSH Code s 25(1)(a)
+      working_days_per_week_max:
+        value: 6
+        unit: days per week
+        provision: OSH Code s 26(1)
+      motor_transport_consecutive_days_max:
+        value: 10
+        unit: days without a whole-day holiday
+        provision: OSH Code s 26(1) proviso
+      compensatory_holiday_window_months:
+        value: 2
+        unit: months after the month the holiday was due
+        provision: OSH Code s 26(3)
+      overtime_rate_multiplier:
+        value: 2
+        unit: times the rate of wages
+        provision: OSH Code s 27; Code on Wages s 14
+      annual_leave_qualifying_days:
+        value: 180
+        unit: days worked in the calendar year
+        provision: OSH Code s 32(1)(i)
+      annual_leave_days_worked_per_leave_day:
+        value: 20
+        unit: days of work per day of leave
+        provision: OSH Code s 32(1)(ii)
+      annual_leave_days_worked_per_leave_day_adolescent:
+        value: 15
+        unit: days of work per day of leave
+        provision: OSH Code s 32(1)(ii)
+      annual_leave_days_worked_per_leave_day_underground_mine:
+        value: 15
+        unit: days of work per day of leave
+        provision: OSH Code s 32(1)(ii)
+      rest_between_jobs_in_factory_or_mine_hours:
+        value: 12
+        unit: hours
+        provision: OSH Code s 30
+  vectors:
+  - input:
+      key: daily_working_hours_max
+      column: value
+    expected: 8
+    origin: source
+  - input:
+      key: working_days_per_week_max
+      column: value
+    expected: 6
+    origin: source
+  - input:
+      key: overtime_rate_multiplier
+      column: value
+    expected: 2
+    origin: source
+  - input:
+      key: annual_leave_qualifying_days
+      column: value
+    expected: 180
+    origin: source
+  - input:
+      key: annual_leave_days_worked_per_leave_day
+      column: value
+    expected: 20
+    origin: source
+evidence:
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Occupational Safety, Health and Working Conditions Code, 2020 (Act No. 37 of 2020), India Code text
+    as on 28 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/3a7333e5-1f94-4f64-aff7-be67c0e63435/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 30, section 25(1)(a)
+  value: eight hours in a day
+  unit: text
+  snippet: work, in any establishment or class of establishment for more than— (a) eight hours in a day; and
+  source_license: unstated
+  content_sha256: d72c3c51f58617de86d457c17fda6f73e16bf53eacb637012998df4ebf2ae214
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Occupational Safety, Health and Working Conditions Code, 2020 (Act No. 37 of 2020), India Code text
+    as on 28 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/3a7333e5-1f94-4f64-aff7-be67c0e63435/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 32, section 26(1)
+  value: more than six days in any one week
+  unit: text
+  snippet: 'No worker shall be allowed to work in an establishment for more than six days in any one week:'
+  source_license: unstated
+  content_sha256: d72c3c51f58617de86d457c17fda6f73e16bf53eacb637012998df4ebf2ae214
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Occupational Safety, Health and Working Conditions Code, 2020 (Act No. 37 of 2020), India Code text
+    as on 28 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/3a7333e5-1f94-4f64-aff7-be67c0e63435/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 32, section 26(1) proviso and 26(3)
+  value: ten days consecutively
+  unit: text
+  snippet: the worker does not work for more than ten days consecutively without a holiday
+  source_license: unstated
+  content_sha256: d72c3c51f58617de86d457c17fda6f73e16bf53eacb637012998df4ebf2ae214
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Occupational Safety, Health and Working Conditions Code, 2020 (Act No. 37 of 2020), India Code text
+    as on 28 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/3a7333e5-1f94-4f64-aff7-be67c0e63435/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 32, section 27
+  value: twice the rate of wages
+  unit: text
+  snippet: There shall be paid wages at the rate of twice the rate of wages in respect of overtime work
+  source_license: unstated
+  content_sha256: d72c3c51f58617de86d457c17fda6f73e16bf53eacb637012998df4ebf2ae214
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Occupational Safety, Health and Working Conditions Code, 2020 (Act No. 37 of 2020), India Code text
+    as on 28 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/3a7333e5-1f94-4f64-aff7-be67c0e63435/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 33, section 32(1)(i) and (ii)
+  value: one hundred and eighty days or more
+  unit: text
+  snippet: (ii) that he shall be entitled for one -day leave for every twenty days of his work, in the case of
+  source_license: unstated
+  content_sha256: d72c3c51f58617de86d457c17fda6f73e16bf53eacb637012998df4ebf2ae214
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Occupational Safety, Health and Working Conditions Code, 2020 (Act No. 37 of 2020), India Code text
+    as on 28 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/3a7333e5-1f94-4f64-aff7-be67c0e63435/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 32, section 30
+  value: preceding twelve hours
+  unit: text
+  snippet: establishment within the preceding twelve hours
+  source_license: unstated
+  content_sha256: d72c3c51f58617de86d457c17fda6f73e16bf53eacb637012998df4ebf2ae214
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 11, section 14
+  value: twice the normal rate of wages
+  unit: text
+  snippet: at the overtime rate which shall not be less than twice the normal rate of wages.
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: value[daily_working_hours_max,value]
+  expected: 8
+  tolerance: 0
+- statistic: value[working_days_per_week_max,value]
+  expected: 6
+  tolerance: 0
+- statistic: value[motor_transport_consecutive_days_max,value]
+  expected: 10
+  tolerance: 0
+- statistic: value[compensatory_holiday_window_months,value]
+  expected: 2
+  tolerance: 0
+- statistic: value[overtime_rate_multiplier,value]
+  expected: 2
+  tolerance: 0
+- statistic: value[annual_leave_qualifying_days,value]
+  expected: 180
+  tolerance: 0
+- statistic: value[annual_leave_days_worked_per_leave_day,value]
+  expected: 20
+  tolerance: 0
+- statistic: value[annual_leave_days_worked_per_leave_day_adolescent,value]
+  expected: 15
+  tolerance: 0
+- statistic: value[annual_leave_days_worked_per_leave_day_underground_mine,value]
+  expected: 15
+  tolerance: 0
+- statistic: value[rest_between_jobs_in_factory_or_mine_hours,value]
+  expected: 12
+  tolerance: 0
+notes: 'Hours and leave limits of the Occupational Safety, Health and Working Conditions Code, 2020, in force from
+  21 November 2025: no worker may work more than eight hours a day (with intervals and spread-over notified by the
+  appropriate Government) or more than six days a week; motor transport workers may be asked to work a weekly holiday
+  but never more than ten days in a row; holidays lost to an exemption are given back within the month or the two
+  months after. Overtime, beyond the daily or weekly hours the appropriate Government prescribes, is paid at twice
+  the rate of wages, needs the worker''s consent, and is counted daily or weekly whichever favours the worker; the
+  Code on Wages separately sets overtime at not less than twice the normal rate for minimum-wage employees. A worker
+  who has worked 180 days in a calendar year earns one day of annual leave with wages for every twenty days worked
+  (fifteen for adolescents and below-ground mine workers). Weekly-hour and overtime-hour caps are left to State
+  and Central rules and are not in this entry.'

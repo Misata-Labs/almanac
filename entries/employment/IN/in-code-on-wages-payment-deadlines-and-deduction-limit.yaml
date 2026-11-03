@@ -1,0 +1,144 @@
+id: in-code-on-wages-payment-deadlines-and-deduction-limit
+title: India Code on Wages ss 16-18 wage periods, payment deadlines (monthly by the 7th) and 50% ceiling on deductions
+kind: rule
+domain: employment
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-11-21'
+valid_to: null
+tags:
+- india
+- payroll
+- labour-law
+- compliance
+- wages
+- pay-date
+use_cases:
+- payroll-demo
+- hr-demo
+- hr-analytics
+- compliance-demo
+- payments-scheduling
+spec:
+  implementation: almanac.rules.in_labour_codes
+  parameters:
+    formula: wage_payment
+    maximum_wage_period: one month
+    payment_deadlines:
+      daily:
+        due: at the end of the shift
+      weekly:
+        due: on the last working day of the week, before the weekly holiday
+      fortnightly:
+        days_after_period_end: 2
+        due: before the end of the second day after the end of the fortnight
+      monthly:
+        day_of_following_month: 7
+        due: before the expiry of the seventh day of the succeeding month
+    separation_payment_working_days: 2
+    deduction_ceiling_percent: 50
+  vectors:
+  - input:
+      wage_period: monthly
+      period_end: '2026-03-31'
+    expected: '2026-04-07'
+    origin: source
+    note: before the expiry of the seventh day of the succeeding month
+  - input:
+      wage_period: monthly
+      period_end: '2026-12-31'
+    expected: '2027-01-07'
+    origin: derived
+  - input:
+      wage_period: fortnightly
+      period_end: '2026-04-15'
+    expected: '2026-04-17'
+    origin: derived
+  - input:
+      wage_period: daily
+      period_end: '2026-04-15'
+    expected: '2026-04-15'
+    origin: derived
+  - input:
+      deductions_ceiling_for: 30000
+    expected: '15000.00'
+    origin: source
+    note: deductions shall not exceed fifty per cent. of such wages
+evidence:
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 12, section 16
+  value: no wage period in respect of any employee shall be more than a month
+  unit: text
+  snippet: no wage period in respect of any employee shall be more than a month
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 12, section 17(1)(i) to (iii)
+  value: at the end of the shift
+  unit: text
+  snippet: (iii) fortnightly basis, before the end of the second day after the end of the fortnight;
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 12, section 17(1)(iv)
+  value: seventh day of the succeeding month
+  unit: text
+  snippet: (iv) monthly basis, before the expiry of the seventh day of the succeeding month.
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 12, section 17(2)
+  value: within two working days
+  unit: text
+  snippet: the wages payable to him shall be paid within two working days of his removal, dismissal, retrenchment
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/7e3863af-0263-4c95-a42a-1bdd0a55a5fc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 13, section 18(3)
+  value: shall not exceed fifty per cent. of such wages
+  unit: text
+  snippet: any wage period from the wages of an employee shall not exceed fifty per cent. of such wages.
+  source_license: unstated
+  content_sha256: 23b93fe0426b540ca833d3348f58c7564efcf33c30dfaac61ff1ec36cb2cb687
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: parameter[deduction_ceiling_percent]
+  expected: 50
+  tolerance: 0
+- statistic: parameter[separation_payment_working_days]
+  expected: 2
+  tolerance: 0
+notes: Chapter III of the Code on Wages, 2019 (in force from 21 November 2025) fixes how and when wages are paid.
+  The wage period may be daily, weekly, fortnightly or monthly but never longer than a month (section 16). Wages
+  are due at the end of the shift for daily workers, on the last working day before the weekly holiday for weekly
+  workers, before the end of the second day after the fortnight for fortnightly workers, and before the expiry of
+  the seventh day of the next month for monthly workers (section 17(1)); an employee who is removed, dismissed,
+  retrenched or resigns, or loses work on closure, is paid within two working days (section 17(2)). The appropriate
+  Government may set other limits. Total authorised deductions in a wage period may not exceed fifty per cent. of
+  the wages (section 18(3)). The rule returns the last payment date for a period end (for weekly wages pass the
+  last working day as ``period_end``) and the deduction ceiling for a wage amount; separation payments need a working-day
+  calendar and are given as a parameter only.

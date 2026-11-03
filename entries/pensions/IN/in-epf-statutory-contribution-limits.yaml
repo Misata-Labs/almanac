@@ -1,0 +1,216 @@
+id: in-epf-statutory-contribution-limits
+title: India provident fund contributions under Code on Social Security s 16 (10% or 12%, pension up to 8 1/3%)
+  and EPF admin charges
+kind: rule
+domain: pensions
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-11-21'
+valid_to: null
+tags:
+- india
+- payroll
+- provident-fund
+- pension
+- compliance
+use_cases:
+- payroll-demo
+- hr-demo
+- pensions
+- compliance-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      employer_contribution_percent:
+        value: 10
+        basis: wages payable to each employee
+        provision: Code on Social Security s 16(1)(a)
+      employer_contribution_percent_notified_establishments:
+        value: 12
+        basis: wages, in establishments the Central Government notifies
+        provision: s 16(1)(a) first proviso
+      employee_contribution:
+        value: equal to the employer contribution
+        basis: may voluntarily exceed it
+        provision: s 16(1)(a)
+      pension_fund_share_max_percent:
+        value: eight and one-third
+        basis: wages, paid from the employer contribution
+        provision: s 16(1)(b)(i)
+      insurance_fund_max_percent:
+        value: 1
+        basis: wages, paid by the employer
+        provision: s 16(1)(c)
+      insurance_administration_max:
+        value: one-fourth
+        basis: of the employer's insurance fund contribution
+        provision: s 16(1)(c) proviso
+      epf_administrative_charges_percent:
+        value: 0.5
+        basis: pay, from 1 June 2018
+        provision: S.O. 2011(E), EPF Scheme paragraphs 30 and 38(1)
+      epf_administrative_charges_minimum_non_functional:
+        value: 75
+        basis: rupees per month per non-functional establishment with no contributory member
+        provision: S.O. 2011(E)
+      epf_administrative_charges_minimum_other:
+        value: 500
+        basis: rupees per month per establishment
+        provision: S.O. 2011(E)
+  vectors:
+  - input:
+      key: employer_contribution_percent
+      column: value
+    expected: 10
+    origin: source
+  - input:
+      key: employer_contribution_percent_notified_establishments
+      column: value
+    expected: 12
+    origin: source
+  - input:
+      key: pension_fund_share_max_percent
+      column: value
+    expected: eight and one-third
+    origin: source
+  - input:
+      key: insurance_fund_max_percent
+      column: value
+    expected: 1
+    origin: source
+  - input:
+      key: epf_administrative_charges_percent
+      column: value
+    expected: 0.5
+    origin: source
+  - input:
+      key: epf_administrative_charges_minimum_other
+      column: value
+    expected: 500
+    origin: source
+evidence:
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 29, section 16(1)(a)
+  value: ten per cent. of the wages
+  unit: text
+  snippet: the employer to the fund shall be ten per cent. of the wages for the time being payable to each of the
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 29, section 16(1)(a), first proviso
+  value: twelve per cent.
+  unit: text
+  snippet: 'the words “twelve per cent.” shall be substituted:'
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 29, section 16(1)(a)
+  value: equal to the contribution payable by the employer
+  unit: text
+  snippet: and the employee's contribution shall be equal to the contribution payable by the employer in respect
+    of him
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 29, section 16(1)(b)(i)
+  value: eight and one - third per cent.
+  unit: text
+  snippet: such sums from the employer's contribution under clause ( a) not exceeding eight and one - third per
+    cent. of the wages
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 29, section 16(1)(c)
+  value: one per cent. of the wages
+  unit: text
+  snippet: than one per cent. of the wages or such per cent. of wages as may be notified by the Central Government
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 29, section 16(1)(c), proviso
+  value: one-fourth of the contribution
+  unit: text
+  snippet: exceeding one-fourth of the contribution which he is required to make under this clause
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: Notification S.O. 2011(E) of 21 May 2018 fixing EPF administrative charges
+  url: https://indiacode.gov.in/server/api/core/bitstreams/ffba9ade-7ad1-4f0b-a644-095f528d2637/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 2, S.O. 2011(E), paragraph 1
+  value: 0.50 per cent
+  unit: text
+  snippet: Scheme with effect from 1 st June, 2018 at 0.50 per cent (zero point five zero per cent.) of the pay
+  source_license: unstated
+  content_sha256: d9830fe97d27861ddbaf7689d1c5616e6e3ba676bd7559e24d5e8ab15c050b2d
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: Notification S.O. 2011(E) of 21 May 2018 fixing EPF administrative charges
+  url: https://indiacode.gov.in/server/api/core/bitstreams/ffba9ade-7ad1-4f0b-a644-095f528d2637/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 2, S.O. 2011(E), paragraph 1
+  value: five hundred rupees per month
+  unit: text
+  snippet: five hundred rupees per month per establishment for other establishments.
+  source_license: unstated
+  content_sha256: d9830fe97d27861ddbaf7689d1c5616e6e3ba676bd7559e24d5e8ab15c050b2d
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025
+  url: https://indiacode.gov.in/server/api/core/bitstreams/0d5654a4-6119-4ef2-98d5-2a2fecd979dc/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 96, section 164(2)(a), savings
+  value: notification (including the notifications issued by the States)
+  unit: text
+  snippet: notification (including the notifications issued by the States), scheme, appointment, order
+  source_license: unstated
+  content_sha256: 3878d95fc1343c62b56288c484a4dd7369dd279bbe601c6a6f522aef892fb605
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 9
+  tolerance: 0
+- statistic: value[employer_contribution_percent_notified_establishments,value]
+  expected: 12
+  tolerance: 0
+notes: 'Statutory provident fund contribution rates under section 16 of the Code on Social Security, 2020 (in force
+  from 21 November 2025, replacing the Employees'' Provident Funds and Miscellaneous Provisions Act, 1952): the
+  employer pays ten per cent. of wages, raised to twelve per cent. in establishments the Central Government notifies,
+  and the employee pays an equal amount (more if they choose, without obliging the employer). Out of the employer''s
+  contribution, up to eight and one-third per cent. of wages goes to the Pension Fund; the employer also pays up
+  to one per cent. of wages to the Deposit-Linked Insurance Fund plus up to a quarter of that for its administration.
+  Administrative charges on the EPF are 0.50% of pay from 1 June 2018 with minimums of ₹75 a month for a non-functional
+  establishment and ₹500 for others (S.O. 2011(E), kept in force by section 164(2)). The operative EPS and EDLI
+  percentages and the wage ceiling are set in the EPF, EPS and EDLI Schemes, whose current texts could not be fetched
+  from EPFO; this entry holds the statutory limits only and does not state the wage ceiling. Wages are as defined
+  in the Code on Wages (50% rule).'

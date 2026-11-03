@@ -1,0 +1,231 @@
+id: in-ir-code-notice-periods-and-subsistence-allowance
+title: 'India IR Code 2020 notice periods: strikes and lock-outs, change of conditions, closure, retrenchment; subsistence
+  allowance'
+kind: rule
+domain: employment
+region: IN
+status: license-review
+tier: B
+valid_from: '2025-11-21'
+valid_to: null
+tags:
+- india
+- payroll
+- labour-law
+- compliance
+- industrial-relations
+- notice-period
+use_cases:
+- payroll-demo
+- hr-demo
+- hr-analytics
+- compliance-demo
+- event-timestamps
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      strike_or_lockout_notice_window_days:
+        value: 60
+        provision: 'IR Code s 62(1)(a) and (2)(a): notice within sixty days before striking or locking out'
+      strike_or_lockout_minimum_days_after_notice:
+        value: 14
+        provision: IR Code s 62(1)(b) and (2)(b)
+      after_conciliation_days:
+        value: 7
+        provision: 'IR Code s 62(1)(d): no strike until seven days after conciliation ends'
+      after_tribunal_or_arbitration_days:
+        value: 60
+        provision: IR Code s 62(1)(e) and (f)
+      notice_of_change_days:
+        value: 21
+        provision: 'IR Code s 40: change in Third Schedule conditions'
+      closure_notice_days:
+        value: 60
+        provision: 'IR Code s 74(1): notice to the appropriate Government'
+      retrenchment_notice_months:
+        value: 1
+        provision: 'IR Code s 70(a): or wages in lieu'
+      disciplinary_inquiry_completion_days:
+        value: 90
+        provision: 'IR Code s 38(1): ordinarily from the date of suspension'
+      subsistence_allowance_first_90_days_percent:
+        value: 50
+        provision: IR Code s 38(3)(a)
+      subsistence_allowance_after_90_days_percent:
+        value: 75
+        provision: 'IR Code s 38(3)(b): where the delay is not due to the worker'
+  vectors:
+  - input:
+      key: strike_or_lockout_notice_window_days
+      column: value
+    expected: 60
+    origin: source
+  - input:
+      key: strike_or_lockout_minimum_days_after_notice
+      column: value
+    expected: 14
+    origin: source
+  - input:
+      key: notice_of_change_days
+      column: value
+    expected: 21
+    origin: source
+  - input:
+      key: subsistence_allowance_first_90_days_percent
+      column: value
+    expected: 50
+    origin: source
+  - input:
+      key: subsistence_allowance_after_90_days_percent
+      column: value
+    expected: 75
+    origin: source
+evidence:
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 37, section 62(1)(a) and (b)
+  value: within sixty days
+  unit: text
+  snippet: without giving to the employer notice of strike, as hereinafter provided, within sixty days
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 37, section 62(1)(b)
+  value: within fourteen days of giving such notice
+  unit: text
+  snippet: (b) within fourteen days of giving such notice; or (c) before the expiry of the date of strike specified
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 37, section 62(1)(d)
+  value: seven days after the conclusion
+  unit: text
+  snippet: during the pendency of any conciliation proceedings before a conciliation officer and seven days after
+    the conclusion
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 27, section 40(ii)
+  value: within twenty-one days of giving such notice
+  unit: text
+  snippet: '(ii) within twenty-one days of giving such notice:'
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 41, section 74(1)
+  value: at least sixty days before
+  unit: text
+  snippet: who intends to close down an undertaking shall serve, at least sixty days before the date on which the
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 26, section 38(1) and (3)
+  value: within a period of ninety days from the date of suspension
+  unit: text
+  snippet: within a period of ninety days from the date of suspension.
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 26, section 38(3)(a)
+  value: at the rate of fifty per cent.
+  unit: text
+  snippet: (a) at the rate of fifty per cent. of the wages which the worker was entitled to immediately
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 27, section 38(3)(b)
+  value: seventy-five per cent.
+  unit: text
+  snippet: (b) at the rate of seventy-five per cent. of such wages for the remaining period of suspension,
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+- publisher: Ministry of Labour and Employment, Government of India (via India Code)
+  title: The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text
+  url: https://indiacode.gov.in/server/api/core/bitstreams/5fcb3857-440d-4679-8710-9e8242e52151/content
+  accessed_at: '2026-11-03'
+  locator: PDF page 40, section 70(a)
+  value: one month ’s notice
+  unit: text
+  snippet: the worker has been given one month ’s notice in writing indicating the reasons for
+  source_license: unstated
+  content_sha256: 2c741247c6caed8dd6e261c0ab9687a9da20cf48f44ebac48834aa96903dea07
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: value[strike_or_lockout_notice_window_days,value]
+  expected: 60
+  tolerance: 0
+- statistic: value[strike_or_lockout_minimum_days_after_notice,value]
+  expected: 14
+  tolerance: 0
+- statistic: value[after_conciliation_days,value]
+  expected: 7
+  tolerance: 0
+- statistic: value[after_tribunal_or_arbitration_days,value]
+  expected: 60
+  tolerance: 0
+- statistic: value[notice_of_change_days,value]
+  expected: 21
+  tolerance: 0
+- statistic: value[closure_notice_days,value]
+  expected: 60
+  tolerance: 0
+- statistic: value[retrenchment_notice_months,value]
+  expected: 1
+  tolerance: 0
+- statistic: value[disciplinary_inquiry_completion_days,value]
+  expected: 90
+  tolerance: 0
+- statistic: value[subsistence_allowance_first_90_days_percent,value]
+  expected: 50
+  tolerance: 0
+- statistic: value[subsistence_allowance_after_90_days_percent,value]
+  expected: 75
+  tolerance: 0
+notes: Notice periods and suspension pay under the Industrial Relations Code, 2020 (in force from 21 November 2025).
+  No one in an industrial establishment may strike, and no employer lock out, without notice given within the sixty
+  days before, within fourteen days of the notice, before the date the notice names, during conciliation and seven
+  days after it, or during Tribunal or arbitration proceedings and sixty days after (section 62). A change in the
+  conditions listed in the Third Schedule needs twenty-one days' notice (section 40); closure of an undertaking
+  needs sixty days' notice to the appropriate Government (section 74, not below fifty workers); retrenchment needs
+  one month's notice or wages in lieu (section 70). A suspended worker is paid subsistence allowance of fifty per
+  cent. of wages for the first ninety days and seventy-five per cent. thereafter unless the delay is the worker's
+  doing; inquiries should ordinarily finish within ninety days (section 38, for establishments with standing orders).
