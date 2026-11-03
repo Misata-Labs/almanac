@@ -93,11 +93,10 @@ uv run almanac applies --on 2026-06-15 --use-case banking-demo
 | **Invoicing, tax or audit test data** | UK VAT rates, India GST slab structure, ISO 4217 minor units, ECB and US Treasury exchange-rate tables, CPIH and IPCA price indices |
 | **Synthetic customers, people and households** | First names by sex, region and birth cohort for England and Wales, Scotland, France, Ireland, Belgium, Spain and Norway, US Census surnames with ethnicity shares, Census 2021 marginals, single-year age distributions, world population weights |
 | **Healthcare and claims test data** | MS-DRG FY2026 relative weights and lengths of stay, Medicare inpatient payments by DRG, outpatient APCs, top physician services, Part B and Part D drug spending, HCPCS Level II sections, office-visit RVUs, readmission penalties, Medicare enrolment, NDC and Orange Book product mixes, ICD-10-CM categories, the NPI check digit |
-| **Insurance, property or fleet data** | FEMA disaster declarations and assistance per disaster as a severity pool, FHFA house price indices by state, UK house prices, the VIN check digit, EPA fuel economy by vehicle class, licensed vehicles by body type, fuel and make, MOT failure rates and defect mix |
+| **Insurance, property or fleet data** | FEMA disaster declarations by year, incident type and state, FHFA house price indices by state, UK house prices, the VIN check digit, EPA fuel economy by vehicle class, licensed vehicles by body type, fuel and make, MOT failure rates and defect mix |
 | **Retail and demand forecasting demos** | Retail sales index with its December peak, inflation by month and by country, GDP and GDP per capita by economy |
 | **Telecom, energy and utilities demos** | ITU country calling codes, internet and mobile penetration by economy, household electricity prices for ten EU states, clock-change dates |
 | **Addresses, geography and product catalogues** | US state, county and CBSA codes, ZIP Code Tabulation Areas by prefix, Census places, French regions, départements and communes, NUTS 2024 with urban-rural typologies, Japanese postal codes, IANA time zones, UN M49 areas, ISO 639 languages, NAICS, ISIC, COICOP and COFOG structures |
-| **Customer service and complaints** | CFPB consumer complaints by product, issue, company, response, channel, state and month, issue given product, response given product, timely-response share |
 | **Fleet, mobility and telematics** | US fatal crashes by month, weekday, hour, weather and light, GB collisions by severity, hour and speed limit, driver and vehicle age in collisions, road traffic by vehicle and road type, NHTSA recalls, FAA aircraft registry and airports, rail, air and port volumes |
 | **US payroll, tax and benefits for 2026** | Federal income tax brackets for every filing status, the Publication 15-T withholding worksheet, standard deduction, capital gains breakpoints, AMT, EITC, child tax credit, wage bases, mileage rates, 401(k), IRA, HSA and ACA limits, Medicare Part A and B premiums with IRMAA tiers, HHS poverty guidelines, conforming loan limits by county, MACRS depreciation |
 | **European payroll** | Germany's income tax formula with splitting, solidarity surcharge, child benefit, minimum wage and minijob limits, social insurance reference values; income tax scales for Austria, the Netherlands, Ireland with USC and PRSI, Spain, France and Poland; Dutch youth minimum wages; Spanish contribution bases and rates |
@@ -141,7 +140,7 @@ for entry in almanac.select(on=date(2026, 6, 15), region="GB", kind="rule"):
 
 ## What is inside
 
-Six hundred and ninety-six entries across thirty-eight domains and twenty-eight
+Six hundred and eighty-four entries across thirty-seven domains and twenty-eight
 regions at the time of writing, every one of them passing live verification. The generated
 [CATALOGUE.md](CATALOGUE.md) is the authoritative list; this is the tour.
 
@@ -259,12 +258,11 @@ category, recalls by class and year. CDC births by month and year and the
 leading causes of death. AHRQ costliest inpatient conditions and emergency
 department costs by patient characteristic.
 
-**Lending, complaints and disasters.** CFPB complaints cut every way a
-customer-service demo needs. HMDA mortgage applications by outcome, purpose
-and type. The New York Fed household debt workbook: balances, delinquency
+**Lending, failures and disasters.** HMDA mortgage applications by outcome,
+purpose and type. The New York Fed household debt workbook: balances, delinquency
 buckets, transitions into serious delinquency by age, credit scores at
 origination. Every US bank failure since 2000 with assets and estimated loss.
-FEMA declarations by year, type and state, and assistance per disaster. FHFA
+FEMA declarations by year, incident type and state. FHFA
 house prices by state and division, the Treasury par yield curve, the Federal
 Reserve Payments Study and the Survey of Consumer Finances.
 
@@ -381,7 +379,7 @@ confessed, with the method. `tests` is what the verifier reproduces.
 [PASS] br-pix-monthly-volume-and-value  (entries/payments/BR/br-pix-monthly-volume-and-value.yaml)
     PASS test column[quantity_thousands,2026-09]  observed 7.89294e+06, expected 7892936.44 ± 0
 ...
-696 passed, 0 failed, 696 entries
+684 passed, 0 failed, 684 entries
 ```
 
 ## Frequently asked questions

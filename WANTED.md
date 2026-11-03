@@ -37,12 +37,23 @@ dynamically rather than in the statistics handbook. A reader with the files
 to hand can extend `in-wireless-subscribers-monthly-2025` through December and
 add NPS subscriber counts by sector.
 
+## Held back: published figures stable, responses not
+
+The CFPB consumer complaint API and the OpenFEMA web disaster summaries were
+built and checked, then withdrawn because every response carries an hourly
+index timestamp or a growing all-time record count, so the bytes change
+within hours even when the 2025 figures do not. Their builders keep the code
+as on-demand groups (`tools/build_usfinance.py cfpb fema-ihp`). They return
+once the archive decides how to hash a response whose envelope moves while
+its data stands still.
+
 ## Most wanted right now
 
 | Entry id | Why it matters | Where the official source lives |
 | --- | --- | --- |
 | global-iban-structure | Every bank transfer generator needs it | SWIFT IBAN Registry (the site refuses non-browser clients; download the TXT release by hand and cite its release number) |
 | in-upi-monthly-volume | The largest real-time payment system by volume | NPCI product statistics (download the XLSX by hand) |
+| us-ein-prefixes | Valid employer identification number prefixes by IRS campus | IRS (the web page serves different bytes within minutes; a dated IRS publication or IRM PDF carrying the table would make it citable) |
 | be-legal-public-holidays | Payroll and settlement calendars for Belgium | Royal decree of 18 April 1974 on the Belgian law database or a stable FPS Employment file (the ministry pages re-render with rotating tokens, so their hashes drift) |
 | in-nps-subscribers-and-aum-by-sector | Pension demos need the sector split | PFRDA monthly statistics (served dynamically; save the table by hand) |
 | br-cpf-check-digits | The identifier on every Brazilian customer record | Receita Federal do Brasil |

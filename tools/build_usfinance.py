@@ -21,7 +21,9 @@ fetches must hash identically, or the build stops):
 Only the CFPB resource states a licence, so the other entries record ``unstated`` and stay at
 ``license-review``. Run from the repository root:
 
-    uv run python tools/build_usfinance.py
+    uv run python tools/build_usfinance.py              # every group with hash-stable sources
+    uv run python tools/build_usfinance.py fdic hmda    # selected groups
+    uv run python tools/build_usfinance.py cfpb         # on-demand groups (see ON_DEMAND)
 """
 
 from __future__ import annotations
@@ -293,9 +295,10 @@ CFPB_TAGS = ["complaints", "cfpb", "customer-service", "consumer-finance"]
 CFPB_USE_CASES = ["customer-service-demo", "banking-demo", "crm-demo", "collections"]
 CFPB_NOTE = (
     "Counts come from the Consumer Complaint Database search API with size=0, which returns only the "
-    "aggregations over complaints received between the two dates. The database grows as companies respond "
-    "and new complaints are published, so the content hash tracks the day's index; the API's _meta block "
-    "states the data licence as CC0 and is cited as supporting evidence."
+    "aggregations over complaints received between the two dates. The API has no pinned or versioned form and "
+    "the database grows as companies respond and new complaints are published, so counts for a closed period "
+    "still move and the content hash tracks the day's index: re-indexed daily; rebuild before release. The API's "
+    "_meta block states the data licence as CC0 and is cited as supporting evidence."
 )
 
 
@@ -680,14 +683,35 @@ def build_fdic() -> None:
 # ----------------------------------------------------------------------------------------------
 
 FEMA = "Federal Emergency Management Agency"
-FEMA_DECLARATIONS_URL = "https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries.csv"
-FEMA_RECENT_URL = "https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries?$filter=fyDeclared%20ge%202024&$format=csv&$allrecords=true"
-FEMA_WEB_URL = "https://www.fema.gov/api/open/v1/FemaWebDisasterSummaries.csv"
+FEMA_API = "https://www.fema.gov/api/open"
+FEMA_DECLARATION_FIELDS = "femaDeclarationString,disasterNumber,state,declarationType,declarationDate,fyDeclared,incidentType"
+FEMA_WEB_FIELDS = "disasterNumber,totalNumberIaApproved,totalAmountIhpApproved,totalAmountHaApproved"
+
+
+def fema_declarations_url(fiscal_years: str) -> str:
+    """Disaster Declarations Summaries for a closed fiscal-year filter, reduced to the columns the entries read.
+
+    Selecting columns drops the per-row refresh timestamp and hash, and the sort makes the row order
+    reproducible; rows of one declaration share every selected column, so ties cannot reorder the bytes.
+    """
+    return (
+        f"{FEMA_API}/v2/DisasterDeclarationsSummaries?$select={FEMA_DECLARATION_FIELDS}"
+        f"&$filter={quote(fiscal_years, safe='')}&$orderby=femaDeclarationString&$format=csv&$allrecords=true"
+    )
+
+
+FEMA_DECLARATIONS_URL = fema_declarations_url("fyDeclared le 2025")
+FEMA_RECENT_URL = fema_declarations_url("fyDeclared ge 2024 and fyDeclared le 2026")
+FEMA_WEB_URL = (
+    f"{FEMA_API}/v1/FemaWebDisasterSummaries?$select={FEMA_WEB_FIELDS}"
+    f"&$filter={quote('totalAmountIhpApproved gt 0', safe='')}&$orderby=disasterNumber&$format=csv&$allrecords=true"
+)
 FEMA_TAGS = ["claims", "fema", "disasters", "insurance"]
 FEMA_USE_CASES = ["insurance-demo", "claims-generation", "event-timestamps", "capacity-planning"]
 FEMA_NOTE = (
-    "OpenFEMA datasets are refreshed as declarations and assistance totals change, so the content hash tracks the "
-    "day's file. " + FEDERAL_NOTE
+    "The OpenFEMA query is pinned to closed fiscal years, a fixed column list and an explicit sort, but OpenFEMA "
+    "refreshes its tables daily as amendments add designated areas and assistance totals grow, so the content hash "
+    "tracks the day's data: re-indexed daily; rebuild before release. " + FEDERAL_NOTE
 )
 
 
@@ -732,8 +756,8 @@ def fema_declarations_by_year() -> dict:
     peak = max(series, key=lambda p: p["value"])
     sample = next(r for r in rows if r["fyDeclared"] == "2025" and r["declarationType"] == "DR")
     items = [
-        evidence(FEMA, "OpenFEMA Disaster Declarations Summaries v2 (CSV)", FEMA_DECLARATIONS_URL, f"row femaDeclarationString={sample['femaDeclarationString']}", sample["disasterNumber"], "text", fema_row_snippet(sample), UNSTATED, raw),
-        evidence(FEMA, "OpenFEMA Disaster Declarations Summaries v2 (CSV)", FEMA_DECLARATIONS_URL, "header row", "fyDeclared", "text", "femaDeclarationString,disasterNumber,state,declarationType,declarationDate,fyDeclared,incidentType", UNSTATED, raw),
+        evidence(FEMA, "OpenFEMA Disaster Declarations Summaries v2, fyDeclared <= 2025 (CSV)", FEMA_DECLARATIONS_URL, f"row femaDeclarationString={sample['femaDeclarationString']}", sample["disasterNumber"], "text", fema_row_snippet(sample), UNSTATED, raw),
+        evidence(FEMA, "OpenFEMA Disaster Declarations Summaries v2, fyDeclared <= 2025 (CSV)", FEMA_DECLARATIONS_URL, "header row", "fyDeclared", "text", FEMA_DECLARATION_FIELDS, UNSTATED, raw),
     ]
     return temporal_entry(
         entry_id="us-fema-disaster-declarations-per-fiscal-year-1953-2025",
@@ -747,10 +771,10 @@ def fema_declarations_by_year() -> dict:
         evidence_items=items,
         notes=(
             "Distinct disaster numbers declared in each federal fiscal year (fyDeclared), counted from the OpenFEMA "
-            "Disaster Declarations Summaries file, which has one row per declared disaster and designated area. The "
+            "Disaster Declarations Summaries for fiscal years to 2025, which have one row per declared disaster and designated area. The "
             "columns split the count by declaration type (DR major disaster, EM emergency, FM fire management) and "
-            "give the number of designated-area rows in the year. Fiscal years run from 1 October to 30 September; "
-            f"2026 is excluded as incomplete. The busiest year was FY{peak['period']}. " + FEMA_NOTE
+            "give the number of designated-area rows in the year. Fiscal years run from 1 October to 30 September. "
+            f"The query stops at FY2025. The busiest year was FY{peak['period']}. " + FEMA_NOTE
         ),
         tags=FEMA_TAGS + ["annual-series"],
         use_cases=FEMA_USE_CASES,
@@ -771,8 +795,8 @@ def fema_recent_marginal(key: str, entry_id: str, title: str, variable: str, wha
     largest = next(iter(counts))
     sample = next(r for r in rows if r[key] == largest)
     items = [
-        evidence(FEMA, "OpenFEMA Disaster Declarations Summaries v2, fyDeclared >= 2024 (CSV)", FEMA_RECENT_URL, f"row femaDeclarationString={sample['femaDeclarationString']}", sample["disasterNumber"], "text", fema_row_snippet(sample), UNSTATED, raw),
-        evidence(FEMA, "OpenFEMA Disaster Declarations Summaries v2, fyDeclared >= 2024 (CSV)", FEMA_RECENT_URL, "header row", key, "text", "femaDeclarationString,disasterNumber,state,declarationType,declarationDate,fyDeclared,incidentType", UNSTATED, raw),
+        evidence(FEMA, "OpenFEMA Disaster Declarations Summaries v2, fyDeclared 2024 to 2026 (CSV)", FEMA_RECENT_URL, f"row femaDeclarationString={sample['femaDeclarationString']}", sample["disasterNumber"], "text", fema_row_snippet(sample), UNSTATED, raw),
+        evidence(FEMA, "OpenFEMA Disaster Declarations Summaries v2, fyDeclared 2024 to 2026 (CSV)", FEMA_RECENT_URL, "header row", key, "text", FEMA_DECLARATION_FIELDS, UNSTATED, raw),
     ]
     years = sorted({r["fyDeclared"] for r in rows})
     return marginal_entry(
@@ -785,7 +809,7 @@ def fema_recent_marginal(key: str, entry_id: str, title: str, variable: str, wha
         evidence_items=items,
         notes=(
             f"Distinct disasters declared in fiscal years {years[0]} to {years[-1]} by {what}, counted from the "
-            "OpenFEMA Disaster Declarations Summaries filtered to fyDeclared >= 2024 (one row per designated area, "
+            "OpenFEMA Disaster Declarations Summaries filtered to fiscal years 2024 to 2026 (one row per designated area, "
             f"disasters counted once). A disaster spanning several {what} values is counted under each. " + FEMA_NOTE
         ),
         tags=FEMA_TAGS + tags,
@@ -810,9 +834,9 @@ def fema_ihp_amounts() -> dict:
     median = ordered[len(ordered) // 2] if len(ordered) % 2 else (ordered[len(ordered) // 2 - 1] + ordered[len(ordered) // 2]) / 2
     p90 = ordered[int(round(0.9 * (len(ordered) - 1)))]
     items = [
-        evidence(FEMA, "OpenFEMA FEMA Web Disaster Summaries v1 (CSV)", FEMA_WEB_URL, f"row disasterNumber={top['disasterNumber']}, totalAmountIhpApproved", top["totalAmountIhpApproved"], "currency:USD", f"{top['disasterNumber']},{top['totalNumberIaApproved']},{top['totalAmountIhpApproved']}", UNSTATED, raw),
-        evidence(FEMA, "OpenFEMA FEMA Web Disaster Summaries v1 (CSV)", FEMA_WEB_URL, "header row", "totalAmountIhpApproved", "text", "disasterNumber,totalNumberIaApproved,totalAmountIhpApproved,totalAmountHaApproved", UNSTATED, raw),
-        evidence(FEMA, "OpenFEMA Disaster Declarations Summaries v2 (CSV)", FEMA_DECLARATIONS_URL, "header row", "fyDeclared", "text", "femaDeclarationString,disasterNumber,state,declarationType,declarationDate,fyDeclared,incidentType", UNSTATED, RESOURCES[FEMA_DECLARATIONS_URL], role="supporting"),
+        evidence(FEMA, "OpenFEMA FEMA Web Disaster Summaries v1, totalAmountIhpApproved > 0 (CSV)", FEMA_WEB_URL, f"row disasterNumber={top['disasterNumber']}, totalAmountIhpApproved", top["totalAmountIhpApproved"], "currency:USD", f"{top['disasterNumber']},{top['totalNumberIaApproved']},{top['totalAmountIhpApproved']}", UNSTATED, raw),
+        evidence(FEMA, "OpenFEMA FEMA Web Disaster Summaries v1, totalAmountIhpApproved > 0 (CSV)", FEMA_WEB_URL, "header row", "totalAmountIhpApproved", "text", FEMA_WEB_FIELDS, UNSTATED, raw),
+        evidence(FEMA, "OpenFEMA Disaster Declarations Summaries v2, fyDeclared <= 2025 (CSV)", FEMA_DECLARATIONS_URL, "header row", "fyDeclared", "text", FEMA_DECLARATION_FIELDS, UNSTATED, RESOURCES[FEMA_DECLARATIONS_URL], role="supporting"),
     ]
     return {
         "id": "us-fema-individuals-and-households-program-amount-per-disaster-fy2015-fy2025",
@@ -851,11 +875,16 @@ def fema_ihp_amounts() -> dict:
 
 
 def build_fema() -> None:
-    for url in (FEMA_DECLARATIONS_URL, FEMA_RECENT_URL, FEMA_WEB_URL):
+    for url in (FEMA_DECLARATIONS_URL, FEMA_RECENT_URL):
         get(url)
     finish(fema_declarations_by_year())
     finish(fema_recent_marginal("incidentType", "us-fema-disaster-declarations-by-incident-type-fy2024-fy2026", "FEMA disaster declarations by incident type, FY2024 to FY2026", "incident_type", "incident type", ["by-incident-type"], FEMA_USE_CASES))
     finish(fema_recent_marginal("state", "us-fema-disaster-declarations-by-state-fy2024-fy2026", "FEMA disaster declarations by state or territory, FY2024 to FY2026", "state", "state or territory", ["by-state"], FEMA_USE_CASES + ["address-generation"]))
+
+
+def build_fema_ihp() -> None:
+    for url in (FEMA_DECLARATIONS_URL, FEMA_WEB_URL):
+        get(url)
     finish(fema_ihp_amounts())
 
 
@@ -1604,7 +1633,6 @@ def build_frps() -> None:
 
 
 BUILDERS = {
-    "cfpb": build_cfpb,
     "fdic": build_fdic,
     "fema": build_fema,
     "hmda": build_hmda,
@@ -1616,10 +1644,19 @@ BUILDERS = {
 }
 
 
+# Sources whose responses change within hours even when the published figures do not (an index
+# timestamp and a growing all-time record count in every CFPB response, hourly re-exports of the
+# FEMA web summaries), so their evidence cannot hold a content hash. They run only when named.
+ON_DEMAND = {
+    "cfpb": build_cfpb,
+    "fema-ihp": build_fema_ihp,
+}
+
+
 def main(argv: list[str]) -> None:
-    selected = argv or list(BUILDERS)
-    for name in selected:
-        BUILDERS[name]()
+    groups = {**BUILDERS, **ON_DEMAND}
+    for name in argv or list(BUILDERS):
+        groups[name]()
 
 
 if __name__ == "__main__":

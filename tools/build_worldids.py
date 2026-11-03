@@ -38,7 +38,6 @@ URLS = {
     "rvig_uc27": "https://rvig.nl/sites/default/files/2023-05/uc27-genereren-nummers.pdf",
     "poms": "https://secure.ssa.gov/poms.nsf/lnx/0110201035",
     "cfr": f"https://www.ecfr.gov/api/versioner/v1/full/{CFR_DATE}/title-26.xml?section=301.6109-1",
-    "irs_ein": "https://www.irs.gov/businesses/small-businesses-self-employed/how-eins-are-assigned-and-valid-ein-prefixes",
     "egov": "https://laws.e-gov.go.jp/api/1/lawdata/426M60000008085",
     "scb": "https://www.scb.se/contentassets/8d9d985ca9c84c6e8d879cc89a8ae479/ov9999_2016a01_br_be96br1601.pdf",
     "brreg": "https://www.brreg.no/om-oss/registrene-vare/om-enhetsregisteret/organisasjonsnummeret/",
@@ -678,39 +677,6 @@ def build_us_itin(cfr: Source, oecd: Source) -> dict:
     )
 
 
-def build_us_ein(irs: Source, cfr: Source) -> dict:
-    rows = table_rows(irs.raw.decode("utf-8"))
-    prefixes = {row[0]: [p.strip() for p in row[1].split(",")] for row in rows[1:]}
-    return base(
-        "us-ein-prefixes",
-        "United States employer identification number (EIN): 00-0000000 form and valid prefixes by IRS campus",
-        "US",
-        "almanac.rules.us_ein",
-        {"prefixes_by_location": prefixes},
-        [
-            vector({"locations_for": "31"}, ["Small Business Administration (SBA)"], "source"),
-            vector({"locations_for": "33"}, ["Philadelphia", "Internet"], "source", "33 appears under both Philadelphia and Internet"),
-            vector({"locations_for": "10"}, ["Andover"], "source"),
-            vector("31-1234567", True, "derived"),
-            vector("311234567", True, "derived", "without the hyphen"),
-            vector("07-1234567", False, "derived", "07 is not a listed prefix"),
-            vector("31-123456", False, "derived", "eight digits"),
-        ],
-        [
-            item(irs, "Internal Revenue Service", "How EINs are assigned and valid EIN prefixes", "table, IRS campus or other location by valid EIN prefixes", "Small Business Administration (SBA)", "The first two digits of your EIN show the IRS campus that assigned it or if you applied online."),
-            item(cfr, "Internal Revenue Service via the eCFR API", f"26 CFR 301.6109-1, Identifying numbers, as of {CFR_DATE} (XML)", "section 301.6109-1(a)(1)(i)", "00-0000000", "Employer identification numbers take the form 00-0000000."),
-        ],
-        "The nine-digit EIN in the form 00-0000000 (26 CFR 301.6109-1), whose first two digits must be one of the "
-        "prefixes the IRS lists for its campuses, its online application and the Small Business Administration; the "
-        "table is read from the IRS page. Several prefixes appear under both a campus and Internet. A generator can "
-        "draw the prefix from this table and the remaining seven digits freely. valid_from is the page's last-reviewed "
-        "date; neither source states terms, so the entry is held at license-review.",
-        uses=BUSINESS_USES,
-        valid_from="2026-04-09",
-        extra_tags=["ein", "irs"],
-    )
-
-
 def build_fr_siren_siret(siren: Source, siret: Source, oecd: Source) -> dict:
     siren_length = int(oecd.find(r"The numéro SIREN consists in (\d+) numerals"))
     siret_length = int(oecd.find(r"The numéro SIRET consists in (\d+) numerals"))
@@ -902,7 +868,6 @@ def main() -> int:
         build_za_id(src["oecd_south-africa"]),
         build_us_ssn(src["poms"], src["cfr"]),
         build_us_itin(src["cfr"], src["oecd_united-states"]),
-        build_us_ein(src["irs_ein"], src["cfr"]),
         build_fr_siren_siret(src["insee_siren"], src["insee_siret"], src["oecd_france"]),
         build_ch_ahv(src["fedlex"], src["oecd_switzerland"]),
         build_in_pan(src["oecd_india"]),

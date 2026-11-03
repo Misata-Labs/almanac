@@ -17,7 +17,6 @@ from almanac.rules import (
     iso7064_mod11_10,
     pl_pesel,
     se_personnummer,
-    us_ein,
     us_tin_format,
     weighted_modulus,
     za_id,
@@ -156,13 +155,6 @@ def test_ssn_and_itin_formats():
     itin = {"area_required_prefix": "9"}
     assert us_tin_format.mask_is_consistent("9xx-xx-xxxx", itin)
     assert not us_tin_format.is_valid("812-70-1234", itin)
-
-
-def test_ein_prefix_lookup():
-    params = {"prefixes_by_location": {"Philadelphia": ["33", "39"], "Internet": ["20", "33"]}}
-    assert us_ein.locations_for("33", params) == ["Philadelphia", "Internet"]
-    assert us_ein.is_valid("20-1234567", params)
-    assert not us_ein.is_valid("07-1234567", params)
 
 
 def test_shape_only_rules():
