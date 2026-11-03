@@ -15,7 +15,7 @@ from datetime import date
 from pathlib import Path
 
 from almanac.checks import Verifier
-from almanac.fetch import Fetcher
+from almanac.fetch import DEFAULT_RETRIES, Fetcher
 from almanac.report import render_json, render_text
 from almanac.store import DEFAULT_ENTRIES, DEFAULT_SCHEMA, iter_entry_files
 
@@ -26,6 +26,7 @@ def build_parser(parser: argparse.ArgumentParser | None = None) -> argparse.Argu
     parser.add_argument("--schema", type=Path, default=DEFAULT_SCHEMA, help="JSON Schema to validate against")
     parser.add_argument("--cache-dir", type=Path, help="directory in which fetched resources are stored and reused")
     parser.add_argument("--offline", action="store_true", help="serve evidence only from --cache-dir; never go online")
+    parser.add_argument("--retries", type=int, default=DEFAULT_RETRIES, help=f"retries for timeouts, dropped connections and HTTP 429/5xx (default {DEFAULT_RETRIES})")
     parser.add_argument("--no-fetch", action="store_true", help="skip evidence retrieval entirely (evidence checks are reported as SKIP)")
     parser.add_argument("--sample-size", type=int, default=200_000, help="samples drawn per distribution test")
     parser.add_argument("--seed", type=int, default=0, help="seed for distribution sampling")
@@ -42,7 +43,7 @@ def run(args: argparse.Namespace) -> int:
         print("--offline requires --cache-dir", file=sys.stderr)
         return 2
 
-    fetcher = None if args.no_fetch else Fetcher(cache_dir=args.cache_dir, offline=args.offline)
+    fetcher = None if args.no_fetch else Fetcher(cache_dir=args.cache_dir, offline=args.offline, retries=args.retries)
     try:
         verifier = Verifier(schema, fetcher, today=args.today, sample_size=args.sample_size, seed=args.seed)
         reports = verifier.verify_all(iter_entry_files(targets))

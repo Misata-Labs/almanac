@@ -11,7 +11,9 @@ from __future__ import annotations
 import hashlib
 import io
 import json
+import time
 import zipfile
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -19,7 +21,11 @@ import httpx
 from pypdf import PdfReader
 
 USER_AGENT = "misata-almanac-verify/0.1"
-DEFAULT_TIMEOUT = 30.0
+DEFAULT_TIMEOUT = 60.0
+DEFAULT_RETRIES = 3
+DEFAULT_BACKOFF = 2.0
+# Statuses that signal a temporary server-side condition rather than an answer about the resource.
+TRANSIENT_STATUSES = frozenset({429, 500, 502, 503, 504})
 
 
 class FetchError(RuntimeError):
@@ -75,6 +81,11 @@ class Fetcher:
 
     ``cache_dir`` enables an on-disk cache keyed by URL digest; ``offline``
     serves only from that cache and fails for anything missing from it.
+
+    Timeouts, dropped connections and transient server statuses are retried
+    ``retries`` times with exponential backoff starting at ``backoff`` seconds.
+    Any other non-200 answer fails at once, and a retried download is held to
+    the same content hash as a first-time one.
     """
 
     def __init__(
@@ -84,8 +95,16 @@ class Fetcher:
         offline: bool = False,
         transport: httpx.BaseTransport | None = None,
         timeout: float = DEFAULT_TIMEOUT,
+        retries: int = DEFAULT_RETRIES,
+        backoff: float = DEFAULT_BACKOFF,
+        sleep: Callable[[float], None] = time.sleep,
     ) -> None:
+        if retries < 0:
+            raise ValueError("retries must not be negative")
         self._memory: dict[str, Resource] = {}
+        self._retries = retries
+        self._backoff = backoff
+        self._sleep = sleep
         self._cache_dir = cache_dir
         self._offline = offline
         self._client = httpx.Client(
@@ -117,13 +136,23 @@ class Fetcher:
         return resource
 
     def _download(self, url: str) -> Resource:
-        try:
-            response = self._client.get(url)
-        except httpx.HTTPError as exc:
-            raise FetchError(f"{url}: {exc}") from exc
-        if response.status_code != 200:
-            raise FetchError(f"{url}: HTTP {response.status_code}")
-        return Resource(url=url, content=response.content, content_type=response.headers.get("content-type", ""))
+        failure = ""
+        for attempt in range(self._retries + 1):
+            if attempt:
+                self._sleep(self._backoff * 2 ** (attempt - 1))
+            try:
+                response = self._client.get(url)
+            except httpx.TransportError as exc:
+                failure = f"{url}: {exc}"
+                continue
+            except httpx.HTTPError as exc:
+                raise FetchError(f"{url}: {exc}") from exc
+            if response.status_code == 200:
+                return Resource(url=url, content=response.content, content_type=response.headers.get("content-type", ""))
+            failure = f"{url}: HTTP {response.status_code}"
+            if response.status_code not in TRANSIENT_STATUSES:
+                break
+        raise FetchError(failure if attempt == 0 else f"{failure} (after {attempt + 1} attempts)")
 
     def _cache_paths(self, url: str) -> tuple[Path, Path] | None:
         if self._cache_dir is None:
