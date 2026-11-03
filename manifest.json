@@ -8,7 +8,7 @@
     "entries": "ODbL-1.0",
     "code": "Apache-2.0"
   },
-  "entry_count": 557,
+  "entry_count": 661,
   "entries": [
     {
       "id": "eu-new-passenger-car-registrations-by-motor-energy-2025",
@@ -681,6 +681,231 @@
       "vectors": 6
     },
     {
+      "id": "de-bank-account-check-digit-methods",
+      "title": "Germany account number check-digit methods (Bundesbank Prüfzifferberechnungsmethoden): 20 methods covering most sort codes",
+      "kind": "rule",
+      "domain": "banking",
+      "region": "DE",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2018-06-04 to open",
+      "publishers": [
+        "Deutsche Bundesbank"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "payments",
+        "bank-codes",
+        "check-digit",
+        "account-number",
+        "bankleitzahl"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-demo",
+        "kyc-onboarding",
+        "data-quality-validation",
+        "treasury-demo"
+      ],
+      "path": "entries/banking/DE/de-bank-account-check-digit-methods.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/DE/de-bank-account-check-digit-methods.yaml",
+      "valid_from": "2018-06-04",
+      "valid_to": null,
+      "implementation": "almanac.rules.de_bank_account_check",
+      "vectors": 57
+    },
+    {
+      "id": "de-bank-sort-code-check-digit-method-mix",
+      "title": "Germany: share of bank sort codes by account check-digit method (Bundesbank sort code file)",
+      "kind": "marginal",
+      "domain": "banking",
+      "region": "DE",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2026-09-07 to 2026-11-03",
+      "publishers": [
+        "Deutsche Bundesbank"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "payments",
+        "bank-codes",
+        "bankleitzahl",
+        "check-digit"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-demo",
+        "kyc-onboarding",
+        "data-quality-validation",
+        "treasury-demo"
+      ],
+      "path": "entries/banking/DE/de-bank-sort-code-check-digit-method-mix.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/DE/de-bank-sort-code-check-digit-method-mix.yaml",
+      "observed_period": {
+        "start": "2026-09-07",
+        "end": "2026-11-03"
+      },
+      "variable": "check_method"
+    },
+    {
+      "id": "de-bundesbank-bank-sort-codes",
+      "title": "Germany bank sort codes (Bankleitzahlen): name, BIC, postcode, city and check-digit method, 3505 codes",
+      "kind": "rule",
+      "domain": "banking",
+      "region": "DE",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-09-07 to 2026-12-06",
+      "publishers": [
+        "Deutsche Bundesbank"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "payments",
+        "bank-codes",
+        "bankleitzahl",
+        "bic",
+        "reference-table"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-demo",
+        "kyc-onboarding",
+        "data-quality-validation",
+        "treasury-demo"
+      ],
+      "path": "entries/banking/DE/de-bundesbank-bank-sort-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/DE/de-bundesbank-bank-sort-codes.yaml",
+      "valid_from": "2026-09-07",
+      "valid_to": "2026-12-06",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 7
+    },
+    {
+      "id": "de-bundesbank-sort-code-successors",
+      "title": "Germany bank sort codes announced for deletion or with a successor code, 75 codes (Bundesbank sort code file)",
+      "kind": "rule",
+      "domain": "banking",
+      "region": "DE",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-09-07 to 2026-12-06",
+      "publishers": [
+        "Deutsche Bundesbank"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "payments",
+        "bank-codes",
+        "bankleitzahl",
+        "bank-mergers",
+        "reference-table"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-demo",
+        "kyc-onboarding",
+        "data-quality-validation",
+        "treasury-demo"
+      ],
+      "path": "entries/banking/DE/de-bundesbank-sort-code-successors.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/DE/de-bundesbank-sort-code-successors.yaml",
+      "valid_from": "2026-09-07",
+      "valid_to": "2026-12-06",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "gb-account-number-standardisation",
+      "title": "UK nonstandard account numbers converted to eight digits for modulus checking (Vocalink section 2.1.2)",
+      "kind": "rule",
+      "domain": "banking",
+      "region": "GB",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-09-05 to open",
+      "publishers": [
+        "Vocalink Limited (modulus checking specification for Pay.UK schemes)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "payments",
+        "bank-codes",
+        "sort-code",
+        "account-number",
+        "bacs",
+        "data-cleansing"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-demo",
+        "kyc-onboarding",
+        "data-quality-validation",
+        "treasury-demo"
+      ],
+      "path": "entries/banking/GB/gb-account-number-standardisation.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/GB/gb-account-number-standardisation.yaml",
+      "valid_from": "2026-09-05",
+      "valid_to": null,
+      "implementation": "almanac.rules.gb_account_standardisation",
+      "vectors": 7
+    },
+    {
+      "id": "gb-sort-code-modulus-check",
+      "title": "UK sorting code and account number modulus checking (Vocalink v9.10): MOD10, MOD11, DBLAL and 14 exceptions, 1170 table rows",
+      "kind": "rule",
+      "domain": "banking",
+      "region": "GB",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-09-05 to open",
+      "publishers": [
+        "Vocalink Limited (modulus checking specification for Pay.UK schemes)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "payments",
+        "bank-codes",
+        "sort-code",
+        "check-digit",
+        "account-number",
+        "bacs",
+        "modulus-check"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-demo",
+        "kyc-onboarding",
+        "data-quality-validation",
+        "treasury-demo"
+      ],
+      "path": "entries/banking/GB/gb-sort-code-modulus-check.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/GB/gb-sort-code-modulus-check.yaml",
+      "valid_from": "2026-09-05",
+      "valid_to": null,
+      "implementation": "almanac.rules.gb_sort_code_modulus",
+      "vectors": 36
+    },
+    {
       "id": "us-commercial-bank-charge-off-rates-2024-2025",
       "title": "US commercial bank net charge-off rates by loan category, seasonally adjusted, quarterly 2024 to 2025",
       "kind": "temporal",
@@ -826,6 +1051,42 @@
         "end": "2025-12-31"
       },
       "variable": "bank_failures"
+    },
+    {
+      "id": "us-fdic-deposit-insurance-coverage",
+      "title": "United States FDIC deposit insurance coverage by ownership category, 12 CFR 330",
+      "kind": "rule",
+      "domain": "banking",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2024-04-01 to open",
+      "publishers": [
+        "Federal Deposit Insurance Corporation via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "deposit-insurance",
+        "fdic",
+        "ownership-categories",
+        "12-cfr-330"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "customer-service-demo",
+        "data-quality-validation",
+        "personal-finance"
+      ],
+      "path": "entries/banking/US/us-fdic-deposit-insurance-coverage.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/US/us-fdic-deposit-insurance-coverage.yaml",
+      "valid_from": "2024-04-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.us_deposit_insurance",
+      "vectors": 6
     },
     {
       "id": "us-fdic-failed-banks-since-2000",
@@ -1078,6 +1339,43 @@
       "vectors": 5
     },
     {
+      "id": "us-ncua-share-insurance-coverage",
+      "title": "United States NCUA share insurance coverage by ownership category for federally insured credit unions, 12 CFR 745",
+      "kind": "rule",
+      "domain": "banking",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2024-09-30 to open",
+      "publishers": [
+        "National Credit Union Administration via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "deposit-insurance",
+        "share-insurance",
+        "credit-unions",
+        "ncua",
+        "12-cfr-745"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "customer-service-demo",
+        "data-quality-validation",
+        "personal-finance"
+      ],
+      "path": "entries/banking/US/us-ncua-share-insurance-coverage.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/US/us-ncua-share-insurance-coverage.yaml",
+      "valid_from": "2024-09-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.us_deposit_insurance",
+      "vectors": 8
+    },
+    {
       "id": "us-regulation-cc-cash-withdrawal-amount",
       "title": "United States Regulation CC cash withdrawal amount for check deposits, 12 CFR 229.12(d)",
       "kind": "rule",
@@ -1146,6 +1444,44 @@
       "valid_to": null,
       "implementation": "almanac.rules.step_schedule",
       "vectors": 3
+    },
+    {
+      "id": "us-regulation-cc-federal-reserve-and-fhlb-routing-numbers",
+      "title": "US routing numbers of Federal Reserve Banks and Federal Home Loan Banks (Regulation CC Appendix A)",
+      "kind": "rule",
+      "domain": "banking",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "1988-05-27 to open",
+      "publishers": [
+        "Office of the Federal Register (eCFR)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "payments",
+        "bank-codes",
+        "routing-number",
+        "aba",
+        "federal-reserve",
+        "regulation-cc"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-demo",
+        "kyc-onboarding",
+        "data-quality-validation",
+        "treasury-demo"
+      ],
+      "path": "entries/banking/US/us-regulation-cc-federal-reserve-and-fhlb-routing-numbers.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/US/us-regulation-cc-federal-reserve-and-fhlb-routing-numbers.yaml",
+      "valid_from": "1988-05-27",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 4
     },
     {
       "id": "us-regulation-cc-next-day-availability-amount",
@@ -1218,6 +1554,45 @@
       "valid_to": null,
       "implementation": "almanac.rules.lookup_table",
       "vectors": 5
+    },
+    {
+      "id": "us-routing-number-federal-reserve-prefix",
+      "title": "US routing number first two digits: Federal Reserve District 01 to 12, thrift institutions 21 to 32",
+      "kind": "rule",
+      "domain": "banking",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "1988-05-27 to open",
+      "publishers": [
+        "Office of the Federal Register (eCFR)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "payments",
+        "bank-codes",
+        "routing-number",
+        "aba",
+        "federal-reserve",
+        "regulation-cc",
+        "reference-table"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-demo",
+        "kyc-onboarding",
+        "data-quality-validation",
+        "treasury-demo"
+      ],
+      "path": "entries/banking/US/us-routing-number-federal-reserve-prefix.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/banking/US/us-routing-number-federal-reserve-prefix.yaml",
+      "valid_from": "1988-05-27",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 6
     },
     {
       "id": "gb-child-benefit-rates",
@@ -1354,6 +1729,152 @@
       "valid_to": "2027-04-05",
       "implementation": "almanac.rules.lookup_table",
       "vectors": 7
+    },
+    {
+      "id": "us-aca-affordability-and-premium-tax-credit-percentages-2026",
+      "title": "US ACA premium tax credit applicable percentage table and employer coverage affordability percentage for 2026 (Rev. Proc. 2025-25)",
+      "kind": "rule",
+      "domain": "benefits",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "benefits",
+        "health",
+        "aca",
+        "affordability",
+        "premium-tax-credit",
+        "limits",
+        "rev-proc-2025-25"
+      ],
+      "use_cases": [
+        "benefits-demo",
+        "hr-demo",
+        "payroll-demo",
+        "health-demo"
+      ],
+      "path": "entries/benefits/US/us-aca-affordability-and-premium-tax-credit-percentages-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/benefits/US/us-aca-affordability-and-premium-tax-credit-percentages-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 9
+    },
+    {
+      "id": "us-employee-benefit-exclusion-limits-2026",
+      "title": "US employee benefit limits for 2026: health FSA, transit and parking, adoption assistance, QSEHRA, long-term care (Rev. Proc. 2025-32)",
+      "kind": "rule",
+      "domain": "benefits",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "benefits",
+        "payroll",
+        "limits",
+        "fsa",
+        "fringe-benefits",
+        "rev-proc-2025-32"
+      ],
+      "use_cases": [
+        "benefits-demo",
+        "hr-demo",
+        "payroll-demo"
+      ],
+      "path": "entries/benefits/US/us-employee-benefit-exclusion-limits-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/benefits/US/us-employee-benefit-exclusion-limits-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 16
+    },
+    {
+      "id": "us-hhs-poverty-guidelines-2026",
+      "title": "US HHS poverty guidelines for 2026 by household size: 48 contiguous states and DC, Alaska and Hawaii",
+      "kind": "rule",
+      "domain": "benefits",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-01-13 to open",
+      "publishers": [
+        "US Department of Health and Human Services, via the Federal Register (govinfo)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "benefits",
+        "poverty-guidelines",
+        "eligibility",
+        "medicaid",
+        "limits",
+        "federal-poverty-level"
+      ],
+      "use_cases": [
+        "benefits-demo",
+        "health-demo",
+        "household-generation",
+        "lending-demo",
+        "personal-finance"
+      ],
+      "path": "entries/benefits/US/us-hhs-poverty-guidelines-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/benefits/US/us-hhs-poverty-guidelines-2026.yaml",
+      "valid_from": "2026-01-13",
+      "valid_to": null,
+      "implementation": "almanac.rules.us_poverty_guidelines",
+      "vectors": 11
+    },
+    {
+      "id": "us-hsa-and-hdhp-limits-2026",
+      "title": "US health savings account contribution limits and high deductible health plan thresholds for 2026 (Rev. Proc. 2025-19)",
+      "kind": "rule",
+      "domain": "benefits",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "benefits",
+        "health",
+        "hsa",
+        "hdhp",
+        "payroll",
+        "limits",
+        "rev-proc-2025-19"
+      ],
+      "use_cases": [
+        "benefits-demo",
+        "hr-demo",
+        "payroll-demo",
+        "health-demo"
+      ],
+      "path": "entries/benefits/US/us-hsa-and-hdhp-limits-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/benefits/US/us-hsa-and-hdhp-limits-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 12
     },
     {
       "id": "at-enterprise-accounts-by-nace-2024",
@@ -3625,6 +4146,539 @@
       "variable": "timely_response"
     },
     {
+      "id": "gb-consumer-contracts-cancellation-periods",
+      "title": "United Kingdom distance and off-premises contract cancellation and refund periods, Consumer Contracts Regulations 2013",
+      "kind": "rule",
+      "domain": "compliance",
+      "region": "GB",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2020-12-31 to open",
+      "publishers": [
+        "The National Archives (legislation.gov.uk)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "consumer-protection",
+        "cancellation",
+        "refunds",
+        "distance-selling",
+        "consumer-contracts-regulations"
+      ],
+      "use_cases": [
+        "retail-demo",
+        "customer-service-demo",
+        "sla-calculation",
+        "invoicing",
+        "data-quality-validation"
+      ],
+      "path": "entries/compliance/GB/gb-consumer-contracts-cancellation-periods.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/compliance/GB/gb-consumer-contracts-cancellation-periods.yaml",
+      "valid_from": "2020-12-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 6
+    },
+    {
+      "id": "gb-hm-treasury-high-risk-third-countries",
+      "title": "FATF high-risk and increased-monitoring jurisdictions as HM Treasury lists them for UK enhanced due diligence, June 2026",
+      "kind": "rule",
+      "domain": "compliance",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-06-19 to open",
+      "publishers": [
+        "HM Treasury (GOV.UK content API)",
+        "World Bank"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0",
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "compliance",
+        "aml",
+        "kyc",
+        "fatf",
+        "high-risk-third-countries",
+        "enhanced-due-diligence",
+        "country-risk"
+      ],
+      "use_cases": [
+        "kyc-onboarding",
+        "kyb-onboarding",
+        "aml-demo",
+        "fraud-detection-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/compliance/GB/gb-hm-treasury-high-risk-third-countries.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/compliance/GB/gb-hm-treasury-high-risk-third-countries.yaml",
+      "valid_from": "2026-06-19",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 5
+    },
+    {
+      "id": "gb-late-payment-compensation-and-interest",
+      "title": "United Kingdom late commercial payment fixed sums by debt band and statutory interest at 8 per cent over Bank Rate",
+      "kind": "rule",
+      "domain": "compliance",
+      "region": "GB",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2013-03-29 to open",
+      "publishers": [
+        "The National Archives (legislation.gov.uk)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "late-payment",
+        "statutory-interest",
+        "debt-recovery",
+        "b2b"
+      ],
+      "use_cases": [
+        "invoicing",
+        "accounts-payable",
+        "collections",
+        "credit-risk",
+        "payments-scheduling"
+      ],
+      "path": "entries/compliance/GB/gb-late-payment-compensation-and-interest.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/compliance/GB/gb-late-payment-compensation-and-interest.yaml",
+      "valid_from": "2013-03-29",
+      "valid_to": null,
+      "implementation": "almanac.rules.gb_late_payment",
+      "vectors": 6
+    },
+    {
+      "id": "gb-mlr-2017-cdd-thresholds",
+      "title": "United Kingdom Money Laundering Regulations 2017 customer due diligence thresholds and record retention, sterling from 30 June 2026",
+      "kind": "rule",
+      "domain": "compliance",
+      "region": "GB",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-06-30 to open",
+      "publishers": [
+        "The National Archives (legislation.gov.uk)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "aml",
+        "kyc",
+        "customer-due-diligence",
+        "money-laundering-regulations",
+        "high-value-dealer",
+        "casino"
+      ],
+      "use_cases": [
+        "aml-demo",
+        "fraud-detection-demo",
+        "kyc-onboarding",
+        "banking-demo",
+        "kyb-onboarding",
+        "data-quality-validation"
+      ],
+      "path": "entries/compliance/GB/gb-mlr-2017-cdd-thresholds.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/compliance/GB/gb-mlr-2017-cdd-thresholds.yaml",
+      "valid_from": "2026-06-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 6
+    },
+    {
+      "id": "gb-mlr-2017-electronic-money-due-diligence-exemption",
+      "title": "United Kingdom electronic money limits for the customer due diligence exemption, Money Laundering Regulations 2017 regulation 38",
+      "kind": "rule",
+      "domain": "compliance",
+      "region": "GB",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-06-30 to open",
+      "publishers": [
+        "The National Archives (legislation.gov.uk)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "aml",
+        "kyc",
+        "electronic-money",
+        "prepaid-cards",
+        "simplified-due-diligence"
+      ],
+      "use_cases": [
+        "kyc-onboarding",
+        "payments-demo",
+        "fintech-demo",
+        "aml-demo"
+      ],
+      "path": "entries/compliance/GB/gb-mlr-2017-electronic-money-due-diligence-exemption.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/compliance/GB/gb-mlr-2017-electronic-money-due-diligence-exemption.yaml",
+      "valid_from": "2026-06-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-bsa-reporting-thresholds",
+      "title": "United States Bank Secrecy Act reporting and recordkeeping thresholds: CTR, CMIR, FBAR, travel rule, beneficial ownership and Form 8300",
+      "kind": "rule",
+      "domain": "compliance",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-01-02 to open",
+      "publishers": [
+        "Financial Crimes Enforcement Network via the eCFR API",
+        "Internal Revenue Service via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "aml",
+        "bank-secrecy-act",
+        "currency-transaction-report",
+        "travel-rule",
+        "beneficial-ownership",
+        "form-8300",
+        "31-cfr-1010"
+      ],
+      "use_cases": [
+        "aml-demo",
+        "fraud-detection-demo",
+        "kyc-onboarding",
+        "banking-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/compliance/US/us-bsa-reporting-thresholds.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/compliance/US/us-bsa-reporting-thresholds.yaml",
+      "valid_from": "2026-01-02",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 7
+    },
+    {
+      "id": "us-bsa-sar-thresholds-by-institution",
+      "title": "United States suspicious activity report thresholds, filing deadlines and retention by institution type, 31 CFR 1020-1030",
+      "kind": "rule",
+      "domain": "compliance",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2018-06-19 to open",
+      "publishers": [
+        "Financial Crimes Enforcement Network via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "aml",
+        "bank-secrecy-act",
+        "suspicious-activity-report",
+        "transaction-monitoring",
+        "31-cfr-chapter-x"
+      ],
+      "use_cases": [
+        "aml-demo",
+        "fraud-detection-demo",
+        "kyc-onboarding",
+        "banking-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/compliance/US/us-bsa-sar-thresholds-by-institution.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/compliance/US/us-bsa-sar-thresholds-by-institution.yaml",
+      "valid_from": "2018-06-19",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 6
+    },
+    {
+      "id": "us-can-spam-opt-out-requirements",
+      "title": "United States CAN-SPAM Act opt-out deadlines and the sexually explicit subject label, 15 U.S.C. 7704 and 16 CFR 316.4",
+      "kind": "rule",
+      "domain": "compliance",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2004-01-01 to open",
+      "publishers": [
+        "Office of the Law Revision Counsel, US House of Representatives, via govinfo",
+        "Federal Trade Commission via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "consumer-protection",
+        "can-spam",
+        "email-marketing",
+        "opt-out",
+        "15-usc-7704"
+      ],
+      "use_cases": [
+        "digital-channels",
+        "crm-demo",
+        "customer-service-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/compliance/US/us-can-spam-opt-out-requirements.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/compliance/US/us-can-spam-opt-out-requirements.yaml",
+      "valid_from": "2004-01-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-form-8300-installment-reporting",
+      "title": "United States Form 8300 reporting of cash received in instalments: twelve-month aggregation and fifteen-day deadline, 26 CFR 1.6050I-1(b)",
+      "kind": "rule",
+      "domain": "compliance",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2023-06-27 to open",
+      "publishers": [
+        "Internal Revenue Service via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "aml",
+        "form-8300",
+        "cash-reporting",
+        "aggregation",
+        "26-cfr-1-6050i-1"
+      ],
+      "use_cases": [
+        "aml-demo",
+        "fraud-detection-demo",
+        "kyc-onboarding",
+        "banking-demo",
+        "retail-demo",
+        "invoicing"
+      ],
+      "path": "entries/compliance/US/us-form-8300-installment-reporting.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/compliance/US/us-form-8300-installment-reporting.yaml",
+      "valid_from": "2023-06-27",
+      "valid_to": null,
+      "implementation": "almanac.rules.us_form_8300",
+      "vectors": 5
+    },
+    {
+      "id": "us-ftc-cooling-off-rule",
+      "title": "United States FTC Cooling-Off Rule: price thresholds for door-to-door sales and the three-day cancellation right, 16 CFR 429",
+      "kind": "rule",
+      "domain": "compliance",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2016-12-22 to open",
+      "publishers": [
+        "Federal Trade Commission via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "consumer-protection",
+        "cooling-off",
+        "door-to-door-sales",
+        "cancellation",
+        "16-cfr-429"
+      ],
+      "use_cases": [
+        "retail-demo",
+        "customer-service-demo",
+        "invoicing",
+        "data-quality-validation"
+      ],
+      "path": "entries/compliance/US/us-ftc-cooling-off-rule.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/compliance/US/us-ftc-cooling-off-rule.yaml",
+      "valid_from": "2016-12-22",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-ftc-mail-order-rule-time-limits",
+      "title": "United States FTC Mail, Internet or Telephone Order Rule shipment and refund time limits, 16 CFR 435",
+      "kind": "rule",
+      "domain": "compliance",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2016-12-22 to open",
+      "publishers": [
+        "Federal Trade Commission via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "consumer-protection",
+        "mail-order",
+        "e-commerce",
+        "shipping",
+        "refunds",
+        "16-cfr-435"
+      ],
+      "use_cases": [
+        "retail-demo",
+        "logistics",
+        "customer-service-demo",
+        "sla-calculation",
+        "data-quality-validation"
+      ],
+      "path": "entries/compliance/US/us-ftc-mail-order-rule-time-limits.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/compliance/US/us-ftc-mail-order-rule-time-limits.yaml",
+      "valid_from": "2016-12-22",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-regulation-f-call-frequency",
+      "title": "United States Regulation F debt collection call frequency presumptions and inconvenient calling times, 12 CFR 1006.14 and 1006.6",
+      "kind": "rule",
+      "domain": "compliance",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2021-11-30 to open",
+      "publishers": [
+        "Consumer Financial Protection Bureau via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "consumer-protection",
+        "regulation-f",
+        "fdcpa",
+        "debt-collection",
+        "call-frequency",
+        "12-cfr-1006"
+      ],
+      "use_cases": [
+        "collections",
+        "customer-service-demo",
+        "crm-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/compliance/US/us-regulation-f-call-frequency.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/compliance/US/us-regulation-f-call-frequency.yaml",
+      "valid_from": "2021-11-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.us_regf_call_frequency",
+      "vectors": 9
+    },
+    {
+      "id": "us-tcpa-calling-limits",
+      "title": "United States TCPA telemarketing limits: calling hours, do-not-call and revocation deadlines, abandonment rate, 47 CFR 64.1200",
+      "kind": "rule",
+      "domain": "compliance",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-10-26 to open",
+      "publishers": [
+        "Federal Communications Commission via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "consumer-protection",
+        "tcpa",
+        "telemarketing",
+        "do-not-call",
+        "47-cfr-64"
+      ],
+      "use_cases": [
+        "customer-service-demo",
+        "crm-demo",
+        "collections",
+        "telecom-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/compliance/US/us-tcpa-calling-limits.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/compliance/US/us-tcpa-calling-limits.yaml",
+      "valid_from": "2026-10-26",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-tcpa-consent-revocation-keywords",
+      "title": "United States TCPA reply words that revoke consent to robocalls and robotexts per se, 47 CFR 64.1200(a)(10)",
+      "kind": "rule",
+      "domain": "compliance",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-10-26 to open",
+      "publishers": [
+        "Federal Communications Commission via the eCFR API",
+        "Office of the Federal Register via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "consumer-protection",
+        "tcpa",
+        "opt-out",
+        "sms",
+        "47-cfr-64"
+      ],
+      "use_cases": [
+        "customer-service-demo",
+        "crm-demo",
+        "digital-channels",
+        "data-quality-validation"
+      ],
+      "path": "entries/compliance/US/us-tcpa-consent-revocation-keywords.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/compliance/US/us-tcpa-consent-revocation-keywords.yaml",
+      "valid_from": "2026-10-26",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 5
+    },
+    {
       "id": "us-commercial-bank-consumer-loan-rates-2025",
       "title": "US commercial bank interest rates on credit card plans, new auto loans and personal loans, quarterly 2025 (G.19 terms of credit)",
       "kind": "temporal",
@@ -3735,6 +4789,78 @@
       "valid_to": null,
       "implementation": "almanac.rules.lookup_table",
       "vectors": 4
+    },
+    {
+      "id": "us-fha-forward-mortgage-limits-2026",
+      "title": "US FHA forward mortgage limits for 2026: national floor, high-cost ceiling and special-exception ceiling by units (ML 2025-23)",
+      "kind": "rule",
+      "domain": "consumer-credit",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "US Department of Housing and Urban Development, Federal Housing Administration"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "lending",
+        "mortgage",
+        "fha",
+        "loan-limit",
+        "limits"
+      ],
+      "use_cases": [
+        "lending-demo",
+        "mortgage-origination",
+        "loan-pricing",
+        "property-demo"
+      ],
+      "path": "entries/consumer-credit/US/us-fha-forward-mortgage-limits-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/consumer-credit/US/us-fha-forward-mortgage-limits-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 7
+    },
+    {
+      "id": "us-fhfa-conforming-loan-limits-2026-by-county",
+      "title": "US FHFA conforming loan limits for 2026 by county FIPS code and number of units (one to four), with baseline and ceiling",
+      "kind": "rule",
+      "domain": "consumer-credit",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Federal Housing Finance Agency"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "lending",
+        "mortgage",
+        "conforming-loan-limit",
+        "fhfa",
+        "jumbo-loan",
+        "limits"
+      ],
+      "use_cases": [
+        "lending-demo",
+        "mortgage-origination",
+        "loan-pricing",
+        "property-demo",
+        "credit-risk"
+      ],
+      "path": "entries/consumer-credit/US/us-fhfa-conforming-loan-limits-2026-by-county.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/consumer-credit/US/us-fhfa-conforming-loan-limits-2026-by-county.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.us_conforming_loan_limits",
+      "vectors": 18
     },
     {
       "id": "us-finance-company-new-car-loan-terms-2025",
@@ -13706,6 +14832,82 @@
       "vectors": 3
     },
     {
+      "id": "us-medicare-part-a-deductible-coinsurance-and-premiums-2026",
+      "title": "US Medicare Part A 2026 inpatient deductible, hospital and skilled nursing coinsurance, and premiums for the uninsured",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "healthcare",
+        "medicare",
+        "medicare-part-a",
+        "deductible",
+        "coinsurance",
+        "benefits",
+        "limits"
+      ],
+      "use_cases": [
+        "benefits-demo",
+        "health-demo",
+        "personal-finance",
+        "claims-generation",
+        "insurance"
+      ],
+      "path": "entries/healthcare/US/us-medicare-part-a-deductible-coinsurance-and-premiums-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/US/us-medicare-part-a-deductible-coinsurance-and-premiums-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 7
+    },
+    {
+      "id": "us-medicare-part-b-premiums-and-irmaa-2026",
+      "title": "US Medicare Part B 2026 standard premium, deductible and income-related monthly adjustment amounts (IRMAA) by MAGI tier",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "healthcare",
+        "medicare",
+        "medicare-part-b",
+        "irmaa",
+        "premiums",
+        "benefits",
+        "limits"
+      ],
+      "use_cases": [
+        "benefits-demo",
+        "health-demo",
+        "personal-finance",
+        "payroll-demo",
+        "pensions"
+      ],
+      "path": "entries/healthcare/US/us-medicare-part-b-premiums-and-irmaa-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/US/us-medicare-part-b-premiums-and-irmaa-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 11
+    },
+    {
       "id": "us-medicare-part-b-top-50-drugs-2024",
       "title": "Medicare Part B: the 50 drug HCPCS codes with highest total spending, with claims, beneficiaries and spending per claim, 2024",
       "kind": "rule",
@@ -15981,6 +17183,1032 @@
       "variable": "ihp_amount_approved_usd"
     },
     {
+      "id": "es-verifactu-invoice-type-codes",
+      "title": "Spain VERI*FACTU TipoFactura (F1, F2, F3, R1 to R5) and TipoRectificativa codes, Orden HAC/1177/2024",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "ES",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2024-10-29 to open",
+      "publishers": [
+        "Ministerio de Hacienda (Boletín Oficial del Estado)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "verifactu",
+        "aeat",
+        "spain",
+        "document-type"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "accounts-payable"
+      ],
+      "path": "entries/invoicing/ES/es-verifactu-invoice-type-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/ES/es-verifactu-invoice-type-codes.yaml",
+      "valid_from": "2024-10-29",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 6
+    },
+    {
+      "id": "es-verifactu-regime-key-codes",
+      "title": "Spain VERI*FACTU ClaveRegimen codes for VAT (L8A) and Canary Islands IGIC (L8B), Orden HAC/1177/2024",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "ES",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2024-10-29 to open",
+      "publishers": [
+        "Ministerio de Hacienda (Boletín Oficial del Estado)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "verifactu",
+        "aeat",
+        "spain",
+        "tax-regime",
+        "vat"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "accounts-payable"
+      ],
+      "path": "entries/invoicing/ES/es-verifactu-regime-key-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/ES/es-verifactu-regime-key-codes.yaml",
+      "valid_from": "2024-10-29",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 6
+    },
+    {
+      "id": "es-verifactu-tax-operation-and-exemption-codes",
+      "title": "Spain VERI*FACTU tax, CalificacionOperacion, OperacionExenta (E1 to E6) and IDType codes, Orden HAC/1177/2024",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "ES",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2024-10-29 to open",
+      "publishers": [
+        "Ministerio de Hacienda (Boletín Oficial del Estado)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "verifactu",
+        "aeat",
+        "spain",
+        "vat",
+        "vat-exemption",
+        "identifier"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "accounts-payable"
+      ],
+      "path": "entries/invoicing/ES/es-verifactu-tax-operation-and-exemption-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/ES/es-verifactu-tax-operation-and-exemption-codes.yaml",
+      "valid_from": "2024-10-29",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 9
+    },
+    {
+      "id": "in-gst-e-invoicing-turnover-threshold-history",
+      "title": "India GST e-invoicing (IRN) aggregate turnover threshold by date, Notification 13/2020-CT and amendments to 10/2023",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "IN",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2020-10-01 to open",
+      "publishers": [
+        "Central Board of Indirect Taxes and Customs (hosted by the GST Council Secretariat)"
+      ],
+      "source_licenses": [
+        "GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "gst",
+        "irn",
+        "india",
+        "thresholds"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "kyb-onboarding",
+        "tax-filing-demo"
+      ],
+      "path": "entries/invoicing/IN/in-gst-e-invoicing-turnover-threshold-history.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/IN/in-gst-e-invoicing-turnover-threshold-history.yaml",
+      "valid_from": "2020-10-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.step_schedule",
+      "vectors": 5
+    },
+    {
+      "id": "it-fatturapa-document-type-codes",
+      "title": "Italy FatturaPA TipoDocumento codes (TD01 to TD29), schema 1.2.3",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "IT",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2025-01-31 to open",
+      "publishers": [
+        "Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "fatturapa",
+        "sdi",
+        "italy",
+        "document-type"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "accounts-payable"
+      ],
+      "path": "entries/invoicing/IT/it-fatturapa-document-type-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/IT/it-fatturapa-document-type-codes.yaml",
+      "valid_from": "2025-01-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 5
+    },
+    {
+      "id": "it-fatturapa-field-formats",
+      "title": "Italy FatturaPA field formats: CodiceDestinatario, codice fiscale, IBAN, BIC, CAP and amounts (schema 1.2.3 patterns)",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "IT",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2025-01-31 to open",
+      "publishers": [
+        "Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "fatturapa",
+        "sdi",
+        "italy",
+        "field-format",
+        "identifier"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "kyb-onboarding"
+      ],
+      "path": "entries/invoicing/IT/it-fatturapa-field-formats.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/IT/it-fatturapa-field-formats.yaml",
+      "valid_from": "2025-01-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.einvoice_field_format",
+      "vectors": 9
+    },
+    {
+      "id": "it-fatturapa-payment-method-and-terms-codes",
+      "title": "Italy FatturaPA ModalitaPagamento (MP01 to MP23) and CondizioniPagamento (TP01 to TP03) codes, schema 1.2.3",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "IT",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2025-01-31 to open",
+      "publishers": [
+        "Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "fatturapa",
+        "sdi",
+        "italy",
+        "payment-method"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "accounts-payable",
+        "payments-demo"
+      ],
+      "path": "entries/invoicing/IT/it-fatturapa-payment-method-and-terms-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/IT/it-fatturapa-payment-method-and-terms-codes.yaml",
+      "valid_from": "2025-01-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 6
+    },
+    {
+      "id": "it-fatturapa-tax-regime-codes",
+      "title": "Italy FatturaPA RegimeFiscale codes for the seller's tax regime (RF01 to RF20), schema 1.2.3",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "IT",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2025-01-31 to open",
+      "publishers": [
+        "Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "fatturapa",
+        "sdi",
+        "italy",
+        "tax-regime"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "kyb-onboarding",
+        "company-generation"
+      ],
+      "path": "entries/invoicing/IT/it-fatturapa-tax-regime-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/IT/it-fatturapa-tax-regime-codes.yaml",
+      "valid_from": "2025-01-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 4
+    },
+    {
+      "id": "it-fatturapa-vat-nature-codes",
+      "title": "Italy FatturaPA Natura codes for VAT-free lines (N1 to N7 with sub-codes), schema 1.2.3",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "IT",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2025-01-31 to open",
+      "publishers": [
+        "Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "fatturapa",
+        "sdi",
+        "italy",
+        "vat-exemption"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "accounts-payable"
+      ],
+      "path": "entries/invoicing/IT/it-fatturapa-vat-nature-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/IT/it-fatturapa-vat-nature-codes.yaml",
+      "valid_from": "2025-01-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 6
+    },
+    {
+      "id": "it-fatturapa-withholding-pension-fund-and-vat-due-codes",
+      "title": "Italy FatturaPA TipoRitenuta, CausalePagamento, TipoCassa and EsigibilitaIVA codes, schema 1.2.3",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "IT",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2025-01-31 to open",
+      "publishers": [
+        "Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "fatturapa",
+        "sdi",
+        "italy",
+        "withholding-tax"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "accounts-payable",
+        "payroll-demo"
+      ],
+      "path": "entries/invoicing/IT/it-fatturapa-withholding-pension-fund-and-vat-due-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/IT/it-fatturapa-withholding-pension-fund-and-vat-due-codes.yaml",
+      "valid_from": "2025-01-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 6
+    },
+    {
+      "id": "it-sdi-invoice-file-name-rule",
+      "title": "Italy Sistema di Interscambio invoice file name rule (country, tax identifier, progressive, extension)",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "IT",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-03-31 to open",
+      "publishers": [
+        "Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "fatturapa",
+        "sdi",
+        "italy",
+        "file-name",
+        "field-format"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing"
+      ],
+      "path": "entries/invoicing/IT/it-sdi-invoice-file-name-rule.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/IT/it-sdi-invoice-file-name-rule.yaml",
+      "valid_from": "2026-03-31",
+      "valid_to": null,
+      "implementation": "almanac.rules.it_sdi_file_name",
+      "vectors": 10
+    },
+    {
+      "id": "mx-cfdi-40-attribute-catalogues",
+      "title": "Mexico SAT CFDI 4.0 attributes bound to SAT catalogues, with required or optional use (cfdv40.xsd)",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "MX",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2024-06-04 to open",
+      "publishers": [
+        "Servicio de Administración Tributaria (SAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "cfdi",
+        "sat",
+        "mexico",
+        "field-rule"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing"
+      ],
+      "path": "entries/invoicing/MX/mx-cfdi-40-attribute-catalogues.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/MX/mx-cfdi-40-attribute-catalogues.yaml",
+      "valid_from": "2024-06-04",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "mx-cfdi-40-catalogue-codes",
+      "title": "Mexico SAT CFDI 4.0 catalogue codes: FormaPago, MetodoPago, UsoCFDI, RegimenFiscal, ObjetoImp, Impuesto, Moneda and others",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "MX",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2024-12-13 to open",
+      "publishers": [
+        "Servicio de Administración Tributaria (SAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "cfdi",
+        "sat",
+        "mexico",
+        "payment-method",
+        "tax-regime"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "accounts-payable",
+        "kyb-onboarding"
+      ],
+      "path": "entries/invoicing/MX/mx-cfdi-40-catalogue-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/MX/mx-cfdi-40-catalogue-codes.yaml",
+      "valid_from": "2024-12-13",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 14
+    },
+    {
+      "id": "pl-ksef-fa3-invoice-type-codes",
+      "title": "Poland KSeF FA(3) RodzajFaktury invoice types and TypKorekty correction types",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "PL",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-02-01 to open",
+      "publishers": [
+        "Ministerstwo Finansów (Centralne Repozytorium Wzorów Dokumentów Elektronicznych)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "ksef",
+        "fa-3",
+        "poland",
+        "document-type"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "accounts-payable"
+      ],
+      "path": "entries/invoicing/PL/pl-ksef-fa3-invoice-type-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/PL/pl-ksef-fa3-invoice-type-codes.yaml",
+      "valid_from": "2026-02-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 6
+    },
+    {
+      "id": "pl-ksef-fa3-payment-transport-gtu-and-procedure-codes",
+      "title": "Poland KSeF FA(3) payment form, transport mode, GTU goods group and procedure marking codes",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "PL",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-02-01 to open",
+      "publishers": [
+        "Ministerstwo Finansów (Centralne Repozytorium Wzorów Dokumentów Elektronicznych)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "ksef",
+        "fa-3",
+        "poland",
+        "payment-method",
+        "gtu"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "accounts-payable",
+        "payments-demo",
+        "logistics"
+      ],
+      "path": "entries/invoicing/PL/pl-ksef-fa3-payment-transport-gtu-and-procedure-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/PL/pl-ksef-fa3-payment-transport-gtu-and-procedure-codes.yaml",
+      "valid_from": "2026-02-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 8
+    },
+    {
+      "id": "pl-ksef-fa3-vat-rate-codes",
+      "title": "Poland KSeF FA(3) P_12 VAT rate values (TStawkaPodatku: numeric rates, 0 KR/WDT/EX, zw, oo, np I/II)",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "PL",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-02-01 to open",
+      "publishers": [
+        "Ministerstwo Finansów (Centralne Repozytorium Wzorów Dokumentów Elektronicznych)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "ksef",
+        "fa-3",
+        "poland",
+        "vat",
+        "tax-rates"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "accounts-payable",
+        "retail-demo"
+      ],
+      "path": "entries/invoicing/PL/pl-ksef-fa3-vat-rate-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/PL/pl-ksef-fa3-vat-rate-codes.yaml",
+      "valid_from": "2026-02-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 8
+    },
+    {
+      "id": "sa-zatca-invoice-type-and-transaction-codes",
+      "title": "Saudi Arabia ZATCA e-invoice type codes (388, 386, 383, 381) and KSA-2 transaction code NNPNESB",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "SA",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2023-05-19 to open",
+      "publishers": [
+        "Zakat, Tax and Customs Authority (ZATCA)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "zatca",
+        "fatoora",
+        "saudi-arabia",
+        "document-type"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "accounts-payable"
+      ],
+      "path": "entries/invoicing/SA/sa-zatca-invoice-type-and-transaction-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/SA/sa-zatca-invoice-type-and-transaction-codes.yaml",
+      "valid_from": "2023-05-19",
+      "valid_to": null,
+      "implementation": "almanac.rules.sa_zatca_transaction_code",
+      "vectors": 10
+    },
+    {
+      "id": "sa-zatca-vat-exemption-reason-codes",
+      "title": "Saudi Arabia ZATCA e-invoice VAT exemption and zero-rating reason codes (VATEX-SA) by VAT category",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "SA",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2023-05-19 to open",
+      "publishers": [
+        "Zakat, Tax and Customs Authority (ZATCA)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "zatca",
+        "fatoora",
+        "saudi-arabia",
+        "vat-exemption"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "accounts-payable"
+      ],
+      "path": "entries/invoicing/SA/sa-zatca-vat-exemption-reason-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/SA/sa-zatca-vat-exemption-reason-codes.yaml",
+      "valid_from": "2023-05-19",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-peppol-electronic-address-scheme-and-icd-codes",
+      "title": "Peppol BIS Billing 3.0 electronic address schemes (EAS) and ISO 6523 ICD codes",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "global",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-08-17 to open",
+      "publishers": [
+        "OpenPeppol AISBL"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "peppol",
+        "en-16931",
+        "ubl",
+        "identifier",
+        "iso-6523"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "kyb-onboarding",
+        "company-generation"
+      ],
+      "path": "entries/invoicing/global/global-peppol-electronic-address-scheme-and-icd-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/global/global-peppol-electronic-address-scheme-and-icd-codes.yaml",
+      "valid_from": "2026-08-17",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 6
+    },
+    {
+      "id": "global-peppol-invoice-and-credit-note-type-codes",
+      "title": "Peppol BIS Billing 3.0 invoice and credit note type codes (UNCL1001 subsets) with profile restrictions",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "global",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-08-17 to open",
+      "publishers": [
+        "OpenPeppol AISBL"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "peppol",
+        "en-16931",
+        "ubl",
+        "document-type"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "accounts-payable"
+      ],
+      "path": "entries/invoicing/global/global-peppol-invoice-and-credit-note-type-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/global/global-peppol-invoice-and-credit-note-type-codes.yaml",
+      "valid_from": "2026-08-17",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-peppol-participant-identifier-format",
+      "title": "Peppol participant identifier format and SML DNS name (Policy for use of Identifiers 4.4.0)",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "global",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2025-02-06 to open",
+      "publishers": [
+        "OpenPeppol AISBL"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "peppol",
+        "en-16931",
+        "ubl",
+        "identifier",
+        "participant-identifier",
+        "hash"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "kyb-onboarding"
+      ],
+      "path": "entries/invoicing/global/global-peppol-participant-identifier-format.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/global/global-peppol-participant-identifier-format.yaml",
+      "valid_from": "2025-02-06",
+      "valid_to": null,
+      "implementation": "almanac.rules.peppol_participant_id",
+      "vectors": 10
+    },
+    {
+      "id": "global-peppol-participant-identifier-schemes",
+      "title": "Peppol participant identifier schemes, code list 9.7 (ISO 6523 ICD, country, state, validation pattern)",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "global",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2025-02-06 to open",
+      "publishers": [
+        "OpenPeppol AISBL"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "peppol",
+        "en-16931",
+        "ubl",
+        "identifier",
+        "iso-6523",
+        "participant-identifier"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "kyb-onboarding",
+        "company-generation"
+      ],
+      "path": "entries/invoicing/global/global-peppol-participant-identifier-schemes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/global/global-peppol-participant-identifier-schemes.yaml",
+      "valid_from": "2025-02-06",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "global-peppol-payment-means-codes",
+      "title": "Peppol BIS Billing 3.0 payment means codes (UNCL4461, D.16B)",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "global",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-08-17 to open",
+      "publishers": [
+        "OpenPeppol AISBL"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "peppol",
+        "en-16931",
+        "ubl",
+        "payment-method"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "accounts-payable",
+        "payments-demo",
+        "payments-reconciliation"
+      ],
+      "path": "entries/invoicing/global/global-peppol-payment-means-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/global/global-peppol-payment-means-codes.yaml",
+      "valid_from": "2026-08-17",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 5
+    },
+    {
+      "id": "global-peppol-unit-of-measure-codes",
+      "title": "Peppol BIS Billing 3.0 unit of measure codes (UN/ECE Recommendation 20 with X-prefixed Recommendation 21)",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "global",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-08-17 to open",
+      "publishers": [
+        "OpenPeppol AISBL"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "peppol",
+        "en-16931",
+        "ubl",
+        "unit-of-measure"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "retail-demo",
+        "logistics"
+      ],
+      "path": "entries/invoicing/global/global-peppol-unit-of-measure-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/global/global-peppol-unit-of-measure-codes.yaml",
+      "valid_from": "2026-08-17",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 5
+    },
+    {
+      "id": "global-peppol-vat-category-and-exemption-reason-codes",
+      "title": "Peppol BIS Billing 3.0 VAT category codes (UNCL5305 subset) and VATEX exemption reason codes",
+      "kind": "rule",
+      "domain": "invoicing",
+      "region": "global",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-08-17 to open",
+      "publishers": [
+        "OpenPeppol AISBL"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "invoicing",
+        "e-invoicing",
+        "tax",
+        "code-list",
+        "peppol",
+        "en-16931",
+        "ubl",
+        "vat",
+        "vat-exemption"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "erp-demo",
+        "tax-demo",
+        "data-quality-validation",
+        "invoicing",
+        "accounts-payable",
+        "audit-demo"
+      ],
+      "path": "entries/invoicing/global/global-peppol-vat-category-and-exemption-reason-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/invoicing/global/global-peppol-vat-category-and-exemption-reason-codes.yaml",
+      "valid_from": "2026-08-17",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 7
+    },
+    {
       "id": "global-iso-639-2-language-codes",
       "title": "ISO 639-2 three-letter language codes with ISO 639-1 two-letter equivalents and English and French names",
       "kind": "rule",
@@ -16231,6 +18459,83 @@
       "variable": "payer_state"
     },
     {
+      "id": "de-bgb-271a-payment-term-limits",
+      "title": "Germany limits on agreed payment terms (section 271a BGB): 60 days between businesses, 30 and 60 for public authorities",
+      "kind": "rule",
+      "domain": "payments",
+      "region": "DE",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2014-07-29 to open",
+      "publishers": [
+        "Bundesministerium der Justiz / Bundesamt für Justiz (gesetze-im-internet.de)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "payments",
+        "bank-codes",
+        "payment-terms",
+        "late-payment",
+        "invoicing",
+        "reference-table"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-demo",
+        "kyc-onboarding",
+        "data-quality-validation",
+        "treasury-demo"
+      ],
+      "path": "entries/payments/DE/de-bgb-271a-payment-term-limits.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/DE/de-bgb-271a-payment-term-limits.yaml",
+      "valid_from": "2014-07-29",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "de-bgb-288-default-interest",
+      "title": "Germany statutory default interest (section 288 BGB): base rate plus 5 or 9 points, 40 euro flat fee, 30-day default",
+      "kind": "rule",
+      "domain": "payments",
+      "region": "DE",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2014-07-29 to open",
+      "publishers": [
+        "Bundesministerium der Justiz / Bundesamt für Justiz (gesetze-im-internet.de)",
+        "Deutsche Bundesbank"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "payments",
+        "bank-codes",
+        "late-payment",
+        "default-interest",
+        "base-rate",
+        "invoicing"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-demo",
+        "kyc-onboarding",
+        "data-quality-validation",
+        "treasury-demo"
+      ],
+      "path": "entries/payments/DE/de-bgb-288-default-interest.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/DE/de-bgb-288-default-interest.yaml",
+      "valid_from": "2014-07-29",
+      "valid_to": null,
+      "implementation": "almanac.rules.de_default_interest",
+      "vectors": 7
+    },
+    {
       "id": "eu-cashless-payments-by-instrument-annual-2019-2021",
       "title": "Euro area cashless payment transactions by instrument, annual counts 2019 to 2021",
       "kind": "temporal",
@@ -16266,6 +18571,78 @@
         "end": "2021-12-31"
       },
       "variable": "total_payment_transactions_millions"
+    },
+    {
+      "id": "eu-psd2-sca-exemption-thresholds",
+      "title": "European Union PSD2 strong customer authentication exemptions: contactless, low-value remote and transaction risk analysis limits",
+      "kind": "rule",
+      "domain": "payments",
+      "region": "EU",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2019-09-14 to open",
+      "publishers": [
+        "The National Archives (legislation.gov.uk)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "fraud",
+        "psd2",
+        "strong-customer-authentication",
+        "card-payments",
+        "3ds"
+      ],
+      "use_cases": [
+        "fraud-detection-demo",
+        "payments-demo",
+        "fintech-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/payments/EU/eu-psd2-sca-exemption-thresholds.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/EU/eu-psd2-sca-exemption-thresholds.yaml",
+      "valid_from": "2019-09-14",
+      "valid_to": null,
+      "implementation": "almanac.rules.eu_sca_exemptions",
+      "vectors": 11
+    },
+    {
+      "id": "gb-payment-services-unauthorised-transactions",
+      "title": "United Kingdom unauthorised payment refund deadline, £35 payer liability cap and 13-month notice, Payment Services Regulations 2017",
+      "kind": "rule",
+      "domain": "payments",
+      "region": "GB",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-04-28 to open",
+      "publishers": [
+        "The National Archives (legislation.gov.uk)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "compliance",
+        "consumer-protection",
+        "fraud",
+        "unauthorised-transactions",
+        "payment-services-regulations"
+      ],
+      "use_cases": [
+        "fraud-detection-demo",
+        "payments-demo",
+        "banking-demo",
+        "customer-service-demo",
+        "sla-calculation"
+      ],
+      "path": "entries/payments/GB/gb-payment-services-unauthorised-transactions.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/GB/gb-payment-services-unauthorised-transactions.yaml",
+      "valid_from": "2026-04-28",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
     },
     {
       "id": "us-fed-payments-study-noncash-payments-by-type-2015-2024",
@@ -16304,6 +18681,44 @@
       "valid_to": "2024-12-31",
       "implementation": "almanac.rules.lookup_table",
       "vectors": 4
+    },
+    {
+      "id": "global-iban-check-digits-mod97",
+      "title": "IBAN check digits by ISO 7064 MOD 97-10: calculation and validation as a central bank specifies them",
+      "kind": "rule",
+      "domain": "payments",
+      "region": "global",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2013-01-01 to open",
+      "publishers": [
+        "Central Bank of the Republic of Azerbaijan"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "payments",
+        "bank-codes",
+        "iban",
+        "check-digit",
+        "iso-13616",
+        "iso-7064"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-demo",
+        "kyc-onboarding",
+        "data-quality-validation",
+        "treasury-demo"
+      ],
+      "path": "entries/payments/global/global-iban-check-digits-mod97.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/global/global-iban-check-digits-mod97.yaml",
+      "valid_from": "2013-01-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.iban",
+      "vectors": 6
     },
     {
       "id": "gb-state-pension-rates",
@@ -16372,6 +18787,45 @@
       "valid_to": null,
       "implementation": "almanac.rules.lookup_table",
       "vectors": 5
+    },
+    {
+      "id": "us-retirement-plan-limits-2026",
+      "title": "US retirement plan and IRA limits for 2026: 401(k), 403(b), 457, catch-up, SIMPLE, 415, compensation and HCE (Notice 2025-67)",
+      "kind": "rule",
+      "domain": "pensions",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "pensions",
+        "retirement",
+        "401k",
+        "ira",
+        "payroll",
+        "benefits",
+        "limits",
+        "notice-2025-67"
+      ],
+      "use_cases": [
+        "benefits-demo",
+        "hr-demo",
+        "payroll-demo",
+        "pensions",
+        "financial-planning"
+      ],
+      "path": "entries/pensions/US/us-retirement-plan-limits-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/pensions/US/us-retirement-plan-limits-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 28
     },
     {
       "id": "us-social-security-full-retirement-age",
@@ -16447,6 +18901,76 @@
       "valid_to": "2024-12-31",
       "implementation": "almanac.rules.lookup_table",
       "vectors": 3
+    },
+    {
+      "id": "gb-dpa-2018-penalty-maximum",
+      "title": "United Kingdom data protection maximum penalties: higher and standard maximum amounts, Data Protection Act 2018 section 157",
+      "kind": "rule",
+      "domain": "privacy",
+      "region": "GB",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-09-30 to open",
+      "publishers": [
+        "The National Archives (legislation.gov.uk)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "privacy",
+        "compliance",
+        "uk-gdpr",
+        "penalties",
+        "data-protection-act-2018"
+      ],
+      "use_cases": [
+        "audit-demo",
+        "data-quality-validation",
+        "financial-reporting"
+      ],
+      "path": "entries/privacy/GB/gb-dpa-2018-penalty-maximum.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/privacy/GB/gb-dpa-2018-penalty-maximum.yaml",
+      "valid_from": "2026-09-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.gb_dpa_penalty_maximum",
+      "vectors": 4
+    },
+    {
+      "id": "gb-uk-gdpr-time-limits",
+      "title": "United Kingdom UK GDPR time limits: 72-hour breach notification, subject request response period and child consent age",
+      "kind": "rule",
+      "domain": "privacy",
+      "region": "GB",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-09-30 to open",
+      "publishers": [
+        "The National Archives (legislation.gov.uk)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "privacy",
+        "compliance",
+        "uk-gdpr",
+        "data-breach",
+        "subject-access-request",
+        "data-protection"
+      ],
+      "use_cases": [
+        "customer-service-demo",
+        "kyc-onboarding",
+        "sla-calculation",
+        "data-quality-validation"
+      ],
+      "path": "entries/privacy/GB/gb-uk-gdpr-time-limits.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/privacy/GB/gb-uk-gdpr-time-limits.yaml",
+      "valid_from": "2026-09-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
     },
     {
       "id": "us-hipaa-safe-harbor-identifiers",
@@ -16770,6 +19294,44 @@
       "valid_to": "2025-12-31",
       "implementation": "almanac.rules.step_schedule",
       "vectors": 3
+    },
+    {
+      "id": "de-basiszinssatz-247-bgb",
+      "title": "Germany base rate (Basiszinssatz) under section 247 BGB, half-yearly steps since 2002",
+      "kind": "rule",
+      "domain": "rates",
+      "region": "DE",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2002-01-01 to open",
+      "publishers": [
+        "Deutsche Bundesbank"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "banking",
+        "payments",
+        "bank-codes",
+        "base-rate",
+        "interest-rate",
+        "step-schedule",
+        "bundesbank"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-demo",
+        "kyc-onboarding",
+        "data-quality-validation",
+        "treasury-demo"
+      ],
+      "path": "entries/rates/DE/de-basiszinssatz-247-bgb.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/rates/DE/de-basiszinssatz-247-bgb.yaml",
+      "valid_from": "2002-01-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.step_schedule",
+      "vectors": 5
     },
     {
       "id": "eu-cost-of-borrowing-corporations-monthly-2025",
@@ -17184,6 +19746,76 @@
       "valid_to": "2025-01-31",
       "implementation": "almanac.rules.lookup_table",
       "vectors": 3
+    },
+    {
+      "id": "au-gst-rate",
+      "title": "Australia GST rate on taxable supplies, A New Tax System (Goods and Services Tax) Act 1999 s 9-70",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "AU",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to open",
+      "publishers": [
+        "Office of Parliamentary Counsel, Federal Register of Legislation (Australia)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "vat",
+        "tax",
+        "consumption-tax",
+        "gst"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "tax-demo",
+        "ecommerce-demo",
+        "invoicing",
+        "accounts-payable"
+      ],
+      "path": "entries/tax/AU/au-gst-rate.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/AU/au-gst-rate.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.consumption_tax",
+      "vectors": 3
+    },
+    {
+      "id": "ch-vat-rates",
+      "title": "Switzerland VAT rates: standard, reduced and accommodation special rate (VAT Act SR 641.20, Art. 25)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "CH",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2024-01-01 to open",
+      "publishers": [
+        "Swiss Federal Chancellery, Fedlex"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "vat",
+        "tax",
+        "consumption-tax",
+        "mwst"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "tax-demo",
+        "ecommerce-demo",
+        "invoicing",
+        "accounts-payable"
+      ],
+      "path": "entries/tax/CH/ch-vat-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/CH/ch-vat-rates.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.consumption_tax",
+      "vectors": 4
     },
     {
       "id": "de-social-insurance-contribution-rates-2025",
@@ -18108,6 +20740,506 @@
       "vectors": 5
     },
     {
+      "id": "jp-consumption-tax-rates",
+      "title": "Japan consumption tax rates from 1 October 2019: standard and reduced, with national and local components (NTA)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "JP",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2019-10-01 to open",
+      "publishers": [
+        "National Tax Agency, Japan"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "vat",
+        "tax",
+        "consumption-tax",
+        "japan-consumption-tax"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "tax-demo",
+        "ecommerce-demo",
+        "invoicing",
+        "accounts-payable"
+      ],
+      "path": "entries/tax/JP/jp-consumption-tax-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/JP/jp-consumption-tax-rates.yaml",
+      "valid_from": "2019-10-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.consumption_tax",
+      "vectors": 3
+    },
+    {
+      "id": "no-vat-rates-2026",
+      "title": "Norway VAT (merverdiavgift) rates for 2026: general, foodstuffs, water and transport/accommodation (Skatteetaten)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "NO",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Norwegian Tax Administration (Skatteetaten)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "vat",
+        "tax",
+        "consumption-tax",
+        "mva"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "tax-demo",
+        "ecommerce-demo",
+        "invoicing",
+        "accounts-payable"
+      ],
+      "path": "entries/tax/NO/no-vat-rates-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/NO/no-vat-rates-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.consumption_tax",
+      "vectors": 3
+    },
+    {
+      "id": "sg-gst-rates",
+      "title": "Singapore GST standard rate and zero rate with the IRAS tax-exclusive worked example",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "SG",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2024-01-01 to open",
+      "publishers": [
+        "Inland Revenue Authority of Singapore"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "vat",
+        "tax",
+        "consumption-tax",
+        "gst"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "tax-demo",
+        "ecommerce-demo",
+        "invoicing",
+        "accounts-payable"
+      ],
+      "path": "entries/tax/SG/sg-gst-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/SG/sg-gst-rates.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.consumption_tax",
+      "vectors": 3
+    },
+    {
+      "id": "us-alternative-minimum-tax-exemptions-2026",
+      "title": "US alternative minimum tax exemptions, phase-out thresholds and 28% rate threshold for 2026 (Rev. Proc. 2025-32)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tax",
+        "alternative-minimum-tax",
+        "amt",
+        "limits",
+        "rev-proc-2025-32"
+      ],
+      "use_cases": [
+        "tax-demo",
+        "tax-filing-demo",
+        "payroll-demo",
+        "personal-finance"
+      ],
+      "path": "entries/tax/US/us-alternative-minimum-tax-exemptions-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-alternative-minimum-tax-exemptions-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 13
+    },
+    {
+      "id": "us-capital-gains-rate-thresholds-2026",
+      "title": "US long-term capital gains and qualified dividends 0% and 15% rate thresholds for 2026 by filing status (Rev. Proc. 2025-32)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tax",
+        "capital-gains",
+        "qualified-dividends",
+        "limits",
+        "rev-proc-2025-32"
+      ],
+      "use_cases": [
+        "tax-demo",
+        "tax-filing-demo",
+        "payroll-demo",
+        "personal-finance"
+      ],
+      "path": "entries/tax/US/us-capital-gains-rate-thresholds-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-capital-gains-rate-thresholds-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 11
+    },
+    {
+      "id": "us-child-tax-credit-and-adoption-credit-2026",
+      "title": "US child tax credit and adoption credit amounts for 2026, including refundable portions and phase-out (Rev. Proc. 2025-32)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tax",
+        "child-tax-credit",
+        "adoption-credit",
+        "tax-credit",
+        "limits",
+        "obbba",
+        "rev-proc-2025-32"
+      ],
+      "use_cases": [
+        "tax-demo",
+        "tax-filing-demo",
+        "payroll-demo",
+        "personal-finance",
+        "benefits-demo"
+      ],
+      "path": "entries/tax/US/us-child-tax-credit-and-adoption-credit-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-child-tax-credit-and-adoption-credit-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 8
+    },
+    {
+      "id": "us-earned-income-credit-parameters-2026",
+      "title": "US earned income tax credit for 2026: earned income amount, maximum credit and phase-out range by qualifying children (Rev. Proc. 2025-32)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tax",
+        "earned-income-credit",
+        "eitc",
+        "tax-credit",
+        "limits",
+        "rev-proc-2025-32"
+      ],
+      "use_cases": [
+        "tax-demo",
+        "tax-filing-demo",
+        "payroll-demo",
+        "personal-finance",
+        "benefits-demo"
+      ],
+      "path": "entries/tax/US/us-earned-income-credit-parameters-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-earned-income-credit-parameters-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 9
+    },
+    {
+      "id": "us-estate-and-gift-tax-exclusions-2026",
+      "title": "US estate and gift tax basic exclusion, GST exemption and annual gift exclusions for 2026 (Rev. Proc. 2025-32)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tax",
+        "estate-tax",
+        "gift-tax",
+        "limits",
+        "obbba",
+        "rev-proc-2025-32"
+      ],
+      "use_cases": [
+        "tax-demo",
+        "financial-planning",
+        "personal-finance"
+      ],
+      "path": "entries/tax/US/us-estate-and-gift-tax-exclusions-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-estate-and-gift-tax-exclusions-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 7
+    },
+    {
+      "id": "us-federal-income-tax-brackets-2026-estates-and-trusts",
+      "title": "US federal income tax rate schedule for 2026: estates and trusts (Rev. Proc. 2025-32)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tax",
+        "income-tax",
+        "tax-brackets",
+        "limits",
+        "obbba",
+        "rev-proc-2025-32"
+      ],
+      "use_cases": [
+        "tax-demo",
+        "tax-filing-demo",
+        "payroll-demo",
+        "personal-finance"
+      ],
+      "path": "entries/tax/US/us-federal-income-tax-brackets-2026-estates-and-trusts.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-federal-income-tax-brackets-2026-estates-and-trusts.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.income_tax_bands",
+      "vectors": 5
+    },
+    {
+      "id": "us-federal-income-tax-brackets-2026-head-of-household",
+      "title": "US federal income tax rate schedule for 2026: head of household (Rev. Proc. 2025-32)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tax",
+        "income-tax",
+        "tax-brackets",
+        "limits",
+        "obbba",
+        "rev-proc-2025-32"
+      ],
+      "use_cases": [
+        "tax-demo",
+        "tax-filing-demo",
+        "payroll-demo",
+        "personal-finance"
+      ],
+      "path": "entries/tax/US/us-federal-income-tax-brackets-2026-head-of-household.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-federal-income-tax-brackets-2026-head-of-household.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.income_tax_bands",
+      "vectors": 8
+    },
+    {
+      "id": "us-federal-income-tax-brackets-2026-married-filing-jointly",
+      "title": "US federal income tax rate schedule for 2026: married filing jointly (Rev. Proc. 2025-32)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tax",
+        "income-tax",
+        "tax-brackets",
+        "limits",
+        "obbba",
+        "rev-proc-2025-32"
+      ],
+      "use_cases": [
+        "tax-demo",
+        "tax-filing-demo",
+        "payroll-demo",
+        "personal-finance"
+      ],
+      "path": "entries/tax/US/us-federal-income-tax-brackets-2026-married-filing-jointly.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-federal-income-tax-brackets-2026-married-filing-jointly.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.income_tax_bands",
+      "vectors": 8
+    },
+    {
+      "id": "us-federal-income-tax-brackets-2026-married-filing-separately",
+      "title": "US federal income tax rate schedule for 2026: married filing separately (Rev. Proc. 2025-32)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tax",
+        "income-tax",
+        "tax-brackets",
+        "limits",
+        "obbba",
+        "rev-proc-2025-32"
+      ],
+      "use_cases": [
+        "tax-demo",
+        "tax-filing-demo",
+        "payroll-demo",
+        "personal-finance"
+      ],
+      "path": "entries/tax/US/us-federal-income-tax-brackets-2026-married-filing-separately.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-federal-income-tax-brackets-2026-married-filing-separately.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.income_tax_bands",
+      "vectors": 8
+    },
+    {
+      "id": "us-federal-income-tax-brackets-2026-single",
+      "title": "US federal income tax rate schedule for 2026: single (Rev. Proc. 2025-32)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tax",
+        "income-tax",
+        "tax-brackets",
+        "limits",
+        "obbba",
+        "rev-proc-2025-32"
+      ],
+      "use_cases": [
+        "tax-demo",
+        "tax-filing-demo",
+        "payroll-demo",
+        "personal-finance"
+      ],
+      "path": "entries/tax/US/us-federal-income-tax-brackets-2026-single.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-federal-income-tax-brackets-2026-single.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.income_tax_bands",
+      "vectors": 8
+    },
+    {
+      "id": "us-federal-income-tax-withholding-percentage-method-2026",
+      "title": "US federal income tax withholding for 2026: Publication 15-T percentage method tables and Worksheet 1A for automated payroll",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tax",
+        "payroll",
+        "withholding",
+        "form-w-4",
+        "limits",
+        "publication-15-t"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-demo",
+        "tax-demo"
+      ],
+      "path": "entries/tax/US/us-federal-income-tax-withholding-percentage-method-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-federal-income-tax-withholding-percentage-method-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.us_fit_withholding",
+      "vectors": 45
+    },
+    {
       "id": "us-fica-tax-rates",
       "title": "United States FICA payroll tax rates: Social Security and Medicare, employee and employer, 26 U.S.C. 3101 and 3111",
       "kind": "rule",
@@ -18140,6 +21272,187 @@
       "valid_to": null,
       "implementation": "almanac.rules.lookup_table",
       "vectors": 5
+    },
+    {
+      "id": "us-macrs-gds-half-year-depreciation-rates",
+      "title": "US MACRS GDS depreciation percentages, half-year convention, 3- to 20-year property (IRS Publication 946, Table A-1)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "1987-01-01 to open",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tax",
+        "depreciation",
+        "macrs",
+        "fixed-assets",
+        "publication-946"
+      ],
+      "use_cases": [
+        "tax-demo",
+        "tax-filing-demo",
+        "financial-reporting",
+        "accounts-payable"
+      ],
+      "path": "entries/tax/US/us-macrs-gds-half-year-depreciation-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-macrs-gds-half-year-depreciation-rates.yaml",
+      "valid_from": "1987-01-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.us_macrs_depreciation",
+      "vectors": 17
+    },
+    {
+      "id": "us-payroll-tax-wage-bases-and-withholding-rates-2026",
+      "title": "US federal payroll tax limits for 2026: social security wage base, FUTA rate and wage base, supplemental and backup withholding",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury",
+        "Office of the Law Revision Counsel, US House of Representatives, via govinfo"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tax",
+        "payroll",
+        "payroll-tax",
+        "social-security",
+        "futa",
+        "supplemental-wages",
+        "limits",
+        "publication-15"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-demo",
+        "tax-demo"
+      ],
+      "path": "entries/tax/US/us-payroll-tax-wage-bases-and-withholding-rates-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-payroll-tax-wage-bases-and-withholding-rates-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 12
+    },
+    {
+      "id": "us-section-179-expensing-limits-2026",
+      "title": "US section 179 expensing limits for taxable years beginning in 2026: maximum deduction, phase-out threshold and SUV cap",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tax",
+        "depreciation",
+        "section-179",
+        "limits",
+        "obbba",
+        "rev-proc-2025-32"
+      ],
+      "use_cases": [
+        "tax-demo",
+        "tax-filing-demo",
+        "accounts-payable",
+        "financial-reporting"
+      ],
+      "path": "entries/tax/US/us-section-179-expensing-limits-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-section-179-expensing-limits-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "us-standard-deduction-2026",
+      "title": "US federal standard deduction for 2026 by filing status, with the additional amounts for age or blindness (Rev. Proc. 2025-32)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tax",
+        "income-tax",
+        "standard-deduction",
+        "limits",
+        "rev-proc-2025-32"
+      ],
+      "use_cases": [
+        "tax-demo",
+        "tax-filing-demo",
+        "payroll-demo",
+        "personal-finance"
+      ],
+      "path": "entries/tax/US/us-standard-deduction-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-standard-deduction-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 9
+    },
+    {
+      "id": "us-standard-mileage-rates-2026",
+      "title": "US IRS standard mileage rates for 2026: business, charitable, medical and moving, with FAVR and vehicle valuation caps (Notice 2026-10)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Internal Revenue Service, US Department of the Treasury"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "tax",
+        "payroll",
+        "mileage",
+        "expenses",
+        "limits",
+        "notice-2026-10"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-demo",
+        "tax-demo",
+        "fleet-demo",
+        "accounts-payable"
+      ],
+      "path": "entries/tax/US/us-standard-mileage-rates-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/US/us-standard-mileage-rates-2026.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 7
     },
     {
       "id": "global-oecd-tax-wedge-single-earner-2025",
@@ -18178,6 +21491,84 @@
       "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/global/global-oecd-tax-wedge-single-earner-2025.yaml",
       "valid_from": "2025-01-01",
       "valid_to": "2025-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 3
+    },
+    {
+      "id": "global-oecd-vat-gst-rates-2005-2023",
+      "title": "VAT/GST standard rates by country and year 2005 to 2023, with reduced and regional rates (OECD Consumption Tax Trends)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "global",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2005-01-01 to 2023-09-01",
+      "publishers": [
+        "OECD Centre for Tax Policy and Administration"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "vat",
+        "tax",
+        "consumption-tax",
+        "oecd",
+        "reference-table",
+        "by-country"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "tax-demo",
+        "ecommerce-demo",
+        "invoicing",
+        "accounts-payable",
+        "multi-currency-ledger"
+      ],
+      "path": "entries/tax/global/global-oecd-vat-gst-rates-2005-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/global/global-oecd-vat-gst-rates-2005-2023.yaml",
+      "valid_from": "2005-01-01",
+      "valid_to": "2023-09-01",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "global-oecd-vat-gst-registration-thresholds-2023",
+      "title": "VAT/GST registration and collection turnover thresholds by OECD country, position at 1 September 2023 (OECD)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "global",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2023-09-01 to 2023-09-01",
+      "publishers": [
+        "OECD Centre for Tax Policy and Administration"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "vat",
+        "tax",
+        "consumption-tax",
+        "oecd",
+        "registration-threshold",
+        "small-business",
+        "by-country"
+      ],
+      "use_cases": [
+        "invoicing-demo",
+        "tax-demo",
+        "ecommerce-demo",
+        "invoicing",
+        "accounts-payable",
+        "kyb-onboarding",
+        "company-generation"
+      ],
+      "path": "entries/tax/global/global-oecd-vat-gst-registration-thresholds-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/global/global-oecd-vat-gst-registration-thresholds-2023.yaml",
+      "valid_from": "2023-09-01",
+      "valid_to": "2023-09-01",
       "implementation": "almanac.rules.lookup_table",
       "vectors": 3
     },
@@ -18774,6 +22165,575 @@
         "end": "2025-12-31"
       },
       "variable": "nights_spent"
+    },
+    {
+      "id": "eu-combined-nomenclature-2026-headings",
+      "title": "EU Combined Nomenclature 2026 four-digit headings with descriptions (Eurostat Comext)",
+      "kind": "rule",
+      "domain": "trade",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Eurostat (Comext)"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "trade",
+        "customs",
+        "tariffs",
+        "combined-nomenclature",
+        "harmonized-system",
+        "code-list"
+      ],
+      "use_cases": [
+        "ecommerce-demo",
+        "logistics-demo",
+        "procurement-demo",
+        "invoicing-demo",
+        "product-catalogue"
+      ],
+      "path": "entries/trade/EU/eu-combined-nomenclature-2026-headings.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/trade/EU/eu-combined-nomenclature-2026-headings.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 3
+    },
+    {
+      "id": "eu-combined-nomenclature-2026-new-and-closed-codes",
+      "title": "EU Combined Nomenclature eight-digit codes opened on 1 January 2026 and closed at the end of 2025 (Eurostat Comext)",
+      "kind": "rule",
+      "domain": "trade",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Eurostat (Comext)"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "trade",
+        "customs",
+        "tariffs",
+        "combined-nomenclature",
+        "code-list",
+        "code-changes"
+      ],
+      "use_cases": [
+        "ecommerce-demo",
+        "logistics-demo",
+        "procurement-demo",
+        "invoicing-demo",
+        "data-quality-validation"
+      ],
+      "path": "entries/trade/EU/eu-combined-nomenclature-2026-new-and-closed-codes.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/trade/EU/eu-combined-nomenclature-2026-new-and-closed-codes.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 3
+    },
+    {
+      "id": "eu-combined-nomenclature-2026-sections-and-chapters",
+      "title": "EU Combined Nomenclature 2026 sections and chapters with titles (Eurostat Comext)",
+      "kind": "rule",
+      "domain": "trade",
+      "region": "EU",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-01-01 to 2026-12-31",
+      "publishers": [
+        "Eurostat (Comext)"
+      ],
+      "source_licenses": [
+        "CC-BY-4.0"
+      ],
+      "tags": [
+        "trade",
+        "customs",
+        "tariffs",
+        "combined-nomenclature",
+        "harmonized-system",
+        "code-list"
+      ],
+      "use_cases": [
+        "ecommerce-demo",
+        "logistics-demo",
+        "procurement-demo",
+        "invoicing-demo"
+      ],
+      "path": "entries/trade/EU/eu-combined-nomenclature-2026-sections-and-chapters.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/trade/EU/eu-combined-nomenclature-2026-sections-and-chapters.yaml",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 3
+    },
+    {
+      "id": "gb-trade-tariff-sections-and-chapters",
+      "title": "UK Integrated Online Tariff sections and chapters with titles (Trade Tariff API)",
+      "kind": "rule",
+      "domain": "trade",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-11-03 to open",
+      "publishers": [
+        "HM Revenue & Customs and Department for Business and Trade, UK Trade Tariff service"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "trade",
+        "customs",
+        "tariffs",
+        "uk-global-tariff",
+        "harmonized-system",
+        "code-list"
+      ],
+      "use_cases": [
+        "ecommerce-demo",
+        "logistics-demo",
+        "procurement-demo",
+        "invoicing-demo"
+      ],
+      "path": "entries/trade/GB/gb-trade-tariff-sections-and-chapters.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/trade/GB/gb-trade-tariff-sections-and-chapters.yaml",
+      "valid_from": "2026-11-03",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 4
+    },
+    {
+      "id": "gb-uk-global-tariff-third-country-duty-consumer-goods",
+      "title": "UK Global Tariff third-country duty and import VAT for apparel, footwear, computers, phones, TVs, furniture and toys",
+      "kind": "rule",
+      "domain": "trade",
+      "region": "GB",
+      "tier": "A",
+      "status": "verified",
+      "validity": "2026-11-03 to open",
+      "publishers": [
+        "HM Revenue & Customs and Department for Business and Trade, UK Trade Tariff service"
+      ],
+      "source_licenses": [
+        "OGL-UK-3.0"
+      ],
+      "tags": [
+        "trade",
+        "customs",
+        "tariffs",
+        "uk-global-tariff",
+        "duty-rates",
+        "import-duty",
+        "vat"
+      ],
+      "use_cases": [
+        "ecommerce-demo",
+        "logistics-demo",
+        "procurement-demo",
+        "invoicing-demo",
+        "product-catalogue",
+        "pricing"
+      ],
+      "path": "entries/trade/GB/gb-uk-global-tariff-third-country-duty-consumer-goods.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/trade/GB/gb-uk-global-tariff-third-country-duty-consumer-goods.yaml",
+      "valid_from": "2026-11-03",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 3
+    },
+    {
+      "id": "us-customs-de-minimis-and-informal-entry-thresholds",
+      "title": "United States customs de minimis, gift, informal entry and traveller exemption thresholds, 19 CFR parts 10, 143, 145 and 148",
+      "kind": "rule",
+      "domain": "trade",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-06-24 to open",
+      "publishers": [
+        "US Customs and Border Protection via the eCFR API"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "trade",
+        "customs",
+        "tariffs",
+        "de-minimis",
+        "informal-entry",
+        "duty-free",
+        "19-cfr"
+      ],
+      "use_cases": [
+        "ecommerce-demo",
+        "logistics-demo",
+        "procurement-demo",
+        "invoicing-demo",
+        "parcel-shipping"
+      ],
+      "path": "entries/trade/US/us-customs-de-minimis-and-informal-entry-thresholds.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/trade/US/us-customs-de-minimis-and-informal-entry-thresholds.yaml",
+      "valid_from": "2026-06-24",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "us-hts-2026-chapter-61-apparel-knitted-duty-rates",
+      "title": "US HTS 2026 chapter 61 (apparel knitted) eight-digit subheadings with general, special and column 2 duty rates",
+      "kind": "rule",
+      "domain": "trade",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-10-30 to open",
+      "publishers": [
+        "United States International Trade Commission"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "trade",
+        "customs",
+        "tariffs",
+        "hts",
+        "duty-rates",
+        "import-duty",
+        "apparel-knitted"
+      ],
+      "use_cases": [
+        "ecommerce-demo",
+        "logistics-demo",
+        "procurement-demo",
+        "invoicing-demo",
+        "product-catalogue",
+        "pricing"
+      ],
+      "path": "entries/trade/US/us-hts-2026-chapter-61-apparel-knitted-duty-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/trade/US/us-hts-2026-chapter-61-apparel-knitted-duty-rates.yaml",
+      "valid_from": "2026-10-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "us-hts-2026-chapter-62-apparel-woven-duty-rates",
+      "title": "US HTS 2026 chapter 62 (apparel woven) eight-digit subheadings with general, special and column 2 duty rates",
+      "kind": "rule",
+      "domain": "trade",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-10-30 to open",
+      "publishers": [
+        "United States International Trade Commission"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "trade",
+        "customs",
+        "tariffs",
+        "hts",
+        "duty-rates",
+        "import-duty",
+        "apparel-woven"
+      ],
+      "use_cases": [
+        "ecommerce-demo",
+        "logistics-demo",
+        "procurement-demo",
+        "invoicing-demo",
+        "product-catalogue",
+        "pricing"
+      ],
+      "path": "entries/trade/US/us-hts-2026-chapter-62-apparel-woven-duty-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/trade/US/us-hts-2026-chapter-62-apparel-woven-duty-rates.yaml",
+      "valid_from": "2026-10-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "us-hts-2026-chapter-64-footwear-duty-rates",
+      "title": "US HTS 2026 chapter 64 (footwear) eight-digit subheadings with general, special and column 2 duty rates",
+      "kind": "rule",
+      "domain": "trade",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-10-30 to open",
+      "publishers": [
+        "United States International Trade Commission"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "trade",
+        "customs",
+        "tariffs",
+        "hts",
+        "duty-rates",
+        "import-duty",
+        "footwear"
+      ],
+      "use_cases": [
+        "ecommerce-demo",
+        "logistics-demo",
+        "procurement-demo",
+        "invoicing-demo",
+        "product-catalogue",
+        "pricing"
+      ],
+      "path": "entries/trade/US/us-hts-2026-chapter-64-footwear-duty-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/trade/US/us-hts-2026-chapter-64-footwear-duty-rates.yaml",
+      "valid_from": "2026-10-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "us-hts-2026-chapter-84-machinery-duty-rates",
+      "title": "US HTS 2026 chapter 84 (machinery) eight-digit subheadings with general, special and column 2 duty rates",
+      "kind": "rule",
+      "domain": "trade",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-10-30 to open",
+      "publishers": [
+        "United States International Trade Commission"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "trade",
+        "customs",
+        "tariffs",
+        "hts",
+        "duty-rates",
+        "import-duty",
+        "machinery"
+      ],
+      "use_cases": [
+        "ecommerce-demo",
+        "logistics-demo",
+        "procurement-demo",
+        "invoicing-demo",
+        "product-catalogue",
+        "pricing"
+      ],
+      "path": "entries/trade/US/us-hts-2026-chapter-84-machinery-duty-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/trade/US/us-hts-2026-chapter-84-machinery-duty-rates.yaml",
+      "valid_from": "2026-10-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "us-hts-2026-chapter-85-electrical-duty-rates",
+      "title": "US HTS 2026 chapter 85 (electrical) eight-digit subheadings with general, special and column 2 duty rates",
+      "kind": "rule",
+      "domain": "trade",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-10-30 to open",
+      "publishers": [
+        "United States International Trade Commission"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "trade",
+        "customs",
+        "tariffs",
+        "hts",
+        "duty-rates",
+        "import-duty",
+        "electrical"
+      ],
+      "use_cases": [
+        "ecommerce-demo",
+        "logistics-demo",
+        "procurement-demo",
+        "invoicing-demo",
+        "product-catalogue",
+        "pricing"
+      ],
+      "path": "entries/trade/US/us-hts-2026-chapter-85-electrical-duty-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/trade/US/us-hts-2026-chapter-85-electrical-duty-rates.yaml",
+      "valid_from": "2026-10-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "us-hts-2026-chapter-94-furniture-duty-rates",
+      "title": "US HTS 2026 chapter 94 (furniture) eight-digit subheadings with general, special and column 2 duty rates",
+      "kind": "rule",
+      "domain": "trade",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-10-30 to open",
+      "publishers": [
+        "United States International Trade Commission"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "trade",
+        "customs",
+        "tariffs",
+        "hts",
+        "duty-rates",
+        "import-duty",
+        "furniture"
+      ],
+      "use_cases": [
+        "ecommerce-demo",
+        "logistics-demo",
+        "procurement-demo",
+        "invoicing-demo",
+        "product-catalogue",
+        "pricing"
+      ],
+      "path": "entries/trade/US/us-hts-2026-chapter-94-furniture-duty-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/trade/US/us-hts-2026-chapter-94-furniture-duty-rates.yaml",
+      "valid_from": "2026-10-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "us-hts-2026-chapter-95-toys-duty-rates",
+      "title": "US HTS 2026 chapter 95 (toys) eight-digit subheadings with general, special and column 2 duty rates",
+      "kind": "rule",
+      "domain": "trade",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-10-30 to open",
+      "publishers": [
+        "United States International Trade Commission"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "trade",
+        "customs",
+        "tariffs",
+        "hts",
+        "duty-rates",
+        "import-duty",
+        "toys"
+      ],
+      "use_cases": [
+        "ecommerce-demo",
+        "logistics-demo",
+        "procurement-demo",
+        "invoicing-demo",
+        "product-catalogue",
+        "pricing"
+      ],
+      "path": "entries/trade/US/us-hts-2026-chapter-95-toys-duty-rates.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/trade/US/us-hts-2026-chapter-95-toys-duty-rates.yaml",
+      "valid_from": "2026-10-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "us-hts-2026-headings",
+      "title": "US Harmonized Tariff Schedule 2026 four-digit headings with descriptions, chapters 1 to 97 (Revision 22)",
+      "kind": "rule",
+      "domain": "trade",
+      "region": "US",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-10-30 to open",
+      "publishers": [
+        "United States International Trade Commission"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "trade",
+        "customs",
+        "tariffs",
+        "hts",
+        "harmonized-system",
+        "code-list"
+      ],
+      "use_cases": [
+        "ecommerce-demo",
+        "logistics-demo",
+        "procurement-demo",
+        "invoicing-demo",
+        "product-catalogue"
+      ],
+      "path": "entries/trade/US/us-hts-2026-headings.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/trade/US/us-hts-2026-headings.yaml",
+      "valid_from": "2026-10-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 3
+    },
+    {
+      "id": "us-hts-2026-sections-and-chapters",
+      "title": "US Harmonized Tariff Schedule 2026 sections and chapters with titles (Revision 22)",
+      "kind": "rule",
+      "domain": "trade",
+      "region": "US",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-10-30 to open",
+      "publishers": [
+        "United States International Trade Commission"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "trade",
+        "customs",
+        "tariffs",
+        "hts",
+        "harmonized-system",
+        "code-list"
+      ],
+      "use_cases": [
+        "ecommerce-demo",
+        "logistics-demo",
+        "procurement-demo",
+        "invoicing-demo"
+      ],
+      "path": "entries/trade/US/us-hts-2026-sections-and-chapters.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/trade/US/us-hts-2026-sections-and-chapters.yaml",
+      "valid_from": "2026-10-30",
+      "valid_to": null,
+      "implementation": "almanac.rules.enumeration",
+      "vectors": 4
     },
     {
       "id": "eu-air-passengers-carried-monthly-2025",
