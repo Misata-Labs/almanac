@@ -1,0 +1,197 @@
+id: us-routing-number-federal-reserve-prefix
+title: 'US routing number first two digits: Federal Reserve District 01 to 12, thrift institutions 21 to 32'
+kind: rule
+domain: banking
+region: US
+status: license-review
+tier: A
+valid_from: '1988-05-27'
+valid_to: null
+tags:
+- banking
+- payments
+- bank-codes
+- routing-number
+- aba
+- federal-reserve
+- regulation-cc
+- reference-table
+use_cases:
+- banking-demo
+- payments-demo
+- kyc-onboarding
+- data-quality-validation
+- treasury-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: first two digits of the nine-digit routing number
+    rows:
+      '01':
+        district: 1
+        institution: bank
+      '02':
+        district: 2
+        institution: bank
+      '03':
+        district: 3
+        institution: bank
+      '04':
+        district: 4
+        institution: bank
+      '05':
+        district: 5
+        institution: bank
+      '06':
+        district: 6
+        institution: bank
+      '07':
+        district: 7
+        institution: bank
+      08:
+        district: 8
+        institution: bank
+      09:
+        district: 9
+        institution: bank
+      '10':
+        district: 10
+        institution: bank
+      '11':
+        district: 11
+        institution: bank
+      '12':
+        district: 12
+        institution: bank
+      '21':
+        district: 1
+        institution: thrift
+      '22':
+        district: 2
+        institution: thrift
+      '23':
+        district: 3
+        institution: thrift
+      '24':
+        district: 4
+        institution: thrift
+      '25':
+        district: 5
+        institution: thrift
+      '26':
+        district: 6
+        institution: thrift
+      '27':
+        district: 7
+        institution: thrift
+      '28':
+        district: 8
+        institution: thrift
+      '29':
+        district: 9
+        institution: thrift
+      '30':
+        district: 10
+        institution: thrift
+      '31':
+        district: 11
+        institution: thrift
+      '32':
+        district: 12
+        institution: thrift
+  vectors:
+  - input:
+      key: '01'
+      column: district
+    expected: 1
+    origin: source
+    note: '01: First District (Boston)'
+  - input:
+      key: '12'
+      column: district
+    expected: 12
+    origin: source
+    note: '12: Twelfth District (San Francisco)'
+  - input:
+      key: '21'
+      column: institution
+    expected: thrift
+    origin: source
+    note: '21: a thrift in the First District'
+  - input:
+      key: '32'
+      column: district
+    expected: 12
+    origin: source
+    note: '32: a thrift in the Twelfth District'
+  - input:
+      key: '05'
+      column: institution
+    expected: bank
+    origin: derived
+  - input: '13'
+    expected: false
+    origin: derived
+    note: no district 13
+evidence:
+- publisher: Office of the Federal Register (eCFR)
+  title: 12 CFR part 229 (Regulation CC), Appendix A, eCFR XML as of 2026-10-29
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=229
+  accessed_at: '2026-11-03'
+  locator: Appendix A, paragraph B
+  value: '01'
+  unit: text
+  snippet: and 12 will be the first two digits of the routing number of a bank in the Twelfth District (San Francisco).
+  source_license: unstated
+  content_sha256: f4ea58812edfc6182c98bc2827deecb30c48e6edfea53eea8002067039473333
+  role: primary
+- publisher: Office of the Federal Register (eCFR)
+  title: 12 CFR part 229 (Regulation CC), Appendix A, eCFR XML as of 2026-10-29
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=229
+  accessed_at: '2026-11-03'
+  locator: Appendix A, paragraph B
+  value: thrift
+  unit: text
+  snippet: Adding 2 to the first digit denotes a thrift institution.
+  source_license: unstated
+  content_sha256: f4ea58812edfc6182c98bc2827deecb30c48e6edfea53eea8002067039473333
+  role: primary
+- publisher: Office of the Federal Register (eCFR)
+  title: 12 CFR part 229 (Regulation CC), Appendix A, eCFR XML as of 2026-10-29
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=229
+  accessed_at: '2026-11-03'
+  locator: Appendix A, paragraph B
+  value: '32'
+  unit: text
+  snippet: Thus, 21 identifies a thrift in the First District, and 32 denotes a thrift in the Twelfth District.
+  source_license: unstated
+  content_sha256: f4ea58812edfc6182c98bc2827deecb30c48e6edfea53eea8002067039473333
+  role: primary
+- publisher: Office of the Federal Register (eCFR)
+  title: 12 CFR part 229 (Regulation CC), Appendix A, eCFR XML as of 2026-10-29
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=229
+  accessed_at: '2026-11-03'
+  locator: Appendix A, citation
+  value: May 27, 1988
+  unit: date
+  snippet: '[53 FR 19433, May 27, 1988]'
+  source_license: unstated
+  content_sha256: f4ea58812edfc6182c98bc2827deecb30c48e6edfea53eea8002067039473333
+  role: supporting
+assumed:
+- parameter: rows
+  value: 01-12 bank, 21-32 thrift
+  method: derived
+  rationale: Expanded from the stated rule and its two endpoint examples.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 6
+  tolerance: 0
+notes: 'The structure of the American Bankers Association routing number as Regulation CC (12 CFR part 229, Appendix A) describes it: the first four digits form the
+  Federal Reserve routing symbol and the first two identify the Federal Reserve District of the bank, 01 (Boston) to 12 (San Francisco), with 2 added to the first
+  digit for a thrift institution, so 21 to 32. The 24 rows are generated from that rule. Other prefixes in use (such as those for electronic or Treasury items) are
+  not stated in the regulation and are not listed. The ninth digit''s check algorithm is not stated by any official body fetched here and is not included. valid_from
+  is the appendix''s original Federal Register citation. US federal works carry no copyright, but the eCFR states no reuse terms, so the entry is held at license-review.'

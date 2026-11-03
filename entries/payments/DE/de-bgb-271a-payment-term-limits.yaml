@@ -1,0 +1,146 @@
+id: de-bgb-271a-payment-term-limits
+title: 'Germany limits on agreed payment terms (section 271a BGB): 60 days between businesses, 30 and 60 for public authorities'
+kind: rule
+domain: payments
+region: DE
+status: license-review
+tier: A
+valid_from: '2014-07-29'
+valid_to: null
+tags:
+- banking
+- payments
+- bank-codes
+- payment-terms
+- late-payment
+- invoicing
+- reference-table
+use_cases:
+- banking-demo
+- payments-demo
+- kyc-onboarding
+- data-quality-validation
+- treasury-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: debtor or agreement type
+    rows:
+      business_debtor:
+        days: 60
+        counted_from: receipt of performance or of the invoice
+        longer_term: effective only if expressly agreed and not grossly unfair to the creditor
+      public_authority:
+        days: 30
+        counted_from: receipt of performance or of the invoice
+        longer_term: effective only if expressly agreed and objectively justified
+      public_authority_limit:
+        days: 60
+        counted_from: receipt of performance or of the invoice
+        longer_term: void
+      inspection_or_acceptance:
+        days: 30
+        counted_from: receipt of performance
+        longer_term: effective only if expressly agreed and not grossly unfair to the creditor
+  vectors:
+  - input:
+      key: business_debtor
+      column: days
+    expected: 60
+    origin: source
+    note: section 271a(1)
+  - input:
+      key: public_authority
+      column: days
+    expected: 30
+    origin: source
+    note: section 271a(2) no. 1
+  - input:
+      key: public_authority_limit
+      column: longer_term
+    expected: void
+    origin: source
+    note: 'section 271a(2) no. 2: a term over 60 days is unwirksam'
+  - input:
+      key: inspection_or_acceptance
+      column: days
+    expected: 30
+    origin: source
+    note: section 271a(3)
+  - input: consumer_debtor
+    expected: false
+    origin: derived
+    note: 'section 271a(5): the limits do not apply when a consumer owes the payment'
+evidence:
+- publisher: Bundesministerium der Justiz / Bundesamt für Justiz (gesetze-im-internet.de)
+  title: Bürgerliches Gesetzbuch (BGB), XML
+  url: https://www.gesetze-im-internet.de/bgb/xml.zip
+  accessed_at: '2026-11-03'
+  locator: section 271a(1)
+  value: mehr als 60 Tagen
+  unit: text
+  snippet: erst nach mehr als 60 Tagen nach Empfang der Gegenleistung verlangen kann, ist nur wirksam, wenn sie ausdrücklich getroffen
+  source_license: unstated
+  content_sha256: a4f41098aad1932df88ba2743de4a650b931a23cf71958bf5fad1c0e3785284a
+  role: primary
+- publisher: Bundesministerium der Justiz / Bundesamt für Justiz (gesetze-im-internet.de)
+  title: Bürgerliches Gesetzbuch (BGB), XML
+  url: https://www.gesetze-im-internet.de/bgb/xml.zip
+  accessed_at: '2026-11-03'
+  locator: section 271a(2) no. 1
+  value: mehr als 30 Tagen
+  unit: text
+  snippet: erst nach mehr als 30 Tagen nach Empfang der Gegenleistung verlangen kann, nur wirksam, wenn die Vereinbarung ausdrücklich getroffen
+  source_license: unstated
+  content_sha256: a4f41098aad1932df88ba2743de4a650b931a23cf71958bf5fad1c0e3785284a
+  role: primary
+- publisher: Bundesministerium der Justiz / Bundesamt für Justiz (gesetze-im-internet.de)
+  title: Bürgerliches Gesetzbuch (BGB), XML
+  url: https://www.gesetze-im-internet.de/bgb/xml.zip
+  accessed_at: '2026-11-03'
+  locator: section 271a(2) no. 2
+  value: unwirksam
+  unit: text
+  snippet: erst nach mehr als 60 Tagen nach Empfang der Gegenleistung verlangen kann, unwirksam.
+  source_license: unstated
+  content_sha256: a4f41098aad1932df88ba2743de4a650b931a23cf71958bf5fad1c0e3785284a
+  role: primary
+- publisher: Bundesministerium der Justiz / Bundesamt für Justiz (gesetze-im-internet.de)
+  title: Bürgerliches Gesetzbuch (BGB), XML
+  url: https://www.gesetze-im-internet.de/bgb/xml.zip
+  accessed_at: '2026-11-03'
+  locator: section 271a(3)
+  value: mehr als 30 Tage
+  unit: text
+  snippet: die Zeit für die Überprüfung oder Abnahme der Gegenleistung mehr als 30 Tage nach Empfang der Gegenleistung beträgt
+  source_license: unstated
+  content_sha256: a4f41098aad1932df88ba2743de4a650b931a23cf71958bf5fad1c0e3785284a
+  role: primary
+- publisher: Bundesministerium der Justiz / Bundesamt für Justiz (gesetze-im-internet.de)
+  title: Bürgerliches Gesetzbuch (BGB), XML
+  url: https://www.gesetze-im-internet.de/bgb/xml.zip
+  accessed_at: '2026-11-03'
+  locator: section 271a(5) no. 2
+  value: Verbraucher
+  unit: text
+  snippet: ein Schuldverhältnis, aus dem ein Verbraucher die Erfüllung der Entgeltforderung schuldet.
+  source_license: unstated
+  content_sha256: a4f41098aad1932df88ba2743de4a650b931a23cf71958bf5fad1c0e3785284a
+  role: supporting
+assumed:
+- parameter: rows
+  value: four agreement types
+  method: derived
+  rationale: Each row restates one paragraph of section 271a in English; the day counts are read from the statute.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 5
+  tolerance: 0
+notes: How long a German invoice may give a business or public debtor to pay. Between businesses an agreed payment term of more than 60 days from receipt of the performance
+  (or of a later invoice) is effective only if expressly agreed and not grossly unfair to the creditor. Where the debtor is a public contracting authority a term
+  over 30 days needs express agreement and objective justification, and one over 60 days is void. An inspection or acceptance period over 30 days needs express agreement.
+  None of this applies to instalment payments or to consumers as debtors. Under Article 229 section 34 EGBGB the provision applies to obligations arising after 28
+  July 2014. The law publisher's XML states no licence, so the entry is held at license-review.

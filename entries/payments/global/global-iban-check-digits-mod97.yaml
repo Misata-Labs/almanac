@@ -1,0 +1,169 @@
+id: global-iban-check-digits-mod97
+title: 'IBAN check digits by ISO 7064 MOD 97-10: calculation and validation as a central bank specifies them'
+kind: rule
+domain: payments
+region: global
+status: license-review
+tier: B
+valid_from: '2013-01-01'
+valid_to: null
+tags:
+- banking
+- payments
+- bank-codes
+- iban
+- check-digit
+- iso-13616
+- iso-7064
+use_cases:
+- banking-demo
+- payments-demo
+- kyc-onboarding
+- data-quality-validation
+- treasury-demo
+spec:
+  implementation: almanac.rules.iban
+  parameters:
+    modulus: 97
+    complement_base: 98
+    valid_remainder: 1
+    letter_values:
+      A: 10
+      B: 11
+      C: 12
+      D: 13
+      E: 14
+      F: 15
+      G: 16
+      H: 17
+      I: 18
+      J: 19
+      K: 20
+      L: 21
+      M: 22
+      N: 23
+      O: 24
+      P: 25
+      Q: 26
+      R: 27
+      S: 28
+      T: 29
+      U: 30
+      V: 31
+      W: 32
+      X: 33
+      Y: 34
+      Z: 35
+    lengths:
+      AZ: 28
+  vectors:
+  - input: AZ84NABZ00000000137010002944
+    expected: true
+    origin: source
+    note: validation example
+  - input: AZ84 NABZ 0000 0000 1370 1000 2944
+    expected: true
+    origin: source
+    note: printed form with spaces
+  - input:
+      country: AZ
+      bban: NABZ00000000137010002944
+    expected: '84'
+    origin: source
+    note: 'calculation example: AZ00 NABZ 0000 0000 1370 1000 2944 gives 84'
+  - input: AZ85NABZ00000000137010002944
+    expected: false
+    origin: derived
+    note: check digits altered
+  - input: AZ84NABZ0000000013701000294
+    expected: false
+    origin: derived
+    note: 27 characters for a 28-character country
+  - input: AZ84NABZ00000000137010002945
+    expected: false
+    origin: derived
+    note: last digit altered
+evidence:
+- publisher: Central Bank of the Republic of Azerbaijan
+  title: Methodological guidelines on the international bank account number (IBAN), 2013 (PDF)
+  url: https://uploads.cbar.az/assets/Methodological%20Guidelines%20on%20the%20international%20bank%20account%20number%20(IBAN).pdf
+  accessed_at: '2026-11-03'
+  locator: page 5, section VII.1, initial step
+  value: AZ00 NABZ 0000 0000 1370 1000 2944
+  unit: text
+  snippet: with the MOD 97-10 method, the country code of the Republic of Azerbaijan
+  source_license: unstated
+  content_sha256: 6708dc313d0c09dc037f6201d0eb75bf11131e09f78fa03e732fd9ca5b74bdd2
+  role: primary
+- publisher: Central Bank of the Republic of Azerbaijan
+  title: Methodological guidelines on the international bank account number (IBAN), 2013 (PDF)
+  url: https://uploads.cbar.az/assets/Methodological%20Guidelines%20on%20the%20international%20bank%20account%20number%20(IBAN).pdf
+  accessed_at: '2026-11-03'
+  locator: page 5, section VII.1, step 2, compliance table
+  value: A = 10
+  unit: text
+  snippet: 'letters used in the IBAN structure are replaced with numbers:'
+  source_license: unstated
+  content_sha256: 6708dc313d0c09dc037f6201d0eb75bf11131e09f78fa03e732fd9ca5b74bdd2
+  role: primary
+- publisher: Central Bank of the Republic of Azerbaijan
+  title: Methodological guidelines on the international bank account number (IBAN), 2013 (PDF)
+  url: https://uploads.cbar.az/assets/Methodological%20Guidelines%20on%20the%20international%20bank%20account%20number%20(IBAN).pdf
+  accessed_at: '2026-11-03'
+  locator: page 6, section VII.1, step 3
+  value: AZ84 NABZ 0000 0000 1370 1000 2944
+  unit: text
+  snippet: is divided by 97 and the resulting balance is subtracted from 98.
+  source_license: unstated
+  content_sha256: 6708dc313d0c09dc037f6201d0eb75bf11131e09f78fa03e732fd9ca5b74bdd2
+  role: primary
+- publisher: Central Bank of the Republic of Azerbaijan
+  title: Methodological guidelines on the international bank account number (IBAN), 2013 (PDF)
+  url: https://uploads.cbar.az/assets/Methodological%20Guidelines%20on%20the%20international%20bank%20account%20number%20(IBAN).pdf
+  accessed_at: '2026-11-03'
+  locator: page 6, section VII.2, step 2
+  value: '2310113500000000137010002944103584'
+  unit: text
+  snippet: 'Outcome: 2310113500000000137010002944103584'
+  source_license: unstated
+  content_sha256: 6708dc313d0c09dc037f6201d0eb75bf11131e09f78fa03e732fd9ca5b74bdd2
+  role: primary
+- publisher: Central Bank of the Republic of Azerbaijan
+  title: Methodological guidelines on the international bank account number (IBAN), 2013 (PDF)
+  url: https://uploads.cbar.az/assets/Methodological%20Guidelines%20on%20the%20international%20bank%20account%20number%20(IBAN).pdf
+  accessed_at: '2026-11-03'
+  locator: page 6, section VII.2, step 3
+  value: must equal to one
+  unit: text
+  snippet: method) must equal to one. Otherwise, check digits are not correct.
+  source_license: unstated
+  content_sha256: 6708dc313d0c09dc037f6201d0eb75bf11131e09f78fa03e732fd9ca5b74bdd2
+  role: primary
+- publisher: Central Bank of the Republic of Azerbaijan
+  title: Methodological guidelines on the international bank account number (IBAN), 2013 (PDF)
+  url: https://uploads.cbar.az/assets/Methodological%20Guidelines%20on%20the%20international%20bank%20account%20number%20(IBAN).pdf
+  accessed_at: '2026-11-03'
+  locator: page 4, section V
+  value: 28
+  unit: integer
+  snippet: 'The IBAN structure consisting of 28 alphanumeric characters in Azerbaijan is as follows:'
+  source_license: unstated
+  content_sha256: 6708dc313d0c09dc037f6201d0eb75bf11131e09f78fa03e732fd9ca5b74bdd2
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2013-01-01'
+  method: assumed
+  rationale: The guidelines are dated Baku - 2013 without a day; the algorithm itself is the ISO 7064 procedure in use before that.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 6
+  tolerance: 0
+notes: 'The check digits of every International Bank Account Number (ISO 13616): move the country code and check digits to the end, replace letters by 10 to 35, and
+  require the number to leave remainder 1 modulo 97; to issue check digits, put 00 in their place and subtract the remainder from 98. The procedure, the letter table
+  and the worked example are taken from the IBAN guidelines of the Central Bank of the Republic of Azerbaijan, which also states the Azerbaijani IBAN length of 28.
+  The ISO 13616 registry of country formats is maintained by SWIFT and could not be fetched, so ''lengths'' holds only the lengths an official source fetched here
+  states; a country not listed is checked for its check digits only. The PDF states no licence, so the entry is held at license-review.'

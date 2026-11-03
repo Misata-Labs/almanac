@@ -1,0 +1,166 @@
+id: de-bundesbank-sort-code-successors
+title: Germany bank sort codes announced for deletion or with a successor code, 75 codes (Bundesbank sort code file)
+kind: rule
+domain: banking
+region: DE
+status: license-review
+tier: A
+valid_from: '2026-09-07'
+valid_to: '2026-12-06'
+tags:
+- banking
+- payments
+- bank-codes
+- bankleitzahl
+- bank-mergers
+- reference-table
+use_cases:
+- banking-demo
+- payments-demo
+- kyc-onboarding
+- data-quality-validation
+- treasury-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: Bankleitzahl
+    rows:
+      '10060198': {name: Pax-Bank, deletion_announced: true, successor: '37060193'}
+      '10090300': {name: Bank für Schiffahrt (BFS) Fil d Ostfr VB Leer, deletion_announced: true, successor: null}
+      '13061088': {name: Raiffeisenbank Wismar -alt-, deletion_announced: true, successor: '13061078'}
+      '13061128': {name: Raiffeisenbank, deletion_announced: true, successor: '14061308'}
+      '13091084': {name: Volksbank Wismar -alt-, deletion_announced: true, successor: '13061078'}
+      '18062758': {name: VR Bank Forst -alt-, deletion_announced: true, successor: null}
+      '20069815': {name: Volksbank, deletion_announced: true, successor: null}
+      '20069882': {name: Raiffeisenbank Travemünde -alt-, deletion_announced: true, successor: null}
+      '25050299': {name: Kreissparkasse Hannover -alt-, deletion_announced: true, successor: '25050180'}
+      '25491273': {name: Volksbank Aerzen -alt-, deletion_announced: true, successor: null}
+      '26662932': {name: Volksbank -alt-, deletion_announced: true, successor: null}
+      '26760005': {name: Raiffeisen- und Volksbank Nordhorn -alt-, deletion_announced: true, successor: '28069956'}
+      '28069293': {name: Volksbank Obergrafschaft -alt-, deletion_announced: true, successor: '28069956'}
+      '28069755': {name: Raiffeisenbank Oldersum, deletion_announced: true, successor: '28563749'}
+      '28562863': {name: Raiffeisenbank Moormerland, deletion_announced: true, successor: '28563749'}
+      '30551240': {name: Stadtsparkasse Kaarst-Büttgen -alt-, deletion_announced: true, successor: null}
+      '31062553': {name: Volksbank Schwalmtal, deletion_announced: true, successor: '31460290'}
+      '35090300': {name: Bank für Schiffahrt (BFS) Fil d Ostfr VB Leer, deletion_announced: true, successor: null}
+      '35451460': {name: Sparkasse Neukirchen-Vluyn -alt-, deletion_announced: true, successor: null}
+      '35451775': {name: Sparkasse Rheinberg -alt-, deletion_announced: true, successor: null}
+      '36060192': {name: Pax-Bank, deletion_announced: true, successor: '37060193'}
+      '37069302': {name: Raiffeisenbank -alt-, deletion_announced: true, successor: '37069412'}
+      '37069354': {name: Raiffeisenbank Selfkant  -alt-, deletion_announced: true, successor: '37069412'}
+      '37551020': {name: Stadt-Sparkasse Leichlingen -alt-, deletion_announced: true, successor: '37050299'}
+      '38050000': {name: Sparkasse Bonn -alt-, deletion_announced: true, successor: '37050198'}
+      '38650000': {name: Kreissparkasse Siegburg -alt-, deletion_announced: true, successor: '37050299'}
+      '38651390': {name: Sparkasse Hennef -alt-, deletion_announced: true, successor: '37050299'}
+      '39061981': {name: Heinsberger Volksbank -alt-, deletion_announced: true, successor: '37069412'}
+      '39160191': {name: Pax-Bank, deletion_announced: true, successor: '37060193'}
+      '40069348': {name: Volksbank Medebach -alt-, deletion_announced: true, successor: null}
+      '46261607': {name: Volksbank Grevenbrück -alt, deletion_announced: true, successor: null}
+      '46262456': {name: Volksbank Bigge-Lenne -alt-, deletion_announced: true, successor: null}
+      '47261429': {name: Volksbank Haaren -alt-, deletion_announced: true, successor: '47261603'}
+      '47267216': {name: Volksbank Borgentreich -alt-, deletion_announced: true, successor: null}
+      '47460028': {name: Volksbank Warburger Land -alt-, deletion_announced: true, successor: '47264367'}
+      '49061470': {name: Volksbank Stemweder Berg -alt-, deletion_announced: true, successor: null}
+      '50763319': {name: Raiffeisenbank Vogelsberg -alt-, deletion_announced: true, successor: '53060180'}
+      '50810900': {name: Deutsche Bausparkasse Badenia (ehem. DBS Bausparkasse), deletion_announced: true, successor: '66010200'}
+      '50850049': {name: Landesbank Hessen-Thür Girozentrale, deletion_announced: true, successor: null}
+      '50861393': {name: Spar- und Darlehnskasse Zell -alt-, deletion_announced: true, successor: null}
+      '50862311': {name: Volksbank Gräfenhausen -alt-, deletion_announced: true, successor: null}
+      '50862703': {name: Volksbank Gersprenztal-Otzberg, deletion_announced: true, successor: null}
+      '54051660': {name: Stadtsparkasse Landstuhl -alt-, deletion_announced: true, successor: null}
+      '54062027': {name: Raiffeisenbank Donnersberg -alt-, deletion_announced: true, successor: null}
+      '55061907': {name: Volksbank Rhein-Selz -alt-, deletion_announced: true, successor: null}
+      '55160195': {name: Pax-Bank, deletion_announced: true, successor: '37060193'}
+      '58560294': {name: Pax-Bank, deletion_announced: true, successor: '37060193'}
+      '59390100': {name: Volksbank Saarlouis -alt-, deletion_announced: true, successor: null}
+      '59392000': {name: Volksbank Dillingen -alt-, deletion_announced: true, successor: null}
+      '60010700': {name: Landeskreditbank Baden-Württemberg Förderbank -alt-, deletion_announced: true, successor: '66010700'}
+      '60069017': {name: Raiffeisenbank Dellmensingen -alt-, deletion_announced: true, successor: '60069346'}
+      '60069419': {name: Uhlbacher Bank -alt-, deletion_announced: true, successor: null}
+      '60069463': {name: Raiffeisenbank Geislingen-Rosenfeld, deletion_announced: true, successor: '65362499'}
+      '60069669': {name: Erligheimer Bank -alt-, deletion_announced: true, successor: '60491430'}
+      '60069926': {name: Volksbank Glatten-Wittendorf -alt-, deletion_announced: true, successor: null}
+      '64191700': {name: Volksbank Horb -alt-, deletion_announced: true, successor: null}
+      '64261626': {name: Murgtalbank Mitteltal - Obertal -alt-, deletion_announced: true, successor: null}
+      '65462231': {name: Raiffeisenbank Illertal -alt-, deletion_announced: true, successor: null}
+      '66051220': {name: Sparkasse Ettlingen -alt-, deletion_announced: true, successor: '66050101'}
+      '66491800': {name: Volksbank Bühl Fil Kehl, deletion_announced: true, successor: '66291400'}
+      '66492600': {name: Volksbank Appenweier-Urloffen Appenweier -alt-, deletion_announced: true, successor: null}
+      '67051203': {name: Sparkasse Hockenheim, deletion_announced: true, successor: null}
+      '67291900': {name: Volksbank Kraichgau -alt-, deletion_announced: true, successor: null}
+      '70030300': {name: Bankhaus Reuschel & Co -alt-, deletion_announced: true, successor: null}
+      '70169168': {name: VR-Bank Chiemgau-Süd -alt-, deletion_announced: true, successor: null}
+      '70169599': {name: Raiffeisenbank Weil u Umgebung -alt-, deletion_announced: true, successor: null}
+      '70391800': {name: Volksbank-Raiffeisenbank Penzberg -alt-, deletion_announced: true, successor: null}
+      '73311600': {name: Hypo Vorarlberg Bank, deletion_announced: true, successor: null}
+      '74069752': {name: Raiffeisenbank Hohenau-Mauth -alt-, deletion_announced: true, successor: null}
+      '76069409': {name: Raiffeisenbank Dietenhofen -alt-, deletion_announced: true, successor: null}
+      '79568518': {name: Raiffeisenbank Haibach-Obernau, deletion_announced: true, successor: '79562514'}
+      '80054000': {name: Kreissparkasse Weißenfels -alt-, deletion_announced: true, successor: '80053000'}
+      '82060197': {name: Pax-Bank, deletion_announced: true, successor: '37060193'}
+      '85065028': {name: 'Raiffeisenbank Neustadt, Sachs -alt-', deletion_announced: true, successor: null}
+      '86065448': {name: VR Bank Leipziger Land, deletion_announced: true, successor: null}
+  vectors:
+  - input:
+      key: '10060198'
+      column: successor
+    expected: '37060193'
+    origin: source
+  - input:
+      key: '10060198'
+      column: deletion_announced
+    expected: true
+    origin: source
+  - input:
+      key: '18062758'
+      column: successor
+    expected: null
+    origin: source
+    note: no successor named
+  - input: '10000000'
+    expected: false
+    origin: derived
+    note: the Bundesbank's own sort code is not flagged
+evidence:
+- publisher: Deutsche Bundesbank
+  title: Bankleitzahlendatei (CSV, current validity period)
+  url: https://www.bundesbank.de/resource/blob/926192/2feadedd079726ffbe1eedaf6c74ff76/mL/blz-aktuell-csv-data.csv
+  accessed_at: '2026-11-03'
+  locator: row Bankleitzahl=10060198, fields Bankleitzahlloeschung and Nachfolge-Bankleitzahl
+  value: '37060193'
+  unit: text
+  snippet: '"10060198";"1";"Pax-Bank";"14005";"Berlin";"Pax-Bank Berlin";"61335";"GENODED1PA6";"06";"047622";"U";"1";"37060193"'
+  source_license: unstated
+  content_sha256: e19ae0e1a0d8bd8d3b4cf588dc515193896540aa47a5330bd6629214f736d5cb
+  role: primary
+- publisher: Deutsche Bundesbank
+  title: Bankleitzahlendatei (CSV, current validity period)
+  url: https://www.bundesbank.de/resource/blob/926192/2feadedd079726ffbe1eedaf6c74ff76/mL/blz-aktuell-csv-data.csv
+  accessed_at: '2026-11-03'
+  locator: row Bankleitzahl=18062758
+  value: '18062758'
+  unit: text
+  snippet: '"18062758";"1";"VR Bank Forst -alt-";"03149";"Forst (Lausitz)";"VR Bank Forst -alt-";"61329";"GENODEF1FOR";"32";"045757";"U";"1";"00000000"'
+  source_license: unstated
+  content_sha256: e19ae0e1a0d8bd8d3b4cf588dc515193896540aa47a5330bd6629214f736d5cb
+  role: primary
+assumed:
+- parameter: valid_from, valid_to
+  value: 2026-09-07 to 2026-12-06
+  method: assumed
+  rationale: The Bundesbank download page states this validity period for the current file; the page itself is not cited because its asset links carry a cache-busting
+    suffix.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 4
+  tolerance: 0
+- statistic: count
+  expected: 75
+  tolerance: 0
+notes: 'Sort codes in the Bundesbank''s current Bankleitzahlendatei whose owning record (Merkmal 1) announces an intended deletion (field Bankleitzahllöschung = 1)
+  or names a successor sort code (Nachfolge-Bankleitzahl), typically after a bank merger. Use it to age synthetic or migrated account data: an account at a code listed
+  here moves to the successor when one is given (28 codes) and has no announced successor otherwise. Records already deleted in this file (Änderungskennzeichen D)
+  are excluded. The file is replaced each quarter and carries no licence statement, so the entry is held at license-review.'

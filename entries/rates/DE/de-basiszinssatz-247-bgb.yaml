@@ -1,0 +1,206 @@
+id: de-basiszinssatz-247-bgb
+title: Germany base rate (Basiszinssatz) under section 247 BGB, half-yearly steps since 2002
+kind: rule
+domain: rates
+region: DE
+status: license-review
+tier: A
+valid_from: '2002-01-01'
+valid_to: null
+tags:
+- banking
+- payments
+- bank-codes
+- base-rate
+- interest-rate
+- step-schedule
+- bundesbank
+use_cases:
+- banking-demo
+- payments-demo
+- kyc-onboarding
+- data-quality-validation
+- treasury-demo
+spec:
+  implementation: almanac.rules.step_schedule
+  parameters:
+    series: BBIN1.M.DE.BBK.BBKBAS2.EUR.ME
+    unit: percent
+    steps:
+    - from: '2002-01-01'
+      value: 2.57
+    - from: '2002-07-01'
+      value: 2.47
+    - from: '2003-01-01'
+      value: 1.97
+    - from: '2003-07-01'
+      value: 1.22
+    - from: '2004-01-01'
+      value: 1.14
+    - from: '2004-07-01'
+      value: 1.13
+    - from: '2005-01-01'
+      value: 1.21
+    - from: '2005-07-01'
+      value: 1.17
+    - from: '2006-01-01'
+      value: 1.37
+    - from: '2006-07-01'
+      value: 1.95
+    - from: '2007-01-01'
+      value: 2.7
+    - from: '2007-07-01'
+      value: 3.19
+    - from: '2008-01-01'
+      value: 3.32
+    - from: '2008-07-01'
+      value: 3.19
+    - from: '2009-01-01'
+      value: 1.62
+    - from: '2009-07-01'
+      value: 0.12
+    - from: '2010-01-01'
+      value: 0.12
+    - from: '2010-07-01'
+      value: 0.12
+    - from: '2011-01-01'
+      value: 0.12
+    - from: '2011-07-01'
+      value: 0.37
+    - from: '2012-01-01'
+      value: 0.12
+    - from: '2012-07-01'
+      value: 0.12
+    - from: '2013-01-01'
+      value: -0.13
+    - from: '2013-07-01'
+      value: -0.38
+    - from: '2014-01-01'
+      value: -0.63
+    - from: '2014-07-01'
+      value: -0.73
+    - from: '2015-01-01'
+      value: -0.83
+    - from: '2015-07-01'
+      value: -0.83
+    - from: '2016-01-01'
+      value: -0.83
+    - from: '2016-07-01'
+      value: -0.88
+    - from: '2017-01-01'
+      value: -0.88
+    - from: '2017-07-01'
+      value: -0.88
+    - from: '2018-01-01'
+      value: -0.88
+    - from: '2018-07-01'
+      value: -0.88
+    - from: '2019-01-01'
+      value: -0.88
+    - from: '2019-07-01'
+      value: -0.88
+    - from: '2020-01-01'
+      value: -0.88
+    - from: '2020-07-01'
+      value: -0.88
+    - from: '2021-01-01'
+      value: -0.88
+    - from: '2021-07-01'
+      value: -0.88
+    - from: '2022-01-01'
+      value: -0.88
+    - from: '2022-07-01'
+      value: -0.88
+    - from: '2023-01-01'
+      value: 1.62
+    - from: '2023-07-01'
+      value: 3.12
+    - from: '2024-01-01'
+      value: 3.62
+    - from: '2024-07-01'
+      value: 3.37
+    - from: '2025-01-01'
+      value: 2.27
+    - from: '2025-07-01'
+      value: 1.27
+    - from: '2026-01-01'
+      value: 1.27
+    - from: '2026-07-01'
+      value: 1.52
+  vectors:
+  - input:
+      'on': '2002-01-01'
+    expected: 2.57
+    origin: source
+  - input:
+      'on': '2013-01-01'
+    expected: -0.13
+    origin: source
+    note: first negative base rate
+  - input:
+      'on': '2026-07-01'
+    expected: 1.52
+    origin: source
+  - input:
+      'on': '2026-10-31'
+    expected: 1.52
+    origin: derived
+    note: latest step still in force
+  - input:
+      'on': '2025-06-30'
+    expected: 2.27
+    origin: derived
+    note: day before a step
+evidence:
+- publisher: Deutsche Bundesbank
+  title: Time series BBIN1.M.DE.BBK.BBKBAS2.EUR.ME, Basiszinssatz gemaess BGB (SDMX CSV)
+  url: https://api.statistiken.bundesbank.de/rest/data/BBIN1/M.DE.BBK.BBKBAS2.EUR.ME?format=sdmx_csv&detail=dataonly&startPeriod=2002-01&endPeriod=2026-10
+  accessed_at: '2026-11-03'
+  locator: TIME_PERIOD=2002-01, OBS_VALUE and change comment
+  value: '2.57'
+  unit: percent
+  snippet: BBKBAS2;EUR;ME;2002-01;2.57;Ab
+  source_license: unstated
+  content_sha256: c7cbf932ceb4fb58d52037c1bfc29d1a2196d6958191e7780f6f8e5929d50fb2
+  role: primary
+- publisher: Deutsche Bundesbank
+  title: Time series BBIN1.M.DE.BBK.BBKBAS2.EUR.ME, Basiszinssatz gemaess BGB (SDMX CSV)
+  url: https://api.statistiken.bundesbank.de/rest/data/BBIN1/M.DE.BBK.BBKBAS2.EUR.ME?format=sdmx_csv&detail=dataonly&startPeriod=2002-01&endPeriod=2026-10
+  accessed_at: '2026-11-03'
+  locator: TIME_PERIOD=2013-01, OBS_VALUE and change comment
+  value: '-0.13'
+  unit: percent
+  snippet: BBKBAS2;EUR;ME;2013-01;-0.13;Ab
+  source_license: unstated
+  content_sha256: c7cbf932ceb4fb58d52037c1bfc29d1a2196d6958191e7780f6f8e5929d50fb2
+  role: primary
+- publisher: Deutsche Bundesbank
+  title: Time series BBIN1.M.DE.BBK.BBKBAS2.EUR.ME, Basiszinssatz gemaess BGB (SDMX CSV)
+  url: https://api.statistiken.bundesbank.de/rest/data/BBIN1/M.DE.BBK.BBKBAS2.EUR.ME?format=sdmx_csv&detail=dataonly&startPeriod=2002-01&endPeriod=2026-10
+  accessed_at: '2026-11-03'
+  locator: TIME_PERIOD=2026-07, OBS_VALUE and change comment
+  value: '1.52'
+  unit: percent
+  snippet: BBKBAS2;EUR;ME;2026-07;1.52;Ab
+  source_license: unstated
+  content_sha256: c7cbf932ceb4fb58d52037c1bfc29d1a2196d6958191e7780f6f8e5929d50fb2
+  role: primary
+assumed:
+- parameter: steps
+  value: months with an 'Ab 1.' comment
+  method: derived
+  rationale: The comment marks the month a new half-yearly rate takes effect; the value applies from the first day of that month.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 5
+  tolerance: 0
+- statistic: count
+  expected: 50
+  tolerance: 0
+notes: The German civil-law base rate, which the Deutsche Bundesbank announces for 1 January and 1 July of each year under section 247 BGB and to which statutory
+  default interest and many contracts refer. Steps are the months of the Bundesbank's end-of-month series whose observation comment announces a new rate ('Ab 1. Jan.'
+  or 'Ab 1. Juli'), each taken to apply from the first day of that month; unchanged half-years are kept as steps with the same value. The query is pinned to January
+  2002 to October 2026 in data-only SDMX CSV, which carries no update timestamp. The series carries no licence statement, so the entry is held at license-review.

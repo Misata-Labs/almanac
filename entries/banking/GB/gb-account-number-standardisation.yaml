@@ -1,0 +1,172 @@
+id: gb-account-number-standardisation
+title: UK nonstandard account numbers converted to eight digits for modulus checking (Vocalink section 2.1.2)
+kind: rule
+domain: banking
+region: GB
+status: license-review
+tier: B
+valid_from: '2026-09-05'
+valid_to: null
+tags:
+- banking
+- payments
+- bank-codes
+- sort-code
+- account-number
+- bacs
+- data-cleansing
+use_cases:
+- banking-demo
+- payments-demo
+- kyc-onboarding
+- data-quality-validation
+- treasury-demo
+spec:
+  implementation: almanac.rules.gb_account_standardisation
+  parameters:
+    ten_digit:
+      natwest: last_eight
+      co-operative: first_eight
+      leeds: first_eight
+    nine_digit:
+      santander: first_digit_to_sort_code
+    pad_from: 6
+  vectors:
+  - input:
+      sort_code: '600000'
+      account: 0123456789
+      institution: natwest
+    expected:
+    - '600000'
+    - '23456789'
+    origin: source
+    note: NatWest example 0123456789
+  - input:
+      sort_code: '600000'
+      account: 01-23456789
+      institution: natwest
+    expected:
+    - '600000'
+    - '23456789'
+    origin: source
+    note: hyphen ignored
+  - input:
+      sort_code: 089000
+      account: '1234567890'
+      institution: co-operative
+    expected:
+    - 089000
+    - '12345678'
+    origin: source
+  - input:
+      sort_code: 090000
+      account: '123456789'
+      institution: santander
+    expected:
+    - 090001
+    - '23456789'
+    origin: source
+    note: sorting code nn-nn-nn becomes nn-nn-n1
+  - input:
+      sort_code: '200000'
+      account: '1234567'
+    expected:
+    - '200000'
+    - '01234567'
+    origin: source
+  - input:
+      sort_code: '200000'
+      account: '123456'
+    expected:
+    - '200000'
+    - '00123456'
+    origin: source
+  - input:
+      sort_code: '200000'
+      account: '12345678'
+    expected:
+    - '200000'
+    - '12345678'
+    origin: derived
+    note: eight digits are already standard
+evidence:
+- publisher: Vocalink Limited (modulus checking specification for Pay.UK schemes)
+  title: 'Validating account numbers: UK modulus checking, version 9.10 (PDF)'
+  url: https://www.vocalink.com/media/e0mo2xxa/validating-account-numbers-uk-modulus-checking-v910.pdf
+  accessed_at: '2026-11-03'
+  locator: pages 20-21, section 2.1.2, natwest
+  value: '23456789'
+  unit: text
+  snippet: National Westminster Bank plc Use the last eight digits only.
+  source_license: unstated
+  content_sha256: 45157840ca1cad14eab655008c632b5ec5ec54dda84f17b6f20ff7a54c8b755f
+  role: primary
+- publisher: Vocalink Limited (modulus checking specification for Pay.UK schemes)
+  title: 'Validating account numbers: UK modulus checking, version 9.10 (PDF)'
+  url: https://www.vocalink.com/media/e0mo2xxa/validating-account-numbers-uk-modulus-checking-v910.pdf
+  accessed_at: '2026-11-03'
+  locator: pages 20-21, section 2.1.2, co-operative
+  value: '12345678'
+  unit: text
+  snippet: Co-Operative Bank plc Use the first eight digits only.
+  source_license: unstated
+  content_sha256: 45157840ca1cad14eab655008c632b5ec5ec54dda84f17b6f20ff7a54c8b755f
+  role: primary
+- publisher: Vocalink Limited (modulus checking specification for Pay.UK schemes)
+  title: 'Validating account numbers: UK modulus checking, version 9.10 (PDF)'
+  url: https://www.vocalink.com/media/e0mo2xxa/validating-account-numbers-uk-modulus-checking-v910.pdf
+  accessed_at: '2026-11-03'
+  locator: pages 20-21, section 2.1.2, leeds
+  value: '12345678'
+  unit: text
+  snippet: Leeds Building Society Use the first eight digits only.
+  source_license: unstated
+  content_sha256: 45157840ca1cad14eab655008c632b5ec5ec54dda84f17b6f20ff7a54c8b755f
+  role: primary
+- publisher: Vocalink Limited (modulus checking specification for Pay.UK schemes)
+  title: 'Validating account numbers: UK modulus checking, version 9.10 (PDF)'
+  url: https://www.vocalink.com/media/e0mo2xxa/validating-account-numbers-uk-modulus-checking-v910.pdf
+  accessed_at: '2026-11-03'
+  locator: pages 20-21, section 2.1.2, santander
+  value: nn-nn-n1
+  unit: text
+  snippet: Replace the last digit of the sorting code with the first digit of the account number,
+  source_license: unstated
+  content_sha256: 45157840ca1cad14eab655008c632b5ec5ec54dda84f17b6f20ff7a54c8b755f
+  role: primary
+- publisher: Vocalink Limited (modulus checking specification for Pay.UK schemes)
+  title: 'Validating account numbers: UK modulus checking, version 9.10 (PDF)'
+  url: https://www.vocalink.com/media/e0mo2xxa/validating-account-numbers-uk-modulus-checking-v910.pdf
+  accessed_at: '2026-11-03'
+  locator: pages 20-21, section 2.1.2, seven
+  value: '01234567'
+  unit: text
+  snippet: General Prefix the account number with a zero (0). 1234567 01234567
+  source_license: unstated
+  content_sha256: 45157840ca1cad14eab655008c632b5ec5ec54dda84f17b6f20ff7a54c8b755f
+  role: primary
+- publisher: Vocalink Limited (modulus checking specification for Pay.UK schemes)
+  title: 'Validating account numbers: UK modulus checking, version 9.10 (PDF)'
+  url: https://www.vocalink.com/media/e0mo2xxa/validating-account-numbers-uk-modulus-checking-v910.pdf
+  accessed_at: '2026-11-03'
+  locator: pages 20-21, section 2.1.2, six
+  value: '00123456'
+  unit: text
+  snippet: General Prefix the account number with two zeros (00)
+  source_license: unstated
+  content_sha256: 45157840ca1cad14eab655008c632b5ec5ec54dda84f17b6f20ff7a54c8b755f
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 7
+  tolerance: 0
+notes: 'UK modulus checks assume an eight-digit account number. Section 2.1.2 of the Vocalink specification converts the others: ten-digit National Westminster numbers
+  keep the last eight digits (a hyphen after the second digit is ignored), ten-digit Co-operative Bank and Leeds Building Society numbers keep the first eight, a
+  nine-digit Santander number moves its first digit into the last place of the sorting code and keeps the remaining eight, and seven- and six-digit numbers are prefixed
+  with one or two zeros. Institutions are keyed natwest, co-operative, leeds and santander. The source vectors are the specification''s own examples; sorting codes
+  in them are placeholders. Apply this before gb-sort-code-modulus-check. The document states ''All rights reserved'' and no reuse licence, so the entry is held at
+  license-review.'

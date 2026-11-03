@@ -1,0 +1,173 @@
+id: us-regulation-cc-federal-reserve-and-fhlb-routing-numbers
+title: US routing numbers of Federal Reserve Banks and Federal Home Loan Banks (Regulation CC Appendix A)
+kind: rule
+domain: banking
+region: US
+status: license-review
+tier: A
+valid_from: '1988-05-27'
+valid_to: null
+tags:
+- banking
+- payments
+- bank-codes
+- routing-number
+- aba
+- federal-reserve
+- regulation-cc
+use_cases:
+- banking-demo
+- payments-demo
+- kyc-onboarding
+- data-quality-validation
+- treasury-demo
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      federal_reserve_banks:
+        '011000015': Federal Reserve Bank, Federal Reserve District 1
+        011100481: Federal Reserve Bank, Federal Reserve District 1
+        021001208: Federal Reserve Bank, Federal Reserve District 2
+        '021204005': Federal Reserve Bank, Federal Reserve District 2
+        '021305001': Federal Reserve Bank, Federal Reserve District 2
+        '022000266': Federal Reserve Bank, Federal Reserve District 2
+        '031000040': Federal Reserve Bank, Federal Reserve District 3
+        '041000014': Federal Reserve Bank, Federal Reserve District 4
+        '042000437': Federal Reserve Bank, Federal Reserve District 4
+        '043000300': Federal Reserve Bank, Federal Reserve District 4
+        '044000503': Federal Reserve Bank, Federal Reserve District 4
+        '051000033': Federal Reserve Bank, Federal Reserve District 5
+        051900023: Federal Reserve Bank, Federal Reserve District 5
+        052000278: Federal Reserve Bank, Federal Reserve District 5
+        '053000206': Federal Reserve Bank, Federal Reserve District 5
+        053900089: Federal Reserve Bank, Federal Reserve District 5
+        '061000146': Federal Reserve Bank, Federal Reserve District 6
+        062000190: Federal Reserve Bank, Federal Reserve District 6
+        063000199: Federal Reserve Bank, Federal Reserve District 6
+        '064000101': Federal Reserve Bank, Federal Reserve District 6
+        '065000210': Federal Reserve Bank, Federal Reserve District 6
+        066000109: Federal Reserve Bank, Federal Reserve District 6
+        '071000301': Federal Reserve Bank, Federal Reserve District 7
+        '071107110': Federal Reserve Bank, Federal Reserve District 7
+        072000290: Federal Reserve Bank, Federal Reserve District 7
+        073000338: Federal Reserve Bank, Federal Reserve District 7
+        '074000201': Federal Reserve Bank, Federal Reserve District 7
+        075000129: Federal Reserve Bank, Federal Reserve District 7
+        081000045: Federal Reserve Bank, Federal Reserve District 8
+        082000138: Federal Reserve Bank, Federal Reserve District 8
+        083000593: Federal Reserve Bank, Federal Reserve District 8
+        084000039: Federal Reserve Bank, Federal Reserve District 8
+        091000080: Federal Reserve Bank, Federal Reserve District 9
+        092000267: Federal Reserve Bank, Federal Reserve District 9
+        '101000048': Federal Reserve Bank, Federal Reserve District 10
+        '102000199': Federal Reserve Bank, Federal Reserve District 10
+        '103000240': Federal Reserve Bank, Federal Reserve District 10
+        '104000126': Federal Reserve Bank, Federal Reserve District 10
+        '111000038': Federal Reserve Bank, Federal Reserve District 11
+        '112000011': Federal Reserve Bank, Federal Reserve District 11
+        '113000049': Federal Reserve Bank, Federal Reserve District 11
+        '114000721': Federal Reserve Bank, Federal Reserve District 11
+        '121000374': Federal Reserve Bank, Federal Reserve District 12
+        '122000166': Federal Reserve Bank, Federal Reserve District 12
+        '123000013': Federal Reserve Bank, Federal Reserve District 12
+        '124000313': Federal Reserve Bank, Federal Reserve District 12
+        '125000011': Federal Reserve Bank, Federal Reserve District 12
+      federal_home_loan_banks:
+        '011000536': Federal Home Loan Bank, Federal Reserve District 1
+        021206391: Federal Home Loan Bank, Federal Reserve District 2
+        026009739: Federal Home Loan Bank, Federal Reserve District 2
+        041002915: Federal Home Loan Bank, Federal Reserve District 4
+        042000916: Federal Home Loan Bank, Federal Reserve District 4
+        '043001435': Federal Home Loan Bank, Federal Reserve District 4
+        043018622: Federal Home Loan Bank, Federal Reserve District 4
+        061008766: Federal Home Loan Bank, Federal Reserve District 6
+        '071004501': Federal Home Loan Bank, Federal Reserve District 7
+        073000914: Federal Home Loan Bank, Federal Reserve District 7
+        074001019: Federal Home Loan Bank, Federal Reserve District 7
+        081000919: Federal Home Loan Bank, Federal Reserve District 8
+        091000912: Federal Home Loan Bank, Federal Reserve District 9
+        '101000912': Federal Home Loan Bank, Federal Reserve District 10
+        '101101947': Federal Home Loan Bank, Federal Reserve District 10
+        '111010837': Federal Home Loan Bank, Federal Reserve District 11
+        '111910830': Federal Home Loan Bank, Federal Reserve District 11
+        '121000701': Federal Home Loan Bank, Federal Reserve District 12
+        '124002874': Federal Home Loan Bank, Federal Reserve District 12
+        '125000503': Federal Home Loan Bank, Federal Reserve District 12
+  vectors:
+  - input:
+      set: federal_reserve_banks
+      value: '011000015'
+    expected: true
+    origin: source
+    note: first Federal Reserve Bank entry, 0110 0001 5
+  - input:
+      set: federal_reserve_banks
+      value: '125000011'
+    expected: true
+    origin: source
+    note: last Federal Reserve Bank entry, 1250 0001 1
+  - input:
+      set: federal_home_loan_banks
+      value: '011000536'
+    expected: true
+    origin: source
+    note: first Federal Home Loan Bank entry
+  - input:
+      set: federal_home_loan_banks
+      value: '011000015'
+    expected: false
+    origin: derived
+    note: a Federal Reserve Bank number, not a Home Loan Bank one
+evidence:
+- publisher: Office of the Federal Register (eCFR)
+  title: 12 CFR part 229 (Regulation CC), Appendix A, eCFR XML as of 2026-10-29
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=229
+  accessed_at: '2026-11-03'
+  locator: Appendix A, Federal Reserve Banks, first entry
+  value: 0110 0001 5
+  unit: text
+  snippet: <LI>0110 0001 5</LI>
+  source_license: unstated
+  content_sha256: f4ea58812edfc6182c98bc2827deecb30c48e6edfea53eea8002067039473333
+  role: primary
+- publisher: Office of the Federal Register (eCFR)
+  title: 12 CFR part 229 (Regulation CC), Appendix A, eCFR XML as of 2026-10-29
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=229
+  accessed_at: '2026-11-03'
+  locator: Appendix A, Federal Home Loan Banks, first entry
+  value: 0110 0053 6
+  unit: text
+  snippet: <LI>0110 0053 6</LI>
+  source_license: unstated
+  content_sha256: f4ea58812edfc6182c98bc2827deecb30c48e6edfea53eea8002067039473333
+  role: primary
+- publisher: Office of the Federal Register (eCFR)
+  title: 12 CFR part 229 (Regulation CC), Appendix A, eCFR XML as of 2026-10-29
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=229
+  accessed_at: '2026-11-03'
+  locator: Appendix A, heading
+  value: Routing Number Guide
+  unit: text
+  snippet: The guide lists the routing numbers of checks drawn on Federal Reserve Banks and Federal Home Loan Banks,
+  source_license: unstated
+  content_sha256: f4ea58812edfc6182c98bc2827deecb30c48e6edfea53eea8002067039473333
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: vector_count
+  expected: 4
+  tolerance: 0
+- statistic: count[federal_reserve_banks]
+  expected: 47
+  tolerance: 0
+- statistic: count[federal_home_loan_banks]
+  expected: 20
+  tolerance: 0
+notes: The 47 nine-digit routing numbers of Federal Reserve Bank offices and the 20 of Federal Home Loan Banks that Regulation CC Appendix A lists as drawing next-day
+  availability checks, printed there in the groups 'XXXX XXXX X' and stored here without spaces. Each label names the Federal Reserve District read from the first
+  two digits (see us-routing-number-federal-reserve-prefix). Useful as genuine routing numbers of central institutions for test data that should not name a commercial
+  bank. US federal works carry no copyright, but the eCFR states no reuse terms, so the entry is held at license-review.
