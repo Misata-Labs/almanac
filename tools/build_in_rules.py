@@ -34,7 +34,7 @@ UNSTATED = "unstated"
 INDIA_CODE = "https://indiacode.gov.in/server/api/core/bitstreams/{}/content"
 WAGES_URL = INDIA_CODE.format("7e3863af-0263-4c95-a42a-1bdd0a55a5fc")
 SOCIAL_SECURITY_URL = INDIA_CODE.format("0d5654a4-6119-4ef2-98d5-2a2fecd979dc")
-INDUSTRIAL_RELATIONS_URL = INDIA_CODE.format("5fcb3857-440d-4679-8710-9e8242e52151")
+INDUSTRIAL_RELATIONS_URL = INDIA_CODE.format("3445e64d-acb1-432d-9684-028ab37cb788")
 IR_AMENDMENT_URL = INDIA_CODE.format("9d6c106a-1510-4122-b4f1-9c24bf37666e")
 OSH_URL = INDIA_CODE.format("3a7333e5-1f94-4f64-aff7-be67c0e63435")
 GRATUITY_CEILING_URL = INDIA_CODE.format("c1e116f5-07c9-4647-bab3-39c7484f3942")
@@ -55,7 +55,7 @@ SEBI = "Securities and Exchange Board of India"
 
 WAGES_TITLE = "The Code on Wages, 2019 (Act No. 29 of 2019), India Code text as on 21 November 2025"
 SS_TITLE = "The Code on Social Security, 2020 (Act No. 36 of 2020), India Code text as on 21 November 2025"
-IR_TITLE = "The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text"
+IR_TITLE = "The Industrial Relations Code, 2020 (Act No. 35 of 2020), India Code text as on 1 September 2026"
 IR_AMENDMENT_TITLE = "The Industrial Relations Code (Amendment) Act, 2026 (No. 1 of 2026), Gazette of India Extraordinary"
 OSH_TITLE = "The Occupational Safety, Health and Working Conditions Code, 2020 (Act No. 37 of 2020), India Code text as on 28 November 2025"
 GRATUITY_TITLE = "Notifications S.O. 1419(E) and S.O. 1420(E) of 29 March 2018 under the Payment of Gratuity Act, 1972"
