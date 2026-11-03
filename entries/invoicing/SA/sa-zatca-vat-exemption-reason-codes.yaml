@@ -1,0 +1,159 @@
+id: sa-zatca-vat-exemption-reason-codes
+title: Saudi Arabia ZATCA e-invoice VAT exemption and zero-rating reason codes (VATEX-SA) by VAT category
+kind: rule
+domain: invoicing
+region: SA
+status: license-review
+tier: B
+valid_from: '2023-05-19'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- zatca
+- fatoora
+- saudi-arabia
+- vat-exemption
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- accounts-payable
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    vat_categories:
+    - S
+    - Z
+    - E
+    - O
+    rows:
+      VATEX-SA-29:
+        vat_category: E
+        reason: Financial services mentioned in Article 29 of the VAT Regulations
+      VATEX-SA-29-7:
+        vat_category: E
+        reason: Life insurance services mentioned in Article 29 of the VAT Regulations
+      VATEX-SA-30:
+        vat_category: E
+        reason: Real estate transactions mentioned in Article 30 of the VAT Regulations
+      VATEX-SA-32:
+        vat_category: Z
+        reason: Export of goods
+      VATEX-SA-33:
+        vat_category: Z
+        reason: Export of services
+      VATEX-SA-34-1:
+        vat_category: Z
+        reason: The international transport of Goods
+      VATEX-SA-34-2:
+        vat_category: Z
+        reason: international transport of passengers
+      VATEX-SA-34-3:
+        vat_category: Z
+        reason: services directly connected and incidental to a Supply of international passenger transport
+      VATEX-SA-34-4:
+        vat_category: Z
+        reason: Supply of a qualifying means of transport
+      VATEX-SA-34-5:
+        vat_category: Z
+        reason: Any services relating to Goods or passenger transportation, as defined in article twenty five of
+          these Regulations
+      VATEX-SA-35:
+        vat_category: Z
+        reason: Medicines and medical equipment
+      VATEX-SA-36:
+        vat_category: Z
+        reason: Qualifying metals
+      VATEX-SA-EDU:
+        vat_category: Z
+        reason: Private education to citizen
+      VATEX-SA-HEA:
+        vat_category: Z
+        reason: Private healthcare to citizen
+      VATEX-SA-MLTRY:
+        vat_category: Z
+        reason: supply of qualified military goods
+      VATEX-SA-OOS:
+        vat_category: O
+        reason: Reason is free text, to be provided by the taxpayer on case to case basis.
+  vectors:
+  - input:
+      key: VATEX-SA-32
+      column: vat_category
+    expected: Z
+    origin: source
+  - input:
+      key: VATEX-SA-29
+      column: vat_category
+    expected: E
+    origin: source
+  - input:
+      key: VATEX-SA-OOS
+      column: vat_category
+    expected: O
+    origin: source
+  - input:
+      key: VATEX-SA-35
+      column: reason
+    expected: Medicines and medical equipment
+    origin: source
+  - input: VATEX-SA-31
+    expected: false
+    origin: derived
+evidence:
+- publisher: Zakat, Tax and Customs Authority (ZATCA)
+  title: Electronic Invoice XML Implementation Standard, version 1.2 (2023-05-19)
+  url: https://zatca.gov.sa/ar/E-Invoicing/SystemsDevelopers/Documents/20230519_ZATCA_Electronic_Invoice_XML_Implementation_Standard_%20vF.pdf
+  accessed_at: '2026-11-03'
+  locator: page 32, section 11.2.4
+  value: VATEX-SA-29
+  unit: text
+  snippet: A subset of values from UN/CEFACT code list 5305, D.16B shall be used.
+  source_license: unstated
+  content_sha256: 5aa15ff95efb98d3696083c309470d116d7e93ea7e134cca63f9680bc112685e
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA)
+  title: Electronic Invoice XML Implementation Standard, version 1.2 (2023-05-19)
+  url: https://zatca.gov.sa/ar/E-Invoicing/SystemsDevelopers/Documents/20230519_ZATCA_Electronic_Invoice_XML_Implementation_Standard_%20vF.pdf
+  accessed_at: '2026-11-03'
+  locator: page 32, section 11.2.4, category E
+  value: Financial services mentioned in Article 29 of the VAT Regulations
+  unit: text
+  snippet: Real estate transactions mentioned in
+  source_license: unstated
+  content_sha256: 5aa15ff95efb98d3696083c309470d116d7e93ea7e134cca63f9680bc112685e
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA)
+  title: Electronic Invoice XML Implementation Standard, version 1.2 (2023-05-19)
+  url: https://zatca.gov.sa/ar/E-Invoicing/SystemsDevelopers/Documents/20230519_ZATCA_Electronic_Invoice_XML_Implementation_Standard_%20vF.pdf
+  accessed_at: '2026-11-03'
+  locator: page 33, section 11.2.4, categories Z and O
+  value: Medicines and medical equipment
+  unit: text
+  snippet: Reason is free text, to be provided by the taxpayer on case to case basis.
+  source_license: unstated
+  content_sha256: 5aa15ff95efb98d3696083c309470d116d7e93ea7e134cca63f9680bc112685e
+  role: primary
+assumed:
+- parameter: rows.*.vat_category
+  value: table grouping
+  method: derived
+  rationale: Each code's category is the row group it sits under in table 11.2.4.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 16
+  tolerance: 0
+notes: 'Exemption and exception reason codes a ZATCA e-invoice gives in BT-121 when a line''s VAT category (BT-151,
+  a subset of UN/CEFACT 5305) is not S: category E exempt supplies (financial services, life insurance, real estate),
+  Z zero-rated supplies (exports, international transport, qualifying transport means, medicines, qualifying metals,
+  private education and healthcare to citizens, military goods), and O out of scope, where VATEX-SA-OOS takes a
+  free-text reason. Reasons are the English text of table 11.2.4 of the standard. No licence is stated, so the entry
+  stays at license-review.'

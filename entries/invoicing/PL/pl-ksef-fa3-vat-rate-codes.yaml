@@ -1,0 +1,150 @@
+id: pl-ksef-fa3-vat-rate-codes
+title: 'Poland KSeF FA(3) P_12 VAT rate values (TStawkaPodatku: numeric rates, 0 KR/WDT/EX, zw, oo, np I/II)'
+kind: rule
+domain: invoicing
+region: PL
+status: license-review
+tier: A
+valid_from: '2026-02-01'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- ksef
+- fa-3
+- poland
+- vat
+- tax-rates
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- accounts-payable
+- retail-demo
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      stawka_podatku:
+        '23': ''
+        '22': ''
+        '8': ''
+        '7': ''
+        '5': ''
+        '4': ''
+        '3': ''
+        0 KR: Stawka 0% w przypadku sprzedaży towarów i świadczenia usług na terytorium kraju (z wyłączeniem WDT
+          i eksportu)
+        0 WDT: Stawka 0% w przypadku wewnątrzwspólnotowej dostawy towarów (WDT)
+        0 EX: Stawka 0% w przypadku eksportu towarów
+        zw: zwolnione od podatku
+        oo: odwrotne obciążenie
+        np I: niepodlegające opodatkowaniu- dostawy towarów oraz świadczenia usług poza terytorium kraju, z wyłączeniem
+          transakcji, o których mowa w art. 100 ust. 1 pkt 4 ustawy oraz OSS
+        np II: niepodlegajace opodatkowaniu na terytorium kraju, świadczenie usług o których mowa w art. 100 ust.
+          1 pkt 4 ustawy
+  vectors:
+  - input:
+      set: stawka_podatku
+      value: '23'
+    expected: true
+    origin: source
+  - input:
+      set: stawka_podatku
+      value: '8'
+    expected: true
+    origin: source
+  - input:
+      set: stawka_podatku
+      value: '5'
+    expected: true
+    origin: source
+  - input:
+      set: stawka_podatku
+      value: 0 WDT
+    expected: true
+    origin: source
+  - input:
+      set: stawka_podatku
+      value: zw
+    expected: true
+    origin: source
+  - input:
+      set: stawka_podatku
+      value: np I
+    expected: true
+    origin: source
+  - input:
+      set: stawka_podatku
+      value: '0'
+    expected: false
+    origin: derived
+    note: 'zero rate must say which: 0 KR, 0 WDT or 0 EX'
+  - input:
+      set: stawka_podatku
+      value: 23%
+    expected: false
+    origin: derived
+    note: values carry no percent sign
+evidence:
+- publisher: Ministerstwo Finansów (Centralne Repozytorium Wzorów Dokumentów Elektronicznych)
+  title: Schemat FA(3) ustrukturyzowanej faktury VAT dla KSeF (wzór 2025/06/25/13775)
+  url: https://crd.gov.pl/wzor/2025/06/25/13775/schemat.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType TStawkaPodatku
+  value: value="23"
+  unit: text
+  snippet: Stawka podatku
+  source_license: unstated
+  content_sha256: b646b6b525f51adf1bb2545f111fc8ca6e7aa6dd2f98948f1667d3695c06d958
+  role: primary
+- publisher: Ministerstwo Finansów (Centralne Repozytorium Wzorów Dokumentów Elektronicznych)
+  title: Schemat FA(3) ustrukturyzowanej faktury VAT dla KSeF (wzór 2025/06/25/13775)
+  url: https://crd.gov.pl/wzor/2025/06/25/13775/schemat.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType TStawkaPodatku, 0 WDT
+  value: value="0 WDT"
+  unit: text
+  snippet: Stawka 0% w przypadku wewnątrzwspólnotowej dostawy towarów (WDT)
+  source_license: unstated
+  content_sha256: b646b6b525f51adf1bb2545f111fc8ca6e7aa6dd2f98948f1667d3695c06d958
+  role: primary
+- publisher: Ministerstwo Finansów (Centralne Repozytorium Wzorów Dokumentów Elektronicznych)
+  title: Schemat FA(3) ustrukturyzowanej faktury VAT dla KSeF (wzór 2025/06/25/13775)
+  url: https://crd.gov.pl/wzor/2025/06/25/13775/schemat.xsd
+  accessed_at: '2026-11-03'
+  locator: element P_12
+  value: name="P_12" type="tns:TStawkaPodatku"
+  unit: text
+  snippet: Stawka podatku. Pole opcjonalne dla przypadków określonych w art. 106e ust. 2, 3, ust. 4 pkt 3
+  source_license: unstated
+  content_sha256: b646b6b525f51adf1bb2545f111fc8ca6e7aa6dd2f98948f1667d3695c06d958
+  role: primary
+- publisher: Ministerstwo Finansów (Centralne Repozytorium Wzorów Dokumentów Elektronicznych)
+  title: Wyróżnik wzoru FA(3) ustrukturyzowanej faktury VAT (wzór 2025/06/25/13775)
+  url: https://crd.gov.pl/wzor/2025/06/25/13775/wyroznik.xml
+  accessed_at: '2026-11-03'
+  locator: WaznoscWzoru/Od
+  value: <meta:Od>2026-02-01</meta:Od>
+  unit: text
+  snippet: FA(3) USTRUKTURYZOWANA FAKTURA VAT
+  source_license: unstated
+  content_sha256: 26fb7dd01c19d78201d10c7411e9d3aa9c50b50b5ae8556c4471053d2a3bdf31
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[stawka_podatku]
+  expected: 14
+  tolerance: 0
+notes: 'Values allowed in P_12, the VAT rate of an invoice line in a KSeF FA(3) invoice. The numeric values (23,
+  22, 8, 7, 5, 4, 3) are percentages and the schema gives them no label, so their label is empty; the others are
+  annotated: 0 KR domestic zero rate, 0 WDT intra-community supply, 0 EX export, zw exempt, oo reverse charge, np
+  I and np II not subject to Polish VAT. A plain 0 is not a valid value. The repository states no licence, so the
+  entry stays at license-review.'

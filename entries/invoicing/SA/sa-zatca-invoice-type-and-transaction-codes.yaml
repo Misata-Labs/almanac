@@ -1,0 +1,167 @@
+id: sa-zatca-invoice-type-and-transaction-codes
+title: Saudi Arabia ZATCA e-invoice type codes (388, 386, 383, 381) and KSA-2 transaction code NNPNESB
+kind: rule
+domain: invoicing
+region: SA
+status: license-review
+tier: B
+valid_from: '2023-05-19'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- zatca
+- fatoora
+- saudi-arabia
+- document-type
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- accounts-payable
+spec:
+  implementation: almanac.rules.sa_zatca_transaction_code
+  parameters:
+    type_codes:
+      '388':
+        documents:
+          '01': Tax Invoice
+          '02': Simplified Tax Invoice
+      '383':
+        documents:
+          '01': tax invoice debit note
+          '02': simplified debit note
+      '381':
+        documents:
+          '01': tax invoice credit note
+          '02': simplified credit note
+      '386':
+        documents:
+          '01': Prepayment Tax Invoice
+          '02': Prepayment Simplified Tax Invoice
+    subtypes:
+      '01': tax invoice
+      '02': simplified tax invoice
+    flags:
+    - third_party
+    - nominal
+    - export
+    - summary
+    - self_billed
+    forbidden_combinations:
+    - - export
+      - self_billed
+  vectors:
+  - input:
+      transaction_code: '0100000'
+    expected: true
+    origin: source
+    note: tax invoice example
+  - input:
+      transaction_code: '0200000'
+    expected: true
+    origin: source
+    note: simplified tax invoice example
+  - input:
+      transaction_code: '0200000'
+      field: subtype
+    expected: '02'
+    origin: source
+  - input:
+      type_code: '388'
+    expected: true
+    origin: source
+  - input:
+      type_code: '381'
+    expected: true
+    origin: source
+  - input:
+      type_code: '380'
+    expected: false
+    origin: derived
+    note: outside the KSA subset of UNCL1001
+  - input:
+      transaction_code: '0100101'
+    expected: false
+    origin: derived
+    note: 'BR-KSA-07: export invoice cannot be self-billed'
+  - input:
+      transaction_code: '0100100'
+      field: export
+    expected: true
+    origin: derived
+  - input:
+      transaction_code: '0300000'
+    expected: false
+    origin: derived
+    note: unknown subtype
+  - input:
+      transaction_code: '010000'
+    expected: false
+    origin: derived
+    note: six characters
+evidence:
+- publisher: Zakat, Tax and Customs Authority (ZATCA)
+  title: Electronic Invoice XML Implementation Standard, version 1.2 (2023-05-19)
+  url: https://zatca.gov.sa/ar/E-Invoicing/SystemsDevelopers/Documents/20230519_ZATCA_Electronic_Invoice_XML_Implementation_Standard_%20vF.pdf
+  accessed_at: '2026-11-03'
+  locator: page 31, section 11.2.1 notes
+  value: For Simplified Tax Invoice, code is 388 and subtype is 02.
+  unit: text
+  snippet: For Prepayment Tax Invoice, code is 386 and subtype is 01.
+  source_license: unstated
+  content_sha256: 5aa15ff95efb98d3696083c309470d116d7e93ea7e134cca63f9680bc112685e
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA)
+  title: Electronic Invoice XML Implementation Standard, version 1.2 (2023-05-19)
+  url: https://zatca.gov.sa/ar/E-Invoicing/SystemsDevelopers/Documents/20230519_ZATCA_Electronic_Invoice_XML_Implementation_Standard_%20vF.pdf
+  accessed_at: '2026-11-03'
+  locator: page 31, section 11.2.1 notes
+  value: For simplified credit note, code is 381 and subtype is 02.
+  unit: text
+  snippet: For tax invoice debit note, code is 383 and subtype is 01.
+  source_license: unstated
+  content_sha256: 5aa15ff95efb98d3696083c309470d116d7e93ea7e134cca63f9680bc112685e
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA)
+  title: Electronic Invoice XML Implementation Standard, version 1.2 (2023-05-19)
+  url: https://zatca.gov.sa/ar/E-Invoicing/SystemsDevelopers/Documents/20230519_ZATCA_Electronic_Invoice_XML_Implementation_Standard_%20vF.pdf
+  accessed_at: '2026-11-03'
+  locator: page 48, rule BR-KSA-06
+  value: NNPNESB
+  unit: text
+  snippet: P (position 3) = 3rd Party invoice transaction, 0 for false, 1 for true
+  source_license: unstated
+  content_sha256: 5aa15ff95efb98d3696083c309470d116d7e93ea7e134cca63f9680bc112685e
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA)
+  title: Electronic Invoice XML Implementation Standard, version 1.2 (2023-05-19)
+  url: https://zatca.gov.sa/ar/E-Invoicing/SystemsDevelopers/Documents/20230519_ZATCA_Electronic_Invoice_XML_Implementation_Standard_%20vF.pdf
+  accessed_at: '2026-11-03'
+  locator: page 48, rule BR-KSA-07
+  value: Self-billing is not allowed (KSA-2,
+  unit: text
+  snippet: export invoices (KSA-2, position 5 = 1).
+  source_license: unstated
+  content_sha256: 5aa15ff95efb98d3696083c309470d116d7e93ea7e134cca63f9680bc112685e
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[type_codes]
+  expected: 4
+  tolerance: 0
+- statistic: count[flags]
+  expected: 5
+  tolerance: 0
+notes: 'A ZATCA (FATOORA) e-invoice states its document type in cbc:InvoiceTypeCode (BT-3): 388 tax invoice, 386
+  prepayment invoice, 383 debit note, 381 credit note. The name attribute carries the seven-character transaction
+  code KSA-2, NNPNESB: subtype 01 tax invoice (B2B) or 02 simplified tax invoice (B2C), then 0/1 flags for third-party,
+  nominal, export, summary and self-billed transactions (BR-KSA-06). BR-KSA-07 forbids self-billing on export invoices.
+  type_codes lists, per code, the document each subtype makes. No licence is stated, so the entry stays at license-review.'

@@ -1,0 +1,142 @@
+id: es-verifactu-invoice-type-codes
+title: Spain VERI*FACTU TipoFactura (F1, F2, F3, R1 to R5) and TipoRectificativa codes, Orden HAC/1177/2024
+kind: rule
+domain: invoicing
+region: ES
+status: license-review
+tier: B
+valid_from: '2024-10-29'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- verifactu
+- aeat
+- spain
+- document-type
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- accounts-payable
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      tipo_factura:
+        F1: Factura (art. 6, 7.2 y 7.3 del RD 1619/2012).
+        F2: Factura Simplificada y Facturas sin identificación del destinatario art. 6.1.d) RD 1619/2012.
+        F3: Factura emitida en sustitución de facturas simplificadas facturadas y declaradas.
+        R1: Factura Rectificativa (Error fundado en derecho y art. 80 Uno Dos y Seis LIVA).
+        R2: Factura Rectificativa (art. 80.3).
+        R3: Factura Rectificativa (art. 80.4).
+        R4: Factura Rectificativa (Resto).
+        R5: Factura Rectificativa en facturas simplificadas.
+      tipo_rectificativa:
+        S: Por sustitución.
+        I: Por diferencias.
+  vectors:
+  - input:
+      set: tipo_factura
+      value: F1
+    expected: true
+    origin: source
+  - input:
+      set: tipo_factura
+      value: F2
+    expected: true
+    origin: source
+  - input:
+      set: tipo_factura
+      value: R5
+    expected: true
+    origin: source
+  - input:
+      set: tipo_rectificativa
+      value: S
+    expected: true
+    origin: source
+  - input:
+      set: tipo_rectificativa
+      value: I
+    expected: true
+    origin: source
+  - input:
+      set: tipo_factura
+      value: R6
+    expected: false
+    origin: derived
+evidence:
+- publisher: Ministerio de Hacienda (Boletín Oficial del Estado)
+  title: Orden HAC/1177/2024, de 17 de octubre (VERI*FACTU especificaciones técnicas), BOE núm. 260, 28 octubre
+    2024
+  url: https://www.boe.es/boe/dias/2024/10/28/pdfs/BOE-A-2024-22138.pdf
+  accessed_at: '2026-11-03'
+  locator: annex section 6, list L2 (page 137556)
+  value: F1 Factura (art. 6, 7.2 y 7.3 del RD 1619/2012).
+  unit: text
+  snippet: F2 Factura Simplificada y Facturas sin identificación del destinatario art. 6.1.d) RD 1619/2012.
+  source_license: unstated
+  content_sha256: 94344cbc2841fc5c7e759b9a674c821520dc10a12b172f26a415ce8bffa882a2
+  role: primary
+- publisher: Ministerio de Hacienda (Boletín Oficial del Estado)
+  title: Orden HAC/1177/2024, de 17 de octubre (VERI*FACTU especificaciones técnicas), BOE núm. 260, 28 octubre
+    2024
+  url: https://www.boe.es/boe/dias/2024/10/28/pdfs/BOE-A-2024-22138.pdf
+  accessed_at: '2026-11-03'
+  locator: annex section 6, list L3
+  value: S Por sustitución.
+  unit: text
+  snippet: I Por diferencias.
+  source_license: unstated
+  content_sha256: 94344cbc2841fc5c7e759b9a674c821520dc10a12b172f26a415ce8bffa882a2
+  role: primary
+- publisher: Ministerio de Hacienda (Boletín Oficial del Estado)
+  title: Orden HAC/1177/2024, de 17 de octubre (VERI*FACTU especificaciones técnicas), BOE núm. 260, 28 octubre
+    2024
+  url: https://www.boe.es/boe/dias/2024/10/28/pdfs/BOE-A-2024-22138.pdf
+  accessed_at: '2026-11-03'
+  locator: annex section 2, RegistroAlta fields
+  value: TipoFactura1 Especificación del tipo de factura
+  unit: text
+  snippet: sustitución o por diferencia. Alfanumérico (1) L3
+  source_license: unstated
+  content_sha256: 94344cbc2841fc5c7e759b9a674c821520dc10a12b172f26a415ce8bffa882a2
+  role: primary
+- publisher: Ministerio de Hacienda (Boletín Oficial del Estado)
+  title: Orden HAC/1177/2024, de 17 de octubre (VERI*FACTU especificaciones técnicas), BOE núm. 260, 28 octubre
+    2024
+  url: https://www.boe.es/boe/dias/2024/10/28/pdfs/BOE-A-2024-22138.pdf
+  accessed_at: '2026-11-03'
+  locator: final provision
+  value: La presente orden entrará en vigor el día siguiente al de su publicación
+  unit: text
+  snippet: Núm. 260 Lunes 28 de octubre de 2024
+  source_license: unstated
+  content_sha256: 94344cbc2841fc5c7e759b9a674c821520dc10a12b172f26a415ce8bffa882a2
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2024-10-29'
+  method: derived
+  rationale: The order enters into force the day after its publication in the BOE on 28 October 2024; when invoicing
+    systems must comply is set separately by Real Decreto 1007/2023 and its amendments.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[tipo_factura]
+  expected: 8
+  tolerance: 0
+- statistic: count[tipo_rectificativa]
+  expected: 2
+  tolerance: 0
+notes: 'Invoice types for the TipoFactura field of a VERI*FACTU invoicing record (list L2 of the annex to Orden
+  HAC/1177/2024): F1 full invoice, F2 simplified invoice, F3 invoice replacing simplified ones, R1 to R4 corrective
+  invoices by legal ground, R5 corrective simplified invoice; and list L3 for TipoRectificativa (S by substitution,
+  I by differences). Descriptions are as printed in the BOE. The BOE states no licence on the document, so the entry
+  stays at license-review.'

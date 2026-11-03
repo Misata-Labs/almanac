@@ -1,0 +1,241 @@
+id: it-fatturapa-vat-nature-codes
+title: Italy FatturaPA Natura codes for VAT-free lines (N1 to N7 with sub-codes), schema 1.2.3
+kind: rule
+domain: invoicing
+region: IT
+status: license-review
+tier: A
+valid_from: '2025-01-31'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- fatturapa
+- sdi
+- italy
+- vat-exemption
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- accounts-payable
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      N1:
+        description: Escluse ex. art. 15 del D.P.R. 633/1972
+        parent: null
+        valid_for_invoices_issued_from_2021_01_01: true
+      N2:
+        description: Non soggette
+        parent: null
+        valid_for_invoices_issued_from_2021_01_01: false
+      N2.1:
+        description: Non soggette ad IVA ai sensi degli artt. da 7 a 7-septies del DPR 633/72
+        parent: N2
+        valid_for_invoices_issued_from_2021_01_01: true
+      N2.2:
+        description: Non soggette - altri casi
+        parent: N2
+        valid_for_invoices_issued_from_2021_01_01: true
+      N3:
+        description: Non imponibili
+        parent: null
+        valid_for_invoices_issued_from_2021_01_01: false
+      N3.1:
+        description: Non Imponibili - esportazioni
+        parent: N3
+        valid_for_invoices_issued_from_2021_01_01: true
+      N3.2:
+        description: Non Imponibili - cessioni intracomunitarie
+        parent: N3
+        valid_for_invoices_issued_from_2021_01_01: true
+      N3.3:
+        description: Non Imponibili - cessioni verso San Marino
+        parent: N3
+        valid_for_invoices_issued_from_2021_01_01: true
+      N3.4:
+        description: Non Imponibili - operazioni assimilate alle cessioni all'esportazione
+        parent: N3
+        valid_for_invoices_issued_from_2021_01_01: true
+      N3.5:
+        description: Non Imponibili - a seguito di dichiarazioni d'intento
+        parent: N3
+        valid_for_invoices_issued_from_2021_01_01: true
+      N3.6:
+        description: Non Imponibili - altre operazioni che non concorrono alla formazione del plafond
+        parent: N3
+        valid_for_invoices_issued_from_2021_01_01: true
+      N4:
+        description: Esenti
+        parent: null
+        valid_for_invoices_issued_from_2021_01_01: true
+      N5:
+        description: Regime del margine/IVA non esposta in fattura
+        parent: null
+        valid_for_invoices_issued_from_2021_01_01: true
+      N6:
+        description: Inversione contabile (per le operazioni in reverse charge ovvero nei casi di autofatturazione
+          per acquisti extra UE di servizi ovvero per importazioni di beni nei soli casi previsti)
+        parent: null
+        valid_for_invoices_issued_from_2021_01_01: false
+      N6.1:
+        description: Inversione contabile - cessione di rottami e altri materiali di recupero
+        parent: N6
+        valid_for_invoices_issued_from_2021_01_01: true
+      N6.2:
+        description: Inversione contabile - cessione di oro e argento ai sensi della legge 7/2000 nonché di oreficeria
+          usata ad OPO
+        parent: N6
+        valid_for_invoices_issued_from_2021_01_01: true
+      N6.3:
+        description: Inversione contabile - subappalto nel settore edile
+        parent: N6
+        valid_for_invoices_issued_from_2021_01_01: true
+      N6.4:
+        description: Inversione contabile - cessione di fabbricati
+        parent: N6
+        valid_for_invoices_issued_from_2021_01_01: true
+      N6.5:
+        description: Inversione contabile - cessione di telefoni cellulari
+        parent: N6
+        valid_for_invoices_issued_from_2021_01_01: true
+      N6.6:
+        description: Inversione contabile - cessione di prodotti elettronici
+        parent: N6
+        valid_for_invoices_issued_from_2021_01_01: true
+      N6.7:
+        description: Inversione contabile - prestazioni comparto edile e settori connessi
+        parent: N6
+        valid_for_invoices_issued_from_2021_01_01: true
+      N6.8:
+        description: Inversione contabile - operazioni settore energetico
+        parent: N6
+        valid_for_invoices_issued_from_2021_01_01: true
+      N6.9:
+        description: Inversione contabile - altri casi
+        parent: N6
+        valid_for_invoices_issued_from_2021_01_01: true
+      N7:
+        description: IVA assolta in altro stato UE (prestazione di servizi di telecomunicazioni, tele-radiodiffusione
+          ed elettronici ex art. 7-octies lett. a, b, art. 74-sexies DPR 633/72)
+        parent: null
+        valid_for_invoices_issued_from_2021_01_01: true
+  vectors:
+  - input:
+      key: N3.2
+      column: description
+    expected: Non Imponibili - cessioni intracomunitarie
+    origin: source
+  - input:
+      key: N6.3
+      column: parent
+    expected: N6
+    origin: derived
+    note: sub-codes share the parent's prefix
+  - input:
+      key: N2
+      column: valid_for_invoices_issued_from_2021_01_01
+    expected: false
+    origin: source
+  - input:
+      key: N2.1
+      column: valid_for_invoices_issued_from_2021_01_01
+    expected: true
+    origin: source
+  - input:
+      key: N7
+      column: valid_for_invoices_issued_from_2021_01_01
+    expected: true
+    origin: source
+  - input: N8
+    expected: false
+    origin: derived
+    note: not in the schema
+evidence:
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Schema del file XML FatturaPA versione 1.2.3 (fattura ordinaria e PA, Schema_VFPR12_v1.2.3.xsd)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Schema_VFPR12_v1.2.3.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType NaturaType
+  value: value="N3.2"
+  unit: text
+  snippet: Non Imponibili - cessioni intracomunitarie
+  source_license: unstated
+  content_sha256: 152944f6eef9f5d69ef6e955ee173b32142b00a8c1c5222fc97dfab5910e8a8c
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Schema del file XML FatturaPA versione 1.2.3 (fattura ordinaria e PA, Schema_VFPR12_v1.2.3.xsd)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Schema_VFPR12_v1.2.3.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType NaturaType, comment before N2
+  value: value="N2"
+  unit: text
+  snippet: IL CODICE SEGUENTE (N2) NON SARA' PIU' VALIDO PER LE FATTURE EMESSE A PARTIRE DAL PRIMO GENNAIO 2021
+  source_license: unstated
+  content_sha256: 152944f6eef9f5d69ef6e955ee173b32142b00a8c1c5222fc97dfab5910e8a8c
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Schema del file XML FatturaPA versione 1.2.3 (fattura ordinaria e PA, Schema_VFPR12_v1.2.3.xsd)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Schema_VFPR12_v1.2.3.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType NaturaType, comment before N6
+  value: value="N6.9"
+  unit: text
+  snippet: IL CODICE SEGUENTE (N6) NON SARA' PIU' VALIDO
+  source_license: unstated
+  content_sha256: 152944f6eef9f5d69ef6e955ee173b32142b00a8c1c5222fc97dfab5910e8a8c
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Specifiche tecniche operative del formato della fattura del Sistema di Interscambio, versione 1.4
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Specifiche_tecniche_del_formato_FatturaPA_V1.4.pdf
+  accessed_at: '2026-11-03'
+  locator: section 3.8.1, Natura value list
+  value: N2 non soggette (non più valido dal 1 Gen 2021)
+  unit: text
+  snippet: N3 non imponibili (non più valido dal 1 Gen 2021)
+  source_license: unstated
+  content_sha256: 8adde9acf0596f14e2cce66f3c1a4d36ce4e13f65582b45c333fe28eee4d93dc
+  role: supporting
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Specifiche tecniche operative del formato della fattura del Sistema di Interscambio, versione 1.4
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Specifiche_tecniche_del_formato_FatturaPA_V1.4.pdf
+  accessed_at: '2026-11-03'
+  locator: page 5, Stato del documento, revision 1.4
+  value: 1.4 31 gennaio 2025
+  unit: text
+  snippet: per la comunicazione all’Agenzia delle entrate della omessa o irregolare fatturazione
+  source_license: unstated
+  content_sha256: 8adde9acf0596f14e2cce66f3c1a4d36ce4e13f65582b45c333fe28eee4d93dc
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '2025-01-31'
+  method: derived
+  rationale: The specification's revision table dates version 1.4, which introduced the 1.2.3 schema, 31 January
+    2025; it gives no separate start date for the new codes.
+- parameter: rows.*.parent
+  value: code prefix before the dot
+  method: derived
+  rationale: The schema lists sub-codes flat; the parent is read from the code itself.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 24
+  tolerance: 0
+- statistic: value[N4,description]
+  expected: Esenti
+  tolerance: 0
+notes: 'Codes for the Natura element, which states why an invoice line or VAT summary carries no VAT: N1 excluded
+  under article 15 of DPR 633/1972, N2.x not subject, N3.x non-taxable (exports, intra-EU supplies, San Marino and
+  so on), N4 exempt, N5 margin scheme, N6.x reverse charge by sector, and N7 VAT paid in another EU state. The parent
+  codes N2, N3 and N6 remain in the schema but, per the schema comments and the specification, may not be used on
+  invoices issued from 1 January 2021; the valid_for_invoices_issued_from_2021_01_01 column records that. parent
+  is the code before the dot. The schema carries no licence statement.'

@@ -1,0 +1,136 @@
+id: it-fatturapa-tax-regime-codes
+title: Italy FatturaPA RegimeFiscale codes for the seller's tax regime (RF01 to RF20), schema 1.2.3
+kind: rule
+domain: invoicing
+region: IT
+status: license-review
+tier: A
+valid_from: '2025-01-31'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- fatturapa
+- sdi
+- italy
+- tax-regime
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- kyb-onboarding
+- company-generation
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      regime_fiscale:
+        RF01: Regime ordinario
+        RF02: Regime dei contribuenti minimi (art. 1,c.96-117, L. 244/2007)
+        RF04: Agricoltura e attività connesse e pesca (artt. 34 e 34-bis, D.P.R. 633/1972)
+        RF05: Vendita sali e tabacchi (art. 74, c.1, D.P.R. 633/1972)
+        RF06: Commercio dei fiammiferi (art. 74, c.1, D.P.R. 633/1972)
+        RF07: Editoria (art. 74, c.1, D.P.R. 633/1972)
+        RF08: Gestione di servizi di telefonia pubblica (art. 74, c.1, D.P.R. 633/1972)
+        RF09: Rivendita di documenti di trasporto pubblico e di sosta (art. 74, c.1, D.P.R. 633/1972)
+        RF10: Intrattenimenti, giochi e altre attività di cui alla tariffa allegata al D.P.R. 640/72 (art. 74, c.6,
+          D.P.R. 633/1972)
+        RF11: Agenzie di viaggi e turismo (art. 74-ter, D.P.R. 633/1972)
+        RF12: Agriturismo (art. 5, c.2, L. 413/1991)
+        RF13: Vendite a domicilio (art. 25-bis, c.6, D.P.R. 600/1973)
+        RF14: Rivendita di beni usati, di oggetti d’arte, d’antiquariato o da collezione (art. 36, D.L. 41/1995)
+        RF15: Agenzie di vendite all’asta di oggetti d’arte, antiquariato o da collezione (art. 40-bis, D.L. 41/1995)
+        RF16: IVA per cassa P.A. (art. 6, c.5, D.P.R. 633/1972)
+        RF17: IVA per cassa (art. 32-bis, D.L. 83/2012)
+        RF18: Altro
+        RF19: Regime forfettario
+        RF20: Regime transfrontaliero di Franchigia IVA (Direttiva UE 2020/285)
+  vectors:
+  - input:
+      set: regime_fiscale
+      value: RF01
+    expected: true
+    origin: source
+  - input:
+      set: regime_fiscale
+      value: RF19
+    expected: true
+    origin: source
+  - input:
+      set: regime_fiscale
+      value: RF20
+    expected: true
+    origin: source
+    note: cross-border VAT franchise added by specification 1.4
+  - input:
+      set: regime_fiscale
+      value: RF03
+    expected: false
+    origin: source
+    note: removed in specification revision 1.2.1
+evidence:
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Schema del file XML FatturaPA versione 1.2.3 (fattura ordinaria e PA, Schema_VFPR12_v1.2.3.xsd)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Schema_VFPR12_v1.2.3.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType RegimeFiscaleType
+  value: value="RF19"
+  unit: text
+  snippet: simpleType name="RegimeFiscaleType"
+  source_license: unstated
+  content_sha256: 152944f6eef9f5d69ef6e955ee173b32142b00a8c1c5222fc97dfab5910e8a8c
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Schema del file XML FatturaPA versione 1.2.3 (fattura ordinaria e PA, Schema_VFPR12_v1.2.3.xsd)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Schema_VFPR12_v1.2.3.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType RegimeFiscaleType, last enumeration
+  value: value="RF20"
+  unit: text
+  snippet: Regime transfrontaliero di Franchigia IVA (Direttiva UE 2020/285)
+  source_license: unstated
+  content_sha256: 152944f6eef9f5d69ef6e955ee173b32142b00a8c1c5222fc97dfab5910e8a8c
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Specifiche tecniche operative del formato della fattura del Sistema di Interscambio, versione 1.4
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Specifiche_tecniche_del_formato_FatturaPA_V1.4.pdf
+  accessed_at: '2026-11-03'
+  locator: page 5, Stato del documento, revision 1.2.1
+  value: Eliminazione del regime fiscale RF03
+  unit: text
+  snippet: Nuove iniziative produttive
+  source_license: unstated
+  content_sha256: 8adde9acf0596f14e2cce66f3c1a4d36ce4e13f65582b45c333fe28eee4d93dc
+  role: supporting
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Specifiche tecniche operative del formato della fattura del Sistema di Interscambio, versione 1.4
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Specifiche_tecniche_del_formato_FatturaPA_V1.4.pdf
+  accessed_at: '2026-11-03'
+  locator: page 5, Stato del documento, revision 1.4
+  value: 1.4 31 gennaio 2025
+  unit: text
+  snippet: per la comunicazione all’Agenzia delle entrate della omessa o irregolare fatturazione
+  source_license: unstated
+  content_sha256: 8adde9acf0596f14e2cce66f3c1a4d36ce4e13f65582b45c333fe28eee4d93dc
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '2025-01-31'
+  method: derived
+  rationale: The specification's revision table dates version 1.4, which introduced the 1.2.3 schema, 31 January
+    2025; it gives no separate start date for the new codes.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[regime_fiscale]
+  expected: 19
+  tolerance: 0
+notes: 'Codes for the RegimeFiscale element (1.2.1.8) that states the tax regime of the seller (cedente/prestatore):
+  RF01 ordinary, RF02 minimum taxpayers, RF19 the flat-rate scheme, RF20 the cross-border VAT franchise of Directive
+  2020/285, and the special regimes between them. RF03 was withdrawn in revision 1.2.1 and is absent from the schema.
+  Codes and labels come from the 1.2.3 schema; it carries no licence statement.'

@@ -1,0 +1,208 @@
+id: it-fatturapa-withholding-pension-fund-and-vat-due-codes
+title: Italy FatturaPA TipoRitenuta, CausalePagamento, TipoCassa and EsigibilitaIVA codes, schema 1.2.3
+kind: rule
+domain: invoicing
+region: IT
+status: license-review
+tier: A
+valid_from: '2025-01-31'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- fatturapa
+- sdi
+- italy
+- withholding-tax
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- accounts-payable
+- payroll-demo
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      tipo_ritenuta:
+        RT01: Ritenuta di acconto persone fisiche
+        RT02: Ritenuta di acconto persone giuridiche
+        RT03: Contributo INPS
+        RT04: Contributo ENASARCO
+        RT05: Contributo ENPAM
+        RT06: Altro contributo previdenziale
+      causale_pagamento:
+        A: ''
+        B: ''
+        C: ''
+        D: ''
+        E: ''
+        G: ''
+        H: ''
+        I: ''
+        L: ''
+        M: ''
+        N: ''
+        O: ''
+        P: ''
+        Q: ''
+        R: ''
+        S: ''
+        T: ''
+        U: ''
+        V: ''
+        W: ''
+        X: ''
+        Y: ''
+        Z: ''
+        L1: ''
+        M1: ''
+        M2: ''
+        O1: ''
+        V1: ''
+        ZO: ''
+      tipo_cassa:
+        TC01: Cassa nazionale previdenza e assistenza avvocati e procuratori legali
+        TC02: Cassa previdenza dottori commercialisti
+        TC03: Cassa previdenza e assistenza geometri
+        TC04: Cassa nazionale previdenza e assistenza ingegneri e architetti liberi professionisti
+        TC05: Cassa nazionale del notariato
+        TC06: Cassa nazionale previdenza e assistenza ragionieri e periti commerciali
+        TC07: Ente nazionale assistenza agenti e rappresentanti di commercio (ENASARCO)
+        TC08: Ente nazionale previdenza e assistenza consulenti del lavoro (ENPACL)
+        TC09: Ente nazionale previdenza e assistenza medici (ENPAM)
+        TC10: Ente nazionale previdenza e assistenza farmacisti (ENPAF)
+        TC11: Ente nazionale previdenza e assistenza veterinari (ENPAV)
+        TC12: Ente nazionale previdenza e assistenza impiegati dell'agricoltura (ENPAIA)
+        TC13: Fondo previdenza impiegati imprese di spedizione e agenzie marittime
+        TC14: Istituto nazionale previdenza giornalisti italiani (INPGI)
+        TC15: Opera nazionale assistenza orfani sanitari italiani (ONAOSI)
+        TC16: Cassa autonoma assistenza integrativa giornalisti italiani (CASAGIT)
+        TC17: Ente previdenza periti industriali e periti industriali laureati (EPPI)
+        TC18: Ente previdenza e assistenza pluricategoriale (EPAP)
+        TC19: Ente nazionale previdenza e assistenza biologi (ENPAB)
+        TC20: Ente nazionale previdenza e assistenza professione infermieristica (ENPAPI)
+        TC21: Ente nazionale previdenza e assistenza psicologi (ENPAP)
+        TC22: INPS
+      esigibilita_iva:
+        D: esigibilità differita
+        I: esigibilità immediata
+        S: scissione dei pagamenti
+  vectors:
+  - input:
+      set: tipo_ritenuta
+      value: RT01
+    expected: true
+    origin: source
+  - input:
+      set: tipo_ritenuta
+      value: RT06
+    expected: true
+    origin: source
+  - input:
+      set: causale_pagamento
+      value: A
+    expected: true
+    origin: source
+  - input:
+      set: tipo_cassa
+      value: TC22
+    expected: true
+    origin: source
+  - input:
+      set: esigibilita_iva
+      value: S
+    expected: true
+    origin: source
+  - input:
+      set: esigibilita_iva
+      value: X
+    expected: false
+    origin: derived
+evidence:
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Schema del file XML FatturaPA versione 1.2.3 (fattura ordinaria e PA, Schema_VFPR12_v1.2.3.xsd)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Schema_VFPR12_v1.2.3.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType TipoRitenutaType
+  value: value="RT01"
+  unit: text
+  snippet: simpleType name="TipoRitenutaType"
+  source_license: unstated
+  content_sha256: 152944f6eef9f5d69ef6e955ee173b32142b00a8c1c5222fc97dfab5910e8a8c
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Schema del file XML FatturaPA versione 1.2.3 (fattura ordinaria e PA, Schema_VFPR12_v1.2.3.xsd)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Schema_VFPR12_v1.2.3.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType CausalePagamentoType
+  value: value="A"
+  unit: text
+  snippet: simpleType name="CausalePagamentoType"
+  source_license: unstated
+  content_sha256: 152944f6eef9f5d69ef6e955ee173b32142b00a8c1c5222fc97dfab5910e8a8c
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Schema del file XML FatturaPA versione 1.2.3 (fattura ordinaria e PA, Schema_VFPR12_v1.2.3.xsd)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Schema_VFPR12_v1.2.3.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType TipoCassaType
+  value: value="TC22"
+  unit: text
+  snippet: simpleType name="TipoCassaType"
+  source_license: unstated
+  content_sha256: 152944f6eef9f5d69ef6e955ee173b32142b00a8c1c5222fc97dfab5910e8a8c
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Schema del file XML FatturaPA versione 1.2.3 (fattura ordinaria e PA, Schema_VFPR12_v1.2.3.xsd)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Schema_VFPR12_v1.2.3.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType EsigibilitaIVAType
+  value: value="S"
+  unit: text
+  snippet: simpleType name="EsigibilitaIVAType"
+  source_license: unstated
+  content_sha256: 152944f6eef9f5d69ef6e955ee173b32142b00a8c1c5222fc97dfab5910e8a8c
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Specifiche tecniche operative del formato della fattura del Sistema di Interscambio, versione 1.4
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Specifiche_tecniche_del_formato_FatturaPA_V1.4.pdf
+  accessed_at: '2026-11-03'
+  locator: page 5, Stato del documento, revision 1.4
+  value: 1.4 31 gennaio 2025
+  unit: text
+  snippet: per la comunicazione all’Agenzia delle entrate della omessa o irregolare fatturazione
+  source_license: unstated
+  content_sha256: 8adde9acf0596f14e2cce66f3c1a4d36ce4e13f65582b45c333fe28eee4d93dc
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '2025-01-31'
+  method: derived
+  rationale: The specification's revision table dates version 1.4, which introduced the 1.2.3 schema, 31 January
+    2025; it gives no separate start date for the new codes.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[tipo_ritenuta]
+  expected: 6
+  tolerance: 0
+- statistic: count[causale_pagamento]
+  expected: 29
+  tolerance: 0
+- statistic: count[tipo_cassa]
+  expected: 22
+  tolerance: 0
+- statistic: count[esigibilita_iva]
+  expected: 3
+  tolerance: 0
+notes: 'Four smaller FatturaPA vocabularies: TipoRitenuta (2.1.1.5.1) for the withholding type (RT01 natural persons,
+  RT02 legal persons, RT03 to RT06 social security and pension contributions); CausalePagamento (2.1.1.5.4), the
+  payment reason letters taken from the Certificazione Unica model; TipoCassa (2.1.1.7.1) for the professional pension
+  fund (TC01 to TC22); and EsigibilitaIVA (2.2.2.7) for when VAT becomes due (D deferred, I immediate, S split payment).
+  Codes and labels come from the 1.2.3 schema; it carries no licence statement.'

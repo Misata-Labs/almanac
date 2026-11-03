@@ -1,0 +1,156 @@
+id: it-fatturapa-payment-method-and-terms-codes
+title: Italy FatturaPA ModalitaPagamento (MP01 to MP23) and CondizioniPagamento (TP01 to TP03) codes, schema 1.2.3
+kind: rule
+domain: invoicing
+region: IT
+status: license-review
+tier: A
+valid_from: '2025-01-31'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- fatturapa
+- sdi
+- italy
+- payment-method
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- accounts-payable
+- payments-demo
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      modalita_pagamento:
+        MP01: contanti
+        MP02: assegno
+        MP03: assegno circolare
+        MP04: contanti presso Tesoreria
+        MP05: bonifico
+        MP06: vaglia cambiario
+        MP07: bollettino bancario
+        MP08: carta di pagamento
+        MP09: RID
+        MP10: RID utenze
+        MP11: RID veloce
+        MP12: RIBA
+        MP13: MAV
+        MP14: quietanza erario
+        MP15: giroconto su conti di contabilità speciale
+        MP16: domiciliazione bancaria
+        MP17: domiciliazione postale
+        MP18: bollettino di c/c postale
+        MP19: SEPA Direct Debit
+        MP20: SEPA Direct Debit CORE
+        MP21: SEPA Direct Debit B2B
+        MP22: Trattenuta su somme già riscosse
+        MP23: PagoPA
+      condizioni_pagamento:
+        TP01: pagamento a rate
+        TP02: pagamento completo
+        TP03: anticipo
+  vectors:
+  - input:
+      set: modalita_pagamento
+      value: MP01
+    expected: true
+    origin: source
+    note: used by the published example invoice
+  - input:
+      set: modalita_pagamento
+      value: MP05
+    expected: true
+    origin: source
+  - input:
+      set: modalita_pagamento
+      value: MP23
+    expected: true
+    origin: source
+  - input:
+      set: modalita_pagamento
+      value: MP24
+    expected: false
+    origin: derived
+  - input:
+      set: condizioni_pagamento
+      value: TP01
+    expected: true
+    origin: source
+    note: used by the published example invoice
+  - input:
+      set: condizioni_pagamento
+      value: TP03
+    expected: true
+    origin: source
+evidence:
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Schema del file XML FatturaPA versione 1.2.3 (fattura ordinaria e PA, Schema_VFPR12_v1.2.3.xsd)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Schema_VFPR12_v1.2.3.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType ModalitaPagamentoType
+  value: value="MP23"
+  unit: text
+  snippet: simpleType name="ModalitaPagamentoType"
+  source_license: unstated
+  content_sha256: 152944f6eef9f5d69ef6e955ee173b32142b00a8c1c5222fc97dfab5910e8a8c
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Schema del file XML FatturaPA versione 1.2.3 (fattura ordinaria e PA, Schema_VFPR12_v1.2.3.xsd)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Schema_VFPR12_v1.2.3.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType CondizioniPagamentoType
+  value: value="TP01"
+  unit: text
+  snippet: pagamento a rate
+  source_license: unstated
+  content_sha256: 152944f6eef9f5d69ef6e955ee173b32142b00a8c1c5222fc97dfab5910e8a8c
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: FatturaPA example invoice IT01234567890_FPR01.xml (fattura ordinaria)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2/IT01234567890_FPR01.xml
+  accessed_at: '2026-11-03'
+  locator: DatiPagamento
+  value: <ModalitaPagamento>MP01</ModalitaPagamento>
+  unit: text
+  snippet: <CondizioniPagamento>TP01</CondizioniPagamento>
+  source_license: unstated
+  content_sha256: 73e61f2f71ca83937fdc2b64dfa71e45f025087b44ad73d835d8c080dc70b286
+  role: supporting
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Specifiche tecniche operative del formato della fattura del Sistema di Interscambio, versione 1.4
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Specifiche_tecniche_del_formato_FatturaPA_V1.4.pdf
+  accessed_at: '2026-11-03'
+  locator: page 5, Stato del documento, revision 1.4
+  value: 1.4 31 gennaio 2025
+  unit: text
+  snippet: per la comunicazione all’Agenzia delle entrate della omessa o irregolare fatturazione
+  source_license: unstated
+  content_sha256: 8adde9acf0596f14e2cce66f3c1a4d36ce4e13f65582b45c333fe28eee4d93dc
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '2025-01-31'
+  method: derived
+  rationale: The specification's revision table dates version 1.4, which introduced the 1.2.3 schema, 31 January
+    2025; it gives no separate start date for the new codes.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[modalita_pagamento]
+  expected: 23
+  tolerance: 0
+- statistic: count[condizioni_pagamento]
+  expected: 3
+  tolerance: 0
+notes: 'Payment method codes for ModalitaPagamento (2.4.2.2): MP01 cash, MP02 cheque, MP05 bank transfer, MP08 payment
+  card, MP12 RIBA, MP19 to MP21 SEPA direct debits, MP23 PagoPA, and the others in the schema; and payment terms
+  codes for CondizioniPagamento (2.4.1): TP01 instalments, TP02 full payment, TP03 advance. Codes and Italian labels
+  come from the 1.2.3 schema; it carries no licence statement.'

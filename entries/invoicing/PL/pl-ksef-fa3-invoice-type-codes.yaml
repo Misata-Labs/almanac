@@ -1,0 +1,125 @@
+id: pl-ksef-fa3-invoice-type-codes
+title: Poland KSeF FA(3) RodzajFaktury invoice types and TypKorekty correction types
+kind: rule
+domain: invoicing
+region: PL
+status: license-review
+tier: A
+valid_from: '2026-02-01'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- ksef
+- fa-3
+- poland
+- document-type
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- accounts-payable
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      rodzaj_faktury:
+        VAT: Faktura podstawowa
+        KOR: Faktura korygująca
+        ZAL: Faktura dokumentująca otrzymanie zapłaty lub jej części przed dokonaniem czynności oraz faktura wystawiona
+          w związku z art. 106f ust. 4 ustawy (faktura zaliczkowa)
+        ROZ: Faktura wystawiona w związku z art. 106f ust. 3 ustawy
+        UPR: Faktura, o której mowa w art. 106e ust. 5 pkt 3 ustawy
+        KOR_ZAL: Faktura korygująca fakturę dokumentującą otrzymanie zapłaty lub jej części przed dokonaniem czynności
+          oraz fakturę wystawioną w związku z art. 106f ust. 4 ustawy (faktura korygująca fakturę zaliczkową)
+        KOR_ROZ: Faktura korygująca fakturę wystawioną w związku z art. 106f ust. 3 ustawy
+      typ_korekty:
+        '1': Korekta skutkująca w dacie ujęcia faktury pierwotnej
+        '2': Korekta skutkująca w dacie wystawienia faktury korygującej
+        '3': Korekta skutkująca w dacie innej, w tym gdy dla różnych pozycji faktury korygującej daty te są różne
+  vectors:
+  - input:
+      set: rodzaj_faktury
+      value: VAT
+    expected: true
+    origin: source
+  - input:
+      set: rodzaj_faktury
+      value: KOR
+    expected: true
+    origin: source
+  - input:
+      set: rodzaj_faktury
+      value: ZAL
+    expected: true
+    origin: source
+  - input:
+      set: rodzaj_faktury
+      value: KOR_ROZ
+    expected: true
+    origin: source
+  - input:
+      set: typ_korekty
+      value: '1'
+    expected: true
+    origin: source
+  - input:
+      set: rodzaj_faktury
+      value: vat
+    expected: false
+    origin: derived
+    note: codes are upper case
+evidence:
+- publisher: Ministerstwo Finansów (Centralne Repozytorium Wzorów Dokumentów Elektronicznych)
+  title: Schemat FA(3) ustrukturyzowanej faktury VAT dla KSeF (wzór 2025/06/25/13775)
+  url: https://crd.gov.pl/wzor/2025/06/25/13775/schemat.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType TRodzajFaktury
+  value: value="KOR_ZAL"
+  unit: text
+  snippet: Faktura podstawowa
+  source_license: unstated
+  content_sha256: b646b6b525f51adf1bb2545f111fc8ca6e7aa6dd2f98948f1667d3695c06d958
+  role: primary
+- publisher: Ministerstwo Finansów (Centralne Repozytorium Wzorów Dokumentów Elektronicznych)
+  title: Schemat FA(3) ustrukturyzowanej faktury VAT dla KSeF (wzór 2025/06/25/13775)
+  url: https://crd.gov.pl/wzor/2025/06/25/13775/schemat.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType TTypKorekty
+  value: value="3"
+  unit: text
+  snippet: Korekta skutkująca w dacie ujęcia faktury pierwotnej
+  source_license: unstated
+  content_sha256: b646b6b525f51adf1bb2545f111fc8ca6e7aa6dd2f98948f1667d3695c06d958
+  role: primary
+- publisher: Ministerstwo Finansów (Centralne Repozytorium Wzorów Dokumentów Elektronicznych)
+  title: Wyróżnik wzoru FA(3) ustrukturyzowanej faktury VAT (wzór 2025/06/25/13775)
+  url: https://crd.gov.pl/wzor/2025/06/25/13775/wyroznik.xml
+  accessed_at: '2026-11-03'
+  locator: WaznoscWzoru/Od
+  value: <meta:Od>2026-02-01</meta:Od>
+  unit: text
+  snippet: FA(3) USTRUKTURYZOWANA FAKTURA VAT
+  source_license: unstated
+  content_sha256: 26fb7dd01c19d78201d10c7411e9d3aa9c50b50b5ae8556c4471053d2a3bdf31
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[rodzaj_faktury]
+  expected: 7
+  tolerance: 0
+- statistic: count[typ_korekty]
+  expected: 3
+  tolerance: 0
+notes: 'Invoice kinds for the RodzajFaktury element of a KSeF structured invoice in the FA(3) schema: VAT basic
+  invoice, KOR corrective invoice, ZAL advance-payment invoice, ROZ the invoice of art. 106f(3) of the VAT act,
+  UPR the invoice of art. 106e(5)(3), and KOR_ZAL and KOR_ROZ correcting those; and TypKorekty, the date from which
+  a correction takes effect. Labels are the Polish annotations of the schema. valid_from is the validity date the
+  signed FA(3) metadata record gives. The repository states no licence, so the entry stays at license-review.'

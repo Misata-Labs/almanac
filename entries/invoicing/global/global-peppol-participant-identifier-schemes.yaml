@@ -1,0 +1,980 @@
+id: global-peppol-participant-identifier-schemes
+title: Peppol participant identifier schemes, code list 9.7 (ISO 6523 ICD, country, state, validation pattern)
+kind: rule
+domain: invoicing
+region: global
+status: license-review
+tier: A
+valid_from: '2025-02-06'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- peppol
+- en-16931
+- ubl
+- identifier
+- iso-6523
+- participant-identifier
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- kyb-onboarding
+- company-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    version: '9.7'
+    rows:
+      '0002':
+        scheme_id: FR:SIRENE
+        country: FR
+        scheme_name: 'System Information et Repertoire des Entreprise et des Etablissements: SIRENE'
+        state: active
+        registrable: true
+        regex: '[0-9]{9}([0-9]{5})?'
+        examples:
+        - '784301772'
+        - '78430177200025'
+      '0007':
+        scheme_id: SE:ORGNR
+        country: SE
+        scheme_name: Organisationsnummer
+        state: active
+        registrable: true
+        regex: '[0-9]{10}'
+        examples:
+        - '2120000787'
+      0009:
+        scheme_id: FR:SIRET
+        country: FR
+        scheme_name: SIRET-CODE
+        state: active
+        registrable: true
+        regex: '[0-9]{14}'
+        examples:
+        - '78430177200025'
+      '0037':
+        scheme_id: FI:OVT
+        country: FI
+        scheme_name: LY-tunnus
+        state: removed
+        registrable: false
+        regex: (0037)?[0-9]{7}-?[0-9][0-9A-Z]{0,5}
+        examples:
+        - 0037:00371234567800001
+        - 0037:1234567800001
+      '0060':
+        scheme_id: DUNS
+        country: international
+        scheme_name: Data Universal Numbering System (D-U-N-S Number)
+        state: active
+        registrable: true
+        regex: '[0-9]{9}'
+        examples:
+        - '812810734'
+      0088:
+        scheme_id: GLN
+        country: international
+        scheme_name: Global Location Number
+        state: active
+        registrable: true
+        regex: '[0-9]{13}'
+        examples:
+        - '1548079098355'
+      0096:
+        scheme_id: DK:P
+        country: DK
+        scheme_name: The Danish Business Authority - P-number (DK:P)
+        state: active
+        registrable: true
+        regex: '[0-9]{10}'
+        examples: []
+      0097:
+        scheme_id: IT:FTI
+        country: IT
+        scheme_name: FTI - Ediforum Italia
+        state: active
+        registrable: true
+        regex: '[0-9]{11,16}'
+        examples: []
+      '0106':
+        scheme_id: NL:KVK
+        country: NL
+        scheme_name: 'Vereniging van Kamers van Koophandel en Fabrieken in Nederland (Association of
+
+          Chambers of Commerce and Industry in the Netherlands), Scheme'
+        state: active
+        registrable: true
+        regex: '[0-9]{17}'
+        examples: []
+      '0130':
+        scheme_id: EU:NAL
+        country: international
+        scheme_name: Directorates of the European Commission
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '0135':
+        scheme_id: IT:SIA
+        country: IT
+        scheme_name: SIA Object Identifiers
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '0142':
+        scheme_id: IT:SECETI
+        country: IT
+        scheme_name: SECETI Object Identifiers
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '0151':
+        scheme_id: AU:ABN
+        country: AU
+        scheme_name: Australian Business Number (ABN) Scheme
+        state: active
+        registrable: true
+        regex: '[0-9]{11}'
+        examples:
+        - 51 824 753 556
+      0158:
+        scheme_id: SK:ICO
+        country: SK
+        scheme_name: Identification number of economic subject (ICO)
+        state: active
+        registrable: true
+        regex: '[0-9]{8}'
+        examples: []
+      0183:
+        scheme_id: CH:UIDB
+        country: CH
+        scheme_name: Swiss Unique Business Identification Number (UIDB)
+        state: active
+        registrable: true
+        regex: CHE[0-9]{9}
+        examples: []
+      0184:
+        scheme_id: DK:DIGST
+        country: DK
+        scheme_name: The Danish Business Authority - CVR-number (DK:CVR)
+        state: active
+        registrable: true
+        regex: '[1-9][0-9]{7}'
+        examples: []
+      0188:
+        scheme_id: JP:SST
+        country: JP
+        scheme_name: Corporate Number of The Social Security and Tax Number System
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      0190:
+        scheme_id: NL:OINO
+        country: NL
+        scheme_name: Organisatie-identificatienummer (OIN)
+        state: active
+        registrable: true
+        regex: '[0-9]{20}'
+        examples:
+        - 00000001820029336000
+      0191:
+        scheme_id: EE:CC
+        country: EE
+        scheme_name: Company code
+        state: active
+        registrable: true
+        regex: '[1789][0-9]{7}'
+        examples:
+        - '10137025'
+      0192:
+        scheme_id: NO:ORG
+        country: 'NO'
+        scheme_name: Organisasjonsnummer
+        state: active
+        registrable: true
+        regex: '[0-9]{9}'
+        examples:
+        - '745707327'
+      0193:
+        scheme_id: UBLBE
+        country: BE
+        scheme_name: UBL.BE Party Identifier
+        state: deprecated
+        registrable: true
+        regex: .{4,50}
+        examples: []
+      0195:
+        scheme_id: SG:UEN
+        country: SG
+        scheme_name: Singapore Nationwide E-Invoice Framework
+        state: active
+        registrable: true
+        regex: '[a-z]{2}[a-z]{3}([0-9]{8}|[0-9]{9}|[RST][0-9]{2}[a-z]{2}[0-9]{4})[0-9a-z]'
+        examples: []
+      0196:
+        scheme_id: IS:KTNR
+        country: IS
+        scheme_name: Icelandic identifier
+        state: active
+        registrable: true
+        regex: '[0-9]{10}'
+        examples: []
+      0198:
+        scheme_id: DK:ERST
+        country: DK
+        scheme_name: The Danish Business Authority - SE-number (DK:SE)
+        state: active
+        registrable: true
+        regex: DK[0-9]{8}
+        examples: []
+      0199:
+        scheme_id: LEI
+        country: international
+        scheme_name: Legal Entity Identifier (LEI)
+        state: active
+        registrable: true
+        regex: '[A-Z0-9]{18}[0-9]{2}'
+        examples: []
+      '0200':
+        scheme_id: LT:LEC
+        country: LT
+        scheme_name: Legal entity code
+        state: active
+        registrable: true
+        regex: '[0-9]{9}'
+        examples:
+        - '111963319'
+      '0201':
+        scheme_id: IT:CUUO
+        country: IT
+        scheme_name: Codice Univoco Unità Organizzativa iPA
+        state: active
+        registrable: true
+        regex: '[0-9a-zA-Z]{6}'
+        examples: []
+      '0204':
+        scheme_id: DE:LWID
+        country: DE
+        scheme_name: Peppol-Leitweg-ID
+        state: active
+        registrable: true
+        regex: '[0-9]{2,12}(\-[0-9A-Z]{0,30})?\-[0-9]{2}'
+        examples: []
+      '0205':
+        scheme_id: IT:COD
+        country: IT
+        scheme_name: CODDEST
+        state: active
+        registrable: false
+        regex: null
+        examples: []
+      0208:
+        scheme_id: BE:EN
+        country: BE
+        scheme_name: Numero d'entreprise / ondernemingsnummer / Unternehmensnummer
+        state: active
+        registrable: true
+        regex: '[01][0-9]{9}'
+        examples: []
+      0209:
+        scheme_id: GS1
+        country: international
+        scheme_name: GS1 identification keys
+        state: active
+        registrable: true
+        regex: null
+        examples:
+        - '414541000099999325412345678901234567890'
+      '0210':
+        scheme_id: IT:CFI
+        country: IT
+        scheme_name: CODICE FISCALE
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '0211':
+        scheme_id: IT:IVA
+        country: IT
+        scheme_name: PARTITA IVA
+        state: active
+        registrable: true
+        regex: IT[0-9]{11}
+        examples: []
+      '0212':
+        scheme_id: FI:ORG
+        country: FI
+        scheme_name: Finnish Organization Identifier
+        state: removed
+        registrable: false
+        regex: null
+        examples: []
+      '0213':
+        scheme_id: FI:VAT
+        country: FI
+        scheme_name: Finnish Organization Value Add Tax Identifier
+        state: removed
+        registrable: false
+        regex: null
+        examples: []
+      '0215':
+        scheme_id: FI:NSI
+        country: FI
+        scheme_name: Net service ID
+        state: removed
+        registrable: false
+        regex: null
+        examples: []
+      '0216':
+        scheme_id: FI:OVT2
+        country: FI
+        scheme_name: OVTcode
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      0218:
+        scheme_id: LV:URN
+        country: LV
+        scheme_name: Unified registration number
+        state: active
+        registrable: true
+        regex: '[0-9]{9}([0-9]{2})?'
+        examples: []
+      '0221':
+        scheme_id: JP:IIN
+        country: JP
+        scheme_name: The registered number of the qualified invoice issuer
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '0225':
+        scheme_id: FR:CTC
+        country: FR
+        scheme_name: FRCTC Electronic Address
+        state: active
+        registrable: true
+        regex: '[A-Z-a-z0-9_\-]{1,130}'
+        examples: []
+      '0230':
+        scheme_id: MY:EIF
+        country: MY
+        scheme_name: National e-Invoicing Framework
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '0235':
+        scheme_id: AE:TIN
+        country: AE
+        scheme_name: UAE Tax Identification Number (TIN)
+        state: active
+        registrable: true
+        regex: 1[0-9]{9}
+        examples: []
+      '0240':
+        scheme_id: LU:MAT
+        country: LU
+        scheme_name: Register of legal persons
+        state: active
+        registrable: true
+        regex: '[0-9]{11}'
+        examples: []
+      '0242':
+        scheme_id: SPIS
+        country: international
+        scheme_name: OpenPeppol Service Provider Identification Scheme
+        state: active
+        registrable: true
+        regex: '[0-9]{6}(-[0-9A-Z_]{3,12}(\.[0-9A-Z\-\._~]{3,24})?)?'
+        examples: []
+      '0244':
+        scheme_id: NG:TID
+        country: NG
+        scheme_name: Tax Identification (Tax ID)
+        state: active
+        registrable: true
+        regex: '[0-9]{13}'
+        examples: []
+      '0245':
+        scheme_id: SK:DIC
+        country: SK
+        scheme_name: Tax identification number (DIČ)
+        state: active
+        registrable: true
+        regex: '[0-9]{10}'
+        examples: []
+      '0246':
+        scheme_id: DE:GEBA
+        country: DE
+        scheme_name: German Electronic Business Address
+        state: active
+        registrable: true
+        regex: DE[0-9]{9}(-[0-9]{5})?(\.[0-9A-Z]{1,8})?
+        examples: []
+      0248:
+        scheme_id: OM:VAT
+        country: OM
+        scheme_name: Oman Value Added Tax Identification Number (VATIN)
+        state: active
+        registrable: true
+        regex: OM[0-9]{10}
+        examples:
+        - OM1100003554
+      '9901':
+        scheme_id: DK:CPR
+        country: DK
+        scheme_name: Danish Ministry of the Interior and Health
+        state: removed
+        registrable: false
+        regex: null
+        examples: []
+      '9902':
+        scheme_id: DK:CVR
+        country: DK
+        scheme_name: The Danish Commerce and Companies Agency
+        state: removed
+        registrable: false
+        regex: '[1-9][0-9]{7}'
+        examples:
+        - '13585628'
+      '9904':
+        scheme_id: DK:SE
+        country: DK
+        scheme_name: Danish Ministry of Taxation, Central Customs and Tax Administration
+        state: removed
+        registrable: false
+        regex: DK[0-9]{8}
+        examples:
+        - DK26769388
+      '9905':
+        scheme_id: DK:VANS
+        country: DK
+        scheme_name: Danish VANS providers
+        state: removed
+        registrable: false
+        regex: null
+        examples:
+        - DK26769388
+      '9906':
+        scheme_id: IT:VAT
+        country: IT
+        scheme_name: Ufficio responsabile gestione partite IVA
+        state: removed
+        registrable: false
+        regex: IT[0-9]{11}
+        examples:
+        - IT06363391001
+      '9907':
+        scheme_id: IT:CF
+        country: IT
+        scheme_name: TAX Authority
+        state: removed
+        registrable: false
+        regex: '[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST][0-9LMNPQRSTUV]{2}[A-Z][0-9LMNPQRSTUV]{3}[A-Z] (personal
+          identification)'
+        examples:
+        - RSSBBR69C48F839A
+      '9908':
+        scheme_id: NO:ORGNR
+        country: 'NO'
+        scheme_name: Enhetsregisteret ved Bronnoysundregisterne
+        state: removed
+        registrable: false
+        regex: '[0-9]{9}'
+        examples: []
+      '9909':
+        scheme_id: NO:VAT
+        country: 'NO'
+        scheme_name: Norwegian VAT number
+        state: deprecated
+        registrable: true
+        regex: NO[0-9]{9}MVA
+        examples:
+        - 990399123MVA
+      '9910':
+        scheme_id: HU:VAT
+        country: HU
+        scheme_name: Hungary VAT number
+        state: active
+        registrable: true
+        regex: HU[0-9]{8}
+        examples: []
+      '9912':
+        scheme_id: EU:VAT
+        country: international
+        scheme_name: National ministries of Economy
+        state: deprecated
+        registrable: true
+        regex: '[A-Z]{2}[A-Z0-9]{,20}'
+        examples: []
+      '9913':
+        scheme_id: EU:REID
+        country: international
+        scheme_name: Business Registers Network
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9914':
+        scheme_id: AT:VAT
+        country: AT
+        scheme_name: Österreichische Umsatzsteuer-Identifikationsnummer
+        state: active
+        registrable: true
+        regex: null
+        examples:
+        - ATU12345678
+      '9915':
+        scheme_id: AT:GOV
+        country: AT
+        scheme_name: Österreichisches Verwaltungs bzw. Organisationskennzeichen
+        state: active
+        registrable: true
+        regex: '[A-Z][A-Z0-9]*'
+        examples:
+        - b
+      '9916':
+        scheme_id: AT:CID
+        country: AT
+        scheme_name: Firmenidentifikationsnummer der Statistik Austria
+        state: deprecated
+        registrable: true
+        regex: null
+        examples: []
+      '9917':
+        scheme_id: IS:KT
+        country: IS
+        scheme_name: Icelandic National Registry
+        state: deprecated
+        registrable: true
+        regex: '[0-9]{10}'
+        examples: []
+      '9918':
+        scheme_id: IBAN
+        country: international
+        scheme_name: SOCIETY FOR WORLDWIDE INTERBANK FINANCIAL, TELECOMMUNICATION S.W.I.F.T
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9919':
+        scheme_id: AT:KUR
+        country: AT
+        scheme_name: Kennziffer des Unternehmensregisters
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9920':
+        scheme_id: ES:VAT
+        country: ES
+        scheme_name: Agencia Española de Administración Tributaria
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9921':
+        scheme_id: IT:IPA
+        country: IT
+        scheme_name: Indice delle Pubbliche Amministrazioni
+        state: removed
+        registrable: false
+        regex: null
+        examples: []
+      '9922':
+        scheme_id: AD:VAT
+        country: AD
+        scheme_name: Andorra VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9923':
+        scheme_id: AL:VAT
+        country: AL
+        scheme_name: Albania VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9924':
+        scheme_id: BA:VAT
+        country: BA
+        scheme_name: Bosnia and Herzegovina VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9925':
+        scheme_id: BE:VAT
+        country: BE
+        scheme_name: Belgium VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9926':
+        scheme_id: BG:VAT
+        country: BG
+        scheme_name: Bulgaria VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9927':
+        scheme_id: CH:VAT
+        country: CH
+        scheme_name: Switzerland VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9928':
+        scheme_id: CY:VAT
+        country: CY
+        scheme_name: Cyprus VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9929':
+        scheme_id: CZ:VAT
+        country: CZ
+        scheme_name: Czech Republic VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9930':
+        scheme_id: DE:VAT
+        country: DE
+        scheme_name: Germany VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9931':
+        scheme_id: EE:VAT
+        country: EE
+        scheme_name: Estonia VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9932':
+        scheme_id: GB:VAT
+        country: GB
+        scheme_name: United Kingdom VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9933':
+        scheme_id: GR:VAT
+        country: GR
+        scheme_name: Greece VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9934':
+        scheme_id: HR:VAT
+        country: HR
+        scheme_name: Croatia VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9935':
+        scheme_id: IE:VAT
+        country: IE
+        scheme_name: Ireland VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9936':
+        scheme_id: LI:VAT
+        country: LI
+        scheme_name: Liechtenstein VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9937':
+        scheme_id: LT:VAT
+        country: LT
+        scheme_name: Lithuania VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9938':
+        scheme_id: LU:VAT
+        country: LU
+        scheme_name: Luxemburg VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9939':
+        scheme_id: LV:VAT
+        country: LV
+        scheme_name: Latvia VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9940':
+        scheme_id: MC:VAT
+        country: MC
+        scheme_name: Monaco VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9941':
+        scheme_id: ME:VAT
+        country: ME
+        scheme_name: Montenegro VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9942':
+        scheme_id: MK:VAT
+        country: MK
+        scheme_name: Macedonia, the former Yugoslav Republic of VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9943':
+        scheme_id: MT:VAT
+        country: MT
+        scheme_name: Malta VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9944':
+        scheme_id: NL:VAT
+        country: NL
+        scheme_name: Netherlands VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9945':
+        scheme_id: PL:VAT
+        country: PL
+        scheme_name: Poland VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9946':
+        scheme_id: PT:VAT
+        country: PT
+        scheme_name: Portugal VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9947':
+        scheme_id: RO:VAT
+        country: RO
+        scheme_name: Romania VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9948':
+        scheme_id: RS:VAT
+        country: RS
+        scheme_name: Serbia VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9949':
+        scheme_id: SI:VAT
+        country: SI
+        scheme_name: Slovenia VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9950':
+        scheme_id: SK:VAT
+        country: SK
+        scheme_name: Slovakia VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9951':
+        scheme_id: SM:VAT
+        country: SM
+        scheme_name: San Marino VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9952':
+        scheme_id: TR:VAT
+        country: TR
+        scheme_name: Turkey VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9953':
+        scheme_id: VA:VAT
+        country: VA
+        scheme_name: Holy See (Vatican City State) VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9954':
+        scheme_id: NL:OIN
+        country: NL
+        scheme_name: Dutch Originator's Identification Number
+        state: removed
+        registrable: false
+        regex: null
+        examples: []
+      '9955':
+        scheme_id: SE:VAT
+        country: SE
+        scheme_name: Swedish VAT number
+        state: removed
+        registrable: false
+        regex: null
+        examples: []
+      '9956':
+        scheme_id: BE:CBE
+        country: BE
+        scheme_name: Belgian Crossroad Bank of Enterprise number
+        state: removed
+        registrable: false
+        regex: 0[0-9]{9}
+        examples:
+        - 0899965307
+      '9957':
+        scheme_id: FR:VAT
+        country: FR
+        scheme_name: French VAT number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+      '9958':
+        scheme_id: DE:LID
+        country: DE
+        scheme_name: Peppol-Leitweg-ID
+        state: removed
+        registrable: false
+        regex: null
+        examples: []
+      '9959':
+        scheme_id: US:EIN
+        country: US
+        scheme_name: US Employer ID Number
+        state: active
+        registrable: true
+        regex: null
+        examples: []
+  vectors:
+  - input:
+      key: 0088
+      column: scheme_id
+    expected: GLN
+    origin: source
+  - input:
+      key: '0002'
+      column: regex
+    expected: '[0-9]{9}([0-9]{5})?'
+    origin: source
+  - input:
+      key: '0007'
+      column: country
+    expected: SE
+    origin: source
+  - input:
+      key: '9959'
+      column: state
+    expected: active
+    origin: source
+  - input: '0001'
+    expected: false
+    origin: derived
+evidence:
+- publisher: OpenPeppol AISBL
+  title: Peppol Code Lists - Participant identifier schemes v9.7 (JSON)
+  url: https://docs.peppol.eu/edelivery/codelists/v9.7/Peppol%20Code%20Lists%20-%20Participant%20identifier%20schemes%20v9.7.json
+  accessed_at: '2026-11-03'
+  locator: values[iso6523=0002]
+  value: 'RegEx: [0-9]{9}([0-9]{5})?'
+  unit: text
+  snippet: '"schemeid":"FR:SIRENE"'
+  source_license: unstated
+  content_sha256: 69c9b351577219f3e7f108a56ab37a4f1a309721bf8820687389f5804727ec56
+  role: primary
+- publisher: OpenPeppol AISBL
+  title: Peppol Code Lists - Participant identifier schemes v9.7 (JSON)
+  url: https://docs.peppol.eu/edelivery/codelists/v9.7/Peppol%20Code%20Lists%20-%20Participant%20identifier%20schemes%20v9.7.json
+  accessed_at: '2026-11-03'
+  locator: header
+  value: '"entry-count":105'
+  unit: text
+  snippet: '"version":"9.7"'
+  source_license: unstated
+  content_sha256: 69c9b351577219f3e7f108a56ab37a4f1a309721bf8820687389f5804727ec56
+  role: primary
+- publisher: OpenPeppol AISBL
+  title: Peppol Policy for use of Identifiers 4.4.0 (2025-02-06)
+  url: https://docs.peppol.eu/edelivery/policies/Peppol-EDN-Policy-for-use-of-identifiers-4.4.0-2025-02-06.pdf
+  accessed_at: '2026-11-03'
+  locator: page 17, POLICY 4 and 6
+  value: Rows with the state "removed" MUST NOT be used at all.
+  unit: text
+  snippet: Code List rows with the state "deprecated" MUST NOT be used for newly exchanged
+  source_license: unstated
+  content_sha256: 360376e6c9f22f6fe1e9012aebc7174fea7d87f2516c60abb399f9031e492044
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '2025-02-06'
+  method: derived
+  rationale: Date of the Peppol Policy for use of Identifiers 4.4.0 that defines the code list; the v9.7 JSON has
+    no date field.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 105
+  tolerance: 0
+- statistic: value[0088,country]
+  expected: international
+  tolerance: 0
+notes: 'The participant identifier schemes Peppol eDelivery accepts, keyed by ISO 6523 ICD: the Peppol scheme id
+  (such as FR:SIRENE or GLN), country, scheme name, state, whether it may be registered in the SML, the validation
+  regular expression where the list gives one and the published example values. 84 of the 105 rows are active; per
+  the identifier policy, deprecated rows must not be used for new exchanges and removed rows not at all. valid_from
+  is the date of the policy version that governs the list; the code list JSON carries no date of its own. No licence
+  is stated, so the entry stays at license-review.'

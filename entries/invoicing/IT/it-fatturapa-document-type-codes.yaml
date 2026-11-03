@@ -1,0 +1,133 @@
+id: it-fatturapa-document-type-codes
+title: Italy FatturaPA TipoDocumento codes (TD01 to TD29), schema 1.2.3
+kind: rule
+domain: invoicing
+region: IT
+status: license-review
+tier: A
+valid_from: '2025-01-31'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- fatturapa
+- sdi
+- italy
+- document-type
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- accounts-payable
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      tipo_documento:
+        TD01: Fattura
+        TD02: Acconto / anticipo su fattura
+        TD03: Acconto / anticipo su parcella
+        TD04: Nota di credito
+        TD05: Nota di debito
+        TD06: Parcella
+        TD16: Integrazione fattura reverse charge interno
+        TD17: Integrazione/autofattura per acquisto servizi dall'estero
+        TD18: Integrazione per acquisto di beni intracomunitari
+        TD19: Integrazione/autofattura per acquisto di beni ex art.17 c.2 DPR 633/72
+        TD20: Autofattura per regolarizzazione e integrazione delle fatture (ex art. 6 c.9-bis d.lgs. 471/97 o art.46
+          c.5 D.L. 331/93)
+        TD21: Autofattura per splafonamento
+        TD22: Estrazione benida Deposito IVA
+        TD23: Estrazione beni da Deposito IVA con versamento dell'IVA
+        TD24: Fattura differita di cui all'art.21, comma 4, terzo periodo lett. a) DPR 633/72
+        TD25: Fattura differita di cui all'art.21, comma 4, terzo periodo lett. b) DPR 633/72
+        TD26: Cessione di beni ammortizzabili e per passaggi interni (ex art.36 DPR 633/72)
+        TD27: Fattura per autoconsumo o per cessioni gratuite senza rivalsa
+        TD28: Acquisti da San Marino con IVA (fattura cartacea)
+        TD29: Comunicazione per omessa o irregolare fatturazione da parte del cedente/prestatore italiano (art.
+          6, comma 8, D.Lgs. 471/97)
+  vectors:
+  - input:
+      set: tipo_documento
+      value: TD01
+    expected: true
+    origin: source
+  - input:
+      set: tipo_documento
+      value: TD04
+    expected: true
+    origin: source
+  - input:
+      set: tipo_documento
+      value: TD29
+    expected: true
+    origin: source
+    note: added by specification 1.4
+  - input:
+      set: tipo_documento
+      value: TD07
+    expected: false
+    origin: derived
+    note: the schema jumps from TD06 to TD16
+  - input:
+      set: tipo_documento
+      value: td01
+    expected: false
+    origin: derived
+    note: codes are upper case
+evidence:
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Schema del file XML FatturaPA versione 1.2.3 (fattura ordinaria e PA, Schema_VFPR12_v1.2.3.xsd)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Schema_VFPR12_v1.2.3.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType TipoDocumentoType
+  value: value="TD01"
+  unit: text
+  snippet: simpleType name="TipoDocumentoType"
+  source_license: unstated
+  content_sha256: 152944f6eef9f5d69ef6e955ee173b32142b00a8c1c5222fc97dfab5910e8a8c
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Schema del file XML FatturaPA versione 1.2.3 (fattura ordinaria e PA, Schema_VFPR12_v1.2.3.xsd)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Schema_VFPR12_v1.2.3.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType TipoDocumentoType, last enumeration
+  value: value="TD29"
+  unit: text
+  snippet: Comunicazione per omessa o irregolare fatturazione da parte del cedente/prestatore italiano
+  source_license: unstated
+  content_sha256: 152944f6eef9f5d69ef6e955ee173b32142b00a8c1c5222fc97dfab5910e8a8c
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Specifiche tecniche operative del formato della fattura del Sistema di Interscambio, versione 1.4
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Specifiche_tecniche_del_formato_FatturaPA_V1.4.pdf
+  accessed_at: '2026-11-03'
+  locator: page 5, Stato del documento, revision 1.4
+  value: 1.4 31 gennaio 2025
+  unit: text
+  snippet: per la comunicazione all’Agenzia delle entrate della omessa o irregolare fatturazione
+  source_license: unstated
+  content_sha256: 8adde9acf0596f14e2cce66f3c1a4d36ce4e13f65582b45c333fe28eee4d93dc
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '2025-01-31'
+  method: derived
+  rationale: The specification's revision table dates version 1.4, which introduced the 1.2.3 schema, 31 January
+    2025; it gives no separate start date for the new codes.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[tipo_documento]
+  expected: 20
+  tolerance: 0
+notes: Document-type codes for the TipoDocumento element (2.1.1.1) of an Italian electronic invoice sent through
+  the Sistema di Interscambio, with the Italian descriptions the schema annotates them with. TD01 is an ordinary
+  invoice, TD04 a credit note, TD16 to TD19 the integration and self-invoicing documents for reverse charge, and
+  TD29 the notice of omitted or irregular invoicing that version 1.4 of the specification added. Codes and labels
+  are read from Schema_VFPR12_v1.2.3.xsd as published on fatturapa.gov.it; the schema carries no licence statement.

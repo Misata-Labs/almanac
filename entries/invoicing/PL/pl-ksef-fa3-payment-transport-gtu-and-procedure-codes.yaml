@@ -1,0 +1,212 @@
+id: pl-ksef-fa3-payment-transport-gtu-and-procedure-codes
+title: Poland KSeF FA(3) payment form, transport mode, GTU goods group and procedure marking codes
+kind: rule
+domain: invoicing
+region: PL
+status: license-review
+tier: A
+valid_from: '2026-02-01'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- ksef
+- fa-3
+- poland
+- payment-method
+- gtu
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- accounts-payable
+- payments-demo
+- logistics
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      forma_platnosci:
+        '1': Gotówka
+        '2': Karta
+        '3': Bon
+        '4': Czek
+        '5': Kredyt
+        '6': Przelew
+        '7': Mobilna
+      rodzaj_transportu:
+        '1': Transport morski
+        '2': Transport kolejowy
+        '3': Transport drogowy
+        '4': Transport lotniczy
+        '5': Przesyłka pocztowa
+        '7': Stałe instalacje przesyłowe
+        '8': Żegluga śródlądowa
+      gtu:
+        GTU_01: Dostawa towarów, o których mowa w § 10 ust. 3 pkt 1 lit. a rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        GTU_02: Dostawa towarów, o których mowa w § 10 ust. 3 pkt 1 lit. b rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        GTU_03: Dostawa towarów, o których mowa w § 10 ust. 3 pkt 1 lit. c rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        GTU_04: Dostawa towarów, o których mowa w § 10 ust. 3 pkt 1 lit. d rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        GTU_05: Dostawa towarów, o których mowa w § 10 ust. 3 pkt 1 lit. e rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        GTU_06: Dostawa towarów, o których mowa w § 10 ust. 3 pkt 1 lit. f rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        GTU_07: Dostawa towarów, o których mowa w § 10 ust. 3 pkt 1 lit. g rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        GTU_08: Dostawa towarów, o których mowa w § 10 ust. 3 pkt 1 lit. h rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        GTU_09: Dostawa towarów, o których mowa w § 10 ust. 3 pkt 1 lit. i rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        GTU_10: Dostawa towarów, o których mowa w § 10 ust. 3 pkt 1 lit. j rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        GTU_11: Świadczenie usług, o których mowa w § 10 ust. 3 pkt 2 lit. a rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        GTU_12: Świadczenie usług, o których mowa w § 10 ust. 3 pkt 2 lit. b rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        GTU_13: Świadczenie usług, o których mowa w § 10 ust. 3 pkt 2 lit. c rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+      oznaczenie_procedury:
+        WSTO_EE: Oznaczenie dotyczące procedury, o której mowa w § 10 ust. 4 pkt 2a rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        IED: Oznaczenie dotyczące procedury, o której mowa w § 10 ust. 4 pkt 2b rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        TT_D: Oznaczenie dotyczące procedury, o której mowa w § 10 ust. 4 pkt 5 rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        I_42: Oznaczenie dotyczące procedury, o której mowa w § 10 ust. 4 pkt 8 rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        I_63: Oznaczenie dotyczące procedury, o której mowa w § 10 ust. 4 pkt 9 rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        B_SPV: Oznaczenie dotyczące procedury, o której mowa w § 10 ust. 4 pkt 10 rozporządzenia w sprawie szczegółowego
+          zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od towarów i usług
+        B_SPV_DOSTAWA: Oznaczenie dotyczące procedury, o której mowa w § 10 ust. 4 pkt 11 rozporządzenia w sprawie
+          szczegółowego zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od
+          towarów i usług
+        B_MPV_PROWIZJA: Oznaczenie dotyczące procedury, o której mowa w § 10 ust. 4 pkt 12 rozporządzenia w sprawie
+          szczegółowego zakresu danych zawartych w deklaracjach podatkowych i w ewidencji w zakresie podatku od
+          towarów i usług
+  vectors:
+  - input:
+      set: forma_platnosci
+      value: '6'
+    expected: true
+    origin: source
+  - input:
+      set: forma_platnosci
+      value: '1'
+    expected: true
+    origin: source
+  - input:
+      set: rodzaj_transportu
+      value: '3'
+    expected: true
+    origin: source
+  - input:
+      set: gtu
+      value: GTU_01
+    expected: true
+    origin: source
+  - input:
+      set: gtu
+      value: GTU_13
+    expected: true
+    origin: source
+  - input:
+      set: oznaczenie_procedury
+      value: TT_D
+    expected: true
+    origin: source
+  - input:
+      set: forma_platnosci
+      value: '8'
+    expected: false
+    origin: derived
+  - input:
+      set: gtu
+      value: GTU_14
+    expected: false
+    origin: derived
+evidence:
+- publisher: Ministerstwo Finansów (Centralne Repozytorium Wzorów Dokumentów Elektronicznych)
+  title: Schemat FA(3) ustrukturyzowanej faktury VAT dla KSeF (wzór 2025/06/25/13775)
+  url: https://crd.gov.pl/wzor/2025/06/25/13775/schemat.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType TFormaPlatnosci
+  value: value="6"
+  unit: text
+  snippet: Przelew
+  source_license: unstated
+  content_sha256: b646b6b525f51adf1bb2545f111fc8ca6e7aa6dd2f98948f1667d3695c06d958
+  role: primary
+- publisher: Ministerstwo Finansów (Centralne Repozytorium Wzorów Dokumentów Elektronicznych)
+  title: Schemat FA(3) ustrukturyzowanej faktury VAT dla KSeF (wzór 2025/06/25/13775)
+  url: https://crd.gov.pl/wzor/2025/06/25/13775/schemat.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType TRodzajTransportu
+  value: value="3"
+  unit: text
+  snippet: Transport drogowy
+  source_license: unstated
+  content_sha256: b646b6b525f51adf1bb2545f111fc8ca6e7aa6dd2f98948f1667d3695c06d958
+  role: primary
+- publisher: Ministerstwo Finansów (Centralne Repozytorium Wzorów Dokumentów Elektronicznych)
+  title: Schemat FA(3) ustrukturyzowanej faktury VAT dla KSeF (wzór 2025/06/25/13775)
+  url: https://crd.gov.pl/wzor/2025/06/25/13775/schemat.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType TGTU
+  value: value="GTU_13"
+  unit: text
+  snippet: simpleType name="TGTU"
+  source_license: unstated
+  content_sha256: b646b6b525f51adf1bb2545f111fc8ca6e7aa6dd2f98948f1667d3695c06d958
+  role: primary
+- publisher: Ministerstwo Finansów (Centralne Repozytorium Wzorów Dokumentów Elektronicznych)
+  title: Schemat FA(3) ustrukturyzowanej faktury VAT dla KSeF (wzór 2025/06/25/13775)
+  url: https://crd.gov.pl/wzor/2025/06/25/13775/schemat.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType TOznaczenieProcedury
+  value: value="B_MPV_PROWIZJA"
+  unit: text
+  snippet: simpleType name="TOznaczenieProcedury"
+  source_license: unstated
+  content_sha256: b646b6b525f51adf1bb2545f111fc8ca6e7aa6dd2f98948f1667d3695c06d958
+  role: primary
+- publisher: Ministerstwo Finansów (Centralne Repozytorium Wzorów Dokumentów Elektronicznych)
+  title: Wyróżnik wzoru FA(3) ustrukturyzowanej faktury VAT (wzór 2025/06/25/13775)
+  url: https://crd.gov.pl/wzor/2025/06/25/13775/wyroznik.xml
+  accessed_at: '2026-11-03'
+  locator: WaznoscWzoru/Od
+  value: <meta:Od>2026-02-01</meta:Od>
+  unit: text
+  snippet: FA(3) USTRUKTURYZOWANA FAKTURA VAT
+  source_license: unstated
+  content_sha256: 26fb7dd01c19d78201d10c7411e9d3aa9c50b50b5ae8556c4471053d2a3bdf31
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[forma_platnosci]
+  expected: 7
+  tolerance: 0
+- statistic: count[rodzaj_transportu]
+  expected: 7
+  tolerance: 0
+- statistic: count[gtu]
+  expected: 13
+  tolerance: 0
+- statistic: count[oznaczenie_procedury]
+  expected: 8
+  tolerance: 0
+notes: 'Four FA(3) vocabularies: FormaPlatnosci payment forms (1 cash, 2 card, 3 voucher, 4 cheque, 5 credit, 6
+  transfer, 7 mobile); RodzajTransportu transport modes; the GTU_01 to GTU_13 goods and services group markings
+  of the VAT records regulation; and the procedure markings (WSTO_EE, IED, TT_D, I_42, I_63, B_SPV and others).
+  Labels are the Polish annotations of the schema. The repository states no licence, so the entry stays at license-review.'

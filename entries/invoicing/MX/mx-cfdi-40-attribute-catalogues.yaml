@@ -1,0 +1,190 @@
+id: mx-cfdi-40-attribute-catalogues
+title: Mexico SAT CFDI 4.0 attributes bound to SAT catalogues, with required or optional use (cfdv40.xsd)
+kind: rule
+domain: invoicing
+region: MX
+status: license-review
+tier: A
+valid_from: '2024-06-04'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- cfdi
+- sat
+- mexico
+- field-rule
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      Comprobante/InformacionGlobal/@Periodicidad:
+        catalogue: c_Periodicidad
+        use: required
+      Comprobante/InformacionGlobal/@Meses:
+        catalogue: c_Meses
+        use: required
+      Comprobante/CfdiRelacionados/@TipoRelacion:
+        catalogue: c_TipoRelacion
+        use: required
+      Comprobante/Emisor/@RegimenFiscal:
+        catalogue: c_RegimenFiscal
+        use: required
+      Comprobante/Receptor/@ResidenciaFiscal:
+        catalogue: c_Pais
+        use: optional
+      Comprobante/Receptor/@RegimenFiscalReceptor:
+        catalogue: c_RegimenFiscal
+        use: required
+      Comprobante/Receptor/@UsoCFDI:
+        catalogue: c_UsoCFDI
+        use: required
+      Comprobante/Conceptos/Concepto/Impuestos/Traslados/Traslado/@Impuesto:
+        catalogue: c_Impuesto
+        use: required
+      Comprobante/Conceptos/Concepto/Impuestos/Traslados/Traslado/@TipoFactor:
+        catalogue: c_TipoFactor
+        use: required
+      Comprobante/Conceptos/Concepto/Impuestos/Retenciones/Retencion/@Impuesto:
+        catalogue: c_Impuesto
+        use: required
+      Comprobante/Conceptos/Concepto/Impuestos/Retenciones/Retencion/@TipoFactor:
+        catalogue: c_TipoFactor
+        use: required
+      Comprobante/Conceptos/Concepto/ACuentaTerceros/@RegimenFiscalACuentaTerceros:
+        catalogue: c_RegimenFiscal
+        use: required
+      Comprobante/Conceptos/Concepto/Parte/@ClaveProdServ:
+        catalogue: c_ClaveProdServ
+        use: required
+      Comprobante/Conceptos/Concepto/@ClaveProdServ:
+        catalogue: c_ClaveProdServ
+        use: required
+      Comprobante/Conceptos/Concepto/@ClaveUnidad:
+        catalogue: c_ClaveUnidad
+        use: required
+      Comprobante/Conceptos/Concepto/@ObjetoImp:
+        catalogue: c_ObjetoImp
+        use: required
+      Comprobante/Impuestos/Retenciones/Retencion/@Impuesto:
+        catalogue: c_Impuesto
+        use: required
+      Comprobante/Impuestos/Traslados/Traslado/@Impuesto:
+        catalogue: c_Impuesto
+        use: required
+      Comprobante/Impuestos/Traslados/Traslado/@TipoFactor:
+        catalogue: c_TipoFactor
+        use: required
+      Comprobante/@FormaPago:
+        catalogue: c_FormaPago
+        use: optional
+      Comprobante/@Moneda:
+        catalogue: c_Moneda
+        use: required
+      Comprobante/@TipoDeComprobante:
+        catalogue: c_TipoDeComprobante
+        use: required
+      Comprobante/@Exportacion:
+        catalogue: c_Exportacion
+        use: required
+      Comprobante/@MetodoPago:
+        catalogue: c_MetodoPago
+        use: optional
+      Comprobante/@LugarExpedicion:
+        catalogue: c_CodigoPostal
+        use: required
+  vectors:
+  - input:
+      key: Comprobante/Receptor/@UsoCFDI
+      column: catalogue
+    expected: c_UsoCFDI
+    origin: source
+  - input:
+      key: Comprobante/Receptor/@RegimenFiscalReceptor
+      column: use
+    expected: required
+    origin: source
+  - input:
+      key: Comprobante/@MetodoPago
+      column: use
+    expected: optional
+    origin: source
+  - input:
+      key: Comprobante/@Exportacion
+      column: catalogue
+    expected: c_Exportacion
+    origin: source
+  - input: Comprobante/@Folio
+    expected: false
+    origin: derived
+    note: free-text attribute, no catalogue
+evidence:
+- publisher: Servicio de Administración Tributaria (SAT)
+  title: Esquema del Comprobante Fiscal Digital por Internet versión 4.0, cfdv40.xsd
+  url: https://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd
+  accessed_at: '2026-11-03'
+  locator: Receptor, attribute UsoCFDI
+  value: <xs:attribute name="UsoCFDI" type="catCFDI:c_UsoCFDI" use="required">
+  unit: text
+  snippet: Atributo requerido para expresar la clave del uso que dará a esta factura el receptor del CFDI.
+  source_license: unstated
+  content_sha256: 2489b5b535f5cbc6a6c2db6132620de1833f85372512d01deea62880e700e276
+  role: primary
+- publisher: Servicio de Administración Tributaria (SAT)
+  title: Esquema del Comprobante Fiscal Digital por Internet versión 4.0, cfdv40.xsd
+  url: https://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd
+  accessed_at: '2026-11-03'
+  locator: Receptor, attribute RegimenFiscalReceptor
+  value: <xs:attribute name="RegimenFiscalReceptor" type="catCFDI:c_RegimenFiscal" use="required">
+  unit: text
+  snippet: Atributo requerido para incorporar la clave del régimen fiscal del contribuyente receptor
+  source_license: unstated
+  content_sha256: 2489b5b535f5cbc6a6c2db6132620de1833f85372512d01deea62880e700e276
+  role: primary
+- publisher: Servicio de Administración Tributaria (SAT)
+  title: Esquema del Comprobante Fiscal Digital por Internet versión 4.0, cfdv40.xsd
+  url: https://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd
+  accessed_at: '2026-11-03'
+  locator: Comprobante, attribute MetodoPago
+  value: <xs:attribute name="MetodoPago" type="catCFDI:c_MetodoPago" use="optional">
+  unit: text
+  snippet: Atributo condicional para precisar la clave del método de pago
+  source_license: unstated
+  content_sha256: 2489b5b535f5cbc6a6c2db6132620de1833f85372512d01deea62880e700e276
+  role: primary
+- publisher: Servicio de Administración Tributaria (SAT)
+  title: Esquema del Comprobante Fiscal Digital por Internet versión 4.0, cfdv40.xsd
+  url: https://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd
+  accessed_at: '2026-11-03'
+  locator: Comprobante, attribute Version
+  value: <xs:attribute name="Version" use="required" fixed="4.0">
+  unit: text
+  snippet: <xs:attribute name="Exportacion" type="catCFDI:c_Exportacion" use="required">
+  source_license: unstated
+  content_sha256: 2489b5b535f5cbc6a6c2db6132620de1833f85372512d01deea62880e700e276
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2024-06-04'
+  method: derived
+  rationale: cfdv40.xsd carries no date; this is the Last-Modified date the SAT server reports for the pinned file,
+    taken as the revision date.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 25
+  tolerance: 0
+notes: Which attributes of a CFDI 4.0 invoice take their value from a SAT catalogue, keyed by element path and attribute
+  (for example Comprobante/Receptor/@UsoCFDI), with the catalogue type and whether the schema marks the attribute
+  required or optional. Optional attributes such as MetodoPago and FormaPago are conditional under the filling guide,
+  which was not reachable. Read from cfdv40.xsd on www.sat.gob.mx; no licence is stated, so the entry stays at license-review.

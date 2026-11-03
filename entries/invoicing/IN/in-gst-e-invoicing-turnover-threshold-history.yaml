@@ -1,0 +1,204 @@
+id: in-gst-e-invoicing-turnover-threshold-history
+title: India GST e-invoicing (IRN) aggregate turnover threshold by date, Notification 13/2020-CT and amendments
+  to 10/2023
+kind: rule
+domain: invoicing
+region: IN
+status: license-review
+tier: B
+valid_from: '2020-10-01'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- gst
+- irn
+- india
+- thresholds
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- kyb-onboarding
+- tax-filing-demo
+spec:
+  implementation: almanac.rules.step_schedule
+  parameters:
+    unit: currency:INR
+    basis: aggregate turnover in any preceding financial year from 2017-18
+    steps:
+    - from: '2020-10-01'
+      value: 5000000000
+      notification: 13/2020 as amended by 61/2020
+    - from: '2021-01-01'
+      value: 1000000000
+      notification: 88/2020
+    - from: '2021-04-01'
+      value: 500000000
+      notification: 05/2021
+    - from: '2022-04-01'
+      value: 200000000
+      notification: 01/2022
+    - from: '2022-10-01'
+      value: 100000000
+      notification: 17/2022
+    - from: '2023-08-01'
+      value: 50000000
+      notification: 10/2023
+  vectors:
+  - input:
+      'on': '2020-10-01'
+    expected: 5000000000
+    origin: source
+  - input:
+      'on': '2021-01-01'
+    expected: 1000000000
+    origin: source
+  - input:
+      'on': '2022-09-30'
+    expected: 200000000
+    origin: source
+  - input:
+      'on': '2023-08-01'
+    expected: 50000000
+    origin: source
+  - input:
+      'on': '2026-11-01'
+    expected: 50000000
+    origin: derived
+    note: no later amendment fetched
+evidence:
+- publisher: Central Board of Indirect Taxes and Customs (hosted by the GST Council Secretariat)
+  title: Notification No. 13/2020 - Central Tax, 21 March 2020
+  url: https://gstcouncil.gov.in/sites/default/files/2024-05/notfctn-13-central-tax-english-2020.pdf
+  accessed_at: '2026-11-03'
+  locator: paragraphs 1 and 2
+  value: This notification shall come into force from the 1st October, 2020.
+  unit: text
+  snippet: of supply of goods or services or both to a registered person.
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 22c395b8f64ad8d4a0934ed1469ba471ea29bc1006dbe9a859a661d71920e0bd
+  role: primary
+- publisher: Central Board of Indirect Taxes and Customs (hosted by the GST Council Secretariat)
+  title: Notification No. 61/2020 - Central Tax, 30 July 2020
+  url: https://gstcouncil.gov.in/sites/default/files/2024-05/notfctn-61-central-tax-english-2020.pdf
+  accessed_at: '2026-11-03'
+  locator: paragraph (ii)
+  value: five hundred crore rupees
+  unit: text
+  snippet: Zone unit and
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 4bc1ae95b830deed4d02d0049727e6aa47b156238b817fc82c64bac03a0e70df
+  role: primary
+- publisher: Central Board of Indirect Taxes and Customs (hosted by the GST Council Secretariat)
+  title: Notification No. 88/2020 - Central Tax
+  url: https://gstcouncil.gov.in/sites/default/files/2024-05/notfctn-88-central-tax-english-2020.pdf
+  accessed_at: '2026-11-03'
+  locator: operative paragraph
+  value: with effect from the 1 st day of January, 2021, for the words “ five hundred crore rupees ”, the words
+    “ one hundred crore rupees ” shall be substituted
+  unit: text
+  snippet: No. 88/2020
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: e836bdc0d8468d67daa103fd9279fe2927824c44fe82c29db4575a1d7eb53b08
+  role: primary
+- publisher: Central Board of Indirect Taxes and Customs (hosted by the GST Council Secretariat)
+  title: Notification No. 05/2021 - Central Tax
+  url: https://gstcouncil.gov.in/sites/default/files/2024-05/notfctn-05-central-tax-english-2021.pdf
+  accessed_at: '2026-11-03'
+  locator: operative paragraph
+  value: with effect from the 1st day of April, 2021, for the words “one hundred crore rupees”, the words “fifty
+    crore rupees” shall be substituted
+  unit: text
+  snippet: No. 05/2021
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 78dc25e9a2358b0d470a58d34d2a6fc2e9215cfdc4d7ae0fe4273cf0addfa078
+  role: primary
+- publisher: Central Board of Indirect Taxes and Customs (hosted by the GST Council Secretariat)
+  title: Notification No. 01/2022 - Central Tax
+  url: https://gstcouncil.gov.in/sites/default/files/2024-05/nn_01_2022_english.pdf
+  accessed_at: '2026-11-03'
+  locator: operative paragraph
+  value: with effect from the 1 st day of April, 2022, for the words “fifty crore rupees”, the words “twenty crore
+    rupees” shall be substituted
+  unit: text
+  snippet: No. 01/2022
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: a3e1db501461735179cd38b34801ad649f2e0e231fbcdd44535567d1811998c2
+  role: primary
+- publisher: Central Board of Indirect Taxes and Customs (hosted by the GST Council Secretariat)
+  title: Notification No. 17/2022 - Central Tax
+  url: https://gstcouncil.gov.in/sites/default/files/2024-05/17-2022-ct-eng_1_1.pdf
+  accessed_at: '2026-11-03'
+  locator: operative paragraph
+  value: with effect from the 1st day of October, 2022, for the words “twenty crore rupees”, the words “ten crore
+    rupees” shall be substituted
+  unit: text
+  snippet: No. 17/2022
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: bd42e41778deb697eae2d539506d51f425692cd983d1fbe4edd1a3d48cf2ef71
+  role: primary
+- publisher: Central Board of Indirect Taxes and Customs (hosted by the GST Council Secretariat)
+  title: Notification No. 10/2023 - Central Tax
+  url: https://gstcouncil.gov.in/sites/default/files/2024-05/10ct_eng.pdf
+  accessed_at: '2026-11-03'
+  locator: operative paragraph
+  value: with effect from the 1 st day of August, 2023, for the words “ten crore rupees”, the words “five crore
+    rupees” shall be substituted
+  unit: text
+  snippet: No. 10/2023
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 7bfff4c6a0e1be844212280b2b3b397217eed2909d3dca564563c35cc02418a2
+  role: primary
+- publisher: Central Board of Indirect Taxes and Customs (hosted by the GST Council Secretariat)
+  title: Notification No. 70/2020 - Central Tax, 30 September 2020
+  url: https://gstcouncil.gov.in/sites/default/files/2024-05/notfctn-70-central-tax-english-2020.pdf
+  accessed_at: '2026-11-03'
+  locator: paragraphs (i) and (ii)
+  value: any preceding financial year from 2017-18 onwards
+  unit: text
+  snippet: or for exports
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: 0686871b3968e1c656aac7fff6647d12ad96625ac5765913a8058de20382b372
+  role: supporting
+- publisher: Central Board of Indirect Taxes and Customs (hosted by the GST Council Secretariat)
+  title: Notification No. 23/2021 - Central Tax, 1 June 2021
+  url: https://gstcouncil.gov.in/sites/default/files/2024-05/notfctn-23-central-tax-english-2021.pdf
+  accessed_at: '2026-11-03'
+  locator: operative paragraph
+  value: a government department, a local authority,
+  unit: text
+  snippet: notifies registered person, other than
+  source_license: 'GST Council copyright policy: reproduction free of charge after permission by email, with acknowledgement'
+  content_sha256: ad816c92038b044784597c09b92190a7b39974fd8471ae2e0655a06e3983d4e5
+  role: supporting
+assumed:
+- parameter: steps.*.value
+  value: crore = 10,000,000 rupees
+  method: derived
+  rationale: The notifications state amounts in words of crore rupees; values are converted to rupees.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 6
+  tolerance: 0
+- statistic: min
+  expected: 50000000
+  tolerance: 0
+- statistic: max
+  expected: 5000000000
+  tolerance: 0
+notes: Registered persons whose aggregate turnover exceeds this amount must issue e-invoices (report to the Invoice
+  Registration Portal and obtain an IRN) for supplies to registered persons and for exports, under rule 48(4) of
+  the CGST Rules. Notification 13/2020-Central Tax set the class from 1 October 2020; 61/2020 raised its figure
+  to five hundred crore before it took effect; 88/2020, 05/2021, 01/2022, 17/2022 and 10/2023 lowered it on the
+  dates shown. 70/2020 made the test any preceding financial year from 2017-18 and added exports; 23/2021 excluded
+  government departments and local authorities, and SEZ units and persons under rule 54(2) to (4A) are excluded
+  throughout. Values are rupees. The 57th Council's proposed extension to reverse-charge and import supplies is
+  a separate entry (in-gst-registration-and-compliance-thresholds-57th-council).

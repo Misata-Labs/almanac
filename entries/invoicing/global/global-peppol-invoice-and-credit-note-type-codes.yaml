@@ -1,0 +1,277 @@
+id: global-peppol-invoice-and-credit-note-type-codes
+title: Peppol BIS Billing 3.0 invoice and credit note type codes (UNCL1001 subsets) with profile restrictions
+kind: rule
+domain: invoicing
+region: global
+status: license-review
+tier: A
+valid_from: '2026-08-17'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- peppol
+- en-16931
+- ubl
+- document-type
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- accounts-payable
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      '71':
+        name: Request for payment
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '80':
+        name: Debit note related to goods or services
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '82':
+        name: Metered services invoice
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '84':
+        name: Debit note related to financial adjustments
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '102':
+        name: Tax notification
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '218':
+        name: Final payment request based on completion of work
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '219':
+        name: Payment request for completed units
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '326':
+        name: Partial invoice
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '331':
+        name: Commercial invoice which includes a packing list
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '380':
+        name: Commercial invoice
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '382':
+        name: Commission note
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '383':
+        name: Debit note
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '384':
+        name: Corrected invoice
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '386':
+        name: Prepayment invoice
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '388':
+        name: Tax invoice
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '389':
+        name: Self-billed invoice
+        document: invoice
+        allowed_in_billing_profiles_01_02: false
+      '393':
+        name: Factored invoice
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '395':
+        name: Consignment invoice
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '553':
+        name: Forwarder's invoice discrepancy report
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '575':
+        name: Insurer's invoice
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '623':
+        name: Forwarder's invoice
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '780':
+        name: Freight invoice
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '817':
+        name: Claim notification
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '870':
+        name: Consular invoice
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '875':
+        name: Partial construction invoice
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '876':
+        name: Partial final construction invoice
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '877':
+        name: Final construction invoice
+        document: invoice
+        allowed_in_billing_profiles_01_02: true
+      '81':
+        name: Credit note related to goods or services
+        document: credit_note
+        allowed_in_billing_profiles_01_02: true
+      '83':
+        name: Credit note related to financial adjustments
+        document: credit_note
+        allowed_in_billing_profiles_01_02: true
+      '381':
+        name: Credit note
+        document: credit_note
+        allowed_in_billing_profiles_01_02: true
+      '396':
+        name: Factored credit note
+        document: credit_note
+        allowed_in_billing_profiles_01_02: true
+      '532':
+        name: Forwarder's credit note
+        document: credit_note
+        allowed_in_billing_profiles_01_02: true
+  vectors:
+  - input:
+      key: '380'
+      column: name
+    expected: Commercial invoice
+    origin: source
+  - input:
+      key: '381'
+      column: document
+    expected: credit_note
+    origin: source
+  - input:
+      key: '388'
+      column: allowed_in_billing_profiles_01_02
+    expected: true
+    origin: source
+  - input:
+      key: '389'
+      column: allowed_in_billing_profiles_01_02
+    expected: false
+    origin: source
+    note: self-billed invoice, absent from rule P0100's token list
+  - input: '385'
+    expected: false
+    origin: derived
+evidence:
+- publisher: OpenPeppol AISBL
+  title: Peppol BIS Billing 3.0.21 code lists (OpenPEPPOL/peppol-bis-invoice-3 at 5df0eff7), UNCL1001-inv.xml
+  url: https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/5df0eff7c8efafd7c79c0dacce55082d175db759/structure/codelist/UNCL1001-inv.xml
+  accessed_at: '2026-11-03'
+  locator: Code 380
+  value: Commercial invoice
+  unit: text
+  snippet: Invoice type code (UNCL1001 subset)
+  source_license: unstated
+  content_sha256: 00f57463ee94656d12f1947135d622ffdbb22c6e2d9685b7f7fc6df9ed161afc
+  role: primary
+- publisher: OpenPeppol AISBL
+  title: Peppol BIS Billing 3.0.21 code lists (OpenPEPPOL/peppol-bis-invoice-3 at 5df0eff7), UNCL1001-cn.xml
+  url: https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/5df0eff7c8efafd7c79c0dacce55082d175db759/structure/codelist/UNCL1001-cn.xml
+  accessed_at: '2026-11-03'
+  locator: Code 381
+  value: Credit note
+  unit: text
+  snippet: Credit note type code (UNCL1001 subset)
+  source_license: unstated
+  content_sha256: 106747b9464c9d4b43984a1c2a3d8255ad7326fbe44a0149ab9cb3e03679b5e9
+  role: primary
+- publisher: OpenPeppol AISBL
+  title: Peppol BIS Billing 3.0.21 UBL schematron, PEPPOL-EN16931-UBL.sch
+  url: https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/5df0eff7c8efafd7c79c0dacce55082d175db759/rules/sch/PEPPOL-EN16931-UBL.sch
+  accessed_at: '2026-11-03'
+  locator: assert PEPPOL-EN16931-P0100
+  value: 71 80 82 84 102 218 219 326 331 380 382 383 384 386 388 393 395 553 575 623 780 817 870 875 876 877
+  unit: text
+  snippet: Invoice type code MUST be set according to the profile.
+  source_license: unstated
+  content_sha256: 9616cfffb418f349b532c1e25d3c831b8af6a47f4f5607ca0df4b1336f48e5f3
+  role: primary
+- publisher: OpenPeppol AISBL
+  title: Peppol BIS Billing 3.0.21 UBL schematron, PEPPOL-EN16931-UBL.sch
+  url: https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/5df0eff7c8efafd7c79c0dacce55082d175db759/rules/sch/PEPPOL-EN16931-UBL.sch
+  accessed_at: '2026-11-03'
+  locator: assert PEPPOL-EN16931-P0101
+  value: 381 396 81 83 532
+  unit: text
+  snippet: Credit note type code MUST be set according to the profile.
+  source_license: unstated
+  content_sha256: 9616cfffb418f349b532c1e25d3c831b8af6a47f4f5607ca0df4b1336f48e5f3
+  role: primary
+- publisher: OpenPeppol AISBL
+  title: Peppol BIS Billing 3.0 release notes, version 3.0.21-hotfix
+  url: https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/5df0eff7c8efafd7c79c0dacce55082d175db759/guide/release-notes/v3.0.21-hotfix.adoc
+  accessed_at: '2026-11-03'
+  locator: Changes to code lists and validation artefacts
+  value: Invoice type code 384 (Corrected invoice) is allowed when both buyer and seller are German organizations
+    or both are Slovak organizations.
+  unit: text
+  snippet: Invoice type codes 326 (Partial invoice) and 389 (Self-billed invoice) are only allowed when both buyer
+    and seller are German organizations.
+  source_license: unstated
+  content_sha256: ea8f9cedc746fff4eb56f7aa658aa3a5c4cd5811d1689bf588a4aee1602a759f
+  role: supporting
+- publisher: OpenPeppol AISBL
+  title: Peppol BIS Billing 3.0 release notes, version 3.0.21
+  url: https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/5df0eff7c8efafd7c79c0dacce55082d175db759/guide/release-notes/v3.0.21.adoc
+  accessed_at: '2026-11-03'
+  locator: header
+  value: 'Mandatory to use from: 2026-08-17'
+  unit: text
+  snippet: 'Date of publication: 2026-05-20'
+  source_license: unstated
+  content_sha256: 6a1e53351d4686efbdcfffb786faa9e8fa4496ed950db78de2a62197e6e25f94
+  role: supporting
+- publisher: OpenPeppol AISBL
+  title: Peppol BIS Billing 3.0, introduction (copyright statement)
+  url: https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/5df0eff7c8efafd7c79c0dacce55082d175db759/guide/bis/introduction.adoc
+  accessed_at: '2026-11-03'
+  locator: copyright paragraph
+  value: OpenPeppol AISBL holds the copyright of this Peppol BIS
+  unit: text
+  snippet: allowing derivate works to be developed and distributed with no additional licensing requirements
+  source_license: unstated
+  content_sha256: 38b90eb6d1afb0048a443cb825b8152edce5b008f9da01a19dc41b6877669562
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 32
+  tolerance: 0
+notes: 'Document type codes for BT-3 in a Peppol BIS Billing 3.0 invoice (UNCL1001 invoice subset: 380 commercial
+  invoice, 383 debit note, 384 corrected, 386 prepayment, 389 self-billed and others) and credit note (81, 83, 381,
+  396, 532). allowed_in_billing_profiles_01_02 records whether the code appears in the token list of schematron
+  rule P0100 or P0101, which binds the billing profiles; the 3.0.21 hotfix further limits 326 and 389 to German
+  trading partners and 384 to German or Slovak pairs, which this table does not encode. OpenPeppol states it holds
+  the copyright of the BIS and that the EC-CEN agreement allows derivative works with no additional licensing requirements;
+  no SPDX licence is named, so the entry stays at license-review.'

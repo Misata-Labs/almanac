@@ -1,0 +1,216 @@
+id: it-fatturapa-field-formats
+title: 'Italy FatturaPA field formats: CodiceDestinatario, codice fiscale, IBAN, BIC, CAP and amounts (schema 1.2.3
+  patterns)'
+kind: rule
+domain: invoicing
+region: IT
+status: license-review
+tier: A
+valid_from: '2025-01-31'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- fatturapa
+- sdi
+- italy
+- field-format
+- identifier
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- kyb-onboarding
+spec:
+  implementation: almanac.rules.einvoice_field_format
+  parameters:
+    fields:
+      CodiceDestinatario:
+        patterns:
+        - '[A-Z0-9]{6,7}'
+      CodiceFiscale:
+        patterns:
+        - '[A-Z0-9]{11,16}'
+      CodiceFiscalePF:
+        patterns:
+        - '[A-Z0-9]{16}'
+      IBAN:
+        patterns:
+        - '[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{11,30}'
+      BIC:
+        patterns:
+        - '[A-Z]{6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3}){0,1}'
+      CAP:
+        patterns:
+        - '[0-9][0-9][0-9][0-9][0-9]'
+      Provincia:
+        patterns:
+        - '[A-Z]{2}'
+      Nazione:
+        patterns:
+        - '[A-Z]{2}'
+      Divisa:
+        patterns:
+        - '[A-Z]{3}'
+      Aliquota:
+        patterns:
+        - '[0-9]{1,3}\.[0-9]{2}'
+      Importo:
+        patterns:
+        - '[\-]?[0-9]{1,11}\.[0-9]{2}'
+      PrezzoUnitario:
+        patterns:
+        - '[\-]?[0-9]{1,11}\.[0-9]{2,8}'
+  vectors:
+  - input:
+      field: CodiceDestinatario
+      value: ABC1234
+    expected: true
+    origin: source
+    note: B2B example invoice, 7 characters
+  - input:
+      field: CodiceDestinatario
+      value: AAAAAA
+    expected: true
+    origin: source
+    note: public administration example invoice, 6 characters
+  - input:
+      field: CodiceFiscale
+      value: 09876543210
+    expected: true
+    origin: source
+  - input:
+      field: CodiceDestinatario
+      value: abc1234
+    expected: false
+    origin: derived
+    note: lower case is outside the pattern
+  - input:
+      field: CodiceDestinatario
+      value: ABC12345
+    expected: false
+    origin: derived
+    note: eight characters
+  - input:
+      field: CodiceFiscalePF
+      value: 09876543210
+    expected: false
+    origin: derived
+    note: a natural person's code has 16 characters
+  - input:
+      field: Aliquota
+      value: '22.00'
+    expected: true
+    origin: derived
+  - input:
+      field: Importo
+      value: '100.5'
+    expected: false
+    origin: derived
+    note: amounts carry exactly two decimals
+  - input:
+      field: CAP
+      value: '00144'
+    expected: true
+    origin: derived
+evidence:
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Schema del file XML FatturaPA versione 1.2.3 (fattura ordinaria e PA, Schema_VFPR12_v1.2.3.xsd)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Schema_VFPR12_v1.2.3.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType CodiceDestinatarioType, pattern
+  value: '[A-Z0-9]{6,7}'
+  unit: text
+  snippet: simpleType name="CodiceDestinatarioType"
+  source_license: unstated
+  content_sha256: 152944f6eef9f5d69ef6e955ee173b32142b00a8c1c5222fc97dfab5910e8a8c
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Schema del file XML FatturaPA versione 1.2.3 (fattura ordinaria e PA, Schema_VFPR12_v1.2.3.xsd)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Schema_VFPR12_v1.2.3.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType CodiceFiscaleType, pattern
+  value: '[A-Z0-9]{11,16}'
+  unit: text
+  snippet: simpleType name="CodiceFiscaleType"
+  source_license: unstated
+  content_sha256: 152944f6eef9f5d69ef6e955ee173b32142b00a8c1c5222fc97dfab5910e8a8c
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Schema del file XML FatturaPA versione 1.2.3 (fattura ordinaria e PA, Schema_VFPR12_v1.2.3.xsd)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Schema_VFPR12_v1.2.3.xsd
+  accessed_at: '2026-11-03'
+  locator: simpleType Amount2DecimalType, pattern
+  value: '[0-9]{1,11}\.[0-9]{2}'
+  unit: text
+  snippet: simpleType name="Amount2DecimalType"
+  source_license: unstated
+  content_sha256: 152944f6eef9f5d69ef6e955ee173b32142b00a8c1c5222fc97dfab5910e8a8c
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: FatturaPA example invoice IT01234567890_FPR01.xml (fattura ordinaria)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2/IT01234567890_FPR01.xml
+  accessed_at: '2026-11-03'
+  locator: DatiTrasmissione/CodiceDestinatario
+  value: <CodiceDestinatario>ABC1234</CodiceDestinatario>
+  unit: text
+  snippet: <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+  source_license: unstated
+  content_sha256: 73e61f2f71ca83937fdc2b64dfa71e45f025087b44ad73d835d8c080dc70b286
+  role: supporting
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: FatturaPA example invoice IT01234567890_FPA01.xml (fattura PA)
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.2/IT01234567890_FPA01.xml
+  accessed_at: '2026-11-03'
+  locator: DatiTrasmissione/CodiceDestinatario
+  value: <CodiceDestinatario>AAAAAA</CodiceDestinatario>
+  unit: text
+  snippet: <FormatoTrasmissione>FPA12</FormatoTrasmissione>
+  source_license: unstated
+  content_sha256: e26b32f39ac87824d3255f3a9d2b5f06de6cd52dfba705ad057227a5a6d8c30b
+  role: supporting
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Specifiche tecniche operative del formato della fattura del Sistema di Interscambio, versione 1.4
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Specifiche_tecniche_del_formato_FatturaPA_V1.4.pdf
+  accessed_at: '2026-11-03'
+  locator: section 1.1, CodiceDestinatario
+  value: valore, di 6 caratteri, deve corrispondere a quello presente nel campo
+  unit: text
+  snippet: 'Amministrazione il suo valore, di 7 caratteri, deve corrispondere a:'
+  source_license: unstated
+  content_sha256: 8adde9acf0596f14e2cce66f3c1a4d36ce4e13f65582b45c333fe28eee4d93dc
+  role: supporting
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Specifiche tecniche operative del formato della fattura del Sistema di Interscambio, versione 1.4
+  url: https://www.fatturapa.gov.it/export/documenti/fatturapa/v1.4/Specifiche_tecniche_del_formato_FatturaPA_V1.4.pdf
+  accessed_at: '2026-11-03'
+  locator: page 5, Stato del documento, revision 1.4
+  value: 1.4 31 gennaio 2025
+  unit: text
+  snippet: per la comunicazione all’Agenzia delle entrate della omessa o irregolare fatturazione
+  source_license: unstated
+  content_sha256: 8adde9acf0596f14e2cce66f3c1a4d36ce4e13f65582b45c333fe28eee4d93dc
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '2025-01-31'
+  method: derived
+  rationale: The specification's revision table dates version 1.4, which introduced the 1.2.3 schema, 31 January
+    2025; it gives no separate start date for the new codes.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: 'Pattern and length facets of selected FatturaPA simple types, read from the 1.2.3 schema and applied as
+  full matches. CodiceDestinatario routes the invoice through the Sistema di Interscambio: per the specification
+  it has 6 characters (the office code from IndicePA) for a public administration and 7 characters (a code SdI assigns
+  to a receiving channel) otherwise. CodiceFiscale admits 11 to 16 upper-case letters and digits, CodiceFiscalePF
+  exactly 16; amounts carry exactly two decimals and unit prices two to eight. The positive vectors are the values
+  in the example invoices published beside the schema. The schema carries no licence statement.'

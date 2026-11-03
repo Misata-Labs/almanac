@@ -1,0 +1,246 @@
+id: global-peppol-participant-identifier-format
+title: Peppol participant identifier format and SML DNS name (Policy for use of Identifiers 4.4.0)
+kind: rule
+domain: invoicing
+region: global
+status: license-review
+tier: B
+valid_from: '2025-02-06'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- peppol
+- en-16931
+- ubl
+- identifier
+- participant-identifier
+- hash
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- kyb-onboarding
+spec:
+  implementation: almanac.rules.peppol_participant_id
+  parameters:
+    meta_scheme: iso6523-actorid-upis
+    min_value_length: 1
+    max_value_length: 130
+    value_pattern: '[A-Za-z0-9._~-]+'
+    active_icd:
+    - '0002'
+    - '0007'
+    - 0009
+    - '0060'
+    - 0088
+    - 0096
+    - 0097
+    - '0106'
+    - '0130'
+    - '0135'
+    - '0142'
+    - '0151'
+    - 0158
+    - 0183
+    - 0184
+    - 0188
+    - 0190
+    - 0191
+    - 0192
+    - 0195
+    - 0196
+    - 0198
+    - 0199
+    - '0200'
+    - '0201'
+    - '0204'
+    - '0205'
+    - 0208
+    - 0209
+    - '0210'
+    - '0211'
+    - '0216'
+    - 0218
+    - '0221'
+    - '0225'
+    - '0230'
+    - '0235'
+    - '0240'
+    - '0242'
+    - '0244'
+    - '0245'
+    - '0246'
+    - 0248
+    - '9910'
+    - '9913'
+    - '9914'
+    - '9915'
+    - '9918'
+    - '9919'
+    - '9920'
+    - '9922'
+    - '9923'
+    - '9924'
+    - '9925'
+    - '9926'
+    - '9927'
+    - '9928'
+    - '9929'
+    - '9930'
+    - '9931'
+    - '9932'
+    - '9933'
+    - '9934'
+    - '9935'
+    - '9936'
+    - '9937'
+    - '9938'
+    - '9939'
+    - '9940'
+    - '9941'
+    - '9942'
+    - '9943'
+    - '9944'
+    - '9945'
+    - '9946'
+    - '9947'
+    - '9948'
+    - '9949'
+    - '9950'
+    - '9951'
+    - '9952'
+    - '9953'
+    - '9957'
+    - '9959'
+  vectors:
+  - input:
+      sml_hash: 0088:123abc
+    expected: Y7DZFXAF3D4CJZ4KCGRXTEC6TWVCGA4KY7ZWA5BOIF6MSWD4TDRQ
+    origin: source
+    note: POLICY 7 worked example
+  - input:
+      sml_hash: 0088:123ABC
+    expected: Y7DZFXAF3D4CJZ4KCGRXTEC6TWVCGA4KY7ZWA5BOIF6MSWD4TDRQ
+    origin: source
+    note: the policy states 0088:123ABC gives the same result
+  - input:
+      dns_name: 0088:123abc
+      zone: edelivery.tech.ec.europa.eu.
+    expected: Y7DZFXAF3D4CJZ4KCGRXTEC6TWVCGA4KY7ZWA5BOIF6MSWD4TDRQ.iso6523-actorid-upis.edelivery.tech.ec.europa.eu.
+    origin: source
+  - input:
+      identifier: 0088:7300010000001
+    expected: true
+    origin: source
+    note: POLICY 8 example 1
+  - input:
+      identifier: 0002:542034942
+    expected: true
+    origin: source
+    note: POLICY 8 example 2
+  - input:
+      identifier: iso6523-actorid-upis::0088:7300010000001
+    expected: true
+    origin: derived
+  - input:
+      identifier: '0088:'
+    expected: false
+    origin: derived
+    note: empty value
+  - input:
+      identifier: 0088:11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+    expected: false
+    origin: derived
+    note: over the length limit
+  - input:
+      identifier: 0088:73000 10000001
+    expected: false
+    origin: derived
+    note: space is not a permitted character
+  - input:
+      identifier: 1234:abc
+    expected: false
+    origin: derived
+    note: ICD not in the code list
+evidence:
+- publisher: OpenPeppol AISBL
+  title: Peppol Policy for use of Identifiers 4.4.0 (2025-02-06)
+  url: https://docs.peppol.eu/edelivery/policies/Peppol-EDN-Policy-for-use-of-identifiers-4.4.0-2025-02-06.pdf
+  accessed_at: '2026-11-03'
+  locator: page 17, POLICY 5
+  value: iso6523-actorid-upis
+  unit: text
+  snippet: 'The Peppol Participant Identifier Meta Scheme is:'
+  source_license: unstated
+  content_sha256: 360376e6c9f22f6fe1e9012aebc7174fea7d87f2516c60abb399f9031e492044
+  role: primary
+- publisher: OpenPeppol AISBL
+  title: Peppol Policy for use of Identifiers 4.4.0 (2025-02-06)
+  url: https://docs.peppol.eu/edelivery/policies/Peppol-EDN-Policy-for-use-of-identifiers-4.4.0-2025-02-06.pdf
+  accessed_at: '2026-11-03'
+  locator: page 14, POLICY 1
+  value: MUST NOT be more than 130 characters long
+  unit: text
+  snippet: character (.), the underscore character (_) or the tilde character (~) from the invariant
+  source_license: unstated
+  content_sha256: 360376e6c9f22f6fe1e9012aebc7174fea7d87f2516c60abb399f9031e492044
+  role: primary
+- publisher: OpenPeppol AISBL
+  title: Peppol Policy for use of Identifiers 4.4.0 (2025-02-06)
+  url: https://docs.peppol.eu/edelivery/policies/Peppol-EDN-Policy-for-use-of-identifiers-4.4.0-2025-02-06.pdf
+  accessed_at: '2026-11-03'
+  locator: page 18, POLICY 7 example
+  value: Y7DZFXAF3D4CJZ4KCGRXTEC6TWVCGA4KY7ZWA5BOIF6MSWD4TDRQ
+  unit: text
+  snippet: Is the string representation of the SHA-256 hash value, of the
+  source_license: unstated
+  content_sha256: 360376e6c9f22f6fe1e9012aebc7174fea7d87f2516c60abb399f9031e492044
+  role: primary
+- publisher: OpenPeppol AISBL
+  title: Peppol Policy for use of Identifiers 4.4.0 (2025-02-06)
+  url: https://docs.peppol.eu/edelivery/policies/Peppol-EDN-Policy-for-use-of-identifiers-4.4.0-2025-02-06.pdf
+  accessed_at: '2026-11-03'
+  locator: page 19, POLICY 8 examples
+  value: '>0088:7300010000001</ParticipantIdentifier>'
+  unit: text
+  snippet: '>0002:542034942</ParticipantIdentifier>'
+  source_license: unstated
+  content_sha256: 360376e6c9f22f6fe1e9012aebc7174fea7d87f2516c60abb399f9031e492044
+  role: primary
+- publisher: OpenPeppol AISBL
+  title: Peppol Code Lists - Participant identifier schemes v9.7 (JSON)
+  url: https://docs.peppol.eu/edelivery/codelists/v9.7/Peppol%20Code%20Lists%20-%20Participant%20identifier%20schemes%20v9.7.json
+  accessed_at: '2026-11-03'
+  locator: values[].state
+  value: '"state":"active"'
+  unit: text
+  snippet: '"version":"9.7"'
+  source_license: unstated
+  content_sha256: 69c9b351577219f3e7f108a56ab37a4f1a309721bf8820687389f5804727ec56
+  role: primary
+assumed:
+- parameter: value_pattern
+  value: '[A-Za-z0-9._~-]+'
+  method: derived
+  rationale: Policy 1 lists the permitted characters in prose; the pattern restates that list as a regular expression.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[active_icd]
+  expected: 84
+  tolerance: 0
+- statistic: value[max_value_length]
+  expected: 130
+  tolerance: 0
+notes: A Peppol participant identifier is an ISO 6523 ICD and a value joined by a colon (for example 0088 and a
+  GLN), under the meta scheme iso6523-actorid-upis. Policy 1 limits the value, excluding the ICD, to 1 to 130 letters,
+  digits, minus, period, underscore or tilde; Policy 2 makes values case insensitive. Policy 7 publishes each participant
+  in the SML under a DNS label made of the unpadded Base32 SHA-256 digest of the lowercased identifier, which the
+  vectors check against the policy's own worked example. active_icd is the set of ICD values with state active in
+  code list 9.7. No licence is stated, so the entry stays at license-review.

@@ -1,0 +1,202 @@
+id: es-verifactu-tax-operation-and-exemption-codes
+title: Spain VERI*FACTU tax, CalificacionOperacion, OperacionExenta (E1 to E6) and IDType codes, Orden HAC/1177/2024
+kind: rule
+domain: invoicing
+region: ES
+status: license-review
+tier: B
+valid_from: '2024-10-29'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- verifactu
+- aeat
+- spain
+- vat
+- vat-exemption
+- identifier
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- accounts-payable
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      impuesto:
+        '01': Impuesto sobre el Valor Añadido (IVA).
+        '02': Impuesto sobre la Producción, los Servicios y la Importación (IPSI) de Ceuta y Melilla.
+        '03': Impuesto General Indirecto Canario (IGIC).
+        '05': Otros.
+      calificacion_operacion:
+        S1: Operación Sujeta y No exenta - Sin inversión del sujeto pasivo.
+        S2: Operación Sujeta y No exenta - Con Inversión del sujeto pasivo.
+        N1: Operación No Sujeta artículo 7, 14, otros.
+        N2: Operación No Sujeta por Reglas de localización.
+      operacion_exenta:
+        E1: Exenta por el artículo 20.
+        E2: Exenta por el artículo 21.
+        E3: Exenta por el artículo 22.
+        E4: Exenta por los artículos 23 y 24.
+        E5: Exenta por el artículo 25.
+        E6: Exenta por otros.
+      id_type:
+        '02': NIF-IVA.
+        '03': Pasaporte.
+        '04': Documento oficial de identificación expedido por el país o territorio de residencia.
+        '05': Certificado de residencia.
+        '06': Otro documento probatorio.
+        '07': No censado.
+  vectors:
+  - input:
+      set: impuesto
+      value: '01'
+    expected: true
+    origin: source
+  - input:
+      set: impuesto
+      value: '03'
+    expected: true
+    origin: source
+  - input:
+      set: calificacion_operacion
+      value: S1
+    expected: true
+    origin: source
+  - input:
+      set: calificacion_operacion
+      value: N2
+    expected: true
+    origin: source
+  - input:
+      set: operacion_exenta
+      value: E1
+    expected: true
+    origin: source
+  - input:
+      set: operacion_exenta
+      value: E6
+    expected: true
+    origin: source
+  - input:
+      set: id_type
+      value: '02'
+    expected: true
+    origin: source
+  - input:
+      set: operacion_exenta
+      value: E7
+    expected: false
+    origin: derived
+  - input:
+      set: impuesto
+      value: '04'
+    expected: false
+    origin: derived
+    note: list L1 jumps from 03 to 05
+evidence:
+- publisher: Ministerio de Hacienda (Boletín Oficial del Estado)
+  title: Orden HAC/1177/2024, de 17 de octubre (VERI*FACTU especificaciones técnicas), BOE núm. 260, 28 octubre
+    2024
+  url: https://www.boe.es/boe/dias/2024/10/28/pdfs/BOE-A-2024-22138.pdf
+  accessed_at: '2026-11-03'
+  locator: annex section 6, list L1
+  value: 03 Impuesto General Indirecto Canario (IGIC).
+  unit: text
+  snippet: 02 Impuesto sobre la Producción, los Servicios y la Importación (IPSI) de Ceuta y Melilla.
+  source_license: unstated
+  content_sha256: 94344cbc2841fc5c7e759b9a674c821520dc10a12b172f26a415ce8bffa882a2
+  role: primary
+- publisher: Ministerio de Hacienda (Boletín Oficial del Estado)
+  title: Orden HAC/1177/2024, de 17 de octubre (VERI*FACTU especificaciones técnicas), BOE núm. 260, 28 octubre
+    2024
+  url: https://www.boe.es/boe/dias/2024/10/28/pdfs/BOE-A-2024-22138.pdf
+  accessed_at: '2026-11-03'
+  locator: annex section 6, list L9
+  value: S1 Operación Sujeta y No exenta - Sin inversión del sujeto pasivo.
+  unit: text
+  snippet: N2 Operación No Sujeta por Reglas de localización.
+  source_license: unstated
+  content_sha256: 94344cbc2841fc5c7e759b9a674c821520dc10a12b172f26a415ce8bffa882a2
+  role: primary
+- publisher: Ministerio de Hacienda (Boletín Oficial del Estado)
+  title: Orden HAC/1177/2024, de 17 de octubre (VERI*FACTU especificaciones técnicas), BOE núm. 260, 28 octubre
+    2024
+  url: https://www.boe.es/boe/dias/2024/10/28/pdfs/BOE-A-2024-22138.pdf
+  accessed_at: '2026-11-03'
+  locator: annex section 6, list L10 (pages 137559 and 137560)
+  value: E6 Exenta por otros.
+  unit: text
+  snippet: E1 Exenta por el artículo 20.
+  source_license: unstated
+  content_sha256: 94344cbc2841fc5c7e759b9a674c821520dc10a12b172f26a415ce8bffa882a2
+  role: primary
+- publisher: Ministerio de Hacienda (Boletín Oficial del Estado)
+  title: Orden HAC/1177/2024, de 17 de octubre (VERI*FACTU especificaciones técnicas), BOE núm. 260, 28 octubre
+    2024
+  url: https://www.boe.es/boe/dias/2024/10/28/pdfs/BOE-A-2024-22138.pdf
+  accessed_at: '2026-11-03'
+  locator: annex section 6, list L7
+  value: 02 NIF-IVA.
+  unit: text
+  snippet: 04 Documento oficial de identificación expedido por el país o territorio de residencia.
+  source_license: unstated
+  content_sha256: 94344cbc2841fc5c7e759b9a674c821520dc10a12b172f26a415ce8bffa882a2
+  role: primary
+- publisher: Ministerio de Hacienda (Boletín Oficial del Estado)
+  title: Orden HAC/1177/2024, de 17 de octubre (VERI*FACTU especificaciones técnicas), BOE núm. 260, 28 octubre
+    2024
+  url: https://www.boe.es/boe/dias/2024/10/28/pdfs/BOE-A-2024-22138.pdf
+  accessed_at: '2026-11-03'
+  locator: annex section 2, Desglose fields
+  value: OperacionExenta1 Campo que especifica la causa de exención.
+  unit: text
+  snippet: Clave de la operación sujeta y no exenta o de la operación no sujeta. Alfanumérico (2) L9
+  source_license: unstated
+  content_sha256: 94344cbc2841fc5c7e759b9a674c821520dc10a12b172f26a415ce8bffa882a2
+  role: primary
+- publisher: Ministerio de Hacienda (Boletín Oficial del Estado)
+  title: Orden HAC/1177/2024, de 17 de octubre (VERI*FACTU especificaciones técnicas), BOE núm. 260, 28 octubre
+    2024
+  url: https://www.boe.es/boe/dias/2024/10/28/pdfs/BOE-A-2024-22138.pdf
+  accessed_at: '2026-11-03'
+  locator: final provision
+  value: La presente orden entrará en vigor el día siguiente al de su publicación
+  unit: text
+  snippet: Núm. 260 Lunes 28 de octubre de 2024
+  source_license: unstated
+  content_sha256: 94344cbc2841fc5c7e759b9a674c821520dc10a12b172f26a415ce8bffa882a2
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2024-10-29'
+  method: derived
+  rationale: The order enters into force the day after its publication in the BOE on 28 October 2024; when invoicing
+    systems must comply is set separately by Real Decreto 1007/2023 and its amendments.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[impuesto]
+  expected: 4
+  tolerance: 0
+- statistic: count[calificacion_operacion]
+  expected: 4
+  tolerance: 0
+- statistic: count[operacion_exenta]
+  expected: 6
+  tolerance: 0
+- statistic: count[id_type]
+  expected: 6
+  tolerance: 0
+notes: 'Code lists for the tax breakdown and party identification of a VERI*FACTU record: L1 for Impuesto (01 VAT,
+  02 IPSI of Ceuta and Melilla, 03 IGIC, 05 other); L9 for CalificacionOperacion (S1 and S2 subject and not exempt,
+  without and with reverse charge, N1 and N2 not subject); L10 for OperacionExenta (E1 to E6 by article of the VAT
+  law); and L7 for the IDType of a foreign party (02 EU VAT number, 03 passport and others). Descriptions are as
+  printed in the BOE. The BOE states no licence on the document, so the entry stays at license-review.'

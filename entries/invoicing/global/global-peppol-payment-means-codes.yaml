@@ -1,0 +1,201 @@
+id: global-peppol-payment-means-codes
+title: Peppol BIS Billing 3.0 payment means codes (UNCL4461, D.16B)
+kind: rule
+domain: invoicing
+region: global
+status: license-review
+tier: A
+valid_from: '2026-08-17'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- peppol
+- en-16931
+- ubl
+- payment-method
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+- accounts-payable
+- payments-demo
+- payments-reconciliation
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      payment_means:
+        '1': Instrument not defined
+        '2': Automated clearing house credit
+        '3': Automated clearing house debit
+        '4': ACH demand debit reversal
+        '5': ACH demand credit reversal
+        '6': ACH demand credit
+        '7': ACH demand debit
+        '8': Hold
+        '9': National or regional clearing
+        '10': In cash
+        '11': ACH savings credit reversal
+        '12': ACH savings debit reversal
+        '13': ACH savings credit
+        '14': ACH savings debit
+        '15': Bookentry credit
+        '16': Bookentry debit
+        '17': ACH demand cash concentration/disbursement (CCD) credit
+        '18': ACH demand cash concentration/disbursement (CCD) debit
+        '19': ACH demand corporate trade payment (CTP) credit
+        '20': Cheque
+        '21': Banker's draft
+        '22': Certified banker's draft
+        '23': Bank cheque (issued by a banking or similar establishment)
+        '24': Bill of exchange awaiting acceptance
+        '25': Certified cheque
+        '26': Local cheque
+        '27': ACH demand corporate trade payment (CTP) debit
+        '28': ACH demand corporate trade exchange (CTX) credit
+        '29': ACH demand corporate trade exchange (CTX) debit
+        '30': Credit transfer
+        '31': Debit transfer
+        '32': ACH demand cash concentration/disbursement plus (CCD+) credit
+        '33': ACH demand cash concentration/disbursement plus (CCD+) debit
+        '34': ACH prearranged payment and deposit (PPD)
+        '35': ACH savings cash concentration/disbursement (CCD) credit
+        '36': ACH savings cash concentration/disbursement (CCD) debit
+        '37': ACH savings corporate trade payment (CTP) credit
+        '38': ACH savings corporate trade payment (CTP) debit
+        '39': ACH savings corporate trade exchange (CTX) credit
+        '40': ACH savings corporate trade exchange (CTX) debit
+        '41': ACH savings cash concentration/disbursement plus (CCD+) credit
+        '42': Payment to bank account
+        '43': ACH savings cash concentration/disbursement plus (CCD+) debit
+        '44': Accepted bill of exchange
+        '45': Referenced home-banking credit transfer
+        '46': Interbank debit transfer
+        '47': Home-banking debit transfer
+        '48': Bank card
+        '49': Direct debit
+        '50': Payment by postgiro
+        '51': FR, norme 6 97-Telereglement CFONB (French Organisation for
+        '52': Urgent commercial payment
+        '53': Urgent Treasury Payment
+        '54': Credit card
+        '55': Debit card
+        '56': Bankgiro
+        '57': Standing agreement
+        '58': SEPA credit transfer
+        '59': SEPA direct debit
+        '60': Promissory note
+        '61': Promissory note signed by the debtor
+        '62': Promissory note signed by the debtor and endorsed by a bank
+        '63': Promissory note signed by the debtor and endorsed by a third party
+        '64': Promissory note signed by a bank
+        '65': Promissory note signed by a bank and endorsed by another bank
+        '66': Promissory note signed by a third party
+        '67': Promissory note signed by a third party and endorsed by a bank
+        '68': Online payment service
+        '69': Transfer Advice
+        '70': Bill drawn by the creditor on the debtor
+        '74': Bill drawn by the creditor on a bank
+        '75': Bill drawn by the creditor, endorsed by another bank
+        '76': Bill drawn by the creditor on a bank and endorsed by a third party
+        '77': Bill drawn by the creditor on a third party
+        '78': Bill drawn by creditor on third party, accepted and endorsed by bank
+        '91': Not transferable banker's draft
+        '92': Not transferable local cheque
+        '93': Reference giro
+        '94': Urgent giro
+        '95': Free format giro
+        '96': Requested method for payment was not used
+        '97': Clearing between partners
+        '98': JP, Electronically Recorded Monetary Claims
+        ZZZ: Mutually defined
+  vectors:
+  - input:
+      set: payment_means
+      value: '30'
+    expected: true
+    origin: source
+  - input:
+      set: payment_means
+      value: '58'
+    expected: true
+    origin: source
+  - input:
+      set: payment_means
+      value: '59'
+    expected: true
+    origin: source
+  - input:
+      set: payment_means
+      value: ZZZ
+    expected: true
+    origin: source
+  - input:
+      set: payment_means
+      value: '71'
+    expected: false
+    origin: derived
+    note: the list jumps from 70 to 74
+evidence:
+- publisher: OpenPeppol AISBL
+  title: Peppol BIS Billing 3.0.21 code lists (OpenPEPPOL/peppol-bis-invoice-3 at 5df0eff7), UNCL4461.xml
+  url: https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/5df0eff7c8efafd7c79c0dacce55082d175db759/structure/codelist/UNCL4461.xml
+  accessed_at: '2026-11-03'
+  locator: Code 58
+  value: SEPA credit transfer
+  unit: text
+  snippet: Payment means code (UNCL4461)
+  source_license: unstated
+  content_sha256: 44ff6da99db0237bba41de3abf02e3ad53ac488a77b1b4a1871f3895b960192e
+  role: primary
+- publisher: OpenPeppol AISBL
+  title: Peppol BIS Billing 3.0.21 code lists (OpenPEPPOL/peppol-bis-invoice-3 at 5df0eff7), UNCL4461.xml
+  url: https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/5df0eff7c8efafd7c79c0dacce55082d175db759/structure/codelist/UNCL4461.xml
+  accessed_at: '2026-11-03'
+  locator: Code 59
+  value: SEPA direct debit
+  unit: text
+  snippet: Automated clearing house credit
+  source_license: unstated
+  content_sha256: 44ff6da99db0237bba41de3abf02e3ad53ac488a77b1b4a1871f3895b960192e
+  role: primary
+- publisher: OpenPeppol AISBL
+  title: Peppol BIS Billing 3.0 release notes, version 3.0.21
+  url: https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/5df0eff7c8efafd7c79c0dacce55082d175db759/guide/release-notes/v3.0.21.adoc
+  accessed_at: '2026-11-03'
+  locator: header
+  value: 'Mandatory to use from: 2026-08-17'
+  unit: text
+  snippet: 'Date of publication: 2026-05-20'
+  source_license: unstated
+  content_sha256: 6a1e53351d4686efbdcfffb786faa9e8fa4496ed950db78de2a62197e6e25f94
+  role: supporting
+- publisher: OpenPeppol AISBL
+  title: Peppol BIS Billing 3.0, introduction (copyright statement)
+  url: https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/5df0eff7c8efafd7c79c0dacce55082d175db759/guide/bis/introduction.adoc
+  accessed_at: '2026-11-03'
+  locator: copyright paragraph
+  value: OpenPeppol AISBL holds the copyright of this Peppol BIS
+  unit: text
+  snippet: allowing derivate works to be developed and distributed with no additional licensing requirements
+  source_license: unstated
+  content_sha256: 38b90eb6d1afb0048a443cb825b8152edce5b008f9da01a19dc41b6877669562
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[payment_means]
+  expected: 84
+  tolerance: 0
+notes: 'UN/CEFACT 4461 payment means codes accepted in BT-81 of a Peppol BIS Billing 3.0 invoice, with their names:
+  30 credit transfer, 31 debit transfer, 48 bank card, 49 direct debit, 58 SEPA credit transfer, 59 SEPA direct
+  debit, ZZZ mutually defined, and the rest of D.16B, from the release 3.0.21 code-list file at a pinned commit.
+  OpenPeppol states it holds the copyright of the BIS and that the EC-CEN agreement allows derivative works with
+  no additional licensing requirements; no SPDX licence is named, so the entry stays at license-review.'

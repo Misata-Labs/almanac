@@ -1,0 +1,171 @@
+id: it-sdi-invoice-file-name-rule
+title: Italy Sistema di Interscambio invoice file name rule (country, tax identifier, progressive, extension)
+kind: rule
+domain: invoicing
+region: IT
+status: license-review
+tier: B
+valid_from: '2026-03-31'
+valid_to: null
+tags:
+- invoicing
+- e-invoicing
+- tax
+- code-list
+- fatturapa
+- sdi
+- italy
+- file-name
+- field-format
+use_cases:
+- invoicing-demo
+- erp-demo
+- tax-demo
+- data-quality-validation
+- invoicing
+spec:
+  implementation: almanac.rules.it_sdi_file_name
+  parameters:
+    identifier_length:
+      IT:
+      - 11
+      - 16
+      other:
+      - 2
+      - 28
+    progressive_max_length: 5
+    extensions:
+    - .xml
+    - .xml.p7m
+    - .zip
+  vectors:
+  - input:
+      name: ITAAABBB99T99X999W_00001.xml
+    expected: true
+    origin: source
+    note: XAdES-signed example
+  - input:
+      name: IT99999999999_00002.xml.p7m
+    expected: true
+    origin: source
+    note: CAdES-signed example
+  - input:
+      name: ITAAABBB99T99X999W_00004.xml.p7m
+    expected: true
+    origin: source
+  - input:
+      name: IT99999999999_00002.xml.p7m
+      part: progressive
+    expected: '00002'
+    origin: source
+  - input:
+      name: IT01234567890_FPA01.xml
+    expected: true
+    origin: source
+    note: name of an example invoice published on fatturapa.gov.it
+  - input:
+      name: IT01234567890_000001.xml
+    expected: false
+    origin: derived
+    note: progressive longer than five characters
+  - input:
+      name: IT0123456789_00001.xml
+    expected: false
+    origin: derived
+    note: ten-character Italian identifier
+  - input:
+      name: DE123456789_00001.xml
+    expected: true
+    origin: derived
+  - input:
+      name: IT01234567890-00001.xml
+    expected: false
+    origin: derived
+    note: the separator must be an underscore
+  - input:
+      name: IT01234567890_00001.pdf
+    expected: false
+    origin: derived
+evidence:
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Specifiche delle regole tecniche di cui all'Allegato B del DM 55 del 3 aprile 2013 (Sistema di Interscambio),
+    versione 1.8.4
+  url: https://www.fatturapa.gov.it/export/documenti/Specifiche-tecniche-relative-al-Sistema-di-Interscambio-versione-1.8.4.pdf
+  accessed_at: '2026-11-03'
+  locator: page 9, section 2.2
+  value: o 11 caratteri (minimo) e 16 caratteri (massimo) nel caso di codice paese IT;
+  unit: text
+  snippet: o 2 caratteri (minimo) e 28 caratteri (massimo) altrimenti;
+  source_license: unstated
+  content_sha256: f3357ea93ee12fe4071ad73c422885756fbcf2d192f447c843fa5b79ceb6ef90
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Specifiche delle regole tecniche di cui all'Allegato B del DM 55 del 3 aprile 2013 (Sistema di Interscambio),
+    versione 1.8.4
+  url: https://www.fatturapa.gov.it/export/documenti/Specifiche-tecniche-relative-al-Sistema-di-Interscambio-versione-1.8.4.pdf
+  accessed_at: '2026-11-03'
+  locator: page 9, section 2.2
+  value: alfanumerica di lunghezza massima di 5 caratteri
+  unit: text
+  snippet: con valor i ammessi [a-z], [A-Z], [0-9].
+  source_license: unstated
+  content_sha256: f3357ea93ee12fe4071ad73c422885756fbcf2d192f447c843fa5b79ceb6ef90
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Specifiche delle regole tecniche di cui all'Allegato B del DM 55 del 3 aprile 2013 (Sistema di Interscambio),
+    versione 1.8.4
+  url: https://www.fatturapa.gov.it/export/documenti/Specifiche-tecniche-relative-al-Sistema-di-Interscambio-versione-1.8.4.pdf
+  accessed_at: '2026-11-03'
+  locator: page 9, section 2.2
+  value: (per la firma XAdES) oppure
+  unit: text
+  snippet: l’estensione del file assume il valore
+  source_license: unstated
+  content_sha256: f3357ea93ee12fe4071ad73c422885756fbcf2d192f447c843fa5b79ceb6ef90
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Specifiche delle regole tecniche di cui all'Allegato B del DM 55 del 3 aprile 2013 (Sistema di Interscambio),
+    versione 1.8.4
+  url: https://www.fatturapa.gov.it/export/documenti/Specifiche-tecniche-relative-al-Sistema-di-Interscambio-versione-1.8.4.pdf
+  accessed_at: '2026-11-03'
+  locator: page 10, section 2.2 examples
+  value: IT99999999999_00002.xml.p7m
+  unit: text
+  snippet: Il separatore tra il secondo ed il terzo elemento del nome file è il carattere underscore
+  source_license: unstated
+  content_sha256: f3357ea93ee12fe4071ad73c422885756fbcf2d192f447c843fa5b79ceb6ef90
+  role: primary
+- publisher: Agenzia delle Entrate (FatturaPA, Sistema di Interscambio)
+  title: Specifiche delle regole tecniche di cui all'Allegato B del DM 55 del 3 aprile 2013 (Sistema di Interscambio),
+    versione 1.8.4
+  url: https://www.fatturapa.gov.it/export/documenti/Specifiche-tecniche-relative-al-Sistema-di-Interscambio-versione-1.8.4.pdf
+  accessed_at: '2026-11-03'
+  locator: page footer
+  value: '[versione 1.8.4] 31/03/2026'
+  unit: text
+  snippet: Specifiche delle regole tecniche di cui all’Allegato B del DM 55 del 3 aprile 2013
+  source_license: unstated
+  content_sha256: f3357ea93ee12fe4071ad73c422885756fbcf2d192f447c843fa5b79ceb6ef90
+  role: primary
+assumed:
+- parameter: identifier characters
+  value: '[A-Za-z0-9]'
+  method: assumed
+  rationale: The specification gives the identifier's length but not its alphabet; tax identifiers are letters and
+    digits.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[extensions]
+  expected: 3
+  tolerance: 0
+- statistic: value[progressive_max_length]
+  expected: 5
+  tolerance: 0
+notes: 'Every file sent to the Sistema di Interscambio is named country code, transmitter tax identifier, underscore,
+  a unique progressive of up to five letters or digits, and an extension: .xml when XAdES-signed, .xml.p7m when
+  CAdES-signed, or .zip for an archive whose members follow the same rule. The identifier is 11 to 16 characters
+  for country IT, where it is the transmitter''s codice fiscale, and 2 to 28 for a foreign tax identifier. The progressive
+  only needs to make the name unique for that transmitter. valid_from is the date of specification 1.8.4''s revision
+  as printed in its footer. The specification carries no licence statement.'
