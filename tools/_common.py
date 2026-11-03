@@ -12,7 +12,8 @@ import yaml
 from taxonomy import TAXONOMY
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-ACCESSED = date(2026, 10, 31)
+# Evidence records the day its resource was fetched, which is the day the builder runs.
+ACCESSED = date.today()
 
 
 def fetch(url: str) -> bytes:

@@ -884,8 +884,9 @@ def oecd_participation(table: OecdTable) -> dict:
 # ---------------------------------------------------------------- ILOSTAT
 
 
-def ilo_url(indicator: str, timefrom: str) -> str:
-    return f"{ILO_API}?id={indicator}&timefrom={timefrom}&format=.csv"
+def ilo_url(indicator: str, timefrom: str, timeto: str | None = None) -> str:
+    """ILOSTAT data API query from ``timefrom``; ``timeto`` closes the period so later years and projections stay out."""
+    return f"{ILO_API}?id={indicator}&timefrom={timefrom}" + (f"&timeto={timeto}" if timeto else "") + "&format=.csv"
 
 
 def ilo_title(indicator: str, name: str) -> str:
@@ -1006,12 +1007,15 @@ def ilo_informal(table: IloTable) -> dict:
     items = [table.cite(row, f"ref_area={area}, sex=SEX_T", "percent") for area, row in cited.items()]
     lead = "informal_employment_rate_percent"
     return lookup_entry(
-        "global-ilo-informal-employment-rate-latest", "Informal employment as a share of total employment by economy and sex, latest year since 2023 (ILOSTAT)", "employment", "global",
+        "global-ilo-informal-employment-rate-latest", "Informal employment as a share of total employment by economy and sex, latest year from 2023 to 2025 (ILOSTAT)", "employment", "global",
         rows, {"indicator": table.indicator, "url": table.source.url}, lookup_vectors(rows, lead, ("IND", "BRA")), items,
         column_tests(rows, lead, "IND") + [{"statistic": "value[BRA,women_percent]", "expected": rows["BRA"]["women_percent"], "tolerance": 1e-9}],
         ["informal-employment", "employment", "ilostat", "reference-table", "by-country"], HR_USE_CASES + ["hr-analytics", "market-sizing", "credit-risk"],
         f"Informal employment as a percentage of total employment for {len(rows)} economies from ILOSTAT indicator EMP_NIFL_SEX_RT (informal employment rate by sex), for all persons, men and women, "
-        "each row at the latest year the economy reports since 2023. Rows are keyed by ISO 3166-1 alpha-3 code. " + ILO_LICENSE_NOTE,
+        "each row at the latest year from 2023 to 2025 that the economy reports. The query is closed at 2025 so that the later years ILOSTAT "
+        "carries for its regional aggregates (X codes, modelled estimates) stay out; ILOSTAT still revises and back-fills published years, "
+        "so rebuild before release. "
+        "Rows are keyed by ISO 3166-1 alpha-3 code. " + ILO_LICENSE_NOTE,
         ilo_period(rows), status="license-review",
     )
 
@@ -1447,12 +1451,12 @@ def main() -> int:
     write(oecd_hours_bands(oecd("OECD.ELS.SAE,DSD_HW@DF_USL_WK_HRS,1.0", "usual hours worked by weekly hour bands", "all", "2024", "2024")))
     write(oecd_average_hours(oecd("OECD.ELS.SAE,DSD_HW@DF_AVG_USL_WK_WKD,1.0", "average usual weekly hours worked on the main job", "all", "2024", "2024")))
 
-    def ilo(indicator: str, name: str, timefrom: str) -> IloTable:
-        return IloTable(indicator, name, Source(ilo_url(indicator, timefrom)))
+    def ilo(indicator: str, name: str, timefrom: str, timeto: str | None = None) -> IloTable:
+        return IloTable(indicator, name, Source(ilo_url(indicator, timefrom, timeto)))
 
     write(ilo_monthly_earnings(ilo("EAR_EMTA_SEX_OCU_CUR_NB_A", "average monthly earnings of employees by sex, occupation and currency", "2023")))
     write(ilo_employment_by_occupation(ilo("EMP_TEMP_SEX_OCU_NB_A", "employment by sex and occupation, thousands", "2024")))
-    write(ilo_informal(ilo("EMP_NIFL_SEX_RT_A", "informal employment rate by sex", "2023")))
+    write(ilo_informal(ilo("EMP_NIFL_SEX_RT_A", "informal employment rate by sex", "2023", "2025")))
     write(ilo_hours(ilo("HOW_TEMP_SEX_ECO_NB_A", "average weekly hours actually worked per employed person by sex and economic activity", "2024")))
 
     names = codelist("GEO")

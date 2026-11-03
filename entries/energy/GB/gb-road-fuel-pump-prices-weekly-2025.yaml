@@ -347,47 +347,47 @@ spec:
 evidence:
 - publisher: Department for Energy Security and Net Zero (GOV.UK)
   title: Weekly road fuel prices (CSV) 2018 to 2026, GOV.UK statistics attachment
-  url: https://assets.publishing.service.gov.uk/media/6adf6252d798ae11e9bc5d07/CSV__2018_-__.csv
-  accessed_at: '2026-10-31'
+  url: https://assets.publishing.service.gov.uk/media/6ae897f2f4a6b3f59cf37575/CSV__2018_-__.csv
+  accessed_at: '2026-11-03'
   locator: row Date=06/01/2025, ULSP pump price column
   value: '136.6'
   unit: decimal
   snippet: 06/01/2025,136.6,143.3,52.95,52.95,20,20
   source_license: OGL-UK-3.0
-  content_sha256: ea612630ed99527575ee5c6c5544e1dc4bf2436f94270e7bb685dcf86a91eb4d
+  content_sha256: f73fe19d0b01490ebbdc769c7ec4449ae4ab896d4ae7aa143f79f339758ddaa1
   role: primary
 - publisher: Department for Energy Security and Net Zero (GOV.UK)
   title: Weekly road fuel prices (CSV) 2018 to 2026, GOV.UK statistics attachment
-  url: https://assets.publishing.service.gov.uk/media/6adf6252d798ae11e9bc5d07/CSV__2018_-__.csv
-  accessed_at: '2026-10-31'
+  url: https://assets.publishing.service.gov.uk/media/6ae897f2f4a6b3f59cf37575/CSV__2018_-__.csv
+  accessed_at: '2026-11-03'
   locator: row Date=29/12/2025, ULSD pump price column
   value: '144.59'
   unit: decimal
   snippet: 29/12/2025,135.34,144.59,52.95,52.95,20,20
   source_license: OGL-UK-3.0
-  content_sha256: ea612630ed99527575ee5c6c5544e1dc4bf2436f94270e7bb685dcf86a91eb4d
+  content_sha256: f73fe19d0b01490ebbdc769c7ec4449ae4ab896d4ae7aa143f79f339758ddaa1
   role: primary
 - publisher: Department for Energy Security and Net Zero (GOV.UK)
   title: Weekly road fuel prices (CSV) 2018 to 2026, GOV.UK statistics attachment
-  url: https://assets.publishing.service.gov.uk/media/6adf6252d798ae11e9bc5d07/CSV__2018_-__.csv
-  accessed_at: '2026-10-31'
+  url: https://assets.publishing.service.gov.uk/media/6ae897f2f4a6b3f59cf37575/CSV__2018_-__.csv
+  accessed_at: '2026-11-03'
   locator: header row, column 2
   value: ULSP (Ultra low sulphur unleaded petrol) Pump price in pence/litre
   unit: text
   snippet: ULSD (Ultra low sulphur diesel) Pump price in pence/litre
   source_license: OGL-UK-3.0
-  content_sha256: ea612630ed99527575ee5c6c5544e1dc4bf2436f94270e7bb685dcf86a91eb4d
+  content_sha256: f73fe19d0b01490ebbdc769c7ec4449ae4ab896d4ae7aa143f79f339758ddaa1
   role: primary
 - publisher: Department for Energy Security and Net Zero (GOV.UK)
   title: GOV.UK content API item for /government/statistics/weekly-road-fuel-prices (JSON)
   url: https://www.gov.uk/api/content/government/statistics/weekly-road-fuel-prices
-  accessed_at: '2026-10-31'
-  locator: details.attachments[].url for the 2018 to 2026 CSV
-  value: https://assets.publishing.service.gov.uk/media/6adf6252d798ae11e9bc5d07/CSV__2018_-__.csv
+  accessed_at: '2026-11-03'
+  locator: details.attachments[title=Weekly road fuel prices (CSV) 2018 to 2026].url
+  value: https://assets.publishing.service.gov.uk/media/6ae897f2f4a6b3f59cf37575/CSV__2018_-__.csv
   unit: text
   snippet: '"title":"Weekly road fuel prices (CSV) 2018 to 2026"'
   source_license: OGL-UK-3.0
-  content_sha256: 02f07d366d1291c5474a4f4d421061714129a2e83d30234b1bf0640e18764677
+  content_sha256: e7be2885fe975723b245acae09ef8249cab139966316253a8c32ac7c7b656f7e
   role: primary
 assumed: []
 tests:
@@ -406,8 +406,11 @@ tests:
 - statistic: count
   expected: 52
   tolerance: 0
-notes: Weekly UK average pump prices in pence per litre for ultra low sulphur unleaded petrol (the series value)
+notes: 'Weekly UK average pump prices in pence per litre for ultra low sulphur unleaded petrol (the series value)
   and ultra low sulphur diesel, with the duty rate in pence per litre and the VAT rate applying to each, for every
-  week of 2025 in the DESNZ weekly road fuel prices CSV (2018 to 2026) attached to the GOV.UK statistics page, public_updated_at
-  2026-10-27. Periods are the survey dates the file prints (Mondays). Rows for other years are dropped. GOV.UK content
-  and DESNZ statistics are published under the Open Government Licence v3.0.
+  week of 2025 in the DESNZ attachment ''Weekly road fuel prices (CSV) 2018 to 2026'' on the GOV.UK statistics page,
+  public_updated_at 2026-11-03. Periods are the survey dates the file prints (Mondays). Rows for other years are
+  dropped. DESNZ re-uploads the CSV every week under a new asset URL, and earlier URLs redirect to the newest upload,
+  so the cited file and the content API item both change weekly even when the rows for 2025 do not: republished
+  weekly; rebuild before release. GOV.UK content and DESNZ statistics are published under the Open Government Licence
+  v3.0.'

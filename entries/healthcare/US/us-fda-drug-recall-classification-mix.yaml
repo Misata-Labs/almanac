@@ -1,13 +1,13 @@
 id: us-fda-drug-recall-classification-mix
-title: FDA drug enforcement reports by recall classification, 2012 to 2026 (18048 reports)
+title: FDA drug enforcement reports by recall classification, 2012 to 2025 (17372 reports)
 kind: marginal
 domain: healthcare
 region: US
 status: verified
 tier: A
 observed_period:
-  start: '2012-06-20'
-  end: '2026-10-21'
+  start: '2012-01-01'
+  end: '2025-12-31'
 tags:
 - healthcare
 - drugs
@@ -25,43 +25,41 @@ spec:
     family: categorical
     parameters:
       shares:
-        Class II: 0.80768
-        Class I: 0.096964
-        Class III: 0.095246
-        Not Yet Classified: 0.000111
+        Class II: 0.805376
+        Class I: 0.098722
+        Class III: 0.095901
       counts:
-        Class II: 14577
-        Class I: 1750
-        Class III: 1719
-        Not Yet Classified: 2
-      total: 18048
+        Class II: 13991
+        Class I: 1715
+        Class III: 1666
+      total: 17372
 evidence:
 - publisher: U.S. Food and Drug Administration
   title: openFDA drug enforcement endpoint, count of classification
-  url: https://api.fda.gov/drug/enforcement.json?count=classification.exact&limit=1000
-  accessed_at: '2026-10-31'
+  url: https://api.fda.gov/drug/enforcement.json?search=report_date:%5B20120101+TO+20251231%5D&count=classification.exact&limit=1000
+  accessed_at: '2026-11-03'
   locator: results[term=Class II].count
-  value: 14577
+  value: 13991
   unit: count
   snippet: '"term": "Class II",'
   source_license: CC0-1.0
-  content_sha256: bde0536007152aa0b0884a155f2c422dda323497b3456fde1025080a0e46e44f
+  content_sha256: a922946bb6b1937b2ed3f54136f38456c78d9cdbebd84405f38ccc84c78d02ea
   role: primary
 - publisher: U.S. Food and Drug Administration
   title: openFDA drug enforcement endpoint, count of classification
-  url: https://api.fda.gov/drug/enforcement.json?count=classification.exact&limit=1000
-  accessed_at: '2026-10-31'
+  url: https://api.fda.gov/drug/enforcement.json?search=report_date:%5B20120101+TO+20251231%5D&count=classification.exact&limit=1000
+  accessed_at: '2026-11-03'
   locator: meta.last_updated
-  value: '2026-10-21'
+  value: '2026-10-28'
   unit: date
   snippet: '"last_updated":'
   source_license: CC0-1.0
-  content_sha256: bde0536007152aa0b0884a155f2c422dda323497b3456fde1025080a0e46e44f
+  content_sha256: a922946bb6b1937b2ed3f54136f38456c78d9cdbebd84405f38ccc84c78d02ea
   role: primary
 - publisher: U.S. Food and Drug Administration
   title: openFDA licence statement
   url: https://open.fda.gov/license/
-  accessed_at: '2026-10-31'
+  accessed_at: '2026-11-03'
   locator: License section
   value: CC0
   unit: text
@@ -76,18 +74,22 @@ assumed:
   rationale: Shares are each category's count over the sum of all categories in the table.
 tests:
 - statistic: share[Class II]
-  expected: 0.80768
+  expected: 0.805376
   tolerance: 0.004
 - statistic: share[Class I]
-  expected: 0.096964
+  expected: 0.098722
   tolerance: 0.004
 - statistic: share[Class III]
-  expected: 0.095246
+  expected: 0.095901
   tolerance: 0.004
 - statistic: sum_of_shares
   expected: 1
   tolerance: 0.0001
-notes: How FDA drug recalls in the enforcement reports since June 2012 split between Class I (reasonable probability
-  of serious harm), Class II and Class III, counted by the openFDA drug enforcement endpoint as of 2026-10-21. Each
-  count is one product on one recall event. The split gives synthetic recall records a realistic severity mix. openFDA
-  states that its data is public domain under a CC0 1.0 Universal dedication (supporting evidence).
+notes: 'How FDA drug recalls in the enforcement reports dated 2012-01-01 to 2025-12-31 split between Class I (reasonable
+  probability of serious harm), Class II and Class III, counted by the openFDA drug enforcement endpoint as of 2026-10-28;
+  the earliest report date in the window is 2012-06-20. Each count is one product on one recall event. The split
+  gives synthetic recall records a realistic severity mix. The query is pinned to enforcement reports dated in a
+  closed window, but openFDA refreshes the endpoint weekly and every response carries the refresh date in meta.last_updated,
+  so the content hash moves with each refresh and late-classified reports can still shift the counts: re-indexed
+  weekly; rebuild before release. openFDA states that its data is public domain under a CC0 1.0 Universal dedication
+  (supporting evidence).'

@@ -41,7 +41,8 @@ def part_url(title: int, part: int | str) -> str:
 
 
 def versions_url(title: int, section: str) -> str:
-    return f"{API}/versions/title-{title}.json?section={section}"
+    """Versions of a section issued up to CFR_DATE; the bound keeps later reissues of the title out of the answer."""
+    return f"{API}/versions/title-{title}.json?section={section}&issue_date%5Blte%5D={CFR_DATE}"
 
 
 def strip_tags(markup: str) -> str:

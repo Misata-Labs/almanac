@@ -64,6 +64,14 @@ CDC_RESOURCE = "https://data.cdc.gov/resource"
 
 CMS_NOTE = " data.cms.gov and cms.gov publish these files without a licence statement, so the entry is held at license-review."
 OPENFDA_NOTE = " openFDA states that its data is public domain under a CC0 1.0 Universal dedication (supporting evidence)."
+RECALL_WINDOW = ("2012-01-01", "2025-12-31")
+RECALL_SEARCH = f"search=report_date:%5B{RECALL_WINDOW[0].replace('-', '')}+TO+{RECALL_WINDOW[1].replace('-', '')}%5D"
+RECALL_FIELDS = {"classification": "classification.exact", "report_date": "report_date"}
+OPENFDA_REFRESH_NOTE = (
+    " The query is pinned to enforcement reports dated in a closed window, but openFDA refreshes the endpoint weekly and"
+    " every response carries the refresh date in meta.last_updated, so the content hash moves with each refresh and"
+    " late-classified reports can still shift the counts: re-indexed weekly; rebuild before release."
+)
 CDC_NOTE = (
     " data.cdc.gov labels these datasets Public Domain U.S. Government only in view metadata that carries live view and"
     " download counters, so the statement cannot be pinned by a content hash and the licence is recorded as unstated."
@@ -865,8 +873,17 @@ def openfda_counts(field: str, endpoint: str, raw: bytes) -> tuple[dict[str, int
     return counts, payload["meta"]
 
 
-def openfda_entries(license_raw: bytes, ndc: dict[str, bytes], recalls: dict[str, bytes]) -> list[dict]:
-    license_item = cite(FDA, "openFDA licence statement", URLS["fda_license"], "License section", "CC0", "text", "related materials on openFDA is public domain and made available with a", CC0, license_raw, role="supporting")
+def recall_url(name: str) -> str:
+    """openFDA drug enforcement count query over the reports dated inside RECALL_WINDOW."""
+    return f"{OPENFDA}/enforcement.json?{RECALL_SEARCH}&count={RECALL_FIELDS[name]}&limit=1000"
+
+
+def openfda_license_item(license_raw: bytes) -> dict:
+    return cite(FDA, "openFDA licence statement", URLS["fda_license"], "License section", "CC0", "text", "related materials on openFDA is public domain and made available with a", CC0, license_raw, role="supporting")
+
+
+def openfda_ndc_entries(license_raw: bytes, ndc: dict[str, bytes]) -> list[dict]:
+    license_item = openfda_license_item(license_raw)
     entries = []
     ndc_fields = {
         "dosage_form": ("dosage_form.exact", "dosage form"),
@@ -896,49 +913,58 @@ def openfda_entries(license_raw: bytes, ndc: dict[str, bytes], recalls: dict[str
             PHARMA_USE_CASES + ["clinical-records"],
             "verified",
         ))
+    return entries
+
+
+def openfda_recall_entries(license_raw: bytes, recalls: dict[str, bytes]) -> list[dict]:
+    license_item = openfda_license_item(license_raw)
+    first_year, last_year = RECALL_WINDOW[0][:4], RECALL_WINDOW[1][:4]
+    weekly, _ = openfda_counts("report_date", "enforcement", recalls["report_date"])
+    first_day = next(iter(weekly))
+    first_report = f"{first_day[:4]}-{first_day[4:6]}-{first_day[6:]}"
+    entries = []
     counts, meta = openfda_counts("classification.exact", "enforcement", recalls["classification"])
-    url = f"{OPENFDA}/enforcement.json?count=classification.exact&limit=1000"
+    url = recall_url("classification")
     top = next(iter(counts))
     entries.append(marginal(
         "us-fda-drug-recall-classification-mix",
-        f"FDA drug enforcement reports by recall classification, 2012 to {meta['last_updated'][:4]} ({sum(counts.values())} reports)",
+        f"FDA drug enforcement reports by recall classification, {first_year} to {last_year} ({sum(counts.values())} reports)",
         "recall_classification",
         counts,
-        ("2012-06-20", meta["last_updated"]),
+        RECALL_WINDOW,
         [
             cite(FDA, "openFDA drug enforcement endpoint, count of classification", url, f"results[term={top}].count", counts[top], "count", f'"term": "{top}",', CC0, recalls["classification"]),
             cite(FDA, "openFDA drug enforcement endpoint, count of classification", url, "meta.last_updated", meta["last_updated"], "date", '"last_updated":', CC0, recalls["classification"]),
             license_item,
         ],
         [],
-        f"How FDA drug recalls in the enforcement reports since June 2012 split between Class I (reasonable probability of serious harm), Class II and Class III, counted by the openFDA drug enforcement endpoint as of {meta['last_updated']}. Each count is one product on one recall event. The split gives synthetic recall records a realistic severity mix." + OPENFDA_NOTE,
+        f"How FDA drug recalls in the enforcement reports dated {RECALL_WINDOW[0]} to {RECALL_WINDOW[1]} split between Class I (reasonable probability of serious harm), Class II and Class III, counted by the openFDA drug enforcement endpoint as of {meta['last_updated']}; the earliest report date in the window is {first_report}. Each count is one product on one recall event. The split gives synthetic recall records a realistic severity mix." + OPENFDA_REFRESH_NOTE + OPENFDA_NOTE,
         ["healthcare", "drugs", "recalls", "fda", "enforcement"],
         PHARMA_USE_CASES,
         "verified",
     ))
-    weekly, meta = openfda_counts("report_date", "enforcement", recalls["report_date"])
+    meta = json.loads(recalls["report_date"])["meta"]
     yearly: Counter[str] = Counter()
     for day, n in weekly.items():
         yearly[day[:4]] += n
-    years = [y for y in sorted(yearly) if "2013" <= y <= "2025"]
-    first_day = next(iter(weekly))
-    url = f"{OPENFDA}/enforcement.json?count=report_date&limit=1000"
+    years = [y for y in sorted(yearly) if first_year < y <= last_year]
+    url = recall_url("report_date")
     entries.append(temporal(
         "us-fda-drug-recalls-by-year",
-        "FDA drug enforcement report entries per year, 2013 to 2025",
+        f"FDA drug enforcement report entries per year, {years[0]} to {years[-1]}",
         "enforcement_reports",
         "count",
         "annual",
         [{"period": y, "value": float(yearly[y])} for y in years],
         [],
-        ("2013-01-01", "2025-12-31"),
+        (f"{years[0]}-01-01", RECALL_WINDOW[1]),
         [
             cite(FDA, "openFDA drug enforcement endpoint, count of report_date", url, f"results[time={first_day}].count", weekly[first_day], "count", f'"time": "{first_day}",', CC0, recalls["report_date"]),
             cite(FDA, "openFDA drug enforcement endpoint, count of report_date", url, "meta.last_updated", meta["last_updated"], "date", '"last_updated":', CC0, recalls["report_date"]),
             license_item,
         ],
-        [{"parameter": "series", "value": "sum of weekly report_date counts per calendar year", "method": "derived", "rationale": "openFDA counts entries per weekly enforcement report date; the entry sums them by year and drops 2012 and the current year because they are partial."}],
-        f"The number of drug product entries in FDA weekly enforcement reports per calendar year, summed from the openFDA drug enforcement endpoint's per-date counts as of {meta['last_updated']}. A synthetic pharmacovigilance or recall feed can use it to set annual volume." + OPENFDA_NOTE,
+        [{"parameter": "series", "value": "sum of weekly report_date counts per calendar year", "method": "derived", "rationale": f"openFDA counts entries per weekly enforcement report date inside the query window; the entry sums them by year and drops {first_year}, whose reports start on {first_report}."}],
+        f"The number of drug product entries in FDA weekly enforcement reports per calendar year, summed from the openFDA drug enforcement endpoint's per-date counts as of {meta['last_updated']}. A synthetic pharmacovigilance or recall feed can use it to set annual volume." + OPENFDA_REFRESH_NOTE + OPENFDA_NOTE,
         ["healthcare", "drugs", "recalls", "fda", "time-series"],
         PHARMA_USE_CASES + ["capacity-planning"],
         "verified",
@@ -1176,8 +1202,9 @@ def main() -> int:
     for entry in hospital_enrollment_entries(fetch(URLS["hosp_enr"]), fetch(URLS["hosp_dict"])):
         write(entry)
     ndc = {variable: fetch(f"{OPENFDA}/ndc.json?count={field}&limit=1000") for variable, field in [("dosage_form", "dosage_form.exact"), ("route", "route.exact"), ("marketing_category", "marketing_category"), ("product_type", "product_type.exact")]}
-    recalls = {name: fetch(f"{OPENFDA}/enforcement.json?count={field}&limit=1000") for name, field in [("classification", "classification.exact"), ("report_date", "report_date")]}
-    for entry in openfda_entries(fetch(URLS["fda_license"]), ndc, recalls):
+    recalls = {name: fetch(recall_url(name)) for name in RECALL_FIELDS}
+    fda_license = fetch(URLS["fda_license"])
+    for entry in [*openfda_ndc_entries(fda_license, ndc), *openfda_recall_entries(fda_license, recalls)]:
         write(entry)
     for entry in orange_book_entries(fetch(URLS["orange_book"])):
         write(entry)

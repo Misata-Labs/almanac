@@ -1,7 +1,7 @@
 """Regenerate the US federal holidays entry from the statute, the executive order and the regulation.
 
-Sources: 5 U.S.C. 6103 as published by the Government Publishing Office, Executive Order 11582 as
-codified by the National Archives, and 5 CFR 610.202 from the eCFR API. Run from the repository root:
+Sources: 5 U.S.C. 6103 as published by the Government Publishing Office, whose statutory notes set out
+Executive Order 11582, and 5 CFR 610.202 from the eCFR API. Run from the repository root:
 
     uv run python tools/build_us_federal_holidays.py
 """
@@ -15,7 +15,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common import evidence, fetch, write  # noqa: E402
 
 STATUTE_URL = "https://www.govinfo.gov/content/pkg/USCODE-2023-title5/html/USCODE-2023-title5-partIII-subpartE-chap61-subchapI-sec6103.htm"
-ORDER_URL = "https://www.archives.gov/federal-register/codification/executive-order/11582.html"
 CFR_URL = "https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-5.xml?part=610"
 LICENSE = "unstated"
 
@@ -34,7 +33,7 @@ HOLIDAYS = [
 ]
 
 
-def build(statute_raw: bytes, order_raw: bytes, cfr_raw: bytes) -> dict:
+def build(statute_raw: bytes, cfr_raw: bytes) -> dict:
     return {
         "id": "us-federal-holidays",
         "title": "United States legal public holidays (5 U.S.C. 6103) with Saturday and Sunday observance rules",
@@ -66,7 +65,7 @@ def build(statute_raw: bytes, order_raw: bytes, cfr_raw: bytes) -> dict:
         "evidence": [
             evidence("Office of the Law Revision Counsel via the Government Publishing Office (govinfo)", "5 U.S.C. 6103, Holidays (United States Code 2023 edition)", STATUTE_URL, "subsection (a)", "Birthday of Martin Luther King, Jr., the third Monday in January.", "text", "The following are legal public holidays", LICENSE, statute_raw),
             evidence("Office of the Law Revision Counsel via the Government Publishing Office (govinfo)", "5 U.S.C. 6103, Holidays (United States Code 2023 edition)", STATUTE_URL, "subsection (b)(1)", "Instead of a holiday that occurs on a Saturday, the Friday immediately before is a legal public holiday", "text", "employees whose basic workweek is Monday through Friday", LICENSE, statute_raw),
-            evidence("National Archives and Records Administration, Federal Register codification", "Executive Order 11582, Observance of holidays by Government agencies (1971)", ORDER_URL, "section 3(a)", "shall be excused from work on the next workday of his basic workweek whenever a holiday falls on Sunday", "text", "whose basic workweek does not include Sunday", LICENSE, order_raw),
+            evidence("Office of the Law Revision Counsel via the Government Publishing Office (govinfo)", "5 U.S.C. 6103, Holidays (United States Code 2023 edition), statutory notes", STATUTE_URL, "note Ex. Ord. No. 11582, Observance of Holidays, section 3(a)", "shall be excused from work on the next workday of his basic workweek whenever a holiday falls on Sunday", "text", "whose basic workweek does not include Sunday", LICENSE, statute_raw),
             evidence("Office of Personnel Management via the eCFR API", "5 CFR 610.202, Determining the holiday", CFR_URL, "section 610.202(b)", "Executive Order 11582", "text", "Determining the holiday", LICENSE, cfr_raw, role="supporting"),
         ],
         "assumed": [
@@ -94,14 +93,15 @@ def build(statute_raw: bytes, order_raw: bytes, cfr_raw: bytes) -> dict:
             "(6103(b)(1)) and Sunday holidays the Monday after (Executive Order 11582 section 3(a), referenced by 5 CFR "
             "610.202(b)). Inauguration Day (6103(c)) applies only in the Washington area every fourth year and is not "
             "modelled. valid_from is the statutory text's edition date (2023 edition, current through the end of 2023). "
-            "US government works are not subject to copyright, but none of the three pages states terms, so the entry is "
+            "Executive Order 11582 is read from the statutory notes to 6103 in the same govinfo edition. "
+            "US government works are not subject to copyright, but neither source states terms, so the entry is "
             "held at license-review."
         ),
     }
 
 
 def main() -> int:
-    write(build(fetch(STATUTE_URL), fetch(ORDER_URL), fetch(CFR_URL)))
+    write(build(fetch(STATUTE_URL), fetch(CFR_URL)))
     return 0
 
 

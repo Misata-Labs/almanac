@@ -469,26 +469,26 @@ spec:
     designated_area_rows: 1421
 evidence:
 - publisher: Federal Emergency Management Agency
-  title: OpenFEMA Disaster Declarations Summaries v2 (CSV)
-  url: https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries.csv
-  accessed_at: '2026-10-31'
-  locator: row femaDeclarationString=DR-4892-WI
-  value: '4892'
+  title: OpenFEMA Disaster Declarations Summaries v2, fyDeclared <= 2025 (CSV)
+  url: https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries?$select=femaDeclarationString,disasterNumber,state,declarationType,declarationDate,fyDeclared,incidentType&$filter=fyDeclared%20le%202025&$orderby=femaDeclarationString&$format=csv&$allrecords=true
+  accessed_at: '2026-11-03'
+  locator: row femaDeclarationString=DR-4831-VA
+  value: '4831'
   unit: text
-  snippet: DR-4892-WI,4892,WI,DR,2025-09-11T00:00:00.000Z,2025,Flood
+  snippet: DR-4831-VA,4831,VA,DR,2024-10-01T00:00:00.000Z,2025,Tropical Storm
   source_license: unstated
-  content_sha256: 624121c471d8969fa991b55a54b0b9bf09c075c4836f79f9cca92853cfc7e8cf
+  content_sha256: fd4df41b328ba6d9e25e3ff191e3e4f1b7b21503718c246893e43aa1d9cecf11
   role: primary
 - publisher: Federal Emergency Management Agency
-  title: OpenFEMA Disaster Declarations Summaries v2 (CSV)
-  url: https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries.csv
-  accessed_at: '2026-10-31'
+  title: OpenFEMA Disaster Declarations Summaries v2, fyDeclared <= 2025 (CSV)
+  url: https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries?$select=femaDeclarationString,disasterNumber,state,declarationType,declarationDate,fyDeclared,incidentType&$filter=fyDeclared%20le%202025&$orderby=femaDeclarationString&$format=csv&$allrecords=true
+  accessed_at: '2026-11-03'
   locator: header row
   value: fyDeclared
   unit: text
   snippet: femaDeclarationString,disasterNumber,state,declarationType,declarationDate,fyDeclared,incidentType
   source_license: unstated
-  content_sha256: 624121c471d8969fa991b55a54b0b9bf09c075c4836f79f9cca92853cfc7e8cf
+  content_sha256: fd4df41b328ba6d9e25e3ff191e3e4f1b7b21503718c246893e43aa1d9cecf11
   role: primary
 assumed:
 - parameter: value
@@ -515,10 +515,12 @@ tests:
 - statistic: column[designated_area_rows,2020]
   expected: 9490
   tolerance: 0
-notes: Distinct disaster numbers declared in each federal fiscal year (fyDeclared), counted from the OpenFEMA Disaster
-  Declarations Summaries file, which has one row per declared disaster and designated area. The columns split the
-  count by declaration type (DR major disaster, EM emergency, FM fire management) and give the number of designated-area
-  rows in the year. Fiscal years run from 1 October to 30 September; 2026 is excluded as incomplete. The busiest
-  year was FY2020. OpenFEMA datasets are refreshed as declarations and assistance totals change, so the content
-  hash tracks the day's file. The publisher is a US federal body and the resource carries no licence statement,
-  so the licence is recorded as unstated and the entry held at license-review.
+notes: 'Distinct disaster numbers declared in each federal fiscal year (fyDeclared), counted from the OpenFEMA Disaster
+  Declarations Summaries for fiscal years to 2025, which have one row per declared disaster and designated area.
+  The columns split the count by declaration type (DR major disaster, EM emergency, FM fire management) and give
+  the number of designated-area rows in the year. Fiscal years run from 1 October to 30 September. The query stops
+  at FY2025. The busiest year was FY2020. The OpenFEMA query is pinned to closed fiscal years, a fixed column list
+  and an explicit sort, but OpenFEMA refreshes its tables daily as amendments add designated areas and assistance
+  totals grow, so the content hash tracks the day''s data: re-indexed daily; rebuild before release. The publisher
+  is a US federal body and the resource carries no licence statement, so the licence is recorded as unstated and
+  the entry held at license-review.'

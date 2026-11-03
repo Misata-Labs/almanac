@@ -191,7 +191,6 @@ def bcb_sgs_entries() -> list[dict]:
     ]
 
 
-QUARTERLY_URL = f"{OLINDA}/MPV_DadosAbertos/versao/v1/odata/MeiosdePagamentosTrimestralDA(trimestre=@trimestre)?@trimestre='{YEAR}1'&$format=json"
 INSTRUMENT_FIELDS = {
     "Pix": "pix",
     "TED": "ted",
@@ -207,6 +206,16 @@ INSTRUMENT_FIELDS = {
     "DebitoDireto": "direct_debit",
     "Saques": "atm_withdrawal",
 }
+# The service returns every quarter from the one named, newest first, and rejects $filter and $orderby on
+# this function; selecting only the count fields keeps revisions to the value fields out of the bytes.
+QUARTERLY_URL = (
+    f"{OLINDA}/MPV_DadosAbertos/versao/v1/odata/MeiosdePagamentosTrimestralDA(trimestre=@trimestre)?@trimestre='{YEAR}1'"
+    f"&$select=datatrimestre,{','.join(f'quantidade{field}' for field in INSTRUMENT_FIELDS)}&$format=json"
+)
+BCB_REVISION_NOTE = (
+    "The service accepts no filter or sort on the quarter, so its answer gains a quarter with each release and earlier "
+    "quarters can be revised; there is no pinned form of the query: rebuild before release. "
+)
 
 
 def quarter_label(end_date: str) -> str:
@@ -280,6 +289,7 @@ def bcb_payment_instrument_entries() -> list[dict]:
             f"collection agreements (convênios), direct debits and ATM withdrawals as columns. The query asks for every quarter from {YEAR} Q1 "
             f"onward; the service answered with {len(series)} quarters ending {last['period']}. The publisher warns that figures for "
             "Pix transactions settled outside the SPI can be revised, so a later re-fetch may change the content hash. "
+            + BCB_REVISION_NOTE
             + BCB_LICENSE_NOTE
         ),
     }
@@ -337,7 +347,7 @@ def bcb_payment_instrument_entries() -> list[dict]:
         "notes": (
             f"Mix of payment instruments by number of transactions in Brazil over the four quarters of {YEAR}, derived from the "
             "quarterly payment-instrument statistics of the Banco Central do Brasil (Olinda MPV_DadosAbertos service). Counts are "
-            "kept in thousands as published. " + BCB_LICENSE_NOTE
+            "kept in thousands as published. " + BCB_REVISION_NOTE + BCB_LICENSE_NOTE
         ),
     }
     return [quarterly, mix]

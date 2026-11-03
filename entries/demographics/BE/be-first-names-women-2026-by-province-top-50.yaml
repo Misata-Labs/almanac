@@ -3,7 +3,7 @@ title: Belgium first names of women given province or region, top 50 of the 2026
 kind: conditional
 domain: demographics
 region: BE
-status: verified
+status: license-review
 tier: A
 observed_period:
   start: '2026-01-01'
@@ -1208,7 +1208,7 @@ evidence:
 - publisher: Statbel
   title: Most common first names of women in 2026 by province and region (XLSX), sheet F_PROV2026
   url: https://statbel.fgov.be/sites/default/files/files/documents/bevolking/5.10%20Namen%20en%20voornamen/5.10.2%20Voornamen%20van%20vrouwen%20en%20mannen/First_names_Pop_STATBEL_2026_en.xlsx
-  accessed_at: '2026-10-31'
+  accessed_at: '2026-11-03'
   locator: 'F_PROV2026, row 3 (Brussels-Capital Region, rank 1): Firstname, Number'
   value: 9957
   unit: count
@@ -1219,7 +1219,7 @@ evidence:
 - publisher: Statbel
   title: Most common first names of women in 2026 by province and region (XLSX), sheet F_PROV2026
   url: https://statbel.fgov.be/sites/default/files/files/documents/bevolking/5.10%20Namen%20en%20voornamen/5.10.2%20Voornamen%20van%20vrouwen%20en%20mannen/First_names_Pop_STATBEL_2026_en.xlsx
-  accessed_at: '2026-10-31'
+  accessed_at: '2026-11-03'
   locator: F_PROV2026, cell A1
   value: Most common first names of women in 2026 - Province/Region
   unit: text
@@ -1227,17 +1227,6 @@ evidence:
   source_license: CC-BY-4.0
   content_sha256: 2365a42f96789c25b5d78f921e6789ab6d783f0a41ad31853ac93e6f14b285c7
   role: primary
-- publisher: Statbel
-  title: Statbel open data (licence statement)
-  url: https://statbel.fgov.be/en/open-data
-  accessed_at: '2026-10-31'
-  locator: Open data, licence paragraph
-  value: Creative Commons Attribution 4.0 license
-  unit: text
-  snippet: Creative Commons Attribution 4.0 license
-  source_license: CC-BY-4.0
-  content_sha256: deef37de30fb86c876b86fd58f6e589be0ab020df8c72d4ea5682f1283421bda
-  role: supporting
 assumed:
 - parameter: shares
   value: count / sum of counts over the listed names
@@ -1320,4 +1309,6 @@ notes: The 50 most common first names of women living in each Belgian province a
   in 2026, from Statbel's workbook of first names of the population, with published counts and shares renormalised
   within each list. Keys are the province and region names of the sheet; nuts2 holds the NUTS 2 code. The workbook
   has no national total, so no Belgium-wide distribution is given. Statbel's open data page states that its open
-  data are published under the Creative Commons Attribution 4.0 licence.
+  data are published under the Creative Commons Attribution 4.0 licence, but the page also lists newly published
+  datasets and changes as they are added, so it cannot be pinned by a content hash and the entry is held for licence
+  review.

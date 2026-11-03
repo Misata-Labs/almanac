@@ -3,7 +3,7 @@ title: Belgium surnames given region, top 300 of the 2026 population (Statbel)
 kind: conditional
 domain: demographics
 region: BE
-status: verified
+status: license-review
 tier: A
 observed_period:
   start: '2026-01-01'
@@ -2454,7 +2454,7 @@ evidence:
 - publisher: Statbel
   title: Family names 2026 (XLSX), sheet top10000_2026
   url: https://statbel.fgov.be/sites/default/files/files/documents/bevolking/5.10%20Namen%20en%20voornamen/5.10.1%20Familienamen/Family_names_2026.xlsx
-  accessed_at: '2026-10-31'
+  accessed_at: '2026-11-03'
   locator: 'top10000_2026, row 2 (Belgium, rank 1): name, count'
   value: 30169
   unit: count
@@ -2465,7 +2465,7 @@ evidence:
 - publisher: Statbel
   title: Family names 2026 (XLSX), sheet top10000_2026
   url: https://statbel.fgov.be/sites/default/files/files/documents/bevolking/5.10%20Namen%20en%20voornamen/5.10.1%20Familienamen/Family_names_2026.xlsx
-  accessed_at: '2026-10-31'
+  accessed_at: '2026-11-03'
   locator: top10000_2026, row 1 (block headers)
   value: Brussels-Capital Region
   unit: text
@@ -2473,17 +2473,6 @@ evidence:
   source_license: CC-BY-4.0
   content_sha256: 307db79f960c8921b5ad9a65274119e7be510b2066dcc53e82949ad826816e7e
   role: primary
-- publisher: Statbel
-  title: Statbel open data (licence statement)
-  url: https://statbel.fgov.be/en/open-data
-  accessed_at: '2026-10-31'
-  locator: Open data, licence paragraph
-  value: Creative Commons Attribution 4.0 license
-  unit: text
-  snippet: Creative Commons Attribution 4.0 license
-  source_license: CC-BY-4.0
-  content_sha256: deef37de30fb86c876b86fd58f6e589be0ab020df8c72d4ea5682f1283421bda
-  role: supporting
 assumed:
 - parameter: shares
   value: count / sum of counts over the listed names
@@ -2523,4 +2512,5 @@ tests:
 notes: The 300 most common surnames in the 2026 population of Belgium as a whole and of the Flemish, Walloon and
   Brussels-Capital Regions, from Statbel's top-10,000 family names workbook, with published counts and shares renormalised
   within each list. Statbel's open data page states that its open data are published under the Creative Commons
-  Attribution 4.0 licence.
+  Attribution 4.0 licence, but the page also lists newly published datasets and changes as they are added, so it
+  cannot be pinned by a content hash and the entry is held for licence review.

@@ -12,7 +12,9 @@ Sources, all byte-stable files:
   the RPI average prices of selected items.
 * The ONS business demography workbook for births, deaths, active enterprises
   and survival rates.
-* The DESNZ weekly road fuel prices CSV published on GOV.UK.
+* The DESNZ weekly road fuel prices CSV published on GOV.UK. It is the exception to
+  byte stability: DESNZ re-uploads it weekly under a new asset URL, so the builder
+  locates the current upload through the statistics page's content API item.
 * Ofgem's price cap summary documents for the default tariff cap levels.
 
 Run from the repository root:
@@ -50,8 +52,8 @@ QUARTER_START = {"Q1": "01-01", "Q2": "04-01", "Q3": "07-01", "Q4": "10-01"}
 
 MM23_URL = f"{ONS}/file?uri=/economy/inflationandpriceindices/datasets/consumerpriceindices/current/previous/v138/mm23.csv"
 DEMOGRAPHY_URL = f"{ONS}/file?uri=/businessindustryandtrade/business/activitysizeandlocation/datasets/businessdemographyreferencetable/current/businessdemographyexceltables2024.xlsx"
-FUEL_CSV_URL = "https://assets.publishing.service.gov.uk/media/6adf6252d798ae11e9bc5d07/CSV__2018_-__.csv"
 FUEL_API_URL = "https://www.gov.uk/api/content/government/statistics/weekly-road-fuel-prices"
+FUEL_CSV_TITLE = "Weekly road fuel prices (CSV) 2018 to 2026"
 OFGEM_FILES = "https://www.ofgem.gov.uk/sites/default/files"
 OFGEM_COPYRIGHT_URL = "https://www.ofgem.gov.uk/copyright"
 OFGEM_PUBLISHER = "Ofgem (Office of Gas and Electricity Markets)"
@@ -502,7 +504,16 @@ def survival_by_region(raw: bytes, license_raw: bytes) -> dict:
 # ---------------------------------------------------------------- DESNZ road fuel prices
 
 
+def fuel_attachment(api_raw: bytes) -> dict:
+    """The 2018-onward CSV attachment of the weekly road fuel prices page, found by its title."""
+    return next(a for a in json.loads(api_raw)["details"]["attachments"] if a["title"] == FUEL_CSV_TITLE)
+
+
 def fuel_prices(raw: bytes, api_raw: bytes) -> dict:
+    api = json.loads(api_raw)
+    attachment = fuel_attachment(api_raw)
+    csv_url = attachment["url"]
+    csv_title = f"{attachment['title']}, GOV.UK statistics attachment"
     text = raw.decode("utf-8-sig")
     reader = csv.reader(io.StringIO(text))
     header = next(reader)
@@ -520,8 +531,6 @@ def fuel_prices(raw: bytes, api_raw: bytes) -> dict:
         lines[day.isoformat()] = ",".join(row)
     first, last = points[0], points[-1]
     peak = max(points, key=lambda p: p["value"])
-    api = json.loads(api_raw)
-    attachment = next(a for a in api["details"]["attachments"] if a["url"] == FUEL_CSV_URL)
     return {
         "id": f"gb-road-fuel-pump-prices-weekly-{YEAR}",
         "title": f"UK weekly road fuel pump prices, unleaded petrol and diesel, with duty and VAT rates, {YEAR}",
@@ -535,10 +544,10 @@ def fuel_prices(raw: bytes, api_raw: bytes) -> dict:
         "use_cases": ["fleet-demo", "automotive-demo", "logistics", "pricing", "retail-demo"],
         "spec": {"variable": "ulsp_pump_price_pence_per_litre", "unit": "decimal", "frequency": "weekly", "columns": list(columns), "series": points},
         "evidence": [
-            cite(DESNZ_PUBLISHER, "Weekly road fuel prices (CSV) 2018 to 2026, GOV.UK statistics attachment", FUEL_CSV_URL, raw, f"row Date={datetime.fromisoformat(first['period']).strftime('%d/%m/%Y')}, ULSP pump price column", row_value(lines[first["period"]], 1), "decimal", lines[first["period"]], OGL),
-            cite(DESNZ_PUBLISHER, "Weekly road fuel prices (CSV) 2018 to 2026, GOV.UK statistics attachment", FUEL_CSV_URL, raw, f"row Date={datetime.fromisoformat(last['period']).strftime('%d/%m/%Y')}, ULSD pump price column", row_value(lines[last["period"]], 2), "decimal", lines[last["period"]], OGL),
-            cite(DESNZ_PUBLISHER, "Weekly road fuel prices (CSV) 2018 to 2026, GOV.UK statistics attachment", FUEL_CSV_URL, raw, "header row, column 2", header[1], "text", header[2], OGL),
-            cite(DESNZ_PUBLISHER, "GOV.UK content API item for /government/statistics/weekly-road-fuel-prices (JSON)", FUEL_API_URL, api_raw, "details.attachments[].url for the 2018 to 2026 CSV", attachment["url"], "text", f'"title":"{attachment["title"]}"', OGL),
+            cite(DESNZ_PUBLISHER, csv_title, csv_url, raw, f"row Date={datetime.fromisoformat(first['period']).strftime('%d/%m/%Y')}, ULSP pump price column", row_value(lines[first["period"]], 1), "decimal", lines[first["period"]], OGL),
+            cite(DESNZ_PUBLISHER, csv_title, csv_url, raw, f"row Date={datetime.fromisoformat(last['period']).strftime('%d/%m/%Y')}, ULSD pump price column", row_value(lines[last["period"]], 2), "decimal", lines[last["period"]], OGL),
+            cite(DESNZ_PUBLISHER, csv_title, csv_url, raw, "header row, column 2", header[1], "text", header[2], OGL),
+            cite(DESNZ_PUBLISHER, "GOV.UK content API item for /government/statistics/weekly-road-fuel-prices (JSON)", FUEL_API_URL, api_raw, f"details.attachments[title={attachment['title']}].url", attachment["url"], "text", f'"title":"{attachment["title"]}"', OGL),
         ],
         "assumed": [],
         "tests": [
@@ -550,9 +559,12 @@ def fuel_prices(raw: bytes, api_raw: bytes) -> dict:
         ],
         "notes": (
             f"Weekly UK average pump prices in pence per litre for ultra low sulphur unleaded petrol (the series value) and ultra low sulphur diesel, with "
-            f"the duty rate in pence per litre and the VAT rate applying to each, for every week of {YEAR} in the DESNZ weekly road fuel prices CSV "
-            f"(2018 to 2026) attached to the GOV.UK statistics page, public_updated_at {api['public_updated_at'][:10]}. Periods are the survey dates the "
-            "file prints (Mondays). Rows for other years are dropped. GOV.UK content and DESNZ statistics are published under the Open Government Licence v3.0."
+            f"the duty rate in pence per litre and the VAT rate applying to each, for every week of {YEAR} in the DESNZ attachment '{attachment['title']}' "
+            f"on the GOV.UK statistics page, public_updated_at {api['public_updated_at'][:10]}. Periods are the survey dates the "
+            "file prints (Mondays). Rows for other years are dropped. DESNZ re-uploads the CSV every week under a new asset URL, and earlier "
+            "URLs redirect to the newest upload, so the cited file and the content API item both change weekly even when the rows for "
+            f"{YEAR} do not: republished weekly; rebuild before release. GOV.UK content and DESNZ statistics are published under the "
+            "Open Government Licence v3.0."
         ),
     }
 
@@ -665,7 +677,8 @@ def main() -> int:
     write(demography_by_industry(demography_raw, license_raw))
     write(survival_by_region(demography_raw, license_raw))
 
-    write(fuel_prices(fetch(FUEL_CSV_URL), fetch(FUEL_API_URL)))
+    fuel_api = fetch(FUEL_API_URL)
+    write(fuel_prices(fetch(fuel_attachment(fuel_api)["url"]), fuel_api))
     write(price_cap(fetch(OFGEM_COPYRIGHT_URL)))
     return 0
 

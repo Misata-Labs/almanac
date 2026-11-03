@@ -67,30 +67,30 @@ spec:
 evidence:
 - publisher: Banco Central do Brasil
   title: Estatísticas de Meios de Pagamentos, MeiosdePagamentosTrimestralDA (Olinda open data API)
-  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/odata/MeiosdePagamentosTrimestralDA(trimestre=@trimestre)?@trimestre='20251'&$format=json
-  accessed_at: '2026-10-31'
+  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/odata/MeiosdePagamentosTrimestralDA(trimestre=@trimestre)?@trimestre='20251'&$select=datatrimestre,quantidadePix,quantidadeTED,quantidadeTEC,quantidadeCheque,quantidadeBoleto,quantidadeDOC,quantidadeCartaoCredito,quantidadeCartaoDebito,quantidadeCartaoPrePago,quantidadeTransIntrabancaria,quantidadeConvenios,quantidadeDebitoDireto,quantidadeSaques&$format=json
+  accessed_at: '2026-11-03'
   locator: value[datatrimestre=2025-03-31].quantidadePix
   value: '17509754.01'
   unit: count
   snippet: '"datatrimestre":"2025-03-31"'
   source_license: ODbL-1.0
-  content_sha256: 3bd38aae7da8063f3eb11640f1a3d74e12bd462bc2c8488a12327c5dfdb9e6d0
+  content_sha256: 768b6aeed515f4b071262d46b0dab2f8e75b6358040ce2fe47c7e3604aee00d5
   role: primary
 - publisher: Banco Central do Brasil
   title: Estatísticas de Meios de Pagamentos, MeiosdePagamentosTrimestralDA (Olinda open data API)
-  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/odata/MeiosdePagamentosTrimestralDA(trimestre=@trimestre)?@trimestre='20251'&$format=json
-  accessed_at: '2026-10-31'
+  url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/odata/MeiosdePagamentosTrimestralDA(trimestre=@trimestre)?@trimestre='20251'&$select=datatrimestre,quantidadePix,quantidadeTED,quantidadeTEC,quantidadeCheque,quantidadeBoleto,quantidadeDOC,quantidadeCartaoCredito,quantidadeCartaoDebito,quantidadeCartaoPrePago,quantidadeTransIntrabancaria,quantidadeConvenios,quantidadeDebitoDireto,quantidadeSaques&$format=json
+  accessed_at: '2026-11-03'
   locator: value[datatrimestre=2025-12-31].quantidadeCartaoDebito
   value: '4303573.50'
   unit: count
   snippet: '"datatrimestre":"2025-12-31"'
   source_license: ODbL-1.0
-  content_sha256: 3bd38aae7da8063f3eb11640f1a3d74e12bd462bc2c8488a12327c5dfdb9e6d0
+  content_sha256: 768b6aeed515f4b071262d46b0dab2f8e75b6358040ce2fe47c7e3604aee00d5
   role: primary
 - publisher: Banco Central do Brasil
   title: MPV_DadosAbertos service documentation (field descriptions)
   url: https://olinda.bcb.gov.br/olinda/servico/MPV_DadosAbertos/versao/v1/aplicacao
-  accessed_at: '2026-10-31'
+  accessed_at: '2026-11-03'
   locator: MeiosdePagamentosTrimestralDA, quantidadePix description
   value: Quantidade (em milhares) de transações Pix liquidadas trimestralmente no SPI e fora do SPI
   unit: text
@@ -118,8 +118,10 @@ tests:
 - statistic: sum_of_shares
   expected: 1
   tolerance: 1.0e-05
-notes: Mix of payment instruments by number of transactions in Brazil over the four quarters of 2025, derived from
+notes: 'Mix of payment instruments by number of transactions in Brazil over the four quarters of 2025, derived from
   the quarterly payment-instrument statistics of the Banco Central do Brasil (Olinda MPV_DadosAbertos service).
-  Counts are kept in thousands as published. The BCB open data catalogue (dadosabertos.bcb.gov.br) lists this series
-  under the Open Database License; the catalogue API answers vary between requests, so that record is referenced
-  here rather than hashed as evidence.
+  Counts are kept in thousands as published. The service accepts no filter or sort on the quarter, so its answer
+  gains a quarter with each release and earlier quarters can be revised; there is no pinned form of the query: rebuild
+  before release. The BCB open data catalogue (dadosabertos.bcb.gov.br) lists this series under the Open Database
+  License; the catalogue API answers vary between requests, so that record is referenced here rather than hashed
+  as evidence.'

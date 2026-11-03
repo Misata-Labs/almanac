@@ -54,30 +54,30 @@ spec:
 evidence:
 - publisher: U.S. Food and Drug Administration
   title: openFDA drug enforcement endpoint, count of report_date
-  url: https://api.fda.gov/drug/enforcement.json?count=report_date&limit=1000
-  accessed_at: '2026-10-31'
+  url: https://api.fda.gov/drug/enforcement.json?search=report_date:%5B20120101+TO+20251231%5D&count=report_date&limit=1000
+  accessed_at: '2026-11-03'
   locator: results[time=20120620].count
   value: 14
   unit: count
   snippet: '"time": "20120620",'
   source_license: CC0-1.0
-  content_sha256: a29d7f69c334b4c4d20e7c5bbc0e8473d3a8b4e394f94999ac5f377400a69052
+  content_sha256: 634eb12556bbefdd8a24451934e7fadab0928b5b87ef19286bd7c50107bc9a0f
   role: primary
 - publisher: U.S. Food and Drug Administration
   title: openFDA drug enforcement endpoint, count of report_date
-  url: https://api.fda.gov/drug/enforcement.json?count=report_date&limit=1000
-  accessed_at: '2026-10-31'
+  url: https://api.fda.gov/drug/enforcement.json?search=report_date:%5B20120101+TO+20251231%5D&count=report_date&limit=1000
+  accessed_at: '2026-11-03'
   locator: meta.last_updated
-  value: '2026-10-21'
+  value: '2026-10-28'
   unit: date
   snippet: '"last_updated":'
   source_license: CC0-1.0
-  content_sha256: a29d7f69c334b4c4d20e7c5bbc0e8473d3a8b4e394f94999ac5f377400a69052
+  content_sha256: 634eb12556bbefdd8a24451934e7fadab0928b5b87ef19286bd7c50107bc9a0f
   role: primary
 - publisher: U.S. Food and Drug Administration
   title: openFDA licence statement
   url: https://open.fda.gov/license/
-  accessed_at: '2026-10-31'
+  accessed_at: '2026-11-03'
   locator: License section
   value: CC0
   unit: text
@@ -89,8 +89,8 @@ assumed:
 - parameter: series
   value: sum of weekly report_date counts per calendar year
   method: derived
-  rationale: openFDA counts entries per weekly enforcement report date; the entry sums them by year and drops 2012
-    and the current year because they are partial.
+  rationale: openFDA counts entries per weekly enforcement report date inside the query window; the entry sums them
+    by year and drops 2012, whose reports start on 2012-06-20.
 tests:
 - statistic: value[2013]
   expected: 1377.0
@@ -104,7 +104,10 @@ tests:
 - statistic: count
   expected: 13
   tolerance: 0
-notes: The number of drug product entries in FDA weekly enforcement reports per calendar year, summed from the openFDA
-  drug enforcement endpoint's per-date counts as of 2026-10-21. A synthetic pharmacovigilance or recall feed can
-  use it to set annual volume. openFDA states that its data is public domain under a CC0 1.0 Universal dedication
-  (supporting evidence).
+notes: 'The number of drug product entries in FDA weekly enforcement reports per calendar year, summed from the
+  openFDA drug enforcement endpoint''s per-date counts as of 2026-10-28. A synthetic pharmacovigilance or recall
+  feed can use it to set annual volume. The query is pinned to enforcement reports dated in a closed window, but
+  openFDA refreshes the endpoint weekly and every response carries the refresh date in meta.last_updated, so the
+  content hash moves with each refresh and late-classified reports can still shift the counts: re-indexed weekly;
+  rebuild before release. openFDA states that its data is public domain under a CC0 1.0 Universal dedication (supporting
+  evidence).'

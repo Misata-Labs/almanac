@@ -43,7 +43,6 @@ STATBEL_BOYS_URL = f"{STATBEL_BASE}/5.10.%203%20Voornamen%20meisjes%20en%20jonge
 STATBEL_GIRLS_URL = f"{STATBEL_BASE}/5.10.%203%20Voornamen%20meisjes%20en%20jongens/Firstnames_Girls_1995-.xlsx"
 STATBEL_POP_URL = f"{STATBEL_BASE}/5.10.2%20Voornamen%20van%20vrouwen%20en%20mannen/First_names_Pop_STATBEL_2026_en.xlsx"
 STATBEL_SURNAMES_URL = f"{STATBEL_BASE}/5.10.1%20Familienamen/Family_names_2026.xlsx"
-STATBEL_LICENSE_URL = "https://statbel.fgov.be/en/open-data"
 INE_URL = "https://www.ine.es/daco/daco42/nombyapel/nombres_por_edad_media.xlsx"
 INE_LEGAL_URL = "https://www.ine.es/ss/Satellite?L=es_ES&c=Page&cid=1254735849170&p=1254735849170&pagename=Ayuda%2FINELayout"
 SSB_API = "https://data.ssb.no/api/pxwebapi/v2/tables"
@@ -541,7 +540,11 @@ def cso_by_sex(boys_raw: bytes, girls_raw: bytes, year: str, top: int) -> dict:
 
 # --- Belgium: Statbel ---------------------------------------------------------------------------------
 
-STATBEL_NOTE = "Statbel's open data page states that its open data are published under the Creative Commons Attribution 4.0 licence."
+STATBEL_NOTE = (
+    "Statbel's open data page states that its open data are published under the Creative Commons Attribution 4.0 "
+    "licence, but the page also lists newly published datasets and changes as they are added, so it cannot be pinned "
+    "by a content hash and the entry is held for licence review."
+)
 STATBEL_BLOCKS = ("A", "D", "G", "J")
 
 
@@ -555,7 +558,7 @@ def statbel_blocks(rows: list[dict[str, str]], top: int) -> dict[str, dict[str, 
     return blocks
 
 
-def statbel_babies(url: str, raw: bytes, license_raw: bytes, sex: str, year: str, top: int) -> dict:
+def statbel_babies(url: str, raw: bytes, sex: str, year: str, top: int) -> dict:
     rows = sheet_rows(raw, year)
     distributions = {region: categorical(counts) for region, counts in statbel_blocks(rows, top).items()}
     label = {"boys": "male", "girls": "female"}[sex]
@@ -569,7 +572,6 @@ def statbel_babies(url: str, raw: bytes, license_raw: bytes, sex: str, year: str
         [
             evidence("Statbel", f"First names of newborn {sex} 1995 onwards (XLSX), sheet {year}", url, f"sheet {year}, row 2 (Belgium, rank 1): name, count", int(first["C"]), "count", first["B"], CC_BY, raw),
             evidence("Statbel", f"First names of newborn {sex} 1995 onwards (XLSX), sheet {year}", url, f"sheet {year}, row 1 (block headers)", rows[0]["J"], "text", rows[0]["J"], CC_BY, raw),
-            evidence("Statbel", "Statbel open data (licence statement)", STATBEL_LICENSE_URL, "Open data, licence paragraph", "Creative Commons Attribution 4.0 license", "text", "Creative Commons Attribution 4.0 license", CC_BY, license_raw, role="supporting"),
         ],
         [shares_assumption(f"top {top} names for the region")],
         conditional_tests(distributions),
@@ -577,10 +579,11 @@ def statbel_babies(url: str, raw: bytes, license_raw: bytes, sex: str, year: str
         f"from the {year} sheet of Statbel's first-names workbook, with published counts and shares renormalised within each list. "
         f"Keys are the region headings of the sheet. {STATBEL_NOTE}",
         ["first-names", "baby-names", "statbel", "by-region", label],
+        status="license-review",
     )
 
 
-def statbel_surnames(raw: bytes, license_raw: bytes, year: str, top: int) -> dict:
+def statbel_surnames(raw: bytes, year: str, top: int) -> dict:
     rows = sheet_rows(raw, f"top10000_{year}")
     distributions = {region: categorical(counts) for region, counts in statbel_blocks(rows, top).items()}
     first = rows[1]
@@ -593,7 +596,6 @@ def statbel_surnames(raw: bytes, license_raw: bytes, year: str, top: int) -> dic
         [
             evidence("Statbel", f"Family names {year} (XLSX), sheet top10000_{year}", STATBEL_SURNAMES_URL, f"top10000_{year}, row 2 (Belgium, rank 1): name, count", int(first["C"]), "count", first["B"], CC_BY, raw),
             evidence("Statbel", f"Family names {year} (XLSX), sheet top10000_{year}", STATBEL_SURNAMES_URL, f"top10000_{year}, row 1 (block headers)", rows[0]["J"], "text", rows[0]["J"], CC_BY, raw),
-            evidence("Statbel", "Statbel open data (licence statement)", STATBEL_LICENSE_URL, "Open data, licence paragraph", "Creative Commons Attribution 4.0 license", "text", "Creative Commons Attribution 4.0 license", CC_BY, license_raw, role="supporting"),
         ],
         [
             shares_assumption(f"top {top} surnames for the region"),
@@ -604,10 +606,11 @@ def statbel_surnames(raw: bytes, license_raw: bytes, year: str, top: int) -> dic
         f"Brussels-Capital Regions, from Statbel's top-10,000 family names workbook, with published counts and shares renormalised "
         f"within each list. {STATBEL_NOTE}",
         ["surnames", "statbel", "by-region"],
+        status="license-review",
     )
 
 
-def statbel_population_first_names(raw: bytes, license_raw: bytes, sex: str, year: str, top: int) -> dict:
+def statbel_population_first_names(raw: bytes, sex: str, year: str, top: int) -> dict:
     sheet = {"women": "F", "men": "M"}[sex] + f"_PROV{year}"
     rows = sheet_rows(raw, sheet)
     by_province: dict[str, dict[str, int]] = {}
@@ -630,7 +633,6 @@ def statbel_population_first_names(raw: bytes, license_raw: bytes, sex: str, yea
         [
             evidence("Statbel", f"Most common first names of {sex} in {year} by province and region (XLSX), sheet {sheet}", STATBEL_POP_URL, f"{sheet}, row 3 ({first['D']}, rank 1): Firstname, Number", int(first["F"]), "count", first["E"], CC_BY, raw),
             evidence("Statbel", f"Most common first names of {sex} in {year} by province and region (XLSX), sheet {sheet}", STATBEL_POP_URL, f"{sheet}, cell A1", rows[0]["A"], "text", rows[0]["A"], CC_BY, raw),
-            evidence("Statbel", "Statbel open data (licence statement)", STATBEL_LICENSE_URL, "Open data, licence paragraph", "Creative Commons Attribution 4.0 license", "text", "Creative Commons Attribution 4.0 license", CC_BY, license_raw, role="supporting"),
         ],
         [
             shares_assumption(f"top {top} names for the province or region"),
@@ -642,6 +644,7 @@ def statbel_population_first_names(raw: bytes, license_raw: bytes, sex: str, yea
         f"list. Keys are the province and region names of the sheet; nuts2 holds the NUTS 2 code. The workbook has no national "
         f"total, so no Belgium-wide distribution is given. {STATBEL_NOTE}",
         ["first-names", "statbel", "by-province", label],
+        status="license-review",
     )
 
 
@@ -794,13 +797,12 @@ def main() -> int:
 
     write(cso_by_sex(fetch(CSO_BOYS_URL), fetch(CSO_GIRLS_URL), "2025", 100))
 
-    statbel_license = fetch(STATBEL_LICENSE_URL)
     for url, sex in ((STATBEL_BOYS_URL, "boys"), (STATBEL_GIRLS_URL, "girls")):
-        write(statbel_babies(url, fetch(url), statbel_license, sex, "2025", 100))
-    write(statbel_surnames(fetch(STATBEL_SURNAMES_URL), statbel_license, "2026", 300))
+        write(statbel_babies(url, fetch(url), sex, "2025", 100))
+    write(statbel_surnames(fetch(STATBEL_SURNAMES_URL), "2026", 300))
     statbel_pop = fetch(STATBEL_POP_URL)
     for sex in ("women", "men"):
-        write(statbel_population_first_names(statbel_pop, statbel_license, sex, "2026", 50))
+        write(statbel_population_first_names(statbel_pop, sex, "2026", 50))
 
     write(ine_by_sex(fetch(INE_URL), fetch(INE_LEGAL_URL), 300))
 

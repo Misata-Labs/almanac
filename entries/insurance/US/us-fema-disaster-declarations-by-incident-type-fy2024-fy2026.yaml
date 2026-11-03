@@ -26,60 +26,60 @@ spec:
     family: categorical
     parameters:
       shares:
-        Fire: 0.445161
-        Severe Storm: 0.208602
-        Flood: 0.113978
-        Tropical Storm: 0.083871
-        Winter Storm: 0.058065
-        Hurricane: 0.036559
-        Straight-Line Winds: 0.012903
-        Tornado: 0.010753
-        Typhoon: 0.008602
-        Mud/Landslide: 0.006452
-        Other: 0.006452
-        Chemical: 0.002151
-        Earthquake: 0.002151
-        Severe Ice Storm: 0.002151
-        Tropical Depression: 0.002151
+        Fire: 0.459641
+        Severe Storm: 0.210762
+        Flood: 0.109865
+        Tropical Storm: 0.080717
+        Winter Storm: 0.060538
+        Hurricane: 0.029148
+        Straight-Line Winds: 0.013453
+        Tornado: 0.008969
+        Mud/Landslide: 0.006726
+        Typhoon: 0.006726
+        Other: 0.004484
+        Chemical: 0.002242
+        Earthquake: 0.002242
+        Severe Ice Storm: 0.002242
+        Tropical Depression: 0.002242
       disasters:
-        Fire: 207
-        Severe Storm: 97
-        Flood: 53
-        Tropical Storm: 39
+        Fire: 205
+        Severe Storm: 94
+        Flood: 49
+        Tropical Storm: 36
         Winter Storm: 27
-        Hurricane: 17
+        Hurricane: 13
         Straight-Line Winds: 6
-        Tornado: 5
-        Typhoon: 4
+        Tornado: 4
         Mud/Landslide: 3
-        Other: 3
+        Typhoon: 3
+        Other: 2
         Chemical: 1
         Earthquake: 1
         Severe Ice Storm: 1
         Tropical Depression: 1
-      total: 465
+      total: 446
 evidence:
 - publisher: Federal Emergency Management Agency
-  title: OpenFEMA Disaster Declarations Summaries v2, fyDeclared >= 2024 (CSV)
-  url: https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries?$filter=fyDeclared%20ge%202024&$format=csv&$allrecords=true
-  accessed_at: '2026-10-31'
-  locator: row femaDeclarationString=FM-5676-AR
-  value: '5676'
+  title: OpenFEMA Disaster Declarations Summaries v2, fyDeclared 2024 to 2026 (CSV)
+  url: https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries?$select=femaDeclarationString,disasterNumber,state,declarationType,declarationDate,fyDeclared,incidentType&$filter=fyDeclared%20ge%202024%20and%20fyDeclared%20le%202026&$orderby=femaDeclarationString&$format=csv&$allrecords=true
+  accessed_at: '2026-11-03'
+  locator: row femaDeclarationString=DR-4759-WA
+  value: '4759'
   unit: text
-  snippet: FM-5676-AR,5676,AR,FM,2026-09-15T00:00:00.000Z,2026,Fire
+  snippet: DR-4759-WA,4759,WA,DR,2024-02-15T00:00:00.000Z,2024,Fire
   source_license: unstated
-  content_sha256: ca16fb9ae384227d4427696167e832877653c1c575816c4ad738beba0d38492d
+  content_sha256: dd697733cd8ddc895e90ccb98e1193efbaac37f0a1b73471f785c13ff1cfaf9a
   role: primary
 - publisher: Federal Emergency Management Agency
-  title: OpenFEMA Disaster Declarations Summaries v2, fyDeclared >= 2024 (CSV)
-  url: https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries?$filter=fyDeclared%20ge%202024&$format=csv&$allrecords=true
-  accessed_at: '2026-10-31'
+  title: OpenFEMA Disaster Declarations Summaries v2, fyDeclared 2024 to 2026 (CSV)
+  url: https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries?$select=femaDeclarationString,disasterNumber,state,declarationType,declarationDate,fyDeclared,incidentType&$filter=fyDeclared%20ge%202024%20and%20fyDeclared%20le%202026&$orderby=femaDeclarationString&$format=csv&$allrecords=true
+  accessed_at: '2026-11-03'
   locator: header row
   value: incidentType
   unit: text
   snippet: femaDeclarationString,disasterNumber,state,declarationType,declarationDate,fyDeclared,incidentType
   source_license: unstated
-  content_sha256: ca16fb9ae384227d4427696167e832877653c1c575816c4ad738beba0d38492d
+  content_sha256: dd697733cd8ddc895e90ccb98e1193efbaac37f0a1b73471f785c13ff1cfaf9a
   role: primary
 assumed:
 - parameter: shares
@@ -88,16 +88,18 @@ assumed:
   rationale: Shares are distinct disaster counts divided by their sum over the listed categories.
 tests:
 - statistic: share["Fire"]
-  expected: 0.445161
+  expected: 0.459641
   tolerance: 0.003
 - statistic: share["Tropical Depression"]
-  expected: 0.002151
+  expected: 0.002242
   tolerance: 0.002
 - statistic: sum_of_shares
   expected: 1
   tolerance: 0.0001
-notes: Distinct disasters declared in fiscal years 2024 to 2027 by incident type, counted from the OpenFEMA Disaster
-  Declarations Summaries filtered to fyDeclared >= 2024 (one row per designated area, disasters counted once). A
-  disaster spanning several incident type values is counted under each. OpenFEMA datasets are refreshed as declarations
-  and assistance totals change, so the content hash tracks the day's file. The publisher is a US federal body and
-  the resource carries no licence statement, so the licence is recorded as unstated and the entry held at license-review.
+notes: 'Distinct disasters declared in fiscal years 2024 to 2026 by incident type, counted from the OpenFEMA Disaster
+  Declarations Summaries filtered to fiscal years 2024 to 2026 (one row per designated area, disasters counted once).
+  A disaster spanning several incident type values is counted under each. The OpenFEMA query is pinned to closed
+  fiscal years, a fixed column list and an explicit sort, but OpenFEMA refreshes its tables daily as amendments
+  add designated areas and assistance totals grow, so the content hash tracks the day''s data: re-indexed daily;
+  rebuild before release. The publisher is a US federal body and the resource carries no licence statement, so the
+  licence is recorded as unstated and the entry held at license-review.'
