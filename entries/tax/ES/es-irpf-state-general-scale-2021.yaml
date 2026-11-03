@@ -1,0 +1,207 @@
+id: es-irpf-state-general-scale-2021
+title: Spain personal income tax (IRPF) state general scale in force since 2021 (Ley 35/2006, artículo 63)
+kind: rule
+domain: tax
+region: ES
+status: license-review
+tier: A
+valid_from: '2021-01-01'
+valid_to: null
+tags:
+- payroll
+- tax
+- income-tax
+- irpf
+- statute
+- tax-bands
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.cumulative_bracket_tariff
+  parameters:
+    currency: EUR
+    brackets:
+    - name: tramo 1
+      over: 0
+      base_tax: 0
+      rate_percent: 9.5
+    - name: tramo 2
+      over: 12450
+      base_tax: 1182.75
+      rate_percent: 12
+    - name: tramo 3
+      over: 20200
+      base_tax: 2112.75
+      rate_percent: 15
+    - name: tramo 4
+      over: 35200
+      base_tax: 4362.75
+      rate_percent: 18.5
+    - name: tramo 5
+      over: 60000
+      base_tax: 8950.75
+      rate_percent: 22.5
+    - name: tramo 6
+      over: 300000
+      base_tax: 62950.75
+      rate_percent: 24.5
+    scope: state half of the general scale on the general taxable base; the autonomous community scale applies on
+      top
+  vectors:
+  - input:
+      income: 12450
+    expected: '1182.75'
+    origin: source
+    note: cuota íntegra at 12.450,00
+  - input:
+      income: 20200
+    expected: '2112.75'
+    origin: source
+    note: cuota íntegra at 20.200,00
+  - input:
+      income: 35200
+    expected: '4362.75'
+    origin: source
+    note: cuota íntegra at 35.200,00
+  - input:
+      income: 60000
+    expected: '8950.75'
+    origin: source
+    note: cuota íntegra at 60.000,00
+  - input:
+      income: 300000
+    expected: '62950.75'
+    origin: source
+    note: cuota íntegra at 300.000,00
+  - input:
+      income: 30000
+    expected: '3582.75'
+    origin: derived
+  - input:
+      marginal_rate_for: 400000
+    expected: 24.5
+    origin: source
+evidence:
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Ley 11/2020, de Presupuestos Generales del Estado para el año 2021 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2020-17339
+  accessed_at: '2026-11-03'
+  locator: Artículo 63.1.1.º, escala, row 1
+  value: 0,00
+  unit: text
+  snippet: Cuota íntegra
+  source_license: unstated
+  content_sha256: 6103d6d3718b0f32d4e15def179ba198fce5b392f74bb60376df7a6fc3602d96
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Ley 11/2020, de Presupuestos Generales del Estado para el año 2021 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2020-17339
+  accessed_at: '2026-11-03'
+  locator: Artículo 63.1.1.º, escala, row 2
+  value: 1.182,75
+  unit: text
+  snippet: Cuota íntegra
+  source_license: unstated
+  content_sha256: 6103d6d3718b0f32d4e15def179ba198fce5b392f74bb60376df7a6fc3602d96
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Ley 11/2020, de Presupuestos Generales del Estado para el año 2021 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2020-17339
+  accessed_at: '2026-11-03'
+  locator: Artículo 63.1.1.º, escala, row 3
+  value: 2.112,75
+  unit: text
+  snippet: Cuota íntegra
+  source_license: unstated
+  content_sha256: 6103d6d3718b0f32d4e15def179ba198fce5b392f74bb60376df7a6fc3602d96
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Ley 11/2020, de Presupuestos Generales del Estado para el año 2021 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2020-17339
+  accessed_at: '2026-11-03'
+  locator: Artículo 63.1.1.º, escala, row 4
+  value: 4.362,75
+  unit: text
+  snippet: Cuota íntegra
+  source_license: unstated
+  content_sha256: 6103d6d3718b0f32d4e15def179ba198fce5b392f74bb60376df7a6fc3602d96
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Ley 11/2020, de Presupuestos Generales del Estado para el año 2021 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2020-17339
+  accessed_at: '2026-11-03'
+  locator: Artículo 63.1.1.º, escala, row 5
+  value: 8.950,75
+  unit: text
+  snippet: Cuota íntegra
+  source_license: unstated
+  content_sha256: 6103d6d3718b0f32d4e15def179ba198fce5b392f74bb60376df7a6fc3602d96
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Ley 11/2020, de Presupuestos Generales del Estado para el año 2021 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2020-17339
+  accessed_at: '2026-11-03'
+  locator: Artículo 63.1.1.º, escala, row 6
+  value: 62.950,75
+  unit: text
+  snippet: Cuota íntegra
+  source_license: unstated
+  content_sha256: 6103d6d3718b0f32d4e15def179ba198fce5b392f74bb60376df7a6fc3602d96
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Ley 11/2020, de Presupuestos Generales del Estado para el año 2021 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2020-17339
+  accessed_at: '2026-11-03'
+  locator: Artículo 63.1.1.º, escala, rates
+  value: 24,50
+  unit: text
+  snippet: Tipo aplicable
+  source_license: unstated
+  content_sha256: 6103d6d3718b0f32d4e15def179ba198fce5b392f74bb60376df7a6fc3602d96
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Ley 11/2020, de Presupuestos Generales del Estado para el año 2021 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2020-17339
+  accessed_at: '2026-11-03'
+  locator: Artículo 63.1.1.º, escala, last row
+  value: 300.000,00
+  unit: text
+  snippet: En adelante
+  source_license: unstated
+  content_sha256: 6103d6d3718b0f32d4e15def179ba198fce5b392f74bb60376df7a6fc3602d96
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Ley 11/2020, de Presupuestos Generales del Estado para el año 2021 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2020-17339
+  accessed_at: '2026-11-03'
+  locator: Artículo 58
+  value: apartado 1 del artículo 63 de la Ley 35/2006
+  unit: text
+  snippet: Con efectos desde 1 de enero de 2021 y vigencia indefinida, se modifica el apartado 1 del artículo 63
+    de la Ley 35/2006
+  source_license: unstated
+  content_sha256: 6103d6d3718b0f32d4e15def179ba198fce5b392f74bb60376df7a6fc3602d96
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 6
+  tolerance: 0
+- statistic: rate[tramo 6]
+  expected: 24.5
+  tolerance: 0
+notes: 'The state general scale (escala general estatal) of the IRPF in article 63.1 of Ley 35/2006, as article
+  58 of Ley 11/2020 (the 2021 State Budget Act) rewrote it with effect from 1 January 2021 and indefinite validity;
+  the BOE consolidated text of article 63 showed no later version when this entry was built. For each row, the tax
+  (cuota íntegra) at the lower bound plus the applicable rate on the rest of the general taxable base. This is only
+  the state half: each autonomous community applies its own scale to the same base, and the scale is applied to
+  the base and to the personal and family minimum separately, with the result for the minimum subtracted (article
+  63.1.2.º); neither step is modelled. The source vectors are the cuota íntegra column; the other vector is computed
+  from the scale. The BOE XML carries no licence statement, so the licence is recorded as unstated and the entry
+  stays at license-review.'

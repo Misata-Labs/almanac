@@ -1,0 +1,194 @@
+id: at-income-tax-brackets-2026
+title: Austria income tax brackets for 2026 under § 33(1) EStG 1988, including the 55 percent rate above one million
+  euros
+kind: rule
+domain: tax
+region: AT
+status: license-review
+tier: A
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- payroll
+- tax
+- income-tax
+- statute
+- tax-bands
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.income_tax_bands
+  parameters:
+    tax_year: 2026
+    currency: EUR
+    personal_allowance: 0
+    bands:
+    - name: 0%
+      up_to: 13539
+      rate_percent: 0
+    - name: 20%
+      up_to: 21992
+      rate_percent: 20
+    - name: 30%
+      up_to: 36458
+      rate_percent: 30
+    - name: 40%
+      up_to: 70365
+      rate_percent: 40
+    - name: 48%
+      up_to: 104859
+      rate_percent: 48
+    - name: 50%
+      up_to: 1000000
+      rate_percent: 50
+    - name: 55%
+      up_to: null
+      rate_percent: 55
+  vectors:
+  - input:
+      income: 13539
+    expected: '0.00'
+    origin: source
+    note: '§ 33(1): no tax on the first slice'
+  - input:
+      income: 30000
+    expected: '4093.00'
+    origin: derived
+  - input:
+      income: 60000
+    expected: '15447.20'
+    origin: derived
+  - input:
+      income: 104859
+    expected: '36150.32'
+    origin: derived
+    note: top of the 48 percent slice
+  - input:
+      income: 1500000
+    expected: '758720.82'
+    origin: derived
+    note: 55 percent on the part above one million euros
+evidence:
+- publisher: Bundeskanzleramt (RIS, Bundesrecht konsolidiert)
+  title: Einkommensteuergesetz 1988 § 33, version in force from 1 January 2026 (XML)
+  url: https://ogd.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40274868/NOR40274868.xml
+  accessed_at: '2026-11-03'
+  locator: § 33 Absatz 1, first row
+  value: 13 539
+  unit: text
+  snippet: für die ersten 13 539 Euro
+  source_license: unstated
+  content_sha256: 1593213d5f85d92222da692e76c9be1e8fb8a773860be7d60d12c78438ec9f6a
+  role: primary
+- publisher: Bundeskanzleramt (RIS, Bundesrecht konsolidiert)
+  title: Einkommensteuergesetz 1988 § 33, version in force from 1 January 2026 (XML)
+  url: https://ogd.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40274868/NOR40274868.xml
+  accessed_at: '2026-11-03'
+  locator: § 33 Absatz 1, slice at 20%
+  value: 21 992
+  unit: text
+  snippet: für Einkommensteile über 13 539 Euro bis 21 992 Euro
+  source_license: unstated
+  content_sha256: 1593213d5f85d92222da692e76c9be1e8fb8a773860be7d60d12c78438ec9f6a
+  role: primary
+- publisher: Bundeskanzleramt (RIS, Bundesrecht konsolidiert)
+  title: Einkommensteuergesetz 1988 § 33, version in force from 1 January 2026 (XML)
+  url: https://ogd.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40274868/NOR40274868.xml
+  accessed_at: '2026-11-03'
+  locator: § 33 Absatz 1, slice at 30%
+  value: 36 458
+  unit: text
+  snippet: für Einkommensteile über 21 992 Euro bis 36 458 Euro
+  source_license: unstated
+  content_sha256: 1593213d5f85d92222da692e76c9be1e8fb8a773860be7d60d12c78438ec9f6a
+  role: primary
+- publisher: Bundeskanzleramt (RIS, Bundesrecht konsolidiert)
+  title: Einkommensteuergesetz 1988 § 33, version in force from 1 January 2026 (XML)
+  url: https://ogd.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40274868/NOR40274868.xml
+  accessed_at: '2026-11-03'
+  locator: § 33 Absatz 1, slice at 40%
+  value: 70 365
+  unit: text
+  snippet: für Einkommensteile über 36 458 Euro bis 70 365 Euro
+  source_license: unstated
+  content_sha256: 1593213d5f85d92222da692e76c9be1e8fb8a773860be7d60d12c78438ec9f6a
+  role: primary
+- publisher: Bundeskanzleramt (RIS, Bundesrecht konsolidiert)
+  title: Einkommensteuergesetz 1988 § 33, version in force from 1 January 2026 (XML)
+  url: https://ogd.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40274868/NOR40274868.xml
+  accessed_at: '2026-11-03'
+  locator: § 33 Absatz 1, slice at 48%
+  value: 104 859
+  unit: text
+  snippet: für Einkommensteile über 70 365 Euro bis 104 859 Euro
+  source_license: unstated
+  content_sha256: 1593213d5f85d92222da692e76c9be1e8fb8a773860be7d60d12c78438ec9f6a
+  role: primary
+- publisher: Bundeskanzleramt (RIS, Bundesrecht konsolidiert)
+  title: Einkommensteuergesetz 1988 § 33, version in force from 1 January 2026 (XML)
+  url: https://ogd.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40274868/NOR40274868.xml
+  accessed_at: '2026-11-03'
+  locator: § 33 Absatz 1, top slice and million-euro rate
+  value: '55'
+  unit: text
+  snippet: Für Einkommensteile über eine Million Euro beträgt der Steuersatz in den Kalenderjahren 2016 bis 2029
+    55%.
+  source_license: unstated
+  content_sha256: 1593213d5f85d92222da692e76c9be1e8fb8a773860be7d60d12c78438ec9f6a
+  role: primary
+- publisher: Bundeskanzleramt (RIS, Bundesrecht konsolidiert)
+  title: Einkommensteuergesetz 1988 § 33, version in force from 1 January 2026 (XML)
+  url: https://ogd.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40274868/NOR40274868.xml
+  accessed_at: '2026-11-03'
+  locator: Document metadata, Inkrafttretensdatum
+  value: 01.01.2026
+  unit: text
+  snippet: <absatz typ="erltext" ct="ikra" halign="j">01.01.2026</absatz>
+  source_license: unstated
+  content_sha256: 1593213d5f85d92222da692e76c9be1e8fb8a773860be7d60d12c78438ec9f6a
+  role: primary
+- publisher: Bundeskanzleramt (RIS, Bundesrecht konsolidiert)
+  title: Einkommensteuergesetz 1988 § 33, version in force from 30 July 2026 (XML)
+  url: https://ogd.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40279893/NOR40279893.xml
+  accessed_at: '2026-11-03'
+  locator: Document metadata of the following version, Außerkrafttretensdatum
+  value: 31.12.2026
+  unit: text
+  snippet: <absatz typ="erltext" ct="akra" halign="j">31.12.2026</absatz>
+  source_license: unstated
+  content_sha256: 1be4e81639fd27674daa717eea04cc4a7f20aa9b42b0bef29cf0c64852685dad
+  role: supporting
+- publisher: Bundeskanzleramt (RIS, Bundesrecht konsolidiert)
+  title: Einkommensteuergesetz 1988 § 33, version in force from 30 July 2026 (XML)
+  url: https://ogd.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40279893/NOR40279893.xml
+  accessed_at: '2026-11-03'
+  locator: § 33 Absatz 1 with notes on the 2027 amounts
+  value: 'für 2027: 13 846 Euro'
+  unit: text
+  snippet: 'Anm. 2: gemäß BGBl. II Nr. 260/2026 für 2027: 13 846 Euro'
+  source_license: unstated
+  content_sha256: 1be4e81639fd27674daa717eea04cc4a7f20aa9b42b0bef29cf0c64852685dad
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 7
+  tolerance: 0
+- statistic: rate[50%]
+  expected: 50
+  tolerance: 0
+notes: 'The Austrian income tax scale for the 2026 calendar year as § 33(1) EStG 1988 states it in the RIS consolidated
+  text: income slices taxed at 0, 20, 30, 40, 48 and 50 percent and, for the part of income above one million euros,
+  55 percent for the calendar years 2016 to 2029. The version in force from 1 January 2026 and the version in force
+  from 30 July 2026 to 31 December 2026 carry the same brackets; the later one adds notes with the inflation-adjusted
+  amounts for 2027 (BGBl. II Nr. 260/2026). The rule applies the slices to taxable income; deductible credits (Absetzbeträge
+  such as the Verkehrsabsetzbetrag and Familienbonus Plus) are deducted from the result under § 33(2) and are not
+  modelled, and the sixth-part taxation of 13th and 14th salaries under § 67 is outside this rule. Vectors other
+  than the nil slice are computed from the brackets. RIS documents carry no licence statement in the fetched XML,
+  so the licence is recorded as unstated and the entry stays at license-review.'

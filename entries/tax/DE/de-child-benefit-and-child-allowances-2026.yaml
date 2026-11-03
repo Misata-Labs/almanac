@@ -1,0 +1,160 @@
+id: de-child-benefit-and-child-allowances-2026
+title: Germany child benefit (Kindergeld) and child tax allowances from 1 January 2026 (EStG § 66 and § 32(6))
+kind: rule
+domain: tax
+region: DE
+status: license-review
+tier: A
+valid_from: '2026-01-01'
+valid_to: null
+tags:
+- payroll
+- tax
+- child-benefit
+- allowance
+- statute
+- reference-table
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: EUR
+    rows:
+      kindergeld_monthly:
+        amount: 259
+        period: month
+        per: child
+        legal_basis: EStG § 66 Absatz 1
+      kinderfreibetrag:
+        amount: 3414
+        period: year
+        per: child and parent
+        legal_basis: EStG § 32 Absatz 6 Satz 1
+      betreuungsfreibetrag:
+        amount: 1464
+        period: year
+        per: child and parent
+        legal_basis: EStG § 32 Absatz 6 Satz 1
+  vectors:
+  - input:
+      key: kindergeld_monthly
+      column: amount
+    expected: 259
+    origin: source
+  - input:
+      key: kinderfreibetrag
+      column: amount
+    expected: 3414
+    origin: source
+  - input:
+      key: betreuungsfreibetrag
+      column: amount
+    expected: 1464
+    origin: source
+  - input: elterngeld
+    expected: false
+    origin: derived
+    note: not part of this table
+evidence:
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, estg (XML archive)
+  url: https://www.gesetze-im-internet.de/estg/xml.zip
+  accessed_at: '2026-11-03'
+  locator: EStG § 66 Absatz 1
+  value: '259'
+  unit: text
+  snippet: Das Kindergeld beträgt monatlich für jedes Kind 259 Euro
+  source_license: unstated
+  content_sha256: 8b5b3cce19fa17128f54f55cc50fe3ee5641e31c2b9d73a027561fb9b4afc412
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, estg (XML archive)
+  url: https://www.gesetze-im-internet.de/estg/xml.zip
+  accessed_at: '2026-11-03'
+  locator: EStG § 32 Absatz 6 Satz 1
+  value: 3 414
+  unit: text
+  snippet: ein Freibetrag von 3 414 Euro für das sächliche Existenzminimum des Kindes (Kinderfreibetrag)
+  source_license: unstated
+  content_sha256: 8b5b3cce19fa17128f54f55cc50fe3ee5641e31c2b9d73a027561fb9b4afc412
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, estg (XML archive)
+  url: https://www.gesetze-im-internet.de/estg/xml.zip
+  accessed_at: '2026-11-03'
+  locator: EStG § 32 Absatz 6 Satz 1
+  value: 1 464
+  unit: text
+  snippet: ein Freibetrag von 1 464 Euro für den Betreuungs- und Erziehungs- oder Ausbildungsbedarf des Kindes
+  source_license: unstated
+  content_sha256: 8b5b3cce19fa17128f54f55cc50fe3ee5641e31c2b9d73a027561fb9b4afc412
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, estg (XML archive)
+  url: https://www.gesetze-im-internet.de/estg/xml.zip
+  accessed_at: '2026-11-03'
+  locator: EStG § 32 Absatz 6 Satz 2
+  value: verdoppeln sich die Beträge nach Satz 1
+  unit: text
+  snippet: verdoppeln sich die Beträge nach Satz 1, wenn das Kind zu beiden Ehegatten in einem Kindschaftsverhältnis
+    steht
+  source_license: unstated
+  content_sha256: 8b5b3cce19fa17128f54f55cc50fe3ee5641e31c2b9d73a027561fb9b4afc412
+  role: supporting
+- publisher: Bundesministerium der Justiz (Bundesgesetzblatt)
+  title: Steuerfortentwicklungsgesetz (SteFeG), BGBl. 2024 I Nr. 449 (PDF)
+  url: https://www.recht.bund.de/bgbl/1/2024/449/regelungstext.pdf?__blob=publicationFile&v=1
+  accessed_at: '2026-11-03'
+  locator: Artikel 2 Nummer 1 and Nummer 4 (amendments in force on 1 January 2026)
+  value: „3 414 Euro“
+  unit: text
+  snippet: In § 32 Absatz 6 Satz 1 wird die Angabe „3 336 Euro“ durch die Angabe „3 414 Euro“ ersetzt.
+  source_license: unstated
+  content_sha256: 0a679eafcaf3a658b84a5ef0a69992539fee7052cc80eca6fe2a04a9e56ddcf3
+  role: supporting
+- publisher: Bundesministerium der Justiz (Bundesgesetzblatt)
+  title: Steuerfortentwicklungsgesetz (SteFeG), BGBl. 2024 I Nr. 449 (PDF)
+  url: https://www.recht.bund.de/bgbl/1/2024/449/regelungstext.pdf?__blob=publicationFile&v=1
+  accessed_at: '2026-11-03'
+  locator: Artikel 2 Nummer 4 Buchstabe a
+  value: „259 Euro“
+  unit: text
+  snippet: In Absatz 1 wird die Angabe „255 Euro“ durch die Angabe „259 Euro“ ersetzt.
+  source_license: unstated
+  content_sha256: 0a679eafcaf3a658b84a5ef0a69992539fee7052cc80eca6fe2a04a9e56ddcf3
+  role: supporting
+- publisher: Bundesministerium der Justiz (Bundesgesetzblatt)
+  title: Steuerfortentwicklungsgesetz (SteFeG), BGBl. 2024 I Nr. 449 (PDF)
+  url: https://www.recht.bund.de/bgbl/1/2024/449/regelungstext.pdf?__blob=publicationFile&v=1
+  accessed_at: '2026-11-03'
+  locator: Artikel 10 Absatz 2 (Inkrafttreten)
+  value: Die Artikel 2, 4 und 6 treten am 1. Januar 2026 in Kraft.
+  unit: text
+  snippet: Die Artikel 2, 4 und 6 treten am 1. Januar 2026 in Kraft.
+  source_license: unstated
+  content_sha256: 0a679eafcaf3a658b84a5ef0a69992539fee7052cc80eca6fe2a04a9e56ddcf3
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+- statistic: value[kindergeld_monthly, amount]
+  expected: 259
+  tolerance: 0
+notes: 'Monthly Kindergeld per child (EStG § 66(1)) and the two annual child allowances deducted in the income tax
+  assessment: the Kinderfreibetrag for the child''s material subsistence minimum and the allowance for care, upbringing
+  or education (Betreuungs- und Erziehungs- oder Ausbildungsbedarf), both per parent; § 32(6) sentence 2 doubles
+  them for spouses assessed jointly when the child is the child of both. In the assessment the tax office compares
+  the tax saving from the allowances with the Kindergeld received (Günstigerprüfung, § 31) and the rule does not
+  model that comparison. The Kindergeld and Kinderfreibetrag figures were set by Article 2 of the Steuerfortentwicklungsgesetz,
+  which entered into force on 1 January 2026; the care allowance is the figure in the consolidated text and was
+  already in force on that date. Gesetze im Internet carries no licence statement, so the licence is recorded as
+  unstated and the entry stays at license-review.'

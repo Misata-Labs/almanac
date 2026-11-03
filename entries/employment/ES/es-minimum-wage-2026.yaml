@@ -1,0 +1,146 @@
+id: es-minimum-wage-2026
+title: 'Spain interprofessional minimum wage (SMI) for 2026: monthly, daily and annual amounts (Real Decreto 126/2026)'
+kind: rule
+domain: employment
+region: ES
+status: license-review
+tier: A
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- payroll
+- employment
+- minimum-wage
+- statute
+- reference-table
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: EUR
+    rows:
+      monthly:
+        amount: 1221
+        unit: euros per month
+        basis: artículo 1
+      daily:
+        amount: 40.7
+        unit: euros per day
+        basis: artículo 1
+      annual_minimum:
+        amount: 17094
+        unit: euros per year
+        basis: artículo 3.1
+      temporary_up_to_120_days_daily:
+        amount: 57.82
+        unit: euros per legal working day
+        basis: artículo 4.1
+      household_employee_hourly:
+        amount: 9.55
+        unit: euros per hour worked
+        basis: artículo 4.2
+  vectors:
+  - input:
+      key: monthly
+      column: amount
+    expected: 1221
+    origin: source
+  - input:
+      key: daily
+      column: amount
+    expected: 40.7
+    origin: source
+  - input:
+      key: annual_minimum
+      column: amount
+    expected: 17094
+    origin: source
+  - input:
+      key: temporary_up_to_120_days_daily
+      column: amount
+    expected: 57.82
+    origin: source
+  - input:
+      key: household_employee_hourly
+      column: amount
+    expected: 9.55
+    origin: source
+evidence:
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Real Decreto 126/2026, por el que se fija el salario mínimo interprofesional para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-3815
+  accessed_at: '2026-11-03'
+  locator: Artículo 1
+  value: 1 221
+  unit: text
+  snippet: queda fijado en 40,70 euros/día o 1 221 euros/mes
+  source_license: unstated
+  content_sha256: 0fc178f31f57187a027b8ecdad3547706dc77f81ea5080a02198889a69cbe9e1
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Real Decreto 126/2026, por el que se fija el salario mínimo interprofesional para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-3815
+  accessed_at: '2026-11-03'
+  locator: Artículo 3.1
+  value: 17 094
+  unit: text
+  snippet: sin que en ningún caso pueda considerarse una cuantía anual inferior a 17 094 euros
+  source_license: unstated
+  content_sha256: 0fc178f31f57187a027b8ecdad3547706dc77f81ea5080a02198889a69cbe9e1
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Real Decreto 126/2026, por el que se fija el salario mínimo interprofesional para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-3815
+  accessed_at: '2026-11-03'
+  locator: Artículo 4.1
+  value: 57,82
+  unit: text
+  snippet: sin que la cuantía del salario profesional pueda resultar inferior a 57,82 euros por jornada legal
+  source_license: unstated
+  content_sha256: 0fc178f31f57187a027b8ecdad3547706dc77f81ea5080a02198889a69cbe9e1
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Real Decreto 126/2026, por el que se fija el salario mínimo interprofesional para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-3815
+  accessed_at: '2026-11-03'
+  locator: Artículo 4.2
+  value: 9,55
+  unit: text
+  snippet: el salario mínimo de dichas empleadas y empleados de hogar será de 9,55 euros por hora efectivamente
+    trabajada
+  source_license: unstated
+  content_sha256: 0fc178f31f57187a027b8ecdad3547706dc77f81ea5080a02198889a69cbe9e1
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Real Decreto 126/2026, por el que se fija el salario mínimo interprofesional para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-3815
+  accessed_at: '2026-11-03'
+  locator: Disposición final tercera
+  value: entre el 1 de enero y el 31 de diciembre de 2026
+  unit: text
+  snippet: surtirá efectos durante el período comprendido entre el 1 de enero y el 31 de diciembre de 2026
+  source_license: unstated
+  content_sha256: 0fc178f31f57187a027b8ecdad3547706dc77f81ea5080a02198889a69cbe9e1
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: value[monthly, amount]
+  expected: 1221
+  tolerance: 0
+notes: 'The Spanish salario mínimo interprofesional for 2026 fixed by Real Decreto 126/2026 (BOE 19 February 2026),
+  with effect from 1 January to 31 December 2026: the general amount by day or by month (article 1), the annual
+  amount used to compare total pay (article 3.1, which corresponds to fourteen monthly payments), the daily minimum
+  for fixed-term workers whose service with one company does not exceed 120 days, which includes the proportional
+  share of Sundays, holidays and the two extraordinary payments (article 4.1), and the hourly minimum for household
+  employees working by the hour (article 4.2). The BOE XML carries no licence statement, so the licence is recorded
+  as unstated and the entry stays at license-review.'

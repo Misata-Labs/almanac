@@ -1,0 +1,157 @@
+id: nl-box1-income-tax-brackets-2026
+title: Netherlands box 1 income tax brackets for 2026 (Wet inkomstenbelasting 2001, article 2.10), excluding national
+  insurance contributions
+kind: rule
+domain: tax
+region: NL
+status: license-review
+tier: A
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- payroll
+- tax
+- income-tax
+- statute
+- tax-bands
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.cumulative_bracket_tariff
+  parameters:
+    tax_year: 2026
+    currency: EUR
+    brackets:
+    - name: schijf 1
+      over: 0
+      base_tax: 0
+      rate_percent: 8.1
+    - name: schijf 2
+      over: 38883
+      base_tax: 3149
+      rate_percent: 37.56
+    - name: schijf 3
+      over: 78426
+      base_tax: 18001
+      rate_percent: 49.5
+    scope: box 1 tax for taxpayers born on or after 1 January 1946, excluding national insurance contributions
+  vectors:
+  - input:
+      marginal_rate_for: 30000
+    expected: 8.1
+    origin: source
+  - input:
+      marginal_rate_for: 50000
+    expected: 37.56
+    origin: source
+  - input:
+      marginal_rate_for: 100000
+    expected: 49.5
+    origin: source
+  - input:
+      income: 38883
+    expected: '3149.52'
+    origin: derived
+    note: top of the first bracket
+  - input:
+      income: 60000
+    expected: '11080.55'
+    origin: derived
+  - input:
+      income: 88426
+    expected: '22951.00'
+    origin: derived
+    note: column III amount plus the top rate on 10 000 of excess
+evidence:
+- publisher: Overheid.nl (Basiswettenbestand)
+  title: Wet inkomstenbelasting 2001, version valid from 1 January 2026 (BWB XML)
+  url: https://repository.officiele-overheidspublicaties.nl/bwb/BWBR0011353/2026-01-01_1/xml/BWBR0011353_2026-01-01_1.xml
+  accessed_at: '2026-11-03'
+  locator: Artikel 2.10 lid 1, tabel, rij 1 (kolom II)
+  value: € 38.883
+  unit: text
+  snippet: Bij een belastbaar inkomen uit werk en woning van meer dan
+  source_license: unstated
+  content_sha256: 6f6309c07e8feb508a2a28583410d0b2cfb4415e9d5faf1916e1c19165259d74
+  role: primary
+- publisher: Overheid.nl (Basiswettenbestand)
+  title: Wet inkomstenbelasting 2001, version valid from 1 January 2026 (BWB XML)
+  url: https://repository.officiele-overheidspublicaties.nl/bwb/BWBR0011353/2026-01-01_1/xml/BWBR0011353_2026-01-01_1.xml
+  accessed_at: '2026-11-03'
+  locator: Artikel 2.10 lid 1, tabel, kolom IV
+  value: 8,10%
+  unit: text
+  snippet: maar niet meer dan
+  source_license: unstated
+  content_sha256: 6f6309c07e8feb508a2a28583410d0b2cfb4415e9d5faf1916e1c19165259d74
+  role: primary
+- publisher: Overheid.nl (Basiswettenbestand)
+  title: Wet inkomstenbelasting 2001, version valid from 1 January 2026 (BWB XML)
+  url: https://repository.officiele-overheidspublicaties.nl/bwb/BWBR0011353/2026-01-01_1/xml/BWBR0011353_2026-01-01_1.xml
+  accessed_at: '2026-11-03'
+  locator: Artikel 2.10 lid 1, tabel, rij 2 (kolom III)
+  value: € 3.149
+  unit: text
+  snippet: het in kolom III vermelde bedrag, vermeerderd met het bedrag dat wordt berekend door het in kolom IV
+    vermelde percentage
+  source_license: unstated
+  content_sha256: 6f6309c07e8feb508a2a28583410d0b2cfb4415e9d5faf1916e1c19165259d74
+  role: primary
+- publisher: Overheid.nl (Basiswettenbestand)
+  title: Wet inkomstenbelasting 2001, version valid from 1 January 2026 (BWB XML)
+  url: https://repository.officiele-overheidspublicaties.nl/bwb/BWBR0011353/2026-01-01_1/xml/BWBR0011353_2026-01-01_1.xml
+  accessed_at: '2026-11-03'
+  locator: Artikel 2.10 lid 1, tabel, rij 2 en 3 (kolom IV)
+  value: 37,56%
+  unit: text
+  snippet: Tarief belastbaar inkomen uit werk en woning
+  source_license: unstated
+  content_sha256: 6f6309c07e8feb508a2a28583410d0b2cfb4415e9d5faf1916e1c19165259d74
+  role: primary
+- publisher: Overheid.nl (Basiswettenbestand)
+  title: Wet inkomstenbelasting 2001, version valid from 1 January 2026 (BWB XML)
+  url: https://repository.officiele-overheidspublicaties.nl/bwb/BWBR0011353/2026-01-01_1/xml/BWBR0011353_2026-01-01_1.xml
+  accessed_at: '2026-11-03'
+  locator: Artikel 2.10 lid 1, tabel, rij 3 (kolom III)
+  value: € 18.001
+  unit: text
+  snippet: label="Artikel 2.10"
+  source_license: unstated
+  content_sha256: 6f6309c07e8feb508a2a28583410d0b2cfb4415e9d5faf1916e1c19165259d74
+  role: primary
+- publisher: Overheid.nl (Basiswettenbestand)
+  title: Wet inkomstenbelasting 2001, version valid from 1 January 2026 (BWB XML)
+  url: https://repository.officiele-overheidspublicaties.nl/bwb/BWBR0011353/2026-01-01_1/xml/BWBR0011353_2026-01-01_1.xml
+  accessed_at: '2026-11-03'
+  locator: Artikel 2.10 lid 1, tabel, rij 3 (kolom IV)
+  value: 49,50%
+  unit: text
+  snippet: inwerking="2026-01-01" label="Artikel 2.10"
+  source_license: unstated
+  content_sha256: 6f6309c07e8feb508a2a28583410d0b2cfb4415e9d5faf1916e1c19165259d74
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+- statistic: rate[schijf 3]
+  expected: 49.5
+  tolerance: 0
+notes: 'The tax on taxable income from work and home (box 1) under article 2.10 of the Wet inkomstenbelasting 2001
+  in the version in force from 1 January 2026 (Staatscourant 2025, 40487): for each row, the tax is the column III
+  amount plus the column IV percentage of the income above the column I amount. Article 2.10 sets the tax only:
+  national insurance contributions (premie volksverzekeringen) are levied on the first bracket under separate legislation
+  and are not included, and taxpayers born before 1 January 1946 use article 2.10a. Article 2.10(2) adds a further
+  charge on certain deductions in the top bracket, and the general tax credit and labour tax credit (articles 8.10
+  and 8.11) are deducted from tax and premiums together; neither is modelled. The column III amounts are whole euros,
+  so the tax just below a bracket limit can exceed the column III amount of the next row by a few cents; the rule
+  follows the table row that applies. The source vectors restate the column IV rates; the others are computed from
+  the table. Dutch statutes carry no copyright under the Auteurswet, but the BWB XML carries no licence statement,
+  so the licence is recorded as unstated and the entry stays at license-review.'

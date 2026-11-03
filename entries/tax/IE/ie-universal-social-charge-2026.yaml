@@ -1,0 +1,214 @@
+id: ie-universal-social-charge-2026
+title: Ireland Universal Social Charge rates and income slices from 2026 (Finance Act 2025, section 531AN Taxes
+  Consolidation Act 1997)
+kind: rule
+domain: tax
+region: IE
+status: license-review
+tier: A
+valid_from: '2026-01-01'
+valid_to: null
+tags:
+- payroll
+- tax
+- usc
+- social-charge
+- statute
+- tax-bands
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.ie_income_tax_usc
+  parameters:
+    charge: usc
+    tax_year: 2026
+    currency: EUR
+    bands:
+    - up_to: 12012
+      rate_percent: 0.5
+    - up_to: 28700
+      rate_percent: 2
+    - up_to: 70044
+      rate_percent: 3
+    - up_to: null
+      rate_percent: 8
+    slices_as_enacted:
+    - slice: 12012
+      rate_percent: 0.5
+    - slice: 16688
+      rate_percent: 2
+    - slice: 41344
+      rate_percent: 3
+  vectors:
+  - input:
+      income: 30000
+      round: euro
+    expected: '433'
+    origin: source
+    note: 'Department of Finance Budget 2026, Table 2: USC proposed for 2026 on 30,000'
+  - input:
+      income: 50000
+      round: euro
+    expected: '1033'
+    origin: source
+    note: 'Department of Finance Budget 2026, Table 2: USC proposed for 2026 on 50,000'
+  - input:
+      income: 100000
+      round: euro
+    expected: '4031'
+    origin: source
+    note: 'Department of Finance Budget 2026, Table 2: USC proposed for 2026 on 100,000'
+  - input:
+      income: 175000
+      round: euro
+    expected: '10031'
+    origin: source
+    note: 'Department of Finance Budget 2026, Table 2: USC proposed for 2026 on 175,000'
+  - input:
+      income: 28700
+    expected: '393.82'
+    origin: derived
+    note: top of the 2 percent slice
+evidence:
+- publisher: Office of the Attorney General (Irish Statute Book)
+  title: Finance Act 2025 (No. 18 of 2025), XML
+  url: https://www.irishstatutebook.ie/eli/2025/act/18/enacted/en/xml
+  accessed_at: '2026-11-03'
+  locator: Section 2(1)(c), Part 1 of the Table to section 531AN
+  value: 12,012
+  unit: text
+  snippet: Rate of universal social charge
+  source_license: unstated
+  content_sha256: b0013ab7d8289c87862a382b27fc0bbbbc06abee76a825f91b5f06a18cfc355c
+  role: primary
+- publisher: Office of the Attorney General (Irish Statute Book)
+  title: Finance Act 2025 (No. 18 of 2025), XML
+  url: https://www.irishstatutebook.ie/eli/2025/act/18/enacted/en/xml
+  accessed_at: '2026-11-03'
+  locator: Section 2(1)(c), Part 1 of the Table to section 531AN
+  value: 16,688
+  unit: text
+  snippet: Rate of universal social charge
+  source_license: unstated
+  content_sha256: b0013ab7d8289c87862a382b27fc0bbbbc06abee76a825f91b5f06a18cfc355c
+  role: primary
+- publisher: Office of the Attorney General (Irish Statute Book)
+  title: Finance Act 2025 (No. 18 of 2025), XML
+  url: https://www.irishstatutebook.ie/eli/2025/act/18/enacted/en/xml
+  accessed_at: '2026-11-03'
+  locator: Section 2(1)(c), Part 1 of the Table to section 531AN
+  value: 41,344
+  unit: text
+  snippet: Rate of universal social charge
+  source_license: unstated
+  content_sha256: b0013ab7d8289c87862a382b27fc0bbbbc06abee76a825f91b5f06a18cfc355c
+  role: primary
+- publisher: Office of the Attorney General (Irish Statute Book)
+  title: Finance Act 2025 (No. 18 of 2025), XML
+  url: https://www.irishstatutebook.ie/eli/2025/act/18/enacted/en/xml
+  accessed_at: '2026-11-03'
+  locator: Section 2(1)(c), Part 1 of the Table to section 531AN, rates
+  value: 0.5 per cent
+  unit: text
+  snippet: Part of aggregate income
+  source_license: unstated
+  content_sha256: b0013ab7d8289c87862a382b27fc0bbbbc06abee76a825f91b5f06a18cfc355c
+  role: primary
+- publisher: Office of the Attorney General (Irish Statute Book)
+  title: Finance Act 2025 (No. 18 of 2025), XML
+  url: https://www.irishstatutebook.ie/eli/2025/act/18/enacted/en/xml
+  accessed_at: '2026-11-03'
+  locator: Section 2(1)(c), Part 1 of the Table to section 531AN, remainder
+  value: 8 per cent
+  unit: text
+  snippet: The remainder
+  source_license: unstated
+  content_sha256: b0013ab7d8289c87862a382b27fc0bbbbc06abee76a825f91b5f06a18cfc355c
+  role: primary
+- publisher: Office of the Attorney General (Irish Statute Book)
+  title: Finance Act 2025 (No. 18 of 2025), XML
+  url: https://www.irishstatutebook.ie/eli/2025/act/18/enacted/en/xml
+  accessed_at: '2026-11-03'
+  locator: Section 2(2)
+  value: year of assessment 2026
+  unit: text
+  snippet: applies for the year of assessment 2026 and each subsequent year of assessment.
+  source_license: unstated
+  content_sha256: b0013ab7d8289c87862a382b27fc0bbbbc06abee76a825f91b5f06a18cfc355c
+  role: primary
+- publisher: Department of Finance (Ireland)
+  title: Budget 2026 Tax Policy Changes (PDF)
+  url: https://assets.gov.ie/static/documents/beb5bc84/Budget_2026_Tax_Policy_Changes_Book_041125.pdf
+  accessed_at: '2026-11-03'
+  locator: page 21, Table 2, single person, PAYE, full rate PRSI
+  value: '433'
+  unit: text
+  snippet: 30,000 0 30,000 2,000 2,000 1,238 1,271 446 433
+  source_license: unstated
+  content_sha256: a7f846f620cadacfde66e12ddafb5719b59c1388839c324c0dde722231a4249d
+  role: supporting
+- publisher: Department of Finance (Ireland)
+  title: Budget 2026 Tax Policy Changes (PDF)
+  url: https://assets.gov.ie/static/documents/beb5bc84/Budget_2026_Tax_Policy_Changes_Book_041125.pdf
+  accessed_at: '2026-11-03'
+  locator: page 21, Table 2, single person, PAYE, full rate PRSI
+  value: 1,033
+  unit: text
+  snippet: 50,000 0 50,000 7,200 7,200 2,063 2,119 1,046 1,033
+  source_license: unstated
+  content_sha256: a7f846f620cadacfde66e12ddafb5719b59c1388839c324c0dde722231a4249d
+  role: supporting
+- publisher: Department of Finance (Ireland)
+  title: Budget 2026 Tax Policy Changes (PDF)
+  url: https://assets.gov.ie/static/documents/beb5bc84/Budget_2026_Tax_Policy_Changes_Book_041125.pdf
+  accessed_at: '2026-11-03'
+  locator: page 21, Table 2, single person, PAYE, full rate PRSI
+  value: 4,031
+  unit: text
+  snippet: 100,000 0 100,000 27,200 27,200 4,125 4,238 4,044 4,031
+  source_license: unstated
+  content_sha256: a7f846f620cadacfde66e12ddafb5719b59c1388839c324c0dde722231a4249d
+  role: supporting
+- publisher: Department of Finance (Ireland)
+  title: Budget 2026 Tax Policy Changes (PDF)
+  url: https://assets.gov.ie/static/documents/beb5bc84/Budget_2026_Tax_Policy_Changes_Book_041125.pdf
+  accessed_at: '2026-11-03'
+  locator: page 21, Table 2, single person, PAYE, full rate PRSI
+  value: 10,031
+  unit: text
+  snippet: 175,000 0 175,000 57,200 57,200 7,219 7,416 10,044 10,031
+  source_license: unstated
+  content_sha256: a7f846f620cadacfde66e12ddafb5719b59c1388839c324c0dde722231a4249d
+  role: supporting
+assumed:
+- parameter: bands[*].up_to
+  value:
+  - 12012
+  - 28700
+  - 70044
+  - null
+  method: derived
+  rationale: The Act states each slice as 'the first' or 'the next' amount; the cumulative upper limits are the
+    running sums of those slices.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: rate[3]
+  expected: 8
+  tolerance: 0
+notes: 'The standard rates of the Universal Social Charge on aggregate income for 2026 and later years, as section
+  2 of the Finance Act 2025 substitutes Part 1 of the Table to section 531AN of the Taxes Consolidation Act 1997:
+  four slices with their rates, which the rule applies in turn (cumulative limits under bands, the enacted slices
+  under slices_as_enacted). Individuals whose total income is below the exemption threshold in section 531AM pay
+  no USC, reduced rates apply to medical card holders and people aged 70 or over with lower incomes (section 531AN(3)
+  and (4)), and a surcharge applies to certain non-PAYE income; none of these is modelled. The source vectors are
+  the Department of Finance''s Budget 2026 worked USC figures for a single PAYE employee, which it notes are rounded.
+  Neither publisher states a licence in these documents, so the licence is recorded as unstated and the entry stays
+  at license-review.'

@@ -1,0 +1,177 @@
+id: de-social-insurance-reference-values-2026
+title: 'Germany social insurance reference values for 2026: pension contribution ceilings, health insurance thresholds
+  and reference amount'
+kind: rule
+domain: tax
+region: DE
+status: license-review
+tier: A
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- payroll
+- social-insurance
+- social-contributions
+- contribution-ceiling
+- statute
+- reference-table
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: EUR
+    year: 2026
+    rows:
+      bezugsgroesse:
+        annual: 47460
+        monthly: 3955
+        legal_basis: SVBezGrV 2026 § 1 (SGB IV § 18)
+      jahresarbeitsentgeltgrenze:
+        annual: 77400
+        monthly: 6450
+        legal_basis: SVBezGrV 2026 § 2(1) (SGB V § 6(6))
+      jahresarbeitsentgeltgrenze_bestandsfaelle:
+        annual: 69750
+        monthly: 5812.5
+        legal_basis: SVBezGrV 2026 § 2(2) (SGB V § 6(7))
+      beitragsbemessungsgrenze_rv_allgemein:
+        annual: 101400
+        monthly: 8450
+        legal_basis: SVBezGrV 2026 § 4(1) Nr. 1 (SGB VI § 159)
+      beitragsbemessungsgrenze_rv_knappschaft:
+        annual: 124800
+        monthly: 10400
+        legal_basis: SVBezGrV 2026 § 4(1) Nr. 2 (SGB VI § 159)
+      vorlaeufiges_durchschnittsentgelt_rv:
+        annual: 51944
+        monthly: null
+        legal_basis: SVBezGrV 2026 § 3(2) (SGB VI § 69(2))
+  vectors:
+  - input:
+      key: beitragsbemessungsgrenze_rv_allgemein
+      column: monthly
+    expected: 8450
+    origin: source
+  - input:
+      key: jahresarbeitsentgeltgrenze
+      column: annual
+    expected: 77400
+    origin: source
+  - input:
+      key: bezugsgroesse
+      column: monthly
+    expected: 3955
+    origin: source
+  - input:
+      key: jahresarbeitsentgeltgrenze_bestandsfaelle
+      column: monthly
+    expected: 5812.5
+    origin: source
+  - input: beitragsbemessungsgrenze_kv
+    expected: false
+    origin: derived
+    note: the health insurance ceiling is not fixed by this ordinance for 2026
+evidence:
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, svbezgrv_2026 (XML archive)
+  url: https://www.gesetze-im-internet.de/svbezgrv_2026/xml.zip
+  accessed_at: '2026-11-03'
+  locator: SVBezGrV 2026 § 1
+  value: 47 460
+  unit: text
+  snippet: für das Jahr 2026 beträgt 47 460 Euro. Umgerechnet auf den Monat ergeben sich 3 955 Euro.
+  source_license: unstated
+  content_sha256: ade3d2a7d0292b863ab8000ebcbbae6f7367a7240a1ed648932841b1a55c3e6c
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, svbezgrv_2026 (XML archive)
+  url: https://www.gesetze-im-internet.de/svbezgrv_2026/xml.zip
+  accessed_at: '2026-11-03'
+  locator: SVBezGrV 2026 § 2 Absatz 1
+  value: 77 400
+  unit: text
+  snippet: wird für das Jahr 2026 auf 77 400 Euro festgesetzt. Umgerechnet auf den Monat ergeben sich 6 450 Euro.
+  source_license: unstated
+  content_sha256: ade3d2a7d0292b863ab8000ebcbbae6f7367a7240a1ed648932841b1a55c3e6c
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, svbezgrv_2026 (XML archive)
+  url: https://www.gesetze-im-internet.de/svbezgrv_2026/xml.zip
+  accessed_at: '2026-11-03'
+  locator: SVBezGrV 2026 § 2 Absatz 2
+  value: 69 750
+  unit: text
+  snippet: wird für das Jahr 2026 auf 69 750 Euro festgesetzt. Umgerechnet auf den Monat ergeben sich 5 812,50 Euro.
+  source_license: unstated
+  content_sha256: ade3d2a7d0292b863ab8000ebcbbae6f7367a7240a1ed648932841b1a55c3e6c
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, svbezgrv_2026 (XML archive)
+  url: https://www.gesetze-im-internet.de/svbezgrv_2026/xml.zip
+  accessed_at: '2026-11-03'
+  locator: SVBezGrV 2026 § 3 Absatz 2
+  value: 51 944
+  unit: text
+  snippet: Sechsten Buches Sozialgesetzbuch für das Jahr 2026 beträgt 51 944 Euro.
+  source_license: unstated
+  content_sha256: ade3d2a7d0292b863ab8000ebcbbae6f7367a7240a1ed648932841b1a55c3e6c
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, svbezgrv_2026 (XML archive)
+  url: https://www.gesetze-im-internet.de/svbezgrv_2026/xml.zip
+  accessed_at: '2026-11-03'
+  locator: SVBezGrV 2026 § 4 Absatz 1 Nummer 1
+  value: 101 400
+  unit: text
+  snippet: in der allgemeinen Rentenversicherung auf 101 400 Euro jährlich; umgerechnet auf den Monat ergeben sich
+    8 450 Euro
+  source_license: unstated
+  content_sha256: ade3d2a7d0292b863ab8000ebcbbae6f7367a7240a1ed648932841b1a55c3e6c
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, svbezgrv_2026 (XML archive)
+  url: https://www.gesetze-im-internet.de/svbezgrv_2026/xml.zip
+  accessed_at: '2026-11-03'
+  locator: SVBezGrV 2026 § 4 Absatz 1 Nummer 2
+  value: 124 800
+  unit: text
+  snippet: in der knappschaftlichen Rentenversicherung auf 124 800 Euro jährlich; umgerechnet auf den Monat ergeben
+    sich 10 400 Euro
+  source_license: unstated
+  content_sha256: ade3d2a7d0292b863ab8000ebcbbae6f7367a7240a1ed648932841b1a55c3e6c
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, svbezgrv_2026 (XML archive)
+  url: https://www.gesetze-im-internet.de/svbezgrv_2026/xml.zip
+  accessed_at: '2026-11-03'
+  locator: SVBezGrV 2026 § 5
+  value: Diese Verordnung tritt am 1. Januar 2026 in Kraft.
+  unit: text
+  snippet: Diese Verordnung tritt am 1. Januar 2026 in Kraft.
+  source_license: unstated
+  content_sha256: ade3d2a7d0292b863ab8000ebcbbae6f7367a7240a1ed648932841b1a55c3e6c
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 6
+  tolerance: 0
+- statistic: value[beitragsbemessungsgrenze_rv_allgemein, annual]
+  expected: 101400
+  tolerance: 0
+notes: 'The Sozialversicherungsrechengrößen-Verordnung 2026 (BGBl. 2025 I Nr. 278): the reference amount (Bezugsgröße)
+  of SGB IV § 18, the compulsory health insurance thresholds of SGB V § 6(6) and, for employees already privately
+  insured at the end of 2002, § 6(7), the provisional average earnings in the pension insurance for 2026, and the
+  pension and unemployment insurance contribution ceilings for the general and miners'' pension insurance, each
+  as an annual amount and the monthly amount the ordinance states. Earnings above a ceiling carry no contributions.
+  The ordinance has applied a single nationwide set of values since the east-west split ended, and the health and
+  long-term care contribution ceiling for 2026 is not among the values it fixes; SGB V § 223 as now consolidated
+  only states the 2027 ceiling. Gesetze im Internet carries no licence statement, so the licence is recorded as
+  unstated and the entry stays at license-review.'

@@ -1,0 +1,223 @@
+id: de-income-tax-tariff-2026
+title: 'Germany income tax tariff from 2026 under § 32a EStG: basic allowance, progressive zones and splitting for
+  joint assessment'
+kind: rule
+domain: tax
+region: DE
+status: license-review
+tier: A
+valid_from: '2026-01-01'
+valid_to: null
+tags:
+- payroll
+- tax
+- income-tax
+- statute
+- formula
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.de_income_tax_tariff
+  parameters:
+    tax_year_from: 2026
+    currency: EUR
+    zones:
+    - upper: 12348
+      formula: zero
+    - upper: 17799
+      formula: quadratic
+      offset: 12348
+      a: 914.51
+      b: 1400
+      c: 0
+    - upper: 69878
+      formula: quadratic
+      offset: 17799
+      a: 173.1
+      b: 2397
+      c: 1034.87
+    - upper: 277825
+      formula: linear
+      rate: 0.42
+      deduction: 11135.63
+    - upper: null
+      formula: linear
+      rate: 0.45
+      deduction: 19470.38
+    rounding: taxable income and tax rounded down to full euros
+    splitting: twice the tariff on half the joint taxable income
+  vectors:
+  - input:
+      income: 12348
+    expected: 0
+    origin: source
+    note: '§ 32a(1) Nr. 1: no tax up to the basic allowance'
+  - input:
+      income: 17799
+    expected: 1034
+    origin: source
+    note: the constant of zone 3 equals the zone 2 formula at its upper bound, rounded down
+  - input:
+      income: 12349
+    expected: 0
+    origin: derived
+    note: first euro above the basic allowance
+  - input:
+      income: 30000
+    expected: 4217
+    origin: derived
+  - input:
+      income: 69878
+    expected: 18213
+    origin: derived
+    note: top of the second progressive zone
+  - input:
+      income: 69879
+    expected: 18213
+    origin: derived
+    note: first euro at the 42 percent rate
+  - input:
+      income: 100000
+    expected: 30864
+    origin: derived
+  - input:
+      income: 277826
+    expected: 105551
+    origin: derived
+    note: first euro at the 45 percent rate
+  - input:
+      income: 60000.99
+    expected: 14233
+    origin: derived
+    note: taxable income is rounded down to full euros first
+  - input:
+      income: 60000
+      splitting: true
+    expected: 8434
+    origin: derived
+    note: '§ 32a(5) splitting: twice the tax on 30 000'
+  - input:
+      income: 24696
+      splitting: true
+    expected: 0
+    origin: derived
+    note: a couple pays nothing up to twice the basic allowance
+evidence:
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, estg (XML archive)
+  url: https://www.gesetze-im-internet.de/estg/xml.zip
+  accessed_at: '2026-11-03'
+  locator: EStG § 32a Absatz 1 Satz 2 Nummer 1
+  value: 12 348
+  unit: text
+  snippet: 'bis 12 348 Euro (Grundfreibetrag):'
+  source_license: unstated
+  content_sha256: 8b5b3cce19fa17128f54f55cc50fe3ee5641e31c2b9d73a027561fb9b4afc412
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, estg (XML archive)
+  url: https://www.gesetze-im-internet.de/estg/xml.zip
+  accessed_at: '2026-11-03'
+  locator: EStG § 32a Absatz 1 Satz 2 Nummer 2
+  value: (914,51 • y + 1 400) • y;
+  unit: text
+  snippet: 'von 12 349 Euro bis 17 799 Euro:'
+  source_license: unstated
+  content_sha256: 8b5b3cce19fa17128f54f55cc50fe3ee5641e31c2b9d73a027561fb9b4afc412
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, estg (XML archive)
+  url: https://www.gesetze-im-internet.de/estg/xml.zip
+  accessed_at: '2026-11-03'
+  locator: EStG § 32a Absatz 1 Satz 2 Nummer 3
+  value: (173,10 • z + 2 397) • z + 1 034,87;
+  unit: text
+  snippet: 'von 17 800 Euro bis 69 878 Euro:'
+  source_license: unstated
+  content_sha256: 8b5b3cce19fa17128f54f55cc50fe3ee5641e31c2b9d73a027561fb9b4afc412
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, estg (XML archive)
+  url: https://www.gesetze-im-internet.de/estg/xml.zip
+  accessed_at: '2026-11-03'
+  locator: EStG § 32a Absatz 1 Satz 2 Nummer 4
+  value: 0,42 • x – 11 135,63;
+  unit: text
+  snippet: 'von 69 879 Euro bis 277 825 Euro:'
+  source_license: unstated
+  content_sha256: 8b5b3cce19fa17128f54f55cc50fe3ee5641e31c2b9d73a027561fb9b4afc412
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, estg (XML archive)
+  url: https://www.gesetze-im-internet.de/estg/xml.zip
+  accessed_at: '2026-11-03'
+  locator: EStG § 32a Absatz 1 Satz 2 Nummer 5
+  value: 0,45 • x – 19 470,38.
+  unit: text
+  snippet: 'von 277 826 Euro an:'
+  source_license: unstated
+  content_sha256: 8b5b3cce19fa17128f54f55cc50fe3ee5641e31c2b9d73a027561fb9b4afc412
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, estg (XML archive)
+  url: https://www.gesetze-im-internet.de/estg/xml.zip
+  accessed_at: '2026-11-03'
+  locator: EStG § 32a Absatz 1 Sätze 2 to 6
+  value: ab dem Veranlagungszeitraum 2026
+  unit: text
+  snippet: Der sich ergebende Steuerbetrag ist auf den nächsten vollen Euro-Betrag abzurunden.
+  source_license: unstated
+  content_sha256: 8b5b3cce19fa17128f54f55cc50fe3ee5641e31c2b9d73a027561fb9b4afc412
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, estg (XML archive)
+  url: https://www.gesetze-im-internet.de/estg/xml.zip
+  accessed_at: '2026-11-03'
+  locator: EStG § 32a Absatz 5 (Splitting-Verfahren)
+  value: Splitting-Verfahren
+  unit: text
+  snippet: das Zweifache des Steuerbetrags, der sich für die Hälfte ihres gemeinsam zu versteuernden Einkommens
+    nach Absatz 1 ergibt
+  source_license: unstated
+  content_sha256: 8b5b3cce19fa17128f54f55cc50fe3ee5641e31c2b9d73a027561fb9b4afc412
+  role: primary
+- publisher: Bundesministerium der Justiz (Bundesgesetzblatt)
+  title: Steuerfortentwicklungsgesetz (SteFeG), BGBl. 2024 I Nr. 449 (PDF)
+  url: https://www.recht.bund.de/bgbl/1/2024/449/regelungstext.pdf?__blob=publicationFile&v=1
+  accessed_at: '2026-11-03'
+  locator: Artikel 10 Absatz 2 (Inkrafttreten)
+  value: Die Artikel 2, 4 und 6 treten am 1. Januar 2026 in Kraft.
+  unit: text
+  snippet: Die Artikel 2, 4 und 6 treten am 1. Januar 2026 in Kraft.
+  source_license: unstated
+  content_sha256: 0a679eafcaf3a658b84a5ef0a69992539fee7052cc80eca6fe2a04a9e56ddcf3
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: tax[50000]
+  expected: 10548
+  tolerance: 0
+- statistic: splitting[100000]
+  expected: 21096
+  tolerance: 0
+notes: 'The German tariff income tax (tarifliche Einkommensteuer) applicable from the 2026 assessment period as
+  § 32a EStG states it: nil up to the basic allowance (Grundfreibetrag), two progressive zones that are quadratic
+  in y (one ten-thousandth of the income above the basic allowance) and z (one ten-thousandth of the income above
+  the zone 3 offset), then linear zones at 42 and 45 percent less a fixed amount. Taxable income is rounded down
+  to full euros before the formula and the tax is rounded down to full euros. Spouses assessed jointly under §§
+  26, 26b pay twice the tariff on half their joint taxable income (§ 32a(5)). The statute contains no worked examples;
+  the source vectors restate the nil zone and the zone 3 constant, which equals the zone 2 formula at the zone 2
+  upper bound, and the other vectors are computed from the statutory formula. Wage tax withheld by employers follows
+  the Federal Ministry of Finance''s Programmablaufplan, which also deducts allowances not modelled here. The Steuerfortentwicklungsgesetz
+  (BGBl. 2024 I Nr. 449) states that its Article 2, which introduced this tariff, entered into force on 1 January
+  2026. Gesetze im Internet carries no licence statement, so the licence is recorded as unstated and the entry stays
+  at license-review.'

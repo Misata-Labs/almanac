@@ -1,0 +1,208 @@
+id: es-social-security-contribution-bases-2026
+title: Spain General Social Security Scheme minimum and maximum contribution bases by contribution group for 2026
+  (Orden PJC/297/2026)
+kind: rule
+domain: tax
+region: ES
+status: license-review
+tier: A
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- payroll
+- social-insurance
+- contribution-ceiling
+- contribution-groups
+- statute
+- reference-table
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: EUR
+    rows:
+      '1':
+        category: Ingenieros y Licenciados. Personal de alta dirección no incluido en el artículo 1.3.c) del Estatuto
+          de los Trabajadores.
+        minimum: 1989.3
+        maximum: 5101.2
+        period: month
+      '2':
+        category: Ingenieros Técnicos, Peritos y Ayudantes Titulados.
+        minimum: 1649.7
+        maximum: 5101.2
+        period: month
+      '3':
+        category: Jefes Administrativos y de Taller.
+        minimum: 1435.2
+        maximum: 5101.2
+        period: month
+      '4':
+        category: Ayudantes no Titulados.
+        minimum: 1424.4
+        maximum: 5101.2
+        period: month
+      '5':
+        category: Oficiales Administrativos.
+        minimum: 1424.4
+        maximum: 5101.2
+        period: month
+      '6':
+        category: Subalternos.
+        minimum: 1424.4
+        maximum: 5101.2
+        period: month
+      '7':
+        category: Auxiliares Administrativos.
+        minimum: 1424.4
+        maximum: 5101.2
+        period: month
+      '8':
+        category: Oficiales de primera y segunda.
+        minimum: 47.48
+        maximum: 170.04
+        period: day
+      '9':
+        category: Oficiales de tercera y Especialistas.
+        minimum: 47.48
+        maximum: 170.04
+        period: day
+      '10':
+        category: Peones.
+        minimum: 47.48
+        maximum: 170.04
+        period: day
+      '11':
+        category: Personas trabajadoras menores de dieciocho años, cualquiera que sea su categoría profesional.
+        minimum: 47.48
+        maximum: 170.04
+        period: day
+    general_ceiling_monthly: 5101.2
+    occupational_contingency_floor_monthly: 1424.4
+  vectors:
+  - input:
+      key: '1'
+      column: minimum
+    expected: 1989.3
+    origin: source
+  - input:
+      key: '7'
+      column: maximum
+    expected: 5101.2
+    origin: source
+  - input:
+      key: '10'
+      column: minimum
+    expected: 47.48
+    origin: source
+  - input:
+      key: '11'
+      column: period
+    expected: day
+    origin: source
+  - input: '12'
+    expected: false
+    origin: derived
+    note: there are eleven contribution groups
+evidence:
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Orden PJC/297/2026, normas legales de cotización a la Seguridad Social para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-7296
+  accessed_at: '2026-11-03'
+  locator: Artículo 2.1
+  value: 5.101,20
+  unit: text
+  snippet: de la base de cotización al Régimen General de la Seguridad Social será, desde el 1 de enero de 2026,
+    de 5.101,20 euros mensuales
+  source_license: unstated
+  content_sha256: ec4de765d771b2e9d6aaf87e9a77d7511dd33d3d8a08130f39d8172c219997cd
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Orden PJC/297/2026, normas legales de cotización a la Seguridad Social para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-7296
+  accessed_at: '2026-11-03'
+  locator: Artículo 2.2
+  value: 1.424,40
+  unit: text
+  snippet: sin que pueda ser inferior a 1.424,40 euros
+  source_license: unstated
+  content_sha256: ec4de765d771b2e9d6aaf87e9a77d7511dd33d3d8a08130f39d8172c219997cd
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Orden PJC/297/2026, normas legales de cotización a la Seguridad Social para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-7296
+  accessed_at: '2026-11-03'
+  locator: Artículo 3, table row for group 1
+  value: 1.989,30
+  unit: text
+  snippet: Ingenieros y Licenciados. Personal de alta dirección no incluido en el artículo 1.3.c) del Estatuto de
+    los Trabajadores.
+  source_license: unstated
+  content_sha256: ec4de765d771b2e9d6aaf87e9a77d7511dd33d3d8a08130f39d8172c219997cd
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Orden PJC/297/2026, normas legales de cotización a la Seguridad Social para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-7296
+  accessed_at: '2026-11-03'
+  locator: Artículo 3, table row for group 2
+  value: 1.649,70
+  unit: text
+  snippet: Ingenieros Técnicos, Peritos y Ayudantes Titulados.
+  source_license: unstated
+  content_sha256: ec4de765d771b2e9d6aaf87e9a77d7511dd33d3d8a08130f39d8172c219997cd
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Orden PJC/297/2026, normas legales de cotización a la Seguridad Social para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-7296
+  accessed_at: '2026-11-03'
+  locator: Artículo 3, table row for group 3
+  value: 1.435,20
+  unit: text
+  snippet: Jefes Administrativos y de Taller.
+  source_license: unstated
+  content_sha256: ec4de765d771b2e9d6aaf87e9a77d7511dd33d3d8a08130f39d8172c219997cd
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Orden PJC/297/2026, normas legales de cotización a la Seguridad Social para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-7296
+  accessed_at: '2026-11-03'
+  locator: Artículo 3, table row for group 8
+  value: 47,48
+  unit: text
+  snippet: Oficiales de primera y segunda.
+  source_license: unstated
+  content_sha256: ec4de765d771b2e9d6aaf87e9a77d7511dd33d3d8a08130f39d8172c219997cd
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Orden PJC/297/2026, normas legales de cotización a la Seguridad Social para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-7296
+  accessed_at: '2026-11-03'
+  locator: Artículo 3, daily maximum base for groups 8 to 11
+  value: 170,04
+  unit: text
+  snippet: Bases máximas
+  source_license: unstated
+  content_sha256: ec4de765d771b2e9d6aaf87e9a77d7511dd33d3d8a08130f39d8172c219997cd
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 11
+  tolerance: 0
+- statistic: max[maximum]
+  expected: 5101.2
+  tolerance: 0
+notes: 'Minimum and maximum common-contingency contribution bases of the Spanish General Social Security Scheme
+  from 1 January 2026, keyed by contribution group (grupo de cotización) 1 to 11 with its professional categories:
+  groups 1 to 7 per month and groups 8 to 11 per day, as article 3 of Orden PJC/297/2026 states them, plus the general
+  ceiling (article 2.1, set by Real Decreto-ley 3/2026) and the floor for occupational contingencies (article 2.2).
+  A generator assigns an employee a group from the job category and clamps the contribution base between the group''s
+  bounds. The order applies until the 2026 State Budget Act is approved. The BOE XML carries no licence statement,
+  so the licence is recorded as unstated and the entry stays at license-review.'

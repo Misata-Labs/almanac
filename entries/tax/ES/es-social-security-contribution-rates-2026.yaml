@@ -1,0 +1,145 @@
+id: es-social-security-contribution-rates-2026
+title: Spain General Social Security Scheme contribution rates for 2026 with employer and employee shares (Orden
+  PJC/297/2026)
+kind: rule
+domain: tax
+region: ES
+status: license-review
+tier: A
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- payroll
+- social-insurance
+- social-contributions
+- statute
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.rate_schedule
+  parameters:
+    slabs:
+      common_contingencies_total: 28.3
+      common_contingencies_employer: 23.6
+      common_contingencies_employee: 4.7
+      unemployment_open_ended_total: 7.05
+      unemployment_open_ended_employer: 5.5
+      unemployment_open_ended_employee: 1.55
+      unemployment_fixed_term_total: 8.3
+      unemployment_fixed_term_employer: 6.7
+      unemployment_fixed_term_employee: 1.6
+      wage_guarantee_fund_employer: 0.2
+      vocational_training_total: 0.7
+      vocational_training_employer: 0.6
+      vocational_training_employee: 0.1
+      intergenerational_equity_total: 0.9
+      intergenerational_equity_employer: 0.75
+      intergenerational_equity_employee: 0.15
+    unit: percent of the contribution base
+  vectors:
+  - input: 28.3
+    expected: true
+    origin: source
+  - input: 4.7
+    expected: true
+    origin: source
+  - input: 1.55
+    expected: true
+    origin: source
+  - input: 0.9
+    expected: true
+    origin: source
+  - input: 12.5
+    expected: false
+    origin: derived
+evidence:
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Orden PJC/297/2026, normas legales de cotización a la Seguridad Social para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-7296
+  accessed_at: '2026-11-03'
+  locator: Artículo 4.a)
+  value: 28,30
+  unit: text
+  snippet: Para las contingencias comunes, el 28,30 por ciento, del que el 23,60 por ciento será a cargo de la empresa
+    y el 4,70 por
+  source_license: unstated
+  content_sha256: ec4de765d771b2e9d6aaf87e9a77d7511dd33d3d8a08130f39d8172c219997cd
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Orden PJC/297/2026, normas legales de cotización a la Seguridad Social para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-7296
+  accessed_at: '2026-11-03'
+  locator: Artículo 33.2.a).1.º
+  value: 7,05
+  unit: text
+  snippet: 7,05 por ciento, del que el 5,5 por ciento será a cargo de la empresa y el 1,55 por ciento
+  source_license: unstated
+  content_sha256: ec4de765d771b2e9d6aaf87e9a77d7511dd33d3d8a08130f39d8172c219997cd
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Orden PJC/297/2026, normas legales de cotización a la Seguridad Social para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-7296
+  accessed_at: '2026-11-03'
+  locator: Artículo 33.2.a).2.º
+  value: 8,30
+  unit: text
+  snippet: 'Contratación de duración determinada a tiempo completo o a tiempo parcial: 8,30 por ciento'
+  source_license: unstated
+  content_sha256: ec4de765d771b2e9d6aaf87e9a77d7511dd33d3d8a08130f39d8172c219997cd
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Orden PJC/297/2026, normas legales de cotización a la Seguridad Social para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-7296
+  accessed_at: '2026-11-03'
+  locator: Artículo 33.2.b)
+  value: 0,20
+  unit: text
+  snippet: 'Fondo de Garantía Salarial: el 0,20 por ciento, a cargo de la empresa'
+  source_license: unstated
+  content_sha256: ec4de765d771b2e9d6aaf87e9a77d7511dd33d3d8a08130f39d8172c219997cd
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Orden PJC/297/2026, normas legales de cotización a la Seguridad Social para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-7296
+  accessed_at: '2026-11-03'
+  locator: Artículo 33.2.c)
+  value: 0,70
+  unit: text
+  snippet: 'Formación profesional: el 0,70 por ciento, del que el 0,60 por ciento será a cargo de la empresa y el
+    0,10 por ciento, a'
+  source_license: unstated
+  content_sha256: ec4de765d771b2e9d6aaf87e9a77d7511dd33d3d8a08130f39d8172c219997cd
+  role: primary
+- publisher: Agencia Estatal Boletín Oficial del Estado
+  title: Orden PJC/297/2026, normas legales de cotización a la Seguridad Social para 2026 (BOE XML)
+  url: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-7296
+  accessed_at: '2026-11-03'
+  locator: Artículo 16
+  value: 0,90
+  unit: text
+  snippet: aplicando el tipo del 0,90 por ciento sobre la base de cotización por contingencias comunes, del que
+    el 0,75 por ciento será a cargo
+  source_license: unstated
+  content_sha256: ec4de765d771b2e9d6aaf87e9a77d7511dd33d3d8a08130f39d8172c219997cd
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 16
+  tolerance: 0
+- statistic: slab[common_contingencies_employer]
+  expected: 23.6
+  tolerance: 0
+notes: 'Percentage contribution rates of the Spanish General Social Security Scheme from 1 January 2026 under Orden
+  PJC/297/2026, each with its employer and employee share: common contingencies (article 4), unemployment for open-ended
+  and for fixed-term contracts, the wage guarantee fund (employer only) and vocational training (article 33), and
+  the intergenerational equity mechanism (article 16). Occupational accident and disease premiums follow a tariff
+  by activity and are employer-only; overtime surcharges and the solidarity contribution on pay above the maximum
+  base are not in this entry. The BOE XML carries no licence statement, so the licence is recorded as unstated and
+  the entry stays at license-review.'

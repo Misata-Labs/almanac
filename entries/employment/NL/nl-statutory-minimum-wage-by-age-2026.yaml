@@ -1,0 +1,391 @@
+id: nl-statutory-minimum-wage-by-age-2026
+title: Netherlands statutory gross hourly minimum wage and youth minimum wages by age from 1 January and 1 July
+  2026
+kind: rule
+domain: employment
+region: NL
+status: license-review
+tier: A
+valid_from: '2026-01-01'
+valid_to: null
+tags:
+- payroll
+- employment
+- minimum-wage
+- youth-wage
+- age-bands
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.age_band_rates
+  parameters:
+    currency: EUR
+    unit: gross per hour
+    bands:
+    - name: 21 and over
+      min_age: 21
+    - name: '20'
+      min_age: 20
+      max_age: 20
+    - name: '19'
+      min_age: 19
+      max_age: 19
+    - name: '18'
+      min_age: 18
+      max_age: 18
+    - name: '17'
+      min_age: 17
+      max_age: 17
+    - name: '16'
+      min_age: 16
+      max_age: 16
+    - name: '15'
+      min_age: 15
+      max_age: 15
+    categories:
+    - bbl 20
+    - bbl 19
+    - bbl 18
+    youth_percentages:
+      21 and over: 100
+      '20': 80
+      '19': 60
+      '18': 50
+      '17': 39.5
+      '16': 34.5
+      '15': 30
+      bbl 20: 61.5
+      bbl 19: 52.5
+      bbl 18: 45.5
+    tables:
+    - from: '2026-01-01'
+      rates:
+        21 and over: 14.71
+        '20': 11.77
+        '19': 8.83
+        '18': 7.36
+        '17': 5.81
+        '16': 5.07
+        '15': 4.41
+        bbl 20: 9.05
+        bbl 19: 7.72
+        bbl 18: 6.69
+      reference_monthly_wage: 2294.4
+    - from: '2026-07-01'
+      rates:
+        21 and over: 14.99
+        '20': 11.99
+        '19': 8.99
+        '18': 7.5
+        '17': 5.92
+        '16': 5.17
+        '15': 4.5
+        bbl 20: 9.22
+        bbl 19: 7.87
+        bbl 18: 6.82
+      reference_monthly_wage: 2337
+  vectors:
+  - input:
+      age: 30
+      'on': '2026-01-01'
+    expected: 14.71
+    origin: source
+  - input:
+      age: 20
+      'on': '2026-03-15'
+    expected: 11.77
+    origin: source
+  - input:
+      age: 15
+      'on': '2026-03-15'
+    expected: 4.41
+    origin: source
+  - input:
+      age: 40
+      'on': '2026-07-01'
+    expected: 14.99
+    origin: source
+  - input:
+      age: 18
+      'on': '2026-09-01'
+    expected: 7.5
+    origin: source
+  - input:
+      age: 19
+      'on': '2026-09-01'
+      category: bbl 19
+    expected: 7.87
+    origin: source
+    note: beroepsbegeleidende leerweg rate for a 19-year-old
+  - input:
+      age: 21
+      'on': '2026-06-30'
+    expected: 14.71
+    origin: derived
+    note: the July table is not yet in force
+evidence:
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2025, 34131: minimum wage from 1 January 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2025/stcrt-2025-34131/1/xml/stcrt-2025-34131.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, minimumjeugdloon table, row 21 jaar en ouder
+  value: € 14,71
+  unit: text
+  snippet: 21 jaar en ouder
+  source_license: unstated
+  content_sha256: 375abc71feef02b47d4c8d92e243ca7acb4cbf7762f519404275d86305916ac0
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2025, 34131: minimum wage from 1 January 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2025/stcrt-2025-34131/1/xml/stcrt-2025-34131.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, minimumjeugdloon table, row 20 jaar
+  value: € 11,77
+  unit: text
+  snippet: 20 jaar
+  source_license: unstated
+  content_sha256: 375abc71feef02b47d4c8d92e243ca7acb4cbf7762f519404275d86305916ac0
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2025, 34131: minimum wage from 1 January 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2025/stcrt-2025-34131/1/xml/stcrt-2025-34131.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, minimumjeugdloon table, row 19 jaar
+  value: € 8,83
+  unit: text
+  snippet: 19 jaar
+  source_license: unstated
+  content_sha256: 375abc71feef02b47d4c8d92e243ca7acb4cbf7762f519404275d86305916ac0
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2025, 34131: minimum wage from 1 January 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2025/stcrt-2025-34131/1/xml/stcrt-2025-34131.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, minimumjeugdloon table, row 18 jaar
+  value: € 7,36
+  unit: text
+  snippet: 18 jaar
+  source_license: unstated
+  content_sha256: 375abc71feef02b47d4c8d92e243ca7acb4cbf7762f519404275d86305916ac0
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2025, 34131: minimum wage from 1 January 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2025/stcrt-2025-34131/1/xml/stcrt-2025-34131.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, minimumjeugdloon table, row 17 jaar
+  value: € 5,81
+  unit: text
+  snippet: 17 jaar
+  source_license: unstated
+  content_sha256: 375abc71feef02b47d4c8d92e243ca7acb4cbf7762f519404275d86305916ac0
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2025, 34131: minimum wage from 1 January 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2025/stcrt-2025-34131/1/xml/stcrt-2025-34131.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, minimumjeugdloon table, row 16 jaar
+  value: € 5,07
+  unit: text
+  snippet: 16 jaar
+  source_license: unstated
+  content_sha256: 375abc71feef02b47d4c8d92e243ca7acb4cbf7762f519404275d86305916ac0
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2025, 34131: minimum wage from 1 January 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2025/stcrt-2025-34131/1/xml/stcrt-2025-34131.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, minimumjeugdloon table, row 15 jaar
+  value: € 4,41
+  unit: text
+  snippet: 15 jaar
+  source_license: unstated
+  content_sha256: 375abc71feef02b47d4c8d92e243ca7acb4cbf7762f519404275d86305916ac0
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2025, 34131: minimum wage from 1 January 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2025/stcrt-2025-34131/1/xml/stcrt-2025-34131.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, bbl minimumjeugdloon table, row 20 jaar
+  value: € 9,05
+  unit: text
+  snippet: 20 jaar
+  source_license: unstated
+  content_sha256: 375abc71feef02b47d4c8d92e243ca7acb4cbf7762f519404275d86305916ac0
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2025, 34131: minimum wage from 1 January 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2025/stcrt-2025-34131/1/xml/stcrt-2025-34131.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, bbl minimumjeugdloon table, row 19 jaar
+  value: € 7,72
+  unit: text
+  snippet: 19 jaar
+  source_license: unstated
+  content_sha256: 375abc71feef02b47d4c8d92e243ca7acb4cbf7762f519404275d86305916ac0
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2025, 34131: minimum wage from 1 January 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2025/stcrt-2025-34131/1/xml/stcrt-2025-34131.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, bbl minimumjeugdloon table, row 18 jaar
+  value: € 6,69
+  unit: text
+  snippet: 18 jaar
+  source_license: unstated
+  content_sha256: 375abc71feef02b47d4c8d92e243ca7acb4cbf7762f519404275d86305916ac0
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2025, 34131: minimum wage from 1 January 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2025/stcrt-2025-34131/1/xml/stcrt-2025-34131.xml
+  accessed_at: '2026-11-03'
+  locator: Artikel 1 (onderdeel a, minimum hourly wage; onderdeel b, reference monthly wage)
+  value: € 14,71
+  unit: text
+  snippet: 'met ingang van 1 januari 2026 onderscheidenlijk als volgt vastgesteld:'
+  source_license: unstated
+  content_sha256: 375abc71feef02b47d4c8d92e243ca7acb4cbf7762f519404275d86305916ac0
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2026, 16505: minimum wage from 1 July 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2026/stcrt-2026-16505/1/xml/stcrt-2026-16505.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, minimumjeugdloon table, row 21 jaar en ouder
+  value: € 14,99
+  unit: text
+  snippet: 21 jaar en ouder
+  source_license: unstated
+  content_sha256: 61f5ef260f39eace71927b697d820db5b4e9cd8c8ff70fa18b6efb3b5ed46777
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2026, 16505: minimum wage from 1 July 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2026/stcrt-2026-16505/1/xml/stcrt-2026-16505.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, minimumjeugdloon table, row 20 jaar
+  value: € 11,99
+  unit: text
+  snippet: 20 jaar
+  source_license: unstated
+  content_sha256: 61f5ef260f39eace71927b697d820db5b4e9cd8c8ff70fa18b6efb3b5ed46777
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2026, 16505: minimum wage from 1 July 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2026/stcrt-2026-16505/1/xml/stcrt-2026-16505.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, minimumjeugdloon table, row 19 jaar
+  value: € 8,99
+  unit: text
+  snippet: 19 jaar
+  source_license: unstated
+  content_sha256: 61f5ef260f39eace71927b697d820db5b4e9cd8c8ff70fa18b6efb3b5ed46777
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2026, 16505: minimum wage from 1 July 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2026/stcrt-2026-16505/1/xml/stcrt-2026-16505.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, minimumjeugdloon table, row 18 jaar
+  value: € 7,50
+  unit: text
+  snippet: 18 jaar
+  source_license: unstated
+  content_sha256: 61f5ef260f39eace71927b697d820db5b4e9cd8c8ff70fa18b6efb3b5ed46777
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2026, 16505: minimum wage from 1 July 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2026/stcrt-2026-16505/1/xml/stcrt-2026-16505.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, minimumjeugdloon table, row 17 jaar
+  value: € 5,92
+  unit: text
+  snippet: 17 jaar
+  source_license: unstated
+  content_sha256: 61f5ef260f39eace71927b697d820db5b4e9cd8c8ff70fa18b6efb3b5ed46777
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2026, 16505: minimum wage from 1 July 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2026/stcrt-2026-16505/1/xml/stcrt-2026-16505.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, minimumjeugdloon table, row 16 jaar
+  value: € 5,17
+  unit: text
+  snippet: 16 jaar
+  source_license: unstated
+  content_sha256: 61f5ef260f39eace71927b697d820db5b4e9cd8c8ff70fa18b6efb3b5ed46777
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2026, 16505: minimum wage from 1 July 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2026/stcrt-2026-16505/1/xml/stcrt-2026-16505.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, minimumjeugdloon table, row 15 jaar
+  value: € 4,50
+  unit: text
+  snippet: 15 jaar
+  source_license: unstated
+  content_sha256: 61f5ef260f39eace71927b697d820db5b4e9cd8c8ff70fa18b6efb3b5ed46777
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2026, 16505: minimum wage from 1 July 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2026/stcrt-2026-16505/1/xml/stcrt-2026-16505.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, bbl minimumjeugdloon table, row 20 jaar
+  value: € 9,22
+  unit: text
+  snippet: 20 jaar
+  source_license: unstated
+  content_sha256: 61f5ef260f39eace71927b697d820db5b4e9cd8c8ff70fa18b6efb3b5ed46777
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2026, 16505: minimum wage from 1 July 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2026/stcrt-2026-16505/1/xml/stcrt-2026-16505.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, bbl minimumjeugdloon table, row 19 jaar
+  value: € 7,87
+  unit: text
+  snippet: 19 jaar
+  source_license: unstated
+  content_sha256: 61f5ef260f39eace71927b697d820db5b4e9cd8c8ff70fa18b6efb3b5ed46777
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2026, 16505: minimum wage from 1 July 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2026/stcrt-2026-16505/1/xml/stcrt-2026-16505.xml
+  accessed_at: '2026-11-03'
+  locator: Toelichting, bbl minimumjeugdloon table, row 18 jaar
+  value: € 6,82
+  unit: text
+  snippet: 18 jaar
+  source_license: unstated
+  content_sha256: 61f5ef260f39eace71927b697d820db5b4e9cd8c8ff70fa18b6efb3b5ed46777
+  role: primary
+- publisher: Staatscourant (Ministerie van Sociale Zaken en Werkgelegenheid)
+  title: 'Staatscourant 2026, 16505: minimum wage from 1 July 2026 (XML)'
+  url: https://repository.overheid.nl/frbr/officielepublicaties/stcrt/2026/stcrt-2026-16505/1/xml/stcrt-2026-16505.xml
+  accessed_at: '2026-11-03'
+  locator: Artikel 1 (onderdeel a, minimum hourly wage; onderdeel b, reference monthly wage)
+  value: € 14,99
+  unit: text
+  snippet: 'met ingang van 1 juli 2026 onderscheidenlijk als volgt vastgesteld:'
+  source_license: unstated
+  content_sha256: 61f5ef260f39eace71927b697d820db5b4e9cd8c8ff70fa18b6efb3b5ed46777
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+- statistic: rate[21 and over, 2026-07-01]
+  expected: 14.99
+  tolerance: 0
+notes: 'The Dutch statutory minimum hourly wage for employees aged 21 and over and the corresponding youth minimum
+  wages for ages 15 to 20, from the two indexation regulations of the Minister of Social Affairs and Employment
+  published in the Staatscourant: the hourly amount fixed in article 1 under article 8(1)(a) of the Wet minimumloon
+  en minimumvakantiebijslag, and the youth wage tables in the explanatory notes, which apply the percentages of
+  the Besluit minimumjeugdloon (kept under youth_percentages). Employees aged 18 to 20 on a beroepsbegeleidende
+  leerweg (bbl) contract have their own rates, selected with the categories bbl 20, bbl 19 and bbl 18. reference_monthly_wage
+  is the article 8(1)(b) monthly amount, which since 2024 no longer sets anyone''s minimum pay but indexes benefits.
+  The holiday allowance of at least 8 percent is on top. The Staatscourant XML carries no licence statement, so
+  the licence is recorded as unstated and the entry stays at license-review.'

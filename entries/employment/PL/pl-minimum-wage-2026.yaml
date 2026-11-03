@@ -1,0 +1,87 @@
+id: pl-minimum-wage-2026
+title: Poland minimum monthly wage and minimum hourly rate from 1 January 2026 (Council of Ministers regulation,
+  Dz.U. 2025 poz. 1242)
+kind: rule
+domain: employment
+region: PL
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- payroll
+- employment
+- minimum-wage
+- statute
+- reference-table
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: PLN
+    rows:
+      monthly:
+        amount: 4806
+        unit: PLN gross per month, full-time employment
+        basis: § 1
+      hourly:
+        amount: 31.4
+        unit: PLN gross per hour, specified civil-law contracts
+        basis: § 2
+  vectors:
+  - input:
+      key: monthly
+      column: amount
+    expected: 4806
+    origin: source
+  - input:
+      key: hourly
+      column: amount
+    expected: 31.4
+    origin: source
+  - input: weekly
+    expected: false
+    origin: derived
+evidence:
+- publisher: Kancelaria Sejmu (Dziennik Ustaw, ELI API)
+  title: Dz.U. 2025 poz. 1242, minimalne wynagrodzenie za pracę w 2026 r. (PDF)
+  url: https://api.sejm.gov.pl/eli/acts/DU/2025/1242/text.pdf
+  accessed_at: '2026-11-03'
+  locator: § 1
+  value: 4806 zł
+  unit: text
+  snippet: § 1. Od dnia 1 stycznia 2026 r. ustala się minimalne wynagrodzenie za pracę w wysokości 4806 zł
+  source_license: unstated
+  content_sha256: bf547c5f5d601c33296c2ffbf646f6582dbd896d113640bca73f56743f5fb8b9
+  role: primary
+- publisher: Kancelaria Sejmu (Dziennik Ustaw, ELI API)
+  title: Dz.U. 2025 poz. 1242, minimalne wynagrodzenie za pracę w 2026 r. (PDF)
+  url: https://api.sejm.gov.pl/eli/acts/DU/2025/1242/text.pdf
+  accessed_at: '2026-11-03'
+  locator: § 2
+  value: 31,40 zł
+  unit: text
+  snippet: § 2. Od dnia 1 stycznia 2026 r. ustala się minimalną stawkę godzinową w wysokości 31,40 zł
+  source_license: unstated
+  content_sha256: bf547c5f5d601c33296c2ffbf646f6582dbd896d113640bca73f56743f5fb8b9
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+- statistic: value[monthly, amount]
+  expected: 4806
+  tolerance: 0
+notes: The Polish minimum remuneration for work (minimalne wynagrodzenie za pracę) for a full-time employee and
+  the minimum hourly rate for specified civil-law contracts, both from 1 January 2026, as the Council of Ministers
+  regulation of 11 September 2025 sets them under article 2(5) of the Act of 10 October 2002 on the minimum wage.
+  Part-time employees receive at least the proportional monthly amount. The Dziennik Ustaw PDF, served by the Sejm
+  ELI API, carries no licence statement, so the licence is recorded as unstated and the entry stays at license-review.

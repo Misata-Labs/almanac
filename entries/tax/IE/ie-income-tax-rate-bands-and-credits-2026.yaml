@@ -1,0 +1,255 @@
+id: ie-income-tax-rate-bands-and-credits-2026
+title: 'Ireland income tax for 2026: 20 and 40 percent rates, standard rate bands by circumstance, basic personal
+  and employee tax credits'
+kind: rule
+domain: tax
+region: IE
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- payroll
+- tax
+- income-tax
+- paye
+- tax-credits
+- tax-bands
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.ie_income_tax_usc
+  parameters:
+    charge: income_tax
+    tax_year: 2026
+    currency: EUR
+    standard_rate_percent: 20
+    higher_rate_percent: 40
+    standard_rate_bands:
+      single: 44000
+      single_child_carer: 48000
+      married_one_income: 53000
+      married_two_incomes: 53000
+    two_income_increase_max: 35000
+    tax_credits:
+      basic_personal_single: 2000
+      basic_personal_married: 4000
+      employee: 2000
+    employee_credit_cap_percent: 20
+  vectors:
+  - input:
+      income: 30000
+      status: single
+      credits: &id001
+      - basic_personal_single
+      - employee
+      round: euro
+    expected: '2000'
+    origin: source
+    note: 'Department of Finance Budget 2026, Table 2: single PAYE employee on 30,000, income tax proposed for 2026'
+  - input:
+      income: 50000
+      status: single
+      credits: *id001
+      round: euro
+    expected: '7200'
+    origin: source
+    note: 'Department of Finance Budget 2026, Table 2: single PAYE employee on 50,000, income tax proposed for 2026'
+  - input:
+      income: 100000
+      status: single
+      credits: *id001
+      round: euro
+    expected: '27200'
+    origin: source
+    note: 'Department of Finance Budget 2026, Table 2: single PAYE employee on 100,000, income tax proposed for
+      2026'
+  - input:
+      income: 175000
+      status: single
+      credits: *id001
+      round: euro
+    expected: '57200'
+    origin: source
+    note: 'Department of Finance Budget 2026, Table 2: single PAYE employee on 175,000, income tax proposed for
+      2026'
+  - input:
+      income: 60000
+      status: married_two_incomes
+      second_income: 20000
+      credits:
+      - basic_personal_married
+      - employee
+      - employee
+    expected: '4000.00'
+    origin: derived
+    note: band increased by the lower second income
+  - input:
+      income: 8000
+      status: single
+      credits: *id001
+    expected: '0.00'
+    origin: derived
+    note: credits cannot make the tax negative
+evidence:
+- publisher: Revenue Commissioners
+  title: Notes for Guidance, Taxes Consolidation Act 1997, Finance Act 2025 edition, Part 2 (PDF)
+  url: https://www.revenue.ie/en/tax-professionals/documents/notes-for-guidance/tca/part02.pdf
+  accessed_at: '2026-11-03'
+  locator: Section 15, summary table, Part 1
+  value: 44,000
+  unit: text
+  snippet: Single persons, etc.
+  source_license: unstated
+  content_sha256: ce4dd2719237d2af1923e33d48788f09bb436bbfc7aa924ca1edc784b8ec89aa
+  role: primary
+- publisher: Revenue Commissioners
+  title: Notes for Guidance, Taxes Consolidation Act 1997, Finance Act 2025 edition, Part 2 (PDF)
+  url: https://www.revenue.ie/en/tax-professionals/documents/notes-for-guidance/tca/part02.pdf
+  accessed_at: '2026-11-03'
+  locator: Section 15, summary table, Part 2
+  value: 48,000
+  unit: text
+  snippet: Single person child carer
+  source_license: unstated
+  content_sha256: ce4dd2719237d2af1923e33d48788f09bb436bbfc7aa924ca1edc784b8ec89aa
+  role: primary
+- publisher: Revenue Commissioners
+  title: Notes for Guidance, Taxes Consolidation Act 1997, Finance Act 2025 edition, Part 2 (PDF)
+  url: https://www.revenue.ie/en/tax-professionals/documents/notes-for-guidance/tca/part02.pdf
+  accessed_at: '2026-11-03'
+  locator: Section 15, summary table, Part 3
+  value: 53,000
+  unit: text
+  snippet: Married couples/Civil Partners
+  source_license: unstated
+  content_sha256: ce4dd2719237d2af1923e33d48788f09bb436bbfc7aa924ca1edc784b8ec89aa
+  role: primary
+- publisher: Revenue Commissioners
+  title: Notes for Guidance, Taxes Consolidation Act 1997, Finance Act 2025 edition, Part 2 (PDF)
+  url: https://www.revenue.ie/en/tax-professionals/documents/notes-for-guidance/tca/part02.pdf
+  accessed_at: '2026-11-03'
+  locator: Section 15, note to the summary table
+  value: 35,000
+  unit: text
+  snippet: can get an increase of up to €35,000 giving them a combined standard rate band of €88,000
+  source_license: unstated
+  content_sha256: ce4dd2719237d2af1923e33d48788f09bb436bbfc7aa924ca1edc784b8ec89aa
+  role: primary
+- publisher: Revenue Commissioners
+  title: Notes for Guidance, Taxes Consolidation Act 1997, Finance Act 2025 edition, Part 2 (PDF)
+  url: https://www.revenue.ie/en/tax-professionals/documents/notes-for-guidance/tca/part02.pdf
+  accessed_at: '2026-11-03'
+  locator: Section 15, Details
+  value: 20 per cent
+  unit: text
+  snippet: income tax at the standard rate of 20 per cent is chargeable for the year
+  source_license: unstated
+  content_sha256: ce4dd2719237d2af1923e33d48788f09bb436bbfc7aa924ca1edc784b8ec89aa
+  role: primary
+- publisher: Revenue Commissioners
+  title: Notes for Guidance, Taxes Consolidation Act 1997, Finance Act 2025 edition, Part 2 (PDF)
+  url: https://www.revenue.ie/en/tax-professionals/documents/notes-for-guidance/tca/part02.pdf
+  accessed_at: '2026-11-03'
+  locator: Cover
+  value: Finance Act 2025 edition
+  unit: text
+  snippet: Notes for Guidance - Taxes Consolidation Act 1997 Finance Act 2025 edition
+  source_license: unstated
+  content_sha256: ce4dd2719237d2af1923e33d48788f09bb436bbfc7aa924ca1edc784b8ec89aa
+  role: primary
+- publisher: Revenue Commissioners
+  title: Notes for Guidance, Taxes Consolidation Act 1997, Finance Act 2025 edition, Part 15 (PDF)
+  url: https://www.revenue.ie/en/tax-professionals/documents/notes-for-guidance/tca/part15.pdf
+  accessed_at: '2026-11-03'
+  locator: Section 461, basic personal tax credit
+  value: 2,000
+  unit: text
+  snippet: In all other cases the basic personal tax credit is
+  source_license: unstated
+  content_sha256: d72de50beaa99dc58664ecaacb010ab3fd5f8c58238abdb7842b74894cc2b45f
+  role: primary
+- publisher: Revenue Commissioners
+  title: Notes for Guidance, Taxes Consolidation Act 1997, Finance Act 2025 edition, Part 15 (PDF)
+  url: https://www.revenue.ie/en/tax-professionals/documents/notes-for-guidance/tca/part15.pdf
+  accessed_at: '2026-11-03'
+  locator: Section 472, employee tax credit
+  value: 2,000
+  unit: text
+  snippet: The amount of the tax credit in 2025 is €2,000 or 20 per cent of the emoluments, whichever is the lesser
+  source_license: unstated
+  content_sha256: d72de50beaa99dc58664ecaacb010ab3fd5f8c58238abdb7842b74894cc2b45f
+  role: primary
+- publisher: Department of Finance (Ireland)
+  title: Budget 2026 Tax Policy Changes (PDF)
+  url: https://assets.gov.ie/static/documents/beb5bc84/Budget_2026_Tax_Policy_Changes_Book_041125.pdf
+  accessed_at: '2026-11-03'
+  locator: page 21, Table 2, single person, PAYE, full rate PRSI
+  value: 2,000
+  unit: text
+  snippet: 30,000 0 30,000 2,000 2,000
+  source_license: unstated
+  content_sha256: a7f846f620cadacfde66e12ddafb5719b59c1388839c324c0dde722231a4249d
+  role: supporting
+- publisher: Department of Finance (Ireland)
+  title: Budget 2026 Tax Policy Changes (PDF)
+  url: https://assets.gov.ie/static/documents/beb5bc84/Budget_2026_Tax_Policy_Changes_Book_041125.pdf
+  accessed_at: '2026-11-03'
+  locator: page 21, Table 2, single person, PAYE, full rate PRSI
+  value: 7,200
+  unit: text
+  snippet: 50,000 0 50,000 7,200 7,200
+  source_license: unstated
+  content_sha256: a7f846f620cadacfde66e12ddafb5719b59c1388839c324c0dde722231a4249d
+  role: supporting
+- publisher: Department of Finance (Ireland)
+  title: Budget 2026 Tax Policy Changes (PDF)
+  url: https://assets.gov.ie/static/documents/beb5bc84/Budget_2026_Tax_Policy_Changes_Book_041125.pdf
+  accessed_at: '2026-11-03'
+  locator: page 21, Table 2, single person, PAYE, full rate PRSI
+  value: 27,200
+  unit: text
+  snippet: 100,000 0 100,000 27,200 27,200
+  source_license: unstated
+  content_sha256: a7f846f620cadacfde66e12ddafb5719b59c1388839c324c0dde722231a4249d
+  role: supporting
+- publisher: Department of Finance (Ireland)
+  title: Budget 2026 Tax Policy Changes (PDF)
+  url: https://assets.gov.ie/static/documents/beb5bc84/Budget_2026_Tax_Policy_Changes_Book_041125.pdf
+  accessed_at: '2026-11-03'
+  locator: page 21, Table 2, single person, PAYE, full rate PRSI
+  value: 57,200
+  unit: text
+  snippet: 175,000 0 175,000 57,200 57,200
+  source_license: unstated
+  content_sha256: a7f846f620cadacfde66e12ddafb5719b59c1388839c324c0dde722231a4249d
+  role: supporting
+assumed:
+- parameter: tax_credits.employee
+  value: 2000
+  method: derived
+  rationale: Revenue's Part 15 notes (Finance Act 2025 edition) state the employee tax credit for 2025; the Department
+    of Finance Budget 2026 Table 2 income tax figures for 2026 equal the band calculation less the basic personal
+    and employee credits at these amounts, which the source vectors reproduce.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: band[single]
+  expected: 44000
+  tolerance: 0
+- statistic: credit[employee]
+  expected: 2000
+  tolerance: 0
+notes: 'Irish income tax for the 2026 year of assessment: the standard rate of 20 percent up to the standard rate
+  band for the taxpayer''s circumstances (single, single person child carer, married couple or civil partners with
+  one income, or with two incomes, whose band rises by the lower of the second income and the maximum increase)
+  and 40 percent on the balance, as Revenue''s notes for guidance on section 15 of the Taxes Consolidation Act 1997
+  (Finance Act 2025 edition, for 2025 and subsequent years) summarise them; then the basic personal tax credit (section
+  461) and the employee tax credit (section 472, limited to 20 percent of employment income) are deducted. Other
+  credits, such as the home carer or earned income credits, are not in the table. Source vectors are the Department
+  of Finance''s Budget 2026 worked figures for a single PAYE employee, which it notes are rounded. Neither publisher
+  states a licence in these documents, so the licence is recorded as unstated and the entry stays at license-review.'

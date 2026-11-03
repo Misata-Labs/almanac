@@ -1,0 +1,101 @@
+id: ie-prsi-class-a-employee-rate-2025-2026
+title: Ireland employee PRSI rate for full-rate (Class A) contributors from October 2025 and October 2026
+kind: rule
+domain: tax
+region: IE
+status: license-review
+tier: B
+valid_from: '2025-10-01'
+valid_to: null
+tags:
+- payroll
+- social-insurance
+- prsi
+- social-contributions
+- step-schedule
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.step_schedule
+  parameters:
+    unit: percent of reckonable earnings
+    steps:
+    - from: '2025-10-01'
+      value: 4.2
+    - from: '2026-10-01'
+      value: 4.35
+    prior_rate: 4.1
+  vectors:
+  - input:
+      'on': '2025-10-01'
+    expected: 4.2
+    origin: source
+  - input:
+      'on': '2026-10-01'
+    expected: 4.35
+    origin: source
+  - input:
+      'on': '2026-06-30'
+    expected: 4.2
+    origin: derived
+    note: before the October 2026 increase
+evidence:
+- publisher: Department of Finance (Ireland)
+  title: Budget 2026 Tax Policy Changes (PDF)
+  url: https://assets.gov.ie/static/documents/beb5bc84/Budget_2026_Tax_Policy_Changes_Book_041125.pdf
+  accessed_at: '2026-11-03'
+  locator: page 21, Table 2, note 2
+  value: '4.35'
+  unit: text
+  snippet: The agreed PRSI increases are included in the analysis
+  source_license: unstated
+  content_sha256: a7f846f620cadacfde66e12ddafb5719b59c1388839c324c0dde722231a4249d
+  role: primary
+- publisher: Department of Finance (Ireland)
+  title: Budget 2026 Tax Policy Changes (PDF)
+  url: https://assets.gov.ie/static/documents/beb5bc84/Budget_2026_Tax_Policy_Changes_Book_041125.pdf
+  accessed_at: '2026-11-03'
+  locator: page 21, Table 2, note 2
+  value: '4.2'
+  unit: text
+  snippet: 4.1% will increase to 4.2% from 1 October 2025 and to 4.35% from 1 October 2026
+  source_license: unstated
+  content_sha256: a7f846f620cadacfde66e12ddafb5719b59c1388839c324c0dde722231a4249d
+  role: primary
+- publisher: Department of Finance (Ireland)
+  title: Budget 2026 Tax Policy Changes (PDF)
+  url: https://assets.gov.ie/static/documents/beb5bc84/Budget_2026_Tax_Policy_Changes_Book_041125.pdf
+  accessed_at: '2026-11-03'
+  locator: page 21, Table 2, single person on 50,000, PRSI for 2026
+  value: 2,119
+  unit: text
+  snippet: 50,000 0 50,000 7,200 7,200 2,063 2,119
+  source_license: unstated
+  content_sha256: a7f846f620cadacfde66e12ddafb5719b59c1388839c324c0dde722231a4249d
+  role: supporting
+assumed:
+- parameter: steps
+  value: the rate applies to the employee Class A contribution
+  method: derived
+  rationale: The Department of Finance note attaches the increases to the full rate PRSI contributor of its PAYE
+    tables; its 2026 PRSI figure on 50,000 (nine months at the October 2025 rate and three at the October 2026 rate)
+    agrees with these steps.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+- statistic: value[2026-12-31]
+  expected: 4.35
+  tolerance: 0
+notes: 'The employee rate of Pay Related Social Insurance for full-rate contributors, as the Department of Finance''s
+  Budget 2026 tax policy book states the agreed increases in its notes to the PAYE examples: from the prior rate
+  to the October 2025 rate, then to the October 2026 rate. The weekly earnings threshold, the PRSI credit, employer
+  rates and other classes are not in this entry. Because the figures come from a note to a worked example rather
+  than from the Social Welfare Act itself, a reviewer should confirm them against the legislation. The publisher
+  states no licence in the document, so the licence is recorded as unstated and the entry stays at license-review.'

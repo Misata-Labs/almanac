@@ -1,0 +1,153 @@
+id: de-solidarity-surcharge-2026
+title: 'Germany solidarity surcharge on income tax from 2026: rate, exemption limits and phase-in zone (SolZG 1995)'
+kind: rule
+domain: tax
+region: DE
+status: license-review
+tier: A
+valid_from: '2026-01-01'
+valid_to: null
+tags:
+- payroll
+- tax
+- income-tax
+- surcharge
+- statute
+- formula
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.de_solidarity_surcharge
+  parameters:
+    currency: EUR
+    rate_percent: 5.5
+    phase_in_percent: 11.9
+    exemption_limit:
+      single: 20350
+      joint: 40700
+    base: income tax as assessed, computed with the child allowances of § 32(6) EStG (SolZG § 3(2))
+  vectors:
+  - input:
+      income_tax: 20350
+    expected: '0.00'
+    origin: source
+    note: '§ 3(3) Nr. 2: levied only when the base exceeds the exemption limit'
+  - input:
+      income_tax: 40700
+      joint: true
+    expected: '0.00'
+    origin: source
+    note: '§ 3(3) Nr. 1: joint assessment limit'
+  - input:
+      income_tax: 21350
+    expected: '119.00'
+    origin: derived
+    note: 'phase-in zone: capped at the phase-in rate on the excess'
+  - input:
+      income_tax: 50000
+    expected: '2750.00'
+    origin: derived
+    note: above the phase-in zone the full rate applies
+  - input:
+      income_tax: 41700
+      joint: true
+    expected: '119.00'
+    origin: derived
+  - input:
+      income_tax: 30000.123
+    expected: '1148.36'
+    origin: derived
+    note: fractions of a cent are dropped
+evidence:
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, solzg_1995 (XML archive)
+  url: https://www.gesetze-im-internet.de/solzg_1995/xml.zip
+  accessed_at: '2026-11-03'
+  locator: SolZG 1995 § 3 Absatz 3 Satz 1
+  value: 40 700
+  unit: text
+  snippet: in den Fällen des § 32a Absatz 5 und 6 des Einkommensteuergesetzes 40 700 Euro,
+  source_license: unstated
+  content_sha256: f01b35aaf1446253f8c026f99a2aa0f70548b82c9ca55fd67acaa829d3edad8c
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, solzg_1995 (XML archive)
+  url: https://www.gesetze-im-internet.de/solzg_1995/xml.zip
+  accessed_at: '2026-11-03'
+  locator: SolZG 1995 § 3 Absatz 3 Satz 1
+  value: 20 350
+  unit: text
+  snippet: in anderen Fällen 20 350 Euro
+  source_license: unstated
+  content_sha256: f01b35aaf1446253f8c026f99a2aa0f70548b82c9ca55fd67acaa829d3edad8c
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, solzg_1995 (XML archive)
+  url: https://www.gesetze-im-internet.de/solzg_1995/xml.zip
+  accessed_at: '2026-11-03'
+  locator: SolZG 1995 § 4 Satz 1
+  value: 5,5
+  unit: text
+  snippet: Der Solidaritätszuschlag beträgt 5,5 Prozent der Bemessungsgrundlage
+  source_license: unstated
+  content_sha256: f01b35aaf1446253f8c026f99a2aa0f70548b82c9ca55fd67acaa829d3edad8c
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, solzg_1995 (XML archive)
+  url: https://www.gesetze-im-internet.de/solzg_1995/xml.zip
+  accessed_at: '2026-11-03'
+  locator: SolZG 1995 § 4 Satz 2 and 3
+  value: 11,9
+  unit: text
+  snippet: Bruchteile eines Cents bleiben außer Ansatz.
+  source_license: unstated
+  content_sha256: f01b35aaf1446253f8c026f99a2aa0f70548b82c9ca55fd67acaa829d3edad8c
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, solzg_1995 (XML archive)
+  url: https://www.gesetze-im-internet.de/solzg_1995/xml.zip
+  accessed_at: '2026-11-03'
+  locator: SolZG 1995 § 6 Absatz 27
+  value: erstmals im Veranlagungszeitraum 2026 anzuwenden
+  unit: text
+  snippet: § 3 Absatz 3 in der Fassung des Artikels 4 des Gesetzes vom 23. Dezember 2024
+  source_license: unstated
+  content_sha256: f01b35aaf1446253f8c026f99a2aa0f70548b82c9ca55fd67acaa829d3edad8c
+  role: primary
+- publisher: Bundesministerium der Justiz (Bundesgesetzblatt)
+  title: Steuerfortentwicklungsgesetz (SteFeG), BGBl. 2024 I Nr. 449 (PDF)
+  url: https://www.recht.bund.de/bgbl/1/2024/449/regelungstext.pdf?__blob=publicationFile&v=1
+  accessed_at: '2026-11-03'
+  locator: Artikel 10 Absatz 2 (Inkrafttreten)
+  value: Die Artikel 2, 4 und 6 treten am 1. Januar 2026 in Kraft.
+  unit: text
+  snippet: Artikel 4 Weitere Änderung des Solidaritätszuschlaggesetzes 1995
+  source_license: unstated
+  content_sha256: 0a679eafcaf3a658b84a5ef0a69992539fee7052cc80eca6fe2a04a9e56ddcf3
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: rate
+  expected: 5.5
+  tolerance: 0
+- statistic: exemption_limit[single]
+  expected: 20350
+  tolerance: 0
+- statistic: exemption_limit[joint]
+  expected: 40700
+  tolerance: 0
+notes: 'The Solidaritätszuschlag on assessed income tax: a percentage of the income tax base, levied only when the
+  base exceeds the exemption limit (Freigrenze), which applies at the joint figure for spouses assessed under §
+  32a(5) and (6) EStG; above the limit the surcharge is capped at the phase-in percentage of the excess over the
+  limit, and fractions of a cent are dropped. SolZG § 6(27) applies the § 3(3) limits from the 2026 assessment period.
+  The rule takes the income tax base as input; the base for wage tax withholding uses the monthly, weekly and daily
+  fractions of the limits in § 3(4) and is not modelled. Tax on capital income under § 32d(3) and (4) EStG is surcharged
+  at the full rate regardless of the limit and is outside this rule. Vectors other than the two limits are computed
+  from the statutory formula. Gesetze im Internet carries no licence statement, so the licence is recorded as unstated
+  and the entry stays at license-review.'

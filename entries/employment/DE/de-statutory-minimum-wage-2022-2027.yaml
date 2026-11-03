@@ -1,0 +1,139 @@
+id: de-statutory-minimum-wage-2022-2027
+title: Germany statutory gross hourly minimum wage from October 2022 to January 2027 (MiLoG and the Fourth and Fifth
+  adjustment ordinances)
+kind: rule
+domain: employment
+region: DE
+status: license-review
+tier: A
+valid_from: '2022-10-01'
+valid_to: null
+tags:
+- payroll
+- employment
+- minimum-wage
+- statute
+- step-schedule
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.step_schedule
+  parameters:
+    currency: EUR
+    unit: gross per hour
+    steps:
+    - from: '2022-10-01'
+      value: 12
+    - from: '2024-01-01'
+      value: 12.41
+    - from: '2025-01-01'
+      value: 12.82
+    - from: '2026-01-01'
+      value: 13.9
+    - from: '2027-01-01'
+      value: 14.6
+  vectors:
+  - input:
+      'on': '2022-10-01'
+    expected: 12
+    origin: source
+  - input:
+      'on': '2024-01-01'
+    expected: 12.41
+    origin: source
+  - input:
+      'on': '2025-01-01'
+    expected: 12.82
+    origin: source
+  - input:
+      'on': '2026-01-01'
+    expected: 13.9
+    origin: source
+  - input:
+      'on': '2027-01-01'
+    expected: 14.6
+    origin: source
+  - input:
+      'on': '2026-06-30'
+    expected: 13.9
+    origin: derived
+    note: mid-2026 falls in the step that began on 1 January 2026
+evidence:
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, milog (XML archive)
+  url: https://www.gesetze-im-internet.de/milog/xml.zip
+  accessed_at: '2026-11-03'
+  locator: MiLoG § 1 Absatz 2 Satz 1
+  value: '12'
+  unit: text
+  snippet: Die Höhe des Mindestlohns beträgt ab dem 1. Oktober 2022 brutto 12 Euro je Zeitstunde
+  source_license: unstated
+  content_sha256: 0e8af5c6c3065a64ba2766d3a7489b3352f2b4438f954dd3f01029043f82532b
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, milov4 (XML archive)
+  url: https://www.gesetze-im-internet.de/milov4/xml.zip
+  accessed_at: '2026-11-03'
+  locator: MiLoV4 § 1, step from 1 January 2024
+  value: 12,41
+  unit: text
+  snippet: 12,41 Euro brutto je Zeitstunde
+  source_license: unstated
+  content_sha256: 12111889bdbdbba8c43d92e24457268f9ca4f1e63dc037999c01bd26bb7be5a5
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, milov4 (XML archive)
+  url: https://www.gesetze-im-internet.de/milov4/xml.zip
+  accessed_at: '2026-11-03'
+  locator: MiLoV4 § 1, step from 1 January 2025
+  value: 12,82
+  unit: text
+  snippet: 12,82 Euro brutto je Zeitstunde
+  source_license: unstated
+  content_sha256: 12111889bdbdbba8c43d92e24457268f9ca4f1e63dc037999c01bd26bb7be5a5
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, milov5 (XML archive)
+  url: https://www.gesetze-im-internet.de/milov5/xml.zip
+  accessed_at: '2026-11-03'
+  locator: MiLoV5 § 1, step from 1 January 2026
+  value: 13,90
+  unit: text
+  snippet: 13,90 Euro brutto je Zeitstunde
+  source_license: unstated
+  content_sha256: 2fd00b9ba262f8baf760bc5af9f5f547e18bb6be3936ca5ba80fa4f40f300439
+  role: primary
+- publisher: Bundesministerium der Justiz (Gesetze im Internet)
+  title: Gesetze im Internet, milov5 (XML archive)
+  url: https://www.gesetze-im-internet.de/milov5/xml.zip
+  accessed_at: '2026-11-03'
+  locator: MiLoV5 § 1, step from 1 January 2027
+  value: 14,60
+  unit: text
+  snippet: 14,60 Euro brutto je Zeitstunde
+  source_license: unstated
+  content_sha256: 2fd00b9ba262f8baf760bc5af9f5f547e18bb6be3936ca5ba80fa4f40f300439
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: value[2026-01-01]
+  expected: 13.9
+  tolerance: 0
+- statistic: max
+  expected: 14.6
+  tolerance: 0
+notes: 'The general statutory minimum wage in euro per hour, gross, by the date each level took effect: the amount
+  fixed in MiLoG § 1(2) from 1 October 2022, the two steps of the Fourth Minimum Wage Adjustment Ordinance (MiLoV4)
+  and the two steps of the Fifth (MiLoV5, BGBl. 2025 I Nr. 268), the last of which takes effect on 1 January 2027.
+  Sector minimum wages under the Posted Workers Act take precedence where higher and are not included; MiLoG § 22
+  exempts some groups, such as minors without vocational training, from the minimum wage. Gesetze im Internet carries
+  no licence statement, so the licence is recorded as unstated and the entry stays at license-review.'

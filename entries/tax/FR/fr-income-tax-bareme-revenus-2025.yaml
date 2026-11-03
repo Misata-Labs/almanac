@@ -1,0 +1,159 @@
+id: fr-income-tax-bareme-revenus-2025
+title: France income tax scale (barème progressif) for 2025 income taxed in 2026, per part of quotient familial
+  (CGI article 197)
+kind: rule
+domain: tax
+region: FR
+status: license-review
+tier: B
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- payroll
+- tax
+- income-tax
+- tax-bands
+- withholding
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- synthetic-employees
+spec:
+  implementation: almanac.rules.income_tax_bands
+  parameters:
+    income_year: 2025
+    currency: EUR
+    per: part of quotient familial
+    personal_allowance: 0
+    bands:
+    - name: 0%
+      up_to: 11600
+      rate_percent: 0
+    - name: 11%
+      up_to: 29579
+      rate_percent: 11
+    - name: 30%
+      up_to: 84577
+      rate_percent: 30
+    - name: 41%
+      up_to: 181917
+      rate_percent: 41
+    - name: 45%
+      up_to: null
+      rate_percent: 45
+  vectors:
+  - input:
+      income: 11600
+    expected: '0.00'
+    origin: source
+    note: no tax on the first slice
+  - input:
+      income: 40000
+    expected: '5103.99'
+    origin: derived
+    note: tax for one part
+  - input:
+      income: 200000
+    expected: '66523.84'
+    origin: derived
+    note: top slice
+evidence:
+- publisher: Direction générale des Finances publiques (BOFiP-Impôts)
+  title: BOI-IR-LIQ-20-10-20260407, IR - Liquidation - Détermination de l'impôt brut (HTML)
+  url: https://bofip.impots.gouv.fr/bofip/2491-PGP.html/identifiant%3DBOI-IR-LIQ-20-10-20260407
+  accessed_at: '2026-11-03'
+  locator: § 40, barème pour l'imposition des revenus 2025, row 1
+  value: 11 600
+  unit: text
+  snippet: N’excédant pas 11 600 €
+  source_license: etalab-2.0
+  content_sha256: 1918af110eee2a5a224acc4da6e0c0b78a41019c1530bcae68c0736a3478887b
+  role: primary
+- publisher: Direction générale des Finances publiques (BOFiP-Impôts)
+  title: BOI-IR-LIQ-20-10-20260407, IR - Liquidation - Détermination de l'impôt brut (HTML)
+  url: https://bofip.impots.gouv.fr/bofip/2491-PGP.html/identifiant%3DBOI-IR-LIQ-20-10-20260407
+  accessed_at: '2026-11-03'
+  locator: § 40, barème, slice at 11 %
+  value: 29 579
+  unit: text
+  snippet: Supérieure à 11 600 € et inférieure ou égale à 29 579 €
+  source_license: etalab-2.0
+  content_sha256: 1918af110eee2a5a224acc4da6e0c0b78a41019c1530bcae68c0736a3478887b
+  role: primary
+- publisher: Direction générale des Finances publiques (BOFiP-Impôts)
+  title: BOI-IR-LIQ-20-10-20260407, IR - Liquidation - Détermination de l'impôt brut (HTML)
+  url: https://bofip.impots.gouv.fr/bofip/2491-PGP.html/identifiant%3DBOI-IR-LIQ-20-10-20260407
+  accessed_at: '2026-11-03'
+  locator: § 40, barème, slice at 30 %
+  value: 84 577
+  unit: text
+  snippet: Supérieure à 29 579 € et inférieure ou égale à 84 577 €
+  source_license: etalab-2.0
+  content_sha256: 1918af110eee2a5a224acc4da6e0c0b78a41019c1530bcae68c0736a3478887b
+  role: primary
+- publisher: Direction générale des Finances publiques (BOFiP-Impôts)
+  title: BOI-IR-LIQ-20-10-20260407, IR - Liquidation - Détermination de l'impôt brut (HTML)
+  url: https://bofip.impots.gouv.fr/bofip/2491-PGP.html/identifiant%3DBOI-IR-LIQ-20-10-20260407
+  accessed_at: '2026-11-03'
+  locator: § 40, barème, slice at 41 %
+  value: 181 917
+  unit: text
+  snippet: Supérieure à 84 577 € et inférieure ou égale à 181 917 €
+  source_license: etalab-2.0
+  content_sha256: 1918af110eee2a5a224acc4da6e0c0b78a41019c1530bcae68c0736a3478887b
+  role: primary
+- publisher: Direction générale des Finances publiques (BOFiP-Impôts)
+  title: BOI-IR-LIQ-20-10-20260407, IR - Liquidation - Détermination de l'impôt brut (HTML)
+  url: https://bofip.impots.gouv.fr/bofip/2491-PGP.html/identifiant%3DBOI-IR-LIQ-20-10-20260407
+  accessed_at: '2026-11-03'
+  locator: § 40, remarque on the indexation by the loi de finances pour 2026
+  value: 0,9 %
+  unit: text
+  snippet: indexe les limites des tranches de revenus du barème de l’impôt sur le revenu sur l’évolution de l’IPC
+    hors tabac de 2025 par rapport
+  source_license: etalab-2.0
+  content_sha256: 1918af110eee2a5a224acc4da6e0c0b78a41019c1530bcae68c0736a3478887b
+  role: primary
+- publisher: Direction générale des Finances publiques (BOFiP-Impôts)
+  title: BOI-IR-LIQ-20-10-20260407, IR - Liquidation - Détermination de l'impôt brut (HTML)
+  url: https://bofip.impots.gouv.fr/bofip/2491-PGP.html/identifiant%3DBOI-IR-LIQ-20-10-20260407
+  accessed_at: '2026-11-03'
+  locator: § 40, table title
+  value: revenus 2025
+  unit: text
+  snippet: Barème pour l’imposition sur les revenus 2025
+  source_license: etalab-2.0
+  content_sha256: 1918af110eee2a5a224acc4da6e0c0b78a41019c1530bcae68c0736a3478887b
+  role: primary
+- publisher: Direction générale des Finances publiques (BOFiP-Impôts)
+  title: BOI-IR-LIQ-20-10-20260407, IR - Liquidation - Détermination de l'impôt brut (HTML)
+  url: https://bofip.impots.gouv.fr/bofip/2491-PGP.html/identifiant%3DBOI-IR-LIQ-20-10-20260407
+  accessed_at: '2026-11-03'
+  locator: Page footer, licence statement
+  value: licence etalab-2.0
+  unit: text
+  snippet: Sauf mention contraire, tous les contenus de ce site sont sous
+  source_license: etalab-2.0
+  content_sha256: 1918af110eee2a5a224acc4da6e0c0b78a41019c1530bcae68c0736a3478887b
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: rate[45%]
+  expected: 45
+  tolerance: 0
+notes: 'The progressive income tax scale of CGI article 197 I-1 for income earned in 2025 and taxed in 2026, as
+  the BOFiP-Impôts (DGFiP''s official tax doctrine) publishes it after the loi n° 2026-103 du 19 février 2026 de
+  finances pour 2026 indexed the slice limits by 0.9 percent. The scale applies to taxable income for one part of
+  the quotient familial: the household''s net taxable income is divided by its number of parts, the scale applied,
+  and the result multiplied back by the parts (CGI article 193); the cap on the benefit of the quotient familial,
+  the décote and the tax reductions are not modelled. valid_from and valid_to give the income year the scale taxes.
+  The BOFiP page states that its content is under the Licence Ouverte (etalab-2.0); the verifier does not list that
+  licence as permissive, so the entry stays at license-review. The page is HTML (tier B) and lists the document''s
+  versions, so it may change when the next version is published.'
