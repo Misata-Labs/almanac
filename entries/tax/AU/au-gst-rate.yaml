@@ -1,0 +1,83 @@
+id: au-gst-rate
+title: Australia GST rate on taxable supplies, A New Tax System (Goods and Services Tax) Act 1999 s 9-70
+kind: rule
+domain: tax
+region: AU
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: null
+tags:
+- vat
+- tax
+- consumption-tax
+- gst
+use_cases:
+- invoicing-demo
+- tax-demo
+- ecommerce-demo
+- invoicing
+- accounts-payable
+spec:
+  implementation: almanac.rules.consumption_tax
+  parameters:
+    slabs:
+      standard: 10
+    rounding: '0.01'
+    section: 9-70
+    compilation: '96'
+  vectors:
+  - input: 10
+    expected: true
+    origin: source
+  - input:
+      gross: 110
+      slab: standard
+    expected: '10.00'
+    origin: derived
+    note: s 9-75 values a supply at price x 10/11
+  - input:
+      net: 100
+      slab: standard
+    expected: '10.00'
+    origin: derived
+evidence:
+- publisher: Office of Parliamentary Counsel, Federal Register of Legislation (Australia)
+  title: A New Tax System (Goods and Services Tax) Act 1999, Compilation No. 96, volume 1 (PDF)
+  url: https://www.legislation.gov.au/C2004A00446/2026-01-01/2026-01-01/text/original/pdf/1
+  accessed_at: '2026-11-03'
+  locator: page 56, section 9-70
+  value: 10% of the *value of
+  unit: text
+  snippet: The amount of GST on a *taxable supply is
+  source_license: unstated
+  content_sha256: ca5511a8acd9b4ac78773e8d5781e97e889e0ad8a050671de3faaf6eb6bab583
+  role: primary
+- publisher: Office of Parliamentary Counsel, Federal Register of Legislation (Australia)
+  title: A New Tax System (Goods and Services Tax) Act 1999, Compilation No. 96, volume 1 (PDF)
+  url: https://www.legislation.gov.au/C2004A00446/2026-01-01/2026-01-01/text/original/pdf/1
+  accessed_at: '2026-11-03'
+  locator: page 56, header
+  value: 01/01/2026
+  unit: date
+  snippet: 'Compilation No. 96 Compilation date: 01/01/2026'
+  source_license: unstated
+  content_sha256: ca5511a8acd9b4ac78773e8d5781e97e889e0ad8a050671de3faaf6eb6bab583
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 1
+  tolerance: 0
+- statistic: slab[standard]
+  expected: 10
+  tolerance: 0
+notes: Section 9-70 of the A New Tax System (Goods and Services Tax) Act 1999 sets the GST on a taxable supply as
+  a percentage of its value, and section 9-75 values a supply at the GST-inclusive price times 10/11, so the GST
+  inside a GST-inclusive price is one eleventh of it. GST-free and input-taxed supplies carry no GST and are not
+  slabs. The text is the authorised compilation in force from the compilation date, which sets valid_from (the rate
+  itself is older). The Federal Register of Legislation PDF for a compilation does not change once registered. Its
+  licence is not stated in the document, so the licence is unstated and the entry held at license-review.

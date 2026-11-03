@@ -1,0 +1,248 @@
+id: us-customs-de-minimis-and-informal-entry-thresholds
+title: United States customs de minimis, gift, informal entry and traveller exemption thresholds, 19 CFR parts 10,
+  143, 145 and 148
+kind: rule
+domain: trade
+region: US
+status: license-review
+tier: A
+valid_from: '2026-06-24'
+valid_to: null
+tags:
+- trade
+- customs
+- tariffs
+- de-minimis
+- informal-entry
+- duty-free
+- 19-cfr
+use_cases:
+- ecommerce-demo
+- logistics-demo
+- procurement-demo
+- invoicing-demo
+- parcel-shipping
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: USD
+    cfr_date: '2026-10-29'
+    rows:
+      de_minimis_shipment:
+        amount_usd: 800
+        section: 10.151(a)
+        suspended: true
+        scope: shipment imported by one person on one day, fair retail value in the country of shipment
+        suspension: '10.151(b): suspended for all modes other than the international postal network'
+        authority: CBP Dec. 26-12, 91 FR 37800, June 24, 2026
+      de_minimis_postal:
+        amount_usd: 800
+        section: 145.31(a)
+        suspended: true
+        scope: packages arriving through the international postal network
+        suspension: '145.31(b): suspended for merchandise arriving through the international postal network'
+      bona_fide_gift:
+        amount_usd: 100
+        section: '10.152'
+        suspended: false
+        scope: aggregate fair retail value received by one person on one day
+      bona_fide_gift_from_insular_possessions:
+        amount_usd: 200
+        section: '10.152'
+        suspended: false
+        scope: gifts sent from a person in the Virgin Islands, Guam or American Samoa
+      informal_entry_limit:
+        amount_usd: 2500
+        section: 143.21(a)
+        suspended: false
+        scope: shipments of merchandise eligible for informal entry
+      informal_entry_chapter_99_article_limit:
+        amount_usd: 250
+        section: 143.21(a)
+        suspended: false
+        scope: articles above this value classified in Chapter 99, Subchapters III and IV, HTSUS, are excluded from
+          informal entry
+      informal_entry_us_goods_returned:
+        amount_usd: 10000
+        section: 143.21(k)
+        suspended: false
+        scope: products of the United States returned for repair or alteration, or rejected by the foreign purchaser
+      returning_resident_exemption:
+        amount_usd: 800
+        section: '148.33'
+        suspended: false
+        scope: articles acquired abroad accompanying a returning resident
+      returning_resident_exemption_insular_possessions:
+        amount_usd: 1600
+        section: '148.33'
+        suspended: false
+        scope: arrival from American Samoa, Guam, the Northern Mariana Islands or the US Virgin Islands
+      nonresident_in_transit:
+        amount_usd: 200
+        section: '148.41'
+        suspended: false
+        scope: articles a nonresident in transit carries through US Customs territory
+      administrative_exemption:
+        amount_usd: 200
+        section: '148.64'
+        suspended: false
+        scope: articles not otherwise entitled to an exemption, section 321(a)(2)(B) Tariff Act of 1930
+  vectors:
+  - input:
+      key: informal_entry_limit
+      column: amount_usd
+    expected: 2500
+    origin: source
+  - input:
+      key: de_minimis_shipment
+      column: suspended
+    expected: true
+    origin: source
+  - input:
+      key: returning_resident_exemption
+      column: amount_usd
+    expected: 800
+    origin: source
+  - input:
+      key: bona_fide_gift
+      column: amount_usd
+    expected: 100
+    origin: source
+  - input: formal_entry_limit
+    expected: false
+    origin: derived
+evidence:
+- publisher: US Customs and Border Protection via the eCFR API
+  title: 19 CFR 10.151 as of 2026-10-29, eCFR point-in-time API (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-19.xml?section=10.151
+  accessed_at: '2026-11-03'
+  locator: section 10.151(a)
+  value: $800
+  unit: currency:USD
+  snippet: in the country of shipment not exceeding $800
+  source_license: unstated
+  content_sha256: 62db3a4f680a63f20fa0a95643e5d7a001c1b85a64c8ea19f51514b1db0a6e9c
+  role: primary
+- publisher: US Customs and Border Protection via the eCFR API
+  title: 19 CFR 10.151 as of 2026-10-29, eCFR point-in-time API (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-19.xml?section=10.151
+  accessed_at: '2026-11-03'
+  locator: section 10.151(b)
+  value: CBP Dec. 26-12, 91 FR 37800, June 24, 2026
+  unit: text
+  snippet: is suspended for merchandise arriving via all modes other than through the international postal network
+  source_license: unstated
+  content_sha256: 62db3a4f680a63f20fa0a95643e5d7a001c1b85a64c8ea19f51514b1db0a6e9c
+  role: primary
+- publisher: US Customs and Border Protection via the eCFR API
+  title: 19 CFR 145.31 as of 2026-10-29, eCFR point-in-time API (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-19.xml?section=145.31
+  accessed_at: '2026-11-03'
+  locator: section 145.31(b)
+  value: $800
+  unit: currency:USD
+  snippet: is suspended for merchandise arriving through the international postal network
+  source_license: unstated
+  content_sha256: 1473a002237952da63f7e6f9967cbda6b9350ab488a79d98bd034beb581fa1fb
+  role: primary
+- publisher: US Customs and Border Protection via the eCFR API
+  title: 19 CFR 10.152 as of 2026-10-29, eCFR point-in-time API (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-19.xml?section=10.152
+  accessed_at: '2026-11-03'
+  locator: section 10.152
+  value: $100
+  unit: currency:USD
+  snippet: does not exceed $100 or, in the case of articles sent from a person in the Virgin Islands
+  source_license: unstated
+  content_sha256: aa30433542b20c0cb176c3a0460090bafe1ae330951b414b198b5ea05bdfdd70
+  role: primary
+- publisher: US Customs and Border Protection via the eCFR API
+  title: 19 CFR 143.21 as of 2026-10-29, eCFR point-in-time API (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-19.xml?section=143.21
+  accessed_at: '2026-11-03'
+  locator: section 143.21(a)
+  value: $2,500
+  unit: currency:USD
+  snippet: Shipments of merchandise not exceeding $2,500 in value
+  source_license: unstated
+  content_sha256: 0e08b90ecc6ef3e452be272d71179de5da6fee4184ef39519ad81e3aaf3821a5
+  role: primary
+- publisher: US Customs and Border Protection via the eCFR API
+  title: 19 CFR 148.33 as of 2026-10-29, eCFR point-in-time API (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-19.xml?section=148.33
+  accessed_at: '2026-11-03'
+  locator: section 148.33(b)
+  value: $1,600
+  unit: currency:USD
+  snippet: $1,600 in the case of a direct or indirect arrival from American Samoa
+  source_license: unstated
+  content_sha256: 0ed7a3744f6e11e557c7ff14358751fb5a19d50b371cd8bbc2fd9f52b1280209
+  role: primary
+- publisher: US Customs and Border Protection via the eCFR API
+  title: 19 CFR 148.41 as of 2026-10-29, eCFR point-in-time API (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-19.xml?section=148.41
+  accessed_at: '2026-11-03'
+  locator: section 148.41
+  value: $200
+  unit: currency:USD
+  snippet: articles not exceeding $200 in aggregate value
+  source_license: unstated
+  content_sha256: a7c9ba0a12d1885d65c46a41821dfcc28c055d2de305b4ae2347c52815b2f5eb
+  role: primary
+- publisher: US Customs and Border Protection via the eCFR API
+  title: 19 CFR 148.64 as of 2026-10-29, eCFR point-in-time API (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-19.xml?section=148.64
+  accessed_at: '2026-11-03'
+  locator: section 148.64(a)
+  value: $200
+  unit: currency:USD
+  snippet: the aggregate fair retail value of all articles not otherwise entitled to an exemption does not exceed
+  source_license: unstated
+  content_sha256: 88b6f61a1d1f24fc6cba42a676910c684123dab4ea3cf5dbfb9ac600f49aa94a
+  role: primary
+- publisher: US Customs and Border Protection via the eCFR API
+  title: eCFR versions of 19 CFR 10.151 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-19.json?section=10.151
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2026-06-24'
+  unit: date
+  snippet: '"date":"2026-06-24"'
+  source_license: unstated
+  content_sha256: 42a0869101f305b68cc66381aec30fabd2eb9d01b852f1f0065e2c380cabfaa7
+  role: supporting
+- publisher: US Customs and Border Protection via the eCFR API
+  title: eCFR versions of 19 CFR 145.31 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-19.json?section=145.31
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2026-06-24'
+  unit: date
+  snippet: '"date":"2026-06-24"'
+  source_license: unstated
+  content_sha256: 5b06525ea48c01fdfab2de1a79f092dcb127f4aca5fb41961d42c4e47c525403
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 11
+  tolerance: 0
+- statistic: value[de_minimis_shipment,amount_usd]
+  expected: 800
+  tolerance: 0
+- statistic: max[amount_usd]
+  expected: 10000
+  tolerance: 0
+notes: US customs dollar thresholds for low-value shipments and travellers, read from 19 CFR as of 2026-10-29. The
+  de minimis administrative exemption of 19 U.S.C. 1321 (10.151 for commercial modes, 145.31 for mail) keeps its
+  dollar amount in the text but is suspended by paragraph (b) of both sections, for every mode of arrival, by CBP
+  Dec. 26-12, 91 FR 37800, June 24, 2026; the suspension holds until CBP announces otherwise in the Federal Register,
+  so a generator should treat no low-value shipment as duty-free under de minimis. The bona fide gift exemption
+  (10.152), the informal entry ceiling (143.21), the returning resident exemption for articles acquired abroad (148.33),
+  the nonresident in-transit allowance (148.41) and the administrative exemption for travellers (148.64) are not
+  suspended. valid_from is the latest eCFR version date of 10.151 and 145.31, the sections the suspension amended.
+  US federal government works carry no copyright, but neither the eCFR API nor the regulation text states reuse
+  terms, so the licence is recorded as unstated and the entry held at license-review.

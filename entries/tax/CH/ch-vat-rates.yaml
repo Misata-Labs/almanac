@@ -1,0 +1,110 @@
+id: ch-vat-rates
+title: 'Switzerland VAT rates: standard, reduced and accommodation special rate (VAT Act SR 641.20, Art. 25)'
+kind: rule
+domain: tax
+region: CH
+status: license-review
+tier: A
+valid_from: '2024-01-01'
+valid_to: null
+tags:
+- vat
+- tax
+- consumption-tax
+- mwst
+use_cases:
+- invoicing-demo
+- tax-demo
+- ecommerce-demo
+- invoicing
+- accounts-payable
+spec:
+  implementation: almanac.rules.consumption_tax
+  parameters:
+    slabs:
+      standard: 8.1
+      reduced: 2.6
+      accommodation: 3.8
+    rounding: '0.01'
+    currency: CHF
+  vectors:
+  - input: 8.1
+    expected: true
+    origin: source
+  - input: 2.6
+    expected: true
+    origin: source
+  - input: 3.8
+    expected: true
+    origin: source
+  - input:
+      net: 100
+      slab: standard
+    expected: '8.10'
+    origin: derived
+evidence:
+- publisher: Swiss Federal Chancellery, Fedlex
+  title: Federal Act on Value Added Tax (VAT Act) SR 641.20, consolidated version of 31 March 2025, English (XML)
+  url: https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2009/615/20250331/en/xml/fedlex-data-admin-ch-eli-cc-2009-615-20250331-en-xml-3.xml
+  accessed_at: '2026-11-03'
+  locator: Art. 25 para. 1
+  value: 8.1 per cent
+  unit: text
+  snippet: The tax rate is 8.1 per cent (standard rate)
+  source_license: unstated
+  content_sha256: 74a16185443e2cc13b07de05d40049aeb4ed6c53599bd3a449718704936bd1d2
+  role: primary
+- publisher: Swiss Federal Chancellery, Fedlex
+  title: Federal Act on Value Added Tax (VAT Act) SR 641.20, consolidated version of 31 March 2025, English (XML)
+  url: https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2009/615/20250331/en/xml/fedlex-data-admin-ch-eli-cc-2009-615-20250331-en-xml-3.xml
+  accessed_at: '2026-11-03'
+  locator: Art. 25 para. 2
+  value: 2.6 per cent
+  unit: text
+  snippet: The reduced tax rate of 2.6 per cent applies to
+  source_license: unstated
+  content_sha256: 74a16185443e2cc13b07de05d40049aeb4ed6c53599bd3a449718704936bd1d2
+  role: primary
+- publisher: Swiss Federal Chancellery, Fedlex
+  title: Federal Act on Value Added Tax (VAT Act) SR 641.20, consolidated version of 31 March 2025, English (XML)
+  url: https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2009/615/20250331/en/xml/fedlex-data-admin-ch-eli-cc-2009-615-20250331-en-xml-3.xml
+  accessed_at: '2026-11-03'
+  locator: Art. 25 para. 4
+  value: 3.8 per cent
+  unit: text
+  snippet: The tax on accommodation services is 3.8 per cent (special rate)
+  source_license: unstated
+  content_sha256: 74a16185443e2cc13b07de05d40049aeb4ed6c53599bd3a449718704936bd1d2
+  role: primary
+- publisher: Swiss Federal Chancellery, Fedlex
+  title: Federal Act on Value Added Tax (VAT Act) SR 641.20, consolidated version of 31 March 2025, English (XML)
+  url: https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2009/615/20250331/en/xml/fedlex-data-admin-ch-eli-cc-2009-615-20250331-en-xml-3.xml
+  accessed_at: '2026-11-03'
+  locator: Art. 25 para. 1, note
+  value: 1 Jan. 2024
+  unit: text
+  snippet: in force since 1 Jan. 2024
+  source_license: unstated
+  content_sha256: 74a16185443e2cc13b07de05d40049aeb4ed6c53599bd3a449718704936bd1d2
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+- statistic: slab[standard]
+  expected: 8.1
+  tolerance: 0
+- statistic: slab[reduced]
+  expected: 2.6
+  tolerance: 0
+notes: 'Article 25 of the Swiss Federal Act on Value Added Tax: the standard rate, the reduced rate (tap water,
+  foodstuffs other than alcohol, livestock, seeds and plants, animal feed, medication, printed matter and other
+  items listed in paragraph 2) and the special rate for accommodation services, which paragraph 4 limits in time
+  (see the text). The standard and reduced rates are in force since the date the amending note gives, which sets
+  valid_from. The source is the Fedlex XML of the consolidated version of 31 March 2025, the latest English version
+  in Fedlex''s SPARQL index when the entry was built; English is not an official language of Swiss law, so the German
+  text prevails. Fedlex states no licence in the file, so the licence is unstated and the entry held at license-review.'

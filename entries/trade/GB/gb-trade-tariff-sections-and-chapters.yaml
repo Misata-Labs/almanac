@@ -1,0 +1,325 @@
+id: gb-trade-tariff-sections-and-chapters
+title: UK Integrated Online Tariff sections and chapters with titles (Trade Tariff API)
+kind: rule
+domain: trade
+region: GB
+status: verified
+tier: A
+valid_from: '2026-11-03'
+valid_to: null
+tags:
+- trade
+- customs
+- tariffs
+- uk-global-tariff
+- harmonized-system
+- code-list
+use_cases:
+- ecommerce-demo
+- logistics-demo
+- procurement-demo
+- invoicing-demo
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      section:
+        I: Live animals; animal products
+        II: Vegetable products
+        III: Animal, vegetable or microbial fats and oils and their cleavage products; prepared edible fats; animal
+          or vegetable waxes
+        IV: Prepared foodstuffs; beverages, spirits and vinegar; tobacco and manufactured tobacco substitutes; Products,
+          whether or not containing nicotine, intended for inhalation without combustion; Other nicotine containing
+          products intended for the intake of nicotine into the human body
+        V: Mineral products
+        VI: Products of the chemical or allied industries
+        VII: Plastics and articles thereof; rubber and articles thereof
+        VIII: Raw hides and skins, leather, furskins and articles thereof; saddlery and harness; travel goods, handbags
+          and similar containers; articles of animal gut (other than silkworm gut)
+        IX: Wood and articles of wood; wood charcoal; cork and articles of cork; manufactures of straw, of esparto
+          or of other plaiting materials; basket-ware and wickerwork
+        X: Pulp of wood or of other fibrous cellulosic material; recovered (waste and scrap) paper or paperboard;
+          paper and paperboard and articles thereof
+        XI: Textiles and textile articles
+        XII: Footwear, headgear, umbrellas, sun umbrellas, walking-sticks, seat-sticks, whips, riding-crops and
+          parts thereof; prepared feathers and articles made therewith; artificial flowers; articles of human hair
+        XIII: Articles of stone, plaster, cement, asbestos, mica or similar materials; ceramic products; glass and
+          glassware
+        XIV: Natural or cultured pearls, precious or semi-precious stones, precious metals, metals clad with precious
+          metal and articles thereof; imitation jewellery; coins
+        XV: Base metals and articles of base metal
+        XVI: Machinery and mechanical appliances; electrical equipment; parts thereof, sound recorders and reproducers,
+          television image and sound recorders and reproducers, and parts and accessories of such articles
+        XVII: Vehicles, aircraft, vessels and associated transport equipment
+        XVIII: Optical, photographic, cinematographic, measuring, checking, precision, medical or surgical instruments
+          and apparatus; clocks and watches; musical instruments; parts and accessories thereof
+        XIX: Arms and ammunition; parts and accessories thereof
+        XX: Miscellaneous manufactured articles
+        XXI: Works of art, collectors' pieces and antiques
+      chapter:
+        '01': Live animals
+        '02': Meat and edible meat offal
+        '03': Fish and crustaceans, molluscs and other aquatic invertebrates
+        '04': Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified
+          or included
+        '05': Products of animal origin, not elsewhere specified or included
+        '06': Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage
+        '07': Edible vegetables and certain roots and tubers
+        08: Edible fruit and nuts; peel of citrus fruit or melons
+        09: Coffee, tea, maté and spices
+        '10': Cereals
+        '11': Products of the milling industry; malt; starches; inulin; wheat gluten
+        '12': Oil seeds and oleaginous fruits; miscellaneous grains, seeds and fruit; industrial or medicinal plants;
+          straw and fodder
+        '13': Lac; gums, resins and other vegetable saps and extracts
+        '14': Vegetable plaiting materials; vegetable products not elsewhere specified or included
+        '15': Animal, vegetable or microbial fats and oils and their cleavage products; prepared edible fats; animal
+          or vegetable waxes
+        '16': Preparations of meat, of fish, of crustaceans, molluscs or other aquatic invertebrates, or of insects
+        '17': Sugars and sugar confectionery
+        '18': Cocoa and cocoa preparations
+        '19': Preparations of cereals, flour, starch or milk; pastrycooks' products
+        '20': Preparations of vegetables, fruit, nuts or other parts of plants
+        '21': Miscellaneous edible preparations
+        '22': Beverages, spirits and vinegar
+        '23': Residues and waste from the food industries; prepared animal fodder
+        '24': Tobacco and manufactured tobacco substitutes; products, whether or not containing nicotine, intended
+          for inhalation without combustion; other nicotine containing products intended for the intake of nicotine
+          into the human body
+        '25': Salt; sulphur; earths and stone; plastering materials, lime and cement
+        '26': Ores, slag and ash
+        '27': Mineral fuels, mineral oils and products of their distillation; bituminous substances; mineral waxes
+        '28': Inorganic chemicals; organic or inorganic compounds of precious metals, of rare-earth metals, of radioactive
+          elements or of isotopes
+        '29': Organic chemicals
+        '30': Pharmaceutical products
+        '31': Fertilisers
+        '32': Tanning or dyeing extracts; tannins and their derivatives; dyes, pigments and other colouring matter;
+          paints and varnishes; putty and other mastics; inks
+        '33': Essential oils and resinoids; perfumery, cosmetic or toilet preparations
+        '34': Soap, organic surface-active agents, washing preparations, lubricating preparations, artificial waxes,
+          prepared waxes, polishing or scouring preparations, candles and similar articles, modelling pastes, 'dental
+          waxes' and dental preparations with a basis of plaster
+        '35': Albuminoidal substances; modified starches; glues; enzymes
+        '36': Explosives; pyrotechnic products; matches; pyrophoric alloys; certain combustible preparations
+        '37': Photographic or cinematographic goods
+        '38': Miscellaneous chemical products
+        '39': Plastics and articles thereof
+        '40': Rubber and articles thereof
+        '41': Raw hides and skins (other than furskins) and leather
+        '42': Articles of leather; saddlery and harness; travel goods, handbags and similar containers; articles
+          of animal gut (other than silkworm gut)
+        '43': Furskins and artificial fur; manufactures thereof
+        '44': Wood and articles of wood; wood charcoal
+        '45': Cork and articles of cork
+        '46': Manufactures of straw, of esparto or of other plaiting materials; basketware and wickerwork
+        '47': Pulp of wood or of other fibrous cellulosic material; recovered (waste and scrap) paper or paperboard
+        '48': Paper and paperboard; articles of paper pulp, of paper or of paperboard
+        '49': Printed books, newspapers, pictures and other products of the printing industry; manuscripts, typescripts
+          and plans
+        '50': Silk
+        '51': Wool, fine or coarse animal hair; horsehair yarn and woven fabric
+        '52': Cotton
+        '53': Other vegetable textile fibres; paper yarn and woven fabrics of paper yarn
+        '54': Man-made filaments; strip and the like of man-made textile materials
+        '55': Man-made staple fibres
+        '56': Wadding, felt and nonwovens; special yarns; twine, cordage, ropes and cables and articles thereof
+        '57': Carpets and other textile floor coverings
+        '58': Special woven fabrics; tufted textile fabrics; lace; tapestries; trimmings; embroidery
+        '59': Impregnated, coated, covered or laminated textile fabrics; textile articles of a kind suitable for
+          industrial use
+        '60': Knitted or crocheted fabrics
+        '61': Articles of apparel and clothing accessories, knitted or crocheted
+        '62': Articles of apparel and clothing accessories, not knitted or crocheted
+        '63': Other made-up textile articles; sets; worn clothing and worn textile articles; rags
+        '64': Footwear, gaiters and the like; parts of such articles
+        '65': Headgear and parts thereof
+        '66': Umbrellas, sun umbrellas, walking sticks, seat-sticks, whips, riding-crops and parts thereof
+        '67': Prepared feathers and down and articles made of feathers or of down; artificial flowers; articles
+          of human hair
+        '68': Articles of stone, plaster, cement, asbestos, mica or similar materials
+        '69': Ceramic products
+        '70': Glass and glassware
+        '71': Natural or cultured pearls, precious or semi-precious stones, precious metals, metals clad with precious
+          metal, and articles thereof; imitation jewellery; coin
+        '72': Iron and steel
+        '73': Articles of iron or steel
+        '74': Copper and articles thereof
+        '75': Nickel and articles thereof
+        '76': Aluminium and articles thereof
+        '78': Lead and articles thereof
+        '79': Zinc and articles thereof
+        '80': Tin and articles thereof
+        '81': Other base metals; cermets; articles thereof
+        '82': Tools, implements, cutlery, spoons and forks, of base metal; parts thereof of base metal
+        '83': Miscellaneous articles of base metal
+        '84': Nuclear reactors, boilers, machinery and mechanical appliances; parts thereof
+        '85': Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television
+          image and sound recorders and reproducers, and parts and accessories of such articles
+        '86': Railway or tramway locomotives, rolling stock and parts thereof; railway or tramway track fixtures
+          and fittings and parts thereof; mechanical (including electromechanical) traffic signalling equipment
+          of all kinds
+        '87': Vehicles other than railway or tramway rolling stock, and parts and accessories thereof
+        '88': Aircraft, spacecraft, and parts thereof
+        '89': Ships, boats and floating structures
+        '90': Optical, photographic, cinematographic, measuring, checking, precision, medical or surgical instruments
+          and apparatus; parts and accessories thereof
+        '91': Clocks and watches and parts thereof
+        '92': Musical instruments; parts and accessories of such articles
+        '93': Arms and ammunition; parts and accessories thereof
+        '94': Furniture; bedding, mattresses, mattress supports, cushions and similar stuffed furnishings; luminaires
+          and lighting fittings, not elsewhere specified or included; illuminated signs, illuminated nameplates
+          and the like; prefabricated buildings
+        '95': Toys, games and sports requisites; parts and accessories thereof
+        '96': Miscellaneous manufactured articles
+        '97': Works of art, collectors' pieces and antiques
+        '98': Complete industrial plant
+        '99': Special combined nomenclature codes
+    section_chapters:
+      I:
+      - '01'
+      - '05'
+      II:
+      - '06'
+      - '14'
+      III:
+      - '15'
+      - '15'
+      IV:
+      - '16'
+      - '24'
+      V:
+      - '25'
+      - '27'
+      VI:
+      - '28'
+      - '38'
+      VII:
+      - '39'
+      - '40'
+      VIII:
+      - '41'
+      - '43'
+      IX:
+      - '44'
+      - '46'
+      X:
+      - '47'
+      - '49'
+      XI:
+      - '50'
+      - '63'
+      XII:
+      - '64'
+      - '67'
+      XIII:
+      - '68'
+      - '70'
+      XIV:
+      - '71'
+      - '71'
+      XV:
+      - '72'
+      - '83'
+      XVI:
+      - '84'
+      - '85'
+      XVII:
+      - '86'
+      - '89'
+      XVIII:
+      - '90'
+      - '92'
+      XIX:
+      - '93'
+      - '93'
+      XX:
+      - '94'
+      - '96'
+      XXI:
+      - '97'
+      - '99'
+  vectors:
+  - input:
+      set: section
+      value: XI
+    expected: true
+    origin: source
+  - input:
+      set: chapter
+      value: '85'
+    expected: true
+    origin: source
+  - input:
+      set: chapter
+      value: '77'
+    expected: false
+    origin: source
+  - input:
+      set: section
+      value: XXII
+    expected: false
+    origin: source
+evidence:
+- publisher: HM Revenue & Customs and Department for Business and Trade, UK Trade Tariff service
+  title: Trade Tariff API v2 sections (JSON)
+  url: https://www.trade-tariff.service.gov.uk/api/v2/sections
+  accessed_at: '2026-11-03'
+  locator: data[numeral=XI]
+  value: Textiles and textile articles
+  unit: text
+  snippet: '"numeral":"XI","title":"Textiles and textile articles"'
+  source_license: OGL-UK-3.0
+  content_sha256: 7dc9aba58eaf7b20dfee04a5ea7534e1aa14e9f68ea37da09b070f95f543db13
+  role: primary
+- publisher: HM Revenue & Customs and Department for Business and Trade, UK Trade Tariff service
+  title: Trade Tariff API v2 sections (JSON)
+  url: https://www.trade-tariff.service.gov.uk/api/v2/sections
+  accessed_at: '2026-11-03'
+  locator: data[numeral=XVI]
+  value: Machinery and mechanical appliances; electrical equipment; parts thereof, sound recorders and reproducers,
+    television image and sound recorders and reproducers, and parts and accessories of such articles
+  unit: text
+  snippet: '"numeral":"XVI","title":"Machinery and mechanical appliances; electrical equipment; parts thereof,'
+  source_license: OGL-UK-3.0
+  content_sha256: 7dc9aba58eaf7b20dfee04a5ea7534e1aa14e9f68ea37da09b070f95f543db13
+  role: primary
+- publisher: HM Revenue & Customs and Department for Business and Trade, UK Trade Tariff service
+  title: Trade Tariff API v2 chapters (JSON)
+  url: https://www.trade-tariff.service.gov.uk/api/v2/chapters
+  accessed_at: '2026-11-03'
+  locator: data[goods_nomenclature_item_id=6100000000]
+  value: Articles of apparel and clothing accessories, knitted or crocheted
+  unit: text
+  snippet: '"goods_nomenclature_item_id":"6100000000"'
+  source_license: OGL-UK-3.0
+  content_sha256: edf02ef3a32016a27cc8f3aaca266fed1d8cfae58eef66a52d6a725c341d1aed
+  role: primary
+- publisher: HM Revenue & Customs and Department for Business and Trade, UK Trade Tariff service
+  title: Trade Tariff API v2 chapters (JSON)
+  url: https://www.trade-tariff.service.gov.uk/api/v2/chapters
+  accessed_at: '2026-11-03'
+  locator: data[goods_nomenclature_item_id=8500000000]
+  value: Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image
+    and sound recorders and reproducers, and parts and accessories of such articles
+  unit: text
+  snippet: '"goods_nomenclature_item_id":"8500000000"'
+  source_license: OGL-UK-3.0
+  content_sha256: edf02ef3a32016a27cc8f3aaca266fed1d8cfae58eef66a52d6a725c341d1aed
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[section]
+  expected: 21
+  tolerance: 0
+- statistic: count[chapter]
+  expected: 98
+  tolerance: 0
+notes: The sections (by Roman numeral, with the first and last chapter of each) and chapters (two-digit code) of
+  the UK Integrated Online Tariff, the goods classification the UK applies to imports and exports, from the Trade
+  Tariff service API. The API serves the tariff in force on the day of the request, so valid_from is the day the
+  entry was built. Chapter titles are the service's formatted descriptions, checked to carry no markup. The Trade
+  Tariff is a GOV.UK service and its content is published under the Open Government Licence v3.0.

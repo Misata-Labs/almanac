@@ -1,0 +1,113 @@
+id: no-vat-rates-2026
+title: 'Norway VAT (merverdiavgift) rates for 2026: general, foodstuffs, water and transport/accommodation (Skatteetaten)'
+kind: rule
+domain: tax
+region: 'NO'
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- vat
+- tax
+- consumption-tax
+- mva
+use_cases:
+- invoicing-demo
+- tax-demo
+- ecommerce-demo
+- invoicing
+- accounts-payable
+spec:
+  implementation: almanac.rules.consumption_tax
+  parameters:
+    slabs:
+      standard: 25
+      foodstuffs: 15
+      water_and_wastewater: 15
+      passenger_transport_cinema_accommodation: 12
+    rounding: '0.01'
+    currency: NOK
+    year: 2026
+  vectors:
+  - input: 25
+    expected: true
+    origin: source
+  - input: 15
+    expected: true
+    origin: source
+  - input: 12
+    expected: true
+    origin: source
+evidence:
+- publisher: Norwegian Tax Administration (Skatteetaten)
+  title: VAT rates for 2026, Skatteetaten English site (HTML)
+  url: https://www.skatteetaten.no/en/rates/value-added-tax/?year=2026
+  accessed_at: '2026-11-03'
+  locator: rates table, row 'Normal rate'
+  value: <p>25 %</p>
+  unit: text
+  snippet: <p>Normal rate</p>
+  source_license: unstated
+  content_sha256: a970da6b0bb5f68400306c755e9e8b68973ce1cad4f919c5b0154b1b88d0cab6
+  role: primary
+- publisher: Norwegian Tax Administration (Skatteetaten)
+  title: VAT rates for 2026, Skatteetaten English site (HTML)
+  url: https://www.skatteetaten.no/en/rates/value-added-tax/?year=2026
+  accessed_at: '2026-11-03'
+  locator: rates table, row 'Foodstuffs'
+  value: <p>15 %</p>
+  unit: text
+  snippet: <p>Foodstuffs</p>
+  source_license: unstated
+  content_sha256: a970da6b0bb5f68400306c755e9e8b68973ce1cad4f919c5b0154b1b88d0cab6
+  role: primary
+- publisher: Norwegian Tax Administration (Skatteetaten)
+  title: VAT rates for 2026, Skatteetaten English site (HTML)
+  url: https://www.skatteetaten.no/en/rates/value-added-tax/?year=2026
+  accessed_at: '2026-11-03'
+  locator: rates table, row 'Water and wastewater services'
+  value: <p>15 %</p>
+  unit: text
+  snippet: <p>Water and wastewater services</p>
+  source_license: unstated
+  content_sha256: a970da6b0bb5f68400306c755e9e8b68973ce1cad4f919c5b0154b1b88d0cab6
+  role: primary
+- publisher: Norwegian Tax Administration (Skatteetaten)
+  title: VAT rates for 2026, Skatteetaten English site (HTML)
+  url: https://www.skatteetaten.no/en/rates/value-added-tax/?year=2026
+  accessed_at: '2026-11-03'
+  locator: rates table, row 'Passenger transport, cinema tickets, letting of rooms*'
+  value: <p>12 %</p>
+  unit: text
+  snippet: <p>Passenger transport, cinema tickets, letting of rooms*</p>
+  source_license: unstated
+  content_sha256: a970da6b0bb5f68400306c755e9e8b68973ce1cad4f919c5b0154b1b88d0cab6
+  role: primary
+- publisher: Norwegian Tax Administration (Skatteetaten)
+  title: VAT rates for 2026, Skatteetaten English site (HTML)
+  url: https://www.skatteetaten.no/en/rates/value-added-tax/?year=2026
+  accessed_at: '2026-11-03'
+  locator: year picker
+  value: '2026'
+  unit: text
+  snippet: <option selected value="2026">2026</option>
+  source_license: unstated
+  content_sha256: a970da6b0bb5f68400306c755e9e8b68973ce1cad4f919c5b0154b1b88d0cab6
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: slab[standard]
+  expected: 25
+  tolerance: 0
+notes: 'Norway''s VAT rates for 2026 as the Norwegian Tax Administration lists them on its English rates page, pinned
+  to 2026 with the page''s year parameter: the general rate, the rate for foodstuffs, the rate for water and wastewater
+  services, and the low rate for passenger transport, accommodation, public broadcasting and entry to cinemas, sporting
+  events, amusement parks and activity centres. Supplies that are zero-rated or outside the scope of VAT are not
+  listed. The page states no licence, so the entry is held at license-review.'

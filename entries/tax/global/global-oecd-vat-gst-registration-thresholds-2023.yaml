@@ -1,0 +1,411 @@
+id: global-oecd-vat-gst-registration-thresholds-2023
+title: VAT/GST registration and collection turnover thresholds by OECD country, position at 1 September 2023 (OECD)
+kind: rule
+domain: tax
+region: global
+status: license-review
+tier: A
+valid_from: '2023-09-01'
+valid_to: '2023-09-01'
+tags:
+- vat
+- tax
+- consumption-tax
+- oecd
+- registration-threshold
+- small-business
+- by-country
+use_cases:
+- invoicing-demo
+- tax-demo
+- ecommerce-demo
+- invoicing
+- accounts-payable
+- kyb-onboarding
+- company-generation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: ISO 3166-1 alpha-3, as OECD codelist CL_AREA
+    amounts: national currency, annual turnover
+    rows:
+      AUS:
+        country: Australia
+        currency: AUD
+        threshold_type: registration
+        general_threshold: 75000
+        other_thresholds:
+        - 150000
+        voluntary_registration: true
+        minimum_registration_period: 1 year
+      AUT:
+        country: Austria
+        currency: EUR
+        threshold_type: registration
+        general_threshold: 35000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: 5 years
+      BEL:
+        country: Belgium
+        currency: EUR
+        threshold_type: collection
+        general_threshold: 25000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: null
+      CAN:
+        country: Canada
+        currency: CAD
+        threshold_type: registration
+        general_threshold: 30000
+        other_thresholds:
+        - 50000
+        voluntary_registration: true
+        minimum_registration_period: 1 year
+      CHL:
+        country: Chile
+        currency: CLP
+        threshold_type: null
+        general_threshold: null
+        other_thresholds: []
+        voluntary_registration: null
+        minimum_registration_period: null
+      COL:
+        country: Colombia
+        currency: COP
+        threshold_type: registration
+        general_threshold: null
+        other_thresholds:
+        - 133014000
+        voluntary_registration: true
+        minimum_registration_period: null
+      CRI:
+        country: Costa Rica
+        currency: CRC
+        threshold_type: null
+        general_threshold: null
+        other_thresholds: []
+        voluntary_registration: null
+        minimum_registration_period: null
+      CZE:
+        country: Czech Republic
+        currency: CZK
+        threshold_type: registration
+        general_threshold: 2000000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: 1 year
+      DNK:
+        country: Denmark
+        currency: DKK
+        threshold_type: registration
+        general_threshold: 50000
+        other_thresholds:
+        - 170000
+        - 300000
+        voluntary_registration: true
+        minimum_registration_period: 2 years
+      EST:
+        country: Estonia
+        currency: EUR
+        threshold_type: registration
+        general_threshold: 40000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: null
+      FIN:
+        country: Finland
+        currency: EUR
+        threshold_type: registration
+        general_threshold: 15000
+        other_thresholds:
+        - 30000
+        voluntary_registration: true
+        minimum_registration_period: null
+      FRA:
+        country: France
+        currency: EUR
+        threshold_type: registration
+        general_threshold: 91900
+        other_thresholds:
+        - 36800
+        - 44500
+        voluntary_registration: true
+        minimum_registration_period: 2 years
+      DEU:
+        country: Germany
+        currency: EUR
+        threshold_type: collection
+        general_threshold: 22000
+        other_thresholds:
+        - 50000
+        voluntary_registration: true
+        minimum_registration_period: 5 years
+      GRC:
+        country: Greece
+        currency: EUR
+        threshold_type: collection
+        general_threshold: 10000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: 1 year
+      HUN:
+        country: Hungary
+        currency: HUF
+        threshold_type: collection
+        general_threshold: 12000000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: 1 year
+      ISL:
+        country: Iceland
+        currency: ISK
+        threshold_type: registration
+        general_threshold: 2000000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: null
+      IRL:
+        country: Ireland
+        currency: EUR
+        threshold_type: registration
+        general_threshold: 75000
+        other_thresholds:
+        - 37500
+        voluntary_registration: true
+        minimum_registration_period: null
+      ISR:
+        country: Israel
+        currency: ILS
+        threshold_type: collection
+        general_threshold: 107692
+        other_thresholds: []
+        voluntary_registration: false
+        minimum_registration_period: null
+      ITA:
+        country: Italy
+        currency: EUR
+        threshold_type: collection
+        general_threshold: 85000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: null
+      JPN:
+        country: Japan
+        currency: JPY
+        threshold_type: registration
+        general_threshold: 10000000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: 2 years
+      KOR:
+        country: Korea
+        currency: KRW
+        threshold_type: collection
+        general_threshold: 48000000
+        other_thresholds: []
+        voluntary_registration: false
+        minimum_registration_period: null
+      LVA:
+        country: Latvia
+        currency: EUR
+        threshold_type: registration
+        general_threshold: 40000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: null
+      LTU:
+        country: Lithuania
+        currency: EUR
+        threshold_type: registration
+        general_threshold: 45000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: null
+      LUX:
+        country: Luxembourg
+        currency: EUR
+        threshold_type: collection
+        general_threshold: 35000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: null
+      MEX:
+        country: Mexico
+        currency: MXN
+        threshold_type: null
+        general_threshold: null
+        other_thresholds: []
+        voluntary_registration: null
+        minimum_registration_period: null
+      NLD:
+        country: Netherlands
+        currency: EUR
+        threshold_type: collection
+        general_threshold: 20000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: 3 years
+      NZL:
+        country: New Zealand
+        currency: NZD
+        threshold_type: registration
+        general_threshold: 60000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: null
+      NOR:
+        country: Norway
+        currency: NOK
+        threshold_type: registration
+        general_threshold: 50000
+        other_thresholds:
+        - 3000000
+        - 140000
+        voluntary_registration: true
+        minimum_registration_period: 2 years
+      POL:
+        country: Poland
+        currency: PLN
+        threshold_type: registration
+        general_threshold: 200000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: null
+      PRT:
+        country: Portugal
+        currency: EUR
+        threshold_type: collection
+        general_threshold: 13500
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: 5 years
+      SVK:
+        country: Slovak Republic
+        currency: EUR
+        threshold_type: registration
+        general_threshold: 49790
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: 1 year
+      SVN:
+        country: Slovenia
+        currency: EUR
+        threshold_type: registration
+        general_threshold: 50000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: 5 years
+      ESP:
+        country: Spain
+        currency: EUR
+        threshold_type: null
+        general_threshold: null
+        other_thresholds: []
+        voluntary_registration: null
+        minimum_registration_period: null
+      SWE:
+        country: Sweden
+        currency: SEK
+        threshold_type: registration
+        general_threshold: 80000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: 3 years
+      CHE:
+        country: Switzerland
+        currency: CHF
+        threshold_type: registration
+        general_threshold: 100000
+        other_thresholds:
+        - 250000
+        voluntary_registration: true
+        minimum_registration_period: 1 year
+      TUR:
+        country: Türkiye
+        currency: TRY
+        threshold_type: registration
+        general_threshold: null
+        other_thresholds: []
+        voluntary_registration: null
+        minimum_registration_period: null
+      GBR:
+        country: United Kingdom
+        currency: GBP
+        threshold_type: registration
+        general_threshold: 85000
+        other_thresholds: []
+        voluntary_registration: true
+        minimum_registration_period: null
+  vectors:
+  - input:
+      key: GBR
+      column: general_threshold
+    expected: 85000
+    origin: source
+  - input:
+      key: JPN
+      column: currency
+    expected: JPY
+    origin: source
+  - input: USA
+    expected: false
+    origin: source
+evidence:
+- publisher: OECD Centre for Tax Policy and Administration
+  title: Consumption Tax Trends, Annex Table 2.5 annual turnover concessions for VAT/GST registration (XLSX)
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-sub-issues/consumption-tax-trends/vat-gst-annual-turnover-concessions-ctt-trends.xlsx
+  accessed_at: '2026-11-03'
+  locator: sheet 2023, title
+  value: Annual turnover concessions for VAT/GST registration and collection
+  unit: text
+  snippet: Annex Table 2.5. Annual turnover concessions for VAT/GST registration and collection
+  source_license: unstated
+  content_sha256: 5154146ac98ca3380c3eb0493b67e7f7e1c6492a294e2df41a01d51393544a76
+  role: primary
+- publisher: OECD Centre for Tax Policy and Administration
+  title: Consumption Tax Trends, Annex Table 2.5 annual turnover concessions for VAT/GST registration (XLSX)
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-sub-issues/consumption-tax-trends/vat-gst-annual-turnover-concessions-ctt-trends.xlsx
+  accessed_at: '2026-11-03'
+  locator: sheet 2023, source line
+  value: position as at 1 September 2023
+  unit: text
+  snippet: 'Source: National delegates - position as at 1 September 2023'
+  source_license: unstated
+  content_sha256: 5154146ac98ca3380c3eb0493b67e7f7e1c6492a294e2df41a01d51393544a76
+  role: primary
+- publisher: OECD Centre for Tax Policy and Administration
+  title: Consumption Tax Trends, Annex Table 2.5 annual turnover concessions for VAT/GST registration (XLSX)
+  url: https://www.oecd.org/content/dam/oecd/en/topics/policy-sub-issues/consumption-tax-trends/vat-gst-annual-turnover-concessions-ctt-trends.xlsx
+  accessed_at: '2026-11-03'
+  locator: sheet 2023, row United Kingdom
+  value: '85000'
+  unit: integer
+  snippet: '85000'
+  source_license: unstated
+  content_sha256: 5154146ac98ca3380c3eb0493b67e7f7e1c6492a294e2df41a01d51393544a76
+  role: primary
+assumed:
+- parameter: rows (keys)
+  value: OECD CL_AREA alpha-3 code matched on the English country name
+  method: derived
+  rationale: As for the OECD VAT rate table; 'Czech Republic' is matched to CZE.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 37
+  tolerance: 0
+- statistic: value[GBR,general_threshold]
+  expected: 85000
+  tolerance: 0
+notes: 'Annual turnover thresholds below which domestic businesses need not register for, or collect, VAT/GST, from
+  Annex Table 2.5 of OECD Consumption Tax Trends (sheet 2023, position as at 1 September 2023): the national currency,
+  whether the threshold governs registration or collection, the general threshold, any other thresholds the table
+  lists for special sectors (explained in the table''s country notes), whether voluntary registration is allowed
+  and the minimum registration period. 31 of the 37 countries have a numeric general threshold; the rest have none
+  or one the table describes only in a country note. The USD columns of the table are formulas and are not copied.
+  No licence statement was found in the OECD file or in a byte-stable OECD document, so the licence is recorded
+  as unstated and the entry held at license-review.'

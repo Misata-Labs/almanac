@@ -1,0 +1,96 @@
+id: sg-gst-rates
+title: Singapore GST standard rate and zero rate with the IRAS tax-exclusive worked example
+kind: rule
+domain: tax
+region: SG
+status: license-review
+tier: B
+valid_from: '2024-01-01'
+valid_to: null
+tags:
+- vat
+- tax
+- consumption-tax
+- gst
+use_cases:
+- invoicing-demo
+- tax-demo
+- ecommerce-demo
+- invoicing
+- accounts-payable
+spec:
+  implementation: almanac.rules.consumption_tax
+  parameters:
+    slabs:
+      standard: 9
+      zero: 0
+    rounding: '0.01'
+    currency: SGD
+  vectors:
+  - input: 9
+    expected: true
+    origin: source
+  - input:
+      net: 40
+      slab: standard
+    expected: '3.60'
+    origin: source
+    note: paragraph 5.5.2 example
+  - input:
+      gross: '43.60'
+      slab: standard
+    expected: '3.60'
+    origin: derived
+    note: tax fraction of paragraph 5.5.4
+evidence:
+- publisher: Inland Revenue Authority of Singapore
+  title: 'IRAS e-Tax Guide, GST: General Guide for Businesses (PDF)'
+  url: https://www.iras.gov.sg/docs/default-source/e-tax/etaxguide_gst_gst-general-guide-for-businesses(1).pdf?sfvrsn=8a66716d_110
+  accessed_at: '2026-11-03'
+  locator: paragraph 2.1
+  value: the GST rate is 9%
+  unit: text
+  snippet: Since 1 Jan 2024, the GST rate is 9%
+  source_license: unstated
+  content_sha256: 19734b2d66505c763adc389889d7e78540656a08e95b3d1b2db77e15ee4e9656
+  role: primary
+- publisher: Inland Revenue Authority of Singapore
+  title: 'IRAS e-Tax Guide, GST: General Guide for Businesses (PDF)'
+  url: https://www.iras.gov.sg/docs/default-source/e-tax/etaxguide_gst_gst-general-guide-for-businesses(1).pdf?sfvrsn=8a66716d_110
+  accessed_at: '2026-11-03'
+  locator: paragraph 4.2
+  value: GST is charged at 0%
+  unit: text
+  snippet: There are two categories of zero -rated supply
+  source_license: unstated
+  content_sha256: 19734b2d66505c763adc389889d7e78540656a08e95b3d1b2db77e15ee4e9656
+  role: primary
+- publisher: Inland Revenue Authority of Singapore
+  title: 'IRAS e-Tax Guide, GST: General Guide for Businesses (PDF)'
+  url: https://www.iras.gov.sg/docs/default-source/e-tax/etaxguide_gst_gst-general-guide-for-businesses(1).pdf?sfvrsn=8a66716d_110
+  accessed_at: '2026-11-03'
+  locator: paragraph 5.5.2, example
+  value: which is $ 3.60
+  unit: text
+  snippet: The value of supply is $40
+  source_license: unstated
+  content_sha256: 19734b2d66505c763adc389889d7e78540656a08e95b3d1b2db77e15ee4e9656
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+- statistic: slab[standard]
+  expected: 9
+  tolerance: 0
+notes: 'Singapore''s goods and services tax as the IRAS general guide for businesses states it: the standard rate
+  since the date in paragraph 2.1 (valid_from), the zero rate for exports of goods and international services (paragraph
+  4.2), and the guide''s own worked example of tax on a tax-exclusive price (paragraph 5.5.2); the guide gives the
+  tax fraction for tax-inclusive amounts in paragraph 5.5.4. Exempt and out-of-scope supplies carry no GST and are
+  not slabs. The guide''s URL carries IRAS''s document version, so it is pinned to this edition; the HTML rate page
+  is not cited because its links carry version suffixes. IRAS states no licence in the guide, so the entry is held
+  at license-review.'

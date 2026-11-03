@@ -1,0 +1,125 @@
+id: jp-consumption-tax-rates
+title: 'Japan consumption tax rates from 1 October 2019: standard and reduced, with national and local components
+  (NTA)'
+kind: rule
+domain: tax
+region: JP
+status: license-review
+tier: B
+valid_from: '2019-10-01'
+valid_to: null
+tags:
+- vat
+- tax
+- consumption-tax
+- japan-consumption-tax
+use_cases:
+- invoicing-demo
+- tax-demo
+- ecommerce-demo
+- invoicing
+- accounts-payable
+spec:
+  implementation: almanac.rules.consumption_tax
+  parameters:
+    slabs:
+      standard: 10
+      reduced: 8
+    rounding: '1'
+    currency: JPY
+    components:
+      standard:
+        national: 7.8
+        local: 2.2
+      reduced:
+        national: 6.24
+        local: 1.76
+    previous_rate_until_2019_09_30:
+      total: 8
+      national: 6.3
+      local: 1.7
+    reduced_rate_items:
+    - food and drink excluding alcoholic drink and dining out
+    - newspapers issued twice a week or more, by subscription
+    exemption_threshold_base_period_taxable_sales_jpy: 10000000
+  vectors:
+  - input: 10
+    expected: true
+    origin: source
+  - input: 8
+    expected: true
+    origin: source
+  - input:
+      net: 1000
+      slab: reduced
+    expected: '80'
+    origin: derived
+evidence:
+- publisher: National Tax Agency, Japan
+  title: Consumption Tax basic knowledge, National Tax Agency English site (HTML)
+  url: https://www.nta.go.jp/english/taxes/consumption_tax/01.htm
+  accessed_at: '2026-11-03'
+  locator: No.10, table row Total
+  value: 10.0％
+  unit: percent
+  snippet: <th colspan="2" scope="col">From October 1,2019</th>
+  source_license: unstated
+  content_sha256: 44f76370c3ecea474493af0ac718cdc4efa7a5f34b777558dd0521ebf01fa819
+  role: primary
+- publisher: National Tax Agency, Japan
+  title: Consumption Tax basic knowledge, National Tax Agency English site (HTML)
+  url: https://www.nta.go.jp/english/taxes/consumption_tax/01.htm
+  accessed_at: '2026-11-03'
+  locator: No.10, table row National Consumption Tax rate
+  value: 6.24％
+  unit: percent
+  snippet: National Consumption<br>Tax rate
+  source_license: unstated
+  content_sha256: 44f76370c3ecea474493af0ac718cdc4efa7a5f34b777558dd0521ebf01fa819
+  role: primary
+- publisher: National Tax Agency, Japan
+  title: Consumption Tax basic knowledge, National Tax Agency English site (HTML)
+  url: https://www.nta.go.jp/english/taxes/consumption_tax/01.htm
+  accessed_at: '2026-11-03'
+  locator: No.10, table row Local Consumption Tax rate
+  value: 2.2％
+  unit: percent
+  snippet: Local Consumption<br>Tax rate
+  source_license: unstated
+  content_sha256: 44f76370c3ecea474493af0ac718cdc4efa7a5f34b777558dd0521ebf01fa819
+  role: primary
+- publisher: National Tax Agency, Japan
+  title: Consumption Tax basic knowledge, National Tax Agency English site (HTML)
+  url: https://www.nta.go.jp/english/taxes/consumption_tax/01.htm
+  accessed_at: '2026-11-03'
+  locator: No.7 Exemption threshold for business
+  value: 10million yen
+  unit: text
+  snippet: if its taxable sales in the Base Period for the Taxable Period are equal to or less than
+  source_license: unstated
+  content_sha256: 44f76370c3ecea474493af0ac718cdc4efa7a5f34b777558dd0521ebf01fa819
+  role: primary
+assumed:
+- parameter: exemption_threshold_base_period_taxable_sales_jpy
+  value: 10000000
+  method: derived
+  rationale: The NTA states the threshold as '10million yen'; it is written out in yen.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+- statistic: slab[standard]
+  expected: 10
+  tolerance: 0
+- statistic: slab[reduced]
+  expected: 8
+  tolerance: 0
+notes: 'Japan''s consumption tax as the National Tax Agency''s English guidance states it: from 1 October 2019 a
+  standard rate and a reduced rate (food and drink other than alcohol and dining out, and subscription newspapers
+  issued at least twice a week), each split into a national consumption tax and a local consumption tax; the combined
+  rate before that date is kept for history. A business whose taxable sales in the base period do not exceed the
+  stated threshold is in principle exempt. Rounding to whole yen is a convenience for demos, not a rule from the
+  source. The NTA page is static HTML and byte-stable; it states no licence, so the entry is held at license-review.'
