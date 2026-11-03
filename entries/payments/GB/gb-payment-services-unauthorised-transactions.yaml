@@ -1,0 +1,156 @@
+id: gb-payment-services-unauthorised-transactions
+title: United Kingdom unauthorised payment refund deadline, £35 payer liability cap and 13-month notice, Payment
+  Services Regulations 2017
+kind: rule
+domain: payments
+region: GB
+status: license-review
+tier: B
+valid_from: '2026-04-28'
+valid_to: null
+tags:
+- compliance
+- consumer-protection
+- fraud
+- unauthorised-transactions
+- payment-services-regulations
+use_cases:
+- fraud-detection-demo
+- payments-demo
+- banking-demo
+- customer-service-demo
+- sla-calculation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: GBP
+    rows:
+      unauthorised_refund_deadline:
+        value: no later than the end of the business day following the day on which it becomes aware of the unauthorised
+          transaction
+        unit: deadline as the regulation states it
+        regulation: 76(2)
+      unauthorised_refund_business_days:
+        value: 1
+        unit: business days after the day the provider becomes aware, at the end of that day
+        regulation: 76(2)
+      payer_liability_cap_gbp:
+        value: 35
+        unit: GBP, lost or stolen or misappropriated instrument
+        regulation: 77(1)
+      notification_limit_months:
+        value: 13
+        unit: months after the debit date
+        regulation: 74(1)
+  vectors:
+  - input:
+      key: payer_liability_cap_gbp
+      column: value
+    expected: 35
+    origin: source
+  - input:
+      key: notification_limit_months
+      column: value
+    expected: 13
+    origin: source
+  - input: payer_liability_cap_gbp
+    expected: true
+    origin: source
+  - input: chargeback_window_days
+    expected: false
+    origin: derived
+evidence:
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Payment Services Regulations 2017, regulation 76 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/752/regulation/76/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 76(2)
+  value: business day following
+  unit: text
+  snippet: no later than the end of the business day following the day on which it becomes aware of the unauthorised
+    transaction
+  source_license: unstated
+  content_sha256: f631e87dfa74c79ceeb3d015d4c96b2daf1a4aaf1bea231a5ce0d4a2d6270524
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Payment Services Regulations 2017, regulation 77 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/752/regulation/77/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 77(1)
+  value: £35
+  unit: currency:GBP
+  snippet: liable up to a maximum of £35
+  source_license: unstated
+  content_sha256: 02a3461ff54ba1307e9a46b7044423ccfd9bf6ff70876a6b56842401e476de27
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Payment Services Regulations 2017, regulation 74 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/752/regulation/74/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 74(1)
+  value: '13'
+  unit: integer
+  snippet: no later than 13 months after the debit date
+  source_license: unstated
+  content_sha256: 617865da13a17b1cd8e3428c7ed3555889ffc4ca81df9cced20c5697acd82a16
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Payment Services Regulations 2017, regulation 74 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/752/regulation/74/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: restrict start date of the provision (start of its current version)
+  value: '2026-04-28'
+  unit: date
+  snippet: data-x-restrict-start-date="2026-04-28"
+  source_license: unstated
+  content_sha256: 617865da13a17b1cd8e3428c7ed3555889ffc4ca81df9cced20c5697acd82a16
+  role: supporting
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Payment Services Regulations 2017, regulation 76 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/752/regulation/76/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: restrict start date of the provision (start of its current version)
+  value: '2026-04-28'
+  unit: date
+  snippet: data-x-restrict-start-date="2026-04-28"
+  source_license: unstated
+  content_sha256: f631e87dfa74c79ceeb3d015d4c96b2daf1a4aaf1bea231a5ce0d4a2d6270524
+  role: supporting
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Payment Services Regulations 2017, regulation 77 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/752/regulation/77/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: restrict start date of the provision (start of its current version)
+  value: '2026-04-28'
+  unit: date
+  snippet: data-x-restrict-start-date="2026-04-28"
+  source_license: unstated
+  content_sha256: 02a3461ff54ba1307e9a46b7044423ccfd9bf6ff70876a6b56842401e476de27
+  role: supporting
+assumed:
+- parameter: unauthorised_refund_business_days
+  value: 1
+  method: derived
+  rationale: Regulation 76(2) says 'no later than the end of the business day following the day on which it becomes
+    aware'; the row restates that as one business day.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: value[payer_liability_cap_gbp,value]
+  expected: 35
+  tolerance: 0
+notes: 'Rules a UK payment service provider applies to an unauthorised payment transaction under the Payment Services
+  Regulations 2017, read from legislation.gov.uk''s versions as of 2026-10-29: it refunds the payer by the end of
+  the business day after it becomes aware of the transaction (unless it reasonably suspects fraud and notifies the
+  appropriate authority); it may hold the payer liable for no more than the stated cap for losses from a lost, stolen
+  or misappropriated instrument (with exceptions for fraud, gross negligence and losses the payer could not detect);
+  and the payer must notify within the stated months of the debit date to be entitled to redress. valid_from is
+  the latest start of the three regulations'' current versions. The legislation.gov.uk resource carries no licence
+  statement, although the site publishes legislation under the Open Government Licence v3.0, so the licence is recorded
+  as unstated and the entry held at license-review. Provisions are cited in legislation.gov.uk''s HTML rendering,
+  which makes the entry tier B: the XML rendering of these versions lists unapplied effects whose attributes are
+  reordered on every render, so its bytes do not stay fixed.'

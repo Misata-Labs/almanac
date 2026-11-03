@@ -1,0 +1,297 @@
+id: gb-mlr-2017-cdd-thresholds
+title: United Kingdom Money Laundering Regulations 2017 customer due diligence thresholds and record retention,
+  sterling from 30 June 2026
+kind: rule
+domain: compliance
+region: GB
+status: license-review
+tier: B
+valid_from: '2026-06-30'
+valid_to: null
+tags:
+- compliance
+- aml
+- kyc
+- customer-due-diligence
+- money-laundering-regulations
+- high-value-dealer
+- casino
+use_cases:
+- aml-demo
+- fraud-detection-demo
+- kyc-onboarding
+- banking-demo
+- kyb-onboarding
+- data-quality-validation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      transfer_of_funds_over:
+        value: 800
+        currency: GBP
+        before_2026_06_30_value: 1000
+        before_2026_06_30_currency: EUR
+        regulation: 27(1)(b)
+        meaning: Occasional transaction that is a transfer of funds, strictly more than
+      occasional_transaction:
+        value: 12000
+        currency: GBP
+        before_2026_06_30_value: 15000
+        before_2026_06_30_currency: EUR
+        regulation: 27(2)
+        meaning: Occasional transaction by any relevant person other than those with their own threshold, at least
+      high_value_dealer_cash:
+        value: 10000
+        currency: GBP
+        before_2026_06_30_value: 10000
+        before_2026_06_30_currency: EUR
+        regulation: 27(3)
+        meaning: High value dealer cash transaction, at least
+      casino:
+        value: 2000
+        currency: GBP
+        before_2026_06_30_value: 2000
+        before_2026_06_30_currency: EUR
+        regulation: 27(5)
+        meaning: Casino stake or collection of winnings, at least
+      letting_agent_monthly_rent:
+        value: 10000
+        currency: GBP
+        before_2026_06_30_value: 10000
+        before_2026_06_30_currency: EUR
+        regulation: 27(7A)
+        meaning: 'Letting agent: monthly rent, at least'
+      art_market_transaction:
+        value: 10000
+        currency: GBP
+        before_2026_06_30_value: 10000
+        before_2026_06_30_currency: EUR
+        regulation: 27(7C)(a)
+        meaning: Art market participant trade in a work of art, at least
+      freeport_art_storage:
+        value: 10000
+        currency: GBP
+        before_2026_06_30_value: 10000
+        before_2026_06_30_currency: EUR
+        regulation: 27(7C)(b)
+        meaning: Freeport operator storing works of art, at least
+      cryptoasset_transfer:
+        value: 800
+        currency: GBP
+        before_2026_06_30_value: 1000
+        before_2026_06_30_currency: EUR
+        regulation: 27(7E)
+        meaning: Cryptoasset transfer, at least
+      record_retention_years:
+        value: 5
+        currency: null
+        before_2026_06_30_value: null
+        before_2026_06_30_currency: null
+        regulation: 40(3)
+        meaning: Years after the business relationship or occasional transaction ends
+      record_retention_max_years:
+        value: 10
+        currency: null
+        before_2026_06_30_value: null
+        before_2026_06_30_currency: null
+        regulation: 40(4)
+        meaning: Longest period records of the business relationship need be kept
+  vectors:
+  - input:
+      key: occasional_transaction
+      column: value
+    expected: 12000
+    origin: source
+  - input:
+      key: high_value_dealer_cash
+      column: value
+    expected: 10000
+    origin: source
+  - input:
+      key: casino
+      column: value
+    expected: 2000
+    origin: source
+  - input:
+      key: occasional_transaction
+      column: before_2026_06_30_value
+    expected: 15000
+    origin: source
+  - input: record_retention_years
+    expected: true
+    origin: source
+  - input: politically_exposed_person
+    expected: false
+    origin: derived
+evidence:
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 27 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/27/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 27(1)(b)
+  value: £800
+  unit: currency:GBP
+  snippet: transfer of funds within the meaning of Article 3.9 of the funds transfer regulation exceeding
+  source_license: unstated
+  content_sha256: ff2aa8c6669bf8b54d31514709f8c3576fb9439bd1208e832437c3b52e03c5ca
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 27 (legislation.gov.uk HTML, version of 2026-06-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/27/2026-06-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 27(1)(b)
+  value: 1,000 euros
+  unit: currency:EUR
+  snippet: transfer of funds within the meaning of Article 3.9 of the funds transfer regulation exceeding
+  source_license: unstated
+  content_sha256: 3477cef090fcec1f4d4cbaa47cd96159b8956c50b28d4ad2acfc39a4a41e1172
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 27 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/27/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 27(2)
+  value: £12,000
+  unit: currency:GBP
+  snippet: carries out an occasional transaction that amounts to
+  source_license: unstated
+  content_sha256: ff2aa8c6669bf8b54d31514709f8c3576fb9439bd1208e832437c3b52e03c5ca
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 27 (legislation.gov.uk HTML, version of 2026-06-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/27/2026-06-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 27(2)
+  value: 15,000 euros
+  unit: currency:EUR
+  snippet: carries out an occasional transaction that amounts to
+  source_license: unstated
+  content_sha256: 3477cef090fcec1f4d4cbaa47cd96159b8956c50b28d4ad2acfc39a4a41e1172
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 27 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/27/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 27(3)
+  value: £10,000
+  unit: currency:GBP
+  snippet: carries out an occasional transaction in cash that amounts to
+  source_license: unstated
+  content_sha256: ff2aa8c6669bf8b54d31514709f8c3576fb9439bd1208e832437c3b52e03c5ca
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 27 (legislation.gov.uk HTML, version of 2026-06-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/27/2026-06-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 27(3)
+  value: 10,000 euros
+  unit: currency:EUR
+  snippet: carries out an occasional transaction in cash that amounts to
+  source_license: unstated
+  content_sha256: 3477cef090fcec1f4d4cbaa47cd96159b8956c50b28d4ad2acfc39a4a41e1172
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 27 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/27/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 27(5)
+  value: £2,000
+  unit: currency:GBP
+  snippet: any transaction within paragraph (6) that amounts to
+  source_license: unstated
+  content_sha256: ff2aa8c6669bf8b54d31514709f8c3576fb9439bd1208e832437c3b52e03c5ca
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 27 (legislation.gov.uk HTML, version of 2026-06-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/27/2026-06-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 27(5)
+  value: 2,000 euros
+  unit: currency:EUR
+  snippet: any transaction within paragraph (6) that amounts to
+  source_license: unstated
+  content_sha256: 3477cef090fcec1f4d4cbaa47cd96159b8956c50b28d4ad2acfc39a4a41e1172
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 40 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/40/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 40(3)
+  value: five
+  unit: text
+  snippet: the period is five years beginning on the date on which the relevant person knows
+  source_license: unstated
+  content_sha256: 218b9dfda7eb028b73aee74fe2ec164cda77aec501a6401cc3c5d75edae0b015
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 40 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/40/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 40(4)
+  value: '10'
+  unit: integer
+  snippet: for more than 10 years
+  source_license: unstated
+  content_sha256: 218b9dfda7eb028b73aee74fe2ec164cda77aec501a6401cc3c5d75edae0b015
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 27 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/27/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: commentary on the substituted sums
+  value: 30.6.2026
+  unit: text
+  snippet: substituted (30.6.2026) by
+  source_license: unstated
+  content_sha256: ff2aa8c6669bf8b54d31514709f8c3576fb9439bd1208e832437c3b52e03c5ca
+  role: supporting
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 27 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/27/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: restrict start date of the provision (start of its current version)
+  value: '2026-06-30'
+  unit: date
+  snippet: data-x-restrict-start-date="2026-06-30"
+  source_license: unstated
+  content_sha256: ff2aa8c6669bf8b54d31514709f8c3576fb9439bd1208e832437c3b52e03c5ca
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: value[occasional_transaction,value]
+  expected: 12000
+  tolerance: 0
+- statistic: value[cryptoasset_transfer,value]
+  expected: 800
+  tolerance: 0
+notes: 'The transaction sizes at which a business regulated by the UK Money Laundering Regulations 2017 must apply
+  customer due diligence to an occasional transaction (regulation 27), and how long it must keep due diligence and
+  transaction records (regulation 40). The Money Laundering and Terrorist Financing (Amendment) Regulations 2026
+  replaced the euro amounts with sterling amounts from 30 June 2026; each row gives the sterling value now in force
+  and the euro value it replaced, read from legislation.gov.uk''s point-in-time versions of regulation 27 as of
+  2026-10-29 and 2026-06-29. Linked transactions count together. Regulation 27(7D) applies due diligence to every
+  transaction at a cryptoasset exchange machine regardless of amount. valid_from is the start of regulation 27''s
+  current version. The legislation.gov.uk resource carries no licence statement, although the site publishes legislation
+  under the Open Government Licence v3.0, so the licence is recorded as unstated and the entry held at license-review.
+  Provisions are cited in legislation.gov.uk''s HTML rendering, which makes the entry tier B: the XML rendering
+  of these versions lists unapplied effects whose attributes are reordered on every render, so its bytes do not
+  stay fixed.'

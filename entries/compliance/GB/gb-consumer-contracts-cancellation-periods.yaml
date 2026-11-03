@@ -1,0 +1,183 @@
+id: gb-consumer-contracts-cancellation-periods
+title: United Kingdom distance and off-premises contract cancellation and refund periods, Consumer Contracts Regulations
+  2013
+kind: rule
+domain: compliance
+region: GB
+status: license-review
+tier: B
+valid_from: '2020-12-31'
+valid_to: null
+tags:
+- compliance
+- consumer-protection
+- cancellation
+- refunds
+- distance-selling
+- consumer-contracts-regulations
+use_cases:
+- retail-demo
+- customer-service-demo
+- sla-calculation
+- invoicing
+- data-quality-validation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      service_or_digital_cancellation_days:
+        value: 14
+        unit: days after the contract is entered into
+        regulation: 30(2)
+      goods_cancellation_days:
+        value: 14
+        unit: days after the goods come into the consumer's physical possession
+        regulation: 30(3)
+      extended_cancellation_months:
+        value: 12
+        unit: months after the normal period would have ended, when cancellation information was not given
+        regulation: 31(3)
+      refund_days:
+        value: 14
+        unit: days after the trader is told of the cancellation
+        regulation: 34(6)
+      refund_days_goods_not_collected:
+        value: 14
+        unit: days after the trader receives the goods back or evidence of return, if earlier
+        regulation: 34(5)
+  vectors:
+  - input:
+      key: service_or_digital_cancellation_days
+      column: value
+    expected: 14
+    origin: source
+  - input:
+      key: goods_cancellation_days
+      column: value
+    expected: 14
+    origin: source
+  - input:
+      key: extended_cancellation_months
+      column: value
+    expected: 12
+    origin: source
+  - input:
+      key: refund_days
+      column: value
+    expected: 14
+    origin: source
+  - input: service_or_digital_cancellation_days
+    expected: true
+    origin: source
+  - input: restocking_fee_percent
+    expected: false
+    origin: derived
+evidence:
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013, regulation
+    30 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2013/3134/regulation/30/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 30(2)
+  value: '14'
+  unit: integer
+  snippet: the cancellation period ends at the end of 14 days after the day on which the contract is entered into
+  source_license: unstated
+  content_sha256: ab277bf227ad23770dc2ae1380487b86f74f8b018967f266cb104f61b8d1a38c
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013, regulation
+    30 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2013/3134/regulation/30/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 30(3)
+  value: '14'
+  unit: integer
+  snippet: the cancellation period ends at the end of 14 days after the day on which the goods come into the physical
+    possession of
+  source_license: unstated
+  content_sha256: ab277bf227ad23770dc2ae1380487b86f74f8b018967f266cb104f61b8d1a38c
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013, regulation
+    31 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2013/3134/regulation/31/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 31(3)
+  value: '12'
+  unit: integer
+  snippet: Otherwise the cancellation period ends at the end of 12 months after the day on which it would have ended
+    under regulation 30
+  source_license: unstated
+  content_sha256: 49264bf03fbac4d462993d3bf80db5444909fbb37b742d28a1457a69b5ec8c35
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013, regulation
+    34 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2013/3134/regulation/34/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 34(6)
+  value: '14'
+  unit: integer
+  snippet: Otherwise, the time is the end of 14 days after the day on which the trader is informed
+  source_license: unstated
+  content_sha256: cf4621e61d0becbabac5e8350ac86a1e48cafdfcd82e256a0545b4f2c4826abd
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013, regulation
+    30 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2013/3134/regulation/30/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: restrict start date of the provision (start of its current version)
+  value: '2020-12-31'
+  unit: date
+  snippet: data-x-restrict-start-date="2020-12-31"
+  source_license: unstated
+  content_sha256: ab277bf227ad23770dc2ae1380487b86f74f8b018967f266cb104f61b8d1a38c
+  role: supporting
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013, regulation
+    31 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2013/3134/regulation/31/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: restrict start date of the provision (start of its current version)
+  value: '2020-12-31'
+  unit: date
+  snippet: data-x-restrict-start-date="2020-12-31"
+  source_license: unstated
+  content_sha256: 49264bf03fbac4d462993d3bf80db5444909fbb37b742d28a1457a69b5ec8c35
+  role: supporting
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013, regulation
+    34 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2013/3134/regulation/34/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: restrict start date of the provision (start of its current version)
+  value: '2020-12-31'
+  unit: date
+  snippet: data-x-restrict-start-date="2020-12-31"
+  source_license: unstated
+  content_sha256: cf4621e61d0becbabac5e8350ac86a1e48cafdfcd82e256a0545b4f2c4826abd
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: max[value]
+  expected: 14
+  tolerance: 0
+notes: 'The consumer''s right to cancel a distance or off-premises contract in Great Britain and Northern Ireland:
+  the cancellation period ends the stated number of days after the contract for services and digital content, or
+  after the goods arrive for sales contracts (the last item for split deliveries, the first for regular deliveries),
+  and is extended by up to twelve months when the trader fails to give the cancellation information. The trader
+  must refund within the stated days of being told, or, for goods it has not offered to collect, of getting them
+  back or evidence of their return. Read from legislation.gov.uk''s versions as of 2026-10-29; valid_from is the
+  latest start of the three regulations'' current versions. The legislation.gov.uk resource carries no licence statement,
+  although the site publishes legislation under the Open Government Licence v3.0, so the licence is recorded as
+  unstated and the entry held at license-review. Provisions are cited in legislation.gov.uk''s HTML rendering, which
+  makes the entry tier B: the XML rendering of these versions lists unapplied effects whose attributes are reordered
+  on every render, so its bytes do not stay fixed.'

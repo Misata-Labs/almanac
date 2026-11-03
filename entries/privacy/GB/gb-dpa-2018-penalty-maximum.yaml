@@ -1,0 +1,110 @@
+id: gb-dpa-2018-penalty-maximum
+title: 'United Kingdom data protection maximum penalties: higher and standard maximum amounts, Data Protection Act
+  2018 section 157'
+kind: rule
+domain: privacy
+region: GB
+status: license-review
+tier: B
+valid_from: '2026-09-30'
+valid_to: null
+tags:
+- privacy
+- compliance
+- uk-gdpr
+- penalties
+- data-protection-act-2018
+use_cases:
+- audit-demo
+- data-quality-validation
+- financial-reporting
+spec:
+  implementation: almanac.rules.gb_dpa_penalty_maximum
+  parameters:
+    currency: GBP
+    tiers:
+      higher:
+        fixed_gbp: 17500000
+        turnover_percent: 4
+        section: 157(5)
+      standard:
+        fixed_gbp: 8700000
+        turnover_percent: 2
+        section: 157(6)
+    turnover_basis: total annual worldwide turnover in the preceding financial year
+  vectors:
+  - input:
+      tier: higher
+    expected: 17500000
+    origin: source
+  - input:
+      tier: standard
+    expected: 8700000
+    origin: source
+  - input:
+      tier: higher
+      undertaking: true
+      turnover: 1000000000
+    expected: 40000000
+    origin: derived
+  - input:
+      tier: standard
+      undertaking: true
+      turnover: 100000000
+    expected: 8700000
+    origin: derived
+    note: the fixed sum is higher than the turnover share
+evidence:
+- publisher: The National Archives (legislation.gov.uk)
+  title: Data Protection Act 2018, section 157 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/ukpga/2018/12/section/157/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: section 157(5)(a)
+  value: £17,500,000
+  unit: currency:GBP
+  snippet: or 4% of the undertaking's total annual worldwide turnover in the preceding financial year
+  source_license: unstated
+  content_sha256: 3553c379830ecdf4c2cef147e1352753bb75cfc95c5cb59fd3c9ada33c9a827f
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Data Protection Act 2018, section 157 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/ukpga/2018/12/section/157/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: section 157(6)(a)
+  value: £8,700,000
+  unit: currency:GBP
+  snippet: or 2% of the undertaking's total annual worldwide turnover in the preceding financial year
+  source_license: unstated
+  content_sha256: 3553c379830ecdf4c2cef147e1352753bb75cfc95c5cb59fd3c9ada33c9a827f
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Data Protection Act 2018, section 157 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/ukpga/2018/12/section/157/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: restrict start date of the provision (start of its current version)
+  value: '2026-09-30'
+  unit: date
+  snippet: data-x-restrict-start-date="2026-09-30"
+  source_license: unstated
+  content_sha256: 3553c379830ecdf4c2cef147e1352753bb75cfc95c5cb59fd3c9ada33c9a827f
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+- statistic: value[higher,fixed_gbp]
+  expected: 17500000
+  tolerance: 0
+notes: 'The ceilings on a penalty notice under the UK data protection regime, from section 157 of the Data Protection
+  Act 2018 as legislation.gov.uk publishes it at 2026-10-29. For an undertaking the maximum is the fixed sum or
+  the stated percentage of total annual worldwide turnover in the preceding financial year, whichever is higher;
+  for anyone else it is the fixed sum. Which tier applies depends on the provision infringed: section 157 and Article
+  83 of the UK GDPR assign them. valid_from is the start of the section''s current version. The legislation.gov.uk
+  resource carries no licence statement, although the site publishes legislation under the Open Government Licence
+  v3.0, so the licence is recorded as unstated and the entry held at license-review. Provisions are cited in legislation.gov.uk''s
+  HTML rendering, which makes the entry tier B: the XML rendering of these versions lists unapplied effects whose
+  attributes are reordered on every render, so its bytes do not stay fixed.'

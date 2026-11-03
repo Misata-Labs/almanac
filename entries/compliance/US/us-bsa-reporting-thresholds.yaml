@@ -1,0 +1,572 @@
+id: us-bsa-reporting-thresholds
+title: 'United States Bank Secrecy Act reporting and recordkeeping thresholds: CTR, CMIR, FBAR, travel rule, beneficial
+  ownership and Form 8300'
+kind: rule
+domain: compliance
+region: US
+status: license-review
+tier: A
+valid_from: '2026-01-02'
+valid_to: null
+tags:
+- compliance
+- aml
+- bank-secrecy-act
+- currency-transaction-report
+- travel-rule
+- beneficial-ownership
+- form-8300
+- 31-cfr-1010
+use_cases:
+- aml-demo
+- fraud-detection-demo
+- kyc-onboarding
+- banking-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: USD
+    rows:
+      ctr_currency_transaction_over_usd:
+        value: 10000
+        unit: USD, strictly more than
+        section: 31 CFR 1010.311
+        meaning: Currency Transaction Report for a deposit, withdrawal, exchange or other payment or transfer in
+          currency
+      ctr_aggregation_per_business_day_over_usd:
+        value: 10000
+        unit: USD cash in or cash out per business day
+        section: 31 CFR 1010.313(b)
+        meaning: Multiple currency transactions by or for one person treated as one when known to the institution
+      ctr_filing_days:
+        value: 15
+        unit: days after the transaction
+        section: 31 CFR 1010.306(a)(1)
+        meaning: Deadline to file a Currency Transaction Report
+      casino_ctr_currency_transaction_over_usd:
+        value: 10000
+        unit: USD, strictly more than
+        section: 31 CFR 1021.311
+        meaning: Casino Currency Transaction Report, cash in or cash out
+      casino_aggregation_per_gaming_day_over_usd:
+        value: 10000
+        unit: USD cash in or cash out per gaming day
+        section: 31 CFR 1021.313
+        meaning: Casino aggregation of multiple currency transactions
+      cmir_transport_over_usd:
+        value: 10000
+        unit: USD at one time, strictly more than
+        section: 31 CFR 1010.340(a)
+        meaning: Report of international transportation of currency or monetary instruments (CMIR)
+      cmir_receipt_filing_days:
+        value: 15
+        unit: days after receipt
+        section: 31 CFR 1010.306(b)(2)
+        meaning: Deadline for the recipient of unreported currency shipped from abroad
+      fbar_aggregate_accounts_over_usd:
+        value: 10000
+        unit: USD, strictly more than
+        section: 31 CFR 1010.306(c)
+        meaning: Report of foreign financial accounts (FBAR)
+      credit_extension_record_over_usd:
+        value: 10000
+        unit: USD, strictly more than
+        section: 31 CFR 1010.410(a)
+        meaning: Record of an extension of credit not secured by real property
+      cross_border_transfer_record_over_usd:
+        value: 10000
+        unit: USD, strictly more than
+        section: 31 CFR 1010.410(b)
+        meaning: Record of an instruction to transfer value to or from a place outside the United States
+      bank_funds_transfer_record_min_usd:
+        value: 3000
+        unit: USD, at least
+        section: 31 CFR 1020.410(a)
+        meaning: Bank recordkeeping for a funds transfer
+      nonbank_funds_transmittal_record_min_usd:
+        value: 3000
+        unit: USD, at least
+        section: 31 CFR 1010.410(e)
+        meaning: Recordkeeping for a transmittal of funds by a financial institution other than a bank
+      travel_rule_min_usd:
+        value: 3000
+        unit: USD, at least
+        section: 31 CFR 1010.410(f)
+        meaning: Information that must travel with a transmittal order (travel rule)
+      monetary_instrument_cash_purchase_min_usd:
+        value: 3000
+        unit: USD in currency, inclusive
+        section: 31 CFR 1010.415(a)
+        meaning: Record of a cash purchase of a bank check, cashier's check, money order or traveler's check, lower
+          bound
+      monetary_instrument_cash_purchase_max_usd:
+        value: 10000
+        unit: USD in currency, inclusive
+        section: 31 CFR 1010.415(a)
+        meaning: Upper bound of the monetary instrument recordkeeping band
+      msb_money_order_daily_activity_over_usd:
+        value: 1000
+        unit: USD per person per day, strictly more than
+        section: 31 CFR 1010.100(ff)(3)(i)
+        meaning: Daily amount above which an issuer or seller of traveler's checks or money orders is a money services
+          business
+      record_retention_years:
+        value: 5
+        unit: years
+        section: 31 CFR 1010.430(d)
+        meaning: Retention of every record the Bank Secrecy Act rules require
+      beneficial_owner_equity_percent:
+        value: 25
+        unit: percent of equity interests, at least
+        section: 31 CFR 1010.230(d)(1)
+        meaning: Ownership prong of the beneficial owner definition for legal entity customers
+      msb_initial_registration_days:
+        value: 180
+        unit: days after the business is established
+        section: 31 CFR 1022.380(b)(3)
+        meaning: Deadline for a money services business to register with FinCEN
+      msb_registration_period_years:
+        value: 2
+        unit: calendar years
+        section: 31 CFR 1022.380(b)(2)
+        meaning: Length of each registration and renewal period
+      msb_reregistration_transfer_over_percent:
+        value: 10
+        unit: percent of voting power or equity, strictly more than
+        section: 31 CFR 1022.380(b)(4)
+        meaning: Transfer of control that requires re-registration
+      form_8300_cash_over_usd:
+        value: 10000
+        unit: USD in one or related transactions, strictly more than
+        section: 26 CFR 1.6050I-1(a)(1)
+        meaning: Return of cash received in a trade or business (Form 8300)
+      form_8300_filing_days:
+        value: 15
+        unit: days after receipt
+        section: 26 CFR 1.6050I-1(b)(1)
+        meaning: Deadline to file Form 8300
+      form_8300_statement_due:
+        value: January 31
+        unit: day of the following year
+        section: 26 CFR 1.6050I-1(f)(3)
+        meaning: Annual statement to each person named in a Form 8300
+      form_8300_retention_years:
+        value: 5
+        unit: years from filing
+        section: 26 CFR 1.6050I-1(e)(3)(iii)
+        meaning: Retention of a copy of each Form 8300
+  vectors:
+  - input:
+      key: ctr_currency_transaction_over_usd
+      column: value
+    expected: 10000
+    origin: source
+  - input:
+      key: travel_rule_min_usd
+      column: value
+    expected: 3000
+    origin: source
+  - input:
+      key: beneficial_owner_equity_percent
+      column: value
+    expected: 25
+    origin: source
+  - input:
+      key: form_8300_cash_over_usd
+      column: value
+    expected: 10000
+    origin: source
+  - input:
+      key: msb_initial_registration_days
+      column: value
+    expected: 180
+    origin: source
+  - input: ctr_currency_transaction_over_usd
+    expected: true
+    origin: source
+  - input: ctr_currency_transaction_at_least_usd
+    expected: false
+    origin: derived
+evidence:
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1010, General Provisions (Bank Secrecy Act), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1010
+  accessed_at: '2026-11-03'
+  locator: section 1010.311
+  value: $10,000
+  unit: currency:USD
+  snippet: transaction in currency of more than $10,000
+  source_license: unstated
+  content_sha256: a8bf8af1116f81582227e3e0615d8170384cad67db3a5f19ae9adebee19a7c05
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1010, General Provisions (Bank Secrecy Act), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1010
+  accessed_at: '2026-11-03'
+  locator: section 1010.313(b)
+  value: $10,000
+  unit: currency:USD
+  snippet: cash in or cash out totaling more than $10,000 during any one business day
+  source_license: unstated
+  content_sha256: a8bf8af1116f81582227e3e0615d8170384cad67db3a5f19ae9adebee19a7c05
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1010, General Provisions (Bank Secrecy Act), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1010
+  accessed_at: '2026-11-03'
+  locator: section 1010.306(a)(1)
+  value: '15'
+  unit: integer
+  snippet: within 15 days following the day on which the reportable transaction occurred
+  source_license: unstated
+  content_sha256: a8bf8af1116f81582227e3e0615d8170384cad67db3a5f19ae9adebee19a7c05
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1010, General Provisions (Bank Secrecy Act), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1010
+  accessed_at: '2026-11-03'
+  locator: section 1010.340(a)
+  value: $10,000
+  unit: currency:USD
+  snippet: in an aggregate amount exceeding $10,000 at one time
+  source_license: unstated
+  content_sha256: a8bf8af1116f81582227e3e0615d8170384cad67db3a5f19ae9adebee19a7c05
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1010, General Provisions (Bank Secrecy Act), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1010
+  accessed_at: '2026-11-03'
+  locator: section 1010.306(c)
+  value: $10,000
+  unit: currency:USD
+  snippet: foreign financial accounts exceeding $10,000 maintained during the previous calendar year
+  source_license: unstated
+  content_sha256: a8bf8af1116f81582227e3e0615d8170384cad67db3a5f19ae9adebee19a7c05
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1010, General Provisions (Bank Secrecy Act), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1010
+  accessed_at: '2026-11-03'
+  locator: section 1010.410(e)
+  value: $3,000
+  unit: currency:USD
+  snippet: with respect to a transmittal of funds in the amount of $3,000 or more
+  source_license: unstated
+  content_sha256: a8bf8af1116f81582227e3e0615d8170384cad67db3a5f19ae9adebee19a7c05
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1010, General Provisions (Bank Secrecy Act), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1010
+  accessed_at: '2026-11-03'
+  locator: section 1010.410(f)
+  value: $3,000
+  unit: currency:USD
+  snippet: shall include in any transmittal order for a transmittal of funds in the amount of $3,000 or more
+  source_license: unstated
+  content_sha256: a8bf8af1116f81582227e3e0615d8170384cad67db3a5f19ae9adebee19a7c05
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1010, General Provisions (Bank Secrecy Act), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1010
+  accessed_at: '2026-11-03'
+  locator: section 1010.415(a)
+  value: $3,000
+  unit: currency:USD
+  snippet: involves currency in amounts of $3,000-$10,000 inclusive
+  source_license: unstated
+  content_sha256: a8bf8af1116f81582227e3e0615d8170384cad67db3a5f19ae9adebee19a7c05
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1010, General Provisions (Bank Secrecy Act), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1010
+  accessed_at: '2026-11-03'
+  locator: section 1010.430(d)
+  value: five
+  unit: text
+  snippet: required to be retained by this chapter shall be retained for a period of five years
+  source_license: unstated
+  content_sha256: a8bf8af1116f81582227e3e0615d8170384cad67db3a5f19ae9adebee19a7c05
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1010, General Provisions (Bank Secrecy Act), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1010
+  accessed_at: '2026-11-03'
+  locator: section 1010.230(d)(1)
+  value: '25'
+  unit: integer
+  snippet: owns 25 percent or more of the equity interests of a legal entity customer
+  source_license: unstated
+  content_sha256: a8bf8af1116f81582227e3e0615d8170384cad67db3a5f19ae9adebee19a7c05
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1010, General Provisions (Bank Secrecy Act), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1010
+  accessed_at: '2026-11-03'
+  locator: section 1010.100(ff)(3)(i)
+  value: $1,000
+  unit: currency:USD
+  snippet: sold in an amount greater than $1,000 to any person on any day in one or more transactions
+  source_license: unstated
+  content_sha256: a8bf8af1116f81582227e3e0615d8170384cad67db3a5f19ae9adebee19a7c05
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1020, Rules for Banks, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1020
+  accessed_at: '2026-11-03'
+  locator: section 1020.410(a)
+  value: $3,000
+  unit: currency:USD
+  snippet: with respect to a funds transfer in the amount of $3,000 or more
+  source_license: unstated
+  content_sha256: 2588950c5c16efb45a2a78369e08bda2174bf9a8be5afd634235a406f51924bb
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1021, Rules for Casinos and Card Clubs, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1021
+  accessed_at: '2026-11-03'
+  locator: section 1021.311
+  value: $10,000
+  unit: currency:USD
+  snippet: transaction in currency, involving either cash in or cash out, of more than $10,000
+  source_license: unstated
+  content_sha256: 2e0b7deecb409260519c9648f643700d002b38080408090ddc9fe4c2e13283e7
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1021, Rules for Casinos and Card Clubs, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1021
+  accessed_at: '2026-11-03'
+  locator: section 1021.313
+  value: $10,000
+  unit: currency:USD
+  snippet: cash in or cash out totaling more than $10,000 during any gaming day
+  source_license: unstated
+  content_sha256: 2e0b7deecb409260519c9648f643700d002b38080408090ddc9fe4c2e13283e7
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1022, Rules for Money Services Businesses, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1022
+  accessed_at: '2026-11-03'
+  locator: section 1022.380(b)(3)
+  value: '180'
+  unit: integer
+  snippet: on or before the end of the 180-day period beginning on the day following
+  source_license: unstated
+  content_sha256: fcd9c98d465b17ab3d88435373f0552b82d3bc6d9719a24702a892de27bfe627
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1022, Rules for Money Services Businesses, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1022
+  accessed_at: '2026-11-03'
+  locator: section 1022.380(b)(4)
+  value: '10'
+  unit: integer
+  snippet: transfer of more than 10 percent of the voting power or equity interests
+  source_license: unstated
+  content_sha256: fcd9c98d465b17ab3d88435373f0552b82d3bc6d9719a24702a892de27bfe627
+  role: primary
+- publisher: Internal Revenue Service via the eCFR API
+  title: 26 CFR section 1.6050I-1, Returns relating to cash in excess of $10,000 received in a trade or business,
+    as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-26.xml?part=1&section=1.6050I-1
+  accessed_at: '2026-11-03'
+  locator: section 1.6050I-1(a)(1)
+  value: $10,000
+  unit: currency:USD
+  snippet: receives cash in excess of $10,000 in 1 transaction
+  source_license: unstated
+  content_sha256: 0cce07602322e5eaa296bd3d22ffd7fad369bb02ba71e716b1ccff92e955bcc9
+  role: primary
+- publisher: Internal Revenue Service via the eCFR API
+  title: 26 CFR section 1.6050I-1, Returns relating to cash in excess of $10,000 received in a trade or business,
+    as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-26.xml?part=1&section=1.6050I-1
+  accessed_at: '2026-11-03'
+  locator: section 1.6050I-1(b)(1)
+  value: '15'
+  unit: integer
+  snippet: the recipient must report the initial payment within 15 days of its receipt
+  source_license: unstated
+  content_sha256: 0cce07602322e5eaa296bd3d22ffd7fad369bb02ba71e716b1ccff92e955bcc9
+  role: primary
+- publisher: Internal Revenue Service via the eCFR API
+  title: 26 CFR section 1.6050I-1, Returns relating to cash in excess of $10,000 received in a trade or business,
+    as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-26.xml?part=1&section=1.6050I-1
+  accessed_at: '2026-11-03'
+  locator: section 1.6050I-1(f)(3)
+  value: January 31
+  unit: text
+  snippet: furnished to an identified person on or before January 31 of the year following
+  source_license: unstated
+  content_sha256: 0cce07602322e5eaa296bd3d22ffd7fad369bb02ba71e716b1ccff92e955bcc9
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1010.311 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1010.311
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-23'
+  unit: date
+  snippet: '"date":"2016-12-23"'
+  source_license: unstated
+  content_sha256: d48fbf8ecdfeb739e556d84c35c7a2ce2b9bdc85439ecee7da3065da21ed9cd1
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1010.313 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1010.313
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-23'
+  unit: date
+  snippet: '"date":"2016-12-23"'
+  source_license: unstated
+  content_sha256: 3b5764745107b3747b6f4ea44306d3773b34952984c4be0ee8280febde24b6f1
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1010.306 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1010.306
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-23'
+  unit: date
+  snippet: '"date":"2016-12-23"'
+  source_license: unstated
+  content_sha256: e85ea6a714f08cbfae64ad7b43482a8ac7d49d60e7802bcd56cc2c2906870493
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1010.340 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1010.340
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-23'
+  unit: date
+  snippet: '"date":"2016-12-23"'
+  source_license: unstated
+  content_sha256: 41561ef90dd98359406f38522c3d2160e21e43f280c3b27d43ef8bc6db95ce24
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1010.410 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1010.410
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2026-01-02'
+  unit: date
+  snippet: '"date":"2026-01-02"'
+  source_license: unstated
+  content_sha256: c86f5f7f36a6742901cc07535f07a9384964638f1a6bb5f8640fa4ed64e2493b
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1010.415 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1010.415
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-23'
+  unit: date
+  snippet: '"date":"2016-12-23"'
+  source_license: unstated
+  content_sha256: 1c703a91b2312d14d0619058b3c1d431814526df8e1dd43ef3af5009a25d3594
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1010.430 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1010.430
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-23'
+  unit: date
+  snippet: '"date":"2016-12-23"'
+  source_license: unstated
+  content_sha256: c39aff0f7deafcd77b057ab5e48adc51c508625453a440efdbb28b8929cc4d63
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1010.230 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1010.230
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2017-09-28'
+  unit: date
+  snippet: '"date":"2017-09-28"'
+  source_license: unstated
+  content_sha256: 26359f4fac2a7d91d29a3bbb314b9adccf2d50dda972d997a156c20d5a8baa93
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1020.410 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1020.410
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2022-02-11'
+  unit: date
+  snippet: '"date":"2022-02-11"'
+  source_license: unstated
+  content_sha256: 5e9b2d197e76569ec83fe4528437b405f8c7aae1eda04d7d67a015ee80530068
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1021.311 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1021.311
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-23'
+  unit: date
+  snippet: '"date":"2016-12-23"'
+  source_license: unstated
+  content_sha256: 025c8d89ee328497e3c60bfa274a9251a131e8e0e09972749d14053054ea32e9
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1021.313 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1021.313
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-23'
+  unit: date
+  snippet: '"date":"2016-12-23"'
+  source_license: unstated
+  content_sha256: 5ee10e18d8b4b76b16a5fcf1f492f5ed2faa44f5a974a293f01f52f7b0a50c1b
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1022.380 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1022.380
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2018-06-19'
+  unit: date
+  snippet: '"date":"2018-06-19"'
+  source_license: unstated
+  content_sha256: 36d04c1c5518008b3543e271104e8a7c4f6e0223a043aaa827df41003fc916b5
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 26 CFR 1.6050I-1 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-26.json?section=1.6050I-1
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2023-06-27'
+  unit: date
+  snippet: '"date":"2023-06-27"'
+  source_license: unstated
+  content_sha256: 85cea487529ba544d0ed99ccba95c4bcbf4be662bd3c8d2c6306b84904ec7d9b
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 25
+  tolerance: 0
+- statistic: value[ctr_currency_transaction_over_usd,value]
+  expected: 10000
+  tolerance: 0
+- statistic: value[travel_rule_min_usd,value]
+  expected: 3000
+  tolerance: 0
+notes: The dollar thresholds, filing deadlines and retention periods that transaction-monitoring and AML systems
+  enforce under the Bank Secrecy Act rules in 31 CFR chapter X, and the parallel IRS rule for cash received in a
+  trade or business (26 CFR 1.6050I-1, Form 8300), read from the eCFR text as of 2026-10-29. Each row names its
+  section; the unit says whether the threshold is 'more than' or 'at least', which matters at the boundary (a CTR
+  is due for $10,000.01 but not for exactly $10,000; the travel rule applies from exactly $3,000). Suspicious activity
+  report thresholds differ by institution type and sit in their own entry, us-bsa-sar-thresholds-by-institution;
+  the instalment rule for Form 8300 is executable in us-form-8300-installment-reporting. The FBAR row is the account-balance
+  threshold only; the filing date in the regulation text is not reproduced because the statutory due date has since
+  moved. valid_from is the latest version date the eCFR versions endpoint lists for the sections cited; the eCFR
+  history starts in late 2016, so a date at that start marks the beginning of the record rather than of the rule.
+  US federal government works carry no copyright, but neither the eCFR API nor the regulation text states reuse
+  terms, so the licence is recorded as unstated and the entry held at license-review.

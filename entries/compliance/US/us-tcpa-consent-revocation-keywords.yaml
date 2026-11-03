@@ -1,0 +1,115 @@
+id: us-tcpa-consent-revocation-keywords
+title: United States TCPA reply words that revoke consent to robocalls and robotexts per se, 47 CFR 64.1200(a)(10)
+kind: rule
+domain: compliance
+region: US
+status: license-review
+tier: A
+valid_from: '2026-10-26'
+valid_to: null
+tags:
+- compliance
+- consumer-protection
+- tcpa
+- opt-out
+- sms
+- 47-cfr-64
+use_cases:
+- customer-service-demo
+- crm-demo
+- digital-channels
+- data-quality-validation
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      per_se_revocation_words:
+        stop: stop
+        quit: quit
+        end: end
+        revoke: revoke
+        opt out: opt out
+        cancel: cancel
+        unsubscribe: unsubscribe
+    honor_within_business_days: 10
+    section: 47 CFR 64.1200(a)(10)
+  vectors:
+  - input:
+      set: per_se_revocation_words
+      value: stop
+    expected: true
+    origin: source
+  - input:
+      set: per_se_revocation_words
+      value: unsubscribe
+    expected: true
+    origin: source
+  - input:
+      set: per_se_revocation_words
+      value: opt out
+    expected: true
+    origin: source
+  - input:
+      set: per_se_revocation_words
+      value: STOP
+    expected: false
+    origin: derived
+    note: the set holds the words in the regulation's lower case; normalise case before testing
+  - input:
+      set: per_se_revocation_words
+      value: pause
+    expected: false
+    origin: derived
+evidence:
+- publisher: Federal Communications Commission via the eCFR API
+  title: 47 CFR section 64.1200, Delivery restrictions (Telephone Consumer Protection Act rules), as of 2026-10-29
+    (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-47.xml?part=64&section=64.1200
+  accessed_at: '2026-11-03'
+  locator: section 64.1200(a)(10)
+  value: unsubscribe
+  unit: text
+  snippet: sent in reply to an incoming text message; or pursuant to a website or telephone number designated by
+    the caller
+  source_license: unstated
+  content_sha256: c57ec849fba5050107b3bbd98047231b3f4d25f20536ce808bf3a30500792cfe
+  role: primary
+- publisher: Federal Communications Commission via the eCFR API
+  title: 47 CFR section 64.1200, Delivery restrictions (Telephone Consumer Protection Act rules), as of 2026-10-29
+    (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-47.xml?part=64&section=64.1200
+  accessed_at: '2026-11-03'
+  locator: section 64.1200(a)(10)
+  value: ten
+  unit: text
+  snippet: must be honored within a reasonable time not to exceed ten business days from receipt of such request
+  source_license: unstated
+  content_sha256: c57ec849fba5050107b3bbd98047231b3f4d25f20536ce808bf3a30500792cfe
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 47 CFR 64.1200 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-47.json?section=64.1200
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2026-10-26'
+  unit: date
+  snippet: '"date":"2026-10-26"'
+  source_license: unstated
+  content_sha256: 89a19b6193f76be4f3e5982b9ab30b3e891208c3067104ba39247e883c463fd8
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[per_se_revocation_words]
+  expected: 7
+  tolerance: 0
+notes: The words that, sent in reply to an incoming text message, revoke prior express consent to robocalls and
+  robotexts per se under the FCC's TCPA rules, read from 47 CFR 64.1200(a)(10) as of 2026-10-29. Other replies must
+  still be treated as revocation when a reasonable person would understand them that way, and any reasonable method
+  of revoking counts; the list is the set a caller can never refuse. Revocations must be honoured within the business
+  days recorded in the parameters. Matching should ignore case and surrounding whitespace. valid_from is the latest
+  version of 64.1200 in the eCFR versions endpoint, not the date the paragraph was added. US federal government
+  works carry no copyright, but neither the eCFR API nor the regulation text states reuse terms, so the licence
+  is recorded as unstated and the entry held at license-review.

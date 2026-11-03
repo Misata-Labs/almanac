@@ -1,0 +1,143 @@
+id: us-can-spam-opt-out-requirements
+title: United States CAN-SPAM Act opt-out deadlines and the sexually explicit subject label, 15 U.S.C. 7704 and
+  16 CFR 316.4
+kind: rule
+domain: compliance
+region: US
+status: license-review
+tier: B
+valid_from: '2004-01-01'
+valid_to: null
+tags:
+- compliance
+- consumer-protection
+- can-spam
+- email-marketing
+- opt-out
+- 15-usc-7704
+use_cases:
+- digital-channels
+- crm-demo
+- customer-service-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      opt_out_honor_business_days:
+        value: 10
+        unit: business days after the opt-out request
+        section: 15 U.S.C. 7704(a)(4)(A)
+      opt_out_mechanism_min_days:
+        value: 30
+        unit: days after the message is sent
+        section: 15 U.S.C. 7704(a)(3)(A)(ii)
+      sexually_explicit_subject_prefix:
+        value: 'SEXUALLY-EXPLICIT: '
+        unit: exact text, first characters of the subject line
+        section: 16 CFR 316.4(a)(1)
+      sexually_explicit_prefix_length:
+        value: 19
+        unit: characters
+        section: 16 CFR 316.4(a)(1)
+  vectors:
+  - input:
+      key: opt_out_honor_business_days
+      column: value
+    expected: 10
+    origin: source
+  - input:
+      key: opt_out_mechanism_min_days
+      column: value
+    expected: 30
+    origin: source
+  - input:
+      key: sexually_explicit_subject_prefix
+      column: value
+    expected: 'SEXUALLY-EXPLICIT: '
+    origin: source
+  - input: opt_out_honor_business_days
+    expected: true
+    origin: source
+  - input: double_opt_in_days
+    expected: false
+    origin: derived
+evidence:
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 15 U.S.C. 7704, Other protections for users of commercial electronic mail (United States Code 2023 edition,
+    HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap103-sec7704.htm
+  accessed_at: '2026-11-03'
+  locator: subsection (a)(4)(A)(i)
+  value: '10'
+  unit: integer
+  snippet: more than 10 business days after the receipt of such request
+  source_license: unstated
+  content_sha256: 28839a54dd87cd80c2d04851f4bb3dfbcb5d0ff2deecb765366b3ca97e1f137c
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 15 U.S.C. 7704, Other protections for users of commercial electronic mail (United States Code 2023 edition,
+    HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap103-sec7704.htm
+  accessed_at: '2026-11-03'
+  locator: subsection (a)(3)(A)(ii)
+  value: '30'
+  unit: integer
+  snippet: remains capable of receiving such messages or communications for no less than 30 days after the transmission
+    of the original message
+  source_license: unstated
+  content_sha256: 28839a54dd87cd80c2d04851f4bb3dfbcb5d0ff2deecb765366b3ca97e1f137c
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 15 U.S.C. 7704, Other protections for users of commercial electronic mail (United States Code 2023 edition,
+    HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap103-sec7704.htm
+  accessed_at: '2026-11-03'
+  locator: Effective Date note
+  value: Jan. 1, 2004
+  unit: text
+  snippet: Section effective Jan. 1, 2004
+  source_license: unstated
+  content_sha256: 28839a54dd87cd80c2d04851f4bb3dfbcb5d0ff2deecb765366b3ca97e1f137c
+  role: primary
+- publisher: Federal Trade Commission via the eCFR API
+  title: 16 CFR part 316, CAN-SPAM Rule, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-16.xml?part=316
+  accessed_at: '2026-11-03'
+  locator: section 316.4(a)(1)
+  value: '19'
+  unit: integer
+  snippet: in capital letters as the first nineteen (19) characters
+  source_license: unstated
+  content_sha256: 45bf26b68a06dc81f55388a06eb4e376ceb061a490e3858fb6105143d1d583b0
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 16 CFR 316.4 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-16.json?section=316.4
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-22'
+  unit: date
+  snippet: '"date":"2016-12-22"'
+  source_license: unstated
+  content_sha256: a1dff248a9a0358af4db236f24d8957884309ee8b5ee2563082d91a0d091e052
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: value[opt_out_honor_business_days,value]
+  expected: 10
+  tolerance: 0
+notes: 'The CAN-SPAM Act''s deadlines for commercial email: a sender may not send further commercial email to a
+  recipient more than the stated business days after receiving an opt-out request, and the opt-out mechanism in
+  each message must keep working for at least the stated number of days after it is sent. The FTC''s rule adds the
+  exact label that must open the subject line of a message containing sexually explicit material (with its trailing
+  space). The statute is read from govinfo''s HTML of the 2023 US Code, which makes the entry tier B; valid_from
+  is the section''s effective date as the Code''s note records it. The FTC rule text is as of 2026-10-29, and its
+  latest eCFR version is 2016-12-22. US federal statutes carry no copyright, but the govinfo page states no reuse
+  terms, so the licence is recorded as unstated and the entry held at license-review.'

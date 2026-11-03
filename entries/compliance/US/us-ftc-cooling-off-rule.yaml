@@ -1,0 +1,165 @@
+id: us-ftc-cooling-off-rule
+title: 'United States FTC Cooling-Off Rule: price thresholds for door-to-door sales and the three-day cancellation
+  right, 16 CFR 429'
+kind: rule
+domain: compliance
+region: US
+status: license-review
+tier: A
+valid_from: '2016-12-22'
+valid_to: null
+tags:
+- compliance
+- consumer-protection
+- cooling-off
+- door-to-door-sales
+- cancellation
+- 16-cfr-429
+use_cases:
+- retail-demo
+- customer-service-demo
+- invoicing
+- data-quality-validation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: USD
+    rows:
+      residence_sale_min_price_usd:
+        value: 25
+        unit: USD, at least
+        section: 16 CFR 429.0(a)
+      other_location_sale_min_price_usd:
+        value: 130
+        unit: USD, at least
+        section: 16 CFR 429.0(a)
+      cancellation_business_days:
+        value: 3
+        unit: business days after the transaction, until midnight
+        section: 16 CFR 429.1(a)
+      refund_business_days:
+        value: 10
+        unit: business days after the cancellation notice
+        section: 16 CFR 429.1(g)
+      goods_disposition_notice_business_days:
+        value: 10
+        unit: business days after the cancellation notice
+        section: 16 CFR 429.1(i)
+      note_assignment_earliest_business_day:
+        value: 5
+        unit: business day after signing, from midnight
+        section: 16 CFR 429.1(h)
+  vectors:
+  - input:
+      key: residence_sale_min_price_usd
+      column: value
+    expected: 25
+    origin: source
+  - input:
+      key: other_location_sale_min_price_usd
+      column: value
+    expected: 130
+    origin: source
+  - input:
+      key: cancellation_business_days
+      column: value
+    expected: 3
+    origin: source
+  - input: residence_sale_min_price_usd
+    expected: true
+    origin: source
+  - input: online_sale_min_price_usd
+    expected: false
+    origin: derived
+evidence:
+- publisher: Federal Trade Commission via the eCFR API
+  title: 16 CFR part 429, Rule Concerning Cooling-Off Period for Sales Made at Homes or at Certain Other Locations,
+    as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-16.xml?part=429
+  accessed_at: '2026-11-03'
+  locator: section 429.0(a)
+  value: $25
+  unit: currency:USD
+  snippet: which has a purchase price of $25 or more if the sale is made at the buyer's residence
+  source_license: unstated
+  content_sha256: 9efb1e1da9970b2473ac91451cbbeff699ce6a2eb9d35029988db2e5fe6eb309
+  role: primary
+- publisher: Federal Trade Commission via the eCFR API
+  title: 16 CFR part 429, Rule Concerning Cooling-Off Period for Sales Made at Homes or at Certain Other Locations,
+    as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-16.xml?part=429
+  accessed_at: '2026-11-03'
+  locator: section 429.0(a)
+  value: $130
+  unit: currency:USD
+  snippet: a purchase price of $130 or more if the sale is made at locations other than the buyer's residence
+  source_license: unstated
+  content_sha256: 9efb1e1da9970b2473ac91451cbbeff699ce6a2eb9d35029988db2e5fe6eb309
+  role: primary
+- publisher: Federal Trade Commission via the eCFR API
+  title: 16 CFR part 429, Rule Concerning Cooling-Off Period for Sales Made at Homes or at Certain Other Locations,
+    as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-16.xml?part=429
+  accessed_at: '2026-11-03'
+  locator: section 429.1(a)
+  value: third
+  unit: text
+  snippet: prior to midnight of the third business day after the date of this transaction
+  source_license: unstated
+  content_sha256: 9efb1e1da9970b2473ac91451cbbeff699ce6a2eb9d35029988db2e5fe6eb309
+  role: primary
+- publisher: Federal Trade Commission via the eCFR API
+  title: 16 CFR part 429, Rule Concerning Cooling-Off Period for Sales Made at Homes or at Certain Other Locations,
+    as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-16.xml?part=429
+  accessed_at: '2026-11-03'
+  locator: section 429.1(g)
+  value: '10'
+  unit: integer
+  snippet: within 10 business days after the receipt of such notice
+  source_license: unstated
+  content_sha256: 9efb1e1da9970b2473ac91451cbbeff699ce6a2eb9d35029988db2e5fe6eb309
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 16 CFR 429.0 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-16.json?section=429.0
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-22'
+  unit: date
+  snippet: '"date":"2016-12-22"'
+  source_license: unstated
+  content_sha256: d6b7b8ef52c4b6882589de89d382317630a349093a604f0c508ef8162746a1d2
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 16 CFR 429.1 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-16.json?section=429.1
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-22'
+  unit: date
+  snippet: '"date":"2016-12-22"'
+  source_license: unstated
+  content_sha256: 1f5c61a0d9c7b280e572d6afc9415c875ab5119279472be2d2f2e97615e0bc49
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 6
+  tolerance: 0
+- statistic: value[other_location_sale_min_price_usd,value]
+  expected: 130
+  tolerance: 0
+notes: The FTC Cooling-Off Rule gives a buyer the right to cancel a door-to-door sale, which includes sales at the
+  buyer's home and at temporary locations such as hotel rooms, convention centres and fairgrounds, until midnight
+  of the third business day after the transaction, when the price reaches the threshold for where the sale was made.
+  The seller must then refund and return trade-ins within the stated business days and may not assign the buyer's
+  note before the stated business day. Read from 16 CFR 429 as of 2026-10-29. Exclusions (emergency repairs the
+  buyer waives in writing, sales after negotiation at the seller's permanent premises, and others) are in 429.0(a).
+  valid_from is the latest version date the eCFR versions endpoint lists for the sections cited; the eCFR history
+  starts in late 2016, so a date at that start marks the beginning of the record rather than of the rule. US federal
+  government works carry no copyright, but neither the eCFR API nor the regulation text states reuse terms, so the
+  licence is recorded as unstated and the entry held at license-review.

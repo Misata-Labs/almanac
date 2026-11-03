@@ -1,0 +1,158 @@
+id: gb-mlr-2017-electronic-money-due-diligence-exemption
+title: United Kingdom electronic money limits for the customer due diligence exemption, Money Laundering Regulations
+  2017 regulation 38
+kind: rule
+domain: compliance
+region: GB
+status: license-review
+tier: B
+valid_from: '2026-06-30'
+valid_to: null
+tags:
+- compliance
+- aml
+- kyc
+- electronic-money
+- prepaid-cards
+- simplified-due-diligence
+use_cases:
+- kyc-onboarding
+- payments-demo
+- fintech-demo
+- aml-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      max_stored_value:
+        value: 150
+        currency: GBP
+        before_2026_06_30_value: 150
+        before_2026_06_30_currency: EUR
+        regulation: 38(1)(a)
+        meaning: Largest amount the instrument can hold
+      reloadable_monthly_limit:
+        value: 150
+        currency: GBP
+        before_2026_06_30_value: 150
+        before_2026_06_30_currency: EUR
+        regulation: 38(1)(b)(ii)
+        meaning: Monthly payment limit for a reloadable instrument used only in the UK
+      cash_redemption_over:
+        value: 50
+        currency: GBP
+        before_2026_06_30_value: 50
+        before_2026_06_30_currency: EUR
+        regulation: 38(2)(a)
+        meaning: Cash redemption or withdrawal above which the exemption does not apply
+      remote_redemption_per_transaction_over:
+        value: 50
+        currency: GBP
+        before_2026_06_30_value: 50
+        before_2026_06_30_currency: EUR
+        regulation: 38(2)(b)
+        meaning: Remote payment redemption per transaction above which the exemption does not apply
+  vectors:
+  - input:
+      key: max_stored_value
+      column: value
+    expected: 150
+    origin: source
+  - input:
+      key: cash_redemption_over
+      column: value
+    expected: 50
+    origin: source
+  - input:
+      key: max_stored_value
+      column: before_2026_06_30_value
+    expected: 150
+    origin: source
+  - input: reloadable_monthly_limit
+    expected: true
+    origin: source
+  - input: annual_limit
+    expected: false
+    origin: derived
+evidence:
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 38 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/38/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 38(1)(a)
+  value: £150
+  unit: currency:GBP
+  snippet: the maximum amount which can be stored electronically is
+  source_license: unstated
+  content_sha256: 67de7e1cf3951d1d224347de6ef6b8b8c8a873f8fc8210355a851675b2c5c954
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 38 (legislation.gov.uk HTML, version of 2026-06-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/38/2026-06-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 38(1)(a)
+  value: 150 euros
+  unit: currency:EUR
+  snippet: the maximum amount which can be stored electronically is
+  source_license: unstated
+  content_sha256: d5bb952fa82063af30490155a539974f149246313c673dc816ac9f911d69e2cf
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 38 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/38/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 38(2)(a)
+  value: £50
+  unit: currency:GBP
+  snippet: the amount redeemed exceeds
+  source_license: unstated
+  content_sha256: 67de7e1cf3951d1d224347de6ef6b8b8c8a873f8fc8210355a851675b2c5c954
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 38 (legislation.gov.uk HTML, version of 2026-06-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/38/2026-06-29/data.html
+  accessed_at: '2026-11-03'
+  locator: regulation 38(2)(a)
+  value: 50 euros
+  unit: currency:EUR
+  snippet: the amount redeemed exceeds
+  source_license: unstated
+  content_sha256: d5bb952fa82063af30490155a539974f149246313c673dc816ac9f911d69e2cf
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations
+    2017, regulation 38 (legislation.gov.uk HTML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/uksi/2017/692/regulation/38/2026-10-29/data.html
+  accessed_at: '2026-11-03'
+  locator: restrict start date of the provision (start of its current version)
+  value: '2026-06-30'
+  unit: date
+  snippet: data-x-restrict-start-date="2026-06-30"
+  source_license: unstated
+  content_sha256: 67de7e1cf3951d1d224347de6ef6b8b8c8a873f8fc8210355a851675b2c5c954
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: max[value]
+  expected: 150
+  tolerance: 0
+notes: 'Conditions under which an issuer of electronic money need not apply customer due diligence under regulation
+  38 of the UK Money Laundering Regulations 2017: the instrument holds no more than the stored-value limit, is not
+  reloadable or has the monthly limit and works only in the UK, is used only to buy goods or services and cannot
+  be funded with anonymous e-money; the exemption does not cover cash redemptions or remote redemptions above the
+  stated amounts. Sterling amounts replaced euro amounts from 30 June 2026; each row records both, read from legislation.gov.uk''s
+  point-in-time versions as of 2026-10-29 and 2026-06-29. The legislation.gov.uk resource carries no licence statement,
+  although the site publishes legislation under the Open Government Licence v3.0, so the licence is recorded as
+  unstated and the entry held at license-review. Provisions are cited in legislation.gov.uk''s HTML rendering, which
+  makes the entry tier B: the XML rendering of these versions lists unapplied effects whose attributes are reordered
+  on every render, so its bytes do not stay fixed.'

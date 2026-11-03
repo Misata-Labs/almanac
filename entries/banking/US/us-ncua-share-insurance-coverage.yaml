@@ -1,0 +1,239 @@
+id: us-ncua-share-insurance-coverage
+title: United States NCUA share insurance coverage by ownership category for federally insured credit unions, 12
+  CFR 745
+kind: rule
+domain: banking
+region: US
+status: license-review
+tier: A
+valid_from: '2024-09-30'
+valid_to: null
+tags:
+- compliance
+- deposit-insurance
+- share-insurance
+- credit-unions
+- ncua
+- 12-cfr-745
+use_cases:
+- banking-demo
+- customer-service-demo
+- data-quality-validation
+- personal-finance
+spec:
+  implementation: almanac.rules.us_deposit_insurance
+  parameters:
+    currency: USD
+    insurer: NCUA
+    standard_maximum: 250000
+    trust_rule:
+      method: per_beneficiary_with_floor
+      floor_beneficiaries: 5
+      section: 12 CFR 745.4(a) and (e)
+    categories:
+      single:
+        basis: aggregate
+        section: 12 CFR 745.3
+        scope: individual accounts and accounts held by agents or nominees
+      joint:
+        basis: aggregate
+        section: 12 CFR 745.8
+        scope: each co-owner's interests in all qualifying joint accounts
+      trust:
+        basis: per_beneficiary
+        section: 12 CFR 745.4
+        scope: revocable trust accounts, including payable-on-death and living trust accounts
+      business:
+        basis: aggregate
+        section: 12 CFR 745.6
+        scope: corporation, partnership or unincorporated association engaged in an independent activity
+      employee_benefit_plan:
+        basis: aggregate
+        section: 12 CFR 745.9-2
+        scope: pass-through coverage of each participant's non-contingent interest
+      government:
+        basis: aggregate
+        section: 12 CFR 745.10
+        scope: per official custodian
+  vectors:
+  - input:
+      category: joint
+      interests:
+      - 75000
+      - 100000
+      - 125000
+    expected:
+      insured: 250000
+      uninsured: 50000
+    origin: source
+    note: co-owner A in the 12 CFR 745.8(b) example
+  - input:
+      category: joint
+      interests:
+      - 75000
+      - 125000
+    expected:
+      insured: 200000
+      uninsured: 0
+    origin: source
+    note: co-owner B in the 12 CFR 745.8(b) example
+  - input:
+      category: joint
+      interests:
+      - 100000
+      - 125000
+    expected:
+      insured: 225000
+      uninsured: 0
+    origin: source
+    note: co-owner C in the 12 CFR 745.8(b) example
+  - input:
+      category: trust
+      beneficiaries: 4
+    expected:
+      coverage: 1000000
+    origin: source
+    note: 745.4(a) example 1
+  - input:
+      category: trust
+      beneficiaries: 2
+      balance: 600000
+    expected:
+      coverage: 500000
+      insured: 500000
+      uninsured: 100000
+    origin: source
+    note: 745.4(a) example 3
+  - input:
+      category: trust
+      beneficiaries: 4
+      balance: 2000000
+    expected:
+      coverage: 1000000
+      insured: 1000000
+      uninsured: 1000000
+    origin: source
+    note: '745.4(e) example 1: more than five times the SMSIA but only four beneficiaries'
+  - input:
+      category: trust
+      beneficiary_interests:
+      - 125000
+      - 125000
+      - 125000
+      - 15000
+      - 175000
+      - 935000
+      balance: 1500000
+    expected:
+      coverage: 1250000
+      insured: 1250000
+      uninsured: 250000
+    origin: source
+    note: '745.4(e) example 2: six beneficiaries, floor of five times the SMSIA applies'
+  - input:
+      category: trust
+      beneficiaries: 3
+      owners: 2
+    expected:
+      coverage: 1500000
+    origin: source
+    note: '745.4(f) example 1: co-owned account'
+evidence:
+- publisher: National Credit Union Administration via the eCFR API
+  title: 12 CFR part 745, Share Insurance and Appendix, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=745
+  accessed_at: '2026-11-03'
+  locator: section 745.1(e)
+  value: $250,000
+  unit: currency:USD
+  snippet: means $250,000 adjusted pursuant to subparagraph (F)
+  source_license: unstated
+  content_sha256: 1f1b6915e2ca1e96a76a4c387e42f02a84d651b68196b2129f0b870cd32c17ef
+  role: primary
+- publisher: National Credit Union Administration via the eCFR API
+  title: 12 CFR part 745, Share Insurance and Appendix, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=745
+  accessed_at: '2026-11-03'
+  locator: section 745.4(a), example 1
+  value: $1,000,000
+  unit: currency:USD
+  snippet: The maximum insurance coverage would be $1,000,000, determined by multiplying 4 times
+  source_license: unstated
+  content_sha256: 1f1b6915e2ca1e96a76a4c387e42f02a84d651b68196b2129f0b870cd32c17ef
+  role: primary
+- publisher: National Credit Union Administration via the eCFR API
+  title: 12 CFR part 745, Share Insurance and Appendix, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=745
+  accessed_at: '2026-11-03'
+  locator: section 745.4(e), example 2
+  value: $1,250,000
+  unit: currency:USD
+  snippet: the maximum coverage afforded to the account owner would be $1,250,000, the greater of
+  source_license: unstated
+  content_sha256: 1f1b6915e2ca1e96a76a4c387e42f02a84d651b68196b2129f0b870cd32c17ef
+  role: primary
+- publisher: National Credit Union Administration via the eCFR API
+  title: 12 CFR part 745, Share Insurance and Appendix, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=745
+  accessed_at: '2026-11-03'
+  locator: section 745.4(f), example 1
+  value: $1,500,000
+  unit: currency:USD
+  snippet: The maximum coverage afforded to A and B would be $1,500,000
+  source_license: unstated
+  content_sha256: 1f1b6915e2ca1e96a76a4c387e42f02a84d651b68196b2129f0b870cd32c17ef
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 12 CFR 745.1 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-12.json?section=745.1
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2024-09-30'
+  unit: date
+  snippet: '"date":"2024-09-30"'
+  source_license: unstated
+  content_sha256: 29c92662afe8bf95aae7a6b943a6e60fd7baeb50e16801150ec054fd5c3d6a6a
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 12 CFR 745.4 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-12.json?section=745.4
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2024-09-30'
+  unit: date
+  snippet: '"date":"2024-09-30"'
+  source_license: unstated
+  content_sha256: 0fe570227fc84b06bb3f41b6726278bd016088e0d7cf14eda00737e5531a0bc2
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 12 CFR 745.8 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-12.json?section=745.8
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2021-03-26'
+  unit: date
+  snippet: '"date":"2021-03-26"'
+  source_license: unstated
+  content_sha256: e5d14ed3032fc0c9639a41cae8033cb7b75a981ab4a4e4a92af5c93b73f00619
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: standard_maximum
+  expected: 250000
+  tolerance: 0
+- statistic: count
+  expected: 6
+  tolerance: 0
+notes: 'How much of a member''s shares the NCUA insures at one federally insured credit union: the standard maximum
+  share insurance amount (SMSIA) applies separately to each ownership category. Revocable trust accounts are insured
+  at the SMSIA per different beneficiary, per owner; when more than five beneficiaries are named and an owner''s
+  trust balance exceeds five times the SMSIA, coverage is the greater of five times the SMSIA and the sum of each
+  beneficiary''s interest capped at the SMSIA. Every vector is one of the regulation''s own examples. Read from
+  the eCFR text as of 2026-10-29. Unlike the FDIC''s trust rule (us-fdic-deposit-insurance-coverage), the number
+  of beneficiaries is not capped. valid_from is the latest version date the eCFR versions endpoint lists for the
+  sections cited; the eCFR history starts in late 2016, so a date at that start marks the beginning of the record
+  rather than of the rule. US federal government works carry no copyright, but neither the eCFR API nor the regulation
+  text states reuse terms, so the licence is recorded as unstated and the entry held at license-review.'

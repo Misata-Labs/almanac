@@ -1,0 +1,227 @@
+id: eu-psd2-sca-exemption-thresholds
+title: 'European Union PSD2 strong customer authentication exemptions: contactless, low-value remote and transaction
+  risk analysis limits'
+kind: rule
+domain: payments
+region: EU
+status: license-review
+tier: B
+valid_from: '2019-09-14'
+valid_to: null
+tags:
+- compliance
+- fraud
+- psd2
+- strong-customer-authentication
+- card-payments
+- 3ds
+use_cases:
+- fraud-detection-demo
+- payments-demo
+- fintech-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.eu_sca_exemptions
+  parameters:
+    currency: EUR
+    contactless:
+      max_amount_eur: 50
+      max_cumulative_eur: 150
+      max_consecutive: 5
+      article: '11'
+    low_value_remote:
+      max_amount_eur: 30
+      max_cumulative_eur: 100
+      max_consecutive: 5
+      article: '16'
+    tra_bands:
+    - etv_eur: 500
+      card_reference_fraud_rate_percent: 0.01
+      credit_transfer_reference_fraud_rate_percent: 0.005
+    - etv_eur: 250
+      card_reference_fraud_rate_percent: 0.06
+      credit_transfer_reference_fraud_rate_percent: 0.01
+    - etv_eur: 100
+      card_reference_fraud_rate_percent: 0.13
+      credit_transfer_reference_fraud_rate_percent: 0.015
+    tra_article: 18 and Annex
+  vectors:
+  - input:
+      exemption: contactless
+      amount: 50
+      previous_cumulative: 150
+      previous_count: 9
+    expected: true
+    origin: source
+  - input:
+      exemption: contactless
+      amount: 51
+    expected: false
+    origin: derived
+  - input:
+      exemption: contactless
+      amount: 20
+      previous_cumulative: 200
+      previous_count: 5
+    expected: true
+    origin: source
+    note: count limit met although the cumulative limit is exceeded
+  - input:
+      exemption: contactless
+      amount: 20
+      previous_cumulative: 200
+      previous_count: 6
+    expected: false
+    origin: derived
+  - input:
+      exemption: low_value_remote
+      amount: 30
+      previous_cumulative: 0
+      previous_count: 0
+    expected: true
+    origin: source
+  - input:
+      exemption: low_value_remote
+      amount: 10
+      previous_cumulative: 101
+      previous_count: 6
+    expected: false
+    origin: derived
+  - input:
+      exemption: tra_threshold
+      payment_type: card
+      fraud_rate_percent: 0.01
+    expected: 500
+    origin: source
+  - input:
+      exemption: tra_threshold
+      payment_type: card
+      fraud_rate_percent: 0.06
+    expected: 250
+    origin: source
+  - input:
+      exemption: tra_threshold
+      payment_type: credit_transfer
+      fraud_rate_percent: 0.015
+    expected: 100
+    origin: source
+  - input:
+      exemption: tra_threshold
+      payment_type: card
+      fraud_rate_percent: 0.2
+    expected: null
+    origin: derived
+    note: fraud rate above every reference rate
+  - input:
+      exemption: tra
+      payment_type: card
+      fraud_rate_percent: 0.05
+      amount: 300
+    expected: false
+    origin: derived
+evidence:
+- publisher: The National Archives (legislation.gov.uk)
+  title: Commission Delegated Regulation (EU) 2018/389 (strong customer authentication RTS), article 11 (legislation.gov.uk
+    HTML, as adopted)
+  url: https://www.legislation.gov.uk/eur/2018/389/article/11/adopted/data.html
+  accessed_at: '2026-11-03'
+  locator: Article 11(a)
+  value: EUR 50
+  unit: currency:EUR
+  snippet: the individual amount of the contactless electronic payment transaction does not exceed EUR 50
+  source_license: unstated
+  content_sha256: 1bb9200666324161220d3a07f7b724ddffe16aa69273c7685a973e9dc0d0ec1a
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Commission Delegated Regulation (EU) 2018/389 (strong customer authentication RTS), article 11 (legislation.gov.uk
+    HTML, as adopted)
+  url: https://www.legislation.gov.uk/eur/2018/389/article/11/adopted/data.html
+  accessed_at: '2026-11-03'
+  locator: Article 11(b)
+  value: EUR 150
+  unit: currency:EUR
+  snippet: does not exceed EUR 150; or
+  source_license: unstated
+  content_sha256: 1bb9200666324161220d3a07f7b724ddffe16aa69273c7685a973e9dc0d0ec1a
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Commission Delegated Regulation (EU) 2018/389 (strong customer authentication RTS), article 16 (legislation.gov.uk
+    HTML, as adopted)
+  url: https://www.legislation.gov.uk/eur/2018/389/article/16/adopted/data.html
+  accessed_at: '2026-11-03'
+  locator: Article 16(a)
+  value: EUR 30
+  unit: currency:EUR
+  snippet: the amount of the remote electronic payment transaction does not exceed EUR 30
+  source_license: unstated
+  content_sha256: 7df65a02b9d11f7a223ccf18abf9fb636cd2cfebfa822cb0b47ae23f0d92d551
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Commission Delegated Regulation (EU) 2018/389 (strong customer authentication RTS), article 16 (legislation.gov.uk
+    HTML, as adopted)
+  url: https://www.legislation.gov.uk/eur/2018/389/article/16/adopted/data.html
+  accessed_at: '2026-11-03'
+  locator: Article 16(b)
+  value: EUR 100
+  unit: currency:EUR
+  snippet: does not exceed EUR 100; or
+  source_license: unstated
+  content_sha256: 7df65a02b9d11f7a223ccf18abf9fb636cd2cfebfa822cb0b47ae23f0d92d551
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Commission Delegated Regulation (EU) 2018/389 (strong customer authentication RTS), annex (legislation.gov.uk
+    HTML, as adopted)
+  url: https://www.legislation.gov.uk/eur/2018/389/annex/adopted/data.xht
+  accessed_at: '2026-11-03'
+  locator: Annex, table, first row
+  value: 0,005
+  unit: decimal
+  snippet: EUR 500
+  source_license: unstated
+  content_sha256: 4624010268a5144c44506a10f41b74ddba41b3de2cf9d1a8ef90d3e0fc207b0f
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Commission Delegated Regulation (EU) 2018/389 (strong customer authentication RTS), article 38 (legislation.gov.uk
+    HTML, as adopted)
+  url: https://www.legislation.gov.uk/eur/2018/389/article/38/adopted/data.html
+  accessed_at: '2026-11-03'
+  locator: Article 38(2)
+  value: 14 September 2019
+  unit: text
+  snippet: This Regulation shall apply from 14 September 2019
+  source_license: unstated
+  content_sha256: b2484661504c460368224ed9ffd42a95d61bc7a19a6aeea929cbdf87961ac8b8
+  role: primary
+assumed:
+- parameter: tra_bands
+  value: EUR 500 0,01 0,005
+  method: derived
+  rationale: The Annex writes reference fraud rates with decimal commas (for example 0,01); the parameters restate
+    them as decimal numbers in percent.
+- parameter: previous_cumulative and previous_count
+  value: payments since the last strong customer authentication, excluding the payment being tested
+  method: derived
+  rationale: Article 11(b) and 16(b) speak of 'previous' transactions; Article 11(c) does not say whether the current
+    one counts, and the rule reads both limits the same way.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+- statistic: max[etv_eur]
+  expected: 500
+  tolerance: 0
+notes: 'When a payment service provider in the European Union may skip strong customer authentication under the
+  PSD2 regulatory technical standards: a contactless payment at the point of sale or a low-value remote payment
+  within its single-payment limit, provided either the cumulative amount or the count of payments since the last
+  authentication stays within its limit; or a remote payment the provider''s real-time transaction risk analysis
+  rates low risk, up to the exemption threshold value its fraud rate for the payment type qualifies for. The text
+  is the regulation as adopted, published by legislation.gov.uk because EUR-Lex could not be reached; later EU amendments,
+  which changed other articles, could not be checked against the consolidated text. The UK has its own version under
+  the FCA and is not covered here. The legislation.gov.uk resource carries no licence statement, although the site
+  publishes legislation under the Open Government Licence v3.0, so the licence is recorded as unstated and the entry
+  held at license-review. Provisions are cited in legislation.gov.uk''s HTML rendering, which makes the entry tier
+  B: the XML rendering of these versions lists unapplied effects whose attributes are reordered on every render,
+  so its bytes do not stay fixed.'

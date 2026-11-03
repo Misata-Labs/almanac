@@ -1,0 +1,157 @@
+id: us-ftc-mail-order-rule-time-limits
+title: United States FTC Mail, Internet or Telephone Order Rule shipment and refund time limits, 16 CFR 435
+kind: rule
+domain: compliance
+region: US
+status: license-review
+tier: A
+valid_from: '2016-12-22'
+valid_to: null
+tags:
+- compliance
+- consumer-protection
+- mail-order
+- e-commerce
+- shipping
+- refunds
+- 16-cfr-435
+use_cases:
+- retail-demo
+- logistics
+- customer-service-demo
+- sla-calculation
+- data-quality-validation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      default_shipment_days:
+        value: 30
+        unit: days after a properly completed order
+        section: 16 CFR 435.2(a)(1)(ii)
+      credit_application_shipment_days:
+        value: 50
+        unit: days after the order when the buyer applies for credit
+        section: 16 CFR 435.2(a)(1)(ii)
+      refund_working_days:
+        value: 7
+        unit: working days after the right to a refund vests
+        section: 16 CFR 435.1(b)(1)
+      credit_refund_billing_cycles:
+        value: 1
+        unit: billing cycles after the right to a refund vests
+        section: 16 CFR 435.1(b)(2)
+      deemed_consent_delay_max_days:
+        value: 30
+        unit: days beyond the original shipment time
+        section: 16 CFR 435.2(b)(1)(ii)
+  vectors:
+  - input:
+      key: default_shipment_days
+      column: value
+    expected: 30
+    origin: source
+  - input:
+      key: credit_application_shipment_days
+      column: value
+    expected: 50
+    origin: source
+  - input:
+      key: refund_working_days
+      column: value
+    expected: 7
+    origin: source
+  - input: default_shipment_days
+    expected: true
+    origin: source
+  - input: return_window_days
+    expected: false
+    origin: derived
+evidence:
+- publisher: Federal Trade Commission via the eCFR API
+  title: 16 CFR part 435, Mail, Internet, or Telephone Order Merchandise, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-16.xml?part=435
+  accessed_at: '2026-11-03'
+  locator: section 435.2(a)(1)(ii)
+  value: '30'
+  unit: integer
+  snippet: If no time is clearly and conspicuously stated, within thirty (30) days after receipt of a properly completed
+    order from the buyer
+  source_license: unstated
+  content_sha256: 0d6529d35f47448d17e2c080a9c0ed7c7d024e59a5e7b647b3f0891f90a42fc7
+  role: primary
+- publisher: Federal Trade Commission via the eCFR API
+  title: 16 CFR part 435, Mail, Internet, or Telephone Order Merchandise, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-16.xml?part=435
+  accessed_at: '2026-11-03'
+  locator: section 435.2(a)(1)(ii)
+  value: '50'
+  unit: integer
+  snippet: the seller shall have fifty (50) days
+  source_license: unstated
+  content_sha256: 0d6529d35f47448d17e2c080a9c0ed7c7d024e59a5e7b647b3f0891f90a42fc7
+  role: primary
+- publisher: Federal Trade Commission via the eCFR API
+  title: 16 CFR part 435, Mail, Internet, or Telephone Order Merchandise, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-16.xml?part=435
+  accessed_at: '2026-11-03'
+  locator: section 435.1(b)(1)
+  value: '7'
+  unit: integer
+  snippet: within seven (7) working days of the date on which the buyer's right to refund vests
+  source_license: unstated
+  content_sha256: 0d6529d35f47448d17e2c080a9c0ed7c7d024e59a5e7b647b3f0891f90a42fc7
+  role: primary
+- publisher: Federal Trade Commission via the eCFR API
+  title: 16 CFR part 435, Mail, Internet, or Telephone Order Merchandise, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-16.xml?part=435
+  accessed_at: '2026-11-03'
+  locator: section 435.1(b)(2)
+  value: '1'
+  unit: integer
+  snippet: within one (1) billing cycle from the date
+  source_license: unstated
+  content_sha256: 0d6529d35f47448d17e2c080a9c0ed7c7d024e59a5e7b647b3f0891f90a42fc7
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 16 CFR 435.1 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-16.json?section=435.1
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-22'
+  unit: date
+  snippet: '"date":"2016-12-22"'
+  source_license: unstated
+  content_sha256: 8297c8b2070fd2f7e6e9dd80865d5403ae9c52aa132fd8de6743d7732e6fda02
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 16 CFR 435.2 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-16.json?section=435.2
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-22'
+  unit: date
+  snippet: '"date":"2016-12-22"'
+  source_license: unstated
+  content_sha256: 22d9b4fc4920eb522206b6ea1a3148ef44625f3f96855aca0477bcf0671f32d8
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: max[value]
+  expected: 50
+  tolerance: 0
+notes: 'Time limits the FTC Mail, Internet, or Telephone Order Merchandise Rule sets for remote sales, read from
+  16 CFR 435 as of 2026-10-29: a seller that states no shipping time must ship within the default number of days,
+  or the longer period when the buyer applies to the seller for credit; a delay beyond that requires offering the
+  buyer the option to cancel, with consent deemed given only for a short revised delay; refunds are due within the
+  stated working days, or one billing cycle when the refund is a credit to a credit account. Useful for order, shipment
+  and refund timestamps that stay within the rule. valid_from is the latest version date the eCFR versions endpoint
+  lists for the sections cited; the eCFR history starts in late 2016, so a date at that start marks the beginning
+  of the record rather than of the rule. US federal government works carry no copyright, but neither the eCFR API
+  nor the regulation text states reuse terms, so the licence is recorded as unstated and the entry held at license-review.'

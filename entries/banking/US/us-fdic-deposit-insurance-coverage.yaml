@@ -1,0 +1,215 @@
+id: us-fdic-deposit-insurance-coverage
+title: United States FDIC deposit insurance coverage by ownership category, 12 CFR 330
+kind: rule
+domain: banking
+region: US
+status: license-review
+tier: A
+valid_from: '2024-04-01'
+valid_to: null
+tags:
+- compliance
+- deposit-insurance
+- fdic
+- ownership-categories
+- 12-cfr-330
+use_cases:
+- banking-demo
+- customer-service-demo
+- data-quality-validation
+- personal-finance
+spec:
+  implementation: almanac.rules.us_deposit_insurance
+  parameters:
+    currency: USD
+    insurer: FDIC
+    standard_maximum: 250000
+    trust_rule:
+      method: per_beneficiary_capped
+      max_beneficiaries: 5
+      section: 12 CFR 330.10(b)(1)
+    categories:
+      single:
+        basis: aggregate
+        section: 12 CFR 330.6
+        scope: individual, sole proprietorship, single-name community property and decedent accounts
+      joint:
+        basis: aggregate
+        section: 12 CFR 330.9
+        scope: each co-owner's interests in all qualifying joint accounts
+      trust:
+        basis: per_beneficiary
+        section: 12 CFR 330.10
+        scope: informal and formal revocable trusts and irrevocable trusts, aggregated per grantor
+      business:
+        basis: aggregate
+        section: 12 CFR 330.11
+        scope: corporation, partnership or unincorporated association engaged in an independent activity
+      certain_retirement:
+        basis: aggregate
+        section: 12 CFR 330.14(b)(2)
+        scope: IRAs and the other self-directed retirement accounts listed, per participant
+      employee_benefit_plan:
+        basis: aggregate
+        section: 12 CFR 330.14(a)
+        scope: pass-through coverage of each participant's non-contingent interest
+      government:
+        basis: aggregate
+        section: 12 CFR 330.15
+        scope: per official custodian; time and savings deposits and demand deposits are insured separately
+  vectors:
+  - input:
+      category: joint
+      interests:
+      - 75000
+      - 100000
+      - 125000
+    expected:
+      insured: 250000
+      uninsured: 50000
+    origin: source
+    note: co-owner A in the 12 CFR 330.9(b) example
+  - input:
+      category: joint
+      interests:
+      - 75000
+      - 125000
+    expected:
+      insured: 200000
+      uninsured: 0
+    origin: source
+    note: co-owner B in the 12 CFR 330.9(b) example
+  - input:
+      category: joint
+      interests:
+      - 100000
+      - 125000
+    expected:
+      insured: 225000
+      uninsured: 0
+    origin: source
+    note: co-owner C in the 12 CFR 330.9(b) example
+  - input:
+      category: trust
+      beneficiaries: 3
+      balance: 900000
+    expected:
+      coverage: 750000
+      insured: 750000
+      uninsured: 150000
+    origin: derived
+  - input:
+      category: trust
+      beneficiaries: 7
+    expected:
+      coverage: 1250000
+    origin: derived
+    note: beneficiaries beyond the cap add no coverage
+  - input:
+      category: single
+      interests:
+      - 250000
+    expected:
+      insured: 250000
+      uninsured: 0
+    origin: source
+evidence:
+- publisher: Federal Deposit Insurance Corporation via the eCFR API
+  title: 12 CFR part 330, Deposit Insurance Coverage, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=330
+  accessed_at: '2026-11-03'
+  locator: section 330.1(o)
+  value: $250,000
+  unit: currency:USD
+  snippet: means $250,000 adjusted pursuant to subparagraph (F)
+  source_license: unstated
+  content_sha256: d344618ee81c891667b3d54dfd28e54ba4c7e61ec8da97e76a41d597def3443f
+  role: primary
+- publisher: Federal Deposit Insurance Corporation via the eCFR API
+  title: 12 CFR part 330, Deposit Insurance Coverage, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=330
+  accessed_at: '2026-11-03'
+  locator: section 330.10(b)(1)
+  value: '5'
+  unit: integer
+  snippet: up to a maximum of 5 beneficiaries
+  source_license: unstated
+  content_sha256: d344618ee81c891667b3d54dfd28e54ba4c7e61ec8da97e76a41d597def3443f
+  role: primary
+- publisher: Federal Deposit Insurance Corporation via the eCFR API
+  title: 12 CFR part 330, Deposit Insurance Coverage, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=330
+  accessed_at: '2026-11-03'
+  locator: section 330.9(b), example
+  value: $50,000
+  unit: currency:USD
+  snippet: A's interest would be insured in the amount of $250,000 and uninsured in the amount of $50,000
+  source_license: unstated
+  content_sha256: d344618ee81c891667b3d54dfd28e54ba4c7e61ec8da97e76a41d597def3443f
+  role: primary
+- publisher: Federal Deposit Insurance Corporation via the eCFR API
+  title: 12 CFR part 330, Deposit Insurance Coverage, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=330
+  accessed_at: '2026-11-03'
+  locator: section 330.14(b)(2)
+  value: $250,000
+  unit: currency:USD
+  snippet: aggregated and insured in the amount of up to $250,000 per participant
+  source_license: unstated
+  content_sha256: d344618ee81c891667b3d54dfd28e54ba4c7e61ec8da97e76a41d597def3443f
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 12 CFR 330.1 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-12.json?section=330.1
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2024-04-01'
+  unit: date
+  snippet: '"date":"2024-04-01"'
+  source_license: unstated
+  content_sha256: 1640ecc16e8fb4bc0db68eff278c7530183f8751f7145040f675abeaafa648ea
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 12 CFR 330.9 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-12.json?section=330.9
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2019-08-21'
+  unit: date
+  snippet: '"date":"2019-08-21"'
+  source_license: unstated
+  content_sha256: e295364f586f894d77a820d64dd4d79b50d890c7a94517733be0075bc07b46cf
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 12 CFR 330.10 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-12.json?section=330.10
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2024-04-01'
+  unit: date
+  snippet: '"date":"2024-04-01"'
+  source_license: unstated
+  content_sha256: ef7bc6e1489346a807528388ec28f7e39d0b4b3c93d9d456744c3a6da80c0366
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: standard_maximum
+  expected: 250000
+  tolerance: 0
+- statistic: count
+  expected: 7
+  tolerance: 0
+notes: 'How much of a depositor''s money the FDIC insures at one bank: the standard maximum deposit insurance amount
+  (SMDIA) applies separately to each ownership category, aggregating a depositor''s interests within it; trust deposits
+  are insured at the SMDIA per eligible beneficiary up to a cap on beneficiaries per grantor, under the simplified
+  trust rule effective in 2024. The joint account vectors are the regulation''s own example. Government deposits
+  are insured per official custodian, with demand deposits and time and savings deposits counted separately; pass
+  the relevant subset as interests. Read from the eCFR text as of 2026-10-29. The NCUA''s share insurance rules
+  for credit unions are in us-ncua-share-insurance-coverage and differ for trusts. valid_from is the latest version
+  date the eCFR versions endpoint lists for the sections cited; the eCFR history starts in late 2016, so a date
+  at that start marks the beginning of the record rather than of the rule. US federal government works carry no
+  copyright, but neither the eCFR API nor the regulation text states reuse terms, so the licence is recorded as
+  unstated and the entry held at license-review.'

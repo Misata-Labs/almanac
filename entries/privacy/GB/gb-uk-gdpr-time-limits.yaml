@@ -1,0 +1,164 @@
+id: gb-uk-gdpr-time-limits
+title: 'United Kingdom UK GDPR time limits: 72-hour breach notification, subject request response period and child
+  consent age'
+kind: rule
+domain: privacy
+region: GB
+status: license-review
+tier: A
+valid_from: '2026-09-30'
+valid_to: null
+tags:
+- privacy
+- compliance
+- uk-gdpr
+- data-breach
+- subject-access-request
+- data-protection
+use_cases:
+- customer-service-demo
+- kyc-onboarding
+- sla-calculation
+- data-quality-validation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      breach_notification_hours:
+        value: 72
+        unit: hours after becoming aware, where feasible
+        article: 33(1)
+      subject_request_response_months:
+        value: 1
+        unit: month beginning with the relevant time
+        article: 12A(1)
+      subject_request_extension_months:
+        value: 2
+        unit: further months, on notice
+        article: 12A(3)
+      child_consent_min_age_years:
+        value: 13
+        unit: years, for information society services
+        article: 8(1)
+  vectors:
+  - input:
+      key: breach_notification_hours
+      column: value
+    expected: 72
+    origin: source
+  - input:
+      key: subject_request_response_months
+      column: value
+    expected: 1
+    origin: source
+  - input:
+      key: child_consent_min_age_years
+      column: value
+    expected: 13
+    origin: source
+  - input: breach_notification_hours
+    expected: true
+    origin: source
+  - input: erasure_response_days
+    expected: false
+    origin: derived
+evidence:
+- publisher: The National Archives (legislation.gov.uk)
+  title: UK GDPR (Regulation (EU) 2016/679 as retained), Article 33 (legislation.gov.uk XML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/eur/2016/679/article/33/2026-10-29/data.xml
+  accessed_at: '2026-11-03'
+  locator: Article 33(1)
+  value: '72'
+  unit: integer
+  snippet: not later than 72 hours after having become aware of it
+  source_license: unstated
+  content_sha256: b64f034e555da4c4dec7d71b48d68f38d23c4406761e12ff6a23ccc1231e2eba
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: UK GDPR (Regulation (EU) 2016/679 as retained), Article 12A (legislation.gov.uk XML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/eur/2016/679/article/12A./2026-10-29/data.xml
+  accessed_at: '2026-11-03'
+  locator: Article 12A(1)
+  value: one
+  unit: text
+  snippet: means the period of one month beginning with the relevant time
+  source_license: unstated
+  content_sha256: d8cbd1571eab2ba6d2735fca22772f5496d0f7074b9a449850c436f6717ddebf
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: UK GDPR (Regulation (EU) 2016/679 as retained), Article 12A (legislation.gov.uk XML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/eur/2016/679/article/12A./2026-10-29/data.xml
+  accessed_at: '2026-11-03'
+  locator: Article 12A(3)
+  value: two
+  unit: text
+  snippet: extend the applicable time period by two further months
+  source_license: unstated
+  content_sha256: d8cbd1571eab2ba6d2735fca22772f5496d0f7074b9a449850c436f6717ddebf
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: UK GDPR (Regulation (EU) 2016/679 as retained), Article 8 (legislation.gov.uk XML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/eur/2016/679/article/8/2026-10-29/data.xml
+  accessed_at: '2026-11-03'
+  locator: Article 8(1)
+  value: '13'
+  unit: integer
+  snippet: 13 years old
+  source_license: unstated
+  content_sha256: f2684835c9586989a6bf6cbfa7729409128c64e5ba71c86f28abd4ffdeddb08e
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: UK GDPR (Regulation (EU) 2016/679 as retained), Article 33 (legislation.gov.uk XML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/eur/2016/679/article/33/2026-10-29/data.xml
+  accessed_at: '2026-11-03'
+  locator: restrict start date of the provision (start of its current version)
+  value: '2026-09-30'
+  unit: date
+  snippet: P1group RestrictStartDate="2026-09-30"
+  source_license: unstated
+  content_sha256: b64f034e555da4c4dec7d71b48d68f38d23c4406761e12ff6a23ccc1231e2eba
+  role: supporting
+- publisher: The National Archives (legislation.gov.uk)
+  title: UK GDPR (Regulation (EU) 2016/679 as retained), Article 12A (legislation.gov.uk XML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/eur/2016/679/article/12A./2026-10-29/data.xml
+  accessed_at: '2026-11-03'
+  locator: restrict start date of the provision (start of its current version)
+  value: '2026-02-05'
+  unit: date
+  snippet: P1group RestrictStartDate="2026-02-05"
+  source_license: unstated
+  content_sha256: d8cbd1571eab2ba6d2735fca22772f5496d0f7074b9a449850c436f6717ddebf
+  role: supporting
+- publisher: The National Archives (legislation.gov.uk)
+  title: UK GDPR (Regulation (EU) 2016/679 as retained), Article 8 (legislation.gov.uk XML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/eur/2016/679/article/8/2026-10-29/data.xml
+  accessed_at: '2026-11-03'
+  locator: restrict start date of the provision (start of its current version)
+  value: '2026-04-29'
+  unit: date
+  snippet: P1group RestrictExtent="E+W+S+N.I." RestrictStartDate="2026-04-29"
+  source_license: unstated
+  content_sha256: f2684835c9586989a6bf6cbfa7729409128c64e5ba71c86f28abd4ffdeddb08e
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: value[breach_notification_hours,value]
+  expected: 72
+  tolerance: 0
+notes: 'Deadlines in the UK GDPR as amended by the Data (Use and Access) Act 2025, read from legislation.gov.uk''s
+  point-in-time versions as of 2026-10-29: a controller notifies the Information Commissioner of a personal data
+  breach without undue delay and, where feasible, within the stated hours of becoming aware of it, unless the breach
+  is unlikely to result in a risk; it responds to a data subject''s request within one month beginning with the
+  relevant time (the latest of receiving the request, any identifying information asked for and any fee), extendable
+  by two further months for complex or numerous requests on notice given within the first month; and a child can
+  consent to an information society service from the stated age. Article 12A, which holds the response period since
+  5 February 2026, is published at a URL ending in ''12A.''. valid_from is the latest start date of the three provisions''
+  current versions; earlier versions carried the same figures under different wording. The legislation.gov.uk resource
+  carries no licence statement, although the site publishes legislation under the Open Government Licence v3.0,
+  so the licence is recorded as unstated and the entry held at license-review.'

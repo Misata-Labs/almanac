@@ -1,0 +1,246 @@
+id: us-regulation-f-call-frequency
+title: United States Regulation F debt collection call frequency presumptions and inconvenient calling times, 12
+  CFR 1006.14 and 1006.6
+kind: rule
+domain: compliance
+region: US
+status: license-review
+tier: A
+valid_from: '2021-11-30'
+valid_to: null
+tags:
+- compliance
+- consumer-protection
+- regulation-f
+- fdcpa
+- debt-collection
+- call-frequency
+- 12-cfr-1006
+use_cases:
+- collections
+- customer-service-demo
+- crm-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.us_regf_call_frequency
+  parameters:
+    max_calls_in_window: 7
+    call_window_days: 7
+    post_conversation_days: 7
+    convenient_from: 08:00
+    convenient_until: '21:00'
+    validation_period_days_after_receipt: 30
+    assumed_receipt_business_days: 5
+    sections:
+      call_frequency: 12 CFR 1006.14(b)(2)
+      inconvenient_times: 12 CFR 1006.6(b)(1)(i)
+      validation_period: 12 CFR 1006.34(b)(5)
+  vectors:
+  - input:
+      calls:
+      - '2026-04-01'
+      - '2026-04-02'
+      - '2026-04-03'
+      - '2026-04-04'
+      - '2026-04-05'
+      - '2026-04-06'
+      proposed: '2026-04-07'
+    expected: true
+    origin: source
+    note: 'comment 14(b)(2)(i)-1.i: the seventh call within seven days'
+  - input:
+      calls:
+      - '2026-04-01'
+      - '2026-04-02'
+      - '2026-04-03'
+      - '2026-04-04'
+      - '2026-04-05'
+      - '2026-04-06'
+      - '2026-04-07'
+      proposed: '2026-04-08'
+    expected: true
+    origin: source
+    note: 'comment 14(b)(2)(i)-1.i: the next call on April 8'
+  - input:
+      calls:
+      - '2026-04-01'
+      - '2026-04-02'
+      - '2026-04-02'
+      - '2026-04-03'
+      - '2026-04-03'
+      - '2026-04-06'
+      - '2026-04-06'
+      proposed: '2026-04-07'
+    expected: false
+    origin: source
+    note: 'comment 14(b)(2)(ii)-1.i: eight calls in the seven days from April 1'
+  - input:
+      calls:
+      - '2026-08-11'
+      - '2026-08-14'
+      conversations:
+      - '2026-08-14'
+      proposed: '2026-08-20'
+    expected: false
+    origin: source
+    note: 'comment 14(b)(2)(ii)-1.ii: a call before Friday, August 21'
+  - input:
+      calls:
+      - '2026-08-11'
+      - '2026-08-14'
+      conversations:
+      - '2026-08-14'
+      proposed: '2026-08-21'
+    expected: true
+    origin: source
+    note: 'comment 14(b)(2)(ii)-1.ii: the first day after the seven-day period'
+  - input:
+      conversations:
+      - '2026-08-13'
+      proposed: '2026-08-20'
+    expected: true
+    origin: source
+    note: 'comment 14(b)(2)(i)-1.ii: consumer-initiated conversation on Thursday, August 13'
+  - input:
+      local_time: 07:59
+    expected: true
+    origin: derived
+  - input:
+      local_time: '21:00'
+    expected: false
+    origin: derived
+    note: only times after 9:00 p.m. are presumed inconvenient
+  - input:
+      local_time: '21:01'
+    expected: true
+    origin: derived
+evidence:
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1006, Debt Collection Practices (Regulation F), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1006
+  accessed_at: '2026-11-03'
+  locator: section 1006.14(b)(2)(i)(A)
+  value: seven
+  unit: text
+  snippet: More than seven times within seven consecutive days
+  source_license: unstated
+  content_sha256: 9138aa90547a14dac979a600a2f057f1005a5a90b74b1f4837e1ae1063f02432
+  role: primary
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1006, Debt Collection Practices (Regulation F), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1006
+  accessed_at: '2026-11-03'
+  locator: section 1006.14(b)(2)(i)(B)
+  value: seven
+  unit: text
+  snippet: Within a period of seven consecutive days after having had a telephone conversation
+  source_license: unstated
+  content_sha256: 9138aa90547a14dac979a600a2f057f1005a5a90b74b1f4837e1ae1063f02432
+  role: primary
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1006, Debt Collection Practices (Regulation F), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1006
+  accessed_at: '2026-11-03'
+  locator: section 1006.6(b)(1)(i)
+  value: 8:00 a.m.
+  unit: text
+  snippet: a time before 8:00 a.m. and after 9:00 p.m. local time
+  source_license: unstated
+  content_sha256: 9138aa90547a14dac979a600a2f057f1005a5a90b74b1f4837e1ae1063f02432
+  role: primary
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1006, Debt Collection Practices (Regulation F), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1006
+  accessed_at: '2026-11-03'
+  locator: section 1006.34(b)(5)
+  value: '30'
+  unit: integer
+  snippet: ending 30 days after the consumer receives or is assumed to receive the validation information
+  source_license: unstated
+  content_sha256: 9138aa90547a14dac979a600a2f057f1005a5a90b74b1f4837e1ae1063f02432
+  role: primary
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1006, Debt Collection Practices (Regulation F), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1006
+  accessed_at: '2026-11-03'
+  locator: Supplement I, comment 14(b)(2)(ii)-1.i
+  value: eight
+  unit: text
+  snippet: The debt collector has placed a total of eight telephone calls to the consumer about the debt
+  source_license: unstated
+  content_sha256: 9138aa90547a14dac979a600a2f057f1005a5a90b74b1f4837e1ae1063f02432
+  role: primary
+- publisher: Consumer Financial Protection Bureau via the eCFR API
+  title: 12 CFR part 1006, Debt Collection Practices (Regulation F), as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-12.xml?part=1006
+  accessed_at: '2026-11-03'
+  locator: Supplement I, comment 14(b)(2)(ii)-1.ii
+  value: August 21
+  unit: text
+  snippet: again prior to Friday, August 21
+  source_license: unstated
+  content_sha256: 9138aa90547a14dac979a600a2f057f1005a5a90b74b1f4837e1ae1063f02432
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 12 CFR 1006.14 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-12.json?section=1006.14
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2021-11-30'
+  unit: date
+  snippet: '"date":"2021-11-30"'
+  source_license: unstated
+  content_sha256: 08e48261faa3be1b2cdf1bbf2bd2179fb046867c5a0032194271efa12910c768
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 12 CFR 1006.6 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-12.json?section=1006.6
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2021-11-30'
+  unit: date
+  snippet: '"date":"2021-11-30"'
+  source_license: unstated
+  content_sha256: 982c4254ac5fccae721aa39f278c7a2def580a9cdf3ba02dad4f6939a1276571
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 12 CFR 1006.34 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-12.json?section=1006.34
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2021-11-30'
+  unit: date
+  snippet: '"date":"2021-11-30"'
+  source_license: unstated
+  content_sha256: b894df5ce3b3c258e8727ca4db656e8a4b37ed39410de62d973a45157aa53ffa
+  role: supporting
+assumed:
+- parameter: vector dates
+  value: '2026'
+  method: derived
+  rationale: The official interpretation's examples give weekdays and days of the month but no year; 2026 is a year
+    in which every weekday named (Wednesday, April 1; Thursday, August 13; Friday, August 14) matches. Where an
+    example says only that six calls were placed between April 2 and April 7, one call a day is assumed.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: max_calls_in_window
+  expected: 7
+  tolerance: 0
+- statistic: post_conversation_days
+  expected: 7
+  tolerance: 0
+notes: 'Regulation F presumes a debt collector complies with the ban on repeated or continuous calls when, for one
+  person and one debt, it places no more than the stated number of calls within any run of consecutive days, and
+  no call within the run of days starting on the day of a telephone conversation; exceeding either presumes a violation.
+  The rule answers whether one more call on a given day stays inside the presumption, given the dates of earlier
+  counted calls and conversations; leave out calls the regulation excludes (made with the person''s direct prior
+  consent, not connected, or to the persons listed in 1006.6(d)). It also says whether a local time is presumed
+  inconvenient. The parameters record the validation period: it ends the stated number of days after the consumer
+  receives the validation information, which may be assumed to happen a set number of business days after it is
+  provided. Most vectors are the CFPB''s own examples from Supplement I to part 1006. valid_from is the latest version
+  date the eCFR versions endpoint lists for the sections cited; the eCFR history starts in late 2016, so a date
+  at that start marks the beginning of the record rather than of the rule. US federal government works carry no
+  copyright, but neither the eCFR API nor the regulation text states reuse terms, so the licence is recorded as
+  unstated and the entry held at license-review.'

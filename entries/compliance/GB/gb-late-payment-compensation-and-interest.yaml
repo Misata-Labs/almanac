@@ -1,0 +1,155 @@
+id: gb-late-payment-compensation-and-interest
+title: United Kingdom late commercial payment fixed sums by debt band and statutory interest at 8 per cent over
+  Bank Rate
+kind: rule
+domain: compliance
+region: GB
+status: license-review
+tier: A
+valid_from: '2013-03-29'
+valid_to: null
+tags:
+- compliance
+- late-payment
+- statutory-interest
+- debt-recovery
+- b2b
+use_cases:
+- invoicing
+- accounts-payable
+- collections
+- credit-risk
+- payments-scheduling
+spec:
+  implementation: almanac.rules.gb_late_payment
+  parameters:
+    currency: GBP
+    fixed_sums:
+    - below: 1000
+      sum: 40
+    - below: 10000
+      sum: 70
+    - below: null
+      sum: 100
+    margin_percent: 8
+    reference_days:
+      interest_starting_1_jan_to_30_jun: 31 December before
+      interest_starting_1_jul_to_31_dec: 30 June before
+    sections:
+      fixed_sums: 1998 c. 20 s. 5A(2)
+      rate: S.I. 2002/1675 art. 4
+  vectors:
+  - input:
+      debt: 999.99
+    expected: 40
+    origin: source
+  - input:
+      debt: 1000
+    expected: 70
+    origin: source
+  - input:
+      debt: 10000
+    expected: 100
+    origin: source
+  - input:
+      interest_starts: '2026-07-01'
+    expected: '2026-06-30'
+    origin: source
+  - input:
+      interest_starts: '2026-06-30'
+    expected: '2025-12-31'
+    origin: source
+  - input:
+      official_dealing_rate: 4.0
+    expected: 12.0
+    origin: derived
+evidence:
+- publisher: The National Archives (legislation.gov.uk)
+  title: Late Payment of Commercial Debts (Interest) Act 1998, section 5A (legislation.gov.uk XML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/ukpga/1998/20/section/5A/2026-10-29/data.xml
+  accessed_at: '2026-11-03'
+  locator: section 5A(2)(a)
+  value: £40
+  unit: currency:GBP
+  snippet: for a debt less than £1000, the sum of £40;
+  source_license: unstated
+  content_sha256: e89724034ad73cf609b1bc736aaee14a8c70d32939c8c1715380ac3f18a9763a
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Late Payment of Commercial Debts (Interest) Act 1998, section 5A (legislation.gov.uk XML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/ukpga/1998/20/section/5A/2026-10-29/data.xml
+  accessed_at: '2026-11-03'
+  locator: section 5A(2)(b)
+  value: £70
+  unit: currency:GBP
+  snippet: for a debt of £1000 or more, but less than £10,000, the sum of £70;
+  source_license: unstated
+  content_sha256: e89724034ad73cf609b1bc736aaee14a8c70d32939c8c1715380ac3f18a9763a
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Late Payment of Commercial Debts (Interest) Act 1998, section 5A (legislation.gov.uk XML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/ukpga/1998/20/section/5A/2026-10-29/data.xml
+  accessed_at: '2026-11-03'
+  locator: section 5A(2)(c)
+  value: £100
+  unit: currency:GBP
+  snippet: for a debt of £10,000 or more, the sum of £100.
+  source_license: unstated
+  content_sha256: e89724034ad73cf609b1bc736aaee14a8c70d32939c8c1715380ac3f18a9763a
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Late Payment of Commercial Debts (Rate of Interest) (No. 3) Order 2002 (legislation.gov.uk XML, as
+    made)
+  url: https://www.legislation.gov.uk/uksi/2002/1675/made/data.xml
+  accessed_at: '2026-11-03'
+  locator: article 4
+  value: '8'
+  unit: integer
+  snippet: shall be 8 per cent per annum over the official dealing rate
+  source_license: unstated
+  content_sha256: fc62ee414167b830642eb21841105c587fcb7406d2f421e63e454d033e8857fe
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: The Late Payment of Commercial Debts (Rate of Interest) (No. 3) Order 2002 (legislation.gov.uk XML, as
+    made)
+  url: https://www.legislation.gov.uk/uksi/2002/1675/made/data.xml
+  accessed_at: '2026-11-03'
+  locator: article 4
+  value: 31st December
+  unit: text
+  snippet: or the 31st December (in respect of interest which starts to run between 1st January and 30th June)
+  source_license: unstated
+  content_sha256: fc62ee414167b830642eb21841105c587fcb7406d2f421e63e454d033e8857fe
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Late Payment of Commercial Debts (Interest) Act 1998, section 5A (legislation.gov.uk XML, version of 2026-10-29)
+  url: https://www.legislation.gov.uk/ukpga/1998/20/section/5A/2026-10-29/data.xml
+  accessed_at: '2026-11-03'
+  locator: restrict start date of the provision (start of its current version)
+  value: '2013-03-29'
+  unit: date
+  snippet: P1group RestrictExtent="E+W+S+N.I." RestrictStartDate="2013-03-29"
+  source_license: unstated
+  content_sha256: e89724034ad73cf609b1bc736aaee14a8c70d32939c8c1715380ac3f18a9763a
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+- statistic: margin_percent
+  expected: 8
+  tolerance: 0
+notes: 'What a supplier can claim when a business customer pays a qualifying commercial debt late in England, Wales
+  and Northern Ireland: a fixed sum per debt, banded by the size of the debt (section 5A of the Late Payment of
+  Commercial Debts (Interest) Act 1998), plus statutory interest at the stated margin over the Bank of England''s
+  official dealing rate (Bank Rate) in force on the reference day: 30 June for interest starting from 1 July to
+  31 December, 31 December for interest starting from 1 January to 30 June (article 4 of S.I. 2002/1675, cited as
+  made because legislation.gov.uk holds no revised version). The rule returns the fixed sum, the reference day,
+  and the statutory rate for a given Bank Rate; Bank Rate itself is a separate series. Scotland has its own order.
+  valid_from is the start of section 5A''s current version. The legislation.gov.uk resource carries no licence statement,
+  although the site publishes legislation under the Open Government Licence v3.0, so the licence is recorded as
+  unstated and the entry held at license-review.'

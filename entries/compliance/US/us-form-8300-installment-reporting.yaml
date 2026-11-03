@@ -1,0 +1,183 @@
+id: us-form-8300-installment-reporting
+title: 'United States Form 8300 reporting of cash received in instalments: twelve-month aggregation and fifteen-day
+  deadline, 26 CFR 1.6050I-1(b)'
+kind: rule
+domain: compliance
+region: US
+status: license-review
+tier: A
+valid_from: '2023-06-27'
+valid_to: null
+tags:
+- compliance
+- aml
+- form-8300
+- cash-reporting
+- aggregation
+- 26-cfr-1-6050i-1
+use_cases:
+- aml-demo
+- fraud-detection-demo
+- kyc-onboarding
+- banking-demo
+- retail-demo
+- invoicing
+spec:
+  implementation: almanac.rules.us_form_8300
+  parameters:
+    currency: USD
+    threshold: 10000
+    report_within_days: 15
+    aggregation_window_months: 12
+    related_transactions_window_hours: 24
+    section: 26 CFR 1.6050I-1(b)
+  vectors:
+  - input:
+      payments:
+      - date: '1991-01-10'
+        amount: 11000
+      - date: '1991-02-15'
+        amount: 4000
+      - date: '1991-03-20'
+        amount: 6000
+      - date: '1991-05-15'
+        amount: 12000
+    expected:
+    - triggered_on: '1991-01-10'
+      due_by: '1991-01-25'
+      amount: 11000
+    - triggered_on: '1991-05-15'
+      due_by: '1991-05-30'
+      amount: 22000
+    origin: source
+    note: worked example in 26 CFR 1.6050I-1(b)(4)
+  - input:
+      amount: 11000
+    expected: true
+    origin: source
+  - input:
+      amount: 10000
+    expected: false
+    origin: derived
+    note: the threshold must be exceeded
+  - input:
+      payments:
+      - date: '2026-01-05'
+        amount: 6000
+      - date: '2027-01-05'
+        amount: 6000
+    expected: []
+    origin: derived
+    note: the second payment falls on the first anniversary, outside the window
+  - input:
+      payments:
+      - date: '2026-01-05'
+        amount: 6000
+      - date: '2027-01-04'
+        amount: 6000
+    expected:
+    - triggered_on: '2027-01-04'
+      due_by: '2027-01-19'
+      amount: 12000
+    origin: derived
+evidence:
+- publisher: Internal Revenue Service via the eCFR API
+  title: 26 CFR section 1.6050I-1, Returns relating to cash in excess of $10,000 received in a trade or business,
+    as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-26.xml?part=1&section=1.6050I-1
+  accessed_at: '2026-11-03'
+  locator: section 1.6050I-1(a)(1)
+  value: $10,000
+  unit: currency:USD
+  snippet: receives cash in excess of $10,000 in 1 transaction
+  source_license: unstated
+  content_sha256: 0cce07602322e5eaa296bd3d22ffd7fad369bb02ba71e716b1ccff92e955bcc9
+  role: primary
+- publisher: Internal Revenue Service via the eCFR API
+  title: 26 CFR section 1.6050I-1, Returns relating to cash in excess of $10,000 received in a trade or business,
+    as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-26.xml?part=1&section=1.6050I-1
+  accessed_at: '2026-11-03'
+  locator: section 1.6050I-1(b)(1)
+  value: '15'
+  unit: integer
+  snippet: the recipient must report the initial payment within 15 days of its receipt
+  source_license: unstated
+  content_sha256: 0cce07602322e5eaa296bd3d22ffd7fad369bb02ba71e716b1ccff92e955bcc9
+  role: primary
+- publisher: Internal Revenue Service via the eCFR API
+  title: 26 CFR section 1.6050I-1, Returns relating to cash in excess of $10,000 received in a trade or business,
+    as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-26.xml?part=1&section=1.6050I-1
+  accessed_at: '2026-11-03'
+  locator: section 1.6050I-1(b)(3)
+  value: '12'
+  unit: integer
+  snippet: previously unreportable payments made within a 12-month period
+  source_license: unstated
+  content_sha256: 0cce07602322e5eaa296bd3d22ffd7fad369bb02ba71e716b1ccff92e955bcc9
+  role: primary
+- publisher: Internal Revenue Service via the eCFR API
+  title: 26 CFR section 1.6050I-1, Returns relating to cash in excess of $10,000 received in a trade or business,
+    as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-26.xml?part=1&section=1.6050I-1
+  accessed_at: '2026-11-03'
+  locator: section 1.6050I-1(b)(4), example
+  value: January 25, 1991
+  unit: text
+  snippet: M must make a report with respect to the payment received on January 10, 1991, by January 25, 1991
+  source_license: unstated
+  content_sha256: 0cce07602322e5eaa296bd3d22ffd7fad369bb02ba71e716b1ccff92e955bcc9
+  role: primary
+- publisher: Internal Revenue Service via the eCFR API
+  title: 26 CFR section 1.6050I-1, Returns relating to cash in excess of $10,000 received in a trade or business,
+    as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-26.xml?part=1&section=1.6050I-1
+  accessed_at: '2026-11-03'
+  locator: section 1.6050I-1(b)(4), example
+  value: May 30, 1991
+  unit: text
+  snippet: This report must be made by May 30, 1991
+  source_license: unstated
+  content_sha256: 0cce07602322e5eaa296bd3d22ffd7fad369bb02ba71e716b1ccff92e955bcc9
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 26 CFR 1.6050I-1 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-26.json?section=1.6050I-1
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2023-06-27'
+  unit: date
+  snippet: '"date":"2023-06-27"'
+  source_license: unstated
+  content_sha256: 85cea487529ba544d0ed99ccba95c4bcbf4be662bd3c8d2c6306b84904ec7d9b
+  role: supporting
+assumed:
+- parameter: window boundary
+  value: a payment on the first anniversary of the earliest unreported payment falls outside the window
+  method: derived
+  rationale: The regulation says 'within one year of the initial payment' and 'within a 12-month period' without
+    fixing the boundary day; the rule treats the anniversary itself as outside, and the two derived vectors exercise
+    that choice.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: threshold
+  expected: 10000
+  tolerance: 0
+- statistic: report_within_days
+  expected: 15
+  tolerance: 0
+notes: 'Executable form of the multiple-payment rule for Form 8300 (26 U.S.C. 6050I): a business receiving cash
+  for one transaction, or related transactions, reports within the stated number of days once the cash exceeds the
+  threshold, and again each time later unreported payments received within a twelve-month window exceed it. Replaying
+  the payment history returns each report with the day it was triggered, its due date and the amount it covers.
+  The first vector is the regulation''s own worked example: an initial payment above the threshold, then three smaller
+  payments that cross it together. The option to combine several reports falling due within one filing period is
+  not modelled. ''Related transactions'' are those between the same payer and recipient within the stated number
+  of hours, or a longer series the recipient knows to be connected; grouping payments into one transaction is left
+  to the caller. valid_from is the latest version date the eCFR versions endpoint lists for the sections cited;
+  the eCFR history starts in late 2016, so a date at that start marks the beginning of the record rather than of
+  the rule. US federal government works carry no copyright, but neither the eCFR API nor the regulation text states
+  reuse terms, so the licence is recorded as unstated and the entry held at license-review.'

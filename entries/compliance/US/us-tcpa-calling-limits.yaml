@@ -1,0 +1,208 @@
+id: us-tcpa-calling-limits
+title: 'United States TCPA telemarketing limits: calling hours, do-not-call and revocation deadlines, abandonment
+  rate, 47 CFR 64.1200'
+kind: rule
+domain: compliance
+region: US
+status: license-review
+tier: A
+valid_from: '2026-10-26'
+valid_to: null
+tags:
+- compliance
+- consumer-protection
+- tcpa
+- telemarketing
+- do-not-call
+- 47-cfr-64
+use_cases:
+- customer-service-demo
+- crm-demo
+- collections
+- telecom-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      calling_window_start_hour:
+        value: 8
+        unit: hour, local time at the called party
+        section: 47 CFR 64.1200(c)(1)
+      calling_window_end_hour:
+        value: 21
+        unit: hour, local time at the called party (24-hour clock)
+        section: 47 CFR 64.1200(c)(1)
+      do_not_call_request_honor_business_days:
+        value: 10
+        unit: business days from receipt
+        section: 47 CFR 64.1200(d)(3)
+      consent_revocation_honor_business_days:
+        value: 10
+        unit: business days from receipt
+        section: 47 CFR 64.1200(a)(10)
+      national_registry_max_age_days:
+        value: 31
+        unit: days before the call
+        section: 47 CFR 64.1200(c)(2)(i)(D)
+      abandonment_rate_max_percent:
+        value: 3
+        unit: percent of live-answered calls per campaign
+        section: 47 CFR 64.1200(a)(7)
+      abandonment_measurement_days:
+        value: 30
+        unit: days
+        section: 47 CFR 64.1200(a)(7)
+      unanswered_call_min_ring_seconds:
+        value: 15
+        unit: seconds
+        section: 47 CFR 64.1200(a)(6)
+      unanswered_call_min_rings:
+        value: 4
+        unit: rings
+        section: 47 CFR 64.1200(a)(6)
+      live_agent_connect_max_seconds:
+        value: 2
+        unit: seconds after the called person's greeting
+        section: 47 CFR 64.1200(a)(7)(i)
+      noncommercial_residential_max_calls:
+        value: 3
+        unit: calls per consecutive 30-day period
+        section: 47 CFR 64.1200(a)(3)(ii)
+      fax_opt_out_honor_days:
+        value: 30
+        unit: days
+        section: 47 CFR 64.1200(a)(4)(v)
+  vectors:
+  - input:
+      key: calling_window_start_hour
+      column: value
+    expected: 8
+    origin: source
+  - input:
+      key: do_not_call_request_honor_business_days
+      column: value
+    expected: 10
+    origin: source
+  - input:
+      key: abandonment_rate_max_percent
+      column: value
+    expected: 3
+    origin: source
+  - input: calling_window_start_hour
+    expected: true
+    origin: source
+  - input: calling_window_weekend_rule
+    expected: false
+    origin: derived
+evidence:
+- publisher: Federal Communications Commission via the eCFR API
+  title: 47 CFR section 64.1200, Delivery restrictions (Telephone Consumer Protection Act rules), as of 2026-10-29
+    (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-47.xml?part=64&section=64.1200
+  accessed_at: '2026-11-03'
+  locator: section 64.1200(c)(1)
+  value: 8 a.m.
+  unit: text
+  snippet: before the hour of 8 a.m. or after 9 p.m. (local time at the called party's location)
+  source_license: unstated
+  content_sha256: c57ec849fba5050107b3bbd98047231b3f4d25f20536ce808bf3a30500792cfe
+  role: primary
+- publisher: Federal Communications Commission via the eCFR API
+  title: 47 CFR section 64.1200, Delivery restrictions (Telephone Consumer Protection Act rules), as of 2026-10-29
+    (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-47.xml?part=64&section=64.1200
+  accessed_at: '2026-11-03'
+  locator: section 64.1200(d)(3)
+  value: '10'
+  unit: integer
+  snippet: This period may not exceed ten (10) business days from the receipt of such request
+  source_license: unstated
+  content_sha256: c57ec849fba5050107b3bbd98047231b3f4d25f20536ce808bf3a30500792cfe
+  role: primary
+- publisher: Federal Communications Commission via the eCFR API
+  title: 47 CFR section 64.1200, Delivery restrictions (Telephone Consumer Protection Act rules), as of 2026-10-29
+    (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-47.xml?part=64&section=64.1200
+  accessed_at: '2026-11-03'
+  locator: section 64.1200(a)(10)
+  value: ten
+  unit: text
+  snippet: must be honored within a reasonable time not to exceed ten business days from receipt of such request
+  source_license: unstated
+  content_sha256: c57ec849fba5050107b3bbd98047231b3f4d25f20536ce808bf3a30500792cfe
+  role: primary
+- publisher: Federal Communications Commission via the eCFR API
+  title: 47 CFR section 64.1200, Delivery restrictions (Telephone Consumer Protection Act rules), as of 2026-10-29
+    (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-47.xml?part=64&section=64.1200
+  accessed_at: '2026-11-03'
+  locator: section 64.1200(c)(2)(i)(D)
+  value: '31'
+  unit: integer
+  snippet: no more than 31 days prior to the date any call is made
+  source_license: unstated
+  content_sha256: c57ec849fba5050107b3bbd98047231b3f4d25f20536ce808bf3a30500792cfe
+  role: primary
+- publisher: Federal Communications Commission via the eCFR API
+  title: 47 CFR section 64.1200, Delivery restrictions (Telephone Consumer Protection Act rules), as of 2026-10-29
+    (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-47.xml?part=64&section=64.1200
+  accessed_at: '2026-11-03'
+  locator: section 64.1200(a)(7)
+  value: three
+  unit: text
+  snippet: Abandon more than three percent of all telemarketing calls
+  source_license: unstated
+  content_sha256: c57ec849fba5050107b3bbd98047231b3f4d25f20536ce808bf3a30500792cfe
+  role: primary
+- publisher: Federal Communications Commission via the eCFR API
+  title: 47 CFR section 64.1200, Delivery restrictions (Telephone Consumer Protection Act rules), as of 2026-10-29
+    (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-47.xml?part=64&section=64.1200
+  accessed_at: '2026-11-03'
+  locator: section 64.1200(a)(6)
+  value: '15'
+  unit: integer
+  snippet: Disconnect an unanswered telemarketing call prior to at least 15 seconds or four (4) rings
+  source_license: unstated
+  content_sha256: c57ec849fba5050107b3bbd98047231b3f4d25f20536ce808bf3a30500792cfe
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 47 CFR 64.1200 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-47.json?section=64.1200
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2026-10-26'
+  unit: date
+  snippet: '"date":"2026-10-26"'
+  source_license: unstated
+  content_sha256: 89a19b6193f76be4f3e5982b9ab30b3e891208c3067104ba39247e883c463fd8
+  role: supporting
+assumed:
+- parameter: calling_window_end_hour
+  value: 21
+  method: derived
+  rationale: The regulation says 9 p.m.; the row restates it on a 24-hour clock.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 12
+  tolerance: 0
+- statistic: value[calling_window_end_hour,value]
+  expected: 21
+  tolerance: 0
+notes: 'The numeric limits the FCC''s Telephone Consumer Protection Act rules set for telephone solicitation and
+  telemarketing, read from 47 CFR 64.1200 as of 2026-10-29: no telephone solicitation to a residential subscriber
+  before the window opens or after it closes (local time at the called party''s location), the business days within
+  which a company-specific do-not-call request and a revocation of consent must be honoured, how fresh a copy of
+  the national do-not-call registry must be, the maximum abandoned-call rate per calling campaign and the period
+  over which it is measured, how long an unanswered call must ring, how quickly a live agent or message must follow
+  the called person''s greeting, the call limit for exempt non-commercial calls to a residential line, and the fax
+  opt-out deadline. Each limit has conditions and exemptions in the section it cites. valid_from is the latest version
+  date the eCFR versions endpoint lists for the sections cited; the eCFR history starts in late 2016, so a date
+  at that start marks the beginning of the record rather than of the rule. US federal government works carry no
+  copyright, but neither the eCFR API nor the regulation text states reuse terms, so the licence is recorded as
+  unstated and the entry held at license-review.'

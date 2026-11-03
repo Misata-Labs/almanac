@@ -1,0 +1,167 @@
+id: gb-hm-treasury-high-risk-third-countries
+title: FATF high-risk and increased-monitoring jurisdictions as HM Treasury lists them for UK enhanced due diligence,
+  June 2026
+kind: rule
+domain: compliance
+region: GB
+status: verified
+tier: A
+valid_from: '2026-06-19'
+valid_to: null
+tags:
+- compliance
+- aml
+- kyc
+- fatf
+- high-risk-third-countries
+- enhanced-due-diligence
+- country-risk
+use_cases:
+- kyc-onboarding
+- kyb-onboarding
+- aml-demo
+- fraud-detection-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.enumeration
+  parameters:
+    sets:
+      call_for_action:
+        KP: Democratic People’s Republic of Korea
+        IR: Iran
+        MM: Myanmar
+      increased_monitoring:
+        AO: Angola
+        BO: Bolivia
+        BA: Bosnia and Herzegovina
+        VG: British Virgin Islands
+        BG: Bulgaria
+        CM: Cameroon
+        CI: Côte d’Ivoire
+        CD: Democratic Republic of the Congo
+        HT: Haiti
+        IQ: Iraq
+        KE: Kenya
+        KW: Kuwait
+        LA: Lao PDR
+        LB: Lebanon
+        MC: Monaco
+        NP: Nepal
+        PG: Papua New Guinea
+        SS: South Sudan
+        SY: Syria
+        VE: Venezuela
+        VN: Vietnam
+        YE: Yemen
+      also_under_uk_financial_sanctions:
+        KP: Democratic People’s Republic of Korea
+        CD: Democratic Republic of the Congo
+        HT: Haiti
+        IR: Iran
+        MM: Myanmar
+        SS: South Sudan
+        SY: Syria
+        VE: Venezuela
+        YE: Yemen
+    code_system: ISO 3166-1 alpha-2 as the World Bank API gives it
+  vectors:
+  - input:
+      set: call_for_action
+      value: KP
+    expected: true
+    origin: source
+  - input:
+      set: increased_monitoring
+      value: AO
+    expected: true
+    origin: source
+  - input:
+      set: call_for_action
+      value: AO
+    expected: false
+    origin: source
+  - input:
+      set: also_under_uk_financial_sanctions
+      value: KP
+    expected: true
+    origin: source
+  - input:
+      set: increased_monitoring
+      value: GB
+    expected: false
+    origin: derived
+evidence:
+- publisher: HM Treasury (GOV.UK content API)
+  title: 'Money Laundering Advisory Notice: High Risk Third Countries, June 2026 (GOV.UK content API JSON)'
+  url: https://www.gov.uk/api/content/government/publications/money-laundering-advisory-notice-high-risk-third-countries--2/money-laundering-advisory-notice-high-risk-third-countries--2
+  accessed_at: '2026-11-03'
+  locator: details.body, Jurisdictions under Increased Monitoring
+  value: Angola
+  unit: text
+  snippet: <li>Angola</li>
+  source_license: OGL-UK-3.0
+  content_sha256: 3c17f8fed5fb0592b8a653c2648fcf1206b0579b2dc7ea013823205c61eba50f
+  role: primary
+- publisher: HM Treasury (GOV.UK content API)
+  title: 'Money Laundering Advisory Notice: High Risk Third Countries, June 2026 (GOV.UK content API JSON)'
+  url: https://www.gov.uk/api/content/government/publications/money-laundering-advisory-notice-high-risk-third-countries--2/money-laundering-advisory-notice-high-risk-third-countries--2
+  accessed_at: '2026-11-03'
+  locator: details.body, High-Risk Jurisdictions subject to a Call for Action
+  value: Democratic People’s Republic of Korea
+  unit: text
+  snippet: <li>Democratic People’s Republic of Korea</li>
+  source_license: OGL-UK-3.0
+  content_sha256: 3c17f8fed5fb0592b8a653c2648fcf1206b0579b2dc7ea013823205c61eba50f
+  role: primary
+- publisher: HM Treasury (GOV.UK content API)
+  title: 'Money Laundering Advisory Notice: High Risk Third Countries, June 2026 (GOV.UK content API JSON)'
+  url: https://www.gov.uk/api/content/government/publications/money-laundering-advisory-notice-high-risk-third-countries--2/money-laundering-advisory-notice-high-risk-third-countries--2
+  accessed_at: '2026-11-03'
+  locator: details.body, FATF public statement
+  value: 19 June 2026
+  unit: date
+  snippet: On 19 June 2026, the FATF published the most recent update
+  source_license: OGL-UK-3.0
+  content_sha256: 3c17f8fed5fb0592b8a653c2648fcf1206b0579b2dc7ea013823205c61eba50f
+  role: primary
+- publisher: World Bank
+  title: World Bank API, country list (JSON)
+  url: https://api.worldbank.org/v2/country?format=json&per_page=400
+  accessed_at: '2026-11-03'
+  locator: '[1][*], id PRK'
+  value: KP
+  unit: text
+  snippet: '"id":"PRK","iso2Code":"KP"'
+  source_license: CC-BY-4.0
+  content_sha256: c9acf3932785191a649cbc04c3056af4cf64a236e5c3b49d49be25ddb0440bce
+  role: supporting
+assumed:
+- parameter: sets (country codes)
+  value: Côte d’Ivoire = Cote d'Ivoire; Democratic Republic of the Congo = Congo, Dem. Rep.; Democratic People’s
+    Republic of Korea = Korea, Dem. People's Rep.; Iran = Iran, Islamic Rep.; Syria = Syrian Arab Republic; Venezuela
+    = Venezuela, RB; Vietnam = Viet Nam; Yemen = Yemen, Rep.
+  method: derived
+  rationale: HM Treasury names the jurisdictions; each name is matched to its ISO 3166-1 alpha-2 code through the
+    World Bank country list, with these spelling differences mapped by hand. The labels keep HM Treasury's names.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[call_for_action]
+  expected: 3
+  tolerance: 0
+- statistic: count[increased_monitoring]
+  expected: 22
+  tolerance: 0
+- statistic: count[also_under_uk_financial_sanctions]
+  expected: 9
+  tolerance: 0
+notes: The jurisdictions the Financial Action Task Force lists as High-Risk Jurisdictions subject to a Call for
+  Action and as Jurisdictions under Increased Monitoring, as HM Treasury's advisory notice of June 2026 reproduces
+  them after the FATF update of 19 June 2026, keyed by ISO 3166-1 alpha-2 code, with the subset HM Treasury notes
+  is also under UK financial sanctions. Under the UK Money Laundering Regulations 2017 a high-risk third country
+  is one on either FATF list; from 30 June 2026 the mandatory enhanced due diligence of regulation 33(1)(b) applies
+  only to the call-for-action list, while increased monitoring remains a geographic risk factor. FATF updates the
+  lists after each plenary (February, June and October); this entry is the June 2026 notice, the latest HM Treasury
+  had published on GOV.UK when it was built, and should be replaced when a later notice appears. The FATF's own
+  pages could not be fetched (they sit behind a browser challenge).

@@ -1,0 +1,388 @@
+id: us-bsa-sar-thresholds-by-institution
+title: United States suspicious activity report thresholds, filing deadlines and retention by institution type,
+  31 CFR 1020-1030
+kind: rule
+domain: compliance
+region: US
+status: license-review
+tier: A
+valid_from: '2018-06-19'
+valid_to: null
+tags:
+- compliance
+- aml
+- bank-secrecy-act
+- suspicious-activity-report
+- transaction-monitoring
+- 31-cfr-chapter-x
+use_cases:
+- aml-demo
+- fraud-detection-demo
+- kyc-onboarding
+- banking-demo
+- data-quality-validation
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: USD
+    rows:
+      bank:
+        threshold_usd: 5000
+        filing_deadline_days: 30
+        max_deadline_without_suspect_days: 60
+        retention_years: 5
+        section: 31 CFR 1020.320
+      casino_or_card_club:
+        threshold_usd: 5000
+        filing_deadline_days: 30
+        max_deadline_without_suspect_days: 60
+        retention_years: 5
+        section: 31 CFR 1021.320
+      money_services_business:
+        threshold_usd: 2000
+        filing_deadline_days: 30
+        max_deadline_without_suspect_days: null
+        retention_years: 5
+        section: 31 CFR 1022.320
+      broker_dealer:
+        threshold_usd: 5000
+        filing_deadline_days: 30
+        max_deadline_without_suspect_days: 60
+        retention_years: 5
+        section: 31 CFR 1023.320
+      mutual_fund:
+        threshold_usd: 5000
+        filing_deadline_days: 30
+        max_deadline_without_suspect_days: 60
+        retention_years: 5
+        section: 31 CFR 1024.320
+      insurance_company:
+        threshold_usd: 5000
+        filing_deadline_days: 30
+        max_deadline_without_suspect_days: 60
+        retention_years: 5
+        section: 31 CFR 1025.320
+      futures_commission_merchant_or_introducing_broker:
+        threshold_usd: 5000
+        filing_deadline_days: 30
+        max_deadline_without_suspect_days: 60
+        retention_years: 5
+        section: 31 CFR 1026.320
+      loan_or_finance_company:
+        threshold_usd: 5000
+        filing_deadline_days: 30
+        max_deadline_without_suspect_days: 60
+        retention_years: 5
+        section: 31 CFR 1029.320
+      housing_gse:
+        threshold_usd: 5000
+        filing_deadline_days: 30
+        max_deadline_without_suspect_days: 60
+        retention_years: 5
+        section: 31 CFR 1030.320
+      money_order_or_travelers_check_issuer_clearance_review:
+        threshold_usd: 5000
+        filing_deadline_days: 30
+        max_deadline_without_suspect_days: null
+        retention_years: 5
+        section: 31 CFR 1022.320(a)(3)
+  vectors:
+  - input:
+      key: bank
+      column: threshold_usd
+    expected: 5000
+    origin: source
+  - input:
+      key: money_services_business
+      column: threshold_usd
+    expected: 2000
+    origin: source
+  - input:
+      key: bank
+      column: max_deadline_without_suspect_days
+    expected: 60
+    origin: source
+  - input:
+      key: money_services_business
+      column: max_deadline_without_suspect_days
+    expected: null
+    origin: source
+    note: 1022.320 has no extension for an unidentified suspect
+  - input:
+      key: insurance_company
+      column: filing_deadline_days
+    expected: 30
+    origin: source
+  - input: credit_union
+    expected: false
+    origin: derived
+    note: credit unions file under the bank rule in part 1020
+evidence:
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1020, Rules for Banks, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1020
+  accessed_at: '2026-11-03'
+  locator: section 1020.320(a)(2)
+  value: $5,000
+  unit: currency:USD
+  snippet: at least $5,000
+  source_license: unstated
+  content_sha256: 2588950c5c16efb45a2a78369e08bda2174bf9a8be5afd634235a406f51924bb
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1020, Rules for Banks, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1020
+  accessed_at: '2026-11-03'
+  locator: section 1020.320(b)(3)
+  value: '30'
+  unit: integer
+  snippet: no later than 30 calendar days after the date of initial detection
+  source_license: unstated
+  content_sha256: 2588950c5c16efb45a2a78369e08bda2174bf9a8be5afd634235a406f51924bb
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1020, Rules for Banks, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1020
+  accessed_at: '2026-11-03'
+  locator: section 1020.320(b)(3)
+  value: '60'
+  unit: integer
+  snippet: In no case shall reporting be delayed more than 60 calendar days
+  source_license: unstated
+  content_sha256: 2588950c5c16efb45a2a78369e08bda2174bf9a8be5afd634235a406f51924bb
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1021, Rules for Casinos and Card Clubs, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1021
+  accessed_at: '2026-11-03'
+  locator: section 1021.320(a)(2)
+  value: $5,000
+  unit: currency:USD
+  snippet: at least $5,000
+  source_license: unstated
+  content_sha256: 2e0b7deecb409260519c9648f643700d002b38080408090ddc9fe4c2e13283e7
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1022, Rules for Money Services Businesses, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1022
+  accessed_at: '2026-11-03'
+  locator: section 1022.320(a)(2)
+  value: $2,000
+  unit: currency:USD
+  snippet: at least $2,000
+  source_license: unstated
+  content_sha256: fcd9c98d465b17ab3d88435373f0552b82d3bc6d9719a24702a892de27bfe627
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1022, Rules for Money Services Businesses, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1022
+  accessed_at: '2026-11-03'
+  locator: section 1022.320(b)(3)
+  value: '30'
+  unit: integer
+  snippet: no later than 30 calendar days after the date of the initial detection
+  source_license: unstated
+  content_sha256: fcd9c98d465b17ab3d88435373f0552b82d3bc6d9719a24702a892de27bfe627
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1023, Rules for Brokers or Dealers in Securities, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1023
+  accessed_at: '2026-11-03'
+  locator: section 1023.320(a)(2)
+  value: $5,000
+  unit: currency:USD
+  snippet: at least $5,000
+  source_license: unstated
+  content_sha256: b6f336ad69d44f99c1a31d76f7c1fcba4264e82603b117fc77cb302dc9b363fd
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1024, Rules for Mutual Funds, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1024
+  accessed_at: '2026-11-03'
+  locator: section 1024.320(a)(2)
+  value: $5,000
+  unit: currency:USD
+  snippet: at least $5,000
+  source_license: unstated
+  content_sha256: 7ebd0f7b22cf6c4cbb02f80671a1af9151ca8e1fe383cb676d36f03833aa8953
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1025, Rules for Insurance Companies, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1025
+  accessed_at: '2026-11-03'
+  locator: section 1025.320(a)(2)
+  value: $5,000
+  unit: currency:USD
+  snippet: at least $5,000
+  source_license: unstated
+  content_sha256: 17df6e06d0dacd1a76c063e33a858048333c96f60a42f1c9412a4b14edf8bd09
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1026, Rules for Futures Commission Merchants and Introducing Brokers in Commodities, as of
+    2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1026
+  accessed_at: '2026-11-03'
+  locator: section 1026.320(a)(2)
+  value: $5,000
+  unit: currency:USD
+  snippet: at least $5,000
+  source_license: unstated
+  content_sha256: e9801748d5e6c5b51ee9b3433c1b7977716960461f0c04c9ed071eff9fb354b0
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1029, Rules for Loan or Finance Companies, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1029
+  accessed_at: '2026-11-03'
+  locator: section 1029.320(a)(2)
+  value: $5,000
+  unit: currency:USD
+  snippet: at least $5,000
+  source_license: unstated
+  content_sha256: a732250d144ac872c977df8586799eabb080cc09209cecf57f60e81dc828dd16
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1030, Rules for Housing Government Sponsored Enterprises, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1030
+  accessed_at: '2026-11-03'
+  locator: section 1030.320(a)(2)
+  value: $5,000
+  unit: currency:USD
+  snippet: at least $5,000
+  source_license: unstated
+  content_sha256: d3c4b004a35b8e52eeed050041ab528030c796fdbabddee79979cb2ebc13fe2f
+  role: primary
+- publisher: Financial Crimes Enforcement Network via the eCFR API
+  title: 31 CFR part 1022, Rules for Money Services Businesses, as of 2026-10-29 (XML)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-10-29/title-31.xml?part=1022
+  accessed_at: '2026-11-03'
+  locator: section 1022.320(a)(3)
+  value: $5,000
+  unit: currency:USD
+  snippet: involves or aggregates funds or other assets of at least $5,000
+  source_license: unstated
+  content_sha256: fcd9c98d465b17ab3d88435373f0552b82d3bc6d9719a24702a892de27bfe627
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1020.320 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1020.320
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-23'
+  unit: date
+  snippet: '"date":"2016-12-23"'
+  source_license: unstated
+  content_sha256: d3e6540e3f66c7f1e3bce21fc29716ce51e7ca5b32c8e0c4b9c854a71956ba00
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1021.320 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1021.320
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-23'
+  unit: date
+  snippet: '"date":"2016-12-23"'
+  source_license: unstated
+  content_sha256: 49b32cc8e0ec6c64a76d22172f7505197da03585458a0c3753919672e9c6dd0e
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1022.320 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1022.320
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2018-06-19'
+  unit: date
+  snippet: '"date":"2018-06-19"'
+  source_license: unstated
+  content_sha256: f3de90b114182e170c849d5191f3cba47cb0509043febb92014bef7761122973
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1023.320 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1023.320
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2018-06-19'
+  unit: date
+  snippet: '"date":"2018-06-19"'
+  source_license: unstated
+  content_sha256: bd318ddc5a7c68a3499839fd1209068175075ab8af0dbf7715748bda41212085
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1024.320 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1024.320
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-23'
+  unit: date
+  snippet: '"date":"2016-12-23"'
+  source_license: unstated
+  content_sha256: 4cebc8a7c7e230107a69a1bb5cdb81acd7917612507894f77ddd304335185a40
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1025.320 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1025.320
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2018-06-19'
+  unit: date
+  snippet: '"date":"2018-06-19"'
+  source_license: unstated
+  content_sha256: 85a291256ac86bc69dbec366cf101707035d8abe0a6f8cb39168a506b1a15a0c
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1026.320 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1026.320
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-23'
+  unit: date
+  snippet: '"date":"2016-12-23"'
+  source_license: unstated
+  content_sha256: 1f683f2930ac953694605b3d74250abf2e76c632ae77d677e4981e576fd2b187
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1029.320 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1029.320
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-23'
+  unit: date
+  snippet: '"date":"2016-12-23"'
+  source_license: unstated
+  content_sha256: 07d9ce60621df75148c591f354c9b756b899ff55f61b6856ce50ceefa56913c4
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 31 CFR 1030.320 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-31.json?section=1030.320
+  accessed_at: '2026-11-03'
+  locator: content_versions[*].date, latest
+  value: '2016-12-23'
+  unit: date
+  snippet: '"date":"2016-12-23"'
+  source_license: unstated
+  content_sha256: e5f2fcd2e1f0f1dac92d39c93b34131508ba5ad08ddd103b6865f3aa74a169f7
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 10
+  tolerance: 0
+- statistic: min[threshold_usd]
+  expected: 2000
+  tolerance: 0
+- statistic: max[filing_deadline_days]
+  expected: 30
+  tolerance: 0
+notes: The amount at which a known or suspected suspicious transaction, or pattern of transactions, must be reported
+  on a SAR, the number of calendar days after initial detection within which it must be filed, the longest delay
+  allowed when no suspect has been identified, and how long the SAR and its supporting documents must be kept, for
+  each institution type with a SAR rule in 31 CFR chapter X, read from the eCFR text as of 2026-10-29. Money services
+  businesses have a lower threshold and no extension for an unidentified suspect; an issuer of money orders or traveler's
+  checks reviewing clearance records reports only from the higher amount in its own row. Credit unions and other
+  depository institutions file under the bank rule. Thresholds are 'at least' amounts and include aggregated transactions.
+  valid_from is the latest version date the eCFR versions endpoint lists for the sections cited; the eCFR history
+  starts in late 2016, so a date at that start marks the beginning of the record rather than of the rule. US federal
+  government works carry no copyright, but neither the eCFR API nor the regulation text states reuse terms, so the
+  licence is recorded as unstated and the entry held at license-review.
