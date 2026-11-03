@@ -99,6 +99,13 @@ uv run almanac applies --on 2026-06-15 --use-case banking-demo
 | **Addresses, geography and product catalogues** | US state, county and CBSA codes, ZIP Code Tabulation Areas by prefix, Census places, French regions, départements and communes, NUTS 2024 with urban-rural typologies, Japanese postal codes, IANA time zones, UN M49 areas, ISO 639 languages, NAICS, ISIC, COICOP and COFOG structures |
 | **Customer service and complaints** | CFPB consumer complaints by product, issue, company, response, channel, state and month, issue given product, response given product, timely-response share |
 | **Fleet, mobility and telematics** | US fatal crashes by month, weekday, hour, weather and light, GB collisions by severity, hour and speed limit, driver and vehicle age in collisions, road traffic by vehicle and road type, NHTSA recalls, FAA aircraft registry and airports, rail, air and port volumes |
+| **US payroll, tax and benefits for 2026** | Federal income tax brackets for every filing status, the Publication 15-T withholding worksheet, standard deduction, capital gains breakpoints, AMT, EITC, child tax credit, wage bases, mileage rates, 401(k), IRA, HSA and ACA limits, Medicare Part A and B premiums with IRMAA tiers, HHS poverty guidelines, conforming loan limits by county, MACRS depreciation |
+| **European payroll** | Germany's income tax formula with splitting, solidarity surcharge, child benefit, minimum wage and minijob limits, social insurance reference values; income tax scales for Austria, the Netherlands, Ireland with USC and PRSI, Spain, France and Poland; Dutch youth minimum wages; Spanish contribution bases and rates |
+| **AML, fraud and compliance** | Bank Secrecy Act reporting thresholds, SAR thresholds by institution type, Form 8300 instalment aggregation, FDIC and NCUA insurance coverage, Regulation F call limits, TCPA calling hours, FTC cooling-off and mail-order rules, UK money-laundering thresholds, HM Treasury high-risk countries, UK GDPR deadlines, DPA 2018 penalty maxima, PSD2 strong customer authentication exemptions |
+| **Bank accounts and payment validation** | German sort codes with BIC and check method, twenty German account check-digit methods, UK sort code modulus checking with every exception, account number standardisation, the IBAN MOD 97 check, US routing number prefixes, German base rate and late-payment interest, UK statutory late-payment compensation |
+| **Invoicing and e-invoicing** | Italy FatturaPA document, VAT nature, regime and payment codes, Peppol VAT categories, invoice types, payment means, address schemes and units, Mexico CFDI 4.0 catalogues, Poland KSeF, Spain VeriFactu, Saudi ZATCA, India's e-invoicing thresholds, VAT and GST rates for OECD members, Japan, Switzerland, Australia, Singapore and Norway |
+| **Trade, customs and e-commerce** | US tariff schedule headings and duty rates for apparel, footwear, machinery, electronics, furniture and toys, US de minimis and informal entry thresholds, UK tariff sections and consumer-goods duties, EU Combined Nomenclature 2026 |
+| **India: labour codes and company law** | The four Labour Codes in force from November 2025, the 50 per cent wage rule, bonus, gratuity, retrenchment, maternity, working hours and establishment thresholds, EPF limits, contractor and professional-fee TDS, MSME classification, small company and CSR thresholds |
 | **Value pools: margins, costs, churn and defaults** | After-tax margins by industry from the Census Quarterly Financial Report, FDIC bank performance ratios and size classes, Fed charge-off and delinquency rates, IRS corporation returns by sector, Eurostat enterprise accounts for ten member states with operating rate and personnel-cost share, enterprise birth, death and survival rates, hourly labour cost by section, UK rate of return and business survival |
 | **Behaviour over time** | UK employment, unemployment, vacancies, redundancies and claimant count by month, average weekly earnings, household saving ratio, internet share of retail, energy price cap levels, EU air passengers by month, Indian wireless subscribers and ARPU by quarter |
 | **India: telecom, insurance and insolvency demos** | TRAI subscribers by operator and service area, prepaid versus postpaid split, mobile number portability requests, broadband by provider, IRDAI premium by segment and death-claim outcomes, IBBI corporate insolvency status and recoveries by initiator, Income Tax slabs and GST structure |
@@ -134,7 +141,7 @@ for entry in almanac.select(on=date(2026, 6, 15), region="GB", kind="rule"):
 
 ## What is inside
 
-Five hundred and fifty-seven entries across thirty-five domains and twenty-seven
+Six hundred and ninety-six entries across thirty-eight domains and twenty-eight
 regions at the time of writing, every one of them passing live verification. The generated
 [CATALOGUE.md](CATALOGUE.md) is the authoritative list; this is the tour.
 
@@ -209,6 +216,23 @@ general health, highest qualification, household size, tenure, car
 availability, accommodation type. Single-year age distributions for Germany
 and France. Population by sex for ten member states. World population weights
 for 217 economies.
+
+**Business rules that systems enforce.** The thresholds, formulas and code
+lists that payroll engines, banks, tax software and compliance tools apply on
+every transaction, each with the statute, regulation or operator document it
+came from. US federal tax and benefit figures for 2026 from the IRS revenue
+procedures and publications, CMS and HHS notices in the Federal Register and
+FHFA's county file. The Bank Secrecy Act, deposit insurance, debt collection,
+telemarketing and consumer-protection rules from the eCFR. UK money
+laundering, data protection, consumer contracts, payment services and late
+payment rules from legislation.gov.uk. Germany's tax tariff, social insurance
+values and default interest from Gesetze im Internet and the Bundesbank, with
+the Bundesbank's sort code file and account check methods and Vocalink's UK
+modulus checking. E-invoicing code lists from the Italian, Polish, Spanish,
+Mexican and Saudi tax authorities and the Peppol network. Tariff schedules
+from USITC, the UK Trade Tariff and Eurostat. India's Labour Codes from India
+Code, with company, MSME, tax and market-cap thresholds from the ministries
+and SEBI.
 
 **People and names.** First-name distributions from seven statistical
 offices: ONS for England and Wales nationally and by region, National Records
@@ -357,7 +381,7 @@ confessed, with the method. `tests` is what the verifier reproduces.
 [PASS] br-pix-monthly-volume-and-value  (entries/payments/BR/br-pix-monthly-volume-and-value.yaml)
     PASS test column[quantity_thousands,2026-09]  observed 7.89294e+06, expected 7892936.44 ± 0
 ...
-557 passed, 0 failed, 557 entries
+696 passed, 0 failed, 696 entries
 ```
 
 ## Frequently asked questions
