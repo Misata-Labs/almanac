@@ -33,11 +33,17 @@ from pathlib import Path
 from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _common import evidence, fetch, write  # noqa: E402
+import httpx
+from _common import evidence, fetch, write
 
-import httpx  # noqa: E402
-
-from almanac.fetch import Resource  # noqa: E402
+from almanac.fetch import Resource
+from almanac.rules import (
+    cumulative_bracket_tariff,
+    de_income_tax_tariff,
+    de_solidarity_surcharge,
+    ie_income_tax_usc,
+    income_tax_bands,
+)
 
 MAX_SNIPPET_WORDS = 24
 ACCESSED = date(2026, 11, 3)
@@ -179,7 +185,7 @@ def steuerfortentwicklungsgesetz() -> Source:
     )
 
 
-def de_income_tax_tariff(estg: GiiLaw, stefeg: Source) -> dict:
+def de_tariff_entry(estg: GiiLaw, stefeg: Source) -> dict:
     text = estg.section("§ 32a")
     zero = match(r"bis (\d[\d ]*) Euro \(Grundfreibetrag\): 0;", text, "§ 32a zone 1")
     y = match(r"von (\d[\d ]*) Euro bis (\d[\d ]*) Euro: \((\d+,\d+) • y \+ (\d[\d ]*)\) • y;", text, "§ 32a zone 2")
@@ -196,10 +202,9 @@ def de_income_tax_tariff(estg: GiiLaw, stefeg: Source) -> dict:
         {"upper": None, "formula": "linear", "rate": de(lin45.group(2)), "deduction": de(lin45.group(3))},
     ]
     parameters = {"tax_year_from": 2026, "currency": "EUR", "zones": zones, "rounding": "taxable income and tax rounded down to full euros", "splitting": "twice the tariff on half the joint taxable income"}
-    from almanac.rules import de_income_tax_tariff as rule
 
     def tax(income: int, joint: bool = False) -> int:
-        return rule.splitting(parameters, income) if joint else rule.tariff(parameters, income)
+        return de_income_tax_tariff.splitting(parameters, income) if joint else de_income_tax_tariff.tariff(parameters, income)
 
     z_top, lin_top = zones[2]["upper"], zones[3]["upper"]
     vectors = [
@@ -247,7 +252,7 @@ def de_income_tax_tariff(estg: GiiLaw, stefeg: Source) -> dict:
     )
 
 
-def de_solidarity_surcharge(solzg: GiiLaw, stefeg: Source) -> dict:
+def de_solidarity_entry(solzg: GiiLaw, stefeg: Source) -> dict:
     s3 = solzg.section("§ 3")
     s4 = solzg.section("§ 4")
     limits = match(r"1\. in den Fällen des § 32a Absatz 5 und 6 des Einkommensteuergesetzes (\d[\d ]*) Euro, 2\. in anderen Fällen (\d[\d ]*) Euro übersteigt", s3, "SolZG § 3(3)")
@@ -260,12 +265,11 @@ def de_solidarity_surcharge(solzg: GiiLaw, stefeg: Source) -> dict:
         "exemption_limit": {"single": de(limits.group(2)), "joint": de(limits.group(1))},
         "base": "income tax as assessed, computed with the child allowances of § 32(6) EStG (SolZG § 3(2))",
     }
-    from almanac.rules import de_solidarity_surcharge as rule
 
     single, joint = parameters["exemption_limit"]["single"], parameters["exemption_limit"]["joint"]
 
     def solz(tax: float, is_joint: bool = False) -> str:
-        return str(rule.surcharge(parameters, tax, is_joint))
+        return str(de_solidarity_surcharge.surcharge(parameters, tax, is_joint))
 
     vectors = [
         vector({"income_tax": single}, "0.00", "source", "§ 3(3) Nr. 2: levied only when the base exceeds the exemption limit"),
@@ -502,10 +506,9 @@ def at_income_tax() -> dict:
     bands += [{"name": f"{rate}%", "up_to": de(upper), "rate_percent": int(rate)} for _, upper, rate in slices]
     bands += [{"name": f"{top.group(2)}%", "up_to": 1000000, "rate_percent": int(top.group(2))}, {"name": f"{top.group(3)}%", "up_to": None, "rate_percent": int(top.group(3))}]
     parameters = {"tax_year": 2026, "currency": "EUR", "personal_allowance": 0, "bands": bands}
-    from almanac.rules import income_tax_bands as rule
 
     def tax(income: int) -> str:
-        return str(rule.tax_due(parameters, income))
+        return str(income_tax_bands.tax_due(parameters, income))
 
     vectors = [
         vector({"income": bands[0]["up_to"]}, "0.00", "source", "§ 33(1): no tax on the first slice"),
@@ -549,10 +552,10 @@ def at_income_tax() -> dict:
 def nl_box1() -> dict:
     law = Source("https://repository.officiele-overheidspublicaties.nl/bwb/BWBR0011353/2026-01-01_1/xml/BWBR0011353_2026-01-01_1.xml",
                  "Overheid.nl (Basiswettenbestand)", "Wet inkomstenbelasting 2001, version valid from 1 January 2026 (BWB XML)")
-    article = match(r'<artikel[^>]*label="Artikel 2\.10".*?</artikel>', law.raw.decode("utf-8"), "artikel 2.10", re.S).group(0)
+    article = match(r'<artikel[^>]*label="Artikel 2\.10".*?</artikel>', law.raw.decode("utf-8"), "artikel 2.10", re.DOTALL).group(0)
     if 'inwerking="2026-01-01"' not in article:
         raise ValueError("artikel 2.10 is not the version in force from 1 January 2026")
-    cells = [plain(c) for c in re.findall(r"<entry[^>]*>(.*?)</entry>", re.search(r"<tbody.*?</tbody>", article, re.S).group(0), re.S)]
+    cells = [plain(c) for c in re.findall(r"<entry[^>]*>(.*?)</entry>", re.search(r"<tbody.*?</tbody>", article, re.DOTALL).group(0), re.DOTALL)]
     rows = [cells[i:i + 4] for i in range(0, len(cells), 4)]
     brackets = []
     for index, (over, _upper, base, rate) in enumerate(rows):
@@ -563,10 +566,9 @@ def nl_box1() -> dict:
             "rate_percent": de(rate.rstrip("%")),
         })
     parameters = {"tax_year": 2026, "currency": "EUR", "brackets": brackets, "scope": "box 1 tax for taxpayers born on or after 1 January 1946, excluding national insurance contributions"}
-    from almanac.rules import cumulative_bracket_tariff as rule
 
     def tax(income: float) -> str:
-        return str(rule.tax_due(parameters, income))
+        return str(cumulative_bracket_tariff.tax_due(parameters, income))
 
     vectors = [
         vector({"marginal_rate_for": 30000}, brackets[0]["rate_percent"], "source"),
@@ -616,12 +618,12 @@ def nl_minimum_wage() -> dict:
     tables, items, shares = [], [], {}
     for start, source in regs.items():
         markup = source.raw.decode("utf-8")
-        tables_markup = re.findall(r"<tbody.*?</tbody>", markup, re.S)
+        tables_markup = re.findall(r"<tbody.*?</tbody>", markup, re.DOTALL)
         if len(tables_markup) < 2:
             raise ValueError(f"{source.url}: expected the general and bbl youth wage tables")
         rates: dict[str, float] = {}
         for markup_table, prefix in ((tables_markup[0], ""), (tables_markup[1], "bbl ")):
-            cells = [plain(c) for c in re.findall(r"<entry[^>]*>(.*?)</entry>", markup_table, re.S)]
+            cells = [plain(c) for c in re.findall(r"<entry[^>]*>(.*?)</entry>", markup_table, re.DOTALL)]
             for age_label, share, hourly in (cells[i:i + 3] for i in range(0, len(cells), 3)):
                 band = "21 and over" if age_label == "21 jaar en ouder" else age_label.replace(" jaar", "")
                 rates[prefix + band] = de(hourly)
@@ -705,7 +707,6 @@ def ie_income_tax(src: dict[str, Source]) -> dict:
         "tax_credits": {"basic_personal_single": ie_number(personal.group(2)), "basic_personal_married": ie_number(personal.group(1)), "employee": ie_number(employee.group(1))},
         "employee_credit_cap_percent": int(employee.group(2)),
     }
-    from almanac.rules import ie_income_tax_usc as rule
 
     paye = ["basic_personal_single", "employee"]
     rows = {income: dof_single_row(dof, income) for income in ("30,000", "50,000", "100,000", "175,000")}
@@ -713,7 +714,7 @@ def ie_income_tax(src: dict[str, Source]) -> dict:
                       f"Department of Finance Budget 2026, Table 2: single PAYE employee on {i}, income tax proposed for 2026") for i, r in rows.items()]
     vectors += [
         vector({"income": 60000, "status": "married_two_incomes", "second_income": 20000, "credits": ["basic_personal_married", "employee", "employee"]},
-               str(rule.income_tax(parameters, 60000, "married_two_incomes", ["basic_personal_married", "employee", "employee"], 20000)), "derived",
+               str(ie_income_tax_usc.income_tax(parameters, 60000, "married_two_incomes", ["basic_personal_married", "employee", "employee"], 20000)), "derived",
                "band increased by the lower second income"),
         vector({"income": 8000, "status": "single", "credits": paye}, "0.00", "derived", "credits cannot make the tax negative"),
     ]
@@ -727,7 +728,7 @@ def ie_income_tax(src: dict[str, Source]) -> dict:
         part15.cite("Section 461, basic personal tax credit", personal.group(2), "In all other cases the basic personal tax credit is"),
         part15.cite("Section 472, employee tax credit", employee.group(1), employee.group(0)),
     ]
-    for income, row in rows.items():
+    for row in rows.values():
         items.append(dof.cite("page 21, Table 2, single person, PAYE, full rate PRSI", row[4], " ".join(row[:5]), role="supporting"))
     tests = [
         {"statistic": "band[single]", "expected": parameters["standard_rate_bands"]["single"], "tolerance": 0},
@@ -769,16 +770,15 @@ def ie_usc(src: dict[str, Source]) -> dict:
     parameters = {"charge": "usc", "tax_year": 2026, "currency": "EUR", "bands": bands, "slices_as_enacted": [{"slice": ie_number(a), "rate_percent": ie_number(r)} for _, a, r in slices]}
     rows = {income: dof_single_row(dof, income) for income in ("30,000", "50,000", "100,000", "175,000")}
     vectors = [vector({"income": ie_number(i), "round": "euro"}, str(ie_number(r[8])), "source", f"Department of Finance Budget 2026, Table 2: USC proposed for 2026 on {i}") for i, r in rows.items()]
-    from almanac.rules import ie_income_tax_usc as rule
 
-    vectors.append(vector({"income": bands[1]["up_to"]}, str(rule.usc(parameters, bands[1]["up_to"])), "derived", "top of the 2 percent slice"))
+    vectors.append(vector({"income": bands[1]["up_to"]}, str(ie_income_tax_usc.usc(parameters, bands[1]["up_to"])), "derived", "top of the 2 percent slice"))
     items = [fa.cite("Section 2(1)(c), Part 1 of the Table to section 531AN", amount, "Rate of universal social charge") for _, amount, _ in slices]
     items += [
         fa.cite("Section 2(1)(c), Part 1 of the Table to section 531AN, rates", f"{slices[0][2]} per cent", "Part of aggregate income"),
         fa.cite("Section 2(1)(c), Part 1 of the Table to section 531AN, remainder", f"{remainder.group(1)} per cent", "The remainder"),
         fa.cite("Section 2(2)", "year of assessment 2026", "applies for the year of assessment 2026 and each subsequent year of assessment."),
     ]
-    for income, row in rows.items():
+    for row in rows.values():
         items.append(dof.cite("page 21, Table 2, single person, PAYE, full rate PRSI", row[8], " ".join(row), role="supporting"))
     tests = [
         {"statistic": "count", "expected": len(bands), "tolerance": 0},
@@ -854,15 +854,14 @@ BOE = "Agencia Estatal Boletín Oficial del Estado"
 def es_irpf_scale() -> dict:
     source = es_boe("BOE-A-2020-17339", "Ley 11/2020, de Presupuestos Generales del Estado para el año 2021 (BOE XML)")
     article = match(r"Artículo 58\. Escala general del Impuesto sobre la Renta de las Personas Físicas\..*?Artículo 59\.", collapse(source.raw.decode("utf-8")), "artículo 58").group(0)
-    cells = [plain(c) for c in re.findall(r"<td>(.*?)</td>", re.search(r"<tbody>.*?</tbody>", article, re.S).group(0), re.S)]
+    cells = [plain(c) for c in re.findall(r"<td>(.*?)</td>", re.search(r"<tbody>.*?</tbody>", article, re.DOTALL).group(0), re.DOTALL)]
     rows = [cells[i:i + 4] for i in range(0, len(cells), 4)]
     brackets = [{"name": f"tramo {i + 1}", "over": de(base), "base_tax": de(quota), "rate_percent": de(rate)} for i, (base, quota, _rest, rate) in enumerate(rows)]
     parameters = {"currency": "EUR", "brackets": brackets, "scope": "state half of the general scale on the general taxable base; the autonomous community scale applies on top"}
-    from almanac.rules import cumulative_bracket_tariff as rule
 
     vectors = [vector({"income": b["over"]}, f"{Decimal(str(b['base_tax'])):.2f}", "source", f"cuota íntegra at {rows[i][0]}") for i, b in enumerate(brackets) if i > 0]
     vectors += [
-        vector({"income": 30000}, str(rule.tax_due(parameters, 30000)), "derived"),
+        vector({"income": 30000}, str(cumulative_bracket_tariff.tax_due(parameters, 30000)), "derived"),
         vector({"marginal_rate_for": 400000}, brackets[-1]["rate_percent"], "source"),
     ]
     items = [source.cite(f"Artículo 63.1.1.º, escala, row {i + 1}", row[1], "Cuota íntegra") for i, row in enumerate(rows)]
@@ -946,10 +945,10 @@ def es_contribution_sources() -> Source:
 def es_contribution_bases(source: Source) -> dict:
     markup = match(r"Artículo 3\. Bases máximas y mínimas de cotización\..*?Artículo 4\.", collapse(source.raw.decode("utf-8")), "artículo 3").group(0)
     rows: dict[str, dict] = {}
-    for table in re.findall(r"<table.*?</table>", markup, re.S):
+    for table in re.findall(r"<table.*?</table>", markup, re.DOTALL):
         period = "day" if "Euros/día" in table else "month"
-        for row in re.findall(r"<tr>(.*?)</tr>", re.search(r"<tbody>.*?</tbody>", table, re.S).group(0), re.S):
-            group, category, low, high = (plain(cell) for cell in re.findall(r"<td[^>]*>(.*?)</td>", row, re.S))
+        for row in re.findall(r"<tr>(.*?)</tr>", re.search(r"<tbody>.*?</tbody>", table, re.DOTALL).group(0), re.DOTALL):
+            group, category, low, high = (plain(cell) for cell in re.findall(r"<td[^>]*>(.*?)</td>", row, re.DOTALL))
             rows[group] = {"category": category, "minimum": de(low), "maximum": de(high), "period": period}
     if sorted(rows, key=int) != [str(n) for n in range(1, 12)]:
         raise ValueError("artículo 3: expected contribution groups 1 to 11")
@@ -1052,12 +1051,11 @@ def fr_bareme() -> dict:
     bands += [{"name": f"{rate}%", "up_to": de(upper), "rate_percent": int(rate)} for _, upper, rate in slices]
     bands.append({"name": f"{top.group(2)}%", "up_to": None, "rate_percent": int(top.group(2))})
     parameters = {"income_year": 2025, "currency": "EUR", "per": "part of quotient familial", "personal_allowance": 0, "bands": bands}
-    from almanac.rules import income_tax_bands as rule
 
     vectors = [
         vector({"income": bands[0]["up_to"]}, "0.00", "source", "no tax on the first slice"),
-        vector({"income": 40000}, str(rule.tax_due(parameters, 40000)), "derived", "tax for one part"),
-        vector({"income": 200000}, str(rule.tax_due(parameters, 200000)), "derived", "top slice"),
+        vector({"income": 40000}, str(income_tax_bands.tax_due(parameters, 40000)), "derived", "tax for one part"),
+        vector({"income": 200000}, str(income_tax_bands.tax_due(parameters, 200000)), "derived", "top slice"),
     ]
     items = [source.cite("§ 40, barème pour l'imposition des revenus 2025, row 1", first.group(1), f"N’excédant pas {first.group(1)} €")]
     items += [source.cite(f"§ 40, barème, slice at {rate} %", upper, f"Supérieure à {lower} € et inférieure ou égale à {upper} €") for lower, upper, rate in slices]
@@ -1101,13 +1099,12 @@ def pl_pit() -> dict:
         {"name": "second", "over": de(first.group(1)), "base_tax": de(second.group(1)), "rate_percent": int(second.group(2))},
     ]
     parameters = {"currency": "PLN", "brackets": brackets, "reduction_name": "kwota zmniejszająca podatek"}
-    from almanac.rules import cumulative_bracket_tariff as rule
 
     tax_free = int(Decimal(brackets[0]["reduction"]) * 100 / brackets[0]["rate_percent"])
     vectors = [
-        vector({"income": brackets[1]["over"]}, str(rule.tax_due(parameters, brackets[1]["over"])), "derived", "top of the first bracket: 12 percent less the reduction"),
+        vector({"income": brackets[1]["over"]}, str(cumulative_bracket_tariff.tax_due(parameters, brackets[1]["over"])), "derived", "top of the first bracket: 12 percent less the reduction"),
         vector({"income": tax_free}, "0.00", "derived", "the reduction cancels the tax up to this income"),
-        vector({"income": 200000}, str(rule.tax_due(parameters, 200000)), "derived"),
+        vector({"income": 200000}, str(cumulative_bracket_tariff.tax_due(parameters, 200000)), "derived"),
         vector({"marginal_rate_for": 150000}, brackets[1]["rate_percent"], "source"),
     ]
     items = [
@@ -1172,8 +1169,8 @@ def main() -> int:
     stefeg = steuerfortentwicklungsgesetz()
     guidelines = Source("https://www.minijob-zentrale.de/SharedDocs/Downloads/DE/Rundschreiben/Geringfuegigkeitsrichtlinien-2026.pdf?__blob=publicationFile",
                         "Minijob-Zentrale (Deutsche Rentenversicherung Knappschaft-Bahn-See)", "Geringfügigkeits-Richtlinien 2026 of the social insurance central bodies (PDF)")
-    write(de_income_tax_tariff(estg, stefeg))
-    write(de_solidarity_surcharge(solzg, stefeg))
+    write(de_tariff_entry(estg, stefeg))
+    write(de_solidarity_entry(solzg, stefeg))
     write(de_child_allowances(estg, stefeg))
     write(de_minimum_wage(GiiLaw("milog"), GiiLaw("milov4"), GiiLaw("milov5")))
     write(de_minijob_limit(sgb4, guidelines))

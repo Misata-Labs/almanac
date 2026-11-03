@@ -12,7 +12,13 @@ from pathlib import Path
 import pytest
 import yaml
 
-from almanac.rules import cumulative_bracket_tariff, de_income_tax_tariff, de_solidarity_surcharge, ie_income_tax_usc, load_rule
+from almanac.rules import (
+    cumulative_bracket_tariff,
+    de_income_tax_tariff,
+    de_solidarity_surcharge,
+    ie_income_tax_usc,
+    load_rule,
+)
 
 ENTRIES = Path(__file__).resolve().parent.parent / "entries"
 
@@ -22,7 +28,7 @@ ENTRY_IDS = {
     "de-child-benefit-and-child-allowances-2026": "tax/DE",
     "de-social-insurance-reference-values-2026": "tax/DE",
     "de-statutory-minimum-wage-2022-2027": "employment/DE",
-    "de-minijob-earnings-limit-2022-2027": "employment/DE",
+    "de-minijob-earnings-limit-2003-2027": "employment/DE",
     "at-income-tax-brackets-2026": "tax/AT",
     "nl-box1-income-tax-brackets-2026": "tax/NL",
     "nl-statutory-minimum-wage-by-age-2026": "employment/NL",

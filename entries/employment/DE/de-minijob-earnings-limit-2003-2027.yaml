@@ -1,12 +1,12 @@
-id: de-minijob-earnings-limit-2022-2027
-title: Germany marginal employment (Minijob) monthly earnings limit from October 2022 to January 2027, with the
-  Midijob transition zone ceiling
+id: de-minijob-earnings-limit-2003-2027
+title: Germany marginal employment (Minijob) monthly earnings limit from 2003 to January 2027, with the Midijob
+  transition zone ceiling
 kind: rule
 domain: employment
 region: DE
 status: license-review
 tier: B
-valid_from: '2022-10-01'
+valid_from: '2003-04-01'
 valid_to: null
 tags:
 - payroll
@@ -26,6 +26,10 @@ spec:
     currency: EUR
     unit: gross per month
     steps:
+    - from: '2003-04-01'
+      value: 400
+    - from: '2013-01-01'
+      value: 450
     - from: '2022-10-01'
       value: 520
     - from: '2024-01-01'
@@ -39,6 +43,14 @@ spec:
     transition_zone_upper_limit: 2000
     formula: hourly minimum wage x 130 / 3, rounded up to full euros
   vectors:
+  - input:
+      'on': '2003-04-01'
+    expected: 400
+    origin: source
+  - input:
+      'on': '2013-01-01'
+    expected: 450
+    origin: source
   - input:
       'on': '2022-10-01'
     expected: 520
@@ -95,7 +107,51 @@ evidence:
   locator: Geringfügigkeits-Richtlinien 2026, page 3, summary of changes
   value: '603'
   unit: text
-  snippet: der Geringfügigkeitsgrenze ab 1. Januar 2026 auf 603 Euro sowie ab 1. Januar 2027 auf 633 Euro
+  snippet: Anhebung der Geringfügigkeitsgrenze ab 1. Januar 2026 auf 603 Euro sowie ab 1. Januar 2027 auf 633 Euro
+  source_license: unstated
+  content_sha256: cfa631dd7a69ebadf50848b6586933afbbd2565f85603d5ac170a5792e9e5431
+  role: primary
+- publisher: Minijob-Zentrale (Deutsche Rentenversicherung Knappschaft-Bahn-See)
+  title: Geringfügigkeits-Richtlinien 2026 of the social insurance central bodies (PDF)
+  url: https://www.minijob-zentrale.de/SharedDocs/Downloads/DE/Rundschreiben/Geringfuegigkeitsrichtlinien-2026.pdf?__blob=publicationFile
+  accessed_at: '2026-11-03'
+  locator: Geringfügigkeits-Richtlinien 2026, Anlage, contribution table by period
+  value: '400'
+  unit: text
+  snippet: 01.04.03 – 31.12.04 400 €
+  source_license: unstated
+  content_sha256: cfa631dd7a69ebadf50848b6586933afbbd2565f85603d5ac170a5792e9e5431
+  role: primary
+- publisher: Minijob-Zentrale (Deutsche Rentenversicherung Knappschaft-Bahn-See)
+  title: Geringfügigkeits-Richtlinien 2026 of the social insurance central bodies (PDF)
+  url: https://www.minijob-zentrale.de/SharedDocs/Downloads/DE/Rundschreiben/Geringfuegigkeitsrichtlinien-2026.pdf?__blob=publicationFile
+  accessed_at: '2026-11-03'
+  locator: Geringfügigkeits-Richtlinien 2026, Anlage, contribution table by period
+  value: '450'
+  unit: text
+  snippet: 01.01.13 – 31.12.14 450 €
+  source_license: unstated
+  content_sha256: cfa631dd7a69ebadf50848b6586933afbbd2565f85603d5ac170a5792e9e5431
+  role: primary
+- publisher: Minijob-Zentrale (Deutsche Rentenversicherung Knappschaft-Bahn-See)
+  title: Geringfügigkeits-Richtlinien 2026 of the social insurance central bodies (PDF)
+  url: https://www.minijob-zentrale.de/SharedDocs/Downloads/DE/Rundschreiben/Geringfuegigkeitsrichtlinien-2026.pdf?__blob=publicationFile
+  accessed_at: '2026-11-03'
+  locator: Geringfügigkeits-Richtlinien 2026, Anlage, contribution table by period
+  value: '450'
+  unit: text
+  snippet: 01.01.22 – 30.09.22 450 €
+  source_license: unstated
+  content_sha256: cfa631dd7a69ebadf50848b6586933afbbd2565f85603d5ac170a5792e9e5431
+  role: primary
+- publisher: Minijob-Zentrale (Deutsche Rentenversicherung Knappschaft-Bahn-See)
+  title: Geringfügigkeits-Richtlinien 2026 of the social insurance central bodies (PDF)
+  url: https://www.minijob-zentrale.de/SharedDocs/Downloads/DE/Rundschreiben/Geringfuegigkeitsrichtlinien-2026.pdf?__blob=publicationFile
+  accessed_at: '2026-11-03'
+  locator: Geringfügigkeits-Richtlinien 2026, Anlage, contribution table by period
+  value: '520'
+  unit: text
+  snippet: 01.10.22 – 31.12.22 520 €
   source_license: unstated
   content_sha256: cfa631dd7a69ebadf50848b6586933afbbd2565f85603d5ac170a5792e9e5431
   role: primary
@@ -121,30 +177,20 @@ evidence:
   source_license: unstated
   content_sha256: cfa631dd7a69ebadf50848b6586933afbbd2565f85603d5ac170a5792e9e5431
   role: primary
-- publisher: Minijob-Zentrale (Deutsche Rentenversicherung Knappschaft-Bahn-See)
-  title: Geringfügigkeits-Richtlinien 2026 of the social insurance central bodies (PDF)
-  url: https://www.minijob-zentrale.de/SharedDocs/Downloads/DE/Rundschreiben/Geringfuegigkeitsrichtlinien-2026.pdf?__blob=publicationFile
-  accessed_at: '2026-11-03'
-  locator: Geringfügigkeits-Richtlinien 2026, Anlage, contribution table by period
-  value: '520'
-  unit: text
-  snippet: 01.10.22 – 31.12.22 520 €
-  source_license: unstated
-  content_sha256: cfa631dd7a69ebadf50848b6586933afbbd2565f85603d5ac170a5792e9e5431
-  role: primary
 assumed:
 - parameter: steps
   value: each limit equals the hourly minimum wage in force times 130, divided by 3 and rounded up (SGB IV § 8(1a))
   method: derived
-  rationale: The guidelines state the 2026 and 2027 limits and the table gives the earlier ones; the formula in
-    SGB IV § 8(1a) applied to the minimum wage steps in de-statutory-minimum-wage-2022-2027 reproduces each limit,
-    which a reviewer can use as a cross-check.
+  rationale: The guidelines state the 2026 and 2027 limits and Anlage 1 tabulates the earlier ones; a period whose
+    limit repeats the previous one is merged into it. From 1 October 2022 the formula in SGB IV § 8(1a) applied
+    to the minimum wage steps in de-statutory-minimum-wage-2022-2027 reproduces each limit, which a reviewer can
+    use as a cross-check.
 tests:
 - statistic: vector_pass_fraction
   expected: 1
   tolerance: 0
 - statistic: count
-  expected: 5
+  expected: 7
   tolerance: 0
 - statistic: value[2026-03-01]
   expected: 603
@@ -154,7 +200,8 @@ notes: 'The Geringfügigkeitsgrenze, the monthly earnings limit for a marginal e
   130, divided by three and rounded up to full euros, and announced by the Federal Ministry of Labour in the Bundesanzeiger.
   The steps come from the 2026 marginal employment guidelines of the social insurance central bodies, published
   by the Minijob-Zentrale, which state the limits from 1 January 2026 and 1 January 2027 and tabulate the earlier
-  ones. Earnings above the limit and up to the transition zone ceiling in SGB IV § 20(2), kept under transition_zone_upper_limit,
+  ones in Anlage 1 (the first period of that table, ending 31 March 2003, has no start date and is left out). Earnings
+  above the limit and up to the transition zone ceiling in SGB IV § 20(2), kept under transition_zone_upper_limit,
   fall in the Übergangsbereich (Midijob), where employee contributions are computed on a reduced base. Gesetze im
   Internet and the guidelines carry no licence statement, so the licence is recorded as unstated and the entry stays
   at license-review.'
