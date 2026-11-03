@@ -1,0 +1,187 @@
+id: us-capital-gains-rate-thresholds-2026
+title: US long-term capital gains and qualified dividends 0% and 15% rate thresholds for 2026 by filing status (Rev.
+  Proc. 2025-32)
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- tax
+- capital-gains
+- qualified-dividends
+- limits
+- rev-proc-2025-32
+use_cases:
+- tax-demo
+- tax-filing-demo
+- payroll-demo
+- personal-finance
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: '2026'
+    currency: USD
+    rates_percent:
+    - 0
+    - 15
+    - 20
+    rows:
+      married_filing_jointly_or_surviving_spouse:
+        maximum_zero_rate_amount: 98900
+        maximum_15_percent_rate_amount: 613700
+        filing_status: Married Individuals Filing Joint Returns and Surviving Spouse
+      married_filing_separately:
+        maximum_zero_rate_amount: 49450
+        maximum_15_percent_rate_amount: 306850
+        filing_status: Married Individuals Filing Separate Returns
+      head_of_household:
+        maximum_zero_rate_amount: 66200
+        maximum_15_percent_rate_amount: 579600
+        filing_status: Heads of Household
+      all_other_individuals:
+        maximum_zero_rate_amount: 49450
+        maximum_15_percent_rate_amount: 545500
+        filing_status: All Other Individuals
+      estates_and_trusts:
+        maximum_zero_rate_amount: 3300
+        maximum_15_percent_rate_amount: 16250
+        filing_status: Estates and Trusts
+  vectors:
+  - input:
+      key: married_filing_jointly_or_surviving_spouse
+      column: maximum_zero_rate_amount
+    expected: 98900
+    origin: source
+  - input:
+      key: married_filing_jointly_or_surviving_spouse
+      column: maximum_15_percent_rate_amount
+    expected: 613700
+    origin: source
+  - input:
+      key: married_filing_separately
+      column: maximum_zero_rate_amount
+    expected: 49450
+    origin: source
+  - input:
+      key: married_filing_separately
+      column: maximum_15_percent_rate_amount
+    expected: 306850
+    origin: source
+  - input:
+      key: head_of_household
+      column: maximum_zero_rate_amount
+    expected: 66200
+    origin: source
+  - input:
+      key: head_of_household
+      column: maximum_15_percent_rate_amount
+    expected: 579600
+    origin: source
+  - input:
+      key: all_other_individuals
+      column: maximum_zero_rate_amount
+    expected: 49450
+    origin: source
+  - input:
+      key: all_other_individuals
+      column: maximum_15_percent_rate_amount
+    expected: 545500
+    origin: source
+  - input:
+      key: estates_and_trusts
+      column: maximum_zero_rate_amount
+    expected: 3300
+    origin: source
+  - input:
+      key: estates_and_trusts
+      column: maximum_15_percent_rate_amount
+    expected: 16250
+    origin: source
+  - input: qualifying_widow
+    expected: false
+    origin: derived
+    note: surviving spouses use the joint-return row
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 13, section 4.03 table
+  value: $98,900
+  unit: currency:USD
+  snippet: Married Individuals Filing Joint Returns and Surviving Spouse $98,900 $613,700
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 13, section 4.03 table
+  value: $49,450
+  unit: currency:USD
+  snippet: Married Individuals Filing Separate Returns $49,450 $306,850
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 13, section 4.03 table
+  value: $66,200
+  unit: currency:USD
+  snippet: Heads of Household $66,200 $579,600
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 13, section 4.03 table
+  value: $49,450
+  unit: currency:USD
+  snippet: All Other Individuals $49,450 $545,500
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 13, section 4.03 table
+  value: $3,300
+  unit: currency:USD
+  snippet: Estates and Trusts $3,300 $16,250
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+assumed:
+- parameter: rates_percent
+  value:
+  - 0
+  - 15
+  - 20
+  method: derived
+  rationale: The revenue procedure names the zero and 15 percent rate amounts; the 20 percent rate above the second
+    threshold is the statutory maximum capital gains rate of section 1(h) the section heading refers to.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: max[maximum_15_percent_rate_amount]
+  expected: 613700
+  tolerance: 0
+notes: 'Maximum zero rate amount and maximum 15 percent rate amount under section 1(j)(5)(B) for 2026: net capital
+  gain and qualified dividends fall in the 0% band while taxable income is at or below the first figure, in the
+  15% band up to the second, and at 20% above it. Figures as Rev. Proc. 2025-32 adjusts them; ''All Other Individuals''
+  covers single filers. The 0, 15 and 20 percent rates themselves are those the section names and are carried for
+  context. Works of the US federal government carry no copyright in the United States, but the cited documents state
+  no reuse terms, so the licence is recorded as unstated and the entry held at license-review.'

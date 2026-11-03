@@ -1,0 +1,202 @@
+id: us-earned-income-credit-parameters-2026
+title: 'US earned income tax credit for 2026: earned income amount, maximum credit and phase-out range by qualifying
+  children (Rev. Proc. 2025-32)'
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- tax
+- earned-income-credit
+- eitc
+- tax-credit
+- limits
+- rev-proc-2025-32
+use_cases:
+- tax-demo
+- tax-filing-demo
+- payroll-demo
+- personal-finance
+- benefits-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: '2026'
+    currency: USD
+    investment_income_limit: 12200
+    rows:
+      one_child:
+        earned_income_amount: 13020
+        maximum_credit: 4427
+        threshold_phaseout_joint: 31160
+        completed_phaseout_joint: 58863
+        threshold_phaseout_other: 23890
+        completed_phaseout_other: 51593
+      two_children:
+        earned_income_amount: 18290
+        maximum_credit: 7316
+        threshold_phaseout_joint: 31160
+        completed_phaseout_joint: 65899
+        threshold_phaseout_other: 23890
+        completed_phaseout_other: 58629
+      three_or_more_children:
+        earned_income_amount: 18290
+        maximum_credit: 8231
+        threshold_phaseout_joint: 31160
+        completed_phaseout_joint: 70244
+        threshold_phaseout_other: 23890
+        completed_phaseout_other: 62974
+      no_children:
+        earned_income_amount: 8680
+        maximum_credit: 664
+        threshold_phaseout_joint: 18140
+        completed_phaseout_joint: 26820
+        threshold_phaseout_other: 10860
+        completed_phaseout_other: 19540
+  vectors:
+  - input:
+      key: one_child
+      column: maximum_credit
+    expected: 4427
+    origin: source
+  - input:
+      key: two_children
+      column: maximum_credit
+    expected: 7316
+    origin: source
+  - input:
+      key: three_or_more_children
+      column: maximum_credit
+    expected: 8231
+    origin: source
+  - input:
+      key: no_children
+      column: maximum_credit
+    expected: 664
+    origin: source
+  - input:
+      key: one_child
+      column: completed_phaseout_joint
+    expected: 58863
+    origin: source
+  - input:
+      key: two_children
+      column: completed_phaseout_joint
+    expected: 65899
+    origin: source
+  - input:
+      key: three_or_more_children
+      column: completed_phaseout_joint
+    expected: 70244
+    origin: source
+  - input:
+      key: no_children
+      column: completed_phaseout_joint
+    expected: 26820
+    origin: source
+  - input: four_children
+    expected: false
+    origin: derived
+    note: four or more children use three_or_more_children
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 15, section 4.06(1) table, row 'Earned Income Amount'
+  value: $13,020
+  unit: currency:USD
+  snippet: Earned Income Amount $13,020 $18,290 $18,290 $8,680
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 15, section 4.06(1) table, row 'Maximum Amount of Credit'
+  value: $4,427
+  unit: currency:USD
+  snippet: Maximum Amount of Credit $4,427 $7,316 $8,231 $664
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 15, section 4.06(1) table, row 'Threshold Phaseout Amount (Married Filing Jointly)'
+  value: $31,160
+  unit: currency:USD
+  snippet: Threshold Phaseout Amount (Married Filing Jointly) $31,160 $31,160 $31,160 $18,140
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 15, section 4.06(1) table, row 'Completed Phaseout Amount (Married Filing Jointly)'
+  value: $58,863
+  unit: currency:USD
+  snippet: Completed Phaseout Amount (Married Filing Jointly) $58,863 $65,899 $70,244 $26,820
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 15, section 4.06(1) table, row 'Threshold Phaseout Amount (All other filing statuses)'
+  value: $23,890
+  unit: currency:USD
+  snippet: Threshold Phaseout Amount (All other filing statuses) $23,890 $23,890 $23,890 $10,860
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 15, section 4.06(1) table, row 'Completed Phaseout Amount (All other filing statuses)'
+  value: $51,593
+  unit: currency:USD
+  snippet: Completed Phaseout Amount (All other filing statuses) $51,593 $58,629 $62,974 $19,540
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 15, section 4.06(2)
+  value: $12,200
+  unit: currency:USD
+  snippet: if the aggregate amount of certain investment income exceeds $12,200
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: max[maximum_credit]
+  expected: 8231
+  tolerance: 0
+- statistic: value[no_children,earned_income_amount]
+  expected: 8680
+  tolerance: 0
+notes: 'The section 32(b) amounts for 2026 by number of qualifying children: the earned income at which the maximum
+  credit is reached, the maximum credit, and the adjusted gross income (or earned income, if greater) at which the
+  credit starts to phase out and is fully phased out, for joint filers and for all other filing statuses. The credit
+  is not allowed when investment income exceeds investment_income_limit. The IRS publishes the credit for each income
+  in the Form 1040 instructions; this entry carries the table that drives it. Works of the US federal government
+  carry no copyright in the United States, but the cited documents state no reuse terms, so the licence is recorded
+  as unstated and the entry held at license-review.'

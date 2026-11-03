@@ -1,0 +1,110 @@
+id: us-section-179-expensing-limits-2026
+title: 'US section 179 expensing limits for taxable years beginning in 2026: maximum deduction, phase-out threshold
+  and SUV cap'
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- tax
+- depreciation
+- section-179
+- limits
+- obbba
+- rev-proc-2025-32
+use_cases:
+- tax-demo
+- tax-filing-demo
+- accounts-payable
+- financial-reporting
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: '2026'
+    currency: USD
+    rows:
+      maximum_deduction:
+        value: 2560000
+        unit: USD
+        description: maximum section 179 expense deduction (section 179(b)(1))
+      phaseout_threshold:
+        value: 4090000
+        unit: USD
+        description: cost of section 179 property placed in service above which the maximum is reduced dollar for
+          dollar (section 179(b)(2))
+      sport_utility_vehicle_limit:
+        value: 32000
+        unit: USD
+        description: cost of a sport utility vehicle that may be taken into account (section 179(b)(5)(A))
+  vectors:
+  - input:
+      key: maximum_deduction
+      column: value
+    expected: 2560000
+    origin: source
+  - input:
+      key: phaseout_threshold
+      column: value
+    expected: 4090000
+    origin: source
+  - input:
+      key: sport_utility_vehicle_limit
+      column: value
+    expected: 32000
+    origin: source
+  - input: bonus_depreciation_percent
+    expected: false
+    origin: derived
+    note: not a figure this entry covers
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 21, section 4.24
+  value: $2,560,000
+  unit: currency:USD
+  snippet: elects to treat as an expense cannot exceed $2,560,000
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 21, section 4.24
+  value: $4,090,000
+  unit: currency:USD
+  snippet: placed in service during the 2026 taxable year exceeds $4,090,000
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 21, section 4.24
+  value: $32,000
+  unit: currency:USD
+  snippet: the cost of any sport utility vehicle that may be taken into account under § 179 cannot exceed $32,000
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+notes: Section 179 lets a business expense the cost of qualifying property in the year it is placed in service instead
+  of depreciating it. For taxable years beginning in 2026 the maximum is reduced dollar for dollar by the cost of
+  section 179 property placed in service above the phase-out threshold, and the cost of a sport utility vehicle
+  counts only up to its own cap. Public Law 119-21 raised the base amounts for property placed in service in taxable
+  years beginning after 2024; Rev. Proc. 2025-32 indexes them. Works of the US federal government carry no copyright
+  in the United States, but the cited documents state no reuse terms, so the licence is recorded as unstated and
+  the entry held at license-review.

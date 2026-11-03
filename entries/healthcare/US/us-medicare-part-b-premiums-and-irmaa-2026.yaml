@@ -1,0 +1,292 @@
+id: us-medicare-part-b-premiums-and-irmaa-2026
+title: US Medicare Part B 2026 standard premium, deductible and income-related monthly adjustment amounts (IRMAA)
+  by MAGI tier
+kind: rule
+domain: healthcare
+region: US
+status: license-review
+tier: A
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- healthcare
+- medicare
+- medicare-part-b
+- irmaa
+- premiums
+- benefits
+- limits
+use_cases:
+- benefits-demo
+- health-demo
+- personal-finance
+- payroll-demo
+- pensions
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    year: '2026'
+    currency: USD
+    standard_monthly_premium: 202.9
+    annual_deductible: 283.0
+    immunosuppressive_drug_premium: 121.6
+    rows:
+      tier_1:
+        individual_return_magi: Less than or equal to $109,000
+        joint_return_magi: Less than or equal to $218,000
+        income_related_monthly_adjustment: 0.0
+        total_monthly_premium: 202.9
+      tier_2:
+        individual_return_magi: Greater than $109,000 and less than or equal to $137,000
+        joint_return_magi: Greater than $218,000 and less than or equal to $274,000
+        income_related_monthly_adjustment: 81.2
+        total_monthly_premium: 284.1
+      tier_3:
+        individual_return_magi: Greater than $137,000 and less than or equal to $171,000
+        joint_return_magi: Greater than $274,000 and less than or equal to $342,000
+        income_related_monthly_adjustment: 202.9
+        total_monthly_premium: 405.8
+      tier_4:
+        individual_return_magi: Greater than $171,000 and less than or equal to $205,000
+        joint_return_magi: Greater than $342,000 and less than or equal to $410,000
+        income_related_monthly_adjustment: 324.6
+        total_monthly_premium: 527.5
+      tier_5:
+        individual_return_magi: Greater than $205,000 and less than $500,000
+        joint_return_magi: Greater than $410,000 and less than $750,000
+        income_related_monthly_adjustment: 446.3
+        total_monthly_premium: 649.2
+      tier_6:
+        individual_return_magi: Greater than or equal to $500,000
+        joint_return_magi: Greater than or equal to $750,000
+        income_related_monthly_adjustment: 487.0
+        total_monthly_premium: 689.9
+      married_filing_separately_tier_1:
+        individual_return_magi: Less than or equal to $109,000
+        joint_return_magi: null
+        income_related_monthly_adjustment: 0.0
+        total_monthly_premium: 202.9
+      married_filing_separately_tier_2:
+        individual_return_magi: Greater than $109,000 and less than $391,000
+        joint_return_magi: null
+        income_related_monthly_adjustment: 446.3
+        total_monthly_premium: 649.2
+      married_filing_separately_tier_3:
+        individual_return_magi: Greater than or equal to $391,000
+        joint_return_magi: null
+        income_related_monthly_adjustment: 487.0
+        total_monthly_premium: 689.9
+  vectors:
+  - input:
+      key: tier_1
+      column: total_monthly_premium
+    expected: 202.9
+    origin: source
+  - input:
+      key: tier_2
+      column: total_monthly_premium
+    expected: 284.1
+    origin: source
+  - input:
+      key: tier_3
+      column: total_monthly_premium
+    expected: 405.8
+    origin: source
+  - input:
+      key: tier_4
+      column: total_monthly_premium
+    expected: 527.5
+    origin: source
+  - input:
+      key: tier_5
+      column: total_monthly_premium
+    expected: 649.2
+    origin: source
+  - input:
+      key: tier_6
+      column: total_monthly_premium
+    expected: 689.9
+    origin: source
+  - input:
+      key: married_filing_separately_tier_1
+      column: total_monthly_premium
+    expected: 202.9
+    origin: source
+  - input:
+      key: married_filing_separately_tier_2
+      column: total_monthly_premium
+    expected: 649.2
+    origin: source
+  - input:
+      key: married_filing_separately_tier_3
+      column: total_monthly_premium
+    expected: 689.9
+    origin: source
+  - input:
+      key: tier_2
+      column: individual_return_magi
+    expected: Greater than $109,000 and less than or equal to $137,000
+    origin: source
+  - input: tier_7
+    expected: false
+    origin: derived
+    note: six income tiers
+evidence:
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20251, summary
+  value: $202.90
+  unit: currency:USD
+  snippet: The standard monthly Part B premium rate for all enrollees for 2026 is $202.90
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20251, summary
+  value: $283.00
+  unit: currency:USD
+  snippet: The Part B deductible for 2026 is $283.00 for all Part B beneficiaries
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20251, summary
+  value: $121.60
+  unit: currency:USD
+  snippet: For 2026, the immunosuppressive drug premium is $121.60
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20251, section I, table 'Full Part B Coverage'
+  value: $202.90
+  unit: currency:USD
+  snippet: Less than or equal to $218,000</ENT> <ENT>$0.00</ENT> <ENT>$202.90</ENT>
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20251, section I, table 'Full Part B Coverage'
+  value: '284.10'
+  unit: currency:USD
+  snippet: Greater than $218,000 and less than or equal to $274,000</ENT> <ENT>81.20</ENT> <ENT>284.10</ENT>
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20251, section I, table 'Full Part B Coverage'
+  value: '405.80'
+  unit: currency:USD
+  snippet: Greater than $274,000 and less than or equal to $342,000</ENT> <ENT>202.90</ENT> <ENT>405.80</ENT>
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20251, section I, table 'Full Part B Coverage'
+  value: '527.50'
+  unit: currency:USD
+  snippet: Greater than $342,000 and less than or equal to $410,000</ENT> <ENT>324.60</ENT> <ENT>527.50</ENT>
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20251, section I, table 'Full Part B Coverage'
+  value: '649.20'
+  unit: currency:USD
+  snippet: Greater than $410,000 and less than $750,000</ENT> <ENT>446.30</ENT> <ENT>649.20</ENT>
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20251, section I, table 'Full Part B Coverage'
+  value: '689.90'
+  unit: currency:USD
+  snippet: Greater than or equal to $750,000</ENT> <ENT>487.00</ENT> <ENT>689.90</ENT>
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20251, section I, full Part B coverage for married beneficiaries filing separately who lived
+    with their spouse
+  value: $202.90
+  unit: currency:USD
+  snippet: Less than or equal to $109,000</ENT> <ENT>$0.00</ENT> <ENT>$202.90</ENT>
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20251, section I, full Part B coverage for married beneficiaries filing separately who lived
+    with their spouse
+  value: '649.20'
+  unit: currency:USD
+  snippet: Greater than $109,000 and less than $391,000</ENT> <ENT>446.30</ENT> <ENT>649.20</ENT>
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20251, section I, full Part B coverage for married beneficiaries filing separately who lived
+    with their spouse
+  value: '689.90'
+  unit: currency:USD
+  snippet: Greater than or equal to $391,000</ENT> <ENT>487.00</ENT> <ENT>689.90</ENT>
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 9
+  tolerance: 0
+- statistic: max[total_monthly_premium]
+  expected: 689.9
+  tolerance: 0
+- statistic: value[tier_1,total_monthly_premium]
+  expected: 202.9
+  tolerance: 0
+notes: 'The CMS notice of the 2026 Medicare Part B premium (FR Doc. 2025-20251, 90 FR, November 19, 2025): the standard
+  monthly premium, the annual deductible, the immunosuppressive-drug-only premium, and the income-related monthly
+  adjustment amounts for full Part B coverage. Tiers 1 to 6 apply to beneficiaries filing individual returns (individual_return_magi)
+  or joint returns (joint_return_magi); the married_filing_separately tiers apply to married beneficiaries who lived
+  with their spouse at any time in the year and file separately. Each tier keeps the notice''s own wording of its
+  MAGI range; Social Security uses MAGI from the tax return two years earlier. Source is the Federal Register issue
+  XML on govinfo, which is machine-readable, so the entry is tier A. Works of the US federal government carry no
+  copyright in the United States, but the cited documents state no reuse terms, so the licence is recorded as unstated
+  and the entry held at license-review.'

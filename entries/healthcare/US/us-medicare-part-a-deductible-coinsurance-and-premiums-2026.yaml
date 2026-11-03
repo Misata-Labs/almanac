@@ -1,0 +1,175 @@
+id: us-medicare-part-a-deductible-coinsurance-and-premiums-2026
+title: US Medicare Part A 2026 inpatient deductible, hospital and skilled nursing coinsurance, and premiums for
+  the uninsured
+kind: rule
+domain: healthcare
+region: US
+status: license-review
+tier: A
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- healthcare
+- medicare
+- medicare-part-a
+- deductible
+- coinsurance
+- benefits
+- limits
+use_cases:
+- benefits-demo
+- health-demo
+- personal-finance
+- claims-generation
+- insurance
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    year: '2026'
+    currency: USD
+    rows:
+      inpatient_hospital_deductible:
+        value: 1736
+        unit: USD
+        description: inpatient hospital deductible per benefit period
+      hospital_coinsurance_days_61_90:
+        value: 434
+        unit: USD
+        description: daily hospital coinsurance, days 61 to 90 of a benefit period
+      lifetime_reserve_day_coinsurance:
+        value: 868
+        unit: USD
+        description: daily coinsurance for lifetime reserve days
+      snf_coinsurance_days_21_100:
+        value: 217
+        unit: USD
+        description: daily skilled nursing facility coinsurance, days 21 to 100
+      premium_uninsured_full:
+        value: 565
+        unit: USD
+        description: monthly Part A premium for enrollees without enough quarters of coverage
+      premium_uninsured_reduced:
+        value: 311
+        unit: USD
+        description: reduced monthly Part A premium (45 percent reduction, section 1818(d)(4)(B))
+  vectors:
+  - input:
+      key: inpatient_hospital_deductible
+      column: value
+    expected: 1736
+    origin: source
+  - input:
+      key: hospital_coinsurance_days_61_90
+      column: value
+    expected: 434
+    origin: source
+  - input:
+      key: lifetime_reserve_day_coinsurance
+      column: value
+    expected: 868
+    origin: source
+  - input:
+      key: snf_coinsurance_days_21_100
+      column: value
+    expected: 217
+    origin: source
+  - input:
+      key: premium_uninsured_full
+      column: value
+    expected: 565
+    origin: source
+  - input:
+      key: premium_uninsured_reduced
+      column: value
+    expected: 311
+    origin: source
+  - input: part_b_deductible
+    expected: false
+    origin: derived
+    note: not a figure this entry covers
+evidence:
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20249, summary
+  value: $1,736
+  unit: currency:USD
+  snippet: For CY 2026, the inpatient hospital deductible will be $1,736.
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20249, summary
+  value: $434
+  unit: currency:USD
+  snippet: 'The daily coinsurance amounts for CY 2026 will be as follows: $434 for the 61st through 90th day'
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20249, summary
+  value: $868
+  unit: currency:USD
+  snippet: $868 for lifetime reserve days; and
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20249, summary
+  value: $217
+  unit: currency:USD
+  snippet: and $217 for the 21st through 100th day of extended care services in a skilled nursing facility
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20250, section III
+  value: $565
+  unit: currency:USD
+  snippet: who have exhausted other entitlement for the 12 months beginning January 1, 2026, is $565
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+- publisher: Centers for Medicare & Medicaid Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 90, November 19, 2025, issue XML (CMS Medicare Part A and Part B notices)
+  url: https://www.govinfo.gov/content/pkg/FR-2025-11-19/xml/FR-2025-11-19.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2025-20250, section III
+  value: $311
+  unit: currency:USD
+  snippet: subject to the 45 percent reduction in the monthly premium, is $311
+  source_license: unstated
+  content_sha256: cf49930a06b75a229dd562c3e5b5418d267148e4ba9dd30afb7ca3ce8f3643d8
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 6
+  tolerance: 0
+- statistic: max[value]
+  expected: 1736
+  tolerance: 0
+notes: 'Medicare Part A amounts for calendar year 2026 from two CMS notices published in the Federal Register on
+  November 19, 2025: the inpatient hospital deductible per benefit period and the daily coinsurance for hospital
+  days 61 to 90, lifetime reserve days and skilled nursing facility days 21 to 100 (FR Doc. 2025-20249); and the
+  monthly premium for people who buy Part A because they lack enough quarters of coverage, full and with the 45
+  percent reduction (FR Doc. 2025-20250). The statute fixes the coinsurance amounts as one-fourth, one-half and
+  one-eighth of the deductible. Most beneficiaries pay no Part A premium. Source is the Federal Register issue XML
+  on govinfo (tier A). Works of the US federal government carry no copyright in the United States, but the cited
+  documents state no reuse terms, so the licence is recorded as unstated and the entry held at license-review.'

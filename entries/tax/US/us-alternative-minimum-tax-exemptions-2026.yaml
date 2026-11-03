@@ -1,0 +1,232 @@
+id: us-alternative-minimum-tax-exemptions-2026
+title: US alternative minimum tax exemptions, phase-out thresholds and 28% rate threshold for 2026 (Rev. Proc. 2025-32)
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- tax
+- alternative-minimum-tax
+- amt
+- limits
+- rev-proc-2025-32
+use_cases:
+- tax-demo
+- tax-filing-demo
+- payroll-demo
+- personal-finance
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: '2026'
+    currency: USD
+    rate_28_percent_threshold:
+      married_filing_separately: 122250
+      all_other_taxpayers: 244500
+    rows:
+      joint_or_surviving_spouse:
+        exemption: 140200
+        phaseout_threshold: 1000000
+        complete_phaseout: 1280400
+        filing_status: Joint Returns or Surviving Spouses
+      unmarried:
+        exemption: 90100
+        phaseout_threshold: 500000
+        complete_phaseout: 680200
+        filing_status: Unmarried Individuals (other than Surviving Spouses)
+      married_filing_separately:
+        exemption: 70100
+        phaseout_threshold: 500000
+        complete_phaseout: 640200
+        filing_status: Married Individuals Filing Separate Returns
+      estates_and_trusts:
+        exemption: 31400
+        phaseout_threshold: 104800
+        complete_phaseout: 167600
+        filing_status: Estates and Trusts
+  vectors:
+  - input:
+      key: joint_or_surviving_spouse
+      column: exemption
+    expected: 140200
+    origin: source
+  - input:
+      key: joint_or_surviving_spouse
+      column: phaseout_threshold
+    expected: 1000000
+    origin: source
+  - input:
+      key: joint_or_surviving_spouse
+      column: complete_phaseout
+    expected: 1280400
+    origin: source
+  - input:
+      key: unmarried
+      column: exemption
+    expected: 90100
+    origin: source
+  - input:
+      key: unmarried
+      column: phaseout_threshold
+    expected: 500000
+    origin: source
+  - input:
+      key: unmarried
+      column: complete_phaseout
+    expected: 680200
+    origin: source
+  - input:
+      key: married_filing_separately
+      column: exemption
+    expected: 70100
+    origin: source
+  - input:
+      key: married_filing_separately
+      column: phaseout_threshold
+    expected: 500000
+    origin: source
+  - input:
+      key: married_filing_separately
+      column: complete_phaseout
+    expected: 640200
+    origin: source
+  - input:
+      key: estates_and_trusts
+      column: exemption
+    expected: 31400
+    origin: source
+  - input:
+      key: estates_and_trusts
+      column: phaseout_threshold
+    expected: 104800
+    origin: source
+  - input:
+      key: estates_and_trusts
+      column: complete_phaseout
+    expected: 167600
+    origin: source
+  - input: head_of_household
+    expected: false
+    origin: derived
+    note: heads of household use the unmarried row
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 16, section 4.10, exemption amounts under section 55(d)(1)
+  value: $140,200
+  unit: currency:USD
+  snippet: Joint Returns or Surviving Spouses $140,200
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 17, section 4.10, phaseout amounts under section 55(d)(2)
+  value: $1,280,400
+  unit: currency:USD
+  snippet: Joint Returns or Surviving Spouses $1,000,000 $1,280,400
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 16, section 4.10, exemption amounts under section 55(d)(1)
+  value: $90,100
+  unit: currency:USD
+  snippet: Unmarried Individuals (other than Surviving Spouses) $90,100
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 17, section 4.10, phaseout amounts under section 55(d)(2)
+  value: $680,200
+  unit: currency:USD
+  snippet: Unmarried Individuals (other than Surviving Spouses) $500,000 $680,200
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 16, section 4.10, exemption amounts under section 55(d)(1)
+  value: $70,100
+  unit: currency:USD
+  snippet: Married Individuals Filing Separate Returns $70,100
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 17, section 4.10, phaseout amounts under section 55(d)(2)
+  value: $640,200
+  unit: currency:USD
+  snippet: Married Individuals Filing Separate Returns $500,000 $640,200
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 16, section 4.10, exemption amounts under section 55(d)(1)
+  value: $31,400
+  unit: currency:USD
+  snippet: Estates and Trusts $31,400
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 17, section 4.10, phaseout amounts under section 55(d)(2)
+  value: $167,600
+  unit: currency:USD
+  snippet: Estates and Trusts $104,800 $167,600
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 16, section 4.10, 28 percent rate threshold under section 55(b)(1)
+  value: $244,500
+  unit: currency:USD
+  snippet: Excess taxable income Married Individuals Filing Separate Returns $122,250 All Other Taxpayers $244,500
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: value[joint_or_surviving_spouse,exemption]
+  expected: 140200
+  tolerance: 0
+notes: 'Alternative minimum tax for 2026: the exemption amount under section 55(d)(1) by filing status, the alternative
+  minimum taxable income at which it starts to phase out and the amount at which it is fully phased out (section
+  55(d)(2)), and the excess taxable income above which the 28 percent AMT rate applies (section 55(b)(1)), carried
+  in rate_28_percent_threshold. Public Law 119-21 made the higher exemption and phase-out amounts permanent and
+  held the joint-return threshold of $1,000,000 unindexed until 2027, as section 2.07 of the revenue procedure explains.
+  Works of the US federal government carry no copyright in the United States, but the cited documents state no reuse
+  terms, so the licence is recorded as unstated and the entry held at license-review.'

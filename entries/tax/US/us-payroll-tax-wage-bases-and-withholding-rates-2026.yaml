@@ -1,0 +1,307 @@
+id: us-payroll-tax-wage-bases-and-withholding-rates-2026
+title: 'US federal payroll tax limits for 2026: social security wage base, FUTA rate and wage base, supplemental
+  and backup withholding'
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- tax
+- payroll
+- payroll-tax
+- social-security
+- futa
+- supplemental-wages
+- limits
+- publication-15
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: '2026'
+    currency: USD
+    rows:
+      social_security_wage_base:
+        value: 184500
+        unit: USD
+        description: maximum wages subject to social security (OASDI) tax in 2026, employee and employer each
+      futa_rate:
+        value: 6.0
+        unit: percent
+        description: federal unemployment tax rate before the state credit
+        statute: 26 U.S.C. 3301
+      futa_wage_base:
+        value: 7000
+        unit: USD
+        description: FUTA wages per employee per year
+        statute: 26 U.S.C. 3306(b)(1)
+      futa_maximum_state_credit:
+        value: 5.4
+        unit: percent
+        description: maximum credit for state unemployment contributions
+      futa_rate_after_maximum_credit:
+        value: 0.6
+        unit: percent
+        description: FUTA rate after the maximum state credit (no credit reduction)
+      supplemental_wage_flat_rate:
+        value: 22.0
+        unit: percent
+        description: optional flat withholding rate on supplemental wages up to $1 million in the year
+      supplemental_wage_rate_over_1_million:
+        value: 37.0
+        unit: percent
+        description: mandatory withholding rate on supplemental wages above $1 million in the year
+      supplemental_wage_mandatory_threshold:
+        value: 1000000
+        unit: USD
+        description: supplemental wages in the calendar year above which the mandatory rate applies
+      backup_withholding_rate:
+        value: 24.0
+        unit: percent
+        description: backup withholding rate
+      household_worker_cash_wage_threshold:
+        value: 3000
+        unit: USD
+        description: cash wages to a household worker in 2026 at which social security and Medicare taxes apply
+      election_worker_threshold:
+        value: 2500
+        unit: USD
+        description: pay to an election worker in 2026 at which social security and Medicare taxes apply
+  vectors:
+  - input:
+      key: social_security_wage_base
+      column: value
+    expected: 184500
+    origin: source
+  - input:
+      key: futa_rate
+      column: value
+    expected: 6.0
+    origin: source
+  - input:
+      key: futa_wage_base
+      column: value
+    expected: 7000
+    origin: source
+  - input:
+      key: futa_maximum_state_credit
+      column: value
+    expected: 5.4
+    origin: source
+  - input:
+      key: futa_rate_after_maximum_credit
+      column: value
+    expected: 0.6
+    origin: source
+  - input:
+      key: supplemental_wage_flat_rate
+      column: value
+    expected: 22.0
+    origin: source
+  - input:
+      key: supplemental_wage_rate_over_1_million
+      column: value
+    expected: 37.0
+    origin: source
+  - input:
+      key: supplemental_wage_mandatory_threshold
+      column: value
+    expected: 1000000
+    origin: source
+  - input:
+      key: backup_withholding_rate
+      column: value
+    expected: 24.0
+    origin: source
+  - input:
+      key: household_worker_cash_wage_threshold
+      column: value
+    expected: 3000
+    origin: source
+  - input:
+      key: election_worker_threshold
+      column: value
+    expected: 2500
+    origin: source
+  - input: state_unemployment_wage_base
+    expected: false
+    origin: derived
+    note: not a figure this entry covers
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15 (2026), (Circular E), Employer's Tax Guide (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15.pdf
+  accessed_at: '2026-11-03'
+  locator: page 29, section 9, Tax rates and the social security wage base limit
+  value: $184,500
+  unit: currency:USD
+  snippet: The social security wage base limit is $184,500. The tax rate for Medicare
+  source_license: unstated
+  content_sha256: b46c3622439d8521e3a0faca4cd5b5ece3451b526f65f06a5e38d5c9f804c88b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15 (2026), (Circular E), Employer's Tax Guide (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15.pdf
+  accessed_at: '2026-11-03'
+  locator: page 51, section 14, Figuring FUTA tax
+  value: 6.0%
+  unit: percent
+  snippet: For 2026, the FUTA tax rate is 6.0%
+  source_license: unstated
+  content_sha256: b46c3622439d8521e3a0faca4cd5b5ece3451b526f65f06a5e38d5c9f804c88b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15 (2026), (Circular E), Employer's Tax Guide (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15.pdf
+  accessed_at: '2026-11-03'
+  locator: page 51, section 14, Figuring FUTA tax
+  value: $7,000
+  unit: currency:USD
+  snippet: The tax applies to the first $7,000 you pay to each em- ployee as wages during the year
+  source_license: unstated
+  content_sha256: b46c3622439d8521e3a0faca4cd5b5ece3451b526f65f06a5e38d5c9f804c88b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15 (2026), (Circular E), Employer's Tax Guide (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15.pdf
+  accessed_at: '2026-11-03'
+  locator: page 51, section 14, Figuring FUTA tax
+  value: 5.4%
+  unit: percent
+  snippet: The credit may be as much as 5.4% of FUTA taxable wages
+  source_license: unstated
+  content_sha256: b46c3622439d8521e3a0faca4cd5b5ece3451b526f65f06a5e38d5c9f804c88b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15 (2026), (Circular E), Employer's Tax Guide (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15.pdf
+  accessed_at: '2026-11-03'
+  locator: page 51, section 14, Figuring FUTA tax
+  value: 0.6%
+  unit: percent
+  snippet: the FUTA tax rate after credit is 0.6%
+  source_license: unstated
+  content_sha256: b46c3622439d8521e3a0faca4cd5b5ece3451b526f65f06a5e38d5c9f804c88b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15 (2026), (Circular E), Employer's Tax Guide (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, What's New, Withholding on supplemental wages
+  value: 22%
+  unit: percent
+  snippet: The withholding rate on supplemental wages remains 22% (37% if supple- mental wages
+  source_license: unstated
+  content_sha256: b46c3622439d8521e3a0faca4cd5b5ece3451b526f65f06a5e38d5c9f804c88b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15 (2026), (Circular E), Employer's Tax Guide (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15.pdf
+  accessed_at: '2026-11-03'
+  locator: page 24, section 7
+  value: 37%
+  unit: percent
+  snippet: the excess is sub- ject to withholding at 37% (or the highest rate of income tax for the year)
+  source_license: unstated
+  content_sha256: b46c3622439d8521e3a0faca4cd5b5ece3451b526f65f06a5e38d5c9f804c88b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15 (2026), (Circular E), Employer's Tax Guide (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15.pdf
+  accessed_at: '2026-11-03'
+  locator: page 24, section 7
+  value: $1 million
+  unit: currency:USD
+  snippet: supplemental wages paid to any one employee during the calendar year exceed $1 million
+  source_license: unstated
+  content_sha256: b46c3622439d8521e3a0faca4cd5b5ece3451b526f65f06a5e38d5c9f804c88b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15 (2026), (Circular E), Employer's Tax Guide (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, What's New, Backup withholding
+  value: 24%
+  unit: percent
+  snippet: The backup withholding rate re- mains 24%
+  source_license: unstated
+  content_sha256: b46c3622439d8521e3a0faca4cd5b5ece3451b526f65f06a5e38d5c9f804c88b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15 (2026), (Circular E), Employer's Tax Guide (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, What's New
+  value: $3,000
+  unit: currency:USD
+  snippet: Social security and Medicare taxes apply to the wages of household workers you pay $3,000 or more in
+    cash wa- ges in 2026
+  source_license: unstated
+  content_sha256: b46c3622439d8521e3a0faca4cd5b5ece3451b526f65f06a5e38d5c9f804c88b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15 (2026), (Circular E), Employer's Tax Guide (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, What's New
+  value: $2,500
+  unit: currency:USD
+  snippet: election workers who are paid $2,500 or more in cash or an equivalent form of compensation in 2026
+  source_license: unstated
+  content_sha256: b46c3622439d8521e3a0faca4cd5b5ece3451b526f65f06a5e38d5c9f804c88b
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 3301, Rate of tax (FUTA; United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleC-chap23-sec3301.htm
+  accessed_at: '2026-11-03'
+  locator: 26 U.S.C. 3301
+  value: 6 percent
+  unit: percent
+  snippet: equal to 6 percent of the total wages (as defined in section 3306(b)) paid by such employer
+  source_license: unstated
+  content_sha256: e27c4b06817d359cfc1909a7d48e8c597d0b9b28ceb6a50fabf4075201cbff42
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 3306, Definitions (FUTA; United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleC-chap23-sec3306.htm
+  accessed_at: '2026-11-03'
+  locator: 26 U.S.C. 3306(b)(1)
+  value: $7,000
+  unit: currency:USD
+  snippet: (other than remuneration referred to in the succeeding paragraphs of this subsection) equal to $7,000
+    with respect to employment
+  source_license: unstated
+  content_sha256: 016ff26b8fd590b35609cdd0cc746e755fbc455c1b200f3a0e506e6aaa0fb673
+  role: primary
+assumed:
+- parameter: rows.supplemental_wage_mandatory_threshold.value
+  value: 1000000
+  method: derived
+  rationale: Publication 15 writes the threshold as '$1 million'; the row stores it in dollars.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 11
+  tolerance: 0
+- statistic: value[social_security_wage_base,value]
+  expected: 184500
+  tolerance: 0
+- statistic: value[futa_rate,value]
+  expected: 6.0
+  tolerance: 0
+notes: 'Employer payroll figures for 2026 from IRS Publication 15 (Circular E): the social security wage base (wages
+  above it are free of the 6.2% OASDI tax; Medicare tax has no wage base), the FUTA tax rate, wage base and maximum
+  credit for state unemployment contributions, the flat and mandatory withholding rates on supplemental wages, the
+  backup withholding rate, and the cash-pay thresholds for household and election workers. The FUTA rate and wage
+  base are cross-checked against 26 U.S.C. 3301 and 3306(b)(1). FICA rates and the Additional Medicare Tax thresholds
+  are in us-fica-tax-rates. The Publication 15 URL is the current edition, which the IRS replaces each December.
+  Works of the US federal government carry no copyright in the United States, but the cited documents state no reuse
+  terms, so the licence is recorded as unstated and the entry held at license-review.'

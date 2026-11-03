@@ -1,0 +1,356 @@
+id: us-employee-benefit-exclusion-limits-2026
+title: 'US employee benefit limits for 2026: health FSA, transit and parking, adoption assistance, QSEHRA, long-term
+  care (Rev. Proc. 2025-32)'
+kind: rule
+domain: benefits
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- benefits
+- payroll
+- limits
+- fsa
+- fringe-benefits
+- rev-proc-2025-32
+use_cases:
+- benefits-demo
+- hr-demo
+- payroll-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: '2026'
+    currency: USD
+    rows:
+      health_fsa_salary_reduction:
+        value: 3400
+        unit: USD
+        description: annual limit on employee salary reductions to a health FSA (section 125(i))
+      health_fsa_carryover:
+        value: 680
+        unit: USD
+        description: maximum health FSA carryover of unused amounts
+      transit_and_vanpool_monthly:
+        value: 340
+        unit: USD
+        description: monthly exclusion for commuter highway vehicle and transit passes (section 132(f)(2)(A))
+      qualified_parking_monthly:
+        value: 340
+        unit: USD
+        description: monthly exclusion for qualified parking (section 132(f)(2)(B))
+      adoption_assistance_exclusion:
+        value: 17670
+        unit: USD
+        description: maximum exclusion for employer adoption assistance (section 137(b)(1))
+      educational_assistance_exclusion:
+        value: 5250
+        unit: USD
+        description: annual exclusion for employer educational assistance (section 127); indexed only after 2026
+      qsehra_self_only:
+        value: 6450
+        unit: USD
+        description: qualified small employer HRA annual maximum, self-only (section 9831(d))
+      qsehra_family:
+        value: 13100
+        unit: USD
+        description: qualified small employer HRA annual maximum, family
+      small_employer_health_credit_wage_amount:
+        value: 34100
+        unit: USD
+        description: average annual wage amount for the small employer health insurance credit (section 45R(d)(3)(B))
+      long_term_care_per_diem:
+        value: 430
+        unit: USD
+        description: per diem limitation for periodic long-term care payments (section 7702B(d)(4))
+      ltc_premium_age_40_or_less:
+        value: 500
+        unit: USD
+        description: eligible long-term care premium limit, attained age 40 or less (section 213(d)(10))
+      ltc_premium_age_41_to_50:
+        value: 930
+        unit: USD
+        description: eligible long-term care premium limit, attained age more than 40 but not more than 50 (section
+          213(d)(10))
+      ltc_premium_age_51_to_60:
+        value: 1860
+        unit: USD
+        description: eligible long-term care premium limit, attained age more than 50 but not more than 60 (section
+          213(d)(10))
+      ltc_premium_age_61_to_70:
+        value: 4960
+        unit: USD
+        description: eligible long-term care premium limit, attained age more than 60 but not more than 70 (section
+          213(d)(10))
+      ltc_premium_age_over_70:
+        value: 6200
+        unit: USD
+        description: eligible long-term care premium limit, attained age more than 70 (section 213(d)(10))
+  vectors:
+  - input:
+      key: health_fsa_salary_reduction
+      column: value
+    expected: 3400
+    origin: source
+  - input:
+      key: health_fsa_carryover
+      column: value
+    expected: 680
+    origin: source
+  - input:
+      key: transit_and_vanpool_monthly
+      column: value
+    expected: 340
+    origin: source
+  - input:
+      key: qualified_parking_monthly
+      column: value
+    expected: 340
+    origin: source
+  - input:
+      key: adoption_assistance_exclusion
+      column: value
+    expected: 17670
+    origin: source
+  - input:
+      key: educational_assistance_exclusion
+      column: value
+    expected: 5250
+    origin: source
+  - input:
+      key: qsehra_self_only
+      column: value
+    expected: 6450
+    origin: source
+  - input:
+      key: qsehra_family
+      column: value
+    expected: 13100
+    origin: source
+  - input:
+      key: small_employer_health_credit_wage_amount
+      column: value
+    expected: 34100
+    origin: source
+  - input:
+      key: long_term_care_per_diem
+      column: value
+    expected: 430
+    origin: source
+  - input:
+      key: ltc_premium_age_40_or_less
+      column: value
+    expected: 500
+    origin: source
+  - input:
+      key: ltc_premium_age_41_to_50
+      column: value
+    expected: 930
+    origin: source
+  - input:
+      key: ltc_premium_age_51_to_60
+      column: value
+    expected: 1860
+    origin: source
+  - input:
+      key: ltc_premium_age_61_to_70
+      column: value
+    expected: 4960
+    origin: source
+  - input:
+      key: ltc_premium_age_over_70
+      column: value
+    expected: 6200
+    origin: source
+  - input: dependent_care_fsa
+    expected: false
+    origin: derived
+    note: not a figure this entry covers
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 18 to 19, section 4.15
+  value: $3,400
+  unit: currency:USD
+  snippet: spending arrangements is $3,400. If the cafeteria plan permits
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 19, section 4.15
+  value: $680
+  unit: currency:USD
+  snippet: the maximum carryover amount is $680
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 19, section 4.16
+  value: $340
+  unit: currency:USD
+  snippet: transportation in a commuter highway vehicle and any transit pass is $340
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 19, section 4.16
+  value: $340
+  unit: currency:USD
+  snippet: the fringe benefit exclusion amount for qualified parking is $340
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 19, section 4.18
+  value: $17,670
+  unit: currency:USD
+  snippet: furnished pursuant to an adoption assistance program for adoptions by the employee is $17,670
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 7, section 2.09
+  value: $5,250
+  unit: currency:USD
+  snippet: The maximum exclusion amount of $5,250 will be adjusted for inflation for taxable years beginning after
+    2026
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 34, section 4.63
+  value: $6,450
+  unit: currency:USD
+  snippet: payments and reimbursements for any year cannot exceed $6,450 ($13,100 for family coverage)
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 34, section 4.63
+  value: $13,100
+  unit: currency:USD
+  snippet: payments and reimbursements for any year cannot exceed $6,450 ($13,100 for family coverage)
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 16, section 4.09
+  value: $34,100
+  unit: currency:USD
+  snippet: the dollar amount in effect under § 45R(d)(3)(B) is $34,100
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 34, section 4.62
+  value: $430
+  unit: currency:USD
+  snippet: by reason of the death of a chronically ill individual, is $430
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 22, section 4.27 table
+  value: $500
+  unit: currency:USD
+  snippet: 40 or less $500
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 22, section 4.27 table
+  value: $930
+  unit: currency:USD
+  snippet: More than 40 but not more than 50 $930
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 22, section 4.27 table
+  value: $1,860
+  unit: currency:USD
+  snippet: More than 50 but not more than 60 $1,860
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 22, section 4.27 table
+  value: $4,960
+  unit: currency:USD
+  snippet: More than 60 but not more than 70 $4,960
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 22, section 4.27 table
+  value: $6,200
+  unit: currency:USD
+  snippet: More than 70 $6,200
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 15
+  tolerance: 0
+- statistic: value[health_fsa_salary_reduction,value]
+  expected: 3400
+  tolerance: 0
+notes: 'Employer benefit limits for 2026 from Rev. Proc. 2025-32: the health flexible spending arrangement salary-reduction
+  limit and carryover, the monthly qualified transportation fringe exclusions, the adoption assistance exclusion,
+  the educational assistance exclusion (unindexed until after 2026), the qualified small employer HRA maxima, the
+  small employer health credit wage amount, the long-term care per diem, and the age-banded limits on long-term
+  care premiums treated as medical care. Monthly amounts are per employee per month; the others are annual. The
+  adoption assistance exclusion phases out over the same modified AGI range as the adoption credit (us-child-tax-credit-and-adoption-credit-2026).
+  Works of the US federal government carry no copyright in the United States, but the cited documents state no reuse
+  terms, so the licence is recorded as unstated and the entry held at license-review.'

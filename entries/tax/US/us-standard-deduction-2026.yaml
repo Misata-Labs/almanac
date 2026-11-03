@@ -1,0 +1,216 @@
+id: us-standard-deduction-2026
+title: US federal standard deduction for 2026 by filing status, with the additional amounts for age or blindness
+  (Rev. Proc. 2025-32)
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- tax
+- income-tax
+- standard-deduction
+- limits
+- rev-proc-2025-32
+use_cases:
+- tax-demo
+- tax-filing-demo
+- payroll-demo
+- personal-finance
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: '2026'
+    currency: USD
+    rows:
+      married_filing_jointly_or_surviving_spouse:
+        value: 32200
+        unit: USD
+        description: basic standard deduction, married filing jointly and surviving spouses
+      head_of_household:
+        value: 24150
+        unit: USD
+        description: basic standard deduction, heads of households
+      single:
+        value: 16100
+        unit: USD
+        description: basic standard deduction, unmarried individuals other than surviving spouses and heads of households
+      married_filing_separately:
+        value: 16100
+        unit: USD
+        description: basic standard deduction, married filing separately
+      dependent_minimum:
+        value: 1350
+        unit: USD
+        description: 'standard deduction of a dependent: at least this amount'
+      dependent_earned_income_addition:
+        value: 450
+        unit: USD
+        description: 'standard deduction of a dependent: or this amount plus earned income, if greater'
+      additional_aged_or_blind:
+        value: 1650
+        unit: USD
+        description: additional standard deduction for each of age 65 or over and blindness, married or surviving
+          spouse
+      additional_aged_or_blind_unmarried:
+        value: 2050
+        unit: USD
+        description: additional standard deduction for each of age 65 or over and blindness, unmarried and not a
+          surviving spouse
+  vectors:
+  - input:
+      key: married_filing_jointly_or_surviving_spouse
+      column: value
+    expected: 32200
+    origin: source
+  - input:
+      key: head_of_household
+      column: value
+    expected: 24150
+    origin: source
+  - input:
+      key: single
+      column: value
+    expected: 16100
+    origin: source
+  - input:
+      key: married_filing_separately
+      column: value
+    expected: 16100
+    origin: source
+  - input:
+      key: dependent_minimum
+      column: value
+    expected: 1350
+    origin: source
+  - input:
+      key: dependent_earned_income_addition
+      column: value
+    expected: 450
+    origin: source
+  - input:
+      key: additional_aged_or_blind
+      column: value
+    expected: 1650
+    origin: source
+  - input:
+      key: additional_aged_or_blind_unmarried
+      column: value
+    expected: 2050
+    origin: source
+  - input: personal_exemption
+    expected: false
+    origin: derived
+    note: not a figure this entry covers
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 18, section 4.14(1)
+  value: $32,200
+  unit: currency:USD
+  snippet: Married Individuals Filing Joint Returns and Surviving Spouses (§ 1(j)(2)(A)) $32,200
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 18, section 4.14(1)
+  value: $24,150
+  unit: currency:USD
+  snippet: Heads of Households (§ 1(j)(2)(B)) $24,150
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 18, section 4.14(1)
+  value: $16,100
+  unit: currency:USD
+  snippet: Heads of Households) (§ 1(j)(2)(C)) $16,100
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 18, section 4.14(1)
+  value: $16,100
+  unit: currency:USD
+  snippet: Married Individuals Filing Separate Returns (§ 1(j)(2)(D)) $16,100
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 18, section 4.14(2)
+  value: $1,350
+  unit: currency:USD
+  snippet: cannot exceed the greater of (1) $1,350, or (2) the sum of $450 and the individual's earned income
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 18, section 4.14(2)
+  value: $450
+  unit: currency:USD
+  snippet: cannot exceed the greater of (1) $1,350, or (2) the sum of $450 and the individual's earned income
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 18, section 4.14(3)
+  value: $1,650
+  unit: currency:USD
+  snippet: the additional standard deduction amount under § 63(f) for the aged or the blind is $1,650
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 18, section 4.14(3)
+  value: $2,050
+  unit: currency:USD
+  snippet: is increased to $2,050 if the individual is also unmarried and not a surviving spouse
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 8
+  tolerance: 0
+- statistic: value[single,value]
+  expected: 16100
+  tolerance: 0
+- statistic: max[value]
+  expected: 32200
+  tolerance: 0
+notes: The 2026 basic standard deduction under section 63(c)(2) for each filing status, the limit on a dependent's
+  standard deduction under section 63(c)(5), and the additional standard deduction under section 63(f) for a taxpayer
+  who is 65 or older or blind (claimed once for each condition), as Rev. Proc. 2025-32 states them for taxable years
+  beginning in 2026. Public Law 119-21 raised the base amounts from which these are indexed. A synthetic return
+  subtracts the larger of this deduction and itemised deductions from adjusted gross income before applying the
+  rate schedule. Works of the US federal government carry no copyright in the United States, but the cited documents
+  state no reuse terms, so the licence is recorded as unstated and the entry held at license-review.

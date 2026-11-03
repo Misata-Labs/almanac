@@ -1,0 +1,607 @@
+id: us-retirement-plan-limits-2026
+title: 'US retirement plan and IRA limits for 2026: 401(k), 403(b), 457, catch-up, SIMPLE, 415, compensation and
+  HCE (Notice 2025-67)'
+kind: rule
+domain: pensions
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- pensions
+- retirement
+- 401k
+- ira
+- payroll
+- benefits
+- limits
+- notice-2025-67
+use_cases:
+- benefits-demo
+- hr-demo
+- payroll-demo
+- pensions
+- financial-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    plan_year: '2026'
+    currency: USD
+    rows:
+      elective_deferral_402g:
+        value: 24500
+        unit: USD
+        description: 401(k), 403(b) and Thrift Savings Plan elective deferral limit (section 402(g)(1))
+      governmental_457_deferral:
+        value: 24500
+        unit: USD
+        description: 457(b) deferral limit (section 457(e)(15))
+      catch_up_age_50:
+        value: 8000
+        unit: USD
+        description: catch-up contribution, age 50 or over, plans other than SIMPLE (section 414(v)(2)(B)(i))
+      catch_up_age_60_to_63:
+        value: 11250
+        unit: USD
+        description: catch-up contribution for ages 60 to 63, plans other than SIMPLE (section 414(v)(2)(E)(i))
+      roth_catch_up_wage_threshold:
+        value: 150000
+        unit: USD
+        description: prior-year FICA wages above which catch-up contributions must be Roth (section 414(v)(7)(A))
+      simple_deferral:
+        value: 17000
+        unit: USD
+        description: SIMPLE IRA and SIMPLE 401(k) salary reduction limit (section 408(p)(2)(E)(i)(III))
+      simple_deferral_higher:
+        value: 18100
+        unit: USD
+        description: higher SIMPLE deferral limit for certain plans (section 408(p)(2)(E)(i)(I) or (II))
+      simple_catch_up_age_50:
+        value: 4000
+        unit: USD
+        description: SIMPLE catch-up, age 50 or over (section 414(v)(2)(B)(ii))
+      simple_catch_up_age_50_certain_plans:
+        value: 3850
+        unit: USD
+        description: SIMPLE catch-up, age 50 or over, for the accounts or plans of section 414(v)(2)(B)(iii)
+      simple_catch_up_age_60_to_63:
+        value: 5250
+        unit: USD
+        description: SIMPLE catch-up for ages 60 to 63 (section 414(v)(2)(E)(ii))
+      defined_contribution_415c:
+        value: 72000
+        unit: USD
+        description: annual additions limit for defined contribution plans (section 415(c)(1)(A))
+      defined_benefit_415b:
+        value: 290000
+        unit: USD
+        description: annual benefit limit for defined benefit plans (section 415(b)(1)(A))
+      compensation_limit:
+        value: 360000
+        unit: USD
+        description: annual compensation limit (section 401(a)(17))
+      highly_compensated_employee_threshold:
+        value: 160000
+        unit: USD
+        description: highly compensated employee compensation threshold (section 414(q)(1)(B))
+      key_employee_threshold:
+        value: 235000
+        unit: USD
+        description: key employee officer compensation threshold (section 416(i)(1)(A)(i))
+      sep_minimum_compensation:
+        value: 800
+        unit: USD
+        description: SEP participation compensation threshold (section 408(k)(2)(C))
+      ira_contribution:
+        value: 7500
+        unit: USD
+        description: IRA contribution limit (section 219(b)(5)(A))
+      ira_catch_up_age_50:
+        value: 1100
+        unit: USD
+        description: IRA catch-up contribution, age 50 or over (section 219(b)(5)(B))
+      traditional_ira_deduction_phaseout_single_start:
+        value: 81000
+        unit: USD
+        description: traditional IRA deduction phase-out start, single or head of household active participant
+      traditional_ira_deduction_phaseout_single_end:
+        value: 91000
+        unit: USD
+        description: traditional IRA deduction phase-out end, single or head of household active participant
+      traditional_ira_deduction_phaseout_joint_start:
+        value: 129000
+        unit: USD
+        description: traditional IRA deduction phase-out start, joint filer who is an active participant
+      traditional_ira_deduction_phaseout_joint_end:
+        value: 149000
+        unit: USD
+        description: traditional IRA deduction phase-out end, joint filer who is an active participant
+      roth_ira_phaseout_joint_start:
+        value: 242000
+        unit: USD
+        description: Roth IRA contribution phase-out start, married filing jointly
+      roth_ira_phaseout_joint_end:
+        value: 252000
+        unit: USD
+        description: Roth IRA contribution phase-out end, married filing jointly
+      roth_ira_phaseout_single_start:
+        value: 153000
+        unit: USD
+        description: Roth IRA contribution phase-out start, single and head of household
+      roth_ira_phaseout_single_end:
+        value: 168000
+        unit: USD
+        description: Roth IRA contribution phase-out end, single and head of household
+      simple_additional_nonelective:
+        value: 5300
+        unit: USD
+        description: additional nonelective contribution limit for SIMPLE plans (section 408(p)(2)(A)(iv))
+  vectors:
+  - input:
+      key: elective_deferral_402g
+      column: value
+    expected: 24500
+    origin: source
+  - input:
+      key: governmental_457_deferral
+      column: value
+    expected: 24500
+    origin: source
+  - input:
+      key: catch_up_age_50
+      column: value
+    expected: 8000
+    origin: source
+  - input:
+      key: catch_up_age_60_to_63
+      column: value
+    expected: 11250
+    origin: source
+  - input:
+      key: roth_catch_up_wage_threshold
+      column: value
+    expected: 150000
+    origin: source
+  - input:
+      key: simple_deferral
+      column: value
+    expected: 17000
+    origin: source
+  - input:
+      key: simple_deferral_higher
+      column: value
+    expected: 18100
+    origin: source
+  - input:
+      key: simple_catch_up_age_50
+      column: value
+    expected: 4000
+    origin: source
+  - input:
+      key: simple_catch_up_age_50_certain_plans
+      column: value
+    expected: 3850
+    origin: source
+  - input:
+      key: simple_catch_up_age_60_to_63
+      column: value
+    expected: 5250
+    origin: source
+  - input:
+      key: defined_contribution_415c
+      column: value
+    expected: 72000
+    origin: source
+  - input:
+      key: defined_benefit_415b
+      column: value
+    expected: 290000
+    origin: source
+  - input:
+      key: compensation_limit
+      column: value
+    expected: 360000
+    origin: source
+  - input:
+      key: highly_compensated_employee_threshold
+      column: value
+    expected: 160000
+    origin: source
+  - input:
+      key: key_employee_threshold
+      column: value
+    expected: 235000
+    origin: source
+  - input:
+      key: sep_minimum_compensation
+      column: value
+    expected: 800
+    origin: source
+  - input:
+      key: ira_contribution
+      column: value
+    expected: 7500
+    origin: source
+  - input:
+      key: ira_catch_up_age_50
+      column: value
+    expected: 1100
+    origin: source
+  - input:
+      key: traditional_ira_deduction_phaseout_single_start
+      column: value
+    expected: 81000
+    origin: source
+  - input:
+      key: traditional_ira_deduction_phaseout_single_end
+      column: value
+    expected: 91000
+    origin: source
+  - input:
+      key: traditional_ira_deduction_phaseout_joint_start
+      column: value
+    expected: 129000
+    origin: source
+  - input:
+      key: traditional_ira_deduction_phaseout_joint_end
+      column: value
+    expected: 149000
+    origin: source
+  - input:
+      key: roth_ira_phaseout_joint_start
+      column: value
+    expected: 242000
+    origin: source
+  - input:
+      key: roth_ira_phaseout_joint_end
+      column: value
+    expected: 252000
+    origin: source
+  - input:
+      key: roth_ira_phaseout_single_start
+      column: value
+    expected: 153000
+    origin: source
+  - input:
+      key: roth_ira_phaseout_single_end
+      column: value
+    expected: 168000
+    origin: source
+  - input:
+      key: simple_additional_nonelective
+      column: value
+    expected: 5300
+    origin: source
+  - input: hsa_contribution
+    expected: false
+    origin: derived
+    note: not a figure this entry covers
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 1
+  value: $24,500
+  unit: currency:USD
+  snippet: which includes elective deferrals made to the Thrift Savings Plan, is increased from $23,500 to $24,500
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 1
+  value: $24,500
+  unit: currency:USD
+  snippet: state and local governments and tax-exempt organizations is increased from $23,500 to $24,500. The limitation
+    under section 414(v)(2)(B)(i)
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 1
+  value: $8,000
+  unit: currency:USD
+  snippet: that generally applies for individuals aged 50 or over is increased from $7,500 to $8,000. The limitation
+    under section 414(v)(2)(E)(i)
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 1 to 2
+  value: $11,250
+  unit: currency:USD
+  snippet: age 60, 61, 62, or 63 in 2026 remains $11,250. The Roth catch-up
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2
+  value: $150,000
+  unit: currency:USD
+  snippet: must be designated as Roth contributions, is increased from $145,000 to $150,000
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2
+  value: $17,000
+  unit: currency:USD
+  snippet: elective contributions under a SIMPLE 401(k) plan is increased from $16,500 to $17,000
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2
+  value: $18,100
+  unit: currency:USD
+  snippet: The limitation for certain of those accounts or plans under section 408(p)(2)(E)(i)(I) or (II) is increased
+    from $17,600 to $18,100
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2
+  value: $4,000
+  unit: currency:USD
+  snippet: that generally applies for individuals aged 50 or over is increased from $3,500 to $4,000
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2
+  value: $3,850
+  unit: currency:USD
+  snippet: that generally applies for individuals aged 50 or over remains $3,850
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2
+  value: $5,250
+  unit: currency:USD
+  snippet: that applies for individuals who attain age 60, 61, 62, or 63 in 2026 remains $5,250. The limitation
+    under section 414(v)(2)(B)(iii)
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 1
+  value: $72,000
+  unit: currency:USD
+  snippet: The limitation for defined contribution plans under section 415(c)(1)(A) is increased in 2026 from $70,000
+    to $72,000
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 1
+  value: $290,000
+  unit: currency:USD
+  snippet: the limitation on the annual benefit under a defined benefit plan under section 415(b)(1)(A) of the Code
+    is increased from $280,000 to $290,000
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2
+  value: $360,000
+  unit: currency:USD
+  snippet: 408(k)(3)(C), and 408(k)(6)(D)(ii) is increased from $350,000 to $360,000
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2
+  value: $160,000
+  unit: currency:USD
+  snippet: under section 414(q)(1)(B) remains $160,000
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2
+  value: $235,000
+  unit: currency:USD
+  snippet: for top-heavy plan purposes is increased from $230,000 to $235,000
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 3
+  value: $800
+  unit: currency:USD
+  snippet: regarding simplified employee pensions is increased from $750 to $800
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 4
+  value: $7,500
+  unit: currency:USD
+  snippet: which limits the amount of an individual’s deductible qualified retirement contributions for a taxable
+    year is increased from $7,000 to $7,500
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 4
+  value: $1,100
+  unit: currency:USD
+  snippet: for individuals who have attained age 50 before the close of the taxable year is increased from $1,000
+    to $1,100
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 4
+  value: $81,000
+  unit: currency:USD
+  snippet: have adjusted gross incomes (as defined in section 219(g)(3)(A)) between $81,000 and $91,000, increased
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 4
+  value: $91,000
+  unit: currency:USD
+  snippet: have adjusted gross incomes (as defined in section 219(g)(3)(A)) between $81,000 and $91,000, increased
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 4
+  value: $129,000
+  unit: currency:USD
+  snippet: contribution is an active participant, the income phase-out range is between $129,000 and
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 4
+  value: $149,000
+  unit: currency:USD
+  snippet: contribution is an active participant, the income phase-out range is between $129,000 and $149,000,
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 5
+  value: $242,000
+  unit: currency:USD
+  snippet: making contributions to a Roth IRA is between $242,000 and $252,000 for married couples filing jointly
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 5
+  value: $252,000
+  unit: currency:USD
+  snippet: making contributions to a Roth IRA is between $242,000 and $252,000 for married couples filing jointly
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 5
+  value: $153,000
+  unit: currency:USD
+  snippet: For singles and heads of household, the income phase-out range is between $153,000 and $168,000,
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 5
+  value: $168,000
+  unit: currency:USD
+  snippet: For singles and heads of household, the income phase-out range is between $153,000 and $168,000,
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2025-67, 2026 Amounts Relating to Retirement Plans and IRAs (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-25-67.pdf
+  accessed_at: '2026-11-03'
+  locator: page 6
+  value: $5,300
+  unit: currency:USD
+  snippet: to a SIMPLE retirement account or a SIMPLE 401(k) plan is increased from $5,100 to $5,300
+  source_license: unstated
+  content_sha256: 1eea8f141b0cddd182f9f09b3bc8ffad683d27ceb806dfc6da126811dc0a1f8d
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 27
+  tolerance: 0
+- statistic: value[elective_deferral_402g,value]
+  expected: 24500
+  tolerance: 0
+- statistic: max[value]
+  expected: 360000
+  tolerance: 0
+notes: 'Cost-of-living adjusted retirement plan limits for 2026 from IRS Notice 2025-67, effective January 1, 2026:
+  elective deferral limits for 401(k), 403(b), the Thrift Savings Plan and governmental 457(b) plans; catch-up contributions
+  at age 50 and the higher catch-up for those who attain 60 to 63 during the year; the wage threshold above which
+  catch-ups must be Roth; SIMPLE limits; the section 415 defined contribution and defined benefit limits; the compensation
+  limit; the highly compensated and key employee thresholds; the IRA contribution and catch-up limits; and the traditional
+  and Roth IRA phase-out ranges. The highly compensated employee test compares compensation in the look-back year
+  with the threshold. Works of the US federal government carry no copyright in the United States, but the cited
+  documents state no reuse terms, so the licence is recorded as unstated and the entry held at license-review.'

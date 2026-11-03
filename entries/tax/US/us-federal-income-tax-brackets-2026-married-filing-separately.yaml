@@ -1,0 +1,213 @@
+id: us-federal-income-tax-brackets-2026-married-filing-separately
+title: 'US federal income tax rate schedule for 2026: married filing separately (Rev. Proc. 2025-32)'
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- tax
+- income-tax
+- tax-brackets
+- limits
+- obbba
+- rev-proc-2025-32
+use_cases:
+- tax-demo
+- tax-filing-demo
+- payroll-demo
+- personal-finance
+spec:
+  implementation: almanac.rules.income_tax_bands
+  parameters:
+    tax_year: '2026'
+    currency: USD
+    filing_status: married_filing_separately
+    input: taxable income (after the standard or itemised deduction)
+    personal_allowance: 0
+    bands:
+    - name: rate_10
+      up_to: 12400
+      rate_percent: 10
+    - name: rate_12
+      up_to: 50400
+      rate_percent: 12
+    - name: rate_22
+      up_to: 105700
+      rate_percent: 22
+    - name: rate_24
+      up_to: 201775
+      rate_percent: 24
+    - name: rate_32
+      up_to: 256225
+      rate_percent: 32
+    - name: rate_35
+      up_to: 384350
+      rate_percent: 35
+    - name: rate_37
+      up_to: null
+      rate_percent: 37
+  vectors:
+  - input:
+      income: 12400
+    expected: '1240.00'
+    origin: source
+    note: the table states the tax on income over $12,400 as $1,240 plus 12% of the excess
+  - input:
+      income: 50400
+    expected: '5800.00'
+    origin: source
+    note: the table states the tax on income over $50,400 as $5,800 plus 22% of the excess
+  - input:
+      income: 105700
+    expected: '17966.00'
+    origin: source
+    note: the table states the tax on income over $105,700 as $17,966 plus 24% of the excess
+  - input:
+      income: 201775
+    expected: '41024.00'
+    origin: source
+    note: the table states the tax on income over $201,775 as $41,024 plus 32% of the excess
+  - input:
+      income: 256225
+    expected: '58448.00'
+    origin: source
+    note: the table states the tax on income over $256,225 as $58,448 plus 35% of the excess
+  - input:
+      income: 384350
+    expected: '103291.75'
+    origin: source
+    note: the table states the tax on income over $384,350 as $103,291.75 plus 37% of the excess
+  - input:
+      income: 484350
+    expected: '140291.75'
+    origin: derived
+    note: top-bracket base plus 37% of $100,000
+  - input:
+      income: 0
+    expected: '0.00'
+    origin: derived
+    note: no taxable income
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 10 to 12, section 4.01, Table 4, section 1(j)(2)(D)
+  value: $12,400
+  unit: currency:USD
+  snippet: Not over $12,400 10% of the taxable income
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 10 to 12, section 4.01, Table 4, section 1(j)(2)(D)
+  value: $1,240
+  unit: currency:USD
+  snippet: Over $12,400 but not over $50,400 $1,240 plus 12% of the excess over $12,400
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 10 to 12, section 4.01, Table 4, section 1(j)(2)(D)
+  value: $5,800
+  unit: currency:USD
+  snippet: Over $50,400 but not over $105,700 $5,800 plus 22% of the excess over $50,400
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 10 to 12, section 4.01, Table 4, section 1(j)(2)(D)
+  value: $17,966
+  unit: currency:USD
+  snippet: Over $105,700 but not over $201,775 $17,966 plus 24% of the excess over $105,700
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 10 to 12, section 4.01, Table 4, section 1(j)(2)(D)
+  value: $41,024
+  unit: currency:USD
+  snippet: Over $201,775 but not over $256,225 $41,024 plus 32% of the excess over $201,775
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 10 to 12, section 4.01, Table 4, section 1(j)(2)(D)
+  value: $58,448
+  unit: currency:USD
+  snippet: Over $256,225 but not over $384,350 $58,448 plus 35% of the excess over $256,225
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 10 to 12, section 4.01, Table 4, section 1(j)(2)(D)
+  value: $103,291.75
+  unit: currency:USD
+  snippet: Over $384,350 $103,291.75 plus 37% of the excess over $384,350
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: section 5.02, effective date
+  value: applies to taxable years beginning in 2026
+  unit: text
+  snippet: section 4 of this revenue procedure applies to taxable years beginning in 2026
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: supporting
+assumed:
+- parameter: bands[*].up_to
+  value:
+  - 12400
+  - 50400
+  - 105700
+  - 201775
+  - 256225
+  - 384350
+  - null
+  method: derived
+  rationale: The revenue procedure states each bracket as 'Over $X but not over $Y'; the ceiling Y is the band limit
+    and the top bracket has none.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 7
+  tolerance: 0
+- statistic: rate[rate_37]
+  expected: 37
+  tolerance: 0
+notes: 'Married individuals filing separate returns: the 2026 tax rate table of section 1(j)(2) of the Internal
+  Revenue Code as Rev. Proc. 2025-32 adjusts it for inflation, reflecting Public Law 119-21 (commonly known as the
+  One, Big, Beautiful Bill Act), which made the seven individual rates permanent. The rule takes taxable income,
+  so personal_allowance is zero; subtract the standard deduction (us-standard-deduction-2026) or itemised deductions
+  first. Each vector at a bracket ceiling reproduces the dollar base the revenue procedure prints for the next bracket.
+  The revenue procedure applies to taxable years beginning in 2026; the build checks that every printed base equals
+  the cumulative tax of the brackets below it. Works of the US federal government carry no copyright in the United
+  States, but the cited documents state no reuse terms, so the licence is recorded as unstated and the entry held
+  at license-review.'

@@ -1,0 +1,278 @@
+id: us-hsa-and-hdhp-limits-2026
+title: US health savings account contribution limits and high deductible health plan thresholds for 2026 (Rev. Proc.
+  2025-19)
+kind: rule
+domain: benefits
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- benefits
+- health
+- hsa
+- hdhp
+- payroll
+- limits
+- rev-proc-2025-19
+use_cases:
+- benefits-demo
+- hr-demo
+- payroll-demo
+- health-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    calendar_year: '2026'
+    currency: USD
+    rows:
+      hsa_contribution_self_only:
+        value: 4400
+        unit: USD
+        description: annual HSA contribution limit, self-only coverage (section 223(b)(2)(A))
+      hsa_contribution_family:
+        value: 8750
+        unit: USD
+        description: annual HSA contribution limit, family coverage (section 223(b)(2)(B))
+      hdhp_minimum_deductible_self_only:
+        value: 1700
+        unit: USD
+        description: HDHP minimum annual deductible, self-only
+      hdhp_minimum_deductible_family:
+        value: 3400
+        unit: USD
+        description: HDHP minimum annual deductible, family
+      hdhp_out_of_pocket_maximum_self_only:
+        value: 8500
+        unit: USD
+        description: HDHP maximum annual out-of-pocket expenses, self-only
+      hdhp_out_of_pocket_maximum_family:
+        value: 17000
+        unit: USD
+        description: HDHP maximum annual out-of-pocket expenses, family
+      excepted_benefit_hra_maximum:
+        value: 2200
+        unit: USD
+        description: maximum newly available amount for an excepted benefit HRA, plan years beginning in 2026
+      msa_hdhp_deductible_self_only_minimum:
+        value: 2900
+        unit: USD
+        description: Archer MSA HDHP minimum deductible, self-only (section 220(c)(2)(A))
+      msa_hdhp_deductible_self_only_maximum:
+        value: 4400
+        unit: USD
+        description: Archer MSA HDHP maximum deductible, self-only
+      msa_hdhp_deductible_family_minimum:
+        value: 5850
+        unit: USD
+        description: Archer MSA HDHP minimum deductible, family
+      msa_hdhp_deductible_family_maximum:
+        value: 8750
+        unit: USD
+        description: Archer MSA HDHP maximum deductible, family
+  vectors:
+  - input:
+      key: hsa_contribution_self_only
+      column: value
+    expected: 4400
+    origin: source
+  - input:
+      key: hsa_contribution_family
+      column: value
+    expected: 8750
+    origin: source
+  - input:
+      key: hdhp_minimum_deductible_self_only
+      column: value
+    expected: 1700
+    origin: source
+  - input:
+      key: hdhp_minimum_deductible_family
+      column: value
+    expected: 3400
+    origin: source
+  - input:
+      key: hdhp_out_of_pocket_maximum_self_only
+      column: value
+    expected: 8500
+    origin: source
+  - input:
+      key: hdhp_out_of_pocket_maximum_family
+      column: value
+    expected: 17000
+    origin: source
+  - input:
+      key: excepted_benefit_hra_maximum
+      column: value
+    expected: 2200
+    origin: source
+  - input:
+      key: msa_hdhp_deductible_self_only_minimum
+      column: value
+    expected: 2900
+    origin: source
+  - input:
+      key: msa_hdhp_deductible_self_only_maximum
+      column: value
+    expected: 4400
+    origin: source
+  - input:
+      key: msa_hdhp_deductible_family_minimum
+      column: value
+    expected: 5850
+    origin: source
+  - input:
+      key: msa_hdhp_deductible_family_maximum
+      column: value
+    expected: 8750
+    origin: source
+  - input: hsa_catch_up_age_55
+    expected: false
+    origin: derived
+    note: not a figure this entry covers
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-19, 2026 HSA inflation adjusted amounts (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-19.pdf
+  accessed_at: '2026-11-03'
+  locator: page 1 to 2, section 2.01(1)
+  value: $4,400
+  unit: currency:USD
+  snippet: deductible health plan is $4,400. For calendar year 2026, the annual limitation on deductions under §
+    223(b)(2)(B)
+  source_license: unstated
+  content_sha256: ff2ba4bac62ef6940c57578d70f8be88ff3898ac806e921ad52787c11da35bf4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-19, 2026 HSA inflation adjusted amounts (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-19.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, section 2.01(1)
+  value: $8,750
+  unit: currency:USD
+  snippet: for an individual with family coverage under a high deductible health plan is $8,750
+  source_license: unstated
+  content_sha256: ff2ba4bac62ef6940c57578d70f8be88ff3898ac806e921ad52787c11da35bf4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-19, 2026 HSA inflation adjusted amounts (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-19.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, section 2.01(2)
+  value: $1,700
+  unit: currency:USD
+  snippet: an annual deductible that is not less than $1,700 for self-only coverage or $3,400 for family coverage
+  source_license: unstated
+  content_sha256: ff2ba4bac62ef6940c57578d70f8be88ff3898ac806e921ad52787c11da35bf4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-19, 2026 HSA inflation adjusted amounts (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-19.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, section 2.01(2)
+  value: $3,400
+  unit: currency:USD
+  snippet: an annual deductible that is not less than $1,700 for self-only coverage or $3,400 for family coverage
+  source_license: unstated
+  content_sha256: ff2ba4bac62ef6940c57578d70f8be88ff3898ac806e921ad52787c11da35bf4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-19, 2026 HSA inflation adjusted amounts (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-19.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, section 2.01(2)
+  value: $8,500
+  unit: currency:USD
+  snippet: do not exceed $8,500 for self-only coverage or $17,000 for family coverage
+  source_license: unstated
+  content_sha256: ff2ba4bac62ef6940c57578d70f8be88ff3898ac806e921ad52787c11da35bf4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-19, 2026 HSA inflation adjusted amounts (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-19.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, section 2.01(2)
+  value: $17,000
+  unit: currency:USD
+  snippet: do not exceed $8,500 for self-only coverage or $17,000 for family coverage
+  source_license: unstated
+  content_sha256: ff2ba4bac62ef6940c57578d70f8be88ff3898ac806e921ad52787c11da35bf4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-19, 2026 HSA inflation adjusted amounts (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-19.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, section 2.02
+  value: $2,200
+  unit: currency:USD
+  snippet: for an excepted benefit HRA under § 54.9831-1(c)(3)(viii) is $2,200
+  source_license: unstated
+  content_sha256: ff2ba4bac62ef6940c57578d70f8be88ff3898ac806e921ad52787c11da35bf4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: Rev. Proc. 2025-32, page 22, section 4.28(1)
+  value: $2,900
+  unit: currency:USD
+  snippet: for self-only coverage, a health plan that has an annual deductible that is not less than $2,900 and
+    not more than
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: Rev. Proc. 2025-32, page 22, section 4.28(1)
+  value: $4,400,
+  unit: currency:USD
+  snippet: for self-only coverage, a health plan that has an annual deductible that is not less than $2,900 and
+    not more than $4,400,
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: Rev. Proc. 2025-32, page 22, section 4.28(2)
+  value: $5,850
+  unit: currency:USD
+  snippet: for family coverage, a health plan that has an annual deductible that is not less than $5,850 and not
+    more than
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: Rev. Proc. 2025-32, page 22, section 4.28(2)
+  value: $8,750,
+  unit: currency:USD
+  snippet: for family coverage, a health plan that has an annual deductible that is not less than $5,850 and not
+    more than $8,750,
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 11
+  tolerance: 0
+- statistic: value[hsa_contribution_family,value]
+  expected: 8750
+  tolerance: 0
+notes: 'Health savings account amounts for calendar year 2026 from Rev. Proc. 2025-19: the annual contribution limits
+  for self-only and family HDHP coverage, and the minimum deductible and maximum out-of-pocket expenses that define
+  a high deductible health plan; plus the maximum an excepted benefit HRA may make newly available for plan years
+  beginning in 2026. The Archer MSA deductible ranges for 2026 come from Rev. Proc. 2025-32. The additional HSA
+  contribution for account holders aged 55 or over is statutory and not part of this entry. Works of the US federal
+  government carry no copyright in the United States, but the cited documents state no reuse terms, so the licence
+  is recorded as unstated and the entry held at license-review.'

@@ -1,0 +1,197 @@
+id: us-child-tax-credit-and-adoption-credit-2026
+title: US child tax credit and adoption credit amounts for 2026, including refundable portions and phase-out (Rev.
+  Proc. 2025-32)
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- tax
+- child-tax-credit
+- adoption-credit
+- tax-credit
+- limits
+- obbba
+- rev-proc-2025-32
+use_cases:
+- tax-demo
+- tax-filing-demo
+- payroll-demo
+- personal-finance
+- benefits-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: '2026'
+    currency: USD
+    rows:
+      child_tax_credit_per_child:
+        value: 2200
+        unit: USD
+        description: maximum child tax credit per qualifying child
+      child_tax_credit_refundable_per_child:
+        value: 1700
+        unit: USD
+        description: refundable portion of the child tax credit per qualifying child
+      adoption_credit_special_needs:
+        value: 17670
+        unit: USD
+        description: adoption credit for a child with special needs
+      adoption_credit_maximum_expenses:
+        value: 17670
+        unit: USD
+        description: maximum adoption credit for other adoptions
+      adoption_credit_phaseout_start:
+        value: 265080
+        unit: USD
+        description: modified AGI above which the adoption credit phases out
+      adoption_credit_phaseout_end:
+        value: 305080
+        unit: USD
+        description: modified AGI at which the adoption credit is fully phased out
+      adoption_credit_refundable_portion:
+        value: 5120
+        unit: USD
+        description: refundable portion of the adoption credit
+  vectors:
+  - input:
+      key: child_tax_credit_per_child
+      column: value
+    expected: 2200
+    origin: source
+  - input:
+      key: child_tax_credit_refundable_per_child
+      column: value
+    expected: 1700
+    origin: source
+  - input:
+      key: adoption_credit_special_needs
+      column: value
+    expected: 17670
+    origin: source
+  - input:
+      key: adoption_credit_maximum_expenses
+      column: value
+    expected: 17670
+    origin: source
+  - input:
+      key: adoption_credit_phaseout_start
+      column: value
+    expected: 265080
+    origin: source
+  - input:
+      key: adoption_credit_phaseout_end
+      column: value
+    expected: 305080
+    origin: source
+  - input:
+      key: adoption_credit_refundable_portion
+      column: value
+    expected: 5120
+    origin: source
+  - input: child_and_dependent_care_credit
+    expected: false
+    origin: derived
+    note: not a figure this entry covers
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 14, section 4.05(1)
+  value: $2,200
+  unit: currency:USD
+  snippet: the maximum amount of the credit allowed under § 24(a) is $2,200
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 14, section 4.05(2)
+  value: $1,700
+  unit: currency:USD
+  snippet: the amount used in § 24(d)(1)(A) to determine the amount of the credit under § 24 that may be refundable
+    is $1,700
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 13, section 4.04(1)
+  value: $17,670
+  unit: currency:USD
+  snippet: the credit allowed for an adoption of a child with special needs is $17,670
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 13, section 4.04(2)
+  value: $17,670
+  unit: currency:USD
+  snippet: the maximum credit allowed for other adoptions is the amount of qualified adoption expenses up to $17,670
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 13, section 4.04(2)
+  value: $265,080
+  unit: currency:USD
+  snippet: phase out under § 23(b)(2)(A) for taxpayers with modified adjusted gross income in excess of $265,080
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 13, section 4.04(2)
+  value: $305,080
+  unit: currency:USD
+  snippet: is completely phased out for taxpayers with modified adjusted gross income of $305,080 or more. See section
+    4.18
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 14, section 4.04(3)
+  value: $5,120
+  unit: currency:USD
+  snippet: the amount used in § 23(a)(4) to determine the amount of the credit under § 23 that may be refundable
+    is $5,120
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 7
+  tolerance: 0
+- statistic: value[child_tax_credit_per_child,value]
+  expected: 2200
+  tolerance: 0
+notes: 'Credit amounts for 2026 from Rev. Proc. 2025-32: the maximum child tax credit per qualifying child under
+  section 24(a) and the part that may be refundable under section 24(d)(1)(A); the adoption credit for a child with
+  special needs and the cap on qualified adoption expenses for other adoptions under section 23, its modified adjusted
+  gross income phase-out range, and the refundable portion that Public Law 119-21 introduced in section 23(a)(4).
+  The child tax credit''s own income phase-out thresholds are statutory and not part of this entry. Works of the
+  US federal government carry no copyright in the United States, but the cited documents state no reuse terms, so
+  the licence is recorded as unstated and the entry held at license-review.'

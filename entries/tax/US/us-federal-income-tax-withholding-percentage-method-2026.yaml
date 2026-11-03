@@ -1,0 +1,952 @@
+id: us-federal-income-tax-withholding-percentage-method-2026
+title: 'US federal income tax withholding for 2026: Publication 15-T percentage method tables and Worksheet 1A for
+  automated payroll'
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- tax
+- payroll
+- withholding
+- form-w-4
+- limits
+- publication-15-t
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+spec:
+  implementation: almanac.rules.us_fit_withholding
+  parameters:
+    tax_year: '2026'
+    currency: USD
+    pay_periods:
+      annually: 1
+      semiannually: 2
+      quarterly: 4
+      monthly: 12
+      semimonthly: 24
+      biweekly: 26
+      weekly: 52
+      daily: 260
+    step2_adjustment:
+      married_filing_jointly: 12900
+      other: 8600
+    allowance_value: 4300
+    schedules:
+      standard:
+        married_filing_jointly:
+        - at_least: 0
+          less_than: 19300
+          base: 0.0
+          rate_percent: 0
+          excess_over: 0
+        - at_least: 19300
+          less_than: 44100
+          base: 0.0
+          rate_percent: 10
+          excess_over: 19300
+        - at_least: 44100
+          less_than: 120100
+          base: 2480.0
+          rate_percent: 12
+          excess_over: 44100
+        - at_least: 120100
+          less_than: 230700
+          base: 11600.0
+          rate_percent: 22
+          excess_over: 120100
+        - at_least: 230700
+          less_than: 422850
+          base: 35932.0
+          rate_percent: 24
+          excess_over: 230700
+        - at_least: 422850
+          less_than: 531750
+          base: 82048.0
+          rate_percent: 32
+          excess_over: 422850
+        - at_least: 531750
+          less_than: 788000
+          base: 116896.0
+          rate_percent: 35
+          excess_over: 531750
+        - at_least: 788000
+          less_than: null
+          base: 206583.5
+          rate_percent: 37
+          excess_over: 788000
+        single_or_married_filing_separately:
+        - at_least: 0
+          less_than: 7500
+          base: 0.0
+          rate_percent: 0
+          excess_over: 0
+        - at_least: 7500
+          less_than: 19900
+          base: 0.0
+          rate_percent: 10
+          excess_over: 7500
+        - at_least: 19900
+          less_than: 57900
+          base: 1240.0
+          rate_percent: 12
+          excess_over: 19900
+        - at_least: 57900
+          less_than: 113200
+          base: 5800.0
+          rate_percent: 22
+          excess_over: 57900
+        - at_least: 113200
+          less_than: 209275
+          base: 17966.0
+          rate_percent: 24
+          excess_over: 113200
+        - at_least: 209275
+          less_than: 263725
+          base: 41024.0
+          rate_percent: 32
+          excess_over: 209275
+        - at_least: 263725
+          less_than: 648100
+          base: 58448.0
+          rate_percent: 35
+          excess_over: 263725
+        - at_least: 648100
+          less_than: null
+          base: 192979.25
+          rate_percent: 37
+          excess_over: 648100
+        head_of_household:
+        - at_least: 0
+          less_than: 15550
+          base: 0.0
+          rate_percent: 0
+          excess_over: 0
+        - at_least: 15550
+          less_than: 33250
+          base: 0.0
+          rate_percent: 10
+          excess_over: 15550
+        - at_least: 33250
+          less_than: 83000
+          base: 1770.0
+          rate_percent: 12
+          excess_over: 33250
+        - at_least: 83000
+          less_than: 121250
+          base: 7740.0
+          rate_percent: 22
+          excess_over: 83000
+        - at_least: 121250
+          less_than: 217300
+          base: 16155.0
+          rate_percent: 24
+          excess_over: 121250
+        - at_least: 217300
+          less_than: 271750
+          base: 39207.0
+          rate_percent: 32
+          excess_over: 217300
+        - at_least: 271750
+          less_than: 656150
+          base: 56631.0
+          rate_percent: 35
+          excess_over: 271750
+        - at_least: 656150
+          less_than: null
+          base: 191171.0
+          rate_percent: 37
+          excess_over: 656150
+      checkbox:
+        married_filing_jointly:
+        - at_least: 0
+          less_than: 16100
+          base: 0.0
+          rate_percent: 0
+          excess_over: 0
+        - at_least: 16100
+          less_than: 28500
+          base: 0.0
+          rate_percent: 10
+          excess_over: 16100
+        - at_least: 28500
+          less_than: 66500
+          base: 1240.0
+          rate_percent: 12
+          excess_over: 28500
+        - at_least: 66500
+          less_than: 121800
+          base: 5800.0
+          rate_percent: 22
+          excess_over: 66500
+        - at_least: 121800
+          less_than: 217875
+          base: 17966.0
+          rate_percent: 24
+          excess_over: 121800
+        - at_least: 217875
+          less_than: 272325
+          base: 41024.0
+          rate_percent: 32
+          excess_over: 217875
+        - at_least: 272325
+          less_than: 400450
+          base: 58448.0
+          rate_percent: 35
+          excess_over: 272325
+        - at_least: 400450
+          less_than: null
+          base: 103291.75
+          rate_percent: 37
+          excess_over: 400450
+        single_or_married_filing_separately:
+        - at_least: 0
+          less_than: 8050
+          base: 0.0
+          rate_percent: 0
+          excess_over: 0
+        - at_least: 8050
+          less_than: 14250
+          base: 0.0
+          rate_percent: 10
+          excess_over: 8050
+        - at_least: 14250
+          less_than: 33250
+          base: 620.0
+          rate_percent: 12
+          excess_over: 14250
+        - at_least: 33250
+          less_than: 60900
+          base: 2900.0
+          rate_percent: 22
+          excess_over: 33250
+        - at_least: 60900
+          less_than: 108938
+          base: 8983.0
+          rate_percent: 24
+          excess_over: 60900
+        - at_least: 108938
+          less_than: 136163
+          base: 20512.0
+          rate_percent: 32
+          excess_over: 108938
+        - at_least: 136163
+          less_than: 328350
+          base: 29224.0
+          rate_percent: 35
+          excess_over: 136163
+        - at_least: 328350
+          less_than: null
+          base: 96489.63
+          rate_percent: 37
+          excess_over: 328350
+        head_of_household:
+        - at_least: 0
+          less_than: 12075
+          base: 0.0
+          rate_percent: 0
+          excess_over: 0
+        - at_least: 12075
+          less_than: 20925
+          base: 0.0
+          rate_percent: 10
+          excess_over: 12075
+        - at_least: 20925
+          less_than: 45800
+          base: 885.0
+          rate_percent: 12
+          excess_over: 20925
+        - at_least: 45800
+          less_than: 64925
+          base: 3870.0
+          rate_percent: 22
+          excess_over: 45800
+        - at_least: 64925
+          less_than: 112950
+          base: 8077.5
+          rate_percent: 24
+          excess_over: 64925
+        - at_least: 112950
+          less_than: 140175
+          base: 19603.5
+          rate_percent: 32
+          excess_over: 112950
+        - at_least: 140175
+          less_than: 332375
+          base: 28315.5
+          rate_percent: 35
+          excess_over: 140175
+        - at_least: 332375
+          less_than: null
+          base: 95585.5
+          rate_percent: 37
+          excess_over: 332375
+  vectors:
+  - input:
+      adjusted_annual_wage: 19300
+      filing_status: married_filing_jointly
+      checkbox: false
+    expected: '0.00'
+    origin: source
+    note: 'standard schedule row starting at $19,300: column C'
+  - input:
+      adjusted_annual_wage: 44100
+      filing_status: married_filing_jointly
+      checkbox: false
+    expected: '2480.00'
+    origin: source
+    note: 'standard schedule row starting at $44,100: column C'
+  - input:
+      adjusted_annual_wage: 120100
+      filing_status: married_filing_jointly
+      checkbox: false
+    expected: '11600.00'
+    origin: source
+    note: 'standard schedule row starting at $120,100: column C'
+  - input:
+      adjusted_annual_wage: 230700
+      filing_status: married_filing_jointly
+      checkbox: false
+    expected: '35932.00'
+    origin: source
+    note: 'standard schedule row starting at $230,700: column C'
+  - input:
+      adjusted_annual_wage: 422850
+      filing_status: married_filing_jointly
+      checkbox: false
+    expected: '82048.00'
+    origin: source
+    note: 'standard schedule row starting at $422,850: column C'
+  - input:
+      adjusted_annual_wage: 531750
+      filing_status: married_filing_jointly
+      checkbox: false
+    expected: '116896.00'
+    origin: source
+    note: 'standard schedule row starting at $531,750: column C'
+  - input:
+      adjusted_annual_wage: 788000
+      filing_status: married_filing_jointly
+      checkbox: false
+    expected: '206583.50'
+    origin: source
+    note: 'standard schedule row starting at $788,000: column C'
+  - input:
+      adjusted_annual_wage: 7500
+      filing_status: single_or_married_filing_separately
+      checkbox: false
+    expected: '0.00'
+    origin: source
+    note: 'standard schedule row starting at $7,500: column C'
+  - input:
+      adjusted_annual_wage: 19900
+      filing_status: single_or_married_filing_separately
+      checkbox: false
+    expected: '1240.00'
+    origin: source
+    note: 'standard schedule row starting at $19,900: column C'
+  - input:
+      adjusted_annual_wage: 57900
+      filing_status: single_or_married_filing_separately
+      checkbox: false
+    expected: '5800.00'
+    origin: source
+    note: 'standard schedule row starting at $57,900: column C'
+  - input:
+      adjusted_annual_wage: 113200
+      filing_status: single_or_married_filing_separately
+      checkbox: false
+    expected: '17966.00'
+    origin: source
+    note: 'standard schedule row starting at $113,200: column C'
+  - input:
+      adjusted_annual_wage: 209275
+      filing_status: single_or_married_filing_separately
+      checkbox: false
+    expected: '41024.00'
+    origin: source
+    note: 'standard schedule row starting at $209,275: column C'
+  - input:
+      adjusted_annual_wage: 263725
+      filing_status: single_or_married_filing_separately
+      checkbox: false
+    expected: '58448.00'
+    origin: source
+    note: 'standard schedule row starting at $263,725: column C'
+  - input:
+      adjusted_annual_wage: 648100
+      filing_status: single_or_married_filing_separately
+      checkbox: false
+    expected: '192979.25'
+    origin: source
+    note: 'standard schedule row starting at $648,100: column C'
+  - input:
+      adjusted_annual_wage: 15550
+      filing_status: head_of_household
+      checkbox: false
+    expected: '0.00'
+    origin: source
+    note: 'standard schedule row starting at $15,550: column C'
+  - input:
+      adjusted_annual_wage: 33250
+      filing_status: head_of_household
+      checkbox: false
+    expected: '1770.00'
+    origin: source
+    note: 'standard schedule row starting at $33,250: column C'
+  - input:
+      adjusted_annual_wage: 83000
+      filing_status: head_of_household
+      checkbox: false
+    expected: '7740.00'
+    origin: source
+    note: 'standard schedule row starting at $83,000: column C'
+  - input:
+      adjusted_annual_wage: 121250
+      filing_status: head_of_household
+      checkbox: false
+    expected: '16155.00'
+    origin: source
+    note: 'standard schedule row starting at $121,250: column C'
+  - input:
+      adjusted_annual_wage: 217300
+      filing_status: head_of_household
+      checkbox: false
+    expected: '39207.00'
+    origin: source
+    note: 'standard schedule row starting at $217,300: column C'
+  - input:
+      adjusted_annual_wage: 271750
+      filing_status: head_of_household
+      checkbox: false
+    expected: '56631.00'
+    origin: source
+    note: 'standard schedule row starting at $271,750: column C'
+  - input:
+      adjusted_annual_wage: 656150
+      filing_status: head_of_household
+      checkbox: false
+    expected: '191171.00'
+    origin: source
+    note: 'standard schedule row starting at $656,150: column C'
+  - input:
+      adjusted_annual_wage: 16100
+      filing_status: married_filing_jointly
+      checkbox: true
+    expected: '0.00'
+    origin: source
+    note: 'checkbox schedule row starting at $16,100: column C'
+  - input:
+      adjusted_annual_wage: 28500
+      filing_status: married_filing_jointly
+      checkbox: true
+    expected: '1240.00'
+    origin: source
+    note: 'checkbox schedule row starting at $28,500: column C'
+  - input:
+      adjusted_annual_wage: 66500
+      filing_status: married_filing_jointly
+      checkbox: true
+    expected: '5800.00'
+    origin: source
+    note: 'checkbox schedule row starting at $66,500: column C'
+  - input:
+      adjusted_annual_wage: 121800
+      filing_status: married_filing_jointly
+      checkbox: true
+    expected: '17966.00'
+    origin: source
+    note: 'checkbox schedule row starting at $121,800: column C'
+  - input:
+      adjusted_annual_wage: 217875
+      filing_status: married_filing_jointly
+      checkbox: true
+    expected: '41024.00'
+    origin: source
+    note: 'checkbox schedule row starting at $217,875: column C'
+  - input:
+      adjusted_annual_wage: 272325
+      filing_status: married_filing_jointly
+      checkbox: true
+    expected: '58448.00'
+    origin: source
+    note: 'checkbox schedule row starting at $272,325: column C'
+  - input:
+      adjusted_annual_wage: 400450
+      filing_status: married_filing_jointly
+      checkbox: true
+    expected: '103291.75'
+    origin: source
+    note: 'checkbox schedule row starting at $400,450: column C'
+  - input:
+      adjusted_annual_wage: 8050
+      filing_status: single_or_married_filing_separately
+      checkbox: true
+    expected: '0.00'
+    origin: source
+    note: 'checkbox schedule row starting at $8,050: column C'
+  - input:
+      adjusted_annual_wage: 14250
+      filing_status: single_or_married_filing_separately
+      checkbox: true
+    expected: '620.00'
+    origin: source
+    note: 'checkbox schedule row starting at $14,250: column C'
+  - input:
+      adjusted_annual_wage: 33250
+      filing_status: single_or_married_filing_separately
+      checkbox: true
+    expected: '2900.00'
+    origin: source
+    note: 'checkbox schedule row starting at $33,250: column C'
+  - input:
+      adjusted_annual_wage: 60900
+      filing_status: single_or_married_filing_separately
+      checkbox: true
+    expected: '8983.00'
+    origin: source
+    note: 'checkbox schedule row starting at $60,900: column C'
+  - input:
+      adjusted_annual_wage: 108938
+      filing_status: single_or_married_filing_separately
+      checkbox: true
+    expected: '20512.00'
+    origin: source
+    note: 'checkbox schedule row starting at $108,938: column C'
+  - input:
+      adjusted_annual_wage: 136163
+      filing_status: single_or_married_filing_separately
+      checkbox: true
+    expected: '29224.00'
+    origin: source
+    note: 'checkbox schedule row starting at $136,163: column C'
+  - input:
+      adjusted_annual_wage: 328350
+      filing_status: single_or_married_filing_separately
+      checkbox: true
+    expected: '96489.63'
+    origin: source
+    note: 'checkbox schedule row starting at $328,350: column C'
+  - input:
+      adjusted_annual_wage: 12075
+      filing_status: head_of_household
+      checkbox: true
+    expected: '0.00'
+    origin: source
+    note: 'checkbox schedule row starting at $12,075: column C'
+  - input:
+      adjusted_annual_wage: 20925
+      filing_status: head_of_household
+      checkbox: true
+    expected: '885.00'
+    origin: source
+    note: 'checkbox schedule row starting at $20,925: column C'
+  - input:
+      adjusted_annual_wage: 45800
+      filing_status: head_of_household
+      checkbox: true
+    expected: '3870.00'
+    origin: source
+    note: 'checkbox schedule row starting at $45,800: column C'
+  - input:
+      adjusted_annual_wage: 64925
+      filing_status: head_of_household
+      checkbox: true
+    expected: '8077.50'
+    origin: source
+    note: 'checkbox schedule row starting at $64,925: column C'
+  - input:
+      adjusted_annual_wage: 112950
+      filing_status: head_of_household
+      checkbox: true
+    expected: '19603.50'
+    origin: source
+    note: 'checkbox schedule row starting at $112,950: column C'
+  - input:
+      adjusted_annual_wage: 140175
+      filing_status: head_of_household
+      checkbox: true
+    expected: '28315.50'
+    origin: source
+    note: 'checkbox schedule row starting at $140,175: column C'
+  - input:
+      adjusted_annual_wage: 332375
+      filing_status: head_of_household
+      checkbox: true
+    expected: '95585.50'
+    origin: source
+    note: 'checkbox schedule row starting at $332,375: column C'
+  - input:
+      wages: 2000
+      pay_frequency: biweekly
+      filing_status: single
+    expected: '156.15'
+    origin: derived
+    note: 'Worksheet 1A: $2,000 biweekly, single, Step 2 not checked, no other W-4 entries'
+  - input:
+      wages: 9000
+      pay_frequency: monthly
+      filing_status: married_filing_jointly
+      step3: 4400
+    expected: '350.00'
+    origin: derived
+    note: 'Worksheet 1A: $9,000 monthly, married filing jointly, $4,400 of Step 3 credits'
+  - input:
+      wages: 300
+      pay_frequency: weekly
+      filing_status: married_filing_jointly
+    expected: '0.00'
+    origin: derived
+    note: annualised wages below the joint 0% row's ceiling once the Step 2 adjustment is subtracted
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 10, Worksheet 1A, line 1g
+  value: $12,900
+  unit: currency:USD
+  snippet: If the box is not checked, enter $12,900 if the taxpayer is married filing jointly or $8,600 otherwise
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 10, Worksheet 1A, line 1k
+  value: $4,300
+  unit: currency:USD
+  snippet: 1k Multiply line 1j by $4,300
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 10, Worksheet 1A, Table 3 (pay periods per year)
+  value: Table 3 Semiannually Quarterly Monthly Semimonthly Biweekly Weekly Daily 2 4 12 24 26 52 260
+  unit: text
+  snippet: Table 3 Semiannually Quarterly Monthly Semimonthly Biweekly Weekly Daily 2 4 12 24 26 52 260
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, married filing jointly (standard columns A-E, then checkbox
+    columns A-E)
+  value: $0
+  unit: currency:USD
+  snippet: $0 $19,300 $0.00 0% $0 $0 $16,100 $0.00 0% $0
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, married filing jointly (standard columns A-E, then checkbox
+    columns A-E)
+  value: $19,300
+  unit: currency:USD
+  snippet: $19,300 $44,100 $0.00 10% $19,300 $16,100 $28,500 $0.00 10% $16,100
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, married filing jointly (standard columns A-E, then checkbox
+    columns A-E)
+  value: $44,100
+  unit: currency:USD
+  snippet: $44,100 $120,100 $2,480.00 12% $44,100 $28,500 $66,500 $1,240.00 12% $28,500
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, married filing jointly (standard columns A-E, then checkbox
+    columns A-E)
+  value: $120,100
+  unit: currency:USD
+  snippet: $120,100 $230,700 $11,600.00 22% $120,100 $66,500 $121,800 $5,800.00 22% $66,500
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, married filing jointly (standard columns A-E, then checkbox
+    columns A-E)
+  value: $230,700
+  unit: currency:USD
+  snippet: $230,700 $422,850 $35,932.00 24% $230,700 $121,800 $217,875 $17,966.00 24% $121,800
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, married filing jointly (standard columns A-E, then checkbox
+    columns A-E)
+  value: $422,850
+  unit: currency:USD
+  snippet: $422,850 $531,750 $82,048.00 32% $422,850 $217,875 $272,325 $41,024.00 32% $217,875
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, married filing jointly (standard columns A-E, then checkbox
+    columns A-E)
+  value: $531,750
+  unit: currency:USD
+  snippet: $531,750 $788,000 $116,896.00 35% $531,750 $272,325 $400,450 $58,448.00 35% $272,325
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, married filing jointly (standard columns A-E, then checkbox
+    columns A-E)
+  value: $788,000
+  unit: currency:USD
+  snippet: $788,000 $206,583.50 37% $788,000 $400,450 $103,291.75 37% $400,450
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, single or married filing separately (standard columns
+    A-E, then checkbox columns A-E)
+  value: $0
+  unit: currency:USD
+  snippet: $0 $7,500 $0.00 0% $0 $0 $8,050 $0.00 0% $0
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, single or married filing separately (standard columns
+    A-E, then checkbox columns A-E)
+  value: $7,500
+  unit: currency:USD
+  snippet: $7,500 $19,900 $0.00 10% $7,500 $8,050 $14,250 $0.00 10% $8,050
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, single or married filing separately (standard columns
+    A-E, then checkbox columns A-E)
+  value: $19,900
+  unit: currency:USD
+  snippet: $19,900 $57,900 $1,240.00 12% $19,900 $14,250 $33,250 $620.00 12% $14,250
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, single or married filing separately (standard columns
+    A-E, then checkbox columns A-E)
+  value: $57,900
+  unit: currency:USD
+  snippet: $57,900 $113,200 $5,800.00 22% $57,900 $33,250 $60,900 $2,900.00 22% $33,250
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, single or married filing separately (standard columns
+    A-E, then checkbox columns A-E)
+  value: $113,200
+  unit: currency:USD
+  snippet: $113,200 $209,275 $17,966.00 24% $113,200 $60,900 $108,938 $8,983.00 24% $60,900
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, single or married filing separately (standard columns
+    A-E, then checkbox columns A-E)
+  value: $209,275
+  unit: currency:USD
+  snippet: $209,275 $263,725 $41,024.00 32% $209,275 $108,938 $136,163 $20,512.00 32% $108,938
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, single or married filing separately (standard columns
+    A-E, then checkbox columns A-E)
+  value: $263,725
+  unit: currency:USD
+  snippet: $263,725 $648,100 $58,448.00 35% $263,725 $136,163 $328,350 $29,224.00 35% $136,163
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, single or married filing separately (standard columns
+    A-E, then checkbox columns A-E)
+  value: $648,100
+  unit: currency:USD
+  snippet: $648,100 $192,979.25 37% $648,100 $328,350 $96,489.63 37% $328,350
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, head of household (standard columns A-E, then checkbox
+    columns A-E)
+  value: $0
+  unit: currency:USD
+  snippet: $0 $15,550 $0.00 0% $0 $0 $12,075 $0.00 0% $0
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, head of household (standard columns A-E, then checkbox
+    columns A-E)
+  value: $15,550
+  unit: currency:USD
+  snippet: $15,550 $33,250 $0.00 10% $15,550 $12,075 $20,925 $0.00 10% $12,075
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, head of household (standard columns A-E, then checkbox
+    columns A-E)
+  value: $33,250
+  unit: currency:USD
+  snippet: $33,250 $83,000 $1,770.00 12% $33,250 $20,925 $45,800 $885.00 12% $20,925
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, head of household (standard columns A-E, then checkbox
+    columns A-E)
+  value: $83,000
+  unit: currency:USD
+  snippet: $83,000 $121,250 $7,740.00 22% $83,000 $45,800 $64,925 $3,870.00 22% $45,800
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, head of household (standard columns A-E, then checkbox
+    columns A-E)
+  value: $121,250
+  unit: currency:USD
+  snippet: $121,250 $217,300 $16,155.00 24% $121,250 $64,925 $112,950 $8,077.50 24% $64,925
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, head of household (standard columns A-E, then checkbox
+    columns A-E)
+  value: $217,300
+  unit: currency:USD
+  snippet: $217,300 $271,750 $39,207.00 32% $217,300 $112,950 $140,175 $19,603.50 32% $112,950
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, head of household (standard columns A-E, then checkbox
+    columns A-E)
+  value: $271,750
+  unit: currency:USD
+  snippet: $271,750 $656,150 $56,631.00 35% $271,750 $140,175 $332,375 $28,315.50 35% $140,175
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 15-T (2026), Federal Income Tax Withholding Methods (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p15t.pdf
+  accessed_at: '2026-11-03'
+  locator: page 12, 2026 Annual Percentage Method tables, head of household (standard columns A-E, then checkbox
+    columns A-E)
+  value: $656,150
+  unit: currency:USD
+  snippet: $656,150 $191,171.00 37% $656,150 $332,375 $95,585.50 37% $332,375
+  source_license: unstated
+  content_sha256: 31b3e2428628e8d2e40f6266c2c8f1b9b0b6ccd24607895f9b3be3d9d306d3fb
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 48
+  tolerance: 0
+- statistic: top_rate[standard,married_filing_jointly]
+  expected: 37
+  tolerance: 0
+- statistic: rows[checkbox,head_of_household]
+  expected: 8
+  tolerance: 0
+notes: 'The 2026 Annual Percentage Method tables of IRS Publication 15-T for automated payroll systems, both the
+  STANDARD Withholding Rate Schedules (Form W-4 Step 2 not checked, Forms W-4 from 2019 or earlier, and Forms W-4P)
+  and the Form W-4 Step 2 Checkbox schedules, with the fixed amounts Worksheet 1A uses: the Step 2 adjustment subtracted
+  when the box is not checked, the value of one allowance on a pre-2020 Form W-4, and the pay periods per year.
+  The rule implements Worksheet 1A: annualise the period''s wages, add Step 4(a), subtract Step 4(b) and the Step
+  2 adjustment, look up the row, divide by the pay periods, subtract Step 3 credits per period and add Step 4(c).
+  It returns cents; Publication 15-T allows employers to round withholding to whole dollars if they do so consistently.
+  Source vectors are table rows; worksheet vectors are computed from the parsed tables. The cited URL is the current
+  edition of the publication, which the IRS replaces with the 2027 edition at the end of 2026. Works of the US federal
+  government carry no copyright in the United States, but the cited documents state no reuse terms, so the licence
+  is recorded as unstated and the entry held at license-review.'

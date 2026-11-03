@@ -1,0 +1,171 @@
+id: us-estate-and-gift-tax-exclusions-2026
+title: US estate and gift tax basic exclusion, GST exemption and annual gift exclusions for 2026 (Rev. Proc. 2025-32)
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- tax
+- estate-tax
+- gift-tax
+- limits
+- obbba
+- rev-proc-2025-32
+use_cases:
+- tax-demo
+- financial-planning
+- personal-finance
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: '2026'
+    currency: USD
+    rows:
+      basic_exclusion_amount:
+        value: 15000000
+        unit: USD
+        description: estate and gift tax basic exclusion amount (section 2010(c)(3))
+      generation_skipping_transfer_exemption:
+        value: 15000000
+        unit: USD
+        description: generation-skipping transfer tax exemption (section 2631(c))
+      annual_gift_exclusion:
+        value: 19000
+        unit: USD
+        description: annual exclusion per donee for gifts of present interests (section 2503(b))
+      annual_gift_exclusion_noncitizen_spouse:
+        value: 194000
+        unit: USD
+        description: annual exclusion for gifts to a spouse who is not a US citizen (section 2523(i)(2))
+      special_use_valuation_limit:
+        value: 1460000
+        unit: USD
+        description: maximum reduction in value of qualified real property under special use valuation (section
+          2032A)
+      estate_tax_installment_two_percent_portion:
+        value: 1940000
+        unit: USD
+        description: amount defining the 2-percent portion of estate tax deferred under section 6166
+  vectors:
+  - input:
+      key: basic_exclusion_amount
+      column: value
+    expected: 15000000
+    origin: source
+  - input:
+      key: generation_skipping_transfer_exemption
+      column: value
+    expected: 15000000
+    origin: source
+  - input:
+      key: annual_gift_exclusion
+      column: value
+    expected: 19000
+    origin: source
+  - input:
+      key: annual_gift_exclusion_noncitizen_spouse
+      column: value
+    expected: 194000
+    origin: source
+  - input:
+      key: special_use_valuation_limit
+      column: value
+    expected: 1460000
+    origin: source
+  - input:
+      key: estate_tax_installment_two_percent_portion
+      column: value
+    expected: 1940000
+    origin: source
+  - input: inheritance_tax_allowance
+    expected: false
+    origin: derived
+    note: not a figure this entry covers
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 8, section 2.14
+  value: $15,000,000
+  unit: currency:USD
+  snippet: amends § 2010(c)(3) by increasing the basic exclusion amount to $15,000,000 for calendar year 2026
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 8, section 2.14
+  value: $15,000,000
+  unit: currency:USD
+  snippet: the generation-skipping transfer exemption amount under § 2631(c) is equal to $15,000,000
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 25, section 4.42(1)
+  value: $19,000
+  unit: currency:USD
+  snippet: For calendar year 2026, the first $19,000 of gifts to any person
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 26, section 4.42(2)
+  value: $194,000
+  unit: currency:USD
+  snippet: For calendar year 2026, the first $194,000 (instead of the amount provided in paragraph (1)
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 25, section 4.41
+  value: $1,460,000
+  unit: currency:USD
+  snippet: from electing to use § 2032A for purposes of the estate tax cannot exceed $1,460,000
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 28, section 4.51
+  value: $1,940,000
+  unit: currency:USD
+  snippet: of the estate tax extended as provided in § 6166 is $1,940,000
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 6
+  tolerance: 0
+- statistic: max[value]
+  expected: 15000000
+  tolerance: 0
+notes: Federal transfer tax amounts for calendar year 2026. Public Law 119-21 set the basic exclusion amount used
+  for the estate and gift tax applicable credit, and with it the generation-skipping transfer exemption, for 2026
+  (section 2.14 of Rev. Proc. 2025-32); the annual per-donee gift exclusion, the higher annual exclusion for gifts
+  to a non-citizen spouse, the special use valuation cap and the section 6166 '2-percent portion' amount are the
+  indexed figures of sections 4.41, 4.42 and 4.51. Works of the US federal government carry no copyright in the
+  United States, but the cited documents state no reuse terms, so the licence is recorded as unstated and the entry
+  held at license-review.

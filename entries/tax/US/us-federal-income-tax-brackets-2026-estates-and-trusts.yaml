@@ -1,0 +1,152 @@
+id: us-federal-income-tax-brackets-2026-estates-and-trusts
+title: 'US federal income tax rate schedule for 2026: estates and trusts (Rev. Proc. 2025-32)'
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- tax
+- income-tax
+- tax-brackets
+- limits
+- obbba
+- rev-proc-2025-32
+use_cases:
+- tax-demo
+- tax-filing-demo
+- payroll-demo
+- personal-finance
+spec:
+  implementation: almanac.rules.income_tax_bands
+  parameters:
+    tax_year: '2026'
+    currency: USD
+    filing_status: estates_and_trusts
+    input: taxable income (after the standard or itemised deduction)
+    personal_allowance: 0
+    bands:
+    - name: rate_10
+      up_to: 3300
+      rate_percent: 10
+    - name: rate_24
+      up_to: 11700
+      rate_percent: 24
+    - name: rate_35
+      up_to: 16000
+      rate_percent: 35
+    - name: rate_37
+      up_to: null
+      rate_percent: 37
+  vectors:
+  - input:
+      income: 3300
+    expected: '330.00'
+    origin: source
+    note: the table states the tax on income over $3,300 as $330 plus 24% of the excess
+  - input:
+      income: 11700
+    expected: '2346.00'
+    origin: source
+    note: the table states the tax on income over $11,700 as $2,346 plus 35% of the excess
+  - input:
+      income: 16000
+    expected: '3851.00'
+    origin: source
+    note: the table states the tax on income over $16,000 as $3,851 plus 37% of the excess
+  - input:
+      income: 116000
+    expected: '40851.00'
+    origin: derived
+    note: top-bracket base plus 37% of $100,000
+  - input:
+      income: 0
+    expected: '0.00'
+    origin: derived
+    note: no taxable income
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 10 to 12, section 4.01, Table 5, section 1(j)(2)(E)
+  value: $3,300
+  unit: currency:USD
+  snippet: Not over $3,300 10% of the taxable income
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 10 to 12, section 4.01, Table 5, section 1(j)(2)(E)
+  value: $330
+  unit: currency:USD
+  snippet: Over $3,300 but not over $11,700 $330 plus 24% of the excess over $3,300
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 10 to 12, section 4.01, Table 5, section 1(j)(2)(E)
+  value: $2,346
+  unit: currency:USD
+  snippet: Over $11,700 but not over $16,000 $2,346 plus 35% of the excess over $11,700
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: page 10 to 12, section 4.01, Table 5, section 1(j)(2)(E)
+  value: $3,851
+  unit: currency:USD
+  snippet: Over $16,000 $3,851 plus 37% of the excess over $16,000
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-03'
+  locator: section 5.02, effective date
+  value: applies to taxable years beginning in 2026
+  unit: text
+  snippet: section 4 of this revenue procedure applies to taxable years beginning in 2026
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: supporting
+assumed:
+- parameter: bands[*].up_to
+  value:
+  - 3300
+  - 11700
+  - 16000
+  - null
+  method: derived
+  rationale: The revenue procedure states each bracket as 'Over $X but not over $Y'; the ceiling Y is the band limit
+    and the top bracket has none.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: rate[rate_37]
+  expected: 37
+  tolerance: 0
+notes: 'Estates and trusts: the 2026 tax rate table of section 1(j)(2) of the Internal Revenue Code as Rev. Proc.
+  2025-32 adjusts it for inflation, reflecting Public Law 119-21 (commonly known as the One, Big, Beautiful Bill
+  Act), which made the seven individual rates permanent. The rule takes taxable income, so personal_allowance is
+  zero; subtract the standard deduction (us-standard-deduction-2026) or itemised deductions first. Each vector at
+  a bracket ceiling reproduces the dollar base the revenue procedure prints for the next bracket. The revenue procedure
+  applies to taxable years beginning in 2026; the build checks that every printed base equals the cumulative tax
+  of the brackets below it. Works of the US federal government carry no copyright in the United States, but the
+  cited documents state no reuse terms, so the licence is recorded as unstated and the entry held at license-review.'

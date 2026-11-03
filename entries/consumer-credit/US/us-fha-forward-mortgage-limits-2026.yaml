@@ -1,0 +1,263 @@
+id: us-fha-forward-mortgage-limits-2026
+title: 'US FHA forward mortgage limits for 2026: national floor, high-cost ceiling and special-exception ceiling
+  by units (ML 2025-23)'
+kind: rule
+domain: consumer-credit
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- lending
+- mortgage
+- fha
+- loan-limit
+- limits
+use_cases:
+- lending-demo
+- mortgage-origination
+- loan-pricing
+- property-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    year: '2026'
+    currency: USD
+    national_conforming_limit_one_unit: 832750
+    rows:
+      low_cost_floor:
+        description: national low-cost area limit (floor), 65 percent of the conforming limit
+        one_unit: 541287
+        two_unit: 693050
+        three_unit: 837700
+        four_unit: 1041125
+      high_cost_ceiling:
+        description: national high-cost area limit (ceiling), 150 percent of the conforming limit
+        one_unit: 1249125
+        two_unit: 1599375
+        three_unit: 1933200
+        four_unit: 2402625
+      special_exception_ceiling:
+        description: ceiling for Alaska, Hawaii, Guam and the Virgin Islands
+        one_unit: 1873625
+        two_unit: 2399050
+        three_unit: 2899800
+        four_unit: 3603925
+  vectors:
+  - input:
+      key: low_cost_floor
+      column: one_unit
+    expected: 541287
+    origin: source
+  - input:
+      key: low_cost_floor
+      column: four_unit
+    expected: 1041125
+    origin: source
+  - input:
+      key: high_cost_ceiling
+      column: one_unit
+    expected: 1249125
+    origin: source
+  - input:
+      key: high_cost_ceiling
+      column: four_unit
+    expected: 2402625
+    origin: source
+  - input:
+      key: special_exception_ceiling
+      column: one_unit
+    expected: 1873625
+    origin: source
+  - input:
+      key: special_exception_ceiling
+      column: four_unit
+    expected: 3603925
+    origin: source
+  - input: reverse_mortgage_claim_limit
+    expected: false
+    origin: derived
+    note: HECM limits are in a separate mortgagee letter
+evidence:
+- publisher: US Department of Housing and Urban Development, Federal Housing Administration
+  title: Mortgagee Letter 2025-23, 2026 Nationwide Forward Mortgage Loan Limits (PDF)
+  url: https://www.hud.gov/sites/dfiles/hudclips/documents/2025-23hsgml.pdf
+  accessed_at: '2026-11-03'
+  locator: ML 2025-23, Handbook 4000.1 II.A.2.a.ii, national low-cost area limit (floor), 65 percent of the conforming
+    limit
+  value: $541,287
+  unit: currency:USD
+  snippet: 'One-unit: $541,287'
+  source_license: unstated
+  content_sha256: 6642ef8deda538169d9663682919655fd3b6c94997a688c65135ea542ad6d86b
+  role: primary
+- publisher: US Department of Housing and Urban Development, Federal Housing Administration
+  title: Mortgagee Letter 2025-23, 2026 Nationwide Forward Mortgage Loan Limits (PDF)
+  url: https://www.hud.gov/sites/dfiles/hudclips/documents/2025-23hsgml.pdf
+  accessed_at: '2026-11-03'
+  locator: ML 2025-23, Handbook 4000.1 II.A.2.a.ii, national low-cost area limit (floor), 65 percent of the conforming
+    limit
+  value: $693,050
+  unit: currency:USD
+  snippet: 'Two-unit: $693,050'
+  source_license: unstated
+  content_sha256: 6642ef8deda538169d9663682919655fd3b6c94997a688c65135ea542ad6d86b
+  role: primary
+- publisher: US Department of Housing and Urban Development, Federal Housing Administration
+  title: Mortgagee Letter 2025-23, 2026 Nationwide Forward Mortgage Loan Limits (PDF)
+  url: https://www.hud.gov/sites/dfiles/hudclips/documents/2025-23hsgml.pdf
+  accessed_at: '2026-11-03'
+  locator: ML 2025-23, Handbook 4000.1 II.A.2.a.ii, national low-cost area limit (floor), 65 percent of the conforming
+    limit
+  value: $837,700
+  unit: currency:USD
+  snippet: 'Three-unit: $837,700'
+  source_license: unstated
+  content_sha256: 6642ef8deda538169d9663682919655fd3b6c94997a688c65135ea542ad6d86b
+  role: primary
+- publisher: US Department of Housing and Urban Development, Federal Housing Administration
+  title: Mortgagee Letter 2025-23, 2026 Nationwide Forward Mortgage Loan Limits (PDF)
+  url: https://www.hud.gov/sites/dfiles/hudclips/documents/2025-23hsgml.pdf
+  accessed_at: '2026-11-03'
+  locator: ML 2025-23, Handbook 4000.1 II.A.2.a.ii, national low-cost area limit (floor), 65 percent of the conforming
+    limit
+  value: $1,041,125
+  unit: currency:USD
+  snippet: 'Four-unit: $1,041,125'
+  source_license: unstated
+  content_sha256: 6642ef8deda538169d9663682919655fd3b6c94997a688c65135ea542ad6d86b
+  role: primary
+- publisher: US Department of Housing and Urban Development, Federal Housing Administration
+  title: Mortgagee Letter 2025-23, 2026 Nationwide Forward Mortgage Loan Limits (PDF)
+  url: https://www.hud.gov/sites/dfiles/hudclips/documents/2025-23hsgml.pdf
+  accessed_at: '2026-11-03'
+  locator: ML 2025-23, Handbook 4000.1 II.A.2.a.ii, national high-cost area limit (ceiling), 150 percent of the
+    conforming limit
+  value: $1,249,125
+  unit: currency:USD
+  snippet: 'One-unit: $1,249,125'
+  source_license: unstated
+  content_sha256: 6642ef8deda538169d9663682919655fd3b6c94997a688c65135ea542ad6d86b
+  role: primary
+- publisher: US Department of Housing and Urban Development, Federal Housing Administration
+  title: Mortgagee Letter 2025-23, 2026 Nationwide Forward Mortgage Loan Limits (PDF)
+  url: https://www.hud.gov/sites/dfiles/hudclips/documents/2025-23hsgml.pdf
+  accessed_at: '2026-11-03'
+  locator: ML 2025-23, Handbook 4000.1 II.A.2.a.ii, national high-cost area limit (ceiling), 150 percent of the
+    conforming limit
+  value: $1,599,375
+  unit: currency:USD
+  snippet: 'Two-unit: $1,599,375'
+  source_license: unstated
+  content_sha256: 6642ef8deda538169d9663682919655fd3b6c94997a688c65135ea542ad6d86b
+  role: primary
+- publisher: US Department of Housing and Urban Development, Federal Housing Administration
+  title: Mortgagee Letter 2025-23, 2026 Nationwide Forward Mortgage Loan Limits (PDF)
+  url: https://www.hud.gov/sites/dfiles/hudclips/documents/2025-23hsgml.pdf
+  accessed_at: '2026-11-03'
+  locator: ML 2025-23, Handbook 4000.1 II.A.2.a.ii, national high-cost area limit (ceiling), 150 percent of the
+    conforming limit
+  value: $1,933,200
+  unit: currency:USD
+  snippet: 'Three-unit: $1,933,200'
+  source_license: unstated
+  content_sha256: 6642ef8deda538169d9663682919655fd3b6c94997a688c65135ea542ad6d86b
+  role: primary
+- publisher: US Department of Housing and Urban Development, Federal Housing Administration
+  title: Mortgagee Letter 2025-23, 2026 Nationwide Forward Mortgage Loan Limits (PDF)
+  url: https://www.hud.gov/sites/dfiles/hudclips/documents/2025-23hsgml.pdf
+  accessed_at: '2026-11-03'
+  locator: ML 2025-23, Handbook 4000.1 II.A.2.a.ii, national high-cost area limit (ceiling), 150 percent of the
+    conforming limit
+  value: $2,402,625
+  unit: currency:USD
+  snippet: 'Four-unit: $2,402,625'
+  source_license: unstated
+  content_sha256: 6642ef8deda538169d9663682919655fd3b6c94997a688c65135ea542ad6d86b
+  role: primary
+- publisher: US Department of Housing and Urban Development, Federal Housing Administration
+  title: Mortgagee Letter 2025-23, 2026 Nationwide Forward Mortgage Loan Limits (PDF)
+  url: https://www.hud.gov/sites/dfiles/hudclips/documents/2025-23hsgml.pdf
+  accessed_at: '2026-11-03'
+  locator: ML 2025-23, Handbook 4000.1 II.A.2.a.ii, ceiling for Alaska, Hawaii, Guam and the Virgin Islands
+  value: $1,873,625
+  unit: currency:USD
+  snippet: 'One-unit: $1,873,625'
+  source_license: unstated
+  content_sha256: 6642ef8deda538169d9663682919655fd3b6c94997a688c65135ea542ad6d86b
+  role: primary
+- publisher: US Department of Housing and Urban Development, Federal Housing Administration
+  title: Mortgagee Letter 2025-23, 2026 Nationwide Forward Mortgage Loan Limits (PDF)
+  url: https://www.hud.gov/sites/dfiles/hudclips/documents/2025-23hsgml.pdf
+  accessed_at: '2026-11-03'
+  locator: ML 2025-23, Handbook 4000.1 II.A.2.a.ii, ceiling for Alaska, Hawaii, Guam and the Virgin Islands
+  value: $2,399,050
+  unit: currency:USD
+  snippet: 'Two-unit: $2,399,050'
+  source_license: unstated
+  content_sha256: 6642ef8deda538169d9663682919655fd3b6c94997a688c65135ea542ad6d86b
+  role: primary
+- publisher: US Department of Housing and Urban Development, Federal Housing Administration
+  title: Mortgagee Letter 2025-23, 2026 Nationwide Forward Mortgage Loan Limits (PDF)
+  url: https://www.hud.gov/sites/dfiles/hudclips/documents/2025-23hsgml.pdf
+  accessed_at: '2026-11-03'
+  locator: ML 2025-23, Handbook 4000.1 II.A.2.a.ii, ceiling for Alaska, Hawaii, Guam and the Virgin Islands
+  value: $2,899,800
+  unit: currency:USD
+  snippet: 'Three-unit: $2,899,800'
+  source_license: unstated
+  content_sha256: 6642ef8deda538169d9663682919655fd3b6c94997a688c65135ea542ad6d86b
+  role: primary
+- publisher: US Department of Housing and Urban Development, Federal Housing Administration
+  title: Mortgagee Letter 2025-23, 2026 Nationwide Forward Mortgage Loan Limits (PDF)
+  url: https://www.hud.gov/sites/dfiles/hudclips/documents/2025-23hsgml.pdf
+  accessed_at: '2026-11-03'
+  locator: ML 2025-23, Handbook 4000.1 II.A.2.a.ii, ceiling for Alaska, Hawaii, Guam and the Virgin Islands
+  value: $3,603,925
+  unit: currency:USD
+  snippet: 'Four-unit: $3,603,925'
+  source_license: unstated
+  content_sha256: 6642ef8deda538169d9663682919655fd3b6c94997a688c65135ea542ad6d86b
+  role: primary
+- publisher: US Department of Housing and Urban Development, Federal Housing Administration
+  title: Mortgagee Letter 2025-23, 2026 Nationwide Forward Mortgage Loan Limits (PDF)
+  url: https://www.hud.gov/sites/dfiles/hudclips/documents/2025-23hsgml.pdf
+  accessed_at: '2026-11-03'
+  locator: ML 2025-23, II.A.2.a.ii(B)
+  value: $832,750
+  unit: currency:USD
+  snippet: of the national conforming limit of $832,750 for a one-unit Property
+  source_license: unstated
+  content_sha256: 6642ef8deda538169d9663682919655fd3b6c94997a688c65135ea542ad6d86b
+  role: primary
+- publisher: US Department of Housing and Urban Development, Federal Housing Administration
+  title: Mortgagee Letter 2025-23, 2026 Nationwide Forward Mortgage Loan Limits (PDF)
+  url: https://www.hud.gov/sites/dfiles/hudclips/documents/2025-23hsgml.pdf
+  accessed_at: '2026-11-03'
+  locator: ML 2025-23, Effective Date
+  value: January 1, 2026
+  unit: date
+  snippet: effective for case numbers assigned on or after January 1, 2026
+  source_license: unstated
+  content_sha256: 6642ef8deda538169d9663682919655fd3b6c94997a688c65135ea542ad6d86b
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+- statistic: max[four_unit]
+  expected: 3603925
+  tolerance: 0
+notes: 'FHA''s 2026 nationwide forward mortgage limits from HUD Mortgagee Letter 2025-23 (December 11, 2025), effective
+  for FHA case numbers assigned on or after January 1, 2026: the floor that applies in low-cost areas (65 percent
+  of the national conforming limit), the ceiling in high-cost areas (150 percent), and the higher ceiling for the
+  special exception areas of Alaska, Hawaii, Guam and the Virgin Islands, each for one- to four-unit properties.
+  Each county''s own FHA limit lies between the floor and the applicable ceiling; HUD publishes the county list
+  separately. The national conforming limit the percentages refer to is the FHFA baseline (us-fhfa-conforming-loan-limits-2026-by-county).
+  Works of the US federal government carry no copyright in the United States, but the cited documents state no reuse
+  terms, so the licence is recorded as unstated and the entry held at license-review.'

@@ -1,0 +1,202 @@
+id: us-aca-affordability-and-premium-tax-credit-percentages-2026
+title: US ACA premium tax credit applicable percentage table and employer coverage affordability percentage for
+  2026 (Rev. Proc. 2025-25)
+kind: rule
+domain: benefits
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- benefits
+- health
+- aca
+- affordability
+- premium-tax-credit
+- limits
+- rev-proc-2025-25
+use_cases:
+- benefits-demo
+- hr-demo
+- payroll-demo
+- health-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    year: '2026'
+    rows:
+      under_133:
+        household_income_band: Less than 133% of the Federal poverty line
+        initial_percent: 2.1
+        final_percent: 2.1
+      133_to_150:
+        household_income_band: At least 133% but less than 150% of the Federal poverty line
+        initial_percent: 3.14
+        final_percent: 4.19
+      150_to_200:
+        household_income_band: At least 150% but less than 200% of the Federal poverty line
+        initial_percent: 4.19
+        final_percent: 6.6
+      200_to_250:
+        household_income_band: At least 200% but less than 250% of the Federal poverty line
+        initial_percent: 6.6
+        final_percent: 8.44
+      250_to_300:
+        household_income_band: At least 250% but less than 300% of the Federal poverty line
+        initial_percent: 8.44
+        final_percent: 9.96
+      300_to_400:
+        household_income_band: At least 300% but not more than 400% of the Federal poverty line
+        initial_percent: 9.96
+        final_percent: 9.96
+      required_contribution_percentage:
+        household_income_band: employer coverage affordability test
+        initial_percent: 9.96
+        final_percent: 9.96
+  vectors:
+  - input:
+      key: under_133
+      column: final_percent
+    expected: 2.1
+    origin: source
+  - input:
+      key: 133_to_150
+      column: final_percent
+    expected: 4.19
+    origin: source
+  - input:
+      key: 150_to_200
+      column: final_percent
+    expected: 6.6
+    origin: source
+  - input:
+      key: 200_to_250
+      column: final_percent
+    expected: 8.44
+    origin: source
+  - input:
+      key: 250_to_300
+      column: final_percent
+    expected: 9.96
+    origin: source
+  - input:
+      key: 300_to_400
+      column: final_percent
+    expected: 9.96
+    origin: source
+  - input:
+      key: required_contribution_percentage
+      column: final_percent
+    expected: 9.96
+    origin: source
+  - input:
+      key: 133_to_150
+      column: initial_percent
+    expected: 3.14
+    origin: source
+  - input: over_400
+    expected: false
+    origin: derived
+    note: no applicable percentage is published above 400% of the poverty line for 2026
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-25, 2026 applicable percentage table and required contribution percentage (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-25.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, section 3.01, Applicable Percentage Table
+  value: 2.10%
+  unit: percent
+  snippet: Less than 133% 2.10% 2.10%
+  source_license: unstated
+  content_sha256: ba950034c6d6d7f6ca70b9dc94754d923acc34f3d5646593fd12340fb6b67697
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-25, 2026 applicable percentage table and required contribution percentage (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-25.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, section 3.01, Applicable Percentage Table
+  value: 4.19%
+  unit: percent
+  snippet: At least 133% but less than 150% 3.14% 4.19%
+  source_license: unstated
+  content_sha256: ba950034c6d6d7f6ca70b9dc94754d923acc34f3d5646593fd12340fb6b67697
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-25, 2026 applicable percentage table and required contribution percentage (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-25.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, section 3.01, Applicable Percentage Table
+  value: 6.60%
+  unit: percent
+  snippet: At least 150% but less than 200% 4.19% 6.60%
+  source_license: unstated
+  content_sha256: ba950034c6d6d7f6ca70b9dc94754d923acc34f3d5646593fd12340fb6b67697
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-25, 2026 applicable percentage table and required contribution percentage (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-25.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, section 3.01, Applicable Percentage Table
+  value: 8.44%
+  unit: percent
+  snippet: At least 200% but less than 250% 6.60% 8.44%
+  source_license: unstated
+  content_sha256: ba950034c6d6d7f6ca70b9dc94754d923acc34f3d5646593fd12340fb6b67697
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-25, 2026 applicable percentage table and required contribution percentage (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-25.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, section 3.01, Applicable Percentage Table
+  value: 9.96%
+  unit: percent
+  snippet: At least 250% but less than 300% 8.44% 9.96%
+  source_license: unstated
+  content_sha256: ba950034c6d6d7f6ca70b9dc94754d923acc34f3d5646593fd12340fb6b67697
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-25, 2026 applicable percentage table and required contribution percentage (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-25.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, section 3.01, Applicable Percentage Table
+  value: 9.96%
+  unit: percent
+  snippet: At least 300% but not more than 400% 9.96% 9.96%
+  source_license: unstated
+  content_sha256: ba950034c6d6d7f6ca70b9dc94754d923acc34f3d5646593fd12340fb6b67697
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-25, 2026 applicable percentage table and required contribution percentage (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-25.pdf
+  accessed_at: '2026-11-03'
+  locator: page 2, section 3.02
+  value: 9.96%
+  unit: percent
+  snippet: § 36B(c)(2)(C)(i)(II) and § 1.36B-2(c)(3)(v)(C) is 9.96%
+  source_license: unstated
+  content_sha256: ba950034c6d6d7f6ca70b9dc94754d923acc34f3d5646593fd12340fb6b67697
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 7
+  tolerance: 0
+- statistic: value[required_contribution_percentage,final_percent]
+  expected: 9.96
+  tolerance: 0
+- statistic: max[final_percent]
+  expected: 9.96
+  tolerance: 0
+notes: 'Rev. Proc. 2025-25 for taxable and plan years beginning in 2026. The applicable percentage table of section
+  36B(b)(3)(A)(i) gives, for each band of household income as a percentage of the Federal poverty line, the share
+  of income a household is expected to contribute to benchmark Marketplace coverage; within a band the percentage
+  rises from the initial to the final figure. The required contribution percentage is the employer-coverage affordability
+  threshold: an employee''s required contribution for self-only coverage above this share of household income makes
+  the offer unaffordable for premium tax credit purposes. The 2026 table stops at 400% of the poverty line. Poverty
+  guidelines are in us-hhs-poverty-guidelines-2026. Works of the US federal government carry no copyright in the
+  United States, but the cited documents state no reuse terms, so the licence is recorded as unstated and the entry
+  held at license-review.'

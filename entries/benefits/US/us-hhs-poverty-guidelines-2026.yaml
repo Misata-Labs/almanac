@@ -1,0 +1,467 @@
+id: us-hhs-poverty-guidelines-2026
+title: 'US HHS poverty guidelines for 2026 by household size: 48 contiguous states and DC, Alaska and Hawaii'
+kind: rule
+domain: benefits
+region: US
+status: license-review
+tier: A
+valid_from: '2026-01-13'
+valid_to: null
+tags:
+- benefits
+- poverty-guidelines
+- eligibility
+- medicaid
+- limits
+- federal-poverty-level
+use_cases:
+- benefits-demo
+- health-demo
+- household-generation
+- lending-demo
+- personal-finance
+spec:
+  implementation: almanac.rules.us_poverty_guidelines
+  parameters:
+    year: '2026'
+    currency: USD
+    unit: annual income in dollars
+    areas:
+      contiguous_states_and_dc:
+        guidelines:
+          1: 15960
+          2: 21640
+          3: 27320
+          4: 33000
+          5: 38680
+          6: 44360
+          7: 50040
+          8: 55720
+        additional_person: 5680
+      alaska:
+        guidelines:
+          1: 19950
+          2: 27050
+          3: 34150
+          4: 41250
+          5: 48350
+          6: 55450
+          7: 62550
+          8: 69650
+        additional_person: 7100
+      hawaii:
+        guidelines:
+          1: 18360
+          2: 24890
+          3: 31420
+          4: 37950
+          5: 44480
+          6: 51010
+          7: 57540
+          8: 64070
+        additional_person: 6530
+  vectors:
+  - input:
+      area: contiguous_states_and_dc
+      persons: 1
+    expected: 15960
+    origin: source
+  - input:
+      area: contiguous_states_and_dc
+      persons: 4
+    expected: 33000
+    origin: source
+  - input:
+      area: contiguous_states_and_dc
+      persons: 8
+    expected: 55720
+    origin: source
+  - input:
+      area: alaska
+      persons: 1
+    expected: 19950
+    origin: source
+  - input:
+      area: alaska
+      persons: 4
+    expected: 41250
+    origin: source
+  - input:
+      area: alaska
+      persons: 8
+    expected: 69650
+    origin: source
+  - input:
+      area: hawaii
+      persons: 1
+    expected: 18360
+    origin: source
+  - input:
+      area: hawaii
+      persons: 4
+    expected: 37950
+    origin: source
+  - input:
+      area: hawaii
+      persons: 8
+    expected: 64070
+    origin: source
+  - input:
+      area: contiguous_states_and_dc
+      persons: 10
+    expected: 67080
+    origin: derived
+    note: eight-person guideline plus two additional persons
+  - input:
+      area: contiguous_states_and_dc
+      persons: 4
+      income: 66000
+    expected: '200.00'
+    origin: derived
+    note: income at twice the guideline
+evidence:
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for the 48 Contiguous States and the District of Columbia',
+    1 persons
+  value: $15,960
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">1</ENT> <ENT>$15,960</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for the 48 Contiguous States and the District of Columbia',
+    2 persons
+  value: 21,640
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">2</ENT> <ENT>21,640</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for the 48 Contiguous States and the District of Columbia',
+    3 persons
+  value: 27,320
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">3</ENT> <ENT>27,320</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for the 48 Contiguous States and the District of Columbia',
+    4 persons
+  value: 33,000
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">4</ENT> <ENT>33,000</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for the 48 Contiguous States and the District of Columbia',
+    5 persons
+  value: 38,680
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">5</ENT> <ENT>38,680</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for the 48 Contiguous States and the District of Columbia',
+    6 persons
+  value: 44,360
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">6</ENT> <ENT>44,360</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for the 48 Contiguous States and the District of Columbia',
+    7 persons
+  value: 50,040
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">7</ENT> <ENT>50,040</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for the 48 Contiguous States and the District of Columbia',
+    8 persons
+  value: 55,720
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">8</ENT> <ENT>55,720</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, note under '2026 Poverty Guidelines for the 48 Contiguous States and the District
+    of Columbia'
+  value: $5,680
+  unit: currency:USD
+  snippet: For families/households with more than 8 persons, add $5,680 for each additional person.
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for Alaska', 1 persons
+  value: $19,950
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">1</ENT> <ENT>$19,950</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for Alaska', 2 persons
+  value: 27,050
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">2</ENT> <ENT>27,050</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for Alaska', 3 persons
+  value: 34,150
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">3</ENT> <ENT>34,150</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for Alaska', 4 persons
+  value: 41,250
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">4</ENT> <ENT>41,250</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for Alaska', 5 persons
+  value: 48,350
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">5</ENT> <ENT>48,350</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for Alaska', 6 persons
+  value: 55,450
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">6</ENT> <ENT>55,450</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for Alaska', 7 persons
+  value: 62,550
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">7</ENT> <ENT>62,550</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for Alaska', 8 persons
+  value: 69,650
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">8</ENT> <ENT>69,650</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, note under '2026 Poverty Guidelines for Alaska'
+  value: $7,100
+  unit: currency:USD
+  snippet: For families/households with more than 8 persons, add $7,100 for each additional person.
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for Hawaii', 1 persons
+  value: $18,360
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">1</ENT> <ENT>$18,360</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for Hawaii', 2 persons
+  value: 24,890
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">2</ENT> <ENT>24,890</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for Hawaii', 3 persons
+  value: 31,420
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">3</ENT> <ENT>31,420</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for Hawaii', 4 persons
+  value: 37,950
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">4</ENT> <ENT>37,950</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for Hawaii', 5 persons
+  value: 44,480
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">5</ENT> <ENT>44,480</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for Hawaii', 6 persons
+  value: 51,010
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">6</ENT> <ENT>51,010</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for Hawaii', 7 persons
+  value: 57,540
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">7</ENT> <ENT>57,540</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, table '2026 Poverty Guidelines for Hawaii', 8 persons
+  value: 64,070
+  unit: currency:USD
+  snippet: <ROW> <ENT I="01">8</ENT> <ENT>64,070</ENT> </ROW>
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, note under '2026 Poverty Guidelines for Hawaii'
+  value: $6,530
+  unit: currency:USD
+  snippet: For families/households with more than 8 persons, add $6,530 for each additional person.
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+- publisher: US Department of Health and Human Services, via the Federal Register (govinfo)
+  title: Federal Register, Vol. 91, No. 10, January 15, 2026, issue XML (Annual Update of the HHS Poverty Guidelines)
+  url: https://www.govinfo.gov/content/pkg/FR-2026-01-15/xml/FR-2026-01-15.xml
+  accessed_at: '2026-11-03'
+  locator: FR Doc. 2026-00755, DATES
+  value: January 13, 2026
+  unit: date
+  snippet: Effective Date:</E> January 13, 2026 unless an office administering a program
+  source_license: unstated
+  content_sha256: 963bb03baf77709c00c27a797129c86f63f518a5a5886b4553027eb892b5e0b4
+  role: primary
+assumed:
+- parameter: valid_to
+  value: null
+  method: derived
+  rationale: The notice gives an effective date but no end; each year's guidelines are replaced by the next annual
+    update.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+- statistic: guideline[contiguous_states_and_dc,4]
+  expected: 33000
+  tolerance: 0
+- statistic: additional_person[alaska]
+  expected: 7100
+  tolerance: 0
+notes: The 2026 HHS poverty guidelines (FR Doc. 2026-00755, 91 FR 1797, January 15, 2026), the simplified version
+  of the Census Bureau poverty thresholds that Medicaid, the Marketplace premium tax credit, SNAP and many other
+  programmes use to set eligibility, often as a percentage of the guideline (the 'federal poverty level'). Separate
+  tables apply to the 48 contiguous states and DC, to Alaska and to Hawaii; households over eight persons add a
+  fixed amount per person. The guidelines are effective from the date the notice gives unless a programme sets its
+  own date, and stay in force until the 2027 update, so valid_to is open. The rule returns the guideline for a household
+  size and, given an income, that income as a percentage of the guideline. Source is the Federal Register issue
+  XML (tier A). Works of the US federal government carry no copyright in the United States, but the cited documents
+  state no reuse terms, so the licence is recorded as unstated and the entry held at license-review.

@@ -1,0 +1,407 @@
+id: us-macrs-gds-half-year-depreciation-rates
+title: US MACRS GDS depreciation percentages, half-year convention, 3- to 20-year property (IRS Publication 946,
+  Table A-1)
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '1987-01-01'
+valid_to: null
+tags:
+- tax
+- depreciation
+- macrs
+- fixed-assets
+- publication-946
+use_cases:
+- tax-demo
+- tax-filing-demo
+- financial-reporting
+- accounts-payable
+spec:
+  implementation: almanac.rules.us_macrs_depreciation
+  parameters:
+    system: GDS
+    method: 200% or 150% declining balance switching to straight line
+    convention: half-year
+    rates:
+      3-year:
+      - 33.33
+      - 44.45
+      - 14.81
+      - 7.41
+      5-year:
+      - 20.0
+      - 32.0
+      - 19.2
+      - 11.52
+      - 11.52
+      - 5.76
+      7-year:
+      - 14.29
+      - 24.49
+      - 17.49
+      - 12.49
+      - 8.93
+      - 8.92
+      - 8.93
+      - 4.46
+      10-year:
+      - 10.0
+      - 18.0
+      - 14.4
+      - 11.52
+      - 9.22
+      - 7.37
+      - 6.55
+      - 6.55
+      - 6.56
+      - 6.55
+      - 3.28
+      15-year:
+      - 5.0
+      - 9.5
+      - 8.55
+      - 7.7
+      - 6.93
+      - 6.23
+      - 5.9
+      - 5.9
+      - 5.91
+      - 5.9
+      - 5.91
+      - 5.9
+      - 5.91
+      - 5.9
+      - 5.91
+      - 2.95
+      20-year:
+      - 3.75
+      - 7.219
+      - 6.677
+      - 6.177
+      - 5.713
+      - 5.285
+      - 4.888
+      - 4.522
+      - 4.462
+      - 4.461
+      - 4.462
+      - 4.461
+      - 4.462
+      - 4.461
+      - 4.462
+      - 4.461
+      - 4.462
+      - 4.461
+      - 4.462
+      - 4.461
+      - 2.231
+  vectors:
+  - input:
+      basis: 10000
+      recovery_period: 7-year
+      year: 1
+    expected: 1429
+    origin: source
+    note: Publication 946 MACRS Worksheet example, line 15
+  - input:
+      basis: 10000
+      recovery_period: 7-year
+      year: 2
+    expected: 2449
+    origin: source
+    note: example's deduction for recovery year 2 at 24.49%
+  - input:
+      basis: 10000
+      recovery_period: 7-year
+      year: 3
+    expected: 1749
+    origin: source
+    note: example's deduction for recovery year 3 at 17.49%
+  - input:
+      basis: 10000
+      recovery_period: 7-year
+      year: 4
+    expected: 1249
+    origin: source
+    note: example's deduction for recovery year 4 at 12.49%
+  - input:
+      basis: 10000
+      recovery_period: 7-year
+      year: 5
+    expected: 893
+    origin: source
+    note: example's deduction for recovery year 5 at 8.93%
+  - input:
+      basis: 10000
+      recovery_period: 7-year
+      year: 6
+    expected: 892
+    origin: source
+    note: example's deduction for recovery year 6 at 8.92%
+  - input:
+      basis: 10000
+      recovery_period: 7-year
+      year: 7
+    expected: 893
+    origin: source
+    note: example's deduction for recovery year 7 at 8.93%
+  - input:
+      basis: 10000
+      recovery_period: 7-year
+      year: 8
+    expected: 446
+    origin: source
+    note: example's deduction for recovery year 8 at 4.46%
+  - input:
+      basis: 15000
+      recovery_period: 7-year
+      year: 1
+    expected: 2144
+    origin: source
+    note: year-one deduction on 7-year property, rounded to the dollar
+  - input:
+      recovery_period: 3-year
+      year: 1
+    expected: 33.33
+    origin: source
+    note: Table A-1, year 1
+  - input:
+      recovery_period: 5-year
+      year: 1
+    expected: 20.0
+    origin: source
+    note: Table A-1, year 1
+  - input:
+      recovery_period: 7-year
+      year: 1
+    expected: 14.29
+    origin: source
+    note: Table A-1, year 1
+  - input:
+      recovery_period: 10-year
+      year: 1
+    expected: 10.0
+    origin: source
+    note: Table A-1, year 1
+  - input:
+      recovery_period: 15-year
+      year: 1
+    expected: 5.0
+    origin: source
+    note: Table A-1, year 1
+  - input:
+      recovery_period: 20-year
+      year: 1
+    expected: 3.75
+    origin: source
+    note: Table A-1, year 1
+  - input:
+      recovery_period: 20-year
+      year: 21
+    expected: 2.231
+    origin: source
+    note: Table A-1, last half-year
+  - input:
+      recovery_period: 5-year
+      year: 7
+    expected: 0.0
+    origin: derived
+    note: after the recovery period
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 946 (2025), How To Depreciate Property (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p946.pdf
+  accessed_at: '2026-11-03'
+  locator: page 71, Appendix A, Table A-1, 3-year column
+  value: 33.33%
+  unit: percent
+  snippet: 33.33% 44.45 14.81 7.41
+  source_license: unstated
+  content_sha256: 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 946 (2025), How To Depreciate Property (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p946.pdf
+  accessed_at: '2026-11-03'
+  locator: page 71, Appendix A, Table A-1, 5-year column
+  value: 20.00%
+  unit: percent
+  snippet: 20.00% 32.00 19.20 11.52 11.52 5.76
+  source_license: unstated
+  content_sha256: 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 946 (2025), How To Depreciate Property (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p946.pdf
+  accessed_at: '2026-11-03'
+  locator: page 71, Appendix A, Table A-1, 7-year column
+  value: 14.29%
+  unit: percent
+  snippet: 14.29% 24.49 17.49 12.49 8.93 8.92 8.93 4.46
+  source_license: unstated
+  content_sha256: 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 946 (2025), How To Depreciate Property (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p946.pdf
+  accessed_at: '2026-11-03'
+  locator: page 71, Appendix A, Table A-1, 10-year column
+  value: 10.00%
+  unit: percent
+  snippet: 10.00% 18.00 14.40 11.52 9.22 7.37 6.55 6.55 6.56 6.55 3.28
+  source_license: unstated
+  content_sha256: 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 946 (2025), How To Depreciate Property (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p946.pdf
+  accessed_at: '2026-11-03'
+  locator: page 71, Appendix A, Table A-1, 15-year column
+  value: 5.00%
+  unit: percent
+  snippet: 5.00% 9.50 8.55 7.70 6.93 6.23 5.90 5.90 5.91 5.90 5.91 5.90 5.91 5.90 5.91 2.95
+  source_license: unstated
+  content_sha256: 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 946 (2025), How To Depreciate Property (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p946.pdf
+  accessed_at: '2026-11-03'
+  locator: page 71, Appendix A, Table A-1, 20-year column
+  value: 3.750%
+  unit: percent
+  snippet: 3.750% 7.219 6.677 6.177 5.713 5.285 4.888 4.522 4.462 4.461 4.462 4.461 4.462 4.461 4.462 4.461 4.462
+    4.461 4.462 4.461 2.231
+  source_license: unstated
+  content_sha256: 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 946 (2025), How To Depreciate Property (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p946.pdf
+  accessed_at: '2026-11-03'
+  locator: page 41, MACRS Worksheet example (7-year office furniture, $10,000)
+  value: $1,429
+  unit: currency:USD
+  snippet: This is your MACRS depreciation deduction
+  source_license: unstated
+  content_sha256: 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 946 (2025), How To Depreciate Property (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p946.pdf
+  accessed_at: '2026-11-03'
+  locator: page 41, example, deductions for later years
+  value: 2,449
+  unit: currency:USD
+  snippet: 2024 .......... $10,000 24.49% $2,449
+  source_license: unstated
+  content_sha256: 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 946 (2025), How To Depreciate Property (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p946.pdf
+  accessed_at: '2026-11-03'
+  locator: page 41, example, deductions for later years
+  value: 1,749
+  unit: currency:USD
+  snippet: 2025 .......... 10,000 17.49 1,749
+  source_license: unstated
+  content_sha256: 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 946 (2025), How To Depreciate Property (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p946.pdf
+  accessed_at: '2026-11-03'
+  locator: page 41, example, deductions for later years
+  value: 1,249
+  unit: currency:USD
+  snippet: 2026 .......... 10,000 12.49 1,249
+  source_license: unstated
+  content_sha256: 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 946 (2025), How To Depreciate Property (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p946.pdf
+  accessed_at: '2026-11-03'
+  locator: page 41, example, deductions for later years
+  value: '893'
+  unit: currency:USD
+  snippet: 2027 .......... 10,000 8.93 893
+  source_license: unstated
+  content_sha256: 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 946 (2025), How To Depreciate Property (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p946.pdf
+  accessed_at: '2026-11-03'
+  locator: page 41, example, deductions for later years
+  value: '892'
+  unit: currency:USD
+  snippet: 2028 .......... 10,000 8.92 892
+  source_license: unstated
+  content_sha256: 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 946 (2025), How To Depreciate Property (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p946.pdf
+  accessed_at: '2026-11-03'
+  locator: page 41, example, deductions for later years
+  value: '893'
+  unit: currency:USD
+  snippet: 2029 .......... 10,000 8.93 893
+  source_license: unstated
+  content_sha256: 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 946 (2025), How To Depreciate Property (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p946.pdf
+  accessed_at: '2026-11-03'
+  locator: page 41, example, deductions for later years
+  value: '446'
+  unit: currency:USD
+  snippet: 2030 .......... 10,000 4.46 446
+  source_license: unstated
+  content_sha256: 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Publication 946 (2025), How To Depreciate Property (PDF)
+  url: https://www.irs.gov/pub/irs-pdf/p946.pdf
+  accessed_at: '2026-11-03'
+  locator: page 47, example of a casualty loss on 7-year property
+  value: $2,144
+  unit: currency:USD
+  snippet: your depreciation was $2,144
+  source_license: unstated
+  content_sha256: 07fadfb2a6ee34767d77b9a2d3a28413c4afa2d0bd2f0488fd6a4b1b9b5904c4
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '1987-01-01'
+  method: derived
+  rationale: MACRS applies to property placed in service after 1986, as the publication's scope states; the table
+    itself carries no date.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 6
+  tolerance: 0
+- statistic: years[7-year]
+  expected: 8
+  tolerance: 0
+- statistic: total[20-year]
+  expected: 100
+  tolerance: 0.011
+notes: 'Table A-1 of IRS Publication 946: the percentage of unadjusted basis deducted in each recovery year for
+  3-, 5-, 7-, 10-, 15- and 20-year property under the General Depreciation System with the half-year convention,
+  which applies when no more than 40% of the year''s depreciable basis is placed in service in the last quarter.
+  A recovery period of n years spans n+1 tax years because of the half-year convention. Multiply the unadjusted
+  basis (after any section 179 deduction and special allowance) by the year''s percentage; the publication''s examples
+  round the result to whole dollars. Mid-quarter and real property tables are separate. The cited URL is the current
+  (2025) edition of the publication; the percentages apply to property placed in service after 1986. Works of the
+  US federal government carry no copyright in the United States, but the cited documents state no reuse terms, so
+  the licence is recorded as unstated and the entry held at license-review.'

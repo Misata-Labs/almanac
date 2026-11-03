@@ -1,0 +1,176 @@
+id: us-standard-mileage-rates-2026
+title: 'US IRS standard mileage rates for 2026: business, charitable, medical and moving, with FAVR and vehicle
+  valuation caps (Notice 2026-10)'
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- tax
+- payroll
+- mileage
+- expenses
+- limits
+- notice-2026-10
+use_cases:
+- payroll-demo
+- hr-demo
+- tax-demo
+- fleet-demo
+- accounts-payable
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    tax_year: '2026'
+    rows:
+      business:
+        value: 72.5
+        unit: USD cents per mile
+        description: business use, cents per mile
+      charitable:
+        value: 14
+        unit: USD cents per mile
+        description: charitable volunteer use, cents per mile (fixed by section 170(i))
+      medical_and_moving:
+        value: 20.5
+        unit: USD cents per mile
+        description: medical care, and moves deductible under section 217(g), cents per mile
+      depreciation_component:
+        value: 35
+        unit: USD cents per mile
+        description: portion of the business rate treated as depreciation for basis reduction, cents per mile
+      favr_maximum_automobile_cost:
+        value: 61700
+        unit: USD
+        description: maximum standard automobile cost under a FAVR allowance plan
+      employer_vehicle_maximum_value:
+        value: 61700
+        unit: USD
+        description: maximum fair market value of an employer-provided automobile for the fleet-average and cents-per-mile
+          valuation rules
+  vectors:
+  - input:
+      key: business
+      column: value
+    expected: 72.5
+    origin: source
+  - input:
+      key: charitable
+      column: value
+    expected: 14
+    origin: source
+  - input:
+      key: medical_and_moving
+      column: value
+    expected: 20.5
+    origin: source
+  - input:
+      key: depreciation_component
+      column: value
+    expected: 35
+    origin: source
+  - input:
+      key: favr_maximum_automobile_cost
+      column: value
+    expected: 61700
+    origin: source
+  - input:
+      key: employer_vehicle_maximum_value
+      column: value
+    expected: 61700
+    origin: source
+  - input: per_diem_lodging
+    expected: false
+    origin: derived
+    note: not a figure this entry covers
+evidence:
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2026-10, 2026 Standard Mileage Rates (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-26-10.pdf
+  accessed_at: '2026-11-03'
+  locator: page 3, section 3
+  value: '72.5'
+  unit: decimal
+  snippet: The standard mileage rate for transportation or travel expenses for 2026 is 72.5 cents per mile
+  source_license: unstated
+  content_sha256: 8fdda8f02245c38134e08fca50238732c74b0ae693c408252dedf96623d4977a
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2026-10, 2026 Standard Mileage Rates (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-26-10.pdf
+  accessed_at: '2026-11-03'
+  locator: page 4, section 3
+  value: '14'
+  unit: decimal
+  snippet: The standard mileage rate is 14 cents per mile for use of an automobile in rendering gratuitous services
+    to a charitable organization
+  source_license: unstated
+  content_sha256: 8fdda8f02245c38134e08fca50238732c74b0ae693c408252dedf96623d4977a
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2026-10, 2026 Standard Mileage Rates (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-26-10.pdf
+  accessed_at: '2026-11-03'
+  locator: page 4, section 3
+  value: '20.5'
+  unit: decimal
+  snippet: 'The standard mileage rate for 2026 is 20.5 cents per mile for use of an automobile: (1) for medical
+    care'
+  source_license: unstated
+  content_sha256: 8fdda8f02245c38134e08fca50238732c74b0ae693c408252dedf96623d4977a
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2026-10, 2026 Standard Mileage Rates (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-26-10.pdf
+  accessed_at: '2026-11-03'
+  locator: page 4, section 4
+  value: '35'
+  unit: decimal
+  snippet: and 35 cents per mile for 2026. See section 4.04
+  source_license: unstated
+  content_sha256: 8fdda8f02245c38134e08fca50238732c74b0ae693c408252dedf96623d4977a
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2026-10, 2026 Standard Mileage Rates (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-26-10.pdf
+  accessed_at: '2026-11-03'
+  locator: page 5, section 5
+  value: $61,700
+  unit: currency:USD
+  snippet: the standard automobile cost may not exceed $61,700 for automobiles
+  source_license: unstated
+  content_sha256: 8fdda8f02245c38134e08fca50238732c74b0ae693c408252dedf96623d4977a
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Notice 2026-10, 2026 Standard Mileage Rates (PDF)
+  url: https://www.irs.gov/pub/irs-drop/n-26-10.pdf
+  accessed_at: '2026-11-03'
+  locator: page 5, section 6
+  value: $61,700
+  unit: currency:USD
+  snippet: first made available to employees in calendar year 2026 is $61,700
+  source_license: unstated
+  content_sha256: 8fdda8f02245c38134e08fca50238732c74b0ae693c408252dedf96623d4977a
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 6
+  tolerance: 0
+- statistic: value[business,value]
+  expected: 72.5
+  tolerance: 0
+notes: 'Optional standard mileage rates from IRS Notice 2026-10 for costs of operating an automobile from January
+  1, 2026: business, charitable (set by statute), and medical or qualifying moving use, in cents per mile; the depreciation
+  component of the business rate used to reduce basis; the maximum standard automobile cost for a fixed and variable
+  rate (FAVR) plan; and the maximum value of an employer-provided automobile first made available in 2026 for the
+  fleet-average and vehicle cents-per-mile valuation rules. Unreimbursed employee travel remains non-deductible
+  as an itemised deduction except for the groups the notice lists. Reimbursement up to the business rate is the
+  usual accountable-plan pattern. Works of the US federal government carry no copyright in the United States, but
+  the cited documents state no reuse terms, so the licence is recorded as unstated and the entry held at license-review.'
