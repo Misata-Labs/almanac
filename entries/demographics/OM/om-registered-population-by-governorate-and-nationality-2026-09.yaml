@@ -1,0 +1,169 @@
+id: om-registered-population-by-governorate-and-nationality-2026-09
+title: Oman registered population by governorate given nationality (Omani, expatriate), September 2026
+kind: conditional
+domain: demographics
+region: OM
+status: license-review
+tier: B
+observed_period:
+  start: '2026-09-30'
+  end: '2026-09-30'
+tags:
+- oman
+- gcc
+- ncsi
+- population
+- governorate
+- nationality
+- expatriates
+- monthly-bulletin
+use_cases:
+- synthetic-customers
+- address-generation
+- person-generation
+- customer-segmentation
+- banking-demo
+- retail-demo
+spec:
+  variable: governorate
+  unit: ratio
+  given: nationality
+  distributions:
+    Omani:
+      family: categorical
+      parameters:
+        shares:
+          Muscat: 0.19910644
+          Dhofar: 0.08059786
+          Musandam: 0.01201436
+          Al Buraymi: 0.02507153
+          Ad Dakhiliyah: 0.13547285
+          North Al Batinah: 0.20050432
+          South Al Batinah: 0.1253638
+          South Ash Sharqiyah: 0.08288099
+          North Ash Sharqiyah: 0.07071037
+          Adh Dhahirah: 0.05921449
+          Al Wusta: 0.00906299
+        counts:
+          Muscat: 612896
+          Dhofar: 248099
+          Musandam: 36983
+          Al Buraymi: 77176
+          Ad Dakhiliyah: 417017
+          North Al Batinah: 617199
+          South Al Batinah: 385899
+          South Ash Sharqiyah: 255127
+          North Ash Sharqiyah: 217663
+          Adh Dhahirah: 182276
+          Al Wusta: 27898
+        total: 3078233
+    Expatriate:
+      family: categorical
+      parameters:
+        shares:
+          Muscat: 0.40263472
+          Dhofar: 0.12312346
+          Musandam: 0.00818141
+          Al Buraymi: 0.02496255
+          Ad Dakhiliyah: 0.07116563
+          North Al Batinah: 0.14369777
+          South Al Batinah: 0.08342554
+          South Ash Sharqiyah: 0.05358023
+          North Ash Sharqiyah: 0.04428229
+          Adh Dhahirah: 0.02854571
+          Al Wusta: 0.01640069
+        counts:
+          Muscat: 956708
+          Dhofar: 292556
+          Musandam: 19440
+          Al Buraymi: 59314
+          Ad Dakhiliyah: 169098
+          North Al Batinah: 341443
+          South Al Batinah: 198229
+          South Ash Sharqiyah: 127313
+          North Ash Sharqiyah: 105220
+          Adh Dhahirah: 67828
+          Al Wusta: 38970
+        total: 2376119
+evidence:
+- publisher: National Centre for Statistics and Information, Sultanate of Oman
+  title: NCSI Monthly Statistical Bulletin, October 2026 (PDF)
+  url: https://api.ncsi.gov.om/uploads/pdfs/monthly_statistical_bulletin__october_2026_1792489912.pdf
+  accessed_at: '2026-11-09'
+  locator: page 3, Table 1 (total population registered by governorate and nationality), row Muscat
+  value: 1,569,604
+  unit: count
+  snippet: Muscat 2.7 1,528,611 1,569,604 956,708 612,896
+  source_license: Open Government License - Sultanate of Oman
+  content_sha256: 3baab12ebb9db6ed1fe6f26505bee763fce808ff623ad2ec234e91d50dd55b18
+  role: primary
+- publisher: National Centre for Statistics and Information, Sultanate of Oman
+  title: NCSI Monthly Statistical Bulletin, October 2026 (PDF)
+  url: https://api.ncsi.gov.om/uploads/pdfs/monthly_statistical_bulletin__october_2026_1792489912.pdf
+  accessed_at: '2026-11-09'
+  locator: page 3, Table 1, September 2026 Omani column, row Total Population
+  value: 3,078,233
+  unit: count
+  snippet: Total Population 2.1 5,343,630 5,454,352 2,376,119 3,078,233
+  source_license: Open Government License - Sultanate of Oman
+  content_sha256: 3baab12ebb9db6ed1fe6f26505bee763fce808ff623ad2ec234e91d50dd55b18
+  role: primary
+- publisher: National Centre for Statistics and Information, Sultanate of Oman
+  title: NCSI Monthly Statistical Bulletin, October 2026 (PDF)
+  url: https://api.ncsi.gov.om/uploads/pdfs/monthly_statistical_bulletin__october_2026_1792489912.pdf
+  accessed_at: '2026-11-09'
+  locator: page 3, callout beside Table 1, row Muscat Omani share
+  value: 39.0%
+  unit: text
+  snippet: 39.0% Omanis of the registered Total Population in Muscat
+  source_license: Open Government License - Sultanate of Oman
+  content_sha256: 3baab12ebb9db6ed1fe6f26505bee763fce808ff623ad2ec234e91d50dd55b18
+  role: primary
+- publisher: Sultanate of Oman (published by the National Centre for Statistics and Information)
+  title: Open Government Data License of the Sultanate of Oman (PDF, Arabic)
+  url: https://www.ncsi.gov.om/assets/docs/gov_license.pdf
+  accessed_at: '2026-11-09'
+  locator: 'page 1, Article 6 (general provisions), clause 2: compatibility with Creative Commons'
+  value: CC BY
+  unit: text
+  snippet: CREATIVE COMMONS
+  source_license: Open Government License - Sultanate of Oman
+  content_sha256: 43b7a23583b2c2509bc5eb06aafef0d41e93dcb5a8c9f97f34d7c6c4bd92f7d0
+  role: supporting
+assumed:
+- parameter: distributions.*.parameters.shares
+  value: count / sum of counts within each group
+  method: derived
+  rationale: The publisher gives counts; shares are each count over the group total.
+- parameter: column order
+  value: change %, Sep 2025 total, Sep 2026 total, Sep 2026 expatriate, Sep 2026 Omani, Aug 2026 total, Aug 2026
+    expatriate, Aug 2026 Omani, end-2025 total
+  method: derived
+  rationale: The PDF's bilingual header extracts out of order. The September 2026 total equals the September 2025
+    total grown by the printed change; expatriate plus Omani equals the total; and the Omani column gives Muscat
+    the 39.0% Omani share and the country the 56.44% Omani share that the bulletin prints beside the table.
+tests:
+- statistic: share["Omani","North Al Batinah"]
+  expected: 0.20050432
+  tolerance: 0.005
+- statistic: share["Omani","Muscat"]
+  expected: 0.19910644
+  tolerance: 0.005
+- statistic: sum_of_shares["Omani"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Expatriate","Muscat"]
+  expected: 0.40263472
+  tolerance: 0.005
+- statistic: share["Expatriate","North Al Batinah"]
+  expected: 0.14369777
+  tolerance: 0.005
+- statistic: sum_of_shares["Expatriate"]
+  expected: 1
+  tolerance: 1.0e-06
+notes: Population registered in Oman at the end of September 2026 by governorate (11 governorates) for Omanis and
+  expatriates, from Table 1 of the NCSI Monthly Statistical Bulletin (October 2026 issue). Group totals give the
+  nationality split (Omani 3,078,233, expatriate 2,376,119). Governorate names are normalised; the bulletin spells
+  some differently (AdDakhliyah, Al BatinahNorth, Ash Sharqiah). NCSI data are published under the Open Government
+  License of the Sultanate of Oman, whose general provisions say it is compatible with Creative Commons Attribution
+  4.0; it is not itself an SPDX licence, so the entry stays at license-review.

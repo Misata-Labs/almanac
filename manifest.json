@@ -8,7 +8,7 @@
     "entries": "ODbL-1.0",
     "code": "Apache-2.0"
   },
-  "entry_count": 806,
+  "entry_count": 811,
   "entries": [
     {
       "id": "ae-new-driving-licences-by-sex-2025",
@@ -458,6 +458,45 @@
         "end": "2024-12-31"
       },
       "variable": "vehicle_age_years"
+    },
+    {
+      "id": "om-registered-vehicles-by-registration-type-2026-09",
+      "title": "Oman registered vehicles by registration type, end of September 2026",
+      "kind": "marginal",
+      "domain": "automotive",
+      "region": "OM",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2026-09-30 to 2026-09-30",
+      "publishers": [
+        "National Centre for Statistics and Information, Sultanate of Oman",
+        "Sultanate of Oman (published by the National Centre for Statistics and Information)"
+      ],
+      "source_licenses": [
+        "Open Government License - Sultanate of Oman"
+      ],
+      "tags": [
+        "oman",
+        "gcc",
+        "ncsi",
+        "vehicles",
+        "vehicle-registrations",
+        "fleet",
+        "monthly-bulletin"
+      ],
+      "use_cases": [
+        "automotive-demo",
+        "fleet-demo",
+        "insurance",
+        "synthetic-customers"
+      ],
+      "path": "entries/automotive/OM/om-registered-vehicles-by-registration-type-2026-09.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/automotive/OM/om-registered-vehicles-by-registration-type-2026-09.yaml",
+      "observed_period": {
+        "start": "2026-09-30",
+        "end": "2026-09-30"
+      },
+      "variable": "vehicle_registration_type"
     },
     {
       "id": "us-epa-combined-fuel-economy-by-vehicle-class-my2025",
@@ -5562,42 +5601,6 @@
       "vectors": 13
     },
     {
-      "id": "bh-dinar-us-dollar-peg",
-      "title": "Bahraini dinar exchange rate regime: pegged to the US dollar at 0.376 dinars per dollar",
-      "kind": "rule",
-      "domain": "currency",
-      "region": "BH",
-      "tier": "B",
-      "status": "license-review",
-      "validity": "1980-01-01 to open",
-      "publishers": [
-        "Central Bank of Bahrain (CBB)"
-      ],
-      "source_licenses": [
-        "unstated"
-      ],
-      "tags": [
-        "gcc",
-        "currency",
-        "exchange-rate",
-        "peg",
-        "bahrain",
-        "banking"
-      ],
-      "use_cases": [
-        "banking-demo",
-        "treasury-demo",
-        "multi-currency-ledger",
-        "invoicing-demo"
-      ],
-      "path": "entries/currency/BH/bh-dinar-us-dollar-peg.yaml",
-      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/currency/BH/bh-dinar-us-dollar-peg.yaml",
-      "valid_from": "1980-01-01",
-      "valid_to": null,
-      "implementation": "almanac.rules.lookup_table",
-      "vectors": 2
-    },
-    {
       "id": "br-usd-brl-ptax-sell-rate-daily-2025",
       "title": "Brazil PTAX US dollar sell rate (BRL per USD), daily 2025",
       "kind": "temporal",
@@ -8784,6 +8787,48 @@
       "vectors": 4
     },
     {
+      "id": "om-registered-population-by-governorate-and-nationality-2026-09",
+      "title": "Oman registered population by governorate given nationality (Omani, expatriate), September 2026",
+      "kind": "conditional",
+      "domain": "demographics",
+      "region": "OM",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2026-09-30 to 2026-09-30",
+      "publishers": [
+        "National Centre for Statistics and Information, Sultanate of Oman",
+        "Sultanate of Oman (published by the National Centre for Statistics and Information)"
+      ],
+      "source_licenses": [
+        "Open Government License - Sultanate of Oman"
+      ],
+      "tags": [
+        "oman",
+        "gcc",
+        "ncsi",
+        "population",
+        "governorate",
+        "nationality",
+        "expatriates",
+        "monthly-bulletin"
+      ],
+      "use_cases": [
+        "synthetic-customers",
+        "address-generation",
+        "person-generation",
+        "customer-segmentation",
+        "banking-demo",
+        "retail-demo"
+      ],
+      "path": "entries/demographics/OM/om-registered-population-by-governorate-and-nationality-2026-09.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/OM/om-registered-population-by-governorate-and-nationality-2026-09.yaml",
+      "observed_period": {
+        "start": "2026-09-30",
+        "end": "2026-09-30"
+      },
+      "variable": "governorate"
+    },
+    {
       "id": "pl-population-by-single-year-of-age-2024",
       "title": "Poland population on 1 January 2024 by single year of age (Eurostat demo_pjan)",
       "kind": "marginal",
@@ -10708,6 +10753,47 @@
       "valid_to": "2025-12-31",
       "implementation": "almanac.rules.lookup_table",
       "vectors": 6
+    },
+    {
+      "id": "om-cpi-by-group-with-weights-2026-09",
+      "title": "Oman consumer price index by expenditure group with basket weights, September 2026 (base 2018)",
+      "kind": "rule",
+      "domain": "economy",
+      "region": "OM",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-09-01 to 2026-09-30",
+      "publishers": [
+        "National Centre for Statistics and Information, Sultanate of Oman",
+        "Sultanate of Oman (published by the National Centre for Statistics and Information)"
+      ],
+      "source_licenses": [
+        "Open Government License - Sultanate of Oman"
+      ],
+      "tags": [
+        "oman",
+        "gcc",
+        "ncsi",
+        "cpi",
+        "inflation",
+        "prices",
+        "coicop",
+        "basket-weights",
+        "reference-table"
+      ],
+      "use_cases": [
+        "retail-demo",
+        "pricing",
+        "contract-indexation",
+        "household-generation",
+        "banking-demo"
+      ],
+      "path": "entries/economy/OM/om-cpi-by-group-with-weights-2026-09.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/economy/OM/om-cpi-by-group-with-weights-2026-09.yaml",
+      "valid_from": "2026-09-01",
+      "valid_to": "2026-09-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
     },
     {
       "id": "global-agriculture-value-added-share-2024",
@@ -14013,6 +14099,89 @@
         "end": "2024-12-31"
       },
       "variable": "isic_rev4_section_group"
+    },
+    {
+      "id": "om-expatriate-workers-by-nationality-2026-09",
+      "title": "Oman expatriate workers by country of nationality, September 2026",
+      "kind": "marginal",
+      "domain": "employment",
+      "region": "OM",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2026-09-30 to 2026-09-30",
+      "publishers": [
+        "National Centre for Statistics and Information, Sultanate of Oman",
+        "Sultanate of Oman (published by the National Centre for Statistics and Information)"
+      ],
+      "source_licenses": [
+        "Open Government License - Sultanate of Oman"
+      ],
+      "tags": [
+        "oman",
+        "gcc",
+        "ncsi",
+        "employment",
+        "expatriates",
+        "migrant-workers",
+        "nationality",
+        "monthly-bulletin"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "hr-demo",
+        "person-generation",
+        "workforce-planning"
+      ],
+      "path": "entries/employment/OM/om-expatriate-workers-by-nationality-2026-09.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/OM/om-expatriate-workers-by-nationality-2026-09.yaml",
+      "observed_period": {
+        "start": "2026-09-30",
+        "end": "2026-09-30"
+      },
+      "variable": "expatriate_worker_nationality"
+    },
+    {
+      "id": "om-workers-by-sector-and-nationality-2026-09",
+      "title": "Oman workers by sector (government, private, family) given nationality, September 2026",
+      "kind": "conditional",
+      "domain": "employment",
+      "region": "OM",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2026-09-30 to 2026-09-30",
+      "publishers": [
+        "National Centre for Statistics and Information, Sultanate of Oman",
+        "Sultanate of Oman (published by the National Centre for Statistics and Information)"
+      ],
+      "source_licenses": [
+        "Open Government License - Sultanate of Oman"
+      ],
+      "tags": [
+        "oman",
+        "gcc",
+        "ncsi",
+        "employment",
+        "workforce",
+        "sector",
+        "nationality",
+        "expatriates",
+        "domestic-workers",
+        "monthly-bulletin"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "hr-demo",
+        "workforce-planning",
+        "hr-analytics",
+        "payroll-demo"
+      ],
+      "path": "entries/employment/OM/om-workers-by-sector-and-nationality-2026-09.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/OM/om-workers-by-sector-and-nationality-2026-09.yaml",
+      "observed_period": {
+        "start": "2026-09-30",
+        "end": "2026-09-30"
+      },
+      "variable": "sector"
     },
     {
       "id": "pl-minimum-wage-2026",
@@ -27632,6 +27801,46 @@
         "end": "2025-12-31"
       },
       "variable": "nights_spent"
+    },
+    {
+      "id": "om-hotel-guests-by-nationality-jan-sep-2026",
+      "title": "Oman guests of three- to five-star hotels by nationality group, January to September 2026",
+      "kind": "marginal",
+      "domain": "tourism",
+      "region": "OM",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2026-01-01 to 2026-09-30",
+      "publishers": [
+        "National Centre for Statistics and Information, Sultanate of Oman",
+        "Sultanate of Oman (published by the National Centre for Statistics and Information)"
+      ],
+      "source_licenses": [
+        "Open Government License - Sultanate of Oman"
+      ],
+      "tags": [
+        "oman",
+        "gcc",
+        "ncsi",
+        "tourism",
+        "hotels",
+        "hotel-guests",
+        "nationality",
+        "monthly-bulletin"
+      ],
+      "use_cases": [
+        "tourism-demo",
+        "synthetic-customers",
+        "retail-demo",
+        "customer-segmentation"
+      ],
+      "path": "entries/tourism/OM/om-hotel-guests-by-nationality-jan-sep-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tourism/OM/om-hotel-guests-by-nationality-jan-sep-2026.yaml",
+      "observed_period": {
+        "start": "2026-01-01",
+        "end": "2026-09-30"
+      },
+      "variable": "hotel_guest_nationality_group"
     },
     {
       "id": "sa-hotel-occupancy-and-daily-rate-by-region-2026q2",

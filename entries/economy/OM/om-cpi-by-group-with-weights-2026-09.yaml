@@ -1,0 +1,235 @@
+id: om-cpi-by-group-with-weights-2026-09
+title: Oman consumer price index by expenditure group with basket weights, September 2026 (base 2018)
+kind: rule
+domain: economy
+region: OM
+status: license-review
+tier: B
+valid_from: '2026-09-01'
+valid_to: '2026-09-30'
+tags:
+- oman
+- gcc
+- ncsi
+- cpi
+- inflation
+- prices
+- coicop
+- basket-weights
+- reference-table
+use_cases:
+- retail-demo
+- pricing
+- contract-indexation
+- household-generation
+- banking-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    base: average prices of January to December 2018 = 100
+    rows:
+      '01':
+        label: Food and non-alcoholic beverages
+        weight: 20.615
+        index_2026_09: 124.1
+        index_2026_08: 122.7
+        index_2025_09: 114.9
+        change_pct_2026_09_on_2025_09: 8.03
+        change_pct_2026_09_on_2026_08: 1.14
+        change_pct_jan_sep_2026_average: 5.48
+      '02':
+        label: Tobacco
+        weight: 0.11
+        index_2026_09: 207.8
+        index_2026_08: 207.8
+        index_2025_09: 207.8
+        change_pct_2026_09_on_2025_09: 0.0
+        change_pct_2026_09_on_2026_08: 0.0
+        change_pct_jan_sep_2026_average: 0.0
+      '03':
+        label: Clothing and footwear
+        weight: 6.129
+        index_2026_09: 100.9
+        index_2026_08: 100.9
+        index_2025_09: 100.9
+        change_pct_2026_09_on_2025_09: 0.07
+        change_pct_2026_09_on_2026_08: 0.01
+        change_pct_jan_sep_2026_average: 0.06
+      '04':
+        label: Housing, water, electricity, gas and other fuels
+        weight: 31.701
+        index_2026_09: 102.9
+        index_2026_08: 100.9
+        index_2025_09: 102.8
+        change_pct_2026_09_on_2025_09: 0.06
+        change_pct_2026_09_on_2026_08: 2.01
+        change_pct_jan_sep_2026_average: -0.19
+      '05':
+        label: Furnishings, household equipment and routine household maintenance
+        weight: 6.327
+        index_2026_09: 113.5
+        index_2026_08: 113.3
+        index_2025_09: 109.9
+        change_pct_2026_09_on_2025_09: 3.25
+        change_pct_2026_09_on_2026_08: 0.11
+        change_pct_jan_sep_2026_average: 3.01
+      '06':
+        label: Health
+        weight: 1.424
+        index_2026_09: 109.8
+        index_2026_08: 109.8
+        index_2025_09: 108.0
+        change_pct_2026_09_on_2025_09: 1.7
+        change_pct_2026_09_on_2026_08: 0.0
+        change_pct_jan_sep_2026_average: 1.73
+      '07':
+        label: Transport
+        weight: 14.521
+        index_2026_09: 108.6
+        index_2026_08: 112.0
+        index_2025_09: 103.7
+        change_pct_2026_09_on_2025_09: 4.76
+        change_pct_2026_09_on_2026_08: -3.02
+        change_pct_jan_sep_2026_average: 5.52
+      08:
+        label: Communication
+        weight: 5.874
+        index_2026_09: 97.4
+        index_2026_08: 97.4
+        index_2025_09: 97.4
+        change_pct_2026_09_on_2025_09: 0.0
+        change_pct_2026_09_on_2026_08: 0.0
+        change_pct_jan_sep_2026_average: 0.0
+      09:
+        label: Recreation and culture
+        weight: 1.142
+        index_2026_09: 107.9
+        index_2026_08: 107.9
+        index_2025_09: 107.5
+        change_pct_2026_09_on_2025_09: 0.39
+        change_pct_2026_09_on_2026_08: 0.02
+        change_pct_jan_sep_2026_average: 0.26
+      '10':
+        label: Education
+        weight: 2.388
+        index_2026_09: 113.0
+        index_2026_08: 113.0
+        index_2025_09: 110.6
+        change_pct_2026_09_on_2025_09: 2.15
+        change_pct_2026_09_on_2026_08: 0.0
+        change_pct_jan_sep_2026_average: 2.15
+      '11':
+        label: Restaurants and hotels
+        weight: 4.493
+        index_2026_09: 115.1
+        index_2026_08: 115.1
+        index_2025_09: 111.1
+        change_pct_2026_09_on_2025_09: 3.59
+        change_pct_2026_09_on_2026_08: 0.01
+        change_pct_jan_sep_2026_average: 4.64
+      '12':
+        label: Miscellaneous goods and services
+        weight: 5.276
+        index_2026_09: 127.8
+        index_2026_08: 127.7
+        index_2025_09: 122.1
+        change_pct_2026_09_on_2025_09: 4.7
+        change_pct_2026_09_on_2026_08: 0.12
+        change_pct_jan_sep_2026_average: 8.94
+      '00':
+        label: General index
+        weight: 100.0
+        index_2026_09: 110.7
+        index_2026_08: 110.2
+        index_2025_09: 107.3
+        change_pct_2026_09_on_2025_09: 3.2
+        change_pct_2026_09_on_2026_08: 0.41
+        change_pct_jan_sep_2026_average: 2.95
+  vectors:
+  - input:
+      key: '01'
+      column: weight
+    expected: 20.615
+    origin: source
+  - input:
+      key: '00'
+      column: index_2026_09
+    expected: 110.7
+    origin: source
+  - input:
+      key: '07'
+      column: index_2025_09
+    expected: 103.7
+    origin: source
+  - input: '13'
+    expected: false
+    origin: derived
+evidence:
+- publisher: National Centre for Statistics and Information, Sultanate of Oman
+  title: NCSI Monthly Statistical Bulletin, October 2026 (PDF)
+  url: https://api.ncsi.gov.om/uploads/pdfs/monthly_statistical_bulletin__october_2026_1792489912.pdf
+  accessed_at: '2026-11-09'
+  locator: page 16, Table 13 (Sultanate of Oman consumer price index), row 1. Foods & non-alcoholic beverages
+  value: '20.615'
+  unit: decimal
+  snippet: 5.48 8.03 1.14 124.1 122.7 114.9 20.615
+  source_license: Open Government License - Sultanate of Oman
+  content_sha256: 3baab12ebb9db6ed1fe6f26505bee763fce808ff623ad2ec234e91d50dd55b18
+  role: primary
+- publisher: National Centre for Statistics and Information, Sultanate of Oman
+  title: NCSI Monthly Statistical Bulletin, October 2026 (PDF)
+  url: https://api.ncsi.gov.om/uploads/pdfs/monthly_statistical_bulletin__october_2026_1792489912.pdf
+  accessed_at: '2026-11-09'
+  locator: page 16, Table 13, row General Index
+  value: 110.7
+  unit: decimal
+  snippet: General Index 2.95 3.20 0.41 110.7 110.2 107.3 100.0
+  source_license: Open Government License - Sultanate of Oman
+  content_sha256: 3baab12ebb9db6ed1fe6f26505bee763fce808ff623ad2ec234e91d50dd55b18
+  role: primary
+- publisher: National Centre for Statistics and Information, Sultanate of Oman
+  title: NCSI Monthly Statistical Bulletin, October 2026 (PDF)
+  url: https://api.ncsi.gov.om/uploads/pdfs/monthly_statistical_bulletin__october_2026_1792489912.pdf
+  accessed_at: '2026-11-09'
+  locator: page 16, Table 13 footnote, row base period
+  value: '2018'
+  unit: text
+  snippet: Base Price = Average Price of Jan - Dec 2018
+  source_license: Open Government License - Sultanate of Oman
+  content_sha256: 3baab12ebb9db6ed1fe6f26505bee763fce808ff623ad2ec234e91d50dd55b18
+  role: primary
+- publisher: Sultanate of Oman (published by the National Centre for Statistics and Information)
+  title: Open Government Data License of the Sultanate of Oman (PDF, Arabic)
+  url: https://www.ncsi.gov.om/assets/docs/gov_license.pdf
+  accessed_at: '2026-11-09'
+  locator: 'page 1, Article 6 (general provisions), clause 2: compatibility with Creative Commons'
+  value: CC BY
+  unit: text
+  snippet: CREATIVE COMMONS
+  source_license: Open Government License - Sultanate of Oman
+  content_sha256: 43b7a23583b2c2509bc5eb06aafef0d41e93dcb5a8c9f97f34d7c6c4bd92f7d0
+  role: supporting
+assumed:
+- parameter: column order
+  value: Jan-Sep average change %, Sep/Sep change %, Sep/Aug change %, Sep 2026 index, Aug 2026 index, Sep 2025
+    index, weight
+  method: derived
+  rationale: The bilingual header extracts out of order; the builder checks that the three index columns reproduce
+    the printed year-on-year and month-on-month changes within rounding for every group.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 13
+  tolerance: 0
+- statistic: max[weight]
+  expected: 100.0
+  tolerance: 0
+notes: 'Oman''s consumer price index for September 2026 by the twelve COICOP expenditure groups and the general
+  index (key 00), with each group''s basket weight (weights sum to 100, the general index row carries 100.0), the
+  index for September 2026, August 2026 and September 2025, and the changes the bulletin prints. Base: average prices
+  of January to December 2018. Group labels are normalised (the bulletin prints ''Resturants'' and ''routing'').
+  Weights give a ready household spending mix. NCSI data are published under the Open Government License of the
+  Sultanate of Oman, whose general provisions say it is compatible with Creative Commons Attribution 4.0; it is
+  not itself an SPDX licence, so the entry stays at license-review.'

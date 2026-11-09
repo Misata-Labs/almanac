@@ -1,0 +1,113 @@
+id: om-hotel-guests-by-nationality-jan-sep-2026
+title: Oman guests of three- to five-star hotels by nationality group, January to September 2026
+kind: marginal
+domain: tourism
+region: OM
+status: license-review
+tier: B
+observed_period:
+  start: '2026-01-01'
+  end: '2026-09-30'
+tags:
+- oman
+- gcc
+- ncsi
+- tourism
+- hotels
+- hotel-guests
+- nationality
+- monthly-bulletin
+use_cases:
+- tourism-demo
+- synthetic-customers
+- retail-demo
+- customer-segmentation
+spec:
+  variable: hotel_guest_nationality_group
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Omani: 0.4395625
+        G.C.C.: 0.08787371
+        Other Arab: 0.04599145
+        Africans: 0.00776034
+        Asians: 0.16526329
+        Europeans: 0.19141372
+        Americans: 0.02653501
+        Oceanian: 0.00901534
+        Not Stated: 0.02658465
+      counts:
+        Omani: 664073
+        G.C.C.: 132756
+        Other Arab: 69482
+        Africans: 11724
+        Asians: 249673
+        Europeans: 289180
+        Americans: 40088
+        Oceanian: 13620
+        Not Stated: 40163
+      total: 1510759
+evidence:
+- publisher: National Centre for Statistics and Information, Sultanate of Oman
+  title: NCSI Monthly Statistical Bulletin, October 2026 (PDF)
+  url: https://api.ncsi.gov.om/uploads/pdfs/monthly_statistical_bulletin__october_2026_1792489912.pdf
+  accessed_at: '2026-11-09'
+  locator: page 34, Table 30 (main indicators for hotels classified 3 to 5 stars), row Omani
+  value: 664,073
+  unit: count
+  snippet: Omani 3.4 664,073 642,071
+  source_license: Open Government License - Sultanate of Oman
+  content_sha256: 3baab12ebb9db6ed1fe6f26505bee763fce808ff623ad2ec234e91d50dd55b18
+  role: primary
+- publisher: National Centre for Statistics and Information, Sultanate of Oman
+  title: NCSI Monthly Statistical Bulletin, October 2026 (PDF)
+  url: https://api.ncsi.gov.om/uploads/pdfs/monthly_statistical_bulletin__october_2026_1792489912.pdf
+  accessed_at: '2026-11-09'
+  locator: page 34, Table 30, row Total No. of Guests
+  value: 1,510,759
+  unit: count
+  snippet: Total No. of Guests -10.4 1,510,759 1,686,484
+  source_license: Open Government License - Sultanate of Oman
+  content_sha256: 3baab12ebb9db6ed1fe6f26505bee763fce808ff623ad2ec234e91d50dd55b18
+  role: primary
+- publisher: Sultanate of Oman (published by the National Centre for Statistics and Information)
+  title: Open Government Data License of the Sultanate of Oman (PDF, Arabic)
+  url: https://www.ncsi.gov.om/assets/docs/gov_license.pdf
+  accessed_at: '2026-11-09'
+  locator: 'page 1, Article 6 (general provisions), clause 2: compatibility with Creative Commons'
+  value: CC BY
+  unit: text
+  snippet: CREATIVE COMMONS
+  source_license: Open Government License - Sultanate of Oman
+  content_sha256: 43b7a23583b2c2509bc5eb06aafef0d41e93dcb5a8c9f97f34d7c6c4bd92f7d0
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / sum of counts within each group
+  method: derived
+  rationale: The publisher gives counts; shares are each count over the group total.
+- parameter: column order
+  value: Jan-Sep change %, Jan-Sep 2026, Jan-Sep 2025, Sep, Aug, Jul 2026, full-year 2025
+  method: derived
+  rationale: The builder checks that the first two count columns reproduce each printed January-September change;
+    the monthly total row matches the bar chart above the table (September 157,929).
+tests:
+- statistic: share["Omani"]
+  expected: 0.4395625
+  tolerance: 0.005
+- statistic: share["Europeans"]
+  expected: 0.19141372
+  tolerance: 0.005
+- statistic: share["Asians"]
+  expected: 0.16526329
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 1.0e-06
+notes: Cumulative guests of hotels classified three to five stars in Oman from January to September 2026 by nationality
+  group (Omani, GCC, other Arab, African, Asian, European, American, Oceanian, not stated), from Table 30 of the
+  NCSI Monthly Statistical Bulletin (October 2026 issue); 2026 figures are preliminary. NCSI data are published
+  under the Open Government License of the Sultanate of Oman, whose general provisions say it is compatible with
+  Creative Commons Attribution 4.0; it is not itself an SPDX licence, so the entry stays at license-review.

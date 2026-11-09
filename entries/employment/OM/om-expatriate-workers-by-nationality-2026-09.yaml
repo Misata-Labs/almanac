@@ -1,0 +1,101 @@
+id: om-expatriate-workers-by-nationality-2026-09
+title: Oman expatriate workers by country of nationality, September 2026
+kind: marginal
+domain: employment
+region: OM
+status: license-review
+tier: B
+observed_period:
+  start: '2026-09-30'
+  end: '2026-09-30'
+tags:
+- oman
+- gcc
+- ncsi
+- employment
+- expatriates
+- migrant-workers
+- nationality
+- monthly-bulletin
+use_cases:
+- synthetic-employees
+- hr-demo
+- person-generation
+- workforce-planning
+spec:
+  variable: expatriate_worker_nationality
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Bangladeshis: 0.32304614
+        Indians: 0.28569795
+        Pakistanis: 0.15259909
+        Egyptians: 0.03142834
+        Philipinos: 0.02333587
+        Myanmar: 0.02077068
+        Sri Lankans: 0.01120661
+        Sudanese: 0.00963741
+        Tanzanian: 0.01583334
+        Other Nationalities: 0.12644457
+      counts:
+        Bangladeshis: 599070
+        Indians: 529810
+        Pakistanis: 282986
+        Egyptians: 58282
+        Philipinos: 43275
+        Myanmar: 38518
+        Sri Lankans: 20782
+        Sudanese: 17872
+        Tanzanian: 29362
+        Other Nationalities: 234484
+      total: 1854441
+evidence:
+- publisher: National Centre for Statistics and Information, Sultanate of Oman
+  title: NCSI Monthly Statistical Bulletin, October 2026 (PDF)
+  url: https://api.ncsi.gov.om/uploads/pdfs/monthly_statistical_bulletin__october_2026_1792489912.pdf
+  accessed_at: '2026-11-09'
+  locator: page 21, Table 18 (expatriate workers), by nationality, row Indians
+  value: 529,810
+  unit: count
+  snippet: Indians 2.3 529,810 533,085 520,447
+  source_license: Open Government License - Sultanate of Oman
+  content_sha256: 3baab12ebb9db6ed1fe6f26505bee763fce808ff623ad2ec234e91d50dd55b18
+  role: primary
+- publisher: Sultanate of Oman (published by the National Centre for Statistics and Information)
+  title: Open Government Data License of the Sultanate of Oman (PDF, Arabic)
+  url: https://www.ncsi.gov.om/assets/docs/gov_license.pdf
+  accessed_at: '2026-11-09'
+  locator: 'page 1, Article 6 (general provisions), clause 2: compatibility with Creative Commons'
+  value: CC BY
+  unit: text
+  snippet: CREATIVE COMMONS
+  source_license: Open Government License - Sultanate of Oman
+  content_sha256: 43b7a23583b2c2509bc5eb06aafef0d41e93dcb5a8c9f97f34d7c6c4bd92f7d0
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / sum of counts within each group
+  method: derived
+  rationale: The publisher gives counts; shares are each count over the group total. Column order as for Table 18
+    by sector (first count column is September 2026).
+tests:
+- statistic: share["Bangladeshis"]
+  expected: 0.32304614
+  tolerance: 0.005
+- statistic: share["Indians"]
+  expected: 0.28569795
+  tolerance: 0.005
+- statistic: share["Pakistanis"]
+  expected: 0.15259909
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 1.0e-06
+notes: 'Expatriate workers in Oman at the end of September 2026 by country of nationality: the nine largest groups
+  as the bulletin lists them (Bangladeshis, Indians, Pakistanis, Egyptians, Philipinos as spelt, Myanmar, Sri Lankans,
+  Sudanese, Tanzanian) and ''Other Nationalities''. Pair with om-workers-by-sector-and-nationality-2026-09 for the
+  sector split. NCSI data are published under the Open Government License of the Sultanate of Oman, whose general
+  provisions say it is compatible with Creative Commons Attribution 4.0; it is not itself an SPDX licence, so the
+  entry stays at license-review.'

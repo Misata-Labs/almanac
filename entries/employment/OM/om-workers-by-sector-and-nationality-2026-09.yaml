@@ -1,0 +1,134 @@
+id: om-workers-by-sector-and-nationality-2026-09
+title: Oman workers by sector (government, private, family) given nationality, September 2026
+kind: conditional
+domain: employment
+region: OM
+status: license-review
+tier: B
+observed_period:
+  start: '2026-09-30'
+  end: '2026-09-30'
+tags:
+- oman
+- gcc
+- ncsi
+- employment
+- workforce
+- sector
+- nationality
+- expatriates
+- domestic-workers
+- monthly-bulletin
+use_cases:
+- synthetic-employees
+- hr-demo
+- workforce-planning
+- hr-analytics
+- payroll-demo
+spec:
+  variable: sector
+  unit: ratio
+  given: nationality
+  distributions:
+    Omani:
+      family: categorical
+      parameters:
+        shares:
+          Government: 0.43325151
+          Private: 0.49717044
+          Family: 0.0676375
+          Communal: 0.00193613
+          Other: 4.42e-06
+        counts:
+          Government: 391824
+          Private: 449631
+          Family: 61170
+          Communal: 1751
+          Other: 4
+        total: 904380
+    Expatriate:
+      family: categorical
+      parameters:
+        shares:
+          Government: 0.02151106
+          Private: 0.76652641
+          Family: 0.20649781
+          Communal: 0.00495837
+          Other: 0.00050635
+        counts:
+          Government: 39891
+          Private: 1421478
+          Family: 382938
+          Communal: 9195
+          Other: 939
+        total: 1854441
+evidence:
+- publisher: National Centre for Statistics and Information, Sultanate of Oman
+  title: NCSI Monthly Statistical Bulletin, October 2026 (PDF)
+  url: https://api.ncsi.gov.om/uploads/pdfs/monthly_statistical_bulletin__october_2026_1792489912.pdf
+  accessed_at: '2026-11-09'
+  locator: page 20, Table 17 (Omani workers), by sector, row Private
+  value: 449,631
+  unit: count
+  snippet: Private 6.8 449,631 445,799 430,913
+  source_license: Open Government License - Sultanate of Oman
+  content_sha256: 3baab12ebb9db6ed1fe6f26505bee763fce808ff623ad2ec234e91d50dd55b18
+  role: primary
+- publisher: National Centre for Statistics and Information, Sultanate of Oman
+  title: NCSI Monthly Statistical Bulletin, October 2026 (PDF)
+  url: https://api.ncsi.gov.om/uploads/pdfs/monthly_statistical_bulletin__october_2026_1792489912.pdf
+  accessed_at: '2026-11-09'
+  locator: page 21, Table 18 (expatriate workers), by sector, row Private
+  value: 1,421,478
+  unit: count
+  snippet: Private 0.9 1,421,478 1,408,882 1,411,467
+  source_license: Open Government License - Sultanate of Oman
+  content_sha256: 3baab12ebb9db6ed1fe6f26505bee763fce808ff623ad2ec234e91d50dd55b18
+  role: primary
+- publisher: Sultanate of Oman (published by the National Centre for Statistics and Information)
+  title: Open Government Data License of the Sultanate of Oman (PDF, Arabic)
+  url: https://www.ncsi.gov.om/assets/docs/gov_license.pdf
+  accessed_at: '2026-11-09'
+  locator: 'page 1, Article 6 (general provisions), clause 2: compatibility with Creative Commons'
+  value: CC BY
+  unit: text
+  snippet: CREATIVE COMMONS
+  source_license: Open Government License - Sultanate of Oman
+  content_sha256: 43b7a23583b2c2509bc5eb06aafef0d41e93dcb5a8c9f97f34d7c6c4bd92f7d0
+  role: supporting
+assumed:
+- parameter: distributions.*.parameters.shares
+  value: count / sum of counts within each group
+  method: derived
+  rationale: The publisher gives counts; shares are each count over the group total.
+- parameter: column order
+  value: change %, Sep 2026, Aug 2026, 2025
+  method: derived
+  rationale: Tables 17 and 18 use the bulletin's three-period layout; on Table 24 (vehicles), whose pie chart prints
+    shares for September 2026, the first count column reproduces those shares, so the first column is read as September
+    2026 here too.
+tests:
+- statistic: share["Omani","Private"]
+  expected: 0.49717044
+  tolerance: 0.005
+- statistic: share["Omani","Government"]
+  expected: 0.43325151
+  tolerance: 0.005
+- statistic: sum_of_shares["Omani"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Expatriate","Private"]
+  expected: 0.76652641
+  tolerance: 0.005
+- statistic: share["Expatriate","Family"]
+  expected: 0.20649781
+  tolerance: 0.005
+- statistic: sum_of_shares["Expatriate"]
+  expected: 1
+  tolerance: 1.0e-06
+notes: Workers in Oman at the end of September 2026 by sector of employment, for Omanis (Table 17) and expatriates
+  (Table 18) of the NCSI Monthly Statistical Bulletin (October 2026 issue). 'Family' is employment by households
+  (domestic workers); 'Communal' is the civil-society sector. The two groups together give the nationality-by-sector
+  table for synthetic employees. NCSI data are published under the Open Government License of the Sultanate of Oman,
+  whose general provisions say it is compatible with Creative Commons Attribution 4.0; it is not itself an SPDX
+  licence, so the entry stays at license-review.

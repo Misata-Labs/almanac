@@ -8,11 +8,11 @@ report, the UAE Ministry of Finance and Federal Tax Authority's tax
 legislation and corporate tax guide, the UAE employment-relationship
 Decree-Law, the General Pension and Social Security Authority's published
 contribution rates, the IBAN standards of the Central Banks of Bahrain and
-Kuwait, the Central Bank of Kuwait's quarterly review, the Central Bank of
-Bahrain's monetary policy page and the Oman Tax Authority's VAT and income
-tax laws. Every value and snippet is checked against the text the verifier
-extracts before an entry is written, and each PDF locator names the page the
-snippet was found on. Run from the repository root:
+Kuwait, the Central Bank of Kuwait's quarterly review, the UAE top-up tax
+Cabinet Decision and the Oman Tax Authority's VAT and income tax laws.
+Every value and snippet is checked against the text the verifier extracts
+before an entry is written, and each PDF locator names the page the snippet
+was found on. Run from the repository root:
 
     uv run python tools/build_gcc_rules.py
 """
@@ -81,8 +81,6 @@ GPSSA_LAW57_TITLE = "GPSSA reviews the most prominent features of Federal Law No
 CBB = "Central Bank of Bahrain (CBB)"
 CBB_IBAN_URL = "https://www.cbb.gov.bh/wp-content/uploads/2018/12/IBAN-Standard-Document-16-02-2011.pdf"
 CBB_IBAN_TITLE = "Version 1: ISO IBAN Standard for the Kingdom of Bahrain, 16 February 2011"
-CBB_POLICY_URL = "https://www.cbb.gov.bh/monetary-policy/"
-CBB_POLICY_TITLE = "Monetary Policy"
 CBK = "Central Bank of Kuwait (CBK)"
 CBK_IBAN_URL = "https://www.cbk.gov.kw/en/images/iban-9721_v60_tcm10-9721.pdf"
 CBK_IBAN_TITLE = "Information about IBAN Implementation in Kuwait, version 1.1"
@@ -959,31 +957,6 @@ def bh_iban() -> dict:
     )
 
 
-def bh_dinar_peg() -> dict:
-    policy = lambda value, snippet: cite(CBB, CBB_POLICY_TITLE, CBB_POLICY_URL, "Exchange Rate Policy", value, snippet, unit="decimal")  # noqa: E731
-    return rule_entry(
-        "bh-dinar-us-dollar-peg",
-        "Bahraini dinar exchange rate regime: pegged to the US dollar at 0.376 dinars per dollar",
-        "currency",
-        "BH",
-        ("1980-01-01", None),
-        "almanac.rules.lookup_table",
-        {"rows": {"BHD": {"anchor": "USD", "regime": "fixed peg", "units_per_usd": "0.376", "since": "1980"}}},
-        [lookup("BHD", "units_per_usd", "0.376"), lookup("BHD", "anchor", "USD")],
-        [
-            policy("0.376", "Bahrain maintains an exchange rate peg at 0.376 Bahraini dinars to the US dollar."),
-            policy("1980", "The peg has been effectively unchanged since 1980."),
-        ],
-        [{"statistic": "count", "expected": 1, "tolerance": 0}],
-        "The Bahraini dinar is pegged to the US dollar at 0.376 dinars per dollar, a peg the Central Bank of Bahrain describes "
-        "as effectively unchanged since 1980. The CBB buys and sells US dollars to retail banks at rates very close to the "
-        "official rate.",
-        ["currency", "exchange-rate", "peg", "bahrain", "banking"],
-        FX_USE_CASES,
-        [assume("valid_from", "1980-01-01", "derived", "The source gives only the year 1980; the first day of the year is used.")],
-    )
-
-
 def kw_iban() -> dict:
     iban = lambda where, value, snippet: cite(CBK, CBK_IBAN_TITLE, CBK_IBAN_URL, where, value, snippet)  # noqa: E731
     return rule_entry(
@@ -1180,7 +1153,6 @@ BUILDERS = [
     ae_end_of_service,
     ae_gpssa,
     bh_iban,
-    bh_dinar_peg,
     kw_iban,
     kw_dinar_regime,
     om_vat,

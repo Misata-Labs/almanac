@@ -24,7 +24,7 @@ SHARE_DIGITS = 8
 SHARE_TOLERANCE = 0.005
 
 
-def fetch_patiently(url: str, attempts: int = 12, pause: float = 6.0) -> bytes:
+def fetch_patiently(url: str, attempts: int = 40, pause: float = 10.0) -> bytes:
     """Fetch ``url``, retrying dropped connections and transient statuses; several Gulf hosts reset often."""
     failure: Exception | None = None
     for attempt in range(attempts):
