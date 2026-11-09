@@ -1,0 +1,416 @@
+id: qa-registered-deaths-by-age-nationality-and-sex-2022
+title: Qatar registered deaths by age given nationality and sex, 2022
+kind: conditional
+domain: healthcare
+region: QA
+status: verified
+tier: A
+observed_period:
+  start: '2022-01-01'
+  end: '2022-12-31'
+tags:
+- qatar
+- gcc
+- npc
+- deaths
+- mortality
+- vital-statistics
+- age
+- nationality
+- sex
+use_cases:
+- health-demo
+- insurance
+- synthetic-customers
+- claims-generation
+spec:
+  variable: age_at_death
+  unit: ratio
+  given: nationality|sex
+  distributions:
+    Non-Qataris|Females:
+      family: categorical
+      parameters:
+        shares:
+          Under 1 Year: 0.13348946
+          '1': 0.01405152
+          '2': 0.00936768
+          '3': 0.00702576
+          '4': 0.01405152
+          5-9: 0.00468384
+          10-14: 0.00702576
+          15-19: 0.01405152
+          20-24: 0.0117096
+          25-29: 0.02576112
+          30-34: 0.03278689
+          35-39: 0.05386417
+          40-44: 0.03044496
+          45-49: 0.05386417
+          50-54: 0.05152225
+          55-59: 0.06557377
+          60-64: 0.07025761
+          65-69: 0.07494145
+          70-74: 0.09601874
+          75-79: 0.07025761
+          80-84: 0.05620609
+          85-89: 0.05386417
+          90-94: 0.02576112
+          95 +: 0.0234192
+          Not Stated: 0.0
+        counts:
+          Under 1 Year: 57
+          '1': 6
+          '2': 4
+          '3': 3
+          '4': 6
+          5-9: 2
+          10-14: 3
+          15-19: 6
+          20-24: 5
+          25-29: 11
+          30-34: 14
+          35-39: 23
+          40-44: 13
+          45-49: 23
+          50-54: 22
+          55-59: 28
+          60-64: 30
+          65-69: 32
+          70-74: 41
+          75-79: 30
+          80-84: 24
+          85-89: 23
+          90-94: 11
+          95 +: 10
+          Not Stated: 0
+        total: 427
+        labels_ar:
+          Under 1 Year: اقل من عام
+          '1': '1'
+          '2': '2'
+          '3': '3'
+          '4': '4'
+          5-9: 5-9
+          10-14: 10-14
+          15-19: 15-19
+          20-24: 20-24
+          25-29: 25-29
+          30-34: 30-34
+          35-39: 35-39
+          40-44: 40-44
+          45-49: 45-49
+          50-54: 50-54
+          55-59: 55-59
+          60-64: 60-64
+          65-69: 65-69
+          70-74: 70-74
+          75-79: 75-79
+          80-84: 80-84
+          85-89: 85-89
+          90-94: 90-94
+          95 +: 95 +
+          Not Stated: غير مبين
+    Non-Qataris|Males:
+      family: categorical
+      parameters:
+        shares:
+          Under 1 Year: 0.04369274
+          '1': 0.00211416
+          '2': 0.00211416
+          '3': 0.00211416
+          '4': 0.00070472
+          5-9: 0.00634249
+          10-14: 0.00775194
+          15-19: 0.01127555
+          20-24: 0.03805497
+          25-29: 0.07329105
+          30-34: 0.0880902
+          35-39: 0.10359408
+          40-44: 0.09372798
+          45-49: 0.08949965
+          50-54: 0.09513742
+          55-59: 0.08949965
+          60-64: 0.06342495
+          65-69: 0.05355884
+          70-74: 0.04298802
+          75-79: 0.02959831
+          80-84: 0.03030303
+          85-89: 0.01832276
+          90-94: 0.01127555
+          95 +: 0.00352361
+          Not Stated: 0.0
+        counts:
+          Under 1 Year: 62
+          '1': 3
+          '2': 3
+          '3': 3
+          '4': 1
+          5-9: 9
+          10-14: 11
+          15-19: 16
+          20-24: 54
+          25-29: 104
+          30-34: 125
+          35-39: 147
+          40-44: 133
+          45-49: 127
+          50-54: 135
+          55-59: 127
+          60-64: 90
+          65-69: 76
+          70-74: 61
+          75-79: 42
+          80-84: 43
+          85-89: 26
+          90-94: 16
+          95 +: 5
+          Not Stated: 0
+        total: 1419
+        labels_ar:
+          Under 1 Year: اقل من عام
+          '1': '1'
+          '2': '2'
+          '3': '3'
+          '4': '4'
+          5-9: 5-9
+          10-14: 10-14
+          15-19: 15-19
+          20-24: 20-24
+          25-29: 25-29
+          30-34: 30-34
+          35-39: 35-39
+          40-44: 40-44
+          45-49: 45-49
+          50-54: 50-54
+          55-59: 55-59
+          60-64: 60-64
+          65-69: 65-69
+          70-74: 70-74
+          75-79: 75-79
+          80-84: 80-84
+          85-89: 85-89
+          90-94: 90-94
+          95 +: 95 +
+          Not Stated: غير مبين
+    Qataris|Females:
+      family: categorical
+      parameters:
+        shares:
+          Under 1 Year: 0.06619385
+          '1': 0.00472813
+          '2': 0.0070922
+          '3': 0.00236407
+          '4': 0.0
+          5-9: 0.00472813
+          10-14: 0.0070922
+          15-19: 0.0141844
+          20-24: 0.01182033
+          25-29: 0.0141844
+          30-34: 0.01182033
+          35-39: 0.01891253
+          40-44: 0.03309693
+          45-49: 0.03073286
+          50-54: 0.04018913
+          55-59: 0.05200946
+          60-64: 0.08274232
+          65-69: 0.11111111
+          70-74: 0.08983452
+          75-79: 0.13002364
+          80-84: 0.11347518
+          85-89: 0.10874704
+          90-94: 0.02364066
+          95 +: 0.0212766
+          Not Stated: 0.0
+        counts:
+          Under 1 Year: 28
+          '1': 2
+          '2': 3
+          '3': 1
+          '4': 0
+          5-9: 2
+          10-14: 3
+          15-19: 6
+          20-24: 5
+          25-29: 6
+          30-34: 5
+          35-39: 8
+          40-44: 14
+          45-49: 13
+          50-54: 17
+          55-59: 22
+          60-64: 35
+          65-69: 47
+          70-74: 38
+          75-79: 55
+          80-84: 48
+          85-89: 46
+          90-94: 10
+          95 +: 9
+          Not Stated: 0
+        total: 423
+        labels_ar:
+          Under 1 Year: اقل من عام
+          '1': '1'
+          '2': '2'
+          '3': '3'
+          '4': '4'
+          5-9: 5-9
+          10-14: 10-14
+          15-19: 15-19
+          20-24: 20-24
+          25-29: 25-29
+          30-34: 30-34
+          35-39: 35-39
+          40-44: 40-44
+          45-49: 45-49
+          50-54: 50-54
+          55-59: 55-59
+          60-64: 60-64
+          65-69: 65-69
+          70-74: 70-74
+          75-79: 75-79
+          80-84: 80-84
+          85-89: 85-89
+          90-94: 90-94
+          95 +: 95 +
+          Not Stated: غير مبين
+    Qataris|Males:
+      family: categorical
+      parameters:
+        shares:
+          Under 1 Year: 0.04597701
+          '1': 0.00383142
+          '2': 0.0
+          '3': 0.00191571
+          '4': 0.00191571
+          5-9: 0.0
+          10-14: 0.00574713
+          15-19: 0.06130268
+          20-24: 0.03256705
+          25-29: 0.03639847
+          30-34: 0.0210728
+          35-39: 0.00957854
+          40-44: 0.03065134
+          45-49: 0.02490421
+          50-54: 0.0651341
+          55-59: 0.0651341
+          60-64: 0.09003831
+          65-69: 0.08812261
+          70-74: 0.0862069
+          75-79: 0.08429119
+          80-84: 0.0862069
+          85-89: 0.10344828
+          90-94: 0.03831418
+          95 +: 0.01724138
+          Not Stated: 0.0
+        counts:
+          Under 1 Year: 24
+          '1': 2
+          '2': 0
+          '3': 1
+          '4': 1
+          5-9: 0
+          10-14: 3
+          15-19: 32
+          20-24: 17
+          25-29: 19
+          30-34: 11
+          35-39: 5
+          40-44: 16
+          45-49: 13
+          50-54: 34
+          55-59: 34
+          60-64: 47
+          65-69: 46
+          70-74: 45
+          75-79: 44
+          80-84: 45
+          85-89: 54
+          90-94: 20
+          95 +: 9
+          Not Stated: 0
+        total: 522
+        labels_ar:
+          Under 1 Year: اقل من عام
+          '1': '1'
+          '2': '2'
+          '3': '3'
+          '4': '4'
+          5-9: 5-9
+          10-14: 10-14
+          15-19: 15-19
+          20-24: 20-24
+          25-29: 25-29
+          30-34: 30-34
+          35-39: 35-39
+          40-44: 40-44
+          45-49: 45-49
+          50-54: 50-54
+          55-59: 55-59
+          60-64: 60-64
+          65-69: 65-69
+          70-74: 70-74
+          75-79: 75-79
+          80-84: 80-84
+          85-89: 85-89
+          90-94: 90-94
+          95 +: 95 +
+          Not Stated: غير مبين
+evidence:
+- publisher: National Planning Council, State of Qatar (Qatar open data portal)
+  title: Qatar open data portal, dataset registered-deaths-by-nationality-gender-and-age (CSV export, 2022)
+  url: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets/registered-deaths-by-nationality-gender-and-age/exports/csv?delimiter=%2C&select=year%2Cnationality%2Cgender%2Cage_in_years%2Cvalue%2Cljnsy%2Clnw%2Cl_mr_blsnwt&where=year%3Ddate%272022%27&order_by=nationality%2Cgender%2Cage_in_years
+  accessed_at: '2026-11-09'
+  locator: row nationality=Non-Qataris, gender=Males, age_in_years=Under 1 Year
+  value: '62.0'
+  unit: count
+  snippet: 2022,Non-Qataris,Males,Under 1 Year,62.0
+  source_license: CC-BY-4.0
+  content_sha256: 1e0dae13e908656d82b4f1eaa34670bbfc55ddfb26d3d487841dd7cf3fc973cb
+  role: primary
+- publisher: National Planning Council, State of Qatar (Qatar open data portal)
+  title: Qatar open data portal catalogue, licence fields of dataset registered-deaths-by-nationality-gender-and-age
+    (JSON)
+  url: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets?select=dataset_id%2Cdefault.license%2Cdefault.license_url%2Cdefault.publisher&where=dataset_id%3D%22registered-deaths-by-nationality-gender-and-age%22
+  accessed_at: '2026-11-09'
+  locator: results[0].default.license_url
+  value: https://creativecommons.org/licenses/by/4.0/
+  unit: text
+  snippet: '"default.license_url": "https://creativecommons.org/licenses/by/4.0/"'
+  source_license: CC-BY-4.0
+  content_sha256: 7a52913d3e4f97b7b28370b37dbde6629c918b5f905f0b2ec112d21ee02da7a7
+  role: supporting
+assumed:
+- parameter: distributions.*.parameters.shares
+  value: count / sum of counts within each group
+  method: derived
+  rationale: The publisher gives counts; shares are each count over the group total. Ages are under 1, single years
+    1 to 4, five-year bands to 95 +, and not stated, ordered by age. Rows whose sex is not stated are left out.
+tests:
+- statistic: share["Non-Qataris|Females","Under 1 Year"]
+  expected: 0.13348946
+  tolerance: 0.005
+- statistic: sum_of_shares["Non-Qataris|Females"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Non-Qataris|Males","35-39"]
+  expected: 0.10359408
+  tolerance: 0.005
+- statistic: sum_of_shares["Non-Qataris|Males"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Qataris|Females","75-79"]
+  expected: 0.13002364
+  tolerance: 0.005
+- statistic: sum_of_shares["Qataris|Females"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Qataris|Males","85-89"]
+  expected: 0.10344828
+  tolerance: 0.005
+- statistic: sum_of_shares["Qataris|Males"]
+  expected: 1
+  tolerance: 1.0e-06
+notes: Deaths registered in Qatar in 2022 by age of the deceased for Qatari and non-Qatari men and women, with Arabic
+  age labels from the same export; 2022 is the latest year on the portal for this table. The portal's catalogue
+  record for the dataset gives the licence as CC BY with the Creative Commons Attribution 4.0 licence URL.

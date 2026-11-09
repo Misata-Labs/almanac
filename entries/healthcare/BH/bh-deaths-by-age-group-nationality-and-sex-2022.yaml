@@ -1,0 +1,333 @@
+id: bh-deaths-by-age-group-nationality-and-sex-2022
+title: Bahrain registered deaths by age group given nationality and sex, 2022
+kind: conditional
+domain: healthcare
+region: BH
+status: license-review
+tier: A
+observed_period:
+  start: '2022-01-01'
+  end: '2022-12-31'
+tags:
+- bahrain
+- gcc
+- deaths
+- mortality
+- vital-statistics
+- age
+- nationality
+- sex
+use_cases:
+- health-demo
+- insurance
+- synthetic-customers
+- claims-generation
+spec:
+  variable: age_group_at_death
+  unit: ratio
+  given: nationality|sex
+  distributions:
+    Bahraini|Male:
+      family: categorical
+      parameters:
+        shares:
+          < Week: 0.0
+          Week < Month: 0.0
+          Month < Year: 0.00592885
+          1 - 4: 0.00724638
+          5 - 9: 0.00263505
+          10 - 14: 0.01317523
+          15 - 19: 0.01185771
+          20 - 24: 0.01449275
+          25 - 29: 0.01844532
+          30 - 34: 0.01844532
+          35 - 39: 0.02305665
+          40 - 44: 0.0256917
+          45 - 49: 0.03293808
+          50 - 54: 0.0513834
+          55 - 59: 0.07839262
+          60 - 64: 0.09617918
+          65 - 69: 0.12121212
+          70 - 74: 0.14097497
+          75 +: 0.33794466
+        counts:
+          < Week: 0
+          Week < Month: 0
+          Month < Year: 9
+          1 - 4: 11
+          5 - 9: 4
+          10 - 14: 20
+          15 - 19: 18
+          20 - 24: 22
+          25 - 29: 28
+          30 - 34: 28
+          35 - 39: 35
+          40 - 44: 39
+          45 - 49: 50
+          50 - 54: 78
+          55 - 59: 119
+          60 - 64: 146
+          65 - 69: 184
+          70 - 74: 214
+          75 +: 513
+        total: 1518
+        labels_ar:
+          < Week: أقل من إسبوع
+          Week < Month: أقل من شهر
+          Month < Year: أقل من سنة
+          1 - 4: 1 - 4
+          5 - 9: 5 - 9
+          10 - 14: 10 - 14
+          15 - 19: 15 - 19
+          20 - 24: 20 - 24
+          25 - 29: 25 - 29
+          30 - 34: 30 - 34
+          35 - 39: 35 - 39
+          40 - 44: 40 - 44
+          45 - 49: 45 - 49
+          50 - 54: 50 - 54
+          55 - 59: 55 - 59
+          60 - 64: 60 - 64
+          65 - 69: 65 - 69
+          70 - 74: 70 - 74
+          75 +: 75 +
+    Bahraini|Female:
+      family: categorical
+      parameters:
+        shares:
+          < Week: 0.0
+          Week < Month: 0.0
+          Month < Year: 0.00603448
+          1 - 4: 0.00517241
+          5 - 9: 0.00948276
+          10 - 14: 0.00344828
+          15 - 19: 0.00689655
+          20 - 24: 0.00431034
+          25 - 29: 0.01034483
+          30 - 34: 0.01982759
+          35 - 39: 0.01982759
+          40 - 44: 0.02758621
+          45 - 49: 0.02413793
+          50 - 54: 0.0362069
+          55 - 59: 0.05258621
+          60 - 64: 0.11724138
+          65 - 69: 0.09482759
+          70 - 74: 0.11551724
+          75 +: 0.44655172
+        counts:
+          < Week: 0
+          Week < Month: 0
+          Month < Year: 7
+          1 - 4: 6
+          5 - 9: 11
+          10 - 14: 4
+          15 - 19: 8
+          20 - 24: 5
+          25 - 29: 12
+          30 - 34: 23
+          35 - 39: 23
+          40 - 44: 32
+          45 - 49: 28
+          50 - 54: 42
+          55 - 59: 61
+          60 - 64: 136
+          65 - 69: 110
+          70 - 74: 134
+          75 +: 518
+        total: 1160
+        labels_ar:
+          < Week: أقل من إسبوع
+          Week < Month: أقل من شهر
+          Month < Year: أقل من سنة
+          1 - 4: 1 - 4
+          5 - 9: 5 - 9
+          10 - 14: 10 - 14
+          15 - 19: 15 - 19
+          20 - 24: 20 - 24
+          25 - 29: 25 - 29
+          30 - 34: 30 - 34
+          35 - 39: 35 - 39
+          40 - 44: 40 - 44
+          45 - 49: 45 - 49
+          50 - 54: 50 - 54
+          55 - 59: 55 - 59
+          60 - 64: 60 - 64
+          65 - 69: 65 - 69
+          70 - 74: 70 - 74
+          75 +: 75 +
+    Non-Bahraini|Male:
+      family: categorical
+      parameters:
+        shares:
+          < Week: 0.04817276
+          Week < Month: 0.03156146
+          Month < Year: 0.03654485
+          1 - 4: 0.00664452
+          5 - 9: 0.00664452
+          10 - 14: 0.00166113
+          15 - 19: 0.00996678
+          20 - 24: 0.02325581
+          25 - 29: 0.0448505
+          30 - 34: 0.06644518
+          35 - 39: 0.10963455
+          40 - 44: 0.11627907
+          45 - 49: 0.089701
+          50 - 54: 0.11627907
+          55 - 59: 0.09966777
+          60 - 64: 0.06810631
+          65 - 69: 0.03986711
+          70 - 74: 0.02491694
+          75 +: 0.05980066
+        counts:
+          < Week: 29
+          Week < Month: 19
+          Month < Year: 22
+          1 - 4: 4
+          5 - 9: 4
+          10 - 14: 1
+          15 - 19: 6
+          20 - 24: 14
+          25 - 29: 27
+          30 - 34: 40
+          35 - 39: 66
+          40 - 44: 70
+          45 - 49: 54
+          50 - 54: 70
+          55 - 59: 60
+          60 - 64: 41
+          65 - 69: 24
+          70 - 74: 15
+          75 +: 36
+        total: 602
+        labels_ar:
+          < Week: أقل من إسبوع
+          Week < Month: أقل من شهر
+          Month < Year: أقل من سنة
+          1 - 4: 1 - 4
+          5 - 9: 5 - 9
+          10 - 14: 10 - 14
+          15 - 19: 15 - 19
+          20 - 24: 20 - 24
+          25 - 29: 25 - 29
+          30 - 34: 30 - 34
+          35 - 39: 35 - 39
+          40 - 44: 40 - 44
+          45 - 49: 45 - 49
+          50 - 54: 50 - 54
+          55 - 59: 55 - 59
+          60 - 64: 60 - 64
+          65 - 69: 65 - 69
+          70 - 74: 70 - 74
+          75 +: 75 +
+    Non-Bahraini|Female:
+      family: categorical
+      parameters:
+        shares:
+          < Week: 0.08298755
+          Week < Month: 0.04149378
+          Month < Year: 0.09958506
+          1 - 4: 0.02489627
+          5 - 9: 0.0
+          10 - 14: 0.00829876
+          15 - 19: 0.00414938
+          20 - 24: 0.00829876
+          25 - 29: 0.04149378
+          30 - 34: 0.04979253
+          35 - 39: 0.02489627
+          40 - 44: 0.07053942
+          45 - 49: 0.04149378
+          50 - 54: 0.03319502
+          55 - 59: 0.05394191
+          60 - 64: 0.06639004
+          65 - 69: 0.06224066
+          70 - 74: 0.0373444
+          75 +: 0.24896266
+        counts:
+          < Week: 20
+          Week < Month: 10
+          Month < Year: 24
+          1 - 4: 6
+          5 - 9: 0
+          10 - 14: 2
+          15 - 19: 1
+          20 - 24: 2
+          25 - 29: 10
+          30 - 34: 12
+          35 - 39: 6
+          40 - 44: 17
+          45 - 49: 10
+          50 - 54: 8
+          55 - 59: 13
+          60 - 64: 16
+          65 - 69: 15
+          70 - 74: 9
+          75 +: 60
+        total: 241
+        labels_ar:
+          < Week: أقل من إسبوع
+          Week < Month: أقل من شهر
+          Month < Year: أقل من سنة
+          1 - 4: 1 - 4
+          5 - 9: 5 - 9
+          10 - 14: 10 - 14
+          15 - 19: 15 - 19
+          20 - 24: 20 - 24
+          25 - 29: 25 - 29
+          30 - 34: 30 - 34
+          35 - 39: 35 - 39
+          40 - 44: 40 - 44
+          45 - 49: 45 - 49
+          50 - 54: 50 - 54
+          55 - 59: 55 - 59
+          60 - 64: 60 - 64
+          65 - 69: 65 - 69
+          70 - 74: 70 - 74
+          75 +: 75 +
+evidence:
+- publisher: Ministry of Health, Kingdom of Bahrain (via the Bahrain open data portal)
+  title: Bahrain open data portal, dataset 22-deaths-by-age-groups (CSV export, 2022)
+  url: https://www.data.gov.bh/api/explore/v2.1/catalog/datasets/22-deaths-by-age-groups/exports/csv?delimiter=%2C&select=n%2Cyear%2Cnationality%2Csex%2Cage_group%2Cdeaths%2Cljnsy%2Cjns%2Cfy_t_lsn&where=year%3Ddate%272022%27&order_by=n
+  accessed_at: '2026-11-09'
+  locator: row nationality=Non-Bahraini, sex=Male, age_group=75 +
+  value: '36'
+  unit: count
+  snippet: 1729.0,2022,Non-Bahraini,Male,75 +,36
+  source_license: unstated
+  content_sha256: d7fef7b63e9e781a3bccfe1e73758585d4bf25cd8d2293fa9a740939175607a3
+  role: primary
+assumed:
+- parameter: distributions.*.parameters.shares
+  value: count / sum of counts within each group
+  method: derived
+  rationale: The publisher gives counts; shares are each count over the group total. Age labels have doubled spaces
+    collapsed ('1  -  4' becomes '1 - 4').
+tests:
+- statistic: share["Bahraini|Male","75 +"]
+  expected: 0.33794466
+  tolerance: 0.005
+- statistic: sum_of_shares["Bahraini|Male"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Bahraini|Female","75 +"]
+  expected: 0.44655172
+  tolerance: 0.005
+- statistic: sum_of_shares["Bahraini|Female"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Non-Bahraini|Male","40 - 44"]
+  expected: 0.11627907
+  tolerance: 0.005
+- statistic: sum_of_shares["Non-Bahraini|Male"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Non-Bahraini|Female","75 +"]
+  expected: 0.24896266
+  tolerance: 0.005
+- statistic: sum_of_shares["Non-Bahraini|Female"]
+  expected: 1
+  tolerance: 1.0e-06
+notes: Deaths registered in Bahrain in 2022 by age group of the deceased (under a week, under a month, under a year,
+  then five-year bands to 75 +), for Bahraini and non-Bahraini men and women, from the Ministry of Health's vital
+  statistics on the national open data portal, with Arabic age-group labels from the same export. The Bahrain open
+  data portal publishes no licence for this dataset (its catalogue licence field is empty), so the entry stays at
+  license-review until the Information & eGovernment Authority's reuse terms are confirmed.

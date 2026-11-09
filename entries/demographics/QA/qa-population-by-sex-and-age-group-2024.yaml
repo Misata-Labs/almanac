@@ -1,0 +1,176 @@
+id: qa-population-by-sex-and-age-group-2024
+title: Qatar population estimates by age group given sex, 2024
+kind: conditional
+domain: demographics
+region: QA
+status: verified
+tier: A
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+tags:
+- qatar
+- gcc
+- npc
+- population
+- age
+- sex
+- population-pyramid
+use_cases:
+- synthetic-customers
+- person-generation
+- customer-segmentation
+- insurance
+- retail-demo
+spec:
+  variable: age_group
+  unit: ratio
+  given: sex
+  distributions:
+    Females:
+      family: categorical
+      parameters:
+        shares:
+          '0': 0.01640331
+          1 - 4: 0.06368282
+          5 - 9: 0.08758812
+          10 - 14: 0.07548627
+          15 - 19: 0.05295878
+          20 - 24: 0.05503572
+          25 - 29: 0.10992601
+          30 - 34: 0.14202704
+          35 - 39: 0.13649428
+          40 - 44: 0.10104192
+          45 - 49: 0.06449076
+          50 - 54: 0.03762518
+          55 - 59: 0.02343238
+          60 - 64: 0.0145052
+          65 - 69: 0.00894442
+          70 - 74: 0.00501461
+          75 - 79: 0.0028461
+          80 +: 0.00249707
+        counts:
+          '0': 15227
+          1 - 4: 59116
+          5 - 9: 81307
+          10 - 14: 70073
+          15 - 19: 49161
+          20 - 24: 51089
+          25 - 29: 102043
+          30 - 34: 131842
+          35 - 39: 126706
+          40 - 44: 93796
+          45 - 49: 59866
+          50 - 54: 34927
+          55 - 59: 21752
+          60 - 64: 13465
+          65 - 69: 8303
+          70 - 74: 4655
+          75 - 79: 2642
+          80 +: 2318
+        total: 928288
+    Males:
+      family: categorical
+      parameters:
+        shares:
+          '0': 0.00720882
+          1 - 4: 0.0276873
+          5 - 9: 0.03809538
+          10 - 14: 0.03260559
+          15 - 19: 0.02730314
+          20 - 24: 0.08484008
+          25 - 29: 0.14123491
+          30 - 34: 0.16126558
+          35 - 39: 0.1675702
+          40 - 44: 0.12918545
+          45 - 49: 0.08041791
+          50 - 54: 0.05038364
+          55 - 59: 0.02730179
+          60 - 64: 0.01312069
+          65 - 69: 0.00645449
+          70 - 74: 0.00283044
+          75 - 79: 0.00135924
+          80 +: 0.00113534
+        counts:
+          '0': 15969
+          1 - 4: 61333
+          5 - 9: 84389
+          10 - 14: 72228
+          15 - 19: 60482
+          20 - 24: 187938
+          25 - 29: 312864
+          30 - 34: 357236
+          35 - 39: 371202
+          40 - 44: 286172
+          45 - 49: 178142
+          50 - 54: 111610
+          55 - 59: 60479
+          60 - 64: 29065
+          65 - 69: 14298
+          70 - 74: 6270
+          75 - 79: 3011
+          80 +: 2515
+        total: 2215203
+evidence:
+- publisher: National Planning Council, State of Qatar (Qatar open data portal)
+  title: Qatar open data portal, dataset population-estimates-by-gender-and-age-groups (CSV export, 2024)
+  url: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets/population-estimates-by-gender-and-age-groups/exports/csv?delimiter=%2C&select=year%2Cgender%2Cage_groups%2Ctotal%2Clnw&where=year%3Ddate%272024%27&order_by=gender%2Cage_groups
+  accessed_at: '2026-11-09'
+  locator: row gender=Males, age_groups=30 - 34
+  value: '357236'
+  unit: count
+  snippet: 2024,Males,30 - 34,357236
+  source_license: CC-BY-4.0
+  content_sha256: 581ad461323a4ca7f106e828fc312c26858782c32e02abbf2d40c9b8a41a007e
+  role: primary
+- publisher: National Planning Council, State of Qatar (Qatar open data portal)
+  title: Qatar open data portal, dataset population-estimates-by-gender-and-age-groups (CSV export, 2024)
+  url: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets/population-estimates-by-gender-and-age-groups/exports/csv?delimiter=%2C&select=year%2Cgender%2Cage_groups%2Ctotal%2Clnw&where=year%3Ddate%272024%27&order_by=gender%2Cage_groups
+  accessed_at: '2026-11-09'
+  locator: row gender=Females, age_groups=80 +
+  value: '2318'
+  unit: count
+  snippet: 2024,Females,80 +,2318
+  source_license: CC-BY-4.0
+  content_sha256: 581ad461323a4ca7f106e828fc312c26858782c32e02abbf2d40c9b8a41a007e
+  role: primary
+- publisher: National Planning Council, State of Qatar (Qatar open data portal)
+  title: Qatar open data portal catalogue, licence fields of dataset population-estimates-by-gender-and-age-groups
+    (JSON)
+  url: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets?select=dataset_id%2Cdefault.license%2Cdefault.license_url%2Cdefault.publisher&where=dataset_id%3D%22population-estimates-by-gender-and-age-groups%22
+  accessed_at: '2026-11-09'
+  locator: results[0].default.license_url
+  value: https://creativecommons.org/licenses/by/4.0/
+  unit: text
+  snippet: '"default.license_url": "https://creativecommons.org/licenses/by/4.0/"'
+  source_license: CC-BY-4.0
+  content_sha256: 9771044f6dde1df10aff0afc8792d538618e8c35a486bcd3fbc47f9c474bd2b4
+  role: supporting
+assumed:
+- parameter: distributions.*.parameters.shares
+  value: count / sum of counts within each group
+  method: derived
+  rationale: The publisher gives counts; shares are each count over the group total. Age groups are ordered by their
+    lower bound.
+tests:
+- statistic: share["Females","30 - 34"]
+  expected: 0.14202704
+  tolerance: 0.005
+- statistic: share["Females","35 - 39"]
+  expected: 0.13649428
+  tolerance: 0.005
+- statistic: sum_of_shares["Females"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Males","35 - 39"]
+  expected: 0.1675702
+  tolerance: 0.005
+- statistic: share["Males","30 - 34"]
+  expected: 0.16126558
+  tolerance: 0.005
+- statistic: sum_of_shares["Males"]
+  expected: 1
+  tolerance: 1.0e-06
+notes: Population estimates for Qatar in 2024 by age group (under 1, 1-4, then five-year bands to 80+) for males
+  and females. This table is not split by nationality. The portal's catalogue record for the dataset gives the licence
+  as CC BY with the Creative Commons Attribution 4.0 licence URL.

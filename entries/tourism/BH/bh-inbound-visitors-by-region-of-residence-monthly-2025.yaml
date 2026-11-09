@@ -1,0 +1,161 @@
+id: bh-inbound-visitors-by-region-of-residence-monthly-2025
+title: Bahrain inbound visitors by region of residence, monthly 2025
+kind: temporal
+domain: tourism
+region: BH
+status: license-review
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- bahrain
+- gcc
+- tourism
+- visitors
+- arrivals
+- monthly
+- time-series
+- seasonality
+use_cases:
+- tourism-demo
+- demand-forecasting
+- retail-demo
+- synthetic-customers
+spec:
+  variable: inbound_visitors_resident_in_saudi_arabia
+  unit: count
+  frequency: monthly
+  columns:
+  - other_gcc
+  - europe
+  - asia
+  - middle_east
+  - america
+  - other_countries
+  series:
+  - period: 2025-01
+    value: 1243204
+    other_gcc: 185725
+    europe: 33935
+    asia: 10581
+    middle_east: 4167
+    america: 5248
+    other_countries: 2675
+  - period: 2025-02
+    value: 1082188
+    other_gcc: 162077
+    europe: 33493
+    asia: 10370
+    middle_east: 2418
+    america: 4523
+    other_countries: 2193
+  - period: 2025-03
+    value: 802644
+    other_gcc: 76997
+    europe: 30605
+    asia: 10626
+    middle_east: 3702
+    america: 4191
+    other_countries: 3528
+  - period: 2025-04
+    value: 1124969
+    other_gcc: 145239
+    europe: 11966
+    asia: 4778
+    middle_east: 3465
+    america: 3147
+    other_countries: 500
+  - period: 2025-05
+    value: 1253297
+    other_gcc: 126051
+    europe: 6491
+    asia: 3535
+    middle_east: 3033
+    america: 1425
+    other_countries: 351
+  - period: 2025-06
+    value: 1118753
+    other_gcc: 129788
+    europe: 5207
+    asia: 3099
+    middle_east: 2899
+    america: 874
+    other_countries: 295
+  - period: 2025-07
+    value: 1164731
+    other_gcc: 143154
+    europe: 4144
+    asia: 2806
+    middle_east: 3312
+    america: 678
+    other_countries: 172
+  - period: 2025-08
+    value: 1163177
+    other_gcc: 172253
+    europe: 2925
+    asia: 2331
+    middle_east: 4439
+    america: 13328
+    other_countries: 4
+  - period: 2025-09
+    value: 895985
+    other_gcc: 126798
+    europe: 6498
+    asia: 4524
+    middle_east: 4430
+    america: 603
+    other_countries: 395
+  - period: 2025-10
+    value: 1042923
+    other_gcc: 121230
+    europe: 9899
+    asia: 2156
+    middle_east: 2791
+    america: 1057
+    other_countries: 488
+  - period: 2025-11
+    value: 1160260
+    other_gcc: 134582
+    europe: 19270
+    asia: 8266
+    middle_east: 989
+    america: 4469
+    other_countries: 2184
+  - period: 2025-12
+    value: 1055872
+    other_gcc: 185196
+    europe: 25616
+    asia: 11472
+    middle_east: 1557
+    america: 5708
+    other_countries: 3848
+evidence:
+- publisher: Bahrain Tourism & Exhibitions Authority (via the Bahrain open data portal)
+  title: Bahrain open data portal, dataset 05-inbound-visitors-by-countryregion-of-residence (CSV export, 2025)
+  url: https://www.data.gov.bh/api/explore/v2.1/catalog/datasets/05-inbound-visitors-by-countryregion-of-residence/exports/csv?delimiter=%2C&select=n%2Cyear%2Cmonth%2Cksa%2Cother_gcc%2Ceurope%2Casia%2Cmiddle_east%2Camerica%2Cother_countries%2Clshhr&where=year%3Ddate%272025%27&order_by=n
+  accessed_at: '2026-11-09'
+  locator: row year=2025, month=01 January (ksa, then the other regions)
+  value: '1243204.0'
+  unit: count
+  snippet: 2025,01 January,1243204.0
+  source_license: unstated
+  content_sha256: d7fee6b8c07071027abd8713316a6fb94dee251a3413a81d241da51109f1448b
+  role: primary
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 1243204
+  tolerance: 0
+- statistic: column[europe,2025-12]
+  expected: 25616
+  tolerance: 0
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: Monthly inbound visitors (arrivals) to Bahrain in 2025 by region of residence, from the Inbound Tourism Survey
+  published by the Bahrain Tourism & Exhibitions Authority. Visitors resident in Saudi Arabia are the series value;
+  the other GCC states, Europe, Asia, the Middle East, the Americas and other countries ride along as columns. The
+  source publishes no all-regions total; summing the seven figures gives one. The Bahrain open data portal publishes
+  no licence for this dataset (its catalogue licence field is empty), so the entry stays at license-review until
+  the Information & eGovernment Authority's reuse terms are confirmed.

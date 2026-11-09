@@ -1,0 +1,467 @@
+id: bh-private-sector-workers-by-wage-band-nationality-and-sex-2023
+title: Bahrain private-sector insured workers by monthly wage band (BHD) given nationality and sex, 2023
+kind: conditional
+domain: employment
+region: BH
+status: license-review
+tier: A
+observed_period:
+  start: '2023-01-01'
+  end: '2023-12-31'
+tags:
+- bahrain
+- gcc
+- wages
+- salary
+- wage-bands
+- private-sector
+- nationality
+- sex
+- social-insurance
+- sio
+use_cases:
+- synthetic-employees
+- hr-demo
+- payroll-demo
+- hr-analytics
+- banking-demo
+spec:
+  variable: monthly_wage_band_bhd
+  unit: ratio
+  given: nationality|sex
+  distributions:
+    Bahraini|Male:
+      family: categorical
+      parameters:
+        shares:
+          Less than 50: 0.0
+          50 - 99: 0.00018378
+          100 - 149: 0.00131708
+          150 - 199: 0.00338459
+          200 - 249: 0.01869946
+          250 - 299: 0.02920546
+          300 - 349: 0.21708834
+          350 - 399: 0.11195173
+          400 - 449: 0.05139672
+          450 - 499: 0.07364923
+          500 - 599: 0.0720718
+          600 - 699: 0.05952891
+          700 - 799: 0.04380054
+          800 - 899: 0.04020154
+          900 - 999: 0.02762803
+          1,000 - 1,499: 0.08302193
+          1,500 +: 0.16687086
+        counts:
+          Less than 50: 0
+          50 - 99: 12
+          100 - 149: 86
+          150 - 199: 221
+          200 - 249: 1221
+          250 - 299: 1907
+          300 - 349: 14175
+          350 - 399: 7310
+          400 - 449: 3356
+          450 - 499: 4809
+          500 - 599: 4706
+          600 - 699: 3887
+          700 - 799: 2860
+          800 - 899: 2625
+          900 - 999: 1804
+          1,000 - 1,499: 5421
+          1,500 +: 10896
+        total: 65296
+        bands_bhd:
+          Less than 50:
+            low: 0
+            high: 49
+          50 - 99:
+            low: 50
+            high: 99
+          100 - 149:
+            low: 100
+            high: 149
+          150 - 199:
+            low: 150
+            high: 199
+          200 - 249:
+            low: 200
+            high: 249
+          250 - 299:
+            low: 250
+            high: 299
+          300 - 349:
+            low: 300
+            high: 349
+          350 - 399:
+            low: 350
+            high: 399
+          400 - 449:
+            low: 400
+            high: 449
+          450 - 499:
+            low: 450
+            high: 499
+          500 - 599:
+            low: 500
+            high: 599
+          600 - 699:
+            low: 600
+            high: 699
+          700 - 799:
+            low: 700
+            high: 799
+          800 - 899:
+            low: 800
+            high: 899
+          900 - 999:
+            low: 900
+            high: 999
+          1,000 - 1,499:
+            low: 1000
+            high: 1499
+          1,500 +:
+            low: 1500
+            high: null
+    Bahraini|Female:
+      family: categorical
+      parameters:
+        shares:
+          Less than 50: 0.0
+          50 - 99: 0.00389223
+          100 - 149: 0.00709435
+          150 - 199: 0.03547176
+          200 - 249: 0.04902556
+          250 - 299: 0.0400541
+          300 - 349: 0.17520565
+          350 - 399: 0.08833435
+          400 - 449: 0.05203445
+          450 - 499: 0.15094131
+          500 - 599: 0.09512505
+          600 - 699: 0.06288301
+          700 - 799: 0.03679678
+          800 - 899: 0.03072379
+          900 - 999: 0.01984762
+          1,000 - 1,499: 0.05987412
+          1,500 +: 0.09269585
+        counts:
+          Less than 50: 0
+          50 - 99: 141
+          100 - 149: 257
+          150 - 199: 1285
+          200 - 249: 1776
+          250 - 299: 1451
+          300 - 349: 6347
+          350 - 399: 3200
+          400 - 449: 1885
+          450 - 499: 5468
+          500 - 599: 3446
+          600 - 699: 2278
+          700 - 799: 1333
+          800 - 899: 1113
+          900 - 999: 719
+          1,000 - 1,499: 2169
+          1,500 +: 3358
+        total: 36226
+        bands_bhd:
+          Less than 50:
+            low: 0
+            high: 49
+          50 - 99:
+            low: 50
+            high: 99
+          100 - 149:
+            low: 100
+            high: 149
+          150 - 199:
+            low: 150
+            high: 199
+          200 - 249:
+            low: 200
+            high: 249
+          250 - 299:
+            low: 250
+            high: 299
+          300 - 349:
+            low: 300
+            high: 349
+          350 - 399:
+            low: 350
+            high: 399
+          400 - 449:
+            low: 400
+            high: 449
+          450 - 499:
+            low: 450
+            high: 499
+          500 - 599:
+            low: 500
+            high: 599
+          600 - 699:
+            low: 600
+            high: 699
+          700 - 799:
+            low: 700
+            high: 799
+          800 - 899:
+            low: 800
+            high: 899
+          900 - 999:
+            low: 900
+            high: 999
+          1,000 - 1,499:
+            low: 1000
+            high: 1499
+          1,500 +:
+            low: 1500
+            high: null
+    Non-Bahraini|Male:
+      family: categorical
+      parameters:
+        shares:
+          Less than 50: 0.03043765
+          50 - 99: 0.37824577
+          100 - 149: 0.23549118
+          150 - 199: 0.0939451
+          200 - 249: 0.04151248
+          250 - 299: 0.04345335
+          300 - 349: 0.0215309
+          350 - 399: 0.0126459
+          400 - 449: 0.04508002
+          450 - 499: 0.0106446
+          500 - 599: 0.01655907
+          600 - 699: 0.01016361
+          700 - 799: 0.00787226
+          800 - 899: 0.00583713
+          900 - 999: 0.00440624
+          1,000 - 1,499: 0.01573728
+          1,500 +: 0.02643747
+        counts:
+          Less than 50: 12593
+          50 - 99: 156492
+          100 - 149: 97430
+          150 - 199: 38868
+          200 - 249: 17175
+          250 - 299: 17978
+          300 - 349: 8908
+          350 - 399: 5232
+          400 - 449: 18651
+          450 - 499: 4404
+          500 - 599: 6851
+          600 - 699: 4205
+          700 - 799: 3257
+          800 - 899: 2415
+          900 - 999: 1823
+          1,000 - 1,499: 6511
+          1,500 +: 10938
+        total: 413731
+        bands_bhd:
+          Less than 50:
+            low: 0
+            high: 49
+          50 - 99:
+            low: 50
+            high: 99
+          100 - 149:
+            low: 100
+            high: 149
+          150 - 199:
+            low: 150
+            high: 199
+          200 - 249:
+            low: 200
+            high: 249
+          250 - 299:
+            low: 250
+            high: 299
+          300 - 349:
+            low: 300
+            high: 349
+          350 - 399:
+            low: 350
+            high: 399
+          400 - 449:
+            low: 400
+            high: 449
+          450 - 499:
+            low: 450
+            high: 499
+          500 - 599:
+            low: 500
+            high: 599
+          600 - 699:
+            low: 600
+            high: 699
+          700 - 799:
+            low: 700
+            high: 799
+          800 - 899:
+            low: 800
+            high: 899
+          900 - 999:
+            low: 900
+            high: 999
+          1,000 - 1,499:
+            low: 1000
+            high: 1499
+          1,500 +:
+            low: 1500
+            high: null
+    Non-Bahraini|Female:
+      family: categorical
+      parameters:
+        shares:
+          Less than 50: 0.00934787
+          50 - 99: 0.14092857
+          100 - 149: 0.17201412
+          150 - 199: 0.1455692
+          200 - 249: 0.090681
+          250 - 299: 0.08279859
+          300 - 349: 0.06976486
+          350 - 399: 0.03827964
+          400 - 449: 0.07196305
+          450 - 499: 0.02560117
+          500 - 599: 0.03803539
+          600 - 699: 0.02087173
+          700 - 799: 0.01487666
+          800 - 899: 0.01243422
+          900 - 999: 0.00774918
+          1,000 - 1,499: 0.02886516
+          1,500 +: 0.0302196
+        counts:
+          Less than 50: 421
+          50 - 99: 6347
+          100 - 149: 7747
+          150 - 199: 6556
+          200 - 249: 4084
+          250 - 299: 3729
+          300 - 349: 3142
+          350 - 399: 1724
+          400 - 449: 3241
+          450 - 499: 1153
+          500 - 599: 1713
+          600 - 699: 940
+          700 - 799: 670
+          800 - 899: 560
+          900 - 999: 349
+          1,000 - 1,499: 1300
+          1,500 +: 1361
+        total: 45037
+        bands_bhd:
+          Less than 50:
+            low: 0
+            high: 49
+          50 - 99:
+            low: 50
+            high: 99
+          100 - 149:
+            low: 100
+            high: 149
+          150 - 199:
+            low: 150
+            high: 199
+          200 - 249:
+            low: 200
+            high: 249
+          250 - 299:
+            low: 250
+            high: 299
+          300 - 349:
+            low: 300
+            high: 349
+          350 - 399:
+            low: 350
+            high: 399
+          400 - 449:
+            low: 400
+            high: 449
+          450 - 499:
+            low: 450
+            high: 499
+          500 - 599:
+            low: 500
+            high: 599
+          600 - 699:
+            low: 600
+            high: 699
+          700 - 799:
+            low: 700
+            high: 799
+          800 - 899:
+            low: 800
+            high: 899
+          900 - 999:
+            low: 900
+            high: 999
+          1,000 - 1,499:
+            low: 1000
+            high: 1499
+          1,500 +:
+            low: 1500
+            high: null
+evidence:
+- publisher: Social Insurance Organization, Kingdom of Bahrain (via the Bahrain open data portal)
+  title: Bahrain open data portal, dataset 03-workers-by-social-ins-sy-private-sector-by-monthly-wage-g-nat-and-sex
+    (CSV export, 2023)
+  url: https://www.data.gov.bh/api/explore/v2.1/catalog/datasets/03-workers-by-social-ins-sy-private-sector-by-monthly-wage-g-nat-and-sex/exports/csv?delimiter=%2C&select=n%2Cyear%2Cmonthly_wage_groups_bahraini_dinar%2Cnationality%2Csex%2Cvalue%2Cljnsy%2Cljns&where=year%3Ddate%272023%27&order_by=n
+  accessed_at: '2026-11-09'
+  locator: first row for nationality=Non-Bahraini, sex=Male
+  value: '12593.0'
+  unit: count
+  snippet: 511.0,2023,Less than 50,Non-Bahraini,Male,12593.0
+  source_license: unstated
+  content_sha256: 5a28a69d54fadddbae783e8a8c58a942cd3a4ed4e7ffce571ca0f865fd23673a
+  role: primary
+- publisher: Social Insurance Organization, Kingdom of Bahrain (via the Bahrain open data portal)
+  title: Bahrain open data portal, dataset 03-workers-by-social-ins-sy-private-sector-by-monthly-wage-g-nat-and-sex
+    (CSV export, 2023)
+  url: https://www.data.gov.bh/api/explore/v2.1/catalog/datasets/03-workers-by-social-ins-sy-private-sector-by-monthly-wage-g-nat-and-sex/exports/csv?delimiter=%2C&select=n%2Cyear%2Cmonthly_wage_groups_bahraini_dinar%2Cnationality%2Csex%2Cvalue%2Cljnsy%2Cljns&where=year%3Ddate%272023%27&order_by=n
+  accessed_at: '2026-11-09'
+  locator: row wage band 1,500 +, nationality=Bahraini, sex=Female
+  value: '3358.0'
+  unit: count
+  snippet: 510.0,2023,"1,500 +",Bahraini,Female,3358.0
+  source_license: unstated
+  content_sha256: 5a28a69d54fadddbae783e8a8c58a942cd3a4ed4e7ffce571ca0f865fd23673a
+  role: primary
+assumed:
+- parameter: distributions.*.parameters.shares
+  value: count / sum of counts within each group
+  method: derived
+  rationale: The publisher gives counts; shares are each count over the group total.
+- parameter: distributions.*.parameters.bands_bhd
+  value: low and high Bahraini dinar bounds read from each band label
+  method: derived
+  rationale: The source labels bands as text ('50 - 99', '1,500 +'); the numeric bounds restate those labels so
+    a generator can draw a wage inside the band. 'Less than 50' becomes 0 to 49 and the open top band has no upper
+    bound.
+tests:
+- statistic: share["Bahraini|Male","300 - 349"]
+  expected: 0.21708834
+  tolerance: 0.005
+- statistic: sum_of_shares["Bahraini|Male"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Bahraini|Female","300 - 349"]
+  expected: 0.17520565
+  tolerance: 0.005
+- statistic: sum_of_shares["Bahraini|Female"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Non-Bahraini|Male","50 - 99"]
+  expected: 0.37824577
+  tolerance: 0.005
+- statistic: sum_of_shares["Non-Bahraini|Male"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Non-Bahraini|Female","100 - 149"]
+  expected: 0.17201412
+  tolerance: 0.005
+- statistic: sum_of_shares["Non-Bahraini|Female"]
+  expected: 1
+  tolerance: 1.0e-06
+notes: Workers covered by the Social Insurance Organization's private-sector scheme in 2023, by monthly wage band
+  in Bahraini dinars, for Bahraini and non-Bahraini men and women. The bands are those of the source (Less than
+  50, 50 - 99, ... 1,000 - 1,499, 1,500 +), with doubled spaces in the labels collapsed. Coverage is the private
+  sector scheme only; government employees are not included. The Bahrain open data portal publishes no licence for
+  this dataset (its catalogue licence field is empty), so the entry stays at license-review until the Information
+  & eGovernment Authority's reuse terms are confirmed.

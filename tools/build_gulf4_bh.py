@@ -161,7 +161,7 @@ def population_by_governorate() -> dict:
 
 def cpi_monthly() -> dict:
     dataset = "01-consumer-price-index-division-and-group-index-number"
-    months = " or ".join(f'(year="{y}" and month="{m}")' for y, m in CPI_MONTHS)
+    months = " or ".join(f"(year=date'{y}' and month=\"{m}\")" for y, m in CPI_MONTHS)
     where = f'(level=0 or level=2) and ({months})'
     url, raw = export(dataset, ["n", "year", "month", "coicop_code", "level", "coicop_division_group", "point", "lshhr"], where, ["n"])
     rows = csv_rows(raw)
@@ -229,7 +229,7 @@ def wage_bands() -> dict:
         else:
             bands[band] = {"low": numbers[0], "high": numbers[1]}
     for dist in dists.values():
-        dist["parameters"]["bands_bhd"] = bands
+        dist["parameters"]["bands_bhd"] = {band: dict(bounds) for band, bounds in bands.items()}
     line = csv_line(raw, ",Non-Bahraini,Male,").split(",")
     line_bh = csv_line(raw, "1,500 +", ",Bahraini,Female,")
     title = "Bahrain open data portal, dataset 03-workers-by-social-ins-sy-private-sector-by-monthly-wage-g-nat-and-sex (CSV export, 2023)"
@@ -263,7 +263,7 @@ def wage_bands() -> dict:
             "Workers covered by the Social Insurance Organization's private-sector scheme in 2023, by monthly wage band in "
             "Bahraini dinars, for Bahraini and non-Bahraini men and women. The bands are those of the source (Less than 50, "
             "50 - 99, ... 1,000 - 1,499, 1,500 +), with doubled spaces in the labels collapsed. Coverage is the private "
-            "sector only; government employees and domestic workers outside the scheme are not included. " + LICENSE_NOTE
+            "sector scheme only; government employees are not included. " + LICENSE_NOTE
         ),
     }
 
@@ -452,9 +452,11 @@ def deaths_by_age() -> dict:
 BUILDERS = [population_by_age, population_by_governorate, cpi_monthly, wage_bands, workers_by_activity, vehicles, inbound_visitors, work_permits, deaths_by_age]
 
 
-def build() -> list[Path]:
-    return [write(builder()) for builder in BUILDERS]
+def build(names: list[str] | None = None) -> list[Path]:
+    """Build every entry, or only the builders named (for example ``cpi_monthly``)."""
+    chosen = [b for b in BUILDERS if not names or b.__name__ in names]
+    return [write(builder()) for builder in chosen]
 
 
 if __name__ == "__main__":
-    build()
+    build(sys.argv[1:])

@@ -1,0 +1,259 @@
+id: qa-hotel-guests-by-nationality-and-rating-2022
+title: Qatar hotel guests by nationality group given hotel rating, with nights of stay, 2022
+kind: conditional
+domain: tourism
+region: QA
+status: verified
+tier: A
+observed_period:
+  start: '2022-01-01'
+  end: '2022-12-31'
+tags:
+- qatar
+- gcc
+- npc
+- tourism
+- hotels
+- hotel-guests
+- nationality
+- length-of-stay
+use_cases:
+- tourism-demo
+- synthetic-customers
+- retail-demo
+- customer-segmentation
+spec:
+  variable: guest_nationality_group
+  unit: ratio
+  given: hotel_rating
+  distributions:
+    Five Star:
+      family: categorical
+      parameters:
+        shares:
+          Africans (except Arabs): 0.03451262
+          Americans: 0.09239662
+          Asians (except Arabs): 0.15289176
+          Australian and New Zealanders: 0.011452
+          C.C.A.S.G (Other): 0.11007167
+          Europeans: 0.16901614
+          Other Arabs: 0.1094691
+          Qataris: 0.32019008
+        counts:
+          Africans (except Arabs): 98285
+          Americans: 263127
+          Asians (except Arabs): 435405
+          Australian and New Zealanders: 32613
+          C.C.A.S.G (Other): 313462
+          Europeans: 481324
+          Other Arabs: 311746
+          Qataris: 911837
+        total: 2847799
+        labels_ar:
+          Africans (except Arabs): أفارقة باستثناء العرب
+          Americans: أمريكيون
+          Asians (except Arabs): آسيويون باستثناء العرب
+          Australian and New Zealanders: استراليون ونيوزلنديون
+          C.C.A.S.G (Other): بقية مُواطني دول مجلس التعاون
+          Europeans: أوروبيون
+          Other Arabs: عرب آخرون
+          Qataris: قطريون
+        nights:
+          Africans (except Arabs): 134085
+          Americans: 399723
+          Asians (except Arabs): 579199
+          Australian and New Zealanders: 46846
+          C.C.A.S.G (Other): 421692
+          Europeans: 736020
+          Other Arabs: 375433
+          Qataris: 1522090
+    Four Star:
+      family: categorical
+      parameters:
+        shares:
+          Africans (except Arabs): 0.04264131
+          Americans: 0.0772459
+          Asians (except Arabs): 0.42884204
+          Australian and New Zealanders: 0.00779427
+          C.C.A.S.G (Other): 0.1003383
+          Europeans: 0.14540328
+          Other Arabs: 0.14367994
+          Qataris: 0.05405495
+        counts:
+          Africans (except Arabs): 48893
+          Americans: 88571
+          Asians (except Arabs): 491715
+          Australian and New Zealanders: 8937
+          C.C.A.S.G (Other): 115049
+          Europeans: 166721
+          Other Arabs: 164745
+          Qataris: 61980
+        total: 1146611
+        labels_ar:
+          Africans (except Arabs): أفارقة باستثناء العرب
+          Americans: أمريكيون
+          Asians (except Arabs): آسيويون باستثناء العرب
+          Australian and New Zealanders: استراليون ونيوزلنديون
+          C.C.A.S.G (Other): بقية مُواطني دول مجلس التعاون
+          Europeans: أوروبيون
+          Other Arabs: عرب آخرون
+          Qataris: قطريون
+        nights:
+          Africans (except Arabs): 99346
+          Americans: 155664
+          Asians (except Arabs): 796062
+          Australian and New Zealanders: 16153
+          C.C.A.S.G (Other): 202727
+          Europeans: 450086
+          Other Arabs: 290384
+          Qataris: 99734
+    Three Star:
+      family: categorical
+      parameters:
+        shares:
+          Africans (except Arabs): 0.06515136
+          Americans: 0.04563102
+          Asians (except Arabs): 0.4958958
+          Australian and New Zealanders: 0.00516288
+          C.C.A.S.G (Other): 0.0862214
+          Europeans: 0.10862981
+          Other Arabs: 0.13949523
+          Qataris: 0.0538125
+        counts:
+          Africans (except Arabs): 31447
+          Americans: 22025
+          Asians (except Arabs): 239357
+          Australian and New Zealanders: 2492
+          C.C.A.S.G (Other): 41617
+          Europeans: 52433
+          Other Arabs: 67331
+          Qataris: 25974
+        total: 482676
+        labels_ar:
+          Africans (except Arabs): أفارقة باستثناء العرب
+          Americans: أمريكيون
+          Asians (except Arabs): آسيويون باستثناء العرب
+          Australian and New Zealanders: استراليون ونيوزلنديون
+          C.C.A.S.G (Other): بقية مُواطني دول مجلس التعاون
+          Europeans: أوروبيون
+          Other Arabs: عرب آخرون
+          Qataris: قطريون
+        nights:
+          Africans (except Arabs): 36182
+          Americans: 29868
+          Asians (except Arabs): 262502
+          Australian and New Zealanders: 2926
+          C.C.A.S.G (Other): 49323
+          Europeans: 66874
+          Other Arabs: 78357
+          Qataris: 30709
+    Two & One Star:
+      family: categorical
+      parameters:
+        shares:
+          Africans (except Arabs): 0.09891205
+          Americans: 0.0655555
+          Asians (except Arabs): 0.51086339
+          Australian and New Zealanders: 0.01047216
+          C.C.A.S.G (Other): 0.064012
+          Europeans: 0.06065706
+          Other Arabs: 0.16986977
+          Qataris: 0.01965807
+        counts:
+          Africans (except Arabs): 9228
+          Americans: 6116
+          Asians (except Arabs): 47661
+          Australian and New Zealanders: 977
+          C.C.A.S.G (Other): 5972
+          Europeans: 5659
+          Other Arabs: 15848
+          Qataris: 1834
+        total: 93295
+        labels_ar:
+          Africans (except Arabs): أفارقة باستثناء العرب
+          Americans: أمريكيون
+          Asians (except Arabs): آسيويون باستثناء العرب
+          Australian and New Zealanders: استراليون ونيوزلنديون
+          C.C.A.S.G (Other): بقية مُواطني دول مجلس التعاون
+          Europeans: أوروبيون
+          Other Arabs: عرب آخرون
+          Qataris: قطريون
+        nights:
+          Africans (except Arabs): 13640
+          Americans: 9095
+          Asians (except Arabs): 66217
+          Australian and New Zealanders: 1190
+          C.C.A.S.G (Other): 7956
+          Europeans: 7314
+          Other Arabs: 20447
+          Qataris: 2468.31
+evidence:
+- publisher: National Planning Council, State of Qatar (Qatar open data portal)
+  title: Qatar open data portal, dataset hotel-guests-by-nationality-hotel-rating-and-hotel-stays (CSV export, 2022)
+  url: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets/hotel-guests-by-nationality-hotel-rating-and-hotel-stays/exports/csv?delimiter=%2C&select=year%2Cmetric%2Chotel_rating%2Cnationality%2Cnumber%2Clmqys%2Cdrj_lfndq%2Cljnsy&where=year%3Ddate%272022%27&order_by=metric%2Chotel_rating%2Cnationality
+  accessed_at: '2026-11-09'
+  locator: row metric=Guests, hotel_rating=Five Star, nationality=Europeans
+  value: '481324.0'
+  unit: count
+  snippet: 2022,Guests,Five Star,Europeans,481324.0
+  source_license: CC-BY-4.0
+  content_sha256: a7320601a99e7dab6f4f9a491097676a3f6501d6d63f011e4a50158177fa6d26
+  role: primary
+- publisher: National Planning Council, State of Qatar (Qatar open data portal)
+  title: Qatar open data portal, dataset hotel-guests-by-nationality-hotel-rating-and-hotel-stays (CSV export, 2022)
+  url: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets/hotel-guests-by-nationality-hotel-rating-and-hotel-stays/exports/csv?delimiter=%2C&select=year%2Cmetric%2Chotel_rating%2Cnationality%2Cnumber%2Clmqys%2Cdrj_lfndq%2Cljnsy&where=year%3Ddate%272022%27&order_by=metric%2Chotel_rating%2Cnationality
+  accessed_at: '2026-11-09'
+  locator: row metric=Nights, hotel_rating=Five Star, nationality=Europeans
+  value: '736020.0'
+  unit: count
+  snippet: 2022,Nights,Five Star,Europeans,736020.0
+  source_license: CC-BY-4.0
+  content_sha256: a7320601a99e7dab6f4f9a491097676a3f6501d6d63f011e4a50158177fa6d26
+  role: primary
+- publisher: National Planning Council, State of Qatar (Qatar open data portal)
+  title: Qatar open data portal catalogue, licence fields of dataset hotel-guests-by-nationality-hotel-rating-and-hotel-stays
+    (JSON)
+  url: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets?select=dataset_id%2Cdefault.license%2Cdefault.license_url%2Cdefault.publisher&where=dataset_id%3D%22hotel-guests-by-nationality-hotel-rating-and-hotel-stays%22
+  accessed_at: '2026-11-09'
+  locator: results[0].default.license_url
+  value: https://creativecommons.org/licenses/by/4.0/
+  unit: text
+  snippet: '"default.license_url": "https://creativecommons.org/licenses/by/4.0/"'
+  source_license: CC-BY-4.0
+  content_sha256: 7b9d593dc3f602b1ca315dfdb12ba38dd8be8569ac5e42a32429df0ce21f2fc6
+  role: supporting
+assumed:
+- parameter: distributions.*.parameters.shares
+  value: count / sum of counts within each group
+  method: derived
+  rationale: The publisher gives counts; shares are each count over the group total. Nights of stay ride along per
+    nationality group; nights divided by guests gives the mean length of stay.
+tests:
+- statistic: share["Five Star","Qataris"]
+  expected: 0.32019008
+  tolerance: 0.005
+- statistic: sum_of_shares["Five Star"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Four Star","Asians (except Arabs)"]
+  expected: 0.42884204
+  tolerance: 0.005
+- statistic: sum_of_shares["Four Star"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Three Star","Asians (except Arabs)"]
+  expected: 0.4958958
+  tolerance: 0.005
+- statistic: sum_of_shares["Three Star"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Two & One Star","Asians (except Arabs)"]
+  expected: 0.51086339
+  tolerance: 0.005
+- statistic: sum_of_shares["Two & One Star"]
+  expected: 1
+  tolerance: 1.0e-06
+notes: Hotel guests in Qatar in 2022 by nationality group (Qataris, other GCC, other Arabs, Asians, Africans, Europeans,
+  Americans, Australians and New Zealanders) within each hotel rating (five, four, three, two and one star), with
+  the nights of stay for the same cells. 2022 is the latest year on the portal for this table. The portal's catalogue
+  record for the dataset gives the licence as CC BY with the Creative Commons Attribution 4.0 licence URL.

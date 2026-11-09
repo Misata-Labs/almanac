@@ -1,0 +1,121 @@
+id: kw-average-monthly-wage-by-nationality-sector-and-sex-2026-03
+title: Kuwait average monthly wage (KWD) by sector, Kuwaiti or non-Kuwaiti nationality and sex, 31 March 2026
+kind: rule
+domain: employment
+region: KW
+status: license-review
+tier: B
+valid_from: '2026-03-31'
+valid_to: '2026-03-31'
+tags:
+- kuwait
+- gcc
+- wages
+- salary
+- earnings
+- nationality
+- sector
+- sex
+- csb
+- lmis
+- reference-table
+use_cases:
+- synthetic-employees
+- payroll-demo
+- hr-demo
+- banking-demo
+- hr-analytics
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: KWD
+    rows:
+      government|kuwaiti|male:
+        average_monthly_wage_kwd: 1929
+        label_ar: كويتي-ذكر
+      government|kuwaiti|female:
+        average_monthly_wage_kwd: 1414
+        label_ar: كويتي-أنثي
+      government|non_kuwaiti|male:
+        average_monthly_wage_kwd: 649
+        label_ar: غير كويتي-ذكر
+      government|non_kuwaiti|female:
+        average_monthly_wage_kwd: 811
+        label_ar: غير كويتي-أنثي
+      private|kuwaiti|male:
+        average_monthly_wage_kwd: 1681
+        label_ar: كويتي-ذكر
+      private|kuwaiti|female:
+        average_monthly_wage_kwd: 1140
+        label_ar: كويتي-أنثي
+      private|non_kuwaiti|male:
+        average_monthly_wage_kwd: 314
+        label_ar: غير كويتي-ذكر
+      private|non_kuwaiti|female:
+        average_monthly_wage_kwd: 420
+        label_ar: غير كويتي-أنثي
+  vectors:
+  - input:
+      key: government|kuwaiti|male
+      column: average_monthly_wage_kwd
+    expected: 1929
+    origin: source
+  - input:
+      key: private|non_kuwaiti|female
+      column: average_monthly_wage_kwd
+    expected: 420
+    origin: source
+  - input: family|kuwaiti|male
+    expected: false
+    origin: derived
+evidence:
+- publisher: Central Statistical Bureau, State of Kuwait (Labour Market Information System)
+  title: CSB Labour Market Information System, main dashboard (HTML, data as at 31 March 2026)
+  url: https://lmis.csb.gov.kw/MainDashBoard
+  accessed_at: '2026-11-09'
+  locator: chart 'average monthly income in the government sector by nationality'
+  value: 1929
+  unit: currency:KWD
+  snippet: 'data: [{name: ''كويتي-ذكر '', y: 1929}'
+  source_license: unstated
+  content_sha256: 9d8064a311266560305acc7962316ec34a27dee57048275831a8b8a0df818d4e
+  role: primary
+- publisher: Central Statistical Bureau, State of Kuwait (Labour Market Information System)
+  title: CSB Labour Market Information System, main dashboard (HTML, data as at 31 March 2026)
+  url: https://lmis.csb.gov.kw/MainDashBoard
+  accessed_at: '2026-11-09'
+  locator: chart 'average monthly income in the private sector by nationality'
+  value: 1681
+  unit: currency:KWD
+  snippet: 'data: [{name: ''كويتي-ذكر'', y: 1681}'
+  source_license: unstated
+  content_sha256: 9d8064a311266560305acc7962316ec34a27dee57048275831a8b8a0df818d4e
+  role: primary
+assumed:
+- parameter: currency
+  value: KWD
+  method: assumed
+  rationale: The charts title the measure average monthly income (متوسط الدخل الشهري) and print no unit; the figures
+    are read as Kuwaiti dinars per month, the national currency.
+- parameter: category labels
+  value: English renderings of the dashboard's Arabic labels, with the Arabic labels kept alongside
+  method: assumed
+  rationale: The Labour Market Information System publishes Arabic labels only; the English keys are translations
+    made for this entry and change no value.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 8
+  tolerance: 0
+- statistic: max[average_monthly_wage_kwd]
+  expected: 1929
+  tolerance: 0
+notes: 'Average monthly wage of workers in Kuwait as at 31 March 2026 for Kuwaiti and non-Kuwaiti men and women
+  in the government sector and in the private sector, keyed sector|nationality|sex, from the Labour Market Information
+  System''s dashboard charts (whole dinars as published). Combine with the nationality-by-sector counts in kw-workers-by-nationality-group-sector-and-sex-2026-03
+  to draw synthetic salaries. The Labour Market Information System states no reuse licence (its footer reads ''all
+  rights reserved''), so the entry stays at license-review. The dashboard always shows the latest quarter: when
+  the CSB publishes the next quarter the page changes and this entry''s evidence hash will no longer match, which
+  is the signal to rebuild it.'

@@ -1,0 +1,97 @@
+id: bh-lmra-active-expatriate-work-permits-quarterly-2021-2025
+title: Bahrain active work permits for expatriates, quarterly 2021 to 2025 (LMRA)
+kind: temporal
+domain: employment
+region: BH
+status: license-review
+tier: A
+observed_period:
+  start: '2021-01-01'
+  end: '2025-12-31'
+tags:
+- bahrain
+- gcc
+- work-permits
+- expatriates
+- migrant-workers
+- quarterly
+- time-series
+- lmra
+use_cases:
+- synthetic-employees
+- workforce-planning
+- hr-analytics
+- market-sizing
+spec:
+  variable: active_expatriate_work_permits
+  unit: count
+  frequency: quarterly
+  columns: []
+  series:
+  - period: 2021-Q1
+    value: 539036
+  - period: 2021-Q2
+    value: 533521
+  - period: 2021-Q3
+    value: 517775
+  - period: 2021-Q4
+    value: 529562
+  - period: 2022-Q1
+    value: 547424
+  - period: 2022-Q2
+    value: 562714
+  - period: 2022-Q3
+    value: 573820
+  - period: 2022-Q4
+    value: 582051
+  - period: 2023-Q1
+    value: 604406
+  - period: 2023-Q2
+    value: 608411
+  - period: 2023-Q3
+    value: 606682
+  - period: 2023-Q4
+    value: 616122
+  - period: 2024-Q1
+    value: 626528
+  - period: 2024-Q2
+    value: 631763
+  - period: 2024-Q3
+    value: 635142
+  - period: 2024-Q4
+    value: 643274
+  - period: 2025-Q1
+    value: 648468
+  - period: 2025-Q2
+    value: 649642
+  - period: 2025-Q3
+    value: 650285
+  - period: 2025-Q4
+    value: 654672
+evidence:
+- publisher: Labour Market Regulatory Authority, Kingdom of Bahrain (via the Bahrain open data portal)
+  title: Bahrain open data portal, dataset lmra1-active-work-permits-for-expatriate (CSV export, 2021 to 2025)
+  url: https://www.data.gov.bh/api/explore/v2.1/catalog/datasets/lmra1-active-work-permits-for-expatriate/exports/csv?delimiter=%2C&select=n%2Cyear%2Cquarter%2Cnumber%2Clrb&where=year%3E%3Ddate%272021%27%20and%20year%3C%3Ddate%272025%27&order_by=n
+  accessed_at: '2026-11-09'
+  locator: row year=2025, quarter=Q4
+  value: '654672.0'
+  unit: count
+  snippet: 2025,Q4,654672.0
+  source_license: unstated
+  content_sha256: 07dcab821db7a01cec94e2cd29c90f1a378f8c4b282183a54ae4b5f43e259afa
+  role: primary
+assumed: []
+tests:
+- statistic: value[2025-Q4]
+  expected: 654672
+  tolerance: 0
+- statistic: value[2021-Q1]
+  expected: 539036
+  tolerance: 0
+- statistic: count
+  expected: 20
+  tolerance: 0
+notes: Active work permits held by expatriate workers in Bahrain at each quarter from 2021 to 2025, published by
+  the Labour Market Regulatory Authority on the national open data portal. Periods are labelled year-quarter. The
+  Bahrain open data portal publishes no licence for this dataset (its catalogue licence field is empty), so the
+  entry stays at license-review until the Information & eGovernment Authority's reuse terms are confirmed.

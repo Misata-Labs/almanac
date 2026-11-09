@@ -1,0 +1,228 @@
+id: qa-labour-force-status-by-nationality-and-sex-2025
+title: Qatar population aged 15+ by relation to the labour force given nationality and sex, 2025
+kind: conditional
+domain: employment
+region: QA
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- qatar
+- gcc
+- npc
+- labour-force
+- employment
+- unemployment
+- nationality
+- sex
+- labour-force-survey
+use_cases:
+- synthetic-customers
+- synthetic-employees
+- person-generation
+- hr-analytics
+- banking-demo
+spec:
+  variable: labour_force_status
+  unit: ratio
+  given: nationality|sex
+  distributions:
+    Non Qatari|Females:
+      family: categorical
+      parameters:
+        shares:
+          Disabled: 0.00214179
+          Employed: 0.69960357
+          Housewife: 0.20817465
+          Other: 0.00368778
+          Seeking Work for First Time: 0.00191788
+          Student: 0.08434777
+          Unemployed with Previous Employment: 0.00012656
+        counts:
+          Disabled: 1100
+          Employed: 359308
+          Housewife: 106916
+          Other: 1894
+          Seeking Work for First Time: 985
+          Student: 43320
+          Unemployed with Previous Employment: 65
+        total: 513588
+        labels_ar:
+          Disabled: عاجز
+          Employed: مشتغل
+          Housewife: متفرغة لأعمال المنزل
+          Other: أخرى
+          Seeking Work for First Time: متعطل لم يسبق له العمل
+          Student: متفرغ للدراسة
+          Unemployed with Previous Employment: متعطل سبق له العمل
+    Non Qatari|Males:
+      family: categorical
+      parameters:
+        shares:
+          Disabled: 0.00025912
+          Employed: 0.97356003
+          Other: 0.00199474
+          Seeking Work for First Time: 0.0005881
+          Student: 0.02343482
+          Unemployed with Previous Employment: 0.00016319
+        counts:
+          Disabled: 497
+          Employed: 1867330
+          Other: 3826
+          Seeking Work for First Time: 1128
+          Student: 44949
+          Unemployed with Previous Employment: 313
+        total: 1918043
+        labels_ar:
+          Disabled: عاجز
+          Employed: مشتغل
+          Other: أخرى
+          Seeking Work for First Time: متعطل لم يسبق له العمل
+          Student: متفرغ للدراسة
+          Unemployed with Previous Employment: متعطل سبق له العمل
+    Qatari|Females:
+      family: categorical
+      parameters:
+        shares:
+          Disabled: 0.0085651
+          Employed: 0.43846718
+          Housewife: 0.23673439
+          Other: 0.01180995
+          Retired: 0.05783912
+          Seeking Work for First Time: 0.00211657
+          Student: 0.24380883
+          Unemployed with Previous Employment: 0.00065885
+        counts:
+          Disabled: 1040
+          Employed: 53240
+          Housewife: 28745
+          Other: 1434
+          Retired: 7023
+          Seeking Work for First Time: 257
+          Student: 29604
+          Unemployed with Previous Employment: 80
+        total: 121423
+        labels_ar:
+          Disabled: عاجز
+          Employed: مشتغل
+          Housewife: متفرغة لأعمال المنزل
+          Other: أخرى
+          Retired: متقاعد
+          Seeking Work for First Time: متعطل لم يسبق له العمل
+          Student: متفرغ للدراسة
+          Unemployed with Previous Employment: متعطل سبق له العمل
+    Qatari|Males:
+      family: categorical
+      parameters:
+        shares:
+          Disabled: 0.01604078
+          Employed: 0.65893526
+          Other: 0.01840202
+          Retired: 0.0999303
+          Seeking Work for First Time: 0.00097586
+          Student: 0.20529755
+          Unemployed with Previous Employment: 0.00041823
+        counts:
+          Disabled: 1841
+          Employed: 75626
+          Other: 2112
+          Retired: 11469
+          Seeking Work for First Time: 112
+          Student: 23562
+          Unemployed with Previous Employment: 48
+        total: 114770
+        labels_ar:
+          Disabled: عاجز
+          Employed: مشتغل
+          Other: أخرى
+          Retired: متقاعد
+          Seeking Work for First Time: متعطل لم يسبق له العمل
+          Student: متفرغ للدراسة
+          Unemployed with Previous Employment: متعطل سبق له العمل
+evidence:
+- publisher: National Planning Council, State of Qatar (Qatar open data portal)
+  title: Qatar open data portal, dataset population-15-years-and-above-by-relation-to-labour-force-nationality-and-gender
+    (CSV export, 2025)
+  url: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets/population-15-years-and-above-by-relation-to-labour-force-nationality-and-gender/exports/csv?delimiter=%2C&select=year%2Cnationality%2Cgender%2Clabour_force_status%2Ccount%2Cljnsy%2Clnw%2Chl_lqw_l_ml&where=year%3Ddate%272025%27&order_by=nationality%2Cgender%2Clabour_force_status
+  accessed_at: '2026-11-09'
+  locator: row nationality=Non Qatari, gender=Males, labour_force_status=Employed
+  value: '1867330'
+  unit: count
+  snippet: 2025,Non Qatari,Males,Employed,1867330
+  source_license: CC-BY-4.0
+  content_sha256: 99bba1cc647aca13b30e97ef8a7c4ccb215f9539660e140bf6197e6ba7f558dc
+  role: primary
+- publisher: National Planning Council, State of Qatar (Qatar open data portal)
+  title: Qatar open data portal, dataset population-15-years-and-above-by-relation-to-labour-force-nationality-and-gender
+    (CSV export, 2025)
+  url: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets/population-15-years-and-above-by-relation-to-labour-force-nationality-and-gender/exports/csv?delimiter=%2C&select=year%2Cnationality%2Cgender%2Clabour_force_status%2Ccount%2Cljnsy%2Clnw%2Chl_lqw_l_ml&where=year%3Ddate%272025%27&order_by=nationality%2Cgender%2Clabour_force_status
+  accessed_at: '2026-11-09'
+  locator: row nationality=Qatari, gender=Females, labour_force_status=Employed
+  value: '53240'
+  unit: count
+  snippet: 2025,Qatari,Females,Employed,53240
+  source_license: CC-BY-4.0
+  content_sha256: 99bba1cc647aca13b30e97ef8a7c4ccb215f9539660e140bf6197e6ba7f558dc
+  role: primary
+- publisher: National Planning Council, State of Qatar (Qatar open data portal)
+  title: Qatar open data portal catalogue, licence fields of dataset population-15-years-and-above-by-relation-to-labour-force-nationality-and-gender
+    (JSON)
+  url: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets?select=dataset_id%2Cdefault.license%2Cdefault.license_url%2Cdefault.publisher&where=dataset_id%3D%22population-15-years-and-above-by-relation-to-labour-force-nationality-and-gender%22
+  accessed_at: '2026-11-09'
+  locator: results[0].default.license_url
+  value: https://creativecommons.org/licenses/by/4.0/
+  unit: text
+  snippet: '"default.license_url": "https://creativecommons.org/licenses/by/4.0/"'
+  source_license: CC-BY-4.0
+  content_sha256: 8216cb851184462bcb9fb8b4799bc05269909d6f6558452fa71fc8aa74834525
+  role: supporting
+assumed:
+- parameter: distributions.*.parameters.shares
+  value: count / sum of counts within each group
+  method: derived
+  rationale: The publisher gives counts; shares are each count over the group total. Blank cells (for example housewife
+    among men) are unpublished and left out rather than set to zero.
+tests:
+- statistic: share["Non Qatari|Females","Employed"]
+  expected: 0.69960357
+  tolerance: 0.005
+- statistic: share["Non Qatari|Females","Housewife"]
+  expected: 0.20817465
+  tolerance: 0.005
+- statistic: sum_of_shares["Non Qatari|Females"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Non Qatari|Males","Employed"]
+  expected: 0.97356003
+  tolerance: 0.005
+- statistic: share["Non Qatari|Males","Student"]
+  expected: 0.02343482
+  tolerance: 0.005
+- statistic: sum_of_shares["Non Qatari|Males"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Qatari|Females","Employed"]
+  expected: 0.43846718
+  tolerance: 0.005
+- statistic: share["Qatari|Females","Student"]
+  expected: 0.24380883
+  tolerance: 0.005
+- statistic: sum_of_shares["Qatari|Females"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Qatari|Males","Employed"]
+  expected: 0.65893526
+  tolerance: 0.005
+- statistic: share["Qatari|Males","Student"]
+  expected: 0.20529755
+  tolerance: 0.005
+- statistic: sum_of_shares["Qatari|Males"]
+  expected: 1
+  tolerance: 1.0e-06
+notes: Population aged 15 and over in Qatar in 2025 by relation to the labour force (employed, unemployed with previous
+  employment, seeking work for the first time, student, housewife, retired, disabled, other) for Qatari and non-Qatari
+  men and women, from the National Planning Council's labour force statistics, with Arabic status labels from the
+  same export. The portal's catalogue record for the dataset gives the licence as CC BY with the Creative Commons
+  Attribution 4.0 licence URL.

@@ -1,0 +1,97 @@
+id: qa-registered-vehicles-by-licence-type-2022
+title: Qatar registered vehicles and motorcycles by type of licence, 2022
+kind: marginal
+domain: automotive
+region: QA
+status: verified
+tier: A
+observed_period:
+  start: '2022-01-01'
+  end: '2022-12-31'
+tags:
+- qatar
+- gcc
+- npc
+- vehicles
+- vehicle-registrations
+- fleet
+use_cases:
+- automotive-demo
+- fleet-demo
+- insurance
+- synthetic-customers
+spec:
+  variable: vehicle_licence_type
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Private: 0.64895653
+        Private transport: 0.2590981
+        Heavy equipment and machinery: 0.02058138
+        Trailer: 0.02595902
+        Motorcycles: 0.02443129
+        Taxis and limousines: 0.00783021
+        Government: 0.00817995
+        Public transport: 0.0016516
+        Other: 0.00331192
+      counts:
+        Private: 1189390
+        Private transport: 474868
+        Heavy equipment and machinery: 37721
+        Trailer: 47577
+        Motorcycles: 44777
+        Taxis and limousines: 14351
+        Government: 14992
+        Public transport: 3027
+        Other: 6070
+      total: 1832773
+evidence:
+- publisher: National Planning Council, State of Qatar (Qatar open data portal)
+  title: Qatar open data portal, dataset registered-vehicles-and-motor-cycles-by-type-of-license (CSV export, 2022)
+  url: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets/registered-vehicles-and-motor-cycles-by-type-of-license/exports/csv?delimiter=%2C&select=year%2Cprivate%2Cprivate_transport%2Cheavy_equipment_and_machinery%2Ctrailer%2Cmotorcycles%2Ctaxis_and_limousines%2Cgovernment%2Cpublic_transport%2Cother&where=year%3Ddate%272022%27&order_by=year
+  accessed_at: '2026-11-09'
+  locator: row year=2022, columns private, private_transport, heavy_equipment_and_machinery, trailer, motorcycles,
+    taxis_and_limousines, government, public_transport, other
+  value: '1189390.0'
+  unit: count
+  snippet: 2022,1189390.0,474868.0
+  source_license: CC-BY-4.0
+  content_sha256: f4a6082e7dc4474cc1c1784f390c66e66cbe41f09f47d914db814faa25d8a244
+  role: primary
+- publisher: National Planning Council, State of Qatar (Qatar open data portal)
+  title: Qatar open data portal catalogue, licence fields of dataset registered-vehicles-and-motor-cycles-by-type-of-license
+    (JSON)
+  url: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets?select=dataset_id%2Cdefault.license%2Cdefault.license_url%2Cdefault.publisher&where=dataset_id%3D%22registered-vehicles-and-motor-cycles-by-type-of-license%22
+  accessed_at: '2026-11-09'
+  locator: results[0].default.license_url
+  value: https://creativecommons.org/licenses/by/4.0/
+  unit: text
+  snippet: '"default.license_url": "https://creativecommons.org/licenses/by/4.0/"'
+  source_license: CC-BY-4.0
+  content_sha256: a3c6ef3c7a06ea9a4bf12da320d7a0f9d3de3b22796a5386396e04cf74e20e7b
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / sum of counts within each group
+  method: derived
+  rationale: The publisher gives counts; shares are each count over the group total. Column names are rendered as
+    readable labels.
+tests:
+- statistic: share["Private"]
+  expected: 0.64895653
+  tolerance: 0.005
+- statistic: share["Private transport"]
+  expected: 0.2590981
+  tolerance: 0.005
+- statistic: share["Trailer"]
+  expected: 0.02595902
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 1.0e-06
+notes: 'Registered vehicles and motorcycles in Qatar in 2022 (the latest year on the portal) by type of licence:
+  private, private transport, heavy equipment and machinery, trailer, motorcycles, taxis and limousines, government,
+  public transport and other. The portal''s catalogue record for the dataset gives the licence as CC BY with the
+  Creative Commons Attribution 4.0 licence URL.'

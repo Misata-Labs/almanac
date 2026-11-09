@@ -1,0 +1,138 @@
+id: bh-vehicles-registered-in-use-by-type-2025
+title: Bahrain vehicles registered in use by registration type, 2025
+kind: marginal
+domain: automotive
+region: BH
+status: license-review
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- bahrain
+- gcc
+- vehicles
+- vehicle-registrations
+- fleet
+- traffic
+use_cases:
+- automotive-demo
+- fleet-demo
+- insurance
+- synthetic-customers
+spec:
+  variable: vehicle_registration_type
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Classic: 0.00052852
+        Trailer: 0.00023028
+        Racing Cars: 0.00026929
+        Semi-Trailer: 0.00977378
+        Inspection: 0.0
+        For Export: 0.0
+        Private Goods Vehicle(Pick-Up,Lorry): 0.05497957
+        Double Cabin Private(Picknaup): 0.04331571
+        Private Passenger Transport (Buses Only): 0.01616632
+        Special Use (Ambulance, Fire Enginge): 0.01611724
+        Royal Court: 0.00031837
+        Construction Vehicle (Crane, Forklift): 0.00388208
+        Tourist Vehicle: 0.00037374
+        Motor Cycles: 0.0409248
+        Taxi: 0.00176424
+        Goods Vehicles Lorry/Pick Up: 0.00396765
+        Combined Double Cabin Picknaup: 0.00066065
+        Public Transport (Local Buses): 4.782e-05
+        Public Security: 0.0032982
+        Consulate Diplomat: 0.00081543
+        Taxis On Request: 7.676e-05
+        Private Hire: 0.03061495
+        Private: 0.77187461
+      counts:
+        Classic: 420
+        Trailer: 183
+        Racing Cars: 214
+        Semi-Trailer: 7767
+        Inspection: 0
+        For Export: 0
+        Private Goods Vehicle(Pick-Up,Lorry): 43691
+        Double Cabin Private(Picknaup): 34422
+        Private Passenger Transport (Buses Only): 12847
+        Special Use (Ambulance, Fire Enginge): 12808
+        Royal Court: 253
+        Construction Vehicle (Crane, Forklift): 3085
+        Tourist Vehicle: 297
+        Motor Cycles: 32522
+        Taxi: 1402
+        Goods Vehicles Lorry/Pick Up: 3153
+        Combined Double Cabin Picknaup: 525
+        Public Transport (Local Buses): 38
+        Public Security: 2621
+        Consulate Diplomat: 648
+        Taxis On Request: 61
+        Private Hire: 24329
+        Private: 613391
+      total: 794677
+      labels_ar:
+        Classic: أثرية
+        Trailer: المقطورة
+        Racing Cars: سيارات السباقات
+        Semi-Trailer: شبه المقطورة
+        Inspection: الفحص الفني
+        For Export: للتصدير
+        Private Goods Vehicle(Pick-Up,Lorry): النقل الخاص(بيكب-عادى-لورى)
+        Double Cabin Private(Picknaup): النقل المشترك الخاص(بيكب)
+        Private Passenger Transport (Buses Only): النقل الخاص للركاب(باص فقط)
+        Special Use (Ambulance, Fire Enginge): الاستعمال الخاص (المطافي، الاسعاف)
+        Royal Court: الديوان الملكي
+        Construction Vehicle (Crane, Forklift): مركبات المقاولات (رافعة، رافعة شوكية)
+        Tourist Vehicle: مركبات نقل السياح
+        Motor Cycles: الدراجات النارية
+        Taxi: الاجرة(تاكسى)
+        Goods Vehicles Lorry/Pick Up: مركبات شحن بيكب/لوري
+        Combined Double Cabin Picknaup: النقل العام المشترك
+        Public Transport (Local Buses): النقل العام للركاب (باص اهلى)
+        Public Security: امن عام
+        Consulate Diplomat: الهيئات الدبلوماسية
+        Taxis On Request: الاجرة تحت الطلب
+        Private Hire: الخاصة للتاجير
+        Private: الخاصة
+evidence:
+- publisher: Ministry of Interior, General Directorate of Traffic, Kingdom of Bahrain (via the Bahrain open data
+    portal)
+  title: Bahrain open data portal, dataset 01-vehicle-registered-in-use (CSV export, 2025)
+  url: https://www.data.gov.bh/api/explore/v2.1/catalog/datasets/01-vehicle-registered-in-use/exports/csv?delimiter=%2C&select=n%2Cyear%2Ctype%2Citem%2Cvalue%2Clnw%2Clbyn&where=year%3Ddate%272025%27&order_by=n
+  accessed_at: '2026-11-09'
+  locator: row item=Private
+  value: '613391.0'
+  unit: count
+  snippet: 184,2025,Vehicle Registered in Use,Private,613391.0
+  source_license: unstated
+  content_sha256: 3447e859cfb9fd8b8c765e707b38cb6aa200e955790aee0f76b77c4be7ddbc4f
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / sum of counts within each group
+  method: derived
+  rationale: The publisher gives counts; shares are each count over the group total. Categories with a published
+    zero are kept.
+tests:
+- statistic: share["Private"]
+  expected: 0.77187461
+  tolerance: 0.005
+- statistic: share["Private Goods Vehicle(Pick-Up,Lorry)"]
+  expected: 0.05497957
+  tolerance: 0.005
+- statistic: share["Double Cabin Private(Picknaup)"]
+  expected: 0.04331571
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 1.0e-06
+notes: Vehicles registered and in use in Bahrain in 2025 by registration type (private, private hire, goods vehicles,
+  motorcycles, taxis, diplomatic and so on), as published by the General Directorate of Traffic, with Arabic type
+  names from the same export. The Bahrain open data portal publishes no licence for this dataset (its catalogue
+  licence field is empty), so the entry stays at license-review until the Information & eGovernment Authority's
+  reuse terms are confirmed.

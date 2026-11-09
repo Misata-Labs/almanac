@@ -1,0 +1,168 @@
+id: kw-workers-by-nationality-and-sex-2026-03
+title: Kuwait workers by nationality (ten largest and all others) given sex, 31 March 2026
+kind: conditional
+domain: employment
+region: KW
+status: license-review
+tier: B
+observed_period:
+  start: '2026-03-31'
+  end: '2026-03-31'
+tags:
+- kuwait
+- gcc
+- employment
+- workforce
+- nationality
+- sex
+- expatriates
+- csb
+- lmis
+use_cases:
+- synthetic-employees
+- hr-demo
+- person-generation
+- synthetic-customers
+spec:
+  variable: nationality
+  unit: ratio
+  given: sex
+  distributions:
+    male:
+      family: categorical
+      parameters:
+        shares:
+          All other nationalities: 0.08159717
+          Kuwait: 0.10568519
+          Jordan: 0.01150587
+          Egypt: 0.24207669
+          Syria: 0.0371892
+          Bangladesh: 0.11280341
+          Sri Lanka: 0.01306298
+          India: 0.29461792
+          Nepal: 0.04978539
+          Pakistan: 0.03821829
+          Philippines: 0.01345788
+        counts:
+          All other nationalities: 145261
+          Kuwait: 188143
+          Jordan: 20483
+          Egypt: 430950
+          Syria: 66205
+          Bangladesh: 200815
+          Sri Lanka: 23255
+          India: 524485
+          Nepal: 88629
+          Pakistan: 68037
+          Philippines: 23958
+        total: 1780221
+        labels_ar:
+          All other nationalities: باقي الجنسيات
+          Kuwait: الكويت
+          Jordan: الأردن
+          Egypt: مصـــر
+          Syria: ســوريا
+          Bangladesh: بنجلاديش
+          Sri Lanka: سيريلانكا
+          India: الهنــد
+          Nepal: نيبال
+          Pakistan: باكستان
+          Philippines: الفلبين
+    female:
+      family: categorical
+      parameters:
+        shares:
+          All other nationalities: 0.12394794
+          Kuwait: 0.49371062
+          Jordan: 0.02084755
+          Egypt: 0.07300035
+          Syria: 0.01965432
+          Bangladesh: 0.00919663
+          Sri Lanka: 0.01463998
+          India: 0.11159465
+          Nepal: 0.0458694
+          Pakistan: 0.01101041
+          Philippines: 0.07652815
+        counts:
+          All other nationalities: 62118
+          Kuwait: 247429
+          Jordan: 10448
+          Egypt: 36585
+          Syria: 9850
+          Bangladesh: 4609
+          Sri Lanka: 7337
+          India: 55927
+          Nepal: 22988
+          Pakistan: 5518
+          Philippines: 38353
+        total: 501162
+        labels_ar:
+          All other nationalities: باقي الجنسيات
+          Kuwait: الكويت
+          Jordan: الأردن
+          Egypt: مصـــر
+          Syria: ســوريا
+          Bangladesh: بنجلاديش
+          Sri Lanka: سيريلانكا
+          India: الهنــد
+          Nepal: نيبال
+          Pakistan: باكستان
+          Philippines: الفلبين
+evidence:
+- publisher: Central Statistical Bureau, State of Kuwait (Labour Market Information System)
+  title: CSB Labour Market Information System, main dashboard (HTML, data as at 31 March 2026)
+  url: https://lmis.csb.gov.kw/MainDashBoard
+  accessed_at: '2026-11-09'
+  locator: chart 'by top 10 nationalities and sex', series males (ذكور)
+  value: 145261
+  unit: count
+  snippet: 'data: [145261,188143,20483,430950,66205,200815,23255,524485,88629,68037,23958,]'
+  source_license: unstated
+  content_sha256: 9d8064a311266560305acc7962316ec34a27dee57048275831a8b8a0df818d4e
+  role: primary
+- publisher: Central Statistical Bureau, State of Kuwait (Labour Market Information System)
+  title: CSB Labour Market Information System, main dashboard (HTML, data as at 31 March 2026)
+  url: https://lmis.csb.gov.kw/MainDashBoard
+  accessed_at: '2026-11-09'
+  locator: chart 'by top 10 nationalities and sex', series females (إناث)
+  value: 62118
+  unit: count
+  snippet: data:[62118,247429,10448,36585,9850,4609,7337,55927,22988,5518,38353,]
+  source_license: unstated
+  content_sha256: 9d8064a311266560305acc7962316ec34a27dee57048275831a8b8a0df818d4e
+  role: primary
+assumed:
+- parameter: distributions.*.parameters.shares
+  value: count / sum of counts within each group
+  method: derived
+  rationale: The publisher gives counts; shares are each count over the group total.
+- parameter: category labels
+  value: English renderings of the dashboard's Arabic labels, with the Arabic labels kept alongside
+  method: assumed
+  rationale: The Labour Market Information System publishes Arabic labels only; the English keys are translations
+    made for this entry and change no value.
+tests:
+- statistic: share["male","India"]
+  expected: 0.29461792
+  tolerance: 0.005
+- statistic: share["male","Egypt"]
+  expected: 0.24207669
+  tolerance: 0.005
+- statistic: sum_of_shares["male"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["female","Kuwait"]
+  expected: 0.49371062
+  tolerance: 0.005
+- statistic: share["female","All other nationalities"]
+  expected: 0.12394794
+  tolerance: 0.005
+- statistic: sum_of_shares["female"]
+  expected: 1
+  tolerance: 1.0e-06
+notes: 'Workers in Kuwait as at 31 March 2026, all sectors, by nationality for the ten largest nationalities (India,
+  Egypt, Kuwait, Bangladesh, Nepal, Syria, Pakistan, the Philippines, Jordan, Sri Lanka) and all others, for men
+  and women, from the Central Statistical Bureau''s Labour Market Information System. The Labour Market Information
+  System states no reuse licence (its footer reads ''all rights reserved''), so the entry stays at license-review.
+  The dashboard always shows the latest quarter: when the CSB publishes the next quarter the page changes and this
+  entry''s evidence hash will no longer match, which is the signal to rebuild it.'

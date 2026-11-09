@@ -1,0 +1,151 @@
+id: kw-kuwaiti-government-workers-by-age-group-and-sex-2026-03
+title: 'Kuwait: Kuwaiti government-sector workers by five-year age group given sex, 31 March 2026'
+kind: conditional
+domain: employment
+region: KW
+status: license-review
+tier: B
+observed_period:
+  start: '2026-03-31'
+  end: '2026-03-31'
+tags:
+- kuwait
+- gcc
+- employment
+- public-sector
+- age
+- sex
+- nationals
+- csb
+- lmis
+use_cases:
+- synthetic-employees
+- hr-demo
+- pensions
+- workforce-planning
+spec:
+  variable: age_group
+  unit: ratio
+  given: sex
+  distributions:
+    male:
+      family: categorical
+      parameters:
+        shares:
+          15 - 19: 0.00014139
+          20 - 24: 0.04053081
+          25 - 29: 0.20647146
+          30 - 34: 0.22693885
+          35 - 39: 0.18726309
+          40 - 44: 0.15001111
+          45 - 49: 0.10208108
+          50 - 54: 0.05740293
+          55 - 59: 0.01889193
+          60 - 64: 0.00654418
+          65 +: 0.00371645
+          Not stated: 6.73e-06
+        counts:
+          15 - 19: 21
+          20 - 24: 6020
+          25 - 29: 30667
+          30 - 34: 33707
+          35 - 39: 27814
+          40 - 44: 22281
+          45 - 49: 15162
+          50 - 54: 8526
+          55 - 59: 2806
+          60 - 64: 972
+          65 +: 552
+          Not stated: 1
+        total: 148529
+    female:
+      family: categorical
+      parameters:
+        shares:
+          15 - 19: 4.214e-05
+          20 - 24: 0.03975746
+          25 - 29: 0.2210891
+          30 - 34: 0.23852601
+          35 - 39: 0.19430163
+          40 - 44: 0.16281781
+          45 - 49: 0.08983003
+          50 - 54: 0.03807651
+          55 - 59: 0.01150911
+          60 - 64: 0.00281875
+          65 +: 0.00123145
+          Not stated: 0.0
+        counts:
+          15 - 19: 9
+          20 - 24: 8491
+          25 - 29: 47218
+          30 - 34: 50942
+          35 - 39: 41497
+          40 - 44: 34773
+          45 - 49: 19185
+          50 - 54: 8132
+          55 - 59: 2458
+          60 - 64: 602
+          65 +: 263
+          Not stated: 0
+        total: 213570
+evidence:
+- publisher: Central Statistical Bureau, State of Kuwait (Labour Market Information System)
+  title: 'CSB Labour Market Information System, report by sector and age (HTML, default view: government sector,
+    Kuwaiti, 31 March 2026)'
+  url: https://lmis.csb.gov.kw/InteractiveReportPerSectorPerAge
+  accessed_at: '2026-11-09'
+  locator: chart 'distribution by sex - Kuwaiti', series males (ذكور)
+  value: 30667
+  unit: count
+  snippet: 'data: [21,6020,30667,33707,27814,22281,15162,8526,2806,972,552,1,]'
+  source_license: unstated
+  content_sha256: a1d5fac603ae6f59efc8ec5bb5ffed83b62f5354bb25ea9e2c713b14b1c6edf0
+  role: primary
+- publisher: Central Statistical Bureau, State of Kuwait (Labour Market Information System)
+  title: 'CSB Labour Market Information System, report by sector and age (HTML, default view: government sector,
+    Kuwaiti, 31 March 2026)'
+  url: https://lmis.csb.gov.kw/InteractiveReportPerSectorPerAge
+  accessed_at: '2026-11-09'
+  locator: sector selector, selected option
+  value: أ- القطاع الحكومي
+  unit: text
+  snippet: option selected="selected" value="1">أ- القطاع الحكومي
+  source_license: unstated
+  content_sha256: a1d5fac603ae6f59efc8ec5bb5ffed83b62f5354bb25ea9e2c713b14b1c6edf0
+  role: primary
+assumed:
+- parameter: distributions.*.parameters.shares
+  value: count / sum of counts within each group
+  method: derived
+  rationale: The publisher gives counts; shares are each count over the group total. The 'not stated' (غير مبين)
+    age row is kept as 'Not stated'.
+- parameter: population covered
+  value: Kuwaiti workers in the government sector
+  method: derived
+  rationale: The report's default view selects the government sector and Kuwaiti nationality; the male and female
+    totals equal the Kuwait row of the dashboard's government-sector chart.
+tests:
+- statistic: share["male","30 - 34"]
+  expected: 0.22693885
+  tolerance: 0.005
+- statistic: share["male","25 - 29"]
+  expected: 0.20647146
+  tolerance: 0.005
+- statistic: sum_of_shares["male"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["female","30 - 34"]
+  expected: 0.23852601
+  tolerance: 0.005
+- statistic: share["female","25 - 29"]
+  expected: 0.2210891
+  tolerance: 0.005
+- statistic: sum_of_shares["female"]
+  expected: 1
+  tolerance: 1.0e-06
+notes: 'Kuwaiti nationals employed in the government sector as at 31 March 2026 by five-year age group (15-19 to
+  65+, plus not stated) for men and women, from the Labour Market Information System''s report by sector and age
+  in its default view. The Labour Market Information System states no reuse licence (its footer reads ''all rights
+  reserved''), so the entry stays at license-review. The dashboard always shows the latest quarter: when the CSB
+  publishes the next quarter the page changes and this entry''s evidence hash will no longer match, which is the
+  signal to rebuild it.'

@@ -223,9 +223,9 @@ def workers_by_sector(b: Bulletin, licence: bytes) -> dict:
         "tests": share_tests(dists, 2),
         "notes": (
             "Workers in Oman at the end of September 2026 by sector of employment, for Omanis (Table 17) and expatriates "
-            "(Table 18) of the NCSI Monthly Statistical Bulletin (October 2026 issue). 'Family' is employment by households "
-            "(domestic workers); 'Communal' is the civil-society sector. The two groups together give the nationality-by-"
-            "sector table for synthetic employees. " + LICENSE_NOTE
+            "(Table 18) of the NCSI Monthly Statistical Bulletin (October 2026 issue). Sector labels are the bulletin's: "
+            "Government (حكومي), Private (خاص), Family (عائلي), Communal (أهلي) and Other. The two groups together give the "
+            "nationality-by-sector table for synthetic employees. " + LICENSE_NOTE
         ),
     }
 

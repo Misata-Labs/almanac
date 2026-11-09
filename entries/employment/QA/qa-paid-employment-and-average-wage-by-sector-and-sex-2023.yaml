@@ -1,0 +1,172 @@
+id: qa-paid-employment-and-average-wage-by-sector-and-sex-2023
+title: Qatar workers in paid employment by sector given sex, with average monthly wage (QAR), 2023
+kind: conditional
+domain: employment
+region: QA
+status: verified
+tier: A
+observed_period:
+  start: '2023-01-01'
+  end: '2023-12-31'
+tags:
+- qatar
+- gcc
+- npc
+- wages
+- salary
+- sector
+- government
+- private-sector
+- domestic-workers
+- sex
+- labour-force-survey
+use_cases:
+- synthetic-employees
+- payroll-demo
+- hr-demo
+- banking-demo
+- workforce-planning
+spec:
+  variable: sector
+  unit: ratio
+  given: sex
+  distributions:
+    Females:
+      family: categorical
+      parameters:
+        shares:
+          Diplomatic/International/Regional: 0.00623066
+          Domestic: 0.26615666
+          Government Company/ Corporation: 0.06536137
+          Government Department: 0.13922604
+          Mixed: 0.02197058
+          Non profit: 0.00182496
+          Private: 0.49922973
+        counts:
+          Diplomatic/International/Regional: 2366
+          Domestic: 101069
+          Government Company/ Corporation: 24820
+          Government Department: 52869
+          Mixed: 8343
+          Non profit: 693
+          Private: 189575
+        total: 379735
+        labels_ar:
+          Diplomatic/International/Regional: دبلوماسي / دولي / اقليمي
+          Domestic: منزلي
+          Government Company/ Corporation: مؤسسة / شركة حكومية
+          Government Department: إدارة حكومية
+          Mixed: مختلط
+          Non profit: غير ربحي
+          Private: خاص
+        average_monthly_wage_qar:
+          Diplomatic/International/Regional: 23624
+          Domestic: 3051
+          Government Company/ Corporation: 24328
+          Government Department: 28702
+          Mixed: 27761
+          Non profit: 21885
+          Private: 11150
+    Males:
+      family: categorical
+      parameters:
+        shares:
+          Diplomatic/International/Regional: 0.00279793
+          Domestic: 0.03695305
+          Government Company/ Corporation: 0.02995991
+          Government Department: 0.06245314
+          Mixed: 0.01622317
+          Non profit: 0.00116897
+          Private: 0.85044383
+        counts:
+          Diplomatic/International/Regional: 5012
+          Domestic: 66195
+          Government Company/ Corporation: 53668
+          Government Department: 111874
+          Mixed: 29061
+          Non profit: 2094
+          Private: 1523423
+        total: 1791327
+        labels_ar:
+          Diplomatic/International/Regional: دبلوماسي / دولي / اقليمي
+          Domestic: منزلي
+          Government Company/ Corporation: مؤسسة / شركة حكومية
+          Government Department: إدارة حكومية
+          Mixed: مختلط
+          Non profit: غير ربحي
+          Private: خاص
+        average_monthly_wage_qar:
+          Diplomatic/International/Regional: 30088
+          Domestic: 3115
+          Government Company/ Corporation: 30166
+          Government Department: 33339
+          Mixed: 35377
+          Non profit: 27710
+          Private: 7302
+evidence:
+- publisher: National Planning Council, State of Qatar (Qatar open data portal)
+  title: Qatar open data portal, dataset workers-in-paid-employment-and-average-monthly-wage-by-gender-and-sector
+    (CSV export, 2023)
+  url: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets/workers-in-paid-employment-and-average-monthly-wage-by-gender-and-sector/exports/csv?delimiter=%2C&select=year%2Cgender%2Csector%2Cpaid_employment_workers%2Cmonthly_average_wage_qr%2Clnw%2Clqt&where=year%3Ddate%272023%27&order_by=gender%2Csector
+  accessed_at: '2026-11-09'
+  locator: row gender=Males, sector=Private, paid_employment_workers
+  value: '1523423'
+  unit: count
+  snippet: 2023,Males,Private,1523423
+  source_license: CC-BY-4.0
+  content_sha256: ced5c01786d4a14ef2500d2557adf76b06c627ca235e0b4a27d07d351cc2aa69
+  role: primary
+- publisher: National Planning Council, State of Qatar (Qatar open data portal)
+  title: Qatar open data portal, dataset workers-in-paid-employment-and-average-monthly-wage-by-gender-and-sector
+    (CSV export, 2023)
+  url: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets/workers-in-paid-employment-and-average-monthly-wage-by-gender-and-sector/exports/csv?delimiter=%2C&select=year%2Cgender%2Csector%2Cpaid_employment_workers%2Cmonthly_average_wage_qr%2Clnw%2Clqt&where=year%3Ddate%272023%27&order_by=gender%2Csector
+  accessed_at: '2026-11-09'
+  locator: row gender=Females, sector=Government Department, monthly_average_wage_qr
+  value: '28702'
+  unit: currency:QAR
+  snippet: 2023,Females,Government Department,52869,28702
+  source_license: CC-BY-4.0
+  content_sha256: ced5c01786d4a14ef2500d2557adf76b06c627ca235e0b4a27d07d351cc2aa69
+  role: primary
+- publisher: National Planning Council, State of Qatar (Qatar open data portal)
+  title: Qatar open data portal catalogue, licence fields of dataset workers-in-paid-employment-and-average-monthly-wage-by-gender-and-sector
+    (JSON)
+  url: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets?select=dataset_id%2Cdefault.license%2Cdefault.license_url%2Cdefault.publisher&where=dataset_id%3D%22workers-in-paid-employment-and-average-monthly-wage-by-gender-and-sector%22
+  accessed_at: '2026-11-09'
+  locator: results[0].default.license_url
+  value: https://creativecommons.org/licenses/by/4.0/
+  unit: text
+  snippet: '"default.license_url": "https://creativecommons.org/licenses/by/4.0/"'
+  source_license: CC-BY-4.0
+  content_sha256: d386e1c0bef2584d19b6979b2a50b704c899a3d9eafd63fc51a355bb592e6fa6
+  role: supporting
+assumed:
+- parameter: distributions.*.parameters.shares
+  value: count / sum of counts within each group
+  method: derived
+  rationale: The publisher gives counts; shares are each count over the group total. The average wage per sector
+    is published, not derived.
+tests:
+- statistic: share["Females","Private"]
+  expected: 0.49922973
+  tolerance: 0.005
+- statistic: share["Females","Domestic"]
+  expected: 0.26615666
+  tolerance: 0.005
+- statistic: sum_of_shares["Females"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Males","Private"]
+  expected: 0.85044383
+  tolerance: 0.005
+- statistic: share["Males","Government Department"]
+  expected: 0.06245314
+  tolerance: 0.005
+- statistic: sum_of_shares["Males"]
+  expected: 1
+  tolerance: 1.0e-06
+notes: Workers in paid employment in Qatar in 2023 by sector (government department, government company or corporation,
+  mixed, private, domestic, diplomatic or international, non-profit) for men and women, with the average monthly
+  wage in Qatari riyals for each sector and sex under average_monthly_wage_qar. The source does not split this table
+  by nationality. The portal's catalogue record for the dataset gives the licence as CC BY with the Creative Commons
+  Attribution 4.0 licence URL.

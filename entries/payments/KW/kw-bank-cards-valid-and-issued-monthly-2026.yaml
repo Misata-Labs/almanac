@@ -1,0 +1,145 @@
+id: kw-bank-cards-valid-and-issued-monthly-2026
+title: Kuwait local bank credit and debit cards, valid and issued, monthly January to September 2026
+kind: temporal
+domain: payments
+region: KW
+status: license-review
+tier: B
+observed_period:
+  start: '2026-01-01'
+  end: '2026-09-30'
+tags:
+- kuwait
+- gcc
+- cards
+- credit-cards
+- debit-cards
+- payments
+- monthly
+- time-series
+- cbk
+use_cases:
+- banking-demo
+- payments-demo
+- fintech-demo
+- synthetic-customers
+- market-sizing
+spec:
+  variable: valid_local_bank_cards_thousands
+  unit: decimal
+  frequency: monthly
+  columns:
+  - credit_cards_valid_thousands
+  - debit_cards_valid_thousands
+  - cards_issued_thousands
+  - credit_cards_issued_thousands
+  - debit_cards_issued_thousands
+  series:
+  - period: 2026-01
+    value: 7621.6
+    credit_cards_valid_thousands: 1738.0
+    debit_cards_valid_thousands: 5883.6
+    cards_issued_thousands: 184.8
+    credit_cards_issued_thousands: 36.0
+    debit_cards_issued_thousands: 148.7
+  - period: 2026-02
+    value: 7652.8
+    credit_cards_valid_thousands: 1750.6
+    debit_cards_valid_thousands: 5902.2
+    cards_issued_thousands: 174.0
+    credit_cards_issued_thousands: 31.9
+    debit_cards_issued_thousands: 142.1
+  - period: 2026-03
+    value: 7727.0
+    credit_cards_valid_thousands: 1755.5
+    debit_cards_valid_thousands: 5971.4
+    cards_issued_thousands: 142.0
+    credit_cards_issued_thousands: 22.0
+    debit_cards_issued_thousands: 120.0
+  - period: 2026-04
+    value: 7796.5
+    credit_cards_valid_thousands: 1767.1
+    debit_cards_valid_thousands: 6029.4
+    cards_issued_thousands: 187.3
+    credit_cards_issued_thousands: 38.2
+    debit_cards_issued_thousands: 149.1
+  - period: 2026-05
+    value: 7863.4
+    credit_cards_valid_thousands: 1778.5
+    debit_cards_valid_thousands: 6085.0
+    cards_issued_thousands: 184.1
+    credit_cards_issued_thousands: 37.3
+    debit_cards_issued_thousands: 146.8
+  - period: 2026-06
+    value: 7963.0
+    credit_cards_valid_thousands: 1791.3
+    debit_cards_valid_thousands: 6171.7
+    cards_issued_thousands: 203.3
+    credit_cards_issued_thousands: 40.6
+    debit_cards_issued_thousands: 162.7
+  - period: 2026-07
+    value: 8019.3
+    credit_cards_valid_thousands: 1807.5
+    debit_cards_valid_thousands: 6211.8
+    cards_issued_thousands: 214.8
+    credit_cards_issued_thousands: 45.9
+    debit_cards_issued_thousands: 169.0
+  - period: 2026-08
+    value: 8084.1
+    credit_cards_valid_thousands: 1824.6
+    debit_cards_valid_thousands: 6259.4
+    cards_issued_thousands: 201.2
+    credit_cards_issued_thousands: 44.6
+    debit_cards_issued_thousands: 156.6
+  - period: 2026-09
+    value: 8141.2
+    credit_cards_valid_thousands: 1838.3
+    debit_cards_valid_thousands: 6302.9
+    cards_issued_thousands: 209.4
+    credit_cards_issued_thousands: 45.4
+    debit_cards_issued_thousands: 164.0
+evidence:
+- publisher: Central Bank of Kuwait
+  title: Central Bank of Kuwait, Monthly Monetary Statistical Bulletin, September 2026 (PDF)
+  url: https://www.cbk.gov.kw/en/redirects/download?compId=172793&esIndex=reports
+  accessed_at: '2026-11-09'
+  locator: plastic cards table (valid and issued cards, ATM and POS machines), January 2026, Credit Cards (1)
+  value: '1738.0'
+  unit: decimal
+  snippet: 1738.036.0-- - Credit Cards (1)
+  source_license: unstated
+  content_sha256: c944b138979cf1976fe891207b41687c00f846cd1b890251e8176ce2812dbd4c
+  role: primary
+- publisher: Central Bank of Kuwait
+  title: Central Bank of Kuwait, Monthly Monetary Statistical Bulletin, September 2026 (PDF)
+  url: https://www.cbk.gov.kw/en/redirects/download?compId=172793&esIndex=reports
+  accessed_at: '2026-11-09'
+  locator: plastic cards table, September 2026, Debit Cards (2)
+  value: '6302.9'
+  unit: decimal
+  snippet: 6302.9164.0-- - Debit Cards (2)
+  source_license: unstated
+  content_sha256: c944b138979cf1976fe891207b41687c00f846cd1b890251e8176ce2812dbd4c
+  role: primary
+assumed:
+- parameter: cell boundaries
+  value: each figure has one decimal place
+  method: derived
+  rationale: The PDF's extracted text runs adjacent cells together (for example 1738.036.0); every figure in the
+    table carries one decimal, and credit plus debit valid cards reproduce the printed total each month, which the
+    builder checks.
+tests:
+- statistic: value[2026-09]
+  expected: 8141.2
+  tolerance: 1.0e-09
+- statistic: column[credit_cards_valid_thousands,2026-01]
+  expected: 1738.0
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 9
+  tolerance: 0
+notes: 'Credit and debit cards issued by local banks in Kuwait, in thousands: cards valid at the end of each month
+  (the series value is the total) and cards issued during the month, January to September 2026, from the plastic
+  cards table of the Central Bank of Kuwait''s Monthly Monetary Statistical Bulletin (September 2026 issue). ATM
+  and point-of-sale machine counts in the same table are left out because the extracted text runs the two counts
+  together without a separator. The bulletin publishes no reuse licence, so the entry stays at license-review.'
