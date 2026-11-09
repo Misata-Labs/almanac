@@ -436,9 +436,8 @@ def abu_dhabi_hotels() -> list[dict]:
         "notes": (
             "Hotel guests in the Emirate of Abu Dhabi by world region of nationality for each month of 2025 with a SCAD "
             "release, from Table 4 of the monthly Hotel Establishments Statistics (preliminary data from the Department of "
-            "Culture and Tourism). Condition on the booking month to draw a guest's source market with its seasonality: GCC "
-            "and other Arab guests rise in summer, European guests in the winter season. 'UAE' counts residents of the UAE "
-            "of any nationality as published." + gap_note + " " + SCAD_TERMS_NOTE
+            "Culture and Tourism). Condition on the booking month to draw a guest's source market with the month's own mix. "
+            "Region labels are SCAD's own; 'UAE' is reported alongside the GCC and other regions as published." + gap_note + " " + SCAD_TERMS_NOTE
         ),
     }
     return [indicators, by_region]
@@ -699,7 +698,7 @@ def abu_dhabi_births(raw: bytes) -> list[dict]:
         "notes": (
             "Live births in 2025 in each of the three regions of the Emirate of Abu Dhabi (Abu Dhabi, Al Ain, Al Dhafra) "
             "split by citizenship and sex, from Table 1 of SCAD's Birth Statistics 2025. Births abroad, births with region "
-            "not stated, and births with citizenship or sex not stated are left out. The Emirati share differs sharply by "
+            "not stated, and births with citizenship or sex not stated are left out. The Emirati share differs by "
             "region, which makes the table a compact prior for the citizenship of a synthetic resident given their region. "
             + SCAD_TERMS_NOTE
         ),

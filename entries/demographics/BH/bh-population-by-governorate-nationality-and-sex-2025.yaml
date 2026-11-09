@@ -1,0 +1,164 @@
+id: bh-population-by-governorate-nationality-and-sex-2025
+title: Bahrain population by governorate given nationality and sex, mid-2025
+kind: conditional
+domain: demographics
+region: BH
+status: license-review
+tier: A
+observed_period:
+  start: '2025-06-30'
+  end: '2025-06-30'
+tags:
+- bahrain
+- gcc
+- population
+- governorate
+- sex
+- nationality
+- iga
+use_cases:
+- synthetic-customers
+- address-generation
+- person-generation
+- customer-segmentation
+- retail-demo
+spec:
+  variable: governorate
+  unit: ratio
+  given: nationality|sex
+  distributions:
+    Bahraini|Female:
+      family: categorical
+      parameters:
+        shares:
+          Capital: 0.21785364
+          Muharraq: 0.19680879
+          Northern: 0.41424153
+          Southern: 0.17109604
+        counts:
+          Capital: 80227
+          Muharraq: 72477
+          Northern: 152549
+          Southern: 63008
+        total: 368261
+        labels_ar:
+          Capital: العاصمة
+          Muharraq: المحرق
+          Northern: الشمالية
+          Southern: الجنوبية
+    Bahraini|Male:
+      family: categorical
+      parameters:
+        shares:
+          Capital: 0.21279338
+          Muharraq: 0.19655882
+          Northern: 0.41740596
+          Southern: 0.17324183
+        counts:
+          Capital: 80401
+          Muharraq: 74267
+          Northern: 157711
+          Southern: 65457
+        total: 377836
+        labels_ar:
+          Capital: العاصمة
+          Muharraq: المحرق
+          Northern: الشمالية
+          Southern: الجنوبية
+    Non-Bahraini|Female:
+      family: categorical
+      parameters:
+        shares:
+          Capital: 0.40125232
+          Muharraq: 0.20455447
+          Northern: 0.18713575
+          Southern: 0.20705747
+        counts:
+          Capital: 98109
+          Muharraq: 50015
+          Northern: 45756
+          Southern: 50627
+        total: 244507
+        labels_ar:
+          Capital: العاصمة
+          Muharraq: المحرق
+          Northern: الشمالية
+          Southern: الجنوبية
+    Non-Bahraini|Male:
+      family: categorical
+      parameters:
+        shares:
+          Capital: 0.47979127
+          Muharraq: 0.16396151
+          Northern: 0.1225141
+          Southern: 0.23373312
+        counts:
+          Capital: 293947
+          Muharraq: 100452
+          Northern: 75059
+          Southern: 143198
+        total: 612656
+        labels_ar:
+          Capital: العاصمة
+          Muharraq: المحرق
+          Northern: الشمالية
+          Southern: الجنوبية
+evidence:
+- publisher: Information & eGovernment Authority, Kingdom of Bahrain
+  title: Bahrain open data portal, dataset 02-population-by-governorate-nationality-sex (CSV export, June 2025)
+  url: https://www.data.gov.bh/api/explore/v2.1/catalog/datasets/02-population-by-governorate-nationality-sex/exports/csv?delimiter=%2C&select=year%2Cnationality%2Csex%2Cgovernorate%2Cpopulation%2Cljnsy%2Cljns%2Clmhfz&where=year%3Ddate%272025-06%27&order_by=nationality%2Csex%2Cgovernorate
+  accessed_at: '2026-11-09'
+  locator: row nationality=Non-Bahraini, sex=Male, governorate=Capital
+  value: '293947'
+  unit: count
+  snippet: 2025-06,Non-Bahraini,Male,Capital,293947
+  source_license: unstated
+  content_sha256: 2d6f17f66011e4c3860ea943818c79c5e7c2240e1cac24740d0037390ff0be54
+  role: primary
+assumed:
+- parameter: distributions.*.parameters.shares
+  value: count / sum of counts within each group
+  method: derived
+  rationale: The publisher gives counts; shares are each count over the group total. The Not Stated governorate
+    row is kept with its published count.
+tests:
+- statistic: share["Bahraini|Female","Northern"]
+  expected: 0.41424153
+  tolerance: 0.005
+- statistic: share["Bahraini|Female","Capital"]
+  expected: 0.21785364
+  tolerance: 0.005
+- statistic: sum_of_shares["Bahraini|Female"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Bahraini|Male","Northern"]
+  expected: 0.41740596
+  tolerance: 0.005
+- statistic: share["Bahraini|Male","Capital"]
+  expected: 0.21279338
+  tolerance: 0.005
+- statistic: sum_of_shares["Bahraini|Male"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Non-Bahraini|Female","Capital"]
+  expected: 0.40125232
+  tolerance: 0.005
+- statistic: share["Non-Bahraini|Female","Southern"]
+  expected: 0.20705747
+  tolerance: 0.005
+- statistic: sum_of_shares["Non-Bahraini|Female"]
+  expected: 1
+  tolerance: 1.0e-06
+- statistic: share["Non-Bahraini|Male","Capital"]
+  expected: 0.47979127
+  tolerance: 0.005
+- statistic: share["Non-Bahraini|Male","Southern"]
+  expected: 0.23373312
+  tolerance: 0.005
+- statistic: sum_of_shares["Non-Bahraini|Male"]
+  expected: 1
+  tolerance: 1.0e-06
+notes: Mid-year (June) 2025 population of Bahrain across its four governorates (Capital, Muharraq, Northern, Southern)
+  for each nationality and sex group, with the Arabic governorate names from the same export. The Bahrain open data
+  portal publishes no licence for this dataset (its catalogue licence field is empty), so the entry stays at license-review
+  until the Information & eGovernment Authority's reuse terms are confirmed.
