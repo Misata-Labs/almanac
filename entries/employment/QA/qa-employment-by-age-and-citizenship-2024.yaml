@@ -1,0 +1,300 @@
+id: qa-employment-by-age-and-citizenship-2024
+title: Qatar employment by broad age group, given citizenship and sex, 2024 (ILOSTAT, labour force survey)
+kind: conditional
+domain: employment
+region: QA
+status: license-review
+tier: A
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+tags:
+- gcc
+- migration
+- nationality
+- employment
+- by-age
+- by-citizenship
+- by-sex
+- ilostat
+use_cases:
+- synthetic-employees
+- payroll-demo
+- hr-analytics
+- workforce-planning
+- synthetic-customers
+- person-generation
+spec:
+  variable: age_group
+  unit: ratio
+  given: citizenship_and_sex
+  distributions:
+    all:men:
+      family: categorical
+      parameters:
+        shares:
+          AGE_AGGREGATE_Y15-24: 0.076979
+          AGE_AGGREGATE_Y25-54: 0.863209
+          AGE_AGGREGATE_Y55-64: 0.049608
+          AGE_AGGREGATE_YGE65: 0.010205
+        thousand_persons:
+          AGE_AGGREGATE_Y15-24: 143.094
+          AGE_AGGREGATE_Y25-54: 1604.596
+          AGE_AGGREGATE_Y55-64: 92.215
+          AGE_AGGREGATE_YGE65: 18.969
+        labels:
+          AGE_AGGREGATE_Y15-24: 15-24
+          AGE_AGGREGATE_Y25-54: 25-54
+          AGE_AGGREGATE_Y55-64: 55-64
+          AGE_AGGREGATE_YGE65: 65+
+        year: 2024
+    all:total:
+      family: categorical
+      parameters:
+        shares:
+          AGE_AGGREGATE_Y15-24: 0.087966
+          AGE_AGGREGATE_Y25-54: 0.855953
+          AGE_AGGREGATE_Y55-64: 0.047062
+          AGE_AGGREGATE_YGE65: 0.009019
+        thousand_persons:
+          AGE_AGGREGATE_Y15-24: 197.038
+          AGE_AGGREGATE_Y25-54: 1917.282
+          AGE_AGGREGATE_Y55-64: 105.417
+          AGE_AGGREGATE_YGE65: 20.201
+        labels:
+          AGE_AGGREGATE_Y15-24: 15-24
+          AGE_AGGREGATE_Y25-54: 25-54
+          AGE_AGGREGATE_Y55-64: 55-64
+          AGE_AGGREGATE_YGE65: 65+
+        year: 2024
+    all:women:
+      family: categorical
+      parameters:
+        shares:
+          AGE_AGGREGATE_Y15-24: 0.141562
+          AGE_AGGREGATE_Y25-54: 0.82056
+          AGE_AGGREGATE_Y55-64: 0.034645
+          AGE_AGGREGATE_YGE65: 0.003233
+        thousand_persons:
+          AGE_AGGREGATE_Y15-24: 53.944
+          AGE_AGGREGATE_Y25-54: 312.686
+          AGE_AGGREGATE_Y55-64: 13.202
+          AGE_AGGREGATE_YGE65: 1.232
+        labels:
+          AGE_AGGREGATE_Y15-24: 15-24
+          AGE_AGGREGATE_Y25-54: 25-54
+          AGE_AGGREGATE_Y55-64: 55-64
+          AGE_AGGREGATE_YGE65: 65+
+        year: 2024
+    citizens:men:
+      family: categorical
+      parameters:
+        shares:
+          AGE_AGGREGATE_Y15-24: 0.15084
+          AGE_AGGREGATE_Y25-54: 0.756954
+          AGE_AGGREGATE_Y55-64: 0.081038
+          AGE_AGGREGATE_YGE65: 0.011168
+        thousand_persons:
+          AGE_AGGREGATE_Y15-24: 11.291
+          AGE_AGGREGATE_Y25-54: 56.661
+          AGE_AGGREGATE_Y55-64: 6.066
+          AGE_AGGREGATE_YGE65: 0.836
+        labels:
+          AGE_AGGREGATE_Y15-24: 15-24
+          AGE_AGGREGATE_Y25-54: 25-54
+          AGE_AGGREGATE_Y55-64: 55-64
+          AGE_AGGREGATE_YGE65: 65+
+        year: 2024
+    citizens:total:
+      family: categorical
+      parameters:
+        shares:
+          AGE_AGGREGATE_Y15-24: 0.115792
+          AGE_AGGREGATE_Y25-54: 0.801538
+          AGE_AGGREGATE_Y55-64: 0.074535
+          AGE_AGGREGATE_YGE65: 0.008135
+        thousand_persons:
+          AGE_AGGREGATE_Y15-24: 14.746
+          AGE_AGGREGATE_Y25-54: 102.075
+          AGE_AGGREGATE_Y55-64: 9.492
+          AGE_AGGREGATE_YGE65: 1.036
+        labels:
+          AGE_AGGREGATE_Y15-24: 15-24
+          AGE_AGGREGATE_Y25-54: 25-54
+          AGE_AGGREGATE_Y55-64: 55-64
+          AGE_AGGREGATE_YGE65: 65+
+        year: 2024
+    citizens:women:
+      family: categorical
+      parameters:
+        shares:
+          AGE_AGGREGATE_Y15-24: 0.065816
+          AGE_AGGREGATE_Y25-54: 0.865111
+          AGE_AGGREGATE_Y55-64: 0.065263
+          AGE_AGGREGATE_YGE65: 0.00381
+        thousand_persons:
+          AGE_AGGREGATE_Y15-24: 3.455
+          AGE_AGGREGATE_Y25-54: 45.414
+          AGE_AGGREGATE_Y55-64: 3.426
+          AGE_AGGREGATE_YGE65: 0.2
+        labels:
+          AGE_AGGREGATE_Y15-24: 15-24
+          AGE_AGGREGATE_Y25-54: 25-54
+          AGE_AGGREGATE_Y55-64: 55-64
+          AGE_AGGREGATE_YGE65: 65+
+        year: 2024
+    foreign_citizens:men:
+      family: categorical
+      parameters:
+        shares:
+          AGE_AGGREGATE_Y15-24: 0.07388
+          AGE_AGGREGATE_Y25-54: 0.867667
+          AGE_AGGREGATE_Y55-64: 0.048289
+          AGE_AGGREGATE_YGE65: 0.010164
+        thousand_persons:
+          AGE_AGGREGATE_Y15-24: 131.803
+          AGE_AGGREGATE_Y25-54: 1547.935
+          AGE_AGGREGATE_Y55-64: 86.149
+          AGE_AGGREGATE_YGE65: 18.133
+        labels:
+          AGE_AGGREGATE_Y15-24: 15-24
+          AGE_AGGREGATE_Y25-54: 25-54
+          AGE_AGGREGATE_Y55-64: 55-64
+          AGE_AGGREGATE_YGE65: 65+
+        year: 2024
+    foreign_citizens:total:
+      family: categorical
+      parameters:
+        shares:
+          AGE_AGGREGATE_Y15-24: 0.086288
+          AGE_AGGREGATE_Y25-54: 0.859233
+          AGE_AGGREGATE_Y55-64: 0.045406
+          AGE_AGGREGATE_YGE65: 0.009072
+        thousand_persons:
+          AGE_AGGREGATE_Y15-24: 182.292
+          AGE_AGGREGATE_Y25-54: 1815.207
+          AGE_AGGREGATE_Y55-64: 95.925
+          AGE_AGGREGATE_YGE65: 19.165
+        labels:
+          AGE_AGGREGATE_Y15-24: 15-24
+          AGE_AGGREGATE_Y25-54: 25-54
+          AGE_AGGREGATE_Y55-64: 55-64
+          AGE_AGGREGATE_YGE65: 65+
+        year: 2024
+    foreign_citizens:women:
+      family: categorical
+      parameters:
+        shares:
+          AGE_AGGREGATE_Y15-24: 0.153663
+          AGE_AGGREGATE_Y25-54: 0.813443
+          AGE_AGGREGATE_Y55-64: 0.029753
+          AGE_AGGREGATE_YGE65: 0.003141
+        thousand_persons:
+          AGE_AGGREGATE_Y15-24: 50.489
+          AGE_AGGREGATE_Y25-54: 267.272
+          AGE_AGGREGATE_Y55-64: 9.776
+          AGE_AGGREGATE_YGE65: 1.032
+        labels:
+          AGE_AGGREGATE_Y15-24: 15-24
+          AGE_AGGREGATE_Y25-54: 25-54
+          AGE_AGGREGATE_Y55-64: 55-64
+          AGE_AGGREGATE_YGE65: 65+
+        year: 2024
+evidence:
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator EMP_TEMP_SEX_AGE_CCT_NB_A (Employment by sex, age and citizenship
+    (thousands)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_AGE_CCT_NB_A&ref_area=QAT&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=QAT, sex=SEX_T, classif1=AGE_AGGREGATE_Y15-24, classif2=CCT_CIT_CITIZEN, time=2024, obs_value
+  value: '14.746'
+  unit: count
+  snippet: QAT","BA:696","EMP_TEMP_SEX_AGE_CCT_NB","SEX_T","AGE_AGGREGATE_Y15-24","CCT_CIT_CITIZEN","2024",14.746
+  source_license: unstated
+  content_sha256: e00169a26347289dc5d9aad7955fdea8bf27b6b2f33be1a91d8e2c1f53a0ffc4
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator EMP_TEMP_SEX_AGE_CCT_NB_A (Employment by sex, age and citizenship
+    (thousands)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_AGE_CCT_NB_A&ref_area=QAT&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=QAT, sex=SEX_M, classif1=AGE_AGGREGATE_Y25-54, classif2=CCT_CIT_NONCIT, time=2024, obs_value
+  value: '1547.935'
+  unit: count
+  snippet: QAT","BA:696","EMP_TEMP_SEX_AGE_CCT_NB","SEX_M","AGE_AGGREGATE_Y25-54","CCT_CIT_NONCIT","2024",1547.935
+  source_license: unstated
+  content_sha256: e00169a26347289dc5d9aad7955fdea8bf27b6b2f33be1a91d8e2c1f53a0ffc4
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator EMP_TEMP_SEX_AGE_CCT_NB_A (Employment by sex, age and citizenship
+    (thousands)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_AGE_CCT_NB_A&ref_area=QAT&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=QAT, sex=SEX_T, classif1=AGE_AGGREGATE_YGE15, classif2=CCT_CIT_NONCIT, time=2024, obs_value
+  value: '2112.589'
+  unit: count
+  snippet: QAT","BA:696","EMP_TEMP_SEX_AGE_CCT_NB","SEX_T","AGE_AGGREGATE_YGE15","CCT_CIT_NONCIT","2024",2112.589
+  source_license: unstated
+  content_sha256: e00169a26347289dc5d9aad7955fdea8bf27b6b2f33be1a91d8e2c1f53a0ffc4
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT metadata API, classif1 dictionary (English labels), CSV
+  url: https://rplumber.ilo.org/metadata/dic/?var=classif1&lang=en&format=.csv
+  accessed_at: '2026-11-09'
+  locator: classif1=AGE_AGGREGATE_Y15-24
+  value: 'Age (Aggregate bands): 15-24'
+  unit: text
+  snippet: '"AGE_AGGREGATE_Y15-24","Age (Aggregate bands): 15-24"'
+  source_license: unstated
+  content_sha256: 188a7ccdac9ba022f646962476a4a9b2065ab1b7a41a25f4967d2ead4aa0ebd4
+  role: supporting
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT metadata API, classif1 dictionary (English labels), CSV
+  url: https://rplumber.ilo.org/metadata/dic/?var=classif1&lang=en&format=.csv
+  accessed_at: '2026-11-09'
+  locator: classif1=CCT_CIT_NONCIT
+  value: 'Citizenship: Foreign citizens'
+  unit: text
+  snippet: '"CCT_CIT_NONCIT","Citizenship: Foreign citizens"'
+  source_license: unstated
+  content_sha256: 188a7ccdac9ba022f646962476a4a9b2065ab1b7a41a25f4967d2ead4aa0ebd4
+  role: supporting
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / total
+  method: derived
+  rationale: ILOSTAT publishes thousands of employed persons per category; shares are each category over the sum
+    of the categories for that citizenship and sex, kept only where the sum is within one percent of the published
+    total.
+tests:
+- statistic: share[citizens:total,AGE_AGGREGATE_Y15-24]
+  expected: 0.115792
+  tolerance: 0.005
+- statistic: share[foreign_citizens:men,AGE_AGGREGATE_Y25-54]
+  expected: 0.867667
+  tolerance: 0.005
+- statistic: share[foreign_citizens:women,AGE_AGGREGATE_Y25-54]
+  expected: 0.813443
+  tolerance: 0.005
+- statistic: share[all:total,AGE_AGGREGATE_Y55-64]
+  expected: 0.047062
+  tolerance: 0.005
+- statistic: sum_of_shares[citizens:total]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[foreign_citizens:men]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[foreign_citizens:women]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[all:total]
+  expected: 1
+  tolerance: 0.0001
+notes: Employed persons in Qatar in 2024 in the broad age groups 15-24, 25-54, 55-64 and 65+ for citizens and foreign
+  citizens, by sex, from ILOSTAT indicator EMP_TEMP_SEX_AGE_CCT_NB (labour force survey), for assigning ages to
+  synthetic employees by nationality. Conditioning keys are '<citizenship>:<sex>' with citizenship all, citizens
+  or foreign_citizens and sex total, men or women; the published thousands and the English category labels ride
+  alongside the shares. The ILOSTAT terms-of-use page could not be fetched byte-stably in this session, so the licence
+  is recorded as unstated and the entry stays at license-review until a reviewer confirms the terms that apply to
+  ILOSTAT data.

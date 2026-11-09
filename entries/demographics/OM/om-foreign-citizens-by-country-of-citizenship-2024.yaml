@@ -1,0 +1,303 @@
+id: om-foreign-citizens-by-country-of-citizenship-2024
+title: Oman working-age and employed foreign citizens by country of citizenship, given sex, 2024 (ILOSTAT)
+kind: conditional
+domain: demographics
+region: OM
+status: license-review
+tier: A
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+tags:
+- gcc
+- migration
+- nationality
+- foreign-citizens
+- country-of-citizenship
+- by-sex
+- ilostat
+- labour-migration
+use_cases:
+- synthetic-customers
+- synthetic-employees
+- person-generation
+- kyc-onboarding
+- customer-segmentation
+- remittance-demo
+- hr-analytics
+spec:
+  variable: country_of_citizenship_iso3
+  unit: ratio
+  given: population_and_sex
+  distributions:
+    working_age_population:total:
+      family: categorical
+      parameters:
+        shares:
+          BGD: 0.318119
+          EGY: 0.032062
+          IND: 0.285343
+          PAK: 0.170189
+          PHL: 0.022649
+          OTHER: 0.171638
+        thousand_persons:
+          BGD: 662.306
+          EGY: 66.751
+          IND: 594.069
+          PAK: 354.324
+          PHL: 47.155
+          OTHER: 357.342
+        country_names:
+          BGD: Bangladesh
+          EGY: Egypt
+          IND: India
+          PAK: Pakistan
+          PHL: Philippines
+        total_thousand_persons: 2081.947
+        year: 2024
+    working_age_population:men:
+      family: categorical
+      parameters:
+        shares:
+          BGD: 0.382023
+          EGY: 0.026931
+          IND: 0.292152
+          PAK: 0.200127
+          PHL: 0.005206
+          OTHER: 0.093561
+        thousand_persons:
+          BGD: 618.639
+          EGY: 43.612
+          IND: 473.104
+          PAK: 324.081
+          PHL: 8.43
+          OTHER: 151.51
+        country_names:
+          BGD: Bangladesh
+          EGY: Egypt
+          IND: India
+          PAK: Pakistan
+          PHL: Philippines
+        total_thousand_persons: 1619.376
+        year: 2024
+    working_age_population:women:
+      family: categorical
+      parameters:
+        shares:
+          BGD: 0.094401
+          EGY: 0.050023
+          IND: 0.261506
+          PAK: 0.06538
+          PHL: 0.083717
+          OTHER: 0.444974
+        thousand_persons:
+          BGD: 43.667
+          EGY: 23.139
+          IND: 120.965
+          PAK: 30.243
+          PHL: 38.725
+          OTHER: 205.832
+        country_names:
+          BGD: Bangladesh
+          EGY: Egypt
+          IND: India
+          PAK: Pakistan
+          PHL: Philippines
+        total_thousand_persons: 462.571
+        year: 2024
+    employed:total:
+      family: categorical
+      parameters:
+        shares:
+          BGD: 0.352229
+          EGY: 0.025385
+          IND: 0.280071
+          PAK: 0.175406
+          PHL: 0.024827
+          OTHER: 0.142082
+        thousand_persons:
+          BGD: 637.157
+          EGY: 45.92
+          IND: 506.627
+          PAK: 317.297
+          PHL: 44.91
+          OTHER: 257.015
+        country_names:
+          BGD: Bangladesh
+          EGY: Egypt
+          IND: India
+          PAK: Pakistan
+          PHL: Philippines
+        total_thousand_persons: 1808.926
+        year: 2024
+    employed:men:
+      family: categorical
+      parameters:
+        shares:
+          BGD: 0.394259
+          EGY: 0.024248
+          IND: 0.294461
+          PAK: 0.202975
+          PHL: 0.005099
+          OTHER: 0.078957
+        thousand_persons:
+          BGD: 611.241
+          EGY: 37.593
+          IND: 456.519
+          PAK: 314.683
+          PHL: 7.906
+          OTHER: 122.412
+        country_names:
+          BGD: Bangladesh
+          EGY: Egypt
+          IND: India
+          PAK: Pakistan
+          PHL: Philippines
+        total_thousand_persons: 1550.354
+        year: 2024
+    employed:women:
+      family: categorical
+      parameters:
+        shares:
+          BGD: 0.100227
+          EGY: 0.032204
+          IND: 0.193787
+          PAK: 0.010109
+          PHL: 0.143109
+          OTHER: 0.520563
+        thousand_persons:
+          BGD: 25.916
+          EGY: 8.327
+          IND: 50.108
+          PAK: 2.614
+          PHL: 37.004
+          OTHER: 134.603
+        country_names:
+          BGD: Bangladesh
+          EGY: Egypt
+          IND: India
+          PAK: Pakistan
+          PHL: Philippines
+        total_thousand_persons: 258.572
+        year: 2024
+evidence:
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator POP_MFRC_SEX_CCT_NB_A (Working age foreign citizens by sex and country
+    of citizenship (thousands)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=POP_MFRC_SEX_CCT_NB_A&ref_area=OMN&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=OMN, sex=SEX_T, classif1=CCT_CTZ_TOTAL, time=2024, obs_value
+  value: '2081.947'
+  unit: count
+  snippet: OMN","EA:8345","POP_MFRC_SEX_CCT_NB","SEX_T","CCT_CTZ_TOTAL","2024",2081.947
+  source_license: unstated
+  content_sha256: 2ee65bda1ef6be199be6e67ffaed9b6afb58d8a72cd65bb3a45478905b2a0ddd
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator POP_MFRC_SEX_CCT_NB_A (Working age foreign citizens by sex and country
+    of citizenship (thousands)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=POP_MFRC_SEX_CCT_NB_A&ref_area=OMN&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=OMN, sex=SEX_T, classif1=CCT_CTZ_BGD, time=2024, obs_value
+  value: '662.306'
+  unit: count
+  snippet: OMN","EA:8345","POP_MFRC_SEX_CCT_NB","SEX_T","CCT_CTZ_BGD","2024",662.306
+  source_license: unstated
+  content_sha256: 2ee65bda1ef6be199be6e67ffaed9b6afb58d8a72cd65bb3a45478905b2a0ddd
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator POP_MFRC_SEX_CCT_NB_A (Working age foreign citizens by sex and country
+    of citizenship (thousands)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=POP_MFRC_SEX_CCT_NB_A&ref_area=OMN&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=OMN, sex=SEX_F, classif1=CCT_CTZ_PHL, time=2024, obs_value
+  value: '38.725'
+  unit: count
+  snippet: OMN","EA:8345","POP_MFRC_SEX_CCT_NB","SEX_F","CCT_CTZ_PHL","2024",38.725
+  source_license: unstated
+  content_sha256: 2ee65bda1ef6be199be6e67ffaed9b6afb58d8a72cd65bb3a45478905b2a0ddd
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator EMP_MFRC_SEX_CCT_NB_A (Employed foreign citizens by sex and country
+    of citizenship (thousands)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=EMP_MFRC_SEX_CCT_NB_A&ref_area=OMN&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=OMN, sex=SEX_T, classif1=CCT_CTZ_TOTAL, time=2024, obs_value
+  value: '1808.926'
+  unit: count
+  snippet: OMN","EA:8345","EMP_MFRC_SEX_CCT_NB","SEX_T","CCT_CTZ_TOTAL","2024",1808.926
+  source_license: unstated
+  content_sha256: 343793bb42f2c8dba7f3d8dd24f05bc71fc9e56039e621336e497ec4682deafe
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator EMP_MFRC_SEX_CCT_NB_A (Employed foreign citizens by sex and country
+    of citizenship (thousands)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=EMP_MFRC_SEX_CCT_NB_A&ref_area=OMN&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=OMN, sex=SEX_M, classif1=CCT_CTZ_IND, time=2024, obs_value
+  value: '456.519'
+  unit: count
+  snippet: OMN","EA:8345","EMP_MFRC_SEX_CCT_NB","SEX_M","CCT_CTZ_IND","2024",456.519
+  source_license: unstated
+  content_sha256: 343793bb42f2c8dba7f3d8dd24f05bc71fc9e56039e621336e497ec4682deafe
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT metadata API, classif1 dictionary (English labels), CSV
+  url: https://rplumber.ilo.org/metadata/dic/?var=classif1&lang=en&format=.csv
+  accessed_at: '2026-11-09'
+  locator: classif1=CCT_CTZ_BGD
+  value: 'Country of citizenship: Bangladesh'
+  unit: text
+  snippet: '"CCT_CTZ_BGD","Country of citizenship: Bangladesh"'
+  source_license: unstated
+  content_sha256: 188a7ccdac9ba022f646962476a4a9b2065ab1b7a41a25f4967d2ead4aa0ebd4
+  role: supporting
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT metadata API, classif1 dictionary (English labels), CSV
+  url: https://rplumber.ilo.org/metadata/dic/?var=classif1&lang=en&format=.csv
+  accessed_at: '2026-11-09'
+  locator: classif1=CCT_CTZ_X
+  value: 'Country of citizenship: Other countries'
+  unit: text
+  snippet: '"CCT_CTZ_X","Country of citizenship: Other countries"'
+  source_license: unstated
+  content_sha256: 188a7ccdac9ba022f646962476a4a9b2065ab1b7a41a25f4967d2ead4aa0ebd4
+  role: supporting
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / total
+  method: derived
+  rationale: Thousands of foreign citizens of each listed country divided by the sum over the listed countries and
+    'Other countries' (OTHER); the sum is checked against the published total.
+tests:
+- statistic: share[working_age_population:total,BGD]
+  expected: 0.318119
+  tolerance: 0.005
+- statistic: share[working_age_population:women,PHL]
+  expected: 0.083717
+  tolerance: 0.005
+- statistic: share[employed:men,IND]
+  expected: 0.294461
+  tolerance: 0.005
+- statistic: share[employed:total,OTHER]
+  expected: 0.142082
+  tolerance: 0.005
+- statistic: sum_of_shares[working_age_population:total]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[working_age_population:women]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[employed:men]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[employed:total]
+  expected: 1
+  tolerance: 0.0001
+notes: Foreign citizens in Oman in 2024 by country of citizenship, for the working-age population (ILOSTAT indicator
+  POP_MFRC_SEX_CCT_NB) and for employed persons (EMP_MFRC_SEX_CCT_NB), each for all persons, men and women, from
+  ILOSTAT's international labour migration statistics. ILOSTAT lists the main countries of citizenship separately
+  and pools the rest as 'Other countries' (OTHER here). This is a citizenship-based count from national sources,
+  complementing the UN DESA origin estimates for Oman. Conditioning keys are '<population>:<sex>'. The ILOSTAT terms-of-use
+  page could not be fetched byte-stably in this session, so the licence is recorded as unstated and the entry stays
+  at license-review until a reviewer confirms the terms that apply to ILOSTAT data.

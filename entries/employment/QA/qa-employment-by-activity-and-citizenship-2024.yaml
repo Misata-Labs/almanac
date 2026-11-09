@@ -1,0 +1,351 @@
+id: qa-employment-by-activity-and-citizenship-2024
+title: Qatar employment by aggregate economic activity, given citizenship and sex, 2024 (ILOSTAT, labour force survey)
+kind: conditional
+domain: employment
+region: QA
+status: license-review
+tier: A
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+tags:
+- gcc
+- migration
+- nationality
+- employment
+- economic-activity
+- by-citizenship
+- by-sex
+- ilostat
+- labour-force-survey
+use_cases:
+- synthetic-employees
+- payroll-demo
+- hr-analytics
+- workforce-planning
+- synthetic-customers
+- person-generation
+spec:
+  variable: economic_activity_aggregate
+  unit: ratio
+  given: citizenship_and_sex
+  distributions:
+    all:men:
+      family: categorical
+      parameters:
+        shares:
+          ECO_AGGREGATE_AGR: 0.02158
+          ECO_AGGREGATE_MAN: 0.059178
+          ECO_AGGREGATE_CON: 0.373624
+          ECO_AGGREGATE_MEL: 0.028179
+          ECO_AGGREGATE_MKT: 0.369737
+          ECO_AGGREGATE_PUB: 0.147702
+        thousand_persons:
+          ECO_AGGREGATE_AGR: 40.114
+          ECO_AGGREGATE_MAN: 110.005
+          ECO_AGGREGATE_CON: 694.52
+          ECO_AGGREGATE_MEL: 52.381
+          ECO_AGGREGATE_MKT: 687.295
+          ECO_AGGREGATE_PUB: 274.559
+        labels:
+          ECO_AGGREGATE_AGR: Agriculture
+          ECO_AGGREGATE_MAN: Manufacturing
+          ECO_AGGREGATE_CON: Construction
+          ECO_AGGREGATE_MEL: Mining and quarrying; Electricity, gas and water supply
+          ECO_AGGREGATE_MKT: Trade, Transportation, Accommodation and Food, and Business and Administrative Services
+          ECO_AGGREGATE_PUB: Public Administration, Community, Social and other Services and Activities
+        year: 2024
+    all:total:
+      family: categorical
+      parameters:
+        shares:
+          ECO_AGGREGATE_AGR: 0.017909
+          ECO_AGGREGATE_MAN: 0.050306
+          ECO_AGGREGATE_CON: 0.313752
+          ECO_AGGREGATE_MEL: 0.026859
+          ECO_AGGREGATE_MKT: 0.364415
+          ECO_AGGREGATE_PUB: 0.226761
+        thousand_persons:
+          ECO_AGGREGATE_AGR: 40.114
+          ECO_AGGREGATE_MAN: 112.682
+          ECO_AGGREGATE_CON: 702.784
+          ECO_AGGREGATE_MEL: 60.162
+          ECO_AGGREGATE_MKT: 816.266
+          ECO_AGGREGATE_PUB: 507.93
+        labels:
+          ECO_AGGREGATE_AGR: Agriculture
+          ECO_AGGREGATE_MAN: Manufacturing
+          ECO_AGGREGATE_CON: Construction
+          ECO_AGGREGATE_MEL: Mining and quarrying; Electricity, gas and water supply
+          ECO_AGGREGATE_MKT: Trade, Transportation, Accommodation and Food, and Business and Administrative Services
+          ECO_AGGREGATE_PUB: Public Administration, Community, Social and other Services and Activities
+        year: 2024
+    all:women:
+      family: categorical
+      parameters:
+        shares:
+          ECO_AGGREGATE_AGR: 0.0
+          ECO_AGGREGATE_MAN: 0.007025
+          ECO_AGGREGATE_CON: 0.021687
+          ECO_AGGREGATE_MEL: 0.020419
+          ECO_AGGREGATE_MKT: 0.33845
+          ECO_AGGREGATE_PUB: 0.612419
+        thousand_persons:
+          ECO_AGGREGATE_AGR: 0.0
+          ECO_AGGREGATE_MAN: 2.677
+          ECO_AGGREGATE_CON: 8.264
+          ECO_AGGREGATE_MEL: 7.781
+          ECO_AGGREGATE_MKT: 128.971
+          ECO_AGGREGATE_PUB: 233.371
+        labels:
+          ECO_AGGREGATE_AGR: Agriculture
+          ECO_AGGREGATE_MAN: Manufacturing
+          ECO_AGGREGATE_CON: Construction
+          ECO_AGGREGATE_MEL: Mining and quarrying; Electricity, gas and water supply
+          ECO_AGGREGATE_MKT: Trade, Transportation, Accommodation and Food, and Business and Administrative Services
+          ECO_AGGREGATE_PUB: Public Administration, Community, Social and other Services and Activities
+        year: 2024
+    citizens:men:
+      family: categorical
+      parameters:
+        shares:
+          ECO_AGGREGATE_AGR: 0.000868
+          ECO_AGGREGATE_MAN: 0.020306
+          ECO_AGGREGATE_CON: 0.018743
+          ECO_AGGREGATE_MEL: 0.094157
+          ECO_AGGREGATE_MKT: 0.125872
+          ECO_AGGREGATE_PUB: 0.740054
+        thousand_persons:
+          ECO_AGGREGATE_AGR: 0.065
+          ECO_AGGREGATE_MAN: 1.52
+          ECO_AGGREGATE_CON: 1.403
+          ECO_AGGREGATE_MEL: 7.048
+          ECO_AGGREGATE_MKT: 9.422
+          ECO_AGGREGATE_PUB: 55.396
+        labels:
+          ECO_AGGREGATE_AGR: Agriculture
+          ECO_AGGREGATE_MAN: Manufacturing
+          ECO_AGGREGATE_CON: Construction
+          ECO_AGGREGATE_MEL: Mining and quarrying; Electricity, gas and water supply
+          ECO_AGGREGATE_MKT: Trade, Transportation, Accommodation and Food, and Business and Administrative Services
+          ECO_AGGREGATE_PUB: Public Administration, Community, Social and other Services and Activities
+        year: 2024
+    citizens:total:
+      family: categorical
+      parameters:
+        shares:
+          ECO_AGGREGATE_AGR: 0.00051
+          ECO_AGGREGATE_MAN: 0.015139
+          ECO_AGGREGATE_CON: 0.012423
+          ECO_AGGREGATE_MEL: 0.083448
+          ECO_AGGREGATE_MKT: 0.1441
+          ECO_AGGREGATE_PUB: 0.74438
+        thousand_persons:
+          ECO_AGGREGATE_AGR: 0.065
+          ECO_AGGREGATE_MAN: 1.928
+          ECO_AGGREGATE_CON: 1.582
+          ECO_AGGREGATE_MEL: 10.627
+          ECO_AGGREGATE_MKT: 18.351
+          ECO_AGGREGATE_PUB: 94.796
+        labels:
+          ECO_AGGREGATE_AGR: Agriculture
+          ECO_AGGREGATE_MAN: Manufacturing
+          ECO_AGGREGATE_CON: Construction
+          ECO_AGGREGATE_MEL: Mining and quarrying; Electricity, gas and water supply
+          ECO_AGGREGATE_MKT: Trade, Transportation, Accommodation and Food, and Business and Administrative Services
+          ECO_AGGREGATE_PUB: Public Administration, Community, Social and other Services and Activities
+        year: 2024
+    citizens:women:
+      family: categorical
+      parameters:
+        shares:
+          ECO_AGGREGATE_MAN: 0.007772
+          ECO_AGGREGATE_CON: 0.00341
+          ECO_AGGREGATE_MEL: 0.068178
+          ECO_AGGREGATE_MKT: 0.170092
+          ECO_AGGREGATE_PUB: 0.750548
+        thousand_persons:
+          ECO_AGGREGATE_MAN: 0.408
+          ECO_AGGREGATE_CON: 0.179
+          ECO_AGGREGATE_MEL: 3.579
+          ECO_AGGREGATE_MKT: 8.929
+          ECO_AGGREGATE_PUB: 39.4
+        labels:
+          ECO_AGGREGATE_MAN: Manufacturing
+          ECO_AGGREGATE_CON: Construction
+          ECO_AGGREGATE_MEL: Mining and quarrying; Electricity, gas and water supply
+          ECO_AGGREGATE_MKT: Trade, Transportation, Accommodation and Food, and Business and Administrative Services
+          ECO_AGGREGATE_PUB: Public Administration, Community, Social and other Services and Activities
+        year: 2024
+    foreign_citizens:men:
+      family: categorical
+      parameters:
+        shares:
+          ECO_AGGREGATE_AGR: 0.022449
+          ECO_AGGREGATE_MAN: 0.060809
+          ECO_AGGREGATE_CON: 0.388514
+          ECO_AGGREGATE_MEL: 0.025411
+          ECO_AGGREGATE_MKT: 0.379969
+          ECO_AGGREGATE_PUB: 0.122848
+        thousand_persons:
+          ECO_AGGREGATE_AGR: 40.049
+          ECO_AGGREGATE_MAN: 108.485
+          ECO_AGGREGATE_CON: 693.117
+          ECO_AGGREGATE_MEL: 45.333
+          ECO_AGGREGATE_MKT: 677.873
+          ECO_AGGREGATE_PUB: 219.163
+        labels:
+          ECO_AGGREGATE_AGR: Agriculture
+          ECO_AGGREGATE_MAN: Manufacturing
+          ECO_AGGREGATE_CON: Construction
+          ECO_AGGREGATE_MEL: Mining and quarrying; Electricity, gas and water supply
+          ECO_AGGREGATE_MKT: Trade, Transportation, Accommodation and Food, and Business and Administrative Services
+          ECO_AGGREGATE_PUB: Public Administration, Community, Social and other Services and Activities
+        year: 2024
+    foreign_citizens:total:
+      family: categorical
+      parameters:
+        shares:
+          ECO_AGGREGATE_AGR: 0.018957
+          ECO_AGGREGATE_MAN: 0.052426
+          ECO_AGGREGATE_CON: 0.331916
+          ECO_AGGREGATE_MEL: 0.023448
+          ECO_AGGREGATE_MKT: 0.377695
+          ECO_AGGREGATE_PUB: 0.195558
+        thousand_persons:
+          ECO_AGGREGATE_AGR: 40.049
+          ECO_AGGREGATE_MAN: 110.754
+          ECO_AGGREGATE_CON: 701.202
+          ECO_AGGREGATE_MEL: 49.535
+          ECO_AGGREGATE_MKT: 797.915
+          ECO_AGGREGATE_PUB: 413.134
+        labels:
+          ECO_AGGREGATE_AGR: Agriculture
+          ECO_AGGREGATE_MAN: Manufacturing
+          ECO_AGGREGATE_CON: Construction
+          ECO_AGGREGATE_MEL: Mining and quarrying; Electricity, gas and water supply
+          ECO_AGGREGATE_MKT: Trade, Transportation, Accommodation and Food, and Business and Administrative Services
+          ECO_AGGREGATE_PUB: Public Administration, Community, Social and other Services and Activities
+        year: 2024
+    foreign_citizens:women:
+      family: categorical
+      parameters:
+        shares:
+          ECO_AGGREGATE_MAN: 0.006906
+          ECO_AGGREGATE_CON: 0.024607
+          ECO_AGGREGATE_MEL: 0.012789
+          ECO_AGGREGATE_MKT: 0.365348
+          ECO_AGGREGATE_PUB: 0.590351
+        thousand_persons:
+          ECO_AGGREGATE_MAN: 2.269
+          ECO_AGGREGATE_CON: 8.085
+          ECO_AGGREGATE_MEL: 4.202
+          ECO_AGGREGATE_MKT: 120.042
+          ECO_AGGREGATE_PUB: 193.971
+        labels:
+          ECO_AGGREGATE_MAN: Manufacturing
+          ECO_AGGREGATE_CON: Construction
+          ECO_AGGREGATE_MEL: Mining and quarrying; Electricity, gas and water supply
+          ECO_AGGREGATE_MKT: Trade, Transportation, Accommodation and Food, and Business and Administrative Services
+          ECO_AGGREGATE_PUB: Public Administration, Community, Social and other Services and Activities
+        year: 2024
+evidence:
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator EMP_TEMP_SEX_ECO_CCT_NB_A (Employment by sex, economic activity
+    and citizenship (thousands)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_ECO_CCT_NB_A&ref_area=QAT&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=QAT, sex=SEX_T, classif1=ECO_AGGREGATE_PUB, classif2=CCT_CIT_CITIZEN, time=2024, obs_value
+  value: '94.796'
+  unit: count
+  snippet: QAT","BA:696","EMP_TEMP_SEX_ECO_CCT_NB","SEX_T","ECO_AGGREGATE_PUB","CCT_CIT_CITIZEN","2024",94.796
+  source_license: unstated
+  content_sha256: 5214a8a15c769a42f9061cd109741972805462d3432a7cbfd2cc53e1cb09e71d
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator EMP_TEMP_SEX_ECO_CCT_NB_A (Employment by sex, economic activity
+    and citizenship (thousands)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_ECO_CCT_NB_A&ref_area=QAT&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=QAT, sex=SEX_M, classif1=ECO_AGGREGATE_CON, classif2=CCT_CIT_NONCIT, time=2024, obs_value
+  value: '693.117'
+  unit: count
+  snippet: QAT","BA:696","EMP_TEMP_SEX_ECO_CCT_NB","SEX_M","ECO_AGGREGATE_CON","CCT_CIT_NONCIT","2024",693.117
+  source_license: unstated
+  content_sha256: 5214a8a15c769a42f9061cd109741972805462d3432a7cbfd2cc53e1cb09e71d
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator EMP_TEMP_SEX_ECO_CCT_NB_A (Employment by sex, economic activity
+    and citizenship (thousands)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_ECO_CCT_NB_A&ref_area=QAT&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=QAT, sex=SEX_T, classif1=ECO_AGGREGATE_TOTAL, classif2=CCT_CIT_NONCIT, time=2024, obs_value
+  value: '2112.589'
+  unit: count
+  snippet: QAT","BA:696","EMP_TEMP_SEX_ECO_CCT_NB","SEX_T","ECO_AGGREGATE_TOTAL","CCT_CIT_NONCIT","2024",2112.589
+  source_license: unstated
+  content_sha256: 5214a8a15c769a42f9061cd109741972805462d3432a7cbfd2cc53e1cb09e71d
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT metadata API, classif1 dictionary (English labels), CSV
+  url: https://rplumber.ilo.org/metadata/dic/?var=classif1&lang=en&format=.csv
+  accessed_at: '2026-11-09'
+  locator: classif1=ECO_AGGREGATE_AGR
+  value: 'Economic activity (Aggregate): Agriculture'
+  unit: text
+  snippet: '"ECO_AGGREGATE_AGR","Economic activity (Aggregate): Agriculture"'
+  source_license: unstated
+  content_sha256: 188a7ccdac9ba022f646962476a4a9b2065ab1b7a41a25f4967d2ead4aa0ebd4
+  role: supporting
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT metadata API, classif1 dictionary (English labels), CSV
+  url: https://rplumber.ilo.org/metadata/dic/?var=classif1&lang=en&format=.csv
+  accessed_at: '2026-11-09'
+  locator: classif1=CCT_CIT_NONCIT
+  value: 'Citizenship: Foreign citizens'
+  unit: text
+  snippet: '"CCT_CIT_NONCIT","Citizenship: Foreign citizens"'
+  source_license: unstated
+  content_sha256: 188a7ccdac9ba022f646962476a4a9b2065ab1b7a41a25f4967d2ead4aa0ebd4
+  role: supporting
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / total
+  method: derived
+  rationale: ILOSTAT publishes thousands of employed persons per category; shares are each category over the sum
+    of the categories for that citizenship and sex, kept only where the sum is within one percent of the published
+    total.
+tests:
+- statistic: share[citizens:total,ECO_AGGREGATE_PUB]
+  expected: 0.74438
+  tolerance: 0.005
+- statistic: share[foreign_citizens:men,ECO_AGGREGATE_CON]
+  expected: 0.388514
+  tolerance: 0.005
+- statistic: share[foreign_citizens:women,ECO_AGGREGATE_PUB]
+  expected: 0.590351
+  tolerance: 0.005
+- statistic: share[all:total,ECO_AGGREGATE_MKT]
+  expected: 0.364415
+  tolerance: 0.005
+- statistic: sum_of_shares[citizens:total]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[foreign_citizens:men]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[foreign_citizens:women]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[all:total]
+  expected: 1
+  tolerance: 0.0001
+notes: Employed persons in Qatar in 2024 by aggregate economic activity (agriculture; manufacturing; construction;
+  mining, electricity, gas and water; market services; public administration, community, social and other services)
+  for citizens and foreign citizens, by sex, from ILOSTAT indicator EMP_TEMP_SEX_ECO_CCT_NB (labour force survey).
+  Citizens work overwhelmingly in public administration and services while most foreign men work in construction
+  and market services, so drawing the sector after nationality gives a realistic synthetic workforce. Conditioning
+  keys are '<citizenship>:<sex>' with citizenship all, citizens or foreign_citizens and sex total, men or women;
+  the published thousands and the English category labels ride alongside the shares. The ILOSTAT terms-of-use page
+  could not be fetched byte-stably in this session, so the licence is recorded as unstated and the entry stays at
+  license-review until a reviewer confirms the terms that apply to ILOSTAT data.

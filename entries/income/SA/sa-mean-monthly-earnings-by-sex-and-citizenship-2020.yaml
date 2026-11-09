@@ -1,0 +1,145 @@
+id: sa-mean-monthly-earnings-by-sex-and-citizenship-2020
+title: Saudi Arabia mean monthly earnings of employees by citizenship and sex, 2020, in SAR, US$ and PPP US$ (ILOSTAT)
+kind: rule
+domain: income
+region: SA
+status: license-review
+tier: A
+valid_from: '2020-01-01'
+valid_to: '2020-12-31'
+tags:
+- gcc
+- migration
+- nationality
+- earnings
+- pay
+- by-citizenship
+- by-sex
+- ilostat
+- labour-force-survey
+use_cases:
+- synthetic-employees
+- payroll-demo
+- hr-analytics
+- workforce-planning
+- synthetic-customers
+- credit-risk
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    indicator: EAR_EMTA_SEX_CCT_CUR_NB_A
+    url: https://rplumber.ilo.org/data/indicator/?id=EAR_EMTA_SEX_CCT_CUR_NB_A&ref_area=SAU&timefrom=2020&timeto=2020&format=.csv
+    year: 2020
+    currency: SAR
+    rows:
+      all:men:
+        mean_monthly_earnings_sar: 6650.6
+        mean_monthly_earnings_usd_ppp: 3179.47
+        mean_monthly_earnings_usd: 1773.493
+      all:total:
+        mean_monthly_earnings_sar: 6563.8
+        mean_monthly_earnings_usd_ppp: 3137.973
+        mean_monthly_earnings_usd: 1750.347
+      all:women:
+        mean_monthly_earnings_sar: 6065.5
+        mean_monthly_earnings_usd_ppp: 2899.75
+        mean_monthly_earnings_usd: 1617.467
+      citizens:men:
+        mean_monthly_earnings_sar: 10966.7
+        mean_monthly_earnings_usd_ppp: 5242.879
+        mean_monthly_earnings_usd: 2924.453
+      citizens:total:
+        mean_monthly_earnings_sar: 10539.7
+        mean_monthly_earnings_usd_ppp: 5038.742
+        mean_monthly_earnings_usd: 2810.587
+      citizens:women:
+        mean_monthly_earnings_sar: 8951
+        mean_monthly_earnings_usd_ppp: 4279.228
+        mean_monthly_earnings_usd: 2386.933
+      foreign_citizens:men:
+        mean_monthly_earnings_sar: 4264.1
+        mean_monthly_earnings_usd_ppp: 2038.55
+        mean_monthly_earnings_usd: 1137.093
+      foreign_citizens:total:
+        mean_monthly_earnings_sar: 4077.6
+        mean_monthly_earnings_usd_ppp: 1949.389
+        mean_monthly_earnings_usd: 1087.36
+      foreign_citizens:women:
+        mean_monthly_earnings_sar: 2547.8
+        mean_monthly_earnings_usd_ppp: 1218.034
+        mean_monthly_earnings_usd: 679.413
+  vectors:
+  - input:
+      key: citizens:men
+      column: mean_monthly_earnings_sar
+    expected: 10966.7
+    origin: source
+  - input:
+      key: foreign_citizens:women
+      column: mean_monthly_earnings_sar
+    expected: 2547.8
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator EAR_EMTA_SEX_CCT_CUR_NB_A (Average monthly earnings of employees
+    by sex, citizenship and currency), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=EAR_EMTA_SEX_CCT_CUR_NB_A&ref_area=SAU&timefrom=2020&timeto=2020&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=SAU, sex=SEX_T, classif1=CCT_CIT_NONCIT, classif2=CUR_TYPE_USD, time=2020, obs_value
+  value: '1087.36'
+  unit: currency:USD
+  snippet: SAU","BA:627","EAR_EMTA_SEX_CCT_CUR_NB","SEX_T","CCT_CIT_NONCIT","CUR_TYPE_USD","2020",1087.36
+  source_license: unstated
+  content_sha256: 6a40dd14d5cb6a8ef061e09af02809a8e466d458343c71c382870f28d266be97
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator EAR_EMTA_SEX_CCT_CUR_NB_A (Average monthly earnings of employees
+    by sex, citizenship and currency), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=EAR_EMTA_SEX_CCT_CUR_NB_A&ref_area=SAU&timefrom=2020&timeto=2020&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=SAU, sex=SEX_M, classif1=CCT_CIT_CITIZEN, classif2=CUR_TYPE_LCU, time=2020, obs_value
+  value: '10966.7'
+  unit: currency:SAR
+  snippet: SAU","BA:627","EAR_EMTA_SEX_CCT_CUR_NB","SEX_M","CCT_CIT_CITIZEN","CUR_TYPE_LCU","2020",10966.7
+  source_license: unstated
+  content_sha256: 6a40dd14d5cb6a8ef061e09af02809a8e466d458343c71c382870f28d266be97
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator EAR_EMTA_SEX_CCT_CUR_NB_A (Average monthly earnings of employees
+    by sex, citizenship and currency), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=EAR_EMTA_SEX_CCT_CUR_NB_A&ref_area=SAU&timefrom=2020&timeto=2020&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=SAU, sex=SEX_F, classif1=CCT_CIT_NONCIT, classif2=CUR_TYPE_LCU, time=2020, obs_value
+  value: '2547.8'
+  unit: currency:SAR
+  snippet: SAU","BA:627","EAR_EMTA_SEX_CCT_CUR_NB","SEX_F","CCT_CIT_NONCIT","CUR_TYPE_LCU","2020",2547.8
+  source_license: unstated
+  content_sha256: 6a40dd14d5cb6a8ef061e09af02809a8e466d458343c71c382870f28d266be97
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 9
+  tolerance: 0
+- statistic: value[citizens:total,mean_monthly_earnings_sar]
+  expected: 10539.7
+  tolerance: 1.0e-09
+- statistic: value[foreign_citizens:total,mean_monthly_earnings_sar]
+  expected: 4077.6
+  tolerance: 1.0e-09
+- statistic: max[mean_monthly_earnings_sar]
+  expected: 10966.7
+  tolerance: 1.0e-09
+notes: Mean nominal monthly earnings of employees in Saudi Arabia in 2020 for citizens, foreign citizens and all
+  employees, by sex, in Saudi riyals, US dollars and PPP dollars, from ILOSTAT indicator EAR_EMTA_SEX_CCT_CUR_NB
+  (labour force survey). This is the latest year ILOSTAT holds for the series. Citizens' mean earnings are well
+  above those of foreign citizens for both sexes, so synthetic salaries should be drawn after nationality. Rows
+  are keyed '<citizenship>:<sex>'. The ILOSTAT terms-of-use page could not be fetched byte-stably in this session,
+  so the licence is recorded as unstated and the entry stays at license-review until a reviewer confirms the terms
+  that apply to ILOSTAT data.

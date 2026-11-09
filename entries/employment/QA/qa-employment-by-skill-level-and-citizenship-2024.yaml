@@ -1,0 +1,275 @@
+id: qa-employment-by-skill-level-and-citizenship-2024
+title: Qatar employment by occupational skill level, given citizenship and sex, 2024 (ILOSTAT, labour force survey)
+kind: conditional
+domain: employment
+region: QA
+status: license-review
+tier: A
+observed_period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+tags:
+- gcc
+- migration
+- nationality
+- employment
+- occupations
+- skill-level
+- isco-08
+- by-citizenship
+- by-sex
+- ilostat
+use_cases:
+- synthetic-employees
+- payroll-demo
+- hr-analytics
+- workforce-planning
+- synthetic-customers
+- person-generation
+spec:
+  variable: occupation_skill_level
+  unit: ratio
+  given: citizenship_and_sex
+  distributions:
+    all:men:
+      family: categorical
+      parameters:
+        shares:
+          OCU_SKILL_L3-4: 0.240003
+          OCU_SKILL_L2: 0.646284
+          OCU_SKILL_L1: 0.113712
+        thousand_persons:
+          OCU_SKILL_L3-4: 446.136
+          OCU_SKILL_L2: 1201.361
+          OCU_SKILL_L1: 211.377
+        labels:
+          OCU_SKILL_L3-4: Skill levels 3 and 4 ~ high
+          OCU_SKILL_L2: Skill level 2 ~ medium
+          OCU_SKILL_L1: Skill level 1 ~ low
+        year: 2024
+    all:total:
+      family: categorical
+      parameters:
+        shares:
+          OCU_SKILL_L3-4: 0.276801
+          OCU_SKILL_L2: 0.588182
+          OCU_SKILL_L1: 0.135017
+        thousand_persons:
+          OCU_SKILL_L3-4: 620.016
+          OCU_SKILL_L2: 1317.492
+          OCU_SKILL_L1: 302.43
+        labels:
+          OCU_SKILL_L3-4: Skill levels 3 and 4 ~ high
+          OCU_SKILL_L2: Skill level 2 ~ medium
+          OCU_SKILL_L1: Skill level 1 ~ low
+        year: 2024
+    all:women:
+      family: categorical
+      parameters:
+        shares:
+          OCU_SKILL_L3-4: 0.456301
+          OCU_SKILL_L2: 0.304755
+          OCU_SKILL_L1: 0.238944
+        thousand_persons:
+          OCU_SKILL_L3-4: 173.88
+          OCU_SKILL_L2: 116.131
+          OCU_SKILL_L1: 91.053
+        labels:
+          OCU_SKILL_L3-4: Skill levels 3 and 4 ~ high
+          OCU_SKILL_L2: Skill level 2 ~ medium
+          OCU_SKILL_L1: Skill level 1 ~ low
+        year: 2024
+    citizens:men:
+      family: categorical
+      parameters:
+        shares:
+          OCU_SKILL_L3-4: 0.580263
+          OCU_SKILL_L2: 0.405803
+          OCU_SKILL_L1: 0.013934
+        thousand_persons:
+          OCU_SKILL_L3-4: 43.435
+          OCU_SKILL_L2: 30.376
+          OCU_SKILL_L1: 1.043
+        labels:
+          OCU_SKILL_L3-4: Skill levels 3 and 4 ~ high
+          OCU_SKILL_L2: Skill level 2 ~ medium
+          OCU_SKILL_L1: Skill level 1 ~ low
+        year: 2024
+    citizens:total:
+      family: categorical
+      parameters:
+        shares:
+          OCU_SKILL_L3-4: 0.606561
+          OCU_SKILL_L2: 0.381833
+          OCU_SKILL_L1: 0.011606
+        thousand_persons:
+          OCU_SKILL_L3-4: 77.245
+          OCU_SKILL_L2: 48.626
+          OCU_SKILL_L1: 1.478
+        labels:
+          OCU_SKILL_L3-4: Skill levels 3 and 4 ~ high
+          OCU_SKILL_L2: Skill level 2 ~ medium
+          OCU_SKILL_L1: Skill level 1 ~ low
+        year: 2024
+    citizens:women:
+      family: categorical
+      parameters:
+        shares:
+          OCU_SKILL_L3-4: 0.644061
+          OCU_SKILL_L2: 0.347652
+          OCU_SKILL_L1: 0.008287
+        thousand_persons:
+          OCU_SKILL_L3-4: 33.81
+          OCU_SKILL_L2: 18.25
+          OCU_SKILL_L1: 0.435
+        labels:
+          OCU_SKILL_L3-4: Skill levels 3 and 4 ~ high
+          OCU_SKILL_L2: Skill level 2 ~ medium
+          OCU_SKILL_L1: Skill level 1 ~ low
+        year: 2024
+    foreign_citizens:men:
+      family: categorical
+      parameters:
+        shares:
+          OCU_SKILL_L3-4: 0.225727
+          OCU_SKILL_L2: 0.656374
+          OCU_SKILL_L1: 0.117899
+        thousand_persons:
+          OCU_SKILL_L3-4: 402.701
+          OCU_SKILL_L2: 1170.985
+          OCU_SKILL_L1: 210.334
+        labels:
+          OCU_SKILL_L3-4: Skill levels 3 and 4 ~ high
+          OCU_SKILL_L2: Skill level 2 ~ medium
+          OCU_SKILL_L1: Skill level 1 ~ low
+        year: 2024
+    foreign_citizens:total:
+      family: categorical
+      parameters:
+        shares:
+          OCU_SKILL_L3-4: 0.256922
+          OCU_SKILL_L2: 0.600621
+          OCU_SKILL_L1: 0.142456
+        thousand_persons:
+          OCU_SKILL_L3-4: 542.771
+          OCU_SKILL_L2: 1268.866
+          OCU_SKILL_L1: 300.952
+        labels:
+          OCU_SKILL_L3-4: Skill levels 3 and 4 ~ high
+          OCU_SKILL_L2: Skill level 2 ~ medium
+          OCU_SKILL_L1: Skill level 1 ~ low
+        year: 2024
+    foreign_citizens:women:
+      family: categorical
+      parameters:
+        shares:
+          OCU_SKILL_L3-4: 0.426303
+          OCU_SKILL_L2: 0.297901
+          OCU_SKILL_L1: 0.275796
+        thousand_persons:
+          OCU_SKILL_L3-4: 140.07
+          OCU_SKILL_L2: 97.881
+          OCU_SKILL_L1: 90.618
+        labels:
+          OCU_SKILL_L3-4: Skill levels 3 and 4 ~ high
+          OCU_SKILL_L2: Skill level 2 ~ medium
+          OCU_SKILL_L1: Skill level 1 ~ low
+        year: 2024
+evidence:
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator EMP_TEMP_SEX_OCU_CCT_NB_A (Employment by sex, occupation and citizenship
+    (thousands)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_OCU_CCT_NB_A&ref_area=QAT&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=QAT, sex=SEX_T, classif1=OCU_SKILL_L3-4, classif2=CCT_CIT_CITIZEN, time=2024, obs_value
+  value: '77.245'
+  unit: count
+  snippet: QAT","BA:696","EMP_TEMP_SEX_OCU_CCT_NB","SEX_T","OCU_SKILL_L3-4","CCT_CIT_CITIZEN","2024",77.245
+  source_license: unstated
+  content_sha256: d0a19872a795b51e5979109c052464ac622331ba16c1fa27a87730a3d0b96145
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator EMP_TEMP_SEX_OCU_CCT_NB_A (Employment by sex, occupation and citizenship
+    (thousands)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_OCU_CCT_NB_A&ref_area=QAT&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=QAT, sex=SEX_F, classif1=OCU_SKILL_L1, classif2=CCT_CIT_NONCIT, time=2024, obs_value
+  value: '90.618'
+  unit: count
+  snippet: QAT","BA:696","EMP_TEMP_SEX_OCU_CCT_NB","SEX_F","OCU_SKILL_L1","CCT_CIT_NONCIT","2024",90.618
+  source_license: unstated
+  content_sha256: d0a19872a795b51e5979109c052464ac622331ba16c1fa27a87730a3d0b96145
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator EMP_TEMP_SEX_OCU_CCT_NB_A (Employment by sex, occupation and citizenship
+    (thousands)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_OCU_CCT_NB_A&ref_area=QAT&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=QAT, sex=SEX_T, classif1=OCU_SKILL_TOTAL, classif2=CCT_CIT_NONCIT, time=2024, obs_value
+  value: '2112.589'
+  unit: count
+  snippet: QAT","BA:696","EMP_TEMP_SEX_OCU_CCT_NB","SEX_T","OCU_SKILL_TOTAL","CCT_CIT_NONCIT","2024",2112.589
+  source_license: unstated
+  content_sha256: d0a19872a795b51e5979109c052464ac622331ba16c1fa27a87730a3d0b96145
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT metadata API, classif1 dictionary (English labels), CSV
+  url: https://rplumber.ilo.org/metadata/dic/?var=classif1&lang=en&format=.csv
+  accessed_at: '2026-11-09'
+  locator: classif1=OCU_SKILL_L1
+  value: 'Occupation (Skill level): Skill level 1 ~ low'
+  unit: text
+  snippet: '"OCU_SKILL_L1","Occupation (Skill level): Skill level 1 ~ low"'
+  source_license: unstated
+  content_sha256: 188a7ccdac9ba022f646962476a4a9b2065ab1b7a41a25f4967d2ead4aa0ebd4
+  role: supporting
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT metadata API, classif1 dictionary (English labels), CSV
+  url: https://rplumber.ilo.org/metadata/dic/?var=classif1&lang=en&format=.csv
+  accessed_at: '2026-11-09'
+  locator: classif1=CCT_CIT_NONCIT
+  value: 'Citizenship: Foreign citizens'
+  unit: text
+  snippet: '"CCT_CIT_NONCIT","Citizenship: Foreign citizens"'
+  source_license: unstated
+  content_sha256: 188a7ccdac9ba022f646962476a4a9b2065ab1b7a41a25f4967d2ead4aa0ebd4
+  role: supporting
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / total
+  method: derived
+  rationale: ILOSTAT publishes thousands of employed persons per category; shares are each category over the sum
+    of the categories for that citizenship and sex, kept only where the sum is within one percent of the published
+    total.
+tests:
+- statistic: share[citizens:total,OCU_SKILL_L3-4]
+  expected: 0.606561
+  tolerance: 0.005
+- statistic: share[foreign_citizens:men,OCU_SKILL_L2]
+  expected: 0.656374
+  tolerance: 0.005
+- statistic: share[foreign_citizens:women,OCU_SKILL_L1]
+  expected: 0.275796
+  tolerance: 0.005
+- statistic: share[all:total,OCU_SKILL_L2]
+  expected: 0.588182
+  tolerance: 0.005
+- statistic: sum_of_shares[citizens:total]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[foreign_citizens:men]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[foreign_citizens:women]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[all:total]
+  expected: 1
+  tolerance: 0.0001
+notes: Employed persons in Qatar in 2024 by occupational skill level (ISCO-08 skill level 1 low, level 2 medium,
+  levels 3 and 4 high) for citizens and foreign citizens, by sex, from ILOSTAT indicator EMP_TEMP_SEX_OCU_CCT_NB
+  (labour force survey). The skill mix differs sharply between nationals and migrants and between foreign men and
+  women. Conditioning keys are '<citizenship>:<sex>' with citizenship all, citizens or foreign_citizens and sex
+  total, men or women; the published thousands and the English category labels ride alongside the shares. The ILOSTAT
+  terms-of-use page could not be fetched byte-stably in this session, so the licence is recorded as unstated and
+  the entry stays at license-review until a reviewer confirms the terms that apply to ILOSTAT data.
