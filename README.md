@@ -104,6 +104,7 @@ uv run almanac applies --on 2026-06-15 --use-case banking-demo
 | **Bank accounts and payment validation** | German sort codes with BIC and check method, twenty German account check-digit methods, UK sort code modulus checking with every exception, account number standardisation, the IBAN MOD 97 check, US routing number prefixes, German base rate and late-payment interest, UK statutory late-payment compensation |
 | **Invoicing and e-invoicing** | Italy FatturaPA document, VAT nature, regime and payment codes, Peppol VAT categories, invoice types, payment means, address schemes and units, Mexico CFDI 4.0 catalogues, Poland KSeF, Spain VeriFactu, Saudi ZATCA, India's e-invoicing thresholds, VAT and GST rates for OECD members, Japan, Switzerland, Australia, Singapore and Norway |
 | **Trade, customs and e-commerce** | US tariff schedule headings and duty rates for apparel, footwear, machinery, electronics, furniture and toys, US de minimis and informal entry thresholds, UK tariff sections and consumer-goods duties, EU Combined Nomenclature 2026 |
+| **The Gulf: Saudi Arabia, UAE, Qatar, Kuwait, Bahrain, Oman** | Population pyramids and workforce by nationality, sector and sex, wages by nationality, age and education, migrant stock by country of origin for every GCC state, remittance outflows and sending costs, CPI by group, Saudi point-of-sale spending by merchant activity and city, card, ATM and instant payments, hotel occupancy and guests by nationality, VAT rates and thresholds, UAE corporate and top-up tax, Saudi withholding tax, end-of-service gratuity, working time and leave rules, IBAN formats, currency pegs |
 | **India: labour codes and company law** | The four Labour Codes in force from November 2025, the 50 per cent wage rule, bonus, gratuity, retrenchment, maternity, working hours and establishment thresholds, EPF limits, contractor and professional-fee TDS, MSME classification, small company and CSR thresholds |
 | **Value pools: margins, costs, churn and defaults** | After-tax margins by industry from the Census Quarterly Financial Report, FDIC bank performance ratios and size classes, Fed charge-off and delinquency rates, IRS corporation returns by sector, Eurostat enterprise accounts for ten member states with operating rate and personnel-cost share, enterprise birth, death and survival rates, hourly labour cost by section, UK rate of return and business survival |
 | **Behaviour over time** | UK employment, unemployment, vacancies, redundancies and claimant count by month, average weekly earnings, household saving ratio, internet share of retail, energy price cap levels, EU air passengers by month, Indian wireless subscribers and ARPU by quarter |
@@ -140,7 +141,7 @@ for entry in almanac.select(on=date(2026, 6, 15), region="GB", kind="rule"):
 
 ## What is inside
 
-Six hundred and eighty-four entries across thirty-seven domains and twenty-eight
+Eight hundred and thirty-two entries across thirty-seven domains and thirty-three
 regions at the time of writing, every one of them passing live verification. The generated
 [CATALOGUE.md](CATALOGUE.md) is the authoritative list; this is the tour.
 
@@ -215,6 +216,26 @@ general health, highest qualification, household size, tenure, car
 availability, accommodation type. Single-year age distributions for Germany
 and France. Population by sex for ten member states. World population weights
 for 217 economies.
+
+**The Gulf.** Gulf populations are majority migrant, so nationality drives
+almost every distribution, and the archive models it that way. Saudi labour
+force, social insurance and population tables by nationality, sex, age,
+region, occupation and activity from GASTAT, with wages by age and education,
+CPI weights and retail prices, household income and spending, and SAMA's
+point-of-sale, card, ATM, instant payment and personal transfer statistics.
+Abu Dhabi prices, hotels, bank rates, births and building permits from its
+statistics centre, and UAE bank deposits, vehicles and licences from the
+federal open data portal. Qatar labour force, occupations, wages by sector,
+CPI and hotel guests; Kuwait workers and wages by nationality group and
+sector; Bahrain population pyramids by nationality, wage bands, work permits
+and visitors; Oman population and workers by governorate, sector and
+nationality. For all six states, the UN's migrant stock by country of origin
+and sex, migrant age structure, population pyramids and projections,
+employment by activity, remittance outflows and costs, and obesity and
+diabetes prevalence. The rules follow the tax authorities, labour ministries
+and central banks: VAT, UAE corporate and minimum top-up tax, Saudi
+withholding tax, Oman income tax, end-of-service gratuity formulas, working
+time, leave and notice rules, holidays, IBAN formats and currency pegs.
 
 **Business rules that systems enforce.** The thresholds, formulas and code
 lists that payroll engines, banks, tax software and compliance tools apply on
@@ -379,7 +400,7 @@ confessed, with the method. `tests` is what the verifier reproduces.
 [PASS] br-pix-monthly-volume-and-value  (entries/payments/BR/br-pix-monthly-volume-and-value.yaml)
     PASS test column[quantity_thousands,2026-09]  observed 7.89294e+06, expected 7892936.44 ± 0
 ...
-684 passed, 0 failed, 684 entries
+832 passed, 0 failed, 832 entries
 ```
 
 ## Frequently asked questions
