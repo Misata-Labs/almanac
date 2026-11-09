@@ -66,6 +66,8 @@ VAT_LAW_AE_URL = "https://tax.gov.ae/Datafolder/Files/Legislation/2025/Federal%2
 VAT_LAW_AE_TITLE = "Federal Decree-Law No. 8 of 2017 on Value Added Tax and its amendments (unofficial translation, November 2025)"
 VAT_REG_AE_URL = "https://mof.gov.ae/wp-content/uploads/2024/10/Executive-Regulation-of-Federal-Decree-Law-No-8-of-2017.pdf"
 VAT_REG_AE_TITLE = "Executive Regulation of Federal Decree-Law No. 8 of 2017 on Value Added Tax (Cabinet Decision No. 52 of 2017 and its amendments)"
+DMTT_URL = "https://tax.gov.ae/Datafolder/Files/Legislation/Cabinet-Decision-No-142-of-2024-on-Top-up-Tax-on-MNEs.pdf"
+DMTT_TITLE = "Cabinet Decision No. 142 of 2024 on the Imposition of Top-up Tax on Multinational Enterprises, as published in the Official Gazette"
 LABOUR_AE_URL = "https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf"
 LABOUR_AE_TITLE = "Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments"
 LABOUR_AE = "Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs and Free Zone Corporation, Dubai)"
@@ -644,6 +646,45 @@ def ae_corporate_tax() -> dict:
     )
 
 
+def ae_top_up_tax() -> dict:
+    rows = {
+        "minimum_rate": {"value": 15, "unit": "percent", "article": "Definitions"},
+        "consolidated_revenue_threshold": {"value": 750000000, "unit": "EUR", "article": "1.1.1"},
+        "revenue_test_years": {"value": 2, "unit": "of the four preceding fiscal years", "article": "1.1.1"},
+    }
+    decision = lambda where, value, snippet, unit="text": cite(FTA, DMTT_TITLE, DMTT_URL, where, value, snippet, unit=unit)  # noqa: E731
+    return rule_entry(
+        "ae-domestic-minimum-top-up-tax",
+        "UAE domestic minimum top-up tax on large multinational groups: 15% minimum rate, EUR 750 million revenue threshold, from 2025",
+        "tax",
+        "AE",
+        ("2025-01-01", None),
+        "almanac.rules.lookup_table",
+        {"rows": rows, "top_up_tax_percentage": "positive difference between the Minimum Rate and the Effective Tax Rate"},
+        [
+            lookup("minimum_rate", "value", 15),
+            lookup("consolidated_revenue_threshold", "value", 750000000),
+            lookup("revenue_test_years", "value", 2),
+        ],
+        [
+            decision("Article 18, Definitions", "fifteen percent (15%)", "Minimum Rate : means fifteen percent (15%).", "percent"),
+            decision("Article 1.1.1", "EUR 750 million", "Group that has annual revenue of EUR 750 million or more in the Consolidated", "currency:EUR"),
+            decision("Article 1.1.1", "at least two of the four", "Financial Statements of the Ultimate Parent Entity in at least two of the four Fiscal"),
+            decision("Article 5.2.1", "positive", "5.2.1 The Top-up Tax Percentage for a Fiscal Year shall be the positive"),
+            decision("title", "Effective from 1 January 2025", "Cabinet Decision No. 142 of 2024 – Issued 31 December of 2024 – (Effective from 1 January 2025)"),
+        ],
+        [{"statistic": "count", "expected": 3, "tolerance": 0}],
+        "The UAE's domestic minimum top-up tax (Cabinet Decision No. 142 of 2024, effective for fiscal years beginning on or "
+        "after 1 January 2025) applies to constituent entities of multinational groups with consolidated revenue of EUR 750 "
+        "million or more in at least two of the four preceding fiscal years. The top-up tax percentage is the positive "
+        "difference between the 15% minimum rate and the group's effective tax rate in the UAE. The full computation of "
+        "the effective tax rate and excess profit is not modelled; the entry holds the thresholds a demo needs to flag "
+        "in-scope groups.",
+        ["tax", "corporate-tax", "global-minimum-tax", "pillar-two", "uae"],
+        [*TAX_USE_CASES, "financial-reporting"],
+    )
+
+
 def ae_vat() -> dict:
     zero_rated = {
         "exports": "Direct or indirect export of goods and services to outside the Implementing States",
@@ -850,9 +891,8 @@ def ae_gpssa() -> dict:
             lookup("federal_law_57_2023", "total_percent", 26),
         ],
         [
-            faq("5%", "Insured in both government and private sectors : 5%"),
-            faq("15%", "Government sector : Employers contribute 15% of the Contribution Calculation Salary."),
-            faq("12.5%", "Private sector : Employers pay 12.5% of the Contribution Calculation Salary."),
+            faq("5%", "Insured in both government and private sectors: 5%- Government sector: Employers contribute 15% of the Contribution Calculation Salary."),
+            faq("12.5%", "Private sector: Employers pay 12.5% of the Contribution Calculation Salary."),
             faq("2.5%", "The government contributes by bearing 2.5% of the contribution rate determined for an insured individual employed in the private sector"),
             faq("20%", "The percentage of the total contributions due from an insured individual working in the government or private sector is 20%."),
             law57("26%", "As per the 2023 law, the total contribution rates have become 26%, out of which the insured bears 11%"),
@@ -998,7 +1038,7 @@ def kw_dinar_regime() -> dict:
         [lookup("KWD", "legal_basis", "Decree No. 147/2007"), lookup("KWD", "regime", "basket peg"), lookup("KWD", "units_per_usd", None)],
         [
             review("May 20, 2007", "we note that since May 20, 2007, by virtue of the Decree No. 147/2007, the Kuwaiti dinar (KWD)"),
-            review("basket", "peg the KWD to a special weighted basket of currencies of Kuwait’s major trade and financial partner countries."),
+            review("basket", "peg the KWD to a special weighted basket of currencies of Kuwait’s major trade and"),
         ],
         [{"statistic": "count", "expected": 1, "tolerance": 0}],
         "Unlike the other Gulf currencies, the Kuwaiti dinar has no fixed US dollar rate: since 20 May 2007, under Decree No. "
@@ -1134,6 +1174,7 @@ BUILDERS = [
     sa_iban,
     sa_riyal_peg,
     ae_corporate_tax,
+    ae_top_up_tax,
     ae_vat,
     ae_labour_rules,
     ae_end_of_service,

@@ -1,0 +1,179 @@
+id: om-vat-rate-zero-rated-and-exempt-supplies
+title: 'Oman VAT: 5% rate on the taxable value, zero-rated supplies and exempt supplies (Royal Decree 121/2020)'
+kind: rule
+domain: tax
+region: OM
+status: license-review
+tier: B
+valid_from: '2021-06-01'
+valid_to: null
+tags:
+- gcc
+- tax
+- vat
+- oman
+- invoicing
+use_cases:
+- tax-demo
+- invoicing-demo
+- invoicing
+- tax-filing-demo
+spec:
+  implementation: almanac.rules.consumption_tax
+  parameters:
+    currency: OMR
+    slabs:
+      standard: 5
+      zero: 0
+    rounding: '0.001'
+    prices_inclusive_of_tax: true
+    zero_rated_supplies:
+      food: Food items specified by a decision from the Chairman
+      medicines_medical_equipment: Medicines and medical equipment
+      investment_metals: Investment gold, silver and platinum
+      international_transport: International and intra-GCC transport of goods or passengers and connected services
+      means_of_transport: Air, sea and land means of transport for commercial carriage, and related goods and services
+      rescue_craft: Rescue planes and rescue and assistance boats
+      oil_gas: Oil, oil derivatives and natural gas
+      exports: Export of goods and services to customers outside the GCC
+    exempt_supplies:
+      financial_services: Financial Services
+      healthcare: Healthcare Services and related Goods and Services
+      education: Educational Services and related Goods and Services
+      bare_land: Undeveloped land (bare land)
+      resale_residential: Resale of residential properties
+      local_passenger_transport: Local passenger transport
+      residential_rental: Rental of properties for residential purposes
+  vectors:
+  - input: 5
+    expected: true
+    origin: source
+    note: 'Article 36: five percent of the taxable value'
+  - input: 0
+    expected: true
+    origin: source
+    note: 'Article 51: zero rate'
+  - input:
+      net: '100.000'
+    expected: '5.000'
+    origin: derived
+  - input:
+      gross: '10.500'
+    expected: '0.500'
+    origin: derived
+evidence:
+- publisher: Tax Authority, Sultanate of Oman
+  title: Value Added Tax Law (Royal Decree No. 121/2020) and Executive Regulations, English translation
+  url: https://tms.taxoman.gov.om/portal/documents/20126/1414820/VAT+Law+.pdf/9cbe8926-066b-d48d-2b7f-14f41b4c19a8?t=1733169733344
+  accessed_at: '2026-11-09'
+  locator: PDF page 18, Article 36
+  value: (5%) five percent
+  unit: text
+  snippet: (5%) five percent of the Taxable Value.
+  source_license: unstated
+  content_sha256: bb521041901f9d0fb7242678a6a15b4b5c7e452bf0b0d2c9b9f9162c7dd6c5f6
+  role: primary
+- publisher: Tax Authority, Sultanate of Oman
+  title: Value Added Tax Law (Royal Decree No. 121/2020) and Executive Regulations, English translation
+  url: https://tms.taxoman.gov.om/portal/documents/20126/1414820/VAT+Law+.pdf/9cbe8926-066b-d48d-2b7f-14f41b4c19a8?t=1733169733344
+  accessed_at: '2026-11-09'
+  locator: PDF page 18, Article 37
+  value: inclusive
+  unit: text
+  snippet: The Taxable Person shall present the prices of Goods and Services inclusive of the Tax.
+  source_license: unstated
+  content_sha256: bb521041901f9d0fb7242678a6a15b4b5c7e452bf0b0d2c9b9f9162c7dd6c5f6
+  role: primary
+- publisher: Tax Authority, Sultanate of Oman
+  title: Value Added Tax Law (Royal Decree No. 121/2020) and Executive Regulations, English translation
+  url: https://tms.taxoman.gov.om/portal/documents/20126/1414820/VAT+Law+.pdf/9cbe8926-066b-d48d-2b7f-14f41b4c19a8?t=1733169733344
+  accessed_at: '2026-11-09'
+  locator: PDF page 21, Article 47
+  value: Financial Services
+  unit: text
+  snippet: 1. Financial Services. 2. Healthcare Services and related Goods and Services.
+  source_license: unstated
+  content_sha256: bb521041901f9d0fb7242678a6a15b4b5c7e452bf0b0d2c9b9f9162c7dd6c5f6
+  role: primary
+- publisher: Tax Authority, Sultanate of Oman
+  title: Value Added Tax Law (Royal Decree No. 121/2020) and Executive Regulations, English translation
+  url: https://tms.taxoman.gov.om/portal/documents/20126/1414820/VAT+Law+.pdf/9cbe8926-066b-d48d-2b7f-14f41b4c19a8?t=1733169733344
+  accessed_at: '2026-11-09'
+  locator: PDF page 21, Article 47
+  value: Rental of properties
+  unit: text
+  snippet: 7. Rental of properties for residential purposes.
+  source_license: unstated
+  content_sha256: bb521041901f9d0fb7242678a6a15b4b5c7e452bf0b0d2c9b9f9162c7dd6c5f6
+  role: primary
+- publisher: Tax Authority, Sultanate of Oman
+  title: Value Added Tax Law (Royal Decree No. 121/2020) and Executive Regulations, English translation
+  url: https://tms.taxoman.gov.om/portal/documents/20126/1414820/VAT+Law+.pdf/9cbe8926-066b-d48d-2b7f-14f41b4c19a8?t=1733169733344
+  accessed_at: '2026-11-09'
+  locator: PDF page 22, Article 51
+  value: investment gold
+  unit: text
+  snippet: 3. The supply of investment gold, silver, and platinum.
+  source_license: unstated
+  content_sha256: bb521041901f9d0fb7242678a6a15b4b5c7e452bf0b0d2c9b9f9162c7dd6c5f6
+  role: primary
+- publisher: Tax Authority, Sultanate of Oman
+  title: Value Added Tax Law (Royal Decree No. 121/2020) and Executive Regulations, English translation
+  url: https://tms.taxoman.gov.om/portal/documents/20126/1414820/VAT+Law+.pdf/9cbe8926-066b-d48d-2b7f-14f41b4c19a8?t=1733169733344
+  accessed_at: '2026-11-09'
+  locator: PDF page 23, Article 51
+  value: oil derivatives
+  unit: text
+  snippet: The supply of oil, oil derivatives and natural gas.
+  source_license: unstated
+  content_sha256: bb521041901f9d0fb7242678a6a15b4b5c7e452bf0b0d2c9b9f9162c7dd6c5f6
+  role: primary
+- publisher: Tax Authority, Sultanate of Oman
+  title: Value Added Tax Law (Royal Decree No. 121/2020) and Executive Regulations, English translation
+  url: https://tms.taxoman.gov.om/portal/documents/20126/1414820/VAT+Law+.pdf/9cbe8926-066b-d48d-2b7f-14f41b4c19a8?t=1733169733344
+  accessed_at: '2026-11-09'
+  locator: PDF page 3, Royal Decree, Article Four
+  value: (180)
+  unit: text
+  snippet: shall come into force after (180) one hundred and eighty days from the date of publication.
+  source_license: unstated
+  content_sha256: bb521041901f9d0fb7242678a6a15b4b5c7e452bf0b0d2c9b9f9162c7dd6c5f6
+  role: primary
+- publisher: Tax Authority, Sultanate of Oman
+  title: 'VAT Taxpayer Guide: VAT Return Filing, Version 1, June 2021'
+  url: https://tms.taxoman.gov.om/portal/documents/20126/1414820/VAT+Taxpayer+Guide+-+VAT+Return+Filing.pdf/fae31d0c-e7e7-0014-9f28-a4c506b36614?t=1733169613409
+  accessed_at: '2026-11-09'
+  locator: PDF page 1, publication information
+  value: June 2021
+  unit: text
+  snippet: 'Publication info: Version 1 – June 2021'
+  source_license: unstated
+  content_sha256: 134a888691f8241d8b7897ab44204459d36855974420482d4b1fe8d501b0f806
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '2021-06-01'
+  method: derived
+  rationale: The law came into force 180 days after its gazette publication, a date the fetched text does not give;
+    valid_from is the June 2021 edition date of the Tax Authority's VAT return guide, the earliest date the fetched
+    sources confirm the tax in force.
+- parameter: rounding
+  value: '0.001'
+  method: assumed
+  rationale: Three decimal places for the Omani rial (ISO 4217); the law does not state a rounding rule.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: slab[standard]
+  expected: 5
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+notes: 'Oman VAT under the Value Added Tax Law promulgated by Royal Decree 121/2020 (issued 12 October 2020, in
+  force 180 days after publication in the Official Gazette): 5% of the taxable value (Article 36), with prices shown
+  inclusive of tax (Article 37). Exempt supplies (Article 47) and zero-rated supplies (Articles 51 and 52) are held
+  as code lists. The registration thresholds are set by a Chairman''s decision that the Tax Authority publishes
+  only as a scanned image, so they are not included. The Omani rial has three decimal places, used as the rounding
+  step.'

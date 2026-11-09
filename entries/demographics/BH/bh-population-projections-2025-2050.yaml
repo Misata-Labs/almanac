@@ -1,0 +1,249 @@
+id: bh-population-projections-2025-2050
+title: 'Bahrain: total, male and female population, annual 2025 to 2050 (World Bank population projections)'
+kind: rule
+domain: demographics
+region: BH
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2050-12-31'
+tags:
+- gcc
+- population
+- projections
+- by-sex
+- world-bank
+use_cases:
+- synthetic-customers
+- synthetic-employees
+- person-generation
+- kyc-onboarding
+- customer-segmentation
+- market-sizing
+- demand-forecasting
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    source: World Bank API source 40
+    indicators:
+      total: SP.POP.TOTL
+      male: SP.POP.TOTL.MA.IN
+      female: SP.POP.TOTL.FE.IN
+    url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+    rows:
+      '2025':
+        total: 1600366
+        male: 992852
+        female: 607514
+      '2026':
+        total: 1630023
+        male: 1010775
+        female: 619248
+      '2027':
+        total: 1654120
+        male: 1024766
+        female: 629354
+      '2028':
+        total: 1675304
+        male: 1036513
+        female: 638791
+      '2029':
+        total: 1693447
+        male: 1046068
+        female: 647379
+      '2030':
+        total: 1710659
+        male: 1054835
+        female: 655824
+      '2031':
+        total: 1728022
+        male: 1063632
+        female: 664390
+      '2032':
+        total: 1745555
+        male: 1072527
+        female: 673028
+      '2033':
+        total: 1763247
+        male: 1081516
+        female: 681731
+      '2034':
+        total: 1781107
+        male: 1090595
+        female: 690512
+      '2035':
+        total: 1799100
+        male: 1099746
+        female: 699354
+      '2036':
+        total: 1817226
+        male: 1108971
+        female: 708255
+      '2037':
+        total: 1835424
+        male: 1118232
+        female: 717192
+      '2038':
+        total: 1853702
+        male: 1127539
+        female: 726163
+      '2039':
+        total: 1872016
+        male: 1136864
+        female: 735152
+      '2040':
+        total: 1890380
+        male: 1146221
+        female: 744159
+      '2041':
+        total: 1908780
+        male: 1155604
+        female: 753176
+      '2042':
+        total: 1927178
+        male: 1164993
+        female: 762185
+      '2043':
+        total: 1945565
+        male: 1174385
+        female: 771180
+      '2044':
+        total: 1963931
+        male: 1183771
+        female: 780160
+      '2045':
+        total: 1982208
+        male: 1193114
+        female: 789094
+      '2046':
+        total: 2000429
+        male: 1202437
+        female: 797992
+      '2047':
+        total: 2018594
+        male: 1211736
+        female: 806858
+      '2048':
+        total: 2036743
+        male: 1221038
+        female: 815705
+      '2049':
+        total: 2054863
+        male: 1230330
+        female: 824533
+      '2050':
+        total: 2072986
+        male: 1239625
+        female: 833361
+  vectors:
+  - input:
+      key: '2025'
+      column: total
+    expected: 1600366
+    origin: source
+  - input:
+      key: '2050'
+      column: total
+    expected: 2072986
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+  - input:
+      key: '2050'
+      column: male
+    expected: 1239625
+    origin: source
+evidence:
+- publisher: World Bank
+  title: World Bank API, population total, male and female, source 40 (Population estimates and projections), 2025-2050,
+    GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.TOTL, countryiso3code=BHR, date=2025].value'
+  value: 1600366
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.TOTL","value":"Population, total"},"country":{"id":"BH","value":"Bahrain"},"countryiso3code":"BHR","date":"2025","value":1600366'
+  source_license: CC-BY-4.0
+  content_sha256: 37419b5280e13ec88d321f57e1158341a62cef2c4b0d405b73267f5a773dd0b9
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population total, male and female, source 40 (Population estimates and projections), 2025-2050,
+    GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.TOTL, countryiso3code=BHR, date=2050].value'
+  value: 2072986
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.TOTL","value":"Population, total"},"country":{"id":"BH","value":"Bahrain"},"countryiso3code":"BHR","date":"2050","value":2072986'
+  source_license: CC-BY-4.0
+  content_sha256: 37419b5280e13ec88d321f57e1158341a62cef2c4b0d405b73267f5a773dd0b9
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population total, male and female, source 40 (Population estimates and projections), 2025-2050,
+    GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.TOTL.MA.IN, countryiso3code=BHR, date=2050].value'
+  value: 1239625
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.TOTL.MA.IN","value":"Population, male"},"country":{"id":"BH","value":"Bahrain"},"countryiso3code":"BHR","date":"2050","value":1239625'
+  source_license: CC-BY-4.0
+  content_sha256: 37419b5280e13ec88d321f57e1158341a62cef2c4b0d405b73267f5a773dd0b9
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population total, male and female, source 40 (Population estimates and projections), 2025-2050,
+    GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.TOTL.FE.IN, countryiso3code=BHR, date=2050].value'
+  value: 833361
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.TOTL.FE.IN","value":"Population, female"},"country":{"id":"BH","value":"Bahrain"},"countryiso3code":"BHR","date":"2050","value":833361'
+  source_license: CC-BY-4.0
+  content_sha256: 37419b5280e13ec88d321f57e1158341a62cef2c4b0d405b73267f5a773dd0b9
+  role: primary
+- publisher: World Bank
+  title: World Bank indicator metadata, SP.POP.TOTL.MA.IN
+  url: https://api.worldbank.org/v2/indicator/SP.POP.TOTL.MA.IN?format=json
+  accessed_at: '2026-11-09'
+  locator: sourceOrganization
+  value: 'World Population Prospects, United Nations (UN), publisher: UN Population Division'
+  unit: text
+  snippet: 'World Population Prospects, United Nations (UN), publisher: UN Population Division'
+  source_license: CC-BY-4.0
+  content_sha256: 098d59c9dd3c2292aa4fad3cdc08131a3b07be265d9f42dd2b8af8812a50be34
+  role: supporting
+- publisher: World Bank
+  title: World Bank Data Catalog public licenses
+  url: https://datacatalog.worldbank.org/public-licenses
+  accessed_at: '2026-11-09'
+  locator: Data Access And Licensing
+  value: Creative Commons Attribution 4.0 International license
+  unit: text
+  snippet: The World Bank Group makes data publicly available according to open data standards
+  source_license: CC-BY-4.0
+  content_sha256: c7c9b31441ea4a1fa27990f4b11f385587469c5c2bda4ec4fc7a6561db6d2422
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 26
+  tolerance: 0
+- statistic: value[2025,total]
+  expected: 1600366
+  tolerance: 0
+- statistic: value[2050,female]
+  expected: 833361
+  tolerance: 0
+- statistic: max[total]
+  expected: 2072986
+  tolerance: 0
+notes: 'Total, male and female mid-year population of Bahrain for every year from 2025 to 2050, from the World Bank
+  Population estimates and projections database (API source 40: SP.POP.TOTL, SP.POP.TOTL.MA.IN, SP.POP.TOTL.FE.IN),
+  which builds on the UN World Population Prospects. Years after the latest estimate are projections, not observations,
+  so the table is a reference keyed by year (valid_to is the end of the projection horizon) rather than an observed
+  series. Data last updated 2026-07-01. The World Bank licenses its data under CC BY 4.0.'

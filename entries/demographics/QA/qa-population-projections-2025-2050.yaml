@@ -1,0 +1,249 @@
+id: qa-population-projections-2025-2050
+title: 'Qatar: total, male and female population, annual 2025 to 2050 (World Bank population projections)'
+kind: rule
+domain: demographics
+region: QA
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2050-12-31'
+tags:
+- gcc
+- population
+- projections
+- by-sex
+- world-bank
+use_cases:
+- synthetic-customers
+- synthetic-employees
+- person-generation
+- kyc-onboarding
+- customer-segmentation
+- market-sizing
+- demand-forecasting
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    source: World Bank API source 40
+    indicators:
+      total: SP.POP.TOTL
+      male: SP.POP.TOTL.MA.IN
+      female: SP.POP.TOTL.FE.IN
+    url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+    rows:
+      '2025':
+        total: 2972215
+        male: 2112996
+        female: 859219
+      '2026':
+        total: 3022652
+        male: 2143136
+        female: 879516
+      '2027':
+        total: 3063120
+        male: 2166005
+        female: 897115
+      '2028':
+        total: 3100291
+        male: 2186347
+        female: 913944
+      '2029':
+        total: 3134257
+        male: 2204233
+        female: 930024
+      '2030':
+        total: 3165626
+        male: 2220154
+        female: 945472
+      '2031':
+        total: 3197967
+        male: 2236629
+        female: 961338
+      '2032':
+        total: 3231233
+        male: 2253604
+        female: 977629
+      '2033':
+        total: 3265514
+        male: 2271122
+        female: 994392
+      '2034':
+        total: 3300727
+        male: 2289114
+        female: 1011613
+      '2035':
+        total: 3336801
+        male: 2307537
+        female: 1029264
+      '2036':
+        total: 3373840
+        male: 2326464
+        female: 1047376
+      '2037':
+        total: 3411804
+        male: 2345867
+        female: 1065937
+      '2038':
+        total: 3450687
+        male: 2365743
+        female: 1084944
+      '2039':
+        total: 3490428
+        male: 2386055
+        female: 1104373
+      '2040':
+        total: 3531004
+        male: 2406792
+        female: 1124212
+      '2041':
+        total: 3572365
+        male: 2427928
+        female: 1144437
+      '2042':
+        total: 3614504
+        male: 2449463
+        female: 1165041
+      '2043':
+        total: 3657369
+        male: 2471364
+        female: 1186005
+      '2044':
+        total: 3700950
+        male: 2493626
+        female: 1207324
+      '2045':
+        total: 3745141
+        male: 2516181
+        female: 1228960
+      '2046':
+        total: 3789936
+        male: 2539029
+        female: 1250907
+      '2047':
+        total: 3835330
+        male: 2562163
+        female: 1273167
+      '2048':
+        total: 3881316
+        male: 2585580
+        female: 1295736
+      '2049':
+        total: 3927855
+        male: 2609252
+        female: 1318603
+      '2050':
+        total: 3974998
+        male: 2633211
+        female: 1341787
+  vectors:
+  - input:
+      key: '2025'
+      column: total
+    expected: 2972215
+    origin: source
+  - input:
+      key: '2050'
+      column: total
+    expected: 3974998
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+  - input:
+      key: '2050'
+      column: male
+    expected: 2633211
+    origin: source
+evidence:
+- publisher: World Bank
+  title: World Bank API, population total, male and female, source 40 (Population estimates and projections), 2025-2050,
+    GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.TOTL, countryiso3code=QAT, date=2025].value'
+  value: 2972215
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.TOTL","value":"Population, total"},"country":{"id":"QA","value":"Qatar"},"countryiso3code":"QAT","date":"2025","value":2972215'
+  source_license: CC-BY-4.0
+  content_sha256: 37419b5280e13ec88d321f57e1158341a62cef2c4b0d405b73267f5a773dd0b9
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population total, male and female, source 40 (Population estimates and projections), 2025-2050,
+    GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.TOTL, countryiso3code=QAT, date=2050].value'
+  value: 3974998
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.TOTL","value":"Population, total"},"country":{"id":"QA","value":"Qatar"},"countryiso3code":"QAT","date":"2050","value":3974998'
+  source_license: CC-BY-4.0
+  content_sha256: 37419b5280e13ec88d321f57e1158341a62cef2c4b0d405b73267f5a773dd0b9
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population total, male and female, source 40 (Population estimates and projections), 2025-2050,
+    GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.TOTL.MA.IN, countryiso3code=QAT, date=2050].value'
+  value: 2633211
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.TOTL.MA.IN","value":"Population, male"},"country":{"id":"QA","value":"Qatar"},"countryiso3code":"QAT","date":"2050","value":2633211'
+  source_license: CC-BY-4.0
+  content_sha256: 37419b5280e13ec88d321f57e1158341a62cef2c4b0d405b73267f5a773dd0b9
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population total, male and female, source 40 (Population estimates and projections), 2025-2050,
+    GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.TOTL.FE.IN, countryiso3code=QAT, date=2050].value'
+  value: 1341787
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.TOTL.FE.IN","value":"Population, female"},"country":{"id":"QA","value":"Qatar"},"countryiso3code":"QAT","date":"2050","value":1341787'
+  source_license: CC-BY-4.0
+  content_sha256: 37419b5280e13ec88d321f57e1158341a62cef2c4b0d405b73267f5a773dd0b9
+  role: primary
+- publisher: World Bank
+  title: World Bank indicator metadata, SP.POP.TOTL.MA.IN
+  url: https://api.worldbank.org/v2/indicator/SP.POP.TOTL.MA.IN?format=json
+  accessed_at: '2026-11-09'
+  locator: sourceOrganization
+  value: 'World Population Prospects, United Nations (UN), publisher: UN Population Division'
+  unit: text
+  snippet: 'World Population Prospects, United Nations (UN), publisher: UN Population Division'
+  source_license: CC-BY-4.0
+  content_sha256: 098d59c9dd3c2292aa4fad3cdc08131a3b07be265d9f42dd2b8af8812a50be34
+  role: supporting
+- publisher: World Bank
+  title: World Bank Data Catalog public licenses
+  url: https://datacatalog.worldbank.org/public-licenses
+  accessed_at: '2026-11-09'
+  locator: Data Access And Licensing
+  value: Creative Commons Attribution 4.0 International license
+  unit: text
+  snippet: The World Bank Group makes data publicly available according to open data standards
+  source_license: CC-BY-4.0
+  content_sha256: c7c9b31441ea4a1fa27990f4b11f385587469c5c2bda4ec4fc7a6561db6d2422
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 26
+  tolerance: 0
+- statistic: value[2025,total]
+  expected: 2972215
+  tolerance: 0
+- statistic: value[2050,female]
+  expected: 1341787
+  tolerance: 0
+- statistic: max[total]
+  expected: 3974998
+  tolerance: 0
+notes: 'Total, male and female mid-year population of Qatar for every year from 2025 to 2050, from the World Bank
+  Population estimates and projections database (API source 40: SP.POP.TOTL, SP.POP.TOTL.MA.IN, SP.POP.TOTL.FE.IN),
+  which builds on the UN World Population Prospects. Years after the latest estimate are projections, not observations,
+  so the table is a reference keyed by year (valid_to is the end of the projection horizon) rather than an observed
+  series. Data last updated 2026-07-01. The World Bank licenses its data under CC BY 4.0.'

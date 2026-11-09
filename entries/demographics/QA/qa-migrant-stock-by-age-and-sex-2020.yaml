@@ -1,0 +1,236 @@
+id: qa-migrant-stock-by-age-and-sex-2020
+title: 'Qatar: international migrant stock by five-year age group, given sex, mid-2020 (UN DESA)'
+kind: conditional
+domain: demographics
+region: QA
+status: license-review
+tier: A
+observed_period:
+  start: '2020-07-01'
+  end: '2020-07-01'
+tags:
+- gcc
+- migration
+- nationality
+- international-migrant-stock
+- by-age
+- by-sex
+- un-desa
+- population
+use_cases:
+- synthetic-customers
+- synthetic-employees
+- person-generation
+- kyc-onboarding
+- customer-segmentation
+- hr-analytics
+spec:
+  variable: age_group
+  unit: ratio
+  given: sex
+  distributions:
+    total:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.04246
+          5-9: 0.041337
+          10-14: 0.039934
+          15-19: 0.040669
+          20-24: 0.084339
+          25-29: 0.117884
+          30-34: 0.160133
+          35-39: 0.148454
+          40-44: 0.106398
+          45-49: 0.085
+          50-54: 0.055337
+          55-59: 0.037665
+          60-64: 0.022902
+          65-69: 0.010936
+          70-74: 0.003704
+          75+: 0.002851
+        counts:
+          0-4: 94523
+          5-9: 92024
+          10-14: 88900
+          15-19: 90537
+          20-24: 187754
+          25-29: 262432
+          30-34: 356486
+          35-39: 330486
+          40-44: 236862
+          45-49: 189227
+          50-54: 123190
+          55-59: 83850
+          60-64: 50985
+          65-69: 24345
+          70-74: 8245
+          75+: 6346
+        total_migrants: 2226192
+        year: 2020
+    male:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.0356
+          5-9: 0.035558
+          10-14: 0.032324
+          15-19: 0.029972
+          20-24: 0.092106
+          25-29: 0.137285
+          30-34: 0.174881
+          35-39: 0.135762
+          40-44: 0.101546
+          45-49: 0.084821
+          50-54: 0.060033
+          55-59: 0.040862
+          60-64: 0.022356
+          65-69: 0.01123
+          70-74: 0.003669
+          75+: 0.001994
+        counts:
+          0-4: 65603
+          5-9: 65525
+          10-14: 59567
+          15-19: 55232
+          20-24: 169732
+          25-29: 252987
+          30-34: 322269
+          35-39: 250180
+          40-44: 187127
+          45-49: 156306
+          50-54: 110627
+          55-59: 75300
+          60-64: 41198
+          65-69: 20695
+          70-74: 6762
+          75+: 3675
+        total_migrants: 1842785
+        year: 2020
+    female:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.075429
+          5-9: 0.069115
+          10-14: 0.076506
+          15-19: 0.092082
+          20-24: 0.047005
+          25-29: 0.024634
+          30-34: 0.089245
+          35-39: 0.209454
+          40-44: 0.129719
+          45-49: 0.085864
+          50-54: 0.032767
+          55-59: 0.0223
+          60-64: 0.025526
+          65-69: 0.00952
+          70-74: 0.003868
+          75+: 0.006966
+        counts:
+          0-4: 28920
+          5-9: 26499
+          10-14: 29333
+          15-19: 35305
+          20-24: 18022
+          25-29: 9445
+          30-34: 34217
+          35-39: 80306
+          40-44: 49735
+          45-49: 32921
+          50-54: 12563
+          55-59: 8550
+          60-64: 9787
+          65-69: 3650
+          70-74: 1483
+          75+: 2671
+        total_migrants: 383407
+        year: 2020
+evidence:
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!AD963 (Qatar, 2020, males aged 30-34)
+  value: 322269
+  unit: count
+  snippet: <c r="AD963" s="37"><v>322269</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!AV963 (Qatar, 2020, females aged 35-39)
+  value: 80306
+  unit: count
+  snippet: <c r="AV963" s="37"><v>80306</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!W963 (Qatar, 2020, both sexes, total)
+  value: 2226192
+  unit: count
+  snippet: <c r="W963" s="37"><v>2226192</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table of contents, copyright line
+  value: CC BY 3.0 IGO
+  unit: text
+  snippet: made available under a Creative Commons license CC BY 3.0 IGO
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: supporting
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: UN Population Division data portal API, list of locations (M49 code, name, ISO codes)
+  url: https://population.un.org/dataportalapi/api/v1/locations?pageSize=500&pageNumber=1
+  accessed_at: '2026-11-09'
+  locator: data[iso3=QAT].id
+  value: 634
+  unit: integer
+  snippet: '{"id":634,"name":"Qatar","iso3":"QAT"'
+  source_license: unstated
+  content_sha256: 5f1cefa51ad84b20b3d2d061f4e5edf3a5ba7979a8bfca003fd75e5178f2ab56
+  role: supporting
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / total
+  method: derived
+  rationale: Migrants in each five-year age group (0-4 to 75+) divided by the sum over the groups for that sex;
+    the published total is kept beside the counts and differs from the sum only by rounding.
+tests:
+- statistic: share[total,30-34]
+  expected: 0.160133
+  tolerance: 0.005
+- statistic: share[male,30-34]
+  expected: 0.174881
+  tolerance: 0.005
+- statistic: share[female,35-39]
+  expected: 0.209454
+  tolerance: 0.005
+- statistic: sum_of_shares[total]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[male]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[female]
+  expected: 1
+  tolerance: 0.0001
+notes: Age distribution of the international migrants living in Qatar at 1 July 2020, for both sexes ('total'),
+  males and females, in sixteen five-year groups from 0-4 to 75+, from UN DESA International Migrant Stock 2020
+  (age, sex and destination workbook, Table 1). The 2024 revision's downloads carry no age breakdown, so 2020 is
+  the latest age structure for migrants. Combined with the 2024 migrant share and the population pyramid it lets
+  a generator give foreign residents their own age profile. The workbook states that it is made available under
+  CC BY 3.0 IGO. That licence permits reuse with attribution but is not on the verifier's permissive list, so the
+  entry stays at license-review until a reviewer accepts it.

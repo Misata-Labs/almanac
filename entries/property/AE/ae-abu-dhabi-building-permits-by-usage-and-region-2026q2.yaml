@@ -1,0 +1,132 @@
+id: ae-abu-dhabi-building-permits-by-usage-and-region-2026q2
+title: Abu Dhabi building permits issued by building usage, given region, second quarter 2026 (SCAD)
+kind: conditional
+domain: property
+region: AE
+status: license-review
+tier: A
+observed_period:
+  start: '2026-04-01'
+  end: '2026-06-30'
+tags:
+- uae
+- gcc
+- abu-dhabi
+- construction
+- building-permits
+- property
+- regions
+- scad
+use_cases:
+- proptech-demo
+- property-demo
+- market-sizing
+- insurance
+spec:
+  variable: building_usage
+  unit: ratio
+  given: region
+  distributions:
+    Abu Dhabi Region:
+      family: categorical
+      parameters:
+        shares:
+          Residential: 0.441347
+          Commercial: 0.368757
+          Industrial: 0.070267
+          Public facilities: 0.086527
+          Agricultural: 0.015099
+          Other: 0.018002
+        counts:
+          Residential: 760
+          Commercial: 635
+          Industrial: 121
+          Public facilities: 149
+          Agricultural: 26
+          Other: 31
+        total: 1722
+    Al Ain Region:
+      family: categorical
+      parameters:
+        shares:
+          Residential: 0.621849
+          Commercial: 0.109244
+          Industrial: 0.073529
+          Public facilities: 0.134454
+          Agricultural: 0.037815
+          Other: 0.023109
+        counts:
+          Residential: 296
+          Commercial: 52
+          Industrial: 35
+          Public facilities: 64
+          Agricultural: 18
+          Other: 11
+        total: 476
+    Al Dhafra Region:
+      family: categorical
+      parameters:
+        shares:
+          Residential: 0.425287
+          Commercial: 0.022989
+          Industrial: 0.183908
+          Public facilities: 0.206897
+          Agricultural: 0.103448
+          Other: 0.057471
+        counts:
+          Residential: 37
+          Commercial: 2
+          Industrial: 16
+          Public facilities: 18
+          Agricultural: 9
+          Other: 5
+        total: 87
+evidence:
+- publisher: Statistics Centre Abu Dhabi
+  title: SCAD, Building Completion Statistics, Second Quarter 2026 (Excel tables; source Department of Municipalities
+    and Transport)
+  url: https://www.scad.gov.ae/documents/20122/3369624/publication_64093_18_3_5_2026_EN.xlsx/e2462bc4-1828-fdda-e555-a645b37cb999
+  accessed_at: '2026-11-09'
+  locator: Table 2, row 'Residential', column 'Abu Dhabi Region'
+  value: '760'
+  unit: count
+  snippet: 'Table 2: Number of permits issued by building usage and region, Second quarter 2026 '
+  source_license: 'SCAD terms of use: reproduction without further permission, with acknowledgement of SCAD as the
+    source'
+  content_sha256: e32ec929607267b4c2516fd6cbc01f14b4fdadf43b2319e58507298bc3af7089
+  role: primary
+- publisher: Statistics Centre Abu Dhabi
+  title: SCAD, Building Completion Statistics, Second Quarter 2026 (Excel tables; source Department of Municipalities
+    and Transport)
+  url: https://www.scad.gov.ae/documents/20122/3369624/publication_64093_18_3_5_2026_EN.xlsx/e2462bc4-1828-fdda-e555-a645b37cb999
+  accessed_at: '2026-11-09'
+  locator: Table 2, row 'Commercial', column 'Al Ain Region'
+  value: '52'
+  unit: count
+  snippet: Public facilities
+  source_license: 'SCAD terms of use: reproduction without further permission, with acknowledgement of SCAD as the
+    source'
+  content_sha256: e32ec929607267b4c2516fd6cbc01f14b4fdadf43b2319e58507298bc3af7089
+  role: primary
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / sum of the six usage counts
+  method: derived
+  rationale: SCAD publishes counts; each share is the count divided by the sum of the counts in its distribution.
+tests:
+- statistic: share["Abu Dhabi Region","Residential"]
+  expected: 0.441347
+  tolerance: 0.005
+- statistic: share["Al Ain Region","Commercial"]
+  expected: 0.109244
+  tolerance: 0.005
+- statistic: sum_of_shares["Al Dhafra Region"]
+  expected: 1
+  tolerance: 0.0001
+notes: Building permits issued in the Emirate of Abu Dhabi in the second quarter of 2026 by building usage (residential,
+  commercial, industrial, public facilities, agricultural, other) for each region, from Table 2 of SCAD's Building
+  Completion Statistics. Use it to give synthetic construction projects or new property listings a realistic usage
+  mix by region. SCAD marks 2026 data as preliminary. SCAD's terms of use (https://www.scad.gov.ae/terms-of-use)
+  state that its publications and tables may be reproduced without further permission provided SCAD is acknowledged
+  as the source; the page is rendered per request and is referenced rather than hashed, so the entry stays at licence
+  review.

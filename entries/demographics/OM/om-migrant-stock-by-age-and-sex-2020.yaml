@@ -1,0 +1,236 @@
+id: om-migrant-stock-by-age-and-sex-2020
+title: 'Oman: international migrant stock by five-year age group, given sex, mid-2020 (UN DESA)'
+kind: conditional
+domain: demographics
+region: OM
+status: license-review
+tier: A
+observed_period:
+  start: '2020-07-01'
+  end: '2020-07-01'
+tags:
+- gcc
+- migration
+- nationality
+- international-migrant-stock
+- by-age
+- by-sex
+- un-desa
+- population
+use_cases:
+- synthetic-customers
+- synthetic-employees
+- person-generation
+- kyc-onboarding
+- customer-segmentation
+- hr-analytics
+spec:
+  variable: age_group
+  unit: ratio
+  given: sex
+  distributions:
+    total:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.02665
+          5-9: 0.030893
+          10-14: 0.031789
+          15-19: 0.051956
+          20-24: 0.090225
+          25-29: 0.1201
+          30-34: 0.201085
+          35-39: 0.149223
+          40-44: 0.097894
+          45-49: 0.069572
+          50-54: 0.048178
+          55-59: 0.032874
+          60-64: 0.022468
+          65-69: 0.012925
+          70-74: 0.007263
+          75+: 0.006904
+        counts:
+          0-4: 63237
+          5-9: 73303
+          10-14: 75431
+          15-19: 123283
+          20-24: 214089
+          25-29: 284977
+          30-34: 477141
+          35-39: 354082
+          40-44: 232286
+          45-49: 165084
+          50-54: 114319
+          55-59: 78005
+          60-64: 53314
+          65-69: 30670
+          70-74: 17234
+          75+: 16381
+        total_migrants: 2372836
+        year: 2020
+    male:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.019794
+          5-9: 0.022934
+          10-14: 0.023899
+          15-19: 0.039232
+          20-24: 0.086813
+          25-29: 0.127684
+          30-34: 0.214205
+          35-39: 0.157011
+          40-44: 0.102411
+          45-49: 0.074035
+          50-54: 0.050756
+          55-59: 0.035266
+          60-64: 0.023906
+          65-69: 0.012377
+          70-74: 0.005291
+          75+: 0.004386
+        counts:
+          0-4: 39271
+          5-9: 45501
+          10-14: 47417
+          15-19: 77838
+          20-24: 172240
+          25-29: 253328
+          30-34: 424988
+          35-39: 311514
+          40-44: 203185
+          45-49: 146887
+          50-54: 100701
+          55-59: 69968
+          60-64: 47431
+          65-69: 24557
+          70-74: 10497
+          75+: 8702
+        total_migrants: 1984025
+        year: 2020
+    female:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.061639
+          5-9: 0.071505
+          10-14: 0.07205
+          15-19: 0.116882
+          20-24: 0.107633
+          25-29: 0.081399
+          30-34: 0.134135
+          35-39: 0.109482
+          40-44: 0.074846
+          45-49: 0.046802
+          50-54: 0.035025
+          55-59: 0.020671
+          60-64: 0.015131
+          65-69: 0.015722
+          70-74: 0.017327
+          75+: 0.01975
+        counts:
+          0-4: 23966
+          5-9: 27802
+          10-14: 28014
+          15-19: 45445
+          20-24: 41849
+          25-29: 31649
+          30-34: 52153
+          35-39: 42568
+          40-44: 29101
+          45-49: 18197
+          50-54: 13618
+          55-59: 8037
+          60-64: 5883
+          65-69: 6113
+          70-74: 6737
+          75+: 7679
+        total_migrants: 388811
+        year: 2020
+evidence:
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!AD956 (Oman, 2020, males aged 30-34)
+  value: 424988
+  unit: count
+  snippet: <c r="AD956" s="35"><v>424988</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!AU956 (Oman, 2020, females aged 30-34)
+  value: 52153
+  unit: count
+  snippet: <c r="AU956" s="35"><v>52153</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!W956 (Oman, 2020, both sexes, total)
+  value: 2372836
+  unit: count
+  snippet: <c r="W956" s="35"><v>2372836</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table of contents, copyright line
+  value: CC BY 3.0 IGO
+  unit: text
+  snippet: made available under a Creative Commons license CC BY 3.0 IGO
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: supporting
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: UN Population Division data portal API, list of locations (M49 code, name, ISO codes)
+  url: https://population.un.org/dataportalapi/api/v1/locations?pageSize=500&pageNumber=1
+  accessed_at: '2026-11-09'
+  locator: data[iso3=OMN].id
+  value: 512
+  unit: integer
+  snippet: '{"id":512,"name":"Oman","iso3":"OMN"'
+  source_license: unstated
+  content_sha256: 5f1cefa51ad84b20b3d2d061f4e5edf3a5ba7979a8bfca003fd75e5178f2ab56
+  role: supporting
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / total
+  method: derived
+  rationale: Migrants in each five-year age group (0-4 to 75+) divided by the sum over the groups for that sex;
+    the published total is kept beside the counts and differs from the sum only by rounding.
+tests:
+- statistic: share[total,30-34]
+  expected: 0.201085
+  tolerance: 0.005
+- statistic: share[male,30-34]
+  expected: 0.214205
+  tolerance: 0.005
+- statistic: share[female,30-34]
+  expected: 0.134135
+  tolerance: 0.005
+- statistic: sum_of_shares[total]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[male]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[female]
+  expected: 1
+  tolerance: 0.0001
+notes: Age distribution of the international migrants living in Oman at 1 July 2020, for both sexes ('total'), males
+  and females, in sixteen five-year groups from 0-4 to 75+, from UN DESA International Migrant Stock 2020 (age,
+  sex and destination workbook, Table 1). The 2024 revision's downloads carry no age breakdown, so 2020 is the latest
+  age structure for migrants. Combined with the 2024 migrant share and the population pyramid it lets a generator
+  give foreign residents their own age profile. The workbook states that it is made available under CC BY 3.0 IGO.
+  That licence permits reuse with attribution but is not on the verifier's permissive list, so the entry stays at
+  license-review until a reviewer accepts it.

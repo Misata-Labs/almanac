@@ -1,0 +1,187 @@
+id: kw-remittance-outflows-and-sending-cost-2010-2024
+title: 'Kuwait: personal remittances paid (US$) and average cost of sending remittances (%), annual 2010 to 2024
+  (World Bank)'
+kind: rule
+domain: payments
+region: KW
+status: verified
+tier: A
+valid_from: '2010-01-01'
+valid_to: '2024-12-31'
+tags:
+- gcc
+- remittances
+- migration
+- balance-of-payments
+- fees
+- world-bank
+use_cases:
+- remittance-demo
+- banking-demo
+- payments-demo
+- kyc-onboarding
+- pricing
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    indicators:
+      personal_remittances_paid_usd: BM.TRF.PWKR.CD.DT
+      sending_cost_percent: SI.RMT.COST.OB.ZS
+    urls:
+    - https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/BM.TRF.PWKR.CD.DT?date=2010:2024&format=json&per_page=1000
+    - https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SI.RMT.COST.OB.ZS?date=2010:2024&format=json&per_page=1000
+    rows:
+      '2010':
+        personal_remittances_paid_usd: 11864003972.95
+        sending_cost_percent: null
+      '2011':
+        personal_remittances_paid_usd: 13012206030.1339
+        sending_cost_percent: null
+      '2012':
+        personal_remittances_paid_usd: 15459199374.3214
+        sending_cost_percent: null
+      '2013':
+        personal_remittances_paid_usd: 17711480680.7188
+        sending_cost_percent: null
+      '2014':
+        personal_remittances_paid_usd: 18128476350.2661
+        sending_cost_percent: null
+      '2015':
+        personal_remittances_paid_usd: 15202536401.3565
+        sending_cost_percent: null
+      '2016':
+        personal_remittances_paid_usd: 15287570250.0847
+        sending_cost_percent: 2.92674666666667
+      '2017':
+        personal_remittances_paid_usd: 13760108803.0923
+        sending_cost_percent: 2.43952
+      '2018':
+        personal_remittances_paid_usd: 14346861711.1382
+        sending_cost_percent: 2.77343166666667
+      '2019':
+        personal_remittances_paid_usd: 18855161641.2345
+        sending_cost_percent: 2.00376333333333
+      '2020':
+        personal_remittances_paid_usd: 17357178322.8965
+        sending_cost_percent: 2.63293
+      '2021':
+        personal_remittances_paid_usd: 18468103779.7774
+        sending_cost_percent: 2.48222
+      '2022':
+        personal_remittances_paid_usd: 17744092398.6186
+        sending_cost_percent: 2.4744445
+      '2023':
+        personal_remittances_paid_usd: 12679515247.4754
+        sending_cost_percent: 2.41638883333333
+      '2024':
+        personal_remittances_paid_usd: 14168984683.1728
+        sending_cost_percent: null
+  vectors:
+  - input:
+      key: '2024'
+      column: personal_remittances_paid_usd
+    expected: 14168984683.1728
+    origin: source
+  - input:
+      key: '2023'
+      column: sending_cost_percent
+    expected: 2.41638883333333
+    origin: source
+  - input: '1990'
+    expected: false
+    origin: derived
+evidence:
+- publisher: World Bank
+  title: World Bank API, BM.TRF.PWKR.CD.DT (Personal remittances, paid, current US$), 2010-2024, GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/BM.TRF.PWKR.CD.DT?date=2010:2024&format=json&per_page=1000
+  accessed_at: '2026-11-09'
+  locator: '[indicator=BM.TRF.PWKR.CD.DT, countryiso3code=KWT, date=2024].value'
+  value: 14168984683.1728
+  unit: currency:USD
+  snippet: '"indicator":{"id":"BM.TRF.PWKR.CD.DT","value":"Personal remittances, paid (current US$)"},"country":{"id":"KW","value":"Kuwait"},"countryiso3code":"KWT","date":"2024","value":14168984683.1728'
+  source_license: CC-BY-4.0
+  content_sha256: 01701881e5c3e0f49105d42f8bb581fcc29366270e640681bb4ec58a57528fc5
+  role: primary
+- publisher: World Bank
+  title: World Bank API, BM.TRF.PWKR.CD.DT (Personal remittances, paid, current US$), 2010-2024, GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/BM.TRF.PWKR.CD.DT?date=2010:2024&format=json&per_page=1000
+  accessed_at: '2026-11-09'
+  locator: '[indicator=BM.TRF.PWKR.CD.DT, countryiso3code=KWT, date=2010].value'
+  value: 11864003972.95
+  unit: currency:USD
+  snippet: '"indicator":{"id":"BM.TRF.PWKR.CD.DT","value":"Personal remittances, paid (current US$)"},"country":{"id":"KW","value":"Kuwait"},"countryiso3code":"KWT","date":"2010","value":11864003972.95'
+  source_license: CC-BY-4.0
+  content_sha256: 01701881e5c3e0f49105d42f8bb581fcc29366270e640681bb4ec58a57528fc5
+  role: primary
+- publisher: World Bank
+  title: World Bank API, SI.RMT.COST.OB.ZS (Average transaction cost of sending remittances from a specific country,
+    %), GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SI.RMT.COST.OB.ZS?date=2010:2024&format=json&per_page=1000
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SI.RMT.COST.OB.ZS, countryiso3code=KWT, date=2023].value'
+  value: 2.41638883333333
+  unit: percent
+  snippet: '"indicator":{"id":"SI.RMT.COST.OB.ZS","value":"Average transaction cost of sending remittances from
+    a specific country (%)"},"country":{"id":"KW","value":"Kuwait"},"countryiso3code":"KWT","date":"2023","value":2.41638883333333'
+  source_license: CC-BY-4.0
+  content_sha256: 31fe88da8dbacaa7c4c7c9f98591e906302b24c2ee7f5f1b384aae7f2881806a
+  role: primary
+- publisher: World Bank
+  title: World Bank indicator metadata, BM.TRF.PWKR.CD.DT
+  url: https://api.worldbank.org/v2/indicator/BM.TRF.PWKR.CD.DT?format=json
+  accessed_at: '2026-11-09'
+  locator: sourceOrganization
+  value: IMF balance of payments data, International Monetary Fund (IMF)
+  unit: text
+  snippet: IMF balance of payments data, International Monetary Fund (IMF)
+  source_license: CC-BY-4.0
+  content_sha256: 67ac5813586da4569f14fae8f67897685bc0b807b2b7117f5f737998f69c9a6b
+  role: supporting
+- publisher: World Bank
+  title: World Bank indicator metadata, SI.RMT.COST.OB.ZS
+  url: https://api.worldbank.org/v2/indicator/SI.RMT.COST.OB.ZS?format=json
+  accessed_at: '2026-11-09'
+  locator: sourceOrganization
+  value: Remittance Prices Worldwide, World Bank (WB)
+  unit: text
+  snippet: Remittance Prices Worldwide, World Bank (WB)
+  source_license: CC-BY-4.0
+  content_sha256: 91ace34ce17d8ac827d6120cd72db790a4e997e0b8b915d3825e397531b6c869
+  role: supporting
+- publisher: World Bank
+  title: World Bank Data Catalog public licenses
+  url: https://datacatalog.worldbank.org/public-licenses
+  accessed_at: '2026-11-09'
+  locator: Data Access And Licensing
+  value: Creative Commons Attribution 4.0 International license
+  unit: text
+  snippet: The World Bank Group makes data publicly available according to open data standards
+  source_license: CC-BY-4.0
+  content_sha256: c7c9b31441ea4a1fa27990f4b11f385587469c5c2bda4ec4fc7a6561db6d2422
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 15
+  tolerance: 0
+- statistic: value[2024,personal_remittances_paid_usd]
+  expected: 14168984683.1728
+  tolerance: 0.001
+- statistic: max[personal_remittances_paid_usd]
+  expected: 18855161641.2345
+  tolerance: 0.001
+- statistic: value[2023,sending_cost_percent]
+  expected: 2.41638883333333
+  tolerance: 1.0e-09
+notes: 'For Kuwait, one row per year: personal remittances paid in current US dollars (indicator BM.TRF.PWKR.CD.DT:
+  personal transfers plus compensation of employees paid to non-residents, from IMF balance of payments data and
+  World Bank staff estimates) and the average total cost, as a percentage of the amount sent, of sending USD 200
+  from Kuwait across the providers in the World Bank''s Remittance Prices Worldwide database (indicator SI.RMT.COST.OB.ZS).
+  Remittances paid are published for 2010 to 2024 and the cost for 2016 to 2023; a column is null where that indicator
+  has no value (2010, 2011, 2012, 2013, 2014, 2015, 2024). The outflow sets the annual scale of a synthetic outbound
+  remittance ledger and the cost prices its fees; the destination mix can be taken from the UN DESA migrant-stock-by-origin
+  entry. Rows are keyed by year. Data last updated 2026-10-08. The World Bank licenses its data under CC BY 4.0.'

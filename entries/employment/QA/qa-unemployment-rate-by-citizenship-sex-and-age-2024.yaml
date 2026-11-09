@@ -1,0 +1,162 @@
+id: qa-unemployment-rate-by-citizenship-sex-and-age-2024
+title: 'Qatar: unemployment rate by citizenship, sex and age group, 2024 (ILOSTAT, labour force survey)'
+kind: rule
+domain: employment
+region: QA
+status: license-review
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- gcc
+- migration
+- nationality
+- unemployment
+- by-citizenship
+- by-sex
+- by-age
+- ilostat
+- labour-force-survey
+use_cases:
+- synthetic-employees
+- payroll-demo
+- hr-analytics
+- workforce-planning
+- credit-risk
+- synthetic-customers
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    indicator: UNE_DEAP_SEX_AGE_CCT_RT_A
+    url: https://rplumber.ilo.org/data/indicator/?id=UNE_DEAP_SEX_AGE_CCT_RT_A&ref_area=QAT&timefrom=2024&timeto=2024&format=.csv
+    year: 2024
+    age_columns:
+      AGE_YTHADULT_YGE15: age_15_plus
+      AGE_YTHADULT_Y15-24: age_15_24
+      AGE_YTHADULT_YGE25: age_25_plus
+      AGE_YTHADULT_Y15-64: age_15_64
+    rows:
+      all:men:
+        age_15_plus: 0.078
+        age_15_24: 0.257
+        age_25_plus: 0.063
+        age_15_64: null
+      all:total:
+        age_15_plus: 0.128
+        age_15_24: 0.533
+        age_25_plus: 0.089
+        age_15_64: null
+      all:women:
+        age_15_plus: 0.372
+        age_15_24: 1.258
+        age_25_plus: 0.224
+        age_15_64: null
+      citizens:men:
+        age_15_plus: 0.192
+        age_15_24: 0.423
+        age_25_plus: 0.151
+        age_15_64: null
+      citizens:total:
+        age_15_plus: 0.351
+        age_15_24: 0.967
+        age_25_plus: 0.27
+        age_15_64: null
+      citizens:women:
+        age_15_plus: 0.578
+        age_15_24: 2.704
+        age_25_plus: 0.424
+        age_15_64: null
+      foreign_citizens:men:
+        age_15_plus: 0.074
+        age_15_24: 0.243
+        age_25_plus: 0.06
+        age_15_64: null
+      foreign_citizens:total:
+        age_15_plus: 0.115
+        age_15_24: 0.498
+        age_25_plus: 0.078
+        age_15_64: null
+      foreign_citizens:women:
+        age_15_plus: 0.338
+        age_15_24: 1.157
+        age_25_plus: 0.188
+        age_15_64: null
+  vectors:
+  - input:
+      key: citizens:women
+      column: age_15_plus
+    expected: 0.578
+    origin: source
+  - input:
+      key: foreign_citizens:men
+      column: age_15_plus
+    expected: 0.074
+    origin: source
+  - input:
+      key: all:total
+      column: age_15_plus
+    expected: 0.128
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator UNE_DEAP_SEX_AGE_CCT_RT_A (Unemployment rate by sex, age and citizenship
+    (%)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=UNE_DEAP_SEX_AGE_CCT_RT_A&ref_area=QAT&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=QAT, sex=SEX_T, classif1=AGE_YTHADULT_Y15-24, classif2=CCT_CIT_NONCIT, time=2024, obs_value
+  value: '0.498'
+  unit: percent
+  snippet: QAT","BA:696","UNE_DEAP_SEX_AGE_CCT_RT","SEX_T","AGE_YTHADULT_Y15-24","CCT_CIT_NONCIT","2024",0.498
+  source_license: unstated
+  content_sha256: a348c8992a818237735f8c36cbea8a94900a36dcd9336595238385571ae3800c
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator UNE_DEAP_SEX_AGE_CCT_RT_A (Unemployment rate by sex, age and citizenship
+    (%)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=UNE_DEAP_SEX_AGE_CCT_RT_A&ref_area=QAT&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=QAT, sex=SEX_M, classif1=AGE_YTHADULT_YGE15, classif2=CCT_CIT_NONCIT, time=2024, obs_value
+  value: '0.074'
+  unit: percent
+  snippet: QAT","BA:696","UNE_DEAP_SEX_AGE_CCT_RT","SEX_M","AGE_YTHADULT_YGE15","CCT_CIT_NONCIT","2024",0.074
+  source_license: unstated
+  content_sha256: a348c8992a818237735f8c36cbea8a94900a36dcd9336595238385571ae3800c
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator UNE_DEAP_SEX_AGE_CCT_RT_A (Unemployment rate by sex, age and citizenship
+    (%)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=UNE_DEAP_SEX_AGE_CCT_RT_A&ref_area=QAT&timefrom=2024&timeto=2024&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=QAT, sex=SEX_F, classif1=AGE_YTHADULT_YGE15, classif2=CCT_CIT_CITIZEN, time=2024, obs_value
+  value: '0.578'
+  unit: percent
+  snippet: QAT","BA:696","UNE_DEAP_SEX_AGE_CCT_RT","SEX_F","AGE_YTHADULT_YGE15","CCT_CIT_CITIZEN","2024",0.578
+  source_license: unstated
+  content_sha256: a348c8992a818237735f8c36cbea8a94900a36dcd9336595238385571ae3800c
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 9
+  tolerance: 0
+- statistic: value[citizens:women,age_15_plus]
+  expected: 0.578
+  tolerance: 1.0e-09
+- statistic: value[foreign_citizens:total,age_15_24]
+  expected: 0.498
+  tolerance: 1.0e-09
+- statistic: max[age_15_plus]
+  expected: 0.578
+  tolerance: 1.0e-09
+notes: Unemployment rate (percent of the labour force) in Qatar in 2024 for citizens, foreign citizens and all persons,
+  by sex, for ages 15+, 15-24, 25+ and 15-64, from ILOSTAT indicator UNE_DEAP_SEX_AGE_CCT_RT (labour force survey).
+  The query is closed to that one year. Rows are keyed '<citizenship>:<sex>' with citizenship all, citizens or foreign_citizens
+  and sex total, men or women; age_15_64 is null where ILOSTAT publishes no value. The ILOSTAT terms-of-use page
+  could not be fetched byte-stably in this session, so the licence is recorded as unstated and the entry stays at
+  license-review until a reviewer confirms the terms that apply to ILOSTAT data.

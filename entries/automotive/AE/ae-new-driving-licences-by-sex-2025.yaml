@@ -1,0 +1,75 @@
+id: ae-new-driving-licences-by-sex-2025
+title: UAE new driving licences issued in 2025 by sex (Ministry of Interior)
+kind: marginal
+domain: automotive
+region: AE
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- uae
+- gcc
+- driving-licences
+- sex
+- moi
+use_cases:
+- synthetic-customers
+- person-generation
+- insurance
+- fleet-demo
+spec:
+  variable: sex
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        male: 0.795405
+        female: 0.204595
+      counts:
+        male: 443988
+        female: 114203
+      total: 558191
+evidence:
+- publisher: Ministry of Interior (published on Bayanat)
+  title: MOI Registered (new) licenses by gender 2025 (Excel, Bayanat)
+  url: https://bayanat.ae/api/DatasetResources/DownloadSingle?fileName=data&resourceID=WecTNrdOR_Un6Dw6IwG4KvsnGSEyPY9O35HLD-mSRAo
+  accessed_at: '2026-11-09'
+  locator: Data Set sheet, row 3, column Male
+  value: '443988'
+  unit: count
+  snippet: Male
+  source_license: CC-BY-4.0
+  content_sha256: 7edc069f6a8673686318e35c8b1cedcaf9f5a23690b05faab597d68c0e8d8ae4
+  role: primary
+- publisher: Ministry of Interior (published on Bayanat)
+  title: MOI Registered (new) licenses by gender 2025 (Excel, Bayanat)
+  url: https://bayanat.ae/api/DatasetResources/DownloadSingle?fileName=data&resourceID=WecTNrdOR_Un6Dw6IwG4KvsnGSEyPY9O35HLD-mSRAo
+  accessed_at: '2026-11-09'
+  locator: Data Set sheet, row 3, column Total
+  value: '558191'
+  unit: count
+  snippet: Female
+  source_license: CC-BY-4.0
+  content_sha256: 7edc069f6a8673686318e35c8b1cedcaf9f5a23690b05faab597d68c0e8d8ae4
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total
+  method: derived
+  rationale: The Ministry publishes counts by sex and their total; shares are their ratio.
+tests:
+- statistic: share[female]
+  expected: 0.204595
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: New driving licences registered in the UAE in 2025 by holder's sex, from the Ministry of Interior dataset
+  'Registered (new) licenses by gender 2025'. Use the female share when assigning licences to synthetic adults.
+  Bayanat, the UAE federal open data portal run by the Federal Competitiveness and Statistics Centre, states on
+  its Copyright and Data Licensing page that datasets on the portal are available under the Creative Commons Attribution
+  4.0 International licence unless otherwise stated; that page is rendered per request and is referenced rather
+  than hashed. Bayanat download links carry an opaque resource token issued by the portal.

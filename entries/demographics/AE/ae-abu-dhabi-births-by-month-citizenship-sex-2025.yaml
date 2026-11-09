@@ -1,0 +1,149 @@
+id: ae-abu-dhabi-births-by-month-citizenship-sex-2025
+title: Abu Dhabi live births by month, citizenship (Emirati, non-Emirati) and sex, 2025 (SCAD)
+kind: temporal
+domain: demographics
+region: AE
+status: license-review
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- uae
+- gcc
+- abu-dhabi
+- births
+- citizenship
+- sex
+- seasonality
+- scad
+use_cases:
+- synthetic-customers
+- person-generation
+- household-generation
+- health-demo
+spec:
+  variable: live_births
+  unit: count
+  frequency: monthly
+  columns:
+  - emirati_male
+  - emirati_female
+  - non_emirati_male
+  - non_emirati_female
+  series:
+  - period: 2025-01
+    value: 3433
+    emirati_male: 673
+    emirati_female: 657
+    non_emirati_male: 1109
+    non_emirati_female: 984
+  - period: 2025-02
+    value: 2966
+    emirati_male: 592
+    emirati_female: 564
+    non_emirati_male: 935
+    non_emirati_female: 855
+  - period: 2025-03
+    value: 3227
+    emirati_male: 623
+    emirati_female: 553
+    non_emirati_male: 1062
+    non_emirati_female: 974
+  - period: 2025-04
+    value: 3091
+    emirati_male: 651
+    emirati_female: 583
+    non_emirati_male: 952
+    non_emirati_female: 895
+  - period: 2025-05
+    value: 3344
+    emirati_male: 754
+    emirati_female: 630
+    non_emirati_male: 974
+    non_emirati_female: 973
+  - period: 2025-06
+    value: 3323
+    emirati_male: 673
+    emirati_female: 623
+    non_emirati_male: 1036
+    non_emirati_female: 974
+  - period: 2025-07
+    value: 3573
+    emirati_male: 780
+    emirati_female: 657
+    non_emirati_male: 1124
+    non_emirati_female: 994
+  - period: 2025-08
+    value: 3619
+    emirati_male: 749
+    emirati_female: 705
+    non_emirati_male: 1138
+    non_emirati_female: 1007
+  - period: 2025-09
+    value: 3585
+    emirati_male: 740
+    emirati_female: 698
+    non_emirati_male: 1077
+    non_emirati_female: 1061
+  - period: 2025-10
+    value: 3815
+    emirati_male: 793
+    emirati_female: 730
+    non_emirati_male: 1144
+    non_emirati_female: 1131
+  - period: 2025-11
+    value: 3542
+    emirati_male: 744
+    emirati_female: 673
+    non_emirati_male: 1141
+    non_emirati_female: 975
+  - period: 2025-12
+    value: 3717
+    emirati_male: 769
+    emirati_female: 694
+    non_emirati_male: 1159
+    non_emirati_female: 1084
+evidence:
+- publisher: Statistics Centre Abu Dhabi
+  title: SCAD, Birth Statistics 2025 (Excel tables; source Department of Health - Abu Dhabi)
+  url: https://www.scad.gov.ae/documents/20122/3422848/publication_64080_17_1_1_2025_EN.xlsx/5c7f95d5-08ff-000e-03c8-39d08b7c4747
+  accessed_at: '2026-11-09'
+  locator: Table 2, row 'Total', column 'Total'
+  value: '41235'
+  unit: count
+  snippet: Citizenship and Gender
+  source_license: 'SCAD terms of use: reproduction without further permission, with acknowledgement of SCAD as the
+    source'
+  content_sha256: 37c8b6b3051a762413f97253e0b5bcfef5215d18590e1a7036d8aa1c9431771b
+  role: primary
+- publisher: Statistics Centre Abu Dhabi
+  title: SCAD, Birth Statistics 2025 (Excel tables; source Department of Health - Abu Dhabi)
+  url: https://www.scad.gov.ae/documents/20122/3422848/publication_64080_17_1_1_2025_EN.xlsx/5c7f95d5-08ff-000e-03c8-39d08b7c4747
+  accessed_at: '2026-11-09'
+  locator: Table 2, row 'Non-Emirati / Male', column January
+  value: '1109'
+  unit: count
+  snippet: Citizenship Not Stated*
+  source_license: 'SCAD terms of use: reproduction without further permission, with acknowledgement of SCAD as the
+    source'
+  content_sha256: 37c8b6b3051a762413f97253e0b5bcfef5215d18590e1a7036d8aa1c9431771b
+  role: primary
+assumed: []
+tests:
+- statistic: value[2025-01]
+  expected: 3433
+  tolerance: 0
+- statistic: column[emirati_female,2025-12]
+  expected: 694
+  tolerance: 0
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: 'Live births registered in the Emirate of Abu Dhabi in 2025 by month (value is all births), with Emirati
+  and non-Emirati births split by sex as columns, from Table 2 of SCAD''s Birth Statistics 2025 (source: Department
+  of Health - Abu Dhabi). The total also includes births with citizenship or sex not stated, which have no column.
+  Use it to date synthetic births and to set the citizen share and sex ratio of newborns. SCAD''s terms of use (https://www.scad.gov.ae/terms-of-use)
+  state that its publications and tables may be reproduced without further permission provided SCAD is acknowledged
+  as the source; the page is rendered per request and is referenced rather than hashed, so the entry stays at licence
+  review.'

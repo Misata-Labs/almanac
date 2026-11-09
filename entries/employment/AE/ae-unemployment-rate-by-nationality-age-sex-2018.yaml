@@ -1,0 +1,630 @@
+id: ae-unemployment-rate-by-nationality-age-sex-2018
+title: UAE unemployment rate by nationality (citizen, non-citizen), age group and sex, 2018 (FCSC)
+kind: rule
+domain: employment
+region: AE
+status: verified
+tier: A
+valid_from: '2018-01-01'
+valid_to: '2018-12-31'
+tags:
+- uae
+- gcc
+- unemployment
+- labour-force
+- nationality
+- age
+- sex
+- fcsc
+- reference-table
+use_cases:
+- synthetic-employees
+- synthetic-customers
+- hr-analytics
+- credit-risk
+- workforce-planning
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key_format: nationality|sex|age_group
+    unit: ratio of the labour force
+    rows:
+      Citizen|Male|15 - 19:
+        nationality: Citizen
+        sex: Male
+        age_group: 15 - 19
+        unemployment_rate: 0.476315
+      Citizen|Male|20 - 24:
+        nationality: Citizen
+        sex: Male
+        age_group: 20 - 24
+        unemployment_rate: 0.228699
+      Citizen|Male|25 - 29:
+        nationality: Citizen
+        sex: Male
+        age_group: 25 - 29
+        unemployment_rate: 0.073827
+      Citizen|Male|30 - 34:
+        nationality: Citizen
+        sex: Male
+        age_group: 30 - 34
+        unemployment_rate: 0.05017
+      Citizen|Male|35 - 39:
+        nationality: Citizen
+        sex: Male
+        age_group: 35 - 39
+        unemployment_rate: 0.05306
+      Citizen|Male|40 - 44:
+        nationality: Citizen
+        sex: Male
+        age_group: 40 - 44
+        unemployment_rate: 0.011003
+      Citizen|Male|45 - 49:
+        nationality: Citizen
+        sex: Male
+        age_group: 45 - 49
+        unemployment_rate: 0.009678
+      Citizen|Male|50 - 54:
+        nationality: Citizen
+        sex: Male
+        age_group: 50 - 54
+        unemployment_rate: 0.021296
+      Citizen|Male|55 - 59:
+        nationality: Citizen
+        sex: Male
+        age_group: 55 - 59
+        unemployment_rate: 0.022588
+      Citizen|Male|60 - 64:
+        nationality: Citizen
+        sex: Male
+        age_group: 60 - 64
+        unemployment_rate: 0.01206
+      Citizen|Male|65 +:
+        nationality: Citizen
+        sex: Male
+        age_group: 65 +
+        unemployment_rate: 0.0
+      Citizen|Male|Total:
+        nationality: Citizen
+        sex: Male
+        age_group: Total
+        unemployment_rate: 0.075217
+      Citizen|Female|15 - 19:
+        nationality: Citizen
+        sex: Female
+        age_group: 15 - 19
+        unemployment_rate: 0.75536
+      Citizen|Female|20 - 24:
+        nationality: Citizen
+        sex: Female
+        age_group: 20 - 24
+        unemployment_rate: 0.438256
+      Citizen|Female|25 - 29:
+        nationality: Citizen
+        sex: Female
+        age_group: 25 - 29
+        unemployment_rate: 0.260798
+      Citizen|Female|30 - 34:
+        nationality: Citizen
+        sex: Female
+        age_group: 30 - 34
+        unemployment_rate: 0.187545
+      Citizen|Female|35 - 39:
+        nationality: Citizen
+        sex: Female
+        age_group: 35 - 39
+        unemployment_rate: 0.11215
+      Citizen|Female|40 - 44:
+        nationality: Citizen
+        sex: Female
+        age_group: 40 - 44
+        unemployment_rate: 0.071991
+      Citizen|Female|45 - 49:
+        nationality: Citizen
+        sex: Female
+        age_group: 45 - 49
+        unemployment_rate: 0.037455
+      Citizen|Female|50 - 54:
+        nationality: Citizen
+        sex: Female
+        age_group: 50 - 54
+        unemployment_rate: 0.043185
+      Citizen|Female|55 - 59:
+        nationality: Citizen
+        sex: Female
+        age_group: 55 - 59
+        unemployment_rate: 0.128794
+      Citizen|Female|60 - 64:
+        nationality: Citizen
+        sex: Female
+        age_group: 60 - 64
+        unemployment_rate: 0.0
+      Citizen|Female|65 +:
+        nationality: Citizen
+        sex: Female
+        age_group: 65 +
+        unemployment_rate: 0.0
+      Citizen|Female|Total:
+        nationality: Citizen
+        sex: Female
+        age_group: Total
+        unemployment_rate: 0.198934
+      Citizen|Total|15 - 19:
+        nationality: Citizen
+        sex: Total
+        age_group: 15 - 19
+        unemployment_rate: 0.546735
+      Citizen|Total|20 - 24:
+        nationality: Citizen
+        sex: Total
+        age_group: 20 - 24
+        unemployment_rate: 0.298339
+      Citizen|Total|25 - 29:
+        nationality: Citizen
+        sex: Total
+        age_group: 25 - 29
+        unemployment_rate: 0.146308
+      Citizen|Total|30 - 34:
+        nationality: Citizen
+        sex: Total
+        age_group: 30 - 34
+        unemployment_rate: 0.104434
+      Citizen|Total|35 - 39:
+        nationality: Citizen
+        sex: Total
+        age_group: 35 - 39
+        unemployment_rate: 0.075584
+      Citizen|Total|40 - 44:
+        nationality: Citizen
+        sex: Total
+        age_group: 40 - 44
+        unemployment_rate: 0.031259
+      Citizen|Total|45 - 49:
+        nationality: Citizen
+        sex: Total
+        age_group: 45 - 49
+        unemployment_rate: 0.017574
+      Citizen|Total|50 - 54:
+        nationality: Citizen
+        sex: Total
+        age_group: 50 - 54
+        unemployment_rate: 0.025812
+      Citizen|Total|55 - 59:
+        nationality: Citizen
+        sex: Total
+        age_group: 55 - 59
+        unemployment_rate: 0.033974
+      Citizen|Total|60 - 64:
+        nationality: Citizen
+        sex: Total
+        age_group: 60 - 64
+        unemployment_rate: 0.01062
+      Citizen|Total|65 +:
+        nationality: Citizen
+        sex: Total
+        age_group: 65 +
+        unemployment_rate: 0.0
+      Citizen|Total|Total:
+        nationality: Citizen
+        sex: Total
+        age_group: Total
+        unemployment_rate: 0.117886
+      Non-Citizen|Male|15 - 19:
+        nationality: Non-Citizen
+        sex: Male
+        age_group: 15 - 19
+        unemployment_rate: 0.169637
+      Non-Citizen|Male|20 - 24:
+        nationality: Non-Citizen
+        sex: Male
+        age_group: 20 - 24
+        unemployment_rate: 0.029111
+      Non-Citizen|Male|25 - 29:
+        nationality: Non-Citizen
+        sex: Male
+        age_group: 25 - 29
+        unemployment_rate: 0.01046
+      Non-Citizen|Male|30 - 34:
+        nationality: Non-Citizen
+        sex: Male
+        age_group: 30 - 34
+        unemployment_rate: 0.00746
+      Non-Citizen|Male|35 - 39:
+        nationality: Non-Citizen
+        sex: Male
+        age_group: 35 - 39
+        unemployment_rate: 0.005553
+      Non-Citizen|Male|40 - 44:
+        nationality: Non-Citizen
+        sex: Male
+        age_group: 40 - 44
+        unemployment_rate: 0.012331
+      Non-Citizen|Male|45 - 49:
+        nationality: Non-Citizen
+        sex: Male
+        age_group: 45 - 49
+        unemployment_rate: 0.006228
+      Non-Citizen|Male|50 - 54:
+        nationality: Non-Citizen
+        sex: Male
+        age_group: 50 - 54
+        unemployment_rate: 0.004465
+      Non-Citizen|Male|55 - 59:
+        nationality: Non-Citizen
+        sex: Male
+        age_group: 55 - 59
+        unemployment_rate: 0.012369
+      Non-Citizen|Male|60 - 64:
+        nationality: Non-Citizen
+        sex: Male
+        age_group: 60 - 64
+        unemployment_rate: 0.016192
+      Non-Citizen|Male|65 +:
+        nationality: Non-Citizen
+        sex: Male
+        age_group: 65 +
+        unemployment_rate: 0.00212
+      Non-Citizen|Male|Total:
+        nationality: Non-Citizen
+        sex: Male
+        age_group: Total
+        unemployment_rate: 0.010824
+      Non-Citizen|Female|15 - 19:
+        nationality: Non-Citizen
+        sex: Female
+        age_group: 15 - 19
+        unemployment_rate: 0.064696
+      Non-Citizen|Female|20 - 24:
+        nationality: Non-Citizen
+        sex: Female
+        age_group: 20 - 24
+        unemployment_rate: 0.09612
+      Non-Citizen|Female|25 - 29:
+        nationality: Non-Citizen
+        sex: Female
+        age_group: 25 - 29
+        unemployment_rate: 0.055486
+      Non-Citizen|Female|30 - 34:
+        nationality: Non-Citizen
+        sex: Female
+        age_group: 30 - 34
+        unemployment_rate: 0.045631
+      Non-Citizen|Female|35 - 39:
+        nationality: Non-Citizen
+        sex: Female
+        age_group: 35 - 39
+        unemployment_rate: 0.031583
+      Non-Citizen|Female|40 - 44:
+        nationality: Non-Citizen
+        sex: Female
+        age_group: 40 - 44
+        unemployment_rate: 0.024066
+      Non-Citizen|Female|45 - 49:
+        nationality: Non-Citizen
+        sex: Female
+        age_group: 45 - 49
+        unemployment_rate: 0.043111
+      Non-Citizen|Female|50 - 54:
+        nationality: Non-Citizen
+        sex: Female
+        age_group: 50 - 54
+        unemployment_rate: 0.022347
+      Non-Citizen|Female|55 - 59:
+        nationality: Non-Citizen
+        sex: Female
+        age_group: 55 - 59
+        unemployment_rate: 0.00225
+      Non-Citizen|Female|60 - 64:
+        nationality: Non-Citizen
+        sex: Female
+        age_group: 60 - 64
+        unemployment_rate: 0.037395
+      Non-Citizen|Female|65 +:
+        nationality: Non-Citizen
+        sex: Female
+        age_group: 65 +
+        unemployment_rate: 0.0
+      Non-Citizen|Female|Total:
+        nationality: Non-Citizen
+        sex: Female
+        age_group: Total
+        unemployment_rate: 0.046468
+      Non-Citizen|Total|15 - 19:
+        nationality: Non-Citizen
+        sex: Total
+        age_group: 15 - 19
+        unemployment_rate: 0.129891
+      Non-Citizen|Total|20 - 24:
+        nationality: Non-Citizen
+        sex: Total
+        age_group: 20 - 24
+        unemployment_rate: 0.044722
+      Non-Citizen|Total|25 - 29:
+        nationality: Non-Citizen
+        sex: Total
+        age_group: 25 - 29
+        unemployment_rate: 0.020392
+      Non-Citizen|Total|30 - 34:
+        nationality: Non-Citizen
+        sex: Total
+        age_group: 30 - 34
+        unemployment_rate: 0.015056
+      Non-Citizen|Total|35 - 39:
+        nationality: Non-Citizen
+        sex: Total
+        age_group: 35 - 39
+        unemployment_rate: 0.010408
+      Non-Citizen|Total|40 - 44:
+        nationality: Non-Citizen
+        sex: Total
+        age_group: 40 - 44
+        unemployment_rate: 0.014548
+      Non-Citizen|Total|45 - 49:
+        nationality: Non-Citizen
+        sex: Total
+        age_group: 45 - 49
+        unemployment_rate: 0.010398
+      Non-Citizen|Total|50 - 54:
+        nationality: Non-Citizen
+        sex: Total
+        age_group: 50 - 54
+        unemployment_rate: 0.006487
+      Non-Citizen|Total|55 - 59:
+        nationality: Non-Citizen
+        sex: Total
+        age_group: 55 - 59
+        unemployment_rate: 0.01118
+      Non-Citizen|Total|60 - 64:
+        nationality: Non-Citizen
+        sex: Total
+        age_group: 60 - 64
+        unemployment_rate: 0.018836
+      Non-Citizen|Total|65 +:
+        nationality: Non-Citizen
+        sex: Total
+        age_group: 65 +
+        unemployment_rate: 0.002057
+      Non-Citizen|Total|Total:
+        nationality: Non-Citizen
+        sex: Total
+        age_group: Total
+        unemployment_rate: 0.017496
+      Total|Male|15 - 19:
+        nationality: Total
+        sex: Male
+        age_group: 15 - 19
+        unemployment_rate: 0.214373
+      Total|Male|20 - 24:
+        nationality: Total
+        sex: Male
+        age_group: 20 - 24
+        unemployment_rate: 0.040976
+      Total|Male|25 - 29:
+        nationality: Total
+        sex: Male
+        age_group: 25 - 29
+        unemployment_rate: 0.013064
+      Total|Male|30 - 34:
+        nationality: Total
+        sex: Male
+        age_group: 30 - 34
+        unemployment_rate: 0.008842
+      Total|Male|35 - 39:
+        nationality: Total
+        sex: Male
+        age_group: 35 - 39
+        unemployment_rate: 0.0073
+      Total|Male|40 - 44:
+        nationality: Total
+        sex: Male
+        age_group: 40 - 44
+        unemployment_rate: 0.012283
+      Total|Male|45 - 49:
+        nationality: Total
+        sex: Male
+        age_group: 45 - 49
+        unemployment_rate: 0.006355
+      Total|Male|50 - 54:
+        nationality: Total
+        sex: Male
+        age_group: 50 - 54
+        unemployment_rate: 0.005101
+      Total|Male|55 - 59:
+        nationality: Total
+        sex: Male
+        age_group: 55 - 59
+        unemployment_rate: 0.012692
+      Total|Male|60 - 64:
+        nationality: Total
+        sex: Male
+        age_group: 60 - 64
+        unemployment_rate: 0.016068
+      Total|Male|65 +:
+        nationality: Total
+        sex: Male
+        age_group: 65 +
+        unemployment_rate: 0.001972
+      Total|Male|Total:
+        nationality: Total
+        sex: Male
+        age_group: Total
+        unemployment_rate: 0.013329
+      Total|Female|15 - 19:
+        nationality: Total
+        sex: Female
+        age_group: 15 - 19
+        unemployment_rate: 0.124364
+      Total|Female|20 - 24:
+        nationality: Total
+        sex: Female
+        age_group: 20 - 24
+        unemployment_rate: 0.128229
+      Total|Female|25 - 29:
+        nationality: Total
+        sex: Female
+        age_group: 25 - 29
+        unemployment_rate: 0.073444
+      Total|Female|30 - 34:
+        nationality: Total
+        sex: Female
+        age_group: 30 - 34
+        unemployment_rate: 0.057089
+      Total|Female|35 - 39:
+        nationality: Total
+        sex: Female
+        age_group: 35 - 39
+        unemployment_rate: 0.039077
+      Total|Female|40 - 44:
+        nationality: Total
+        sex: Female
+        age_group: 40 - 44
+        unemployment_rate: 0.027565
+      Total|Female|45 - 49:
+        nationality: Total
+        sex: Female
+        age_group: 45 - 49
+        unemployment_rate: 0.042506
+      Total|Female|50 - 54:
+        nationality: Total
+        sex: Female
+        age_group: 50 - 54
+        unemployment_rate: 0.023891
+      Total|Female|55 - 59:
+        nationality: Total
+        sex: Female
+        age_group: 55 - 59
+        unemployment_rate: 0.00586
+      Total|Female|60 - 64:
+        nationality: Total
+        sex: Female
+        age_group: 60 - 64
+        unemployment_rate: 0.03633
+      Total|Female|65 +:
+        nationality: Total
+        sex: Female
+        age_group: 65 +
+        unemployment_rate: 0.0
+      Total|Female|Total:
+        nationality: Total
+        sex: Female
+        age_group: Total
+        unemployment_rate: 0.059383
+      Total|Total|15 - 19:
+        nationality: Total
+        sex: Total
+        age_group: 15 - 19
+        unemployment_rate: 0.181697
+      Total|Total|20 - 24:
+        nationality: Total
+        sex: Total
+        age_group: 20 - 24
+        unemployment_rate: 0.06189
+      Total|Total|25 - 29:
+        nationality: Total
+        sex: Total
+        age_group: 25 - 29
+        unemployment_rate: 0.026905
+      Total|Total|30 - 34:
+        nationality: Total
+        sex: Total
+        age_group: 30 - 34
+        unemployment_rate: 0.018843
+      Total|Total|35 - 39:
+        nationality: Total
+        sex: Total
+        age_group: 35 - 39
+        unemployment_rate: 0.013522
+      Total|Total|40 - 44:
+        nationality: Total
+        sex: Total
+        age_group: 40 - 44
+        unemployment_rate: 0.015265
+      Total|Total|45 - 49:
+        nationality: Total
+        sex: Total
+        age_group: 45 - 49
+        unemployment_rate: 0.010724
+      Total|Total|50 - 54:
+        nationality: Total
+        sex: Total
+        age_group: 50 - 54
+        unemployment_rate: 0.007299
+      Total|Total|55 - 59:
+        nationality: Total
+        sex: Total
+        age_group: 55 - 59
+        unemployment_rate: 0.011891
+      Total|Total|60 - 64:
+        nationality: Total
+        sex: Total
+        age_group: 60 - 64
+        unemployment_rate: 0.018592
+      Total|Total|65 +:
+        nationality: Total
+        sex: Total
+        age_group: 65 +
+        unemployment_rate: 0.001912
+      Total|Total|Total:
+        nationality: Total
+        sex: Total
+        age_group: Total
+        unemployment_rate: 0.022298
+  vectors:
+  - input:
+      key: Citizen|Female|20 - 24
+      column: unemployment_rate
+    expected: 0.438256
+    origin: source
+  - input:
+      key: Non-Citizen|Total|Total
+      column: unemployment_rate
+    expected: 0.017496
+    origin: source
+  - input: Citizen|Male|70 - 74
+    expected: false
+    origin: derived
+evidence:
+- publisher: Federal Competitiveness and Statistics Centre (published on Bayanat)
+  title: FCSC Unemployment rate by nationality, age and gender, 2016-2018 (Excel, Bayanat)
+  url: https://bayanat.ae/api/DatasetResources/DownloadSingle?fileName=data&resourceID=rxMuitcKamCo79i_pjKJZEEPMKDvx_Cb4aPo5H9g7RM
+  accessed_at: '2026-11-09'
+  locator: Sheet1, Year=2018, Age='20 - 24', Nationality=Citizen, Gender=Female
+  value: '0.4382558818077964'
+  unit: ratio
+  snippet: Non-Citizen
+  source_license: CC-BY-4.0
+  content_sha256: 58cc50f226b0bd143d1823e3e1a86a1309b825644ef10767286c9ef80daf2b76
+  role: primary
+- publisher: Federal Competitiveness and Statistics Centre (published on Bayanat)
+  title: FCSC Unemployment rate by nationality, age and gender, 2016-2018 (Excel, Bayanat)
+  url: https://bayanat.ae/api/DatasetResources/DownloadSingle?fileName=data&resourceID=rxMuitcKamCo79i_pjKJZEEPMKDvx_Cb4aPo5H9g7RM
+  accessed_at: '2026-11-09'
+  locator: Sheet1, Year=2018, Age=Total, Nationality=Non-Citizen, Gender=Total
+  value: '1.7496115717119495E-2'
+  unit: ratio
+  snippet: 15 - 19
+  source_license: CC-BY-4.0
+  content_sha256: 58cc50f226b0bd143d1823e3e1a86a1309b825644ef10767286c9ef80daf2b76
+  role: primary
+assumed:
+- parameter: rows[*].unemployment_rate
+  value: rounded to six decimal places
+  method: derived
+  rationale: The dataset stores rates at full floating-point precision; the evidence records the stored value.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 108
+  tolerance: 0
+notes: Unemployment rate (unemployed as a ratio of the labour force) in the UAE in 2018 by nationality (Citizen,
+  Non-Citizen, Total), sex (Male, Female, Total) and five-year age group from 15 - 19 to 65 +, with totals, from
+  the Federal Competitiveness and Statistics Centre labour force survey dataset 'Unemployment rate by nationality,
+  age and gender' (2016-2018). 2018 is the latest year the federal open data portal carries for this breakdown.
+  Keys are nationality|sex|age_group. The gap between citizen and non-citizen rates is large and should drive the
+  employment status of synthetic residents by nationality. Bayanat, the UAE federal open data portal run by the
+  Federal Competitiveness and Statistics Centre, states on its Copyright and Data Licensing page that datasets on
+  the portal are available under the Creative Commons Attribution 4.0 International licence unless otherwise stated;
+  that page is rendered per request and is referenced rather than hashed. Bayanat download links carry an opaque
+  resource token issued by the portal.

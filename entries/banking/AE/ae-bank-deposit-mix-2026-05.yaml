@@ -1,0 +1,117 @@
+id: ae-bank-deposit-mix-2026-05
+title: UAE bank deposits by type and residency, all banks, end of May 2026 (CBUAE)
+kind: marginal
+domain: banking
+region: AE
+status: verified
+tier: A
+observed_period:
+  start: '2026-05-31'
+  end: '2026-05-31'
+tags:
+- uae
+- gcc
+- banks
+- deposits
+- account-types
+- residents
+- non-residents
+- cbuae
+use_cases:
+- banking-demo
+- synthetic-customers
+- customer-segmentation
+- fintech-demo
+spec:
+  variable: deposit_type
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Demand deposits (LCY): 0.253627
+        Time deposits (LCY): 0.225738
+        Savings deposits (LCY): 0.101505
+        Other deposits (FCY): 0.191987
+        Government deposits (LCY + FCY): 0.128273
+        Other domestic deposits (LCY + FCY): 0.006897
+        Non-resident deposits (LCY + FCY): 0.091975
+      amounts:
+        Demand deposits (LCY): 878466.83838014
+        Time deposits (LCY): 781869.93035176
+        Savings deposits (LCY): 351573.482
+        Other deposits (FCY): 664969.00131139
+        Government deposits (LCY + FCY): 444289.001
+        Other domestic deposits (LCY + FCY): 23886.95789851
+        Non-resident deposits (LCY + FCY): 318568.246
+      total: 3463623.456942
+evidence:
+- publisher: Central Bank of the UAE (published on Bayanat)
+  title: CBUAE Banks Aggregated Balance Sheet - Liabilities (All Banks), May 2026 (XML, Bayanat)
+  url: https://bayanat.ae/api/DatasetResources/DownloadSingle?fileName=data&resourceID=VyUxgSp1_0Dt4g1TivZs-2auHqV6G5KZULT8X3LwhGE
+  accessed_at: '2026-11-09'
+  locator: row Third_Cat='Demand Deposits (LCY)', Amount
+  value: '878466.83838014'
+  unit: decimal
+  snippet: <Third_Cat>Demand Deposits (LCY)</Third_Cat>
+  source_license: CC-BY-4.0
+  content_sha256: 0d86285c75e07ec13d5bb4d4c5ed2a8729520a9088fa5858623a4694f08ce74b
+  role: primary
+- publisher: Central Bank of the UAE (published on Bayanat)
+  title: CBUAE Banks Aggregated Balance Sheet - Liabilities (All Banks), May 2026 (XML, Bayanat)
+  url: https://bayanat.ae/api/DatasetResources/DownloadSingle?fileName=data&resourceID=VyUxgSp1_0Dt4g1TivZs-2auHqV6G5KZULT8X3LwhGE
+  accessed_at: '2026-11-09'
+  locator: row Third_Cat='Time Deposits (LCY)', Amount
+  value: '781869.93035176'
+  unit: decimal
+  snippet: <Third_Cat>Time Deposits (LCY)</Third_Cat>
+  source_license: CC-BY-4.0
+  content_sha256: 0d86285c75e07ec13d5bb4d4c5ed2a8729520a9088fa5858623a4694f08ce74b
+  role: primary
+- publisher: Central Bank of the UAE (published on Bayanat)
+  title: CBUAE Banks Aggregated Balance Sheet - Liabilities (All Banks), May 2026 (XML, Bayanat)
+  url: https://bayanat.ae/api/DatasetResources/DownloadSingle?fileName=data&resourceID=VyUxgSp1_0Dt4g1TivZs-2auHqV6G5KZULT8X3LwhGE
+  accessed_at: '2026-11-09'
+  locator: row Main_Cat='Foreign Liabilities', Third_Cat='Other Deposits (LCY + FCY)', Amount
+  value: '318568.246'
+  unit: decimal
+  snippet: <Third_Cat>Other Deposits (LCY + FCY)</Third_Cat>
+  source_license: CC-BY-4.0
+  content_sha256: 0d86285c75e07ec13d5bb4d4c5ed2a8729520a9088fa5858623a4694f08ce74b
+  role: primary
+- publisher: Central Bank of the UAE (published on Bayanat)
+  title: CBUAE Banks Aggregated Balance Sheet - Metadata - Liabilities (All Banks), May 2026 (Bayanat)
+  url: https://bayanat.ae/api/DatasetResources/DownloadSingle?fileName=data&resourceID=91uqDpwGqVDn7o6ae_2etN3uwON-eOqUNuyAXfstA84
+  accessed_at: '2026-11-09'
+  locator: Metadata sheet, field 'Calculation methodology'
+  value: IMF's Monetary and Financial Statistics Manual and Compilation Guide
+  unit: text
+  snippet: IMF's Monetary and Financial Statistics Manual and Compilation Guide
+  source_license: CC-BY-4.0
+  content_sha256: e0b9d89339ce91835a9bef50e08d2ebe74cc56c786c2e2b4dfba0bc4d706dd88
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: amount / sum of the seven deposit amounts
+  method: derived
+  rationale: CBUAE publishes balances; the shares are each deposit balance over the sum of the deposit balances
+    listed. Non-resident deposits are the 'Other Deposits (LCY + FCY)' line under Foreign Liabilities.
+tests:
+- statistic: share["Demand deposits (LCY)"]
+  expected: 0.253627
+  tolerance: 0.005
+- statistic: share["Non-resident deposits (LCY + FCY)"]
+  expected: 0.091975
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: 'Balance-weighted mix of deposits held with UAE banks at the end of May 2026: resident deposits in dirhams
+  split into demand, time and savings deposits, resident foreign-currency deposits, government deposits, other domestic
+  deposits, and non-resident deposits. Shares weight by balance, not by number of accounts, so use them for the
+  split of a synthetic bank''s deposit book rather than for account counts. Source: CBUAE Banks Aggregated Balance
+  Sheet - Liabilities (All Banks). Bayanat, the UAE federal open data portal run by the Federal Competitiveness
+  and Statistics Centre, states on its Copyright and Data Licensing page that datasets on the portal are available
+  under the Creative Commons Attribution 4.0 International licence unless otherwise stated; that page is rendered
+  per request and is referenced rather than hashed. Bayanat download links carry an opaque resource token issued
+  by the portal.'

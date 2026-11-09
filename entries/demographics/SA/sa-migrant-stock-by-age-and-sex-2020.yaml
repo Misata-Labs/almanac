@@ -1,0 +1,236 @@
+id: sa-migrant-stock-by-age-and-sex-2020
+title: 'Saudi Arabia: international migrant stock by five-year age group, given sex, mid-2020 (UN DESA)'
+kind: conditional
+domain: demographics
+region: SA
+status: license-review
+tier: A
+observed_period:
+  start: '2020-07-01'
+  end: '2020-07-01'
+tags:
+- gcc
+- migration
+- nationality
+- international-migrant-stock
+- by-age
+- by-sex
+- un-desa
+- population
+use_cases:
+- synthetic-customers
+- synthetic-employees
+- person-generation
+- kyc-onboarding
+- customer-segmentation
+- hr-analytics
+spec:
+  variable: age_group
+  unit: ratio
+  given: sex
+  distributions:
+    total:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.045981
+          5-9: 0.058326
+          10-14: 0.047797
+          15-19: 0.038905
+          20-24: 0.041456
+          25-29: 0.096327
+          30-34: 0.114794
+          35-39: 0.162073
+          40-44: 0.151564
+          45-49: 0.103176
+          50-54: 0.063414
+          55-59: 0.038432
+          60-64: 0.021569
+          65-69: 0.008547
+          70-74: 0.004369
+          75+: 0.003271
+        counts:
+          0-4: 618666
+          5-9: 784762
+          10-14: 643098
+          15-19: 523460
+          20-24: 557786
+          25-29: 1296061
+          30-34: 1544539
+          35-39: 2180661
+          40-44: 2039274
+          45-49: 1388218
+          50-54: 853224
+          55-59: 517091
+          60-64: 290207
+          65-69: 115002
+          70-74: 58788
+          75+: 44005
+        total_migrants: 13454842
+        year: 2020
+    male:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.034492
+          5-9: 0.043634
+          10-14: 0.035928
+          15-19: 0.029447
+          20-24: 0.034731
+          25-29: 0.088331
+          30-34: 0.115537
+          35-39: 0.169655
+          40-44: 0.160198
+          45-49: 0.117773
+          50-54: 0.080153
+          55-59: 0.047994
+          60-64: 0.025701
+          65-69: 0.008923
+          70-74: 0.004087
+          75+: 0.003415
+        counts:
+          0-4: 318535
+          5-9: 402970
+          10-14: 331802
+          15-19: 271950
+          20-24: 320749
+          25-29: 815746
+          30-34: 1066996
+          35-39: 1566787
+          40-44: 1479450
+          45-49: 1087651
+          50-54: 740225
+          55-59: 443228
+          60-64: 237352
+          65-69: 82409
+          70-74: 37740
+          75+: 31540
+        total_migrants: 9235130
+        year: 2020
+    female:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.071126
+          5-9: 0.090478
+          10-14: 0.073772
+          15-19: 0.059604
+          20-24: 0.056174
+          25-29: 0.113826
+          30-34: 0.11317
+          35-39: 0.145478
+          40-44: 0.132669
+          45-49: 0.071229
+          50-54: 0.026779
+          55-59: 0.017504
+          60-64: 0.012526
+          65-69: 0.007724
+          70-74: 0.004988
+          75+: 0.002954
+        counts:
+          0-4: 300131
+          5-9: 381792
+          10-14: 311296
+          15-19: 251510
+          20-24: 237037
+          25-29: 480315
+          30-34: 477543
+          35-39: 613874
+          40-44: 559824
+          45-49: 300567
+          50-54: 112999
+          55-59: 73863
+          60-64: 52855
+          65-69: 32593
+          70-74: 21048
+          75+: 12465
+        total_migrants: 4219712
+        year: 2020
+evidence:
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!AE970 (Saudi Arabia, 2020, males aged 35-39)
+  value: 1566787
+  unit: count
+  snippet: <c r="AE970" s="35"><v>1566787</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!AV970 (Saudi Arabia, 2020, females aged 35-39)
+  value: 613874
+  unit: count
+  snippet: <c r="AV970" s="35"><v>613874</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!W970 (Saudi Arabia, 2020, both sexes, total)
+  value: 13454842
+  unit: count
+  snippet: <c r="W970" s="35"><v>13454842</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table of contents, copyright line
+  value: CC BY 3.0 IGO
+  unit: text
+  snippet: made available under a Creative Commons license CC BY 3.0 IGO
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: supporting
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: UN Population Division data portal API, list of locations (M49 code, name, ISO codes)
+  url: https://population.un.org/dataportalapi/api/v1/locations?pageSize=500&pageNumber=1
+  accessed_at: '2026-11-09'
+  locator: data[iso3=SAU].id
+  value: 682
+  unit: integer
+  snippet: '{"id":682,"name":"Saudi Arabia","iso3":"SAU"'
+  source_license: unstated
+  content_sha256: 5f1cefa51ad84b20b3d2d061f4e5edf3a5ba7979a8bfca003fd75e5178f2ab56
+  role: supporting
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / total
+  method: derived
+  rationale: Migrants in each five-year age group (0-4 to 75+) divided by the sum over the groups for that sex;
+    the published total is kept beside the counts and differs from the sum only by rounding.
+tests:
+- statistic: share[total,35-39]
+  expected: 0.162073
+  tolerance: 0.005
+- statistic: share[male,35-39]
+  expected: 0.169655
+  tolerance: 0.005
+- statistic: share[female,35-39]
+  expected: 0.145478
+  tolerance: 0.005
+- statistic: sum_of_shares[total]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[male]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[female]
+  expected: 1
+  tolerance: 0.0001
+notes: Age distribution of the international migrants living in Saudi Arabia at 1 July 2020, for both sexes ('total'),
+  males and females, in sixteen five-year groups from 0-4 to 75+, from UN DESA International Migrant Stock 2020
+  (age, sex and destination workbook, Table 1). The 2024 revision's downloads carry no age breakdown, so 2020 is
+  the latest age structure for migrants. Combined with the 2024 migrant share and the population pyramid it lets
+  a generator give foreign residents their own age profile. The workbook states that it is made available under
+  CC BY 3.0 IGO. That licence permits reuse with attribution but is not on the verifier's permissive list, so the
+  entry stays at license-review until a reviewer accepts it.

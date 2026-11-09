@@ -1,0 +1,192 @@
+id: ae-vat-rate-thresholds-zero-rated-and-exempt-supplies
+title: 'UAE VAT: 5% standard rate, AED 375,000 and AED 187,500 registration thresholds, zero-rated and exempt supplies'
+kind: rule
+domain: tax
+region: AE
+status: license-review
+tier: B
+valid_from: '2018-01-01'
+valid_to: null
+tags:
+- gcc
+- tax
+- vat
+- uae
+- invoicing
+- registration-threshold
+use_cases:
+- tax-demo
+- invoicing-demo
+- invoicing
+- tax-filing-demo
+spec:
+  implementation: almanac.rules.consumption_tax
+  parameters:
+    currency: AED
+    slabs:
+      standard: 5
+      zero: 0
+    rounding: '0.01'
+    mandatory_registration_threshold: 375000
+    voluntary_registration_threshold: 187500
+    registration_application_days: 30
+    zero_rated_supplies:
+      exports: Direct or indirect export of goods and services to outside the Implementing States
+      international_transport: International transport of passengers and goods, including transport-related services
+      international_air_passenger_transport: Air passenger transport in the State that is international carriage
+      means_of_transport: Supply or import of air, sea and land means of transport for passengers and goods
+      means_of_transport_goods_services: Goods and services for the operation, repair, maintenance or conversion
+        of those means of transport
+      rescue_craft: Supply or import of air or sea rescue and assistance aircraft or vessels
+      goods_consumed_on_board: Goods and services consumed on board international transport
+      investment_precious_metals: Supply or import of investment precious metals
+      first_supply_residential_buildings: First supply of residential buildings within 3 years of completion
+      first_supply_charity_buildings: First supply of buildings designed for use by charities
+      first_supply_converted_residential: First supply of buildings converted from non-residential to residential
+      crude_oil_natural_gas: Supply or import of crude oil and natural gas
+      education: Educational services and related goods and services for nurseries, schools and government-funded
+        higher education
+      healthcare: Preventive and basic healthcare services and related goods and services
+    exempt_supplies:
+      financial_services: Financial services specified in the Executive Regulation
+      residential_buildings: Residential buildings by sale or lease, other than zero-rated first supplies
+      bare_land: Bare land
+      local_passenger_transport: Local passenger transport
+  vectors:
+  - input: 5
+    expected: true
+    origin: source
+    note: 'Article 3: a standard rate of 5%'
+  - input: 0
+    expected: true
+    origin: source
+    note: 'Article 45: the zero rate'
+  - input:
+      net: 1000
+    expected: '50.00'
+    origin: derived
+  - input:
+      gross: 105
+    expected: '5.00'
+    origin: derived
+  - input: 15
+    expected: false
+    origin: derived
+evidence:
+- publisher: Ministry of Finance, United Arab Emirates
+  title: Federal Decree-Law No. 8 of 2017 on Value Added Tax and its amendments (unofficial translation, November
+    2025)
+  url: https://tax.gov.ae/Datafolder/Files/Legislation/2025/Federal%20Decree-Law%20No.%208%20of%202017%20and%20amendments%20-%20publishing%2028%2011%202025.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 8, Article 3, Tax Rate
+  value: 5%
+  unit: percent
+  snippet: a standard rate of 5% Tax shall be imposed on any supply or Import
+  source_license: unstated
+  content_sha256: 264ef5003e5d5c79107ccf130ac60485bd6c69a06fc59957166ecbf49215f120
+  role: primary
+- publisher: Ministry of Finance, United Arab Emirates
+  title: Federal Decree-Law No. 8 of 2017 on Value Added Tax and its amendments (unofficial translation, November
+    2025)
+  url: https://tax.gov.ae/Datafolder/Files/Legislation/2025/Federal%20Decree-Law%20No.%208%20of%202017%20and%20amendments%20-%20publishing%2028%2011%202025.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 1, title page
+  value: Effective from 1 Jan 2018
+  unit: text
+  snippet: Federal Decree-Law No. 8 of 2017 – Issued 23 Aug 2017 (Effective from 1 Jan 2018)
+  source_license: unstated
+  content_sha256: 264ef5003e5d5c79107ccf130ac60485bd6c69a06fc59957166ecbf49215f120
+  role: primary
+- publisher: Ministry of Finance, United Arab Emirates
+  title: Federal Decree-Law No. 8 of 2017 on Value Added Tax and its amendments (unofficial translation, November
+    2025)
+  url: https://tax.gov.ae/Datafolder/Files/Legislation/2025/Federal%20Decree-Law%20No.%208%20of%202017%20and%20amendments%20-%20publishing%2028%2011%202025.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 22, Article 45, Goods and Services Subject to Zero Rate
+  value: investment precious metals
+  unit: text
+  snippet: The supply or Import of investment precious metals.
+  source_license: unstated
+  content_sha256: 264ef5003e5d5c79107ccf130ac60485bd6c69a06fc59957166ecbf49215f120
+  role: primary
+- publisher: Ministry of Finance, United Arab Emirates
+  title: Federal Decree-Law No. 8 of 2017 on Value Added Tax and its amendments (unofficial translation, November
+    2025)
+  url: https://tax.gov.ae/Datafolder/Files/Legislation/2025/Federal%20Decree-Law%20No.%208%20of%202017%20and%20amendments%20-%20publishing%2028%2011%202025.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 22, Article 45, Goods and Services Subject to Zero Rate
+  value: crude oil and natural gas
+  unit: text
+  snippet: The supply or Import of crude oil and natural gas.
+  source_license: unstated
+  content_sha256: 264ef5003e5d5c79107ccf130ac60485bd6c69a06fc59957166ecbf49215f120
+  role: primary
+- publisher: Ministry of Finance, United Arab Emirates
+  title: Federal Decree-Law No. 8 of 2017 on Value Added Tax and its amendments (unofficial translation, November
+    2025)
+  url: https://tax.gov.ae/Datafolder/Files/Legislation/2025/Federal%20Decree-Law%20No.%208%20of%202017%20and%20amendments%20-%20publishing%2028%2011%202025.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 23, Article 46, Supply Exempt from Tax
+  value: bare land
+  unit: text
+  snippet: Supply of bare land. 4. Supply of local passenger transport.
+  source_license: unstated
+  content_sha256: 264ef5003e5d5c79107ccf130ac60485bd6c69a06fc59957166ecbf49215f120
+  role: primary
+- publisher: Ministry of Finance, United Arab Emirates
+  title: Executive Regulation of Federal Decree-Law No. 8 of 2017 on Value Added Tax (Cabinet Decision No. 52 of
+    2017 and its amendments)
+  url: https://mof.gov.ae/wp-content/uploads/2024/10/Executive-Regulation-of-Federal-Decree-Law-No-8-of-2017.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 4, Article 7, Mandatory Registration
+  value: 375,000
+  unit: currency:AED
+  snippet: Registration Threshold shall be AED 375,000 (three hundred and seventy -five
+  source_license: unstated
+  content_sha256: 0fa13b0c94dd693513e6a065e2c0a9bc7fafcea94918b586bd6850e756ae9a12
+  role: primary
+- publisher: Ministry of Finance, United Arab Emirates
+  title: Executive Regulation of Federal Decree-Law No. 8 of 2017 on Value Added Tax (Cabinet Decision No. 52 of
+    2017 and its amendments)
+  url: https://mof.gov.ae/wp-content/uploads/2024/10/Executive-Regulation-of-Federal-Decree-Law-No-8-of-2017.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 5, Article 8, Voluntary Registration
+  value: 187,500
+  unit: currency:AED
+  snippet: The Voluntary Registration Threshold shall be AED 187,500
+  source_license: unstated
+  content_sha256: 0fa13b0c94dd693513e6a065e2c0a9bc7fafcea94918b586bd6850e756ae9a12
+  role: primary
+- publisher: Ministry of Finance, United Arab Emirates
+  title: Executive Regulation of Federal Decree-Law No. 8 of 2017 on Value Added Tax (Cabinet Decision No. 52 of
+    2017 and its amendments)
+  url: https://mof.gov.ae/wp-content/uploads/2024/10/Executive-Regulation-of-Federal-Decree-Law-No-8-of-2017.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 4, Article 7, Mandatory Registration
+  value: 30 (thirty) days
+  unit: text
+  snippet: Tax Registration application with the Authority within 30 (thirty) days of being required to register.
+  source_license: unstated
+  content_sha256: 0fa13b0c94dd693513e6a065e2c0a9bc7fafcea94918b586bd6850e756ae9a12
+  role: primary
+assumed:
+- parameter: zero_rated_supplies labels
+  value: summaries
+  method: derived
+  rationale: Each label summarises one clause of Article 45 or 46 in a few words; the clause text is longer.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: slab[standard]
+  expected: 5
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+notes: 'UAE VAT under Federal Decree-Law No. 8 of 2017 as amended (consolidated text published November 2025), in
+  force from 1 January 2018: a standard rate of 5% on supplies and imports (Article 3), the zero-rated supplies
+  of Article 45 and the exempt supplies of Article 46, held as code lists with labels summarising each clause. The
+  Executive Regulation sets the mandatory registration threshold at AED 375,000 and the voluntary one at AED 187,500,
+  with 30 days to apply once registration is required. The executive regulation conditions on each zero-rated or
+  exempt category are not modelled.'

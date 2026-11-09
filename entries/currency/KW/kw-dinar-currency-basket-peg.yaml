@@ -1,0 +1,82 @@
+id: kw-dinar-currency-basket-peg
+title: 'Kuwaiti dinar exchange rate regime: pegged since 20 May 2007 to an undisclosed weighted basket of currencies'
+kind: rule
+domain: currency
+region: KW
+status: license-review
+tier: B
+valid_from: '2007-05-20'
+valid_to: null
+tags:
+- gcc
+- currency
+- exchange-rate
+- peg
+- kuwait
+- banking
+use_cases:
+- banking-demo
+- treasury-demo
+- multi-currency-ledger
+- invoicing-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      KWD:
+        anchor: undisclosed weighted basket of currencies of Kuwait's major trade and financial partners
+        regime: basket peg
+        units_per_usd: null
+        since: '2007-05-20'
+        legal_basis: Decree No. 147/2007
+  vectors:
+  - input:
+      key: KWD
+      column: legal_basis
+    expected: Decree No. 147/2007
+    origin: source
+  - input:
+      key: KWD
+      column: regime
+    expected: basket peg
+    origin: source
+  - input:
+      key: KWD
+      column: units_per_usd
+    expected: null
+    origin: source
+evidence:
+- publisher: Central Bank of Kuwait (CBK)
+  title: Overview of the Key Economic, Monetary and Banking Developments, First Issue, November 2022
+  url: https://www.cbk.gov.kw/en/images/key-indicators-q3-2022-159994_v60_tcm10-159994.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 4, Kuwaiti dinar exchange rate
+  value: May 20, 2007
+  unit: text
+  snippet: we note that since May 20, 2007, by virtue of the Decree No. 147/2007, the Kuwaiti dinar (KWD)
+  source_license: unstated
+  content_sha256: 1fa369fa987cbf48306903d0f6d81228d1dc6baebc112c8e2ad25be3a62e49d6
+  role: primary
+- publisher: Central Bank of Kuwait (CBK)
+  title: Overview of the Key Economic, Monetary and Banking Developments, First Issue, November 2022
+  url: https://www.cbk.gov.kw/en/images/key-indicators-q3-2022-159994_v60_tcm10-159994.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 4, Kuwaiti dinar exchange rate
+  value: basket
+  unit: text
+  snippet: peg the KWD to a special weighted basket of currencies of Kuwait’s major trade and
+  source_license: unstated
+  content_sha256: 1fa369fa987cbf48306903d0f6d81228d1dc6baebc112c8e2ad25be3a62e49d6
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 1
+  tolerance: 0
+notes: 'Unlike the other Gulf currencies, the Kuwaiti dinar has no fixed US dollar rate: since 20 May 2007, under
+  Decree No. 147/2007, it has been pegged to an undisclosed weighted basket of the currencies of Kuwait''s major
+  trade and financial partners, as the Central Bank of Kuwait restates in its November 2022 review. A generator
+  converting KWD must use published market rates; the basket weights are not disclosed.'

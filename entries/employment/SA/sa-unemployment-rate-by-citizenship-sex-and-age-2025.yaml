@@ -1,0 +1,162 @@
+id: sa-unemployment-rate-by-citizenship-sex-and-age-2025
+title: 'Saudi Arabia: unemployment rate by citizenship, sex and age group, 2025 (ILOSTAT, labour force survey)'
+kind: rule
+domain: employment
+region: SA
+status: license-review
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- gcc
+- migration
+- nationality
+- unemployment
+- by-citizenship
+- by-sex
+- by-age
+- ilostat
+- labour-force-survey
+use_cases:
+- synthetic-employees
+- payroll-demo
+- hr-analytics
+- workforce-planning
+- credit-risk
+- synthetic-customers
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    indicator: UNE_DEAP_SEX_AGE_CCT_RT_A
+    url: https://rplumber.ilo.org/data/indicator/?id=UNE_DEAP_SEX_AGE_CCT_RT_A&ref_area=SAU&timefrom=2025&timeto=2025&format=.csv
+    year: 2025
+    age_columns:
+      AGE_YTHADULT_YGE15: age_15_plus
+      AGE_YTHADULT_Y15-24: age_15_24
+      AGE_YTHADULT_YGE25: age_25_plus
+      AGE_YTHADULT_Y15-64: age_15_64
+    rows:
+      all:men:
+        age_15_plus: 2.083
+        age_15_24: 9.14
+        age_25_plus: 1.339
+        age_15_64: 2.113
+      all:total:
+        age_15_plus: 3.238
+        age_15_24: 11.278
+        age_25_plus: 2.34
+        age_15_64: 3.284
+      all:women:
+        age_15_plus: 8.57
+        age_15_24: 18.881
+        age_25_plus: 7.113
+        age_15_64: 8.66
+      citizens:men:
+        age_15_plus: 4.736
+        age_15_24: 12.944
+        age_25_plus: 3.358
+        age_15_64: 4.843
+      citizens:total:
+        age_15_plus: 6.953
+        age_15_24: 16.103
+        age_25_plus: 5.424
+        age_15_64: 7.089
+      citizens:women:
+        age_15_plus: 11.042
+        age_15_24: 22
+        age_25_plus: 9.227
+        age_15_64: 11.182
+      foreign_citizens:men:
+        age_15_plus: 1.119
+        age_15_24: 6.584
+        age_25_plus: 0.658
+        age_15_64: 1.131
+      foreign_citizens:total:
+        age_15_plus: 1.342
+        age_15_24: 6.794
+        age_25_plus: 0.877
+        age_15_64: 1.357
+      foreign_citizens:women:
+        age_15_plus: 3.614
+        age_15_24: 8.7
+        age_25_plus: 3.128
+        age_15_64: 3.638
+  vectors:
+  - input:
+      key: citizens:women
+      column: age_15_plus
+    expected: 11.042
+    origin: source
+  - input:
+      key: foreign_citizens:men
+      column: age_15_plus
+    expected: 1.119
+    origin: source
+  - input:
+      key: all:total
+      column: age_15_plus
+    expected: 3.238
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+evidence:
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator UNE_DEAP_SEX_AGE_CCT_RT_A (Unemployment rate by sex, age and citizenship
+    (%)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=UNE_DEAP_SEX_AGE_CCT_RT_A&ref_area=SAU&timefrom=2025&timeto=2025&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=SAU, sex=SEX_T, classif1=AGE_YTHADULT_Y15-24, classif2=CCT_CIT_NONCIT, time=2025, obs_value
+  value: '6.794'
+  unit: percent
+  snippet: SAU","BA:627","UNE_DEAP_SEX_AGE_CCT_RT","SEX_T","AGE_YTHADULT_Y15-24","CCT_CIT_NONCIT","2025",6.794
+  source_license: unstated
+  content_sha256: 4b65cf0b93332c5d48abb6548a4d24830890753df872d7cde26dbb2d9b7b25f5
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator UNE_DEAP_SEX_AGE_CCT_RT_A (Unemployment rate by sex, age and citizenship
+    (%)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=UNE_DEAP_SEX_AGE_CCT_RT_A&ref_area=SAU&timefrom=2025&timeto=2025&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=SAU, sex=SEX_M, classif1=AGE_YTHADULT_YGE15, classif2=CCT_CIT_NONCIT, time=2025, obs_value
+  value: '1.119'
+  unit: percent
+  snippet: SAU","BA:627","UNE_DEAP_SEX_AGE_CCT_RT","SEX_M","AGE_YTHADULT_YGE15","CCT_CIT_NONCIT","2025",1.119
+  source_license: unstated
+  content_sha256: 4b65cf0b93332c5d48abb6548a4d24830890753df872d7cde26dbb2d9b7b25f5
+  role: primary
+- publisher: International Labour Organization (ILOSTAT)
+  title: ILOSTAT data API (rplumber), indicator UNE_DEAP_SEX_AGE_CCT_RT_A (Unemployment rate by sex, age and citizenship
+    (%)), CSV
+  url: https://rplumber.ilo.org/data/indicator/?id=UNE_DEAP_SEX_AGE_CCT_RT_A&ref_area=SAU&timefrom=2025&timeto=2025&format=.csv
+  accessed_at: '2026-11-09'
+  locator: ref_area=SAU, sex=SEX_F, classif1=AGE_YTHADULT_YGE15, classif2=CCT_CIT_CITIZEN, time=2025, obs_value
+  value: '11.042'
+  unit: percent
+  snippet: SAU","BA:627","UNE_DEAP_SEX_AGE_CCT_RT","SEX_F","AGE_YTHADULT_YGE15","CCT_CIT_CITIZEN","2025",11.042
+  source_license: unstated
+  content_sha256: 4b65cf0b93332c5d48abb6548a4d24830890753df872d7cde26dbb2d9b7b25f5
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 9
+  tolerance: 0
+- statistic: value[citizens:women,age_15_plus]
+  expected: 11.042
+  tolerance: 1.0e-09
+- statistic: value[foreign_citizens:total,age_15_24]
+  expected: 6.794
+  tolerance: 1.0e-09
+- statistic: max[age_15_plus]
+  expected: 11.042
+  tolerance: 1.0e-09
+notes: Unemployment rate (percent of the labour force) in Saudi Arabia in 2025 for citizens, foreign citizens and
+  all persons, by sex, for ages 15+, 15-24, 25+ and 15-64, from ILOSTAT indicator UNE_DEAP_SEX_AGE_CCT_RT (labour
+  force survey). The query is closed to that one year. Rows are keyed '<citizenship>:<sex>' with citizenship all,
+  citizens or foreign_citizens and sex total, men or women. The ILOSTAT terms-of-use page could not be fetched byte-stably
+  in this session, so the licence is recorded as unstated and the entry stays at license-review until a reviewer
+  confirms the terms that apply to ILOSTAT data.

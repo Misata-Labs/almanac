@@ -1,0 +1,177 @@
+id: om-income-tax-rates
+title: 'Oman income tax rates: 15% corporate, 3% small enterprise, 10% withholding on non-residents, 55% petroleum'
+kind: rule
+domain: tax
+region: OM
+status: license-review
+tier: B
+valid_from: '2024-12-16'
+valid_to: null
+tags:
+- gcc
+- tax
+- corporate-tax
+- withholding-tax
+- oman
+use_cases:
+- tax-demo
+- invoicing-demo
+- invoicing
+- tax-filing-demo
+- financial-reporting
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    unit: percent
+    rows:
+      standard:
+        rate_percent: 15
+        base: taxable income of any establishment, Omani company or permanent establishment
+        article: '112'
+      non_resident_withholding:
+        rate_percent: 10
+        base: gross amount of income under Article 52
+        article: '113'
+      petroleum:
+        rate_percent: 55
+        base: taxable income from the sale of petroleum
+        article: '114'
+      small_enterprise:
+        rate_percent: 3
+        base: taxable income of an enterprise meeting Article 159bis
+        article: 159bis 15
+    small_enterprise_conditions:
+      max_registered_capital_omr: 50000
+      max_gross_income_omr: 100000
+      max_average_employees: 15
+  vectors:
+  - input:
+      key: standard
+      column: rate_percent
+    expected: 15
+    origin: source
+  - input:
+      key: small_enterprise
+      column: rate_percent
+    expected: 3
+    origin: source
+  - input:
+      key: non_resident_withholding
+      column: rate_percent
+    expected: 10
+    origin: source
+  - input:
+      key: petroleum
+      column: rate_percent
+    expected: 55
+    origin: source
+evidence:
+- publisher: Tax Authority, Sultanate of Oman
+  title: Income Tax Law promulgated by Royal Decree 28/2009 as amended by Royal Decree 118/2020, consolidated English
+    text
+  url: https://tms.taxoman.gov.om/portal/documents/20126/1455220/income+tax+law+english.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 67, Article 112
+  value: '%15'
+  unit: text
+  snippet: The tax stipulated in this Part shall be computed by applying the rate of %15 of the taxable income
+  source_license: unstated
+  content_sha256: f7442e8364116a309744a2274b543e910c86b03bcb3e405f17df021f1726c3e0
+  role: primary
+- publisher: Tax Authority, Sultanate of Oman
+  title: Income Tax Law promulgated by Royal Decree 28/2009 as amended by Royal Decree 118/2020, consolidated English
+    text
+  url: https://tms.taxoman.gov.om/portal/documents/20126/1455220/income+tax+law+english.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 67, Article 113
+  value: '%10'
+  unit: text
+  snippet: The tax rate referred to in Article 52 of this Law shall be %10 of the gross amount.
+  source_license: unstated
+  content_sha256: f7442e8364116a309744a2274b543e910c86b03bcb3e405f17df021f1726c3e0
+  role: primary
+- publisher: Tax Authority, Sultanate of Oman
+  title: Income Tax Law promulgated by Royal Decree 28/2009 as amended by Royal Decree 118/2020, consolidated English
+    text
+  url: https://tms.taxoman.gov.om/portal/documents/20126/1455220/income+tax+law+english.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 67, Article 114
+  value: '%55'
+  unit: text
+  snippet: The tax rate for taxpayers engaged in petroleum exploration shall be %55
+  source_license: unstated
+  content_sha256: f7442e8364116a309744a2274b543e910c86b03bcb3e405f17df021f1726c3e0
+  role: primary
+- publisher: Tax Authority, Sultanate of Oman
+  title: Income Tax Law promulgated by Royal Decree 28/2009 as amended by Royal Decree 118/2020, consolidated English
+    text
+  url: https://tms.taxoman.gov.om/portal/documents/20126/1455220/income+tax+law+english.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 92, Article 159bis 15
+  value: '%3'
+  unit: text
+  snippet: The tax stipulated in this chapter shall be calculated by applying a %3 rate on the enterprise’s taxable
+    income
+  source_license: unstated
+  content_sha256: f7442e8364116a309744a2274b543e910c86b03bcb3e405f17df021f1726c3e0
+  role: primary
+- publisher: Tax Authority, Sultanate of Oman
+  title: Income Tax Law promulgated by Royal Decree 28/2009 as amended by Royal Decree 118/2020, consolidated English
+    text
+  url: https://tms.taxoman.gov.om/portal/documents/20126/1455220/income+tax+law+english.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 87, Article 159bis
+  value: (50,000)
+  unit: text
+  snippet: shall not exceed (50,000) fifty thousand Omani Rials;
+  source_license: unstated
+  content_sha256: f7442e8364116a309744a2274b543e910c86b03bcb3e405f17df021f1726c3e0
+  role: primary
+- publisher: Tax Authority, Sultanate of Oman
+  title: Income Tax Law promulgated by Royal Decree 28/2009 as amended by Royal Decree 118/2020, consolidated English
+    text
+  url: https://tms.taxoman.gov.om/portal/documents/20126/1455220/income+tax+law+english.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 87, Article 159bis
+  value: (100,000)
+  unit: text
+  snippet: The gross income realized at the end of the tax year shall not exceed (100,000) one hundred thousand
+    Omani Rials;
+  source_license: unstated
+  content_sha256: f7442e8364116a309744a2274b543e910c86b03bcb3e405f17df021f1726c3e0
+  role: primary
+- publisher: Tax Authority, Sultanate of Oman
+  title: Income Tax Law promulgated by Royal Decree 28/2009 as amended by Royal Decree 118/2020, consolidated English
+    text
+  url: https://tms.taxoman.gov.om/portal/documents/20126/1455220/income+tax+law+english.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 87, Article 159bis
+  value: (15) employees
+  unit: text
+  snippet: The average number of employees during the tax year shall not exceed (15) employees;
+  source_license: unstated
+  content_sha256: f7442e8364116a309744a2274b543e910c86b03bcb3e405f17df021f1726c3e0
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2024-12-16'
+  method: derived
+  rationale: Creation date of the Tax Authority's consolidated PDF; the rates applied earlier from amendments the
+    fetched text does not date.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: max[rate_percent]
+  expected: 55
+  tolerance: 0
+notes: 'Income tax rates in Oman from the Tax Authority''s consolidated English text of the Income Tax Law (Royal
+  Decree 28/2009 as amended by Royal Decree 118/2020): 15% of the taxable income of establishments, Omani companies
+  and permanent establishments (Article 112); 10% of the gross amount withheld on the non-resident income listed
+  in Article 52 (Article 113); 55% on petroleum income (Article 114); and 3% for small enterprises with registered
+  capital up to OMR 50,000, gross income up to OMR 100,000 and at most 15 employees on average, excluding owner-managed
+  enterprises and those employing at least two Omanis (Article 159bis). The English text is a draft translation
+  for guidance; the Arabic text prevails.'

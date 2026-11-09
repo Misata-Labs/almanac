@@ -1,0 +1,251 @@
+id: sa-population-projections-2025-2050
+title: 'Saudi Arabia: total, male and female population, annual 2025 to 2050 (World Bank population projections)'
+kind: rule
+domain: demographics
+region: SA
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2050-12-31'
+tags:
+- gcc
+- population
+- projections
+- by-sex
+- world-bank
+use_cases:
+- synthetic-customers
+- synthetic-employees
+- person-generation
+- kyc-onboarding
+- customer-segmentation
+- market-sizing
+- demand-forecasting
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    source: World Bank API source 40
+    indicators:
+      total: SP.POP.TOTL
+      male: SP.POP.TOTL.MA.IN
+      female: SP.POP.TOTL.FE.IN
+    url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+    rows:
+      '2025':
+        total: 36973555
+        male: 22341396
+        female: 14632159
+      '2026':
+        total: 37595308
+        male: 22675635
+        female: 14919673
+      '2027':
+        total: 38213380
+        male: 23006193
+        female: 15207187
+      '2028':
+        total: 38816988
+        male: 23326291
+        female: 15490697
+      '2029':
+        total: 39395768
+        male: 23628055
+        female: 15767713
+      '2030':
+        total: 39931768
+        male: 23898509
+        female: 16033259
+      '2031':
+        total: 40468400
+        male: 24165870
+        female: 16302530
+      '2032':
+        total: 41004748
+        male: 24433300
+        female: 16571448
+      '2033':
+        total: 41541736
+        male: 24701349
+        female: 16840387
+      '2034':
+        total: 42079308
+        male: 24969956
+        female: 17109352
+      '2035':
+        total: 42617228
+        male: 25238953
+        female: 17378275
+      '2036':
+        total: 43154620
+        male: 25507888
+        female: 17646732
+      '2037':
+        total: 43690736
+        male: 25776393
+        female: 17914343
+      '2038':
+        total: 44226036
+        male: 26044752
+        female: 18181284
+      '2039':
+        total: 44759432
+        male: 26312344
+        female: 18447088
+      '2040':
+        total: 45292056
+        male: 26579823
+        female: 18712233
+      '2041':
+        total: 45823092
+        male: 26846752
+        female: 18976340
+      '2042':
+        total: 46352620
+        male: 27113213
+        female: 19239407
+      '2043':
+        total: 46880744
+        male: 27379240
+        female: 19501504
+      '2044':
+        total: 47408096
+        male: 27645197
+        female: 19762899
+      '2045':
+        total: 47933708
+        male: 27910495
+        female: 20023213
+      '2046':
+        total: 48456988
+        male: 28174802
+        female: 20282186
+      '2047':
+        total: 48978064
+        male: 28438225
+        female: 20539839
+      '2048':
+        total: 49497596
+        male: 28701130
+        female: 20796466
+      '2049':
+        total: 50014304
+        male: 28962713
+        female: 21051591
+      '2050':
+        total: 50528540
+        male: 29223206
+        female: 21305334
+  vectors:
+  - input:
+      key: '2025'
+      column: total
+    expected: 36973555
+    origin: source
+  - input:
+      key: '2050'
+      column: total
+    expected: 50528540
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+  - input:
+      key: '2050'
+      column: male
+    expected: 29223206
+    origin: source
+evidence:
+- publisher: World Bank
+  title: World Bank API, population total, male and female, source 40 (Population estimates and projections), 2025-2050,
+    GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.TOTL, countryiso3code=SAU, date=2025].value'
+  value: 36973555
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.TOTL","value":"Population, total"},"country":{"id":"SA","value":"Saudi Arabia"},"countryiso3code":"SAU","date":"2025","value":36973555'
+  source_license: CC-BY-4.0
+  content_sha256: 37419b5280e13ec88d321f57e1158341a62cef2c4b0d405b73267f5a773dd0b9
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population total, male and female, source 40 (Population estimates and projections), 2025-2050,
+    GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.TOTL, countryiso3code=SAU, date=2050].value'
+  value: 50528540
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.TOTL","value":"Population, total"},"country":{"id":"SA","value":"Saudi Arabia"},"countryiso3code":"SAU","date":"2050","value":50528540'
+  source_license: CC-BY-4.0
+  content_sha256: 37419b5280e13ec88d321f57e1158341a62cef2c4b0d405b73267f5a773dd0b9
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population total, male and female, source 40 (Population estimates and projections), 2025-2050,
+    GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.TOTL.MA.IN, countryiso3code=SAU, date=2050].value'
+  value: 29223206
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.TOTL.MA.IN","value":"Population, male"},"country":{"id":"SA","value":"Saudi
+    Arabia"},"countryiso3code":"SAU","date":"2050","value":29223206'
+  source_license: CC-BY-4.0
+  content_sha256: 37419b5280e13ec88d321f57e1158341a62cef2c4b0d405b73267f5a773dd0b9
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population total, male and female, source 40 (Population estimates and projections), 2025-2050,
+    GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.TOTL.FE.IN, countryiso3code=SAU, date=2050].value'
+  value: 21305334
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.TOTL.FE.IN","value":"Population, female"},"country":{"id":"SA","value":"Saudi
+    Arabia"},"countryiso3code":"SAU","date":"2050","value":21305334'
+  source_license: CC-BY-4.0
+  content_sha256: 37419b5280e13ec88d321f57e1158341a62cef2c4b0d405b73267f5a773dd0b9
+  role: primary
+- publisher: World Bank
+  title: World Bank indicator metadata, SP.POP.TOTL.MA.IN
+  url: https://api.worldbank.org/v2/indicator/SP.POP.TOTL.MA.IN?format=json
+  accessed_at: '2026-11-09'
+  locator: sourceOrganization
+  value: 'World Population Prospects, United Nations (UN), publisher: UN Population Division'
+  unit: text
+  snippet: 'World Population Prospects, United Nations (UN), publisher: UN Population Division'
+  source_license: CC-BY-4.0
+  content_sha256: 098d59c9dd3c2292aa4fad3cdc08131a3b07be265d9f42dd2b8af8812a50be34
+  role: supporting
+- publisher: World Bank
+  title: World Bank Data Catalog public licenses
+  url: https://datacatalog.worldbank.org/public-licenses
+  accessed_at: '2026-11-09'
+  locator: Data Access And Licensing
+  value: Creative Commons Attribution 4.0 International license
+  unit: text
+  snippet: The World Bank Group makes data publicly available according to open data standards
+  source_license: CC-BY-4.0
+  content_sha256: c7c9b31441ea4a1fa27990f4b11f385587469c5c2bda4ec4fc7a6561db6d2422
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 26
+  tolerance: 0
+- statistic: value[2025,total]
+  expected: 36973555
+  tolerance: 0
+- statistic: value[2050,female]
+  expected: 21305334
+  tolerance: 0
+- statistic: max[total]
+  expected: 50528540
+  tolerance: 0
+notes: 'Total, male and female mid-year population of Saudi Arabia for every year from 2025 to 2050, from the World
+  Bank Population estimates and projections database (API source 40: SP.POP.TOTL, SP.POP.TOTL.MA.IN, SP.POP.TOTL.FE.IN),
+  which builds on the UN World Population Prospects. Years after the latest estimate are projections, not observations,
+  so the table is a reference keyed by year (valid_to is the end of the projection horizon) rather than an observed
+  series. Data last updated 2026-07-01. The World Bank licenses its data under CC BY 4.0.'

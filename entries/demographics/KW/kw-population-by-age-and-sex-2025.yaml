@@ -1,0 +1,194 @@
+id: kw-population-by-age-and-sex-2025
+title: 'Kuwait: population by five-year age group, given sex, 2025 (World Bank, based on UN World Population Prospects)'
+kind: conditional
+domain: demographics
+region: KW
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- gcc
+- population
+- age-pyramid
+- by-age
+- by-sex
+- world-bank
+use_cases:
+- synthetic-customers
+- synthetic-employees
+- person-generation
+- kyc-onboarding
+- customer-segmentation
+- insurance
+- pensions
+spec:
+  variable: age_group
+  unit: ratio
+  given: sex
+  distributions:
+    male:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.044578
+          5-9: 0.051084
+          10-14: 0.054662
+          15-19: 0.047893
+          20-24: 0.044947
+          25-29: 0.091529
+          30-34: 0.11527
+          35-39: 0.133756
+          40-44: 0.131678
+          45-49: 0.101077
+          50-54: 0.075372
+          55-59: 0.05161
+          60-64: 0.028877
+          65-69: 0.014676
+          70-74: 0.007171
+          75-79: 0.003358
+          80+: 0.002463
+        counts:
+          0-4: 132461
+          5-9: 151793
+          10-14: 162424
+          15-19: 142311
+          20-24: 133556
+          25-29: 271972
+          30-34: 342516
+          35-39: 397447
+          40-44: 391271
+          45-49: 300342
+          50-54: 223963
+          55-59: 153356
+          60-64: 85807
+          65-69: 43609
+          70-74: 21308
+          75-79: 9977
+          80+: 7318
+        year: 2025
+    female:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.0677
+          5-9: 0.077391
+          10-14: 0.080778
+          15-19: 0.071795
+          20-24: 0.061111
+          25-29: 0.076186
+          30-34: 0.09386
+          35-39: 0.111725
+          40-44: 0.105123
+          45-49: 0.083639
+          50-54: 0.062982
+          55-59: 0.042565
+          60-64: 0.026993
+          65-69: 0.016723
+          70-74: 0.010239
+          75-79: 0.006126
+          80+: 0.005064
+        counts:
+          0-4: 128214
+          5-9: 146568
+          10-14: 152983
+          15-19: 135970
+          20-24: 115735
+          25-29: 144286
+          30-34: 177758
+          35-39: 211592
+          40-44: 199089
+          45-49: 158400
+          50-54: 119280
+          55-59: 80612
+          60-64: 51122
+          65-69: 31672
+          70-74: 19391
+          75-79: 11602
+          80+: 9590
+        year: 2025
+evidence:
+- publisher: World Bank
+  title: World Bank API, population by five-year age group and sex (SP.POP.<age>.MA/FE), source 40, 2025, GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.0004.MA;SP.POP.0509.MA;SP.POP.1014.MA;SP.POP.1519.MA;SP.POP.2024.MA;SP.POP.2529.MA;SP.POP.3034.MA;SP.POP.3539.MA;SP.POP.4044.MA;SP.POP.4549.MA;SP.POP.5054.MA;SP.POP.5559.MA;SP.POP.6064.MA;SP.POP.6569.MA;SP.POP.7074.MA;SP.POP.7579.MA;SP.POP.80UP.MA;SP.POP.0004.FE;SP.POP.0509.FE;SP.POP.1014.FE;SP.POP.1519.FE;SP.POP.2024.FE;SP.POP.2529.FE;SP.POP.3034.FE;SP.POP.3539.FE;SP.POP.4044.FE;SP.POP.4549.FE;SP.POP.5054.FE;SP.POP.5559.FE;SP.POP.6064.FE;SP.POP.6569.FE;SP.POP.7074.FE;SP.POP.7579.FE;SP.POP.80UP.FE?date=2025&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.3539.MA, countryiso3code=KWT, date=2025].value'
+  value: 397447
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.3539.MA","value":"Population ages 35-39, male"},"country":{"id":"KW","value":"Kuwait"},"countryiso3code":"KWT","date":"2025","value":397447'
+  source_license: CC-BY-4.0
+  content_sha256: 2372c5bd994cbc824eb63162afa19fa53410f5193d43a0ff862501493fc2262c
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population by five-year age group and sex (SP.POP.<age>.MA/FE), source 40, 2025, GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.0004.MA;SP.POP.0509.MA;SP.POP.1014.MA;SP.POP.1519.MA;SP.POP.2024.MA;SP.POP.2529.MA;SP.POP.3034.MA;SP.POP.3539.MA;SP.POP.4044.MA;SP.POP.4549.MA;SP.POP.5054.MA;SP.POP.5559.MA;SP.POP.6064.MA;SP.POP.6569.MA;SP.POP.7074.MA;SP.POP.7579.MA;SP.POP.80UP.MA;SP.POP.0004.FE;SP.POP.0509.FE;SP.POP.1014.FE;SP.POP.1519.FE;SP.POP.2024.FE;SP.POP.2529.FE;SP.POP.3034.FE;SP.POP.3539.FE;SP.POP.4044.FE;SP.POP.4549.FE;SP.POP.5054.FE;SP.POP.5559.FE;SP.POP.6064.FE;SP.POP.6569.FE;SP.POP.7074.FE;SP.POP.7579.FE;SP.POP.80UP.FE?date=2025&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.3539.FE, countryiso3code=KWT, date=2025].value'
+  value: 211592
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.3539.FE","value":"Population ages 35-39, female"},"country":{"id":"KW","value":"Kuwait"},"countryiso3code":"KWT","date":"2025","value":211592'
+  source_license: CC-BY-4.0
+  content_sha256: 2372c5bd994cbc824eb63162afa19fa53410f5193d43a0ff862501493fc2262c
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population by five-year age group and sex (SP.POP.<age>.MA/FE), source 40, 2025, GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.0004.MA;SP.POP.0509.MA;SP.POP.1014.MA;SP.POP.1519.MA;SP.POP.2024.MA;SP.POP.2529.MA;SP.POP.3034.MA;SP.POP.3539.MA;SP.POP.4044.MA;SP.POP.4549.MA;SP.POP.5054.MA;SP.POP.5559.MA;SP.POP.6064.MA;SP.POP.6569.MA;SP.POP.7074.MA;SP.POP.7579.MA;SP.POP.80UP.MA;SP.POP.0004.FE;SP.POP.0509.FE;SP.POP.1014.FE;SP.POP.1519.FE;SP.POP.2024.FE;SP.POP.2529.FE;SP.POP.3034.FE;SP.POP.3539.FE;SP.POP.4044.FE;SP.POP.4549.FE;SP.POP.5054.FE;SP.POP.5559.FE;SP.POP.6064.FE;SP.POP.6569.FE;SP.POP.7074.FE;SP.POP.7579.FE;SP.POP.80UP.FE?date=2025&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.0004.FE, countryiso3code=KWT, date=2025].value'
+  value: 128214
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.0004.FE","value":"Population ages 00-04, female"},"country":{"id":"KW","value":"Kuwait"},"countryiso3code":"KWT","date":"2025","value":128214'
+  source_license: CC-BY-4.0
+  content_sha256: 2372c5bd994cbc824eb63162afa19fa53410f5193d43a0ff862501493fc2262c
+  role: primary
+- publisher: World Bank
+  title: World Bank indicator metadata, SP.POP.0004.MA
+  url: https://api.worldbank.org/v2/indicator/SP.POP.0004.MA?format=json
+  accessed_at: '2026-11-09'
+  locator: sourceOrganization
+  value: age\/sex distributions of the United Nations Population Division's World Population Prospects
+  unit: text
+  snippet: age\/sex distributions of the United Nations Population Division's World Population Prospects
+  source_license: CC-BY-4.0
+  content_sha256: 1fc6d579f8adaa2e711a0fd9af03801316b0c1894773cf2a123dd930d1d53047
+  role: supporting
+- publisher: World Bank
+  title: World Bank Data Catalog public licenses
+  url: https://datacatalog.worldbank.org/public-licenses
+  accessed_at: '2026-11-09'
+  locator: Data Access And Licensing
+  value: Creative Commons Attribution 4.0 International license
+  unit: text
+  snippet: The World Bank Group makes data publicly available according to open data standards
+  source_license: CC-BY-4.0
+  content_sha256: c7c9b31441ea4a1fa27990f4b11f385587469c5c2bda4ec4fc7a6561db6d2422
+  role: supporting
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / total
+  method: derived
+  rationale: Persons in each five-year age group divided by the sum of the seventeen groups (0-4 to 80+) for that
+    sex.
+tests:
+- statistic: share[male,35-39]
+  expected: 0.133756
+  tolerance: 0.005
+- statistic: share[female,35-39]
+  expected: 0.111725
+  tolerance: 0.005
+- statistic: share[female,0-4]
+  expected: 0.0677
+  tolerance: 0.005
+- statistic: sum_of_shares[male]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[female]
+  expected: 1
+  tolerance: 0.0001
+notes: Mid-year 2025 population of Kuwait in seventeen five-year age groups (0-4 to 80+) for males and females,
+  from the World Bank Population estimates and projections database (API source 40, indicators SP.POP.0004.MA to
+  SP.POP.80UP.FE). The World Bank derives these from its total population and the age and sex distributions of the
+  UN World Population Prospects. Counts ride beside the shares, so a generator can reproduce both the shape of each
+  pyramid and the ratio of men to women at each age, which migrant labour skews in the GCC. Data last updated 2026-07-01.
+  The World Bank licenses its data under CC BY 4.0.

@@ -1,0 +1,236 @@
+id: bh-migrant-stock-by-age-and-sex-2020
+title: 'Bahrain: international migrant stock by five-year age group, given sex, mid-2020 (UN DESA)'
+kind: conditional
+domain: demographics
+region: BH
+status: license-review
+tier: A
+observed_period:
+  start: '2020-07-01'
+  end: '2020-07-01'
+tags:
+- gcc
+- migration
+- nationality
+- international-migrant-stock
+- by-age
+- by-sex
+- un-desa
+- population
+use_cases:
+- synthetic-customers
+- synthetic-employees
+- person-generation
+- kyc-onboarding
+- customer-segmentation
+- hr-analytics
+spec:
+  variable: age_group
+  unit: ratio
+  given: sex
+  distributions:
+    total:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.044712
+          5-9: 0.011124
+          10-14: 0.003154
+          15-19: 0.00763
+          20-24: 0.023088
+          25-29: 0.109185
+          30-34: 0.250808
+          35-39: 0.198358
+          40-44: 0.119661
+          45-49: 0.090933
+          50-54: 0.061972
+          55-59: 0.041549
+          60-64: 0.024729
+          65-69: 0.009497
+          70-74: 0.002728
+          75+: 0.000871
+        counts:
+          0-4: 41855
+          5-9: 10413
+          10-14: 2952
+          15-19: 7142
+          20-24: 21613
+          25-29: 102207
+          30-34: 234780
+          35-39: 185682
+          40-44: 112014
+          45-49: 85122
+          50-54: 58012
+          55-59: 38894
+          60-64: 23149
+          65-69: 8890
+          70-74: 2554
+          75+: 815
+        total_migrants: 936094
+        year: 2020
+    male:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.030779
+          5-9: 0.007796
+          10-14: 0.002227
+          15-19: 0.005416
+          20-24: 0.020749
+          25-29: 0.112588
+          30-34: 0.254626
+          35-39: 0.203139
+          40-44: 0.122972
+          45-49: 0.092522
+          50-54: 0.066541
+          55-59: 0.044738
+          60-64: 0.024813
+          65-69: 0.008468
+          70-74: 0.002031
+          75+: 0.000595
+        counts:
+          0-4: 21368
+          5-9: 5412
+          10-14: 1546
+          15-19: 3760
+          20-24: 14405
+          25-29: 78163
+          30-34: 176771
+          35-39: 141027
+          40-44: 85372
+          45-49: 64232
+          50-54: 46195
+          55-59: 31059
+          60-64: 17226
+          65-69: 5879
+          70-74: 1410
+          75+: 413
+        total_migrants: 694238
+        year: 2020
+    female:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.084707
+          5-9: 0.020678
+          10-14: 0.005813
+          15-19: 0.013984
+          20-24: 0.029803
+          25-29: 0.099415
+          30-34: 0.239849
+          35-39: 0.184635
+          40-44: 0.110156
+          45-49: 0.086374
+          50-54: 0.04886
+          55-59: 0.032395
+          60-64: 0.02449
+          65-69: 0.01245
+          70-74: 0.00473
+          75+: 0.001662
+        counts:
+          0-4: 20487
+          5-9: 5001
+          10-14: 1406
+          15-19: 3382
+          20-24: 7208
+          25-29: 24044
+          30-34: 58009
+          35-39: 44655
+          40-44: 26642
+          45-49: 20890
+          50-54: 11817
+          55-59: 7835
+          60-64: 5923
+          65-69: 3011
+          70-74: 1144
+          75+: 402
+        total_migrants: 241856
+        year: 2020
+evidence:
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!AD900 (Bahrain, 2020, males aged 30-34)
+  value: 176771
+  unit: count
+  snippet: <c r="AD900" s="35"><v>176771</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!AU900 (Bahrain, 2020, females aged 30-34)
+  value: 58009
+  unit: count
+  snippet: <c r="AU900" s="35"><v>58009</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!W900 (Bahrain, 2020, both sexes, total)
+  value: 936094
+  unit: count
+  snippet: <c r="W900" s="35"><v>936094</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table of contents, copyright line
+  value: CC BY 3.0 IGO
+  unit: text
+  snippet: made available under a Creative Commons license CC BY 3.0 IGO
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: supporting
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: UN Population Division data portal API, list of locations (M49 code, name, ISO codes)
+  url: https://population.un.org/dataportalapi/api/v1/locations?pageSize=500&pageNumber=1
+  accessed_at: '2026-11-09'
+  locator: data[iso3=BHR].id
+  value: 48
+  unit: integer
+  snippet: '{"id":48,"name":"Bahrain","iso3":"BHR"'
+  source_license: unstated
+  content_sha256: 5f1cefa51ad84b20b3d2d061f4e5edf3a5ba7979a8bfca003fd75e5178f2ab56
+  role: supporting
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / total
+  method: derived
+  rationale: Migrants in each five-year age group (0-4 to 75+) divided by the sum over the groups for that sex;
+    the published total is kept beside the counts and differs from the sum only by rounding.
+tests:
+- statistic: share[total,30-34]
+  expected: 0.250808
+  tolerance: 0.005
+- statistic: share[male,30-34]
+  expected: 0.254626
+  tolerance: 0.005
+- statistic: share[female,30-34]
+  expected: 0.239849
+  tolerance: 0.005
+- statistic: sum_of_shares[total]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[male]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[female]
+  expected: 1
+  tolerance: 0.0001
+notes: Age distribution of the international migrants living in Bahrain at 1 July 2020, for both sexes ('total'),
+  males and females, in sixteen five-year groups from 0-4 to 75+, from UN DESA International Migrant Stock 2020
+  (age, sex and destination workbook, Table 1). The 2024 revision's downloads carry no age breakdown, so 2020 is
+  the latest age structure for migrants. Combined with the 2024 migrant share and the population pyramid it lets
+  a generator give foreign residents their own age profile. The workbook states that it is made available under
+  CC BY 3.0 IGO. That licence permits reuse with attribution but is not on the verifier's permissive list, so the
+  entry stays at license-review until a reviewer accepts it.

@@ -1,0 +1,150 @@
+id: kw-iban-format
+title: 'Kuwait IBAN format: 30 characters, KW, check digits, four-letter bank code and 22-character account number
+  (CBK)'
+kind: rule
+domain: payments
+region: KW
+status: license-review
+tier: B
+valid_from: '2011-01-01'
+valid_to: null
+tags:
+- gcc
+- banking
+- payments
+- iban
+- check-digit
+- kuwait
+use_cases:
+- banking-demo
+- payments-demo
+- kyc-onboarding
+- data-quality-validation
+spec:
+  implementation: almanac.rules.iban
+  parameters:
+    modulus: 97
+    complement_base: 98
+    valid_remainder: 1
+    letter_values:
+      A: 10
+      B: 11
+      C: 12
+      D: 13
+      E: 14
+      F: 15
+      G: 16
+      H: 17
+      I: 18
+      J: 19
+      K: 20
+      L: 21
+      M: 22
+      N: 23
+      O: 24
+      P: 25
+      Q: 26
+      R: 27
+      S: 28
+      T: 29
+      U: 30
+      V: 31
+      W: 32
+      X: 33
+      Y: 34
+      Z: 35
+    lengths:
+      KW: 30
+    structure:
+      country_code: KW
+      check_digits: 2
+      bank_code: four letters
+      account_number: 22 alphanumeric characters, left-padded with zeros
+  vectors:
+  - input: KW81CBKU0000000000001234560101
+    expected: true
+    origin: source
+    note: electronic format example
+  - input: KW81 CBKU 0000 0000 0000 1234 5601 01
+    expected: true
+    origin: source
+    note: print format example
+  - input:
+      country: KW
+      bban: CBKU0000000000001234560101
+    expected: '81'
+    origin: source
+    note: check digits of the example
+  - input: KW81CBKU000000000000123456010
+    expected: false
+    origin: derived
+    note: 29 characters
+evidence:
+- publisher: Central Bank of Kuwait (CBK)
+  title: Information about IBAN Implementation in Kuwait, version 1.1
+  url: https://www.cbk.gov.kw/en/images/iban-9721_v60_tcm10-9721.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 5, section 2, IBAN Structure in Kuwait
+  value: 30 digits
+  unit: text
+  snippet: 'The IBAN for Kuwait consists of 30 digits (letters and numbers) divided as follows:'
+  source_license: unstated
+  content_sha256: ef08414e12da985ac02088f4de3c65dc6242418be6c8997ab839fde0bfa1d0bf
+  role: primary
+- publisher: Central Bank of Kuwait (CBK)
+  title: Information about IBAN Implementation in Kuwait, version 1.1
+  url: https://www.cbk.gov.kw/en/images/iban-9721_v60_tcm10-9721.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 6, section 2, IBAN Electronic format
+  value: KW81CBKU0000000000001234560101
+  unit: text
+  snippet: KW81CBKU0000000000001234560101
+  source_license: unstated
+  content_sha256: ef08414e12da985ac02088f4de3c65dc6242418be6c8997ab839fde0bfa1d0bf
+  role: primary
+- publisher: Central Bank of Kuwait (CBK)
+  title: Information about IBAN Implementation in Kuwait, version 1.1
+  url: https://www.cbk.gov.kw/en/images/iban-9721_v60_tcm10-9721.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 6, section 2, IBAN Print format
+  value: KW81 CBKU 0000 0000 0000 1234 5601 01
+  unit: text
+  snippet: KW81 CBKU 0000 0000 0000 1234 5601 01
+  source_license: unstated
+  content_sha256: ef08414e12da985ac02088f4de3c65dc6242418be6c8997ab839fde0bfa1d0bf
+  role: primary
+- publisher: Central Bank of Kuwait (CBK)
+  title: Information about IBAN Implementation in Kuwait, version 1.1
+  url: https://www.cbk.gov.kw/en/images/iban-9721_v60_tcm10-9721.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 5, section 2, IBAN Structure in Kuwait
+  value: 1/1/2011
+  unit: text
+  snippet: register the IBAN format for Kuwait effective from 1/1/2011.
+  source_license: unstated
+  content_sha256: ef08414e12da985ac02088f4de3c65dc6242418be6c8997ab839fde0bfa1d0bf
+  role: primary
+- publisher: Central Bank of Kuwait (CBK)
+  title: Information about IBAN Implementation in Kuwait, version 1.1
+  url: https://www.cbk.gov.kw/en/images/iban-9721_v60_tcm10-9721.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 5, section 2, IBAN Structure in Kuwait
+  value: MOD97-
+  unit: text
+  snippet: ISO/IEC 7064 (MOD97-
+  source_license: unstated
+  content_sha256: ef08414e12da985ac02088f4de3c65dc6242418be6c8997ab839fde0bfa1d0bf
+  role: primary
+assumed:
+- parameter: letter_values
+  value: A=10 to Z=35
+  method: derived
+  rationale: ISO 13616 conversion table, as printed in the Central Bank of Bahrain's IBAN standard (Table 1).
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+notes: 'Kuwaiti International Bank Account Numbers as the Central Bank of Kuwait specifies them, effective 1 January
+  2011: 30 characters made of the country code KW, two ISO 7064 MOD 97-10 check digits, a four-letter bank code
+  and a 22-character account number formed by left-padding the bank''s existing account number with zeros. The vectors
+  are the CBK''s own example in print and electronic form.'

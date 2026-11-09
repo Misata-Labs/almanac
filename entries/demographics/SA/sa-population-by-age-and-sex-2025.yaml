@@ -1,0 +1,198 @@
+id: sa-population-by-age-and-sex-2025
+title: 'Saudi Arabia: population by five-year age group, given sex, 2025 (World Bank, based on UN World Population
+  Prospects)'
+kind: conditional
+domain: demographics
+region: SA
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- gcc
+- population
+- age-pyramid
+- by-age
+- by-sex
+- world-bank
+use_cases:
+- synthetic-customers
+- synthetic-employees
+- person-generation
+- kyc-onboarding
+- customer-segmentation
+- insurance
+- pensions
+spec:
+  variable: age_group
+  unit: ratio
+  given: sex
+  distributions:
+    male:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.066291
+          5-9: 0.067184
+          10-14: 0.065694
+          15-19: 0.061276
+          20-24: 0.073948
+          25-29: 0.105089
+          30-34: 0.126121
+          35-39: 0.123283
+          40-44: 0.10111
+          45-49: 0.071615
+          50-54: 0.050813
+          55-59: 0.036291
+          60-64: 0.02355
+          65-69: 0.013086
+          70-74: 0.006634
+          75-79: 0.004457
+          80+: 0.00356
+        counts:
+          0-4: 1481026
+          5-9: 1500983
+          10-14: 1467692
+          15-19: 1368986
+          20-24: 1652092
+          25-29: 2347834
+          30-34: 2817727
+          35-39: 2754317
+          40-44: 2258931
+          45-49: 1599974
+          50-54: 1135229
+          55-59: 810784
+          60-64: 526139
+          65-69: 292351
+          70-74: 148203
+          75-79: 99585
+          80+: 79543
+        year: 2025
+    female:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.096953
+          5-9: 0.098936
+          10-14: 0.09688
+          15-19: 0.088114
+          20-24: 0.084229
+          25-29: 0.091866
+          30-34: 0.100058
+          35-39: 0.091201
+          40-44: 0.072876
+          45-49: 0.053616
+          50-54: 0.038617
+          55-59: 0.029747
+          60-64: 0.022017
+          65-69: 0.014503
+          70-74: 0.008577
+          75-79: 0.005933
+          80+: 0.005876
+        counts:
+          0-4: 1418634
+          5-9: 1447653
+          10-14: 1417566
+          15-19: 1289292
+          20-24: 1232454
+          25-29: 1344199
+          30-34: 1464061
+          35-39: 1334462
+          40-44: 1066335
+          45-49: 784518
+          50-54: 565047
+          55-59: 435259
+          60-64: 322161
+          65-69: 212216
+          70-74: 125503
+          75-79: 86818
+          80+: 85981
+        year: 2025
+evidence:
+- publisher: World Bank
+  title: World Bank API, population by five-year age group and sex (SP.POP.<age>.MA/FE), source 40, 2025, GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.0004.MA;SP.POP.0509.MA;SP.POP.1014.MA;SP.POP.1519.MA;SP.POP.2024.MA;SP.POP.2529.MA;SP.POP.3034.MA;SP.POP.3539.MA;SP.POP.4044.MA;SP.POP.4549.MA;SP.POP.5054.MA;SP.POP.5559.MA;SP.POP.6064.MA;SP.POP.6569.MA;SP.POP.7074.MA;SP.POP.7579.MA;SP.POP.80UP.MA;SP.POP.0004.FE;SP.POP.0509.FE;SP.POP.1014.FE;SP.POP.1519.FE;SP.POP.2024.FE;SP.POP.2529.FE;SP.POP.3034.FE;SP.POP.3539.FE;SP.POP.4044.FE;SP.POP.4549.FE;SP.POP.5054.FE;SP.POP.5559.FE;SP.POP.6064.FE;SP.POP.6569.FE;SP.POP.7074.FE;SP.POP.7579.FE;SP.POP.80UP.FE?date=2025&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.3034.MA, countryiso3code=SAU, date=2025].value'
+  value: 2817727
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.3034.MA","value":"Population ages 30-34, male"},"country":{"id":"SA","value":"Saudi
+    Arabia"},"countryiso3code":"SAU","date":"2025","value":2817727'
+  source_license: CC-BY-4.0
+  content_sha256: 2372c5bd994cbc824eb63162afa19fa53410f5193d43a0ff862501493fc2262c
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population by five-year age group and sex (SP.POP.<age>.MA/FE), source 40, 2025, GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.0004.MA;SP.POP.0509.MA;SP.POP.1014.MA;SP.POP.1519.MA;SP.POP.2024.MA;SP.POP.2529.MA;SP.POP.3034.MA;SP.POP.3539.MA;SP.POP.4044.MA;SP.POP.4549.MA;SP.POP.5054.MA;SP.POP.5559.MA;SP.POP.6064.MA;SP.POP.6569.MA;SP.POP.7074.MA;SP.POP.7579.MA;SP.POP.80UP.MA;SP.POP.0004.FE;SP.POP.0509.FE;SP.POP.1014.FE;SP.POP.1519.FE;SP.POP.2024.FE;SP.POP.2529.FE;SP.POP.3034.FE;SP.POP.3539.FE;SP.POP.4044.FE;SP.POP.4549.FE;SP.POP.5054.FE;SP.POP.5559.FE;SP.POP.6064.FE;SP.POP.6569.FE;SP.POP.7074.FE;SP.POP.7579.FE;SP.POP.80UP.FE?date=2025&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.3034.FE, countryiso3code=SAU, date=2025].value'
+  value: 1464061
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.3034.FE","value":"Population ages 30-34, female"},"country":{"id":"SA","value":"Saudi
+    Arabia"},"countryiso3code":"SAU","date":"2025","value":1464061'
+  source_license: CC-BY-4.0
+  content_sha256: 2372c5bd994cbc824eb63162afa19fa53410f5193d43a0ff862501493fc2262c
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population by five-year age group and sex (SP.POP.<age>.MA/FE), source 40, 2025, GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.0004.MA;SP.POP.0509.MA;SP.POP.1014.MA;SP.POP.1519.MA;SP.POP.2024.MA;SP.POP.2529.MA;SP.POP.3034.MA;SP.POP.3539.MA;SP.POP.4044.MA;SP.POP.4549.MA;SP.POP.5054.MA;SP.POP.5559.MA;SP.POP.6064.MA;SP.POP.6569.MA;SP.POP.7074.MA;SP.POP.7579.MA;SP.POP.80UP.MA;SP.POP.0004.FE;SP.POP.0509.FE;SP.POP.1014.FE;SP.POP.1519.FE;SP.POP.2024.FE;SP.POP.2529.FE;SP.POP.3034.FE;SP.POP.3539.FE;SP.POP.4044.FE;SP.POP.4549.FE;SP.POP.5054.FE;SP.POP.5559.FE;SP.POP.6064.FE;SP.POP.6569.FE;SP.POP.7074.FE;SP.POP.7579.FE;SP.POP.80UP.FE?date=2025&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.0004.FE, countryiso3code=SAU, date=2025].value'
+  value: 1418634
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.0004.FE","value":"Population ages 00-04, female"},"country":{"id":"SA","value":"Saudi
+    Arabia"},"countryiso3code":"SAU","date":"2025","value":1418634'
+  source_license: CC-BY-4.0
+  content_sha256: 2372c5bd994cbc824eb63162afa19fa53410f5193d43a0ff862501493fc2262c
+  role: primary
+- publisher: World Bank
+  title: World Bank indicator metadata, SP.POP.0004.MA
+  url: https://api.worldbank.org/v2/indicator/SP.POP.0004.MA?format=json
+  accessed_at: '2026-11-09'
+  locator: sourceOrganization
+  value: age\/sex distributions of the United Nations Population Division's World Population Prospects
+  unit: text
+  snippet: age\/sex distributions of the United Nations Population Division's World Population Prospects
+  source_license: CC-BY-4.0
+  content_sha256: 1fc6d579f8adaa2e711a0fd9af03801316b0c1894773cf2a123dd930d1d53047
+  role: supporting
+- publisher: World Bank
+  title: World Bank Data Catalog public licenses
+  url: https://datacatalog.worldbank.org/public-licenses
+  accessed_at: '2026-11-09'
+  locator: Data Access And Licensing
+  value: Creative Commons Attribution 4.0 International license
+  unit: text
+  snippet: The World Bank Group makes data publicly available according to open data standards
+  source_license: CC-BY-4.0
+  content_sha256: c7c9b31441ea4a1fa27990f4b11f385587469c5c2bda4ec4fc7a6561db6d2422
+  role: supporting
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / total
+  method: derived
+  rationale: Persons in each five-year age group divided by the sum of the seventeen groups (0-4 to 80+) for that
+    sex.
+tests:
+- statistic: share[male,30-34]
+  expected: 0.126121
+  tolerance: 0.005
+- statistic: share[female,30-34]
+  expected: 0.100058
+  tolerance: 0.005
+- statistic: share[female,0-4]
+  expected: 0.096953
+  tolerance: 0.005
+- statistic: sum_of_shares[male]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[female]
+  expected: 1
+  tolerance: 0.0001
+notes: Mid-year 2025 population of Saudi Arabia in seventeen five-year age groups (0-4 to 80+) for males and females,
+  from the World Bank Population estimates and projections database (API source 40, indicators SP.POP.0004.MA to
+  SP.POP.80UP.FE). The World Bank derives these from its total population and the age and sex distributions of the
+  UN World Population Prospects. Counts ride beside the shares, so a generator can reproduce both the shape of each
+  pyramid and the ratio of men to women at each age, which migrant labour skews in the GCC. Data last updated 2026-07-01.
+  The World Bank licenses its data under CC BY 4.0.

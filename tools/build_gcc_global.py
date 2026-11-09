@@ -14,7 +14,9 @@ anywhere else. Every source here is intergovernmental and fetched live:
   citizens by country of citizenship.
 * WHO Global Health Observatory OData API: adult obesity, overweight and diabetes prevalence by sex.
 
-Tables spanning the six GCC states are filed under region SA. Run from the repository root:
+Each GCC state gets its own entries under its ISO 3166-1 region code (SA, AE, QA, KW, BH, OM), with
+ids prefixed by that code; the multi-country source files are shared between them. Run from the
+repository root:
 
     uv run python tools/build_gcc_global.py
 """
@@ -36,7 +38,19 @@ from openpyxl.utils import get_column_letter
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common import write
-from build_labour import ILO, ILO_LICENSE_NOTE, UNSTATED, CsvRow, IloTable, Source, csv_rows, lookup_entry, lookup_vectors, numeric, shares_of
+from build_labour import (
+    ILO,
+    ILO_LICENSE_NOTE,
+    UNSTATED,
+    CsvRow,
+    IloTable,
+    Source,
+    csv_rows,
+    lookup_entry,
+    lookup_vectors,
+    numeric,
+    shares_of,
+)
 
 # ---------------------------------------------------------------- constants
 
@@ -131,6 +145,41 @@ def top_with_remainder(counts: dict[str, float], total: float, limit: int) -> di
     return kept
 
 
+def temporal(entry_id: str, title: str, domain: str, region: str, variable: str, unit: str, frequency: str, columns: list[str], series: list[dict], items: list[dict], assumed: list[dict], tests: list[dict], tags: list[str], use_cases: list[str], notes: str, period: tuple[str, str], status: str) -> dict:
+    return {
+        "id": entry_id,
+        "title": title,
+        "kind": "temporal",
+        "domain": domain,
+        "region": region,
+        "status": status,
+        "tier": "A",
+        "observed_period": {"start": period[0], "end": period[1]},
+        "tags": tags,
+        "use_cases": use_cases,
+        "spec": {"variable": variable, "unit": unit, "frequency": frequency, "columns": columns, "series": series},
+        "evidence": items,
+        "assumed": assumed,
+        "tests": tests,
+        "notes": notes,
+    }
+
+
+@dataclass(frozen=True)
+class Country:
+    """A GCC state with the codes each source keys it by."""
+
+    iso3: str
+    iso2: str
+    name: str
+    m49: int
+
+    @property
+    def prefix(self) -> str:
+        """The entry id prefix and lower-case region code, for example 'ae'."""
+        return self.iso2.lower()
+
+
 @dataclass
 class Locations:
     """M49 numeric codes and ISO 3166 codes from the UN Population Division data portal."""
@@ -150,6 +199,10 @@ class Locations:
 
     def m49(self, iso3: str) -> int:
         return self.by_iso3[iso3]["id"]
+
+    def country(self, iso3: str) -> Country:
+        record = self.by_iso3[iso3]
+        return Country(iso3, record["iso2"], record["name"], record["id"])
 
     def cite(self, iso3: str) -> dict:
         record = self.by_iso3[iso3]
@@ -268,196 +321,200 @@ class OriginTable:
         return self.book.cite(IMS_ORIGIN_TITLE, self.sheet, index, column, f"destination {row[1]}, origin {row[5]}, {sex}, {self.year}", "count")
 
 
-def ims_origin_entry(table: OriginTable) -> dict:
+def ims_origin_entry(table: OriginTable, country: Country) -> dict:
+    iso3 = country.iso3
+    names = table.names(iso3)
     distributions: dict[str, dict] = {}
-    for iso3 in GCC:
-        counts, total = table.counts(iso3, table.both)
+    for sex, column in (("total", table.both), ("male", table.male), ("female", table.female)):
+        counts, total = table.counts(iso3, column)
         kept = top_with_remainder(counts, total, TOP_ORIGINS)
-        names = table.names(iso3)
-        distributions[iso3] = categorical(kept, total_migrants=total, origin_names={k: names[k] for k in kept if k != OTHER}, year=table.year)
-    items = [table.cite(table.world_row(iso3), table.both, "both sexes") for iso3 in GCC]
-    items += [
-        table.cite(table.origin_index("SAU", "IND"), table.both, "both sexes"),
-        table.cite(table.origin_index("ARE", "IND"), table.both, "both sexes"),
-        table.cite(table.origin_index("QAT", "NPL"), table.both, "both sexes"),
-        table.cite(table.origin_index("KWT", "EGY"), table.both, "both sexes"),
+        distributions[sex] = categorical(kept, total_migrants=total, origin_names={k: names[k] for k in kept if k != OTHER}, year=table.year)
+    leaders = {sex: next(k for k in d["parameters"]["shares"] if k != OTHER) for sex, d in distributions.items()}
+    items = [
+        table.cite(table.world_row(iso3), table.both, "both sexes"),
+        table.cite(table.world_row(iso3), table.male, "males"),
+        table.cite(table.world_row(iso3), table.female, "females"),
+        table.cite(table.origin_index(iso3, leaders["total"]), table.both, "both sexes"),
+        table.cite(table.origin_index(iso3, leaders["female"]), table.female, "females"),
         table.book.source.cite(UNDESA, IMS_ORIGIN_TITLE, "Migrant notes, type of data", "C", "text", DATA_TYPE_SNIPPET, CC_BY_IGO, role="supporting"),
         table.book.cite_license(IMS_ORIGIN_TITLE),
-        table.locations.cite("IND"),
+        table.locations.cite(iso3),
     ]
-    picks = [("SAU", "IND"), ("ARE", "IND"), ("QAT", "NPL"), ("KWT", "EGY"), ("BHR", "IND"), ("OMN", "BGD")]
+    data_type = table.row(table.world_row(iso3))[3]
+    listed = len([k for k in distributions["total"]["parameters"]["shares"] if k != OTHER])
     return conditional(
-        "gcc-migrant-stock-by-origin-2024", "International migrant stock by country of origin, given GCC destination, mid-2024: up to 30 largest origins (UN DESA)",
-        "demographics", "SA", "country_of_origin_iso3", "destination_iso3", distributions, items,
+        f"{country.prefix}-migrant-stock-by-country-of-origin-and-sex-{table.year}",
+        f"{country.name}: international migrant stock by country of origin, given sex, mid-{table.year} (UN DESA)",
+        "demographics", country.iso2, "country_of_origin_iso3", "sex", distributions, items,
         [
-            shares_assumption("distributions[*].parameters.shares", "Each origin's 2024 migrant stock (both sexes) divided by the destination's total migrant stock (origin 'World'); the 30 largest origins are kept and the rest of the total, including the workbook's 'Others' row, is pooled as OTHER."),
+            shares_assumption("distributions[*].parameters.shares", "Each origin's 2024 migrant stock for the sex in question divided by the total migrant stock of that sex (origin 'World'); at most the 30 largest listed origins are kept and the rest of the total, including the workbook's 'Others' row, is pooled as OTHER."),
             {"parameter": "categories", "value": "ISO 3166-1 alpha-3", "method": "derived", "rationale": "The workbook identifies origins by M49 code; codes are mapped to ISO alpha-3 with the UN Population Division location list. A code without an ISO mapping would be kept as M49-<code>."},
         ],
-        share_tests(distributions, picks),
-        GCC_TAGS + ["international-migrant-stock", "country-of-origin", "un-desa", "population"], PEOPLE_USE_CASES + ["remittance-demo", "banking-demo"],
-        "Share of each GCC state's international migrants by country of origin at 1 July 2024, from UN DESA International Migrant Stock 2024 "
-        "(destination and origin workbook, Table 1). For all six states the type of data is C (Saudi Arabia: C R): the estimates are derived from "
-        "data on foreign citizens, so 'origin' is effectively the country of citizenship and the distribution can drive nationality for synthetic "
-        "residents. Each destination keeps its 30 largest listed origins (fewer where the workbook lists fewer) and an OTHER remainder; counts (persons), the destination total and the origin "
-        "names ride alongside the shares. Destinations and origins are keyed by ISO 3166-1 alpha-3 code." + UNDESA_LICENSE_NOTE,
-        ("2024-07-01", "2024-07-01"), "license-review",
+        share_tests(distributions, [(sex, leaders[sex]) for sex in ("total", "male", "female")]),
+        GCC_TAGS + ["international-migrant-stock", "country-of-origin", "by-sex", "un-desa", "population"], PEOPLE_USE_CASES + ["remittance-demo", "banking-demo"],
+        f"Country-of-origin mix of the international migrants living in {country.name} at 1 July {table.year}, for both sexes ('total'), males and females, "
+        "from UN DESA International Migrant Stock 2024 (destination and origin workbook, Table 1). "
+        f"The type of data for {country.name} is '{data_type}': C means the estimates are derived from data on foreign citizens, so 'origin' is effectively "
+        "the country of citizenship and the distribution can drive nationality for synthetic residents" + (" (R: refugees are added)" if "R" in str(data_type).split() else "") + ". "
+        f"The workbook lists {listed} origin countries for {country.name}; at most the 30 largest per sex are kept, with the remainder (including the "
+        "workbook's 'Others' row) pooled as OTHER. The origin mix of female migrants differs from that of male migrants, so draw nationality after sex. "
+        "Counts (persons), the sex-specific total and the origin names ride alongside the shares; origins are keyed by ISO 3166-1 alpha-3 code." + UNDESA_LICENSE_NOTE,
+        (f"{table.year}-07-01", f"{table.year}-07-01"), "license-review",
     )
 
 
-def ims_origin_by_sex_entry(table: OriginTable) -> dict:
-    distributions: dict[str, dict] = {}
-    for iso3 in GCC:
-        for sex, column in (("male", table.male), ("female", table.female)):
-            counts, total = table.counts(iso3, column)
-            kept = top_with_remainder(counts, total, TOP_ORIGINS)
-            distributions[f"{iso3}-{sex}"] = categorical(kept, total_migrants=total, year=table.year)
-    items = [
-        table.cite(table.world_row("SAU"), table.male, "males"),
-        table.cite(table.world_row("SAU"), table.female, "females"),
-        table.cite(table.world_row("ARE"), table.female, "females"),
-        table.cite(table.origin_index("SAU", "PHL"), table.female, "females"),
-        table.cite(table.origin_index("KWT", "IND"), table.male, "males"),
-        table.book.cite_license(IMS_ORIGIN_TITLE),
-    ]
-    picks = [("SAU-female", "PHL"), ("SAU-male", "IND"), ("KWT-male", "IND"), ("ARE-female", "IND"), ("QAT-male", "IND")]
-    return conditional(
-        "gcc-migrant-stock-by-origin-and-sex-2024", "International migrant stock by country of origin, given GCC destination and sex, mid-2024: up to 30 largest origins (UN DESA)",
-        "demographics", "SA", "country_of_origin_iso3", "destination_iso3_and_sex", distributions, items,
-        [
-            shares_assumption("distributions[*].parameters.shares", "Each origin's 2024 male or female migrant stock divided by the destination's male or female total (origin 'World'); the 30 largest origins for that sex are kept and the remainder, including 'Others', is pooled as OTHER."),
-            {"parameter": "categories", "value": "ISO 3166-1 alpha-3", "method": "derived", "rationale": "M49 origin codes are mapped to ISO alpha-3 with the UN Population Division location list."},
-        ],
-        share_tests(distributions, picks),
-        GCC_TAGS + ["international-migrant-stock", "country-of-origin", "by-sex", "un-desa", "population"], PEOPLE_USE_CASES + ["remittance-demo"],
-        "Country-of-origin mix of male and female migrants in each GCC state at 1 July 2024, from UN DESA International Migrant Stock 2024 "
-        "(destination and origin workbook, Table 1, male and female columns). Conditioning keys are '<destination ISO3>-male' and "
-        "'<destination ISO3>-female'. The origin mix of female migrants differs from that of male migrants, so drawing nationality after sex "
-        "reproduces both mixes, which the both-sexes table cannot. The 30 largest listed origins per sex are kept with an OTHER "
-        "remainder; counts and the sex-specific total ride alongside. Estimates are derived from data on foreign citizens (type of data C)." + UNDESA_LICENSE_NOTE,
-        ("2024-07-01", "2024-07-01"), "license-review",
-    )
+@dataclass
+class DestinationTables:
+    """Tables 1 to 4 of the 2024 destination workbook, with each GCC state's row located in every table."""
+
+    book: UnWorkbook
+    countries: list[Country]
+    names: tuple[str, ...] = ("Table 1", "Table 2", "Table 3", "Table 4")
+
+    def __post_init__(self) -> None:
+        self.headers = {name: next(i for i, r in enumerate(self.book.rows[name]) if 1990 in r) for name in self.names}
+        first = self.book.rows["Table 1"]
+        by_code = {c.m49: c.iso3 for c in self.countries}
+        self.located: dict[str, dict[str, int]] = {}
+        for index, row in enumerate(first[self.headers["Table 1"] + 1 :], start=self.headers["Table 1"] + 1):
+            if isinstance(row[4], int) and row[4] in by_code:
+                self.located[by_code[row[4]]] = {"Table 1": index}
+        # Table 2 carries no location code, so the other tables are matched on the shared Index column and the name is checked.
+        for at in self.located.values():
+            key, name = first[at["Table 1"]][0], first[at["Table 1"]][1]
+            for other in self.names[1:]:
+                rows = self.book.rows[other]
+                at[other] = next(i for i, r in enumerate(rows) if i > self.headers[other] and r[0] == key)
+                if rows[at[other]][1] != name:
+                    raise ValueError(f"{other} row {at[other]} is {rows[at[other]][1]!r}, expected {name!r}")
+
+    def years(self) -> list[int]:
+        return sorted({y for y in self.book.rows["Table 1"][self.headers["Table 1"]] if isinstance(y, int)})
+
+    def column(self, table: str, year: int, block: int) -> int:
+        """Column of ``year`` in the given block (0 both sexes, 1 males, 2 females)."""
+        return year_columns(self.book.rows[table][self.headers[table]], year)[block]
+
+    def value(self, iso3: str, table: str, year: int, block: int = 0) -> Any:
+        return self.book.rows[table][self.located[iso3][table]][self.column(table, year, block)]
+
+    def cite(self, iso3: str, table: str, year: int, block: int, description: str, unit: str) -> dict:
+        return self.book.cite(IMS_DESTINATION_TITLE, table, self.located[iso3][table], self.column(table, year, block), description, unit)
 
 
-def ims_destination_entry(book: UnWorkbook, locations: Locations) -> dict:
-    tables = {name: book.rows[name] for name in ("Table 1", "Table 2", "Table 3", "Table 4")}
-    headers = {name: next(i for i, r in enumerate(rows) if 1990 in r) for name, rows in tables.items()}
-    codes = {locations.m49(iso3): iso3 for iso3 in GCC}
-    located: dict[str, dict[str, int]] = {}
-    first = tables["Table 1"]
-    for index, row in enumerate(first[headers["Table 1"] + 1 :], start=headers["Table 1"] + 1):
-        if isinstance(row[4], int) and row[4] in codes:
-            located[codes[row[4]]] = {"Table 1": index}
-    # Table 2 carries no location code, so every table is matched on the shared Index column and the name is checked.
-    for iso3, at in located.items():
-        key, name = first[at["Table 1"]][0], first[at["Table 1"]][1]
-        for other in ("Table 2", "Table 3", "Table 4"):
-            rows = tables[other]
-            at[other] = next(i for i, r in enumerate(rows) if i > headers[other] and r[0] == key)
-            if rows[at[other]][1] != name:
-                raise ValueError(f"{other} row {at[other]} is {rows[at[other]][1]!r}, expected {name!r}")
-    years = [y for y in tables["Table 3"][headers["Table 3"]] if isinstance(y, int)][:8]
-    rows: dict[str, dict] = {}
-    for iso3 in GCC:
-        at = located[iso3]
-        t1, t2, t3, t4 = (tables[n][at[n]] for n in ("Table 1", "Table 2", "Table 3", "Table 4"))
-        c1 = year_columns(tables["Table 1"][headers["Table 1"]], 2024)
-        c2 = year_columns(tables["Table 2"][headers["Table 2"]], 2024)
-        c3 = year_columns(tables["Table 3"][headers["Table 3"]], 2024)
-        c4 = year_columns(tables["Table 4"][headers["Table 4"]], 2024)
-        record: dict[str, Any] = {
-            "name": t1[1],
-            "m49": t1[4],
-            "type_of_data": t1[3],
-            "migrant_stock_2024": t1[c1[0]],
-            "migrant_stock_male_2024": t1[c1[1]],
-            "migrant_stock_female_2024": t1[c1[2]],
-            "total_population_thousands_2024": t2[c2[0]],
-            "total_population_male_thousands_2024": t2[c2[1]],
-            "total_population_female_thousands_2024": t2[c2[2]],
-            "migrant_share_percent_2024": t3[c3[0]],
-            "migrant_share_male_percent_2024": t3[c3[1]],
-            "migrant_share_female_percent_2024": t3[c3[2]],
-            "female_share_of_migrants_percent_2024": t4[c4[0]],
-        }
-        first3 = year_columns(tables["Table 3"][headers["Table 3"]], years[0])[0]
-        for offset, year in enumerate(years):
-            record[f"migrant_share_percent_{year}"] = t3[first3 + offset]
-        rows[iso3] = record
-    sau, qat, are = located["SAU"], located["QAT"], located["ARE"]
-    items = [
-        book.cite(IMS_DESTINATION_TITLE, "Table 1", sau["Table 1"], year_columns(tables["Table 1"][headers["Table 1"]], 2024)[0], "Saudi Arabia, migrant stock, both sexes, 2024", "count"),
-        book.cite(IMS_DESTINATION_TITLE, "Table 1", qat["Table 1"], year_columns(tables["Table 1"][headers["Table 1"]], 2024)[2], "Qatar, migrant stock, females, 2024", "count"),
-        book.cite(IMS_DESTINATION_TITLE, "Table 3", are["Table 3"], year_columns(tables["Table 3"][headers["Table 3"]], 2024)[0], "United Arab Emirates, migrants as percentage of population, 2024", "percent"),
-        book.cite(IMS_DESTINATION_TITLE, "Table 4", qat["Table 4"], year_columns(tables["Table 4"][headers["Table 4"]], 2024)[0], "Qatar, female migrants as percentage of migrant stock, 2024", "percent"),
-        book.cite_license(IMS_DESTINATION_TITLE),
-        locations.cite("SAU"),
+def ims_stock_entry(tables: DestinationTables, country: Country) -> dict:
+    iso3 = country.iso3
+    years = tables.years()
+    columns = [
+        "migrant_stock", "migrant_stock_male", "migrant_stock_female",
+        "total_population_thousands", "total_population_male_thousands", "total_population_female_thousands",
+        "migrant_share_male_percent", "migrant_share_female_percent", "female_share_of_migrants_percent",
     ]
-    lead = "migrant_share_percent_2024"
-    return lookup_entry(
-        "gcc-migrant-stock-and-share-of-population-1990-2024", "GCC international migrant stock by sex, total population and migrant share of population, 1990 to 2024 (UN DESA)",
-        "demographics", "SA", rows, {"source_tables": list(tables), "year": 2024, "history_years": years},
-        lookup_vectors(rows, lead, ("SAU", "QAT")) + [{"input": {"key": "ARE", "column": "migrant_stock_2024"}, "expected": rows["ARE"]["migrant_stock_2024"], "origin": "source"}],
-        items,
+    series = []
+    for year in years:
+        series.append({
+            "period": str(year),
+            "value": tables.value(iso3, "Table 3", year),
+            "migrant_stock": tables.value(iso3, "Table 1", year, 0),
+            "migrant_stock_male": tables.value(iso3, "Table 1", year, 1),
+            "migrant_stock_female": tables.value(iso3, "Table 1", year, 2),
+            "total_population_thousands": tables.value(iso3, "Table 2", year, 0),
+            "total_population_male_thousands": tables.value(iso3, "Table 2", year, 1),
+            "total_population_female_thousands": tables.value(iso3, "Table 2", year, 2),
+            "migrant_share_male_percent": tables.value(iso3, "Table 3", year, 1),
+            "migrant_share_female_percent": tables.value(iso3, "Table 3", year, 2),
+            "female_share_of_migrants_percent": tables.value(iso3, "Table 4", year),
+        })
+    first, last = years[0], years[-1]
+    latest = series[-1]
+    items = [
+        tables.cite(iso3, "Table 3", last, 0, f"{country.name}, migrants as percentage of population, both sexes, {last}", "percent"),
+        tables.cite(iso3, "Table 3", first, 0, f"{country.name}, migrants as percentage of population, both sexes, {first}", "percent"),
+        tables.cite(iso3, "Table 1", last, 0, f"{country.name}, migrant stock, both sexes, {last}", "count"),
+        tables.cite(iso3, "Table 1", last, 2, f"{country.name}, migrant stock, females, {last}", "count"),
+        tables.cite(iso3, "Table 4", last, 0, f"{country.name}, female migrants as percentage of migrant stock, {last}", "percent"),
+        tables.book.cite_license(IMS_DESTINATION_TITLE),
+        tables.book.source.cite(UNDESA, IMS_DESTINATION_TITLE, "Notes, reference date", "Years given refer to 1 July.", "text", "Years given refer to 1 July.", CC_BY_IGO, role="supporting"),
+    ]
+    return temporal(
+        f"{country.prefix}-international-migrant-stock-and-share-{first}-{last}",
+        f"{country.name}: international migrant stock, total population and migrant share by sex, {first} to {last} (UN DESA)",
+        "demographics", country.iso2, "migrant_share_of_population_percent", "percent", "annual", columns, series, items, [],
         [
-            {"statistic": f"value[QAT,{lead}]", "expected": rows["QAT"][lead], "tolerance": 1e-9},
-            {"statistic": f"max[{lead}]", "expected": max(r[lead] for r in rows.values()), "tolerance": 1e-9},
-            {"statistic": f"min[{lead}]", "expected": min(r[lead] for r in rows.values()), "tolerance": 1e-9},
-            {"statistic": "value[SAU,migrant_stock_female_2024]", "expected": rows["SAU"]["migrant_stock_female_2024"], "tolerance": 0},
+            {"statistic": f"value[{last}]", "expected": latest["value"], "tolerance": 1e-9},
+            {"statistic": f"value[{first}]", "expected": series[0]["value"], "tolerance": 1e-9},
+            {"statistic": f"column[migrant_stock,{last}]", "expected": latest["migrant_stock"], "tolerance": 0},
+            {"statistic": f"column[migrant_share_male_percent,{last}]", "expected": latest["migrant_share_male_percent"], "tolerance": 1e-9},
+            {"statistic": "count", "expected": len(series), "tolerance": 0},
         ],
         GCC_TAGS + ["international-migrant-stock", "migrant-share", "by-sex", "un-desa", "population"], PEOPLE_USE_CASES + ["market-sizing"],
-        "For each GCC state, the international migrant stock at 1 July 2024 for both sexes, males and females (Table 1), the total population in "
-        "thousands (Table 2), migrants as a percentage of the population by sex (Table 3) and female migrants as a percentage of all migrants (Table 4), "
-        f"plus the both-sexes migrant share for {', '.join(str(y) for y in years)}, from the UN DESA International Migrant Stock 2024 destination workbook. "
-        "Values are copied unchanged. Use migrant_share_percent_2024 to split a synthetic population into nationals and foreign residents, and the "
-        "male and female shares to reproduce the strong male skew among migrants. type_of_data is the workbook's code (C: derived from data on foreign "
-        "citizens; R: refugees added). Rows are keyed by ISO 3166-1 alpha-3 code; m49 is the UN location code." + UNDESA_LICENSE_NOTE,
-        ("2024-07-01", None), status="license-review",
+        f"International migrants in {country.name} as a percentage of the total population (the series value, Table 3, both sexes) at 1 July of "
+        f"{', '.join(str(y) for y in years)}, with the migrant stock for both sexes, males and females (Table 1), the total population in thousands by sex "
+        "(Table 2), the migrant share among males and among females (Table 3) and female migrants as a percentage of all migrants (Table 4), from the UN DESA "
+        "International Migrant Stock 2024 destination workbook. Values are copied unchanged. Observations are five years apart up to 2020 and four years "
+        "apart after that; frequency 'annual' means one point per listed year. Use the latest value to split a synthetic population into nationals and "
+        "foreign residents, and the male and female shares to reproduce the sex imbalance among migrants." + UNDESA_LICENSE_NOTE,
+        (f"{first}-07-01", f"{last}-07-01"), "license-review",
     )
 
 
-def ims_age_entry(book: UnWorkbook, locations: Locations) -> dict:
-    sheet = "Table 1"
-    rows = book.rows[sheet]
-    header = header_row(rows, "Index")
-    labels = rows[header]
-    totals = [i for i, cell in enumerate(labels) if cell == "Total"]
-    blocks = {"total": (6, totals[0]), "male": (totals[0] + 1, totals[1]), "female": (totals[1] + 1, totals[2])}
-    codes = {locations.m49(iso3): iso3 for iso3 in GCC}
-    found: dict[str, int] = {}
-    for index, row in enumerate(rows[header + 1 :], start=header + 1):
-        if row[1] == 2020 and row[4] in codes:
-            found[codes[row[4]]] = index
+@dataclass
+class AgeTable:
+    """Migrant stock by five-year age group and sex in 2020, from Table 1 of the 2020 age and sex workbook."""
+
+    book: UnWorkbook
+    countries: list[Country]
+    locations: Locations
+    sheet: str = "Table 1"
+    year: int = 2020
+
+    def __post_init__(self) -> None:
+        rows = self.book.rows[self.sheet]
+        self.header = header_row(rows, "Index")
+        self.labels = rows[self.header]
+        totals = [i for i, cell in enumerate(self.labels) if cell == "Total"]
+        first_age = self.labels.index("0-4")
+        self.blocks = {"total": (first_age, totals[0]), "male": (totals[0] + 1, totals[1]), "female": (totals[1] + 1, totals[2])}
+        by_code = {c.m49: c.iso3 for c in self.countries}
+        self.found = {by_code[r[4]]: i for i, r in enumerate(rows) if i > self.header and r[1] == self.year and r[4] in by_code}
+
+    def column(self, sex: str, label: str) -> int:
+        start, end = self.blocks[sex]
+        return next(i for i in range(start, end) if str(self.labels[i]).strip() == label)
+
+
+def ims_age_entry(table: AgeTable, country: Country) -> dict:
+    row_index = table.found[country.iso3]
+    row = table.book.rows[table.sheet][row_index]
     distributions: dict[str, dict] = {}
-    for iso3 in GCC:
-        row = rows[found[iso3]]
-        for sex, (start, end) in blocks.items():
-            counts = {str(labels[i]).strip(): int(row[i]) for i in range(start, end)}
-            published = int(row[end])
-            if abs(sum(counts.values()) - published) > 0.01 * published:
-                raise ValueError(f"{iso3} {sex}: age groups sum to {sum(counts.values())}, total is {published}")
-            distributions[f"{iso3}-{sex}"] = categorical(counts, total_migrants=published, year=2020)
-    qat, sau = found["QAT"], found["SAU"]
+    for sex, (start, end) in table.blocks.items():
+        counts = {str(table.labels[i]).strip(): int(row[i]) for i in range(start, end)}
+        published = int(row[end])
+        if abs(sum(counts.values()) - published) > 0.01 * published:
+            raise ValueError(f"{country.iso3} {sex}: age groups sum to {sum(counts.values())}, total is {published}")
+        distributions[sex] = categorical(counts, total_migrants=published, year=table.year)
+    modes = {sex: max(d["parameters"]["counts"], key=d["parameters"]["counts"].get) for sex, d in distributions.items()}
     items = [
-        book.cite(IMS_AGE_TITLE, sheet, qat, blocks["male"][0] + 6, "Qatar, 2020, males aged 30-34", "count"),
-        book.cite(IMS_AGE_TITLE, sheet, qat, blocks["male"][1], "Qatar, 2020, males, total", "count"),
-        book.cite(IMS_AGE_TITLE, sheet, sau, blocks["female"][0] + 5, "Saudi Arabia, 2020, females aged 25-29", "count"),
-        book.cite(IMS_AGE_TITLE, sheet, sau, blocks["total"][1], "Saudi Arabia, 2020, both sexes, total", "count"),
-        book.cite_license(IMS_AGE_TITLE),
-        locations.cite("QAT"),
+        table.book.cite(IMS_AGE_TITLE, table.sheet, row_index, table.column("male", modes["male"]), f"{country.name}, {table.year}, males aged {modes['male']}", "count"),
+        table.book.cite(IMS_AGE_TITLE, table.sheet, row_index, table.column("female", modes["female"]), f"{country.name}, {table.year}, females aged {modes['female']}", "count"),
+        table.book.cite(IMS_AGE_TITLE, table.sheet, row_index, table.blocks["total"][1], f"{country.name}, {table.year}, both sexes, total", "count"),
+        table.book.cite_license(IMS_AGE_TITLE),
+        table.locations.cite(country.iso3),
     ]
-    picks = [("QAT-male", "30-34"), ("SAU-female", "25-29"), ("ARE-total", "35-39"), ("OMN-male", "30-34")]
     return conditional(
-        "gcc-migrant-stock-by-age-and-sex-2020", "International migrant stock by five-year age group, given GCC destination and sex, mid-2020 (UN DESA)",
-        "demographics", "SA", "age_group", "destination_iso3_and_sex", distributions, items,
-        [shares_assumption("distributions[*].parameters.shares", "Migrants in each five-year age group (0-4 to 75+) divided by the sum over the groups for that destination and sex; the published total is kept beside the counts and differs from the sum only by rounding.")],
-        share_tests(distributions, picks),
+        f"{country.prefix}-migrant-stock-by-age-and-sex-{table.year}",
+        f"{country.name}: international migrant stock by five-year age group, given sex, mid-{table.year} (UN DESA)",
+        "demographics", country.iso2, "age_group", "sex", distributions, items,
+        [shares_assumption("distributions[*].parameters.shares", "Migrants in each five-year age group (0-4 to 75+) divided by the sum over the groups for that sex; the published total is kept beside the counts and differs from the sum only by rounding.")],
+        share_tests(distributions, [(sex, modes[sex]) for sex in ("total", "male", "female")]),
         GCC_TAGS + ["international-migrant-stock", "by-age", "by-sex", "un-desa", "population"], PEOPLE_USE_CASES + ["hr-analytics"],
-        "Age distribution of international migrants in each GCC state at 1 July 2020, for both sexes ('<ISO3>-total'), males and females, in sixteen "
-        "five-year groups from 0-4 to 75+, from UN DESA International Migrant Stock 2020 (age, sex and destination workbook, Table 1). The 2024 "
+        f"Age distribution of the international migrants living in {country.name} at 1 July {table.year}, for both sexes ('total'), males and females, in "
+        "sixteen five-year groups from 0-4 to 75+, from UN DESA International Migrant Stock 2020 (age, sex and destination workbook, Table 1). The 2024 "
         "revision's downloads carry no age breakdown, so 2020 is the latest age structure for migrants. Combined with the 2024 migrant share and the "
-        "population pyramid it lets a generator give foreign residents the concentrated working-age profile the data show." + UNDESA_LICENSE_NOTE,
-        ("2020-07-01", "2020-07-01"), "license-review",
+        "population pyramid it lets a generator give foreign residents their own age profile." + UNDESA_LICENSE_NOTE,
+        (f"{table.year}-07-01", f"{table.year}-07-01"), "license-review",
     )
+
 
 
 # ---------------------------------------------------------------- World Bank API
@@ -509,138 +566,131 @@ def band_label(band: str) -> str:
     return "80+" if band == "80UP" else f"{int(band[:2])}-{int(band[2:])}"
 
 
-def wb_age_entry(query: WorldBankQuery, metadata: Source, license_source: Source, year: int) -> dict:
+def wb_age_entry(query: WorldBankQuery, metadata: Source, license_source: Source, country: Country, year: int) -> dict:
+    iso3 = country.iso3
     distributions: dict[str, dict] = {}
-    for iso3 in GCC:
-        for sex, suffix in (("male", "MA"), ("female", "FE")):
-            counts = {band_label(b): query.value(f"SP.POP.{b}.{suffix}", iso3, year) for b in AGE_BANDS}
-            if any(v is None for v in counts.values()):
-                raise ValueError(f"{iso3} {sex} {year}: missing age groups")
-            distributions[f"{iso3}-{sex}"] = categorical({k: int(v) for k, v in counts.items()}, year=year)
+    for sex, suffix in (("male", "MA"), ("female", "FE")):
+        counts = {band_label(b): query.value(f"SP.POP.{b}.{suffix}", iso3, year) for b in AGE_BANDS}
+        if any(v is None for v in counts.values()):
+            raise ValueError(f"{iso3} {sex} {year}: missing age groups")
+        distributions[sex] = categorical({k: int(v) for k, v in counts.items()}, year=year)
     title = f"World Bank API, population by five-year age group and sex (SP.POP.<age>.MA/FE), source 40, {year}, GCC economies"
+    modes = {sex: max(d["parameters"]["counts"], key=d["parameters"]["counts"].get) for sex, d in distributions.items()}
+    band_of = {band_label(b): b for b in AGE_BANDS}
     items = [
-        query.cite(title, "SP.POP.2529.MA", "QAT", year, "count"),
-        query.cite(title, "SP.POP.2529.FE", "QAT", year, "count"),
-        query.cite(title, "SP.POP.3034.MA", "ARE", year, "count"),
-        query.cite(title, "SP.POP.0004.FE", "SAU", year, "count"),
+        query.cite(title, f"SP.POP.{band_of[modes['male']]}.MA", iso3, year, "count"),
+        query.cite(title, f"SP.POP.{band_of[modes['female']]}.FE", iso3, year, "count"),
+        query.cite(title, "SP.POP.0004.FE", iso3, year, "count"),
         wb_metadata(metadata, "SP.POP.0004.MA", "age\\/sex distributions of the United Nations Population Division's World Population Prospects"),
         wb_license(license_source),
     ]
-    picks = [("QAT-male", "25-29"), ("QAT-female", "25-29"), ("ARE-male", "30-34"), ("SAU-female", "0-4"), ("KWT-male", "35-39")]
     return conditional(
-        f"gcc-population-by-age-and-sex-{year}", f"Population by five-year age group, given GCC economy and sex, {year} (World Bank, based on UN World Population Prospects)",
-        "demographics", "SA", "age_group", "economy_iso3_and_sex", distributions, items,
-        [shares_assumption("distributions[*].parameters.shares", "Persons in each five-year age group divided by the sum of the seventeen groups (0-4 to 80+) for that economy and sex.")],
-        share_tests(distributions, picks),
+        f"{country.prefix}-population-by-age-and-sex-{year}",
+        f"{country.name}: population by five-year age group, given sex, {year} (World Bank, based on UN World Population Prospects)",
+        "demographics", country.iso2, "age_group", "sex", distributions, items,
+        [shares_assumption("distributions[*].parameters.shares", "Persons in each five-year age group divided by the sum of the seventeen groups (0-4 to 80+) for that sex.")],
+        share_tests(distributions, [("male", modes["male"]), ("female", modes["female"]), ("female", "0-4")]),
         ["gcc", "population", "age-pyramid", "by-age", "by-sex", "world-bank"], PEOPLE_USE_CASES + ["insurance", "pensions"],
-        f"Mid-year {year} population of each GCC state in seventeen five-year age groups (0-4 to 80+) for males and females, from the World Bank "
-        "Population estimates and projections database (API source 40, indicators SP.POP.0004.MA to SP.POP.80UP.FE). The World Bank derives these "
-        "from its total population and the age and sex distributions of the UN World Population Prospects. Counts are kept beside the shares, so "
-        "the male-heavy working-age bulge that migrant labour creates (compare the male and female 25-44 groups) can be sampled directly. "
-        f"Conditioning keys are '<ISO3>-male' and '<ISO3>-female'. Data last updated {query.last_updated}. The World Bank licenses its data under CC BY 4.0.",
+        f"Mid-year {year} population of {country.name} in seventeen five-year age groups (0-4 to 80+) for males and females, from the World Bank "
+        "Population estimates and projections database (API source 40, indicators SP.POP.0004.MA to SP.POP.80UP.FE). The World Bank derives these from "
+        "its total population and the age and sex distributions of the UN World Population Prospects. Counts ride beside the shares, so a generator can "
+        "reproduce both the shape of each pyramid and the ratio of men to women at each age, which migrant labour skews in the GCC. "
+        f"Data last updated {query.last_updated}. The World Bank licenses its data under CC BY 4.0.",
         (f"{year}-01-01", f"{year}-12-31"), "verified",
     )
 
 
-def wb_projection_entry(query: WorldBankQuery, metadata: Source, license_source: Source, first: int, last: int) -> dict:
-    rows: dict[str, dict] = {}
-    for iso3 in GCC:
-        record: dict[str, Any] = {}
-        for year in range(first, last + 1):
-            record[f"total_{year}"] = int(query.value("SP.POP.TOTL", iso3, year))
-        for year in range(first, last + 1, 5):
-            record[f"male_{year}"] = int(query.value("SP.POP.TOTL.MA.IN", iso3, year))
-            record[f"female_{year}"] = int(query.value("SP.POP.TOTL.FE.IN", iso3, year))
-        rows[iso3] = record
+def wb_projection_entry(query: WorldBankQuery, metadata: Source, license_source: Source, country: Country, first: int, last: int) -> dict:
+    iso3 = country.iso3
+    rows = {
+        str(year): {
+            "total": int(query.value("SP.POP.TOTL", iso3, year)),
+            "male": int(query.value("SP.POP.TOTL.MA.IN", iso3, year)),
+            "female": int(query.value("SP.POP.TOTL.FE.IN", iso3, year)),
+        }
+        for year in range(first, last + 1)
+    }
     title = f"World Bank API, population total, male and female, source 40 (Population estimates and projections), {first}-{last}, GCC economies"
     items = [
-        query.cite(title, "SP.POP.TOTL", "SAU", last, "count"),
-        query.cite(title, "SP.POP.TOTL", "QAT", first, "count"),
-        query.cite(title, "SP.POP.TOTL.MA.IN", "ARE", last, "count"),
-        query.cite(title, "SP.POP.TOTL.FE.IN", "OMN", first, "count"),
+        query.cite(title, "SP.POP.TOTL", iso3, first, "count"),
+        query.cite(title, "SP.POP.TOTL", iso3, last, "count"),
+        query.cite(title, "SP.POP.TOTL.MA.IN", iso3, last, "count"),
+        query.cite(title, "SP.POP.TOTL.FE.IN", iso3, last, "count"),
         wb_metadata(metadata, "SP.POP.TOTL.MA.IN", "World Population Prospects, United Nations (UN), publisher: UN Population Division"),
         wb_license(license_source),
     ]
-    lead = f"total_{last}"
+    first_key, last_key = str(first), str(last)
     return lookup_entry(
-        f"gcc-population-projections-{first}-{last}", f"GCC population, annual totals {first} to {last} and male and female every five years (World Bank projections)",
-        "demographics", "SA", rows, {"source": "World Bank API source 40", "indicators": ["SP.POP.TOTL", "SP.POP.TOTL.MA.IN", "SP.POP.TOTL.FE.IN"], "url": query.source.url},
-        lookup_vectors(rows, lead, ("SAU", "QAT")) + [{"input": {"key": "ARE", "column": f"male_{last}"}, "expected": rows["ARE"][f"male_{last}"], "origin": "source"}],
+        f"{country.prefix}-population-projections-{first}-{last}",
+        f"{country.name}: total, male and female population, annual {first} to {last} (World Bank population projections)",
+        "demographics", country.iso2, rows, {"source": "World Bank API source 40", "indicators": {"total": "SP.POP.TOTL", "male": "SP.POP.TOTL.MA.IN", "female": "SP.POP.TOTL.FE.IN"}, "url": query.source.url},
+        lookup_vectors(rows, "total", (first_key, last_key)) + [{"input": {"key": last_key, "column": "male"}, "expected": rows[last_key]["male"], "origin": "source"}],
         items,
         [
-            {"statistic": f"value[SAU,{lead}]", "expected": rows["SAU"][lead], "tolerance": 0},
-            {"statistic": f"max[{lead}]", "expected": max(r[lead] for r in rows.values()), "tolerance": 0},
-            {"statistic": f"value[OMN,female_{first}]", "expected": rows["OMN"][f"female_{first}"], "tolerance": 0},
+            {"statistic": f"value[{first_key},total]", "expected": rows[first_key]["total"], "tolerance": 0},
+            {"statistic": f"value[{last_key},female]", "expected": rows[last_key]["female"], "tolerance": 0},
+            {"statistic": "max[total]", "expected": max(r["total"] for r in rows.values()), "tolerance": 0},
         ],
         ["gcc", "population", "projections", "by-sex", "world-bank"], PEOPLE_USE_CASES + ["market-sizing", "demand-forecasting"],
-        f"Total population of each GCC state for every year from {first} to {last}, and male and female population every five years, from the World Bank "
-        "Population estimates and projections database (API source 40), which projects forward from the UN World Population Prospects. Values after the "
-        "latest estimate year are projections, not observations. Rows are keyed by ISO 3166-1 alpha-3 code; columns are named <series>_<year>. "
-        f"Data last updated {query.last_updated}. The World Bank licenses its data under CC BY 4.0.",
+        f"Total, male and female mid-year population of {country.name} for every year from {first} to {last}, from the World Bank Population estimates "
+        "and projections database (API source 40: SP.POP.TOTL, SP.POP.TOTL.MA.IN, SP.POP.TOTL.FE.IN), which builds on the UN World Population "
+        "Prospects. Years after the latest estimate are projections, not observations, so the table is a reference keyed by year (valid_to is the end "
+        f"of the projection horizon) rather than an observed series. Data last updated {query.last_updated}. The World Bank licenses its data under CC BY 4.0.",
         (f"{first}-01-01", f"{last}-12-31"),
     )
 
 
-def wb_remittances_paid_entry(query: WorldBankQuery, metadata: Source, license_source: Source, first: int, last: int) -> dict:
-    indicator = "BM.TRF.PWKR.CD.DT"
-    rows = {iso3: {f"usd_{year}": query.value(indicator, iso3, year) for year in range(first, last + 1)} for iso3 in GCC}
-    title = f"World Bank API, {indicator} (Personal remittances, paid, current US$), {first}-{last}, GCC economies"
+REMITTANCES_PAID = "BM.TRF.PWKR.CD.DT"
+REMITTANCE_COST = "SI.RMT.COST.OB.ZS"
+
+
+def wb_remittance_entry(paid: WorldBankQuery, cost: WorldBankQuery, metadata: dict[str, Source], license_source: Source, country: Country, first: int, last: int) -> dict:
+    iso3 = country.iso3
+    rows: dict[str, dict] = {}
+    for year in range(first, last + 1):
+        record = {"personal_remittances_paid_usd": paid.value(REMITTANCES_PAID, iso3, year), "sending_cost_percent": cost.value(REMITTANCE_COST, iso3, year)}
+        if any(v is not None for v in record.values()):
+            rows[str(year)] = record
+    paid_years = [y for y, r in rows.items() if r["personal_remittances_paid_usd"] is not None]
+    cost_years = [y for y, r in rows.items() if r["sending_cost_percent"] is not None]
+    paid_title = f"World Bank API, {REMITTANCES_PAID} (Personal remittances, paid, current US$), {first}-{last}, GCC economies"
+    cost_title = f"World Bank API, {REMITTANCE_COST} (Average transaction cost of sending remittances from a specific country, %), GCC economies"
     items = [
-        query.cite(title, indicator, "SAU", last, "currency:USD"),
-        query.cite(title, indicator, "ARE", last, "currency:USD"),
-        query.cite(title, indicator, "KWT", first, "currency:USD"),
-        wb_metadata(metadata, indicator, "IMF balance of payments data, International Monetary Fund (IMF)"),
+        paid.cite(paid_title, REMITTANCES_PAID, iso3, int(paid_years[-1]), "currency:USD"),
+        paid.cite(paid_title, REMITTANCES_PAID, iso3, int(paid_years[0]), "currency:USD"),
+        cost.cite(cost_title, REMITTANCE_COST, iso3, int(cost_years[-1]), "percent"),
+        wb_metadata(metadata[REMITTANCES_PAID], REMITTANCES_PAID, "IMF balance of payments data, International Monetary Fund (IMF)"),
+        wb_metadata(metadata[REMITTANCE_COST], REMITTANCE_COST, "Remittance Prices Worldwide, World Bank (WB)"),
         wb_license(license_source),
     ]
-    lead = f"usd_{last}"
-    missing = sorted(f"{iso3} {k[4:]}" for iso3, r in rows.items() for k, v in r.items() if v is None)
-    return lookup_entry(
-        f"gcc-personal-remittances-paid-{first}-{last}", f"Personal remittances paid by GCC economies, current US dollars, annual {first} to {last} (World Bank)",
-        "economy", "SA", rows, {"indicator": indicator, "url": query.source.url},
-        lookup_vectors(rows, lead, ("SAU", "ARE", "KWT")), items,
-        [
-            {"statistic": f"value[SAU,{lead}]", "expected": rows["SAU"][lead], "tolerance": 1e-3},
-            {"statistic": f"max[{lead}]", "expected": max(r[lead] for r in rows.values() if r[lead] is not None), "tolerance": 1e-3},
-        ],
-        ["gcc", "remittances", "migration", "balance-of-payments", "world-bank"], REMITTANCE_USE_CASES + ["market-sizing"],
-        f"Personal remittances paid (indicator {indicator}: personal transfers plus compensation of employees, from IMF balance of payments data and World "
-        f"Bank staff estimates) by each GCC state for {first} to {last}, in current US dollars. Personal transfers are current transfers from resident to non-resident households. The series "
-        "sets the annual scale for a synthetic outbound remittance ledger; the destination mix can be taken from the UN DESA migrant-stock-by-origin entry. "
-        + (f"Years without a published value are null: {', '.join(missing)}. " if missing else "")
-        + f"Rows are keyed by ISO 3166-1 alpha-3 code. Data last updated {query.last_updated}. The World Bank licenses its data under CC BY 4.0.",
-        (f"{first}-01-01", f"{last}-12-31"),
-    )
-
-
-def wb_remittance_cost_entry(query: WorldBankQuery, metadata: Source, license_source: Source, first: int, last: int) -> dict:
-    indicator = "SI.RMT.COST.OB.ZS"
-    rows = {iso3: {f"percent_{year}": query.value(indicator, iso3, year) for year in range(first, last + 1)} for iso3 in GCC}
-    title = f"World Bank API, {indicator} (Average transaction cost of sending remittances from a specific country, %), {first}-{last}, GCC economies"
-    items = [
-        query.cite(title, indicator, "SAU", last, "percent"),
-        query.cite(title, indicator, "QAT", last, "percent"),
-        query.cite(title, indicator, "KWT", first, "percent"),
-        wb_metadata(metadata, indicator, "Remittance Prices Worldwide, World Bank (WB)"),
-        wb_license(license_source),
+    vectors = [
+        {"input": {"key": paid_years[-1], "column": "personal_remittances_paid_usd"}, "expected": rows[paid_years[-1]]["personal_remittances_paid_usd"], "origin": "source"},
+        {"input": {"key": cost_years[-1], "column": "sending_cost_percent"}, "expected": rows[cost_years[-1]]["sending_cost_percent"], "origin": "source"},
+        {"input": "1990", "expected": False, "origin": "derived"},
     ]
-    lead = f"percent_{last}"
-    missing = sorted(f"{iso3} {k[8:]}" for iso3, r in rows.items() for k, v in r.items() if v is None)
+    gaps = [y for y in rows if None in rows[y].values()]
+    period = (min(rows), max(rows))
     return lookup_entry(
-        f"gcc-remittance-sending-cost-{first}-{last}", f"Average cost of sending USD 200 in remittances from each GCC economy, percent, annual {first} to {last} (World Bank)",
-        "payments", "SA", rows, {"indicator": indicator, "url": query.source.url},
-        lookup_vectors(rows, lead, ("SAU", "QAT", "KWT")), items,
+        f"{country.prefix}-remittance-outflows-and-sending-cost-{period[0]}-{period[1]}",
+        f"{country.name}: personal remittances paid (US$) and average cost of sending remittances (%), annual {period[0]} to {period[1]} (World Bank)",
+        "payments", country.iso2, rows, {"indicators": {"personal_remittances_paid_usd": REMITTANCES_PAID, "sending_cost_percent": REMITTANCE_COST}, "urls": [paid.source.url, cost.source.url]},
+        vectors, items,
         [
-            {"statistic": f"value[QAT,{lead}]", "expected": rows["QAT"][lead], "tolerance": 1e-9},
-            {"statistic": f"max[{lead}]", "expected": max(r[lead] for r in rows.values() if r[lead] is not None), "tolerance": 1e-9},
-            {"statistic": f"min[{lead}]", "expected": min(r[lead] for r in rows.values() if r[lead] is not None), "tolerance": 1e-9},
+            {"statistic": f"value[{paid_years[-1]},personal_remittances_paid_usd]", "expected": rows[paid_years[-1]]["personal_remittances_paid_usd"], "tolerance": 1e-3},
+            {"statistic": "max[personal_remittances_paid_usd]", "expected": max(rows[y]["personal_remittances_paid_usd"] for y in paid_years), "tolerance": 1e-3},
+            {"statistic": f"value[{cost_years[-1]},sending_cost_percent]", "expected": rows[cost_years[-1]]["sending_cost_percent"], "tolerance": 1e-9},
         ],
-        ["gcc", "remittances", "fees", "remittance-prices", "world-bank"], REMITTANCE_USE_CASES + ["pricing"],
-        f"Average total transaction cost, as a percentage of the amount sent, of sending USD 200 from each GCC state (indicator {indicator}), averaged over the "
-        f"remittance service providers in the World Bank's Remittance Prices Worldwide database, for {first} to {last}. Use it to price fees on synthetic "
-        "outbound transfers. " + (f"Years without a published value are null: {', '.join(missing)}. " if missing else "")
-        + f"Rows are keyed by ISO 3166-1 alpha-3 code. Data last updated {query.last_updated}. The World Bank licenses its data under CC BY 4.0.",
-        (f"{first}-01-01", f"{last}-12-31"),
+        ["gcc", "remittances", "migration", "balance-of-payments", "fees", "world-bank"], REMITTANCE_USE_CASES + ["pricing", "market-sizing"],
+        f"For {country.name}, one row per year: personal remittances paid in current US dollars (indicator {REMITTANCES_PAID}: personal transfers plus "
+        "compensation of employees paid to non-residents, from IMF balance of payments data and World Bank staff estimates) and the average total cost, as a "
+        f"percentage of the amount sent, of sending USD 200 from {country.name} across the providers in the World Bank's Remittance Prices Worldwide database "
+        f"(indicator {REMITTANCE_COST}). Remittances paid are published for {paid_years[0]} to {paid_years[-1]} and the cost for {cost_years[0]} to {cost_years[-1]}"
+        + (f"; a column is null where that indicator has no value ({', '.join(gaps)})" if gaps else "") + ". The outflow sets the annual scale of a synthetic "
+        "outbound remittance ledger and the cost prices its fees; the destination mix can be taken from the UN DESA migrant-stock-by-origin entry. Rows are "
+        f"keyed by year. Data last updated {paid.last_updated}. The World Bank licenses its data under CC BY 4.0.",
+        (f"{period[0]}-01-01", f"{period[1]}-12-31"),
     )
+
 
 
 # ---------------------------------------------------------------- ILOSTAT
@@ -718,7 +768,7 @@ def ilo_citizenship_conditional(table: IloTable, labels: IloLabels, area: str, r
         [shares_assumption("distributions[*].parameters.shares", "ILOSTAT publishes thousands of employed persons per category; shares are each category over the sum of the categories for that citizenship and sex, kept only where the sum is within one percent of the published total.")],
         share_tests(distributions, picks),
         tags, LABOUR_USE_CASES + ["synthetic-customers", "person-generation"],
-        notes + f" Conditioning keys are '<citizenship>:<sex>' with citizenship all, citizens or foreign_citizens and sex total, men or women; the "
+        notes + " Conditioning keys are '<citizenship>:<sex>' with citizenship all, citizens or foreign_citizens and sex total, men or women; the "
         "published thousands and the English category labels ride alongside the shares. " + ILO_LICENSE_NOTE,
         (f"{year}-01-01", f"{year}-12-31"), "license-review",
     )
@@ -769,38 +819,88 @@ def qa_employment_by_age(labels: IloLabels, year: int) -> dict:
     )
 
 
-def unemployment_by_citizenship(sau_year: int, qat_year: int) -> dict:
-    name = "Unemployment rate by sex, age and citizenship (%)"
-    tables = {"SAU": ilo_table("UNE_DEAP_SEX_AGE_CCT_RT_A", name, "SAU", sau_year), "QAT": ilo_table("UNE_DEAP_SEX_AGE_CCT_RT_A", name, "QAT", qat_year)}
-    ages = {"AGE_YTHADULT_YGE15": "age_15_plus", "AGE_YTHADULT_Y15-24": "age_15_24", "AGE_YTHADULT_YGE25": "age_25_plus", "AGE_YTHADULT_Y15-64": "age_15_64"}
+UNEMPLOYMENT_AGES = {"AGE_YTHADULT_YGE15": "age_15_plus", "AGE_YTHADULT_Y15-24": "age_15_24", "AGE_YTHADULT_YGE25": "age_25_plus", "AGE_YTHADULT_Y15-64": "age_15_64"}
+
+
+def unemployment_by_citizenship(country: Country, year: int) -> dict:
+    table = ilo_table("UNE_DEAP_SEX_AGE_CCT_RT_A", "Unemployment rate by sex, age and citizenship (%)", country.iso3, year)
     rows: dict[str, dict] = {}
-    cited: list[tuple[IloTable, CsvRow]] = []
-    for area, table in tables.items():
-        for row in table.rows:
-            if row["classif1"] not in ages or row["classif2"] not in CITIZENSHIP:
-                continue
-            key = f"{area}:{CITIZENSHIP[row['classif2']]}:{SEXES[row['sex']]}"
-            rows.setdefault(key, {"year": int(row["time"])})[ages[row["classif1"]]] = numeric(row["obs_value"])
-            if (row["classif1"], row["classif2"], row["sex"]) in {("AGE_YTHADULT_YGE15", "CCT_CIT_CITIZEN", "SEX_F"), ("AGE_YTHADULT_Y15-24", "CCT_CIT_NONCIT", "SEX_T")}:
-                cited.append((table, row))
-    rows = {key: {"year": record["year"], **{column: record.get(column) for column in ages.values()}} for key, record in sorted(rows.items())}
-    items = [t.cite(r, f"ref_area={r['ref_area']}, sex={r['sex']}, classif1={r['classif1']}, classif2={r['classif2']}", "percent") for t, r in cited]
+    for row in table.rows:
+        if row["classif1"] in UNEMPLOYMENT_AGES and row["classif2"] in CITIZENSHIP:
+            rows.setdefault(f"{CITIZENSHIP[row['classif2']]}:{SEXES[row['sex']]}", {})[UNEMPLOYMENT_AGES[row["classif1"]]] = numeric(row["obs_value"])
+    rows = {key: {column: record.get(column) for column in UNEMPLOYMENT_AGES.values()} for key, record in sorted(rows.items())}
+    cited = {("AGE_YTHADULT_YGE15", "CCT_CIT_CITIZEN", "SEX_F"), ("AGE_YTHADULT_YGE15", "CCT_CIT_NONCIT", "SEX_M"), ("AGE_YTHADULT_Y15-24", "CCT_CIT_NONCIT", "SEX_T")}
+    items = [table.cite(r, f"ref_area={country.iso3}, sex={r['sex']}, classif1={r['classif1']}, classif2={r['classif2']}", "percent") for r in table.rows if (r["classif1"], r["classif2"], r["sex"]) in cited]
     lead = "age_15_plus"
+    missing = sorted({column for record in rows.values() for column, value in record.items() if value is None})
     return lookup_entry(
-        "gcc-unemployment-rate-by-citizenship-sex-and-age", f"Unemployment rate by citizenship, sex and age: Saudi Arabia {sau_year} and Qatar {qat_year} (ILOSTAT)",
-        "employment", "SA", rows, {"indicator": "UNE_DEAP_SEX_AGE_CCT_RT_A", "urls": [t.source.url for t in tables.values()], "age_columns": ages},
-        lookup_vectors(rows, lead, ("SAU:citizens:women", "SAU:foreign_citizens:men", "QAT:citizens:total")), items,
+        f"{country.prefix}-unemployment-rate-by-citizenship-sex-and-age-{year}",
+        f"{country.name}: unemployment rate by citizenship, sex and age group, {year} (ILOSTAT, labour force survey)",
+        "employment", country.iso2, rows, {"indicator": table.indicator, "url": table.source.url, "year": year, "age_columns": UNEMPLOYMENT_AGES},
+        lookup_vectors(rows, lead, ("citizens:women", "foreign_citizens:men", "all:total")), items,
         [
-            {"statistic": f"value[SAU:citizens:women,{lead}]", "expected": rows["SAU:citizens:women"][lead], "tolerance": 1e-9},
-            {"statistic": "value[SAU:foreign_citizens:total,age_15_24]", "expected": rows["SAU:foreign_citizens:total"]["age_15_24"], "tolerance": 1e-9},
-            {"statistic": f"max[{lead}]", "expected": max(r[lead] for r in rows.values() if r.get(lead) is not None), "tolerance": 1e-9},
+            {"statistic": f"value[citizens:women,{lead}]", "expected": rows["citizens:women"][lead], "tolerance": 1e-9},
+            {"statistic": "value[foreign_citizens:total,age_15_24]", "expected": rows["foreign_citizens:total"]["age_15_24"], "tolerance": 1e-9},
+            {"statistic": f"max[{lead}]", "expected": max(r[lead] for r in rows.values()), "tolerance": 1e-9},
         ],
         GCC_TAGS + ["unemployment", "by-citizenship", "by-sex", "by-age", "ilostat", "labour-force-survey"], LABOUR_USE_CASES + ["credit-risk", "synthetic-customers"],
-        f"Unemployment rate (percent of the labour force) for citizens, foreign citizens and all persons, by sex, for ages 15+, 15-24, 25+ and 15-64, from "
-        f"ILOSTAT indicator UNE_DEAP_SEX_AGE_CCT_RT (labour force surveys): Saudi Arabia {sau_year} and Qatar {qat_year}, the GCC states ILOSTAT publishes "
-        "this series for. Each query is closed to one year. Rows are keyed '<ISO3>:<citizenship>:<sex>'; a column is null where ILOSTAT "
-        "publishes no value. " + ILO_LICENSE_NOTE,
-        (f"{min(sau_year, qat_year)}-01-01", f"{max(sau_year, qat_year)}-12-31"), status="license-review",
+        f"Unemployment rate (percent of the labour force) in {country.name} in {year} for citizens, foreign citizens and all persons, by sex, for ages 15+, "
+        "15-24, 25+ and 15-64, from ILOSTAT indicator UNE_DEAP_SEX_AGE_CCT_RT (labour force survey). The query is closed to that one year. Rows are keyed "
+        "'<citizenship>:<sex>' with citizenship all, citizens or foreign_citizens and sex total, men or women"
+        + (f"; {', '.join(missing)} is null where ILOSTAT publishes no value" if missing else "") + ". " + ILO_LICENSE_NOTE,
+        (f"{year}-01-01", f"{year}-12-31"), status="license-review",
+    )
+
+
+@dataclass
+class ModelledEmployment:
+    """ILO modelled estimates of employment by sex and ISIC Rev.4 section group for the GCC economies in one year."""
+
+    labels: IloLabels
+    year: int
+    table: IloTable = field(init=False)
+
+    def __post_init__(self) -> None:
+        self.table = ilo_table("EMP_2EMP_SEX_ECO_NB_A", "Employment by sex and economic activity, ILO modelled estimates (thousands)", GCC_QUERY, self.year)
+
+    def counts(self, area: str, sex_code: str) -> dict[str, float]:
+        selected = self.table.select(ref_area=area, sex=sex_code, time=str(self.year))
+        counts = {r["classif1"]: float(r["obs_value"]) for r in selected if r["classif1"].startswith("ECO_ISIC4_") and r["classif1"] != "ECO_ISIC4_TOTAL"}
+        total = next(float(r["obs_value"]) for r in selected if r["classif1"] == "ECO_ISIC4_TOTAL")
+        if abs(sum(counts.values()) - total) > 0.01 * total:
+            raise ValueError(f"{area} {sex_code}: sections sum to {sum(counts.values())}, total is {total}")
+        return counts
+
+    def row(self, area: str, sex_code: str, code: str) -> CsvRow:
+        return next(r for r in self.table.select(ref_area=area, sex=sex_code, classif1=code, time=str(self.year)))
+
+
+def employment_by_activity(modelled: ModelledEmployment, country: Country) -> dict:
+    year, area = modelled.year, country.iso3
+    distributions: dict[str, dict] = {}
+    for code, sex in SEXES.items():
+        counts = modelled.counts(area, code)
+        distributions[sex] = {"family": "categorical", "parameters": {"shares": shares_of(counts), "thousand_persons": counts, "labels": {c: modelled.labels.label(c) for c in counts}, "year": year}}
+    leaders = {sex: max(d["parameters"]["thousand_persons"], key=d["parameters"]["thousand_persons"].get) for sex, d in distributions.items()}
+    items = [
+        modelled.table.cite(modelled.row(area, "SEX_M", leaders["men"]), f"ref_area={area}, sex=SEX_M, classif1={leaders['men']}", "count"),
+        modelled.table.cite(modelled.row(area, "SEX_F", leaders["women"]), f"ref_area={area}, sex=SEX_F, classif1={leaders['women']}", "count"),
+        modelled.table.cite(modelled.row(area, "SEX_T", "ECO_ISIC4_TOTAL"), f"ref_area={area}, sex=SEX_T, classif1=ECO_ISIC4_TOTAL", "count"),
+        modelled.labels.cite(leaders["men"]),
+        modelled.labels.cite("ECO_ISIC4_LMN"),
+    ]
+    return conditional(
+        f"{country.prefix}-employment-by-economic-activity-and-sex-{year}",
+        f"{country.name}: employment by ISIC Rev.4 section group, given sex, {year} (ILO modelled estimates)",
+        "employment", country.iso2, "isic_rev4_section_group", "sex", distributions, items,
+        [shares_assumption("distributions[*].parameters.shares", "Thousands employed in each ISIC Rev.4 section group divided by the sum over the groups for that sex, kept only where the sum is within one percent of the published ECO_ISIC4_TOTAL.")],
+        share_tests(distributions, [(sex, leaders[sex]) for sex in ("total", "men", "women")]),
+        ["gcc", "employment", "economic-activity", "isic-rev4", "by-sex", "ilostat", "modelled-estimates"], LABOUR_USE_CASES + ["company-generation", "market-sizing"],
+        f"Employment in {country.name} in {year} in fourteen ISIC Rev.4 section groups (A; B; C; D and E; F; G; H and J; I; K; L, M and N; O; P; Q; R, S, T and U) "
+        "for all persons ('total'), men and women, from ILOSTAT indicator EMP_2EMP_SEX_ECO_NB (ILO modelled estimates). The modelled series covers all six GCC "
+        "states for the same year, which the survey series do not. Codes keep the ILOSTAT form (ECO_ISIC4_<sections>); the parameters carry the English "
+        "labels and the thousands employed. The query is closed to one year so that projections for later years stay out. " + ILO_LICENSE_NOTE,
+        (f"{year}-01-01", f"{year}-12-31"), "license-review",
     )
 
 
@@ -830,36 +930,6 @@ def sa_earnings_by_citizenship(year: int) -> dict:
         "series. Citizens' mean earnings are well above those of foreign citizens for both sexes, so synthetic salaries should be drawn after nationality. Rows are keyed "
         "'<citizenship>:<sex>'. " + ILO_LICENSE_NOTE,
         (f"{year}-01-01", f"{year}-12-31"), status="license-review",
-    )
-
-
-def gcc_employment_by_activity(labels: IloLabels, year: int) -> dict:
-    table = ilo_table("EMP_2EMP_SEX_ECO_NB_A", "Employment by sex and economic activity, ILO modelled estimates (thousands)", GCC_QUERY, year)
-    distributions: dict[str, dict] = {}
-    for area in GCC:
-        for code, sex in SEXES.items():
-            selected = table.select(ref_area=area, sex=code, time=str(year))
-            counts = {r["classif1"]: float(r["obs_value"]) for r in selected if r["classif1"].startswith("ECO_ISIC4_") and r["classif1"] != "ECO_ISIC4_TOTAL"}
-            total = next(float(r["obs_value"]) for r in selected if r["classif1"] == "ECO_ISIC4_TOTAL")
-            if abs(sum(counts.values()) - total) > 0.01 * total:
-                raise ValueError(f"{area} {sex}: sections sum to {sum(counts.values())}, total is {total}")
-            distributions[f"{area}:{sex}"] = {"family": "categorical", "parameters": {"shares": shares_of(counts), "thousand_persons": counts, "labels": {c: labels.label(c) for c in counts}, "year": year}}
-    cited = [r for r in table.rows if (r["ref_area"], r["sex"], r["classif1"]) in {("SAU", "SEX_M", "ECO_ISIC4_F"), ("ARE", "SEX_F", "ECO_ISIC4_RSTU"), ("QAT", "SEX_T", "ECO_ISIC4_TOTAL")}]
-    items = [table.cite(r, f"ref_area={r['ref_area']}, sex={r['sex']}, classif1={r['classif1']}", "count") for r in cited]
-    items += [labels.cite("ECO_ISIC4_RSTU"), labels.cite("ECO_ISIC4_LMN")]
-    picks = [("SAU:men", "ECO_ISIC4_F"), ("ARE:women", "ECO_ISIC4_RSTU"), ("QAT:total", "ECO_ISIC4_F"), ("KWT:women", "ECO_ISIC4_O"), ("OMN:total", "ECO_ISIC4_G")]
-    return conditional(
-        f"gcc-employment-by-economic-activity-and-sex-{year}", f"Employment by ISIC Rev.4 section group, given GCC economy and sex, {year} (ILO modelled estimates)",
-        "employment", "SA", "isic_rev4_section_group", "economy_iso3_and_sex", distributions, items,
-        [shares_assumption("distributions[*].parameters.shares", "Thousands employed in each ISIC Rev.4 section group divided by the sum over the groups for that economy and sex, kept only where the sum is within one percent of the published ECO_ISIC4_TOTAL.")],
-        share_tests(distributions, picks),
-        ["gcc", "employment", "economic-activity", "isic-rev4", "by-sex", "ilostat", "modelled-estimates"], LABOUR_USE_CASES + ["company-generation", "market-sizing"],
-        f"Employment in {year} in fourteen ISIC Rev.4 section groups (A; B; C; D and E; F; G; H and J; I; K; L, M and N; O; P; Q; R, S, T and U) for each GCC "
-        "state, for all persons, men and women, from ILOSTAT indicator EMP_2EMP_SEX_ECO_NB (ILO modelled estimates). The modelled "
-        "series covers all six states for the same year, which the survey series do not. Codes keep the ILOSTAT form (ECO_ISIC4_<sections>); the "
-        "parameters carry the English labels and the thousands employed. Conditioning keys are '<ISO3>:<sex>' with sex total, men or women. The query "
-        "is closed to one year so that projections for later years stay out. " + ILO_LICENSE_NOTE,
-        (f"{year}-01-01", f"{year}-12-31"), "license-review",
     )
 
 
@@ -933,77 +1003,52 @@ class GhoIndicator:
 
 
 GHO_SEXES = {"SEX_BTSX": "both_sexes", "SEX_MLE": "men", "SEX_FMLE": "women"}
+# Row key, GHO indicator, age group dimension and the indicator's name as it is cited.
+GHO_MEASURES = (
+    ("obesity_18_plus", "NCD_BMI_30A", "AGEGROUP_YEARS18-PLUS", "prevalence of obesity among adults, BMI 30 or more, age-standardised"),
+    ("overweight_18_plus", "NCD_BMI_25A", "AGEGROUP_YEARS18-PLUS", "prevalence of overweight among adults, BMI 25 or more, age-standardised"),
+    ("diabetes_18_plus", "NCD_DIABETES_PREVALENCE_AGESTD", "AGEGROUP_YEARS18-PLUS", "prevalence of diabetes, age-standardised"),
+    ("diabetes_30_plus", "NCD_DIABETES_PREVALENCE_AGESTD", "AGEGROUP_YEARS30-PLUS", "prevalence of diabetes, age-standardised"),
+)
 
 
-def who_weight_entry(year: int) -> dict:
-    indicators = {"obesity": (GhoIndicator("NCD_BMI_30A", year), "prevalence of obesity among adults, BMI 30 or more, age-standardised"), "overweight": (GhoIndicator("NCD_BMI_25A", year), "prevalence of overweight among adults, BMI 25 or more, age-standardised")}
+def who_health_entry(indicators: dict[str, GhoIndicator], country: Country) -> dict:
     rows: dict[str, dict] = {}
-    for area in GCC:
-        record: dict[str, Any] = {}
-        for measure, (gho, _) in indicators.items():
-            for sex, label in GHO_SEXES.items():
-                found = gho.find(area, sex, "AGEGROUP_YEARS18-PLUS")
-                record[f"{measure}_{label}_percent"] = found["NumericValue"]
-                record[f"{measure}_{label}_low"] = found["Low"]
-                record[f"{measure}_{label}_high"] = found["High"]
-        rows[area] = record
-    obesity, overweight = indicators["obesity"][0], indicators["overweight"][0]
-    items = [
-        obesity.cite(obesity.find("KWT", "SEX_FMLE", "AGEGROUP_YEARS18-PLUS"), indicators["obesity"][1]),
-        obesity.cite(obesity.find("SAU", "SEX_MLE", "AGEGROUP_YEARS18-PLUS"), indicators["obesity"][1]),
-        overweight.cite(overweight.find("QAT", "SEX_BTSX", "AGEGROUP_YEARS18-PLUS"), indicators["overweight"][1]),
-    ]
-    lead = "obesity_women_percent"
+    for key, code, age, _ in GHO_MEASURES:
+        gho = indicators[code]
+        record: dict[str, Any] = {"indicator": code, "year": gho.year}
+        for sex, label in GHO_SEXES.items():
+            found = gho.find(country.iso3, sex, age)
+            record[f"{label}_percent"] = found["NumericValue"]
+            record[f"{label}_low"] = found["Low"]
+            record[f"{label}_high"] = found["High"]
+        rows[key] = record
+    names = {key: name for key, _, _, name in GHO_MEASURES}
+    cited = (("obesity_18_plus", "SEX_FMLE"), ("obesity_18_plus", "SEX_MLE"), ("overweight_18_plus", "SEX_BTSX"), ("diabetes_18_plus", "SEX_MLE"), ("diabetes_30_plus", "SEX_FMLE"))
+    ages = {key: age for key, _, age, _ in GHO_MEASURES}
+    items = [indicators[rows[key]["indicator"]].cite(indicators[rows[key]["indicator"]].find(country.iso3, sex, ages[key]), names[key]) for key, sex in cited]
+    years = sorted({r["year"] for r in rows.values()})
     return lookup_entry(
-        f"gcc-adult-obesity-and-overweight-by-sex-{year}", f"Age-standardised prevalence of obesity and overweight among adults 18+ by sex, GCC economies, {year} (WHO GHO)",
-        "healthcare", "SA", rows, {"indicators": ["NCD_BMI_30A", "NCD_BMI_25A"], "urls": [g.source.url for g, _ in indicators.values()], "year": year},
-        lookup_vectors(rows, lead, ("KWT", "SAU")), items,
+        f"{country.prefix}-adult-obesity-overweight-and-diabetes-by-sex-{years[0]}-{years[-1]}",
+        f"{country.name}: age-standardised adult obesity, overweight and diabetes prevalence by sex, {years[0]} and {years[-1]} (WHO GHO)",
+        "healthcare", country.iso2, rows, {"urls": {code: g.source.url for code, g in indicators.items()}},
+        lookup_vectors(rows, "women_percent", ("obesity_18_plus", "diabetes_18_plus")) + [{"input": {"key": "overweight_18_plus", "column": "both_sexes_percent"}, "expected": rows["overweight_18_plus"]["both_sexes_percent"], "origin": "source"}],
+        items,
         [
-            {"statistic": f"value[KWT,{lead}]", "expected": rows["KWT"][lead], "tolerance": 1e-9},
-            {"statistic": "value[SAU,obesity_men_percent]", "expected": rows["SAU"]["obesity_men_percent"], "tolerance": 1e-9},
-            {"statistic": "max[overweight_both_sexes_percent]", "expected": max(r["overweight_both_sexes_percent"] for r in rows.values()), "tolerance": 1e-9},
+            {"statistic": "value[obesity_18_plus,women_percent]", "expected": rows["obesity_18_plus"]["women_percent"], "tolerance": 1e-9},
+            {"statistic": "value[diabetes_18_plus,men_percent]", "expected": rows["diabetes_18_plus"]["men_percent"], "tolerance": 1e-9},
+            {"statistic": "max[both_sexes_percent]", "expected": max(r["both_sexes_percent"] for r in rows.values()), "tolerance": 1e-9},
         ],
-        ["gcc", "obesity", "overweight", "bmi", "by-sex", "who", "health"], ["health-demo", "insurance", "synthetic-customers", "clinical-records"],
-        f"Age-standardised prevalence (percent) of obesity (BMI 30 or more, GHO indicator NCD_BMI_30A) and overweight (BMI 25 or more, NCD_BMI_25A) among "
-        f"adults aged 18 and over in each GCC state in {year}, for both sexes, men and women, with the lower and upper bounds of the WHO uncertainty interval "
-        "(_low and _high), from the WHO Global Health Observatory; each query is filtered to one year. "
-        "Rows are keyed by ISO 3166-1 alpha-3 code." + WHO_LICENSE_NOTE,
-        (f"{year}-01-01", f"{year}-12-31"), status="license-review",
+        ["gcc", "obesity", "overweight", "bmi", "diabetes", "ncd", "by-sex", "who", "health"], ["health-demo", "insurance", "synthetic-customers", "clinical-records"],
+        f"Age-standardised prevalence (percent) among adults in {country.name}, for both sexes, men and women, with the lower and upper bounds of the WHO "
+        "uncertainty interval (_low and _high): obesity (BMI 30 or more, GHO indicator NCD_BMI_30A) and overweight (BMI 25 or more, NCD_BMI_25A) for ages "
+        f"18 and over in {rows['obesity_18_plus']['year']}, and diabetes (NCD_DIABETES_PREVALENCE_AGESTD) for ages 18 and over and 30 and over in "
+        f"{rows['diabetes_18_plus']['year']}, the latest year that indicator carries. Each GHO query is filtered to one year and the six GCC states. "
+        "Rows are keyed by measure and record their indicator and year. The World Bank diabetes table already in the archive gives one both-sexes figure "
+        "for ages 20 to 79; this adds the split by sex." + WHO_LICENSE_NOTE,
+        (f"{years[0]}-01-01", f"{years[-1]}-12-31"), status="license-review",
     )
 
-
-def who_diabetes_entry(year: int) -> dict:
-    gho = GhoIndicator("NCD_DIABETES_PREVALENCE_AGESTD", year)
-    ages = {"AGEGROUP_YEARS18-PLUS": "18_plus", "AGEGROUP_YEARS30-PLUS": "30_plus"}
-    rows: dict[str, dict] = {}
-    for area in GCC:
-        record: dict[str, Any] = {}
-        for age, age_label in ages.items():
-            for sex, label in GHO_SEXES.items():
-                found = gho.find(area, sex, age)
-                record[f"diabetes_{age_label}_{label}_percent"] = found["NumericValue"]
-                record[f"diabetes_{age_label}_{label}_low"] = found["Low"]
-                record[f"diabetes_{age_label}_{label}_high"] = found["High"]
-        rows[area] = record
-    name = "prevalence of diabetes, age-standardised"
-    items = [gho.cite(gho.find("KWT", "SEX_MLE", "AGEGROUP_YEARS18-PLUS"), name), gho.cite(gho.find("BHR", "SEX_FMLE", "AGEGROUP_YEARS30-PLUS"), name)]
-    lead = "diabetes_18_plus_both_sexes_percent"
-    return lookup_entry(
-        f"gcc-diabetes-prevalence-by-sex-{year}", f"Age-standardised prevalence of diabetes among adults 18+ and 30+ by sex, GCC economies, {year} (WHO GHO)",
-        "healthcare", "SA", rows, {"indicator": gho.code, "url": gho.source.url, "year": year},
-        lookup_vectors(rows, lead, ("KWT", "BHR")), items,
-        [
-            {"statistic": "value[KWT,diabetes_18_plus_men_percent]", "expected": rows["KWT"]["diabetes_18_plus_men_percent"], "tolerance": 1e-9},
-            {"statistic": "value[BHR,diabetes_30_plus_women_percent]", "expected": rows["BHR"]["diabetes_30_plus_women_percent"], "tolerance": 1e-9},
-            {"statistic": f"max[{lead}]", "expected": max(r[lead] for r in rows.values()), "tolerance": 1e-9},
-        ],
-        ["gcc", "diabetes", "ncd", "by-sex", "who", "health"], ["health-demo", "insurance", "synthetic-customers", "clinical-records"],
-        f"Age-standardised prevalence (percent) of diabetes among adults aged 18 and over and aged 30 and over in each GCC state in {year}, for both sexes, men and "
-        "women, with the lower and upper bounds of the uncertainty interval (_low and _high), from WHO GHO indicator NCD_DIABETES_PREVALENCE_AGESTD "
-        f"({year} is the latest year the indicator carries). The World Bank diabetes table already in the archive gives one both-sexes figure for ages 20 to 79; "
-        "this one adds the split by sex. Rows are keyed by ISO 3166-1 alpha-3 code." + WHO_LICENSE_NOTE,
-        (f"{year}-01-01", f"{year}-12-31"), status="license-review",
-    )
 
 
 # ---------------------------------------------------------------- main
@@ -1011,32 +1056,44 @@ def who_diabetes_entry(year: int) -> dict:
 
 def main() -> int:
     locations = Locations(Source(UN_LOCATIONS_URL))
+    countries = [locations.country(iso3) for iso3 in GCC]
+    by_iso3 = {c.iso3: c for c in countries}
 
     origin = OriginTable(UnWorkbook(Source(IMS_ORIGIN_URL), ["Table 1"]), locations)
-    write(ims_origin_entry(origin))
-    write(ims_origin_by_sex_entry(origin))
-    write(ims_destination_entry(UnWorkbook(Source(IMS_DESTINATION_URL), ["Table 1", "Table 2", "Table 3", "Table 4"]), locations))
-    write(ims_age_entry(UnWorkbook(Source(IMS_AGE_URL), ["Table 1"]), locations))
+    destination = DestinationTables(UnWorkbook(Source(IMS_DESTINATION_URL), DestinationTables.names), countries)
+    ages = AgeTable(UnWorkbook(Source(IMS_AGE_URL), ["Table 1"]), countries, locations)
 
     license_source = Source(WB_LICENSE_URL)
     age_indicators = [f"SP.POP.{band}.{sex}" for sex in ("MA", "FE") for band in AGE_BANDS]
-    write(wb_age_entry(WorldBankQuery(Source(wb_url(age_indicators, "2025", 40))), Source(f"{WB_API}/indicator/SP.POP.0004.MA?format=json"), license_source, 2025))
+    population = WorldBankQuery(Source(wb_url(age_indicators, "2025", 40)))
+    population_meta = Source(f"{WB_API}/indicator/SP.POP.0004.MA?format=json")
     projections = WorldBankQuery(Source(wb_url(["SP.POP.TOTL", "SP.POP.TOTL.MA.IN", "SP.POP.TOTL.FE.IN"], "2025:2050", 40)))
-    write(wb_projection_entry(projections, Source(f"{WB_API}/indicator/SP.POP.TOTL.MA.IN?format=json"), license_source, 2025, 2050))
-    write(wb_remittances_paid_entry(WorldBankQuery(Source(wb_url(["BM.TRF.PWKR.CD.DT"], "2010:2024"))), Source(f"{WB_API}/indicator/BM.TRF.PWKR.CD.DT?format=json"), license_source, 2010, 2024))
-    write(wb_remittance_cost_entry(WorldBankQuery(Source(wb_url(["SI.RMT.COST.OB.ZS"], "2016:2023"))), Source(f"{WB_API}/indicator/SI.RMT.COST.OB.ZS?format=json"), license_source, 2016, 2023))
+    projections_meta = Source(f"{WB_API}/indicator/SP.POP.TOTL.MA.IN?format=json")
+    paid = WorldBankQuery(Source(wb_url([REMITTANCES_PAID], "2010:2024")))
+    cost = WorldBankQuery(Source(wb_url([REMITTANCE_COST], "2010:2024")))
+    remittance_meta = {code: Source(f"{WB_API}/indicator/{code}?format=json") for code in (REMITTANCES_PAID, REMITTANCE_COST)}
 
     labels = IloLabels(Source(ILO_LABELS_URL))
+    modelled = ModelledEmployment(labels, 2024)
+    gho = {"NCD_BMI_30A": GhoIndicator("NCD_BMI_30A", 2024), "NCD_BMI_25A": GhoIndicator("NCD_BMI_25A", 2024), "NCD_DIABETES_PREVALENCE_AGESTD": GhoIndicator("NCD_DIABETES_PREVALENCE_AGESTD", 2022)}
+
+    for country in countries:
+        write(ims_origin_entry(origin, country))
+        write(ims_stock_entry(destination, country))
+        write(ims_age_entry(ages, country))
+        write(wb_age_entry(population, population_meta, license_source, country, 2025))
+        write(wb_projection_entry(projections, projections_meta, license_source, country, 2025, 2050))
+        write(wb_remittance_entry(paid, cost, remittance_meta, license_source, country, 2010, 2024))
+        write(employment_by_activity(modelled, country))
+        write(who_health_entry(gho, country))
+
     write(qa_employment_by_activity(labels, 2024))
     write(qa_employment_by_skill(labels, 2024))
     write(qa_employment_by_age(labels, 2024))
-    write(unemployment_by_citizenship(2025, 2024))
+    write(unemployment_by_citizenship(by_iso3["SAU"], 2025))
+    write(unemployment_by_citizenship(by_iso3["QAT"], 2024))
     write(sa_earnings_by_citizenship(2020))
-    write(gcc_employment_by_activity(labels, 2024))
     write(om_foreign_citizens(labels, locations, 2024))
-
-    write(who_weight_entry(2024))
-    write(who_diabetes_entry(2022))
     return 0
 
 

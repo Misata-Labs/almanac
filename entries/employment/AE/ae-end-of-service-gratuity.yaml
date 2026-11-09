@@ -1,0 +1,181 @@
+id: ae-end-of-service-gratuity
+title: 'UAE end-of-service gratuity for foreign workers: 21 days'' basic wage a year for five years, 30 days thereafter,
+  capped at two years'
+kind: rule
+domain: employment
+region: AE
+status: license-review
+tier: B
+valid_from: '2022-02-02'
+valid_to: null
+tags:
+- gcc
+- labour-law
+- payroll
+- end-of-service
+- gratuity
+- uae
+use_cases:
+- payroll-demo
+- hr-demo
+- hr-analytics
+spec:
+  implementation: almanac.rules.gcc_end_of_service
+  parameters:
+    currency: AED
+    wage_unit: day
+    days_per_month: 30
+    tiers:
+    - up_to_years: 5
+      per_year: '21'
+    - up_to_years: null
+      per_year: '30'
+    minimum_years: 1
+    cap_months: 24
+    wage_basis: last basic wage
+    applies_to: full-time foreign workers; nationals receive pension under the pensions and social security legislation
+  vectors:
+  - input:
+      op: accrual
+      year: 3
+    expected: '21'
+    origin: source
+    note: 'Article 51(2)(a): 21 days for each of the first five years'
+  - input:
+      op: accrual
+      year: 6
+    expected: '30'
+    origin: source
+    note: 'Article 51(2)(b): 30 days for each year exceeding five'
+  - input:
+      op: award_months
+      years: '0.9'
+    expected: '0'
+    origin: source
+    note: 'Article 51(2): entitlement requires a year or more of continuous service'
+  - input:
+      monthly_wage: 10000
+      years: 5
+    expected: '35000.00'
+    origin: derived
+    note: 5 x 21 days at 10,000 / 30
+  - input:
+      monthly_wage: 10000
+      years: 10
+    expected: '85000.00'
+    origin: derived
+    note: 5 x 21 + 5 x 30 = 255 days
+  - input:
+      monthly_wage: 10000
+      years: 30
+    expected: '240000.00'
+    origin: derived
+    note: capped at two years' (24 months') wage
+  - input:
+      monthly_wage: 9000
+      years: '2.5'
+    expected: '15750.00'
+    origin: derived
+    note: 52.5 days at 300 a day
+evidence:
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 39, Article 51(2)
+  value: completed a year or more
+  unit: text
+  snippet: The full-time foreign worker, who completed a year or more in continuous service,
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 39, Article 51(2)(a)
+  value: (21) twenty one days
+  unit: text
+  snippet: a. A wage of (21) twenty one days for each year of the first five years of service;
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 39, Article 51(2)(b)
+  value: (30) thirty days
+  unit: text
+  snippet: b. A wage of (30) thirty days for each year exceeding such period.
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 39, Article 51(3)
+  value: parts of the year
+  unit: text
+  snippet: The foreign worker shall be entitled to a benefit for parts of the year in proportion to
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 40, Article 51(6)
+  value: two years’ wage
+  unit: text
+  snippet: worker in its entirety does not exceed two years’ wage.
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 39, Article 51(5)
+  value: last basic wage
+  unit: text
+  snippet: calculated according to the last basic wage the worker was entitled to,
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+assumed:
+- parameter: days_per_month
+  value: 30
+  method: assumed
+  rationale: The Decree-Law text does not define the daily wage for monthly-paid workers; 30 days a month is assumed.
+- parameter: cap_months
+  value: 24
+  method: derived
+  rationale: Article 51(6) caps the benefit at two years' wage, read as 24 months of the basic wage.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: tier_count
+  expected: 2
+  tolerance: 0
+- statistic: accrual[6]
+  expected: 30
+  tolerance: 0
+- statistic: cap_months
+  expected: 24
+  tolerance: 0
+notes: 'End-of-service benefit for a full-time foreign worker under Article 51 of Federal Decree-Law No. 33 of 2021:
+  after at least a year of continuous service, 21 days of the last basic wage for each of the first five years and
+  30 days for each later year, part years pro rata, unpaid absence excluded, the total capped at two years'' wage.
+  The 2021 law makes no reduction for resignation. UAE nationals are covered by pension legislation instead. The
+  law does not convert a monthly wage to a daily one in the text fetched; the entry uses 30 days a month, which
+  is an assumption, as is reading two years'' wage as 24 months of basic wage. Monetary vectors are computed from
+  the stated rule.'

@@ -1,0 +1,149 @@
+id: bh-iban-format
+title: 'Bahrain IBAN format: 22 characters, BH, check digits, four-letter bank code from the BIC and 14-character
+  account (CBB)'
+kind: rule
+domain: payments
+region: BH
+status: license-review
+tier: B
+valid_from: '2011-02-16'
+valid_to: null
+tags:
+- gcc
+- banking
+- payments
+- iban
+- check-digit
+- bahrain
+use_cases:
+- banking-demo
+- payments-demo
+- kyc-onboarding
+- data-quality-validation
+spec:
+  implementation: almanac.rules.iban
+  parameters:
+    modulus: 97
+    complement_base: 98
+    valid_remainder: 1
+    letter_values:
+      A: 10
+      B: 11
+      C: 12
+      D: 13
+      E: 14
+      F: 15
+      G: 16
+      H: 17
+      I: 18
+      J: 19
+      K: 20
+      L: 21
+      M: 22
+      N: 23
+      O: 24
+      P: 25
+      Q: 26
+      R: 27
+      S: 28
+      T: 29
+      U: 30
+      V: 31
+      W: 32
+      X: 33
+      Y: 34
+      Z: 35
+    lengths:
+      BH: 22
+    structure:
+      country_code: BH
+      check_digits: 2
+      bank_identifier: first four letters of the bank's BIC
+      account_number: 14 characters, left-padded with zeros
+  vectors:
+  - input: BH50NBOB00001299123456
+    expected: true
+    origin: source
+    note: Example 1
+  - input: BH89SCBLBHD18123456701
+    expected: true
+    origin: source
+    note: Example 2, alphanumeric account
+  - input: BH50 NBOB 0000 1299 1234 56
+    expected: true
+    origin: source
+    note: print format of Example 1
+  - input:
+      country: BH
+      bban: NBOB00001299123456
+    expected: '50'
+    origin: source
+    note: Annexure I check digit generation
+  - input: BH51NBOB00001299123456
+    expected: false
+    origin: derived
+evidence:
+- publisher: Central Bank of Bahrain (CBB)
+  title: 'Version 1: ISO IBAN Standard for the Kingdom of Bahrain, 16 February 2011'
+  url: https://www.cbb.gov.bh/wp-content/uploads/2018/12/IBAN-Standard-Document-16-02-2011.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 6, section 3.2, Length of IBAN
+  value: 22 characters
+  unit: text
+  snippet: The IBAN for the Kingdom of Bahrain is fixed in length, 22 characters,
+  source_license: unstated
+  content_sha256: 14a159e341682bf73b4300d8086427ac9a8f16a0b8100feac07999758d7ecb4d
+  role: primary
+- publisher: Central Bank of Bahrain (CBB)
+  title: 'Version 1: ISO IBAN Standard for the Kingdom of Bahrain, 16 February 2011'
+  url: https://www.cbb.gov.bh/wp-content/uploads/2018/12/IBAN-Standard-Document-16-02-2011.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 8, section 3.3, Example 1
+  value: BH50NBOB00001299123456
+  unit: text
+  snippet: 'IBAN electronic format example: BH50NBOB00001299123456'
+  source_license: unstated
+  content_sha256: 14a159e341682bf73b4300d8086427ac9a8f16a0b8100feac07999758d7ecb4d
+  role: primary
+- publisher: Central Bank of Bahrain (CBB)
+  title: 'Version 1: ISO IBAN Standard for the Kingdom of Bahrain, 16 February 2011'
+  url: https://www.cbb.gov.bh/wp-content/uploads/2018/12/IBAN-Standard-Document-16-02-2011.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 8, section 3.3, Example 2
+  value: BH89SCBLBHD18123456701
+  unit: text
+  snippet: 'IBAN electronic format example: BH89SCBLBHD18123456701'
+  source_license: unstated
+  content_sha256: 14a159e341682bf73b4300d8086427ac9a8f16a0b8100feac07999758d7ecb4d
+  role: primary
+- publisher: Central Bank of Bahrain (CBB)
+  title: 'Version 1: ISO IBAN Standard for the Kingdom of Bahrain, 16 February 2011'
+  url: https://www.cbb.gov.bh/wp-content/uploads/2018/12/IBAN-Standard-Document-16-02-2011.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 15, Annexure I, Step 10
+  value: 98-48=50
+  unit: text
+  snippet: Subtract this final remainder (48) from 98. (98-48=50)
+  source_license: unstated
+  content_sha256: 14a159e341682bf73b4300d8086427ac9a8f16a0b8100feac07999758d7ecb4d
+  role: primary
+- publisher: Central Bank of Bahrain (CBB)
+  title: 'Version 1: ISO IBAN Standard for the Kingdom of Bahrain, 16 February 2011'
+  url: https://www.cbb.gov.bh/wp-content/uploads/2018/12/IBAN-Standard-Document-16-02-2011.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 12, section 3.1, Table 1
+  value: Z 35
+  unit: text
+  snippet: M 22 Z 35
+  source_license: unstated
+  content_sha256: 14a159e341682bf73b4300d8086427ac9a8f16a0b8100feac07999758d7ecb4d
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+notes: 'Bahraini International Bank Account Numbers as the Central Bank of Bahrain''s 2011 ISO IBAN standard specifies
+  them: 22 characters made of the country code BH, two MOD 97-10 check digits, the first four letters of the account-holding
+  bank''s BIC, and the 14-character core account number padded with leading zeros. The vectors are the standard''s
+  own examples and its worked check-digit generation (remainder 48, check digits 98 - 48 = 50).'

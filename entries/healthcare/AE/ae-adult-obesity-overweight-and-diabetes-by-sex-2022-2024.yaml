@@ -1,0 +1,186 @@
+id: ae-adult-obesity-overweight-and-diabetes-by-sex-2022-2024
+title: 'United Arab Emirates: age-standardised adult obesity, overweight and diabetes prevalence by sex, 2022 and
+  2024 (WHO GHO)'
+kind: rule
+domain: healthcare
+region: AE
+status: license-review
+tier: A
+valid_from: '2022-01-01'
+valid_to: '2024-12-31'
+tags:
+- gcc
+- obesity
+- overweight
+- bmi
+- diabetes
+- ncd
+- by-sex
+- who
+- health
+use_cases:
+- health-demo
+- insurance
+- synthetic-customers
+- clinical-records
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    urls:
+      NCD_BMI_30A: https://ghoapi.azureedge.net/api/NCD_BMI_30A?$filter=TimeDim%20eq%202024%20and%20SpatialDim%20in%20(%27SAU%27,%27ARE%27,%27QAT%27,%27KWT%27,%27BHR%27,%27OMN%27)
+      NCD_BMI_25A: https://ghoapi.azureedge.net/api/NCD_BMI_25A?$filter=TimeDim%20eq%202024%20and%20SpatialDim%20in%20(%27SAU%27,%27ARE%27,%27QAT%27,%27KWT%27,%27BHR%27,%27OMN%27)
+      NCD_DIABETES_PREVALENCE_AGESTD: https://ghoapi.azureedge.net/api/NCD_DIABETES_PREVALENCE_AGESTD?$filter=TimeDim%20eq%202022%20and%20SpatialDim%20in%20(%27SAU%27,%27ARE%27,%27QAT%27,%27KWT%27,%27BHR%27,%27OMN%27)
+    rows:
+      obesity_18_plus:
+        indicator: NCD_BMI_30A
+        year: 2024
+        both_sexes_percent: 31.609392
+        both_sexes_low: 27.094015
+        both_sexes_high: 36.323455
+        men_percent: 27.820173
+        men_low: 21.510971
+        men_high: 34.392285
+        women_percent: 38.405374
+        women_low: 32.858282
+        women_high: 44.14016
+      overweight_18_plus:
+        indicator: NCD_BMI_25A
+        year: 2024
+        both_sexes_percent: 70.113194
+        both_sexes_low: 65.724528
+        both_sexes_high: 74.229115
+        men_percent: 70.674694
+        men_low: 64.507377
+        men_high: 76.491588
+        women_percent: 68.968433
+        women_low: 63.783097
+        women_high: 74.057871
+      diabetes_18_plus:
+        indicator: NCD_DIABETES_PREVALENCE_AGESTD
+        year: 2022
+        both_sexes_percent: 26.086864
+        both_sexes_low: 19.433695
+        both_sexes_high: 33.279979
+        men_percent: 26.157868
+        men_low: 17.069356
+        men_high: 36.40559
+        women_percent: 25.432688
+        women_low: 16.810894
+        women_high: 35.299611
+      diabetes_30_plus:
+        indicator: NCD_DIABETES_PREVALENCE_AGESTD
+        year: 2022
+        both_sexes_percent: 33.488524
+        both_sexes_low: 25.385746
+        both_sexes_high: 41.981155
+        men_percent: 33.324081
+        men_low: 22.342138
+        men_high: 45.153099
+        women_percent: 33.063602
+        women_low: 22.396293
+        women_high: 44.745547
+  vectors:
+  - input:
+      key: obesity_18_plus
+      column: women_percent
+    expected: 38.405374
+    origin: source
+  - input:
+      key: diabetes_18_plus
+      column: women_percent
+    expected: 25.432688
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+  - input:
+      key: overweight_18_plus
+      column: both_sexes_percent
+    expected: 70.113194
+    origin: source
+evidence:
+- publisher: World Health Organization (Global Health Observatory)
+  title: WHO GHO OData API, NCD_BMI_30A (prevalence of obesity among adults, BMI 30 or more, age-standardised),
+    2024, GCC economies
+  url: https://ghoapi.azureedge.net/api/NCD_BMI_30A?$filter=TimeDim%20eq%202024%20and%20SpatialDim%20in%20(%27SAU%27,%27ARE%27,%27QAT%27,%27KWT%27,%27BHR%27,%27OMN%27)
+  accessed_at: '2026-11-09'
+  locator: value[Id=122338] (SpatialDim=ARE, Dim1=SEX_FMLE, Dim2=AGEGROUP_YEARS18-PLUS).NumericValue
+  value: 38.405374
+  unit: percent
+  snippet: '"Value":"38.4 [32.9-44.1]","NumericValue":38.405374000'
+  source_license: unstated
+  content_sha256: 72901d25aea093d27c427b6f1520f17c39c5030e5137d3cede16394171aa7a93
+  role: primary
+- publisher: World Health Organization (Global Health Observatory)
+  title: WHO GHO OData API, NCD_BMI_30A (prevalence of obesity among adults, BMI 30 or more, age-standardised),
+    2024, GCC economies
+  url: https://ghoapi.azureedge.net/api/NCD_BMI_30A?$filter=TimeDim%20eq%202024%20and%20SpatialDim%20in%20(%27SAU%27,%27ARE%27,%27QAT%27,%27KWT%27,%27BHR%27,%27OMN%27)
+  accessed_at: '2026-11-09'
+  locator: value[Id=122326] (SpatialDim=ARE, Dim1=SEX_MLE, Dim2=AGEGROUP_YEARS18-PLUS).NumericValue
+  value: 27.820173
+  unit: percent
+  snippet: '"Value":"27.8 [21.5-34.4]","NumericValue":27.820173000'
+  source_license: unstated
+  content_sha256: 72901d25aea093d27c427b6f1520f17c39c5030e5137d3cede16394171aa7a93
+  role: primary
+- publisher: World Health Organization (Global Health Observatory)
+  title: WHO GHO OData API, NCD_BMI_25A (prevalence of overweight among adults, BMI 25 or more, age-standardised),
+    2024, GCC economies
+  url: https://ghoapi.azureedge.net/api/NCD_BMI_25A?$filter=TimeDim%20eq%202024%20and%20SpatialDim%20in%20(%27SAU%27,%27ARE%27,%27QAT%27,%27KWT%27,%27BHR%27,%27OMN%27)
+  accessed_at: '2026-11-09'
+  locator: value[Id=92092] (SpatialDim=ARE, Dim1=SEX_BTSX, Dim2=AGEGROUP_YEARS18-PLUS).NumericValue
+  value: 70.113194
+  unit: percent
+  snippet: '"Value":"70.1 [65.7-74.2]","NumericValue":70.113194000'
+  source_license: unstated
+  content_sha256: e2665183b5410fbdcc0757fc17bcb6e9a7d61986a5268fe227cd5cf70b6a7754
+  role: primary
+- publisher: World Health Organization (Global Health Observatory)
+  title: WHO GHO OData API, NCD_DIABETES_PREVALENCE_AGESTD (prevalence of diabetes, age-standardised), 2022, GCC
+    economies
+  url: https://ghoapi.azureedge.net/api/NCD_DIABETES_PREVALENCE_AGESTD?$filter=TimeDim%20eq%202022%20and%20SpatialDim%20in%20(%27SAU%27,%27ARE%27,%27QAT%27,%27KWT%27,%27BHR%27,%27OMN%27)
+  accessed_at: '2026-11-09'
+  locator: value[Id=6760837] (SpatialDim=ARE, Dim1=SEX_MLE, Dim2=AGEGROUP_YEARS18-PLUS).NumericValue
+  value: 26.157868
+  unit: percent
+  snippet: '"Value":"26.2 [17.1-36.4]","NumericValue":26.157868000'
+  source_license: unstated
+  content_sha256: 0fe59c419fc31c73fe98c509d943053bf973d1c1d2beb6e58ae0936c507f3499
+  role: primary
+- publisher: World Health Organization (Global Health Observatory)
+  title: WHO GHO OData API, NCD_DIABETES_PREVALENCE_AGESTD (prevalence of diabetes, age-standardised), 2022, GCC
+    economies
+  url: https://ghoapi.azureedge.net/api/NCD_DIABETES_PREVALENCE_AGESTD?$filter=TimeDim%20eq%202022%20and%20SpatialDim%20in%20(%27SAU%27,%27ARE%27,%27QAT%27,%27KWT%27,%27BHR%27,%27OMN%27)
+  accessed_at: '2026-11-09'
+  locator: value[Id=2993096] (SpatialDim=ARE, Dim1=SEX_FMLE, Dim2=AGEGROUP_YEARS30-PLUS).NumericValue
+  value: 33.063602
+  unit: percent
+  snippet: '"Value":"33.1 [22.4-44.7]","NumericValue":33.063602000'
+  source_license: unstated
+  content_sha256: 0fe59c419fc31c73fe98c509d943053bf973d1c1d2beb6e58ae0936c507f3499
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: value[obesity_18_plus,women_percent]
+  expected: 38.405374
+  tolerance: 1.0e-09
+- statistic: value[diabetes_18_plus,men_percent]
+  expected: 26.157868
+  tolerance: 1.0e-09
+- statistic: max[both_sexes_percent]
+  expected: 70.113194
+  tolerance: 1.0e-09
+notes: 'Age-standardised prevalence (percent) among adults in United Arab Emirates, for both sexes, men and women,
+  with the lower and upper bounds of the WHO uncertainty interval (_low and _high): obesity (BMI 30 or more, GHO
+  indicator NCD_BMI_30A) and overweight (BMI 25 or more, NCD_BMI_25A) for ages 18 and over in 2024, and diabetes
+  (NCD_DIABETES_PREVALENCE_AGESTD) for ages 18 and over and 30 and over in 2022, the latest year that indicator
+  carries. Each GHO query is filtered to one year and the six GCC states. Rows are keyed by measure and record their
+  indicator and year. The World Bank diabetes table already in the archive gives one both-sexes figure for ages
+  20 to 79; this adds the split by sex. The GHO API carries no licence statement, so the licence is recorded as
+  unstated and the entry stays at license-review until a reviewer confirms the WHO terms that apply.'

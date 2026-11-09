@@ -1,0 +1,118 @@
+id: ae-abu-dhabi-births-by-region-citizenship-sex-2025
+title: Abu Dhabi live births by citizenship and sex, given region of the emirate, 2025 (SCAD)
+kind: conditional
+domain: demographics
+region: AE
+status: license-review
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- uae
+- gcc
+- abu-dhabi
+- births
+- citizenship
+- sex
+- regions
+- scad
+use_cases:
+- synthetic-customers
+- person-generation
+- address-generation
+- household-generation
+spec:
+  variable: citizenship_and_sex
+  unit: ratio
+  given: region
+  distributions:
+    Abu Dhabi Region:
+      family: categorical
+      parameters:
+        shares:
+          Emirati male: 0.184931
+          Emirati female: 0.1721
+          Non-Emirati male: 0.332345
+          Non-Emirati female: 0.310624
+        counts:
+          Emirati male: 5304
+          Emirati female: 4936
+          Non-Emirati male: 9532
+          Non-Emirati female: 8909
+        total: 28681
+    Al Ain Region:
+      family: categorical
+      parameters:
+        shares:
+          Emirati male: 0.270321
+          Emirati female: 0.234225
+          Non-Emirati male: 0.261052
+          Non-Emirati female: 0.234403
+        counts:
+          Emirati male: 3033
+          Emirati female: 2628
+          Non-Emirati male: 2929
+          Non-Emirati female: 2630
+        total: 11220
+    Al Dhafra Region:
+      family: categorical
+      parameters:
+        shares:
+          Emirati male: 0.14111
+          Emirati female: 0.146754
+          Non-Emirati male: 0.365945
+          Non-Emirati female: 0.34619
+        counts:
+          Emirati male: 150
+          Emirati female: 156
+          Non-Emirati male: 389
+          Non-Emirati female: 368
+        total: 1063
+evidence:
+- publisher: Statistics Centre Abu Dhabi
+  title: SCAD, Birth Statistics 2025 (Excel tables; source Department of Health - Abu Dhabi)
+  url: https://www.scad.gov.ae/documents/20122/3422848/publication_64080_17_1_1_2025_EN.xlsx/5c7f95d5-08ff-000e-03c8-39d08b7c4747
+  accessed_at: '2026-11-09'
+  locator: Table 1, row 'Emirati / Male', column 'Abu Dhabi Region'
+  value: '5304'
+  unit: count
+  snippet: 'Table 1: Births by citizenship, gender and region, 2025'
+  source_license: 'SCAD terms of use: reproduction without further permission, with acknowledgement of SCAD as the
+    source'
+  content_sha256: 37c8b6b3051a762413f97253e0b5bcfef5215d18590e1a7036d8aa1c9431771b
+  role: primary
+- publisher: Statistics Centre Abu Dhabi
+  title: SCAD, Birth Statistics 2025 (Excel tables; source Department of Health - Abu Dhabi)
+  url: https://www.scad.gov.ae/documents/20122/3422848/publication_64080_17_1_1_2025_EN.xlsx/5c7f95d5-08ff-000e-03c8-39d08b7c4747
+  accessed_at: '2026-11-09'
+  locator: Table 1, row 'Non-Emirati / Female', column 'Al Ain Region'
+  value: '2630'
+  unit: count
+  snippet: Al Dhafra Region
+  source_license: 'SCAD terms of use: reproduction without further permission, with acknowledgement of SCAD as the
+    source'
+  content_sha256: 37c8b6b3051a762413f97253e0b5bcfef5215d18590e1a7036d8aa1c9431771b
+  role: primary
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / sum of the four citizenship and sex counts
+  method: derived
+  rationale: SCAD publishes counts; each share is the count divided by the sum of the counts in its distribution.
+tests:
+- statistic: share["Abu Dhabi Region","Non-Emirati male"]
+  expected: 0.332345
+  tolerance: 0.005
+- statistic: share["Al Dhafra Region","Emirati female"]
+  expected: 0.146754
+  tolerance: 0.005
+- statistic: sum_of_shares["Al Ain Region"]
+  expected: 1
+  tolerance: 0.0001
+notes: Live births in 2025 in each of the three regions of the Emirate of Abu Dhabi (Abu Dhabi, Al Ain, Al Dhafra)
+  split by citizenship and sex, from Table 1 of SCAD's Birth Statistics 2025. Births abroad, births with region
+  not stated, and births with citizenship or sex not stated are left out. The Emirati share differs sharply by region,
+  which makes the table a compact prior for the citizenship of a synthetic resident given their region. SCAD's terms
+  of use (https://www.scad.gov.ae/terms-of-use) state that its publications and tables may be reproduced without
+  further permission provided SCAD is acknowledged as the source; the page is rendered per request and is referenced
+  rather than hashed, so the entry stays at licence review.

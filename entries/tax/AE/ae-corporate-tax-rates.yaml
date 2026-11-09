@@ -1,0 +1,160 @@
+id: ae-corporate-tax-rates
+title: 'UAE Corporate Tax: 0% on taxable income up to AED 375,000 and 9% above, with small business relief at AED
+  3 million'
+kind: rule
+domain: tax
+region: AE
+status: license-review
+tier: B
+valid_from: '2023-06-01'
+valid_to: null
+tags:
+- gcc
+- tax
+- corporate-tax
+- uae
+use_cases:
+- tax-demo
+- invoicing-demo
+- invoicing
+- tax-filing-demo
+- financial-reporting
+spec:
+  implementation: almanac.rules.income_tax_bands
+  parameters:
+    currency: AED
+    personal_allowance: 0
+    bands:
+    - name: zero_rate
+      up_to: 375000
+      rate_percent: 0
+    - name: standard
+      up_to: null
+      rate_percent: 9
+    qualifying_free_zone_person_qualifying_income_rate_percent: 0
+    small_business_relief_revenue_threshold: 3000000
+    small_business_relief_last_period_ending: '2026-12-31'
+    cash_basis_revenue_threshold: 3000000
+  vectors:
+  - input: 6000000
+    expected: '506250.00'
+    origin: source
+    note: General Corporate Tax Guide, Example 1
+  - input: 375000
+    expected: '0.00'
+    origin: source
+    note: the portion not exceeding AED 375,000 is taxed at 0%
+  - input: 1000000
+    expected: '56250.00'
+    origin: derived
+evidence:
+- publisher: Ministry of Finance, United Arab Emirates
+  title: Cabinet Decision No. 116 of 2022 on the Determination of Annual Income Subject to Corporate Tax
+  url: https://mof.gov.ae/wp-content/uploads/2023/04/Cabinet-Decision-No-116-of-2022-on-the-annual-Taxable-Income-subject-to-Corporate-Tax.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 2, Article 2
+  value: 375,000
+  unit: currency:AED
+  snippet: Taxable Income of the Taxable Person not exceeding (375,000) three hundred seventy -five thousand
+  source_license: unstated
+  content_sha256: 7f753bb433b491f90d78a23e00dbac8bcd5273156340d6a0b7ce52f9f24cee06
+  role: primary
+- publisher: Ministry of Finance, United Arab Emirates
+  title: Cabinet Decision No. 116 of 2022 on the Determination of Annual Income Subject to Corporate Tax
+  url: https://mof.gov.ae/wp-content/uploads/2023/04/Cabinet-Decision-No-116-of-2022-on-the-annual-Taxable-Income-subject-to-Corporate-Tax.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 2, Article 3
+  value: (9%) nine percent
+  unit: percent
+  snippet: shall be subject to Corporate Tax at (9%) nine percent in the relevant Tax Period.
+  source_license: unstated
+  content_sha256: 7f753bb433b491f90d78a23e00dbac8bcd5273156340d6a0b7ce52f9f24cee06
+  role: primary
+- publisher: Federal Tax Authority, United Arab Emirates
+  title: General Corporate Tax Guide (CTGGCT1), September 2023
+  url: https://tax.gov.ae/DataFolder/Files/Guides/CT/CT%20General%20Guide%20-%20EN%20-%2010%2009%202023.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 21, section 4, Example 1
+  value: 506,250
+  unit: currency:AED
+  snippet: A LLC’s UAE Corporate Tax liability for the Tax Period will be AED 506,250.
+  source_license: unstated
+  content_sha256: b837af15aaab96e65a149538cbbcda5482e4c96a1ddf2b4d383fd86774063e7f
+  role: primary
+- publisher: Federal Tax Authority, United Arab Emirates
+  title: General Corporate Tax Guide (CTGGCT1), September 2023
+  url: https://tax.gov.ae/DataFolder/Files/Guides/CT/CT%20General%20Guide%20-%20EN%20-%2010%2009%202023.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 21, section 4, Example 1
+  value: 6,000,000
+  unit: currency:AED
+  snippet: (AED 6,000,000 - AED 375,000) x 9% = AED 5,625,000 x
+  source_license: unstated
+  content_sha256: b837af15aaab96e65a149538cbbcda5482e4c96a1ddf2b4d383fd86774063e7f
+  role: primary
+- publisher: Federal Tax Authority, United Arab Emirates
+  title: General Corporate Tax Guide (CTGGCT1), September 2023
+  url: https://tax.gov.ae/DataFolder/Files/Guides/CT/CT%20General%20Guide%20-%20EN%20-%2010%2009%202023.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 14, section 1, introduction
+  value: 1 June 2023
+  unit: text
+  snippet: The provisions of the Corporate Tax Law shall apply to Tax Periods commencing on or after 1 June 2023.
+  source_license: unstated
+  content_sha256: b837af15aaab96e65a149538cbbcda5482e4c96a1ddf2b4d383fd86774063e7f
+  role: primary
+- publisher: Federal Tax Authority, United Arab Emirates
+  title: General Corporate Tax Guide (CTGGCT1), September 2023
+  url: https://tax.gov.ae/DataFolder/Files/Guides/CT/CT%20General%20Guide%20-%20EN%20-%2010%2009%202023.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 88, section 7.2, small business relief
+  value: AED 3,000,000
+  unit: currency:AED
+  snippet: Any eligible Taxable Person with Revenue equal to or below AED 3,000,000 in a
+  source_license: unstated
+  content_sha256: b837af15aaab96e65a149538cbbcda5482e4c96a1ddf2b4d383fd86774063e7f
+  role: primary
+- publisher: Federal Tax Authority, United Arab Emirates
+  title: General Corporate Tax Guide (CTGGCT1), September 2023
+  url: https://tax.gov.ae/DataFolder/Files/Guides/CT/CT%20General%20Guide%20-%20EN%20-%2010%2009%202023.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 88, section 7.2, small business relief
+  value: 31 December
+  unit: text
+  snippet: relevant Tax Period and all previous Tax Periods (ending on or before 31 December
+  source_license: unstated
+  content_sha256: b837af15aaab96e65a149538cbbcda5482e4c96a1ddf2b4d383fd86774063e7f
+  role: primary
+- publisher: Federal Tax Authority, United Arab Emirates
+  title: General Corporate Tax Guide (CTGGCT1), September 2023
+  url: https://tax.gov.ae/DataFolder/Files/Guides/CT/CT%20General%20Guide%20-%20EN%20-%2010%2009%202023.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 23, section 4, Qualifying Free Zone Persons
+  value: 0%
+  unit: percent
+  snippet: A 0% rate of Corporate Tax applies to Qualifying Income earned by certain Free Zone
+  source_license: unstated
+  content_sha256: b837af15aaab96e65a149538cbbcda5482e4c96a1ddf2b4d383fd86774063e7f
+  role: primary
+assumed:
+- parameter: personal_allowance
+  value: 0
+  method: assumed
+  rationale: Corporate tax has no allowance; the 0% band is modelled as the first band.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+- statistic: rate[standard]
+  expected: 9
+  tolerance: 0
+notes: 'UAE Corporate Tax under Federal Decree-Law No. 47 of 2022, for tax periods starting on or after 1 June 2023:
+  taxable income up to AED 375,000 is taxed at 0% and the excess at 9% (Cabinet Decision No. 116 of 2022). A Qualifying
+  Free Zone Person pays 0% on its qualifying income. A resident person with revenue of AED 3,000,000 or less in
+  the period and all earlier periods ending on or before 31 December 2026 may elect small business relief and be
+  treated as having no taxable income; the same AED 3,000,000 revenue figure allows the cash basis of accounting.
+  The tax computation vector is the Federal Tax Authority''s own Example 1. The domestic minimum top-up tax for
+  large multinational groups is not modelled.'

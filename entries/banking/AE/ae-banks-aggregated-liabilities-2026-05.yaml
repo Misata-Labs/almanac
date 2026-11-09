@@ -1,0 +1,180 @@
+id: ae-banks-aggregated-liabilities-2026-05
+title: UAE banks aggregated balance sheet liabilities by category, all banks, end of May 2026 (CBUAE)
+kind: rule
+domain: banking
+region: AE
+status: verified
+tier: A
+valid_from: '2026-05-31'
+valid_to: '2026-05-31'
+tags:
+- uae
+- gcc
+- banks
+- balance-sheet
+- deposits
+- liabilities
+- cbuae
+- reference-table
+use_cases:
+- banking-demo
+- treasury
+- financial-reporting
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataset: Banks Aggregated Balance Sheet - Liabilities (All Banks)
+    period: 2026-05
+    rows:
+      'Monetary Deposits: Demand Deposits (LCY)':
+        main_category: Domestic Liabilities
+        amount: 878466.83838014
+      'Monetary Deposits: Bankers Drafts':
+        main_category: Domestic Liabilities
+        amount: 7413.815
+      Monetary Deposits:
+        main_category: Domestic Liabilities
+        amount: 885880.65338014
+      'Quasi Monetary Deposits: Time Deposits (LCY)':
+        main_category: Domestic Liabilities
+        amount: 781869.93035176
+      'Quasi Monetary Deposits: Savings Deposits (LCY)':
+        main_category: Domestic Liabilities
+        amount: 351573.482
+      'Quasi Monetary Deposits: Other Deposits (FCY)':
+        main_category: Domestic Liabilities
+        amount: 664969.00131139
+      Quasi Monetary Deposits:
+        main_category: Domestic Liabilities
+        amount: 1798412.41366315
+      Government Deposits (LCY + FCY):
+        main_category: Domestic Liabilities
+        amount: 444289.001
+      Other Domestic Deposits (LCY + FCY):
+        main_category: Domestic Liabilities
+        amount: 23886.95789851
+      Capital and Reserves:
+        main_category: Capital and Reserves
+        amount: 602013.419
+      Due to Central Bank:
+        main_category: Domestic Liabilities
+        amount: 31335.67
+      Due to Resident Banks:
+        main_category: Domestic Liabilities
+        amount: 89042.956
+      Capital Market Funding & Term Borrowings:
+        main_category: Domestic Liabilities
+        amount: 36094.083
+      Domestic Liabilities:
+        main_category: Domestic Liabilities
+        amount: 3910955.1539418
+      Due to H.O and/or Branches Abroad:
+        main_category: Foreign Liabilities
+        amount: 235283.90068961
+      Due to Other Banks Abroad:
+        main_category: Foreign Liabilities
+        amount: 382015.961
+      Capital Market Funding:
+        main_category: Foreign Liabilities
+        amount: 226295.801
+      Other Term Borrowings:
+        main_category: Foreign Liabilities
+        amount: 39950.483
+      Other Deposits (LCY + FCY):
+        main_category: Foreign Liabilities
+        amount: 318568.246
+      Other Foreign Liabilities:
+        main_category: Foreign Liabilities
+        amount: 178879.629
+      Foreign Liabilities:
+        main_category: Foreign Liabilities
+        amount: 1380994.02068961
+      Inter-Branch Transactions:
+        main_category: Unclassified Liabilities
+        amount: 4683.436
+      Other Liabilities:
+        main_category: Unclassified Liabilities
+        amount: 336493.17664112
+      'Other Liabilities: Of which: Provisions':
+        main_category: Unclassified Liabilities
+        amount: 108859.846
+      Unclassified Liabilities:
+        main_category: Unclassified Liabilities
+        amount: 341176.61264112
+      Total Liabilities:
+        main_category: Total Liabilities
+        amount: 5633125.78727253
+  vectors:
+  - input:
+      key: 'Quasi Monetary Deposits: Savings Deposits (LCY)'
+      column: amount
+    expected: 351573.482
+    origin: source
+  - input:
+      key: Total Liabilities
+      column: amount
+    expected: 5633125.78727253
+    origin: source
+  - input: Equity
+    expected: false
+    origin: derived
+evidence:
+- publisher: Central Bank of the UAE (published on Bayanat)
+  title: CBUAE Banks Aggregated Balance Sheet - Liabilities (All Banks), May 2026 (XML, Bayanat)
+  url: https://bayanat.ae/api/DatasetResources/DownloadSingle?fileName=data&resourceID=VyUxgSp1_0Dt4g1TivZs-2auHqV6G5KZULT8X3LwhGE
+  accessed_at: '2026-11-09'
+  locator: row Third_Cat='Savings Deposits (LCY)', Amount
+  value: '351573.482'
+  unit: decimal
+  snippet: <Third_Cat>Savings Deposits (LCY)</Third_Cat>
+  source_license: CC-BY-4.0
+  content_sha256: 0d86285c75e07ec13d5bb4d4c5ed2a8729520a9088fa5858623a4694f08ce74b
+  role: primary
+- publisher: Central Bank of the UAE (published on Bayanat)
+  title: CBUAE Banks Aggregated Balance Sheet - Liabilities (All Banks), May 2026 (XML, Bayanat)
+  url: https://bayanat.ae/api/DatasetResources/DownloadSingle?fileName=data&resourceID=VyUxgSp1_0Dt4g1TivZs-2auHqV6G5KZULT8X3LwhGE
+  accessed_at: '2026-11-09'
+  locator: row Third_Cat='Total Liabilities', Amount
+  value: '5633125.78727253'
+  unit: decimal
+  snippet: <Third_Cat>Total Liabilities</Third_Cat>
+  source_license: CC-BY-4.0
+  content_sha256: 0d86285c75e07ec13d5bb4d4c5ed2a8729520a9088fa5858623a4694f08ce74b
+  role: primary
+- publisher: Central Bank of the UAE (published on Bayanat)
+  title: CBUAE Banks Aggregated Balance Sheet - Metadata - Liabilities (All Banks), May 2026 (Bayanat)
+  url: https://bayanat.ae/api/DatasetResources/DownloadSingle?fileName=data&resourceID=91uqDpwGqVDn7o6ae_2etN3uwON-eOqUNuyAXfstA84
+  accessed_at: '2026-11-09'
+  locator: Metadata sheet, field 'Calculation methodology'
+  value: IMF's Monetary and Financial Statistics Manual and Compilation Guide
+  unit: text
+  snippet: IMF's Monetary and Financial Statistics Manual and Compilation Guide
+  source_license: CC-BY-4.0
+  content_sha256: e0b9d89339ce91835a9bef50e08d2ebe74cc56c786c2e2b4dfba0bc4d706dd88
+  role: supporting
+assumed:
+- parameter: parameters.rows keys
+  value: Third_Cat, prefixed with Second_Cat when the two differ
+  method: derived
+  rationale: The source repeats a category name at several levels (subtotals carry the same name at the second and
+    third level); prefixing keeps keys unique.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 26
+  tolerance: 0
+notes: 'Liabilities side of the aggregated balance sheet of all banks operating in the UAE at the end of May 2026,
+  by category: domestic monetary deposits (demand deposits and bankers'' drafts), quasi-monetary deposits (time
+  and savings deposits in dirhams, other deposits in foreign currency), government and other domestic deposits,
+  amounts due to the central bank and resident banks, capital market funding, foreign liabilities including non-resident
+  deposits, capital and reserves, provisions and other liabilities, with subtotals and the total. Compiled by the
+  Central Bank of the UAE under the IMF Monetary and Financial Statistics Manual. The dataset states no unit; CBUAE
+  monetary statistics report balance-sheet amounts in AED million, so treat amounts as such only after checking
+  the CBUAE bulletin. LCY is local currency (dirham) and FCY foreign currency. Bayanat, the UAE federal open data
+  portal run by the Federal Competitiveness and Statistics Centre, states on its Copyright and Data Licensing page
+  that datasets on the portal are available under the Creative Commons Attribution 4.0 International licence unless
+  otherwise stated; that page is rendered per request and is referenced rather than hashed. Bayanat download links
+  carry an opaque resource token issued by the portal.'

@@ -1,0 +1,187 @@
+id: bh-remittance-outflows-and-sending-cost-2010-2024
+title: 'Bahrain: personal remittances paid (US$) and average cost of sending remittances (%), annual 2010 to 2024
+  (World Bank)'
+kind: rule
+domain: payments
+region: BH
+status: verified
+tier: A
+valid_from: '2010-01-01'
+valid_to: '2024-12-31'
+tags:
+- gcc
+- remittances
+- migration
+- balance-of-payments
+- fees
+- world-bank
+use_cases:
+- remittance-demo
+- banking-demo
+- payments-demo
+- kyc-onboarding
+- pricing
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    indicators:
+      personal_remittances_paid_usd: BM.TRF.PWKR.CD.DT
+      sending_cost_percent: SI.RMT.COST.OB.ZS
+    urls:
+    - https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/BM.TRF.PWKR.CD.DT?date=2010:2024&format=json&per_page=1000
+    - https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SI.RMT.COST.OB.ZS?date=2010:2024&format=json&per_page=1000
+    rows:
+      '2010':
+        personal_remittances_paid_usd: 1641755319.14893
+        sending_cost_percent: null
+      '2011':
+        personal_remittances_paid_usd: 2050000000
+        sending_cost_percent: null
+      '2012':
+        personal_remittances_paid_usd: 2074468085.10638
+        sending_cost_percent: null
+      '2013':
+        personal_remittances_paid_usd: 2165957446.80851
+        sending_cost_percent: null
+      '2014':
+        personal_remittances_paid_usd: 2364361702.12766
+        sending_cost_percent: null
+      '2015':
+        personal_remittances_paid_usd: 2367287234.04255
+        sending_cost_percent: null
+      '2016':
+        personal_remittances_paid_usd: 2391489361.70212
+        sending_cost_percent: 4.44503
+      '2017':
+        personal_remittances_paid_usd: 2465957446.80851
+        sending_cost_percent: 1.8161
+      '2018':
+        personal_remittances_paid_usd: 3268882978.7234
+        sending_cost_percent: 1.95747
+      '2019':
+        personal_remittances_paid_usd: 2890159574.46808
+        sending_cost_percent: 3.6885175
+      '2020':
+        personal_remittances_paid_usd: 2738031914.89361
+        sending_cost_percent: 3.2416725
+      '2021':
+        personal_remittances_paid_usd: 2526861702.12766
+        sending_cost_percent: 1.9425025
+      '2022':
+        personal_remittances_paid_usd: 2711702127.65957
+        sending_cost_percent: 2.36833325
+      '2023':
+        personal_remittances_paid_usd: 2663297872.34042
+        sending_cost_percent: 3.8383335
+      '2024':
+        personal_remittances_paid_usd: 2659574468.0851
+        sending_cost_percent: null
+  vectors:
+  - input:
+      key: '2024'
+      column: personal_remittances_paid_usd
+    expected: 2659574468.0851
+    origin: source
+  - input:
+      key: '2023'
+      column: sending_cost_percent
+    expected: 3.8383335
+    origin: source
+  - input: '1990'
+    expected: false
+    origin: derived
+evidence:
+- publisher: World Bank
+  title: World Bank API, BM.TRF.PWKR.CD.DT (Personal remittances, paid, current US$), 2010-2024, GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/BM.TRF.PWKR.CD.DT?date=2010:2024&format=json&per_page=1000
+  accessed_at: '2026-11-09'
+  locator: '[indicator=BM.TRF.PWKR.CD.DT, countryiso3code=BHR, date=2024].value'
+  value: 2659574468.0851
+  unit: currency:USD
+  snippet: '"indicator":{"id":"BM.TRF.PWKR.CD.DT","value":"Personal remittances, paid (current US$)"},"country":{"id":"BH","value":"Bahrain"},"countryiso3code":"BHR","date":"2024","value":2659574468.0851'
+  source_license: CC-BY-4.0
+  content_sha256: 01701881e5c3e0f49105d42f8bb581fcc29366270e640681bb4ec58a57528fc5
+  role: primary
+- publisher: World Bank
+  title: World Bank API, BM.TRF.PWKR.CD.DT (Personal remittances, paid, current US$), 2010-2024, GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/BM.TRF.PWKR.CD.DT?date=2010:2024&format=json&per_page=1000
+  accessed_at: '2026-11-09'
+  locator: '[indicator=BM.TRF.PWKR.CD.DT, countryiso3code=BHR, date=2010].value'
+  value: 1641755319.14893
+  unit: currency:USD
+  snippet: '"indicator":{"id":"BM.TRF.PWKR.CD.DT","value":"Personal remittances, paid (current US$)"},"country":{"id":"BH","value":"Bahrain"},"countryiso3code":"BHR","date":"2010","value":1641755319.14893'
+  source_license: CC-BY-4.0
+  content_sha256: 01701881e5c3e0f49105d42f8bb581fcc29366270e640681bb4ec58a57528fc5
+  role: primary
+- publisher: World Bank
+  title: World Bank API, SI.RMT.COST.OB.ZS (Average transaction cost of sending remittances from a specific country,
+    %), GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SI.RMT.COST.OB.ZS?date=2010:2024&format=json&per_page=1000
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SI.RMT.COST.OB.ZS, countryiso3code=BHR, date=2023].value'
+  value: 3.8383335
+  unit: percent
+  snippet: '"indicator":{"id":"SI.RMT.COST.OB.ZS","value":"Average transaction cost of sending remittances from
+    a specific country (%)"},"country":{"id":"BH","value":"Bahrain"},"countryiso3code":"BHR","date":"2023","value":3.8383335'
+  source_license: CC-BY-4.0
+  content_sha256: 31fe88da8dbacaa7c4c7c9f98591e906302b24c2ee7f5f1b384aae7f2881806a
+  role: primary
+- publisher: World Bank
+  title: World Bank indicator metadata, BM.TRF.PWKR.CD.DT
+  url: https://api.worldbank.org/v2/indicator/BM.TRF.PWKR.CD.DT?format=json
+  accessed_at: '2026-11-09'
+  locator: sourceOrganization
+  value: IMF balance of payments data, International Monetary Fund (IMF)
+  unit: text
+  snippet: IMF balance of payments data, International Monetary Fund (IMF)
+  source_license: CC-BY-4.0
+  content_sha256: 67ac5813586da4569f14fae8f67897685bc0b807b2b7117f5f737998f69c9a6b
+  role: supporting
+- publisher: World Bank
+  title: World Bank indicator metadata, SI.RMT.COST.OB.ZS
+  url: https://api.worldbank.org/v2/indicator/SI.RMT.COST.OB.ZS?format=json
+  accessed_at: '2026-11-09'
+  locator: sourceOrganization
+  value: Remittance Prices Worldwide, World Bank (WB)
+  unit: text
+  snippet: Remittance Prices Worldwide, World Bank (WB)
+  source_license: CC-BY-4.0
+  content_sha256: 91ace34ce17d8ac827d6120cd72db790a4e997e0b8b915d3825e397531b6c869
+  role: supporting
+- publisher: World Bank
+  title: World Bank Data Catalog public licenses
+  url: https://datacatalog.worldbank.org/public-licenses
+  accessed_at: '2026-11-09'
+  locator: Data Access And Licensing
+  value: Creative Commons Attribution 4.0 International license
+  unit: text
+  snippet: The World Bank Group makes data publicly available according to open data standards
+  source_license: CC-BY-4.0
+  content_sha256: c7c9b31441ea4a1fa27990f4b11f385587469c5c2bda4ec4fc7a6561db6d2422
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 15
+  tolerance: 0
+- statistic: value[2024,personal_remittances_paid_usd]
+  expected: 2659574468.0851
+  tolerance: 0.001
+- statistic: max[personal_remittances_paid_usd]
+  expected: 3268882978.7234
+  tolerance: 0.001
+- statistic: value[2023,sending_cost_percent]
+  expected: 3.8383335
+  tolerance: 1.0e-09
+notes: 'For Bahrain, one row per year: personal remittances paid in current US dollars (indicator BM.TRF.PWKR.CD.DT:
+  personal transfers plus compensation of employees paid to non-residents, from IMF balance of payments data and
+  World Bank staff estimates) and the average total cost, as a percentage of the amount sent, of sending USD 200
+  from Bahrain across the providers in the World Bank''s Remittance Prices Worldwide database (indicator SI.RMT.COST.OB.ZS).
+  Remittances paid are published for 2010 to 2024 and the cost for 2016 to 2023; a column is null where that indicator
+  has no value (2010, 2011, 2012, 2013, 2014, 2015, 2024). The outflow sets the annual scale of a synthetic outbound
+  remittance ledger and the cost prices its fees; the destination mix can be taken from the UN DESA migrant-stock-by-origin
+  entry. Rows are keyed by year. Data last updated 2026-10-08. The World Bank licenses its data under CC BY 4.0.'

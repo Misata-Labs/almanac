@@ -1,0 +1,236 @@
+id: ae-migrant-stock-by-age-and-sex-2020
+title: 'United Arab Emirates: international migrant stock by five-year age group, given sex, mid-2020 (UN DESA)'
+kind: conditional
+domain: demographics
+region: AE
+status: license-review
+tier: A
+observed_period:
+  start: '2020-07-01'
+  end: '2020-07-01'
+tags:
+- gcc
+- migration
+- nationality
+- international-migrant-stock
+- by-age
+- by-sex
+- un-desa
+- population
+use_cases:
+- synthetic-customers
+- synthetic-employees
+- person-generation
+- kyc-onboarding
+- customer-segmentation
+- hr-analytics
+spec:
+  variable: age_group
+  unit: ratio
+  given: sex
+  distributions:
+    total:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.048291
+          5-9: 0.048548
+          10-14: 0.037253
+          15-19: 0.038714
+          20-24: 0.074729
+          25-29: 0.149104
+          30-34: 0.191062
+          35-39: 0.146769
+          40-44: 0.098443
+          45-49: 0.06772
+          50-54: 0.048383
+          55-59: 0.030991
+          60-64: 0.011898
+          65-69: 0.004423
+          70-74: 0.002018
+          75+: 0.001654
+        counts:
+          0-4: 420917
+          5-9: 423161
+          10-14: 324712
+          15-19: 337441
+          20-24: 651361
+          25-29: 1299643
+          30-34: 1665357
+          35-39: 1279287
+          40-44: 858062
+          45-49: 590271
+          50-54: 421722
+          55-59: 270130
+          60-64: 103711
+          65-69: 38556
+          70-74: 17588
+          75+: 14413
+        total_migrants: 8716332
+        year: 2020
+    male:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.035722
+          5-9: 0.038076
+          10-14: 0.033297
+          15-19: 0.029432
+          20-24: 0.072202
+          25-29: 0.159425
+          30-34: 0.198379
+          35-39: 0.144831
+          40-44: 0.1012
+          45-49: 0.078687
+          50-54: 0.050237
+          55-59: 0.035052
+          60-64: 0.014925
+          65-69: 0.004839
+          70-74: 0.002051
+          75+: 0.001643
+        counts:
+          0-4: 229327
+          5-9: 244443
+          10-14: 213760
+          15-19: 188950
+          20-24: 463525
+          25-29: 1023473
+          30-34: 1273555
+          35-39: 929786
+          40-44: 649683
+          45-49: 505155
+          50-54: 322508
+          55-59: 225028
+          60-64: 95814
+          65-69: 31068
+          70-74: 13169
+          75+: 10548
+        total_migrants: 6419792
+        year: 2020
+    female:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.083426
+          5-9: 0.077821
+          10-14: 0.048313
+          15-19: 0.064659
+          20-24: 0.081791
+          25-29: 0.120255
+          30-34: 0.170605
+          35-39: 0.152186
+          40-44: 0.090736
+          45-49: 0.037063
+          50-54: 0.043202
+          55-59: 0.019639
+          60-64: 0.003439
+          65-69: 0.003261
+          70-74: 0.001924
+          75+: 0.001683
+        counts:
+          0-4: 191590
+          5-9: 178718
+          10-14: 110952
+          15-19: 148491
+          20-24: 187836
+          25-29: 276170
+          30-34: 391802
+          35-39: 349501
+          40-44: 208379
+          45-49: 85116
+          50-54: 99214
+          55-59: 45102
+          60-64: 7897
+          65-69: 7488
+          70-74: 4419
+          75+: 3865
+        total_migrants: 2296540
+        year: 2020
+evidence:
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!AD998 (United Arab Emirates, 2020, males aged 30-34)
+  value: 1273555
+  unit: count
+  snippet: <c r="AD998" s="35"><v>1273555</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!AU998 (United Arab Emirates, 2020, females aged 30-34)
+  value: 391802
+  unit: count
+  snippet: <c r="AU998" s="35"><v>391802</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!W998 (United Arab Emirates, 2020, both sexes, total)
+  value: 8716332
+  unit: count
+  snippet: <c r="W998" s="35"><v>8716332</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table of contents, copyright line
+  value: CC BY 3.0 IGO
+  unit: text
+  snippet: made available under a Creative Commons license CC BY 3.0 IGO
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: supporting
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: UN Population Division data portal API, list of locations (M49 code, name, ISO codes)
+  url: https://population.un.org/dataportalapi/api/v1/locations?pageSize=500&pageNumber=1
+  accessed_at: '2026-11-09'
+  locator: data[iso3=ARE].id
+  value: 784
+  unit: integer
+  snippet: '{"id":784,"name":"United Arab Emirates","iso3":"ARE"'
+  source_license: unstated
+  content_sha256: 5f1cefa51ad84b20b3d2d061f4e5edf3a5ba7979a8bfca003fd75e5178f2ab56
+  role: supporting
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / total
+  method: derived
+  rationale: Migrants in each five-year age group (0-4 to 75+) divided by the sum over the groups for that sex;
+    the published total is kept beside the counts and differs from the sum only by rounding.
+tests:
+- statistic: share[total,30-34]
+  expected: 0.191062
+  tolerance: 0.005
+- statistic: share[male,30-34]
+  expected: 0.198379
+  tolerance: 0.005
+- statistic: share[female,30-34]
+  expected: 0.170605
+  tolerance: 0.005
+- statistic: sum_of_shares[total]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[male]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[female]
+  expected: 1
+  tolerance: 0.0001
+notes: Age distribution of the international migrants living in United Arab Emirates at 1 July 2020, for both sexes
+  ('total'), males and females, in sixteen five-year groups from 0-4 to 75+, from UN DESA International Migrant
+  Stock 2020 (age, sex and destination workbook, Table 1). The 2024 revision's downloads carry no age breakdown,
+  so 2020 is the latest age structure for migrants. Combined with the 2024 migrant share and the population pyramid
+  it lets a generator give foreign residents their own age profile. The workbook states that it is made available
+  under CC BY 3.0 IGO. That licence permits reuse with attribution but is not on the verifier's permissive list,
+  so the entry stays at license-review until a reviewer accepts it.

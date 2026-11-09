@@ -1,0 +1,166 @@
+id: ae-abu-dhabi-bank-lending-rates-quarterly
+title: Average interest rates on loans by type, banks based in Abu Dhabi, quarterly 2023-Q1 to 2026-Q2 (SCAD, CBUAE)
+kind: temporal
+domain: banking
+region: AE
+status: license-review
+tier: A
+observed_period:
+  start: '2023-01-01'
+  end: '2026-06-30'
+tags:
+- uae
+- gcc
+- abu-dhabi
+- interest-rates
+- lending
+- personal-loans
+- cbuae
+- scad
+use_cases:
+- banking-demo
+- loan-pricing
+- credit-risk
+- synthetic-customers
+spec:
+  variable: personal_loan_rate_percent
+  unit: percent
+  frequency: quarterly
+  columns:
+  - business_loans
+  - overdrafts
+  - trust_receipts
+  - other_loans_and_advances
+  series:
+  - period: 2023-Q1
+    value: 9.69
+    business_loans: 7.14
+    overdrafts: 9.5
+    trust_receipts: 6.03
+    other_loans_and_advances: 17.18
+  - period: 2023-Q2
+    value: 9.34
+    business_loans: 7.56
+    overdrafts: 8.64
+    trust_receipts: 6.3
+    other_loans_and_advances: 17.78
+  - period: 2023-Q3
+    value: 8.89
+    business_loans: 6.94
+    overdrafts: 10.43
+    trust_receipts: 6.28
+    other_loans_and_advances: 17.88
+  - period: 2023-Q4
+    value: 8.9
+    business_loans: 7.08
+    overdrafts: 10.3
+    trust_receipts: 6.37
+    other_loans_and_advances: 17.95
+  - period: 2024-Q1
+    value: 8.83
+    business_loans: 7.16
+    overdrafts: 10.04
+    trust_receipts: 6.27
+    other_loans_and_advances: 17.83
+  - period: 2024-Q2
+    value: 8.906
+    business_loans: 7.1663
+    overdrafts: 10.448
+    trust_receipts: 6.2866
+    other_loans_and_advances: 17.8836
+  - period: 2024-Q3
+    value: 8.87
+    business_loans: 6.9769
+    overdrafts: 10.1642
+    trust_receipts: 6.1838
+    other_loans_and_advances: 17.8145
+  - period: 2024-Q4
+    value: 8.9279
+    business_loans: 6.9758
+    overdrafts: 9.6881
+    trust_receipts: 6.2286
+    other_loans_and_advances: 17.9151
+  - period: 2025-Q1
+    value: 8.8976
+    business_loans: 6.9782
+    overdrafts: 9.7146
+    trust_receipts: 6.1665
+    other_loans_and_advances: 17.8969
+  - period: 2025-Q2
+    value: 8.8934
+    business_loans: 6.9571
+    overdrafts: 9.765
+    trust_receipts: 6.1673
+    other_loans_and_advances: 17.9
+  - period: 2025-Q3
+    value: 8.8212
+    business_loans: 6.9165
+    overdrafts: 9.7098
+    trust_receipts: 6.1948
+    other_loans_and_advances: 17.9057
+  - period: 2025-Q4
+    value: 8.8747
+    business_loans: 6.7863
+    overdrafts: 9.7734
+    trust_receipts: 6.1547
+    other_loans_and_advances: 17.8906
+  - period: 2026-Q1
+    value: 8.8495
+    business_loans: 6.9374
+    overdrafts: 9.7402
+    trust_receipts: 6.1835
+    other_loans_and_advances: 17.9048
+  - period: 2026-Q2
+    value: 8.84
+    business_loans: 6.92
+    overdrafts: 9.74
+    trust_receipts: 6.18
+    other_loans_and_advances: 17.9
+evidence:
+- publisher: Statistics Centre Abu Dhabi
+  title: SCAD, Bank Statistics, Second Quarter 2026 (Excel tables; source Central Bank of the UAE)
+  url: https://www.scad.gov.ae/documents/20122/3350763/publication_64055_14_3_5_2026_EN.xlsx/e911c4ac-cce8-fc97-feb1-3a300769618f
+  accessed_at: '2026-11-09'
+  locator: Table 5, row 'Personal Loans', column Q1 2023
+  value: '9.69'
+  unit: percent
+  snippet: 'Table 5: Average Interest rate on deposits, loans, and advances in banks based in the Emirate of Abu
+    Dhabi (%)'
+  source_license: 'SCAD terms of use: reproduction without further permission, with acknowledgement of SCAD as the
+    source'
+  content_sha256: c3682830b1b06a35e26265f3e2353cac47b24d316a26710d77db2664885d9b60
+  role: primary
+- publisher: Statistics Centre Abu Dhabi
+  title: SCAD, Bank Statistics, Second Quarter 2026 (Excel tables; source Central Bank of the UAE)
+  url: https://www.scad.gov.ae/documents/20122/3350763/publication_64055_14_3_5_2026_EN.xlsx/e911c4ac-cce8-fc97-feb1-3a300769618f
+  accessed_at: '2026-11-09'
+  locator: Table 5, row 'Overdrafts', column Q2 2026*
+  value: '9.74'
+  unit: percent
+  snippet: Trust Receipts
+  source_license: 'SCAD terms of use: reproduction without further permission, with acknowledgement of SCAD as the
+    source'
+  content_sha256: c3682830b1b06a35e26265f3e2353cac47b24d316a26710d77db2664885d9b60
+  role: primary
+assumed:
+- parameter: series[*]
+  value: rounded to four decimal places
+  method: derived
+  rationale: Some quarters are stored at full floating-point precision; the evidence records the stored value.
+tests:
+- statistic: value[2023-Q1]
+  expected: 9.69
+  tolerance: 1.0e-09
+- statistic: column[business_loans,2026-Q2]
+  expected: 6.92
+  tolerance: 1.0e-09
+- statistic: count
+  expected: 14
+  tolerance: 0
+notes: 'Average interest rate, percent a year, charged by banks based in the Emirate of Abu Dhabi on personal loans
+  (value), business loans, overdrafts, trust receipts and other loans and advances, by quarter, from Table 5 of
+  SCAD''s Bank Statistics release (source: Central Bank of the UAE). Use as the centre of a synthetic loan-rate
+  distribution by product. Quarters marked with an asterisk in the source (the latest) are preliminary estimates.
+  SCAD''s terms of use (https://www.scad.gov.ae/terms-of-use) state that its publications and tables may be reproduced
+  without further permission provided SCAD is acknowledged as the source; the page is rendered per request and is
+  referenced rather than hashed, so the entry stays at licence review.'

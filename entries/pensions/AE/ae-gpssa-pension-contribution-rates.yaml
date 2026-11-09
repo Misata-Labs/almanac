@@ -1,0 +1,153 @@
+id: ae-gpssa-pension-contribution-rates
+title: 'UAE GPSSA pension contributions for Emirati employees: insured, employer and government shares as GPSSA
+  publishes them'
+kind: rule
+domain: pensions
+region: AE
+status: license-review
+tier: B
+valid_from: '2024-08-21'
+valid_to: null
+tags:
+- gcc
+- pensions
+- social-insurance
+- payroll
+- uae
+use_cases:
+- payroll-demo
+- hr-demo
+- hr-analytics
+- pensions
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      faq_government_sector:
+        insured_percent: 5
+        employer_percent: 15
+        government_percent: 0
+        total_percent: 20
+      faq_private_sector:
+        insured_percent: 5
+        employer_percent: '12.5'
+        government_percent: '2.5'
+        total_percent: 20
+      federal_law_57_2023:
+        insured_percent: 11
+        employer_percent: 15
+        government_percent: null
+        total_percent: 26
+    private_sector_government_support_salary_ceiling_aed: 20000
+  vectors:
+  - input:
+      key: faq_private_sector
+      column: employer_percent
+    expected: '12.5'
+    origin: source
+  - input:
+      key: faq_government_sector
+      column: employer_percent
+    expected: 15
+    origin: source
+  - input:
+      key: federal_law_57_2023
+      column: insured_percent
+    expected: 11
+    origin: source
+  - input:
+      key: federal_law_57_2023
+      column: total_percent
+    expected: 26
+    origin: source
+evidence:
+- publisher: General Pension and Social Security Authority (GPSSA), United Arab Emirates
+  title: 'FAQ: What is the distribution of contributions due from insured individuals?'
+  url: https://gpssa.gov.ae/pages/en/help/faq/what-distribution-contributions-due-insured-individuals
+  accessed_at: '2026-11-09'
+  locator: FAQ answer
+  value: 5%
+  unit: percent
+  snippet: 'Insured in both government and private sectors: 5%- Government sector: Employers contribute 15% of the
+    Contribution Calculation Salary.'
+  source_license: unstated
+  content_sha256: b446662d62f5086c151f4e91b0ee38b2e6e8cff18039bcebd53522d124a69285
+  role: primary
+- publisher: General Pension and Social Security Authority (GPSSA), United Arab Emirates
+  title: 'FAQ: What is the distribution of contributions due from insured individuals?'
+  url: https://gpssa.gov.ae/pages/en/help/faq/what-distribution-contributions-due-insured-individuals
+  accessed_at: '2026-11-09'
+  locator: FAQ answer
+  value: 12.5%
+  unit: percent
+  snippet: 'Private sector: Employers pay 12.5% of the Contribution Calculation Salary.'
+  source_license: unstated
+  content_sha256: b446662d62f5086c151f4e91b0ee38b2e6e8cff18039bcebd53522d124a69285
+  role: primary
+- publisher: General Pension and Social Security Authority (GPSSA), United Arab Emirates
+  title: 'FAQ: What is the distribution of contributions due from insured individuals?'
+  url: https://gpssa.gov.ae/pages/en/help/faq/what-distribution-contributions-due-insured-individuals
+  accessed_at: '2026-11-09'
+  locator: FAQ answer
+  value: 2.5%
+  unit: percent
+  snippet: The government contributes by bearing 2.5% of the contribution rate determined for an insured individual
+    employed in the private sector
+  source_license: unstated
+  content_sha256: b446662d62f5086c151f4e91b0ee38b2e6e8cff18039bcebd53522d124a69285
+  role: primary
+- publisher: General Pension and Social Security Authority (GPSSA), United Arab Emirates
+  title: 'FAQ: What is the distribution of contributions due from insured individuals?'
+  url: https://gpssa.gov.ae/pages/en/help/faq/what-distribution-contributions-due-insured-individuals
+  accessed_at: '2026-11-09'
+  locator: FAQ answer
+  value: 20%
+  unit: percent
+  snippet: The percentage of the total contributions due from an insured individual working in the government or
+    private sector is 20%.
+  source_license: unstated
+  content_sha256: b446662d62f5086c151f4e91b0ee38b2e6e8cff18039bcebd53522d124a69285
+  role: primary
+- publisher: General Pension and Social Security Authority (GPSSA), United Arab Emirates
+  title: GPSSA reviews the most prominent features of Federal Law No. (57) of 2023
+  url: https://www.gpssa.gov.ae/pages/en/media-center/news/gpssa-reviews-most-prominent-features-federal-law-no-57-2023
+  accessed_at: '2026-11-09'
+  locator: news article, Contribution rates
+  value: 26%
+  unit: percent
+  snippet: As per the 2023 law, the total contribution rates have become 26%, out of which the insured bears 11%
+  source_license: unstated
+  content_sha256: 0a1bbc079f7746c724d36c849a2f73217345dec3d2d9d2b74ef68d4e33b2a6df
+  role: primary
+- publisher: General Pension and Social Security Authority (GPSSA), United Arab Emirates
+  title: GPSSA reviews the most prominent features of Federal Law No. (57) of 2023
+  url: https://www.gpssa.gov.ae/pages/en/media-center/news/gpssa-reviews-most-prominent-features-federal-law-no-57-2023
+  accessed_at: '2026-11-09'
+  locator: news article, Contribution rates
+  value: Dh20,000
+  unit: percent
+  snippet: employing Emiratis whose contribution account salaries are less than Dh20,000, by paying 2.5% out of
+    the employers 15% share.
+  source_license: unstated
+  content_sha256: 0a1bbc079f7746c724d36c849a2f73217345dec3d2d9d2b74ef68d4e33b2a6df
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2024-08-21'
+  method: derived
+  rationale: The FAQ's last-updated date; the rates applied earlier.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+notes: Pension contributions for UAE nationals registered with the General Pension and Social Security Authority,
+  as two GPSSA pages state them. The FAQ (last updated 21 August 2024) gives 5% from the insured, 15% from a government-sector
+  employer, and 12.5% from a private-sector employer with the government bearing 2.5%, 20% in total. GPSSA's article
+  on Federal Law No. 57 of 2023 says that under that law the total is 26%, 11% from the insured and 15% from the
+  employer, with the government paying 2.5% of the employer share for Emiratis whose contribution salary is below
+  AED 20,000. The pages do not say which insured persons each schedule covers; the rows are kept separate and named
+  after their source for a human to reconcile. Abu Dhabi nationals are covered by the Abu Dhabi Pension Fund, whose
+  site could not be reached.

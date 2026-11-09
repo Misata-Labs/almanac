@@ -1,0 +1,194 @@
+id: om-population-by-age-and-sex-2025
+title: 'Oman: population by five-year age group, given sex, 2025 (World Bank, based on UN World Population Prospects)'
+kind: conditional
+domain: demographics
+region: OM
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- gcc
+- population
+- age-pyramid
+- by-age
+- by-sex
+- world-bank
+use_cases:
+- synthetic-customers
+- synthetic-employees
+- person-generation
+- kyc-onboarding
+- customer-segmentation
+- insurance
+- pensions
+spec:
+  variable: age_group
+  unit: ratio
+  given: sex
+  distributions:
+    male:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.064707
+          5-9: 0.071278
+          10-14: 0.062623
+          15-19: 0.047035
+          20-24: 0.082248
+          25-29: 0.116239
+          30-34: 0.13795
+          35-39: 0.141651
+          40-44: 0.105367
+          45-49: 0.067069
+          50-54: 0.042926
+          55-59: 0.025221
+          60-64: 0.015044
+          65-69: 0.008475
+          70-74: 0.005266
+          75-79: 0.003653
+          80+: 0.003247
+        counts:
+          0-4: 221880
+          5-9: 244410
+          10-14: 214734
+          15-19: 161282
+          20-24: 282025
+          25-29: 398581
+          30-34: 473028
+          35-39: 485718
+          40-44: 361299
+          45-49: 229976
+          50-54: 147192
+          55-59: 86482
+          60-64: 51586
+          65-69: 29061
+          70-74: 18056
+          75-79: 12526
+          80+: 11135
+        year: 2025
+    female:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.103324
+          5-9: 0.114037
+          10-14: 0.099867
+          15-19: 0.074987
+          20-24: 0.07343
+          25-29: 0.085013
+          30-34: 0.098853
+          35-39: 0.098467
+          40-44: 0.079699
+          45-49: 0.057429
+          50-54: 0.035335
+          55-59: 0.023555
+          60-64: 0.018792
+          65-69: 0.014124
+          70-74: 0.009535
+          75-79: 0.006599
+          80+: 0.006953
+        counts:
+          0-4: 213438
+          5-9: 235568
+          10-14: 206297
+          15-19: 154902
+          20-24: 151686
+          25-29: 175614
+          30-34: 204203
+          35-39: 203406
+          40-44: 164636
+          45-49: 118633
+          50-54: 72992
+          55-59: 48658
+          60-64: 38820
+          65-69: 29177
+          70-74: 19696
+          75-79: 13632
+          80+: 14362
+        year: 2025
+evidence:
+- publisher: World Bank
+  title: World Bank API, population by five-year age group and sex (SP.POP.<age>.MA/FE), source 40, 2025, GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.0004.MA;SP.POP.0509.MA;SP.POP.1014.MA;SP.POP.1519.MA;SP.POP.2024.MA;SP.POP.2529.MA;SP.POP.3034.MA;SP.POP.3539.MA;SP.POP.4044.MA;SP.POP.4549.MA;SP.POP.5054.MA;SP.POP.5559.MA;SP.POP.6064.MA;SP.POP.6569.MA;SP.POP.7074.MA;SP.POP.7579.MA;SP.POP.80UP.MA;SP.POP.0004.FE;SP.POP.0509.FE;SP.POP.1014.FE;SP.POP.1519.FE;SP.POP.2024.FE;SP.POP.2529.FE;SP.POP.3034.FE;SP.POP.3539.FE;SP.POP.4044.FE;SP.POP.4549.FE;SP.POP.5054.FE;SP.POP.5559.FE;SP.POP.6064.FE;SP.POP.6569.FE;SP.POP.7074.FE;SP.POP.7579.FE;SP.POP.80UP.FE?date=2025&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.3539.MA, countryiso3code=OMN, date=2025].value'
+  value: 485718
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.3539.MA","value":"Population ages 35-39, male"},"country":{"id":"OM","value":"Oman"},"countryiso3code":"OMN","date":"2025","value":485718'
+  source_license: CC-BY-4.0
+  content_sha256: 2372c5bd994cbc824eb63162afa19fa53410f5193d43a0ff862501493fc2262c
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population by five-year age group and sex (SP.POP.<age>.MA/FE), source 40, 2025, GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.0004.MA;SP.POP.0509.MA;SP.POP.1014.MA;SP.POP.1519.MA;SP.POP.2024.MA;SP.POP.2529.MA;SP.POP.3034.MA;SP.POP.3539.MA;SP.POP.4044.MA;SP.POP.4549.MA;SP.POP.5054.MA;SP.POP.5559.MA;SP.POP.6064.MA;SP.POP.6569.MA;SP.POP.7074.MA;SP.POP.7579.MA;SP.POP.80UP.MA;SP.POP.0004.FE;SP.POP.0509.FE;SP.POP.1014.FE;SP.POP.1519.FE;SP.POP.2024.FE;SP.POP.2529.FE;SP.POP.3034.FE;SP.POP.3539.FE;SP.POP.4044.FE;SP.POP.4549.FE;SP.POP.5054.FE;SP.POP.5559.FE;SP.POP.6064.FE;SP.POP.6569.FE;SP.POP.7074.FE;SP.POP.7579.FE;SP.POP.80UP.FE?date=2025&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.0509.FE, countryiso3code=OMN, date=2025].value'
+  value: 235568
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.0509.FE","value":"Population ages 05-09, female"},"country":{"id":"OM","value":"Oman"},"countryiso3code":"OMN","date":"2025","value":235568'
+  source_license: CC-BY-4.0
+  content_sha256: 2372c5bd994cbc824eb63162afa19fa53410f5193d43a0ff862501493fc2262c
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population by five-year age group and sex (SP.POP.<age>.MA/FE), source 40, 2025, GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.0004.MA;SP.POP.0509.MA;SP.POP.1014.MA;SP.POP.1519.MA;SP.POP.2024.MA;SP.POP.2529.MA;SP.POP.3034.MA;SP.POP.3539.MA;SP.POP.4044.MA;SP.POP.4549.MA;SP.POP.5054.MA;SP.POP.5559.MA;SP.POP.6064.MA;SP.POP.6569.MA;SP.POP.7074.MA;SP.POP.7579.MA;SP.POP.80UP.MA;SP.POP.0004.FE;SP.POP.0509.FE;SP.POP.1014.FE;SP.POP.1519.FE;SP.POP.2024.FE;SP.POP.2529.FE;SP.POP.3034.FE;SP.POP.3539.FE;SP.POP.4044.FE;SP.POP.4549.FE;SP.POP.5054.FE;SP.POP.5559.FE;SP.POP.6064.FE;SP.POP.6569.FE;SP.POP.7074.FE;SP.POP.7579.FE;SP.POP.80UP.FE?date=2025&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.0004.FE, countryiso3code=OMN, date=2025].value'
+  value: 213438
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.0004.FE","value":"Population ages 00-04, female"},"country":{"id":"OM","value":"Oman"},"countryiso3code":"OMN","date":"2025","value":213438'
+  source_license: CC-BY-4.0
+  content_sha256: 2372c5bd994cbc824eb63162afa19fa53410f5193d43a0ff862501493fc2262c
+  role: primary
+- publisher: World Bank
+  title: World Bank indicator metadata, SP.POP.0004.MA
+  url: https://api.worldbank.org/v2/indicator/SP.POP.0004.MA?format=json
+  accessed_at: '2026-11-09'
+  locator: sourceOrganization
+  value: age\/sex distributions of the United Nations Population Division's World Population Prospects
+  unit: text
+  snippet: age\/sex distributions of the United Nations Population Division's World Population Prospects
+  source_license: CC-BY-4.0
+  content_sha256: 1fc6d579f8adaa2e711a0fd9af03801316b0c1894773cf2a123dd930d1d53047
+  role: supporting
+- publisher: World Bank
+  title: World Bank Data Catalog public licenses
+  url: https://datacatalog.worldbank.org/public-licenses
+  accessed_at: '2026-11-09'
+  locator: Data Access And Licensing
+  value: Creative Commons Attribution 4.0 International license
+  unit: text
+  snippet: The World Bank Group makes data publicly available according to open data standards
+  source_license: CC-BY-4.0
+  content_sha256: c7c9b31441ea4a1fa27990f4b11f385587469c5c2bda4ec4fc7a6561db6d2422
+  role: supporting
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / total
+  method: derived
+  rationale: Persons in each five-year age group divided by the sum of the seventeen groups (0-4 to 80+) for that
+    sex.
+tests:
+- statistic: share[male,35-39]
+  expected: 0.141651
+  tolerance: 0.005
+- statistic: share[female,5-9]
+  expected: 0.114037
+  tolerance: 0.005
+- statistic: share[female,0-4]
+  expected: 0.103324
+  tolerance: 0.005
+- statistic: sum_of_shares[male]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[female]
+  expected: 1
+  tolerance: 0.0001
+notes: Mid-year 2025 population of Oman in seventeen five-year age groups (0-4 to 80+) for males and females, from
+  the World Bank Population estimates and projections database (API source 40, indicators SP.POP.0004.MA to SP.POP.80UP.FE).
+  The World Bank derives these from its total population and the age and sex distributions of the UN World Population
+  Prospects. Counts ride beside the shares, so a generator can reproduce both the shape of each pyramid and the
+  ratio of men to women at each age, which migrant labour skews in the GCC. Data last updated 2026-07-01. The World
+  Bank licenses its data under CC BY 4.0.

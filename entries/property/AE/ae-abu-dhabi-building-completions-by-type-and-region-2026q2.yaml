@@ -1,0 +1,98 @@
+id: ae-abu-dhabi-building-completions-by-type-and-region-2026q2
+title: Abu Dhabi building completions by type of construction, given region, second quarter 2026 (SCAD)
+kind: conditional
+domain: property
+region: AE
+status: license-review
+tier: A
+observed_period:
+  start: '2026-04-01'
+  end: '2026-06-30'
+tags:
+- uae
+- gcc
+- abu-dhabi
+- construction
+- building-completions
+- property
+- regions
+- scad
+use_cases:
+- proptech-demo
+- property-demo
+- market-sizing
+spec:
+  variable: construction_type
+  unit: ratio
+  given: region
+  distributions:
+    Abu Dhabi Region:
+      family: categorical
+      parameters:
+        shares:
+          New building: 0.868334
+          Additions: 0.021708
+          Other - Modification: 0.109958
+        counts:
+          New building: 3680
+          Additions: 92
+          Other - Modification: 466
+        total: 4238
+    Al Ain Region:
+      family: categorical
+      parameters:
+        shares:
+          New building: 0.931876
+          Additions: 0.030278
+          Other - Modification: 0.037847
+        counts:
+          New building: 2216
+          Additions: 72
+          Other - Modification: 90
+        total: 2378
+    Al Dhafra Region:
+      family: categorical
+      parameters:
+        shares:
+          New building: 0.968661
+          Additions: 0.017094
+          Other - Modification: 0.014245
+        counts:
+          New building: 340
+          Additions: 6
+          Other - Modification: 5
+        total: 351
+evidence:
+- publisher: Statistics Centre Abu Dhabi
+  title: SCAD, Building Completion Statistics, Second Quarter 2026 (Excel tables; source Department of Municipalities
+    and Transport)
+  url: https://www.scad.gov.ae/documents/20122/3369624/publication_64093_18_3_5_2026_EN.xlsx/e2462bc4-1828-fdda-e555-a645b37cb999
+  accessed_at: '2026-11-09'
+  locator: Table 3, row 'New building', column 'Abu Dhabi Region'
+  value: '3680'
+  unit: count
+  snippet: 'Table 3: Building completions by type of construction and region, Second quarter 2026 '
+  source_license: 'SCAD terms of use: reproduction without further permission, with acknowledgement of SCAD as the
+    source'
+  content_sha256: e32ec929607267b4c2516fd6cbc01f14b4fdadf43b2319e58507298bc3af7089
+  role: primary
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / sum of the three construction-type counts
+  method: derived
+  rationale: SCAD publishes counts; each share is the count divided by the sum of the counts in its distribution.
+tests:
+- statistic: share["Abu Dhabi Region","New building"]
+  expected: 0.868334
+  tolerance: 0.005
+- statistic: share["Al Ain Region","Other - Modification"]
+  expected: 0.037847
+  tolerance: 0.005
+- statistic: sum_of_shares["Al Dhafra Region"]
+  expected: 1
+  tolerance: 0.0001
+notes: Buildings completed in the Emirate of Abu Dhabi in the second quarter of 2026 by type of construction (new
+  building, additions, other modification) for each region, from Table 3 of SCAD's Building Completion Statistics.
+  SCAD marks 2026 data as preliminary. SCAD's terms of use (https://www.scad.gov.ae/terms-of-use) state that its
+  publications and tables may be reproduced without further permission provided SCAD is acknowledged as the source;
+  the page is rendered per request and is referenced rather than hashed, so the entry stays at licence review.

@@ -1,0 +1,103 @@
+id: ae-registered-vehicles-by-type-2025
+title: UAE vehicles registered in 2025 by vehicle type (Ministry of Interior)
+kind: marginal
+domain: automotive
+region: AE
+status: verified
+tier: A
+observed_period:
+  start: '2025-01-01'
+  end: '2025-12-31'
+tags:
+- uae
+- gcc
+- vehicles
+- registrations
+- vehicle-type
+- moi
+use_cases:
+- fleet-demo
+- automotive-demo
+- insurance
+- synthetic-customers
+spec:
+  variable: vehicle_type
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        مركبة خفيفة: 0.82762
+        دراجة نارية: 0.074019
+        جهاز ميكانيكي ثقيل: 0.019281
+        باص ثقيل 27 راكب فأكثر: 0.01515
+        شحن ثقيل 3 طن: 0.015014
+        غير معروف: 0.013985
+        شحن ثقيل 12 طن فأكثر: 0.011776
+        باص خفيف أقل من 27 راكب: 0.009557
+        شحن ثقيل أقل من 12 طن: 0.007827
+        جهاز ميكانيكي خفيف: 0.00577
+      counts:
+        مركبة خفيفة: 706300
+        دراجة نارية: 63169
+        جهاز ميكانيكي ثقيل: 16455
+        باص ثقيل 27 راكب فأكثر: 12929
+        شحن ثقيل 3 طن: 12813
+        غير معروف: 11935
+        شحن ثقيل 12 طن فأكثر: 10050
+        باص خفيف أقل من 27 راكب: 8156
+        شحن ثقيل أقل من 12 طن: 6680
+        جهاز ميكانيكي خفيف: 4924
+      total: 853411
+evidence:
+- publisher: Ministry of Interior (published on Bayanat)
+  title: 'MOI Registered vehicles 2025: vehicle type by colour (Excel, Bayanat)'
+  url: https://bayanat.ae/api/DatasetResources/DownloadSingle?fileName=data&resourceID=PZ7PAVb0neBeqzk7BI7mXSt6AnsbpTXzxhPV20wbwdA
+  accessed_at: '2026-11-09'
+  locator: Data Set sheet, header row
+  value: Vehicle color
+  unit: text
+  snippet: Total number of vehicles registered in the country
+  source_license: CC-BY-4.0
+  content_sha256: 94c4b6d933cc708af9fa1d2a07c795c1514c15de8897df5c0ecb57a462cb1d37
+  role: primary
+- publisher: Ministry of Interior (published on Bayanat)
+  title: 'MOI Registered vehicles 2025: vehicle type by colour (Excel, Bayanat)'
+  url: https://bayanat.ae/api/DatasetResources/DownloadSingle?fileName=data&resourceID=PZ7PAVb0neBeqzk7BI7mXSt6AnsbpTXzxhPV20wbwdA
+  accessed_at: '2026-11-09'
+  locator: Data Set sheet, row 2 (باص خفيف أقل من 27 راكب, أحمر), column Total
+  value: '1'
+  unit: count
+  snippet: The year in which the vehicle was registered
+  source_license: CC-BY-4.0
+  content_sha256: 94c4b6d933cc708af9fa1d2a07c795c1514c15de8897df5c0ecb57a462cb1d37
+  role: primary
+assumed:
+- parameter: distribution.parameters.counts
+  value: sum over colours of each vehicle type
+  method: derived
+  rationale: The Ministry publishes registrations by type and colour; type totals are the sum of the type's rows,
+    and shares are totals over the grand total.
+- parameter: vehicle type labels
+  value:
+    شحن ثقيل 12 طن فاكثر: شحن ثقيل 12 طن فأكثر
+  method: derived
+  rationale: The source spells the heavy cargo 12 tonnes and over type two ways; rows under the variant spelling
+    are counted under the common one.
+tests:
+- statistic: share["مركبة خفيفة"]
+  expected: 0.82762
+  tolerance: 0.005
+- statistic: share["دراجة نارية"]
+  expected: 0.074019
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Vehicles registered in the UAE in 2025 by vehicle type, from the Ministry of Interior's federal traffic system
+  dataset 'Registered vehicles 2025'. Labels are kept in Arabic exactly as the Ministry publishes them (the dataset
+  gives no English labels). Rows repeated for the same type and colour in the source are summed. Bayanat, the UAE
+  federal open data portal run by the Federal Competitiveness and Statistics Centre, states on its Copyright and
+  Data Licensing page that datasets on the portal are available under the Creative Commons Attribution 4.0 International
+  licence unless otherwise stated; that page is rendered per request and is referenced rather than hashed. Bayanat
+  download links carry an opaque resource token issued by the portal.

@@ -1,0 +1,236 @@
+id: kw-migrant-stock-by-age-and-sex-2020
+title: 'Kuwait: international migrant stock by five-year age group, given sex, mid-2020 (UN DESA)'
+kind: conditional
+domain: demographics
+region: KW
+status: license-review
+tier: A
+observed_period:
+  start: '2020-07-01'
+  end: '2020-07-01'
+tags:
+- gcc
+- migration
+- nationality
+- international-migrant-stock
+- by-age
+- by-sex
+- un-desa
+- population
+use_cases:
+- synthetic-customers
+- synthetic-employees
+- person-generation
+- kyc-onboarding
+- customer-segmentation
+- hr-analytics
+spec:
+  variable: age_group
+  unit: ratio
+  given: sex
+  distributions:
+    total:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.063146
+          5-9: 0.059649
+          10-14: 0.044737
+          15-19: 0.041865
+          20-24: 0.059877
+          25-29: 0.06861
+          30-34: 0.106125
+          35-39: 0.150626
+          40-44: 0.130605
+          45-49: 0.10586
+          50-54: 0.07086
+          55-59: 0.042083
+          60-64: 0.029731
+          65-69: 0.014143
+          70-74: 0.006336
+          75+: 0.005748
+        counts:
+          0-4: 196395
+          5-9: 185519
+          10-14: 139139
+          15-19: 130207
+          20-24: 186228
+          25-29: 213388
+          30-34: 330065
+          35-39: 468471
+          40-44: 406203
+          45-49: 329240
+          50-54: 220385
+          55-59: 130884
+          60-64: 92467
+          65-69: 43986
+          70-74: 19706
+          75+: 17876
+        total_migrants: 3110159
+        year: 2020
+    male:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.063991
+          5-9: 0.060394
+          10-14: 0.045502
+          15-19: 0.045944
+          20-24: 0.050827
+          25-29: 0.065883
+          30-34: 0.100829
+          35-39: 0.143112
+          40-44: 0.124091
+          45-49: 0.114519
+          50-54: 0.078092
+          55-59: 0.046378
+          60-64: 0.032762
+          65-69: 0.015585
+          70-74: 0.006341
+          75+: 0.005752
+        counts:
+          0-4: 132040
+          5-9: 124618
+          10-14: 93890
+          15-19: 94803
+          20-24: 104877
+          25-29: 135945
+          30-34: 208053
+          35-39: 295301
+          40-44: 256053
+          45-49: 236302
+          50-54: 161137
+          55-59: 95698
+          60-64: 67602
+          65-69: 32159
+          70-74: 13084
+          75+: 11868
+        total_migrants: 2063430
+        year: 2020
+    female:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.061482
+          5-9: 0.058182
+          10-14: 0.043229
+          15-19: 0.033823
+          20-24: 0.077719
+          25-29: 0.073986
+          30-34: 0.116565
+          35-39: 0.165439
+          40-44: 0.143447
+          45-49: 0.088789
+          50-54: 0.056603
+          55-59: 0.033615
+          60-64: 0.023755
+          65-69: 0.011299
+          70-74: 0.006326
+          75+: 0.00574
+        counts:
+          0-4: 64355
+          5-9: 60901
+          10-14: 45249
+          15-19: 35404
+          20-24: 81351
+          25-29: 77443
+          30-34: 122012
+          35-39: 173170
+          40-44: 150150
+          45-49: 92938
+          50-54: 59248
+          55-59: 35186
+          60-64: 24865
+          65-69: 11827
+          70-74: 6622
+          75+: 6008
+        total_migrants: 1046729
+        year: 2020
+evidence:
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!AE942 (Kuwait, 2020, males aged 35-39)
+  value: 295301
+  unit: count
+  snippet: <c r="AE942" s="35"><v>295301</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!AV942 (Kuwait, 2020, females aged 35-39)
+  value: 173170
+  unit: count
+  snippet: <c r="AV942" s="35"><v>173170</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table 1!W942 (Kuwait, 2020, both sexes, total)
+  value: 3110159
+  unit: count
+  snippet: <c r="W942" s="35"><v>3110159</v></c>
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: primary
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: 'International Migrant Stock 2020: Age, sex and destination (XLSX, Table 1)'
+  url: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_age_sex_and_destination.xlsx
+  accessed_at: '2026-11-09'
+  locator: Table of contents, copyright line
+  value: CC BY 3.0 IGO
+  unit: text
+  snippet: made available under a Creative Commons license CC BY 3.0 IGO
+  source_license: CC-BY-3.0-IGO
+  content_sha256: d74f135d08cce0bf56f1118bdfb86ed0514e6ae16a733e899dabe8c888fb9dc1
+  role: supporting
+- publisher: United Nations Department of Economic and Social Affairs, Population Division
+  title: UN Population Division data portal API, list of locations (M49 code, name, ISO codes)
+  url: https://population.un.org/dataportalapi/api/v1/locations?pageSize=500&pageNumber=1
+  accessed_at: '2026-11-09'
+  locator: data[iso3=KWT].id
+  value: 414
+  unit: integer
+  snippet: '{"id":414,"name":"Kuwait","iso3":"KWT"'
+  source_license: unstated
+  content_sha256: 5f1cefa51ad84b20b3d2d061f4e5edf3a5ba7979a8bfca003fd75e5178f2ab56
+  role: supporting
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / total
+  method: derived
+  rationale: Migrants in each five-year age group (0-4 to 75+) divided by the sum over the groups for that sex;
+    the published total is kept beside the counts and differs from the sum only by rounding.
+tests:
+- statistic: share[total,35-39]
+  expected: 0.150626
+  tolerance: 0.005
+- statistic: share[male,35-39]
+  expected: 0.143112
+  tolerance: 0.005
+- statistic: share[female,35-39]
+  expected: 0.165439
+  tolerance: 0.005
+- statistic: sum_of_shares[total]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[male]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[female]
+  expected: 1
+  tolerance: 0.0001
+notes: Age distribution of the international migrants living in Kuwait at 1 July 2020, for both sexes ('total'),
+  males and females, in sixteen five-year groups from 0-4 to 75+, from UN DESA International Migrant Stock 2020
+  (age, sex and destination workbook, Table 1). The 2024 revision's downloads carry no age breakdown, so 2020 is
+  the latest age structure for migrants. Combined with the 2024 migrant share and the population pyramid it lets
+  a generator give foreign residents their own age profile. The workbook states that it is made available under
+  CC BY 3.0 IGO. That licence permits reuse with attribution but is not on the verifier's permissive list, so the
+  entry stays at license-review until a reviewer accepts it.

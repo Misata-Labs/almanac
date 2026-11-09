@@ -1,0 +1,131 @@
+id: ae-domestic-minimum-top-up-tax
+title: 'UAE domestic minimum top-up tax on large multinational groups: 15% minimum rate, EUR 750 million revenue
+  threshold, from 2025'
+kind: rule
+domain: tax
+region: AE
+status: license-review
+tier: B
+valid_from: '2025-01-01'
+valid_to: null
+tags:
+- gcc
+- tax
+- corporate-tax
+- global-minimum-tax
+- pillar-two
+- uae
+use_cases:
+- tax-demo
+- invoicing-demo
+- invoicing
+- tax-filing-demo
+- financial-reporting
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      minimum_rate:
+        value: 15
+        unit: percent
+        article: Definitions
+      consolidated_revenue_threshold:
+        value: 750000000
+        unit: EUR
+        article: 1.1.1
+      revenue_test_years:
+        value: 2
+        unit: of the four preceding fiscal years
+        article: 1.1.1
+    top_up_tax_percentage: positive difference between the Minimum Rate and the Effective Tax Rate
+  vectors:
+  - input:
+      key: minimum_rate
+      column: value
+    expected: 15
+    origin: source
+  - input:
+      key: consolidated_revenue_threshold
+      column: value
+    expected: 750000000
+    origin: source
+  - input:
+      key: revenue_test_years
+      column: value
+    expected: 2
+    origin: source
+evidence:
+- publisher: Federal Tax Authority, United Arab Emirates
+  title: Cabinet Decision No. 142 of 2024 on the Imposition of Top-up Tax on Multinational Enterprises, as published
+    in the Official Gazette
+  url: https://tax.gov.ae/Datafolder/Files/Legislation/Cabinet-Decision-No-142-of-2024-on-Top-up-Tax-on-MNEs.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 91, Article 18, Definitions
+  value: fifteen percent (15%)
+  unit: percent
+  snippet: 'Minimum Rate : means fifteen percent (15%).'
+  source_license: unstated
+  content_sha256: 13528d9196ee2e624f06637426a79e4021d346428aa6bba34a87f11e3cbcca44
+  role: primary
+- publisher: Federal Tax Authority, United Arab Emirates
+  title: Cabinet Decision No. 142 of 2024 on the Imposition of Top-up Tax on Multinational Enterprises, as published
+    in the Official Gazette
+  url: https://tax.gov.ae/Datafolder/Files/Legislation/Cabinet-Decision-No-142-of-2024-on-Top-up-Tax-on-MNEs.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 2, Article 1.1.1
+  value: EUR 750 million
+  unit: currency:EUR
+  snippet: Group that has annual revenue of EUR 750 million or more in the Consolidated
+  source_license: unstated
+  content_sha256: 13528d9196ee2e624f06637426a79e4021d346428aa6bba34a87f11e3cbcca44
+  role: primary
+- publisher: Federal Tax Authority, United Arab Emirates
+  title: Cabinet Decision No. 142 of 2024 on the Imposition of Top-up Tax on Multinational Enterprises, as published
+    in the Official Gazette
+  url: https://tax.gov.ae/Datafolder/Files/Legislation/Cabinet-Decision-No-142-of-2024-on-Top-up-Tax-on-MNEs.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 2, Article 1.1.1
+  value: at least two of the four
+  unit: text
+  snippet: Financial Statements of the Ultimate Parent Entity in at least two of the four Fiscal
+  source_license: unstated
+  content_sha256: 13528d9196ee2e624f06637426a79e4021d346428aa6bba34a87f11e3cbcca44
+  role: primary
+- publisher: Federal Tax Authority, United Arab Emirates
+  title: Cabinet Decision No. 142 of 2024 on the Imposition of Top-up Tax on Multinational Enterprises, as published
+    in the Official Gazette
+  url: https://tax.gov.ae/Datafolder/Files/Legislation/Cabinet-Decision-No-142-of-2024-on-Top-up-Tax-on-MNEs.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 28, Article 5.2.1
+  value: positive
+  unit: text
+  snippet: 5.2.1 The Top-up Tax Percentage for a Fiscal Year shall be the positive
+  source_license: unstated
+  content_sha256: 13528d9196ee2e624f06637426a79e4021d346428aa6bba34a87f11e3cbcca44
+  role: primary
+- publisher: Federal Tax Authority, United Arab Emirates
+  title: Cabinet Decision No. 142 of 2024 on the Imposition of Top-up Tax on Multinational Enterprises, as published
+    in the Official Gazette
+  url: https://tax.gov.ae/Datafolder/Files/Legislation/Cabinet-Decision-No-142-of-2024-on-Top-up-Tax-on-MNEs.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 1, title
+  value: Effective from 1 January 2025
+  unit: text
+  snippet: Cabinet Decision No. 142 of 2024 – Issued 31 December of 2024 – (Effective from 1 January 2025)
+  source_license: unstated
+  content_sha256: 13528d9196ee2e624f06637426a79e4021d346428aa6bba34a87f11e3cbcca44
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+notes: The UAE's domestic minimum top-up tax (Cabinet Decision No. 142 of 2024, effective for fiscal years beginning
+  on or after 1 January 2025) applies to constituent entities of multinational groups with consolidated revenue
+  of EUR 750 million or more in at least two of the four preceding fiscal years. The top-up tax percentage is the
+  positive difference between the 15% minimum rate and the group's effective tax rate in the UAE. The full computation
+  of the effective tax rate and excess profit is not modelled; the entry holds the thresholds a demo needs to flag
+  in-scope groups.

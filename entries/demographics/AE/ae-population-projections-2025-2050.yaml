@@ -1,0 +1,253 @@
+id: ae-population-projections-2025-2050
+title: 'United Arab Emirates: total, male and female population, annual 2025 to 2050 (World Bank population projections)'
+kind: rule
+domain: demographics
+region: AE
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2050-12-31'
+tags:
+- gcc
+- population
+- projections
+- by-sex
+- world-bank
+use_cases:
+- synthetic-customers
+- synthetic-employees
+- person-generation
+- kyc-onboarding
+- customer-segmentation
+- market-sizing
+- demand-forecasting
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    source: World Bank API source 40
+    indicators:
+      total: SP.POP.TOTL
+      male: SP.POP.TOTL.MA.IN
+      female: SP.POP.TOTL.FE.IN
+    url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+    rows:
+      '2025':
+        total: 11513149
+        male: 7342214
+        female: 4170935
+      '2026':
+        total: 11706447
+        male: 7450054
+        female: 4256393
+      '2027':
+        total: 11869877
+        male: 7538088
+        female: 4331789
+      '2028':
+        total: 12013923
+        male: 7613172
+        female: 4400751
+      '2029':
+        total: 12148428
+        male: 7681727
+        female: 4466701
+      '2030':
+        total: 12279500
+        male: 7747642
+        female: 4531858
+      '2031':
+        total: 12414978
+        male: 7815838
+        female: 4599140
+      '2032':
+        total: 12554355
+        male: 7886013
+        female: 4668342
+      '2033':
+        total: 12697233
+        male: 7957969
+        female: 4739264
+      '2034':
+        total: 12843334
+        male: 8031570
+        female: 4811764
+      '2035':
+        total: 12992147
+        male: 8106549
+        female: 4885598
+      '2036':
+        total: 13143716
+        male: 8182984
+        female: 4960732
+      '2037':
+        total: 13297487
+        male: 8260567
+        female: 5036920
+      '2038':
+        total: 13453445
+        male: 8339303
+        female: 5114142
+      '2039':
+        total: 13610579
+        male: 8418598
+        female: 5191981
+      '2040':
+        total: 13768774
+        male: 8498416
+        female: 5270358
+      '2041':
+        total: 13927864
+        male: 8578651
+        female: 5349213
+      '2042':
+        total: 14087686
+        male: 8659214
+        female: 5428472
+      '2043':
+        total: 14248177
+        male: 8740068
+        female: 5508109
+      '2044':
+        total: 14409391
+        male: 8821243
+        female: 5588148
+      '2045':
+        total: 14571048
+        male: 8902578
+        female: 5668470
+      '2046':
+        total: 14734506
+        male: 8985366
+        female: 5749140
+      '2047':
+        total: 14900518
+        male: 9070766
+        female: 5829752
+      '2048':
+        total: 15068890
+        male: 9158212
+        female: 5910678
+      '2049':
+        total: 15241673
+        male: 9248045
+        female: 5993628
+      '2050':
+        total: 15414665
+        male: 9337530
+        female: 6077135
+  vectors:
+  - input:
+      key: '2025'
+      column: total
+    expected: 11513149
+    origin: source
+  - input:
+      key: '2050'
+      column: total
+    expected: 15414665
+    origin: source
+  - input: XX
+    expected: false
+    origin: derived
+  - input:
+      key: '2050'
+      column: male
+    expected: 9337530
+    origin: source
+evidence:
+- publisher: World Bank
+  title: World Bank API, population total, male and female, source 40 (Population estimates and projections), 2025-2050,
+    GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.TOTL, countryiso3code=ARE, date=2025].value'
+  value: 11513149
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.TOTL","value":"Population, total"},"country":{"id":"AE","value":"United Arab
+    Emirates"},"countryiso3code":"ARE","date":"2025","value":11513149'
+  source_license: CC-BY-4.0
+  content_sha256: 37419b5280e13ec88d321f57e1158341a62cef2c4b0d405b73267f5a773dd0b9
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population total, male and female, source 40 (Population estimates and projections), 2025-2050,
+    GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.TOTL, countryiso3code=ARE, date=2050].value'
+  value: 15414665
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.TOTL","value":"Population, total"},"country":{"id":"AE","value":"United Arab
+    Emirates"},"countryiso3code":"ARE","date":"2050","value":15414665'
+  source_license: CC-BY-4.0
+  content_sha256: 37419b5280e13ec88d321f57e1158341a62cef2c4b0d405b73267f5a773dd0b9
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population total, male and female, source 40 (Population estimates and projections), 2025-2050,
+    GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.TOTL.MA.IN, countryiso3code=ARE, date=2050].value'
+  value: 9337530
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.TOTL.MA.IN","value":"Population, male"},"country":{"id":"AE","value":"United
+    Arab Emirates"},"countryiso3code":"ARE","date":"2050","value":9337530'
+  source_license: CC-BY-4.0
+  content_sha256: 37419b5280e13ec88d321f57e1158341a62cef2c4b0d405b73267f5a773dd0b9
+  role: primary
+- publisher: World Bank
+  title: World Bank API, population total, male and female, source 40 (Population estimates and projections), 2025-2050,
+    GCC economies
+  url: https://api.worldbank.org/v2/country/SAU;ARE;QAT;KWT;BHR;OMN/indicator/SP.POP.TOTL;SP.POP.TOTL.MA.IN;SP.POP.TOTL.FE.IN?date=2025:2050&format=json&per_page=1000&source=40
+  accessed_at: '2026-11-09'
+  locator: '[indicator=SP.POP.TOTL.FE.IN, countryiso3code=ARE, date=2050].value'
+  value: 6077135
+  unit: count
+  snippet: '"indicator":{"id":"SP.POP.TOTL.FE.IN","value":"Population, female"},"country":{"id":"AE","value":"United
+    Arab Emirates"},"countryiso3code":"ARE","date":"2050","value":6077135'
+  source_license: CC-BY-4.0
+  content_sha256: 37419b5280e13ec88d321f57e1158341a62cef2c4b0d405b73267f5a773dd0b9
+  role: primary
+- publisher: World Bank
+  title: World Bank indicator metadata, SP.POP.TOTL.MA.IN
+  url: https://api.worldbank.org/v2/indicator/SP.POP.TOTL.MA.IN?format=json
+  accessed_at: '2026-11-09'
+  locator: sourceOrganization
+  value: 'World Population Prospects, United Nations (UN), publisher: UN Population Division'
+  unit: text
+  snippet: 'World Population Prospects, United Nations (UN), publisher: UN Population Division'
+  source_license: CC-BY-4.0
+  content_sha256: 098d59c9dd3c2292aa4fad3cdc08131a3b07be265d9f42dd2b8af8812a50be34
+  role: supporting
+- publisher: World Bank
+  title: World Bank Data Catalog public licenses
+  url: https://datacatalog.worldbank.org/public-licenses
+  accessed_at: '2026-11-09'
+  locator: Data Access And Licensing
+  value: Creative Commons Attribution 4.0 International license
+  unit: text
+  snippet: The World Bank Group makes data publicly available according to open data standards
+  source_license: CC-BY-4.0
+  content_sha256: c7c9b31441ea4a1fa27990f4b11f385587469c5c2bda4ec4fc7a6561db6d2422
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 26
+  tolerance: 0
+- statistic: value[2025,total]
+  expected: 11513149
+  tolerance: 0
+- statistic: value[2050,female]
+  expected: 6077135
+  tolerance: 0
+- statistic: max[total]
+  expected: 15414665
+  tolerance: 0
+notes: 'Total, male and female mid-year population of United Arab Emirates for every year from 2025 to 2050, from
+  the World Bank Population estimates and projections database (API source 40: SP.POP.TOTL, SP.POP.TOTL.MA.IN, SP.POP.TOTL.FE.IN),
+  which builds on the UN World Population Prospects. Years after the latest estimate are projections, not observations,
+  so the table is a reference keyed by year (valid_to is the end of the projection horizon) rather than an observed
+  series. Data last updated 2026-07-01. The World Bank licenses its data under CC BY 4.0.'

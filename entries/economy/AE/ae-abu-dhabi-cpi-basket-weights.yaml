@@ -1,0 +1,110 @@
+id: ae-abu-dhabi-cpi-basket-weights
+title: Abu Dhabi consumer price index basket weights by expenditure group (2021=100 series, SCAD)
+kind: marginal
+domain: economy
+region: AE
+status: license-review
+tier: A
+observed_period:
+  start: '2022-01-01'
+  end: '2025-12-31'
+tags:
+- uae
+- gcc
+- abu-dhabi
+- cpi
+- household-spending
+- basket-weights
+- coicop
+- scad
+use_cases:
+- retail-demo
+- synthetic-customers
+- household-generation
+- sales-generation
+- market-sizing
+spec:
+  variable: household_expenditure_group
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Food and beverages: 0.12012
+        Tobacco: 0.002002
+        Clothing and footwear: 0.049049
+        Housing, water, electricity, gas and other fuels: 0.336336
+        Furnishings, household equipment and routine household maintenance: 0.064064
+        Health: 0.022022
+        Transport: 0.14014
+        Communication: 0.057057
+        Recreation and culture: 0.039039
+        Education: 0.076076
+        Restaurants and hotels: 0.036036
+        Insurance and financial services: 0.012012
+        Personal care, social protection and miscellaneous goods: 0.046046
+      weights_percent:
+        Food and beverages: 12.0
+        Tobacco: 0.2
+        Clothing and footwear: 4.9
+        Housing, water, electricity, gas and other fuels: 33.6
+        Furnishings, household equipment and routine household maintenance: 6.4
+        Health: 2.2
+        Transport: 14.0
+        Communication: 5.7
+        Recreation and culture: 3.9
+        Education: 7.6
+        Restaurants and hotels: 3.6
+        Insurance and financial services: 1.2
+        Personal care, social protection and miscellaneous goods: 4.6
+      total: 99.9
+evidence:
+- publisher: Statistics Centre Abu Dhabi
+  title: 'SCAD, Consumer Price Index, December 2025 (Excel tables), Table 1: monthly series by group, 2022-2025
+    (2021=100)'
+  url: https://www.scad.gov.ae/documents/20122/2303931/publication_63882_322_4_18_2025_EN.xlsx/2182010c-28e1-3455-0bd4-76131ca92607
+  accessed_at: '2026-11-09'
+  locator: Table 1, column 'Weights', row 'Housing, water, electricity, gas and other fuels'
+  value: '33.6'
+  unit: percent
+  snippet: Housing, water, electricity, gas and other fuels
+  source_license: 'SCAD terms of use: reproduction without further permission, with acknowledgement of SCAD as the
+    source'
+  content_sha256: 0a328e98cd6c36b3deb70a0834af22d292a5dec81842973fcce9001329b50890
+  role: primary
+- publisher: Statistics Centre Abu Dhabi
+  title: 'SCAD, Consumer Price Index, December 2025 (Excel tables), Table 1: monthly series by group, 2022-2025
+    (2021=100)'
+  url: https://www.scad.gov.ae/documents/20122/2303931/publication_63882_322_4_18_2025_EN.xlsx/2182010c-28e1-3455-0bd4-76131ca92607
+  accessed_at: '2026-11-09'
+  locator: Table 1, column 'Weights', row 'Consumer Price Index'
+  value: '100'
+  unit: percent
+  snippet: 'Table 1: Monthly series for Consumer price Index by Group, 2022-2025'
+  source_license: 'SCAD terms of use: reproduction without further permission, with acknowledgement of SCAD as the
+    source'
+  content_sha256: 0a328e98cd6c36b3deb70a0834af22d292a5dec81842973fcce9001329b50890
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: weight / sum of the thirteen group weights
+  method: derived
+  rationale: SCAD publishes each group's weight in percent of the all-items index; the shares rescale the published
+    one-decimal weights so they sum to exactly one.
+tests:
+- statistic: share["Housing, water, electricity, gas and other fuels"]
+  expected: 0.336336
+  tolerance: 0.005
+- statistic: share["Food and beverages"]
+  expected: 0.12012
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Expenditure weights of the Abu Dhabi consumer price index (2021=100 series) for its thirteen groups, from
+  the Weights column of Table 1 in SCAD's December 2025 Consumer Price Index release. The weights describe how the
+  average household budget in the emirate splits across categories, which makes them a ready category mix for synthetic
+  household spending or retail baskets. Published weights (percent) ride along as weights_percent. SCAD's terms
+  of use (https://www.scad.gov.ae/terms-of-use) state that its publications and tables may be reproduced without
+  further permission provided SCAD is acknowledged as the source; the page is rendered per request and is referenced
+  rather than hashed, so the entry stays at licence review.

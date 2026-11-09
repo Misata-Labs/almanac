@@ -1,0 +1,261 @@
+id: ae-labour-law-working-time-leave-and-notice
+title: 'UAE private-sector labour law limits: probation, working hours, overtime premiums, annual leave and notice
+  periods'
+kind: rule
+domain: employment
+region: AE
+status: license-review
+tier: B
+valid_from: '2022-02-02'
+valid_to: null
+tags:
+- gcc
+- labour-law
+- payroll
+- working-time
+- annual-leave
+- uae
+use_cases:
+- payroll-demo
+- hr-demo
+- hr-analytics
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      probation_max_months:
+        value: 6
+        unit: months
+        article: '9'
+      probation_termination_notice_days:
+        value: 14
+        unit: days
+        article: '9'
+      daily_working_hours_max:
+        value: 8
+        unit: hours
+        article: '17'
+      weekly_working_hours_max:
+        value: 48
+        unit: hours
+        article: '17'
+      consecutive_hours_before_break:
+        value: 5
+        unit: hours
+        article: '18'
+      daily_overtime_max_hours:
+        value: 2
+        unit: hours
+        article: '19'
+      total_hours_max_per_3_weeks:
+        value: 144
+        unit: hours
+        article: '19'
+      overtime_premium_percent:
+        value: 25
+        unit: percent of basic wage
+        article: '19'
+      night_overtime_premium_percent:
+        value: 50
+        unit: percent of basic wage, 10 pm to 4 am
+        article: '19'
+      weekend_work_premium_percent:
+        value: 50
+        unit: percent of basic wage
+        article: '19'
+      annual_leave_days:
+        value: 30
+        unit: days per year
+        article: '29'
+      annual_leave_days_per_month_6_to_12_months:
+        value: 2
+        unit: days per month
+        article: '29'
+      notice_period_min_days:
+        value: 30
+        unit: days
+        article: '43'
+      notice_period_max_days:
+        value: 90
+        unit: days
+        article: '43'
+  vectors:
+  - input:
+      key: probation_max_months
+      column: value
+    expected: 6
+    origin: source
+  - input:
+      key: weekly_working_hours_max
+      column: value
+    expected: 48
+    origin: source
+  - input:
+      key: overtime_premium_percent
+      column: value
+    expected: 25
+    origin: source
+  - input:
+      key: notice_period_max_days
+      column: value
+    expected: 90
+    origin: source
+  - input:
+      key: annual_leave_days
+      column: value
+    expected: 30
+    origin: source
+evidence:
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 17, Article 9
+  value: 6
+  unit: text
+  snippet: The employer may appoint the worker under a probationary period not exceeding (6) six months
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 17, Article 9
+  value: fourteen (14) days
+  unit: text
+  snippet: writing fourteen (14) days at least before the date specified for the termination of service.
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 23, Article 17
+  value: 48
+  unit: text
+  snippet: The maximum normal working hours for workers shall be (8) eight hours per day or (48) forty-eight hours
+    per week.
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 23, Article 18
+  value: 5
+  unit: text
+  snippet: The worker may not work for more than (5) five consecutive hours without a break
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 24, Article 19
+  value: 144
+  unit: text
+  snippet: the total working hours shall not exceed ( 144) one hundred and forty four hours every (3) three weeks.
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 24, Article 19
+  value: 25 %
+  unit: text
+  snippet: is calculated according to the basic wage plus an increase of not less than ( 25 %) twenty five percent
+    of that wage.
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 24, Article 19
+  value: between 10 pm and 4 am
+  unit: text
+  snippet: If the work conditions require that the worker works overtime between 10 pm and 4 am,
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 27, Article 29
+  value: Thirty days
+  unit: text
+  snippet: a. Thirty days for each year of extended service;
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 27, Article 29
+  value: Two days for each month
+  unit: text
+  snippet: b. Two days for each month if his service term is more than six months and less
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 35, Article 43
+  value: ( 90) ninety days
+  unit: text
+  snippet: such period is not less than ( 30) thirty days and not more than ( 90) ninety days.
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+- publisher: Ministry of Human Resources and Emiratisation, United Arab Emirates (text published by Ports, Customs
+    and Free Zone Corporation, Dubai)
+  title: Federal Decree-Law No. (33) of 2021 Regarding the Regulation of Employment Relationships and its amendments
+  url: https://pcfc.ae/en/Rules%20and%20Regulations/Trakhees/Licensing%20Department/Government%20Services/Rules%20&%20Regulations/Federal%20Decree-Law%20No.%20(33)%20of%202021%20Regarding%20the%20Regulation%20of%20Employment%20Relationship%20and%20its%20amendments.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 49, Article 74
+  value: 2 February 2022
+  unit: text
+  snippet: shall be enforced as of2 February 2022.
+  source_license: unstated
+  content_sha256: 31541ec83e610aac24f6da66046859f8419827d355969e59952683f3e7acf4f6
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 14
+  tolerance: 0
+- statistic: max[value]
+  expected: 144
+  tolerance: 0
+notes: 'Limits that UAE private-sector payroll and HR systems enforce under Federal Decree-Law No. 33 of 2021 on
+  the Regulation of Employment Relationships, in force from 2 February 2022: probation of at most six months (14
+  days'' written notice to end it), 8 hours a day or 48 a week, no more than 5 consecutive hours without a break,
+  overtime of at most 2 hours a day and 144 hours in any three weeks, overtime paid at the basic wage plus at least
+  25% (50% between 10 pm and 4 am, and for weekend work), annual leave of 30 days per year of service (2 days a
+  month between six months and a year), and contract notice of 30 to 90 days. Ramadan hours are set by the Implementing
+  Regulation, which was not fetched. The text is the consolidated English translation with amendments, which states
+  that it is not an official translation.'
