@@ -1,0 +1,471 @@
+id: sa-population-by-age-nationality-sex-2024
+title: Saudi Arabia population by five-year age group given nationality and sex, mid-2024 (GASTAT population estimates)
+kind: conditional
+domain: demographics
+region: SA
+status: license-review
+tier: A
+tags:
+- saudi-arabia
+- gcc
+- population
+- age
+- nationality
+- population-estimates
+- gastat
+use_cases:
+- synthetic-customers
+- person-generation
+- household-generation
+- insurance
+- market-sizing
+observed_period:
+  start: '2024-07-01'
+  end: '2024-07-01'
+spec:
+  variable: age_group
+  unit: ratio
+  given: nationality_sex
+  distributions:
+    saudi-male:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.109871
+          5-9: 0.117369
+          10-14: 0.112261
+          15-19: 0.10103
+          20-24: 0.089993
+          25-29: 0.087738
+          30-34: 0.082192
+          35-39: 0.073549
+          40-44: 0.060968
+          45-49: 0.04445
+          50-54: 0.034369
+          55-59: 0.02831
+          60-64: 0.021124
+          65-69: 0.01506
+          70-74: 0.008807
+          75-79: 0.005783
+          80+: 0.007126
+        counts:
+          0-4: 1079765
+          5-9: 1153454
+          10-14: 1103253
+          15-19: 992884
+          20-24: 884417
+          25-29: 862252
+          30-34: 807752
+          35-39: 722806
+          40-44: 599165
+          45-49: 436840
+          50-54: 337761
+          55-59: 278222
+          60-64: 207603
+          65-69: 148001
+          70-74: 86556
+          75-79: 56837
+          80+: 70027
+        total: 9827595
+    saudi-female:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.10673
+          5-9: 0.114945
+          10-14: 0.109612
+          15-19: 0.099509
+          20-24: 0.088961
+          25-29: 0.086975
+          30-34: 0.081738
+          35-39: 0.073434
+          40-44: 0.061633
+          45-49: 0.046143
+          50-54: 0.037314
+          55-59: 0.030817
+          60-64: 0.023132
+          65-69: 0.015801
+          70-74: 0.009553
+          75-79: 0.006033
+          80+: 0.007669
+        counts:
+          0-4: 1046773
+          5-9: 1127344
+          10-14: 1075034
+          15-19: 975955
+          20-24: 872503
+          25-29: 853022
+          30-34: 801655
+          35-39: 720219
+          40-44: 604477
+          45-49: 452556
+          50-54: 365968
+          55-59: 302239
+          60-64: 226875
+          65-69: 154971
+          70-74: 93691
+          75-79: 59167
+          80+: 75214
+        total: 9807663
+    saudi-total:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.108302
+          5-9: 0.116158
+          10-14: 0.110938
+          15-19: 0.100271
+          20-24: 0.089478
+          25-29: 0.087357
+          30-34: 0.081965
+          35-39: 0.073492
+          40-44: 0.0613
+          45-49: 0.045296
+          50-54: 0.03584
+          55-59: 0.029562
+          60-64: 0.022127
+          65-69: 0.01543
+          70-74: 0.00918
+          75-79: 0.005908
+          80+: 0.007397
+        counts:
+          0-4: 2126538
+          5-9: 2280798
+          10-14: 2178287
+          15-19: 1968839
+          20-24: 1756920
+          25-29: 1715274
+          30-34: 1609407
+          35-39: 1443025
+          40-44: 1203642
+          45-49: 889396
+          50-54: 703729
+          55-59: 580461
+          60-64: 434478
+          65-69: 302972
+          70-74: 180247
+          75-79: 116004
+          80+: 145241
+        total: 19635258
+    non-saudi-male:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.016081
+          5-9: 0.021205
+          10-14: 0.019639
+          15-19: 0.015675
+          20-24: 0.085362
+          25-29: 0.163146
+          30-34: 0.168716
+          35-39: 0.17147
+          40-44: 0.130217
+          45-49: 0.084188
+          50-54: 0.054701
+          55-59: 0.036341
+          60-64: 0.018683
+          65-69: 0.008576
+          70-74: 0.003492
+          75-79: 0.001387
+          80+: 0.001121
+        counts:
+          0-4: 194400
+          5-9: 256343
+          10-14: 237412
+          15-19: 189492
+          20-24: 1031907
+          25-29: 1972204
+          30-34: 2039534
+          35-39: 2072825
+          40-44: 1574139
+          45-49: 1017713
+          50-54: 661253
+          55-59: 439307
+          60-64: 225846
+          65-69: 103667
+          70-74: 42212
+          75-79: 16766
+          80+: 13557
+        total: 12088577
+    non-saudi-female:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.051518
+          5-9: 0.068143
+          10-14: 0.062963
+          15-19: 0.049714
+          20-24: 0.072565
+          25-29: 0.140087
+          30-34: 0.148836
+          35-39: 0.148755
+          40-44: 0.101832
+          45-49: 0.061676
+          50-54: 0.037765
+          55-59: 0.022954
+          60-64: 0.014781
+          65-69: 0.00852
+          70-74: 0.004797
+          75-79: 0.002516
+          80+: 0.002576
+        counts:
+          0-4: 184251
+          5-9: 243711
+          10-14: 225184
+          15-19: 177801
+          20-24: 259526
+          25-29: 501014
+          30-34: 532304
+          35-39: 532013
+          40-44: 364198
+          45-49: 220582
+          50-54: 135064
+          55-59: 82095
+          60-64: 52863
+          65-69: 30471
+          70-74: 17157
+          75-79: 8999
+          80+: 9212
+        total: 3576445
+    non-saudi-total:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.024172
+          5-9: 0.031922
+          10-14: 0.029531
+          15-19: 0.023447
+          20-24: 0.082441
+          25-29: 0.157882
+          30-34: 0.164177
+          35-39: 0.166284
+          40-44: 0.123737
+          45-49: 0.079048
+          50-54: 0.050834
+          55-59: 0.033284
+          60-64: 0.017792
+          65-69: 0.008563
+          70-74: 0.00379
+          75-79: 0.001645
+          80+: 0.001453
+        counts:
+          0-4: 378651
+          5-9: 500054
+          10-14: 462596
+          15-19: 367293
+          20-24: 1291433
+          25-29: 2473218
+          30-34: 2571838
+          35-39: 2604838
+          40-44: 1938337
+          45-49: 1238295
+          50-54: 796317
+          55-59: 521402
+          60-64: 278709
+          65-69: 134138
+          70-74: 59369
+          75-79: 25765
+          80+: 22769
+        total: 15665022
+    total-male:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.058138
+          5-9: 0.064327
+          10-14: 0.061172
+          15-19: 0.05395
+          20-24: 0.087439
+          25-29: 0.129332
+          30-34: 0.129917
+          35-39: 0.12756
+          40-44: 0.099164
+          45-49: 0.066369
+          50-54: 0.045583
+          55-59: 0.03274
+          60-64: 0.019778
+          65-69: 0.011483
+          70-74: 0.005875
+          75-79: 0.003358
+          80+: 0.003814
+        counts:
+          0-4: 1274165
+          5-9: 1409797
+          10-14: 1340665
+          15-19: 1182376
+          20-24: 1916324
+          25-29: 2834456
+          30-34: 2847286
+          35-39: 2795631
+          40-44: 2173304
+          45-49: 1454553
+          50-54: 999014
+          55-59: 717529
+          60-64: 433449
+          65-69: 251668
+          70-74: 128768
+          75-79: 73603
+          80+: 83584
+        total: 21916172
+    total-female:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.091977
+          5-9: 0.102439
+          10-14: 0.097146
+          15-19: 0.086203
+          20-24: 0.08458
+          25-29: 0.101167
+          30-34: 0.099667
+          35-39: 0.093561
+          40-44: 0.072375
+          45-49: 0.050294
+          50-54: 0.037435
+          55-59: 0.028716
+          60-64: 0.020901
+          65-69: 0.013855
+          70-74: 0.008282
+          75-79: 0.005093
+          80+: 0.006308
+        counts:
+          0-4: 1231024
+          5-9: 1371055
+          10-14: 1300218
+          15-19: 1153756
+          20-24: 1132029
+          25-29: 1354036
+          30-34: 1333959
+          35-39: 1252232
+          40-44: 968675
+          45-49: 673138
+          50-54: 501032
+          55-59: 384334
+          60-64: 279738
+          65-69: 185442
+          70-74: 110848
+          75-79: 68166
+          80+: 84426
+        total: 13384108
+    total-total:
+      family: categorical
+      parameters:
+        shares:
+          0-4: 0.070968
+          5-9: 0.078777
+          10-14: 0.074812
+          15-19: 0.066179
+          20-24: 0.086355
+          25-29: 0.118653
+          30-34: 0.118448
+          35-39: 0.114669
+          40-44: 0.089007
+          45-49: 0.060274
+          50-54: 0.042494
+          55-59: 0.031214
+          60-64: 0.020203
+          65-69: 0.012383
+          70-74: 0.006788
+          75-79: 0.004016
+          80+: 0.004759
+        counts:
+          0-4: 2505189
+          5-9: 2780852
+          10-14: 2640883
+          15-19: 2336132
+          20-24: 3048353
+          25-29: 4188492
+          30-34: 4181245
+          35-39: 4047863
+          40-44: 3141979
+          45-49: 2127691
+          50-54: 1500046
+          55-59: 1101863
+          60-64: 713187
+          65-69: 437110
+          70-74: 239616
+          75-79: 141769
+          80+: 168010
+        total: 35300280
+evidence:
+- publisher: General Authority for Statistics (GASTAT)
+  title: Population Estimates Statistics 2024 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Population_Estimates_Statistics_2024_EN.xlsx_fixed_2514649/6703cee3-3703-18e0-fc1b-956a76d75847
+  accessed_at: '2026-11-09'
+  locator: sheet الفئات العمرية, cell F9 (25-29, Non-Saudi 2024 male)
+  value: 1972204
+  unit: count
+  snippet: Non-Saudi 2024
+  source_license: unstated
+  content_sha256: 1a788fea14fbf0c830cd7a0b93ffd17f93cdb108c55196b10f670cd3cf8067fe
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Population Estimates Statistics 2024 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Population_Estimates_Statistics_2024_EN.xlsx_fixed_2514649/6703cee3-3703-18e0-fc1b-956a76d75847
+  accessed_at: '2026-11-09'
+  locator: sheet الفئات العمرية, cell B4 (0-4, Saudi 2024 female)
+  value: 1046773
+  unit: count
+  snippet: Age Group
+  source_license: unstated
+  content_sha256: 1a788fea14fbf0c830cd7a0b93ffd17f93cdb108c55196b10f670cd3cf8067fe
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Population Estimates Statistics 2024 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Population_Estimates_Statistics_2024_EN.xlsx_fixed_2514649/6703cee3-3703-18e0-fc1b-956a76d75847
+  accessed_at: '2026-11-09'
+  locator: sheet الفئات العمرية, cell J21 (Total, Total 2024)
+  value: 35300280
+  unit: count
+  snippet: Total 2024
+  source_license: unstated
+  content_sha256: 1a788fea14fbf0c830cd7a0b93ffd17f93cdb108c55196b10f670cd3cf8067fe
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Population Estimates Publication 2024 (PDF)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Population_Estimates_Publication_2024_EN.pdf_fixed_3226306/7d123c57-1626-7d2f-ba7f-8a719f928f28
+  accessed_at: '2026-11-09'
+  locator: page 1, headline
+  value: Total population exceeds 35 million by mid-2024
+  unit: text
+  snippet: Total population exceeds 35 million by mid-2024
+  source_license: unstated
+  content_sha256: 837782f4f38eb1ce9b220c2d9f874c967208a28a80aa11d39c1471016430b286
+  role: supporting
+assumed:
+- parameter: distributions.*.parameters.shares
+  value: count / group total
+  method: derived
+  rationale: Shares are the published counts divided by the group's published total, rounded to 6 decimals; the
+    builder checks the age groups add up to the total.
+- parameter: observed_period
+  value: '2024-07-01'
+  method: assumed
+  rationale: GASTAT describes the estimates as the population in mid-2024 without naming a day; 1 July 2024 is used
+    as the reference date.
+tests:
+- statistic: share["non-saudi-male","30-34"]
+  expected: 0.168716
+  tolerance: 0.004
+- statistic: share["saudi-female","0-4"]
+  expected: 0.10673
+  tolerance: 0.004
+- statistic: share["total-total","80+"]
+  expected: 0.004759
+  tolerance: 0.004
+- statistic: sum_of_shares["saudi-male"]
+  expected: 1
+  tolerance: 0.002
+- statistic: sum_of_shares["saudi-female"]
+  expected: 1
+  tolerance: 0.002
+- statistic: sum_of_shares["saudi-total"]
+  expected: 1
+  tolerance: 0.002
+notes: Mid-2024 population estimates by five-year age group (open-ended 80+) for each nationality and sex group,
+  from the 'Population Estimates Statistics 2024' workbook GASTAT publishes beside its estimates release; the 2023
+  columns of the same sheet are ignored. Groups are nationality (saudi, non-saudi, total) by sex (male, female,
+  total), keyed as saudi-male, saudi-female, saudi-total, non-saudi-male and so on, matching the publication's nine
+  columns. The estimates are projected from the May 2022 census base. Counts sit beside the shares. Neither file
+  carries a licence statement, so the entry stays at license-review; GASTAT's website use policy permits reuse,
+  including commercial reuse, with GASTAT acknowledged as the source and changes indicated.

@@ -1,0 +1,257 @@
+id: sa-household-income-expenditure-by-region-nationality-2023
+title: Saudi Arabia household monthly disposable income and consumption by region and nationality of head, 2023
+  (GASTAT HIES)
+kind: rule
+domain: income
+region: SA
+status: license-review
+tier: A
+tags:
+- saudi-arabia
+- gcc
+- household-income
+- household-spending
+- by-region
+- nationality
+- hies
+- gastat
+use_cases:
+- household-generation
+- synthetic-customers
+- customer-segmentation
+- credit-risk
+valid_from: '2023-01-01'
+valid_to: '2023-12-31'
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    unit: currency:SAR
+    period: per household per month
+    rows:
+      Riyadh:
+        mean_disposable_income_saudi: 25995.0
+        median_disposable_income_saudi: 18581.0
+        mean_consumption_expenditure_saudi: 21971.0
+        mean_disposable_income_non_saudi: 6405.0
+        median_disposable_income_non_saudi: 3943.0
+        mean_consumption_expenditure_non_saudi: 6003.0
+        mean_disposable_income_total: 14990.0
+        median_disposable_income_total: 8000.0
+        mean_consumption_expenditure_total: 13000.0
+      Makkah:
+        mean_disposable_income_saudi: 15577.0
+        median_disposable_income_saudi: 12900.0
+        mean_consumption_expenditure_saudi: 12977.0
+        mean_disposable_income_non_saudi: 5425.0
+        median_disposable_income_non_saudi: 3914.0
+        mean_consumption_expenditure_non_saudi: 5811.0
+        mean_disposable_income_total: 10141.0
+        median_disposable_income_total: 6547.0
+        mean_consumption_expenditure_total: 9146.0
+      Madinah:
+        mean_disposable_income_saudi: 12939.0
+        median_disposable_income_saudi: 10493.0
+        mean_consumption_expenditure_saudi: 12355.0
+        mean_disposable_income_non_saudi: 5364.0
+        median_disposable_income_non_saudi: 3781.0
+        mean_consumption_expenditure_non_saudi: 5200.0
+        mean_disposable_income_total: 9723.0
+        median_disposable_income_total: 6944.0
+        mean_consumption_expenditure_total: 9317.0
+      Qassim:
+        mean_disposable_income_saudi: 13958.0
+        median_disposable_income_saudi: 11532.0
+        mean_consumption_expenditure_saudi: 13628.0
+        mean_disposable_income_non_saudi: 3902.0
+        median_disposable_income_non_saudi: 2753.0
+        mean_consumption_expenditure_non_saudi: 4175.0
+        mean_disposable_income_total: 10081.0
+        median_disposable_income_total: 7000.0
+        mean_consumption_expenditure_total: 9983.0
+      Eastern Province:
+        mean_disposable_income_saudi: 18661.0
+        median_disposable_income_saudi: 14909.0
+        mean_consumption_expenditure_saudi: 17898.0
+        mean_disposable_income_non_saudi: 5132.0
+        median_disposable_income_non_saudi: 3660.0
+        mean_consumption_expenditure_non_saudi: 5345.0
+        mean_disposable_income_total: 11775.0
+        median_disposable_income_total: 7341.0
+        mean_consumption_expenditure_total: 11509.0
+      Asir:
+        mean_disposable_income_saudi: 15820.0
+        median_disposable_income_saudi: 12332.0
+        mean_consumption_expenditure_saudi: 12864.0
+        mean_disposable_income_non_saudi: 3371.0
+        median_disposable_income_non_saudi: 2500.0
+        mean_consumption_expenditure_non_saudi: 4222.0
+        mean_disposable_income_total: 11264.0
+        median_disposable_income_total: 7793.0
+        mean_consumption_expenditure_total: 9701.0
+      Tabuk:
+        mean_disposable_income_saudi: 14341.0
+        median_disposable_income_saudi: 11999.0
+        mean_consumption_expenditure_saudi: 12403.0
+        mean_disposable_income_non_saudi: 5642.0
+        median_disposable_income_non_saudi: 3850.0
+        mean_consumption_expenditure_non_saudi: 5146.0
+        mean_disposable_income_total: 11127.0
+        median_disposable_income_total: 9121.0
+        mean_consumption_expenditure_total: 9722.0
+      Hail:
+        mean_disposable_income_saudi: 13495.0
+        median_disposable_income_saudi: 11798.0
+        mean_consumption_expenditure_saudi: 11891.0
+        mean_disposable_income_non_saudi: 3075.0
+        median_disposable_income_non_saudi: 2269.0
+        mean_consumption_expenditure_non_saudi: 3776.0
+        mean_disposable_income_total: 9269.0
+        median_disposable_income_total: 5948.0
+        mean_consumption_expenditure_total: 8600.0
+      Northern Border:
+        mean_disposable_income_saudi: 16427.0
+        median_disposable_income_saudi: 13700.0
+        mean_consumption_expenditure_saudi: 13989.0
+        mean_disposable_income_non_saudi: 5398.0
+        median_disposable_income_non_saudi: 4116.0
+        mean_consumption_expenditure_non_saudi: 5687.0
+        mean_disposable_income_total: 12868.0
+        median_disposable_income_total: 9826.0
+        mean_consumption_expenditure_total: 11310.0
+      Jazan:
+        mean_disposable_income_saudi: 14010.0
+        median_disposable_income_saudi: 11785.0
+        mean_consumption_expenditure_saudi: 16583.0
+        mean_disposable_income_non_saudi: 4034.0
+        median_disposable_income_non_saudi: 2905.0
+        mean_consumption_expenditure_non_saudi: 6657.0
+        mean_disposable_income_total: 10763.0
+        median_disposable_income_total: 8419.0
+        mean_consumption_expenditure_total: 13353.0
+      Najran:
+        mean_disposable_income_saudi: 10979.0
+        median_disposable_income_saudi: 9744.0
+        mean_consumption_expenditure_saudi: 10857.0
+        mean_disposable_income_non_saudi: 3556.0
+        median_disposable_income_non_saudi: 2397.0
+        mean_consumption_expenditure_non_saudi: 4205.0
+        mean_disposable_income_total: 7969.0
+        median_disposable_income_total: 5332.0
+        mean_consumption_expenditure_total: 8159.0
+      AL - Baha:
+        mean_disposable_income_saudi: 14471.0
+        median_disposable_income_saudi: 11948.0
+        mean_consumption_expenditure_saudi: 14459.0
+        mean_disposable_income_non_saudi: 4806.0
+        median_disposable_income_non_saudi: 2577.0
+        mean_consumption_expenditure_non_saudi: 4826.0
+        mean_disposable_income_total: 11348.0
+        median_disposable_income_total: 8504.0
+        mean_consumption_expenditure_total: 11346.0
+      AL - Jouf:
+        mean_disposable_income_saudi: 14712.0
+        median_disposable_income_saudi: 11735.0
+        mean_consumption_expenditure_saudi: 12722.0
+        mean_disposable_income_non_saudi: 3517.0
+        median_disposable_income_non_saudi: 3000.0
+        mean_consumption_expenditure_non_saudi: 4798.0
+        mean_disposable_income_total: 10686.0
+        median_disposable_income_total: 7395.0
+        mean_consumption_expenditure_total: 9872.0
+      Total:
+        mean_disposable_income_saudi: 18056.0
+        median_disposable_income_saudi: 13655.0
+        mean_consumption_expenditure_saudi: 16028.0
+        mean_disposable_income_non_saudi: 5428.0
+        median_disposable_income_non_saudi: 3657.0
+        mean_consumption_expenditure_non_saudi: 5574.0
+        mean_disposable_income_total: 11839.0
+        median_disposable_income_total: 7362.0
+        mean_consumption_expenditure_total: 10884.0
+  vectors:
+  - input:
+      key: Riyadh
+      column: mean_disposable_income_saudi
+    expected: 25995.0
+    origin: source
+  - input:
+      key: Jazan
+      column: median_disposable_income_total
+    expected: 8419.0
+    origin: source
+  - input:
+      key: Total
+      column: mean_consumption_expenditure_non_saudi
+    expected: 5574.0
+    origin: source
+  - input: Riyadh
+    expected: true
+    origin: source
+  - input: Doha
+    expected: false
+    origin: derived
+    note: not a row of the table
+evidence:
+- publisher: General Authority for Statistics (GASTAT)
+  title: Household Income and Consumption Expenditure Survey 2023, publication tables (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Publication_tables_of_Household_Income_and_Consumption_Expenditure_Survey_2023_2_%281%29.xlsx_fixed_2613883/f482083a-b92a-ab65-d41b-7d1bf7c23e6e
+  accessed_at: '2026-11-09'
+  locator: sheet 1-2, cell B6 (Riyadh, Saudi)
+  value: 25995
+  unit: currency:SAR
+  snippet: Average Household Monthly Disposable Income by Administrative Region and Nationality of Household Head
+  source_license: unstated
+  content_sha256: df850fca853f66c6f9774e1f6472013cc520adc42c676eaaf8fe83b3fd1b3260
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Household Income and Consumption Expenditure Survey 2023, publication tables (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Publication_tables_of_Household_Income_and_Consumption_Expenditure_Survey_2023_2_%281%29.xlsx_fixed_2613883/f482083a-b92a-ab65-d41b-7d1bf7c23e6e
+  accessed_at: '2026-11-09'
+  locator: sheet 2-2, cell D15 (Jazan, Total)
+  value: 8419
+  unit: currency:SAR
+  snippet: Median Household Monthly Disposable Income by Administrative Region and Nationality of Household Head
+  source_license: unstated
+  content_sha256: df850fca853f66c6f9774e1f6472013cc520adc42c676eaaf8fe83b3fd1b3260
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Household Income and Consumption Expenditure Survey 2023, publication tables (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Publication_tables_of_Household_Income_and_Consumption_Expenditure_Survey_2023_2_%281%29.xlsx_fixed_2613883/f482083a-b92a-ab65-d41b-7d1bf7c23e6e
+  accessed_at: '2026-11-09'
+  locator: sheet 1-3, cell C19 (Total, Non Saudi)
+  value: 5574
+  unit: currency:SAR
+  snippet: Average Household Monthly Consumption Expenditure by Administrative Region and Nationality of Household
+    Head
+  source_license: unstated
+  content_sha256: df850fca853f66c6f9774e1f6472013cc520adc42c676eaaf8fe83b3fd1b3260
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Household Income and Consumption Expenditure Survey 2023, publication tables (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Publication_tables_of_Household_Income_and_Consumption_Expenditure_Survey_2023_2_%281%29.xlsx_fixed_2613883/f482083a-b92a-ab65-d41b-7d1bf7c23e6e
+  accessed_at: '2026-11-09'
+  locator: sheet content, title
+  value: Household Income and Consumption Expenditure Survey Indicators, KSA, 2023
+  unit: text
+  snippet: Household Income and Consumption Expenditure Survey Indicators, KSA, 2023
+  source_license: unstated
+  content_sha256: df850fca853f66c6f9774e1f6472013cc520adc42c676eaaf8fe83b3fd1b3260
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 14
+  tolerance: 0
+- statistic: max[mean_disposable_income_saudi]
+  expected: 25995.0
+  tolerance: 0
+notes: Mean and median household monthly disposable income and mean household monthly consumption expenditure, in
+  Saudi riyals, by administrative region and nationality of the household head (saudi, non_saudi, total), from Tables
+  1-2, 2-2 and 1-3 of GASTAT's Household Income and Consumption Expenditure Survey 2023 workbook. GASTAT notes that
+  2023 is the first survey to use the disposable income and consumption expenditure method, so earlier rounds are
+  not comparable. Use the mean and median together to fit a skewed income distribution per region and nationality.
+  Neither file carries a licence statement, so the entry stays at license-review; GASTAT's website use policy permits
+  reuse, including commercial reuse, with GASTAT acknowledged as the source and changes indicated.

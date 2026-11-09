@@ -1,0 +1,110 @@
+id: sa-population-by-nationality-sex-2024
+title: Saudi Arabia population by nationality (Saudi, non-Saudi) and sex, mid-2024 (GASTAT population estimates)
+kind: marginal
+domain: demographics
+region: SA
+status: license-review
+tier: A
+tags:
+- saudi-arabia
+- gcc
+- population
+- nationality
+- sex
+- population-estimates
+- gastat
+use_cases:
+- synthetic-customers
+- person-generation
+- kyc-onboarding
+- market-sizing
+observed_period:
+  start: '2024-07-01'
+  end: '2024-07-01'
+spec:
+  variable: nationality_sex
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        saudi|male: 0.2784
+        saudi|female: 0.277835
+        non-saudi|male: 0.34245
+        non-saudi|female: 0.101315
+      counts:
+        saudi|male: 9827595
+        saudi|female: 9807663
+        non-saudi|male: 12088577
+        non-saudi|female: 3576445
+      total: 35300280
+evidence:
+- publisher: General Authority for Statistics (GASTAT)
+  title: Population Estimates Statistics 2024 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Population_Estimates_Statistics_2024_EN.xlsx_fixed_2514649/6703cee3-3703-18e0-fc1b-956a76d75847
+  accessed_at: '2026-11-09'
+  locator: sheet الفئات العمرية, cell C21 (Total, Saudi 2024 male)
+  value: 9827595
+  unit: count
+  snippet: Saudi 2024
+  source_license: unstated
+  content_sha256: 1a788fea14fbf0c830cd7a0b93ffd17f93cdb108c55196b10f670cd3cf8067fe
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Population Estimates Statistics 2024 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Population_Estimates_Statistics_2024_EN.xlsx_fixed_2514649/6703cee3-3703-18e0-fc1b-956a76d75847
+  accessed_at: '2026-11-09'
+  locator: sheet الفئات العمرية, cell F21 (Total, Non-Saudi 2024 male)
+  value: 12088577
+  unit: count
+  snippet: Non-Saudi 2024
+  source_license: unstated
+  content_sha256: 1a788fea14fbf0c830cd7a0b93ffd17f93cdb108c55196b10f670cd3cf8067fe
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Population Estimates Statistics 2024 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Population_Estimates_Statistics_2024_EN.xlsx_fixed_2514649/6703cee3-3703-18e0-fc1b-956a76d75847
+  accessed_at: '2026-11-09'
+  locator: sheet الفئات العمرية, cell J21 (Total, Total 2024)
+  value: 35300280
+  unit: count
+  snippet: Total 2024
+  source_license: unstated
+  content_sha256: 1a788fea14fbf0c830cd7a0b93ffd17f93cdb108c55196b10f670cd3cf8067fe
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Population Estimates Publication 2024 (PDF)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Population_Estimates_Publication_2024_EN.pdf_fixed_3226306/7d123c57-1626-7d2f-ba7f-8a719f928f28
+  accessed_at: '2026-11-09'
+  locator: page 1, headline
+  value: Total population exceeds 35 million by mid-2024
+  unit: text
+  snippet: Total population exceeds 35 million by mid-2024
+  source_license: unstated
+  content_sha256: 837782f4f38eb1ce9b220c2d9f874c967208a28a80aa11d39c1471016430b286
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total
+  method: derived
+  rationale: Shares are the four published nationality and sex totals divided by the published total population.
+- parameter: observed_period
+  value: '2024-07-01'
+  method: assumed
+  rationale: GASTAT describes the estimates as the population in mid-2024 without naming a day; 1 July 2024 is used
+    as the reference date.
+tests:
+- statistic: share["non-saudi|male"]
+  expected: 0.34245
+  tolerance: 0.004
+- statistic: share["saudi|female"]
+  expected: 0.277835
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Mid-2024 population of Saudi Arabia split by nationality (Saudi, non-Saudi) and sex, from the totals row
+  of GASTAT's Population Estimates Statistics 2024 workbook. Categories are 'nationality|sex'. The non-Saudi population
+  is strongly male because of the migrant workforce, so draw nationality and sex jointly rather than independently.
+  Neither file carries a licence statement, so the entry stays at license-review; GASTAT's website use policy permits
+  reuse, including commercial reuse, with GASTAT acknowledged as the source and changes indicated.

@@ -1,0 +1,214 @@
+id: sa-average-monthly-wage-by-education-nationality-sex-2026q2
+title: Saudi Arabia average monthly wage of paid employees by education level, nationality and sex, Q2 2026 (GASTAT
+  LFS)
+kind: rule
+domain: employment
+region: SA
+status: license-review
+tier: A
+tags:
+- saudi-arabia
+- gcc
+- wages
+- earnings
+- nationality
+- lfs
+- gastat
+use_cases:
+- synthetic-employees
+- payroll-demo
+- hr-demo
+- customer-segmentation
+valid_from: '2026-04-01'
+valid_to: '2026-06-30'
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    unit: currency:SAR
+    measure: average monthly wage per paid employee in main work
+    rows:
+      No schooling:
+        saudi-male: 5411.77
+        saudi-female: 4167.29
+        saudi-total: 4801.92
+        non-saudi-male: 2043.06
+        non-saudi-female: 1243.3
+        non-saudi-total: 1906.35
+        total-male: 2068.16
+        total-female: 1342.17
+        total-total: 1941.27
+      Early childhood education:
+        saudi-male: 4363.69
+        saudi-female: 4283.35
+        saudi-total: 4344.61
+        non-saudi-male: 1903.77
+        non-saudi-female: 1204.8
+        non-saudi-total: 1850.16
+        total-male: 1944.82
+        total-female: 1388.98
+        total-total: 1900.4
+      Primary education:
+        saudi-male: 5930.83
+        saudi-female: 4407.28
+        saudi-total: 5558.57
+        non-saudi-male: 2108.32
+        non-saudi-female: 1439.79
+        non-saudi-total: 2029.61
+        total-male: 2189.18
+        total-female: 1587.44
+        total-total: 2116.46
+      Lower secondary education:
+        saudi-male: 7516.3
+        saudi-female: 4730.17
+        saudi-total: 7076.95
+        non-saudi-male: 2287.28
+        non-saudi-female: 1432.02
+        non-saudi-total: 2211.32
+        total-male: 2433.53
+        total-female: 1604.76
+        total-total: 2358.2
+      Upper secondary education:
+        saudi-male: 9276.53
+        saudi-female: 5109.84
+        saudi-total: 8870.98
+        non-saudi-male: 2923.22
+        non-saudi-female: 1762.89
+        non-saudi-total: 2844.49
+        total-male: 4787.36
+        total-female: 3037.59
+        total-total: 4653.16
+      Post-secondary non-tertiary education:
+        saudi-male: 10810.47
+        saudi-female: 7976.98
+        saudi-total: 10329.92
+        non-saudi-male: 5130.49
+        non-saudi-female: 4002.98
+        non-saudi-total: 5085.42
+        total-male: 7775.67
+        total-female: 7223.61
+        total-total: 7717.68
+      Short-cycle tertiary education:
+        saudi-male: 10455.74
+        saudi-female: 8086.96
+        saudi-total: 10039.47
+        non-saudi-male: 5008.3
+        non-saudi-female: 5023.1
+        non-saudi-total: 5008.75
+        total-male: 7871.96
+        total-female: 7732.37
+        total-total: 7856.26
+      Bachelor’s or equivalent level:
+        saudi-male: 14328.22
+        saudi-female: 9877.35
+        saudi-total: 12767.49
+        non-saudi-male: 9677.4
+        non-saudi-female: 6939.05
+        non-saudi-total: 9543.22
+        total-male: 11290.36
+        total-female: 9429.78
+        total-total: 10953.67
+      Master’s or equivalent level:
+        saudi-male: 22674.23
+        saudi-female: 13696.08
+        saudi-total: 20110.9
+        non-saudi-male: 16963.72
+        non-saudi-female: 11369.03
+        non-saudi-total: 16504.92
+        total-male: 18826.0
+        total-female: 12960.77
+        total-total: 17887.41
+      Doctoral or equivalent level:
+        saudi-male: 32094.29
+        saudi-female: 21027.15
+        saudi-total: 28898.92
+        non-saudi-male: 20943.63
+        non-saudi-female: 17393.22
+        non-saudi-total: 20543.1
+        total-male: 24511.44
+        total-female: 19574.75
+        total-total: 23633.35
+      Total:
+        saudi-male: 12103.5
+        saudi-female: 9248.67
+        saudi-total: 11424.25
+        non-saudi-male: 4249.45
+        non-saudi-female: 2395.29
+        non-saudi-total: 4090.4
+        total-male: 5831.56
+        total-female: 5522.67
+        total-total: 5794.14
+  vectors:
+  - input:
+      key: Master’s or equivalent level
+      column: saudi-male
+    expected: 22674.23
+    origin: source
+  - input:
+      key: Primary education
+      column: non-saudi-female
+    expected: 1439.79
+    origin: source
+  - input: Master’s or equivalent level
+    expected: true
+    origin: source
+  - input: Kindergarten
+    expected: false
+    origin: derived
+    note: not a row of the table
+evidence:
+- publisher: General Authority for Statistics (GASTAT)
+  title: Labor Market Statistics, Second Quarter 2026 (LFS tables, XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Labor+Market+Statistics+Q2+2026+EN+%282%29.xlsx/1eb7c5ce-46c1-c8b3-b8e6-9538d3e76422
+  accessed_at: '2026-11-09'
+  locator: sheet 6-2, cell B16 (Master’s or equivalent level, saudi-male)
+  value: '22674.231406339299'
+  unit: currency:SAR
+  snippet: Average Monthly Wages per Paid employee in main work by nationality, sex and educational level
+  source_license: unstated
+  content_sha256: 6a6aca172e52cdcbac6f2c0708ed5c83b8d1840196b9a89dd379e269673b17c7
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Labor Market Statistics, Second Quarter 2026 (LFS tables, XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Labor+Market+Statistics+Q2+2026+EN+%282%29.xlsx/1eb7c5ce-46c1-c8b3-b8e6-9538d3e76422
+  accessed_at: '2026-11-09'
+  locator: sheet 6-2, cell F10 (Primary education, non-saudi-female)
+  value: 1439.7880950893416
+  unit: currency:SAR
+  snippet: Average Monthly Wages Includes
+  source_license: unstated
+  content_sha256: 6a6aca172e52cdcbac6f2c0708ed5c83b8d1840196b9a89dd379e269673b17c7
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Labor Market Statistics, Second Quarter 2026 (LFS tables, XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Labor+Market+Statistics+Q2+2026+EN+%282%29.xlsx/1eb7c5ce-46c1-c8b3-b8e6-9538d3e76422
+  accessed_at: '2026-11-09'
+  locator: sheet 6-2, cell J18 (Total, total-total)
+  value: '5794.1415850696176'
+  unit: currency:SAR
+  snippet: 'Source : Estimated data from LFS - GaStat'
+  source_license: unstated
+  content_sha256: 6a6aca172e52cdcbac6f2c0708ed5c83b8d1840196b9a89dd379e269673b17c7
+  role: primary
+assumed:
+- parameter: rows
+  value: rounded
+  method: derived
+  rationale: Published values carry full floating-point precision; they are rounded for readability (rates and percentages
+    to 4 decimals, riyal amounts to 2).
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 11
+  tolerance: 0
+- statistic: max[total-total]
+  expected: 23633.35
+  tolerance: 0
+notes: Average monthly wage in Saudi riyals per paid employee in main work, by education level (ISCED 2011), nationality
+  and sex, from Table 6-2 of GASTAT's Q2 2026 Labour Market Statistics workbook (Labour Force Survey estimates covering
+  paid employees and paid apprentices who reported their wage). Groups are nationality (saudi, non-saudi, total)
+  by sex (male, female, total), keyed as saudi-male, saudi-female, saudi-total, non-saudi-male and so on, matching
+  the publication's nine columns. These are survey means, so use them as the centre of a wage distribution, not
+  as a cap or floor. Neither file carries a licence statement, so the entry stays at license-review; GASTAT's website
+  use policy permits reuse, including commercial reuse, with GASTAT acknowledged as the source and changes indicated.

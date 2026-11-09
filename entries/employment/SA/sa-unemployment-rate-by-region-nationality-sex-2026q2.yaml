@@ -1,0 +1,247 @@
+id: sa-unemployment-rate-by-region-nationality-sex-2026q2
+title: Saudi Arabia unemployment rate by administrative region, nationality and sex, Q2 2026 (GASTAT LFS)
+kind: rule
+domain: employment
+region: SA
+status: license-review
+tier: A
+tags:
+- saudi-arabia
+- gcc
+- unemployment
+- by-region
+- nationality
+- lfs
+- gastat
+use_cases:
+- synthetic-employees
+- hr-demo
+- address-generation
+- credit-risk
+valid_from: '2026-04-01'
+valid_to: '2026-06-30'
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    unit: percent
+    rows:
+      Riyadh:
+        saudi-male: 2.9429
+        saudi-female: 6.2614
+        saudi-total: 4.1828
+        non-saudi-male: 0.6741
+        non-saudi-female: 3.2312
+        non-saudi-total: 0.9164
+        total-male: 1.1981
+        total-female: 5.1439
+        total-total: 1.905
+      Makkah:
+        saudi-male: 5.1833
+        saudi-female: 11.336
+        saudi-total: 7.2917
+        non-saudi-male: 2.2865
+        non-saudi-female: 7.0542
+        non-saudi-total: 2.6492
+        total-male: 2.9576
+        total-female: 9.8642
+        total-total: 4.0311
+      Madinah:
+        saudi-male: 7.8329
+        saudi-female: 12.9892
+        saudi-total: 9.4721
+        non-saudi-male: 1.1505
+        non-saudi-female: 4.536
+        non-saudi-total: 1.3768
+        total-male: 2.9613
+        total-female: 10.5162
+        total-total: 4.1057
+      Qassim:
+        saudi-male: 5.8067
+        saudi-female: 10.8269
+        saudi-total: 7.6293
+        non-saudi-male: 0.95
+        non-saudi-female: 3.4417
+        non-saudi-total: 1.2311
+        total-male: 2.5511
+        total-female: 8.5224
+        total-total: 3.8322
+      Eastern Province:
+        saudi-male: 3.6904
+        saudi-female: 8.7403
+        saudi-total: 5.3387
+        non-saudi-male: 0.5696
+        non-saudi-female: 3.2059
+        non-saudi-total: 0.7924
+        total-male: 1.3342
+        total-female: 6.693
+        total-total: 2.1838
+      Asir:
+        saudi-male: 6.4938
+        saudi-female: 10.9643
+        saudi-total: 8.0296
+        non-saudi-male: 0.3383
+        non-saudi-female: 1.4249
+        non-saudi-total: 0.4343
+        total-male: 2.1687
+        total-female: 8.0618
+        total-total: 3.2459
+      Tabuk:
+        saudi-male: 5.4972
+        saudi-female: 17.2552
+        saudi-total: 9.2739
+        non-saudi-male: 0.1364
+        non-saudi-female: 2.164
+        non-saudi-total: 0.2937
+        total-male: 1.8662
+        total-female: 13.1563
+        total-total: 3.8228
+      Hail:
+        saudi-male: 5.6304
+        saudi-female: 13.599
+        saudi-total: 8.3032
+        non-saudi-male: 0.0919
+        non-saudi-female: 0.6171
+        non-saudi-total: 0.1579
+        total-male: 1.7943
+        total-female: 8.5238
+        total-total: 3.1603
+      Northern Border:
+        saudi-male: 7.659
+        saudi-female: 15.4664
+        saudi-total: 10.3729
+        non-saudi-male: 0.2874
+        non-saudi-female: 1.4188
+        non-saudi-total: 0.461
+        total-male: 2.8582
+        total-female: 10.0084
+        total-total: 4.5246
+      Jazan:
+        saudi-male: 8.791
+        saudi-female: 11.9334
+        saudi-total: 9.856
+        non-saudi-male: 0.5827
+        non-saudi-female: 2.8168
+        non-saudi-total: 0.7532
+        total-male: 3.5265
+        total-female: 9.8936
+        total-total: 4.7458
+      Najran:
+        saudi-male: 5.9483
+        saudi-female: 4.825
+        saudi-total: 5.5509
+        non-saudi-male: 2.9413
+        non-saudi-female: 3.8187
+        non-saudi-total: 3.0224
+        total-male: 3.8552
+        total-female: 4.5244
+        total-total: 3.9835
+      AL - Baha:
+        saudi-male: 5.9
+        saudi-female: 14.5657
+        saudi-total: 8.8901
+        non-saudi-male: 0.2349
+        non-saudi-female: 0.0
+        non-saudi-total: 0.2056
+        total-male: 2.2508
+        total-female: 9.7824
+        total-total: 3.8944
+      AL - Jouf:
+        saudi-male: 5.558
+        saudi-female: 7.3494
+        saudi-total: 6.1993
+        non-saudi-male: 1.1885
+        non-saudi-female: 0.4406
+        non-saudi-total: 1.1028
+        total-male: 2.6476
+        total-female: 5.1637
+        total-total: 3.1862
+      Total:
+        saudi-male: 4.8435
+        saudi-female: 9.5607
+        saudi-total: 6.4841
+        non-saudi-male: 1.0907
+        non-saudi-female: 3.8193
+        non-saudi-total: 1.3296
+        total-male: 2.0511
+        total-female: 7.5884
+        total-total: 3.0041
+  vectors:
+  - input:
+      key: Riyadh
+      column: saudi-female
+    expected: 6.2614
+    origin: source
+  - input:
+      key: Jazan
+      column: saudi-male
+    expected: 8.791
+    origin: source
+  - input:
+      key: Total
+      column: total-total
+    expected: 3.0041
+    origin: source
+  - input: Riyadh
+    expected: true
+    origin: source
+  - input: Dubai
+    expected: false
+    origin: derived
+    note: not a row of the table
+evidence:
+- publisher: General Authority for Statistics (GASTAT)
+  title: Labor Market Statistics, Second Quarter 2026 (LFS tables, XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Labor+Market+Statistics+Q2+2026+EN+%282%29.xlsx/1eb7c5ce-46c1-c8b3-b8e6-9538d3e76422
+  accessed_at: '2026-11-09'
+  locator: sheet 2-4, cell C8 (Riyadh, saudi-female)
+  value: '6.2614297795424836'
+  unit: decimal
+  snippet: Unemployment Rate by nationality, sex and administrative region
+  source_license: unstated
+  content_sha256: 6a6aca172e52cdcbac6f2c0708ed5c83b8d1840196b9a89dd379e269673b17c7
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Labor Market Statistics, Second Quarter 2026 (LFS tables, XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Labor+Market+Statistics+Q2+2026+EN+%282%29.xlsx/1eb7c5ce-46c1-c8b3-b8e6-9538d3e76422
+  accessed_at: '2026-11-09'
+  locator: sheet 2-4, cell B17 (Jazan, saudi-male)
+  value: '8.7909983724105949'
+  unit: decimal
+  snippet: Administrative Region
+  source_license: unstated
+  content_sha256: 6a6aca172e52cdcbac6f2c0708ed5c83b8d1840196b9a89dd379e269673b17c7
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Labor Market Statistics, Second Quarter 2026 (LFS tables, XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Labor+Market+Statistics+Q2+2026+EN+%282%29.xlsx/1eb7c5ce-46c1-c8b3-b8e6-9538d3e76422
+  accessed_at: '2026-11-09'
+  locator: sheet 2-4, cell J21 (Total, total-total)
+  value: 3.00413699851436
+  unit: decimal
+  snippet: Northern Border
+  source_license: unstated
+  content_sha256: 6a6aca172e52cdcbac6f2c0708ed5c83b8d1840196b9a89dd379e269673b17c7
+  role: primary
+assumed:
+- parameter: rows
+  value: rounded
+  method: derived
+  rationale: Published values carry full floating-point precision; they are rounded for readability (rates and percentages
+    to 4 decimals, riyal amounts to 2).
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 14
+  tolerance: 0
+- statistic: max[saudi-female]
+  expected: 17.2552
+  tolerance: 0
+notes: Unemployment rate in per cent for each of the 13 administrative regions and the Kingdom, by nationality and
+  sex, from Table 2-4 of GASTAT's Q2 2026 Labour Market Statistics workbook. Region names are GASTAT's English labels.
+  Groups are nationality (saudi, non-saudi, total) by sex (male, female, total), keyed as saudi-male, saudi-female,
+  saudi-total, non-saudi-male and so on, matching the publication's nine columns. Small cells (for example non-Saudi
+  women in Al-Baha) can be zero or volatile because they rest on few survey respondents. Neither file carries a
+  licence statement, so the entry stays at license-review; GASTAT's website use policy permits reuse, including
+  commercial reuse, with GASTAT acknowledged as the source and changes indicated.

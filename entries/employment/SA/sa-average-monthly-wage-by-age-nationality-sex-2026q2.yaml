@@ -1,0 +1,224 @@
+id: sa-average-monthly-wage-by-age-nationality-sex-2026q2
+title: Saudi Arabia average monthly wage of paid employees by five-year age group, nationality and sex, Q2 2026
+  (GASTAT LFS)
+kind: rule
+domain: employment
+region: SA
+status: license-review
+tier: A
+tags:
+- saudi-arabia
+- gcc
+- wages
+- earnings
+- nationality
+- lfs
+- gastat
+use_cases:
+- synthetic-employees
+- payroll-demo
+- hr-demo
+- customer-segmentation
+valid_from: '2026-04-01'
+valid_to: '2026-06-30'
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    unit: currency:SAR
+    measure: average monthly wage per paid employee in main work
+    rows:
+      15-19:
+        saudi-male: 4285.69
+        saudi-female: 3918.84
+        saudi-total: 4218.11
+        non-saudi-male: 2387.19
+        non-saudi-female: 1559.24
+        non-saudi-total: 2256.86
+        total-male: 3939.7
+        total-female: 3551.54
+        total-total: 3870.04
+      20-24:
+        saudi-male: 6089.2
+        saudi-female: 5264.83
+        saudi-total: 5877.95
+        non-saudi-male: 2210.61
+        non-saudi-female: 1448.29
+        non-saudi-total: 2133.11
+        total-male: 2913.55
+        total-female: 2984.83
+        total-total: 2923.12
+      25-29:
+        saudi-male: 8350.33
+        saudi-female: 6967.42
+        saudi-total: 8002.9
+        non-saudi-male: 2622.49
+        non-saudi-female: 1538.73
+        non-saudi-total: 2479.67
+        total-male: 3647.12
+        total-female: 3303.26
+        total-total: 3593.52
+      30-34:
+        saudi-male: 10900.2
+        saudi-female: 8133.91
+        saudi-total: 10323.42
+        non-saudi-male: 3858.85
+        non-saudi-female: 2486.41
+        non-saudi-total: 3741.39
+        total-male: 5440.48
+        total-female: 5022.93
+        total-total: 5391.88
+      35-39:
+        saudi-male: 13144.25
+        saudi-female: 9156.58
+        saudi-total: 12359.09
+        non-saudi-male: 4636.92
+        non-saudi-female: 2902.93
+        non-saudi-total: 4501.27
+        total-male: 6468.15
+        total-female: 5667.64
+        total-total: 6382.78
+      40-44:
+        saudi-male: 14139.93
+        saudi-female: 10751.4
+        saudi-total: 13340.58
+        non-saudi-male: 5681.73
+        non-saudi-female: 2906.71
+        non-saudi-total: 5491.35
+        total-male: 7523.43
+        total-female: 7130.73
+        total-total: 7479.84
+      45-49:
+        saudi-male: 15723.99
+        saudi-female: 11999.64
+        saudi-total: 14706.63
+        non-saudi-male: 5361.05
+        non-saudi-female: 3772.19
+        non-saudi-total: 5256.1
+        total-male: 7735.02
+        total-female: 8809.56
+        total-total: 7867.49
+      50-54:
+        saudi-male: 17101.12
+        saudi-female: 11932.18
+        saudi-total: 15372.98
+        non-saudi-male: 5413.18
+        non-saudi-female: 3470.58
+        non-saudi-total: 5298.1
+        total-male: 7640.4
+        total-female: 8991.7
+        total-total: 7813.25
+      55-59:
+        saudi-male: 16234.15
+        saudi-female: 12132.02
+        saudi-total: 15100.39
+        non-saudi-male: 5765.04
+        non-saudi-female: 4099.39
+        non-saudi-total: 5703.25
+        total-male: 7235.72
+        total-female: 9066.6
+        total-total: 7381.89
+      60-64:
+        saudi-male: 14145.98
+        saudi-female: 9608.28
+        saudi-total: 13471.49
+        non-saudi-male: 5391.7
+        non-saudi-female: 6138.78
+        non-saudi-total: 5415.4
+        total-male: 5833.08
+        total-female: 6903.9
+        total-total: 5874.18
+      + 65:
+        saudi-male: 10233.5
+        saudi-female: 3535.05
+        saudi-total: 9902.84
+        non-saudi-male: 4870.81
+        non-saudi-female: 3053.54
+        non-saudi-total: 4799.68
+        total-male: 5109.05
+        total-female: 3080.48
+        total-total: 5028.72
+      Total:
+        saudi-male: 12103.5
+        saudi-female: 9248.67
+        saudi-total: 11424.25
+        non-saudi-male: 4249.45
+        non-saudi-female: 2395.29
+        non-saudi-total: 4090.4
+        total-male: 5831.56
+        total-female: 5522.67
+        total-total: 5794.14
+  vectors:
+  - input:
+      key: 30-34
+      column: saudi-female
+    expected: 8133.91
+    origin: source
+  - input:
+      key: 25-29
+      column: non-saudi-male
+    expected: 2622.49
+    origin: source
+  - input: 30-34
+    expected: true
+    origin: source
+  - input: 10-14
+    expected: false
+    origin: derived
+    note: not a row of the table
+evidence:
+- publisher: General Authority for Statistics (GASTAT)
+  title: Labor Market Statistics, Second Quarter 2026 (LFS tables, XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Labor+Market+Statistics+Q2+2026+EN+%282%29.xlsx/1eb7c5ce-46c1-c8b3-b8e6-9538d3e76422
+  accessed_at: '2026-11-09'
+  locator: sheet 6-1, cell C24 (30-34, saudi-female)
+  value: '8133.9098463815226'
+  unit: currency:SAR
+  snippet: Average Monthly Wages per Paid employee of main Work by Sex , Nationality and Age Group 5 Years
+  source_license: unstated
+  content_sha256: 6a6aca172e52cdcbac6f2c0708ed5c83b8d1840196b9a89dd379e269673b17c7
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Labor Market Statistics, Second Quarter 2026 (LFS tables, XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Labor+Market+Statistics+Q2+2026+EN+%282%29.xlsx/1eb7c5ce-46c1-c8b3-b8e6-9538d3e76422
+  accessed_at: '2026-11-09'
+  locator: sheet 6-1, cell E23 (25-29, non-saudi-male)
+  value: 2622.491335157416
+  unit: currency:SAR
+  snippet: Average Monthly Wages Includes
+  source_license: unstated
+  content_sha256: 6a6aca172e52cdcbac6f2c0708ed5c83b8d1840196b9a89dd379e269673b17c7
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Labor Market Statistics, Second Quarter 2026 (LFS tables, XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Labor+Market+Statistics+Q2+2026+EN+%282%29.xlsx/1eb7c5ce-46c1-c8b3-b8e6-9538d3e76422
+  accessed_at: '2026-11-09'
+  locator: sheet 6-1, cell J32 (Total, total-total)
+  value: '5794.1415850696176'
+  unit: currency:SAR
+  snippet: 'Source : Estimated data from LFS - GaStat'
+  source_license: unstated
+  content_sha256: 6a6aca172e52cdcbac6f2c0708ed5c83b8d1840196b9a89dd379e269673b17c7
+  role: primary
+assumed:
+- parameter: rows
+  value: rounded
+  method: derived
+  rationale: Published values carry full floating-point precision; they are rounded for readability (rates and percentages
+    to 4 decimals, riyal amounts to 2).
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 12
+  tolerance: 0
+- statistic: max[total-total]
+  expected: 7867.49
+  tolerance: 0
+notes: Average monthly wage in Saudi riyals per paid employee in main work, by five-year age group, nationality
+  and sex, from Table 6-1 of GASTAT's Q2 2026 Labour Market Statistics workbook (Labour Force Survey estimates covering
+  paid employees and paid apprentices who reported their wage). Groups are nationality (saudi, non-saudi, total)
+  by sex (male, female, total), keyed as saudi-male, saudi-female, saudi-total, non-saudi-male and so on, matching
+  the publication's nine columns. These are survey means, so use them as the centre of a wage distribution, not
+  as a cap or floor. Neither file carries a licence statement, so the entry stays at license-review; GASTAT's website
+  use policy permits reuse, including commercial reuse, with GASTAT acknowledged as the source and changes indicated.

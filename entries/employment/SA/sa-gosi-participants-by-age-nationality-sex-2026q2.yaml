@@ -1,0 +1,350 @@
+id: sa-gosi-participants-by-age-nationality-sex-2026q2
+title: Saudi Arabia GOSI-registered workers by age group given nationality and sex, Q2 2026 (GASTAT register-based
+  statistics)
+kind: conditional
+domain: employment
+region: SA
+status: license-review
+tier: A
+tags:
+- saudi-arabia
+- gcc
+- age
+- gosi
+- social-insurance-register
+- nationality
+- gastat
+use_cases:
+- synthetic-employees
+- hr-demo
+- payroll-demo
+- pensions
+observed_period:
+  start: '2026-04-01'
+  end: '2026-06-30'
+spec:
+  variable: age_group
+  unit: ratio
+  given: nationality_sex
+  distributions:
+    saudi-male:
+      family: categorical
+      parameters:
+        shares:
+          15-19: 0.024044
+          20-24: 0.14527
+          25-29: 0.201953
+          30-34: 0.196287
+          35-39: 0.157502
+          40-44: 0.11248
+          45-49: 0.074567
+          50-54: 0.0422
+          55-59: 0.029144
+          60-64: 0.010912
+          65+: 0.005642
+        counts:
+          15-19: 45264
+          20-24: 273482
+          25-29: 380193
+          30-34: 369526
+          35-39: 296510
+          40-44: 211752
+          45-49: 140378
+          50-54: 79445
+          55-59: 54866
+          60-64: 20543
+          65+: 10621
+        total: 1882580
+    saudi-female:
+      family: categorical
+      parameters:
+        shares:
+          15-19: 0.017738
+          20-24: 0.114755
+          25-29: 0.216833
+          30-34: 0.220354
+          35-39: 0.170417
+          40-44: 0.115734
+          45-49: 0.066779
+          50-54: 0.037127
+          55-59: 0.025797
+          60-64: 0.009858
+          65+: 0.004608
+        counts:
+          15-19: 22786
+          20-24: 147413
+          25-29: 278541
+          30-34: 283064
+          35-39: 218916
+          40-44: 148670
+          45-49: 85783
+          50-54: 47693
+          55-59: 33139
+          60-64: 12663
+          65+: 5920
+        total: 1284588
+    saudi-total:
+      family: categorical
+      parameters:
+        shares:
+          15-19: 0.021486
+          20-24: 0.132893
+          25-29: 0.207988
+          30-34: 0.206048
+          35-39: 0.16274
+          40-44: 0.113799
+          45-49: 0.071408
+          50-54: 0.040142
+          55-59: 0.027787
+          60-64: 0.010484
+          65+: 0.005223
+        counts:
+          15-19: 68050
+          20-24: 420895
+          25-29: 658734
+          30-34: 652590
+          35-39: 515426
+          40-44: 360422
+          45-49: 226161
+          50-54: 127138
+          55-59: 88005
+          60-64: 33206
+          65+: 16541
+        total: 3167168
+    non-saudi-male:
+      family: categorical
+      parameters:
+        shares:
+          15-19: 5.4e-05
+          20-24: 0.070001
+          25-29: 0.193325
+          30-34: 0.167794
+          35-39: 0.174154
+          40-44: 0.152039
+          45-49: 0.106532
+          50-54: 0.058553
+          55-59: 0.039242
+          60-64: 0.021778
+          65+: 0.016529
+        counts:
+          15-19: 551
+          20-24: 716558
+          25-29: 1978954
+          30-34: 1717603
+          35-39: 1782716
+          40-44: 1556335
+          45-49: 1090503
+          50-54: 599372
+          55-59: 401692
+          60-64: 222928
+          65+: 169194
+        total: 10236406
+    non-saudi-female:
+      family: categorical
+      parameters:
+        shares:
+          15-19: 0.000178
+          20-24: 0.053719
+          25-29: 0.220987
+          30-34: 0.207517
+          35-39: 0.196394
+          40-44: 0.145308
+          45-49: 0.080699
+          50-54: 0.043689
+          55-59: 0.028012
+          60-64: 0.013565
+          65+: 0.009932
+        counts:
+          15-19: 104
+          20-24: 31375
+          25-29: 129070
+          30-34: 121203
+          35-39: 114706
+          40-44: 84869
+          45-49: 47133
+          50-54: 25517
+          55-59: 16361
+          60-64: 7923
+          65+: 5801
+        total: 584062
+    non-saudi-total:
+      family: categorical
+      parameters:
+        shares:
+          15-19: 6.1e-05
+          20-24: 0.069122
+          25-29: 0.194818
+          30-34: 0.169938
+          35-39: 0.175355
+          40-44: 0.151676
+          45-49: 0.105137
+          50-54: 0.057751
+          55-59: 0.038635
+          60-64: 0.021335
+          65+: 0.016173
+        counts:
+          15-19: 655
+          20-24: 747933
+          25-29: 2108024
+          30-34: 1838806
+          35-39: 1897422
+          40-44: 1641204
+          45-49: 1137636
+          50-54: 624889
+          55-59: 418053
+          60-64: 230851
+          65+: 174995
+        total: 10820468
+    total-male:
+      family: categorical
+      parameters:
+        shares:
+          15-19: 0.00378
+          20-24: 0.081693
+          25-29: 0.194665
+          30-34: 0.17222
+          35-39: 0.171568
+          40-44: 0.145894
+          45-49: 0.101566
+          50-54: 0.056013
+          55-59: 0.037673
+          60-64: 0.02009
+          65+: 0.014837
+        counts:
+          15-19: 45815
+          20-24: 990040
+          25-29: 2359147
+          30-34: 2087129
+          35-39: 2079226
+          40-44: 1768087
+          45-49: 1230881
+          50-54: 678817
+          55-59: 456558
+          60-64: 243471
+          65+: 179815
+        total: 12118986
+    total-female:
+      family: categorical
+      parameters:
+        shares:
+          15-19: 0.012249
+          20-24: 0.095678
+          25-29: 0.218131
+          30-34: 0.216342
+          35-39: 0.178536
+          40-44: 0.124977
+          45-49: 0.071129
+          50-54: 0.039178
+          55-59: 0.02649
+          60-64: 0.011017
+          65+: 0.006272
+        counts:
+          15-19: 22890
+          20-24: 178788
+          25-29: 407611
+          30-34: 404267
+          35-39: 333622
+          40-44: 233539
+          45-49: 132916
+          50-54: 73210
+          55-59: 49500
+          60-64: 20586
+          65+: 11721
+        total: 1868650
+    total-total:
+      family: categorical
+      parameters:
+        shares:
+          15-19: 0.004912
+          20-24: 0.083562
+          25-29: 0.1978
+          30-34: 0.178114
+          35-39: 0.172499
+          40-44: 0.1431
+          45-49: 0.0975
+          50-54: 0.053764
+          55-59: 0.036179
+          60-64: 0.018878
+          65+: 0.013693
+        counts:
+          15-19: 68705
+          20-24: 1168828
+          25-29: 2766758
+          30-34: 2491396
+          35-39: 2412848
+          40-44: 2001626
+          45-49: 1363797
+          50-54: 752027
+          55-59: 506058
+          60-64: 264057
+          65+: 191536
+        total: 13987636
+evidence:
+- publisher: General Authority for Statistics (GASTAT)
+  title: Register-based Labour Market Statistics, Second Quarter 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Register-based+Labour+Market+Statistics-+Q2+2026+EN.xlsx/fbbb6b2c-5d38-ae17-3cab-a54c3df75356
+  accessed_at: '2026-11-09'
+  locator: sheet 3-3, cell E11 (30-34, non-saudi-male)
+  value: 1717603
+  unit: count
+  snippet: Participants on the job Subject to the rules and regulations of social insurance by nationality, sex
+    and Age group
+  source_license: unstated
+  content_sha256: 11445641850f26fd01a9ba7e2e03f4f028d8daafd7f78204b2037f508747ee81
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Register-based Labour Market Statistics, Second Quarter 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Register-based+Labour+Market+Statistics-+Q2+2026+EN.xlsx/fbbb6b2c-5d38-ae17-3cab-a54c3df75356
+  accessed_at: '2026-11-09'
+  locator: sheet 3-3, cell C10 (25-29, saudi-female)
+  value: 278541
+  unit: count
+  snippet: Preliminary data
+  source_license: unstated
+  content_sha256: 11445641850f26fd01a9ba7e2e03f4f028d8daafd7f78204b2037f508747ee81
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Register-based Labour Market Statistics, Second Quarter 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Register-based+Labour+Market+Statistics-+Q2+2026+EN.xlsx/fbbb6b2c-5d38-ae17-3cab-a54c3df75356
+  accessed_at: '2026-11-09'
+  locator: sheet 3-3, cell J19 (Total, total-total)
+  value: 13987636
+  unit: count
+  snippet: Data pulled on 02-08-2026
+  source_license: unstated
+  content_sha256: 11445641850f26fd01a9ba7e2e03f4f028d8daafd7f78204b2037f508747ee81
+  role: primary
+assumed:
+- parameter: distributions.*.parameters.shares
+  value: count / group total
+  method: derived
+  rationale: The table publishes counts; each share is the category count divided by the group's published total,
+    rounded to 6 decimals. The builder checks that the categories add up to the published total.
+tests:
+- statistic: share["non-saudi-male","30-34"]
+  expected: 0.167794
+  tolerance: 0.004
+- statistic: share["saudi-female","25-29"]
+  expected: 0.216833
+  tolerance: 0.004
+- statistic: share["total-total","65+"]
+  expected: 0.013693
+  tolerance: 0.004
+- statistic: sum_of_shares["saudi-male"]
+  expected: 1
+  tolerance: 0.002
+- statistic: sum_of_shares["saudi-female"]
+  expected: 1
+  tolerance: 0.002
+- statistic: sum_of_shares["saudi-total"]
+  expected: 1
+  tolerance: 0.002
+notes: Workers on the job registered with the General Organization for Social Insurance (GOSI) in the second quarter
+  of 2026, by five-year age group, for each nationality and sex group, from Table 3-3 of GASTAT's Register-based
+  Labour Market Statistics workbook (GOSI source, preliminary data pulled on 2 August 2026). The register covers
+  private-sector employees and public employees under the social insurance rules; civil-service staff, the security
+  and military sectors and domestic workers are outside it. Groups are nationality (saudi, non-saudi, total) by
+  sex (male, female, total), keyed as saudi-male, saudi-female, saudi-total, non-saudi-male and so on, matching
+  the publication's nine columns. Counts sit beside the shares. Neither file carries a licence statement, so the
+  entry stays at license-review; GASTAT's website use policy permits reuse, including commercial reuse, with GASTAT
+  acknowledged as the source and changes indicated.

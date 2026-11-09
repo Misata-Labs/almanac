@@ -1,0 +1,189 @@
+id: sa-household-spending-by-coicop-nationality-2023
+title: Saudi Arabia household monthly cash consumption by COICOP division given nationality of head, 2023 (GASTAT
+  HIES)
+kind: conditional
+domain: income
+region: SA
+status: license-review
+tier: A
+tags:
+- saudi-arabia
+- gcc
+- household-spending
+- coicop
+- nationality
+- hies
+- gastat
+use_cases:
+- retail-demo
+- household-generation
+- sales-generation
+- customer-segmentation
+observed_period:
+  start: '2023-01-01'
+  end: '2023-12-31'
+spec:
+  variable: coicop_division
+  unit: ratio
+  given: nationality_of_head
+  distributions:
+    saudi:
+      family: categorical
+      parameters:
+        shares:
+          Food and beverages: 0.276415
+          Tobacco: 0.004241
+          Clothing and footwear: 0.105949
+          Housing, water, electricity, gas and other fuels: 0.111157
+          Furnishings, household equipment and routine household maintenance: 0.083157
+          Health: 0.019578
+          Transport: 0.118057
+          Information and communication: 0.048235
+          Recreation, sport and culture: 0.043935
+          Education services: 0.013158
+          Restaurants and accommodation services: 0.112938
+          Insurance and financial services: 0.009109
+          Personal care, social protection and miscellaneous goods and services: 0.054071
+        mean_monthly_sar:
+          Food and beverages: 3741.5
+          Tobacco: 57.4
+          Clothing and footwear: 1434.1
+          Housing, water, electricity, gas and other fuels: 1504.6
+          Furnishings, household equipment and routine household maintenance: 1125.6
+          Health: 265.0
+          Transport: 1598.0
+          Information and communication: 652.9
+          Recreation, sport and culture: 594.7
+          Education services: 178.1
+          Restaurants and accommodation services: 1528.7
+          Insurance and financial services: 123.3
+          Personal care, social protection and miscellaneous goods and services: 731.9
+    non-saudi:
+      family: categorical
+      parameters:
+        shares:
+          Food and beverages: 0.284183
+          Tobacco: 0.016328
+          Clothing and footwear: 0.067643
+          Housing, water, electricity, gas and other fuels: 0.222458
+          Furnishings, household equipment and routine household maintenance: 0.033311
+          Health: 0.016482
+          Transport: 0.069667
+          Information and communication: 0.059875
+          Recreation, sport and culture: 0.014246
+          Education services: 0.011933
+          Restaurants and accommodation services: 0.126651
+          Insurance and financial services: 0.015036
+          Personal care, social protection and miscellaneous goods and services: 0.062188
+        mean_monthly_sar:
+          Food and beverages: 1474.2
+          Tobacco: 84.7
+          Clothing and footwear: 350.9
+          Housing, water, electricity, gas and other fuels: 1154.0
+          Furnishings, household equipment and routine household maintenance: 172.8
+          Health: 85.5
+          Transport: 361.4
+          Information and communication: 310.6
+          Recreation, sport and culture: 73.9
+          Education services: 61.9
+          Restaurants and accommodation services: 657.0
+          Insurance and financial services: 78.0
+          Personal care, social protection and miscellaneous goods and services: 322.6
+    total:
+      family: categorical
+      parameters:
+        shares:
+          Food and beverages: 0.278512
+          Tobacco: 0.007522
+          Clothing and footwear: 0.095578
+          Housing, water, electricity, gas and other fuels: 0.141314
+          Furnishings, household equipment and routine household maintenance: 0.069649
+          Health: 0.018736
+          Transport: 0.104946
+          Information and communication: 0.051391
+          Recreation, sport and culture: 0.035891
+          Education services: 0.012826
+          Restaurants and accommodation services: 0.116648
+          Insurance and financial services: 0.010715
+          Personal care, social protection and miscellaneous goods and services: 0.056271
+        mean_monthly_sar:
+          Food and beverages: 2625.2
+          Tobacco: 70.9
+          Clothing and footwear: 900.9
+          Housing, water, electricity, gas and other fuels: 1332.0
+          Furnishings, household equipment and routine household maintenance: 656.5
+          Health: 176.6
+          Transport: 989.2
+          Information and communication: 484.4
+          Recreation, sport and culture: 338.3
+          Education services: 120.9
+          Restaurants and accommodation services: 1099.5
+          Insurance and financial services: 101.0
+          Personal care, social protection and miscellaneous goods and services: 530.4
+evidence:
+- publisher: General Authority for Statistics (GASTAT)
+  title: Household Income and Consumption Expenditure Survey 2023, publication tables (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Publication_tables_of_Household_Income_and_Consumption_Expenditure_Survey_2023_2_%281%29.xlsx_fixed_2613883/f482083a-b92a-ab65-d41b-7d1bf7c23e6e
+  accessed_at: '2026-11-09'
+  locator: sheet 11-4, cell B6 (Food and beverages, Saudi)
+  value: 3741.5
+  unit: currency:SAR
+  snippet: Average Household Monthly Final Monetary Consumption Expenditure by COICOP Divisions and Nationality
+    of Household Head
+  source_license: unstated
+  content_sha256: df850fca853f66c6f9774e1f6472013cc520adc42c676eaaf8fe83b3fd1b3260
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Household Income and Consumption Expenditure Survey 2023, publication tables (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Publication_tables_of_Household_Income_and_Consumption_Expenditure_Survey_2023_2_%281%29.xlsx_fixed_2613883/f482083a-b92a-ab65-d41b-7d1bf7c23e6e
+  accessed_at: '2026-11-09'
+  locator: sheet 11-4, cell C16 (Restaurants and accommodation services, Non Saudi)
+  value: 657
+  unit: currency:SAR
+  snippet: Restaurants and accommodation services
+  source_license: unstated
+  content_sha256: df850fca853f66c6f9774e1f6472013cc520adc42c676eaaf8fe83b3fd1b3260
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Household Income and Consumption Expenditure Survey 2023, publication tables (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Publication_tables_of_Household_Income_and_Consumption_Expenditure_Survey_2023_2_%281%29.xlsx_fixed_2613883/f482083a-b92a-ab65-d41b-7d1bf7c23e6e
+  accessed_at: '2026-11-09'
+  locator: sheet 11-4, cell D12 (Transport, Total)
+  value: 989.2
+  unit: currency:SAR
+  snippet: Household Income and Consumption Expenditure Survey 2023
+  source_license: unstated
+  content_sha256: df850fca853f66c6f9774e1f6472013cc520adc42c676eaaf8fe83b3fd1b3260
+  role: primary
+assumed:
+- parameter: distributions.*.parameters.shares
+  value: division mean / sum of division means
+  method: derived
+  rationale: The table publishes mean monthly riyal amounts per division; each share is a division's amount over
+    the sum of the thirteen amounts for that nationality, rounded to 6 decimals. GASTAT also publishes percentage
+    shares (Table 12-4); these derived shares agree with them up to rounding.
+tests:
+- statistic: share["saudi","Food and beverages"]
+  expected: 0.276415
+  tolerance: 0.004
+- statistic: share["non-saudi","Housing, water, electricity, gas and other fuels"]
+  expected: 0.222458
+  tolerance: 0.004
+- statistic: share["total","Transport"]
+  expected: 0.104946
+  tolerance: 0.004
+- statistic: sum_of_shares["saudi"]
+  expected: 1
+  tolerance: 0.002
+- statistic: sum_of_shares["non-saudi"]
+  expected: 1
+  tolerance: 0.002
+- statistic: sum_of_shares["total"]
+  expected: 1
+  tolerance: 0.002
+notes: Mean household monthly final monetary (cash) consumption expenditure in Saudi riyals by COICOP division,
+  for households headed by a Saudi, by a non-Saudi, and overall, from Table 11-4 of GASTAT's Household Income and
+  Consumption Expenditure Survey 2023 workbook. The riyal means sit beside the derived shares, so a generator can
+  draw both the category of a purchase and a plausible monthly budget per category. Neither file carries a licence
+  statement, so the entry stays at license-review; GASTAT's website use policy permits reuse, including commercial
+  reuse, with GASTAT acknowledged as the source and changes indicated.

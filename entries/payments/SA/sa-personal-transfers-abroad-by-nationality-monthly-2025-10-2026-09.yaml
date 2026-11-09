@@ -1,0 +1,124 @@
+id: sa-personal-transfers-abroad-by-nationality-monthly-2025-10-2026-09
+title: Saudi Arabia bank sales of foreign exchange for personal transfers abroad by Saudis and non-Saudis, monthly
+  Oct 2025 to Sep 2026 (SAMA)
+kind: temporal
+domain: payments
+region: SA
+status: license-review
+tier: A
+tags:
+- saudi-arabia
+- gcc
+- remittances
+- personal-transfers
+- foreign-exchange
+- nationality
+- monthly
+- time-series
+- sama
+use_cases:
+- payments-demo
+- fintech-demo
+- banking-demo
+- multi-currency-ledger
+observed_period:
+  start: '2025-10-01'
+  end: '2026-09-30'
+spec:
+  variable: personal_transfers_non_saudis_sar_million
+  unit: currency:SAR
+  frequency: monthly
+  columns:
+  - saudis_sar_million
+  series:
+  - period: 2025-10
+    value: 13665.4
+    saudis_sar_million: 6596.8
+  - period: 2025-11
+    value: 12626.75
+    saudis_sar_million: 4810.37
+  - period: 2025-12
+    value: 14010.03
+    saudis_sar_million: 6125.83
+  - period: 2026-01
+    value: 13318.64
+    saudis_sar_million: 5172.85
+  - period: 2026-02
+    value: 12551.06
+    saudis_sar_million: 4863.6
+  - period: 2026-03
+    value: 16921.21
+    saudis_sar_million: 5170.63
+  - period: 2026-04
+    value: 14653.96
+    saudis_sar_million: 5495.16
+  - period: 2026-05
+    value: 14149.36
+    saudis_sar_million: 4731.92
+  - period: 2026-06
+    value: 13696.8
+    saudis_sar_million: 6621.25
+  - period: 2026-07
+    value: 14283.26
+    saudis_sar_million: 6212.56
+  - period: 2026-08
+    value: 13456.32
+    saudis_sar_million: 5841.98
+  - period: 2026-09
+    value: 13288.22
+    saudis_sar_million: 5312.78
+evidence:
+- publisher: Saudi Central Bank (SAMA)
+  title: Monthly Statistical Bulletin, September 2026 (XLSX)
+  url: https://www.sama.gov.sa/en-US/Statistics/MonthlyStatistics/Monthly_Statistical_Bulletin_For_Sep_2026.xlsx
+  accessed_at: '2026-11-09'
+  locator: sheet 25, cell Q573 (Personal Transfers, Non-Saudis, September 2026)
+  value: 13288.224363283993
+  unit: currency:SAR
+  snippet: Sales of Foreign Exchange
+  source_license: unstated
+  content_sha256: 519ea65ddddff9d577cdb6ab3663e9db59b452da62f8342fc40307d10cbe029c
+  role: primary
+- publisher: Saudi Central Bank (SAMA)
+  title: Monthly Statistical Bulletin, September 2026 (XLSX)
+  url: https://www.sama.gov.sa/en-US/Statistics/MonthlyStatistics/Monthly_Statistical_Bulletin_For_Sep_2026.xlsx
+  accessed_at: '2026-11-09'
+  locator: sheet 25, cell P562 (Personal Transfers, Saudis, October 2025)
+  value: '6596.8042708199391'
+  unit: currency:SAR
+  snippet: Personal Transfers
+  source_license: unstated
+  content_sha256: 519ea65ddddff9d577cdb6ab3663e9db59b452da62f8342fc40307d10cbe029c
+  role: primary
+- publisher: Saudi Central Bank (SAMA)
+  title: Monthly Statistical Bulletin, September 2026 (XLSX)
+  url: https://www.sama.gov.sa/en-US/Statistics/MonthlyStatistics/Monthly_Statistical_Bulletin_For_Sep_2026.xlsx
+  accessed_at: '2026-11-09'
+  locator: sheet 25, cell Q562 (Personal Transfers, Non-Saudis, October 2025)
+  value: 13665.404655596589
+  unit: currency:SAR
+  snippet: Non-Saudis
+  source_license: unstated
+  content_sha256: 519ea65ddddff9d577cdb6ab3663e9db59b452da62f8342fc40307d10cbe029c
+  role: primary
+assumed:
+- parameter: series
+  value: rounded
+  method: derived
+  rationale: Values in millions of riyals are rounded to 2 decimals.
+tests:
+- statistic: value[2026-09]
+  expected: 13288.22
+  tolerance: 0
+- statistic: column[saudis_sar_million,2025-10]
+  expected: 6596.8
+  tolerance: 0
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: Monthly bank sales of foreign exchange attributed to personal transfers abroad, in millions of riyals, split
+  by Saudis and non-Saudis, from Table 25 (Bank Purchases and Sales of Foreign Exchange, section A, sales attributable
+  to specific purposes) of SAMA's Monthly Statistical Bulletin for September 2026. The non-Saudi series (value)
+  is the monthly measure commonly read as expatriate workers' remittances; the balance of payments workers' remittances
+  line is quarterly and defined differently. SAMA publishes no licence for its statistical files, so the entry stays
+  at license-review.

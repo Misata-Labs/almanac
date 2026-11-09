@@ -1,0 +1,209 @@
+id: sa-pos-transactions-by-activity-2026q3
+title: Saudi Arabia point-of-sale transactions and sales by merchant activity, Q3 2026 (SAMA)
+kind: marginal
+domain: payments
+region: SA
+status: license-review
+tier: A
+tags:
+- saudi-arabia
+- gcc
+- pos
+- card-payments
+- merchant-category
+- average-ticket
+- sama
+use_cases:
+- payments-demo
+- retail-demo
+- sales-generation
+- fintech-demo
+observed_period:
+  start: '2026-07-01'
+  end: '2026-09-30'
+spec:
+  variable: merchant_activity
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Transportation: 0.028571
+        Health: 0.039955
+        Restaurants & Café: 0.239425
+        Bakeries & Pastries: 0.025347
+        Hotels: 0.003676
+        Food & Beverages: 0.232327
+        Apparel, Clothing & Accessories: 0.04186
+        Recreation & Culture: 0.016695
+        Professional & Business Services: 0.063312
+        Electronic & Electric Devices: 0.008423
+        Furniture & Home Supplies: 0.011027
+        Construction & Building Materials: 0.012157
+        Jewelry: 0.00128
+        Telecommunication: 0.021003
+        Education: 0.000784
+        Public Utilities & Services: 0.003427
+        Gas Stations: 0.072658
+        Laundry Services: 0.012095
+        Others: 0.165977
+      transactions_thousand:
+        Transportation: 94009.517
+        Health: 131468.865
+        Restaurants & Café: 787805.764
+        Bakeries & Pastries: 83403.081
+        Hotels: 12096.175
+        Food & Beverages: 764448.648
+        Apparel, Clothing & Accessories: 137735.863
+        Recreation & Culture: 54933.384
+        Professional & Business Services: 208322.786
+        Electronic & Electric Devices: 27714.866
+        Furniture & Home Supplies: 36284.673
+        Construction & Building Materials: 40001.898
+        Jewelry: 4210.081
+        Telecommunication: 69109.433
+        Education: 2578.992
+        Public Utilities & Services: 11275.239
+        Gas Stations: 239074.578
+        Laundry Services: 39797.195
+        Others: 546131.141
+      sales_sar_thousand:
+        Transportation: 14087741.994
+        Health: 11758380.764
+        Restaurants & Café: 23426777.519
+        Bakeries & Pastries: 3263860.747
+        Hotels: 4018237.77
+        Food & Beverages: 30369509.224
+        Apparel, Clothing & Accessories: 15974528.702
+        Recreation & Culture: 4913965.725
+        Professional & Business Services: 10990376.876
+        Electronic & Electric Devices: 2667930.748
+        Furniture & Home Supplies: 6229292.582
+        Construction & Building Materials: 5346993.028
+        Jewelry: 4793019.74
+        Telecommunication: 2571863.967
+        Education: 4946312.418
+        Public Utilities & Services: 765607.974
+        Gas Stations: 13485598.423
+        Laundry Services: 747629.615
+        Others: 29020459.393
+      average_ticket_sar:
+        Transportation: 149.85
+        Health: 89.44
+        Restaurants & Café: 29.74
+        Bakeries & Pastries: 39.13
+        Hotels: 332.19
+        Food & Beverages: 39.73
+        Apparel, Clothing & Accessories: 115.98
+        Recreation & Culture: 89.45
+        Professional & Business Services: 52.76
+        Electronic & Electric Devices: 96.26
+        Furniture & Home Supplies: 171.68
+        Construction & Building Materials: 133.67
+        Jewelry: 1138.46
+        Telecommunication: 37.21
+        Education: 1917.92
+        Public Utilities & Services: 67.9
+        Gas Stations: 56.41
+        Laundry Services: 18.79
+        Others: 53.14
+      sub_activities:
+        Transportation / Airlines:
+          transactions_thousand: 2487.725
+          sales_sar_thousand: 742916.401
+        Transportation / Auto & Equipment Rentals:
+          transactions_thousand: 3528.483
+          sales_sar_thousand: 870741.88
+        Transportation / Trade of Vehicles & Spare Parts:
+          transactions_thousand: 30465.958
+          sales_sar_thousand: 7120977.775
+        Transportation / Maintenance & Repair of Vehicles:
+          transactions_thousand: 38991.339
+          sales_sar_thousand: 3506443.721
+        Transportation / Freight Transport & Postal & Courier Services:
+          transactions_thousand: 4320.574
+          sales_sar_thousand: 640923.691
+        Transportation / Others:
+          transactions_thousand: 14215.438
+          sales_sar_thousand: 1205738.526
+        Health / Medical Services:
+          transactions_thousand: 45523.208
+          sales_sar_thousand: 6893605.849
+        Health / Pharmacies & Medical Supplies:
+          transactions_thousand: 47207.797
+          sales_sar_thousand: 2973453.497
+        Health / Personal Care:
+          transactions_thousand: 38737.86
+          sales_sar_thousand: 1891321.417
+        Recreation & Culture / Books & Stationery:
+          transactions_thousand: 15774.814
+          sales_sar_thousand: 1694675.462
+        Recreation & Culture / Recreation:
+          transactions_thousand: 39158.57
+          sales_sar_thousand: 3219290.263
+      total_transactions_thousand: 3290402.179
+      total_sales_sar_thousand: 189378087.208
+evidence:
+- publisher: Saudi Central Bank (SAMA)
+  title: Monthly Statistical Bulletin, September 2026 (XLSX)
+  url: https://www.sama.gov.sa/en-US/Statistics/MonthlyStatistics/Monthly_Statistical_Bulletin_For_Sep_2026.xlsx
+  accessed_at: '2026-11-09'
+  locator: sheet 30d, cell N20 (Restaurants & Café, Q3 2026)
+  value: '787805.76400000008'
+  unit: count
+  snippet: 'Table 30d: Points of Sale Transactions by Activity (Number of Transactions)'
+  source_license: unstated
+  content_sha256: 519ea65ddddff9d577cdb6ab3663e9db59b452da62f8342fc40307d10cbe029c
+  role: primary
+- publisher: Saudi Central Bank (SAMA)
+  title: Monthly Statistical Bulletin, September 2026 (XLSX)
+  url: https://www.sama.gov.sa/en-US/Statistics/MonthlyStatistics/Monthly_Statistical_Bulletin_For_Sep_2026.xlsx
+  accessed_at: '2026-11-09'
+  locator: sheet 30e, cell N36 (Gas Stations, Q3 2026)
+  value: 13485598.423039995
+  unit: currency:SAR
+  snippet: 'Table 30e: Points of Sale Transactions by Activity (Value of Transactions)'
+  source_license: unstated
+  content_sha256: 519ea65ddddff9d577cdb6ab3663e9db59b452da62f8342fc40307d10cbe029c
+  role: primary
+- publisher: Saudi Central Bank (SAMA)
+  title: Monthly Statistical Bulletin, September 2026 (XLSX)
+  url: https://www.sama.gov.sa/en-US/Statistics/MonthlyStatistics/Monthly_Statistical_Bulletin_For_Sep_2026.xlsx
+  accessed_at: '2026-11-09'
+  locator: sheet 30d, cell N39 (Total, Q3 2026)
+  value: 3290402.1789999995
+  unit: count
+  snippet: Transactions in Thousand
+  source_license: unstated
+  content_sha256: 519ea65ddddff9d577cdb6ab3663e9db59b452da62f8342fc40307d10cbe029c
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: activity transactions / total transactions
+  method: derived
+  rationale: Shares are each top-level activity's Q3 2026 transaction count over the published total; sub-activities
+    (for example airlines within transportation) are kept separately so nothing is counted twice. The builder checks
+    the top-level activities add up to the total.
+- parameter: distribution.parameters.average_ticket_sar
+  value: sales / transactions
+  method: derived
+  rationale: Average ticket in riyals is the activity's sales (thousand riyals) divided by its transactions (thousands).
+tests:
+- statistic: share["Restaurants & Café"]
+  expected: 0.239425
+  tolerance: 0.004
+- statistic: share["Gas Stations"]
+  expected: 0.072658
+  tolerance: 0.004
+- statistic: share["Jewelry"]
+  expected: 0.00128
+  tolerance: 0.002
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0002
+notes: Point-of-sale card transactions in Saudi Arabia in the third quarter of 2026 by merchant activity, from Tables
+  30d (number, thousands) and 30e (sales, thousand riyals) of SAMA's Monthly Statistical Bulletin for September
+  2026. shares weight activities by number of transactions, so a generator draws the merchant category of a card
+  payment and then its amount around average_ticket_sar. Sub-activities of transportation, health and recreation
+  and culture are listed under sub_activities. Activity labels are SAMA's. SAMA publishes no licence for its statistical
+  files, so the entry stays at license-review.

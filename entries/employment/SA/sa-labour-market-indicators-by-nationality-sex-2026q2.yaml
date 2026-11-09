@@ -1,0 +1,157 @@
+id: sa-labour-market-indicators-by-nationality-sex-2026q2
+title: Saudi Arabia unemployment, employment and participation rates by nationality and sex, Q2 2026 (GASTAT LFS)
+kind: rule
+domain: employment
+region: SA
+status: license-review
+tier: A
+tags:
+- saudi-arabia
+- gcc
+- labour-force
+- unemployment
+- participation
+- nationality
+- lfs
+- gastat
+use_cases:
+- synthetic-employees
+- hr-demo
+- workforce-planning
+- synthetic-customers
+valid_from: '2026-04-01'
+valid_to: '2026-06-30'
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    unit: percent
+    population: aged 15 and over
+    rows:
+      saudi-male:
+        unemployment_rate_percent: 4.8435
+        employment_to_population_percent: 60.7901
+        participation_rate_percent: 63.8844
+      saudi-female:
+        unemployment_rate_percent: 9.5607
+        employment_to_population_percent: 30.4607
+        participation_rate_percent: 33.6809
+      saudi-total:
+        unemployment_rate_percent: 6.4841
+        employment_to_population_percent: 45.5395
+        participation_rate_percent: 48.6971
+      non-saudi-male:
+        unemployment_rate_percent: 1.0907
+        employment_to_population_percent: 93.5958
+        participation_rate_percent: 94.6279
+      non-saudi-female:
+        unemployment_rate_percent: 3.8193
+        employment_to_population_percent: 33.4022
+        participation_rate_percent: 34.7286
+      non-saudi-total:
+        unemployment_rate_percent: 1.3296
+        employment_to_population_percent: 81.1177
+        participation_rate_percent: 82.2108
+      total-male:
+        unemployment_rate_percent: 2.0511
+        employment_to_population_percent: 82.523
+        participation_rate_percent: 84.2511
+      total-female:
+        unemployment_rate_percent: 7.5884
+        employment_to_population_percent: 31.451
+        participation_rate_percent: 34.0336
+      total-total:
+        unemployment_rate_percent: 3.0041
+        employment_to_population_percent: 65.1704
+        participation_rate_percent: 67.1889
+  vectors:
+  - input:
+      key: saudi-female
+      column: unemployment_rate_percent
+    expected: 9.5607
+    origin: source
+  - input:
+      key: non-saudi-male
+      column: participation_rate_percent
+    expected: 94.6279
+    origin: source
+  - input:
+      key: total-total
+      column: employment_to_population_percent
+    expected: 65.1704
+    origin: source
+  - input: saudi-female
+    expected: true
+    origin: source
+  - input: gcc-total
+    expected: false
+    origin: derived
+    note: not a row of the table
+evidence:
+- publisher: General Authority for Statistics (GASTAT)
+  title: Labor Market Statistics, Second Quarter 2026 (LFS tables, XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Labor+Market+Statistics+Q2+2026+EN+%282%29.xlsx/1eb7c5ce-46c1-c8b3-b8e6-9538d3e76422
+  accessed_at: '2026-11-09'
+  locator: sheet 1, cell C9 (Unemployment Rate, saudi-female)
+  value: '9.5607424084015893'
+  unit: decimal
+  snippet: Main labour market indicators by nationality and sex
+  source_license: unstated
+  content_sha256: 6a6aca172e52cdcbac6f2c0708ed5c83b8d1840196b9a89dd379e269673b17c7
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Labor Market Statistics, Second Quarter 2026 (LFS tables, XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Labor+Market+Statistics+Q2+2026+EN+%282%29.xlsx/1eb7c5ce-46c1-c8b3-b8e6-9538d3e76422
+  accessed_at: '2026-11-09'
+  locator: sheet 1, cell E11 (Labour Force Participation rate, non-saudi-male)
+  value: '94.627912534175607'
+  unit: decimal
+  snippet: Labour Force Participation rate
+  source_license: unstated
+  content_sha256: 6a6aca172e52cdcbac6f2c0708ed5c83b8d1840196b9a89dd379e269673b17c7
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Labor Market Statistics, Second Quarter 2026 (LFS tables, XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Labor+Market+Statistics+Q2+2026+EN+%282%29.xlsx/1eb7c5ce-46c1-c8b3-b8e6-9538d3e76422
+  accessed_at: '2026-11-09'
+  locator: sheet 1, cell J10 (Employment-to-population ratio, total-total)
+  value: '65.170410202198298'
+  unit: decimal
+  snippet: Employment-to-population ratio
+  source_license: unstated
+  content_sha256: 6a6aca172e52cdcbac6f2c0708ed5c83b8d1840196b9a89dd379e269673b17c7
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Labor Market Statistics, Second Quarter 2026 (LFS tables, XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Labor+Market+Statistics+Q2+2026+EN+%282%29.xlsx/1eb7c5ce-46c1-c8b3-b8e6-9538d3e76422
+  accessed_at: '2026-11-09'
+  locator: sheet Index, title
+  value: Labour Market Statistics, KSA, Second Quarter 2026
+  unit: text
+  snippet: Labour Market Statistics, KSA, Second Quarter 2026
+  source_license: unstated
+  content_sha256: 6a6aca172e52cdcbac6f2c0708ed5c83b8d1840196b9a89dd379e269673b17c7
+  role: primary
+assumed:
+- parameter: rows
+  value: rounded
+  method: derived
+  rationale: Published values carry full floating-point precision; they are rounded for readability (rates and percentages
+    to 4 decimals, riyal amounts to 2).
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 9
+  tolerance: 0
+- statistic: max[unemployment_rate_percent]
+  expected: 9.5607
+  tolerance: 0
+notes: 'Headline Labour Force Survey rates for the second quarter of 2026 from GASTAT''s Labour Market Statistics
+  workbook, Table 1: unemployment rate, employment-to-population ratio and labour force participation rate for the
+  population aged 15 and over, in per cent. Groups are nationality (saudi, non-saudi, total) by sex (male, female,
+  total), keyed as saudi-male, saudi-female, saudi-total, non-saudi-male and so on, matching the publication''s
+  nine columns. Use the participation and unemployment rates to assign an employment status to synthetic adults
+  by nationality and sex. Neither file carries a licence statement, so the entry stays at license-review; GASTAT''s
+  website use policy permits reuse, including commercial reuse, with GASTAT acknowledged as the source and changes
+  indicated.'

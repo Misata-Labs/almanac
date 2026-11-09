@@ -1,0 +1,199 @@
+id: sa-hospitals-and-beds-by-region-sector-2024
+title: Saudi Arabia hospitals and hospital beds by administrative region and sector, 2024 (GASTAT, Ministry of Health)
+kind: rule
+domain: healthcare
+region: SA
+status: license-review
+tier: A
+tags:
+- saudi-arabia
+- gcc
+- hospitals
+- hospital-beds
+- by-region
+- gastat
+- ministry-of-health
+use_cases:
+- health-demo
+- claims-generation
+- capacity-planning
+- address-generation
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    unit: count
+    rows:
+      Riyadh:
+        hospitals_government: 65
+        hospitals_private: 50
+        hospitals_total: 115
+        beds_government: 14672
+        beds_private: 7428
+        beds_total: 22100
+      Makkah:
+        hospitals_government: 58
+        hospitals_private: 41
+        hospitals_total: 99
+        beds_government: 13085
+        beds_private: 4548
+        beds_total: 17633
+      Madinah:
+        hospitals_government: 23
+        hospitals_private: 10
+        hospitals_total: 33
+        beds_government: 3922
+        beds_private: 1026
+        beds_total: 4948
+      Qassim:
+        hospitals_government: 21
+        hospitals_private: 4
+        hospitals_total: 25
+        beds_government: 3724
+        beds_private: 363
+        beds_total: 4087
+      Eastern Region:
+        hospitals_government: 49
+        hospitals_private: 38
+        hospitals_total: 87
+        beds_government: 8753
+        beds_private: 5109
+        beds_total: 13862
+      Aseer:
+        hospitals_government: 32
+        hospitals_private: 11
+        hospitals_total: 43
+        beds_government: 4081
+        beds_private: 1294
+        beds_total: 5375
+      Tabuk:
+        hospitals_government: 14
+        hospitals_private: 2
+        hospitals_total: 16
+        beds_government: 2513
+        beds_private: 136
+        beds_total: 2649
+      Hail:
+        hospitals_government: 14
+        hospitals_private: 3
+        hospitals_total: 17
+        beds_government: 1940
+        beds_private: 260
+        beds_total: 2200
+      Northern Borders:
+        hospitals_government: 11
+        hospitals_private: 0
+        hospitals_total: 11
+        beds_government: 1460
+        beds_private: 0
+        beds_total: 1460
+      Jazan:
+        hospitals_government: 25
+        hospitals_private: 3
+        hospitals_total: 28
+        beds_government: 2986
+        beds_private: 252
+        beds_total: 3236
+      Najran:
+        hospitals_government: 14
+        hospitals_private: 3
+        hospitals_total: 17
+        beds_government: 1726
+        beds_private: 180
+        beds_total: 1906
+      Al-Baha:
+        hospitals_government: 10
+        hospitals_private: 0
+        hospitals_total: 10
+        beds_government: 1295
+        beds_private: 0
+        beds_total: 1295
+      Al-Jouf:
+        hospitals_government: 14
+        hospitals_private: 1
+        hospitals_total: 15
+        beds_government: 1940
+        beds_private: 30
+        beds_total: 1970
+      Total:
+        hospitals_government: 350
+        hospitals_private: 166
+        hospitals_total: 516
+        beds_government: 62097
+        beds_private: 20626
+        beds_total: 82721
+  vectors:
+  - input:
+      key: Riyadh
+      column: hospitals_private
+    expected: 50
+    origin: source
+  - input:
+      key: Eastern Region
+      column: beds_total
+    expected: 13862
+    origin: source
+  - input:
+      key: Total
+      column: beds_government
+    expected: 62097
+    origin: source
+  - input: Riyadh
+    expected: true
+    origin: source
+  - input: Kuwait
+    expected: false
+    origin: derived
+    note: not a row of the table
+evidence:
+- publisher: General Authority for Statistics (GASTAT)
+  title: Healthcare Establishments and Workforce Statistics 2024 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Healthcare_Establishments_and_workforce_Statistics_2024_EN_%281%29.xlsx_fixed_4215695/82a743c6-210f-5e89-60c8-97593875f8d9
+  accessed_at: '2026-11-09'
+  locator: sheet 1, cell C7 (Riyadh, Private)
+  value: 50
+  unit: count
+  snippet: Number of hospitals by administrative region and sector for 2024
+  source_license: unstated
+  content_sha256: a8145fbece45cf9f5d62660e0fd2894a641364c11c2cb2d5f6675fdb1d4625a2
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Healthcare Establishments and Workforce Statistics 2024 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Healthcare_Establishments_and_workforce_Statistics_2024_EN_%281%29.xlsx_fixed_4215695/82a743c6-210f-5e89-60c8-97593875f8d9
+  accessed_at: '2026-11-09'
+  locator: sheet 4, cell D11 (Eastern Region, Total)
+  value: 13862
+  unit: count
+  snippet: Number of hospital beds by administrative region and sector for 2024
+  source_license: unstated
+  content_sha256: a8145fbece45cf9f5d62660e0fd2894a641364c11c2cb2d5f6675fdb1d4625a2
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Healthcare Establishments and Workforce Statistics 2024 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Healthcare_Establishments_and_workforce_Statistics_2024_EN_%281%29.xlsx_fixed_4215695/82a743c6-210f-5e89-60c8-97593875f8d9
+  accessed_at: '2026-11-09'
+  locator: sheet 4, cell B20 (Total, Government)
+  value: 62097
+  unit: count
+  snippet: 'Source: Ministry of Health 2024'
+  source_license: unstated
+  content_sha256: a8145fbece45cf9f5d62660e0fd2894a641364c11c2cb2d5f6675fdb1d4625a2
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 14
+  tolerance: 0
+- statistic: max[beds_total]
+  expected: 82721
+  tolerance: 0
+notes: Number of hospitals and hospital beds in 2024 by administrative region and sector (government, private),
+  from Tables 1 and 4 of GASTAT's Healthcare Establishments and Workforce Statistics 2024 workbook (Ministry of
+  Health data). Use the counts to weight where synthetic hospital claims or admissions happen and how they split
+  between public and private providers. Neither file carries a licence statement, so the entry stays at license-review;
+  GASTAT's website use policy permits reuse, including commercial reuse, with GASTAT acknowledged as the source
+  and changes indicated.

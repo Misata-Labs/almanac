@@ -1,0 +1,134 @@
+id: sa-registered-workers-by-sector-nationality-sex-2026q2
+title: Saudi Arabia registered workers by sector, nationality and sex, Q2 2026 (GOSI, civil service and domestic
+  workers)
+kind: marginal
+domain: employment
+region: SA
+status: license-review
+tier: A
+tags:
+- saudi-arabia
+- gcc
+- gosi
+- civil-service
+- domestic-workers
+- sector
+- nationality
+- gastat
+use_cases:
+- synthetic-employees
+- hr-demo
+- workforce-planning
+- payroll-demo
+observed_period:
+  start: '2026-04-01'
+  end: '2026-06-30'
+spec:
+  variable: sector_nationality_sex
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        government (civil service)|saudi|male: 0.031121
+        government (civil service)|saudi|female: 0.024842
+        government (civil service)|non-saudi|male: 0.000993
+        government (civil service)|non-saudi|female: 0.000887
+        public (GOSI-registered)|saudi|male: 0.017739
+        public (GOSI-registered)|saudi|female: 0.008734
+        public (GOSI-registered)|non-saudi|male: 0.00393
+        public (GOSI-registered)|non-saudi|female: 0.00244
+        private|saudi|male: 0.079005
+        private|saudi|female: 0.05728
+        private|non-saudi|male: 0.522109
+        private|non-saudi|female: 0.027574
+        domestic worker|non-saudi|male: 0.142797
+        domestic worker|non-saudi|female: 0.080549
+      counts:
+        government (civil service)|saudi|male: 605595
+        government (civil service)|saudi|female: 483402
+        government (civil service)|non-saudi|male: 19332
+        government (civil service)|non-saudi|female: 17264
+        public (GOSI-registered)|saudi|male: 345194
+        public (GOSI-registered)|saudi|female: 169951
+        public (GOSI-registered)|non-saudi|male: 76469
+        public (GOSI-registered)|non-saudi|female: 47481
+        private|saudi|male: 1537386
+        private|saudi|female: 1114637
+        private|non-saudi|male: 10159937
+        private|non-saudi|female: 536581
+        domestic worker|non-saudi|male: 2778739
+        domestic worker|non-saudi|female: 1567434
+      total: 19459402
+evidence:
+- publisher: General Authority for Statistics (GASTAT)
+  title: Register-based Labour Market Statistics, Second Quarter 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Register-based+Labour+Market+Statistics-+Q2+2026+EN.xlsx/fbbb6b2c-5d38-ae17-3cab-a54c3df75356
+  accessed_at: '2026-11-09'
+  locator: sheet 2-3, cell E9 (Private, non-saudi-male)
+  value: 10159937
+  unit: count
+  snippet: by nationality, sex and Sector
+  source_license: unstated
+  content_sha256: 11445641850f26fd01a9ba7e2e03f4f028d8daafd7f78204b2037f508747ee81
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Register-based Labour Market Statistics, Second Quarter 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Register-based+Labour+Market+Statistics-+Q2+2026+EN.xlsx/fbbb6b2c-5d38-ae17-3cab-a54c3df75356
+  accessed_at: '2026-11-09'
+  locator: sheet 2-3, cell C7 (Governmental*, saudi-female)
+  value: 483402
+  unit: count
+  snippet: 'The government sector : civil service regulations'
+  source_license: unstated
+  content_sha256: 11445641850f26fd01a9ba7e2e03f4f028d8daafd7f78204b2037f508747ee81
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Register-based Labour Market Statistics, Second Quarter 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Register-based+Labour+Market+Statistics-+Q2+2026+EN.xlsx/fbbb6b2c-5d38-ae17-3cab-a54c3df75356
+  accessed_at: '2026-11-09'
+  locator: sheet 2-3, cell F10 (Domestic worker ***, non-saudi-female)
+  value: 1567434
+  unit: count
+  snippet: 'Source: NIC and data owner MHRSD***'
+  source_license: unstated
+  content_sha256: 11445641850f26fd01a9ba7e2e03f4f028d8daafd7f78204b2037f508747ee81
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Register-based Labour Market Statistics, Second Quarter 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Register-based+Labour+Market+Statistics-+Q2+2026+EN.xlsx/fbbb6b2c-5d38-ae17-3cab-a54c3df75356
+  accessed_at: '2026-11-09'
+  locator: sheet 2-3, cell B8 (public**, saudi-male)
+  value: 345194
+  unit: count
+  snippet: employees in the government sector subject to the insurance insurance regulations
+  source_license: unstated
+  content_sha256: 11445641850f26fd01a9ba7e2e03f4f028d8daafd7f78204b2037f508747ee81
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / total
+  method: derived
+  rationale: Each share is the published count for a sector, nationality and sex cell divided by the sum of all
+    sixteen cells. The builder checks each sector's four cells against its published total.
+tests:
+- statistic: share["private|non-saudi|male"]
+  expected: 0.522109
+  tolerance: 0.004
+- statistic: share["domestic worker|non-saudi|female"]
+  expected: 0.080549
+  tolerance: 0.004
+- statistic: share["government (civil service)|saudi|female"]
+  expected: 0.024842
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Registered workers in the second quarter of 2026 by sector, nationality and sex, from Table 2-3 of GASTAT's
+  Register-based Labour Market Statistics workbook. Categories are 'sector|nationality|sex'. Government means staff
+  under the civil service regulations; public means government-sector staff registered with GOSI; private means
+  GOSI-registered private-sector employees; domestic workers come from the National Information Center with MHRSD
+  as data owner and are all non-Saudi. The security and military sectors and anyone not in these registers are excluded.
+  GOSI and MHRSD figures are preliminary. Neither file carries a licence statement, so the entry stays at license-review;
+  GASTAT's website use policy permits reuse, including commercial reuse, with GASTAT acknowledged as the source
+  and changes indicated.

@@ -1,0 +1,152 @@
+id: sa-domestic-workers-by-occupation-sex-2026q2
+title: Saudi Arabia non-Saudi domestic workers by household occupation and sex, Q2 2026 (GASTAT register data)
+kind: conditional
+domain: employment
+region: SA
+status: license-review
+tier: A
+tags:
+- saudi-arabia
+- gcc
+- domestic-workers
+- occupation
+- gastat
+use_cases:
+- synthetic-employees
+- household-generation
+- hr-demo
+observed_period:
+  start: '2026-04-01'
+  end: '2026-06-30'
+spec:
+  variable: household_occupation
+  unit: ratio
+  given: sex
+  distributions:
+    male:
+      family: categorical
+      parameters:
+        shares:
+          Housekeeper: 0.000926
+          Drivers: 0.641087
+          Servants and house cleaners: 0.329986
+          Cookers and food provider: 0.017437
+          House guards: 0.007638
+          Farmers houses: 0.002391
+          Home Tailors: 0.000345
+          Nurses and health professionals at homes: 0.000181
+          Private teachers and Nannies at homes: 9.0e-06
+        counts:
+          Housekeeper: 2572
+          Drivers: 1781414
+          Servants and house cleaners: 916946
+          Cookers and food provider: 48453
+          House guards: 21223
+          Farmers houses: 6645
+          Home Tailors: 958
+          Nurses and health professionals at homes: 504
+          Private teachers and Nannies at homes: 24
+        total: 2778739
+    female:
+      family: categorical
+      parameters:
+        shares:
+          Housekeeper: 0.001759
+          Drivers: 0.000394
+          Servants and house cleaners: 0.994055
+          Cookers and food provider: 0.001726
+          House guards: 5.0e-06
+          Farmers houses: 0.0
+          Home Tailors: 0.000412
+          Nurses and health professionals at homes: 0.000668
+          Private teachers and Nannies at homes: 0.000981
+        counts:
+          Housekeeper: 2757
+          Drivers: 618
+          Servants and house cleaners: 1558116
+          Cookers and food provider: 2705
+          House guards: 8
+          Farmers houses: 0
+          Home Tailors: 645
+          Nurses and health professionals at homes: 1047
+          Private teachers and Nannies at homes: 1538
+        total: 1567434
+    total:
+      family: categorical
+      parameters:
+        shares:
+          Housekeeper: 0.001226
+          Drivers: 0.410023
+          Servants and house cleaners: 0.569481
+          Cookers and food provider: 0.011771
+          House guards: 0.004885
+          Farmers houses: 0.001529
+          Home Tailors: 0.000369
+          Nurses and health professionals at homes: 0.000357
+          Private teachers and Nannies at homes: 0.000359
+        counts:
+          Housekeeper: 5329
+          Drivers: 1782032
+          Servants and house cleaners: 2475062
+          Cookers and food provider: 51158
+          House guards: 21231
+          Farmers houses: 6645
+          Home Tailors: 1603
+          Nurses and health professionals at homes: 1551
+          Private teachers and Nannies at homes: 1562
+        total: 4346173
+evidence:
+- publisher: General Authority for Statistics (GASTAT)
+  title: Register-based Labour Market Statistics, Second Quarter 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Register-based+Labour+Market+Statistics-+Q2+2026+EN.xlsx/fbbb6b2c-5d38-ae17-3cab-a54c3df75356
+  accessed_at: '2026-11-09'
+  locator: sheet 7-2, cell B8 (Drivers, male)
+  value: 1781414
+  unit: count
+  snippet: Non - Saudi domestic workers by Sex and Main Groups of Household Occupations
+  source_license: unstated
+  content_sha256: 11445641850f26fd01a9ba7e2e03f4f028d8daafd7f78204b2037f508747ee81
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Register-based Labour Market Statistics, Second Quarter 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Register-based+Labour+Market+Statistics-+Q2+2026+EN.xlsx/fbbb6b2c-5d38-ae17-3cab-a54c3df75356
+  accessed_at: '2026-11-09'
+  locator: sheet 7-2, cell C9 (Servants and house cleaners, female)
+  value: 1558116
+  unit: count
+  snippet: Servants and house cleaners
+  source_license: unstated
+  content_sha256: 11445641850f26fd01a9ba7e2e03f4f028d8daafd7f78204b2037f508747ee81
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Register-based Labour Market Statistics, Second Quarter 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435273/Register-based+Labour+Market+Statistics-+Q2+2026+EN.xlsx/fbbb6b2c-5d38-ae17-3cab-a54c3df75356
+  accessed_at: '2026-11-09'
+  locator: sheet 7-2, cell D16 (Total, total)
+  value: 4346173
+  unit: count
+  snippet: 'Source: NIC and data owner MHRSD'
+  source_license: unstated
+  content_sha256: 11445641850f26fd01a9ba7e2e03f4f028d8daafd7f78204b2037f508747ee81
+  role: primary
+assumed:
+- parameter: distributions.*.parameters.shares
+  value: count / sex total
+  method: derived
+  rationale: Shares are the published counts divided by the published total for each sex, rounded to 6 decimals;
+    the builder checks the occupations add up to that total.
+tests:
+- statistic: share["male","Drivers"]
+  expected: 0.641087
+  tolerance: 0.004
+- statistic: share["female","Servants and house cleaners"]
+  expected: 0.994055
+  tolerance: 0.004
+- statistic: sum_of_shares["total"]
+  expected: 1
+  tolerance: 0.002
+notes: 'Non-Saudi domestic workers in the second quarter of 2026 by main household occupation group and sex, from
+  Table 7-2 of GASTAT''s Register-based Labour Market Statistics workbook (source: National Information Center,
+  data owner MHRSD). Occupation labels are GASTAT''s English labels. Counts sit beside the shares. Neither file
+  carries a licence statement, so the entry stays at license-review; GASTAT''s website use policy permits reuse,
+  including commercial reuse, with GASTAT acknowledged as the source and changes indicated.'

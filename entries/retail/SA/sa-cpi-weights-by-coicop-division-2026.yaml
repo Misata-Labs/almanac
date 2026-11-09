@@ -1,0 +1,114 @@
+id: sa-cpi-weights-by-coicop-division-2026
+title: Saudi Arabia CPI basket weights by COICOP 2018 division, 2026 (GASTAT)
+kind: marginal
+domain: retail
+region: SA
+status: license-review
+tier: A
+tags:
+- saudi-arabia
+- gcc
+- cpi
+- coicop
+- household-spending
+- weights
+- prices
+- gastat
+use_cases:
+- retail-demo
+- sales-generation
+- pricing
+- household-generation
+observed_period:
+  start: '2026-01-01'
+  end: '2026-09-30'
+spec:
+  variable: coicop_division
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        Food And Beverages: 0.218819
+        Tobacco: 0.007236
+        Clothing And Footwear: 0.036893
+        Housing, Water, Electricity, Gas And Other Fuels: 0.201868
+        Furnishings, Household Equipment And Routine Household Maintenance: 0.066732
+        Health: 0.04049
+        Transport: 0.145493
+        Information And Communication: 0.051578
+        Recreation, Sport And Culture: 0.032168
+        Education Services: 0.021552
+        Restaurants And Accommodation Services: 0.083751
+        Insurance And Financial Services: 0.032079
+        Personal Care, Social Protection And Miscellaneous Goods And Services: 0.06134
+      weights_percent:
+        Food And Beverages: 21.8819
+        Tobacco: 0.7236
+        Clothing And Footwear: 3.6893
+        Housing, Water, Electricity, Gas And Other Fuels: 20.1868
+        Furnishings, Household Equipment And Routine Household Maintenance: 6.6732
+        Health: 4.049
+        Transport: 14.5493
+        Information And Communication: 5.1578
+        Recreation, Sport And Culture: 3.2168
+        Education Services: 2.1552
+        Restaurants And Accommodation Services: 8.3751
+        Insurance And Financial Services: 3.2079
+        Personal Care, Social Protection And Miscellaneous Goods And Services: 6.134
+evidence:
+- publisher: General Authority for Statistics (GASTAT)
+  title: Consumer Price Index tables, September 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435267/CPI+Tables-Sep+2026-AR-EN+%281%29.xlsx/33c4aa4c-84da-cd22-da4a-c1b045b28e69
+  accessed_at: '2026-11-09'
+  locator: sheet 1.1, cell C16 (FOOD AND BEVERAGES weight)
+  value: 21.88189067014741
+  unit: percent
+  snippet: Indices and Rates of Changes Summary by Expenditure Divisions, September 2026
+  source_license: unstated
+  content_sha256: de7c8f31acbeb1f3a7ed274727c67b4928cfab0122dbfbb68b90a3dff11975e9
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Consumer Price Index tables, September 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435267/CPI+Tables-Sep+2026-AR-EN+%281%29.xlsx/33c4aa4c-84da-cd22-da4a-c1b045b28e69
+  accessed_at: '2026-11-09'
+  locator: sheet 1.1, cell C21 (HEALTH weight)
+  value: '4.0489613632753789'
+  unit: percent
+  snippet: Weights are updated at the beginning of each year based on the chain-linking methodology.
+  source_license: unstated
+  content_sha256: de7c8f31acbeb1f3a7ed274727c67b4928cfab0122dbfbb68b90a3dff11975e9
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Consumer Price Index tables, September 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435267/CPI+Tables-Sep+2026-AR-EN+%281%29.xlsx/33c4aa4c-84da-cd22-da4a-c1b045b28e69
+  accessed_at: '2026-11-09'
+  locator: sheet 1.1, base
+  value: 2023=100
+  unit: text
+  snippet: 2023=100
+  source_license: unstated
+  content_sha256: de7c8f31acbeb1f3a7ed274727c67b4928cfab0122dbfbb68b90a3dff11975e9
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: weight / 100
+  method: derived
+  rationale: The CPI weights are published in per cent of the basket; shares are those weights divided by 100 and
+    rounded to 6 decimals.
+tests:
+- statistic: share["Food And Beverages"]
+  expected: 0.218819
+  tolerance: 0.004
+- statistic: share["Transport"]
+  expected: 0.145493
+  tolerance: 0.004
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0002
+notes: Weights of the thirteen COICOP 2018 divisions in Saudi Arabia's consumer price index (base 2023=100) as shown
+  in Table 1.1 of GASTAT's September 2026 CPI workbook. GASTAT updates the weights at the start of each year under
+  its chain-linking method, so these are the 2026 weights. They describe the household consumption basket and suit
+  allocating synthetic household or card spend across categories. Division names are GASTAT's English labels in
+  title case. Neither file carries a licence statement, so the entry stays at license-review; GASTAT's website use
+  policy permits reuse, including commercial reuse, with GASTAT acknowledged as the source and changes indicated.

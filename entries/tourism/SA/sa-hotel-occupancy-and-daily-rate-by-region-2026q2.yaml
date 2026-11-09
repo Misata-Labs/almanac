@@ -1,0 +1,212 @@
+id: sa-hotel-occupancy-and-daily-rate-by-region-2026q2
+title: Saudi Arabia licensed hotels, occupancy and average daily rate by region and facility type, Q2 2026 (GASTAT,
+  Ministry of Tourism)
+kind: rule
+domain: tourism
+region: SA
+status: license-review
+tier: A
+tags:
+- saudi-arabia
+- gcc
+- hotels
+- occupancy
+- average-daily-rate
+- by-region
+- gastat
+- ministry-of-tourism
+use_cases:
+- tourism-demo
+- pricing
+- capacity-planning
+- payments-demo
+valid_from: '2026-04-01'
+valid_to: '2026-06-30'
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    occupancy_unit: ratio
+    rate_unit: currency:SAR
+    rows:
+      Ar Riyadh:
+        hotels: 261
+        serviced_apartments_and_other: 1020
+        hotel_occupancy_rate: 0.4267
+        serviced_apartment_occupancy_rate: 0.5272
+        hotel_average_daily_rate_sar: 540.91
+        serviced_apartment_average_daily_rate_sar: 229.81
+      Makkah Al Mukarramah:
+        hotels: 1684
+        serviced_apartments_and_other: 681
+        hotel_occupancy_rate: 0.4995
+        serviced_apartment_occupancy_rate: 0.4421
+        hotel_average_daily_rate_sar: 585.31
+        serviced_apartment_average_daily_rate_sar: 195.63
+      Al Madinah Al Munawwarah:
+        hotels: 496
+        serviced_apartments_and_other: 199
+        hotel_occupancy_rate: 0.6533
+        serviced_apartment_occupancy_rate: 0.3865
+        hotel_average_daily_rate_sar: 589.46
+        serviced_apartment_average_daily_rate_sar: 221.36
+      Al Qaseem:
+        hotels: 32
+        serviced_apartments_and_other: 106
+        hotel_occupancy_rate: 0.4269
+        serviced_apartment_occupancy_rate: 0.4672
+        hotel_average_daily_rate_sar: 389.63
+        serviced_apartment_average_daily_rate_sar: 153.62
+      Eastern region:
+        hotels: 159
+        serviced_apartments_and_other: 390
+        hotel_occupancy_rate: 0.4779
+        serviced_apartment_occupancy_rate: 0.4763
+        hotel_average_daily_rate_sar: 433.09
+        serviced_apartment_average_daily_rate_sar: 195.87
+      Aseer:
+        hotels: 112
+        serviced_apartments_and_other: 338
+        hotel_occupancy_rate: 0.38
+        serviced_apartment_occupancy_rate: 0.4302
+        hotel_average_daily_rate_sar: 297.06
+        serviced_apartment_average_daily_rate_sar: 141.0
+      Tabuk:
+        hotels: 90
+        serviced_apartments_and_other: 92
+        hotel_occupancy_rate: 0.2861
+        serviced_apartment_occupancy_rate: 0.3495
+        hotel_average_daily_rate_sar: 738.42
+        serviced_apartment_average_daily_rate_sar: 151.18
+      Hail:
+        hotels: 17
+        serviced_apartments_and_other: 86
+        hotel_occupancy_rate: 0.2891
+        serviced_apartment_occupancy_rate: 0.4289
+        hotel_average_daily_rate_sar: 331.05
+        serviced_apartment_average_daily_rate_sar: 176.07
+      Northern Borders:
+        hotels: 18
+        serviced_apartments_and_other: 28
+        hotel_occupancy_rate: 0.4682
+        serviced_apartment_occupancy_rate: 0.3815
+        hotel_average_daily_rate_sar: 207.05
+        serviced_apartment_average_daily_rate_sar: 133.15
+      Jazan:
+        hotels: 88
+        serviced_apartments_and_other: 116
+        hotel_occupancy_rate: 0.3643
+        serviced_apartment_occupancy_rate: 0.4071
+        hotel_average_daily_rate_sar: 290.26
+        serviced_apartment_average_daily_rate_sar: 214.33
+      Najran:
+        hotels: 36
+        serviced_apartments_and_other: 71
+        hotel_occupancy_rate: 0.3993
+        serviced_apartment_occupancy_rate: 0.5424
+        hotel_average_daily_rate_sar: 199.79
+        serviced_apartment_average_daily_rate_sar: 95.66
+      Al Bahah:
+        hotels: 15
+        serviced_apartments_and_other: 74
+        hotel_occupancy_rate: 0.343
+        serviced_apartment_occupancy_rate: 0.3315
+        hotel_average_daily_rate_sar: 331.11
+        serviced_apartment_average_daily_rate_sar: 147.19
+      Al Jawf:
+        hotels: 12
+        serviced_apartments_and_other: 57
+        hotel_occupancy_rate: 0.3371
+        serviced_apartment_occupancy_rate: 0.3872
+        hotel_average_daily_rate_sar: 245.92
+        serviced_apartment_average_daily_rate_sar: 132.36
+  vectors:
+  - input:
+      key: Makkah Al Mukarramah
+      column: hotels
+    expected: 1684
+    origin: source
+  - input:
+      key: Ar Riyadh
+      column: hotel_occupancy_rate
+    expected: 0.4267
+    origin: source
+  - input:
+      key: Tabuk
+      column: hotel_average_daily_rate_sar
+    expected: 738.42
+    origin: source
+  - input: Makkah Al Mukarramah
+    expected: true
+    origin: source
+  - input: Dubai
+    expected: false
+    origin: derived
+    note: not a row of the table
+evidence:
+- publisher: General Authority for Statistics (GASTAT)
+  title: Tourism Establishments Statistics, Q2 of 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435281/Tourism+Establishments+Statistics+Q2+of+2026+EN+%281%29.xlsx/55242e87-417c-29f8-5f27-53c918fc9d5f
+  accessed_at: '2026-11-09'
+  locator: sheet 2.1, cell D6 (Makkah Al Mukarramah, Number of hotels)
+  value: 1684
+  unit: count
+  snippet: Number of licensed tourist hospitality facilities by regions and facility type for Q2 of 2026
+  source_license: unstated
+  content_sha256: 37541384148c21bfd4eaea1e42689746a371b1ec01f9b441bef4cd6a89d30f90
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Tourism Establishments Statistics, Q2 of 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435281/Tourism+Establishments+Statistics+Q2+of+2026+EN+%281%29.xlsx/55242e87-417c-29f8-5f27-53c918fc9d5f
+  accessed_at: '2026-11-09'
+  locator: sheet 2.4, cell F5 (Ar Riyadh, quarterly average)
+  value: 0.42673099269568476
+  unit: ratio
+  snippet: Occupancy rate in hotels by regions and month for Q2 of 2026
+  source_license: unstated
+  content_sha256: 37541384148c21bfd4eaea1e42689746a371b1ec01f9b441bef4cd6a89d30f90
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Tourism Establishments Statistics, Q2 of 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435281/Tourism+Establishments+Statistics+Q2+of+2026+EN+%281%29.xlsx/55242e87-417c-29f8-5f27-53c918fc9d5f
+  accessed_at: '2026-11-09'
+  locator: sheet 2.10, cell F11 (Tabuk, quarterly average)
+  value: 738.4223565558417
+  unit: currency:SAR
+  snippet: Average daily rate in hotels by regions and month for Q2 of 2026
+  source_license: unstated
+  content_sha256: 37541384148c21bfd4eaea1e42689746a371b1ec01f9b441bef4cd6a89d30f90
+  role: primary
+- publisher: General Authority for Statistics (GASTAT)
+  title: Tourism Establishments Statistics, Q2 of 2026 (XLSX)
+  url: https://www.stats.gov.sa/documents/20117/2435281/Tourism+Establishments+Statistics+Q2+of+2026+EN+%281%29.xlsx/55242e87-417c-29f8-5f27-53c918fc9d5f
+  accessed_at: '2026-11-09'
+  locator: sheet 2.10, note
+  value: The average daily rate does not include Value Added Tax (VAT) or municipal service fees.
+  unit: text
+  snippet: The average daily rate does not include Value Added Tax (VAT) or municipal service fees.
+  source_license: unstated
+  content_sha256: 37541384148c21bfd4eaea1e42689746a371b1ec01f9b441bef4cd6a89d30f90
+  role: supporting
+assumed:
+- parameter: rows
+  value: quarterly averages
+  method: derived
+  rationale: Occupancy and average daily rate are the 'Quarterly average' columns of Tables 2.3, 2.4, 2.9 and 2.10,
+    rounded (occupancy to 4 decimals, rates to 2); facility counts are copied from Table 2.1.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 13
+  tolerance: 0
+- statistic: max[hotel_average_daily_rate_sar]
+  expected: 738.42
+  tolerance: 0
+notes: Licensed tourist hospitality facilities, occupancy rate (share of rooms sold, 0 to 1) and average daily rate
+  in Saudi riyals by administrative region for the second quarter of 2026, for hotels and for serviced apartments
+  and other hospitality facilities, from GASTAT's Tourism Establishments Statistics workbook (Ministry of Tourism
+  Tourism Monitoring Platform, preliminary data). Average daily rates exclude VAT and municipal fees. Region names
+  are the publication's English labels. Neither file carries a licence statement, so the entry stays at license-review;
+  GASTAT's website use policy permits reuse, including commercial reuse, with GASTAT acknowledged as the source
+  and changes indicated.
