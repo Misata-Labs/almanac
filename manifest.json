@@ -8,7 +8,7 @@
     "entries": "ODbL-1.0",
     "code": "Apache-2.0"
   },
-  "entry_count": 684,
+  "entry_count": 725,
   "entries": [
     {
       "id": "eu-new-passenger-car-registrations-by-motor-energy-2025",
@@ -3122,6 +3122,43 @@
       "vectors": 6
     },
     {
+      "id": "sa-private-sector-official-holidays",
+      "title": "Saudi private-sector official holidays: Founding Day 22 Feb, National Day 23 Sep, Eid al-Fitr and Eid al-Adha four days each",
+      "kind": "rule",
+      "domain": "calendar",
+      "region": "SA",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2025-12-01 to open",
+      "publishers": [
+        "Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "gcc",
+        "calendar",
+        "public-holidays",
+        "hijri",
+        "labour-law",
+        "saudi-arabia"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-demo",
+        "hr-analytics",
+        "payments-scheduling",
+        "event-timestamps"
+      ],
+      "path": "entries/calendar/SA/sa-private-sector-official-holidays.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/calendar/SA/sa-private-sector-official-holidays.yaml",
+      "valid_from": "2025-12-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.holiday_list",
+      "vectors": 4
+    },
+    {
       "id": "sg-public-holidays",
       "title": "Singapore public holidays (Ministry of Manpower list on data.gov.sg), 2020 to 2027",
       "kind": "rule",
@@ -5293,6 +5330,42 @@
       "variable": "usd_per_eur"
     },
     {
+      "id": "sa-riyal-us-dollar-peg",
+      "title": "Saudi riyal exchange rate regime: pegged to the US dollar at 3.75 riyals per dollar since 1986",
+      "kind": "rule",
+      "domain": "currency",
+      "region": "SA",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "1986-01-01 to open",
+      "publishers": [
+        "Saudi Central Bank (SAMA)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "gcc",
+        "currency",
+        "exchange-rate",
+        "peg",
+        "saudi-arabia",
+        "banking"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "treasury-demo",
+        "multi-currency-ledger",
+        "invoicing-demo"
+      ],
+      "path": "entries/currency/SA/sa-riyal-us-dollar-peg.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/currency/SA/sa-riyal-us-dollar-peg.yaml",
+      "valid_from": "1986-01-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 3
+    },
+    {
       "id": "us-treasury-reporting-rates-of-exchange-2025-12-31",
       "title": "US Treasury reporting rates of exchange as of 2025-12-31 (167 country-currency pairs)",
       "kind": "rule",
@@ -7318,6 +7391,48 @@
       "variable": "surname"
     },
     {
+      "id": "om-foreign-citizens-by-country-of-citizenship-2024",
+      "title": "Oman working-age and employed foreign citizens by country of citizenship, given sex, 2024 (ILOSTAT)",
+      "kind": "conditional",
+      "domain": "demographics",
+      "region": "OM",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2024-01-01 to 2024-12-31",
+      "publishers": [
+        "International Labour Organization (ILOSTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "gcc",
+        "migration",
+        "nationality",
+        "foreign-citizens",
+        "country-of-citizenship",
+        "by-sex",
+        "ilostat",
+        "labour-migration"
+      ],
+      "use_cases": [
+        "synthetic-customers",
+        "synthetic-employees",
+        "person-generation",
+        "kyc-onboarding",
+        "customer-segmentation",
+        "remittance-demo",
+        "hr-analytics"
+      ],
+      "path": "entries/demographics/OM/om-foreign-citizens-by-country-of-citizenship-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/OM/om-foreign-citizens-by-country-of-citizenship-2024.yaml",
+      "observed_period": {
+        "start": "2024-01-01",
+        "end": "2024-12-31"
+      },
+      "variable": "country_of_citizenship_iso3"
+    },
+    {
       "id": "pl-population-by-single-year-of-age-2024",
       "title": "Poland population on 1 January 2024 by single year of age (Eurostat demo_pjan)",
       "kind": "marginal",
@@ -7350,6 +7465,83 @@
         "end": "2024-01-01"
       },
       "variable": "age"
+    },
+    {
+      "id": "sa-population-by-age-nationality-sex-2024",
+      "title": "Saudi Arabia population by five-year age group given nationality and sex, mid-2024 (GASTAT population estimates)",
+      "kind": "conditional",
+      "domain": "demographics",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2024-07-01 to 2024-07-01",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "population",
+        "age",
+        "nationality",
+        "population-estimates",
+        "gastat"
+      ],
+      "use_cases": [
+        "synthetic-customers",
+        "person-generation",
+        "household-generation",
+        "insurance",
+        "market-sizing"
+      ],
+      "path": "entries/demographics/SA/sa-population-by-age-nationality-sex-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/SA/sa-population-by-age-nationality-sex-2024.yaml",
+      "observed_period": {
+        "start": "2024-07-01",
+        "end": "2024-07-01"
+      },
+      "variable": "age_group"
+    },
+    {
+      "id": "sa-population-by-nationality-sex-2024",
+      "title": "Saudi Arabia population by nationality (Saudi, non-Saudi) and sex, mid-2024 (GASTAT population estimates)",
+      "kind": "marginal",
+      "domain": "demographics",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2024-07-01 to 2024-07-01",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "population",
+        "nationality",
+        "sex",
+        "population-estimates",
+        "gastat"
+      ],
+      "use_cases": [
+        "synthetic-customers",
+        "person-generation",
+        "kyc-onboarding",
+        "market-sizing"
+      ],
+      "path": "entries/demographics/SA/sa-population-by-nationality-sex-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/demographics/SA/sa-population-by-nationality-sex-2024.yaml",
+      "observed_period": {
+        "start": "2024-07-01",
+        "end": "2024-07-01"
+      },
+      "variable": "nationality_sex"
     },
     {
       "id": "se-population-by-single-year-of-age-2024",
@@ -11749,6 +11941,695 @@
       "vectors": 3
     },
     {
+      "id": "qa-employment-by-activity-and-citizenship-2024",
+      "title": "Qatar employment by aggregate economic activity, given citizenship and sex, 2024 (ILOSTAT, labour force survey)",
+      "kind": "conditional",
+      "domain": "employment",
+      "region": "QA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2024-01-01 to 2024-12-31",
+      "publishers": [
+        "International Labour Organization (ILOSTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "gcc",
+        "migration",
+        "nationality",
+        "employment",
+        "economic-activity",
+        "by-citizenship",
+        "by-sex",
+        "ilostat",
+        "labour-force-survey"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "payroll-demo",
+        "hr-analytics",
+        "workforce-planning",
+        "synthetic-customers",
+        "person-generation"
+      ],
+      "path": "entries/employment/QA/qa-employment-by-activity-and-citizenship-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/QA/qa-employment-by-activity-and-citizenship-2024.yaml",
+      "observed_period": {
+        "start": "2024-01-01",
+        "end": "2024-12-31"
+      },
+      "variable": "economic_activity_aggregate"
+    },
+    {
+      "id": "qa-employment-by-age-and-citizenship-2024",
+      "title": "Qatar employment by broad age group, given citizenship and sex, 2024 (ILOSTAT, labour force survey)",
+      "kind": "conditional",
+      "domain": "employment",
+      "region": "QA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2024-01-01 to 2024-12-31",
+      "publishers": [
+        "International Labour Organization (ILOSTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "gcc",
+        "migration",
+        "nationality",
+        "employment",
+        "by-age",
+        "by-citizenship",
+        "by-sex",
+        "ilostat"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "payroll-demo",
+        "hr-analytics",
+        "workforce-planning",
+        "synthetic-customers",
+        "person-generation"
+      ],
+      "path": "entries/employment/QA/qa-employment-by-age-and-citizenship-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/QA/qa-employment-by-age-and-citizenship-2024.yaml",
+      "observed_period": {
+        "start": "2024-01-01",
+        "end": "2024-12-31"
+      },
+      "variable": "age_group"
+    },
+    {
+      "id": "qa-employment-by-skill-level-and-citizenship-2024",
+      "title": "Qatar employment by occupational skill level, given citizenship and sex, 2024 (ILOSTAT, labour force survey)",
+      "kind": "conditional",
+      "domain": "employment",
+      "region": "QA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2024-01-01 to 2024-12-31",
+      "publishers": [
+        "International Labour Organization (ILOSTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "gcc",
+        "migration",
+        "nationality",
+        "employment",
+        "occupations",
+        "skill-level",
+        "isco-08",
+        "by-citizenship",
+        "by-sex",
+        "ilostat"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "payroll-demo",
+        "hr-analytics",
+        "workforce-planning",
+        "synthetic-customers",
+        "person-generation"
+      ],
+      "path": "entries/employment/QA/qa-employment-by-skill-level-and-citizenship-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/QA/qa-employment-by-skill-level-and-citizenship-2024.yaml",
+      "observed_period": {
+        "start": "2024-01-01",
+        "end": "2024-12-31"
+      },
+      "variable": "occupation_skill_level"
+    },
+    {
+      "id": "sa-average-monthly-wage-by-age-nationality-sex-2026q2",
+      "title": "Saudi Arabia average monthly wage of paid employees by five-year age group, nationality and sex, Q2 2026 (GASTAT LFS)",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-04-01 to 2026-06-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "wages",
+        "earnings",
+        "nationality",
+        "lfs",
+        "gastat"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "payroll-demo",
+        "hr-demo",
+        "customer-segmentation"
+      ],
+      "path": "entries/employment/SA/sa-average-monthly-wage-by-age-nationality-sex-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/SA/sa-average-monthly-wage-by-age-nationality-sex-2026q2.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": "2026-06-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "sa-average-monthly-wage-by-education-nationality-sex-2026q2",
+      "title": "Saudi Arabia average monthly wage of paid employees by education level, nationality and sex, Q2 2026 (GASTAT LFS)",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-04-01 to 2026-06-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "wages",
+        "earnings",
+        "nationality",
+        "lfs",
+        "gastat"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "payroll-demo",
+        "hr-demo",
+        "customer-segmentation"
+      ],
+      "path": "entries/employment/SA/sa-average-monthly-wage-by-education-nationality-sex-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/SA/sa-average-monthly-wage-by-education-nationality-sex-2026q2.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": "2026-06-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 4
+    },
+    {
+      "id": "sa-domestic-workers-by-occupation-sex-2026q2",
+      "title": "Saudi Arabia non-Saudi domestic workers by household occupation and sex, Q2 2026 (GASTAT register data)",
+      "kind": "conditional",
+      "domain": "employment",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2026-04-01 to 2026-06-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "domestic-workers",
+        "occupation",
+        "gastat"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "household-generation",
+        "hr-demo"
+      ],
+      "path": "entries/employment/SA/sa-domestic-workers-by-occupation-sex-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/SA/sa-domestic-workers-by-occupation-sex-2026q2.yaml",
+      "observed_period": {
+        "start": "2026-04-01",
+        "end": "2026-06-30"
+      },
+      "variable": "household_occupation"
+    },
+    {
+      "id": "sa-employed-by-economic-activity-nationality-sex-2026q2",
+      "title": "Saudi Arabia employed persons by ISIC economic activity section given nationality and sex, Q2 2026 (GASTAT LFS)",
+      "kind": "conditional",
+      "domain": "employment",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2026-04-01 to 2026-06-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "industry",
+        "isic",
+        "nationality",
+        "lfs",
+        "gastat"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "hr-demo",
+        "workforce-planning",
+        "company-generation"
+      ],
+      "path": "entries/employment/SA/sa-employed-by-economic-activity-nationality-sex-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/SA/sa-employed-by-economic-activity-nationality-sex-2026q2.yaml",
+      "observed_period": {
+        "start": "2026-04-01",
+        "end": "2026-06-30"
+      },
+      "variable": "economic_activity_section"
+    },
+    {
+      "id": "sa-employed-by-occupation-nationality-sex-2026q2",
+      "title": "Saudi Arabia employed persons by ISCO-08 major occupation group given nationality and sex, Q2 2026 (GASTAT LFS)",
+      "kind": "conditional",
+      "domain": "employment",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2026-04-01 to 2026-06-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "occupation",
+        "isco",
+        "nationality",
+        "lfs",
+        "gastat"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "hr-demo",
+        "workforce-planning",
+        "company-generation"
+      ],
+      "path": "entries/employment/SA/sa-employed-by-occupation-nationality-sex-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/SA/sa-employed-by-occupation-nationality-sex-2026q2.yaml",
+      "observed_period": {
+        "start": "2026-04-01",
+        "end": "2026-06-30"
+      },
+      "variable": "occupation_major_group"
+    },
+    {
+      "id": "sa-end-of-service-award",
+      "title": "Saudi Labour Law end-of-service award: half a month's wage per year for five years, a month thereafter, reduced on resignation",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "SA",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2005-09-27 to open",
+      "publishers": [
+        "Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "gcc",
+        "labour-law",
+        "payroll",
+        "end-of-service",
+        "gratuity",
+        "saudi-arabia"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-demo",
+        "hr-analytics"
+      ],
+      "path": "entries/employment/SA/sa-end-of-service-award.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/SA/sa-end-of-service-award.yaml",
+      "valid_from": "2005-09-27",
+      "valid_to": null,
+      "implementation": "almanac.rules.gcc_end_of_service",
+      "vectors": 9
+    },
+    {
+      "id": "sa-gosi-participants-by-age-nationality-sex-2026q2",
+      "title": "Saudi Arabia GOSI-registered workers by age group given nationality and sex, Q2 2026 (GASTAT register-based statistics)",
+      "kind": "conditional",
+      "domain": "employment",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2026-04-01 to 2026-06-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "age",
+        "gosi",
+        "social-insurance-register",
+        "nationality",
+        "gastat"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "hr-demo",
+        "payroll-demo",
+        "pensions"
+      ],
+      "path": "entries/employment/SA/sa-gosi-participants-by-age-nationality-sex-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/SA/sa-gosi-participants-by-age-nationality-sex-2026q2.yaml",
+      "observed_period": {
+        "start": "2026-04-01",
+        "end": "2026-06-30"
+      },
+      "variable": "age_group"
+    },
+    {
+      "id": "sa-gosi-participants-by-economic-activity-nationality-sex-2026q2",
+      "title": "Saudi Arabia GOSI-registered workers by ISIC economic activity given nationality and sex, Q2 2026 (GASTAT register-based statistics)",
+      "kind": "conditional",
+      "domain": "employment",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2026-04-01 to 2026-06-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "industry",
+        "isic",
+        "gosi",
+        "social-insurance-register",
+        "nationality",
+        "gastat"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "company-generation",
+        "kyb-onboarding",
+        "hr-demo"
+      ],
+      "path": "entries/employment/SA/sa-gosi-participants-by-economic-activity-nationality-sex-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/SA/sa-gosi-participants-by-economic-activity-nationality-sex-2026q2.yaml",
+      "observed_period": {
+        "start": "2026-04-01",
+        "end": "2026-06-30"
+      },
+      "variable": "economic_activity_section"
+    },
+    {
+      "id": "sa-gosi-participants-by-occupation-nationality-sex-2026q2",
+      "title": "Saudi Arabia GOSI-registered workers by ISCO-08 major occupation group given nationality and sex, Q2 2026 (GASTAT)",
+      "kind": "conditional",
+      "domain": "employment",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2026-04-01 to 2026-06-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "occupation",
+        "isco",
+        "gosi",
+        "social-insurance-register",
+        "nationality",
+        "gastat"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "hr-demo",
+        "payroll-demo",
+        "workforce-planning"
+      ],
+      "path": "entries/employment/SA/sa-gosi-participants-by-occupation-nationality-sex-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/SA/sa-gosi-participants-by-occupation-nationality-sex-2026q2.yaml",
+      "observed_period": {
+        "start": "2026-04-01",
+        "end": "2026-06-30"
+      },
+      "variable": "occupation_major_group"
+    },
+    {
+      "id": "sa-gosi-participants-by-region-nationality-sex-2026q2",
+      "title": "Saudi Arabia GOSI-registered workers by administrative region given nationality and sex, Q2 2026 (GASTAT register-based statistics)",
+      "kind": "conditional",
+      "domain": "employment",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2026-04-01 to 2026-06-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "by-region",
+        "gosi",
+        "social-insurance-register",
+        "nationality",
+        "gastat"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "hr-demo",
+        "address-generation",
+        "workforce-planning"
+      ],
+      "path": "entries/employment/SA/sa-gosi-participants-by-region-nationality-sex-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/SA/sa-gosi-participants-by-region-nationality-sex-2026q2.yaml",
+      "observed_period": {
+        "start": "2026-04-01",
+        "end": "2026-06-30"
+      },
+      "variable": "administrative_region"
+    },
+    {
+      "id": "sa-labour-law-working-time-leave-and-probation",
+      "title": "Saudi Labour Law limits: working hours, Ramadan hours, overtime premium, annual leave, probation and unlawful-termination compensation",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "SA",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2025-12-01 to open",
+      "publishers": [
+        "Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "gcc",
+        "labour-law",
+        "payroll",
+        "working-time",
+        "annual-leave",
+        "saudi-arabia"
+      ],
+      "use_cases": [
+        "payroll-demo",
+        "hr-demo",
+        "hr-analytics"
+      ],
+      "path": "entries/employment/SA/sa-labour-law-working-time-leave-and-probation.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/SA/sa-labour-law-working-time-leave-and-probation.yaml",
+      "valid_from": "2025-12-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "sa-labour-market-indicators-by-nationality-sex-2026q2",
+      "title": "Saudi Arabia unemployment, employment and participation rates by nationality and sex, Q2 2026 (GASTAT LFS)",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-04-01 to 2026-06-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "labour-force",
+        "unemployment",
+        "participation",
+        "nationality",
+        "lfs",
+        "gastat"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "hr-demo",
+        "workforce-planning",
+        "synthetic-customers"
+      ],
+      "path": "entries/employment/SA/sa-labour-market-indicators-by-nationality-sex-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/SA/sa-labour-market-indicators-by-nationality-sex-2026q2.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": "2026-06-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "sa-registered-workers-by-sector-nationality-sex-2026q2",
+      "title": "Saudi Arabia registered workers by sector, nationality and sex, Q2 2026 (GOSI, civil service and domestic workers)",
+      "kind": "marginal",
+      "domain": "employment",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2026-04-01 to 2026-06-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "gosi",
+        "civil-service",
+        "domestic-workers",
+        "sector",
+        "nationality",
+        "gastat"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "hr-demo",
+        "workforce-planning",
+        "payroll-demo"
+      ],
+      "path": "entries/employment/SA/sa-registered-workers-by-sector-nationality-sex-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/SA/sa-registered-workers-by-sector-nationality-sex-2026q2.yaml",
+      "observed_period": {
+        "start": "2026-04-01",
+        "end": "2026-06-30"
+      },
+      "variable": "sector_nationality_sex"
+    },
+    {
+      "id": "sa-unemployment-rate-by-nationality-sex-quarterly-2021-2026",
+      "title": "Saudi Arabia unemployment rate by nationality and sex, quarterly 2021-Q1 to 2026-Q2 (GASTAT LFS)",
+      "kind": "temporal",
+      "domain": "employment",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2021-01-01 to 2026-06-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "unemployment",
+        "labour-force",
+        "quarterly",
+        "time-series",
+        "nationality",
+        "lfs",
+        "gastat"
+      ],
+      "use_cases": [
+        "hr-demo",
+        "workforce-planning",
+        "credit-risk",
+        "demand-forecasting"
+      ],
+      "path": "entries/employment/SA/sa-unemployment-rate-by-nationality-sex-quarterly-2021-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/SA/sa-unemployment-rate-by-nationality-sex-quarterly-2021-2026.yaml",
+      "observed_period": {
+        "start": "2021-01-01",
+        "end": "2026-06-30"
+      },
+      "variable": "unemployment_rate_percent"
+    },
+    {
+      "id": "sa-unemployment-rate-by-region-nationality-sex-2026q2",
+      "title": "Saudi Arabia unemployment rate by administrative region, nationality and sex, Q2 2026 (GASTAT LFS)",
+      "kind": "rule",
+      "domain": "employment",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-04-01 to 2026-06-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "unemployment",
+        "by-region",
+        "nationality",
+        "lfs",
+        "gastat"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "hr-demo",
+        "address-generation",
+        "credit-risk"
+      ],
+      "path": "entries/employment/SA/sa-unemployment-rate-by-region-nationality-sex-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/employment/SA/sa-unemployment-rate-by-region-nationality-sex-2026q2.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": "2026-06-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
       "id": "us-federal-minimum-wage",
       "title": "United States federal minimum wage under the Fair Labor Standards Act, 29 U.S.C. 206(a)(1), steps since 2007",
       "kind": "rule",
@@ -13995,6 +14876,43 @@
       "valid_to": "2023-12-31",
       "implementation": "almanac.rules.lookup_table",
       "vectors": 3
+    },
+    {
+      "id": "sa-hospitals-and-beds-by-region-sector-2024",
+      "title": "Saudi Arabia hospitals and hospital beds by administrative region and sector, 2024 (GASTAT, Ministry of Health)",
+      "kind": "rule",
+      "domain": "healthcare",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2024-01-01 to 2024-12-31",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "hospitals",
+        "hospital-beds",
+        "by-region",
+        "gastat",
+        "ministry-of-health"
+      ],
+      "use_cases": [
+        "health-demo",
+        "claims-generation",
+        "capacity-planning",
+        "address-generation"
+      ],
+      "path": "entries/healthcare/SA/sa-hospitals-and-beds-by-region-sector-2024.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/healthcare/SA/sa-hospitals-and-beds-by-region-sector-2024.yaml",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
     },
     {
       "id": "us-births-by-year-1909-2018",
@@ -16833,6 +17751,123 @@
       "vectors": 3
     },
     {
+      "id": "sa-household-income-expenditure-by-region-nationality-2023",
+      "title": "Saudi Arabia household monthly disposable income and consumption by region and nationality of head, 2023 (GASTAT HIES)",
+      "kind": "rule",
+      "domain": "income",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2023-01-01 to 2023-12-31",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "household-income",
+        "household-spending",
+        "by-region",
+        "nationality",
+        "hies",
+        "gastat"
+      ],
+      "use_cases": [
+        "household-generation",
+        "synthetic-customers",
+        "customer-segmentation",
+        "credit-risk"
+      ],
+      "path": "entries/income/SA/sa-household-income-expenditure-by-region-nationality-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/income/SA/sa-household-income-expenditure-by-region-nationality-2023.yaml",
+      "valid_from": "2023-01-01",
+      "valid_to": "2023-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "sa-household-spending-by-coicop-nationality-2023",
+      "title": "Saudi Arabia household monthly cash consumption by COICOP division given nationality of head, 2023 (GASTAT HIES)",
+      "kind": "conditional",
+      "domain": "income",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2023-01-01 to 2023-12-31",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "household-spending",
+        "coicop",
+        "nationality",
+        "hies",
+        "gastat"
+      ],
+      "use_cases": [
+        "retail-demo",
+        "household-generation",
+        "sales-generation",
+        "customer-segmentation"
+      ],
+      "path": "entries/income/SA/sa-household-spending-by-coicop-nationality-2023.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/income/SA/sa-household-spending-by-coicop-nationality-2023.yaml",
+      "observed_period": {
+        "start": "2023-01-01",
+        "end": "2023-12-31"
+      },
+      "variable": "coicop_division"
+    },
+    {
+      "id": "sa-mean-monthly-earnings-by-sex-and-citizenship-2020",
+      "title": "Saudi Arabia mean monthly earnings of employees by citizenship and sex, 2020, in SAR, US$ and PPP US$ (ILOSTAT)",
+      "kind": "rule",
+      "domain": "income",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2020-01-01 to 2020-12-31",
+      "publishers": [
+        "International Labour Organization (ILOSTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "gcc",
+        "migration",
+        "nationality",
+        "earnings",
+        "pay",
+        "by-citizenship",
+        "by-sex",
+        "ilostat",
+        "labour-force-survey"
+      ],
+      "use_cases": [
+        "synthetic-employees",
+        "payroll-demo",
+        "hr-analytics",
+        "workforce-planning",
+        "synthetic-customers",
+        "credit-risk"
+      ],
+      "path": "entries/income/SA/sa-mean-monthly-earnings-by-sex-and-citizenship-2020.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/income/SA/sa-mean-monthly-earnings-by-sex-and-citizenship-2020.yaml",
+      "valid_from": "2020-01-01",
+      "valid_to": "2020-12-31",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 3
+    },
+    {
       "id": "us-irs-individual-income-by-agi-size-2023",
       "title": "US individual income tax returns by size of adjusted gross income, tax year 2023: returns by filing status, AGI, average AGI, wages, interest and dividends",
       "kind": "rule",
@@ -18871,6 +19906,238 @@
       "vectors": 4
     },
     {
+      "id": "sa-card-payments-pos-ecommerce-atm-monthly-2025-10-2026-09",
+      "title": "Saudi Arabia POS, mada e-commerce and ATM activity, monthly October 2025 to September 2026 (SAMA)",
+      "kind": "temporal",
+      "domain": "payments",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2025-10-01 to 2026-09-30",
+      "publishers": [
+        "Saudi Central Bank (SAMA)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "pos",
+        "card-payments",
+        "ecommerce",
+        "mada",
+        "atm",
+        "monthly",
+        "time-series",
+        "sama"
+      ],
+      "use_cases": [
+        "payments-demo",
+        "fintech-demo",
+        "retail-demo",
+        "demand-forecasting"
+      ],
+      "path": "entries/payments/SA/sa-card-payments-pos-ecommerce-atm-monthly-2025-10-2026-09.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/SA/sa-card-payments-pos-ecommerce-atm-monthly-2025-10-2026-09.yaml",
+      "observed_period": {
+        "start": "2025-10-01",
+        "end": "2026-09-30"
+      },
+      "variable": "pos_sales_sar_thousand"
+    },
+    {
+      "id": "sa-iban-format",
+      "title": "Saudi Arabia IBAN format: 24 characters, SA prefix, MOD 97-10 check digits, printed in groups of four (SAMA)",
+      "kind": "rule",
+      "domain": "payments",
+      "region": "SA",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2021-05-05 to open",
+      "publishers": [
+        "Saudi Central Bank (SAMA)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "gcc",
+        "banking",
+        "payments",
+        "iban",
+        "check-digit",
+        "saudi-arabia"
+      ],
+      "use_cases": [
+        "banking-demo",
+        "payments-demo",
+        "kyc-onboarding",
+        "data-quality-validation"
+      ],
+      "path": "entries/payments/SA/sa-iban-format.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/SA/sa-iban-format.yaml",
+      "valid_from": "2021-05-05",
+      "valid_to": null,
+      "implementation": "almanac.rules.iban",
+      "vectors": 5
+    },
+    {
+      "id": "sa-instant-payments-and-sarie-monthly-2025-10-2026-09",
+      "title": "Saudi Arabia instant payments and SARIE transfers, number and value, monthly October 2025 to September 2026 (SAMA)",
+      "kind": "temporal",
+      "domain": "payments",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2025-10-01 to 2026-09-30",
+      "publishers": [
+        "Saudi Central Bank (SAMA)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "instant-payments",
+        "sarie",
+        "credit-transfers",
+        "monthly",
+        "time-series",
+        "sama"
+      ],
+      "use_cases": [
+        "payments-demo",
+        "fintech-demo",
+        "banking-demo",
+        "payments-reconciliation"
+      ],
+      "path": "entries/payments/SA/sa-instant-payments-and-sarie-monthly-2025-10-2026-09.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/SA/sa-instant-payments-and-sarie-monthly-2025-10-2026-09.yaml",
+      "observed_period": {
+        "start": "2025-10-01",
+        "end": "2026-09-30"
+      },
+      "variable": "instant_payment_transactions"
+    },
+    {
+      "id": "sa-personal-transfers-abroad-by-nationality-monthly-2025-10-2026-09",
+      "title": "Saudi Arabia bank sales of foreign exchange for personal transfers abroad by Saudis and non-Saudis, monthly Oct 2025 to Sep 2026 (SAMA)",
+      "kind": "temporal",
+      "domain": "payments",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2025-10-01 to 2026-09-30",
+      "publishers": [
+        "Saudi Central Bank (SAMA)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "remittances",
+        "personal-transfers",
+        "foreign-exchange",
+        "nationality",
+        "monthly",
+        "time-series",
+        "sama"
+      ],
+      "use_cases": [
+        "payments-demo",
+        "fintech-demo",
+        "banking-demo",
+        "multi-currency-ledger"
+      ],
+      "path": "entries/payments/SA/sa-personal-transfers-abroad-by-nationality-monthly-2025-10-2026-09.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/SA/sa-personal-transfers-abroad-by-nationality-monthly-2025-10-2026-09.yaml",
+      "observed_period": {
+        "start": "2025-10-01",
+        "end": "2026-09-30"
+      },
+      "variable": "personal_transfers_non_saudis_sar_million"
+    },
+    {
+      "id": "sa-pos-transactions-by-activity-2026q3",
+      "title": "Saudi Arabia point-of-sale transactions and sales by merchant activity, Q3 2026 (SAMA)",
+      "kind": "marginal",
+      "domain": "payments",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2026-07-01 to 2026-09-30",
+      "publishers": [
+        "Saudi Central Bank (SAMA)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "pos",
+        "card-payments",
+        "merchant-category",
+        "average-ticket",
+        "sama"
+      ],
+      "use_cases": [
+        "payments-demo",
+        "retail-demo",
+        "sales-generation",
+        "fintech-demo"
+      ],
+      "path": "entries/payments/SA/sa-pos-transactions-by-activity-2026q3.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/SA/sa-pos-transactions-by-activity-2026q3.yaml",
+      "observed_period": {
+        "start": "2026-07-01",
+        "end": "2026-09-30"
+      },
+      "variable": "merchant_activity"
+    },
+    {
+      "id": "sa-pos-transactions-by-city-2026-10",
+      "title": "Saudi Arabia point-of-sale transactions and sales by city, four weeks 4 to 31 October 2026 (SAMA weekly POS report)",
+      "kind": "marginal",
+      "domain": "payments",
+      "region": "SA",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "observed 2026-10-04 to 2026-10-31",
+      "publishers": [
+        "Saudi Central Bank (SAMA)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "pos",
+        "card-payments",
+        "by-city",
+        "weekly",
+        "sama"
+      ],
+      "use_cases": [
+        "payments-demo",
+        "retail-demo",
+        "address-generation",
+        "sales-generation"
+      ],
+      "path": "entries/payments/SA/sa-pos-transactions-by-city-2026-10.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/payments/SA/sa-pos-transactions-by-city-2026-10.yaml",
+      "observed_period": {
+        "start": "2026-10-04",
+        "end": "2026-10-31"
+      },
+      "variable": "city"
+    },
+    {
       "id": "us-fed-payments-study-noncash-payments-by-type-2015-2024",
       "title": "Federal Reserve Payments Study: noncash payments by type, number, value and average payment, 2015, 2018, 2021 and 2024",
       "kind": "rule",
@@ -20007,6 +21274,121 @@
       "valid_to": "2025-01-31",
       "implementation": "almanac.rules.lookup_table",
       "vectors": 3
+    },
+    {
+      "id": "sa-average-retail-prices-2026-09",
+      "title": "Saudi Arabia average retail prices of 166 goods and services, September 2026 (GASTAT)",
+      "kind": "rule",
+      "domain": "retail",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-09-01 to 2026-09-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "prices",
+        "retail-prices",
+        "basket",
+        "gastat"
+      ],
+      "use_cases": [
+        "retail-demo",
+        "pricing",
+        "sales-generation",
+        "invoicing"
+      ],
+      "path": "entries/retail/SA/sa-average-retail-prices-2026-09.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/retail/SA/sa-average-retail-prices-2026-09.yaml",
+      "valid_from": "2026-09-01",
+      "valid_to": "2026-09-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "sa-cpi-by-coicop-division-monthly-2025-10-2026-09",
+      "title": "Saudi Arabia consumer price index by COICOP division, monthly October 2025 to September 2026 (GASTAT, 2023=100)",
+      "kind": "temporal",
+      "domain": "retail",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2025-10-01 to 2026-09-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "cpi",
+        "inflation",
+        "coicop",
+        "prices",
+        "monthly",
+        "time-series",
+        "gastat"
+      ],
+      "use_cases": [
+        "retail-demo",
+        "pricing",
+        "contract-indexation",
+        "demand-forecasting"
+      ],
+      "path": "entries/retail/SA/sa-cpi-by-coicop-division-monthly-2025-10-2026-09.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/retail/SA/sa-cpi-by-coicop-division-monthly-2025-10-2026-09.yaml",
+      "observed_period": {
+        "start": "2025-10-01",
+        "end": "2026-09-30"
+      },
+      "variable": "cpi_general_index"
+    },
+    {
+      "id": "sa-cpi-weights-by-coicop-division-2026",
+      "title": "Saudi Arabia CPI basket weights by COICOP 2018 division, 2026 (GASTAT)",
+      "kind": "marginal",
+      "domain": "retail",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2026-01-01 to 2026-09-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "cpi",
+        "coicop",
+        "household-spending",
+        "weights",
+        "prices",
+        "gastat"
+      ],
+      "use_cases": [
+        "retail-demo",
+        "sales-generation",
+        "pricing",
+        "household-generation"
+      ],
+      "path": "entries/retail/SA/sa-cpi-weights-by-coicop-division-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/retail/SA/sa-cpi-weights-by-coicop-division-2026.yaml",
+      "observed_period": {
+        "start": "2026-01-01",
+        "end": "2026-09-30"
+      },
+      "variable": "coicop_division"
     },
     {
       "id": "at-income-tax-brackets-2026",
@@ -21609,6 +22991,113 @@
       "vectors": 4
     },
     {
+      "id": "sa-vat-rate-and-registration-thresholds",
+      "title": "Saudi Arabia VAT: 15% basic rate, tax computation and the SAR 375,000 and SAR 187,500 registration thresholds",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "SA",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2020-07-01 to open",
+      "publishers": [
+        "Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "gcc",
+        "tax",
+        "vat",
+        "saudi-arabia",
+        "invoicing",
+        "registration-threshold"
+      ],
+      "use_cases": [
+        "tax-demo",
+        "invoicing-demo",
+        "invoicing",
+        "tax-filing-demo"
+      ],
+      "path": "entries/tax/SA/sa-vat-rate-and-registration-thresholds.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/SA/sa-vat-rate-and-registration-thresholds.yaml",
+      "valid_from": "2020-07-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.consumption_tax",
+      "vectors": 5
+    },
+    {
+      "id": "sa-vat-standard-rate-history",
+      "title": "Saudi Arabia VAT standard (basic) rate by date: 5% from 2018, 15% from 1 July 2020",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "SA",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2018-01-01 to open",
+      "publishers": [
+        "Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "gcc",
+        "tax",
+        "vat",
+        "saudi-arabia",
+        "tax-rate"
+      ],
+      "use_cases": [
+        "tax-demo",
+        "invoicing-demo",
+        "invoicing",
+        "tax-filing-demo"
+      ],
+      "path": "entries/tax/SA/sa-vat-standard-rate-history.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/SA/sa-vat-standard-rate-history.yaml",
+      "valid_from": "2018-01-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.step_schedule",
+      "vectors": 4
+    },
+    {
+      "id": "sa-withholding-tax-rates-non-residents",
+      "title": "Saudi Arabia withholding tax rates on payments to non-residents by payment type (Income Tax Law, Article 68)",
+      "kind": "rule",
+      "domain": "tax",
+      "region": "SA",
+      "tier": "B",
+      "status": "license-review",
+      "validity": "2026-05-01 to open",
+      "publishers": [
+        "Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "gcc",
+        "tax",
+        "withholding-tax",
+        "saudi-arabia",
+        "cross-border-payments"
+      ],
+      "use_cases": [
+        "tax-demo",
+        "invoicing-demo",
+        "invoicing",
+        "tax-filing-demo",
+        "accounts-payable"
+      ],
+      "path": "entries/tax/SA/sa-withholding-tax-rates-non-residents.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tax/SA/sa-withholding-tax-rates-non-residents.yaml",
+      "valid_from": "2026-05-01",
+      "valid_to": null,
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
       "id": "sg-gst-rates",
       "title": "Singapore GST standard rate and zero rate with the IRAS tax-exclusive worked example",
       "kind": "rule",
@@ -22964,6 +24453,84 @@
         "end": "2025-12-31"
       },
       "variable": "nights_spent"
+    },
+    {
+      "id": "sa-hotel-occupancy-and-daily-rate-by-region-2026q2",
+      "title": "Saudi Arabia licensed hotels, occupancy and average daily rate by region and facility type, Q2 2026 (GASTAT, Ministry of Tourism)",
+      "kind": "rule",
+      "domain": "tourism",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "2026-04-01 to 2026-06-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "hotels",
+        "occupancy",
+        "average-daily-rate",
+        "by-region",
+        "gastat",
+        "ministry-of-tourism"
+      ],
+      "use_cases": [
+        "tourism-demo",
+        "pricing",
+        "capacity-planning",
+        "payments-demo"
+      ],
+      "path": "entries/tourism/SA/sa-hotel-occupancy-and-daily-rate-by-region-2026q2.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tourism/SA/sa-hotel-occupancy-and-daily-rate-by-region-2026q2.yaml",
+      "valid_from": "2026-04-01",
+      "valid_to": "2026-06-30",
+      "implementation": "almanac.rules.lookup_table",
+      "vectors": 5
+    },
+    {
+      "id": "sa-hotel-occupancy-and-daily-rate-quarterly-2023-2026",
+      "title": "Saudi Arabia hotel and serviced apartment occupancy and average daily rate, quarterly 2023-Q1 to 2026-Q2 (GASTAT)",
+      "kind": "temporal",
+      "domain": "tourism",
+      "region": "SA",
+      "tier": "A",
+      "status": "license-review",
+      "validity": "observed 2023-01-01 to 2026-06-30",
+      "publishers": [
+        "General Authority for Statistics (GASTAT)"
+      ],
+      "source_licenses": [
+        "unstated"
+      ],
+      "tags": [
+        "saudi-arabia",
+        "gcc",
+        "hotels",
+        "occupancy",
+        "average-daily-rate",
+        "quarterly",
+        "time-series",
+        "gastat",
+        "ministry-of-tourism"
+      ],
+      "use_cases": [
+        "tourism-demo",
+        "pricing",
+        "demand-forecasting",
+        "capacity-planning"
+      ],
+      "path": "entries/tourism/SA/sa-hotel-occupancy-and-daily-rate-quarterly-2023-2026.yaml",
+      "url": "https://raw.githubusercontent.com/Misata-labs/almanac/main/entries/tourism/SA/sa-hotel-occupancy-and-daily-rate-quarterly-2023-2026.yaml",
+      "observed_period": {
+        "start": "2023-01-01",
+        "end": "2026-06-30"
+      },
+      "variable": "hotel_occupancy_rate"
     },
     {
       "id": "eu-combined-nomenclature-2026-headings",
