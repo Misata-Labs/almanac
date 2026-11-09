@@ -1,0 +1,144 @@
+id: sa-private-sector-official-holidays
+title: 'Saudi private-sector official holidays: Founding Day 22 Feb, National Day 23 Sep, Eid al-Fitr and Eid al-Adha
+  four days each'
+kind: rule
+domain: calendar
+region: SA
+status: license-review
+tier: B
+valid_from: '2025-12-01'
+valid_to: null
+tags:
+- gcc
+- calendar
+- public-holidays
+- hijri
+- labour-law
+- saudi-arabia
+use_cases:
+- payroll-demo
+- hr-demo
+- hr-analytics
+- payments-scheduling
+- event-timestamps
+spec:
+  implementation: almanac.rules.holiday_list
+  parameters:
+    weekend:
+    - friday
+    holidays:
+    - name: Founding Day
+      month: 2
+      day: 22
+      days: 1
+    - name: National Day
+      month: 9
+      day: 23
+      days: 1
+    hijri_holidays:
+    - name: Eid al-Fitr
+      calendar: hijri
+      starts: the day after 29 Ramadan
+      days: 4
+    - name: Eid al-Adha
+      calendar: hijri
+      starts: the day of standing at Arafat (9 Dhu al-Hijjah)
+      days: 4
+  vectors:
+  - input: '2026-09-23'
+    expected: true
+    origin: source
+    note: National Day, 23 September
+  - input: '2027-02-22'
+    expected: true
+    origin: source
+    note: Founding Day, 22 February
+  - input: '2026-09-24'
+    expected: false
+    origin: derived
+  - input:
+      op: is_business_day
+      date: '2026-11-13'
+    expected: false
+    origin: source
+    note: Friday is the weekly rest day
+evidence:
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 8, section 4, official holidays
+  value: February 22
+  unit: text
+  snippet: Founding Day For 1 day February 22
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 8, section 4, official holidays
+  value: September 23
+  unit: text
+  snippet: National Day For 1 day September 23
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 8, section 4, official holidays
+  value: Starting the day after Ramadan 29
+  unit: text
+  snippet: For 4 days Starting the day after Ramadan 29
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 8, section 4, official holidays
+  value: It starts from the day of standing at Arafat
+  unit: text
+  snippet: For 4 days It starts from the day of standing at Arafat
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 6, section 2, weekly rest day
+  value: Friday
+  unit: text
+  snippet: Friday is the weekly rest day for all workers unless another day is agreed upon
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2025-12-01'
+  method: derived
+  rationale: Edition date of the awareness guide (uploaded December 2025); the fetched source confirms the list
+    only from then.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+- statistic: list_length[hijri_holidays]
+  expected: 2
+  tolerance: 0
+notes: 'Official holidays a Saudi private-sector worker receives with full pay, as the Ministry of Human Resources
+  and Social Development''s 2025 awareness guide lists them: Founding Day (22 February) and National Day (23 September),
+  one day each, and Eid al-Fitr and Eid al-Adha, four days each. The Eid holidays follow the Hijri calendar: Eid
+  al-Fitr starts the day after 29 Ramadan and Eid al-Adha on the day of standing at Arafat. Their Gregorian dates
+  depend on the announced Hijri month and are held in hijri_holidays rather than as dates, so is_holiday answers
+  only for the fixed Gregorian days. Friday is the weekly rest day unless another day is agreed with notice to the
+  labour office. Holidays that fall on a rest day are compensated with a day before or after; National or Founding
+  Day overlapping an Eid is not compensated.'

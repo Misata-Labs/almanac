@@ -1,0 +1,268 @@
+id: sa-labour-law-working-time-leave-and-probation
+title: 'Saudi Labour Law limits: working hours, Ramadan hours, overtime premium, annual leave, probation and unlawful-termination
+  compensation'
+kind: rule
+domain: employment
+region: SA
+status: license-review
+tier: B
+valid_from: '2025-12-01'
+valid_to: null
+tags:
+- gcc
+- labour-law
+- payroll
+- working-time
+- annual-leave
+- saudi-arabia
+use_cases:
+- payroll-demo
+- hr-demo
+- hr-analytics
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      daily_working_hours_max:
+        value: 8
+        unit: hours
+        label: Number of daily working hours
+      weekly_working_hours_max:
+        value: 48
+        unit: hours
+        label: Number of working hours per week
+      ramadan_daily_working_hours_max:
+        value: 6
+        unit: hours
+        label: Daily working hours in Ramadan (Muslim workers)
+      ramadan_weekly_working_hours_max:
+        value: 36
+        unit: hours
+        label: Weekly working hours in Ramadan (Muslim workers)
+      rest_break_after_consecutive_hours:
+        value: 5
+        unit: hours
+        label: Consecutive hours of work before a rest break
+      rest_break_minimum_minutes:
+        value: 30
+        unit: minutes
+        label: Minimum rest break
+      overtime_premium_percent_of_basic_hourly_wage:
+        value: 50
+        unit: percent
+        label: 'Overtime: actual hourly wage plus 50% of basic hourly wage'
+      compensatory_leave_max_days_per_year:
+        value: 30
+        unit: days
+        label: Compensatory leave for overtime per year
+      annual_leave_min_days:
+        value: 21
+        unit: days
+        label: Annual leave
+      annual_leave_min_days_after_5_years:
+        value: 30
+        unit: days
+        label: Annual leave after 5 consecutive years
+      annual_leave_notice_days:
+        value: 30
+        unit: days
+        label: Employer notice of leave dates
+      maternity_leave_weeks:
+        value: 12
+        unit: weeks
+        label: Maternity leave
+      probation_max_days:
+        value: 180
+        unit: days
+        label: Maximum probation period
+      unlawful_termination_compensation_days_per_year:
+        value: 15
+        unit: days' pay
+        label: Indefinite contract, per year of service
+      unlawful_termination_compensation_min_months:
+        value: 2
+        unit: months' wages
+        label: Minimum compensation
+  vectors:
+  - input:
+      key: daily_working_hours_max
+      column: value
+    expected: 8
+    origin: source
+  - input:
+      key: ramadan_daily_working_hours_max
+      column: value
+    expected: 6
+    origin: source
+  - input:
+      key: probation_max_days
+      column: value
+    expected: 180
+    origin: source
+  - input:
+      key: annual_leave_min_days_after_5_years
+      column: value
+    expected: 30
+    origin: source
+  - input:
+      key: overtime_premium_percent_of_basic_hourly_wage
+      column: value
+    expected: 50
+    origin: source
+evidence:
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 6, section 2, working hours
+  value: 48
+  unit: text
+  snippet: 'Working hours are as follows: 8 hours 48 hours'
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 6, section 2, working hours in Ramadan
+  value: 36
+  unit: text
+  snippet: 'daily working hours are reduced for Muslims to: 6 hours 36 hours'
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 6, section 2, rest periods
+  value: 30
+  unit: text
+  snippet: A rest period of at least 30 minutes must be granted after every ﬁve consecutive hours of work.
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 7, section 3, overtime
+  value: 50%
+  unit: text
+  snippet: Overtime pay is calculated on the basis of the actual wage plus 50% of the basic hourly wage.
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 7, section 3, overtime example
+  value: '33.33'
+  unit: text
+  snippet: 25 + (16.67 x 0.5) = 33.33 riyals for each additional hour
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 7, section 3, compensatory leave
+  value: 30
+  unit: text
+  snippet: The compensatory leave must not exceed 30 days in a year
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 8, section 4, annual leave
+  value: 30
+  unit: text
+  snippet: Annual leave increases to 30 days if the worker completes 5 consecutive years of service with the employer
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 8, section 4, annual leave
+  value: 21
+  unit: text
+  snippet: Days 21 Not less than
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 9, section 4, maternity leave
+  value: 12
+  unit: text
+  snippet: For 12 weeks • Maternity leave
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 10, section 5, probation period
+  value: 180
+  unit: text
+  snippet: The probation period may not exceed 180 days.
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 21, section 05, unlawful termination
+  value: 15
+  unit: text
+  snippet: 'Compensation: 15 days'' pay for each year of service'
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 21, section 05, unlawful termination
+  value: 2
+  unit: text
+  snippet: The minimum compensation shall not be less than 2 months’ wages.
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2025-12-01'
+  method: derived
+  rationale: The guide is the 2025 first edition, uploaded in December 2025 (URL path); the amended limits applied
+    earlier, but the fetched source confirms them only from this edition.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 15
+  tolerance: 0
+- statistic: value[weekly_working_hours_max,value]
+  expected: 48
+  tolerance: 0
+notes: 'Statutory limits a Saudi payroll or HR system enforces, as the Ministry of Human Resources and Social Development''s
+  2025 awareness guide states them after the Labour Law amendments: 8 hours a day and 48 a week (6 and 36 for Muslim
+  workers in Ramadan), a 30-minute break after five consecutive hours, overtime paid at the actual hourly wage plus
+  50% of the basic hourly wage (the guide''s example: basic 4,000 and actual 6,000 riyals a month give 33.33 riyals
+  an overtime hour on a 30-day, 8-hour basis), annual leave of at least 21 days rising to 30 after five consecutive
+  years, probation of at most 180 days, and for an indefinite contract ended without valid reason 15 days'' pay
+  per year of service with a two-month minimum. Notice periods appear in the guide only as an image and are not
+  included; the pre-amendment Labor Law (Article 75) set 60 days for monthly-paid workers.'

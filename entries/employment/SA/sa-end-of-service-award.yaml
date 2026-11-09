@@ -1,0 +1,225 @@
+id: sa-end-of-service-award
+title: 'Saudi Labour Law end-of-service award: half a month''s wage per year for five years, a month thereafter,
+  reduced on resignation'
+kind: rule
+domain: employment
+region: SA
+status: license-review
+tier: B
+valid_from: '2005-09-27'
+valid_to: null
+tags:
+- gcc
+- labour-law
+- payroll
+- end-of-service
+- gratuity
+- saudi-arabia
+use_cases:
+- payroll-demo
+- hr-demo
+- hr-analytics
+spec:
+  implementation: almanac.rules.gcc_end_of_service
+  parameters:
+    currency: SAR
+    wage_unit: month
+    tiers:
+    - up_to_years: 5
+      per_year: 1/2
+    - up_to_years: null
+      per_year: '1'
+    minimum_years: 0
+    resignation:
+    - from_years: 2
+      from_inclusive: true
+      fraction: 1/3
+    - from_years: 5
+      from_inclusive: false
+      fraction: 2/3
+    - from_years: 10
+      from_inclusive: true
+      fraction: '1'
+    full_award_exceptions:
+    - worker leaves because of force majeure beyond his control
+    - female worker ends the contract within six months of marriage or three months of giving birth
+    wage_basis: last wage
+  vectors:
+  - input:
+      op: accrual
+      year: 5
+    expected: 1/2
+    origin: source
+    note: 'Article 84: half-month wage for each of the first five years'
+  - input:
+      op: accrual
+      year: 6
+    expected: '1'
+    origin: source
+    note: 'Article 84: one-month wage for each of the following years'
+  - input:
+      op: resignation_fraction
+      years: 3
+    expected: 1/3
+    origin: source
+    note: 'Article 85: one third after two to five years'
+  - input:
+      op: resignation_fraction
+      years: 7
+    expected: 2/3
+    origin: source
+    note: 'Article 85: two thirds after more than five but less than ten years'
+  - input:
+      op: resignation_fraction
+      years: 10
+    expected: '1'
+    origin: source
+    note: 'Article 85: the full award after ten years or more'
+  - input:
+      op: resignation_fraction
+      years: '1.5'
+    expected: '0'
+    origin: derived
+    note: no award is stated for resignation before two years
+  - input:
+      monthly_wage: 10000
+      years: 10
+      reason: termination
+    expected: '75000.00'
+    origin: derived
+    note: 5 x 0.5 + 5 x 1 = 7.5 months
+  - input:
+      monthly_wage: 10000
+      years: 3
+      reason: resignation
+    expected: '5000.00'
+    origin: derived
+    note: 1.5 months x 1/3
+  - input:
+      monthly_wage: 8000
+      years: '7.5'
+      reason: resignation
+    expected: '26666.67'
+    origin: derived
+    note: 5 months x 2/3, part year pro rata
+evidence:
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Labor Law, Royal Decree No. M/51 (English translation)
+  url: https://www.hrsd.gov.sa/sites/default/files/2023-02/Labor.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 21, Article 84
+  value: half-month wage
+  unit: text
+  snippet: an end-of-service award equivalent to the amount of a half-month wage for each of the first five years
+    and a one-month wage
+  source_license: unstated
+  content_sha256: 2d2830afaf63c78cd7b3484d2e82f525d520d44917d29dc2feb5ef642c6a3e2a
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Labor Law, Royal Decree No. M/51 (English translation)
+  url: https://www.hrsd.gov.sa/sites/default/files/2023-02/Labor.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 21, Article 84
+  value: last wage
+  unit: text
+  snippet: award shall be calculated on the basis of the last wage
+  source_license: unstated
+  content_sha256: 2d2830afaf63c78cd7b3484d2e82f525d520d44917d29dc2feb5ef642c6a3e2a
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Labor Law, Royal Decree No. M/51 (English translation)
+  url: https://www.hrsd.gov.sa/sites/default/files/2023-02/Labor.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 22, Article 85
+  value: one third
+  unit: text
+  snippet: he shall, in this case, be entitled to one third of the award after service of not less than two consecutive
+    years
+  source_license: unstated
+  content_sha256: 2d2830afaf63c78cd7b3484d2e82f525d520d44917d29dc2feb5ef642c6a3e2a
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Labor Law, Royal Decree No. M/51 (English translation)
+  url: https://www.hrsd.gov.sa/sites/default/files/2023-02/Labor.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 22, Article 85
+  value: two thirds
+  unit: text
+  snippet: to two thirds if his service is in excess of five consecutive years but less than 10 years
+  source_license: unstated
+  content_sha256: 2d2830afaf63c78cd7b3484d2e82f525d520d44917d29dc2feb5ef642c6a3e2a
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Labor Law, Royal Decree No. M/51 (English translation)
+  url: https://www.hrsd.gov.sa/sites/default/files/2023-02/Labor.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 22, Article 85
+  value: full award
+  unit: text
+  snippet: and to the full award if his service amounts to 10 years or more.
+  source_license: unstated
+  content_sha256: 2d2830afaf63c78cd7b3484d2e82f525d520d44917d29dc2feb5ef642c6a3e2a
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Labor Law, Royal Decree No. M/51 (English translation)
+  url: https://www.hrsd.gov.sa/sites/default/files/2023-02/Labor.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 22, Article 87
+  value: six months
+  unit: text
+  snippet: if she ends her contract within six months from the date of her marriage or three months from the date
+    of giving birth.
+  source_license: unstated
+  content_sha256: 2d2830afaf63c78cd7b3484d2e82f525d520d44917d29dc2feb5ef642c6a3e2a
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Labor Law, Royal Decree No. M/51 (English translation)
+  url: https://www.hrsd.gov.sa/sites/default/files/2023-02/Labor.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 1, title page
+  value: September 27, 2005
+  unit: text
+  snippet: Royal Decree No. M/51 September 27, 2005
+  source_license: unstated
+  content_sha256: 2d2830afaf63c78cd7b3484d2e82f525d520d44917d29dc2feb5ef642c6a3e2a
+  role: primary
+- publisher: Ministry of Human Resources and Social Development (HRSD), Kingdom of Saudi Arabia
+  title: Awareness Guide on the Rights and Duties of Employers and Workers, First Edition 2025
+  url: https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 23, section 05, end of service award, resignation
+  value: two-thirds
+  unit: text
+  snippet: 'Service period: more than 5 to less than 10 years Percentage of the end of service award due: two-thirds
+    of the award'
+  source_license: unstated
+  content_sha256: d52757e5d966f0ee00a8ad5c195dd826178e64a29c92292499a1e98229a9b439
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '2005-09-27'
+  method: derived
+  rationale: Date of Royal Decree M/51 printed on the translation; the law entered into force later, on a date the
+    fetched text does not give.
+- parameter: resignation below two years
+  value: 0
+  method: derived
+  rationale: Article 85 grants a share only from two years of service; shorter service on resignation earns no award.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: tier_count
+  expected: 2
+  tolerance: 0
+- statistic: accrual[1]
+  expected: 0.5
+  tolerance: 0
+notes: 'The end-of-service award a Saudi employer pays at the end of the employment relation (Labour Law Articles
+  84 to 87): half a month''s wage for each of the first five years and a month''s wage for each later year, part
+  years pro rata, on the last wage. On resignation the worker receives one third of the award after two to five
+  years, two thirds after more than five and less than ten years, and the whole award after ten years; the full
+  award is also due when the worker leaves for force majeure, or a female worker ends the contract within six months
+  of marriage or three months of giving birth. The Ministry''s 2025 awareness guide restates the same bands after
+  the 2025 amendments. Monetary vectors are computed from the stated rules; the source publishes no numeric worked
+  example.'

@@ -1,0 +1,158 @@
+id: sa-vat-rate-and-registration-thresholds
+title: 'Saudi Arabia VAT: 15% basic rate, tax computation and the SAR 375,000 and SAR 187,500 registration thresholds'
+kind: rule
+domain: tax
+region: SA
+status: license-review
+tier: B
+valid_from: '2020-07-01'
+valid_to: null
+tags:
+- gcc
+- tax
+- vat
+- saudi-arabia
+- invoicing
+- registration-threshold
+use_cases:
+- tax-demo
+- invoicing-demo
+- invoicing
+- tax-filing-demo
+spec:
+  implementation: almanac.rules.consumption_tax
+  parameters:
+    currency: SAR
+    slabs:
+      standard: 15
+      zero: 0
+    rounding: '0.01'
+    mandatory_registration_threshold: 375000
+    voluntary_registration_threshold: 187500
+    threshold_period: twelve months
+  vectors:
+  - input: 15
+    expected: true
+    origin: source
+    note: basic rate of 15%
+  - input:
+      net: 90
+      slab: standard
+    expected: '13.50'
+    origin: source
+    note: 'Example (7): SAR 90 of food plus VAT of SAR 13.50'
+  - input:
+      net: 10000
+      slab: standard
+    expected: '1500.00'
+    origin: source
+    note: 'Example (1): VAT of SAR 1,500, 15% of the SAR 10,000 cost price'
+  - input:
+      gross: '103.50'
+      slab: standard
+    expected: '13.50'
+    origin: source
+    note: 'Example (7): total consideration SAR 103.50 includes VAT of SAR 13.50'
+  - input: 5
+    expected: false
+    origin: derived
+    note: 5% was the basic rate before 1 July 2020 and is not a current slab
+evidence:
+- publisher: Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia
+  title: Guideline for Tax Invoicing and Records under VAT Provisions, Version 3, May 2026
+  url: https://zatca.gov.sa/en/HelpCenter/guidelines/Documents/Guideline-for-Tax-Invoicing-and-Records-under-VAT-Provisions.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 24, section 4.3, Example (7)
+  value: '13.50'
+  unit: currency:SAR
+  snippet: sells food products on a retail basis for an amount of SAR 90, in addition to VAT of SAR 13.50.
+  source_license: unstated
+  content_sha256: ed060261b25d3afb774283fb70ff52b3404dfbfc3a6ff41def935af26fe77780
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia
+  title: Guideline for Tax Invoicing and Records under VAT Provisions, Version 3, May 2026
+  url: https://zatca.gov.sa/en/HelpCenter/guidelines/Documents/Guideline-for-Tax-Invoicing-and-Records-under-VAT-Provisions.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 24, section 4.3, Example (7)
+  value: '103.50'
+  unit: currency:SAR
+  snippet: or issue a simplified tax invoice showing the total consideration due (SAR 103.50)
+  source_license: unstated
+  content_sha256: ed060261b25d3afb774283fb70ff52b3404dfbfc3a6ff41def935af26fe77780
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia
+  title: Guideline for Tax Invoicing and Records under VAT Provisions, Version 3, May 2026
+  url: https://zatca.gov.sa/en/HelpCenter/guidelines/Documents/Guideline-for-Tax-Invoicing-and-Records-under-VAT-Provisions.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 14, section 3, deemed supplies, Example (1)
+  value: 1,500
+  unit: currency:SAR
+  snippet: for VAT in the amount of SAR 1,500 (15% of the cost price) on the deemed supply
+  source_license: unstated
+  content_sha256: ed060261b25d3afb774283fb70ff52b3404dfbfc3a6ff41def935af26fe77780
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia
+  title: Guideline for Tax Invoicing and Records under VAT Provisions, Version 3, May 2026
+  url: https://zatca.gov.sa/en/HelpCenter/guidelines/Documents/Guideline-for-Tax-Invoicing-and-Records-under-VAT-Provisions.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 24, section 4.3, simplified tax invoice requirements
+  value: 15%
+  unit: percent
+  snippet: includes VAT at the basic rate of 15%.
+  source_license: unstated
+  content_sha256: ed060261b25d3afb774283fb70ff52b3404dfbfc3a6ff41def935af26fe77780
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia
+  title: Guideline for Tax Invoicing and Records under VAT Provisions, Version 3, May 2026
+  url: https://zatca.gov.sa/en/HelpCenter/guidelines/Documents/Guideline-for-Tax-Invoicing-and-Records-under-VAT-Provisions.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 10, section 3.2, Mandatory Registration
+  value: 375,000
+  unit: currency:SAR
+  snippet: SAR 375,000 (the “mandatory registration threshold”), that person must register for VAT
+  source_license: unstated
+  content_sha256: ed060261b25d3afb774283fb70ff52b3404dfbfc3a6ff41def935af26fe77780
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia
+  title: Guideline for Tax Invoicing and Records under VAT Provisions, Version 3, May 2026
+  url: https://zatca.gov.sa/en/HelpCenter/guidelines/Documents/Guideline-for-Tax-Invoicing-and-Records-under-VAT-Provisions.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 11, section 3.3, Voluntary Registration
+  value: 187,500
+  unit: currency:SAR
+  snippet: exceed SAR 187,500 (the “voluntary registration threshold”) during a period of twelve months
+  source_license: unstated
+  content_sha256: ed060261b25d3afb774283fb70ff52b3404dfbfc3a6ff41def935af26fe77780
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia
+  title: Guideline on the change of the basic VAT rate to 15% (Arabic edition)
+  url: https://zatca.gov.sa/ar/HelpCenter/guidelines/Documents/VAT15.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 10, section 2.2, calculation of tax due
+  value: 15
+  unit: percent
+  snippet: م، سيتم احتساب الضريبة على التوريدات الخاضعة للضريبة بالنسبة الأساسية 2020 يوليو1 واعتبارًا من
+  source_license: unstated
+  content_sha256: d8a1fc60be017c6e248c015b44c0d78f9d833d94934f3177ed84b395484338d7
+  role: supporting
+assumed:
+- parameter: tax_fraction[standard]
+  value: 3/23
+  method: derived
+  rationale: 15/115 reduced to lowest terms; the guideline's SAR 103.50 example contains SAR 13.50 of tax, which
+    this fraction reproduces.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: slab[standard]
+  expected: 15
+  tolerance: 0
+- statistic: tax_fraction[standard]
+  expected: 0.13043478260869565
+  tolerance: 1.0e-12
+notes: 'Saudi VAT as an invoicing system applies it: the basic rate of 15% (zero rate for exports, international
+  transport, qualifying medicines and other listed supplies; reasons are in the ZATCA e-invoicing code lists), tax
+  on a net amount and the tax contained in a VAT-inclusive amount, and the registration thresholds measured on taxable
+  supplies over twelve months: SAR 375,000 mandatory and SAR 187,500 voluntary. The worked examples are ZATCA''s
+  own. The 15% rate applies from 1 July 2020 (see sa-vat-standard-rate-history for the 5% period).'

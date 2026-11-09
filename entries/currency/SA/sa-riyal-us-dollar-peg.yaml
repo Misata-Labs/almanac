@@ -1,0 +1,72 @@
+id: sa-riyal-us-dollar-peg
+title: 'Saudi riyal exchange rate regime: pegged to the US dollar at 3.75 riyals per dollar since 1986'
+kind: rule
+domain: currency
+region: SA
+status: license-review
+tier: B
+valid_from: '1986-01-01'
+valid_to: null
+tags:
+- gcc
+- currency
+- exchange-rate
+- peg
+- saudi-arabia
+- banking
+use_cases:
+- banking-demo
+- treasury-demo
+- multi-currency-ledger
+- invoicing-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      SAR:
+        anchor: USD
+        regime: fixed peg
+        units_per_usd: '3.75'
+        since: '1986'
+        minor_units: null
+  vectors:
+  - input:
+      key: SAR
+      column: units_per_usd
+    expected: '3.75'
+    origin: source
+  - input:
+      key: SAR
+      column: anchor
+    expected: USD
+    origin: source
+  - input: OMR
+    expected: false
+    origin: derived
+evidence:
+- publisher: Saudi Central Bank (SAMA)
+  title: Financial Stability Report 2019
+  url: https://www.sama.gov.sa/en-US/Publications/FinanceReports/Financial%20Stability%20Report/Financial%20Stability%20Report%202019.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 15, section 2.3.2, Monetary policy condition
+  value: '3.75'
+  unit: decimal
+  snippet: pegged to the US Dollar Since 1986 at the rate 3.75 per USD.
+  source_license: unstated
+  content_sha256: 9f99bcb10d5e59412bd88c919252504abd01548e4b4b916d7ef24698632a7f06
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '1986-01-01'
+  method: derived
+  rationale: The source gives only the year 1986; the first day of the year is used.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 1
+  tolerance: 0
+notes: The Saudi riyal has been pegged to the US dollar at 3.75 riyals per dollar since 1986, as the Saudi Central
+  Bank restates in its Financial Stability Report. A multi-currency ledger can convert SAR and USD at this rate;
+  market rates trade in a narrow band around it. Minor units are in global-iso4217-currency-minor-units.

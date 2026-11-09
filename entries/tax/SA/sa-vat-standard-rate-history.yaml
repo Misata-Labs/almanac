@@ -1,0 +1,101 @@
+id: sa-vat-standard-rate-history
+title: 'Saudi Arabia VAT standard (basic) rate by date: 5% from 2018, 15% from 1 July 2020'
+kind: rule
+domain: tax
+region: SA
+status: license-review
+tier: B
+valid_from: '2018-01-01'
+valid_to: null
+tags:
+- gcc
+- tax
+- vat
+- saudi-arabia
+- tax-rate
+use_cases:
+- tax-demo
+- invoicing-demo
+- invoicing
+- tax-filing-demo
+spec:
+  implementation: almanac.rules.step_schedule
+  parameters:
+    unit: percent
+    steps:
+    - from: '2018-01-01'
+      value: 5
+    - from: '2020-07-01'
+      value: 15
+  vectors:
+  - input: '2019-06-30'
+    expected: 5
+    origin: source
+    note: 'the guideline: VAT applied from the start of 2018 at a basic rate of 5%'
+  - input: '2020-07-01'
+    expected: 15
+    origin: source
+    note: the revised basic rate of 15% applies from 1 July 2020
+  - input: '2020-06-30'
+    expected: 5
+    origin: source
+    note: supplies up to 30 June 2020 are taxed at 5%
+  - input: '2026-11-09'
+    expected: 15
+    origin: derived
+evidence:
+- publisher: Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia
+  title: Guideline on the change of the basic VAT rate to 15% (Arabic edition)
+  url: https://zatca.gov.sa/ar/HelpCenter/guidelines/Documents/VAT15.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 7, section 1, Introduction
+  value: 5
+  unit: percent
+  snippet: على جميع التوريدات وعمليات الاستيراد مع استثناءات محدودة %5 م بنسبة أساسية قدرها 2018
+  source_license: unstated
+  content_sha256: d8a1fc60be017c6e248c015b44c0d78f9d833d94934f3177ed84b395484338d7
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia
+  title: Guideline on the change of the basic VAT rate to 15% (Arabic edition)
+  url: https://zatca.gov.sa/ar/HelpCenter/guidelines/Documents/VAT15.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 10, section 2.2, calculation of tax due
+  value: 15
+  unit: percent
+  snippet: م، سيتم احتساب الضريبة على التوريدات الخاضعة للضريبة بالنسبة الأساسية 2020 يوليو1 واعتبارًا من
+  source_license: unstated
+  content_sha256: d8a1fc60be017c6e248c015b44c0d78f9d833d94934f3177ed84b395484338d7
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia
+  title: Guideline on the change of the basic VAT rate to 15% (Arabic edition)
+  url: https://zatca.gov.sa/ar/HelpCenter/guidelines/Documents/VAT15.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 10, section 2.2, the period ending 30 June 2020
+  value: 5
+  unit: percent
+  snippet: على%5 م، يتم احتساب ضريبة القيمة المضافة بنسبة2020 يونيو30 خلال الفترة التي تنتهي في
+  source_license: unstated
+  content_sha256: d8a1fc60be017c6e248c015b44c0d78f9d833d94934f3177ed84b395484338d7
+  role: primary
+assumed:
+- parameter: steps[0].from
+  value: '2018-01-01'
+  method: derived
+  rationale: The guideline says VAT applied from the beginning of 2018 (بداية عام 2018); the first day of that year
+    is used.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+- statistic: value[2021-01-01]
+  expected: 15
+  tolerance: 0
+notes: 'The basic (standard) VAT rate in Saudi Arabia: 5% from the introduction of VAT at the start of 2018, raised
+  to 15% for supplies made on or after 1 July 2020 under the measures announced by the Ministry of Finance on 11
+  May 2020. ZATCA''s guideline on the rate change states both rates and the changeover; transitional rules for contracts
+  and invoices dated before 11 May 2020 are in the same guideline and are not modelled here. The guideline is published
+  in Arabic; the snippets are its extracted text, which pypdf returns in visual order with digits and Arabic words
+  interleaved.'

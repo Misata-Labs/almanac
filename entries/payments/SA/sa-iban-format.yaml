@@ -1,0 +1,138 @@
+id: sa-iban-format
+title: 'Saudi Arabia IBAN format: 24 characters, SA prefix, MOD 97-10 check digits, printed in groups of four (SAMA)'
+kind: rule
+domain: payments
+region: SA
+status: license-review
+tier: B
+valid_from: '2021-05-05'
+valid_to: null
+tags:
+- gcc
+- banking
+- payments
+- iban
+- check-digit
+- saudi-arabia
+use_cases:
+- banking-demo
+- payments-demo
+- kyc-onboarding
+- data-quality-validation
+spec:
+  implementation: almanac.rules.iban
+  parameters:
+    modulus: 97
+    complement_base: 98
+    valid_remainder: 1
+    letter_values:
+      A: 10
+      B: 11
+      C: 12
+      D: 13
+      E: 14
+      F: 15
+      G: 16
+      H: 17
+      I: 18
+      J: 19
+      K: 20
+      L: 21
+      M: 22
+      N: 23
+      O: 24
+      P: 25
+      Q: 26
+      R: 27
+      S: 28
+      T: 29
+      U: 30
+      V: 31
+      W: 32
+      X: 33
+      Y: 34
+      Z: 35
+    lengths:
+      SA: 24
+    print_format: groups of four characters separated by a blank space or dashes
+  vectors:
+  - input: SA3915000999103143430001
+    expected: true
+    origin: source
+    note: SAMA's electronic IBAN example
+  - input: SA39 1500 0999 1031 4343 0001
+    expected: true
+    origin: source
+    note: SAMA's printed IBAN example
+  - input:
+      country: SA
+      bban: '15000999103143430001'
+    expected: '39'
+    origin: source
+    note: check digits of SAMA's example
+  - input: SA3815000999103143430001
+    expected: false
+    origin: derived
+    note: one check digit altered
+  - input: SA391500099910314343000
+    expected: false
+    origin: derived
+    note: 23 characters
+evidence:
+- publisher: Saudi Central Bank (SAMA)
+  title: 'SAMA Rulebook: Printed IBAN Account Formats'
+  url: https://rulebook.sama.gov.sa/en/printed-iban-account-formats
+  accessed_at: '2026-11-09'
+  locator: Printed IBAN Account Formats, EXAMPLE
+  value: SA3915000999103143430001
+  unit: text
+  snippet: SA3915000999103143430001
+  source_license: unstated
+  content_sha256: fbbb39441eb4b9dfb1a4b8a3a043d39777bad6e7e2feedb0a27205db734e624c
+  role: primary
+- publisher: Saudi Central Bank (SAMA)
+  title: 'SAMA Rulebook: Printed IBAN Account Formats'
+  url: https://rulebook.sama.gov.sa/en/printed-iban-account-formats
+  accessed_at: '2026-11-09'
+  locator: Printed IBAN Account Formats, EXAMPLE
+  value: SA39 1500 0999 1031 4343 0001
+  unit: text
+  snippet: SA39 1500 0999 1031 4343 0001
+  source_license: unstated
+  content_sha256: fbbb39441eb4b9dfb1a4b8a3a043d39777bad6e7e2feedb0a27205db734e624c
+  role: primary
+- publisher: Saudi Central Bank (SAMA)
+  title: 'SAMA Rulebook: Printed IBAN Account Formats'
+  url: https://rulebook.sama.gov.sa/en/printed-iban-account-formats
+  accessed_at: '2026-11-09'
+  locator: Printed IBAN Account Formats
+  value: groups of four characters
+  unit: text
+  snippet: the IBAN should be printed in groups of four characters and each group should be separated by a blank
+    space or dashes.
+  source_license: unstated
+  content_sha256: fbbb39441eb4b9dfb1a4b8a3a043d39777bad6e7e2feedb0a27205db734e624c
+  role: primary
+assumed:
+- parameter: lengths.SA
+  value: 24
+  method: derived
+  rationale: Length of SAMA's electronic IBAN example; the rulebook page does not state the length in words.
+- parameter: valid_from
+  value: '2021-05-05'
+  method: derived
+  rationale: Date of the rulebook's IBAN payment-message rule (7.12, 5/5/2021) in the same rulebook; the format
+    is older.
+- parameter: letter_values
+  value: A=10 to Z=35
+  method: derived
+  rationale: ISO 13616 conversion table, as printed in the Central Bank of Bahrain's IBAN standard (Table 1).
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+notes: 'Saudi International Bank Account Numbers as the Saudi Central Bank''s rulebook presents them, citing its
+  document IBAN Standards in Saudi Arabia: printed in groups of four characters separated by blanks or dashes, and
+  written electronically without separators. The check digits follow ISO 7064 MOD 97-10 (see global-iban-check-digits-mod97).
+  The 24-character length is taken from SAMA''s example; the structure of the BBAN (bank code and account number)
+  is in SAMA''s IBAN standard document, which was not fetched.'

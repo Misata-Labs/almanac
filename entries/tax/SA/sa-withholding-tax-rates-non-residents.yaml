@@ -1,0 +1,170 @@
+id: sa-withholding-tax-rates-non-residents
+title: Saudi Arabia withholding tax rates on payments to non-residents by payment type (Income Tax Law, Article
+  68)
+kind: rule
+domain: tax
+region: SA
+status: license-review
+tier: B
+valid_from: '2026-05-01'
+valid_to: null
+tags:
+- gcc
+- tax
+- withholding-tax
+- saudi-arabia
+- cross-border-payments
+use_cases:
+- tax-demo
+- invoicing-demo
+- invoicing
+- tax-filing-demo
+- accounts-payable
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    unit: percent
+    rows:
+      management_fees:
+        label: Management fees
+        rate_percent: 20
+      royalties:
+        label: Royalties
+        rate_percent: 15
+      dividends:
+        label: Dividends
+        rate_percent: 5
+      rent:
+        label: Rent
+        rate_percent: 5
+      loan_charges:
+        label: Loan charges (income from debt claims)
+        rate_percent: 5
+      insurance_reinsurance:
+        label: Insurance/reinsurance
+        rate_percent: 5
+      technical_consulting_services:
+        label: Technical and consulting services
+        rate_percent: 5
+      air_tickets_air_sea_freight:
+        label: Payments for air tickets or air or sea freight
+        rate_percent: 5
+      international_telecommunications:
+        label: International telecommunications services
+        rate_percent: 5
+      land_transport_within_kingdom:
+        label: Land transport within the Kingdom
+        rate_percent: 15
+      other_payments:
+        label: Any other payments
+        rate_percent: 15
+  vectors:
+  - input:
+      key: management_fees
+      column: rate_percent
+    expected: 20
+    origin: source
+  - input:
+      key: royalties
+      column: rate_percent
+    expected: 15
+    origin: source
+  - input:
+      key: technical_consulting_services
+      column: rate_percent
+    expected: 5
+    origin: source
+  - input:
+      key: other_payments
+      column: rate_percent
+    expected: 15
+    origin: source
+  - input: salaries
+    expected: false
+    origin: derived
+    note: not a payment type in the table
+evidence:
+- publisher: Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia
+  title: General Guideline for Withholding Tax under the Income Tax Law and its Implementing Regulations, Second
+    Version, May 2026
+  url: https://zatca.gov.sa/en/HelpCenter/guidelines/Documents/General-Guideline-for-Withholding-Tax-In-accordance-with-the-provisions-of-the-Income-Tax-Law-and-its-Implementing-Regulations.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 28, withholding tax rates table
+  value: Management fees 20%
+  unit: percent
+  snippet: Management fees 20% Royalties 15% Dividends 5% Rent 5%
+  source_license: unstated
+  content_sha256: 3e5e4b3fa90ca53749437224d7515884231cd48c978c5e918f26aafdaf7e4bc7
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia
+  title: General Guideline for Withholding Tax under the Income Tax Law and its Implementing Regulations, Second
+    Version, May 2026
+  url: https://zatca.gov.sa/en/HelpCenter/guidelines/Documents/General-Guideline-for-Withholding-Tax-In-accordance-with-the-provisions-of-the-Income-Tax-Law-and-its-Implementing-Regulations.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 28, withholding tax rates table
+  value: Technical and consulting services* 5%
+  unit: percent
+  snippet: Insurance/reinsurance 5% Technical and consulting services* 5%
+  source_license: unstated
+  content_sha256: 3e5e4b3fa90ca53749437224d7515884231cd48c978c5e918f26aafdaf7e4bc7
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia
+  title: General Guideline for Withholding Tax under the Income Tax Law and its Implementing Regulations, Second
+    Version, May 2026
+  url: https://zatca.gov.sa/en/HelpCenter/guidelines/Documents/General-Guideline-for-Withholding-Tax-In-accordance-with-the-provisions-of-the-Income-Tax-Law-and-its-Implementing-Regulations.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 28, withholding tax rates table
+  value: International telecommunications services 5%
+  unit: percent
+  snippet: Payments for air tickets or air or sea freight 5% International telecommunications services 5%
+  source_license: unstated
+  content_sha256: 3e5e4b3fa90ca53749437224d7515884231cd48c978c5e918f26aafdaf7e4bc7
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia
+  title: General Guideline for Withholding Tax under the Income Tax Law and its Implementing Regulations, Second
+    Version, May 2026
+  url: https://zatca.gov.sa/en/HelpCenter/guidelines/Documents/General-Guideline-for-Withholding-Tax-In-accordance-with-the-provisions-of-the-Income-Tax-Law-and-its-Implementing-Regulations.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 28, withholding tax rates table
+  value: Any other payments 15%
+  unit: percent
+  snippet: Land transport within the Kingdom 15% Any other payments 15%
+  source_license: unstated
+  content_sha256: 3e5e4b3fa90ca53749437224d7515884231cd48c978c5e918f26aafdaf7e4bc7
+  role: primary
+- publisher: Zakat, Tax and Customs Authority (ZATCA), Kingdom of Saudi Arabia
+  title: General Guideline for Withholding Tax under the Income Tax Law and its Implementing Regulations, Second
+    Version, May 2026
+  url: https://zatca.gov.sa/en/HelpCenter/guidelines/Documents/General-Guideline-for-Withholding-Tax-In-accordance-with-the-provisions-of-the-Income-Tax-Law-and-its-Implementing-Regulations.pdf
+  accessed_at: '2026-11-09'
+  locator: PDF page 5, definitions
+  value: M/1
+  unit: text
+  snippet: Income Tax Law issued by Royal Decree No. M/1 dated 15th Muharram 1425H.
+  source_license: unstated
+  content_sha256: 3e5e4b3fa90ca53749437224d7515884231cd48c978c5e918f26aafdaf7e4bc7
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '2026-05-01'
+  method: derived
+  rationale: The guideline's second version is dated May 2026; the rates applied earlier under the Income Tax Law
+    of 1425H, but the fetched source confirms them only from this edition.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 11
+  tolerance: 0
+- statistic: max[rate_percent]
+  expected: 20
+  tolerance: 0
+- statistic: min[rate_percent]
+  expected: 5
+  tolerance: 0
+notes: Rates at which a resident payer withholds Saudi income tax from payments to a non-resident with no permanent
+  establishment, by type of payment, as tabulated in ZATCA's withholding tax guideline under Article 68 of the Income
+  Tax Law and Article 63 of its Implementing Regulations. Double taxation agreements can reduce these rates, and
+  the guideline marks technical and consulting services with an asterisk for a treaty note. Related-party royalties
+  and special zones carry their own treatments that are not modelled.
