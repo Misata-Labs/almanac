@@ -104,6 +104,10 @@ uv run almanac applies --on 2026-06-15 --use-case banking-demo
 | **Bank accounts and payment validation** | German sort codes with BIC and check method, twenty German account check-digit methods, UK sort code modulus checking with every exception, account number standardisation, the IBAN MOD 97 check, US routing number prefixes, German base rate and late-payment interest, UK statutory late-payment compensation |
 | **Invoicing and e-invoicing** | Italy FatturaPA document, VAT nature, regime and payment codes, Peppol VAT categories, invoice types, payment means, address schemes and units, Mexico CFDI 4.0 catalogues, Poland KSeF, Spain VeriFactu, Saudi ZATCA, India's e-invoicing thresholds, VAT and GST rates for OECD members, Japan, Switzerland, Australia, Singapore and Norway |
 | **Trade, customs and e-commerce** | US tariff schedule headings and duty rates for apparel, footwear, machinery, electronics, furniture and toys, US de minimis and informal entry thresholds, UK tariff sections and consumer-goods duties, EU Combined Nomenclature 2026 |
+| **Private equity: sourcing, sizing and portfolio companies** | US firms, establishments, employment, payroll and receipts by employment and receipts size class, legal form, state and industry, firm age by size and sector from Business Dynamics, County Business Patterns, monthly business applications, Census QFR leverage and return ratios by industry and asset size, UK business population by size band, sector and region, enterprises by turnover band, EU enterprise accounts by size class for eleven economies, OECD size classes, World Bank Enterprise Survey finance indicators, Australian entries, exits and survival |
+| **Private equity: deals, financing and exits** | HSR thresholds and filing fees for 2026, US bankruptcy filings by chapter and district, UK insolvencies by type, industry, age, size and turnover, UK inward, outward and domestic M&A, Companies House register movements, EU bankruptcy and registration indices, OECD FDI positions and restrictiveness, SOFR, EFFR and repo rates, the Treasury HQM corporate yield curve, H.15 rates, loan officer survey, Fed Z.1 corporate leverage and interest paid, SONIA, UK and euro area loan rates to companies by size, Euribor, BIS debt service ratios and credit gaps |
+| **Private equity: tax, structuring and funds** | Corporate tax rates, effective tax rates, withholding rates and interest limitation rules for every OECD-covered jurisdiction, US 163(j), QSBS, bonus depreciation, carried interest, NIIT and 199A, accredited investor, Rule 506, 3(c)(1) and 3(c)(7), qualified client, private fund adviser, venture fund and ERISA plan-asset tests, UK Business Asset Disposal Relief, carried interest regime, interest restriction, SSE, EIS and SEIS, Dutch earnings stripping |
+| **Portfolio monitoring and KPI benchmarks** | US industrial production and capacity utilization by industry, manufacturers' shipments, orders and inventory ratios, services revenue by industry, retail sales and e-commerce share, construction spending and housing starts, EU production, services turnover, producer prices and retail volumes, OECD leading, business and consumer confidence indicators, UK monthly GDP by industry and business turnover and price expectations |
 | **The Gulf: Saudi Arabia, UAE, Qatar, Kuwait, Bahrain, Oman** | Population pyramids and workforce by nationality, sector and sex, wages by nationality, age and education, migrant stock by country of origin for every GCC state, remittance outflows and sending costs, CPI by group, Saudi point-of-sale spending by merchant activity and city, card, ATM and instant payments, hotel occupancy and guests by nationality, VAT rates and thresholds, UAE corporate and top-up tax, Saudi withholding tax, end-of-service gratuity, working time and leave rules, IBAN formats, currency pegs |
 | **India: labour codes and company law** | The four Labour Codes in force from November 2025, the 50 per cent wage rule, bonus, gratuity, retrenchment, maternity, working hours and establishment thresholds, EPF limits, contractor and professional-fee TDS, MSME classification, small company and CSR thresholds |
 | **Value pools: margins, costs, churn and defaults** | After-tax margins by industry from the Census Quarterly Financial Report, FDIC bank performance ratios and size classes, Fed charge-off and delinquency rates, IRS corporation returns by sector, Eurostat enterprise accounts for ten member states with operating rate and personnel-cost share, enterprise birth, death and survival rates, hourly labour cost by section, UK rate of return and business survival |
@@ -141,7 +145,7 @@ for entry in almanac.select(on=date(2026, 6, 15), region="GB", kind="rule"):
 
 ## What is inside
 
-Eight hundred and thirty-two entries across thirty-seven domains and thirty-three
+Nine hundred and seventy-three entries across thirty-nine domains and thirty-three
 regions at the time of writing, every one of them passing live verification. The generated
 [CATALOGUE.md](CATALOGUE.md) is the authoritative list; this is the tour.
 
@@ -216,6 +220,27 @@ general health, highest qualification, household size, tenure, car
 availability, accommodation type. Single-year age distributions for Germany
 and France. Population by sex for ten member states. World population weights
 for 217 economies.
+
+**Private equity and private credit.** What a deal team sizes, sources,
+finances, structures and monitors, from official sources only. Firm counts,
+receipts, payroll and employment by size class, legal form, state and industry
+from the Census Bureau's SUSB, firm age, entry, exit and job flows from
+Business Dynamics Statistics, establishments by size from County Business
+Patterns, business applications by month, state and sector, and Census QFR
+leverage, liquidity and return ratios by industry and asset size. The UK
+business population by size band, sector and region, enterprises by turnover
+band, EU enterprise accounts by size class for eleven economies, OECD size
+classes, World Bank Enterprise Survey finance indicators and Australian
+survival rates. HSR thresholds and fees, US bankruptcies, UK insolvencies by
+type, industry, age, size and turnover, UK M&A, Companies House register
+movements, EU bankruptcy indices and OECD FDI. SOFR and repo rates, the
+Treasury HQM corporate yield curve, H.15, the loan officer survey, Z.1
+corporate leverage, SONIA, Bank Rate, company loan rates in the UK and euro
+area, Euribor and BIS debt service ratios. Corporate tax, withholding and
+interest limitation rules by jurisdiction, the US and UK rules that shape
+structuring and carry, fund formation thresholds, and the production,
+orders, services, retail and confidence series that portfolio KPIs are read
+against.
 
 **The Gulf.** Gulf populations are majority migrant, so nationality drives
 almost every distribution, and the archive models it that way. Saudi labour
@@ -400,7 +425,7 @@ confessed, with the method. `tests` is what the verifier reproduces.
 [PASS] br-pix-monthly-volume-and-value  (entries/payments/BR/br-pix-monthly-volume-and-value.yaml)
     PASS test column[quantity_thousands,2026-09]  observed 7.89294e+06, expected 7892936.44 ± 0
 ...
-832 passed, 0 failed, 832 entries
+973 passed, 0 failed, 973 entries
 ```
 
 ## Frequently asked questions
