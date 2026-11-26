@@ -71,10 +71,6 @@ def num(text: str) -> float:
     return float(text)
 
 
-def slug(text: str) -> str:
-    return re.sub(r"[^a-z0-9]+", "_", text.lower()).strip("_")
-
-
 def temporal(
     *,
     entry_id: str,
@@ -675,8 +671,8 @@ def sloos() -> dict:
             "and to small firms), increased spreads of loan rates over their cost of funds, reported stronger C&I "
             "loan demand, and tightened standards on three kinds of commercial real estate loans, quarterly from "
             "2015Q1 to 2026Q4. Each quarter label is read as the survey conducted in that quarter (2026Q4 is the "
-            "October 2026 survey, the latest listed on the Board's SLOOS page); a positive net percentage means more banks tightened, raised spreads or saw "
-            "stronger demand than the reverse. The package holds all observations, so it changes when the next "
+            "October 2026 survey, the latest listed on the Board's SLOOS page); a positive net percentage means "
+            "more banks tightened, raised spreads or saw stronger demand than the reverse. The package holds all observations, so it changes when the next "
             "survey is published and the hash then needs refreshing. " + DDP_NOTE + " "
             + US_FEDERAL_NOTE
         ),
