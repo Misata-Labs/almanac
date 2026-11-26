@@ -1076,23 +1076,13 @@ evidence:
   source_license: unstated
   content_sha256: daeb57a69c77c3d4ae379a9fb0620fe6f5d7e900e13da68fc1be5eac104ab037
   role: primary
-- publisher: OECD Centre for Tax Policy and Administration
-  title: OECD SDMX codelist CL_AREA version 1.12 (XML)
-  url: https://sdmx.oecd.org/public/rest/codelist/OECD/CL_AREA/1.12
-  accessed_at: '2026-11-03'
-  locator: Code JPN
-  value: JPN
-  unit: text
-  snippet: <structure:Code id="JPN">
-  source_license: unstated
-  content_sha256: 26d03cec3632bd75507c3c3e8526936793c721c3f824514c4bd8928aa3063c2a
-  role: supporting
 assumed:
 - parameter: rows (keys)
   value: OECD CL_AREA alpha-3 code matched on the English country name
   method: derived
   rationale: The table names countries only. Names are matched to the OECD area codelist after removing note markers;
-    'Czech Republic', the older name the table uses, is matched to CZE.
+    'Czech Republic', the older name the table uses, is matched to CZE. The codelist response carries a per-request
+    preparation timestamp, so it informs the mapping but is not cited as evidence.
 - parameter: rows[*].reduced_rates_2023
   value: published reduced-rate string split on '/' and spaces
   method: derived

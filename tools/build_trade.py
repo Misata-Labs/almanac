@@ -818,7 +818,7 @@ def rate_list(text: Any) -> list[float]:
     return [number(part) for part in re.split(r"[/ ]+", value) if part.strip()]
 
 
-def global_oecd_vat_rates(codes: dict[str, str], area_raw: bytes) -> dict:
+def global_oecd_vat_rates(codes: dict[str, str]) -> dict:
     url = OECD_CTT + "vat-gst-rates-ctt-trends.xlsx"
     raw = fetch(url)
     sheet = openpyxl.load_workbook(io.BytesIO(raw)).worksheets[0]
@@ -848,7 +848,6 @@ def global_oecd_vat_rates(codes: dict[str, str], area_raw: bytes) -> dict:
         ev(OECD, "Consumption Tax Trends, Annex Table 2.A.1 VAT rates (XLSX)", url, "sheet 1, source line", "position as at 1 September 2023", "text", "Source: National delegates - position as at 1 September 2023", "unstated", raw),
         ev(OECD, "Consumption Tax Trends, Annex Table 2.A.1 VAT rates (XLSX)", url, "sheet 1, row Belgium, reduced rates", rows["BEL"]["reduced_rates_published"], "text", rows["BEL"]["reduced_rates_published"], "unstated", raw),
         ev(OECD, "Consumption Tax Trends, Annex Table 2.A.1 VAT rates (XLSX)", url, f"sheet 1, cell B{france} (France, 2005)", france_cell[1], "decimal", france_cell[0], "unstated", raw),
-        ev(OECD, "OECD SDMX codelist CL_AREA version 1.12 (XML)", OECD_AREA, "Code JPN", "JPN", "text", '<structure:Code id="JPN">', "unstated", area_raw, role="supporting"),
     ]
     return rule(
         "global-oecd-vat-gst-rates-2005-2023",
@@ -868,7 +867,8 @@ def global_oecd_vat_rates(codes: dict[str, str], area_raw: bytes) -> dict:
         assumed=[
             {"parameter": "rows (keys)", "value": "OECD CL_AREA alpha-3 code matched on the English country name",
              "method": "derived", "rationale": "The table names countries only. Names are matched to the OECD area codelist "
-             "after removing note markers; 'Czech Republic', the older name the table uses, is matched to CZE."},
+             "after removing note markers; 'Czech Republic', the older name the table uses, is matched to CZE. The codelist "
+             "response carries a per-request preparation timestamp, so it informs the mapping but is not cited as evidence."},
             {"parameter": "rows[*].reduced_rates_2023", "value": "published reduced-rate string split on '/' and spaces",
              "method": "derived", "rationale": "The table prints reduced rates as one string such as 0.0/6.0/12.0; temporary "
              "rates the table puts in brackets are left out of the list and kept in reduced_rates_published."},
@@ -1197,8 +1197,8 @@ def main() -> None:
     write(eu_cn_sections_and_chapters(cn_url, cn_raw))
     write(eu_cn_headings(cn_url, cn_raw))
     write(eu_cn_changes())
-    codes, area_raw = oecd_area_codes()
-    write(global_oecd_vat_rates(codes, area_raw))
+    codes, _ = oecd_area_codes()
+    write(global_oecd_vat_rates(codes))
     write(global_oecd_vat_thresholds(codes))
     write(au_gst())
     write(ch_vat())
