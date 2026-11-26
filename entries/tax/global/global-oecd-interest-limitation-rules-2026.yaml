@@ -1,0 +1,1650 @@
+id: global-oecd-interest-limitation-rules-2026
+title: 'Interest limitation rules by jurisdiction, 2026: rule type, earnings measure, ratio, de minimis, group ratio
+  (OECD Corporate Tax Statistics)'
+kind: rule
+domain: tax
+region: global
+status: license-review
+tier: A
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- tax
+- private-equity
+- structuring
+- interest-limitation
+- atad
+- beps-action-4
+- oecd
+- by-country
+- reference-table
+use_cases:
+- lbo-modelling
+- private-credit-demo
+- tax-demo
+- valuation-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: OECD.CTP.TPS,DSD_QDD_ILR@DF_QDD_ILR,2.0
+    regime: REGIME1 (the main rule) where reported; has_rule may come from the not-applicable regime for jurisdictions
+      without a rule
+    key: ISO 3166-1 alpha-3 jurisdiction code (OECD REF_AREA)
+    columns: values as the OECD publishes them (free text); null where not reported
+    rows:
+      ABW:
+        name: Aruba
+        has_rule: 'Yes'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: None
+        interest_basis: Gross interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      AGO:
+        name: Angola
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      AIA:
+        name: Anguilla
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      ALB:
+        name: Albania
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: EBITDA
+        ratio_as_published: '0.3'
+        de_minimis_as_published: None
+        interest_basis: EBITDA
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      AND:
+        name: Andorra
+        has_rule: 'Yes'
+        rule_type: Other
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: None
+        interest_basis: null
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      ARE:
+        name: United Arab Emirates
+        has_rule: 'Yes'
+        rule_type: General/Safe Harbour
+        financial_measure: Net Interest Expenditure to tax EBITDA
+        ratio_as_published: Restricted to 30% of tax EBITDA (if over/above AED 12m de minimis in a taxable period)
+        de_minimis_as_published: Yes - AED 12,000,000
+        interest_basis: Net Interest Expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      ARG:
+        name: Argentina
+        has_rule: 'Yes'
+        rule_type: fixed ratio rule
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: 0,3
+        de_minimis_as_published: The de minimis threshold amounts to one million Argentine pesos (ARS 1.000.000).
+        interest_basis: The limit on deduction of Interests will not apply over the amount of interests that does
+          not exceed the amount of active interests received .
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      ARM:
+        name: Armenia
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      ATG:
+        name: Antigua and Barbuda
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      AUS:
+        name: Australia
+        has_rule: 'Yes'
+        rule_type: Fixed Ratio Test
+        financial_measure: Tax EBITDA
+        ratio_as_published: '0.3'
+        de_minimis_as_published: 'Yes'
+        interest_basis: Net interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      AUT:
+        name: Austria
+        has_rule: 'Yes'
+        rule_type: ILRs/general
+        financial_measure: EBITDA (adapted for tax pusposes)
+        ratio_as_published: 30 percent of the taxpayer's EBTDA
+        de_minimis_as_published: Yes, 3 Milion EURO
+        interest_basis: net interest expense
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      AZE:
+        name: Azerbaijan
+        has_rule: 'Yes'
+        rule_type: Thin capitalisation
+        financial_measure: debt-to-equity
+        ratio_as_published: '8.4027777777777785E-2'
+        de_minimis_as_published: '0'
+        interest_basis: Gross
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      BEL:
+        name: Belgium
+        has_rule: 'Yes'
+        rule_type: fixed ratio rule
+        financial_measure: interest-to-EBITDA
+        ratio_as_published: '0.3'
+        de_minimis_as_published: 'yes: 3 million euros'
+        interest_basis: Net interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      BEN:
+        name: Benin
+        has_rule: 'Yes'
+        rule_type: General
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      BFA:
+        name: Burkina Faso
+        has_rule: 'Yes'
+        rule_type: General
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      BGR:
+        name: Bulgaria
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: EBIT
+        ratio_as_published: '0.75'
+        de_minimis_as_published: None
+        interest_basis: Net interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      BHR:
+        name: Bahrain
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      BHS:
+        name: Bahamas
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      BIH:
+        name: Bosnia and Herzegovina
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      BLZ:
+        name: Belize
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      BMU:
+        name: Bermuda
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      BRA:
+        name: Brazil
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: 0.3:1 or 2:1
+        de_minimis_as_published: None
+        interest_basis: Gross interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      BRB:
+        name: Barbados
+        has_rule: 'Yes'
+        rule_type: Thin Capitalization Rule
+        financial_measure: Debt-Equity
+        ratio_as_published: 1.5 - 1
+        de_minimis_as_published: 'No'
+        interest_basis: Gross Interest Expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      BRN:
+        name: Brunei Darussalam
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      BWA:
+        name: Botswana
+        has_rule: 'Yes'
+        rule_type: EBITDA
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: '0.12569444444444444'
+        de_minimis_as_published: None
+        interest_basis: net interest expense.
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      CAN:
+        name: Canada
+        has_rule: 'Yes'
+        rule_type: Fixed ratio rule
+        financial_measure: interest-to-EBITDA (where EBITDA is determined based on adjusted taxable income)
+        ratio_as_published: 30% for tax years starting on or after January 1, 2024; 40% for tax years starting on
+          or after October 1, 2023, and before January 1, 2024
+        de_minimis_as_published: Yes. The rules provide an exemption for small Canadian businesses, groups with
+          aggregate net IFE of $1 million or less, and groups with only de minimis foreign activities/income.
+        interest_basis: Net interest and financing expenses
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      CHE:
+        name: Switzerland
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: The rule provides levels of acceptable debt financing per asset category based on fair
+          market values
+        de_minimis_as_published: None
+        interest_basis: Gross interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      CHL:
+        name: Chile
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: '0.12569444444444444'
+        de_minimis_as_published: None
+        interest_basis: Net interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      CHN:
+        name: China (People’s Republic of)
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      CIV:
+        name: Côte d’Ivoire
+        has_rule: 'Yes'
+        rule_type: Earnings stripping
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: '0.3'
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      CMR:
+        name: Cameroon
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: 1.5:1
+        de_minimis_as_published: None
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: 'No'
+      COD:
+        name: Democratic Republic of the Congo
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: '0.12569444444444444'
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      COG:
+        name: Congo
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: 1.5:1
+        de_minimis_as_published: None
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: 'No'
+      COK:
+        name: Cook Islands
+        has_rule: 'Yes'
+        rule_type: Thin capitalisation
+        financial_measure: Debt-to-equity
+        ratio_as_published: 1.5 - 1
+        de_minimis_as_published: None
+        interest_basis: Gross Interest Expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      COL:
+        name: Colombia
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: '8.4027777777777785E-2'
+        de_minimis_as_published: None
+        interest_basis: Gross interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      CPV:
+        name: Cabo Verde
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      CRI:
+        name: Costa Rica
+        has_rule: 'Yes'
+        rule_type: Stripping of profits
+        financial_measure: Interest to EBITDA
+        ratio_as_published: The maximum deductibility will be thirty percent (30%) and will be adjusted downwards
+          each year by two percentage points until reaching twenty percent (20%).
+        de_minimis_as_published: 'Yes'
+        interest_basis: for net interest expenses of twenty percent (20%) of earnings before interest, taxes, depreciation
+          and amortization (EBITDA) for each tax period.
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      CUW:
+        name: Curaçao
+        has_rule: 'Yes'
+        rule_type: base is the sound business principles
+        financial_measure: sound business principles
+        ratio_as_published: Not applicable
+        de_minimis_as_published: 'No'
+        interest_basis: gross interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      CYM:
+        name: Cayman Islands
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      CZE:
+        name: Czechia
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: The ratio 6:1 is in the case where the recipient of the financial credit instrument
+          is a bank or insurance company and 4:1 for other recipients of financial credit instruments
+        de_minimis_as_published: None
+        interest_basis: Gross interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      DEU:
+        name: Germany
+        has_rule: 'Yes'
+        rule_type: Earnings stripping
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: '0.13194444444444445'
+        de_minimis_as_published: EUR 3 million
+        interest_basis: Net interest expense
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      DJI:
+        name: Djibouti
+        has_rule: 'Yes'
+        rule_type: General
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      DMA:
+        name: Dominica
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      DNK:
+        name: Denmark
+        has_rule: 'Yes'
+        rule_type: Earnings stripping (EBITDA-rule)
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: 0.3 of EBITDA
+        de_minimis_as_published: DKK 22.3 million
+        interest_basis: Net interest expense
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      DOM:
+        name: Dominican Republic
+        has_rule: 'Yes'
+        rule_type: Thin capitalization
+        financial_measure: Debt-to-equity
+        ratio_as_published: '0.12569444444444444'
+        de_minimis_as_published: 'No'
+        interest_basis: 'No'
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      EGY:
+        name: Egypt
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: '0.12569444399999999'
+        de_minimis_as_published: None
+        interest_basis: Yes to gross
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      ESP:
+        name: Spain
+        has_rule: 'Yes'
+        rule_type: Earnings stripping
+        financial_measure: 'Interest-to-operating profit, calculated based on the accounting operating result (as
+          per Spanish GAAP), subject to certain tax adjustments. Specifically, the operating profit is adjusted
+          by: - Excluding amortisation of fixed assets, impairment and disposal results of fixed assets, and capital
+          grants, and - Including financial income from equity instruments (i.e. dividends or profit shares), provided
+          that the taxpayer holds at least 5% of the entity and the shares are not adquired with non-deductible
+          hybrid debt (per Article 15 h).'
+        ratio_as_published: 0.3 (30%)
+        de_minimis_as_published: Yes. As a general rule the threshold is set at one million euros
+        interest_basis: Net interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      EST:
+        name: Estonia
+        has_rule: 'Yes'
+        rule_type: Earnings stripping
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: '0.3'
+        de_minimis_as_published: 3 million euros
+        interest_basis: Net interest expense
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      FIN:
+        name: Finland
+        has_rule: 'Yes'
+        rule_type: Earnings stripping
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: '0.25'
+        de_minimis_as_published: EUR 500,000. Despite of the rules of 500 000 euros and 25* EBITD, the deductible
+          amount of the net interest expense of external net interest is 3 MEUR
+        interest_basis: Net interest expense
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      FJI:
+        name: Fiji
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      FRA:
+        name: France
+        has_rule: 'Yes'
+        rule_type: Safe harbour
+        financial_measure: '% of net interest expenses'
+        ratio_as_published: '0.75'
+        de_minimis_as_published: 'No'
+        interest_basis: Net interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      FRO:
+        name: Faroe Islands
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      GAB:
+        name: Gabon
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: 1.5:1
+        de_minimis_as_published: None
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: 'No'
+      GBR:
+        name: United Kingdom
+        has_rule: 'Yes'
+        rule_type: Fixed ratio rule (with an option for a group ratio rule and with a public infrastructure rule)
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: 30% of EBITDA
+        de_minimis_as_published: GBP 2 million per annum
+        interest_basis: Net interest expense
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      GEO:
+        name: Georgia
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      GGY:
+        name: Bailiwick of Guernsey
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      GIB:
+        name: Gibraltar
+        has_rule: 'Yes'
+        rule_type: Fixed ratio rule
+        financial_measure: interest-to-EBITDA
+        ratio_as_published: 3:10 (i.e. 30%)
+        de_minimis_as_published: '3000000'
+        interest_basis: '3000000'
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      GRC:
+        name: Greece
+        has_rule: 'Yes'
+        rule_type: Fixed ratio rule
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: '0.3'
+        de_minimis_as_published: Yes; EUR 3 millionNo
+        interest_basis: Net interest expense
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      GRD:
+        name: Grenada
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      GRL:
+        name: Greenland
+        has_rule: 'Yes'
+        rule_type: Thin Cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: '0.1673611111111111'
+        de_minimis_as_published: 'Yes'
+        interest_basis: Net interest expense
+        group_ratio_rule: null
+        carry_forward_or_back: 'No'
+      GTM:
+        name: Guatemala
+        has_rule: 'Yes'
+        rule_type: Deductible expenses for Income Tax purposes; They must originate from transactions that generate
+          taxable income for the taxpayer
+        financial_measure: Total net assets (-) interest
+        ratio_as_published: There are no relationship values.
+        de_minimis_as_published: 'No'
+        interest_basis: The deductible amount for this concept may not exceed the value of multiplying the interest
+          rate referred to in the following paragraphs by an amount of three times the average total net asset presented
+          by the taxpayer in his annual sworn statement.
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'No'
+      HKG:
+        name: Hong Kong (China)
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      HND:
+        name: Honduras
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      HRV:
+        name: Croatia
+        has_rule: 'Yes'
+        rule_type: Fixed ratio rule
+        financial_measure: interest-to-EBITDA
+        ratio_as_published: 30% EBITDA
+        de_minimis_as_published: 'Yes'
+        interest_basis: net interest expenses
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      HTI:
+        name: Haiti
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      HUN:
+        name: Hungary
+        has_rule: 'Yes'
+        rule_type: Earnings stripping
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: '0.3'
+        de_minimis_as_published: HUF 939.810.000
+        interest_basis: Net interest expense
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      IDN:
+        name: Indonesia
+        has_rule: 'Yes'
+        rule_type: Thin capitalization
+        financial_measure: Debt-to-equity
+        ratio_as_published: '0.1673611111111111'
+        de_minimis_as_published: None
+        interest_basis: Gross interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      IMN:
+        name: Isle of Man
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      IND:
+        name: India
+        has_rule: 'Yes'
+        rule_type: Fixed Ratio Rule
+        financial_measure: Interest to EBTIDA
+        ratio_as_published: '0.41875000000000001'
+        de_minimis_as_published: Yes, minimum interest expense of Rs. 10 Million necessary
+        interest_basis: Gross Interest Expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      IRL:
+        name: Ireland
+        has_rule: 'Yes'
+        rule_type: Fixed ratio rule
+        financial_measure: Interest to EBITDA
+        ratio_as_published: 0.3:1
+        de_minimis_as_published: A de minimis exemption will apply where the net interest expense of the taxpayer
+          in a year is less than 3 million.
+        interest_basis: Net interest expense
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      ISL:
+        name: Iceland
+        has_rule: 'Yes'
+        rule_type: Earnings stripping
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: '0.12569444444444444'
+        de_minimis_as_published: ISK 100 million
+        interest_basis: Gross interest expense
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'No'
+      ISR:
+        name: Israel
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      ITA:
+        name: Italy
+        has_rule: 'Yes'
+        rule_type: Earnings stripping
+        financial_measure: Interest-to-EBIT
+        ratio_as_published: '0.3'
+        de_minimis_as_published: None
+        interest_basis: Net interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      JAM:
+        name: Jamaica
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      JEY:
+        name: Jersey
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      JOR:
+        name: Jordan
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      JPN:
+        name: Japan
+        has_rule: 'Yes'
+        rule_type: Earning stripping
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: '0.2'
+        de_minimis_as_published: Net interest expense in a fiscal year is JPY 20 million or less
+        interest_basis: Net interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      KAZ:
+        name: Kazakhstan
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      KEN:
+        name: Kenya
+        has_rule: 'Yes'
+        rule_type: Fixed Ratio Rule
+        financial_measure: interest-to-EBITDA
+        ratio_as_published: 30% of earnings before interest, tax, depreciation, and amortization ( EBITDA
+        de_minimis_as_published: None
+        interest_basis: Gross interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      KNA:
+        name: Saint Kitts and Nevis
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      KOR:
+        name: Korea
+        has_rule: 'Yes'
+        rule_type: Earnings stripping
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: '0.3'
+        de_minimis_as_published: None
+        interest_basis: Net interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      KWT:
+        name: Kuwait
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      LBR:
+        name: Liberia
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      LCA:
+        name: Saint Lucia
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      LIE:
+        name: Liechtenstein
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      LKA:
+        name: Sri Lanka
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: '0.12569444444444444'
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      LTU:
+        name: Lithuania
+        has_rule: 'Yes'
+        rule_type: Thin capitalisation rule
+        financial_measure: Debt-to-equity
+        ratio_as_published: '0.1673611111111111'
+        de_minimis_as_published: 'No'
+        interest_basis: Gross interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      LUX:
+        name: Luxembourg
+        has_rule: 'Yes'
+        rule_type: Luxembourg applies a fixed ratio rule, introduced by the law of 21 December 2018 transposing
+          Article 4 of ATAD I into domestic law. Codified in Article 168bis LITL, the rule has applied since 1 January
+          2019. It limits the deduction of exceeding borrowing costs to the higher of 30% of tax-adjusted EBITDA
+          or EUR 3 million.
+        financial_measure: 'Interest-to-EBITDA : Luxembourg interest limitation rule is based on an interest-to-EBITDA
+          ratio. Exceeding borrowing costs are deductible only up to 30% of tax-adjusted EBITDA (with a EUR 3 million
+          safe harbour).'
+        ratio_as_published: The fixed ratio is 30% of tax-adjusted EBITDA (Article 168bis LITL).
+        de_minimis_as_published: The de minimis threshold in Luxembourg is EUR 3 million of exceeding borrowing
+          costs (per taxpayer, per tax period).
+        interest_basis: The limit applies to net interest expense (i.e. exceeding borrowing costs, equal to deductible
+          interest expense minus taxable interest income).
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      LVA:
+        name: Latvia
+        has_rule: 'Yes'
+        rule_type: capitalisation rule - fixed ratio rule
+        financial_measure: debt-to-equity
+        ratio_as_published: '0.1673611111111111'
+        de_minimis_as_published: 'No'
+        interest_basis: gross interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      MAC:
+        name: Macau (China)
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      MAR:
+        name: Morocco
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      MCO:
+        name: Monaco
+        has_rule: 'Yes'
+        rule_type: Arm's length rate (Taux de pleine concurrence).
+        financial_measure: Taux d'intérêt effectif vs Taux de référence (TMP).
+        ratio_as_published: Variable (Taux TMP publié trimestriellement).
+        de_minimis_as_published: Non.
+        interest_basis: Gross interest expense (sur les dettes liées).
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'No'
+      MDA:
+        name: Moldova
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      MDV:
+        name: Maldives
+        has_rule: 'Yes'
+        rule_type: Fixed ratio rule
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: '0.3'
+        de_minimis_as_published: 6. While the Maldives does not apply a de minimis threshold based on the monetary
+          value of net interest expense, certain categories of taxpayers are exempt from the interest limitation
+          rules. These include licensed financial institutions, micro, small, and medium-sized enterprises (MSMEs),
+          and State-Owned Enterprises (SOEs) in which the Government of Maldives directly holds a majority shareholding
+        interest_basis: Gross interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      MEX:
+        name: Mexico
+        has_rule: 'Yes'
+        rule_type: Fixed ratio rule.
+        financial_measure: interest to EBITDA
+        ratio_as_published: '0.3'
+        de_minimis_as_published: $20 million pesos
+        interest_basis: The deduction of net interest is limited.
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      MKD:
+        name: North Macedonia
+        has_rule: 'Yes'
+        rule_type: Thin capitalization rule
+        financial_measure: debt-to-equity
+        ratio_as_published: '0.12569444444444444'
+        de_minimis_as_published: 'No'
+        interest_basis: gross interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      MLT:
+        name: Malta
+        has_rule: 'Yes'
+        rule_type: A Fixed Ratio rule with Group Equity Escape Clause
+        financial_measure: Exceeding Borrowing costs to EBITDA
+        ratio_as_published: Up to 30% of EBITDA
+        de_minimis_as_published: 'Yes'
+        interest_basis: Limit applies to Exceeding Borrowing Costs
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      MNE:
+        name: Montenegro
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      MNG:
+        name: Mongolia
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: '0.12569444444444444'
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: 'No'
+      MRT:
+        name: Mauritania
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      MSR:
+        name: Montserrat
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      MUS:
+        name: Mauritius
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      MYS:
+        name: Malaysia
+        has_rule: 'Yes'
+        rule_type: Interest restriction based on fixed ratio rules
+        financial_measure: Interest-to-Tax EBITDA
+        ratio_as_published: 1:5 (20% of the amount of tax-EBITDA)
+        de_minimis_as_published: RM 500,000
+        interest_basis: The limit is applied to the gross interest expense incurred for business sources
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      NAM:
+        name: Namibia
+        has_rule: 'Yes'
+        rule_type: Interest limitation rule
+        financial_measure: interest-to-EBITDA
+        ratio_as_published: 30% of EBITDA
+        de_minimis_as_published: NAD 3 Million.
+        interest_basis: Net interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      NGA:
+        name: Nigeria
+        has_rule: 'Yes'
+        rule_type: Fixed ratio rule
+        financial_measure: interest-to-EBITDA
+        ratio_as_published: '0.3'
+        de_minimis_as_published: No De minimis threshold
+        interest_basis: Gross
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      NLD:
+        name: Netherlands
+        has_rule: 'Yes'
+        rule_type: Fixed ratio rule
+        financial_measure: Benchmark fixed ratio of the EBITDA
+        ratio_as_published: 24.5% of the EBITDA (20% in 2022, 2023 and 2024; and 30% before 2022)
+        de_minimis_as_published: Yes, EUR 1 million
+        interest_basis: Net interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      NOR:
+        name: Norway
+        has_rule: 'Yes'
+        rule_type: fixed ratio rule
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: '0.25'
+        de_minimis_as_published: NOK 25 million on a consolidated basis for all Norwegian entities
+        interest_basis: Net interest expense
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      NZL:
+        name: New Zealand
+        has_rule: 'Yes'
+        rule_type: Thin cap (inbound)
+        financial_measure: Debt-to-(assets - non-debt liabilities)
+        ratio_as_published: 60% safe harbour or 110% of worldwide group debt percentage
+        de_minimis_as_published: Yes - NZD 1 million in financing costs
+        interest_basis: Gross interest expense
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'No'
+      OMN:
+        name: Oman
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: '8.4027777777777785E-2'
+        de_minimis_as_published: 'No'
+        interest_basis: Net Interest Expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      PAK:
+        name: Pakistan
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: '0.12569444444444444'
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      PAN:
+        name: Panama
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      PER:
+        name: Peru
+        has_rule: 'Yes'
+        rule_type: Fixed ratio rule
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: '0.3'
+        de_minimis_as_published: 'No'
+        interest_basis: Net interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      PHL:
+        name: Philippines
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      PNG:
+        name: Papua New Guinea
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: '8.4027777777777785E-2'
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: 'No'
+      POL:
+        name: Poland
+        has_rule: 'Yes'
+        rule_type: fixed ratio rule
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: '0.3'
+        de_minimis_as_published: PLN 3 million
+        interest_basis: Net interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      PRT:
+        name: Portugal
+        has_rule: 'Yes'
+        rule_type: The actual Portuguese ILR is an earnings-stripping rule.
+        financial_measure: As said before, and besides the limit of 1M , the financial accounting measure used is
+          Interest-to-EBITDA.
+        ratio_as_published: As said before, and besides the limit of 1M , the ratio value is 30% (3/10 or 0,3).
+        de_minimis_as_published: As said before, we can consider a de minimis threshold the amount of 1M .
+        interest_basis: As said before, the higher of the limits of 1M or 30% of the EBITDA are applied to net interest
+          cost/expense.
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      PRY:
+        name: Paraguay
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      QAT:
+        name: Qatar
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      ROU:
+        name: Romania
+        has_rule: 'Yes'
+        rule_type: interest-to-EBITDA; deductible ceiling represented by the ROL equivalent of EUR
+        financial_measure: The difference between the exceeding borrowing costs, as defined in Article 40^1 and
+          the deductible ceiling shall be deducted limitedly in the fiscal period during which they are incurred,
+          up to 30% of the calculation basis established under the algorithm provided by the law.
+        ratio_as_published: '-'
+        de_minimis_as_published: The amount of 1,000,000 euros or the equivalent in lei of the amount of 500,000
+          euros, as appropriate.
+        interest_basis: Net interest, respectively exceeding borrowing costs - means the amount by which the borrowing
+          costs of a taxpayer exceed the interest incomes and other economically equivalent incomes that the taxpayer
+          receives.
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      SAU:
+        name: Saudi Arabia
+        has_rule: 'Yes'
+        rule_type: Other
+        financial_measure: We have a specific formula explained in previous question.
+        ratio_as_published: same as above
+        de_minimis_as_published: NA
+        interest_basis: Net interest
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      SEN:
+        name: Senegal
+        has_rule: 'Yes'
+        rule_type: General
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      SGP:
+        name: Singapore
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      SLE:
+        name: Sierra Leone
+        has_rule: 'Yes'
+        rule_type: General
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      SMR:
+        name: San Marino
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      SRB:
+        name: Serbia
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: debt-to-equity
+        ratio_as_published: 10:1 for banks and financial lessors, 4:1 for other taxpayers
+        de_minimis_as_published: /
+        interest_basis: gross
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      SVK:
+        name: Slovak Republic
+        has_rule: 'Yes'
+        rule_type: Thin capitalisation rules
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: 25% of EBITDA
+        de_minimis_as_published: 'No'
+        interest_basis: Gross interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      SVN:
+        name: Slovenia
+        has_rule: 'Yes'
+        rule_type: EBITDA
+        financial_measure: interest-to-EBITDA
+        ratio_as_published: '0.3'
+        de_minimis_as_published: 3.000.000 EUR
+        interest_basis: Gross interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      SWE:
+        name: Sweden
+        has_rule: 'Yes'
+        rule_type: Earnings stripping
+        financial_measure: Interest-to-EBITDA
+        ratio_as_published: '0.3'
+        de_minimis_as_published: SEK 5 million
+        interest_basis: Net interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      SWZ:
+        name: Eswatini
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      SYC:
+        name: Seychelles
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      TCA:
+        name: Turks and Caicos Islands
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      TGO:
+        name: Togo
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      THA:
+        name: Thailand
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      TTO:
+        name: Trinidad and Tobago
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      TUN:
+        name: Tunisia
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      TUR:
+        name: Türkiye
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: '0.12569444444444444'
+        de_minimis_as_published: In T rkiye s thin capitalization rules, there is no formal de minimis threshold
+          stated in the legislation.
+        interest_basis: gross
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      UKR:
+        name: Ukraine
+        has_rule: 'Yes'
+        rule_type: thin capitalisation
+        financial_measure: 1. The ratio of the amount of equity and the amount of debt obligations is more than
+          3.5 times; 2. limitation of the amount of interest = 30% (tax object - depreciation - financial expenses).
+        ratio_as_published: 3.5:1
+        de_minimis_as_published: 'No'
+        interest_basis: not applicable
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      URY:
+        name: Uruguay
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      USA:
+        name: United States
+        has_rule: 'Yes'
+        rule_type: Interest Limitation
+        financial_measure: Interest-to-EBITDA. Under the One Big Beautiful Bill Act (OBBBA), ATI is computed without
+          regard to depreciation, amortization, or depletion for tax years beginning after December 31, 2024. .
+        ratio_as_published: The interest that is allowed to be deducted to EBITDA ratio is generally 3:10 when a
+          taxpayer does not have business interest income or floor plan financing interest for the taxable year.
+        de_minimis_as_published: Taxpayers that are not "tax shelters" are exempted from section 163(j) if the taxpayer's
+          average annual gross receipts for the three prior tax years are less than or equal to $25 million (adjusted
+          annually for inflation after 2018).
+        interest_basis: Gross interest expense
+        group_ratio_rule: 'Yes'
+        carry_forward_or_back: 'Yes'
+      UZB:
+        name: Uzbekistan
+        has_rule: 'Yes'
+        rule_type: Thin capitalization / controlled debt limitation
+        financial_measure: Debt-to-equity ratio
+        ratio_as_published: 3:1 (general), 13:1 for banks and leasing-only taxpayers
+        de_minimis_as_published: No specific threshold, applies when controlled debt exists
+        interest_basis: Gross interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'No'
+      VCT:
+        name: Saint Vincent and the Grenadines
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      VGB:
+        name: British Virgin Islands
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      VNM:
+        name: Viet Nam
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      WSM:
+        name: Samoa
+        has_rule: 'No'
+        rule_type: null
+        financial_measure: null
+        ratio_as_published: null
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: null
+      ZAF:
+        name: South Africa
+        has_rule: 'Yes'
+        rule_type: Fixed ratio rule
+        financial_measure: EBITDA + interest accrued - interest paid to parties falling outside the limitation rules
+        ratio_as_published: '0.3'
+        de_minimis_as_published: None
+        interest_basis: Gross interest expense
+        group_ratio_rule: 'No'
+        carry_forward_or_back: 'Yes'
+      ZMB:
+        name: Zambia
+        has_rule: 'Yes'
+        rule_type: Thin cap
+        financial_measure: Debt-to-equity
+        ratio_as_published: '0.12569444444444444'
+        de_minimis_as_published: null
+        interest_basis: null
+        group_ratio_rule: null
+        carry_forward_or_back: 'Yes'
+  vectors:
+  - input:
+      key: DEU
+      column: rule_type
+    expected: Earnings stripping
+    origin: source
+  - input:
+      key: GBR
+      column: ratio_as_published
+    expected: 30% of EBITDA
+    origin: source
+  - input:
+      key: USA
+      column: interest_basis
+    expected: Gross interest expense
+    origin: source
+  - input:
+      key: DEU
+      column: de_minimis_as_published
+    expected: EUR 3 million
+    origin: source
+  - input: ATLANTIS
+    expected: false
+    origin: derived
+    note: not a covered jurisdiction
+evidence:
+- publisher: OECD Centre for Tax Policy and Administration
+  title: OECD Corporate Tax Statistics, interest limitation rules, main regime, 2026 (SDMX CSV)
+  url: https://sdmx.oecd.org/public/rest/data/OECD.CTP.TPS,DSD_QDD_ILR@DF_QDD_ILR,2.0/.A.ILR+RULE_TYPE+FAM+RV+DMT+LA+GR+CF.REGIME1+_Z?startPeriod=2026&endPeriod=2026&format=csvfilewithlabels
+  accessed_at: '2026-11-26'
+  locator: row REF_AREA=DEU, MEASURE=RULE_TYPE, REGIME=REGIME1
+  value: Earnings stripping
+  unit: text
+  snippet: DEU,Germany,A,Annual,RULE_TYPE,Type of interest limitation rule,REGIME1,Regime 1,2026,,Earnings stripping
+  source_license: unstated
+  content_sha256: 40c14ca0cd54a61a9465022098acf41e5815a59b10085e799fbd83c141f1f1e0
+  role: primary
+- publisher: OECD Centre for Tax Policy and Administration
+  title: OECD Corporate Tax Statistics, interest limitation rules, main regime, 2026 (SDMX CSV)
+  url: https://sdmx.oecd.org/public/rest/data/OECD.CTP.TPS,DSD_QDD_ILR@DF_QDD_ILR,2.0/.A.ILR+RULE_TYPE+FAM+RV+DMT+LA+GR+CF.REGIME1+_Z?startPeriod=2026&endPeriod=2026&format=csvfilewithlabels
+  accessed_at: '2026-11-26'
+  locator: row REF_AREA=DEU, MEASURE=DMT, REGIME=REGIME1
+  value: EUR 3 million
+  unit: text
+  snippet: DEU,Germany,A,Annual,DMT,Is a de minimis threshold present?,REGIME1,Regime 1,2026,,EUR 3 million
+  source_license: unstated
+  content_sha256: 40c14ca0cd54a61a9465022098acf41e5815a59b10085e799fbd83c141f1f1e0
+  role: primary
+- publisher: OECD Centre for Tax Policy and Administration
+  title: OECD Corporate Tax Statistics, interest limitation rules, main regime, 2026 (SDMX CSV)
+  url: https://sdmx.oecd.org/public/rest/data/OECD.CTP.TPS,DSD_QDD_ILR@DF_QDD_ILR,2.0/.A.ILR+RULE_TYPE+FAM+RV+DMT+LA+GR+CF.REGIME1+_Z?startPeriod=2026&endPeriod=2026&format=csvfilewithlabels
+  accessed_at: '2026-11-26'
+  locator: row REF_AREA=GBR, MEASURE=RV, REGIME=REGIME1
+  value: 30% of EBITDA
+  unit: text
+  snippet: GBR,United Kingdom,A,Annual,RV,Financial ratio referenced,REGIME1,Regime 1,2026,,30% of EBITDA
+  source_license: unstated
+  content_sha256: 40c14ca0cd54a61a9465022098acf41e5815a59b10085e799fbd83c141f1f1e0
+  role: primary
+- publisher: OECD Centre for Tax Policy and Administration
+  title: OECD Corporate Tax Statistics, interest limitation rules, main regime, 2026 (SDMX CSV)
+  url: https://sdmx.oecd.org/public/rest/data/OECD.CTP.TPS,DSD_QDD_ILR@DF_QDD_ILR,2.0/.A.ILR+RULE_TYPE+FAM+RV+DMT+LA+GR+CF.REGIME1+_Z?startPeriod=2026&endPeriod=2026&format=csvfilewithlabels
+  accessed_at: '2026-11-26'
+  locator: row REF_AREA=GBR, MEASURE=DMT, REGIME=REGIME1
+  value: GBP 2 million per annum
+  unit: text
+  snippet: GBR,United Kingdom,A,Annual,DMT,Is a de minimis threshold present?,REGIME1,Regime 1,2026,,GBP 2 million
+    per annum
+  source_license: unstated
+  content_sha256: 40c14ca0cd54a61a9465022098acf41e5815a59b10085e799fbd83c141f1f1e0
+  role: primary
+- publisher: OECD Centre for Tax Policy and Administration
+  title: OECD Corporate Tax Statistics, interest limitation rules, main regime, 2026 (SDMX CSV)
+  url: https://sdmx.oecd.org/public/rest/data/OECD.CTP.TPS,DSD_QDD_ILR@DF_QDD_ILR,2.0/.A.ILR+RULE_TYPE+FAM+RV+DMT+LA+GR+CF.REGIME1+_Z?startPeriod=2026&endPeriod=2026&format=csvfilewithlabels
+  accessed_at: '2026-11-26'
+  locator: row REF_AREA=USA, MEASURE=LA, REGIME=REGIME1
+  value: Gross interest expense
+  unit: text
+  snippet: USA,United States,A,Annual,LA,Is the rule is applicable to net or gross interest expensing?,REGIME1,Regime
+    1,2026,,Gross interest expense
+  source_license: unstated
+  content_sha256: 40c14ca0cd54a61a9465022098acf41e5815a59b10085e799fbd83c141f1f1e0
+  role: primary
+- publisher: OECD Centre for Tax Policy and Administration
+  title: OECD Corporate Tax Statistics, interest limitation rules, main regime, 2026 (SDMX CSV)
+  url: https://sdmx.oecd.org/public/rest/data/OECD.CTP.TPS,DSD_QDD_ILR@DF_QDD_ILR,2.0/.A.ILR+RULE_TYPE+FAM+RV+DMT+LA+GR+CF.REGIME1+_Z?startPeriod=2026&endPeriod=2026&format=csvfilewithlabels
+  accessed_at: '2026-11-26'
+  locator: row REF_AREA=NLD, MEASURE=FAM, REGIME=REGIME1
+  value: Benchmark fixed ratio of the EBITDA
+  unit: text
+  snippet: NLD,Netherlands,A,Annual,FAM,Financial accounting measure applied to rule,REGIME1,Regime 1,2026,,Benchmark
+    fixed ratio of the EBITDA
+  source_license: unstated
+  content_sha256: 40c14ca0cd54a61a9465022098acf41e5815a59b10085e799fbd83c141f1f1e0
+  role: primary
+assumed:
+- parameter: rows.*
+  value: whitespace
+  method: derived
+  rationale: Line breaks inside published cells are collapsed to single spaces; the text is otherwise unchanged.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 146
+  tolerance: 0
+notes: 'The OECD''s survey of interest limitation rules (BEPS Action 4 and, for EU members, article 4 of the Anti-Tax
+  Avoidance Directive) for 2026: whether a jurisdiction has a rule, its type (fixed ratio, earnings stripping, thin
+  capitalisation), the earnings measure, the ratio, any de minimis threshold, whether it applies to net or gross
+  interest, whether a group ratio escape exists and whether disallowed amounts carry over. The cells are free text
+  supplied by each jurisdiction and kept as published, whitespace collapsed; some numeric cells are not ratios in
+  the form the law states them (Germany''s ratio cell holds a fraction that does not read as 30%), so the statute-level
+  entries for the United States, United Kingdom and the Netherlands should be preferred where they exist. 89 jurisdictions
+  report a rule. The OECD SDMX response carries no licence statement, so the licence is recorded as unstated and
+  the entry held at license-review until a reviewer confirms the OECD terms that apply to the dataset.'

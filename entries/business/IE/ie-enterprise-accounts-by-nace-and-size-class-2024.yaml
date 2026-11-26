@@ -1,0 +1,2222 @@
+id: ie-enterprise-accounts-by-nace-and-size-class-2024
+title: Ireland enterprise accounts by NACE section and employment size class with derived ratios, 2024 (Eurostat
+  sbs_sc_ovw)
+kind: rule
+domain: business
+region: IE
+status: verified
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- firms
+- business
+- smes
+- size-class
+- structural-business-statistics
+- nace
+- turnover
+- value-added
+- operating-margin
+- eurostat
+- revenue-per-employee
+use_cases:
+- pe-portfolio-demo
+- deal-sourcing-demo
+- synthetic-companies
+- valuation-demo
+- kyb-onboarding
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: sbs_sc_ovw
+    key: A.ENT_NR+EMP_NR+NETTUR_MEUR+AV_MEUR+GOS_MEUR+EXPN_SAL_BEN_MEUR+GOR_PC.B-S_X_O_S94+B+C+D+E+F+G+H+I+J+K+L+M+N+P+Q+R+S95+S96.0_1+2-9+10-19+20-49+50-249+GE250+TOTAL.IE
+    period: '2024'
+    geo: IE
+    size_classes:
+      '0_1': From 0 to 1 person employed
+      2-9: From 2 to 9 persons employed
+      10-19: From 10 to 19 persons employed
+      20-49: From 20 to 49 persons employed
+      50-249: From 50 to 249 persons employed
+      GE250: 250 persons employed or more
+      TOTAL: Total
+    rows:
+      B-S_X_O_S94|10-19:
+        activity: Industry, construction and market services (except public administration and defence; compulsory
+          social security; activities of membership organisations)
+        size_class: From 10 to 19 persons employed
+        enterprises: 15652
+        persons_employed: 211159
+        net_turnover_meur: 82505.24
+        value_added_meur: 15905.52
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 5271.227
+        net_turnover_per_person_employed_teur: 390.726
+        value_added_per_person_employed_teur: 75.325
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.038157
+        persons_employed_share_of_activity: 0.086952
+        net_turnover_share_of_activity: 0.054574
+      B-S_X_O_S94|20-49:
+        activity: Industry, construction and market services (except public administration and defence; compulsory
+          social security; activities of membership organisations)
+        size_class: From 20 to 49 persons employed
+        enterprises: 9979
+        persons_employed: 299219
+        net_turnover_meur: 123227.65
+        value_added_meur: 25172.81
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 12348.697
+        net_turnover_per_person_employed_teur: 411.831
+        value_added_per_person_employed_teur: 84.128
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.024327
+        persons_employed_share_of_activity: 0.123213
+        net_turnover_share_of_activity: 0.08151
+      B-S_X_O_S94|50-249:
+        activity: Industry, construction and market services (except public administration and defence; compulsory
+          social security; activities of membership organisations)
+        size_class: From 50 to 249 persons employed
+        enterprises: 4835
+        persons_employed: 472913
+        net_turnover_meur: 178472.75
+        value_added_meur: 58217.3
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 36912.668
+        net_turnover_per_person_employed_teur: 377.39
+        value_added_per_person_employed_teur: 123.104
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.011787
+        persons_employed_share_of_activity: 0.194737
+        net_turnover_share_of_activity: 0.118052
+      B-S_X_O_S94|GE250:
+        activity: Industry, construction and market services (except public administration and defence; compulsory
+          social security; activities of membership organisations)
+        size_class: 250 persons employed or more
+        enterprises: 958
+        persons_employed: 802819
+        net_turnover_meur: 867880.05
+        value_added_meur: 306121.23
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 905929.071
+        net_turnover_per_person_employed_teur: 1081.041
+        value_added_per_person_employed_teur: 381.308
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.002335
+        persons_employed_share_of_activity: 0.330587
+        net_turnover_share_of_activity: 0.574067
+      B-S_X_O_S94|TOTAL:
+        activity: Industry, construction and market services (except public administration and defence; compulsory
+          social security; activities of membership organisations)
+        size_class: Total
+        enterprises: 410205
+        persons_employed: 2428464
+        net_turnover_meur: 1511810.21
+        value_added_meur: 492769.24
+        gross_operating_surplus_meur: 410203.01
+        employee_benefits_expense_meur: 112499.15
+        gross_operating_rate_percent: 27.13
+        net_turnover_per_enterprise_teur: 3685.499
+        net_turnover_per_person_employed_teur: 622.538
+        value_added_per_person_employed_teur: 202.914
+        gross_operating_surplus_to_turnover: 0.271332
+        employee_benefits_share_of_turnover: 0.074414
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+      B|10-19:
+        activity: Mining and quarrying
+        size_class: From 10 to 19 persons employed
+        enterprises: 20
+        persons_employed: null
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.049383
+        persons_employed_share_of_activity: null
+        net_turnover_share_of_activity: null
+      B|20-49:
+        activity: Mining and quarrying
+        size_class: From 20 to 49 persons employed
+        enterprises: 29
+        persons_employed: null
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.071605
+        persons_employed_share_of_activity: null
+        net_turnover_share_of_activity: null
+      B|TOTAL:
+        activity: Mining and quarrying
+        size_class: Total
+        enterprises: 405
+        persons_employed: null
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: null
+        net_turnover_share_of_activity: null
+      C|10-19:
+        activity: Manufacturing
+        size_class: From 10 to 19 persons employed
+        enterprises: 924
+        persons_employed: 12543
+        net_turnover_meur: null
+        value_added_meur: 991.72
+        gross_operating_surplus_meur: 449.12
+        employee_benefits_expense_meur: 542.59
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: 79.066
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.047102
+        persons_employed_share_of_activity: 0.045058
+        net_turnover_share_of_activity: null
+      C|20-49:
+        activity: Manufacturing
+        size_class: From 20 to 49 persons employed
+        enterprises: 742
+        persons_employed: 22771
+        net_turnover_meur: null
+        value_added_meur: 1906.41
+        gross_operating_surplus_meur: 825.01
+        employee_benefits_expense_meur: 1081.39
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: 83.721
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.037824
+        persons_employed_share_of_activity: 0.081799
+        net_turnover_share_of_activity: null
+      C|50-249:
+        activity: Manufacturing
+        size_class: From 50 to 249 persons employed
+        enterprises: 618
+        persons_employed: 65000
+        net_turnover_meur: null
+        value_added_meur: 12101.61
+        gross_operating_surplus_meur: 8502.49
+        employee_benefits_expense_meur: 3599.12
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: 186.179
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.031503
+        persons_employed_share_of_activity: 0.233496
+        net_turnover_share_of_activity: null
+      C|GE250:
+        activity: Manufacturing
+        size_class: 250 persons employed or more
+        enterprises: 196
+        persons_employed: 146799
+        net_turnover_meur: 354112.58
+        value_added_meur: 158905.35
+        gross_operating_surplus_meur: 147467.18
+        employee_benefits_expense_meur: 11438.17
+        gross_operating_rate_percent: 41.64
+        net_turnover_per_enterprise_teur: 1806696.837
+        net_turnover_per_person_employed_teur: 2412.227
+        value_added_per_person_employed_teur: 1082.469
+        gross_operating_surplus_to_turnover: 0.416442
+        employee_benefits_share_of_turnover: 0.032301
+        enterprise_share_of_activity: 0.009991
+        persons_employed_share_of_activity: 0.527339
+        net_turnover_share_of_activity: 0.836292
+      C|TOTAL:
+        activity: Manufacturing
+        size_class: Total
+        enterprises: 19617
+        persons_employed: 278377
+        net_turnover_meur: 423431.95
+        value_added_meur: 178603.24
+        gross_operating_surplus_meur: 161164.15
+        employee_benefits_expense_meur: 17439.09
+        gross_operating_rate_percent: 38.06
+        net_turnover_per_enterprise_teur: 21584.949
+        net_turnover_per_person_employed_teur: 1521.074
+        value_added_per_person_employed_teur: 641.588
+        gross_operating_surplus_to_turnover: 0.380614
+        employee_benefits_share_of_turnover: 0.041185
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+      D|10-19:
+        activity: Electricity, gas, steam and air conditioning supply
+        size_class: From 10 to 19 persons employed
+        enterprises: 17
+        persons_employed: null
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.016865
+        persons_employed_share_of_activity: null
+        net_turnover_share_of_activity: null
+      D|20-49:
+        activity: Electricity, gas, steam and air conditioning supply
+        size_class: From 20 to 49 persons employed
+        enterprises: 9
+        persons_employed: null
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.008929
+        persons_employed_share_of_activity: null
+        net_turnover_share_of_activity: null
+      D|50-249:
+        activity: Electricity, gas, steam and air conditioning supply
+        size_class: From 50 to 249 persons employed
+        enterprises: 7
+        persons_employed: null
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.006944
+        persons_employed_share_of_activity: null
+        net_turnover_share_of_activity: null
+      D|GE250:
+        activity: Electricity, gas, steam and air conditioning supply
+        size_class: 250 persons employed or more
+        enterprises: 6
+        persons_employed: null
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.005952
+        persons_employed_share_of_activity: null
+        net_turnover_share_of_activity: null
+      D|TOTAL:
+        activity: Electricity, gas, steam and air conditioning supply
+        size_class: Total
+        enterprises: 1008
+        persons_employed: null
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: null
+        net_turnover_share_of_activity: null
+      E|10-19:
+        activity: Water supply; sewerage, waste management and remediation activities
+        size_class: From 10 to 19 persons employed
+        enterprises: 74
+        persons_employed: 960
+        net_turnover_meur: 219.22
+        value_added_meur: 129.56
+        gross_operating_surplus_meur: 88.95
+        employee_benefits_expense_meur: 40.6
+        gross_operating_rate_percent: 40.58
+        net_turnover_per_enterprise_teur: 2962.432
+        net_turnover_per_person_employed_teur: 228.354
+        value_added_per_person_employed_teur: 134.958
+        gross_operating_surplus_to_turnover: 0.405757
+        employee_benefits_share_of_turnover: 0.185202
+        enterprise_share_of_activity: 0.066667
+        persons_employed_share_of_activity: 0.082079
+        net_turnover_share_of_activity: 0.074026
+      E|20-49:
+        activity: Water supply; sewerage, waste management and remediation activities
+        size_class: From 20 to 49 persons employed
+        enterprises: 57
+        persons_employed: 1640
+        net_turnover_meur: 311.12
+        value_added_meur: 114.29
+        gross_operating_surplus_meur: 41.39
+        employee_benefits_expense_meur: 72.9
+        gross_operating_rate_percent: 13.3
+        net_turnover_per_enterprise_teur: 5458.246
+        net_turnover_per_person_employed_teur: 189.707
+        value_added_per_person_employed_teur: 69.689
+        gross_operating_surplus_to_turnover: 0.133035
+        employee_benefits_share_of_turnover: 0.234315
+        enterprise_share_of_activity: 0.051351
+        persons_employed_share_of_activity: 0.140219
+        net_turnover_share_of_activity: 0.105059
+      E|50-249:
+        activity: Water supply; sewerage, waste management and remediation activities
+        size_class: From 50 to 249 persons employed
+        enterprises: null
+        persons_employed: 3648
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: 179.61
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: null
+        persons_employed_share_of_activity: 0.311902
+        net_turnover_share_of_activity: null
+      E|TOTAL:
+        activity: Water supply; sewerage, waste management and remediation activities
+        size_class: Total
+        enterprises: 1110
+        persons_employed: 11696
+        net_turnover_meur: 2961.39
+        value_added_meur: 1219.1
+        gross_operating_surplus_meur: 677.0
+        employee_benefits_expense_meur: 542.1
+        gross_operating_rate_percent: 22.86
+        net_turnover_per_enterprise_teur: 2667.919
+        net_turnover_per_person_employed_teur: 253.197
+        value_added_per_person_employed_teur: 104.232
+        gross_operating_surplus_to_turnover: 0.228609
+        employee_benefits_share_of_turnover: 0.183056
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+      F|0_1:
+        activity: Construction
+        size_class: From 0 to 1 person employed
+        enterprises: 59203
+        persons_employed: 59203
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.739991
+        persons_employed_share_of_activity: 0.282283
+        net_turnover_share_of_activity: null
+      F|2-9:
+        activity: Construction
+        size_class: From 2 to 9 persons employed
+        enterprises: 18025
+        persons_employed: 60616
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.225298
+        persons_employed_share_of_activity: 0.289021
+        net_turnover_share_of_activity: null
+      F|10-19:
+        activity: Construction
+        size_class: From 10 to 19 persons employed
+        enterprises: 1660
+        persons_employed: 21978
+        net_turnover_meur: null
+        value_added_meur: 1556.93
+        gross_operating_surplus_meur: 523.84
+        employee_benefits_expense_meur: 1033.09
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: 70.84
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.020749
+        persons_employed_share_of_activity: 0.104792
+        net_turnover_share_of_activity: null
+      F|20-49:
+        activity: Construction
+        size_class: From 20 to 49 persons employed
+        enterprises: 811
+        persons_employed: 24048
+        net_turnover_meur: null
+        value_added_meur: 1675.26
+        gross_operating_surplus_meur: 439.89
+        employee_benefits_expense_meur: 1235.37
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: 69.663
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.010137
+        persons_employed_share_of_activity: 0.114662
+        net_turnover_share_of_activity: null
+      F|50-249:
+        activity: Construction
+        size_class: From 50 to 249 persons employed
+        enterprises: 275
+        persons_employed: 24587
+        net_turnover_meur: 7000.91
+        value_added_meur: 2096.95
+        gross_operating_surplus_meur: 629.46
+        employee_benefits_expense_meur: 1467.5
+        gross_operating_rate_percent: 8.99
+        net_turnover_per_enterprise_teur: 25457.855
+        net_turnover_per_person_employed_teur: 284.74
+        value_added_per_person_employed_teur: 85.287
+        gross_operating_surplus_to_turnover: 0.089911
+        employee_benefits_share_of_turnover: 0.209616
+        enterprise_share_of_activity: 0.003437
+        persons_employed_share_of_activity: 0.117232
+        net_turnover_share_of_activity: 0.147342
+      F|GE250:
+        activity: Construction
+        size_class: 250 persons employed or more
+        enterprises: 31
+        persons_employed: 19297
+        net_turnover_meur: 9663.13
+        value_added_meur: 2075.12
+        gross_operating_surplus_meur: 574.59
+        employee_benefits_expense_meur: 1500.53
+        gross_operating_rate_percent: 5.95
+        net_turnover_per_enterprise_teur: 311713.871
+        net_turnover_per_person_employed_teur: 500.758
+        value_added_per_person_employed_teur: 107.536
+        gross_operating_surplus_to_turnover: 0.059462
+        employee_benefits_share_of_turnover: 0.155284
+        enterprise_share_of_activity: 0.000387
+        persons_employed_share_of_activity: 0.092009
+        net_turnover_share_of_activity: 0.203372
+      F|TOTAL:
+        activity: Construction
+        size_class: Total
+        enterprises: 80005
+        persons_employed: 209729
+        net_turnover_meur: 47514.57
+        value_added_meur: 13728.12
+        gross_operating_surplus_meur: 3740.5
+        employee_benefits_expense_meur: 7531.21
+        gross_operating_rate_percent: 7.87
+        net_turnover_per_enterprise_teur: 593.895
+        net_turnover_per_person_employed_teur: 226.552
+        value_added_per_person_employed_teur: 65.456
+        gross_operating_surplus_to_turnover: 0.078723
+        employee_benefits_share_of_turnover: 0.158503
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+      G|0_1:
+        activity: Wholesale and retail trade; repair of motor vehicles and motorcycles
+        size_class: From 0 to 1 person employed
+        enterprises: 24945
+        persons_employed: 24945
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.505994
+        persons_employed_share_of_activity: 0.058631
+        net_turnover_share_of_activity: null
+      G|2-9:
+        activity: Wholesale and retail trade; repair of motor vehicles and motorcycles
+        size_class: From 2 to 9 persons employed
+        enterprises: 17275
+        persons_employed: 69297
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.350413
+        persons_employed_share_of_activity: 0.162875
+        net_turnover_share_of_activity: null
+      G|10-19:
+        activity: Wholesale and retail trade; repair of motor vehicles and motorcycles
+        size_class: From 10 to 19 persons employed
+        enterprises: 3755
+        persons_employed: 51091
+        net_turnover_meur: 39160.17
+        value_added_meur: 2881.46
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 10428.807
+        net_turnover_per_person_employed_teur: 766.479
+        value_added_per_person_employed_teur: 56.399
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.076168
+        persons_employed_share_of_activity: 0.120084
+        net_turnover_share_of_activity: 0.129499
+      G|20-49:
+        activity: Wholesale and retail trade; repair of motor vehicles and motorcycles
+        size_class: From 20 to 49 persons employed
+        enterprises: 2317
+        persons_employed: 69140
+        net_turnover_meur: 56871.9
+        value_added_meur: 5012.8
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 24545.49
+        net_turnover_per_person_employed_teur: 822.561
+        value_added_per_person_employed_teur: 72.502
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.046999
+        persons_employed_share_of_activity: 0.162506
+        net_turnover_share_of_activity: 0.188069
+      G|50-249:
+        activity: Wholesale and retail trade; repair of motor vehicles and motorcycles
+        size_class: From 50 to 249 persons employed
+        enterprises: 882
+        persons_employed: 81022
+        net_turnover_meur: 47103.83
+        value_added_meur: 7135.86
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 53405.703
+        net_turnover_per_person_employed_teur: 581.371
+        value_added_per_person_employed_teur: 88.073
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.017891
+        persons_employed_share_of_activity: 0.190433
+        net_turnover_share_of_activity: 0.155767
+      G|GE250:
+        activity: Wholesale and retail trade; repair of motor vehicles and motorcycles
+        size_class: 250 persons employed or more
+        enterprises: 125
+        persons_employed: 129966
+        net_turnover_meur: 78931.32
+        value_added_meur: 9464.02
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 631450.56
+        net_turnover_per_person_employed_teur: 607.323
+        value_added_per_person_employed_teur: 72.819
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.002536
+        persons_employed_share_of_activity: 0.305471
+        net_turnover_share_of_activity: 0.261018
+      G|TOTAL:
+        activity: Wholesale and retail trade; repair of motor vehicles and motorcycles
+        size_class: Total
+        enterprises: 49299
+        persons_employed: 425461
+        net_turnover_meur: 302398.56
+        value_added_meur: 31660.36
+        gross_operating_surplus_meur: 22460.2
+        employee_benefits_expense_meur: 16201.49
+        gross_operating_rate_percent: 7.43
+        net_turnover_per_enterprise_teur: 6133.969
+        net_turnover_per_person_employed_teur: 710.755
+        value_added_per_person_employed_teur: 74.414
+        gross_operating_surplus_to_turnover: 0.074274
+        employee_benefits_share_of_turnover: 0.053577
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+      H|0_1:
+        activity: Transportation and storage
+        size_class: From 0 to 1 person employed
+        enterprises: 21164
+        persons_employed: 21164
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.813093
+        persons_employed_share_of_activity: 0.179691
+        net_turnover_share_of_activity: null
+      H|2-9:
+        activity: Transportation and storage
+        size_class: From 2 to 9 persons employed
+        enterprises: 3536
+        persons_employed: 13086
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.135848
+        persons_employed_share_of_activity: 0.111105
+        net_turnover_share_of_activity: null
+      H|10-19:
+        activity: Transportation and storage
+        size_class: From 10 to 19 persons employed
+        enterprises: 605
+        persons_employed: 8296
+        net_turnover_meur: 1972.47
+        value_added_meur: 626.33
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 3260.281
+        net_turnover_per_person_employed_teur: 237.762
+        value_added_per_person_employed_teur: 75.498
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.023243
+        persons_employed_share_of_activity: 0.070436
+        net_turnover_share_of_activity: 0.047933
+      H|20-49:
+        activity: Transportation and storage
+        size_class: From 20 to 49 persons employed
+        enterprises: 502
+        persons_employed: 14992
+        net_turnover_meur: 3018.36
+        value_added_meur: 975.46
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 6012.669
+        net_turnover_per_person_employed_teur: 201.331
+        value_added_per_person_employed_teur: 65.065
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.019286
+        persons_employed_share_of_activity: 0.127288
+        net_turnover_share_of_activity: 0.073349
+      H|50-249:
+        activity: Transportation and storage
+        size_class: From 50 to 249 persons employed
+        enterprises: 186
+        persons_employed: 17683
+        net_turnover_meur: 3396.91
+        value_added_meur: 1148.61
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 18262.957
+        net_turnover_per_person_employed_teur: 192.1
+        value_added_per_person_employed_teur: 64.956
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.007146
+        persons_employed_share_of_activity: 0.150136
+        net_turnover_share_of_activity: 0.082548
+      H|GE250:
+        activity: Transportation and storage
+        size_class: 250 persons employed or more
+        enterprises: 36
+        persons_employed: 42559
+        net_turnover_meur: 27189.81
+        value_added_meur: 4547.75
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 755272.5
+        net_turnover_per_person_employed_teur: 638.873
+        value_added_per_person_employed_teur: 106.858
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.001383
+        persons_employed_share_of_activity: 0.361343
+        net_turnover_share_of_activity: 0.660736
+      H|TOTAL:
+        activity: Transportation and storage
+        size_class: Total
+        enterprises: 26029
+        persons_employed: 117780
+        net_turnover_meur: 41150.8
+        value_added_meur: 9524.06
+        gross_operating_surplus_meur: 6793.85
+        employee_benefits_expense_meur: 4623.36
+        gross_operating_rate_percent: 16.51
+        net_turnover_per_enterprise_teur: 1580.96
+        net_turnover_per_person_employed_teur: 349.387
+        value_added_per_person_employed_teur: 80.863
+        gross_operating_surplus_to_turnover: 0.165096
+        employee_benefits_share_of_turnover: 0.112352
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+      I|0_1:
+        activity: Accommodation and food service activities
+        size_class: From 0 to 1 person employed
+        enterprises: 7536
+        persons_employed: 7536
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.353587
+        persons_employed_share_of_activity: 0.030425
+        net_turnover_share_of_activity: null
+      I|2-9:
+        activity: Accommodation and food service activities
+        size_class: From 2 to 9 persons employed
+        enterprises: 8705
+        persons_employed: 39219
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.408436
+        persons_employed_share_of_activity: 0.158338
+        net_turnover_share_of_activity: null
+      I|10-19:
+        activity: Accommodation and food service activities
+        size_class: From 10 to 19 persons employed
+        enterprises: 2665
+        persons_employed: 35952
+        net_turnover_meur: 2270.39
+        value_added_meur: 928.45
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 851.929
+        net_turnover_per_person_employed_teur: 63.151
+        value_added_per_person_employed_teur: 25.825
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.125041
+        persons_employed_share_of_activity: 0.145149
+        net_turnover_share_of_activity: 0.136421
+      I|20-49:
+        activity: Accommodation and food service activities
+        size_class: From 20 to 49 persons employed
+        enterprises: 1580
+        persons_employed: 47308
+        net_turnover_meur: 3189.12
+        value_added_meur: 1337.8
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 2018.43
+        net_turnover_per_person_employed_teur: 67.412
+        value_added_per_person_employed_teur: 28.279
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.074133
+        persons_employed_share_of_activity: 0.190996
+        net_turnover_share_of_activity: 0.191625
+      I|50-249:
+        activity: Accommodation and food service activities
+        size_class: From 50 to 249 persons employed
+        enterprises: 748
+        persons_employed: 73483
+        net_turnover_meur: 5202.24
+        value_added_meur: 2670.37
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 6954.866
+        net_turnover_per_person_employed_teur: 70.795
+        value_added_per_person_employed_teur: 36.34
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.035096
+        persons_employed_share_of_activity: 0.296672
+        net_turnover_share_of_activity: 0.312587
+      I|GE250:
+        activity: Accommodation and food service activities
+        size_class: 250 persons employed or more
+        enterprises: 79
+        persons_employed: 44193
+        net_turnover_meur: 2994.75
+        value_added_meur: 1464.77
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 37908.228
+        net_turnover_per_person_employed_teur: 67.765
+        value_added_per_person_employed_teur: 33.145
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.003707
+        persons_employed_share_of_activity: 0.17842
+        net_turnover_share_of_activity: 0.179946
+      I|TOTAL:
+        activity: Accommodation and food service activities
+        size_class: Total
+        enterprises: 21313
+        persons_employed: 247691
+        net_turnover_meur: 16642.51
+        value_added_meur: 7660.57
+        gross_operating_surplus_meur: 3525.86
+        employee_benefits_expense_meur: 5508.54
+        gross_operating_rate_percent: 21.19
+        net_turnover_per_enterprise_teur: 780.862
+        net_turnover_per_person_employed_teur: 67.191
+        value_added_per_person_employed_teur: 30.928
+        gross_operating_surplus_to_turnover: 0.211859
+        employee_benefits_share_of_turnover: 0.330992
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+      J|0_1:
+        activity: Information and communication
+        size_class: From 0 to 1 person employed
+        enterprises: 14563
+        persons_employed: 14563
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.715064
+        persons_employed_share_of_activity: 0.096894
+        net_turnover_share_of_activity: null
+      J|2-9:
+        activity: Information and communication
+        size_class: From 2 to 9 persons employed
+        enterprises: 4353
+        persons_employed: 14318
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.213739
+        persons_employed_share_of_activity: 0.095264
+        net_turnover_share_of_activity: null
+      J|10-19:
+        activity: Information and communication
+        size_class: From 10 to 19 persons employed
+        enterprises: 564
+        persons_employed: 7605
+        net_turnover_meur: 2964.74
+        value_added_meur: 889.08
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 5256.631
+        net_turnover_per_person_employed_teur: 389.841
+        value_added_per_person_employed_teur: 116.907
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.027693
+        persons_employed_share_of_activity: 0.050599
+        net_turnover_share_of_activity: 0.00788
+      J|20-49:
+        activity: Information and communication
+        size_class: From 20 to 49 persons employed
+        enterprises: 483
+        persons_employed: 14617
+        net_turnover_meur: 8793.92
+        value_added_meur: 3047.0
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 18206.874
+        net_turnover_per_person_employed_teur: 601.623
+        value_added_per_person_employed_teur: 208.456
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.023716
+        persons_employed_share_of_activity: 0.097253
+        net_turnover_share_of_activity: 0.023373
+      J|50-249:
+        activity: Information and communication
+        size_class: From 50 to 249 persons employed
+        enterprises: 326
+        persons_employed: 32156
+        net_turnover_meur: 26652.11
+        value_added_meur: 9806.05
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 81754.939
+        net_turnover_per_person_employed_teur: 828.838
+        value_added_per_person_employed_teur: 304.952
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.016007
+        persons_employed_share_of_activity: 0.213948
+        net_turnover_share_of_activity: 0.070838
+      J|GE250:
+        activity: Information and communication
+        size_class: 250 persons employed or more
+        enterprises: 77
+        persons_employed: 67039
+        net_turnover_meur: 322502.98
+        value_added_meur: 90339.72
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 4188350.39
+        net_turnover_per_person_employed_teur: 4810.677
+        value_added_per_person_employed_teur: 1347.57
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.003781
+        persons_employed_share_of_activity: 0.446041
+        net_turnover_share_of_activity: 0.857171
+      J|TOTAL:
+        activity: Information and communication
+        size_class: Total
+        enterprises: 20366
+        persons_employed: 150298
+        net_turnover_meur: 376241.29
+        value_added_meur: 108172.27
+        gross_operating_surplus_meur: 102394.73
+        employee_benefits_expense_meur: 14555.89
+        gross_operating_rate_percent: 27.22
+        net_turnover_per_enterprise_teur: 18473.99
+        net_turnover_per_person_employed_teur: 2503.302
+        value_added_per_person_employed_teur: 719.719
+        gross_operating_surplus_to_turnover: 0.272152
+        employee_benefits_share_of_turnover: 0.038688
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+      K|10-19:
+        activity: Financial and insurance activities
+        size_class: From 10 to 19 persons employed
+        enterprises: 403
+        persons_employed: 5423
+        net_turnover_meur: 6272.62
+        value_added_meur: 4382.25
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 15564.814
+        net_turnover_per_person_employed_teur: 1156.67
+        value_added_per_person_employed_teur: 808.086
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.02031
+        persons_employed_share_of_activity: 0.040415
+        net_turnover_share_of_activity: 0.06994
+      K|20-49:
+        activity: Financial and insurance activities
+        size_class: From 20 to 49 persons employed
+        enterprises: 301
+        persons_employed: 9218
+        net_turnover_meur: 7323.51
+        value_added_meur: 3946.77
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 24330.598
+        net_turnover_per_person_employed_teur: 794.479
+        value_added_per_person_employed_teur: 428.159
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.01517
+        persons_employed_share_of_activity: 0.068698
+        net_turnover_share_of_activity: 0.081657
+      K|50-249:
+        activity: Financial and insurance activities
+        size_class: From 50 to 249 persons employed
+        enterprises: 205
+        persons_employed: 20730
+        net_turnover_meur: 16698.99
+        value_added_meur: 7649.66
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 81458.488
+        net_turnover_per_person_employed_teur: 805.547
+        value_added_per_person_employed_teur: 369.014
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.010332
+        persons_employed_share_of_activity: 0.154492
+        net_turnover_share_of_activity: 0.186193
+      K|GE250:
+        activity: Financial and insurance activities
+        size_class: 250 persons employed or more
+        enterprises: 70
+        persons_employed: 72042
+        net_turnover_meur: 19979.02
+        value_added_meur: 15187.6
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 285414.571
+        net_turnover_per_person_employed_teur: 277.325
+        value_added_per_person_employed_teur: 210.816
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.003528
+        persons_employed_share_of_activity: 0.536898
+        net_turnover_share_of_activity: 0.222766
+      K|TOTAL:
+        activity: Financial and insurance activities
+        size_class: Total
+        enterprises: 19842
+        persons_employed: 134182
+        net_turnover_meur: 89686.28
+        value_added_meur: 51697.62
+        gross_operating_surplus_meur: 40414.0
+        employee_benefits_expense_meur: 11283.61
+        gross_operating_rate_percent: 45.06
+        net_turnover_per_enterprise_teur: 4520.022
+        net_turnover_per_person_employed_teur: 668.393
+        value_added_per_person_employed_teur: 385.28
+        gross_operating_surplus_to_turnover: 0.450615
+        employee_benefits_share_of_turnover: 0.125812
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+      L|0_1:
+        activity: Real estate activities
+        size_class: From 0 to 1 person employed
+        enterprises: 16393
+        persons_employed: 16393
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.831204
+        persons_employed_share_of_activity: 0.387761
+        net_turnover_share_of_activity: null
+      L|2-9:
+        activity: Real estate activities
+        size_class: From 2 to 9 persons employed
+        enterprises: 2968
+        persons_employed: 9508
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.150492
+        persons_employed_share_of_activity: 0.224903
+        net_turnover_share_of_activity: null
+      L|10-19:
+        activity: Real estate activities
+        size_class: From 10 to 19 persons employed
+        enterprises: 208
+        persons_employed: 2739
+        net_turnover_meur: 388.86
+        value_added_meur: 185.4
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 1869.519
+        net_turnover_per_person_employed_teur: 141.972
+        value_added_per_person_employed_teur: 67.689
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.010547
+        persons_employed_share_of_activity: 0.064789
+        net_turnover_share_of_activity: 0.068549
+      L|20-49:
+        activity: Real estate activities
+        size_class: From 20 to 49 persons employed
+        enterprises: 108
+        persons_employed: 3239
+        net_turnover_meur: 784.62
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 7265.0
+        net_turnover_per_person_employed_teur: 242.241
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.005476
+        persons_employed_share_of_activity: 0.076616
+        net_turnover_share_of_activity: 0.138314
+      L|50-249:
+        activity: Real estate activities
+        size_class: From 50 to 249 persons employed
+        enterprises: 36
+        persons_employed: 3067
+        net_turnover_meur: 401.48
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 11152.222
+        net_turnover_per_person_employed_teur: 130.903
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.001825
+        persons_employed_share_of_activity: 0.072547
+        net_turnover_share_of_activity: 0.070773
+      L|GE250:
+        activity: Real estate activities
+        size_class: 250 persons employed or more
+        enterprises: 9
+        persons_employed: 7330
+        net_turnover_meur: 532.79
+        value_added_meur: 379.97
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 59198.889
+        net_turnover_per_person_employed_teur: 72.686
+        value_added_per_person_employed_teur: 51.838
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.000456
+        persons_employed_share_of_activity: 0.173384
+        net_turnover_share_of_activity: 0.093921
+      L|TOTAL:
+        activity: Real estate activities
+        size_class: Total
+        enterprises: 19722
+        persons_employed: 42276
+        net_turnover_meur: 5672.76
+        value_added_meur: 2749.89
+        gross_operating_surplus_meur: 1869.01
+        employee_benefits_expense_meur: 1095.94
+        gross_operating_rate_percent: 32.95
+        net_turnover_per_enterprise_teur: 287.636
+        net_turnover_per_person_employed_teur: 134.184
+        value_added_per_person_employed_teur: 65.046
+        gross_operating_surplus_to_turnover: 0.329471
+        employee_benefits_share_of_turnover: 0.193193
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+      M|0_1:
+        activity: Professional, scientific and technical activities
+        size_class: From 0 to 1 person employed
+        enterprises: 39014
+        persons_employed: 39014
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.714097
+        persons_employed_share_of_activity: 0.171242
+        net_turnover_share_of_activity: null
+      M|2-9:
+        activity: Professional, scientific and technical activities
+        size_class: From 2 to 9 persons employed
+        enterprises: 12923
+        persons_employed: 44882
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.236538
+        persons_employed_share_of_activity: 0.196999
+        net_turnover_share_of_activity: null
+      M|10-19:
+        activity: Professional, scientific and technical activities
+        size_class: From 10 to 19 persons employed
+        enterprises: 1414
+        persons_employed: 18914
+        net_turnover_meur: 4899.99
+        value_added_meur: 1299.06
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 3465.339
+        net_turnover_per_person_employed_teur: 259.067
+        value_added_per_person_employed_teur: 68.682
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.025881
+        persons_employed_share_of_activity: 0.083018
+        net_turnover_share_of_activity: 0.052109
+      M|20-49:
+        activity: Professional, scientific and technical activities
+        size_class: From 20 to 49 persons employed
+        enterprises: 814
+        persons_employed: 24247
+        net_turnover_meur: 22282.89
+        value_added_meur: 3064.23
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 27374.558
+        net_turnover_per_person_employed_teur: 918.996
+        value_added_per_person_employed_teur: 126.376
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.014899
+        persons_employed_share_of_activity: 0.106426
+        net_turnover_share_of_activity: 0.236969
+      M|50-249:
+        activity: Professional, scientific and technical activities
+        size_class: From 50 to 249 persons employed
+        enterprises: 383
+        persons_employed: 37489
+        net_turnover_meur: 20151.98
+        value_added_meur: 9376.4
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 52616.136
+        net_turnover_per_person_employed_teur: 537.544
+        value_added_per_person_employed_teur: 250.111
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.00701
+        persons_employed_share_of_activity: 0.164549
+        net_turnover_share_of_activity: 0.214307
+      M|GE250:
+        activity: Professional, scientific and technical activities
+        size_class: 250 persons employed or more
+        enterprises: 86
+        persons_employed: 63283
+        net_turnover_meur: 21856.04
+        value_added_meur: 10928.02
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 254140.0
+        net_turnover_per_person_employed_teur: 345.37
+        value_added_per_person_employed_teur: 172.685
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.001574
+        persons_employed_share_of_activity: 0.277765
+        net_turnover_share_of_activity: 0.232429
+      M|TOTAL:
+        activity: Professional, scientific and technical activities
+        size_class: Total
+        enterprises: 54634
+        persons_employed: 227829
+        net_turnover_meur: 94033.1
+        value_added_meur: 32462.44
+        gross_operating_surplus_meur: 24113.6
+        employee_benefits_expense_meur: 13278.79
+        gross_operating_rate_percent: 25.64
+        net_turnover_per_enterprise_teur: 1721.146
+        net_turnover_per_person_employed_teur: 412.735
+        value_added_per_person_employed_teur: 142.486
+        gross_operating_surplus_to_turnover: 0.256437
+        employee_benefits_share_of_turnover: 0.141214
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+      N|0_1:
+        activity: Administrative and support service activities
+        size_class: From 0 to 1 person employed
+        enterprises: 16219
+        persons_employed: 16219
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.72274
+        persons_employed_share_of_activity: 0.085034
+        net_turnover_share_of_activity: null
+      N|2-9:
+        activity: Administrative and support service activities
+        size_class: From 2 to 9 persons employed
+        enterprises: 4536
+        persons_employed: 16169
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.20213
+        persons_employed_share_of_activity: 0.084772
+        net_turnover_share_of_activity: null
+      N|10-19:
+        activity: Administrative and support service activities
+        size_class: From 10 to 19 persons employed
+        enterprises: 687
+        persons_employed: 9296
+        net_turnover_meur: 2608.39
+        value_added_meur: 783.25
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 3796.783
+        net_turnover_per_person_employed_teur: 280.593
+        value_added_per_person_employed_teur: 84.257
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.030614
+        persons_employed_share_of_activity: 0.048738
+        net_turnover_share_of_activity: 0.041714
+      N|20-49:
+        activity: Administrative and support service activities
+        size_class: From 20 to 49 persons employed
+        enterprises: 545
+        persons_employed: 16921
+        net_turnover_meur: 6028.01
+        value_added_meur: 2018.04
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 11060.569
+        net_turnover_per_person_employed_teur: 356.244
+        value_added_per_person_employed_teur: 119.262
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.024286
+        persons_employed_share_of_activity: 0.088714
+        net_turnover_share_of_activity: 0.096402
+      N|50-249:
+        activity: Administrative and support service activities
+        size_class: From 50 to 249 persons employed
+        enterprises: 334
+        persons_employed: 36043
+        net_turnover_meur: 9046.94
+        value_added_meur: 3102.87
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 27086.647
+        net_turnover_per_person_employed_teur: 251.004
+        value_added_per_person_employed_teur: 86.088
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.014883
+        persons_employed_share_of_activity: 0.188968
+        net_turnover_share_of_activity: 0.144681
+      N|GE250:
+        activity: Administrative and support service activities
+        size_class: 250 persons employed or more
+        enterprises: 120
+        persons_employed: 96088
+        net_turnover_meur: 9361.37
+        value_added_meur: 3458.96
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 78011.417
+        net_turnover_per_person_employed_teur: 97.425
+        value_added_per_person_employed_teur: 35.998
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.005347
+        persons_employed_share_of_activity: 0.503775
+        net_turnover_share_of_activity: 0.14971
+      N|TOTAL:
+        activity: Administrative and support service activities
+        size_class: Total
+        enterprises: 22441
+        persons_employed: 190736
+        net_turnover_meur: 62530.14
+        value_added_meur: 33080.81
+        gross_operating_surplus_meur: 28618.56
+        employee_benefits_expense_meur: 7794.4
+        gross_operating_rate_percent: 45.77
+        net_turnover_per_enterprise_teur: 2786.424
+        net_turnover_per_person_employed_teur: 327.836
+        value_added_per_person_employed_teur: 173.438
+        gross_operating_surplus_to_turnover: 0.457676
+        employee_benefits_share_of_turnover: 0.12465
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+      P|0_1:
+        activity: Education
+        size_class: From 0 to 1 person employed
+        enterprises: 10363
+        persons_employed: 10363
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.751596
+        persons_employed_share_of_activity: 0.140481
+        net_turnover_share_of_activity: null
+      P|2-9:
+        activity: Education
+        size_class: From 2 to 9 persons employed
+        enterprises: 2625
+        persons_employed: 10018
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.190383
+        persons_employed_share_of_activity: 0.135804
+        net_turnover_share_of_activity: null
+      P|10-19:
+        activity: Education
+        size_class: From 10 to 19 persons employed
+        enterprises: 446
+        persons_employed: 5983
+        net_turnover_meur: 402.2
+        value_added_meur: 173.5
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 901.794
+        net_turnover_per_person_employed_teur: 67.224
+        value_added_per_person_employed_teur: 28.999
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.032347
+        persons_employed_share_of_activity: 0.081106
+        net_turnover_share_of_activity: 0.074306
+      P|20-49:
+        activity: Education
+        size_class: From 20 to 49 persons employed
+        enterprises: 250
+        persons_employed: 7319
+        net_turnover_meur: 542.06
+        value_added_meur: 245.54
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 2168.24
+        net_turnover_per_person_employed_teur: 74.062
+        value_added_per_person_employed_teur: 33.548
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.018132
+        persons_employed_share_of_activity: 0.099216
+        net_turnover_share_of_activity: 0.100146
+      P|50-249:
+        activity: Education
+        size_class: From 50 to 249 persons employed
+        enterprises: 87
+        persons_employed: 7774
+        net_turnover_meur: 456.48
+        value_added_meur: 287.77
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 5246.897
+        net_turnover_per_person_employed_teur: 58.719
+        value_added_per_person_employed_teur: 37.017
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.00631
+        persons_employed_share_of_activity: 0.105384
+        net_turnover_share_of_activity: 0.084335
+      P|GE250:
+        activity: Education
+        size_class: 250 persons employed or more
+        enterprises: 17
+        persons_employed: 32311
+        net_turnover_meur: 2523.78
+        value_added_meur: 2052.75
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 148457.647
+        net_turnover_per_person_employed_teur: 78.109
+        value_added_per_person_employed_teur: 63.531
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.001233
+        persons_employed_share_of_activity: 0.438008
+        net_turnover_share_of_activity: 0.466268
+      P|TOTAL:
+        activity: Education
+        size_class: Total
+        enterprises: 13788
+        persons_employed: 73768
+        net_turnover_meur: 5412.72
+        value_added_meur: 3404.15
+        gross_operating_surplus_meur: 2475.39
+        employee_benefits_expense_meur: 2819.08
+        gross_operating_rate_percent: 45.73
+        net_turnover_per_enterprise_teur: 392.567
+        net_turnover_per_person_employed_teur: 73.375
+        value_added_per_person_employed_teur: 46.147
+        gross_operating_surplus_to_turnover: 0.457328
+        employee_benefits_share_of_turnover: 0.520825
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+      Q|0_1:
+        activity: Human health and social work activities
+        size_class: From 0 to 1 person employed
+        enterprises: 15857
+        persons_employed: 15857
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.625819
+        persons_employed_share_of_activity: 0.076928
+        net_turnover_share_of_activity: null
+      Q|2-9:
+        activity: Human health and social work activities
+        size_class: From 2 to 9 persons employed
+        enterprises: 6260
+        persons_employed: 24899
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.24706
+        persons_employed_share_of_activity: 0.120794
+        net_turnover_share_of_activity: null
+      Q|10-19:
+        activity: Human health and social work activities
+        size_class: From 10 to 19 persons employed
+        enterprises: 1464
+        persons_employed: 20057
+        net_turnover_meur: 1012.41
+        value_added_meur: 702.8
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 691.537
+        net_turnover_per_person_employed_teur: 50.477
+        value_added_per_person_employed_teur: 35.04
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.057779
+        persons_employed_share_of_activity: 0.097304
+        net_turnover_share_of_activity: 0.071887
+      Q|20-49:
+        activity: Human health and social work activities
+        size_class: From 20 to 49 persons employed
+        enterprises: 1086
+        persons_employed: 32417
+        net_turnover_meur: 1360.01
+        value_added_meur: 1079.78
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 1252.311
+        net_turnover_per_person_employed_teur: 41.954
+        value_added_per_person_employed_teur: 33.309
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.042861
+        persons_employed_share_of_activity: 0.157266
+        net_turnover_share_of_activity: 0.096568
+      Q|50-249:
+        activity: Human health and social work activities
+        size_class: From 50 to 249 persons employed
+        enterprises: 588
+        persons_employed: 58121
+        net_turnover_meur: 3346.05
+        value_added_meur: 2494.46
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 5690.561
+        net_turnover_per_person_employed_teur: 57.57
+        value_added_per_person_employed_teur: 42.918
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.023206
+        persons_employed_share_of_activity: 0.281966
+        net_turnover_share_of_activity: 0.237588
+      Q|GE250:
+        activity: Human health and social work activities
+        size_class: 250 persons employed or more
+        enterprises: 83
+        persons_employed: 54777
+        net_turnover_meur: 3786.52
+        value_added_meur: 2418.33
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 45620.723
+        net_turnover_per_person_employed_teur: 69.126
+        value_added_per_person_employed_teur: 44.149
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.003276
+        persons_employed_share_of_activity: 0.265743
+        net_turnover_share_of_activity: 0.268864
+      Q|TOTAL:
+        activity: Human health and social work activities
+        size_class: Total
+        enterprises: 25338
+        persons_employed: 206128
+        net_turnover_meur: 14083.39
+        value_added_meur: 9694.44
+        gross_operating_surplus_meur: 5653.56
+        employee_benefits_expense_meur: 6605.92
+        gross_operating_rate_percent: 40.14
+        net_turnover_per_enterprise_teur: 555.821
+        net_turnover_per_person_employed_teur: 68.324
+        value_added_per_person_employed_teur: 47.031
+        gross_operating_surplus_to_turnover: 0.401435
+        employee_benefits_share_of_turnover: 0.469058
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+      R|0_1:
+        activity: Arts, entertainment and recreation
+        size_class: From 0 to 1 person employed
+        enterprises: 12576
+        persons_employed: 12576
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.840754
+        persons_employed_share_of_activity: 0.260729
+        net_turnover_share_of_activity: null
+      R|2-9:
+        activity: Arts, entertainment and recreation
+        size_class: From 2 to 9 persons employed
+        enterprises: 1715
+        persons_employed: 6406
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.114654
+        persons_employed_share_of_activity: 0.132811
+        net_turnover_share_of_activity: null
+      R|10-19:
+        activity: Arts, entertainment and recreation
+        size_class: From 10 to 19 persons employed
+        enterprises: 334
+        persons_employed: 4499
+        net_turnover_meur: 347.41
+        value_added_meur: 166.13
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 1040.15
+        net_turnover_per_person_employed_teur: 77.219
+        value_added_per_person_employed_teur: 36.926
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.022329
+        persons_employed_share_of_activity: 0.093274
+        net_turnover_share_of_activity: 0.041427
+      R|20-49:
+        activity: Arts, entertainment and recreation
+        size_class: From 20 to 49 persons employed
+        enterprises: 229
+        persons_employed: 6961
+        net_turnover_meur: 465.5
+        value_added_meur: 221.51
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 2032.751
+        net_turnover_per_person_employed_teur: 66.873
+        value_added_per_person_employed_teur: 31.822
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.01531
+        persons_employed_share_of_activity: 0.144317
+        net_turnover_share_of_activity: 0.055508
+      R|50-249:
+        activity: Arts, entertainment and recreation
+        size_class: From 50 to 249 persons employed
+        enterprises: 93
+        persons_employed: 8821
+        net_turnover_meur: 2405.52
+        value_added_meur: 627.63
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 25865.806
+        net_turnover_per_person_employed_teur: 272.704
+        value_added_per_person_employed_teur: 71.152
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.006217
+        persons_employed_share_of_activity: 0.182879
+        net_turnover_share_of_activity: 0.286844
+      R|GE250:
+        activity: Arts, entertainment and recreation
+        size_class: 250 persons employed or more
+        enterprises: 11
+        persons_employed: 8971
+        net_turnover_meur: 2478.64
+        value_added_meur: 325.44
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 225330.909
+        net_turnover_per_person_employed_teur: 276.295
+        value_added_per_person_employed_teur: 36.277
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.000735
+        persons_employed_share_of_activity: 0.185989
+        net_turnover_share_of_activity: 0.295563
+      R|TOTAL:
+        activity: Arts, entertainment and recreation
+        size_class: Total
+        enterprises: 14958
+        persons_employed: 48234
+        net_turnover_meur: 8386.17
+        value_added_meur: 2366.68
+        gross_operating_surplus_meur: 1424.33
+        employee_benefits_expense_meur: 1204.96
+        gross_operating_rate_percent: 16.98
+        net_turnover_per_enterprise_teur: 560.648
+        net_turnover_per_person_employed_teur: 173.864
+        value_added_per_person_employed_teur: 49.067
+        gross_operating_surplus_to_turnover: 0.169843
+        employee_benefits_share_of_turnover: 0.143684
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+      S95|0_1:
+        activity: Repair of computers and personal and household goods
+        size_class: From 0 to 1 person employed
+        enterprises: 1199
+        persons_employed: 1199
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.693866
+        persons_employed_share_of_activity: 0.355892
+        net_turnover_share_of_activity: null
+      S95|2-9:
+        activity: Repair of computers and personal and household goods
+        size_class: From 2 to 9 persons employed
+        enterprises: 501
+        persons_employed: 1542
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.289931
+        persons_employed_share_of_activity: 0.457703
+        net_turnover_share_of_activity: null
+      S95|10-19:
+        activity: Repair of computers and personal and household goods
+        size_class: From 10 to 19 persons employed
+        enterprises: 17
+        persons_employed: 236
+        net_turnover_meur: 16.58
+        value_added_meur: 7.83
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 975.294
+        net_turnover_per_person_employed_teur: 70.254
+        value_added_per_person_employed_teur: 33.178
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.009838
+        persons_employed_share_of_activity: 0.07005
+        net_turnover_share_of_activity: 0.062102
+      S95|GE250:
+        activity: Repair of computers and personal and household goods
+        size_class: 250 persons employed or more
+        enterprises: 0
+        persons_employed: 0
+        net_turnover_meur: 0.0
+        value_added_meur: 0.0
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.0
+        persons_employed_share_of_activity: 0.0
+        net_turnover_share_of_activity: 0.0
+      S95|TOTAL:
+        activity: Repair of computers and personal and household goods
+        size_class: Total
+        enterprises: 1728
+        persons_employed: 3369
+        net_turnover_meur: 266.98
+        value_added_meur: 131.1
+        gross_operating_surplus_meur: 75.71
+        employee_benefits_expense_meur: 67.61
+        gross_operating_rate_percent: 28.36
+        net_turnover_per_enterprise_teur: 154.502
+        net_turnover_per_person_employed_teur: 79.246
+        value_added_per_person_employed_teur: 38.914
+        gross_operating_surplus_to_turnover: 0.283579
+        employee_benefits_share_of_turnover: 0.25324
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+      S96|0_1:
+        activity: Other personal service activities
+        size_class: From 0 to 1 person employed
+        enterprises: 12866
+        persons_employed: 12866
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.691646
+        persons_employed_share_of_activity: 0.28821
+        net_turnover_share_of_activity: null
+      S96|2-9:
+        activity: Other personal service activities
+        size_class: From 2 to 9 persons employed
+        enterprises: 5210
+        persons_employed: 18597
+        net_turnover_meur: null
+        value_added_meur: null
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: null
+        net_turnover_per_person_employed_teur: null
+        value_added_per_person_employed_teur: null
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.280077
+        persons_employed_share_of_activity: 0.41659
+        net_turnover_share_of_activity: null
+      S96|10-19:
+        activity: Other personal service activities
+        size_class: From 10 to 19 persons employed
+        enterprises: 395
+        persons_employed: 5070
+        net_turnover_meur: 280.38
+        value_added_meur: 139.39
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 709.823
+        net_turnover_per_person_employed_teur: 55.302
+        value_added_per_person_employed_teur: 27.493
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.021234
+        persons_employed_share_of_activity: 0.113573
+        net_turnover_share_of_activity: 0.094714
+      S96|GE250:
+        activity: Other personal service activities
+        size_class: 250 persons employed or more
+        enterprises: 4
+        persons_employed: 3257
+        net_turnover_meur: 315.14
+        value_added_meur: 96.37
+        gross_operating_surplus_meur: null
+        employee_benefits_expense_meur: null
+        gross_operating_rate_percent: null
+        net_turnover_per_enterprise_teur: 78785.0
+        net_turnover_per_person_employed_teur: 96.758
+        value_added_per_person_employed_teur: 29.589
+        gross_operating_surplus_to_turnover: null
+        employee_benefits_share_of_turnover: null
+        enterprise_share_of_activity: 0.000215
+        persons_employed_share_of_activity: 0.07296
+        net_turnover_share_of_activity: 0.106456
+      S96|TOTAL:
+        activity: Other personal service activities
+        size_class: Total
+        enterprises: 18602
+        persons_employed: 44641
+        net_turnover_meur: 2960.29
+        value_added_meur: 629.39
+        gross_operating_surplus_meur: 19.22
+        employee_benefits_expense_meur: 745.51
+        gross_operating_rate_percent: 0.65
+        net_turnover_per_enterprise_teur: 159.138
+        net_turnover_per_person_employed_teur: 66.313
+        value_added_per_person_employed_teur: 14.099
+        gross_operating_surplus_to_turnover: 0.006493
+        employee_benefits_share_of_turnover: 0.251837
+        enterprise_share_of_activity: 1.0
+        persons_employed_share_of_activity: 1.0
+        net_turnover_share_of_activity: 1.0
+  vectors:
+  - input:
+      key: B-S_X_O_S94|TOTAL
+      column: enterprises
+    expected: 410205
+    origin: source
+  - input:
+      key: C|GE250
+      column: net_turnover_meur
+    expected: 354112.58
+    origin: source
+  - input:
+      key: C|TOTAL
+      column: gross_operating_rate_percent
+    expected: 38.06
+    origin: source
+  - input:
+      key: G|10-19
+      column: net_turnover_per_enterprise_teur
+    expected: 10428.807
+    origin: derived
+    note: net_turnover_meur * 1000 / enterprises
+  - input: A|TOTAL
+    expected: false
+    origin: derived
+    note: agriculture is outside structural business statistics
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow sbs_sc_ovw (enterprise statistics by size class and NACE Rev. 2 activity),
+    SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/sbs_sc_ovw/A.ENT_NR+EMP_NR+NETTUR_MEUR+AV_MEUR+GOS_MEUR+EXPN_SAL_BEN_MEUR+GOR_PC.B-S_X_O_S94+B+C+D+E+F+G+H+I+J+K+L+M+N+P+Q+R+S95+S96.0_1+2-9+10-19+20-49+50-249+GE250+TOTAL.IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-11-26'
+  locator: indic_sbs=ENT_NR, nace_r2=B-S_X_O_S94, size_emp=TOTAL, geo=IE, TIME_PERIOD=2024, OBS_VALUE
+  value: '410205'
+  unit: count
+  snippet: ENT_NR,B-S_X_O_S94,TOTAL,IE,2024,410205
+  source_license: CC-BY-4.0
+  content_sha256: e27361e2d3cd79119ac1aa6cba62848c1a5d02d613b94b22fa883214e1de20dc
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow sbs_sc_ovw (enterprise statistics by size class and NACE Rev. 2 activity),
+    SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/sbs_sc_ovw/A.ENT_NR+EMP_NR+NETTUR_MEUR+AV_MEUR+GOS_MEUR+EXPN_SAL_BEN_MEUR+GOR_PC.B-S_X_O_S94+B+C+D+E+F+G+H+I+J+K+L+M+N+P+Q+R+S95+S96.0_1+2-9+10-19+20-49+50-249+GE250+TOTAL.IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-11-26'
+  locator: indic_sbs=NETTUR_MEUR, nace_r2=C, size_emp=GE250, geo=IE, TIME_PERIOD=2024, OBS_VALUE
+  value: '354112.58'
+  unit: currency:EUR
+  snippet: NETTUR_MEUR,C,GE250,IE,2024,354112.58
+  source_license: CC-BY-4.0
+  content_sha256: e27361e2d3cd79119ac1aa6cba62848c1a5d02d613b94b22fa883214e1de20dc
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow sbs_sc_ovw (enterprise statistics by size class and NACE Rev. 2 activity),
+    SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/sbs_sc_ovw/A.ENT_NR+EMP_NR+NETTUR_MEUR+AV_MEUR+GOS_MEUR+EXPN_SAL_BEN_MEUR+GOR_PC.B-S_X_O_S94+B+C+D+E+F+G+H+I+J+K+L+M+N+P+Q+R+S95+S96.0_1+2-9+10-19+20-49+50-249+GE250+TOTAL.IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-11-26'
+  locator: indic_sbs=GOR_PC, nace_r2=C, size_emp=TOTAL, geo=IE, TIME_PERIOD=2024, OBS_VALUE
+  value: '38.06'
+  unit: percent
+  snippet: GOR_PC,C,TOTAL,IE,2024,38.06
+  source_license: CC-BY-4.0
+  content_sha256: e27361e2d3cd79119ac1aa6cba62848c1a5d02d613b94b22fa883214e1de20dc
+  role: primary
+assumed:
+- parameter: rows[*].net_turnover_per_enterprise_teur
+  value: net_turnover_meur * 1000 / enterprises
+  method: derived
+  rationale: Average turnover per enterprise of the size class in thousand euro.
+- parameter: rows[*].net_turnover_per_person_employed_teur
+  value: net_turnover_meur * 1000 / persons_employed
+  method: derived
+  rationale: Turnover per person employed in thousand euro, the revenue-per-head benchmark for the size class.
+- parameter: rows[*].value_added_per_person_employed_teur
+  value: value_added_meur * 1000 / persons_employed
+  method: derived
+  rationale: Apparent labour productivity in thousand euro per person employed.
+- parameter: rows[*].gross_operating_surplus_to_turnover
+  value: gross_operating_surplus_meur / net_turnover_meur
+  method: derived
+  rationale: Operating margin proxy as a ratio; Eurostat's gross_operating_rate_percent is the published percentage
+    and is kept beside it.
+- parameter: rows[*].employee_benefits_share_of_turnover
+  value: employee_benefits_expense_meur / net_turnover_meur
+  method: derived
+  rationale: Personnel costs as a share of turnover.
+- parameter: rows[*].enterprise_share_of_activity
+  value: enterprises / enterprises of the TOTAL size class of the same activity
+  method: derived
+  rationale: Share of the activity's enterprises in the size class, for sampling a size class given an activity;
+    the other *_share_of_activity columns do the same for persons employed and turnover.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 114
+  tolerance: 0
+- statistic: value[B-S_X_O_S94|TOTAL,enterprises]
+  expected: 410205
+  tolerance: 0
+- statistic: max[net_turnover_per_person_employed_teur]
+  expected: 4810.677
+  tolerance: 0
+notes: 'Structural business statistics for Ireland in 2024 from Eurostat dataflow sbs_sc_ovw, one row per NACE Rev.
+  2 activity and size class of persons employed, keyed activity|size_class: the aggregate B-S_X_O_S94 (Industry,
+  construction and market services (except public administration and defence; compulsory social security; activities
+  of membership organisations)), sections B to R except O, and divisions S95 and S96, each for the classes 0_1,
+  2-9, 10-19, 20-49, 50-249, GE250 and TOTAL; classes are by persons employed, not employees, and a class the country
+  does not publish has no row. Published columns, with their INDIC_SBS labels: enterprises (Enterprises - number);
+  persons_employed (Persons employed - number); net_turnover_meur (Net turnover - million euro); value_added_meur
+  (Value added - million euro); gross_operating_surplus_meur (Gross operating surplus - million euro); employee_benefits_expense_meur
+  (Employee benefits expense - million euro); gross_operating_rate_percent (Gross operating rate - percentage).
+  Derived columns give turnover per enterprise and per person employed, value added per person employed, the operating-surplus
+  and personnel-cost shares of turnover, and each class''s share of the activity''s enterprises, persons employed
+  and turnover; every derived column is null where an input is missing. This complements the by-NACE enterprise
+  accounts entries, which have no size dimension. Cells Eurostat withholds as confidential (no value) occur in:
+  B|10-19, B|20-49, B|50-249, B|GE250, B|TOTAL, C|10-19, C|20-49, C|50-249, D|10-19, D|20-49, D|50-249, D|GE250,
+  D|TOTAL, E|50-249, E|GE250, F|10-19, F|20-49, L|20-49, L|50-249, S95|20-49 and more. Eurostat''s copyright notice
+  states that its data are released under the Creative Commons Attribution 4.0 International licence; the notice
+  page renders dynamically and is referenced rather than hashed.'

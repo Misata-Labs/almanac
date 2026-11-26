@@ -1,0 +1,158 @@
+id: gb-business-asset-disposal-relief
+title: 'UK Business Asset Disposal Relief: Capital Gains Tax rate by disposal date (10%, 14%, 18%) and lifetime
+  limit'
+kind: rule
+domain: tax
+region: GB
+status: verified
+tier: A
+valid_from: '2025-04-06'
+valid_to: null
+tags:
+- tax
+- private-equity
+- structuring
+- capital-gains-tax
+- badr
+- exit
+- founder
+- step-schedule
+use_cases:
+- lbo-modelling
+- valuation-demo
+- tax-demo
+- pe-portfolio-demo
+spec:
+  implementation: almanac.rules.step_schedule
+  parameters:
+    unit: percent
+    steps:
+    - from: '2025-04-06'
+      value: 14
+    - from: '2026-04-06'
+      value: 18
+    rate_on_or_before_first_step:
+      value: 10
+      applies_to: disposals on or before 2025-04-05
+    lifetime_limit_gbp: 1000000
+    announced_lifetime_limit:
+      value_gbp: 500000
+      from: '2027-04-06'
+      status: announced at Budget 2026 for Finance Bill 2026-27; not yet enacted
+    personal_company_min_holding_percent: 5
+    min_qualifying_period_years: 2
+  vectors:
+  - input:
+      'on': '2025-04-06'
+    expected: 14
+    origin: source
+  - input:
+      'on': '2026-04-06'
+    expected: 18
+    origin: source
+  - input:
+      'on': '2026-11-26'
+    expected: 18
+    origin: derived
+    note: latest step still in force
+  - input:
+      'on': '2026-04-05'
+    expected: 14
+    origin: derived
+    note: last day of the 2025-26 tax year
+evidence:
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: Business Asset Disposal Relief (GOV.UK content API, JSON)
+  url: https://www.gov.uk/api/content/business-asset-disposal-relief
+  accessed_at: '2026-11-26'
+  locator: details.body, rate list
+  value: 18%
+  unit: percent
+  snippet: 18% on all gains on qualifying assets disposed of from 6 April 2026
+  source_license: OGL-UK-3.0
+  content_sha256: e6f95099a07c48a9409b5952fae0518fe8e4e5e7a68b438b16488f66641cffd6
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: Business Asset Disposal Relief (GOV.UK content API, JSON)
+  url: https://www.gov.uk/api/content/business-asset-disposal-relief
+  accessed_at: '2026-11-26'
+  locator: details.body, rate list
+  value: 14%
+  unit: percent
+  snippet: 14% on all gains on qualifying assets disposed of between 6 April 2025 and
+  source_license: OGL-UK-3.0
+  content_sha256: e6f95099a07c48a9409b5952fae0518fe8e4e5e7a68b438b16488f66641cffd6
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: Business Asset Disposal Relief (GOV.UK content API, JSON)
+  url: https://www.gov.uk/api/content/business-asset-disposal-relief
+  accessed_at: '2026-11-26'
+  locator: details.body, rate list
+  value: 10%
+  unit: percent
+  snippet: 10% on all gains on qualifying assets disposed of on or before 5 April 2025
+  source_license: OGL-UK-3.0
+  content_sha256: e6f95099a07c48a9409b5952fae0518fe8e4e5e7a68b438b16488f66641cffd6
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: Business Asset Disposal Relief (GOV.UK content API, JSON)
+  url: https://www.gov.uk/api/content/business-asset-disposal-relief
+  accessed_at: '2026-11-26'
+  locator: details.body, lifetime limit
+  value: £1 million
+  unit: currency:GBP
+  snippet: You can claim a total of £1 million in Business Asset Disposal Relief over your lifetime
+  source_license: OGL-UK-3.0
+  content_sha256: e6f95099a07c48a9409b5952fae0518fe8e4e5e7a68b438b16488f66641cffd6
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: Business Asset Disposal Relief (GOV.UK content API, JSON)
+  url: https://www.gov.uk/api/content/business-asset-disposal-relief
+  accessed_at: '2026-11-26'
+  locator: details.body, shares
+  value: 5%
+  unit: percent
+  snippet: 'This means that you have at least 5% of both the:'
+  source_license: OGL-UK-3.0
+  content_sha256: e6f95099a07c48a9409b5952fae0518fe8e4e5e7a68b438b16488f66641cffd6
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: 'Capital Gains Tax: new Business Asset Disposal Relief lifetime limit, Budget 2026 tax information and
+    impact note (GOV.UK content API, JSON)'
+  url: https://www.gov.uk/api/content/government/publications/capital-gains-tax-reduction-in-the-business-asset-disposal-relief-lifetime-limit/capital-gains-tax-new-business-asset-disposal-relief-lifetime-limit
+  accessed_at: '2026-11-26'
+  locator: details.body, General description of the measure
+  value: £500,000
+  unit: currency:GBP
+  snippet: to £500,000 for qualifying disposals made on or after 6 April 2027
+  source_license: OGL-UK-3.0
+  content_sha256: a755a0edcfade6aa419460e7948169311d79225167691fc687efcd7d8471238d
+  role: supporting
+assumed:
+- parameter: personal_company_min_holding_percent
+  value: 5
+  method: derived
+  rationale: The guide states the 5% personal company test and the two-year period in prose; recorded as parameters
+    for convenience.
+- parameter: lifetime_limit_gbp
+  value: 1000000
+  method: derived
+  rationale: The guide states the limit as '£1 million'; the builder converts it to pounds.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+- statistic: max
+  expected: 18
+  tolerance: 0
+notes: Business Asset Disposal Relief (formerly Entrepreneurs' Relief) charges qualifying gains on disposals of
+  all or part of a business, or of shares in a personal trading company in which the individual has held at least
+  5% of the shares and votes and been an officer or employee for two years, at a reduced Capital Gains Tax rate,
+  up to a lifetime limit of qualifying gains. The rate was 10% for disposals on or before 5 April 2025 (kept as
+  rate_on_or_before_first_step because the source gives no start date for it), 14% in 2025-26 and 18% from 6 April
+  2026. A reduction of the lifetime limit for disposals from 6 April 2027 was announced at Budget 2026 and is recorded
+  as announced, not enacted. The guide and the tax information and impact note are published under the Open Government
+  Licence.

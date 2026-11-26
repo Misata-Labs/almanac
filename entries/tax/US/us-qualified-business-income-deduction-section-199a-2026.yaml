@@ -1,0 +1,204 @@
+id: us-qualified-business-income-deduction-section-199a-2026
+title: 'US qualified business income deduction (26 U.S.C. 199A) for taxable years beginning in 2026: 20% rate, thresholds
+  and phase-in ranges'
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2026-01-01'
+valid_to: '2026-12-31'
+tags:
+- tax
+- private-equity
+- structuring
+- qbi
+- section-199a
+- pass-through
+- obbba
+- rev-proc-2025-32
+use_cases:
+- tax-demo
+- tax-filing-demo
+- lbo-modelling
+- valuation-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: USD
+    tax_year: 2026
+    rows:
+      deduction_rate:
+        value: 20
+        unit: percent
+        section: 199A(b)(2)(A)
+      threshold_joint:
+        value: 403500
+        unit: USD
+        section: 199A(e)(2)
+        tax_year: 2026
+      phase_in_end_joint:
+        value: 553500
+        unit: USD
+        section: 199A(b)(3)(B), (d)(3)(A)
+        tax_year: 2026
+      threshold_married_filing_separately:
+        value: 201775
+        unit: USD
+        section: 199A(e)(2)
+        tax_year: 2026
+      phase_in_end_married_filing_separately:
+        value: 276775
+        unit: USD
+        section: 199A(b)(3)(B), (d)(3)(A)
+        tax_year: 2026
+      threshold_other:
+        value: 201750
+        unit: USD
+        section: 199A(e)(2)
+        tax_year: 2026
+      phase_in_end_other:
+        value: 276750
+        unit: USD
+        section: 199A(b)(3)(B), (d)(3)(A)
+        tax_year: 2026
+      phase_in_range_joint:
+        value: 150000
+        unit: USD
+        section: 199A(b)(3)(B) as amended by Public Law 119-21
+      phase_in_range_other:
+        value: 75000
+        unit: USD
+        section: 199A(b)(3)(B) as amended by Public Law 119-21
+      minimum_deduction:
+        value: 400
+        unit: USD
+        section: 199A(i)(1)(B)
+        indexed_after: 2026
+      minimum_active_qbi_for_minimum_deduction:
+        value: 1000
+        unit: USD
+        section: 199A(i)(2)(A)
+        indexed_after: 2026
+  vectors:
+  - input:
+      key: deduction_rate
+      column: value
+    expected: 20
+    origin: source
+  - input:
+      key: threshold_joint
+      column: value
+    expected: 403500
+    origin: source
+  - input:
+      key: phase_in_end_other
+      column: value
+    expected: 276750
+    origin: source
+  - input:
+      key: minimum_deduction
+      column: value
+    expected: 400
+    origin: source
+  - input: deduction_rate_2017
+    expected: false
+    origin: derived
+    note: not a row of this table
+evidence:
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 199A, Qualified business income (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapB-partVI-sec199A.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (b)(2)(A)
+  value: 20 percent
+  unit: percent
+  snippet: 20 percent of the taxpayer's qualified business income with respect to the qualified trade or business
+  source_license: unstated
+  content_sha256: 3040a9ee50907163a7224e3930b8cbdc31bf83a5d29329e6ed28141f2e65d91c
+  role: primary
+- publisher: US Government Publishing Office (govinfo)
+  title: Public Law 119-21, 139 Stat. 72 (July 4, 2025), USLM XML
+  url: https://www.govinfo.gov/content/pkg/PLAW-119publ21/uslm/PLAW-119publ21.xml
+  accessed_at: '2026-11-26'
+  locator: section 70105(a)(1)
+  value: $150,000
+  unit: currency:USD
+  snippet: $75,000 ($150,000 in the case of a joint return)
+  source_license: unstated
+  content_sha256: 762ae9af06640f023ddb9eb6f474ff7cfa275691de338d4fd985cfb04a7b6dea
+  role: primary
+- publisher: US Government Publishing Office (govinfo)
+  title: Public Law 119-21, 139 Stat. 72 (July 4, 2025), USLM XML
+  url: https://www.govinfo.gov/content/pkg/PLAW-119publ21/uslm/PLAW-119publ21.xml
+  accessed_at: '2026-11-26'
+  locator: section 70105(b)(1), new section 199A(i)(2)(A)
+  value: $1,000
+  unit: currency:USD
+  snippet: is at least $1,000.
+  source_license: unstated
+  content_sha256: 762ae9af06640f023ddb9eb6f474ff7cfa275691de338d4fd985cfb04a7b6dea
+  role: primary
+- publisher: US Government Publishing Office (govinfo)
+  title: Public Law 119-21, 139 Stat. 72 (July 4, 2025), USLM XML
+  url: https://www.govinfo.gov/content/pkg/PLAW-119publ21/uslm/PLAW-119publ21.xml
+  accessed_at: '2026-11-26'
+  locator: section 70105(c)
+  value: December 31, 2025
+  unit: date
+  snippet: The amendments made by this section shall apply to taxable years beginning after December 31, 2025.
+  source_license: unstated
+  content_sha256: 762ae9af06640f023ddb9eb6f474ff7cfa275691de338d4fd985cfb04a7b6dea
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-26'
+  locator: page 21, section 4.26
+  value: $403,500
+  unit: currency:USD
+  snippet: Married Individuals Filing Joint Returns $403,500
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-26'
+  locator: page 21, section 4.26
+  value: $201,750
+  unit: currency:USD
+  snippet: All Other Returns $201,750
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-26'
+  locator: page 7, section 2.12
+  value: $400
+  unit: currency:USD
+  snippet: amended § 199A(i) to add a minimum deduction of
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 11
+  tolerance: 0
+- statistic: value[threshold_other,value]
+  expected: 201750
+  tolerance: 0
+notes: Section 199A lets individuals and other non-corporate owners of pass-through businesses deduct 20 percent
+  of qualified business income, subject above a taxable-income threshold to wage and capital limits and the exclusion
+  of specified service businesses, phased in over a range above the threshold. Public Law 119-21 made the deduction
+  permanent (it was to end after 2025), widened the phase-in ranges and added a minimum deduction for taxpayers
+  with at least the stated amount of active qualified business income, effective for taxable years beginning after
+  2025. The 2026 thresholds and phase-in end points are those Rev. Proc. 2025-32 publishes; the phase-in end equals
+  the threshold plus the range. Works of the US federal government carry no copyright in the United States, but
+  the cited resources state no reuse terms, so the licence is recorded as unstated and the entry held at license-review.

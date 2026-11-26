@@ -1,0 +1,142 @@
+id: gb-bank-rate-changes-2025
+title: Bank of England Bank Rate in force through 2025, with the effective date of each change
+kind: rule
+domain: rates
+region: GB
+status: license-review
+tier: A
+valid_from: '2025-01-02'
+valid_to: null
+tags:
+- rates
+- financing
+- bank-of-england
+- sterling
+- policy-rate
+- step-schedule
+use_cases:
+- lbo-modelling
+- private-credit-demo
+- valuation-demo
+- treasury-demo
+- banking-demo
+- loan-pricing
+spec:
+  implementation: almanac.rules.step_schedule
+  parameters:
+    series: IUDBEDR (Official Bank Rate, daily)
+    unit: percent
+    steps:
+    - from: '2025-01-02'
+      value: 4.75
+    - from: '2025-02-06'
+      value: 4.5
+    - from: '2025-05-08'
+      value: 4.25
+    - from: '2025-08-07'
+      value: 4.0
+    - from: '2025-12-18'
+      value: 3.75
+  vectors:
+  - input:
+      'on': '2025-01-02'
+    expected: 4.75
+    origin: source
+  - input:
+      'on': '2025-02-06'
+    expected: 4.5
+    origin: source
+  - input:
+      'on': '2025-05-08'
+    expected: 4.25
+    origin: source
+  - input:
+      'on': '2025-08-07'
+    expected: 4.0
+    origin: source
+  - input:
+      'on': '2025-12-18'
+    expected: 3.75
+    origin: source
+  - input:
+      'on': '2025-12-31'
+    expected: 3.75
+    origin: derived
+    note: last step still in force at year end
+evidence:
+- publisher: Bank of England
+  title: Bank of England Database, series IUDSOIA and IUDBEDR, daily 2025 (CSV)
+  url: https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom=01/Jan/2025&Dateto=31/Dec/2025&SeriesCodes=IUDSOIA,IUDBEDR&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N
+  accessed_at: '2026-11-26'
+  locator: row DATE=02 Jan 2025, IUDBEDR
+  value: '4.75'
+  unit: percent
+  snippet: 02 Jan 2025,4.7,4.75
+  source_license: OGL-UK-3.0
+  content_sha256: a274f3c3ea20e37f577143bbfb78320a3d77aaa813ec74a6fa1281594dd4c67e
+  role: primary
+- publisher: Bank of England
+  title: Bank of England Database, series IUDSOIA and IUDBEDR, daily 2025 (CSV)
+  url: https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom=01/Jan/2025&Dateto=31/Dec/2025&SeriesCodes=IUDSOIA,IUDBEDR&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N
+  accessed_at: '2026-11-26'
+  locator: row DATE=06 Feb 2025, IUDBEDR
+  value: '4.5'
+  unit: percent
+  snippet: 06 Feb 2025,4.4544,4.5
+  source_license: OGL-UK-3.0
+  content_sha256: a274f3c3ea20e37f577143bbfb78320a3d77aaa813ec74a6fa1281594dd4c67e
+  role: primary
+- publisher: Bank of England
+  title: Bank of England Database, series IUDSOIA and IUDBEDR, daily 2025 (CSV)
+  url: https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom=01/Jan/2025&Dateto=31/Dec/2025&SeriesCodes=IUDSOIA,IUDBEDR&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N
+  accessed_at: '2026-11-26'
+  locator: row DATE=08 May 2025, IUDBEDR
+  value: '4.25'
+  unit: percent
+  snippet: 08 May 2025,4.21,4.25
+  source_license: OGL-UK-3.0
+  content_sha256: a274f3c3ea20e37f577143bbfb78320a3d77aaa813ec74a6fa1281594dd4c67e
+  role: primary
+- publisher: Bank of England
+  title: Bank of England Database, series IUDSOIA and IUDBEDR, daily 2025 (CSV)
+  url: https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom=01/Jan/2025&Dateto=31/Dec/2025&SeriesCodes=IUDSOIA,IUDBEDR&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N
+  accessed_at: '2026-11-26'
+  locator: row DATE=07 Aug 2025, IUDBEDR
+  value: '4'
+  unit: percent
+  snippet: 07 Aug 2025,3.9676,4
+  source_license: OGL-UK-3.0
+  content_sha256: a274f3c3ea20e37f577143bbfb78320a3d77aaa813ec74a6fa1281594dd4c67e
+  role: primary
+- publisher: Bank of England
+  title: Bank of England Database, series IUDSOIA and IUDBEDR, daily 2025 (CSV)
+  url: https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom=01/Jan/2025&Dateto=31/Dec/2025&SeriesCodes=IUDSOIA,IUDBEDR&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N
+  accessed_at: '2026-11-26'
+  locator: row DATE=18 Dec 2025, IUDBEDR
+  value: '3.75'
+  unit: percent
+  snippet: 18 Dec 2025,3.7264,3.75
+  source_license: OGL-UK-3.0
+  content_sha256: a274f3c3ea20e37f577143bbfb78320a3d77aaa813ec74a6fa1281594dd4c67e
+  role: primary
+assumed:
+- parameter: steps
+  value: change dates read from the daily Bank Rate series
+  method: derived
+  rationale: The schedule starts at the first business day of 2025 and adds a step on each business day whose Bank
+    Rate differs from the previous business day's in the daily IUDBEDR series.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+- statistic: value[2025-12-31]
+  expected: 3.75
+  tolerance: 1.0e-09
+notes: 'Bank of England Bank Rate as a step schedule over 2025: the rate on the first business day of the year and
+  each later change, dated by the first business day on which the daily series IUDBEDR shows the new rate. The Bank
+  of England''s legal notice states that reproduction of data in its Statistical Interactive Database is subject
+  to the UK Open Government Licence; that page is not byte-stable, so the statement is not cited as evidence and
+  the entry is held at license-review until the clause is confirmed.'

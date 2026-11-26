@@ -1,0 +1,129 @@
+id: nl-earnings-stripping-rule-article-15b
+title: 'Netherlands earnings-stripping rule (art. 15b Wet Vpb 1969, ATAD art. 4): net interest capped at 24.5% of
+  tax EBITDA or EUR 1 million'
+kind: rule
+domain: tax
+region: NL
+status: license-review
+tier: A
+valid_from: '2025-01-01'
+valid_to: null
+tags:
+- tax
+- private-equity
+- structuring
+- interest-limitation
+- earnings-stripping
+- atad
+- leverage
+- ebitda
+use_cases:
+- lbo-modelling
+- private-credit-demo
+- tax-demo
+- valuation-demo
+spec:
+  implementation: almanac.rules.interest_limitation
+  parameters:
+    currency: EUR
+    ratio_percent: 24.5
+    base: 'gecorrigeerde winst: taxable profit before the limitation plus depreciation, impairments and the net
+      interest balance (a tax EBITDA)'
+    allowance_floor: 1000000
+    exemption_threshold: null
+    gross_receipts_limit: null
+    carryforward: non-deductible net interest is carried forward without time limit
+  vectors:
+  - input:
+      earnings: 0
+      interest_expense: 1000000
+    expected: 1000000
+    origin: source
+    note: the EUR 1,000,000 amount of art. 15b(1)(b) is deductible whatever the profit
+  - input:
+      earnings: 10000000
+      interest_expense: 4000000
+      interest_income: 500000
+    expected: 2950000
+    origin: derived
+    note: interest income plus 24.5% of tax EBITDA
+  - input:
+      earnings: 10000000
+      interest_expense: 4000000
+      interest_income: 500000
+      output: disallowed
+    expected: 1050000
+    origin: derived
+    note: carried forward
+  - input:
+      earnings: 2000000
+      interest_expense: 900000
+    expected: 900000
+    origin: derived
+    note: below the EUR 1 million floor
+evidence:
+- publisher: Overheid.nl (Basiswettenbestand)
+  title: Wet op de vennootschapsbelasting 1969, version valid from 1 January 2026 (BWB XML)
+  url: https://repository.officiele-overheidspublicaties.nl/bwb/BWBR0002672/2026-01-01_0/xml/BWBR0002672_2026-01-01_0.xml
+  accessed_at: '2026-11-26'
+  locator: artikel 15b, lid 1, onderdeel a
+  value: 24,5%
+  unit: percent
+  snippet: 24,5% van de gecorrigeerde winst;
+  source_license: unstated
+  content_sha256: fd356a624ac95ed29cd21dd2326f50ccbac7577c15791e3dab18c8a936b1aea1
+  role: primary
+- publisher: Overheid.nl (Basiswettenbestand)
+  title: Wet op de vennootschapsbelasting 1969, version valid from 1 January 2026 (BWB XML)
+  url: https://repository.officiele-overheidspublicaties.nl/bwb/BWBR0002672/2026-01-01_0/xml/BWBR0002672_2026-01-01_0.xml
+  accessed_at: '2026-11-26'
+  locator: artikel 15b, lid 1, onderdeel b
+  value: € 1.000.000
+  unit: currency:EUR
+  snippet: € 1.000.000.
+  source_license: unstated
+  content_sha256: fd356a624ac95ed29cd21dd2326f50ccbac7577c15791e3dab18c8a936b1aea1
+  role: primary
+- publisher: Overheid.nl (Basiswettenbestand)
+  title: Wet op de vennootschapsbelasting 1969, version valid from 1 January 2026 (BWB XML)
+  url: https://repository.officiele-overheidspublicaties.nl/bwb/BWBR0002672/2026-01-01_0/xml/BWBR0002672_2026-01-01_0.xml
+  accessed_at: '2026-11-26'
+  locator: artikel 15b, attribute inwerking
+  value: '2025-01-01'
+  unit: date
+  snippet: inwerking="2025-01-01" label="Artikel 15b"
+  source_license: unstated
+  content_sha256: fd356a624ac95ed29cd21dd2326f50ccbac7577c15791e3dab18c8a936b1aea1
+  role: primary
+- publisher: Overheid.nl (Basiswettenbestand)
+  title: Wet op de vennootschapsbelasting 1969, version valid from 1 January 2026 (BWB XML)
+  url: https://repository.officiele-overheidspublicaties.nl/bwb/BWBR0002672/2026-01-01_0/xml/BWBR0002672_2026-01-01_0.xml
+  accessed_at: '2026-11-26'
+  locator: artikel 15b, lid 1
+  value: het hoogste van de volgende bedragen
+  unit: text
+  snippet: 'niet in aftrek voor zover dat meer bedraagt dan het hoogste van de volgende bedragen:'
+  source_license: unstated
+  content_sha256: fd356a624ac95ed29cd21dd2326f50ccbac7577c15791e3dab18c8a936b1aea1
+  role: primary
+assumed:
+- parameter: allowance_floor
+  value: 1000000
+  method: derived
+  rationale: The Act writes the amount as '€ 1.000.000' with Dutch thousands separators; the builder converts it.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: ratio_percent
+  expected: 24.5
+  tolerance: 0
+- statistic: allowance_floor
+  expected: 1000000
+  tolerance: 0
+notes: Article 15b of the Dutch Corporate Income Tax Act, which implements the interest limitation rule of the EU
+  Anti-Tax Avoidance Directive, denies a deduction for a company's net interest balance on loans to the extent it
+  exceeds the higher of a percentage of its adjusted profit (a tax EBITDA) and a fixed amount. The percentage has
+  been 24.5% for years from 2025 (the article's current text took effect on the inwerking date the XML records);
+  disallowed interest carries forward to later years. Dutch statutes carry no copyright under the Auteurswet, but
+  the BWB XML carries no licence statement, so the licence is recorded as unstated and the entry stays at license-review.

@@ -1,0 +1,197 @@
+id: gb-carried-interest-income-tax-regime
+title: 'UK carried interest regime from 2026-27 (ITTOIA 2005 s. 23I, Sch. A1): 72.5% of qualifying carry taxed as
+  trading profits, holding-period bands'
+kind: rule
+domain: tax
+region: GB
+status: license-review
+tier: A
+valid_from: '2026-04-06'
+valid_to: null
+tags:
+- tax
+- private-equity
+- structuring
+- carried-interest
+- fund-manager
+- income-tax
+- capital-gains-tax
+use_cases:
+- fund-administration-demo
+- tax-demo
+- lbo-modelling
+spec:
+  implementation: almanac.rules.gb_carried_interest
+  parameters:
+    currency: GBP
+    qualifying_fraction_percent: 72.5
+    holding_period_bands:
+    - min_months: 0
+      max_months: 36
+      qualifying_percent: 0
+    - min_months: 36
+      max_months: 37
+      qualifying_percent: 20
+    - min_months: 37
+      max_months: 38
+      qualifying_percent: 40
+    - min_months: 38
+      max_months: 39
+      qualifying_percent: 60
+    - min_months: 39
+      max_months: 40
+      qualifying_percent: 80
+    - min_months: 40
+      max_months: null
+      qualifying_percent: 100
+    first_tax_year: 2026-27
+    capital_gains_tax_before_regime:
+      rates_percent_to_2025_04_05:
+      - 18
+      - 28
+      rate_percent_from:
+        from: '2025-04-06'
+        value: 32
+      note: carried interest gains were charged to CGT until the income tax regime took effect for 2026-27
+  vectors:
+  - input:
+      average_holding_months: 35
+    expected: 0
+    origin: source
+    note: 'Sch. A1 para. 12(2): less than 36 months'
+  - input:
+      average_holding_months: 36
+    expected: 20
+    origin: source
+    note: at least 36 but less than 37 months
+  - input:
+      average_holding_months: 39.5
+    expected: 80
+    origin: source
+    note: at least 39 but less than 40 months
+  - input:
+      average_holding_months: 48
+    expected: 100
+    origin: source
+    note: 40 months or more
+  - input:
+      average_holding_months: 48
+      carried_interest: 1000000
+    expected: 725000
+    origin: derived
+    note: 'wholly qualifying: 72.5% taxed'
+  - input:
+      average_holding_months: 30
+      carried_interest: 1000000
+    expected: 1000000
+    origin: derived
+    note: 'wholly non-qualifying: taxed in full'
+  - input:
+      average_holding_months: 37
+      carried_interest: 1000000
+      permitted_deductions: 100000
+    expected: 801000
+    origin: derived
+    note: '40% qualifying of 900,000 net: 540,000 + 72.5% of 360,000'
+evidence:
+- publisher: The National Archives (legislation.gov.uk)
+  title: Finance Act 2026, section 58, Carried interest (legislation.gov.uk XML, version of 2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2026/11/section/58/2026-11-26/data.xml
+  accessed_at: '2026-11-26'
+  locator: section 58(2), new ITTOIA 2005 s. 23I(2)(b)
+  value: 72.5%
+  unit: percent
+  snippet: the sum of the non-qualifying profits of the trade and 72.5% of the qualifying profits of the trade
+  source_license: unstated
+  content_sha256: 01bde47c5cc8b2c1a5de5183733481ef577a900b6628b929f7875b89a2a01084
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Finance Act 2026, section 58, Carried interest (legislation.gov.uk XML, version of 2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2026/11/section/58/2026-11-26/data.xml
+  accessed_at: '2026-11-26'
+  locator: section 58(6)
+  value: 2026-27
+  unit: text
+  snippet: have effect for the tax year 2026-27 and subsequent tax years
+  source_license: unstated
+  content_sha256: 01bde47c5cc8b2c1a5de5183733481ef577a900b6628b929f7875b89a2a01084
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Finance Act 2026, Schedule 11, Carried interest (legislation.gov.uk XML, version of 2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2026/11/schedule/11/2026-11-26/data.xml
+  accessed_at: '2026-11-26'
+  locator: Part 1, new Sch. A1 para. 12(2)
+  value: Less than 36 months
+  unit: text
+  snippet: Less than 36 months
+  source_license: unstated
+  content_sha256: 189675b9d5abb3e07b151edab1227a9788cfd19ccd7de83b4ea8d7325b32e58a
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Finance Act 2026, Schedule 11, Carried interest (legislation.gov.uk XML, version of 2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2026/11/schedule/11/2026-11-26/data.xml
+  accessed_at: '2026-11-26'
+  locator: Part 1, new Sch. A1 para. 12(2)
+  value: 40 months or more
+  unit: text
+  snippet: 40 months or more
+  source_license: unstated
+  content_sha256: 189675b9d5abb3e07b151edab1227a9788cfd19ccd7de83b4ea8d7325b32e58a
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Finance Act 2025, section 12, Rate of CGT for carried interest gains (legislation.gov.uk XML, version of
+    2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2025/8/section/12/2026-11-26/data.xml
+  accessed_at: '2026-11-26'
+  locator: section 12(1)(c), new TCGA 1992 s. 1H(4B)
+  value: 32%
+  unit: percent
+  snippet: charged to capital gains tax at a rate of 32%
+  source_license: unstated
+  content_sha256: fcad91c39fc0b89c1bb3d5dc1671a7e27fdfc2f006e99d85aa5dbc95a45fdb2f
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Finance Act 2025, section 12, Rate of CGT for carried interest gains (legislation.gov.uk XML, version of
+    2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2025/8/section/12/2026-11-26/data.xml
+  accessed_at: '2026-11-26'
+  locator: section 12(3)
+  value: 6 April 2025
+  unit: date
+  snippet: have effect in relation to carried interest arising on or after 6 April 2025
+  source_license: unstated
+  content_sha256: fcad91c39fc0b89c1bb3d5dc1671a7e27fdfc2f006e99d85aa5dbc95a45fdb2f
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Finance Act 2025, section 12, Rate of CGT for carried interest gains (legislation.gov.uk XML, version of
+    2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2025/8/section/12/2026-11-26/data.xml
+  accessed_at: '2026-11-26'
+  locator: section 12(1)(a)
+  value: 28%
+  unit: percent
+  snippet: which provides for rates of 18% or 28% on carried interest gains
+  source_license: unstated
+  content_sha256: fcad91c39fc0b89c1bb3d5dc1671a7e27fdfc2f006e99d85aa5dbc95a45fdb2f
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 6
+  tolerance: 0
+- statistic: qualifying_fraction_percent
+  expected: 72.5
+  tolerance: 0
+notes: From the 2026-27 tax year carried interest arising to an individual who performs investment management services
+  is taxed as the profits of a deemed trade (income tax and Class 4 National Insurance) instead of as a capital
+  gain. Qualifying carried interest enters the profits at 72.5% of its amount; the qualifying share of each sum
+  depends on the investment scheme's average holding period, from none below 36 months rising by 20 points a month
+  to all of it at 40 months or more. Before the regime, carried interest gains were charged to Capital Gains Tax
+  at 18% or 28% and, for carried interest arising on or after 6 April 2025, at a single 32% rate. The rule does
+  not model the exceptions treating carried interest as wholly qualifying, the territorial scope or the holding
+  period averaging adjustments. legislation.gov.uk publishes Crown copyright legislation for reuse, but the cited
+  resource carries no licence statement of its own, so the licence is recorded as unstated and the entry held at
+  license-review.

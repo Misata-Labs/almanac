@@ -1,0 +1,711 @@
+id: eu-enterprise-demography-by-legal-form-2024
+title: Active enterprises, births, deaths and employment by legal form, EU27 and ten member states, 2024 (Eurostat
+  bd_l_form)
+kind: rule
+domain: business
+region: EU
+status: verified
+tier: A
+valid_from: '2024-01-01'
+valid_to: '2024-12-31'
+tags:
+- firms
+- business
+- smes
+- size-class
+- business-demography
+- legal-form
+- births
+- deaths
+- eurostat
+- by-country
+use_cases:
+- pe-portfolio-demo
+- deal-sourcing-demo
+- synthetic-companies
+- valuation-demo
+- kyb-onboarding
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    dataflow: bd_l_form
+    key: A.ENT_NR+ENT_BRTH_NR+ENT_DTH_NR+ENT_BRTHR_PC+ENT_DTHR_PC+EMP_NR+SAL_NR.TOTAL+ENT_LL+ENT_PA+ENT_SOLE.B-S_X_O_S94.EU27_2020+DE+FR+IT+ES+NL+PL+SE+BE+AT+IE
+    period: '2024'
+    legal_forms:
+      TOTAL: Total
+      ENT_LL: Limited liability enterprise
+      ENT_PA: Partnership, co-operatives, associations, etc.
+      ENT_SOLE: Sole proprietorship
+    rows:
+      AT|ENT_LL:
+        geo_name: Austria
+        legal_form: Limited liability enterprise
+        active_enterprises: 127409
+        enterprise_births: 5854
+        enterprise_deaths: 5763
+        birth_rate_percent: 4.59
+        death_rate_percent: 4.52
+        persons_employed: 2447885
+        employees: 2312803
+        share_of_active_enterprises: 0.202862
+        share_of_persons_employed: 0.644042
+        persons_employed_per_enterprise: 19.213
+      AT|ENT_PA:
+        geo_name: Austria
+        legal_form: Partnership, co-operatives, associations, etc.
+        active_enterprises: 52755
+        enterprise_births: 2447
+        enterprise_deaths: 3056
+        birth_rate_percent: 4.64
+        death_rate_percent: 5.79
+        persons_employed: 551558
+        employees: 477812
+        share_of_active_enterprises: 0.083997
+        share_of_persons_employed: 0.145116
+        persons_employed_per_enterprise: 10.455
+      AT|ENT_SOLE:
+        geo_name: Austria
+        legal_form: Sole proprietorship
+        active_enterprises: 447894
+        enterprise_births: 31253
+        enterprise_deaths: 24511
+        birth_rate_percent: 6.98
+        death_rate_percent: 5.47
+        persons_employed: 801370
+        employees: 351410
+        share_of_active_enterprises: 0.713141
+        share_of_persons_employed: 0.210842
+        persons_employed_per_enterprise: 1.789
+      AT|TOTAL:
+        geo_name: Austria
+        legal_form: Total
+        active_enterprises: 628058
+        enterprise_births: 39554
+        enterprise_deaths: 33330
+        birth_rate_percent: 6.3
+        death_rate_percent: 5.31
+        persons_employed: 3800813
+        employees: 3142025
+        share_of_active_enterprises: 1.0
+        share_of_persons_employed: 1.0
+        persons_employed_per_enterprise: 6.052
+      BE|ENT_LL:
+        geo_name: Belgium
+        legal_form: Limited liability enterprise
+        active_enterprises: 586492
+        enterprise_births: 38101
+        enterprise_deaths: 14664
+        birth_rate_percent: 6.5
+        death_rate_percent: 2.5
+        persons_employed: 3329219
+        employees: 2924172
+        share_of_active_enterprises: 0.629685
+        share_of_persons_employed: 0.839592
+        persons_employed_per_enterprise: 5.676
+      BE|ENT_PA:
+        geo_name: Belgium
+        legal_form: Partnership, co-operatives, associations, etc.
+        active_enterprises: 82388
+        enterprise_births: 9149
+        enterprise_deaths: 11531
+        birth_rate_percent: 11.1
+        death_rate_percent: 14.0
+        persons_employed: 326951
+        employees: 163733
+        share_of_active_enterprises: 0.088456
+        share_of_persons_employed: 0.082453
+        persons_employed_per_enterprise: 3.968
+      BE|ENT_SOLE:
+        geo_name: Belgium
+        legal_form: Sole proprietorship
+        active_enterprises: 262525
+        enterprise_births: 27279
+        enterprise_deaths: 26653
+        birth_rate_percent: 10.39
+        death_rate_percent: 10.15
+        persons_employed: 309112
+        employees: 41320
+        share_of_active_enterprises: 0.281859
+        share_of_persons_employed: 0.077955
+        persons_employed_per_enterprise: 1.177
+      BE|TOTAL:
+        geo_name: Belgium
+        legal_form: Total
+        active_enterprises: 931405
+        enterprise_births: 74529
+        enterprise_deaths: 52848
+        birth_rate_percent: 8.0
+        death_rate_percent: 5.67
+        persons_employed: 3965283
+        employees: 3129227
+        share_of_active_enterprises: 1.0
+        share_of_persons_employed: 1.0
+        persons_employed_per_enterprise: 4.257
+      DE|ENT_LL:
+        geo_name: Germany
+        legal_form: Limited liability enterprise
+        active_enterprises: 744556
+        enterprise_births: 48822
+        enterprise_deaths: 51963
+        birth_rate_percent: 6.56
+        death_rate_percent: 6.98
+        persons_employed: 22086969
+        employees: 21975073
+        share_of_active_enterprises: 0.229735
+        share_of_persons_employed: 0.554816
+        persons_employed_per_enterprise: 29.665
+      DE|ENT_PA:
+        geo_name: Germany
+        legal_form: Partnership, co-operatives, associations, etc.
+        active_enterprises: 450676
+        enterprise_births: 28895
+        enterprise_deaths: 37028
+        birth_rate_percent: 6.41
+        death_rate_percent: 8.22
+        persons_employed: 10023155
+        employees: 9195684
+        share_of_active_enterprises: 0.139057
+        share_of_persons_employed: 0.251778
+        persons_employed_per_enterprise: 22.24
+      DE|ENT_SOLE:
+        geo_name: Germany
+        legal_form: Sole proprietorship
+        active_enterprises: 2045707
+        enterprise_births: 174373
+        enterprise_deaths: 242599
+        birth_rate_percent: 8.52
+        death_rate_percent: 11.86
+        persons_employed: 7699416
+        employees: 5696690
+        share_of_active_enterprises: 0.631208
+        share_of_persons_employed: 0.193406
+        persons_employed_per_enterprise: 3.764
+      DE|TOTAL:
+        geo_name: Germany
+        legal_form: Total
+        active_enterprises: 3240939
+        enterprise_births: 252090
+        enterprise_deaths: 331590
+        birth_rate_percent: 7.78
+        death_rate_percent: 10.23
+        persons_employed: 39809540
+        employees: 36867447
+        share_of_active_enterprises: 1.0
+        share_of_persons_employed: 1.0
+        persons_employed_per_enterprise: 12.283
+      ES|ENT_LL:
+        geo_name: Spain
+        legal_form: Limited liability enterprise
+        active_enterprises: 1240582
+        enterprise_births: 87672
+        enterprise_deaths: 55416
+        birth_rate_percent: 7.07
+        death_rate_percent: 4.47
+        persons_employed: 12149268
+        employees: 11638338
+        share_of_active_enterprises: 0.349177
+        share_of_persons_employed: 0.744473
+        persons_employed_per_enterprise: 9.793
+      ES|ENT_PA:
+        geo_name: Spain
+        legal_form: Partnership, co-operatives, associations, etc.
+        active_enterprises: 227473
+        enterprise_births: 14988
+        enterprise_deaths: 13098
+        birth_rate_percent: 6.59
+        death_rate_percent: 5.76
+        persons_employed: 1183557
+        employees: 989337
+        share_of_active_enterprises: 0.064025
+        share_of_persons_employed: 0.072525
+        persons_employed_per_enterprise: 5.203
+      ES|ENT_SOLE:
+        geo_name: Spain
+        legal_form: Sole proprietorship
+        active_enterprises: 2084817
+        enterprise_births: 232129
+        enterprise_deaths: 201078
+        birth_rate_percent: 11.13
+        death_rate_percent: 9.64
+        persons_employed: 2986473
+        employees: 1136643
+        share_of_active_enterprises: 0.586798
+        share_of_persons_employed: 0.183003
+        persons_employed_per_enterprise: 1.432
+      ES|TOTAL:
+        geo_name: Spain
+        legal_form: Total
+        active_enterprises: 3552872
+        enterprise_births: 334789
+        enterprise_deaths: 269592
+        birth_rate_percent: 9.42
+        death_rate_percent: 7.59
+        persons_employed: 16319296
+        employees: 13764318
+        share_of_active_enterprises: 1.0
+        share_of_persons_employed: 1.0
+        persons_employed_per_enterprise: 4.593
+      EU27_2020|ENT_LL:
+        geo_name: European Union - 27 countries (from 2020)
+        legal_form: Limited liability enterprise
+        active_enterprises: 11266939
+        enterprise_births: 939567
+        enterprise_deaths: 731151
+        birth_rate_percent: 8.34
+        death_rate_percent: 6.49
+        persons_employed: 114082518
+        employees: 109235206
+        share_of_active_enterprises: 0.329553
+        share_of_persons_employed: 0.686564
+        persons_employed_per_enterprise: 10.125
+      EU27_2020|ENT_PA:
+        geo_name: European Union - 27 countries (from 2020)
+        legal_form: Partnership, co-operatives, associations, etc.
+        active_enterprises: 2127388
+        enterprise_births: 143461
+        enterprise_deaths: 134288
+        birth_rate_percent: 6.74
+        death_rate_percent: 6.31
+        persons_employed: 21282004
+        employees: 18444687
+        share_of_active_enterprises: 0.062225
+        share_of_persons_employed: 0.128078
+        persons_employed_per_enterprise: 10.004
+      EU27_2020|ENT_SOLE:
+        geo_name: European Union - 27 countries (from 2020)
+        legal_form: Sole proprietorship
+        active_enterprises: 20794237
+        enterprise_births: 2458454
+        enterprise_deaths: 2278343
+        birth_rate_percent: 11.82
+        death_rate_percent: 10.96
+        persons_employed: 30799887
+        employees: 12426602
+        share_of_active_enterprises: 0.608222
+        share_of_persons_employed: 0.185358
+        persons_employed_per_enterprise: 1.481
+      EU27_2020|TOTAL:
+        geo_name: European Union - 27 countries (from 2020)
+        legal_form: Total
+        active_enterprises: 34188564
+        enterprise_births: 3541482
+        enterprise_deaths: 3143782
+        birth_rate_percent: 10.36
+        death_rate_percent: 9.2
+        persons_employed: 166164407
+        employees: 140106496
+        share_of_active_enterprises: 1.0
+        share_of_persons_employed: 1.0
+        persons_employed_per_enterprise: 4.86
+      FR|ENT_LL:
+        geo_name: France
+        legal_form: Limited liability enterprise
+        active_enterprises: 2337394
+        enterprise_births: 242745
+        enterprise_deaths: 163685
+        birth_rate_percent: 10.39
+        death_rate_percent: 7.0
+        persons_employed: 18752126
+        employees: 17557816
+        share_of_active_enterprises: 0.41622
+        share_of_persons_employed: 0.852731
+        persons_employed_per_enterprise: 8.023
+      FR|ENT_PA:
+        geo_name: France
+        legal_form: Partnership, co-operatives, associations, etc.
+        active_enterprises: 41137
+        enterprise_births: 2143
+        enterprise_deaths: 2045
+        birth_rate_percent: 5.21
+        death_rate_percent: 4.97
+        persons_employed: 687081
+        employees: 686728
+        share_of_active_enterprises: 0.007325
+        share_of_persons_employed: 0.031244
+        persons_employed_per_enterprise: 16.702
+      FR|ENT_SOLE:
+        geo_name: France
+        legal_form: Sole proprietorship
+        active_enterprises: 3237234
+        enterprise_births: 554220
+        enterprise_deaths: 449350
+        birth_rate_percent: 17.12
+        death_rate_percent: 13.88
+        persons_employed: 2551469
+        employees: 304957
+        share_of_active_enterprises: 0.576455
+        share_of_persons_employed: 0.116025
+        persons_employed_per_enterprise: 0.788
+      FR|TOTAL:
+        geo_name: France
+        legal_form: Total
+        active_enterprises: 5615765
+        enterprise_births: 799108
+        enterprise_deaths: 615080
+        birth_rate_percent: 14.23
+        death_rate_percent: 10.95
+        persons_employed: 21990675
+        employees: 18549500
+        share_of_active_enterprises: 1.0
+        share_of_persons_employed: 1.0
+        persons_employed_per_enterprise: 3.916
+      IE|ENT_LL:
+        geo_name: Ireland
+        legal_form: Limited liability enterprise
+        active_enterprises: 185446
+        enterprise_births: 17142
+        enterprise_deaths: 58637
+        birth_rate_percent: 9.24
+        death_rate_percent: 31.62
+        persons_employed: 1842957
+        employees: 1842147
+        share_of_active_enterprises: 0.452081
+        share_of_persons_employed: 0.758898
+        persons_employed_per_enterprise: 9.938
+      IE|ENT_PA:
+        geo_name: Ireland
+        legal_form: Partnership, co-operatives, associations, etc.
+        active_enterprises: 10870
+        enterprise_births: 2248
+        enterprise_deaths: 1216
+        birth_rate_percent: 20.68
+        death_rate_percent: 11.19
+        persons_employed: 285054
+        employees: 273157
+        share_of_active_enterprises: 0.026499
+        share_of_persons_employed: 0.11738
+        persons_employed_per_enterprise: 26.224
+      IE|ENT_SOLE:
+        geo_name: Ireland
+        legal_form: Sole proprietorship
+        active_enterprises: 213889
+        enterprise_births: 25028
+        enterprise_deaths: 9301
+        birth_rate_percent: 11.7
+        death_rate_percent: 4.35
+        persons_employed: 300453
+        employees: 87394
+        share_of_active_enterprises: 0.52142
+        share_of_persons_employed: 0.123721
+        persons_employed_per_enterprise: 1.405
+      IE|TOTAL:
+        geo_name: Ireland
+        legal_form: Total
+        active_enterprises: 410205
+        enterprise_births: 44418
+        enterprise_deaths: 69154
+        birth_rate_percent: 10.83
+        death_rate_percent: 16.86
+        persons_employed: 2428464
+        employees: 2202698
+        share_of_active_enterprises: 1.0
+        share_of_persons_employed: 1.0
+        persons_employed_per_enterprise: 5.92
+      IT|ENT_LL:
+        geo_name: Italy
+        legal_form: Limited liability enterprise
+        active_enterprises: 1033012
+        enterprise_births: 74199
+        enterprise_deaths: 52498
+        birth_rate_percent: 7.18
+        death_rate_percent: 5.08
+        persons_employed: 11463250
+        employees: 10866640
+        share_of_active_enterprises: 0.222637
+        share_of_persons_employed: 0.608193
+        persons_employed_per_enterprise: 11.097
+      IT|ENT_PA:
+        geo_name: Italy
+        legal_form: Partnership, co-operatives, associations, etc.
+        active_enterprises: 560251
+        enterprise_births: 10116
+        enterprise_deaths: 19591
+        birth_rate_percent: 1.81
+        death_rate_percent: 3.5
+        persons_employed: 3065466
+        employees: 2143843
+        share_of_active_enterprises: 0.120747
+        share_of_persons_employed: 0.162641
+        persons_employed_per_enterprise: 5.472
+      IT|ENT_SOLE:
+        geo_name: Italy
+        legal_form: Sole proprietorship
+        active_enterprises: 3046627
+        enterprise_births: 283961
+        enterprise_deaths: 225731
+        birth_rate_percent: 9.32
+        death_rate_percent: 7.41
+        persons_employed: 4319322
+        employees: 1139724
+        share_of_active_enterprises: 0.656616
+        share_of_persons_employed: 0.229166
+        persons_employed_per_enterprise: 1.418
+      IT|TOTAL:
+        geo_name: Italy
+        legal_form: Total
+        active_enterprises: 4639890
+        enterprise_births: 368276
+        enterprise_deaths: 297820
+        birth_rate_percent: 7.94
+        death_rate_percent: 6.42
+        persons_employed: 18848038
+        employees: 14150207
+        share_of_active_enterprises: 1.0
+        share_of_persons_employed: 1.0
+        persons_employed_per_enterprise: 4.062
+      NL|ENT_LL:
+        geo_name: Netherlands
+        legal_form: Limited liability enterprise
+        active_enterprises: 487135
+        enterprise_births: 29215
+        enterprise_deaths: 17869
+        birth_rate_percent: 6.0
+        death_rate_percent: 3.67
+        persons_employed: 5716837
+        employees: 5627234
+        share_of_active_enterprises: 0.200939
+        share_of_persons_employed: 0.654207
+        persons_employed_per_enterprise: 11.736
+      NL|ENT_PA:
+        geo_name: Netherlands
+        legal_form: Partnership, co-operatives, associations, etc.
+        active_enterprises: 219743
+        enterprise_births: 14317
+        enterprise_deaths: 16050
+        birth_rate_percent: 6.52
+        death_rate_percent: 7.3
+        persons_employed: 1792554
+        employees: 1604597
+        share_of_active_enterprises: 0.090642
+        share_of_persons_employed: 0.205131
+        persons_employed_per_enterprise: 8.158
+      NL|ENT_SOLE:
+        geo_name: Netherlands
+        legal_form: Sole proprietorship
+        active_enterprises: 1717419
+        enterprise_births: 154178
+        enterprise_deaths: 124117
+        birth_rate_percent: 8.98
+        death_rate_percent: 7.23
+        persons_employed: 1229181
+        employees: 231361
+        share_of_active_enterprises: 0.708419
+        share_of_persons_employed: 0.140662
+        persons_employed_per_enterprise: 0.716
+      NL|TOTAL:
+        geo_name: Netherlands
+        legal_form: Total
+        active_enterprises: 2424297
+        enterprise_births: 197710
+        enterprise_deaths: 158036
+        birth_rate_percent: 8.16
+        death_rate_percent: 6.52
+        persons_employed: 8738572
+        employees: 7463192
+        share_of_active_enterprises: 1.0
+        share_of_persons_employed: 1.0
+        persons_employed_per_enterprise: 3.605
+      PL|ENT_LL:
+        geo_name: Poland
+        legal_form: Limited liability enterprise
+        active_enterprises: 302680
+        enterprise_births: 44633
+        enterprise_deaths: 9540
+        birth_rate_percent: 14.75
+        death_rate_percent: 3.15
+        persons_employed: 6013140
+        employees: 5854551
+        share_of_active_enterprises: 0.107289
+        share_of_persons_employed: 0.52176
+        persons_employed_per_enterprise: 19.866
+      PL|ENT_PA:
+        geo_name: Poland
+        legal_form: Partnership, co-operatives, associations, etc.
+        active_enterprises: 58623
+        enterprise_births: 2049
+        enterprise_deaths: 2951
+        birth_rate_percent: 3.5
+        death_rate_percent: 5.03
+        persons_employed: 1015305
+        employees: 978917
+        share_of_active_enterprises: 0.02078
+        share_of_persons_employed: 0.088098
+        persons_employed_per_enterprise: 17.319
+      PL|ENT_SOLE:
+        geo_name: Poland
+        legal_form: Sole proprietorship
+        active_enterprises: 2459867
+        enterprise_births: 270480
+        enterprise_deaths: 331468
+        birth_rate_percent: 11.0
+        death_rate_percent: 13.48
+        persons_employed: 4496290
+        employees: 2086588
+        share_of_active_enterprises: 0.871932
+        share_of_persons_employed: 0.390143
+        persons_employed_per_enterprise: 1.828
+      PL|TOTAL:
+        geo_name: Poland
+        legal_form: Total
+        active_enterprises: 2821170
+        enterprise_births: 317162
+        enterprise_deaths: 343959
+        birth_rate_percent: 11.24
+        death_rate_percent: 12.19
+        persons_employed: 11524735
+        employees: 8920056
+        share_of_active_enterprises: 1.0
+        share_of_persons_employed: 1.0
+        persons_employed_per_enterprise: 4.085
+      SE|ENT_LL:
+        geo_name: Sweden
+        legal_form: Limited liability enterprise
+        active_enterprises: 528332
+        enterprise_births: 33474
+        enterprise_deaths: 34122
+        birth_rate_percent: 6.34
+        death_rate_percent: 6.46
+        persons_employed: 3566769
+        employees: 3558927
+        share_of_active_enterprises: 0.604583
+        share_of_persons_employed: 0.876727
+        persons_employed_per_enterprise: 6.751
+      SE|ENT_PA:
+        geo_name: Sweden
+        legal_form: Partnership, co-operatives, associations, etc.
+        active_enterprises: 40568
+        enterprise_births: 6844
+        enterprise_deaths: 5091
+        birth_rate_percent: 16.87
+        death_rate_percent: 12.55
+        persons_employed: 159828
+        employees: 111902
+        share_of_active_enterprises: 0.046423
+        share_of_persons_employed: 0.039286
+        persons_employed_per_enterprise: 3.94
+      SE|ENT_SOLE:
+        geo_name: Sweden
+        legal_form: Sole proprietorship
+        active_enterprises: 304978
+        enterprise_births: 38551
+        enterprise_deaths: 28076
+        birth_rate_percent: 12.64
+        death_rate_percent: 9.21
+        persons_employed: 341679
+        employees: 36701
+        share_of_active_enterprises: 0.348994
+        share_of_persons_employed: 0.083986
+        persons_employed_per_enterprise: 1.12
+      SE|TOTAL:
+        geo_name: Sweden
+        legal_form: Total
+        active_enterprises: 873878
+        enterprise_births: 78869
+        enterprise_deaths: 67289
+        birth_rate_percent: 9.03
+        death_rate_percent: 7.7
+        persons_employed: 4068276
+        employees: 3707530
+        share_of_active_enterprises: 1.0
+        share_of_persons_employed: 1.0
+        persons_employed_per_enterprise: 4.655
+  vectors:
+  - input:
+      key: FR|ENT_LL
+      column: active_enterprises
+    expected: 2337394
+    origin: source
+  - input:
+      key: IT|ENT_SOLE
+      column: birth_rate_percent
+    expected: 9.32
+    origin: source
+  - input:
+      key: NL|ENT_PA
+      column: active_enterprises
+    expected: 219743
+    origin: source
+  - input:
+      key: DE|ENT_LL
+      column: share_of_active_enterprises
+    expected: 0.229735
+    origin: derived
+    note: active_enterprises / active_enterprises of DE|TOTAL
+  - input: FR|ENT_COOP
+    expected: false
+    origin: derived
+    note: only the three broad legal forms and the total are kept
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow bd_l_form (business demography by legal form and NACE Rev. 2 activity),
+    SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/bd_l_form/A.ENT_NR+ENT_BRTH_NR+ENT_DTH_NR+ENT_BRTHR_PC+ENT_DTHR_PC+EMP_NR+SAL_NR.TOTAL+ENT_LL+ENT_PA+ENT_SOLE.B-S_X_O_S94.EU27_2020+DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-11-26'
+  locator: indic_sbs=ENT_NR, leg_form=ENT_LL, nace_r2=B-S_X_O_S94, geo=FR, TIME_PERIOD=2024, OBS_VALUE
+  value: '2337394'
+  unit: count
+  snippet: ENT_NR,ENT_LL,B-S_X_O_S94,FR,2024,2337394
+  source_license: CC-BY-4.0
+  content_sha256: 87c044a86ff09bce05199bf4ef4fa058410dfd4f02932dca872c5e3139575d4e
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow bd_l_form (business demography by legal form and NACE Rev. 2 activity),
+    SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/bd_l_form/A.ENT_NR+ENT_BRTH_NR+ENT_DTH_NR+ENT_BRTHR_PC+ENT_DTHR_PC+EMP_NR+SAL_NR.TOTAL+ENT_LL+ENT_PA+ENT_SOLE.B-S_X_O_S94.EU27_2020+DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-11-26'
+  locator: indic_sbs=ENT_BRTHR_PC, leg_form=ENT_SOLE, nace_r2=B-S_X_O_S94, geo=IT, TIME_PERIOD=2024, OBS_VALUE
+  value: '9.32'
+  unit: percent
+  snippet: ENT_BRTHR_PC,ENT_SOLE,B-S_X_O_S94,IT,2024,9.32
+  source_license: CC-BY-4.0
+  content_sha256: 87c044a86ff09bce05199bf4ef4fa058410dfd4f02932dca872c5e3139575d4e
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow bd_l_form (business demography by legal form and NACE Rev. 2 activity),
+    SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/bd_l_form/A.ENT_NR+ENT_BRTH_NR+ENT_DTH_NR+ENT_BRTHR_PC+ENT_DTHR_PC+EMP_NR+SAL_NR.TOTAL+ENT_LL+ENT_PA+ENT_SOLE.B-S_X_O_S94.EU27_2020+DE+FR+IT+ES+NL+PL+SE+BE+AT+IE?startPeriod=2024&endPeriod=2024&format=SDMX-CSV
+  accessed_at: '2026-11-26'
+  locator: indic_sbs=ENT_NR, leg_form=ENT_PA, nace_r2=B-S_X_O_S94, geo=NL, TIME_PERIOD=2024, OBS_VALUE
+  value: '219743'
+  unit: count
+  snippet: ENT_NR,ENT_PA,B-S_X_O_S94,NL,2024,219743
+  source_license: CC-BY-4.0
+  content_sha256: 87c044a86ff09bce05199bf4ef4fa058410dfd4f02932dca872c5e3139575d4e
+  role: primary
+assumed:
+- parameter: rows[*].share_of_active_enterprises
+  value: active_enterprises / active_enterprises of the country's TOTAL row
+  method: derived
+  rationale: Legal-form mix of the active enterprise population, for assigning a legal form to a synthetic company;
+    share_of_persons_employed does the same for employment. The three forms need not add up to the total, which
+    also covers other legal forms.
+- parameter: rows[*].persons_employed_per_enterprise
+  value: persons_employed / active_enterprises
+  method: derived
+  rationale: Average size of an active enterprise of the legal form.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 44
+  tolerance: 0
+- statistic: value[FR|ENT_LL,active_enterprises]
+  expected: 2337394
+  tolerance: 0
+- statistic: max[share_of_active_enterprises]
+  expected: 1.0
+  tolerance: 0
+notes: 'Business demography by legal form for 2024 from Eurostat dataflow bd_l_form for the business economy aggregate
+  B-S_X_O_S94, one row per country and legal form keyed geo|leg_form for the EU27 and DE, FR, IT, ES, NL, PL, SE,
+  BE, AT and IE: TOTAL (Total), ENT_LL (Limited liability enterprise), ENT_PA (Partnership, co-operatives, associations,
+  etc.), ENT_SOLE (Sole proprietorship). Published columns: active enterprises, enterprise births and deaths, the
+  birth and death rates (births or deaths over active enterprises, in percent), persons employed and employees;
+  derived columns give the legal form''s share of active enterprises and persons employed and its average headcount.
+  Observation flags published with the data: break in time series (b) on DE|ENT_LL, DE|ENT_PA, DE|ENT_SOLE, DE|TOTAL;
+  estimated (e) on DE|ENT_LL, DE|ENT_PA, DE|ENT_SOLE, DE|TOTAL, ES|ENT_LL, ES|ENT_PA, ES|ENT_SOLE, ES|TOTAL, IT|ENT_LL,
+  IT|ENT_PA, IT|ENT_SOLE, IT|TOTAL and 4 more; provisional (p) on AT|ENT_LL, AT|ENT_PA, AT|ENT_SOLE, AT|TOTAL, BE|ENT_LL,
+  BE|ENT_PA, BE|ENT_SOLE, BE|TOTAL, DE|ENT_LL, DE|ENT_PA, DE|ENT_SOLE, DE|TOTAL and 32 more. Eurostat''s copyright
+  notice states that its data are released under the Creative Commons Attribution 4.0 International licence; the
+  notice page renders dynamically and is referenced rather than hashed.'

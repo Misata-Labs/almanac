@@ -1,0 +1,152 @@
+id: gb-corporate-bodies-by-sic-section-2025-26
+title: SIC 2007 sections declared by UK corporate bodies on the Companies House register, 2025-26
+kind: marginal
+domain: company
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2025-04-01'
+  end: '2026-03-31'
+tags:
+- companies-house
+- sic-2007
+- by-industry
+- company-register
+use_cases:
+- synthetic-companies
+- kyb-onboarding
+- deal-sourcing-demo
+- pe-portfolio-demo
+- company-generation
+spec:
+  variable: sic_2007_section
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        A: 0.006873
+        B: 0.001371
+        C: 0.038152
+        D: 0.002863
+        E: 0.003076
+        F: 0.098012
+        G: 0.137358
+        H: 0.02754
+        I: 0.049839
+        J: 0.089445
+        K: 0.034946
+        L: 0.147136
+        M: 0.121258
+        N: 0.077897
+        O: 0.002133
+        P: 0.024662
+        Q: 0.043429
+        R: 0.027773
+        S: 0.043115
+        T: 0.000407
+        U: 0.000153
+        X: 0.022561
+      counts:
+        A: 50255
+        B: 10028
+        C: 278967
+        D: 20934
+        E: 22494
+        F: 716662
+        G: 1004362
+        H: 201369
+        I: 364420
+        J: 654023
+        K: 255526
+        L: 1075855
+        M: 886639
+        N: 569578
+        O: 15598
+        P: 180328
+        Q: 317550
+        R: 203079
+        S: 315253
+        T: 2974
+        U: 1118
+        X: 164964
+      names:
+        A: Agriculture, forestry and fishing
+        B: Mining and quarrying
+        C: Manufacturing
+        D: Electricity, gas, steam and air conditioning supply
+        E: Water supply, sewerage, waste management and remediation activities
+        F: Construction
+        G: Wholesale and retail trade; repair of motor vehicles and motorcycles
+        H: Transportation and storage
+        I: Accommodation and food service activities
+        J: Information and communication
+        K: Financial and insurance activities
+        L: Real estate activities
+        M: Professional, scientific and technical activities
+        N: Administrative and support service activities
+        O: Public administration and defence; compulsory social security
+        P: Education
+        Q: Human health and social work activities
+        R: Arts, entertainment and recreation
+        S: Other service activities
+        T: Activities of households as employers; undifferentiated goods and services producing activities of households
+          for own use
+        U: Activities of extraterritorial organisations and bodies
+        X: Code not elsewhere classified
+evidence:
+- publisher: Companies House
+  title: Companies register activities, April 2025 to March 2026 (XLSX)
+  url: https://assets.publishing.service.gov.uk/media/6a3d1a97eaee00074150f4df/Companies_register_activities_April_2025_to_March_2026.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table C2, row L, column 2025-26
+  value: 1075855
+  unit: count
+  snippet: Real estate activities
+  source_license: OGL-UK-3.0
+  content_sha256: 1122b57e284a72c603944c305d04800a5afd1896fff784d72bab9017e5b6e0f9
+  role: primary
+- publisher: Companies House
+  title: Companies register activities, April 2025 to March 2026 (XLSX)
+  url: https://assets.publishing.service.gov.uk/media/6a3d1a97eaee00074150f4df/Companies_register_activities_April_2025_to_March_2026.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table C2, row Total, column 2025-26
+  value: 7311976
+  unit: count
+  snippet: <v>7311976</v>
+  source_license: OGL-UK-3.0
+  content_sha256: 1122b57e284a72c603944c305d04800a5afd1896fff784d72bab9017e5b6e0f9
+  role: primary
+- publisher: Companies House
+  title: Companies register activities, April 2025 to March 2026 (XLSX)
+  url: https://assets.publishing.service.gov.uk/media/6a3d1a97eaee00074150f4df/Companies_register_activities_April_2025_to_March_2026.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table C2, note 3
+  value: Up to four Standard Industrial Classification (SIC) codes
+  unit: text
+  snippet: Up to four Standard Industrial Classification (SIC) codes can be submitted and captured per corporate
+    body record
+  source_license: OGL-UK-3.0
+  content_sha256: 1122b57e284a72c603944c305d04800a5afd1896fff784d72bab9017e5b6e0f9
+  role: supporting
+assumed:
+- parameter: distribution.parameters.shares
+  value: count / sum of section counts
+  method: derived
+  rationale: Companies House publishes counts of SIC codes by section; shares divide each by the published total.
+tests:
+- statistic: share[L]
+  expected: 0.147136
+  tolerance: 0.005
+- statistic: share[C]
+  expected: 0.038152
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: SIC 2007 sections recorded on the UK register in 2025-26, from Table C2 of Companies House's Companies register
+  activities release (all corporate body types). A corporate body may record up to four SIC codes, so the counts
+  are codes, not companies; the shares are therefore the industry mix of declared activities, which is what a generator
+  needs to assign a section to a synthetic UK company. Section X is 'Code not elsewhere classified'. Published on
+  GOV.UK under the Open Government Licence v3.0.

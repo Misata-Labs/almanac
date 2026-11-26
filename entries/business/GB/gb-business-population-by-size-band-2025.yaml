@@ -1,0 +1,339 @@
+id: gb-business-population-by-size-band-2025
+title: UK private-sector businesses, employment and turnover by employee size band, start of 2025 (DBT Business
+  Population Estimates)
+kind: rule
+domain: business
+region: GB
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- firms
+- business
+- smes
+- size-class
+- business-population-estimates
+- turnover
+- employment
+- revenue-per-employee
+use_cases:
+- pe-portfolio-demo
+- deal-sourcing-demo
+- synthetic-companies
+- valuation-demo
+- kyb-onboarding
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    source_table: Table 1
+    rows:
+      all:
+        label: All businesses
+        businesses: 5690265
+        employment_thousands: 28128
+        employees_thousands: 23999
+        working_proprietors_thousands: 4129
+        turnover_gbp_million: 5524662
+        businesses_percent: 100
+        employment_percent: 100
+        turnover_percent: 100
+        turnover_per_employment_gbp_thousand: 196.411
+        turnover_per_business_gbp_thousand: 970.897
+        employment_per_business: 4.943
+      employers:
+        label: All employers
+        businesses: 1417730
+        employment_thousands: 23464
+        employees_thousands: 23064
+        working_proprietors_thousands: 401
+        turnover_gbp_million: 5122051
+        businesses_percent: 24.9
+        employment_percent: 83.4
+        turnover_percent: 92.7
+        turnover_per_employment_gbp_thousand: 218.294
+        turnover_per_business_gbp_thousand: 3612.854
+        employment_per_business: 16.55
+      0-unregistered:
+        label: With no employees (unregistered)
+        businesses: 3044940
+        employment_thousands: 3356
+        employees_thousands: 0
+        working_proprietors_thousands: 3356
+        turnover_gbp_million: 135561
+        businesses_percent: 53.5
+        employment_percent: 11.9
+        turnover_percent: 2.5
+        turnover_per_employment_gbp_thousand: 40.394
+        turnover_per_business_gbp_thousand: 44.52
+        employment_per_business: 1.102
+      0-registered:
+        label: With no employees (registered)
+        businesses: 1227595
+        employment_thousands: 1307
+        employees_thousands: 935
+        working_proprietors_thousands: 372
+        turnover_gbp_million: 267051
+        businesses_percent: 21.6
+        employment_percent: 4.6
+        turnover_percent: 4.8
+        turnover_per_employment_gbp_thousand: 204.324
+        turnover_per_business_gbp_thousand: 217.54
+        employment_per_business: 1.065
+      '1':
+        label: '1'
+        businesses: 114170
+        employment_thousands: 254
+        employees_thousands: 114
+        working_proprietors_thousands: 140
+        turnover_gbp_million: 27686
+        businesses_percent: 2
+        employment_percent: 0.9
+        turnover_percent: 0.5
+        turnover_per_employment_gbp_thousand: 109.0
+        turnover_per_business_gbp_thousand: 242.498
+        employment_per_business: 2.225
+      2-4:
+        label: 2 to 4
+        businesses: 772535
+        employment_thousands: 2124
+        employees_thousands: 1998
+        working_proprietors_thousands: 127
+        turnover_gbp_million: 372779
+        businesses_percent: 13.6
+        employment_percent: 7.6
+        turnover_percent: 6.7
+        turnover_per_employment_gbp_thousand: 175.508
+        turnover_per_business_gbp_thousand: 482.54
+        employment_per_business: 2.749
+      5-9:
+        label: 5 to 9
+        businesses: 264170
+        employment_thousands: 1778
+        employees_thousands: 1729
+        working_proprietors_thousands: 49
+        turnover_gbp_million: 300783
+        businesses_percent: 4.6
+        employment_percent: 6.3
+        turnover_percent: 5.4
+        turnover_per_employment_gbp_thousand: 169.169
+        turnover_per_business_gbp_thousand: 1138.596
+        employment_per_business: 6.731
+      10-19:
+        label: 10 to 19
+        businesses: 142500
+        employment_thousands: 1952
+        employees_thousands: 1926
+        working_proprietors_thousands: 26
+        turnover_gbp_million: 297849
+        businesses_percent: 2.5
+        employment_percent: 6.9
+        turnover_percent: 5.4
+        turnover_per_employment_gbp_thousand: 152.587
+        turnover_per_business_gbp_thousand: 2090.168
+        employment_per_business: 13.698
+      20-49:
+        label: 20 to 49
+        businesses: 77585
+        employment_thousands: 2372
+        employees_thousands: 2350
+        working_proprietors_thousands: 23
+        turnover_gbp_million: 478314
+        businesses_percent: 1.4
+        employment_percent: 8.4
+        turnover_percent: 8.7
+        turnover_per_employment_gbp_thousand: 201.65
+        turnover_per_business_gbp_thousand: 6165.032
+        employment_per_business: 30.573
+      50-99:
+        label: 50 to 99
+        businesses: 26020
+        employment_thousands: 1811
+        employees_thousands: 1803
+        working_proprietors_thousands: 8
+        turnover_gbp_million: 422278
+        businesses_percent: 0.5
+        employment_percent: 6.4
+        turnover_percent: 7.6
+        turnover_per_employment_gbp_thousand: 233.174
+        turnover_per_business_gbp_thousand: 16228.978
+        employment_per_business: 69.6
+      100-199:
+        label: 100 to 199
+        businesses: 10205
+        employment_thousands: 1435
+        employees_thousands: 1430
+        working_proprietors_thousands: 5
+        turnover_gbp_million: 350825
+        businesses_percent: 0.2
+        employment_percent: 5.1
+        turnover_percent: 6.4
+        turnover_per_employment_gbp_thousand: 244.477
+        turnover_per_business_gbp_thousand: 34377.756
+        employment_per_business: 140.617
+      200-249:
+        label: 200 to 249
+        businesses: 2210
+        employment_thousands: 492
+        employees_thousands: 491
+        working_proprietors_thousands: 1
+        turnover_gbp_million: 175536
+        businesses_percent: 0
+        employment_percent: 1.7
+        turnover_percent: 3.2
+        turnover_per_employment_gbp_thousand: 356.78
+        turnover_per_business_gbp_thousand: 79428.054
+        employment_per_business: 222.624
+      250-499:
+        label: 250 to 499
+        businesses: 4290
+        employment_thousands: 1491
+        employees_thousands: 1487
+        working_proprietors_thousands: 4
+        turnover_gbp_million: 407886
+        businesses_percent: 0.1
+        employment_percent: 5.3
+        turnover_percent: 7.4
+        turnover_per_employment_gbp_thousand: 273.565
+        turnover_per_business_gbp_thousand: 95078.322
+        employment_per_business: 347.552
+      500-999:
+        label: 500 to 999
+        businesses: 2075
+        employment_thousands: 1435
+        employees_thousands: 1430
+        working_proprietors_thousands: 5
+        turnover_gbp_million: 524307
+        businesses_percent: 0
+        employment_percent: 5.1
+        turnover_percent: 9.5
+        turnover_per_employment_gbp_thousand: 365.371
+        turnover_per_business_gbp_thousand: 252678.072
+        employment_per_business: 691.566
+      1000+:
+        label: 1000 or more
+        businesses: 1970
+        employment_thousands: 8320
+        employees_thousands: 8307
+        working_proprietors_thousands: 13
+        turnover_gbp_million: 1763807
+        businesses_percent: 0
+        employment_percent: 29.6
+        turnover_percent: 31.9
+        turnover_per_employment_gbp_thousand: 211.996
+        turnover_per_business_gbp_thousand: 895333.503
+        employment_per_business: 4223.35
+  vectors:
+  - input:
+      key: all
+      column: businesses
+    expected: 5690265
+    origin: source
+  - input:
+      key: 1000+
+      column: turnover_gbp_million
+    expected: 1763807
+    origin: source
+  - input:
+      key: 10-19
+      column: businesses
+    expected: 142500
+    origin: source
+  - input:
+      key: 50-99
+      column: turnover_per_employment_gbp_thousand
+    expected: 233.174
+    origin: derived
+    note: turnover_gbp_million / employment_thousands
+  - input: 250+
+    expected: false
+    origin: derived
+    note: the table splits 250 or more into 250-499, 500-999 and 1000+
+evidence:
+- publisher: Department for Business and Trade
+  title: 'Business population estimates for the UK and regions 2025: detailed tables (XLSX)'
+  url: https://assets.publishing.service.gov.uk/media/68dbccc9c487360cc70c9f4e/BPE_2025_detailed_tables.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table 1, row All businesses, column Business number
+  value: 5690265
+  unit: count
+  snippet: 'Table 1 (UK private sector): Number and percentage of businesses in the private sector'
+  source_license: OGL-UK-3.0
+  content_sha256: 223790dfd61d41d5866b747f2ea24535cef0db754ee261ae9a2d88bba9f478d7
+  role: primary
+- publisher: Department for Business and Trade
+  title: 'Business population estimates for the UK and regions 2025: detailed tables (XLSX)'
+  url: https://assets.publishing.service.gov.uk/media/68dbccc9c487360cc70c9f4e/BPE_2025_detailed_tables.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table 1, row 1000 or more, column Turnover (£ millions)
+  value: 1763807
+  unit: currency:GBP
+  snippet: 1000 or more
+  source_license: OGL-UK-3.0
+  content_sha256: 223790dfd61d41d5866b747f2ea24535cef0db754ee261ae9a2d88bba9f478d7
+  role: primary
+- publisher: Department for Business and Trade
+  title: 'Business population estimates for the UK and regions 2025: detailed tables (XLSX)'
+  url: https://assets.publishing.service.gov.uk/media/68dbccc9c487360cc70c9f4e/BPE_2025_detailed_tables.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table 1, row 10 to 19, column Business number
+  value: 142500
+  unit: count
+  snippet: 10 to 19
+  source_license: OGL-UK-3.0
+  content_sha256: 223790dfd61d41d5866b747f2ea24535cef0db754ee261ae9a2d88bba9f478d7
+  role: primary
+- publisher: Department for Business and Trade (GOV.UK)
+  title: GOV.UK content API item for /government/statistics/business-population-estimates-2025 (JSON)
+  url: https://www.gov.uk/api/content/government/statistics/business-population-estimates-2025
+  accessed_at: '2026-11-26'
+  locator: details.attachments[title=detailed tables (MS Excel)].url
+  value: https://assets.publishing.service.gov.uk/media/68dbccc9c487360cc70c9f4e/BPE_2025_detailed_tables.xlsx
+  unit: text
+  snippet: 'Business population estimates for the UK and regions 2025: detailed tables (MS Excel)'
+  source_license: OGL-UK-3.0
+  content_sha256: 00b33ed25d1d1b78b31aca9a5973eb567c0a0fb2d1666990737cf8723455b5cc
+  role: supporting
+assumed:
+- parameter: rows[*].turnover_per_employment_gbp_thousand
+  value: turnover_gbp_million / employment_thousands
+  method: derived
+  rationale: Turnover per person employed (working proprietors plus employees) in thousand pounds, from the published
+    turnover and employment of the band.
+- parameter: rows[*].turnover_per_business_gbp_thousand
+  value: turnover_gbp_million * 1000 / businesses
+  method: derived
+  rationale: Average turnover per business of the band in thousand pounds.
+- parameter: rows[*].employment_per_business
+  value: employment_thousands * 1000 / businesses
+  method: derived
+  rationale: Average headcount (working proprietors plus employees) per business of the band.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 15
+  tolerance: 0
+- statistic: value[all,businesses]
+  expected: 5690265
+  tolerance: 0
+- statistic: max[turnover_per_employment_gbp_thousand]
+  expected: 365.371
+  tolerance: 0
+notes: UK private-sector business population at the start of 2025 from Table 1 of the Business Population Estimates
+  detailed tables, one row per employee size band (zero-employee businesses split into unregistered and VAT or PAYE
+  registered, then 1, 2-4, 5-9, 10-19, 20-49, 50-99, 100-199, 200-249, 250-499, 500-999 and 1000 or more) plus the
+  all-businesses and all-employers totals. Each row carries the number of businesses, employment, employees and
+  working proprietors in thousands, turnover in million pounds, the published percentages, and derived turnover
+  per person employed, turnover per business and headcount per business. The Business Population Estimates count
+  private-sector businesses at the start of 2025, combining businesses registered for VAT or PAYE on the Inter-Departmental
+  Business Register with estimates of unregistered businesses. The release notes say that companies with a single
+  PAYE employee are counted with no employees (the employee is treated as a working proprietor), that the turnover
+  of unregistered businesses is imputed from registered zero-employee businesses in the same sector, that all-industry
+  turnover totals leave out section K (financial and insurance activities) because its turnover is not available
+  on a comparable basis, and that business counts are rounded so totals may differ slightly from the sum of the
+  bands; [c] marks a disclosive cell and [x] a cell that is not available, both stored as null. Employment counts
+  working proprietors and employees, in thousands; turnover is in million pounds excluding VAT. GOV.UK content is
+  published under the Open Government Licence v3.0.

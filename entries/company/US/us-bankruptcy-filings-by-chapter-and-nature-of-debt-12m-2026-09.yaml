@@ -1,0 +1,126 @@
+id: us-bankruptcy-filings-by-chapter-and-nature-of-debt-12m-2026-09
+title: US bankruptcy filings by chapter, business and nonbusiness, 12 months to 30 September 2026
+kind: conditional
+domain: company
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2025-10-01'
+  end: '2026-09-30'
+tags:
+- insolvency
+- distress
+- bankruptcy
+- chapter-11
+- us-courts
+- court-statistics
+use_cases:
+- private-credit-demo
+- credit-underwriting-demo
+- pe-portfolio-demo
+- credit-risk
+- collections
+spec:
+  variable: bankruptcy_chapter
+  unit: ratio
+  given: predominant_nature_of_debt
+  distributions:
+    business:
+      family: categorical
+      parameters:
+        shares:
+          chapter_7: 0.576698
+          chapter_11: 0.349412
+          chapter_13: 0.050861
+          other_chapters: 0.023028
+        counts:
+          chapter_7: 15602
+          chapter_11: 9453
+          chapter_13: 1376
+          other_chapters: 623
+    nonbusiness:
+      family: categorical
+      parameters:
+        shares:
+          chapter_7: 0.632572
+          chapter_11: 0.000897
+          chapter_13: 0.36653
+        counts:
+          chapter_7: 375784
+          chapter_11: 533
+          chapter_13: 217740
+evidence:
+- publisher: Administrative Office of the US Courts
+  title: Table F-2, bankruptcy cases commenced by chapter, 12 months ending 30 September 2026 (bf_f2_0930.2026.xlsx)
+  url: https://www.uscourts.gov/sites/default/files/document/bf_f2_0930.2026.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table F-2, row Total, column Business Chapter 11
+  value: 9453
+  unit: count
+  snippet: During the 12-Month Period Ending September 30, 2026
+  source_license: unstated
+  content_sha256: 037ba30b07e5b3d6157ce0a55a7401ef655523d421f125b34ccb752b5842556d
+  role: primary
+- publisher: Administrative Office of the US Courts
+  title: Table F-2, bankruptcy cases commenced by chapter, 12 months ending 30 September 2026 (bf_f2_0930.2026.xlsx)
+  url: https://www.uscourts.gov/sites/default/files/document/bf_f2_0930.2026.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table F-2, row Total, column Business All Chapters
+  value: 27054
+  unit: count
+  snippet: <v>27054</v>
+  source_license: unstated
+  content_sha256: 037ba30b07e5b3d6157ce0a55a7401ef655523d421f125b34ccb752b5842556d
+  role: primary
+- publisher: Administrative Office of the US Courts
+  title: Table F-2, bankruptcy cases commenced by chapter, 12 months ending 30 September 2026 (bf_f2_0930.2026.xlsx)
+  url: https://www.uscourts.gov/sites/default/files/document/bf_f2_0930.2026.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table F-2, row Total, column Nonbusiness Chapter 7
+  value: 375784
+  unit: count
+  snippet: <v>375784</v>
+  source_license: unstated
+  content_sha256: 037ba30b07e5b3d6157ce0a55a7401ef655523d421f125b34ccb752b5842556d
+  role: primary
+- publisher: Administrative Office of the US Courts
+  title: Table F-2, bankruptcy cases commenced by chapter, 12 months ending 30 September 2026 (bf_f2_0930.2026.xlsx)
+  url: https://www.uscourts.gov/sites/default/files/document/bf_f2_0930.2026.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table F-2, row Total, column Nonbusiness All Chapters
+  value: 594057
+  unit: count
+  snippet: Predominant Nature of Debt
+  source_license: unstated
+  content_sha256: 037ba30b07e5b3d6157ce0a55a7401ef655523d421f125b34ccb752b5842556d
+  role: primary
+assumed:
+- parameter: distributions[*].parameters.shares
+  value: count / total of the nature-of-debt group
+  method: derived
+  rationale: The table publishes counts; shares divide each chapter by the business or nonbusiness total, rounded
+    to six decimals.
+tests:
+- statistic: share[business,chapter_11]
+  expected: 0.349412
+  tolerance: 0.005
+- statistic: share[business,chapter_7]
+  expected: 0.576698
+  tolerance: 0.005
+- statistic: share[nonbusiness,chapter_13]
+  expected: 0.36653
+  tolerance: 0.005
+- statistic: sum_of_shares[business]
+  expected: 1
+  tolerance: 0.0001
+- statistic: sum_of_shares[nonbusiness]
+  expected: 1
+  tolerance: 0.0001
+notes: Cases commenced in the US bankruptcy courts in the twelve months ending 30 September 2026, by chapter of
+  the Bankruptcy Code and predominant nature of debt, from Table F-2 of the Administrative Office of the US Courts.
+  'Other chapters' covers chapters 9, 12 and 15 and section 304 cases and is published for business filings only.
+  The table's note defines the nature of debt as business when the debtor is a corporation or partnership or when
+  debt related to the operation of a business predominates. Subchapter V cases are not tabulated separately in F-2.
+  The publisher is a US federal body and the resource carries no licence statement, so the licence is recorded as
+  unstated and the entry held at license-review.

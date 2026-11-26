@@ -1,0 +1,267 @@
+id: us-regulation-d-accredited-investor-definition
+title: US Regulation D accredited investor categories and dollar thresholds (17 CFR 230.501(a))
+kind: rule
+domain: funds
+region: US
+status: license-review
+tier: A
+valid_from: '2025-02-18'
+valid_to: null
+tags:
+- funds
+- private-equity
+- regulation
+- accredited-investor
+- regulation-d
+- investor-eligibility
+use_cases:
+- fund-administration-demo
+- kyb-onboarding
+- kyc-onboarding
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: USD
+    indexed_for_inflation: false
+    rows:
+      natural_person_net_worth:
+        paragraph: 230.501(a)(5)
+        investor: natural person
+        test: individual or joint (with spouse or spousal equivalent) net worth, excluding the primary residence
+          and the debt it secures up to its value
+        threshold_usd: 1000000
+        comparison: exceeds
+      natural_person_income:
+        paragraph: 230.501(a)(6)
+        investor: natural person
+        test: individual income in each of the two most recent years, with a reasonable expectation of the same
+          in the current year
+        threshold_usd: 200000
+        comparison: exceeds
+      natural_person_joint_income:
+        paragraph: 230.501(a)(6)
+        investor: natural person
+        test: joint income with spouse or spousal equivalent in each of the two most recent years, with the same
+          expectation
+        threshold_usd: 300000
+        comparison: exceeds
+      professional_certification:
+        paragraph: 230.501(a)(10)
+        investor: natural person
+        test: holds in good standing a professional certification, designation or credential the Commission has
+          designated
+        threshold_usd: null
+        comparison: null
+      knowledgeable_employee:
+        paragraph: 230.501(a)(11)
+        investor: natural person
+        test: knowledgeable employee of a private fund issuer relying on section 3(c)(1) or 3(c)(7)
+        threshold_usd: null
+        comparison: null
+      director_officer_general_partner:
+        paragraph: 230.501(a)(4)
+        investor: natural person
+        test: director, executive officer or general partner of the issuer or of its general partner
+        threshold_usd: null
+        comparison: null
+      entity_total_assets:
+        paragraph: 230.501(a)(3)
+        investor: 501(c)(3) organisation, corporation, business trust, partnership or LLC not formed to acquire
+          the securities
+        test: total assets
+        threshold_usd: 5000000
+        comparison: exceeds
+      trust_total_assets:
+        paragraph: 230.501(a)(7)
+        investor: trust not formed to acquire the securities, directed by a sophisticated person
+        test: total assets
+        threshold_usd: 5000000
+        comparison: exceeds
+      entity_investments:
+        paragraph: 230.501(a)(9)
+        investor: entity of another type not formed to acquire the securities
+        test: investments as defined in rule 2a51-1(b)
+        threshold_usd: 5000000
+        comparison: exceeds
+      family_office_assets_under_management:
+        paragraph: 230.501(a)(12)
+        investor: family office not formed to acquire the securities
+        test: assets under management
+        threshold_usd: 5000000
+        comparison: exceeds
+      benefit_plan_total_assets:
+        paragraph: 230.501(a)(1)
+        investor: state or ERISA employee benefit plan
+        test: total assets (or a qualifying fiduciary or accredited self-directed decision makers)
+        threshold_usd: 5000000
+        comparison: exceeds
+      entity_all_owners_accredited:
+        paragraph: 230.501(a)(8)
+        investor: entity
+        test: all equity owners are accredited investors
+        threshold_usd: null
+        comparison: null
+      regulated_institution:
+        paragraph: 230.501(a)(1)
+        investor: bank, broker-dealer, registered or exempt reporting adviser, insurance company, registered fund,
+          BDC, SBIC or RBIC
+        test: status
+        threshold_usd: null
+        comparison: null
+  vectors:
+  - input:
+      key: natural_person_net_worth
+      column: threshold_usd
+    expected: 1000000
+    origin: source
+  - input:
+      key: natural_person_income
+      column: threshold_usd
+    expected: 200000
+    origin: source
+  - input:
+      key: natural_person_joint_income
+      column: threshold_usd
+    expected: 300000
+    origin: source
+  - input:
+      key: entity_investments
+      column: threshold_usd
+    expected: 5000000
+    origin: source
+  - input:
+      key: knowledgeable_employee
+      column: threshold_usd
+    expected: null
+    origin: source
+  - input: sophisticated_non_accredited_purchaser
+    expected: false
+    origin: derived
+    note: not an accredited investor category
+evidence:
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 230.501, Definitions and terms used in Regulation D (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=230.501
+  accessed_at: '2026-11-26'
+  locator: paragraph (a)(5)
+  value: $1,000,000
+  unit: currency:USD
+  snippet: joint net worth with that person's spouse or spousal equivalent, exceeds $1,000,000;
+  source_license: unstated
+  content_sha256: a54a63376aa3e8a20b053759ebda57d7ed371a373794351ba299292f11b08b1a
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 230.501, Definitions and terms used in Regulation D (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=230.501
+  accessed_at: '2026-11-26'
+  locator: paragraph (a)(5)(i)(A)
+  value: primary residence
+  unit: text
+  snippet: The person's primary residence shall not be included as an asset;
+  source_license: unstated
+  content_sha256: a54a63376aa3e8a20b053759ebda57d7ed371a373794351ba299292f11b08b1a
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 230.501, Definitions and terms used in Regulation D (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=230.501
+  accessed_at: '2026-11-26'
+  locator: paragraph (a)(6)
+  value: $200,000
+  unit: currency:USD
+  snippet: had an individual income in excess of $200,000 in each of the two most recent years
+  source_license: unstated
+  content_sha256: a54a63376aa3e8a20b053759ebda57d7ed371a373794351ba299292f11b08b1a
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 230.501, Definitions and terms used in Regulation D (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=230.501
+  accessed_at: '2026-11-26'
+  locator: paragraph (a)(6)
+  value: $300,000
+  unit: currency:USD
+  snippet: spouse or spousal equivalent in excess of $300,000 in each of those years
+  source_license: unstated
+  content_sha256: a54a63376aa3e8a20b053759ebda57d7ed371a373794351ba299292f11b08b1a
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 230.501, Definitions and terms used in Regulation D (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=230.501
+  accessed_at: '2026-11-26'
+  locator: paragraph (a)(3)
+  value: $5,000,000
+  unit: currency:USD
+  snippet: not formed for the specific purpose of acquiring the securities offered, with total assets in excess
+    of $5,000,000;
+  source_license: unstated
+  content_sha256: a54a63376aa3e8a20b053759ebda57d7ed371a373794351ba299292f11b08b1a
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 230.501, Definitions and terms used in Regulation D (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=230.501
+  accessed_at: '2026-11-26'
+  locator: paragraph (a)(9)
+  value: $5,000,000
+  unit: currency:USD
+  snippet: owning investments in excess of $5,000,000;
+  source_license: unstated
+  content_sha256: a54a63376aa3e8a20b053759ebda57d7ed371a373794351ba299292f11b08b1a
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 230.501, Definitions and terms used in Regulation D (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=230.501
+  accessed_at: '2026-11-26'
+  locator: paragraph (a)(12)
+  value: $5,000,000
+  unit: currency:USD
+  snippet: With assets under management in excess of $5,000,000,
+  source_license: unstated
+  content_sha256: a54a63376aa3e8a20b053759ebda57d7ed371a373794351ba299292f11b08b1a
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 230.501, Definitions and terms used in Regulation D (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=230.501
+  accessed_at: '2026-11-26'
+  locator: paragraph (a)(11)
+  value: knowledgeable employee
+  unit: text
+  snippet: Any natural person who is a
+  source_license: unstated
+  content_sha256: a54a63376aa3e8a20b053759ebda57d7ed371a373794351ba299292f11b08b1a
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 17 CFR 230.501 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-17.json?section=230.501&issue_date%5Blte%5D=2026-11-02
+  accessed_at: '2026-11-26'
+  locator: content_versions[*].date, latest
+  value: '2025-02-18'
+  unit: date
+  snippet: '"date":"2025-02-18"'
+  source_license: unstated
+  content_sha256: 8a954213594997905f3e832a6df6f6b2b1ad791f6d1cd984f1f7a67fe0057244
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '2025-02-18'
+  method: derived
+  rationale: Latest content version date of the section in the eCFR versions endpoint, bounded by the pinned eCFR
+    date.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 13
+  tolerance: 0
+- statistic: max[threshold_usd]
+  expected: 5000000
+  tolerance: 0
+notes: The categories of accredited investor in Rule 501(a) of Regulation D, which private funds rely on to offer
+  interests under Rule 506(b) or 506(c). Natural persons qualify by net worth (excluding the primary residence),
+  by income in each of the last two years, by holding a designated professional certification, or as knowledgeable
+  employees of the fund; entities qualify by total assets, investments or assets under management above the stated
+  amount (each requiring that the entity was not formed to acquire the securities), by regulated status, or because
+  all their equity owners are accredited. All thresholds are tests of 'in excess of'. The amounts are not indexed.
+  valid_from is the date the section's current text took effect according to the eCFR; the income and net worth
+  tests are much older. The family client category of paragraph (a)(13) is omitted. Works of the US federal government
+  carry no copyright in the United States, but the cited resources state no reuse terms, so the licence is recorded
+  as unstated and the entry held at license-review.

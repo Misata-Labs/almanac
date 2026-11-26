@@ -1,0 +1,150 @@
+id: us-erisa-plan-asset-significant-participation-test
+title: 'US ERISA plan-asset regulation: 25% significant participation test by benefit plan investors (29 CFR 2510.3-101(f))'
+kind: rule
+domain: funds
+region: US
+status: license-review
+tier: A
+valid_from: '2017-01-01'
+valid_to: null
+tags:
+- funds
+- private-equity
+- regulation
+- erisa
+- plan-assets
+- benefit-plan-investors
+- fund-formation
+use_cases:
+- fund-administration-demo
+- kyb-onboarding
+spec:
+  implementation: almanac.rules.erisa_plan_asset_test
+  parameters:
+    threshold_percent: 25
+    test: benefit plan investors hold the threshold or more of the value of any class of equity interests, immediately
+      after the most recent acquisition
+    disregarded: interests of persons with discretionary authority or control over the entity's assets or who give
+      investment advice for a fee about them, and their affiliates (other than benefit plan investors)
+  vectors:
+  - input:
+      benefit_plan_value: 30
+      total_value: 100
+    expected: true
+    origin: source
+    note: 'paragraph (j)(2): plan 15% plus governmental plan 15%'
+  - input:
+      benefit_plan_value: 10
+      total_value: 100
+    expected: false
+    origin: source
+    note: paragraph (j)(3)
+  - input:
+      benefit_plan_value: 1000
+      total_value: 10000
+      disregarded_value: 6500
+      output: share
+    expected: 28.6
+    origin: source
+    note: 'paragraph (j)(4): $1000/$3500'
+  - input:
+      benefit_plan_value: 1000
+      total_value: 10000
+      disregarded_value: 6500
+    expected: true
+    origin: source
+    note: paragraph (j)(4)
+  - input:
+      benefit_plan_value: 25
+      total_value: 100
+    expected: true
+    origin: derived
+    note: exactly the threshold is significant ('25 percent or more')
+  - input:
+      benefit_plan_value: 2499
+      total_value: 10000
+    expected: false
+    origin: derived
+    note: just below the threshold
+evidence:
+- publisher: Office of the Federal Register via the eCFR API
+  title: 29 CFR 2510.3-101, Definition of plan assets, plan investments (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-29.xml?section=2510.3-101
+  accessed_at: '2026-11-26'
+  locator: paragraph (f)(1)
+  value: 25 percent
+  unit: percent
+  snippet: 25 percent or more of the value of any class of equity interests in the entity is held by benefit plan
+    investors
+  source_license: unstated
+  content_sha256: 4890c6a37b8609f3463849a6b7e00fd74e94ca320de70d4691558f90bb005616
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 29 CFR 2510.3-101, Definition of plan assets, plan investments (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-29.xml?section=2510.3-101
+  accessed_at: '2026-11-26'
+  locator: paragraph (j)(2)
+  value: more than 25 percent
+  unit: text
+  snippet: such investors hold more than 25 percent of the limited partnership interests in U
+  source_license: unstated
+  content_sha256: 4890c6a37b8609f3463849a6b7e00fd74e94ca320de70d4691558f90bb005616
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 29 CFR 2510.3-101, Definition of plan assets, plan investments (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-29.xml?section=2510.3-101
+  accessed_at: '2026-11-26'
+  locator: paragraph (j)(3)
+  value: 10 percent
+  unit: percent
+  snippet: benefit plan investors in the aggregate hold only 10 percent of the value of the limited partnership
+    interests in U
+  source_license: unstated
+  content_sha256: 4890c6a37b8609f3463849a6b7e00fd74e94ca320de70d4691558f90bb005616
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 29 CFR 2510.3-101, Definition of plan assets, plan investments (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-29.xml?section=2510.3-101
+  accessed_at: '2026-11-26'
+  locator: paragraph (j)(4)
+  value: 28.6%
+  unit: percent
+  snippet: is approximately 28.6% ($1000/$3500)
+  source_license: unstated
+  content_sha256: 4890c6a37b8609f3463849a6b7e00fd74e94ca320de70d4691558f90bb005616
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 29 CFR 2510.3-101 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-29.json?section=2510.3-101&issue_date%5Blte%5D=2026-11-02
+  accessed_at: '2026-11-26'
+  locator: content_versions[*].date, latest
+  value: '2017-01-01'
+  unit: date
+  snippet: '"date":"2017-01-01"'
+  source_license: unstated
+  content_sha256: cdc6360bd913109d2cf60e304f709e7529a105d541584185a5710f1b03774f42
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '2017-01-01'
+  method: derived
+  rationale: Latest content version date in the eCFR versions endpoint, which for this section is the start of the
+    eCFR's history; the test itself is older.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: threshold_percent
+  expected: 25
+  tolerance: 0
+notes: When an employee benefit plan invests in a fund that is neither publicly offered, a registered investment
+  company nor an operating company (including a venture capital or real estate operating company), the plan's assets
+  include an undivided interest in the fund's underlying assets, making the manager an ERISA fiduciary, unless equity
+  participation by benefit plan investors is not significant. Participation is significant when benefit plan investors
+  hold 25 percent or more of the value of any class of equity interests immediately after the most recent acquisition,
+  disregarding interests held by the manager, advisers for a fee and their affiliates. Private equity funds therefore
+  cap benefit plan investors below the threshold or qualify as a venture capital operating company. The vectors
+  are the regulation's own examples in paragraph (j). valid_from is the date the eCFR versions endpoint gives for
+  the section's current text, which is the start of the eCFR's version history rather than the date the 25 percent
+  test was adopted. Works of the US federal government carry no copyright in the United States, but the cited resources
+  state no reuse terms, so the licence is recorded as unstated and the entry held at license-review.

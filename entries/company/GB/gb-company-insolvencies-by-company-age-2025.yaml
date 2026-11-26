@@ -1,0 +1,237 @@
+id: gb-company-insolvencies-by-company-age-2025
+title: Company insolvencies in England and Wales by company age and type, 2025, with rates per 10000 companies
+kind: rule
+domain: company
+region: GB
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- insolvency
+- distress
+- insolvency-service
+- by-company-age
+- reference-table
+- firm-age
+use_cases:
+- private-credit-demo
+- credit-underwriting-demo
+- pe-portfolio-demo
+- credit-risk
+- synthetic-companies
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: company age band at insolvency
+    geography: England and Wales
+    year: 2025
+    rows:
+      Total:
+        total_count: 22455
+        administrations_count: 1425
+        compulsory_liquidations_count: 3320
+        creditors_voluntary_liquidations_count: 17530
+        other_count: 180
+        total_rate_per_10000: 115.9
+        administrations_rate_per_10000: 7.4
+        compulsory_liquidations_rate_per_10000: 17.1
+        creditors_voluntary_liquidations_rate_per_10000: 90.5
+        other_rate_per_10000: 0.9
+      Less than 2 years:
+        total_count: 1200
+        administrations_count: 60
+        compulsory_liquidations_count: 165
+        creditors_voluntary_liquidations_count: 970
+        other_count: null
+        total_rate_per_10000: 37.2
+        administrations_rate_per_10000: 1.9
+        compulsory_liquidations_rate_per_10000: 5.1
+        creditors_voluntary_liquidations_rate_per_10000: 30
+        other_rate_per_10000: null
+      2 to 4 years:
+        total_count: 2825
+        administrations_count: 155
+        compulsory_liquidations_count: 480
+        creditors_voluntary_liquidations_count: 2180
+        other_count: 10
+        total_rate_per_10000: 94.1
+        administrations_rate_per_10000: 5.2
+        compulsory_liquidations_rate_per_10000: 16
+        creditors_voluntary_liquidations_rate_per_10000: 72.6
+        other_rate_per_10000: 0.3
+      4 to 7 years:
+        total_count: 5575
+        administrations_count: 215
+        compulsory_liquidations_count: 915
+        creditors_voluntary_liquidations_count: 4400
+        other_count: 45
+        total_rate_per_10000: 168.8
+        administrations_rate_per_10000: 6.5
+        compulsory_liquidations_rate_per_10000: 27.7
+        creditors_voluntary_liquidations_rate_per_10000: 133.2
+        other_rate_per_10000: 1.4
+      7 to 10 years:
+        total_count: 4180
+        administrations_count: 210
+        compulsory_liquidations_count: 680
+        creditors_voluntary_liquidations_count: 3255
+        other_count: 40
+        total_rate_per_10000: 170.4
+        administrations_rate_per_10000: 8.6
+        compulsory_liquidations_rate_per_10000: 27.7
+        creditors_voluntary_liquidations_rate_per_10000: 132.7
+        other_rate_per_10000: 1.6
+      10 to 15 years:
+        total_count: 3860
+        administrations_count: 230
+        compulsory_liquidations_count: 580
+        creditors_voluntary_liquidations_count: 3010
+        other_count: 40
+        total_rate_per_10000: 144.8
+        administrations_rate_per_10000: 8.6
+        compulsory_liquidations_rate_per_10000: 21.8
+        creditors_voluntary_liquidations_rate_per_10000: 112.9
+        other_rate_per_10000: 1.5
+      15 to 20 years:
+        total_count: 1690
+        administrations_count: 140
+        compulsory_liquidations_count: 215
+        creditors_voluntary_liquidations_count: 1320
+        other_count: 15
+        total_rate_per_10000: 111.1
+        administrations_rate_per_10000: 9.2
+        compulsory_liquidations_rate_per_10000: 14.1
+        creditors_voluntary_liquidations_rate_per_10000: 86.8
+        other_rate_per_10000: 1
+      20 to 25 years:
+        total_count: 1090
+        administrations_count: 95
+        compulsory_liquidations_count: 105
+        creditors_voluntary_liquidations_count: 880
+        other_count: 10
+        total_rate_per_10000: 98.4
+        administrations_rate_per_10000: 8.6
+        compulsory_liquidations_rate_per_10000: 9.5
+        creditors_voluntary_liquidations_rate_per_10000: 79.5
+        other_rate_per_10000: 0.9
+      25 to 35 years:
+        total_count: 1085
+        administrations_count: 140
+        compulsory_liquidations_count: 115
+        creditors_voluntary_liquidations_count: 815
+        other_count: 10
+        total_rate_per_10000: 94.8
+        administrations_rate_per_10000: 12.2
+        compulsory_liquidations_rate_per_10000: 10
+        creditors_voluntary_liquidations_rate_per_10000: 71.2
+        other_rate_per_10000: 0.9
+      35 years or older:
+        total_count: 955
+        administrations_count: 180
+        compulsory_liquidations_count: 65
+        creditors_voluntary_liquidations_count: 705
+        other_count: 5
+        total_rate_per_10000: 100
+        administrations_rate_per_10000: 18.9
+        compulsory_liquidations_rate_per_10000: 6.8
+        creditors_voluntary_liquidations_rate_per_10000: 73.9
+        other_rate_per_10000: 0.5
+      Unknown:
+        total_count: 1325
+        administrations_count: 45
+        compulsory_liquidations_count: 385
+        creditors_voluntary_liquidations_count: 895
+        other_count: null
+  vectors:
+  - input:
+      key: 4 to 7 years
+      column: total_count
+    expected: 5575
+    origin: source
+  - input:
+      key: 4 to 7 years
+      column: total_rate_per_10000
+    expected: 168.8
+    origin: source
+  - input:
+      key: Total
+      column: total_count
+    expected: 22455
+    origin: source
+  - input: Not a band
+    expected: false
+    origin: derived
+evidence:
+- publisher: The Insolvency Service
+  title: Business Insolvency Demography 2015 to 2025, full data (CSV)
+  url: https://assets.publishing.service.gov.uk/media/6a33c35f0bea238415c9a204/Full_Data_in_CSV_Format_-_Business_Insolvency_Demography_2015_to_2025.csv
+  accessed_at: '2026-11-26'
+  locator: row Age,Volume,ew,4 to 7 years, columns 2025_total to 2025_other
+  value: 5575
+  unit: count
+  snippet: 5575,215,915,4400,45
+  source_license: OGL-UK-3.0
+  content_sha256: 474df518a5d6f4f7bc75a2aaea0fbef3ca6711b111932e6104ffc22073dc0452
+  role: primary
+- publisher: The Insolvency Service
+  title: Business Insolvency Demography 2015 to 2025, full data (CSV)
+  url: https://assets.publishing.service.gov.uk/media/6a33c35f0bea238415c9a204/Full_Data_in_CSV_Format_-_Business_Insolvency_Demography_2015_to_2025.csv
+  accessed_at: '2026-11-26'
+  locator: row Age,Rate per 10000,ew,4 to 7 years, columns 2025_total to 2025_other
+  value: 168.8
+  unit: decimal
+  snippet: 168.8,6.5,27.7,133.2,1.4
+  source_license: OGL-UK-3.0
+  content_sha256: 474df518a5d6f4f7bc75a2aaea0fbef3ca6711b111932e6104ffc22073dc0452
+  role: primary
+- publisher: The Insolvency Service
+  title: Business Insolvency Demography 2015 to 2025, full data (CSV)
+  url: https://assets.publishing.service.gov.uk/media/6a33c35f0bea238415c9a204/Full_Data_in_CSV_Format_-_Business_Insolvency_Demography_2015_to_2025.csv
+  accessed_at: '2026-11-26'
+  locator: row Age,Volume,ew,Total, column 2025_total
+  value: 22455
+  unit: count
+  snippet: 22455,1425,3320,17530,180
+  source_license: OGL-UK-3.0
+  content_sha256: 474df518a5d6f4f7bc75a2aaea0fbef3ca6711b111932e6104ffc22073dc0452
+  role: primary
+- publisher: The Insolvency Service
+  title: Business Insolvency Demography 2015 to 2025, full data (CSV)
+  url: https://assets.publishing.service.gov.uk/media/6a33c35f0bea238415c9a204/Full_Data_in_CSV_Format_-_Business_Insolvency_Demography_2015_to_2025.csv
+  accessed_at: '2026-11-26'
+  locator: row Age,Rate per 10000,ew,7 to 10 years, column 2025_total
+  value: 170.4
+  unit: decimal
+  snippet: 170.4,8.6,27.7,132.7,1.6
+  source_license: OGL-UK-3.0
+  content_sha256: 474df518a5d6f4f7bc75a2aaea0fbef3ca6711b111932e6104ffc22073dc0452
+  role: primary
+- publisher: The Insolvency Service
+  title: Business Insolvency Demography 2015 to 2025, metadata (CSV)
+  url: https://assets.publishing.service.gov.uk/media/6a33fd0f0bea238415c9a276/Metadata_for_Full_Data_in_CSV_Format_-_Business_Insolvency_Demography_2015_to_2025.csv
+  accessed_at: '2026-11-26'
+  locator: Licence
+  value: Open Government Licence 3.0
+  unit: text
+  snippet: Open Government Licence 3.0
+  source_license: OGL-UK-3.0
+  content_sha256: 57e1d396eaf104b18f616f9cb37edc462b6639a64231df8a6c85dfa1c715e431
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: value["4 to 7 years",total_rate_per_10000]
+  expected: 168.8
+  tolerance: 0
+- statistic: count
+  expected: 11
+  tolerance: 0
+notes: Company insolvencies registered in England and Wales in 2025 by company age band at insolvency, from the
+  Insolvency Service's Business Insolvency Demography 2015 to 2025 release. Each row gives counts and rates per
+  10,000 companies for all insolvencies and for administrations, compulsory liquidations, creditors' voluntary liquidations
+  and other procedures. Published counts are multiples of five; null marks a cell the publisher suppressed ([c])
+  for disclosure control. The highest overall rate among known bands is '7 to 10 years'. Rates are the published
+  ones, not recomputed. The file is published under the Open Government Licence 3.0.

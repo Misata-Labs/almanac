@@ -1,0 +1,106 @@
+id: us-clayton-act-section-8-interlocking-directorate-thresholds-2026
+title: Clayton Act section 8 interlocking directorate thresholds, 2026 (capital and competitive sales)
+kind: rule
+domain: deals
+region: US
+status: license-review
+tier: A
+valid_from: '2026-01-16'
+valid_to: null
+tags:
+- deals
+- antitrust
+- board-composition
+- thresholds
+- ftc
+- reference-table
+use_cases:
+- pe-portfolio-demo
+- deal-sourcing-demo
+- compliance-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: Clayton Act subsection
+    rows:
+      8(a)(1):
+        description: Each competitor corporation has capital, surplus and undivided profits aggregating more than
+          this amount
+        threshold_usd: 54402000
+        published: $54,402,000
+      8(a)(2)(A):
+        description: No corporation is covered if the competitive sales of either corporation are less than this
+          amount
+        threshold_usd: 5440200
+        published: $5,440,200
+  vectors:
+  - input:
+      key: 8(a)(1)
+      column: threshold_usd
+    expected: 54402000
+    origin: source
+  - input:
+      key: 8(a)(2)(A)
+      column: threshold_usd
+    expected: 5440200
+    origin: source
+  - input: 8(a)(2)(B)
+    expected: false
+    origin: derived
+    note: the percentage tests of 8(a)(2)(B) and (C) are not adjusted and not tabulated
+evidence:
+- publisher: Federal Trade Commission
+  title: Federal Register, 16 January 2026, govinfo bulk XML (FR Doc. 2026-00877 and the following notice)
+  url: https://www.govinfo.gov/bulkdata/FR/2026/01/FR-2026-01-16.xml
+  accessed_at: '2026-11-26'
+  locator: NOTICE 'Revised Jurisdictional Thresholds for Section 8 of the Clayton Act', SUMMARY
+  value: $54,402,000
+  unit: currency:USD
+  snippet: $54,402,000 for Section 8(a)(1)
+  source_license: unstated
+  content_sha256: 5eca317d18b69935be178cfeacbf0257a0a39507e04929dea69916f537d4a0ef
+  role: primary
+- publisher: Federal Trade Commission
+  title: Federal Register, 16 January 2026, govinfo bulk XML (FR Doc. 2026-00877 and the following notice)
+  url: https://www.govinfo.gov/bulkdata/FR/2026/01/FR-2026-01-16.xml
+  accessed_at: '2026-11-26'
+  locator: NOTICE 'Revised Jurisdictional Thresholds for Section 8 of the Clayton Act', SUMMARY
+  value: $5,440,200
+  unit: currency:USD
+  snippet: $5,440,200 for Section 8(a)(2)(A)
+  source_license: unstated
+  content_sha256: 5eca317d18b69935be178cfeacbf0257a0a39507e04929dea69916f537d4a0ef
+  role: primary
+- publisher: Federal Trade Commission
+  title: Federal Register, 16 January 2026, govinfo bulk XML (FR Doc. 2026-00877 and the following notice)
+  url: https://www.govinfo.gov/bulkdata/FR/2026/01/FR-2026-01-16.xml
+  accessed_at: '2026-11-26'
+  locator: NOTICE 'Revised Jurisdictional Thresholds for Section 8 of the Clayton Act', SUMMARY
+  value: take effect immediately
+  unit: text
+  snippet: The new thresholds, which take effect immediately
+  source_license: unstated
+  content_sha256: 5eca317d18b69935be178cfeacbf0257a0a39507e04929dea69916f537d4a0ef
+  role: primary
+assumed:
+- parameter: rows[*].threshold_usd
+  value: published dollar amounts without separators
+  method: derived
+  rationale: Restates the dollar amounts in the notice as integers; the published form is kept in 'published'.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: value[8(a)(1),threshold_usd]
+  expected: 54402000
+  tolerance: 0
+- statistic: count
+  expected: 2
+  tolerance: 0
+notes: Section 8 of the Clayton Act bars, with exceptions, one person from serving as a director or officer of two
+  competing corporations. Corporations are covered when each has capital, surplus and undivided profits above the
+  8(a)(1) amount, and neither is covered when the competitive sales of either are below the 8(a)(2)(A) amount. The
+  Federal Trade Commission revised both amounts for gross national product in the notice published on 16 January
+  2026, effective immediately. Useful for checking board interlocks across a synthetic private-equity portfolio.
+  The publisher is a US federal body and the resource carries no licence statement, so the licence is recorded as
+  unstated and the entry held at license-review.

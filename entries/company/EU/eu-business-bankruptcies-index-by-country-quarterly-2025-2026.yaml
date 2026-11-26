@@ -1,0 +1,455 @@
+id: eu-business-bankruptcies-index-by-country-quarterly-2025-2026
+title: Business bankruptcy declarations index (2021=100) by European country, seasonally adjusted, 2025Q1 to 2026Q3
+kind: rule
+domain: company
+region: EU
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2026-09-30'
+tags:
+- insolvency
+- distress
+- bankruptcy
+- eurostat
+- by-country
+- index
+- reference-table
+use_cases:
+- private-credit-demo
+- credit-underwriting-demo
+- pe-portfolio-demo
+- credit-risk
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: Eurostat geo code
+    columns:
+    - 2025-Q1
+    - 2025-Q2
+    - 2025-Q3
+    - 2025-Q4
+    - 2026-Q1
+    - 2026-Q2
+    - 2026-Q3
+    rows:
+      AL:
+        name: Albania
+        2025-Q1: 0.0
+        2025-Q2: 0.0
+        2025-Q3: 0.0
+        2025-Q4: 0.0
+        2026-Q1: 0.0
+        2026-Q2: 0.0
+        2026-Q3: 0.0
+      AT:
+        name: Austria
+        2025-Q1: 231.3
+        2025-Q2: 229.4
+        2025-Q3: 224.1
+        2025-Q4: 217.3
+        2026-Q1: 225.4
+        2026-Q2: 222.4
+        2026-Q3: 233.3
+      BE:
+        name: Belgium
+        2025-Q1: 172.9
+        2025-Q2: 179.5
+        2025-Q3: 183.3
+        2025-Q4: 185.5
+        2026-Q1: 182.6
+        2026-Q2: 181.5
+        2026-Q3: 168.6
+      BG:
+        name: Bulgaria
+        2025-Q1: 103.3
+        2025-Q2: 110.3
+        2025-Q3: 103.9
+        2025-Q4: 114.6
+        2026-Q1: 97.2
+        2026-Q2: 90.7
+        2026-Q3: 81.1
+      CY:
+        name: Cyprus
+        2025-Q1: 40.0
+        2025-Q2: 80.0
+        2025-Q3: 53.3
+        2025-Q4: 146.7
+        2026-Q1: 160.0
+        2026-Q2: 93.3
+        2026-Q3: 40.0
+      CZ:
+        name: Czechia
+        2025-Q1: 124.1
+        2025-Q2: 123.8
+        2025-Q3: 150.1
+        2025-Q4: 127.7
+        2026-Q1: 124.4
+        2026-Q2: 124.7
+        2026-Q3: 140.6
+      DE:
+        name: Germany
+        2025-Q1: 166.9
+        2025-Q2: 171.3
+        2025-Q3: 175.5
+        2025-Q4: 176.5
+        2026-Q1: 178.0
+        2026-Q2: 183.1
+        2026-Q3: null
+      DK:
+        name: Denmark
+        2025-Q1: 75.0
+        2025-Q2: 75.9
+        2025-Q3: 78.2
+        2025-Q4: 77.6
+        2026-Q1: 67.8
+        2026-Q2: 61.8
+        2026-Q3: 71.2
+      EA20:
+        name: Euro area – 20 countries (2023-2025)
+        2025-Q1: 188.6
+        2025-Q2: 201.4
+        2025-Q3: 207.6
+        2025-Q4: 208.5
+        2026-Q1: 203.4
+        2026-Q2: 215.5
+        2026-Q3: 212.4
+      EA21:
+        name: Euro area – 21 countries (from 2026)
+        2025-Q1: 187.3
+        2025-Q2: 199.9
+        2025-Q3: 205.9
+        2025-Q4: 207.0
+        2026-Q1: 201.7
+        2026-Q2: 213.5
+        2026-Q3: 210.3
+      EE:
+        name: Estonia
+        2025-Q1: 196.0
+        2025-Q2: 136.8
+        2025-Q3: 106.5
+        2025-Q4: 130.0
+        2026-Q1: 129.4
+        2026-Q2: 171.0
+        2026-Q3: 202.3
+      EL:
+        name: Greece
+        2025-Q1: 772.4
+        2025-Q2: 937.9
+        2025-Q3: 1158.9
+        2025-Q4: 1174.6
+        2026-Q1: 1079.7
+        2026-Q2: 1349.9
+        2026-Q3: 1170.2
+      ES:
+        name: Spain
+        2025-Q1: 175.9
+        2025-Q2: 161.8
+        2025-Q3: 155.8
+        2025-Q4: 154.0
+        2026-Q1: 146.2
+        2026-Q2: 149.2
+        2026-Q3: 159.5
+      EU27_2020:
+        name: European Union - 27 countries (from 2020)
+        2025-Q1: 176.5
+        2025-Q2: 186.8
+        2025-Q3: 191.5
+        2025-Q4: 190.5
+        2026-Q1: 185.9
+        2026-Q2: 195.2
+        2026-Q3: 193.7
+      FI:
+        name: Finland
+        2025-Q1: 152.9
+        2025-Q2: 156.4
+        2025-Q3: 158.3
+        2025-Q4: 162.1
+        2026-Q1: 165.3
+        2026-Q2: 168.7
+        2026-Q3: 173.2
+      FR:
+        name: France
+        2025-Q1: 237.8
+        2025-Q2: 253.0
+        2025-Q3: 259.6
+        2025-Q4: 260.5
+        2026-Q1: 256.3
+        2026-Q2: 265.4
+        2026-Q3: 263.9
+      HR:
+        name: Croatia
+        2025-Q1: 80.2
+        2025-Q2: 71.9
+        2025-Q3: 79.6
+        2025-Q4: 79.0
+        2026-Q1: 70.0
+        2026-Q2: 83.4
+        2026-Q3: 80.9
+      HU:
+        name: Hungary
+        2025-Q1: 341.3
+        2025-Q2: 364.7
+        2025-Q3: 344.2
+        2025-Q4: 276.2
+        2026-Q1: 261.4
+        2026-Q2: 295.9
+        2026-Q3: 273.7
+      IS:
+        name: Iceland
+        2025-Q1: 90.6
+        2025-Q2: 105.3
+        2025-Q3: 108.9
+        2025-Q4: 106.1
+        2026-Q1: 112.0
+        2026-Q2: 116.1
+        2026-Q3: 108.9
+      IT:
+        name: Italy
+        2025-Q1: 103.0
+        2025-Q2: 113.4
+        2025-Q3: 105.0
+        2025-Q4: 114.7
+        2026-Q1: 111.6
+        2026-Q2: 109.9
+        2026-Q3: 118.3
+      LT:
+        name: Lithuania
+        2025-Q1: 136.5
+        2025-Q2: 131.3
+        2025-Q3: 121.0
+        2025-Q4: 132.1
+        2026-Q1: 118.0
+        2026-Q2: 120.7
+        2026-Q3: 129.3
+      LU:
+        name: Luxembourg
+        2025-Q1: 98.9
+        2025-Q2: 103.3
+        2025-Q3: 98.9
+        2025-Q4: 120.2
+        2026-Q1: 96.7
+        2026-Q2: 105.2
+        2026-Q3: 102.2
+      LV:
+        name: Latvia
+        2025-Q1: 79.3
+        2025-Q2: 135.3
+        2025-Q3: 126.9
+        2025-Q4: 82.7
+        2026-Q1: 110.1
+        2026-Q2: 108.2
+        2026-Q3: 83.4
+      ME:
+        name: Montenegro
+        2025-Q1: 46.6
+        2025-Q2: 82.6
+        2025-Q3: 65.4
+        2025-Q4: 55.2
+        2026-Q1: 47.4
+        2026-Q2: 26.2
+        2026-Q3: null
+      MK:
+        name: North Macedonia
+        2025-Q1: 88.4
+        2025-Q2: 101.0
+        2025-Q3: 112.6
+        2025-Q4: 115.5
+        2026-Q1: 112.2
+        2026-Q2: 81.8
+        2026-Q3: 79.0
+      MT:
+        name: Malta
+        2025-Q1: 111.1
+        2025-Q2: 111.1
+        2025-Q3: 0.0
+        2025-Q4: 0.0
+        2026-Q1: 66.7
+        2026-Q2: 44.4
+        2026-Q3: 22.2
+      NL:
+        name: Netherlands
+        2025-Q1: 194.6
+        2025-Q2: 221.2
+        2025-Q3: 206.3
+        2025-Q4: 186.0
+        2026-Q1: 195.5
+        2026-Q2: 195.0
+        2026-Q3: 202.8
+      'NO':
+        name: Norway
+        2025-Q1: 159.1
+        2025-Q2: 141.6
+        2025-Q3: 141.6
+        2025-Q4: 123.1
+        2026-Q1: 122.9
+        2026-Q2: 134.5
+        2026-Q3: 135.2
+      PL:
+        name: Poland
+        2025-Q1: 100.9
+        2025-Q2: 99.4
+        2025-Q3: 109.4
+        2025-Q4: 107.9
+        2026-Q1: 109.0
+        2026-Q2: 104.4
+        2026-Q3: 116.5
+      PT:
+        name: Portugal
+        2025-Q1: 95.7
+        2025-Q2: 93.1
+        2025-Q3: 101.1
+        2025-Q4: 109.5
+        2026-Q1: 98.3
+        2026-Q2: 104.9
+        2026-Q3: 101.1
+      RO:
+        name: Romania
+        2025-Q1: 44.6
+        2025-Q2: 52.3
+        2025-Q3: 29.6
+        2025-Q4: 63.3
+        2026-Q1: 52.0
+        2026-Q2: 51.1
+        2026-Q3: 49.2
+      RS:
+        name: Serbia
+        2025-Q1: null
+        2025-Q2: null
+        2025-Q3: null
+        2025-Q4: null
+        2026-Q1: null
+        2026-Q2: null
+        2026-Q3: null
+      SE:
+        name: Sweden
+        2025-Q1: 181.4
+        2025-Q2: 169.0
+        2025-Q3: 150.3
+        2025-Q4: 160.9
+        2026-Q1: 175.3
+        2026-Q2: 158.1
+        2026-Q3: 155.4
+      SI:
+        name: Slovenia
+        2025-Q1: 104.4
+        2025-Q2: 107.4
+        2025-Q3: 109.6
+        2025-Q4: 99.4
+        2026-Q1: 115.0
+        2026-Q2: 97.0
+        2026-Q3: 98.6
+      SK:
+        name: Slovakia
+        2025-Q1: 86.6
+        2025-Q2: 107.1
+        2025-Q3: 106.2
+        2025-Q4: 83.4
+        2026-Q1: 93.5
+        2026-Q2: 62.2
+        2026-Q3: 64.9
+      UA:
+        name: Ukraine
+        2025-Q1: 125.3
+        2025-Q2: 122.8
+        2025-Q3: 97.8
+        2025-Q4: 105.2
+        2026-Q1: 92.7
+        2026-Q2: 107.4
+        2026-Q3: 104.9
+      XK:
+        name: Kosovo*
+        2025-Q1: 55.1
+        2025-Q2: 101.7
+        2025-Q3: 90.0
+        2025-Q4: 81.2
+        2026-Q1: 94.1
+        2026-Q2: 86.5
+        2026-Q3: 81.4
+  vectors:
+  - input:
+      key: FR
+      column: 2026-Q3
+    expected: 263.9
+    origin: source
+  - input:
+      key: DE
+      column: 2025-Q1
+    expected: 166.9
+    origin: source
+  - input: US
+    expected: false
+    origin: derived
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow sts_rb_q, bankruptcies by country, SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/sts_rb_q/Q.BKRT.B-S_X_O_S94.SCA.I21.?startPeriod=2025-Q1&endPeriod=2026-Q3&format=SDMX-CSV
+  accessed_at: '2026-11-26'
+  locator: BKRT, SCA, I21, FR, 2026-Q3
+  value: '263.9'
+  unit: decimal
+  snippet: BKRT,B-S_X_O_S94,SCA,I21,FR,2026-Q3,263.9
+  source_license: CC-BY-4.0
+  content_sha256: 99e751051d9b5c7b27237ed11e065fee1f329142022f05a2886148c18e145f65
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow sts_rb_q, bankruptcies by country, SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/sts_rb_q/Q.BKRT.B-S_X_O_S94.SCA.I21.?startPeriod=2025-Q1&endPeriod=2026-Q3&format=SDMX-CSV
+  accessed_at: '2026-11-26'
+  locator: BKRT, SCA, I21, DE, 2025-Q1
+  value: '166.9'
+  unit: decimal
+  snippet: BKRT,B-S_X_O_S94,SCA,I21,DE,2025-Q1,166.9
+  source_license: CC-BY-4.0
+  content_sha256: 99e751051d9b5c7b27237ed11e065fee1f329142022f05a2886148c18e145f65
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: value[FR,2026-Q3]
+  expected: 263.9
+  tolerance: 0
+- statistic: count
+  expected: 37
+  tolerance: 0
+notes: 'Index of declarations of bankruptcy (2021 = 100), seasonally and calendar adjusted, for the business economy
+  excluding public administration and membership organisations, by country and quarter from 2025-Q1 to 2026-Q3,
+  from Eurostat dataflow sts_rb_q. Rows cover EU member states, the EU and euro-area aggregates and the other reporting
+  countries; null marks a quarter not yet reported. Each country''s index is relative to its own 2021 level, so
+  compare movements, not levels, across countries. Flagged observations: AL 2025-Q1 (i), AL 2025-Q2 (i), AL 2025-Q3
+  (i), AL 2025-Q4 (i), AL 2026-Q1 (i), AL 2026-Q2 (i), AL 2026-Q3 (i), AT 2025-Q1 (i), AT 2025-Q2 (i), AT 2025-Q3
+  (i), AT 2025-Q4 (p), AT 2026-Q1 (p), AT 2026-Q2 (p), AT 2026-Q3 (p), BE 2025-Q1 (i), BE 2025-Q2 (i), BE 2025-Q3
+  (i), BE 2025-Q4 (i), BE 2026-Q1 (i), BE 2026-Q2 (i), BE 2026-Q3 (i), BG 2025-Q1 (i), BG 2025-Q2 (i), BG 2025-Q3
+  (i), BG 2025-Q4 (i), BG 2026-Q1 (i), BG 2026-Q2 (i), BG 2026-Q3 (i), CY 2025-Q1 (i), CY 2025-Q2 (i), CY 2025-Q3
+  (i), CY 2025-Q4 (i), CY 2026-Q1 (i), CY 2026-Q2 (i), CY 2026-Q3 (p), CZ 2025-Q1 (i), CZ 2025-Q2 (i), CZ 2025-Q3
+  (i), CZ 2025-Q4 (i), CZ 2026-Q1 (i), CZ 2026-Q2 (i), CZ 2026-Q3 (i), DE 2025-Q1 (i), DE 2025-Q2 (i), DE 2025-Q3
+  (i), DE 2025-Q4 (i), DE 2026-Q1 (i), DE 2026-Q2 (i), DK 2025-Q1 (i), DK 2025-Q2 (i), DK 2025-Q3 (i), DK 2025-Q4
+  (i), DK 2026-Q1 (i), DK 2026-Q2 (i), DK 2026-Q3 (i), EE 2025-Q1 (i), EE 2025-Q2 (i), EE 2025-Q3 (i), EE 2025-Q4
+  (i), EE 2026-Q1 (i), EE 2026-Q2 (i), EE 2026-Q3 (i), EL 2025-Q1 (i), EL 2025-Q2 (i), EL 2025-Q3 (i), EL 2025-Q4
+  (i), EL 2026-Q1 (i), EL 2026-Q2 (i), EL 2026-Q3 (i), ES 2025-Q1 (i), ES 2025-Q2 (i), ES 2025-Q3 (i), ES 2025-Q4
+  (p), ES 2026-Q1 (p), ES 2026-Q2 (p), ES 2026-Q3 (p), FI 2025-Q1 (i), FI 2025-Q2 (i), FI 2025-Q3 (i), FI 2025-Q4
+  (i), FI 2026-Q1 (i), FI 2026-Q2 (i), FI 2026-Q3 (i), FR 2025-Q1 (i), FR 2025-Q2 (i), FR 2025-Q3 (i), FR 2025-Q4
+  (i), FR 2026-Q1 (i), FR 2026-Q2 (i), FR 2026-Q3 (i), HR 2025-Q1 (i), HR 2025-Q2 (i), HR 2025-Q3 (i), HR 2025-Q4
+  (i), HR 2026-Q1 (i), HR 2026-Q2 (i), HR 2026-Q3 (i), HU 2025-Q1 (i), HU 2025-Q2 (i), HU 2025-Q3 (i), HU 2025-Q4
+  (i), HU 2026-Q1 (i), HU 2026-Q2 (i), HU 2026-Q3 (i), IS 2025-Q1 (i), IS 2025-Q2 (i), IS 2025-Q3 (i), IS 2025-Q4
+  (p), IS 2026-Q1 (p), IS 2026-Q2 (p), IS 2026-Q3 (p), IT 2025-Q1 (i), IT 2025-Q2 (i), IT 2025-Q3 (i), IT 2025-Q4
+  (i), IT 2026-Q1 (i), IT 2026-Q2 (i), IT 2026-Q3 (i), LT 2025-Q1 (i), LT 2025-Q2 (i), LT 2025-Q3 (i), LT 2025-Q4
+  (i), LT 2026-Q1 (i), LT 2026-Q2 (i), LT 2026-Q3 (i), LU 2025-Q1 (p), LU 2025-Q2 (p), LU 2025-Q3 (p), LU 2025-Q4
+  (p), LU 2026-Q1 (p), LU 2026-Q2 (p), LU 2026-Q3 (p), LV 2025-Q1 (i), LV 2025-Q2 (i), LV 2025-Q3 (i), LV 2025-Q4
+  (i), LV 2026-Q1 (i), LV 2026-Q2 (i), LV 2026-Q3 (i), ME 2025-Q1 (i), ME 2025-Q2 (i), ME 2025-Q3 (i), ME 2025-Q4
+  (i), ME 2026-Q1 (i), ME 2026-Q2 (i), MK 2025-Q1 (i), MK 2025-Q2 (i), MK 2025-Q3 (i), MK 2025-Q4 (i), MK 2026-Q1
+  (i), MK 2026-Q2 (i), MK 2026-Q3 (i), MT 2025-Q1 (p), MT 2025-Q2 (p), MT 2025-Q3 (p), MT 2025-Q4 (p), MT 2026-Q1
+  (p), MT 2026-Q2 (p), MT 2026-Q3 (p), NL 2025-Q1 (i), NL 2025-Q2 (i), NL 2025-Q3 (i), NL 2025-Q4 (i), NL 2026-Q1
+  (i), NL 2026-Q2 (i), NL 2026-Q3 (p), NO 2025-Q1 (i), NO 2025-Q2 (i), NO 2025-Q3 (i), NO 2025-Q4 (i), NO 2026-Q1
+  (i), NO 2026-Q2 (i), NO 2026-Q3 (i), PL 2025-Q1 (i), PL 2025-Q2 (i), PL 2025-Q3 (i), PL 2025-Q4 (i), PL 2026-Q1
+  (i), PL 2026-Q2 (i), PL 2026-Q3 (i), PT 2025-Q1 (i), PT 2025-Q2 (i), PT 2025-Q3 (i), PT 2025-Q4 (i), PT 2026-Q1
+  (i), PT 2026-Q2 (i), PT 2026-Q3 (i), RO 2025-Q1 (i), RO 2025-Q2 (i), RO 2025-Q3 (i), RO 2025-Q4 (i), RO 2026-Q1
+  (i), RO 2026-Q2 (i), RO 2026-Q3 (i), SE 2025-Q1 (i), SE 2025-Q2 (i), SE 2025-Q3 (i), SE 2025-Q4 (i), SE 2026-Q1
+  (i), SE 2026-Q2 (i), SE 2026-Q3 (i), SK 2025-Q1 (i), SK 2025-Q2 (i), SK 2025-Q3 (i), SK 2025-Q4 (i), SK 2026-Q1
+  (i), SK 2026-Q2 (i), SK 2026-Q3 (i), UA 2025-Q1 (i), UA 2025-Q2 (i), UA 2025-Q3 (i), UA 2025-Q4 (i), UA 2026-Q1
+  (i), UA 2026-Q2 (i), UA 2026-Q3 (i), XK 2025-Q1 (i), XK 2025-Q2 (i), XK 2025-Q3 (i), XK 2025-Q4 (i), XK 2026-Q1
+  (i), XK 2026-Q2 (i), XK 2026-Q3 (i). Eurostat flags: b break in series, e estimated, p provisional. Eurostat''s
+  copyright notice states that its data are released under the Creative Commons Attribution 4.0 International licence;
+  the notice page renders dynamically and is referenced rather than hashed.'

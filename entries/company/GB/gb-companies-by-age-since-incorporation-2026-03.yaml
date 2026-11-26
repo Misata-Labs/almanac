@@ -1,0 +1,96 @@
+id: gb-companies-by-age-since-incorporation-2026-03
+title: Age since incorporation of companies on the UK effective register at 31 March 2026
+kind: marginal
+domain: company
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2026-03-31'
+  end: '2026-03-31'
+tags:
+- companies-house
+- firm-age
+- company-register
+use_cases:
+- synthetic-companies
+- kyb-onboarding
+- pe-portfolio-demo
+- credit-underwriting-demo
+- company-generation
+spec:
+  variable: company_age_band
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        less than 1 year: 0.150818
+        1-4 years: 0.318883
+        5-9 years: 0.215068
+        10-14 years: 0.125242
+        15-19 years: 0.066882
+        20-24 years: 0.050992
+        25-29 years: 0.025464
+        30-34 years: 0.012642
+        35-39 years: 0.01003
+        40-44 years: 0.006851
+        45-49 years: 0.004183
+        more than 50 years: 0.012947
+      published_percent:
+        less than 1 year: 15.0818004012505
+        1-4 years: 31.8883398819981
+        5-9 years: 21.5067658698955
+        10-14 years: 12.5241638210555
+        15-19 years: 6.688151488515761
+        20-24 years: 5.09922151554348
+        25-29 years: 2.5464207473402
+        30-34 years: 1.26415846508889
+        35-39 years: 1.00298398045844
+        40-44 years: 0.68508013834486
+        45-49 years: 0.418257100211435
+        more than 50 years: 1.29465659029741
+      average_age_years: 9.1
+evidence:
+- publisher: Companies House
+  title: Companies register activities, April 2025 to March 2026 (XLSX)
+  url: https://assets.publishing.service.gov.uk/media/6a3d1a97eaee00074150f4df/Companies_register_activities_April_2025_to_March_2026.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table A5, row 'Percentage of companies aged less than 1 year', column Effective register
+  value: 15.0818004012505
+  unit: percent
+  snippet: Analysis of companies on the register in the UK at 31 March 2026 by age since incorporation
+  source_license: OGL-UK-3.0
+  content_sha256: 1122b57e284a72c603944c305d04800a5afd1896fff784d72bab9017e5b6e0f9
+  role: primary
+- publisher: Companies House
+  title: Companies register activities, April 2025 to March 2026 (XLSX)
+  url: https://assets.publishing.service.gov.uk/media/6a3d1a97eaee00074150f4df/Companies_register_activities_April_2025_to_March_2026.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table A5, row 'Average age of companies (years)', column Effective register
+  value: 9.1
+  unit: decimal
+  snippet: Average age of companies (years)
+  source_license: OGL-UK-3.0
+  content_sha256: 1122b57e284a72c603944c305d04800a5afd1896fff784d72bab9017e5b6e0f9
+  role: primary
+assumed:
+- parameter: distribution.parameters.shares
+  value: published percent / sum of published percents
+  method: derived
+  rationale: The published percentages sum to 100.0; shares rescale them to sum to one.
+tests:
+- statistic: share["less than 1 year"]
+  expected: 0.150818
+  tolerance: 0.005
+- statistic: share["1-4 years"]
+  expected: 0.318883
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: Share of companies on the UK effective register (excluding those in liquidation or the course of dissolution)
+  by age since incorporation at 31 March 2026, in thirteen bands, from Table A5 of Companies House's Companies register
+  activities release for April 2025 to March 2026; the published average age of the effective register rides beside
+  the shares. Companies House notes that the age categorisation changed in 2022. Published on GOV.UK under the Open
+  Government Licence v3.0.

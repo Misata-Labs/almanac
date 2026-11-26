@@ -1,0 +1,136 @@
+id: us-regulation-d-rule-506-purchaser-limits
+title: 'US Regulation D Rule 506(b) and 506(c) purchaser conditions: 35 non-accredited purchasers per 90 days, accredited-only
+  506(c)'
+kind: rule
+domain: funds
+region: US
+status: license-review
+tier: A
+valid_from: '2021-06-09'
+valid_to: null
+tags:
+- funds
+- private-equity
+- regulation
+- regulation-d
+- rule-506
+- private-placement
+use_cases:
+- fund-administration-demo
+- kyb-onboarding
+- deal-sourcing-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      rule_506b_max_non_accredited_purchasers:
+        value: 35
+        unit: purchasers
+        paragraph: 230.506(b)(2)(i)
+        description: purchasers counted under 230.501(e), which excludes accredited investors
+      rule_506b_purchaser_count_period_days:
+        value: 90
+        unit: calendar days
+        paragraph: 230.506(b)(2)(i)
+      rule_506b_non_accredited_sophistication_required:
+        value: true
+        unit: boolean
+        paragraph: 230.506(b)(2)(ii)
+      rule_506c_all_purchasers_accredited:
+        value: true
+        unit: boolean
+        paragraph: 230.506(c)(2)(i)
+      rule_506c_reasonable_steps_to_verify:
+        value: true
+        unit: boolean
+        paragraph: 230.506(c)(2)(ii)
+  vectors:
+  - input:
+      key: rule_506b_max_non_accredited_purchasers
+      column: value
+    expected: 35
+    origin: source
+  - input:
+      key: rule_506b_purchaser_count_period_days
+      column: value
+    expected: 90
+    origin: source
+  - input:
+      key: rule_506c_all_purchasers_accredited
+      column: value
+    expected: true
+    origin: source
+  - input: rule_504_offering_limit
+    expected: false
+    origin: derived
+    note: Rule 504 is not part of this table
+evidence:
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 230.506, Exemption for limited offers and sales without regard to dollar amount of offering (eCFR
+    XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=230.506
+  accessed_at: '2026-11-26'
+  locator: paragraph (b)(2)(i)
+  value: '35'
+  unit: count
+  snippet: that there are no more than, 35 purchasers of securities from the issuer in offerings under this section
+    in any 90-calendar-day period
+  source_license: unstated
+  content_sha256: a2a0c7f692dd443647e7a26684805ff87f5475cbce09345bb8b026ae122256cb
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 230.506, Exemption for limited offers and sales without regard to dollar amount of offering (eCFR
+    XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=230.506
+  accessed_at: '2026-11-26'
+  locator: paragraph (c)(2)(i)
+  value: accredited investors
+  unit: text
+  snippet: All purchasers of securities sold in any offering under paragraph (c) of this section are accredited
+    investors.
+  source_license: unstated
+  content_sha256: a2a0c7f692dd443647e7a26684805ff87f5475cbce09345bb8b026ae122256cb
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 230.501, Definitions and terms used in Regulation D (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=230.501
+  accessed_at: '2026-11-26'
+  locator: paragraph (e)(1)(iv)
+  value: Any accredited investor
+  unit: text
+  snippet: (iv) Any accredited investor.
+  source_license: unstated
+  content_sha256: a54a63376aa3e8a20b053759ebda57d7ed371a373794351ba299292f11b08b1a
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 17 CFR 230.506 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-17.json?section=230.506&issue_date%5Blte%5D=2026-11-02
+  accessed_at: '2026-11-26'
+  locator: content_versions[*].date, latest
+  value: '2021-06-09'
+  unit: date
+  snippet: '"date":"2021-06-09"'
+  source_license: unstated
+  content_sha256: 0bd81898e629a54bfc3e5eebba059f416410a9564ecd82a6dbbff44cae4ed3ae
+  role: supporting
+assumed:
+- parameter: valid_from
+  value: '2021-06-09'
+  method: derived
+  rationale: Latest content version date of the section in the eCFR versions endpoint, bounded by the pinned eCFR
+    date.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+notes: Rule 506 is the safe harbour most private funds use to offer interests without registration. Under 506(b)
+  there may be no more than 35 purchasers in any 90-calendar-day period, counted under Rule 501(e), which excludes
+  accredited investors and certain relatives and controlled entities, so the limit in practice applies to non-accredited
+  purchasers, each of whom must be sophisticated (alone or with a purchaser representative); general solicitation
+  is not permitted. Under 506(c) general solicitation is allowed but every purchaser must be an accredited investor
+  and the issuer must take reasonable steps to verify that status. valid_from is the date the section's current
+  text took effect according to the eCFR. Works of the US federal government carry no copyright in the United States,
+  but the cited resources state no reuse terms, so the licence is recorded as unstated and the entry held at license-review.

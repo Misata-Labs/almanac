@@ -1,0 +1,116 @@
+id: gb-domestic-mergers-acquisitions-quarterly-2024q3-2026q2
+title: Domestic mergers and acquisitions of UK companies by other UK companies, number and value by quarter, 2024Q3
+  to 2026Q2
+kind: temporal
+domain: deals
+region: GB
+status: verified
+tier: A
+observed_period:
+  start: '2024-07-01'
+  end: '2026-06-30'
+tags:
+- deals
+- m-and-a
+- domestic
+- ons
+- quarterly-series
+use_cases:
+- deal-sourcing-demo
+- pe-portfolio-demo
+- valuation-demo
+- market-sizing
+spec:
+  variable: domestic_mergers_and_acquisitions_number
+  unit: count
+  frequency: quarterly
+  columns:
+  - total_value_gbp_millions
+  series:
+  - period: 2024-Q3
+    value: 199
+    total_value_gbp_millions: 4470
+  - period: 2024-Q4
+    value: 231
+    total_value_gbp_millions: 6373
+  - period: 2025-Q1
+    value: 183
+    total_value_gbp_millions: 3108
+  - period: 2025-Q2
+    value: 241
+    total_value_gbp_millions: 3367
+  - period: 2025-Q3
+    value: 166
+    total_value_gbp_millions: 7568
+  - period: 2025-Q4
+    value: 167
+    total_value_gbp_millions: 1937
+  - period: 2026-Q1
+    value: 142
+    total_value_gbp_millions: 1785
+  - period: 2026-Q2
+    value: 130
+    total_value_gbp_millions: 4238
+evidence:
+- publisher: Office for National Statistics
+  title: Mergers and acquisitions involving UK companies, Quarter 2 2026 dataset (XLSX)
+  url: https://www.ons.gov.uk/file?uri=/businessindustryandtrade/changestobusiness/mergersandacquisitions/datasets/mergersandacquisitionsinvolvingukcompanies/current/newversionq22026rftmatablewithr1andcdid.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table 8, row '2026 Q2', total number of all mergers and acquisitions
+  value: 130
+  unit: count
+  snippet: Summary of Mergers and Acquisitions in the UK by other UK Companies
+  source_license: OGL-UK-3.0
+  content_sha256: 04d409b2d05bf279e34000efb53978e7f2e69b0b7059fe679adfaa28734a3937
+  role: primary
+- publisher: Office for National Statistics
+  title: Mergers and acquisitions involving UK companies, Quarter 2 2026 dataset (XLSX)
+  url: https://www.ons.gov.uk/file?uri=/businessindustryandtrade/changestobusiness/mergersandacquisitions/datasets/mergersandacquisitionsinvolvingukcompanies/current/newversionq22026rftmatablewithr1andcdid.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table 8, row '2026 Q2', total value (GBP million)
+  value: 4238
+  unit: currency:GBP
+  snippet: <v>4238</v>
+  source_license: OGL-UK-3.0
+  content_sha256: 04d409b2d05bf279e34000efb53978e7f2e69b0b7059fe679adfaa28734a3937
+  role: primary
+- publisher: Office for National Statistics
+  title: Mergers and acquisitions involving UK companies, Quarter 2 2026 dataset (XLSX)
+  url: https://www.ons.gov.uk/file?uri=/businessindustryandtrade/changestobusiness/mergersandacquisitions/datasets/mergersandacquisitionsinvolvingukcompanies/current/newversionq22026rftmatablewithr1andcdid.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table 8, row '2024 Q3', total number
+  value: 199
+  unit: count
+  snippet: <v>199</v>
+  source_license: OGL-UK-3.0
+  content_sha256: 04d409b2d05bf279e34000efb53978e7f2e69b0b7059fe679adfaa28734a3937
+  role: primary
+- publisher: Office for National Statistics
+  title: ONS dataset metadata cpih01 (licence statement for ONS datasets)
+  url: https://api.beta.ons.gov.uk/v1/datasets/cpih01
+  accessed_at: '2026-11-26'
+  locator: license
+  value: Open Government Licence v3.0
+  unit: text
+  snippet: '"license":"Open Government Licence v3.0"'
+  source_license: OGL-UK-3.0
+  content_sha256: c8d0e2fde94bc0ed865f5e5b237a7b34835371ff71a5b36d460e6bb3aac5d40c
+  role: supporting
+assumed: []
+tests:
+- statistic: value[2026-Q2]
+  expected: 130
+  tolerance: 0
+- statistic: column[total_value_gbp_millions,2026-Q2]
+  expected: 4238
+  tolerance: 0
+- statistic: value[2024-Q3]
+  expected: 199
+  tolerance: 0
+- statistic: count
+  expected: 8
+  tolerance: 0
+notes: Acquisitions of UK companies by other UK companies worth £1 million or more, from Table 8 of the ONS Mergers
+  and Acquisitions dataset published with the Q2 2026 release; values in millions of pounds. The split between independent
+  companies and sales of subsidiaries is suppressed for 2026 Q2 and is left out. 2026 Q1 carries the source's [er]
+  marker. Released under the Open Government Licence v3.0.

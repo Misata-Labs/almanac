@@ -1,0 +1,383 @@
+id: us-qsbs-section-1202-gain-exclusion
+title: 'US qualified small business stock gain exclusion (26 U.S.C. 1202) before and after Public Law 119-21: percentages,
+  holding periods, caps'
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '1993-08-10'
+valid_to: null
+tags:
+- tax
+- private-equity
+- structuring
+- qsbs
+- section-1202
+- capital-gains
+- exit
+- obbba
+use_cases:
+- lbo-modelling
+- valuation-demo
+- tax-demo
+- pe-portfolio-demo
+spec:
+  implementation: almanac.rules.us_qsbs_exclusion
+  parameters:
+    currency: USD
+    applicable_date: '2025-07-04'
+    acquisition_periods:
+    - acquired_after: '1993-08-10'
+      acquired_on_or_before: '2009-02-17'
+      percent: 50
+      more_than_years: 5
+      section: 1202(a)(1)(A)
+    - acquired_after: '2009-02-17'
+      acquired_on_or_before: '2010-09-27'
+      percent: 75
+      more_than_years: 5
+      section: 1202(a)(3)
+    - acquired_after: '2010-09-27'
+      acquired_on_or_before: '2025-07-04'
+      percent: 100
+      more_than_years: 5
+      section: 1202(a)(4)
+    holding_schedule:
+    - years_held: 3
+      percent: 50
+    - years_held: 4
+      percent: 75
+    - years_held: 5
+      percent: 100
+    dollar_limit:
+      on_or_before_applicable_date: 10000000
+      after_applicable_date: 15000000
+    married_filing_separately_dollar_limit_on_or_before_applicable_date: 5000000
+    basis_multiple: 10
+    aggregate_gross_assets_limit:
+      stock_issued_on_or_before_applicable_date: 50000000
+      stock_issued_after_applicable_date: 75000000
+    inflation_adjustment:
+      amounts:
+      - dollar_limit.after_applicable_date
+      - aggregate_gross_assets_limit.stock_issued_after_applicable_date
+      taxable_years_beginning_after: 2026
+      base_year: 2025
+      rounding_multiple: 10000
+  vectors:
+  - input:
+      acquired: '2025-08-01'
+      sold: '2028-08-01'
+    expected: 50
+    origin: source
+    note: 'new section 1202(a)(5): 3 years held'
+  - input:
+      acquired: '2025-08-01'
+      sold: '2029-08-01'
+    expected: 75
+    origin: source
+    note: 'new section 1202(a)(5): 4 years held'
+  - input:
+      acquired: '2025-08-01'
+      sold: '2030-08-01'
+    expected: 100
+    origin: source
+    note: 'new section 1202(a)(5): 5 years or more'
+  - input:
+      acquired: '2015-01-15'
+      sold: '2020-01-16'
+    expected: 100
+    origin: source
+    note: 'section 1202(a)(4): acquired after the 2010 Act, held more than 5 years'
+  - input:
+      acquired: '2009-06-01'
+      sold: '2015-06-02'
+    expected: 75
+    origin: source
+    note: section 1202(a)(3)
+  - input:
+      acquired: '2005-03-01'
+      sold: '2012-03-02'
+    expected: 50
+    origin: source
+    note: section 1202(a)(1)
+  - input:
+      acquired: '2025-08-01'
+      sold: '2028-07-31'
+    expected: 0
+    origin: derived
+    note: one day short of 3 years
+  - input:
+      acquired: '2015-01-15'
+      sold: '2020-01-15'
+    expected: 0
+    origin: derived
+    note: exactly 5 years is not more than 5 years
+  - input:
+      acquired: '2026-01-02'
+      sold: '2031-01-02'
+      gain: 20000000
+      adjusted_basis: 1000000
+    expected: 15000000
+    origin: derived
+    note: capped at the dollar limit, which exceeds 10 times basis
+  - input:
+      acquired: '2026-01-02'
+      sold: '2031-01-02'
+      gain: 20000000
+      adjusted_basis: 2500000
+    expected: 20000000
+    origin: derived
+    note: 10 times basis exceeds the gain
+  - input:
+      acquired: '2026-01-02'
+      sold: '2030-01-02'
+      gain: 8000000
+      adjusted_basis: 100000
+    expected: 6000000
+    origin: derived
+    note: '4 years held: 75% of the gain'
+  - input:
+      acquired: '2014-03-01'
+      sold: '2024-03-01'
+      gain: 12000000
+      adjusted_basis: 500000
+      prior_eligible_gain: 4000000
+    expected: 6000000
+    origin: derived
+    note: dollar limit reduced by prior eligible gain from the same issuer
+evidence:
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 1202, Partial exclusion for gain from certain small business stock (United States Code 2024 edition,
+    HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapP-partI-sec1202.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (a)(1)
+  value: 50 percent
+  unit: percent
+  snippet: shall not include 50 percent of any gain from the sale or exchange of qualified small business stock
+    held for more than 5 years
+  source_license: unstated
+  content_sha256: 76a477876d344ebe58adf602583fb0f370428e0b105b34abea65a1642ee5b064
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 1202, Partial exclusion for gain from certain small business stock (United States Code 2024 edition,
+    HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapP-partI-sec1202.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (a)(4) heading
+  value: 100 percent
+  unit: percent
+  snippet: 100 percent exclusion for stock acquired during certain periods in 2010 and thereafter
+  source_license: unstated
+  content_sha256: 76a477876d344ebe58adf602583fb0f370428e0b105b34abea65a1642ee5b064
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 1202, Partial exclusion for gain from certain small business stock (United States Code 2024 edition,
+    HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapP-partI-sec1202.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (b)(1)(B)
+  value: 10 times
+  unit: integer
+  snippet: 10 times the aggregate adjusted bases of qualified small business stock issued by such corporation
+  source_license: unstated
+  content_sha256: 76a477876d344ebe58adf602583fb0f370428e0b105b34abea65a1642ee5b064
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 1202, Partial exclusion for gain from certain small business stock (United States Code 2024 edition,
+    HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapP-partI-sec1202.htm
+  accessed_at: '2026-11-26'
+  locator: References in Text notes
+  value: Feb. 17, 2009
+  unit: date
+  snippet: which was approved Feb. 17, 2009
+  source_license: unstated
+  content_sha256: 76a477876d344ebe58adf602583fb0f370428e0b105b34abea65a1642ee5b064
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 1202, Partial exclusion for gain from certain small business stock (United States Code 2024 edition,
+    HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapP-partI-sec1202.htm
+  accessed_at: '2026-11-26'
+  locator: References in Text notes
+  value: Sept. 27, 2010
+  unit: date
+  snippet: which was approved Sept. 27, 2010
+  source_license: unstated
+  content_sha256: 76a477876d344ebe58adf602583fb0f370428e0b105b34abea65a1642ee5b064
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 1202, Partial exclusion for gain from certain small business stock (United States Code 2024 edition,
+    HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapP-partI-sec1202.htm
+  accessed_at: '2026-11-26'
+  locator: References in Text notes
+  value: Aug. 10, 1993
+  unit: date
+  snippet: which was approved Aug. 10, 1993
+  source_license: unstated
+  content_sha256: 76a477876d344ebe58adf602583fb0f370428e0b105b34abea65a1642ee5b064
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 1202, Partial exclusion for gain from certain small business stock (United States Code 2024 edition,
+    HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapP-partI-sec1202.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (a)(3)(A)
+  value: 75 percent
+  unit: percent
+  snippet: (A) paragraph (1) shall be applied by substituting
+  source_license: unstated
+  content_sha256: 76a477876d344ebe58adf602583fb0f370428e0b105b34abea65a1642ee5b064
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 1202, Partial exclusion for gain from certain small business stock (United States Code 2024 edition,
+    HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapP-partI-sec1202.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (d)(1)(A)
+  value: $50,000,000
+  unit: currency:USD
+  snippet: and before the issuance did not exceed $50,000,000,
+  source_license: unstated
+  content_sha256: 76a477876d344ebe58adf602583fb0f370428e0b105b34abea65a1642ee5b064
+  role: primary
+- publisher: US Government Publishing Office (govinfo)
+  title: Public Law 119-21, 139 Stat. 72 (July 4, 2025), USLM XML
+  url: https://www.govinfo.gov/content/pkg/PLAW-119publ21/uslm/PLAW-119publ21.xml
+  accessed_at: '2026-11-26'
+  locator: section 70431(a)(2), new section 1202(a)(5) table
+  value: 50%
+  unit: percent
+  snippet: 3 years
+  source_license: unstated
+  content_sha256: 762ae9af06640f023ddb9eb6f474ff7cfa275691de338d4fd985cfb04a7b6dea
+  role: primary
+- publisher: US Government Publishing Office (govinfo)
+  title: Public Law 119-21, 139 Stat. 72 (July 4, 2025), USLM XML
+  url: https://www.govinfo.gov/content/pkg/PLAW-119publ21/uslm/PLAW-119publ21.xml
+  accessed_at: '2026-11-26'
+  locator: section 70431(a)(2), new section 1202(a)(5) table
+  value: 75%
+  unit: percent
+  snippet: 4 years
+  source_license: unstated
+  content_sha256: 762ae9af06640f023ddb9eb6f474ff7cfa275691de338d4fd985cfb04a7b6dea
+  role: primary
+- publisher: US Government Publishing Office (govinfo)
+  title: Public Law 119-21, 139 Stat. 72 (July 4, 2025), USLM XML
+  url: https://www.govinfo.gov/content/pkg/PLAW-119publ21/uslm/PLAW-119publ21.xml
+  accessed_at: '2026-11-26'
+  locator: section 70431(a)(2), new section 1202(a)(5) table
+  value: 100%
+  unit: percent
+  snippet: 5 years or more
+  source_license: unstated
+  content_sha256: 762ae9af06640f023ddb9eb6f474ff7cfa275691de338d4fd985cfb04a7b6dea
+  role: primary
+- publisher: US Government Publishing Office (govinfo)
+  title: Public Law 119-21, 139 Stat. 72 (July 4, 2025), USLM XML
+  url: https://www.govinfo.gov/content/pkg/PLAW-119publ21/uslm/PLAW-119publ21.xml
+  accessed_at: '2026-11-26'
+  locator: section 70431(b)(2), new section 1202(b)(5)(A)
+  value: $10,000
+  unit: currency:USD
+  snippet: such increase shall be rounded to the nearest multiple of $10,000.
+  source_license: unstated
+  content_sha256: 762ae9af06640f023ddb9eb6f474ff7cfa275691de338d4fd985cfb04a7b6dea
+  role: primary
+- publisher: US Government Publishing Office (govinfo)
+  title: Public Law 119-21, 139 Stat. 72 (July 4, 2025), USLM XML
+  url: https://www.govinfo.gov/content/pkg/PLAW-119publ21/uslm/PLAW-119publ21.xml
+  accessed_at: '2026-11-26'
+  locator: section 70431(a)(1), new section 1202(a)(1)(B)
+  value: at least 3 years
+  unit: text
+  snippet: qualified small business stock acquired after the applicable date and held for at least 3 years
+  source_license: unstated
+  content_sha256: 762ae9af06640f023ddb9eb6f474ff7cfa275691de338d4fd985cfb04a7b6dea
+  role: primary
+- publisher: US Government Publishing Office (govinfo)
+  title: Public Law 119-21, 139 Stat. 72 (July 4, 2025), USLM XML
+  url: https://www.govinfo.gov/content/pkg/PLAW-119publ21/uslm/PLAW-119publ21.xml
+  accessed_at: '2026-11-26'
+  locator: section 70431(b)(2), new section 1202(b)(4)(A)
+  value: $10,000,000
+  unit: currency:USD
+  snippet: if such stock was acquired by the taxpayer on or before the applicable date, $10,000,000, reduced by
+    the aggregate amount
+  source_license: unstated
+  content_sha256: 762ae9af06640f023ddb9eb6f474ff7cfa275691de338d4fd985cfb04a7b6dea
+  role: primary
+- publisher: US Government Publishing Office (govinfo)
+  title: Public Law 119-21, 139 Stat. 72 (July 4, 2025), USLM XML
+  url: https://www.govinfo.gov/content/pkg/PLAW-119publ21/uslm/PLAW-119publ21.xml
+  accessed_at: '2026-11-26'
+  locator: section 70431(b)(2), new section 1202(b)(4)(B)
+  value: $15,000,000
+  unit: currency:USD
+  snippet: if such stock was acquired by the taxpayer after the applicable date, $15,000,000, reduced by the sum
+    of
+  source_license: unstated
+  content_sha256: 762ae9af06640f023ddb9eb6f474ff7cfa275691de338d4fd985cfb04a7b6dea
+  role: primary
+- publisher: US Government Publishing Office (govinfo)
+  title: Public Law 119-21, 139 Stat. 72 (July 4, 2025), USLM XML
+  url: https://www.govinfo.gov/content/pkg/PLAW-119publ21/uslm/PLAW-119publ21.xml
+  accessed_at: '2026-11-26'
+  locator: section 70431(c)(2), inflation adjustment of the gross assets limit
+  value: $75,000,000
+  unit: currency:USD
+  snippet: In the case of any taxable year beginning after 2026, the $75,000,000 amounts in paragraphs (1)(A) and
+    (1)(B)
+  source_license: unstated
+  content_sha256: 762ae9af06640f023ddb9eb6f474ff7cfa275691de338d4fd985cfb04a7b6dea
+  role: primary
+- publisher: US Government Publishing Office (govinfo)
+  title: Public Law 119-21, 139 Stat. 72 (July 4, 2025), USLM XML
+  url: https://www.govinfo.gov/content/pkg/PLAW-119publ21/uslm/PLAW-119publ21.xml
+  accessed_at: '2026-11-26'
+  locator: approval date
+  value: July 4, 2025
+  unit: date
+  snippet: approvedDate date="2025-07-04"
+  source_license: unstated
+  content_sha256: 762ae9af06640f023ddb9eb6f474ff7cfa275691de338d4fd985cfb04a7b6dea
+  role: primary
+assumed:
+- parameter: married_filing_separately_dollar_limit_on_or_before_applicable_date
+  value: 5000000
+  method: derived
+  rationale: Section 1202(b)(3)(A) substitutes $5,000,000 for the $10,000,000 amount for separate returns; recorded
+    for reference.
+- parameter: acquisition_periods
+  value: dates
+  method: derived
+  rationale: The windows are bounded by the enactment dates the Code's References in Text notes give for the 1993,
+    2009 and 2010 Acts and the approval date of Public Law 119-21.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: dollar_limit[after_applicable_date]
+  expected: 15000000
+  tolerance: 0
+- statistic: max_percent
+  expected: 100
+  tolerance: 0
+notes: 'Section 1202 lets a non-corporate holder exclude part of the gain on stock of a qualified small business
+  (a C corporation with aggregate gross assets within the limit when the stock is issued) acquired at original issue.
+  Stock acquired on or before the applicable date (the date Public Law 119-21 was enacted) keeps the earlier regime:
+  50, 75 or 100 percent depending on the acquisition window, only if held for more than five years, with a per-issuer
+  cap of the greater of the dollar limit (reduced by earlier eligible gain from the issuer) and ten times the adjusted
+  basis of the stock sold. Stock acquired after that date qualifies after three years, with the exclusion stepping
+  up by whole years held, a higher dollar limit and, for stock issued after that date, a higher gross assets limit;
+  both new amounts are indexed for taxable years beginning after 2026. The pre-enactment text is read from the 2024
+  edition of the Code and the changes from the public law itself, since no edition of the Code yet incorporates
+  them. The rule does not model the empowerment-zone percentage, the AMT preference, the qualified trade or business
+  tests, or the reduction of the post-enactment dollar limit for same-year gain on older stock of the same issuer.
+  Works of the US federal government carry no copyright in the United States, but the cited resources state no reuse
+  terms, so the licence is recorded as unstated and the entry held at license-review.'

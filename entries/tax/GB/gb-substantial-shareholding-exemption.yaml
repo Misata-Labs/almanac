@@ -1,0 +1,149 @@
+id: gb-substantial-shareholding-exemption
+title: 'UK substantial shareholding exemption for corporate share disposals (TCGA 1992 Sch. 7AC): 10% holding for
+  12 months in the last 6 years'
+kind: rule
+domain: tax
+region: GB
+status: license-review
+tier: B
+valid_from: '2026-11-26'
+valid_to: null
+tags:
+- tax
+- private-equity
+- structuring
+- participation-exemption
+- substantial-shareholding-exemption
+- capital-gains
+- exit
+- holding-company
+use_cases:
+- lbo-modelling
+- tax-demo
+- valuation-demo
+- pe-portfolio-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      minimum_ordinary_share_capital_percent:
+        value: 10
+        unit: percent
+        paragraph: Sch. 7AC para. 8(1)(a)
+      minimum_profits_entitlement_percent:
+        value: 10
+        unit: percent
+        paragraph: Sch. 7AC para. 8(1)(b)
+      minimum_assets_on_winding_up_percent:
+        value: 10
+        unit: percent
+        paragraph: Sch. 7AC para. 8(1)(c)
+      minimum_holding_period_months:
+        value: 12
+        unit: months
+        paragraph: Sch. 7AC para. 7
+        description: held throughout a twelve-month period
+      holding_period_lookback_years:
+        value: 6
+        unit: years
+        paragraph: Sch. 7AC para. 7
+        description: the twelve-month period must begin not more than this many years before the disposal
+    investee_condition: the company invested in must have been a qualifying (trading) company throughout the relevant
+      period, except where the institutional investor rules apply
+  vectors:
+  - input:
+      key: minimum_ordinary_share_capital_percent
+      column: value
+    expected: 10
+    origin: source
+  - input:
+      key: holding_period_lookback_years
+      column: value
+    expected: 6
+    origin: source
+  - input:
+      key: minimum_holding_period_months
+      column: value
+    expected: 12
+    origin: derived
+    note: twelve-month period, written in words
+  - input: minimum_voting_rights_percent
+    expected: false
+    origin: derived
+    note: the schedule sets no separate voting-rights test
+evidence:
+- publisher: The National Archives (legislation.gov.uk)
+  title: Taxation of Chargeable Gains Act 1992, Schedule 7AC, exemptions for disposals by companies with substantial
+    shareholding (legislation.gov.uk HTML, version of 2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/1992/12/schedule/7AC/2026-11-26/data.html
+  accessed_at: '2026-11-26'
+  locator: paragraph 8(1)(a)
+  value: 10%
+  unit: percent
+  snippet: it holds not less than 10% of the company’s ordinary share capital
+  source_license: unstated
+  content_sha256: 4d73cad8a8c511aae7b7f94a7d4729d40ebb5eb795c4ee20dc12880198cd84a5
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Taxation of Chargeable Gains Act 1992, Schedule 7AC, exemptions for disposals by companies with substantial
+    shareholding (legislation.gov.uk HTML, version of 2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/1992/12/schedule/7AC/2026-11-26/data.html
+  accessed_at: '2026-11-26'
+  locator: paragraph 7
+  value: twelve-month period
+  unit: text
+  snippet: throughout a twelve-month period beginning not more than
+  source_license: unstated
+  content_sha256: 4d73cad8a8c511aae7b7f94a7d4729d40ebb5eb795c4ee20dc12880198cd84a5
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Taxation of Chargeable Gains Act 1992, Schedule 7AC, exemptions for disposals by companies with substantial
+    shareholding (legislation.gov.uk HTML, version of 2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/1992/12/schedule/7AC/2026-11-26/data.html
+  accessed_at: '2026-11-26'
+  locator: paragraph 7
+  value: six
+  unit: text
+  snippet: years before the day on which the disposal takes place
+  source_license: unstated
+  content_sha256: 4d73cad8a8c511aae7b7f94a7d4729d40ebb5eb795c4ee20dc12880198cd84a5
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Taxation of Chargeable Gains Act 1992, Schedule 7AC, exemptions for disposals by companies with substantial
+    shareholding (legislation.gov.uk HTML, version of 2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/1992/12/schedule/7AC/2026-11-26/data.html
+  accessed_at: '2026-11-26'
+  locator: paragraph 1(1)
+  value: not a chargeable gain
+  unit: text
+  snippet: is not a chargeable gain if the requirements of this Schedule are met
+  source_license: unstated
+  content_sha256: 4d73cad8a8c511aae7b7f94a7d4729d40ebb5eb795c4ee20dc12880198cd84a5
+  role: primary
+assumed:
+- parameter: valid_from
+  value: '2026-11-26'
+  method: derived
+  rationale: Point-in-time date of the cited version; the schedule's paragraphs were inserted and amended at different
+    dates.
+- parameter: rows.minimum_holding_period_months.value
+  value: 12
+  method: derived
+  rationale: Paragraph 7 writes 'twelve-month period'; paragraph 28 defines it as ending the day before the first
+    anniversary of its start.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+notes: A gain (or loss) of a company on a disposal of shares in another company is exempt from corporation tax on
+  chargeable gains if the investing company held a substantial shareholding (at least 10% of the ordinary share
+  capital and entitlement to at least 10% of distributable profits and of assets on a winding up) throughout a twelve-month
+  period beginning no more than six years before the disposal, and the company invested in meets the trading conditions.
+  It is the UK participation exemption that makes share sales by UK holding companies tax-free at exit. The text
+  is the version in force on the pinned point-in-time date, which is also used as valid_from because the schedule's
+  provisions take effect on different dates; the HTML form is cited because the XML lists unapplied effects for
+  the Act. legislation.gov.uk publishes Crown copyright legislation for reuse, but the cited resource carries no
+  licence statement of its own, so the licence is recorded as unstated and the entry held at license-review.

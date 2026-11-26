@@ -1,0 +1,293 @@
+id: us-hsr-premerger-thresholds-and-filing-fees-2026
+title: Hart-Scott-Rodino premerger notification thresholds and filing-fee tiers in force from 17 February 2026
+kind: rule
+domain: deals
+region: US
+status: license-review
+tier: A
+valid_from: '2026-02-17'
+valid_to: null
+tags:
+- deals
+- m-and-a
+- hart-scott-rodino
+- antitrust
+- filing-fee
+- thresholds
+- ftc
+use_cases:
+- deal-sourcing-demo
+- pe-portfolio-demo
+- valuation-demo
+- lbo-modelling
+- compliance-demo
+spec:
+  implementation: almanac.rules.us_hsr_premerger
+  parameters:
+    size_of_transaction:
+      all_transactions_above_usd: 535500000
+      size_of_person_test_above_usd: 133900000
+    size_of_person:
+      smaller_person_usd: 26800000
+      larger_person_usd: 267800000
+    filing_fees:
+    - from_usd: 0
+      below_usd: 189600000
+      fee_usd: 35000
+      published_band: less than $189.6 million
+      published_fee: $35,000
+    - from_usd: 189600000
+      below_usd: 586900000
+      fee_usd: 110000
+      published_band: not less than $189.6 million but less than $586.9 million
+      published_fee: 110,000
+    - from_usd: 586900000
+      below_usd: 1174000000
+      fee_usd: 275000
+      published_band: not less than $586.9 million but less than $1.174 billion
+      published_fee: 275,000
+    - from_usd: 1174000000
+      below_usd: 2347000000
+      fee_usd: 440000
+      published_band: not less than $1.174 billion but less than $2.347 billion
+      published_fee: 440,000
+    - from_usd: 2347000000
+      below_usd: 5869000000
+      fee_usd: 875000
+      published_band: not less than $2.347 billion but less than $5.869 billion
+      published_fee: 875,000
+    - from_usd: 5869000000
+      below_usd: null
+      fee_usd: 2460000
+      published_band: $5.869 billion or more
+      published_fee: 2,460,000
+    adjusted_thresholds:
+      $10 million: $26.8 million
+      $50 million: $133.9 million
+      $100 million: $267.8 million
+      $110 million: $294.5 million
+      $200 million: $535.5 million
+      $500 million: $1.339 billion
+      $1 billion: $2.678 billion
+  vectors:
+  - input:
+      fee: 100000000
+    expected: 35000
+    origin: source
+    note: first tier, less than $189.6 million
+  - input:
+      fee: 189600000
+    expected: 110000
+    origin: source
+    note: second tier starts at not less than $189.6 million but less than $586.9 million
+  - input:
+      fee: 1174000000
+    expected: 440000
+    origin: source
+    note: not less than $1.174 billion but less than $2.347 billion
+  - input:
+      fee: 5869000000
+    expected: 2460000
+    origin: source
+    note: top tier, $5.869 billion or more
+  - input:
+      fee: 5868999999
+    expected: 875000
+    origin: derived
+    note: one dollar below the top tier
+  - input:
+      band: 535500001
+    expected: reportable
+    origin: derived
+    note: in excess of the 7A(a)(2)(A) threshold
+  - input:
+      band: 535500000
+    expected: size-of-person test applies
+    origin: derived
+    note: exactly at the upper threshold is not in excess of it
+  - input:
+      band: 133900000
+    expected: not reportable
+    origin: derived
+  - input:
+      reportable: 134900000
+      acquiring:
+        annual_net_sales_usd: 267800000
+        total_assets_usd: 0
+      acquired:
+        manufacturing: true
+        annual_net_sales_usd: 26800000
+        total_assets_usd: 0
+    expected: true
+    origin: derived
+    note: size-of-person test (I) met at both minimums
+  - input:
+      reportable: 134900000
+      acquiring:
+        annual_net_sales_usd: 267799999
+        total_assets_usd: 0
+      acquired:
+        manufacturing: true
+        annual_net_sales_usd: 26800000
+        total_assets_usd: 0
+    expected: false
+    origin: derived
+    note: acquirer one dollar short of the larger amount
+  - input:
+      reportable: 134900000
+      acquiring:
+        annual_net_sales_usd: 267800000
+        total_assets_usd: 0
+      acquired:
+        manufacturing: false
+        annual_net_sales_usd: 26800000
+        total_assets_usd: 0
+    expected: false
+    origin: derived
+    note: test (II) counts only the total assets of a non-manufacturing acquired person
+evidence:
+- publisher: Federal Trade Commission
+  title: Federal Register, 16 January 2026, govinfo bulk XML (FR Doc. 2026-00877 and the following notice)
+  url: https://www.govinfo.gov/bulkdata/FR/2026/01/FR-2026-01-16.xml
+  accessed_at: '2026-11-26'
+  locator: NOTICE 'Revised Jurisdictional Thresholds for Section 7A of the Clayton Act', DATES
+  value: February 17, 2026
+  unit: date
+  snippet: Revised Jurisdictional Thresholds for Section 7A of the Clayton Act
+  source_license: unstated
+  content_sha256: 5eca317d18b69935be178cfeacbf0257a0a39507e04929dea69916f537d4a0ef
+  role: primary
+- publisher: Federal Trade Commission
+  title: Federal Register, 16 January 2026, govinfo bulk XML (FR Doc. 2026-00877 and the following notice)
+  url: https://www.govinfo.gov/bulkdata/FR/2026/01/FR-2026-01-16.xml
+  accessed_at: '2026-11-26'
+  locator: Section 7A notice, adjusted threshold table, row '$200 million'
+  value: $535.5 million
+  unit: text
+  snippet: <ENT>$535.5 million.</ENT>
+  source_license: unstated
+  content_sha256: 5eca317d18b69935be178cfeacbf0257a0a39507e04929dea69916f537d4a0ef
+  role: primary
+- publisher: Federal Trade Commission
+  title: Federal Register, 16 January 2026, govinfo bulk XML (FR Doc. 2026-00877 and the following notice)
+  url: https://www.govinfo.gov/bulkdata/FR/2026/01/FR-2026-01-16.xml
+  accessed_at: '2026-11-26'
+  locator: Section 7A notice, adjusted threshold table, row '$50 million'
+  value: $133.9 million
+  unit: text
+  snippet: <ENT>$133.9 million.</ENT>
+  source_license: unstated
+  content_sha256: 5eca317d18b69935be178cfeacbf0257a0a39507e04929dea69916f537d4a0ef
+  role: primary
+- publisher: Federal Trade Commission
+  title: Federal Register, 16 January 2026, govinfo bulk XML (FR Doc. 2026-00877 and the following notice)
+  url: https://www.govinfo.gov/bulkdata/FR/2026/01/FR-2026-01-16.xml
+  accessed_at: '2026-11-26'
+  locator: Section 7A notice, adjusted threshold table, row '$10 million'
+  value: $26.8 million
+  unit: text
+  snippet: <ENT>$26.8 million.</ENT>
+  source_license: unstated
+  content_sha256: 5eca317d18b69935be178cfeacbf0257a0a39507e04929dea69916f537d4a0ef
+  role: primary
+- publisher: Federal Trade Commission
+  title: Federal Register, 16 January 2026, govinfo bulk XML (FR Doc. 2026-00877 and the following notice)
+  url: https://www.govinfo.gov/bulkdata/FR/2026/01/FR-2026-01-16.xml
+  accessed_at: '2026-11-26'
+  locator: Section 7A notice, adjusted threshold table, row '$100 million'
+  value: $267.8 million
+  unit: text
+  snippet: <ENT>$267.8 million.</ENT>
+  source_license: unstated
+  content_sha256: 5eca317d18b69935be178cfeacbf0257a0a39507e04929dea69916f537d4a0ef
+  role: primary
+- publisher: Federal Trade Commission
+  title: Federal Register, 16 January 2026, govinfo bulk XML (FR Doc. 2026-00877 and the following notice)
+  url: https://www.govinfo.gov/bulkdata/FR/2026/01/FR-2026-01-16.xml
+  accessed_at: '2026-11-26'
+  locator: Section 7A notice, filing fee table, row 1
+  value: $35,000
+  unit: currency:USD
+  snippet: less than $189.6 million.
+  source_license: unstated
+  content_sha256: 5eca317d18b69935be178cfeacbf0257a0a39507e04929dea69916f537d4a0ef
+  role: primary
+- publisher: Federal Trade Commission
+  title: Federal Register, 16 January 2026, govinfo bulk XML (FR Doc. 2026-00877 and the following notice)
+  url: https://www.govinfo.gov/bulkdata/FR/2026/01/FR-2026-01-16.xml
+  accessed_at: '2026-11-26'
+  locator: Section 7A notice, filing fee table, row 2
+  value: 110,000
+  unit: currency:USD
+  snippet: not less than $189.6 million but less than $586.9 million.
+  source_license: unstated
+  content_sha256: 5eca317d18b69935be178cfeacbf0257a0a39507e04929dea69916f537d4a0ef
+  role: primary
+- publisher: Federal Trade Commission
+  title: Federal Register, 16 January 2026, govinfo bulk XML (FR Doc. 2026-00877 and the following notice)
+  url: https://www.govinfo.gov/bulkdata/FR/2026/01/FR-2026-01-16.xml
+  accessed_at: '2026-11-26'
+  locator: Section 7A notice, filing fee table, row 4
+  value: 440,000
+  unit: currency:USD
+  snippet: not less than $1.174 billion but less than $2.347 billion.
+  source_license: unstated
+  content_sha256: 5eca317d18b69935be178cfeacbf0257a0a39507e04929dea69916f537d4a0ef
+  role: primary
+- publisher: Federal Trade Commission
+  title: Federal Register, 16 January 2026, govinfo bulk XML (FR Doc. 2026-00877 and the following notice)
+  url: https://www.govinfo.gov/bulkdata/FR/2026/01/FR-2026-01-16.xml
+  accessed_at: '2026-11-26'
+  locator: Section 7A notice, filing fee table, row 6
+  value: 2,460,000
+  unit: currency:USD
+  snippet: $5.869 billion or more.
+  source_license: unstated
+  content_sha256: 5eca317d18b69935be178cfeacbf0257a0a39507e04929dea69916f537d4a0ef
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives (via govinfo)
+  title: 15 U.S.C. 18a, United States Code 2023 edition (HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap1-sec18a.htm
+  accessed_at: '2026-11-26'
+  locator: 15 U.S.C. 18a(a)(2)(B)(ii)(II)
+  value: not engaged in manufacturing
+  unit: text
+  snippet: any voting securities or assets of a person not engaged in manufacturing which has total assets of $10,000,000
+  source_license: unstated
+  content_sha256: f6c1bd5e6441a8a2dd3d142bf3ddfe86ffa60e565503add59fc8ad52dc7b5489
+  role: supporting
+assumed:
+- parameter: size_of_transaction, size_of_person, filing_fees[*].from_usd and below_usd
+  value: published '$x million' or '$x billion' as whole dollars
+  method: derived
+  rationale: The notice states amounts in millions or billions of dollars; the rule restates them as whole dollars,
+    and the published wording is kept beside each fee tier.
+- parameter: meaning of the size-of-person tests
+  value: 15 U.S.C. 18a(a)(2)(B)(ii)
+  method: derived
+  rationale: The notice lists adjusted amounts by subsection; which amount applies to which party and to which measure
+    (net sales, total assets) is taken from the statute text cited as supporting evidence.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: tier_count
+  expected: 6
+  tolerance: 0
+- statistic: threshold[all_transactions_above_usd]
+  expected: 535500000
+  tolerance: 0
+- statistic: fee[5869000000]
+  expected: 2460000
+  tolerance: 0
+notes: 'Thresholds of the Hart-Scott-Rodino Antitrust Improvements Act and the filing fee schedule as revised by
+  the Federal Trade Commission''s annual notice published in the Federal Register on 16 January 2026 (FR Doc. 2026-00877),
+  effective 17 February 2026, thirty days after publication. An acquisition is reportable when the acquiring person
+  would hold voting securities and assets of the acquired person in excess of the upper size-of-transaction threshold,
+  or in excess of the lower threshold when one of the three size-of-person tests of section 7A(a)(2)(B)(ii) is also
+  met. The filing fee depends only on the size of transaction, in six tiers whose lower bounds are inclusive (''not
+  less than''). Exemptions, valuation rules and aggregation under 16 CFR parts 801 to 803 are not modelled. The
+  rule answers {''fee'': size}, {''band'': size} and {''reportable'': size, ''acquiring'': {...}, ''acquired'':
+  {...}} with annual_net_sales_usd, total_assets_usd and, for the acquired person, manufacturing. Values are read
+  from the govinfo bulk XML of that day''s Federal Register. The publisher is a US federal body and the resource
+  carries no licence statement, so the licence is recorded as unstated and the entry held at license-review.'

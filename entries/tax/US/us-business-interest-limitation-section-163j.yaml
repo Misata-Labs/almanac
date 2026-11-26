@@ -1,0 +1,251 @@
+id: us-business-interest-limitation-section-163j
+title: 'US business interest limitation (26 U.S.C. 163(j)): 30% of adjusted taxable income, EBITDA add-back by year,
+  2026 small business test'
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2018-01-01'
+valid_to: null
+tags:
+- tax
+- private-equity
+- structuring
+- interest-limitation
+- section-163j
+- leverage
+- ebitda
+- obbba
+use_cases:
+- lbo-modelling
+- private-credit-demo
+- tax-demo
+- valuation-demo
+spec:
+  implementation: almanac.rules.interest_limitation
+  parameters:
+    currency: USD
+    ratio_percent: 30
+    base: adjusted taxable income (section 163(j)(8))
+    allowance_floor: null
+    exemption_threshold: null
+    gross_receipts_limit: 32000000
+    gross_receipts_limit_tax_year: 2026
+    gross_receipts_limit_statutory_base: 25000000
+    depreciation_addback:
+    - from: '2018-01-01'
+      value: true
+    - from: '2022-01-01'
+      value: false
+    - from: '2025-01-01'
+      value: true
+    carryforward: disallowed business interest is carried forward indefinitely (section 163(j)(2))
+  vectors:
+  - input:
+      tax_year_start: '2021-01-01'
+      earnings: 100
+      interest_expense: 50
+      floor_plan_interest: 10
+      interest_income: 20
+      output: limit
+    expected: 60
+    origin: source
+    note: 26 CFR 1.163(j)-2(h)(1), Example 1, amounts in units of x
+  - input:
+      tax_year_start: '2021-01-01'
+      earnings: 100
+      interest_expense: 50
+      floor_plan_interest: 10
+      interest_income: 20
+    expected: 50
+    origin: source
+    note: 'Example 1: business interest expense within the limitation is deductible in full'
+  - input:
+      tax_year_start: '2021-01-01'
+      earnings: 100
+      interest_expense: 80
+      floor_plan_interest: 10
+      interest_income: 20
+    expected: 60
+    origin: source
+    note: 26 CFR 1.163(j)-2(h)(2), Example 2
+  - input:
+      tax_year_start: '2021-01-01'
+      earnings: 100
+      interest_expense: 80
+      floor_plan_interest: 10
+      interest_income: 20
+      output: disallowed
+    expected: 20
+    origin: source
+    note: 'Example 2: carried forward'
+  - input:
+      tax_year_start: '2023-01-01'
+      earnings: 70
+      depreciation: 30
+      interest_expense: 40
+    expected: 21
+    origin: derived
+    note: '2022 to 2024: no depreciation add-back, 30% of 70'
+  - input:
+      tax_year_start: '2026-01-01'
+      earnings: 70
+      depreciation: 30
+      interest_expense: 40
+    expected: 30
+    origin: derived
+    note: 'from 2025: depreciation added back, 30% of 100'
+  - input:
+      tax_year_start: '2026-01-01'
+      earnings: 70
+      depreciation: 30
+      interest_expense: 40
+      average_gross_receipts: 32000000
+    expected: 40
+    origin: derived
+    note: small business exemption at the 2026 gross receipts limit
+evidence:
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 163, Interest (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapB-partVI-sec163.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (j)(1)(B)
+  value: 30 percent
+  unit: percent
+  snippet: 30 percent of the adjusted taxable income of such taxpayer for such taxable year
+  source_license: unstated
+  content_sha256: ee043cb7e04c0214f0b9232d14987b56d71af1e5d0c275937a1f2b3fbab83f53
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 163, Interest (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapB-partVI-sec163.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (j)(8)(A)(v)
+  value: January 1, 2022
+  unit: date
+  snippet: in the case of taxable years beginning before January 1, 2022, any deduction allowable for depreciation,
+    amortization, or depletion
+  source_license: unstated
+  content_sha256: ee043cb7e04c0214f0b9232d14987b56d71af1e5d0c275937a1f2b3fbab83f53
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 163, Interest (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapB-partVI-sec163.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (j)(3)
+  value: section 448(c)
+  unit: text
+  snippet: which meets the gross receipts test of section 448(c) for any taxable year, paragraph (1) shall not apply
+  source_license: unstated
+  content_sha256: ee043cb7e04c0214f0b9232d14987b56d71af1e5d0c275937a1f2b3fbab83f53
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 163, Interest (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapB-partVI-sec163.htm
+  accessed_at: '2026-11-26'
+  locator: Effective Date of 2017 Amendment note, Pub. L. 115-97 section 13301(c)
+  value: December 31, 2017
+  unit: date
+  snippet: '[amending this section and sections 381 and 382 of this title] shall apply to taxable years beginning
+    after December 31, 2017'
+  source_license: unstated
+  content_sha256: ee043cb7e04c0214f0b9232d14987b56d71af1e5d0c275937a1f2b3fbab83f53
+  role: primary
+- publisher: US Government Publishing Office (govinfo)
+  title: Public Law 119-21, 139 Stat. 72 (July 4, 2025), USLM XML
+  url: https://www.govinfo.gov/content/pkg/PLAW-119publ21/uslm/PLAW-119publ21.xml
+  accessed_at: '2026-11-26'
+  locator: section 70303(a) and (c)(1)
+  value: December 31, 2024
+  unit: date
+  snippet: The amendments made by this section shall apply to taxable years beginning after December 31, 2024.
+  source_license: unstated
+  content_sha256: 762ae9af06640f023ddb9eb6f474ff7cfa275691de338d4fd985cfb04a7b6dea
+  role: primary
+- publisher: US Government Publishing Office (govinfo)
+  title: Public Law 119-21, 139 Stat. 72 (July 4, 2025), USLM XML
+  url: https://www.govinfo.gov/content/pkg/PLAW-119publ21/uslm/PLAW-119publ21.xml
+  accessed_at: '2026-11-26'
+  locator: section 70303(a)
+  value: 163(j)(8)(A)(v)
+  unit: text
+  snippet: 163(j)(8)(A)(v)
+  source_license: unstated
+  content_sha256: 762ae9af06640f023ddb9eb6f474ff7cfa275691de338d4fd985cfb04a7b6dea
+  role: primary
+- publisher: Internal Revenue Service, US Department of the Treasury
+  title: Rev. Proc. 2025-32, 2026 inflation-adjusted items (PDF)
+  url: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
+  accessed_at: '2026-11-26'
+  locator: page 23, section 4.30
+  value: $32,000,000
+  unit: currency:USD
+  snippet: which precedes such taxable year does not exceed $32,000,000
+  source_license: unstated
+  content_sha256: e9ada115fb43a4af5ea326ca91edd40ab0bf29b9be01d2c13d7b8fa96214635b
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 448, Limitation on use of cash method of accounting (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapE-partII-subpartA-sec448.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (c)(1)
+  value: $25,000,000
+  unit: currency:USD
+  snippet: which precedes such taxable year does not exceed $25,000,000
+  source_license: unstated
+  content_sha256: cb027585dfd8de827aa4aea5b8ae941aa8dd5cad67cd00f797f2f98734ebf1e3
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: 26 CFR 1.163(j)-2, Deduction for business interest expense limited (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-26.xml?section=1.163(j)-2
+  accessed_at: '2026-11-26'
+  locator: paragraph (h)(1), Example 1
+  value: $60x
+  unit: text
+  snippet: X's section 163(j) limitation is $60x
+  source_license: unstated
+  content_sha256: 9db174dac37f731afb870e28e2bc57595cd3a631ec36954e12ebebcd625a940e
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 26 CFR 1.163(j)-2, Deduction for business interest expense limited (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-26.xml?section=1.163(j)-2
+  accessed_at: '2026-11-26'
+  locator: paragraph (h)(2), Example 2
+  value: $20x
+  unit: text
+  snippet: X may only deduct $60x of its business interest expense for the 2021 taxable year, and the remaining
+    $20x
+  source_license: unstated
+  content_sha256: 9db174dac37f731afb870e28e2bc57595cd3a631ec36954e12ebebcd625a940e
+  role: primary
+assumed:
+- parameter: depreciation_addback
+  value:
+  - '2018-01-01'
+  - '2022-01-01'
+  - '2025-01-01'
+  method: derived
+  rationale: 'Step dates restate the statutory wording: taxable years beginning after December 31, 2017; before
+    January 1, 2022; and after December 31, 2024 (Public Law 119-21 section 70303(c)).'
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: ratio_percent
+  expected: 30
+  tolerance: 0
+- statistic: gross_receipts_limit
+  expected: 32000000
+  tolerance: 0
+notes: Section 163(j) caps the deduction for business interest at the sum of business interest income, 30 percent
+  of adjusted taxable income (ATI) and floor plan financing interest; the excess carries forward without time limit.
+  ATI added back depreciation, amortisation and depletion (an EBITDA measure) for taxable years beginning before
+  2022 and, after Public Law 119-21 struck the time limit, again for taxable years beginning after 31 December 2024;
+  for 2022 to 2024 it was an EBIT measure. Taxpayers other than tax shelters that meet the section 448(c) gross
+  receipts test (average annual gross receipts for the three prior years not above the indexed amount, here the
+  amount for taxable years beginning in 2026) are exempt. From 2026 the same Act also removes subpart F and GILTI
+  inclusions from ATI (section 70342), which this rule does not model, nor does it model the partnership rules or
+  the real property and farming elections. The worked examples are the Treasury regulation's, in units of x. Works
+  of the US federal government carry no copyright in the United States, but the cited resources state no reuse terms,
+  so the licence is recorded as unstated and the entry held at license-review.

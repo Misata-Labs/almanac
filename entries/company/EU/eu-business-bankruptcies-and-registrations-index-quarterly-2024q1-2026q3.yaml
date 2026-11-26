@@ -1,0 +1,118 @@
+id: eu-business-bankruptcies-and-registrations-index-quarterly-2024q1-2026q3
+title: EU business bankruptcy and registration indices (2021=100), seasonally adjusted, quarterly 2024Q1 to 2026Q3
+kind: temporal
+domain: company
+region: EU
+status: verified
+tier: A
+observed_period:
+  start: '2024-01-01'
+  end: '2026-09-30'
+tags:
+- insolvency
+- distress
+- bankruptcy
+- business-registrations
+- eurostat
+- quarterly-series
+- index
+use_cases:
+- private-credit-demo
+- credit-underwriting-demo
+- pe-portfolio-demo
+- credit-risk
+- deal-sourcing-demo
+spec:
+  variable: bankruptcy_declarations_index_2021_100
+  unit: decimal
+  frequency: quarterly
+  columns:
+  - registrations_index
+  series:
+  - period: 2024-Q1
+    value: 164.9
+    registrations_index: 106.0
+  - period: 2024-Q2
+    value: 166.3
+    registrations_index: 104.3
+  - period: 2024-Q3
+    value: 171.2
+    registrations_index: 104.2
+  - period: 2024-Q4
+    value: 173.6
+    registrations_index: 106.9
+  - period: 2025-Q1
+    value: 176.5
+    registrations_index: 102.3
+  - period: 2025-Q2
+    value: 186.8
+    registrations_index: 108.7
+  - period: 2025-Q3
+    value: 191.5
+    registrations_index: 111.6
+  - period: 2025-Q4
+    value: 190.5
+    registrations_index: 112.5
+  - period: 2026-Q1
+    value: 185.9
+    registrations_index: 112.4
+  - period: 2026-Q2
+    value: 195.2
+    registrations_index: 111.4
+  - period: 2026-Q3
+    value: 193.7
+    registrations_index: 114.1
+evidence:
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow sts_rb_q (registrations and bankruptcies index), EU27, SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/sts_rb_q/Q.BKRT+REG.B-S_X_O_S94.SCA.I21.EU27_2020?startPeriod=2024-Q1&endPeriod=2026-Q3&format=SDMX-CSV
+  accessed_at: '2026-11-26'
+  locator: BKRT, B-S_X_O_S94, SCA, I21, EU27_2020, 2026-Q3
+  value: '193.7'
+  unit: decimal
+  snippet: BKRT,B-S_X_O_S94,SCA,I21,EU27_2020,2026-Q3,193.7
+  source_license: CC-BY-4.0
+  content_sha256: d6107ac0199cac05b7290efe95225704c60cb569fa42e22ed68aaad1dfb670ce
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow sts_rb_q (registrations and bankruptcies index), EU27, SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/sts_rb_q/Q.BKRT+REG.B-S_X_O_S94.SCA.I21.EU27_2020?startPeriod=2024-Q1&endPeriod=2026-Q3&format=SDMX-CSV
+  accessed_at: '2026-11-26'
+  locator: REG, B-S_X_O_S94, SCA, I21, EU27_2020, 2026-Q3
+  value: '114.1'
+  unit: decimal
+  snippet: REG,B-S_X_O_S94,SCA,I21,EU27_2020,2026-Q3,114.1
+  source_license: CC-BY-4.0
+  content_sha256: d6107ac0199cac05b7290efe95225704c60cb569fa42e22ed68aaad1dfb670ce
+  role: primary
+- publisher: Eurostat
+  title: Eurostat SDMX 2.1 API, dataflow sts_rb_q (registrations and bankruptcies index), EU27, SDMX-CSV
+  url: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/sts_rb_q/Q.BKRT+REG.B-S_X_O_S94.SCA.I21.EU27_2020?startPeriod=2024-Q1&endPeriod=2026-Q3&format=SDMX-CSV
+  accessed_at: '2026-11-26'
+  locator: BKRT, B-S_X_O_S94, SCA, I21, EU27_2020, 2024-Q1
+  value: '164.9'
+  unit: decimal
+  snippet: BKRT,B-S_X_O_S94,SCA,I21,EU27_2020,2024-Q1,164.9
+  source_license: CC-BY-4.0
+  content_sha256: d6107ac0199cac05b7290efe95225704c60cb569fa42e22ed68aaad1dfb670ce
+  role: primary
+assumed: []
+tests:
+- statistic: value[2026-Q3]
+  expected: 193.7
+  tolerance: 0
+- statistic: column[registrations_index,2026-Q3]
+  expected: 114.1
+  tolerance: 0
+- statistic: value[2024-Q1]
+  expected: 164.9
+  tolerance: 0
+- statistic: count
+  expected: 11
+  tolerance: 0
+notes: Quarterly indices (2021 = 100) of declarations of bankruptcy and of new business registrations for the EU-27,
+  business economy excluding public administration and activities of membership organisations (NACE B-S excluding
+  O and S94), seasonally and calendar adjusted, from Eurostat's short-term business statistics dataflow sts_rb_q.
+  The dataflow carries indices and growth rates, not counts; use the indices to scale a synthetic default rate through
+  time rather than as levels. Eurostat's copyright notice states that its data are released under the Creative Commons
+  Attribution 4.0 International licence; the notice page renders dynamically and is referenced rather than hashed.

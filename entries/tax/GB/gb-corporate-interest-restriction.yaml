@@ -1,0 +1,152 @@
+id: gb-corporate-interest-restriction
+title: 'UK Corporate Interest Restriction (TIOPA 2010 Part 10): 30% of tax-EBITDA fixed ratio, £2 million de minimis'
+kind: rule
+domain: tax
+region: GB
+status: license-review
+tier: B
+valid_from: '2017-04-01'
+valid_to: null
+tags:
+- tax
+- private-equity
+- structuring
+- interest-limitation
+- corporate-interest-restriction
+- leverage
+- ebitda
+- atad
+use_cases:
+- lbo-modelling
+- private-credit-demo
+- tax-demo
+- valuation-demo
+spec:
+  implementation: almanac.rules.interest_limitation
+  parameters:
+    currency: GBP
+    ratio_percent: 30
+    base: aggregate tax-EBITDA of the worldwide group's UK members (fixed ratio method)
+    allowance_floor: 2000000
+    exemption_threshold: null
+    gross_receipts_limit: null
+    fixed_ratio_debt_cap: the basic interest allowance is the lower of the ratio amount and the fixed ratio debt
+      cap (s. 397(1)(b)); not modelled
+    group_ratio_election: a group ratio based on the group's net third-party interest to EBITDA may be elected instead
+      (s. 398); not modelled
+    unused_allowance_carry_forward_years: 5
+  vectors:
+  - input:
+      earnings: 10000000
+      interest_expense: 4000000
+    expected: 3000000
+    origin: derived
+    note: 30% of tax-EBITDA exceeds the de minimis amount
+  - input:
+      earnings: 1000000
+      interest_expense: 2500000
+    expected: 2000000
+    origin: derived
+    note: the de minimis amount is the floor of interest capacity
+  - input:
+      earnings: 0
+      interest_expense: 2000000
+    expected: 2000000
+    origin: source
+    note: the de minimis amount stated in s. 392(3)(a) is deductible whatever the tax-EBITDA
+  - input:
+      earnings: 1000000
+      interest_expense: 1800000
+    expected: 1800000
+    origin: derived
+    note: net interest below the de minimis amount is not restricted
+  - input:
+      earnings: 10000000
+      interest_expense: 4000000
+      output: disallowed
+    expected: 1000000
+    origin: derived
+    note: carried forward indefinitely
+evidence:
+- publisher: The National Archives (legislation.gov.uk)
+  title: Taxation (International and Other Provisions) Act 2010, section 397, fixed ratio method (legislation.gov.uk
+    XML, version of 2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2010/8/section/397/2026-11-26/data.xml
+  accessed_at: '2026-11-26'
+  locator: section 397(1)(a)
+  value: 30%
+  unit: percent
+  snippet: 30% of the aggregate tax-EBITDA of the group for the period
+  source_license: unstated
+  content_sha256: 11671d71233b0eed52c85e8cff5198d99afaaa68885b9da1e329622708ea4a00
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Taxation (International and Other Provisions) Act 2010, section 392, interest capacity (legislation.gov.uk
+    XML, version of 2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2010/8/section/392/2026-11-26/data.xml
+  accessed_at: '2026-11-26'
+  locator: section 392(3)(a)
+  value: £2 million
+  unit: currency:GBP
+  snippet: £2 million
+  source_license: unstated
+  content_sha256: a4af45fcee53828ee927973c511dad04a8dabbcfc18a50bd75dd9d14bf1d09ec
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Taxation (International and Other Provisions) Act 2010, section 392, interest capacity (legislation.gov.uk
+    XML, version of 2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2010/8/section/392/2026-11-26/data.xml
+  accessed_at: '2026-11-26'
+  locator: section 392(2)
+  value: de minimis amount
+  unit: text
+  snippet: the interest capacity of the worldwide group for the period is the de minimis amount
+  source_license: unstated
+  content_sha256: a4af45fcee53828ee927973c511dad04a8dabbcfc18a50bd75dd9d14bf1d09ec
+  role: primary
+- publisher: HM Revenue & Customs (GOV.UK)
+  title: Restriction on Corporation Tax relief for interest deductions (GOV.UK content API, JSON)
+  url: https://www.gov.uk/api/content/guidance/restriction-on-corporation-tax-relief-for-interest-deductions
+  accessed_at: '2026-11-26'
+  locator: details.body
+  value: 5 years
+  unit: integer
+  snippet: carry forward unused interest allowance for up to 5 years
+  source_license: OGL-UK-3.0
+  content_sha256: 1e7afa00ee4565996103987392c6c3ac8c4ef5a7b04a0ef56f302c45557a947f
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Finance (No. 2) Act 2017, Schedule 5, paragraph 25, commencement of the corporate interest restriction
+    (legislation.gov.uk XML, version of 2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2017/32/schedule/5/paragraph/25/2026-11-26/data.xml
+  accessed_at: '2026-11-26'
+  locator: paragraph 25(1)
+  value: 1 April 2017
+  unit: date
+  snippet: periods of account of worldwide groups that begin on or after 1 April 2017.
+  source_license: unstated
+  content_sha256: 85cec523dca50922c3663da726f06a4c24095c1c77b81e10db668fb6807e2f66
+  role: primary
+assumed:
+- parameter: allowance_floor
+  value: 2000000
+  method: derived
+  rationale: Section 392(3) states the de minimis amount as '£2 million'; the builder converts it to pounds.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: ratio_percent
+  expected: 30
+  tolerance: 0
+- statistic: allowance_floor
+  expected: 2000000
+  tolerance: 0
+notes: 'The Corporate Interest Restriction limits a worldwide group''s UK net tax-interest expense to its interest
+  capacity: the interest allowance for the period (30% of the aggregate tax-EBITDA of its UK companies under the
+  fixed ratio method, capped by the fixed ratio debt cap, or a group ratio if elected) plus unused allowance brought
+  forward, but never less than the £2 million de minimis amount, pro-rated for periods other than a year. Disallowed
+  interest is carried forward without time limit and unused allowance for five years. The rule models the fixed
+  ratio method with the de minimis floor; the debt cap, group ratio and public infrastructure options are described
+  but not computed. legislation.gov.uk publishes Crown copyright legislation for reuse, but the cited resource carries
+  no licence statement of its own, so the licence is recorded as unstated and the entry held at license-review.'

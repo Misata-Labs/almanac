@@ -1,0 +1,186 @@
+id: us-qualified-client-thresholds
+title: US qualified client thresholds for adviser performance fees (17 CFR 275.205-3) as adjusted by the SEC order
+  effective 29 June 2026
+kind: rule
+domain: funds
+region: US
+status: license-review
+tier: B
+valid_from: '2026-06-29'
+valid_to: null
+tags:
+- funds
+- private-equity
+- regulation
+- qualified-client
+- performance-fee
+- carried-interest
+- investor-eligibility
+use_cases:
+- fund-administration-demo
+- kyb-onboarding
+- kyc-onboarding
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: USD
+    rows:
+      assets_under_management_test:
+        value: 1400000
+        unit: USD
+        comparison: at least
+        paragraph: 275.205-3(d)(1)(i)
+        effective: '2026-06-29'
+        previous_value: 1100000
+        previous_effective: '2021-08-16'
+      net_worth_test:
+        value: 2700000
+        unit: USD
+        comparison: more than
+        paragraph: 275.205-3(d)(1)(ii)(A)
+        effective: '2026-06-29'
+        previous_value: 2200000
+        previous_effective: '2021-08-16'
+        excludes: primary residence and the debt it secures up to its value
+      employee_participation_months:
+        value: 12
+        unit: months
+        paragraph: 275.205-3(d)(1)(iii)(B)
+    next_adjustment: approximately every five years by Commission order, indexed to the PCE price index and rounded
+      to the nearest $100,000
+  vectors:
+  - input:
+      key: assets_under_management_test
+      column: value
+    expected: 1400000
+    origin: source
+  - input:
+      key: net_worth_test
+      column: value
+    expected: 2700000
+    origin: source
+  - input:
+      key: net_worth_test
+      column: previous_value
+    expected: 2200000
+    origin: source
+  - input: qualified_purchaser
+    expected: false
+    origin: derived
+    note: a qualified purchaser is a qualified client, but not a row of this table
+evidence:
+- publisher: US Securities and Exchange Commission, Federal Register via govinfo
+  title: Order Approving Adjustment for Inflation of the Dollar Amount Tests in Rule 205-3, 91 FR 23520 (May 1,
+    2026), HTML
+  url: https://www.govinfo.gov/content/pkg/FR-2026-05-01/html/2026-08480.htm
+  accessed_at: '2026-11-26'
+  locator: section IV, first ordering paragraph
+  value: $1,400,000
+  unit: currency:USD
+  snippet: entering into the contract has at least $1,400,000 under the management
+  source_license: unstated
+  content_sha256: 80ee56f9d4e45ec7b2da802c6cc6ca469655b0936aa93aa7c64f334f611059d6
+  role: primary
+- publisher: US Securities and Exchange Commission, Federal Register via govinfo
+  title: Order Approving Adjustment for Inflation of the Dollar Amount Tests in Rule 205-3, 91 FR 23520 (May 1,
+    2026), HTML
+  url: https://www.govinfo.gov/content/pkg/FR-2026-05-01/html/2026-08480.htm
+  accessed_at: '2026-11-26'
+  locator: section IV, second ordering paragraph
+  value: $2,700,000
+  unit: currency:USD
+  snippet: with assets held jointly with a spouse) of more than $2,700,000.
+  source_license: unstated
+  content_sha256: 80ee56f9d4e45ec7b2da802c6cc6ca469655b0936aa93aa7c64f334f611059d6
+  role: primary
+- publisher: US Securities and Exchange Commission, Federal Register via govinfo
+  title: Order Approving Adjustment for Inflation of the Dollar Amount Tests in Rule 205-3, 91 FR 23520 (May 1,
+    2026), HTML
+  url: https://www.govinfo.gov/content/pkg/FR-2026-05-01/html/2026-08480.htm
+  accessed_at: '2026-11-26'
+  locator: section II
+  value: $1,100,000
+  unit: currency:USD
+  snippet: test would increase from $1,100,000 to $1,400,000
+  source_license: unstated
+  content_sha256: 80ee56f9d4e45ec7b2da802c6cc6ca469655b0936aa93aa7c64f334f611059d6
+  role: primary
+- publisher: US Securities and Exchange Commission, Federal Register via govinfo
+  title: Order Approving Adjustment for Inflation of the Dollar Amount Tests in Rule 205-3, 91 FR 23520 (May 1,
+    2026), HTML
+  url: https://www.govinfo.gov/content/pkg/FR-2026-05-01/html/2026-08480.htm
+  accessed_at: '2026-11-26'
+  locator: section II
+  value: $2,200,000
+  unit: currency:USD
+  snippet: net worth test would increase from $2,200,000 to $2,700,000
+  source_license: unstated
+  content_sha256: 80ee56f9d4e45ec7b2da802c6cc6ca469655b0936aa93aa7c64f334f611059d6
+  role: primary
+- publisher: US Securities and Exchange Commission, Federal Register via govinfo
+  title: Order Approving Adjustment for Inflation of the Dollar Amount Tests in Rule 205-3, 91 FR 23520 (May 1,
+    2026), HTML
+  url: https://www.govinfo.gov/content/pkg/FR-2026-05-01/html/2026-08480.htm
+  accessed_at: '2026-11-26'
+  locator: section III
+  value: June 29, 2026
+  unit: date
+  snippet: This Order is effective as of June 29, 2026.
+  source_license: unstated
+  content_sha256: 80ee56f9d4e45ec7b2da802c6cc6ca469655b0936aa93aa7c64f334f611059d6
+  role: primary
+- publisher: US Securities and Exchange Commission, Federal Register via govinfo
+  title: Order Approving Adjustment for Inflation of the Dollar Amount Tests in Rule 205-3, 91 FR 23520 (May 1,
+    2026), HTML
+  url: https://www.govinfo.gov/content/pkg/FR-2026-05-01/html/2026-08480.htm
+  accessed_at: '2026-11-26'
+  locator: footnote 9
+  value: August 16, 2021
+  unit: date
+  snippet: The 2021 Order was effective as of August 16,
+  source_license: unstated
+  content_sha256: 80ee56f9d4e45ec7b2da802c6cc6ca469655b0936aa93aa7c64f334f611059d6
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 275.205-3, Exemption from the compensation prohibition of section 205(a)(1) for investment advisers
+    (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=275.205-3
+  accessed_at: '2026-11-26'
+  locator: paragraph (e)
+  value: $100,000
+  unit: currency:USD
+  snippet: rounding the product to the nearest multiple of $100,000
+  source_license: unstated
+  content_sha256: 5f5a564348a3075eb6e6211e9296c0ac211fd2a90af383f2d7573582fe78450f
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 275.205-3, Exemption from the compensation prohibition of section 205(a)(1) for investment advisers
+    (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=275.205-3
+  accessed_at: '2026-11-26'
+  locator: paragraph (d)(1)(i)
+  value: most recent order
+  unit: text
+  snippet: at least the applicable dollar amount specified in the most recent order
+  source_license: unstated
+  content_sha256: 5f5a564348a3075eb6e6211e9296c0ac211fd2a90af383f2d7573582fe78450f
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+- statistic: value[assets_under_management_test,value]
+  expected: 1400000
+  tolerance: 0
+notes: 'A registered investment adviser may charge a performance fee (such as carried interest from a 3(c)(1) fund)
+  only to qualified clients: clients with at least the assets-under-management amount with the adviser immediately
+  after contracting, with net worth above the net-worth amount (excluding the primary residence), qualified purchasers,
+  or certain officers and knowledgeable employees of the adviser. Rule 205-3 sets the amounts by reference to the
+  most recent SEC inflation order; the order published on 1 May 2026 raised them with effect from 29 June 2026 and
+  does not apply retroactively to existing contracts. The previous amounts and the date they took effect are kept
+  for contracts entered into before then. Works of the US federal government carry no copyright in the United States,
+  but the cited resources state no reuse terms, so the licence is recorded as unstated and the entry held at license-review.'

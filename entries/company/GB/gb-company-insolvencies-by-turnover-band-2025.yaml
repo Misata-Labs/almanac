@@ -1,0 +1,237 @@
+id: gb-company-insolvencies-by-turnover-band-2025
+title: Company insolvencies in England and Wales by turnover band and type, 2025, with rates per 10000 companies
+kind: rule
+domain: company
+region: GB
+status: verified
+tier: A
+valid_from: '2025-01-01'
+valid_to: '2025-12-31'
+tags:
+- insolvency
+- distress
+- insolvency-service
+- by-turnover
+- reference-table
+- turnover-band
+use_cases:
+- private-credit-demo
+- credit-underwriting-demo
+- pe-portfolio-demo
+- credit-risk
+- synthetic-companies
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: turnover band in pounds
+    geography: England and Wales
+    year: 2025
+    rows:
+      Total:
+        total_count: 22455
+        administrations_count: 1425
+        compulsory_liquidations_count: 3320
+        creditors_voluntary_liquidations_count: 17530
+        other_count: 180
+        total_rate_per_10000: 115.9
+        administrations_rate_per_10000: 7.4
+        compulsory_liquidations_rate_per_10000: 17.1
+        creditors_voluntary_liquidations_rate_per_10000: 90.5
+        other_rate_per_10000: 0.9
+      Less than 50000:
+        total_count: 2055
+        administrations_count: 120
+        compulsory_liquidations_count: 405
+        creditors_voluntary_liquidations_count: 1525
+        other_count: 5
+        total_rate_per_10000: 85.3
+        administrations_rate_per_10000: 5
+        compulsory_liquidations_rate_per_10000: 16.8
+        creditors_voluntary_liquidations_rate_per_10000: 63.3
+        other_rate_per_10000: 0.2
+      50000 to 100000:
+        total_count: 2715
+        administrations_count: 50
+        compulsory_liquidations_count: 445
+        creditors_voluntary_liquidations_count: 2215
+        other_count: 5
+        total_rate_per_10000: 72.8
+        administrations_rate_per_10000: 1.3
+        compulsory_liquidations_rate_per_10000: 11.9
+        creditors_voluntary_liquidations_rate_per_10000: 59.4
+        other_rate_per_10000: 0.1
+      100000 to 250000:
+        total_count: 6050
+        administrations_count: 155
+        compulsory_liquidations_count: 825
+        creditors_voluntary_liquidations_count: 5065
+        other_count: 10
+        total_rate_per_10000: 97.1
+        administrations_rate_per_10000: 2.5
+        compulsory_liquidations_rate_per_10000: 13.2
+        creditors_voluntary_liquidations_rate_per_10000: 81.3
+        other_rate_per_10000: 0.2
+      250000 to 500000:
+        total_count: 4050
+        administrations_count: 95
+        compulsory_liquidations_count: 530
+        creditors_voluntary_liquidations_count: 3415
+        other_count: 15
+        total_rate_per_10000: 148.4
+        administrations_rate_per_10000: 3.5
+        compulsory_liquidations_rate_per_10000: 19.4
+        creditors_voluntary_liquidations_rate_per_10000: 125.1
+        other_rate_per_10000: 0.5
+      500000 to 1000000:
+        total_count: 3195
+        administrations_count: 135
+        compulsory_liquidations_count: 440
+        creditors_voluntary_liquidations_count: 2575
+        other_count: 40
+        total_rate_per_10000: 181.9
+        administrations_rate_per_10000: 7.7
+        compulsory_liquidations_rate_per_10000: 25.1
+        creditors_voluntary_liquidations_rate_per_10000: 146.6
+        other_rate_per_10000: 2.3
+      1000000 to 2000000:
+        total_count: 1975
+        administrations_count: 205
+        compulsory_liquidations_count: 295
+        creditors_voluntary_liquidations_count: 1450
+        other_count: 25
+        total_rate_per_10000: 186.1
+        administrations_rate_per_10000: 19.3
+        compulsory_liquidations_rate_per_10000: 27.8
+        creditors_voluntary_liquidations_rate_per_10000: 136.6
+        other_rate_per_10000: 2.4
+      2000000 to 5000000:
+        total_count: 1470
+        administrations_count: 290
+        compulsory_liquidations_count: 235
+        creditors_voluntary_liquidations_count: 900
+        other_count: 40
+        total_rate_per_10000: 189.3
+        administrations_rate_per_10000: 37.3
+        compulsory_liquidations_rate_per_10000: 30.3
+        creditors_voluntary_liquidations_rate_per_10000: 115.9
+        other_rate_per_10000: 5.1
+      5000000 to 10000000:
+        total_count: 490
+        administrations_count: 150
+        compulsory_liquidations_count: 75
+        creditors_voluntary_liquidations_count: 245
+        other_count: 20
+        total_rate_per_10000: 157.2
+        administrations_rate_per_10000: 48.1
+        compulsory_liquidations_rate_per_10000: 24.1
+        creditors_voluntary_liquidations_rate_per_10000: 78.6
+        other_rate_per_10000: 6.4
+      10000000 to 50000000:
+        total_count: 365
+        administrations_count: 185
+        compulsory_liquidations_count: 50
+        creditors_voluntary_liquidations_count: 115
+        other_count: 15
+        total_rate_per_10000: 128.6
+        administrations_rate_per_10000: 65.2
+        compulsory_liquidations_rate_per_10000: 17.6
+        creditors_voluntary_liquidations_rate_per_10000: 40.5
+        other_rate_per_10000: 5.3
+      50000000 or more:
+        total_count: 90
+        administrations_count: 50
+        compulsory_liquidations_count: 20
+        creditors_voluntary_liquidations_count: 20
+        other_count: null
+        total_rate_per_10000: 96.5
+        administrations_rate_per_10000: 53.6
+        compulsory_liquidations_rate_per_10000: 21.4
+        creditors_voluntary_liquidations_rate_per_10000: 21.4
+        other_rate_per_10000: null
+      Unknown:
+        total_count: 1325
+        administrations_count: 45
+        compulsory_liquidations_count: 385
+        creditors_voluntary_liquidations_count: 895
+        other_count: null
+  vectors:
+  - input:
+      key: 2000000 to 5000000
+      column: total_count
+    expected: 1470
+    origin: source
+  - input:
+      key: 2000000 to 5000000
+      column: total_rate_per_10000
+    expected: 189.3
+    origin: source
+  - input:
+      key: Total
+      column: total_count
+    expected: 22455
+    origin: source
+  - input: Not a band
+    expected: false
+    origin: derived
+evidence:
+- publisher: The Insolvency Service
+  title: Business Insolvency Demography 2015 to 2025, full data (CSV)
+  url: https://assets.publishing.service.gov.uk/media/6a33c35f0bea238415c9a204/Full_Data_in_CSV_Format_-_Business_Insolvency_Demography_2015_to_2025.csv
+  accessed_at: '2026-11-26'
+  locator: row Turnover,Volume,ew,2000000 to 5000000, columns 2025_total to 2025_other
+  value: 1470
+  unit: count
+  snippet: 1470,290,235,900,40
+  source_license: OGL-UK-3.0
+  content_sha256: 474df518a5d6f4f7bc75a2aaea0fbef3ca6711b111932e6104ffc22073dc0452
+  role: primary
+- publisher: The Insolvency Service
+  title: Business Insolvency Demography 2015 to 2025, full data (CSV)
+  url: https://assets.publishing.service.gov.uk/media/6a33c35f0bea238415c9a204/Full_Data_in_CSV_Format_-_Business_Insolvency_Demography_2015_to_2025.csv
+  accessed_at: '2026-11-26'
+  locator: row Turnover,Rate per 10000,ew,2000000 to 5000000, columns 2025_total to 2025_other
+  value: 189.3
+  unit: decimal
+  snippet: 189.3,37.3,30.3,115.9,5.1
+  source_license: OGL-UK-3.0
+  content_sha256: 474df518a5d6f4f7bc75a2aaea0fbef3ca6711b111932e6104ffc22073dc0452
+  role: primary
+- publisher: The Insolvency Service
+  title: Business Insolvency Demography 2015 to 2025, full data (CSV)
+  url: https://assets.publishing.service.gov.uk/media/6a33c35f0bea238415c9a204/Full_Data_in_CSV_Format_-_Business_Insolvency_Demography_2015_to_2025.csv
+  accessed_at: '2026-11-26'
+  locator: row Turnover,Volume,ew,Total, column 2025_total
+  value: 22455
+  unit: count
+  snippet: 22455,1425,3320,17530,180
+  source_license: OGL-UK-3.0
+  content_sha256: 474df518a5d6f4f7bc75a2aaea0fbef3ca6711b111932e6104ffc22073dc0452
+  role: primary
+- publisher: The Insolvency Service
+  title: Business Insolvency Demography 2015 to 2025, metadata (CSV)
+  url: https://assets.publishing.service.gov.uk/media/6a33fd0f0bea238415c9a276/Metadata_for_Full_Data_in_CSV_Format_-_Business_Insolvency_Demography_2015_to_2025.csv
+  accessed_at: '2026-11-26'
+  locator: Licence
+  value: Open Government Licence 3.0
+  unit: text
+  snippet: Open Government Licence 3.0
+  source_license: OGL-UK-3.0
+  content_sha256: 57e1d396eaf104b18f616f9cb37edc462b6639a64231df8a6c85dfa1c715e431
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: value["2000000 to 5000000",total_rate_per_10000]
+  expected: 189.3
+  tolerance: 0
+- statistic: count
+  expected: 12
+  tolerance: 0
+notes: Company insolvencies registered in England and Wales in 2025 by turnover band in pounds, from the Insolvency
+  Service's Business Insolvency Demography 2015 to 2025 release. Each row gives counts and rates per 10,000 companies
+  for all insolvencies and for administrations, compulsory liquidations, creditors' voluntary liquidations and other
+  procedures. Published counts are multiples of five; null marks a cell the publisher suppressed ([c]) for disclosure
+  control. The highest overall rate among known bands is '2000000 to 5000000'. Rates are the published ones, not
+  recomputed. The file is published under the Open Government Licence 3.0.

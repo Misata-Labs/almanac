@@ -1,0 +1,135 @@
+id: us-net-investment-income-tax-section-1411
+title: 'US net investment income tax (26 U.S.C. 1411): 3.8% rate and modified adjusted gross income thresholds by
+  filing status'
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2013-01-01'
+valid_to: null
+tags:
+- tax
+- private-equity
+- structuring
+- niit
+- section-1411
+- investment-income
+- capital-gains
+use_cases:
+- tax-demo
+- tax-filing-demo
+- fund-administration-demo
+- valuation-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: USD
+    indexed_for_inflation: false
+    rows:
+      rate:
+        value: 3.8
+        unit: percent
+        section: 1411(a)(1)
+      threshold_joint_return_or_surviving_spouse:
+        value: 250000
+        unit: USD
+        section: 1411(b)(1)
+      threshold_married_filing_separately:
+        value: 125000
+        unit: USD
+        section: 1411(b)(2)
+        rule: one half of the joint-return amount
+      threshold_other:
+        value: 200000
+        unit: USD
+        section: 1411(b)(3)
+  vectors:
+  - input:
+      key: rate
+      column: value
+    expected: 3.8
+    origin: source
+  - input:
+      key: threshold_joint_return_or_surviving_spouse
+      column: value
+    expected: 250000
+    origin: source
+  - input:
+      key: threshold_other
+      column: value
+    expected: 200000
+    origin: source
+  - input:
+      key: threshold_married_filing_separately
+      column: value
+    expected: 125000
+    origin: derived
+    note: half of the joint amount
+evidence:
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 1411, Imposition of tax (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap2A-sec1411.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (a)(1)
+  value: 3.8 percent
+  unit: percent
+  snippet: a tax equal to 3.8 percent of the lesser of
+  source_license: unstated
+  content_sha256: 57eb2f33a690a2853493b8e7e55db44bab5053c928cbcfadcfbdc6dd3fe9e9f5
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 1411, Imposition of tax (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap2A-sec1411.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (b)(1)
+  value: $250,000
+  unit: currency:USD
+  snippet: or a surviving spouse (as defined in section 2(a)), $250,000,
+  source_license: unstated
+  content_sha256: 57eb2f33a690a2853493b8e7e55db44bab5053c928cbcfadcfbdc6dd3fe9e9f5
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 1411, Imposition of tax (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap2A-sec1411.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (b)(3)
+  value: $200,000
+  unit: currency:USD
+  snippet: in any other case, $200,000.
+  source_license: unstated
+  content_sha256: 57eb2f33a690a2853493b8e7e55db44bab5053c928cbcfadcfbdc6dd3fe9e9f5
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 1411, Imposition of tax (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap2A-sec1411.htm
+  accessed_at: '2026-11-26'
+  locator: Effective Date note
+  value: December 31, 2012
+  unit: date
+  snippet: shall apply to taxable years beginning after December 31, 2012
+  source_license: unstated
+  content_sha256: 57eb2f33a690a2853493b8e7e55db44bab5053c928cbcfadcfbdc6dd3fe9e9f5
+  role: primary
+assumed:
+- parameter: rows.threshold_married_filing_separately.value
+  value: 125000
+  method: derived
+  rationale: Section 1411(b)(2) states the threshold as one half of the joint-return amount.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+- statistic: max[value]
+  expected: 250000
+  tolerance: 0
+notes: Section 1411 imposes a tax on individuals equal to 3.8 percent of the lesser of net investment income and
+  the excess of modified adjusted gross income over a threshold that depends on filing status. Net investment income
+  covers interest, dividends, rents, royalties, passive trade or business income and net gains on property not held
+  in an active trade or business, so it reaches most fund distributions and exit gains of passive investors. The
+  thresholds are fixed in the statute and are not indexed for inflation. Estates and trusts use the start of the
+  top bracket instead. Works of the US federal government carry no copyright in the United States, but the cited
+  resources state no reuse terms, so the licence is recorded as unstated and the entry held at license-review.

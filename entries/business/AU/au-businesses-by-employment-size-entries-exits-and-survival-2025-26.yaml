@@ -1,0 +1,301 @@
+id: au-businesses-by-employment-size-entries-exits-and-survival-2025-26
+title: 'Australian businesses by employment size range: counts, entries, exits and four-year survival, 2025-26 (ABS
+  8165.0)'
+kind: rule
+domain: business
+region: AU
+status: license-review
+tier: A
+valid_from: '2025-07-01'
+valid_to: '2026-06-30'
+tags:
+- firms
+- business
+- smes
+- size-class
+- abs
+- business-register
+- entries
+- exits
+- survival
+- employment-size
+use_cases:
+- pe-portfolio-demo
+- deal-sourcing-demo
+- synthetic-companies
+- valuation-demo
+- kyb-onboarding
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    source_tables:
+    - Table 13
+    - Table 15
+    financial_year: 2025-26
+    key: employment size range
+    rows:
+      Non-employing:
+        label: Non–employing
+        operating_at_start: 1735470
+        entries_births: 228812
+        entries_other: 125286
+        entries_total: 354098
+        exits_cancellations: 244560
+        exits_other: 54560
+        exits_total: 299120
+        operating_at_end: 1818575
+        entry_rate_percent: 20.4
+        exit_rate_percent: 17.24
+        birth_rate_percent: 13.18
+        operating_june_2022: 1521428
+        survived_to_june_2023: 1252882
+        survival_rate_2023_percent: 82.3
+        survived_to_june_2024: 1065346
+        survival_rate_2024_percent: 70
+        survived_to_june_2025: 940777
+        survival_rate_2025_percent: 61.8
+        survived_to_june_2026: 841410
+        survival_rate_2026_percent: 55.3
+        share_of_businesses_at_end: 0.646081
+      1-4:
+        label: 1–4
+        operating_at_start: 688870
+        entries_births: 80866
+        entries_other: 15992
+        entries_total: 96858
+        exits_cancellations: 44468
+        exits_other: 17879
+        exits_total: 62347
+        operating_at_end: 689600
+        entry_rate_percent: 14.06
+        exit_rate_percent: 9.05
+        birth_rate_percent: 11.74
+        operating_june_2022: 727457
+        survived_to_june_2023: 654412
+        survival_rate_2023_percent: 90
+        survived_to_june_2024: 592614
+        survival_rate_2024_percent: 81.5
+        survived_to_june_2025: 542312
+        survival_rate_2025_percent: 74.5
+        survived_to_june_2026: 498674
+        survival_rate_2026_percent: 68.6
+        share_of_businesses_at_end: 0.244993
+      5-19:
+        label: 5–19
+        operating_at_start: 232129
+        entries_births: 5724
+        entries_other: 2551
+        entries_total: 8275
+        exits_cancellations: 7472
+        exits_other: 4267
+        exits_total: 11739
+        operating_at_end: 232912
+        entry_rate_percent: 3.56
+        exit_rate_percent: 5.06
+        birth_rate_percent: 2.47
+        operating_june_2022: 226968
+        survived_to_june_2023: 214387
+        survival_rate_2023_percent: 94.5
+        survived_to_june_2024: 201194
+        survival_rate_2024_percent: 88.6
+        survived_to_june_2025: 188618
+        survival_rate_2025_percent: 83.1
+        survived_to_june_2026: 176813
+        survival_rate_2026_percent: 77.9
+        share_of_businesses_at_end: 0.082746
+      20-199:
+        label: 20–199
+        operating_at_start: 67857
+        entries_births: 739
+        entries_other: 439
+        entries_total: 1178
+        exits_cancellations: 1045
+        exits_other: 955
+        exits_total: 2000
+        operating_at_end: 68325
+        entry_rate_percent: 1.74
+        exit_rate_percent: 2.95
+        birth_rate_percent: 1.09
+        operating_june_2022: 59338
+        survived_to_june_2023: 57424
+        survival_rate_2023_percent: 96.8
+        survived_to_june_2024: 55229
+        survival_rate_2024_percent: 93.1
+        survived_to_june_2025: 52900
+        survival_rate_2025_percent: 89.2
+        survived_to_june_2026: 50505
+        survival_rate_2026_percent: 85.1
+        share_of_businesses_at_end: 0.024274
+      200+:
+        label: 200+
+        operating_at_start: 5322
+        entries_births: 37
+        entries_other: 15
+        entries_total: 52
+        exits_cancellations: 43
+        exits_other: 82
+        exits_total: 125
+        operating_at_end: 5366
+        entry_rate_percent: 0.98
+        exit_rate_percent: 2.35
+        birth_rate_percent: 0.7
+        operating_june_2022: 4533
+        survived_to_june_2023: 4403
+        survival_rate_2023_percent: 97.1
+        survived_to_june_2024: 4260
+        survival_rate_2024_percent: 94
+        survived_to_june_2025: 4150
+        survival_rate_2025_percent: 91.6
+        survived_to_june_2026: 4047
+        survival_rate_2026_percent: 89.3
+        share_of_businesses_at_end: 0.001906
+      Total employing:
+        label: Total employing
+        operating_at_start: 994178
+        entries_births: 87366
+        entries_other: 18997
+        entries_total: 106363
+        exits_cancellations: 53028
+        exits_other: 23183
+        exits_total: 76211
+        operating_at_end: 996203
+        entry_rate_percent: 10.7
+        exit_rate_percent: 7.67
+        birth_rate_percent: 8.79
+        operating_june_2022: 1018296
+        survived_to_june_2023: 930626
+        survival_rate_2023_percent: 91.4
+        survived_to_june_2024: 853297
+        survival_rate_2024_percent: 83.8
+        survived_to_june_2025: 787980
+        survival_rate_2025_percent: 77.4
+        survived_to_june_2026: 730039
+        survival_rate_2026_percent: 71.7
+        share_of_businesses_at_end: 0.353919
+      Total:
+        label: Total
+        operating_at_start: 2729648
+        entries_births: 316178
+        entries_other: 144283
+        entries_total: 460461
+        exits_cancellations: 297588
+        exits_other: 77743
+        exits_total: 375331
+        operating_at_end: 2814778
+        entry_rate_percent: 16.87
+        exit_rate_percent: 13.75
+        birth_rate_percent: 11.58
+        operating_june_2022: 2539724
+        survived_to_june_2023: 2183508
+        survival_rate_2023_percent: 86
+        survived_to_june_2024: 1918643
+        survival_rate_2024_percent: 75.5
+        survived_to_june_2025: 1728757
+        survival_rate_2025_percent: 68.1
+        survived_to_june_2026: 1571449
+        survival_rate_2026_percent: 61.9
+        share_of_businesses_at_end: 1.0
+  vectors:
+  - input:
+      key: 1-4
+      column: operating_at_end
+    expected: 689600
+    origin: source
+  - input:
+      key: 20-199
+      column: entries_births
+    expected: 739
+    origin: source
+  - input:
+      key: 1-4
+      column: survived_to_june_2026
+    expected: 498674
+    origin: source
+  - input:
+      key: 20-199
+      column: exit_rate_percent
+    expected: 2.95
+    origin: derived
+    note: exits_total / operating_at_start * 100
+  - input: Unknown size
+    expected: false
+    origin: derived
+    note: not a published row
+evidence:
+- publisher: Australian Bureau of Statistics
+  title: 8165.0 Counts of Australian Businesses, including Entries and Exits, June 2022 - June 2026, Data cube 1
+    (XLSX)
+  url: https://www.abs.gov.au/statistics/economy/business-indicators/counts-australian-businesses-including-entries-and-exits/jul2022-jun2026/8165DC01.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table 13, block 2025-26, row 1–4, column Operating at end of financial year
+  value: 689600
+  unit: count
+  snippet: 'Table 13: Counts of businesses, Australia: Employment size ranges'
+  source_license: CC-BY-4.0
+  content_sha256: 477690c133eaf70e5671643be4e255ac22bca46b7db6d236f91744b3a40d2d79
+  role: primary
+- publisher: Australian Bureau of Statistics
+  title: 8165.0 Counts of Australian Businesses, including Entries and Exits, June 2022 - June 2026, Data cube 1
+    (XLSX)
+  url: https://www.abs.gov.au/statistics/economy/business-indicators/counts-australian-businesses-including-entries-and-exits/jul2022-jun2026/8165DC01.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table 13, block 2025-26, row 20–199, column Entries - Births
+  value: 739
+  unit: count
+  snippet: 20–199
+  source_license: CC-BY-4.0
+  content_sha256: 477690c133eaf70e5671643be4e255ac22bca46b7db6d236f91744b3a40d2d79
+  role: primary
+- publisher: Australian Bureau of Statistics
+  title: 8165.0 Counts of Australian Businesses, including Entries and Exits, June 2022 - June 2026, Data cube 1
+    (XLSX)
+  url: https://www.abs.gov.au/statistics/economy/business-indicators/counts-australian-businesses-including-entries-and-exits/jul2022-jun2026/8165DC01.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table 15, row 1–4, column Survived to June 2026
+  value: 498674
+  unit: count
+  snippet: 'Table 15: Counts of businesses, Australia: Employment size ranges, business survival'
+  source_license: CC-BY-4.0
+  content_sha256: 477690c133eaf70e5671643be4e255ac22bca46b7db6d236f91744b3a40d2d79
+  role: primary
+assumed:
+- parameter: rows[*].entry_rate_percent
+  value: entries_total / operating_at_start * 100
+  method: derived
+  rationale: Entries during 2025-26 relative to businesses operating at its start; exit_rate_percent and birth_rate_percent
+    do the same for total exits and for births.
+- parameter: rows[*].share_of_businesses_at_end
+  value: operating_at_end / operating_at_end of Total
+  method: derived
+  rationale: Share of all businesses operating at the end of the year, for sampling a category.
+- parameter: valid_from, valid_to
+  value: 2025-07-01 to 2026-06-30
+  method: assumed
+  rationale: The 2025-26 financial year is taken as July 2025 to June 2026, consistent with the June reference points
+    of the cube's title and survival tables.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 7
+  tolerance: 0
+- statistic: value[Total,operating_at_end]
+  expected: 2814778
+  tolerance: 0
+- statistic: max[exit_rate_percent]
+  expected: 17.24
+  tolerance: 0
+notes: 'Counts of Australian businesses for 2025-26 by employment size range (non-employing, 1-4, 5-19, 20-199 and
+  200 or more employees, plus the employing and grand totals) from Tables 13 and 15 of data cube 1, keyed by the
+  published range with en dashes written as hyphens. Each row carries businesses operating at the start and end
+  of the year, entries and exits, derived entry, birth and exit rates, the category''s share of all businesses,
+  and survival of the June 2022 population to June 2026. Size ranges are by employment, not turnover; this release
+  publishes no turnover size ranges. Source: ABS release 8165.0, data cube 1, released 18 August 2026; flow columns
+  come from the 2025-26 block of the flow table. Entries split into births and other entries and exits into cancellations
+  and other exits as the ABS publishes them. Survival columns follow the businesses operating in June 2022 to June
+  2023, 2024, 2025 and 2026. The ABS website copyright page states that, unless otherwise noted, its content is
+  licensed under Creative Commons Attribution 4.0 International; that page renders with varying bytes between fetches,
+  so it is referenced rather than hashed and the entry is held at license-review until the licence of this file
+  is confirmed.'

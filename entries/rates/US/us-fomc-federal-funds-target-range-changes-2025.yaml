@@ -1,0 +1,144 @@
+id: us-fomc-federal-funds-target-range-changes-2025
+title: FOMC federal funds target range in force through 2025, with the first effective date of each change
+kind: rule
+domain: rates
+region: US
+status: license-review
+tier: A
+valid_from: '2025-01-02'
+valid_to: null
+tags:
+- rates
+- financing
+- reference-rates
+- money-market
+- daily-series
+- new-york-fed
+- fed-funds
+- policy-rate
+- step-schedule
+use_cases:
+- lbo-modelling
+- private-credit-demo
+- valuation-demo
+- treasury-demo
+- banking-demo
+- loan-pricing
+spec:
+  implementation: almanac.rules.step_schedule
+  parameters:
+    series: FOMC target range for the federal funds rate (lower and upper bound, percent)
+    unit: percent
+    steps:
+    - from: '2025-01-02'
+      value:
+        lower: 4.25
+        upper: 4.5
+    - from: '2025-09-18'
+      value:
+        lower: 4.0
+        upper: 4.25
+    - from: '2025-10-30'
+      value:
+        lower: 3.75
+        upper: 4.0
+    - from: '2025-12-11'
+      value:
+        lower: 3.5
+        upper: 3.75
+  vectors:
+  - input:
+      'on': '2025-01-02'
+    expected:
+      lower: 4.25
+      upper: 4.5
+    origin: source
+  - input:
+      'on': '2025-09-18'
+    expected:
+      lower: 4.0
+      upper: 4.25
+    origin: source
+  - input:
+      'on': '2025-10-30'
+    expected:
+      lower: 3.75
+      upper: 4.0
+    origin: source
+  - input:
+      'on': '2025-12-11'
+    expected:
+      lower: 3.5
+      upper: 3.75
+    origin: source
+  - input:
+      'on': '2025-12-31'
+    expected:
+      lower: 3.5
+      upper: 3.75
+    origin: derived
+    note: last step still in force at year end
+evidence:
+- publisher: Federal Reserve Bank of New York
+  title: Reference rates API, all rates, 2025-01-01 to 2025-12-31 (CSV)
+  url: https://markets.newyorkfed.org/api/rates/all/search.csv?startDate=2025-01-01&endDate=2025-12-31
+  accessed_at: '2026-11-26'
+  locator: row Effective Date=01/02/2025, Rate Type=EFFR, Target Rate To (%)
+  value: '4.50'
+  unit: percent
+  snippet: 01/02/2025,EFFR,4.33,4.31,4.33,4.34,4.35,106,4.25,4.50,,,,,,,,,
+  source_license: unstated
+  content_sha256: 94099fe975c854ecc3f91b72d5255135290354059a25fa94c3126644a55ad6e1
+  role: primary
+- publisher: Federal Reserve Bank of New York
+  title: Reference rates API, all rates, 2025-01-01 to 2025-12-31 (CSV)
+  url: https://markets.newyorkfed.org/api/rates/all/search.csv?startDate=2025-01-01&endDate=2025-12-31
+  accessed_at: '2026-11-26'
+  locator: row Effective Date=09/18/2025, Rate Type=EFFR, Target Rate To (%)
+  value: '4.25'
+  unit: percent
+  snippet: 09/18/2025,EFFR,4.08,4.07,4.08,4.09,4.18,92,4.00,4.25,,,,,,,,,
+  source_license: unstated
+  content_sha256: 94099fe975c854ecc3f91b72d5255135290354059a25fa94c3126644a55ad6e1
+  role: primary
+- publisher: Federal Reserve Bank of New York
+  title: Reference rates API, all rates, 2025-01-01 to 2025-12-31 (CSV)
+  url: https://markets.newyorkfed.org/api/rates/all/search.csv?startDate=2025-01-01&endDate=2025-12-31
+  accessed_at: '2026-11-26'
+  locator: row Effective Date=10/30/2025, Rate Type=EFFR, Target Rate To (%)
+  value: '4.00'
+  unit: percent
+  snippet: 10/30/2025,EFFR,3.87,3.84,3.86,3.87,3.90,104,3.75,4.00,,,,,,,,,
+  source_license: unstated
+  content_sha256: 94099fe975c854ecc3f91b72d5255135290354059a25fa94c3126644a55ad6e1
+  role: primary
+- publisher: Federal Reserve Bank of New York
+  title: Reference rates API, all rates, 2025-01-01 to 2025-12-31 (CSV)
+  url: https://markets.newyorkfed.org/api/rates/all/search.csv?startDate=2025-01-01&endDate=2025-12-31
+  accessed_at: '2026-11-26'
+  locator: row Effective Date=12/11/2025, Rate Type=EFFR, Target Rate To (%)
+  value: '3.75'
+  unit: percent
+  snippet: 12/11/2025,EFFR,3.64,3.60,3.63,3.65,3.66,99,3.50,3.75,,,,,,,,,
+  source_license: unstated
+  content_sha256: 94099fe975c854ecc3f91b72d5255135290354059a25fa94c3126644a55ad6e1
+  role: primary
+assumed:
+- parameter: steps
+  value: change dates read from the daily target-range columns
+  method: derived
+  rationale: The schedule starts at the first EFFR publication of 2025 and adds a step on each effective date whose
+    target range differs from the previous business day's, as recorded alongside EFFR in the New York Fed API.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 4
+  tolerance: 0
+notes: 'The FOMC''s target range for the federal funds rate as a step schedule over 2025: the range in force on
+  the first business day of the year and each later change, dated by the first effective date on which the New York
+  Fed records the new range alongside EFFR. Each step''s value carries the lower and upper bound in percent. Rates
+  are published by the New York Fed each business day for the previous business day; dates are the effective dates
+  of the rates. The API''s terms of use are on an HTML page that is not byte-stable, so the licence is recorded
+  as unstated and the entry held at license-review.'

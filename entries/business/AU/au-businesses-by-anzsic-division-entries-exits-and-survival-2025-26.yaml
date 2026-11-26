@@ -1,0 +1,621 @@
+id: au-businesses-by-anzsic-division-entries-exits-and-survival-2025-26
+title: 'Australian businesses by ANZSIC division: counts, entries, exits and four-year survival, 2025-26 (ABS 8165.0)'
+kind: rule
+domain: business
+region: AU
+status: license-review
+tier: A
+valid_from: '2025-07-01'
+valid_to: '2026-06-30'
+tags:
+- firms
+- business
+- smes
+- size-class
+- abs
+- business-register
+- entries
+- exits
+- survival
+- anzsic
+- industry
+use_cases:
+- pe-portfolio-demo
+- deal-sourcing-demo
+- synthetic-companies
+- valuation-demo
+- kyb-onboarding
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    source_tables:
+    - Table 1
+    - Table 2
+    financial_year: 2025-26
+    key: ANZSIC division name
+    rows:
+      Agriculture, Forestry and Fishing:
+        label: Agriculture, Forestry and Fishing
+        operating_at_start: 171046
+        entries_births: 8052
+        entries_other: 4556
+        entries_total: 12608
+        exits_cancellations: 9978
+        exits_other: 3491
+        exits_total: 13469
+        operating_at_end: 170185
+        entry_rate_percent: 7.37
+        exit_rate_percent: 7.87
+        birth_rate_percent: 4.71
+        operating_june_2022: 175272
+        survived_to_june_2023: 160844
+        survival_rate_2023_percent: 91.8
+        survived_to_june_2024: 148765
+        survival_rate_2024_percent: 84.9
+        survived_to_june_2025: 139144
+        survival_rate_2025_percent: 79.4
+        survived_to_june_2026: 130525
+        survival_rate_2026_percent: 74.5
+        share_of_businesses_at_end: 0.060461
+      Mining:
+        label: Mining
+        operating_at_start: 8660
+        entries_births: 707
+        entries_other: 329
+        entries_total: 1036
+        exits_cancellations: 710
+        exits_other: 231
+        exits_total: 941
+        operating_at_end: 8755
+        entry_rate_percent: 11.96
+        exit_rate_percent: 10.87
+        birth_rate_percent: 8.16
+        operating_june_2022: 8357
+        survived_to_june_2023: 7468
+        survival_rate_2023_percent: 89.4
+        survived_to_june_2024: 6814
+        survival_rate_2024_percent: 81.5
+        survived_to_june_2025: 6322
+        survival_rate_2025_percent: 75.6
+        survived_to_june_2026: 5881
+        survival_rate_2026_percent: 70.4
+        share_of_businesses_at_end: 0.00311
+      Manufacturing:
+        label: Manufacturing
+        operating_at_start: 90687
+        entries_births: 7935
+        entries_other: 3391
+        entries_total: 11326
+        exits_cancellations: 8860
+        exits_other: 2274
+        exits_total: 11134
+        operating_at_end: 90879
+        entry_rate_percent: 12.49
+        exit_rate_percent: 12.28
+        birth_rate_percent: 8.75
+        operating_june_2022: 89250
+        survived_to_june_2023: 78686
+        survival_rate_2023_percent: 88.2
+        survived_to_june_2024: 70289
+        survival_rate_2024_percent: 78.8
+        survived_to_june_2025: 63796
+        survival_rate_2025_percent: 71.5
+        survived_to_june_2026: 58125
+        survival_rate_2026_percent: 65.1
+        share_of_businesses_at_end: 0.032286
+      Electricity, Gas, Water and Waste Services:
+        label: Electricity, Gas, Water and Waste Services
+        operating_at_start: 8888
+        entries_births: 1092
+        entries_other: 373
+        entries_total: 1465
+        exits_cancellations: 933
+        exits_other: 252
+        exits_total: 1185
+        operating_at_end: 9168
+        entry_rate_percent: 16.48
+        exit_rate_percent: 13.33
+        birth_rate_percent: 12.29
+        operating_june_2022: 8341
+        survived_to_june_2023: 7322
+        survival_rate_2023_percent: 87.8
+        survived_to_june_2024: 6522
+        survival_rate_2024_percent: 78.2
+        survived_to_june_2025: 5953
+        survival_rate_2025_percent: 71.4
+        survived_to_june_2026: 5371
+        survival_rate_2026_percent: 64.4
+        share_of_businesses_at_end: 0.003257
+      Construction:
+        label: Construction
+        operating_at_start: 463048
+        entries_births: 54714
+        entries_other: 28290
+        entries_total: 83004
+        exits_cancellations: 50935
+        exits_other: 16466
+        exits_total: 67401
+        operating_at_end: 478651
+        entry_rate_percent: 17.93
+        exit_rate_percent: 14.56
+        birth_rate_percent: 11.82
+        operating_june_2022: 435420
+        survived_to_june_2023: 370957
+        survival_rate_2023_percent: 85.2
+        survived_to_june_2024: 321762
+        survival_rate_2024_percent: 73.9
+        survived_to_june_2025: 287590
+        survival_rate_2025_percent: 66
+        survived_to_june_2026: 259531
+        survival_rate_2026_percent: 59.6
+        share_of_businesses_at_end: 0.170049
+      Wholesale Trade:
+        label: Wholesale Trade
+        operating_at_start: 82069
+        entries_births: 8097
+        entries_other: 3044
+        entries_total: 11141
+        exits_cancellations: 9067
+        exits_other: 1695
+        exits_total: 10762
+        operating_at_end: 82448
+        entry_rate_percent: 13.58
+        exit_rate_percent: 13.11
+        birth_rate_percent: 9.87
+        operating_june_2022: 81794
+        survived_to_june_2023: 70757
+        survival_rate_2023_percent: 86.5
+        survived_to_june_2024: 62452
+        survival_rate_2024_percent: 76.4
+        survived_to_june_2025: 56516
+        survival_rate_2025_percent: 69.1
+        survived_to_june_2026: 51724
+        survival_rate_2026_percent: 63.2
+        share_of_businesses_at_end: 0.029291
+      Retail Trade:
+        label: Retail Trade
+        operating_at_start: 156018
+        entries_births: 17925
+        entries_other: 6643
+        entries_total: 24568
+        exits_cancellations: 20569
+        exits_other: 3874
+        exits_total: 24443
+        operating_at_end: 156143
+        entry_rate_percent: 15.75
+        exit_rate_percent: 15.67
+        birth_rate_percent: 11.49
+        operating_june_2022: 157321
+        survived_to_june_2023: 133215
+        survival_rate_2023_percent: 84.7
+        survived_to_june_2024: 114392
+        survival_rate_2024_percent: 72.7
+        survived_to_june_2025: 100311
+        survival_rate_2025_percent: 63.8
+        survived_to_june_2026: 88856
+        survival_rate_2026_percent: 56.5
+        share_of_businesses_at_end: 0.055473
+      Accommodation and Food Services:
+        label: Accommodation and Food Services
+        operating_at_start: 112871
+        entries_births: 14860
+        entries_other: 4400
+        entries_total: 19260
+        exits_cancellations: 14731
+        exits_other: 3031
+        exits_total: 17762
+        operating_at_end: 114369
+        entry_rate_percent: 17.06
+        exit_rate_percent: 15.74
+        birth_rate_percent: 13.17
+        operating_june_2022: 110368
+        survived_to_june_2023: 91853
+        survival_rate_2023_percent: 83.2
+        survived_to_june_2024: 77741
+        survival_rate_2024_percent: 70.4
+        survived_to_june_2025: 67491
+        survival_rate_2025_percent: 61.2
+        survived_to_june_2026: 59294
+        survival_rate_2026_percent: 53.7
+        share_of_businesses_at_end: 0.040632
+      Transport, Postal and Warehousing:
+        label: Transport, Postal and Warehousing
+        operating_at_start: 248982
+        entries_births: 44163
+        entries_other: 21928
+        entries_total: 66091
+        exits_cancellations: 43641
+        exits_other: 10323
+        exits_total: 53964
+        operating_at_end: 261109
+        entry_rate_percent: 26.54
+        exit_rate_percent: 21.67
+        birth_rate_percent: 17.74
+        operating_june_2022: 209753
+        survived_to_june_2023: 163295
+        survival_rate_2023_percent: 77.9
+        survived_to_june_2024: 133715
+        survival_rate_2024_percent: 63.7
+        survived_to_june_2025: 114561
+        survival_rate_2025_percent: 54.6
+        survived_to_june_2026: 99230
+        survival_rate_2026_percent: 47.3
+        share_of_businesses_at_end: 0.092764
+      Information Media and Telecommunications:
+        label: Information Media and Telecommunications
+        operating_at_start: 25248
+        entries_births: 3288
+        entries_other: 1420
+        entries_total: 4708
+        exits_cancellations: 3041
+        exits_other: 665
+        exits_total: 3706
+        operating_at_end: 26250
+        entry_rate_percent: 18.65
+        exit_rate_percent: 14.68
+        birth_rate_percent: 13.02
+        operating_june_2022: 24596
+        survived_to_june_2023: 20826
+        survival_rate_2023_percent: 84.7
+        survived_to_june_2024: 17932
+        survival_rate_2024_percent: 72.9
+        survived_to_june_2025: 15924
+        survival_rate_2025_percent: 64.7
+        survived_to_june_2026: 14273
+        survival_rate_2026_percent: 58
+        share_of_businesses_at_end: 0.009326
+      Financial and Insurance Services:
+        label: Financial and Insurance Services
+        operating_at_start: 133668
+        entries_births: 16455
+        entries_other: 5819
+        entries_total: 22274
+        exits_cancellations: 14067
+        exits_other: 2458
+        exits_total: 16525
+        operating_at_end: 139417
+        entry_rate_percent: 16.66
+        exit_rate_percent: 12.36
+        birth_rate_percent: 12.31
+        operating_june_2022: 119730
+        survived_to_june_2023: 104405
+        survival_rate_2023_percent: 87.2
+        survived_to_june_2024: 93688
+        survival_rate_2024_percent: 78.2
+        survived_to_june_2025: 85656
+        survival_rate_2025_percent: 71.5
+        survived_to_june_2026: 78921
+        survival_rate_2026_percent: 65.9
+        share_of_businesses_at_end: 0.04953
+      Rental, Hiring and Real Estate Services:
+        label: Rental, Hiring and Real Estate Services
+        operating_at_start: 308206
+        entries_births: 30095
+        entries_other: 10301
+        entries_total: 40396
+        exits_cancellations: 25600
+        exits_other: 3285
+        exits_total: 28885
+        operating_at_end: 319717
+        entry_rate_percent: 13.11
+        exit_rate_percent: 9.37
+        birth_rate_percent: 9.76
+        operating_june_2022: 286229
+        survived_to_june_2023: 257868
+        survival_rate_2023_percent: 90.1
+        survived_to_june_2024: 237076
+        survival_rate_2024_percent: 82.8
+        survived_to_june_2025: 221363
+        survival_rate_2025_percent: 77.3
+        survived_to_june_2026: 207541
+        survival_rate_2026_percent: 72.5
+        share_of_businesses_at_end: 0.113585
+      Professional, Scientific and Technical Services:
+        label: Professional, Scientific and Technical Services
+        operating_at_start: 353485
+        entries_births: 41727
+        entries_other: 18909
+        entries_total: 60636
+        exits_cancellations: 37740
+        exits_other: 10092
+        exits_total: 47832
+        operating_at_end: 366289
+        entry_rate_percent: 17.15
+        exit_rate_percent: 13.53
+        birth_rate_percent: 11.8
+        operating_june_2022: 329618
+        survived_to_june_2023: 284621
+        survival_rate_2023_percent: 86.3
+        survived_to_june_2024: 250123
+        survival_rate_2024_percent: 75.9
+        survived_to_june_2025: 224654
+        survival_rate_2025_percent: 68.2
+        survived_to_june_2026: 203808
+        survival_rate_2026_percent: 61.8
+        share_of_businesses_at_end: 0.130131
+      Administrative and Support Services:
+        label: Administrative and Support Services
+        operating_at_start: 127031
+        entries_births: 16914
+        entries_other: 8919
+        entries_total: 25833
+        exits_cancellations: 17755
+        exits_other: 4779
+        exits_total: 22534
+        operating_at_end: 130330
+        entry_rate_percent: 20.34
+        exit_rate_percent: 17.74
+        birth_rate_percent: 13.31
+        operating_june_2022: 117731
+        survived_to_june_2023: 95862
+        survival_rate_2023_percent: 81.4
+        survived_to_june_2024: 80262
+        survival_rate_2024_percent: 68.2
+        survived_to_june_2025: 70188
+        survival_rate_2025_percent: 59.6
+        survived_to_june_2026: 62003
+        survival_rate_2026_percent: 52.7
+        share_of_businesses_at_end: 0.046302
+      Public Administration and Safety:
+        label: Public Administration and Safety
+        operating_at_start: 7771
+        entries_births: 977
+        entries_other: 528
+        entries_total: 1505
+        exits_cancellations: 1118
+        exits_other: 250
+        exits_total: 1368
+        operating_at_end: 7908
+        entry_rate_percent: 19.37
+        exit_rate_percent: 17.6
+        birth_rate_percent: 12.57
+        operating_june_2022: 7505
+        survived_to_june_2023: 6158
+        survival_rate_2023_percent: 82.1
+        survived_to_june_2024: 5228
+        survival_rate_2024_percent: 69.7
+        survived_to_june_2025: 4622
+        survival_rate_2025_percent: 61.6
+        survived_to_june_2026: 4126
+        survival_rate_2026_percent: 55
+        share_of_businesses_at_end: 0.002809
+      Education and Training:
+        label: Education and Training
+        operating_at_start: 43046
+        entries_births: 4467
+        entries_other: 2653
+        entries_total: 7120
+        exits_cancellations: 4679
+        exits_other: 1251
+        exits_total: 5930
+        operating_at_end: 44236
+        entry_rate_percent: 16.54
+        exit_rate_percent: 13.78
+        birth_rate_percent: 10.38
+        operating_june_2022: 40509
+        survived_to_june_2023: 34499
+        survival_rate_2023_percent: 85.2
+        survived_to_june_2024: 30070
+        survival_rate_2024_percent: 74.2
+        survived_to_june_2025: 26995
+        survival_rate_2025_percent: 66.6
+        survived_to_june_2026: 24411
+        survival_rate_2026_percent: 60.3
+        share_of_businesses_at_end: 0.015716
+      Health Care and Social Assistance:
+        label: Health Care and Social Assistance
+        operating_at_start: 213424
+        entries_births: 24884
+        entries_other: 12233
+        entries_total: 37117
+        exits_cancellations: 15619
+        exits_other: 7220
+        exits_total: 22839
+        operating_at_end: 227702
+        entry_rate_percent: 17.39
+        exit_rate_percent: 10.7
+        birth_rate_percent: 11.66
+        operating_june_2022: 174154
+        survived_to_june_2023: 156139
+        survival_rate_2023_percent: 89.7
+        survived_to_june_2024: 141957
+        survival_rate_2024_percent: 81.5
+        survived_to_june_2025: 131209
+        survival_rate_2025_percent: 75.3
+        survived_to_june_2026: 122228
+        survival_rate_2026_percent: 70.2
+        share_of_businesses_at_end: 0.080895
+      Arts and Recreation Services:
+        label: Arts and Recreation Services
+        operating_at_start: 39292
+        entries_births: 4245
+        entries_other: 2861
+        entries_total: 7106
+        exits_cancellations: 4296
+        exits_other: 1310
+        exits_total: 5606
+        operating_at_end: 40792
+        entry_rate_percent: 18.09
+        exit_rate_percent: 14.27
+        birth_rate_percent: 10.8
+        operating_june_2022: 36653
+        survived_to_june_2023: 31002
+        survival_rate_2023_percent: 84.6
+        survived_to_june_2024: 26659
+        survival_rate_2024_percent: 72.7
+        survived_to_june_2025: 23609
+        survival_rate_2025_percent: 64.4
+        survived_to_june_2026: 21189
+        survival_rate_2026_percent: 57.8
+        share_of_businesses_at_end: 0.014492
+      Other Services:
+        label: Other Services
+        operating_at_start: 134522
+        entries_births: 15484
+        entries_other: 7559
+        entries_total: 23043
+        exits_cancellations: 14079
+        exits_other: 4751
+        exits_total: 18830
+        operating_at_end: 138735
+        entry_rate_percent: 17.13
+        exit_rate_percent: 14.0
+        birth_rate_percent: 11.51
+        operating_june_2022: 125074
+        survived_to_june_2023: 106157
+        survival_rate_2023_percent: 84.9
+        survived_to_june_2024: 91956
+        survival_rate_2024_percent: 73.5
+        survived_to_june_2025: 81734
+        survival_rate_2025_percent: 65.3
+        survived_to_june_2026: 73370
+        survival_rate_2026_percent: 58.7
+        share_of_businesses_at_end: 0.049288
+      Currently Unknown:
+        label: Currently Unknown
+        operating_at_start: 1686
+        entries_births: 97
+        entries_other: 127
+        entries_total: 224
+        exits_cancellations: 170
+        exits_other: 45
+        exits_total: 215
+        operating_at_end: 1695
+        entry_rate_percent: 13.29
+        exit_rate_percent: 12.75
+        birth_rate_percent: 5.75
+        operating_june_2022: 2049
+        survived_to_june_2023: 1574
+        survival_rate_2023_percent: null
+        survived_to_june_2024: 1240
+        survival_rate_2024_percent: null
+        survived_to_june_2025: 1119
+        survival_rate_2025_percent: null
+        survived_to_june_2026: 1042
+        survival_rate_2026_percent: null
+        share_of_businesses_at_end: 0.000602
+      All Industries:
+        label: All Industries
+        operating_at_start: 2729648
+        entries_births: 316178
+        entries_other: 144283
+        entries_total: 460461
+        exits_cancellations: 297588
+        exits_other: 77743
+        exits_total: 375331
+        operating_at_end: 2814778
+        entry_rate_percent: 16.87
+        exit_rate_percent: 13.75
+        birth_rate_percent: 11.58
+        operating_june_2022: 2539724
+        survived_to_june_2023: 2183508
+        survival_rate_2023_percent: 86
+        survived_to_june_2024: 1918643
+        survival_rate_2024_percent: 75.5
+        survived_to_june_2025: 1728757
+        survival_rate_2025_percent: 68.1
+        survived_to_june_2026: 1571449
+        survival_rate_2026_percent: 61.9
+        share_of_businesses_at_end: 1.0
+  vectors:
+  - input:
+      key: Construction
+      column: operating_at_end
+    expected: 478651
+    origin: source
+  - input:
+      key: Retail Trade
+      column: entries_births
+    expected: 17925
+    origin: source
+  - input:
+      key: Construction
+      column: survived_to_june_2026
+    expected: 259531
+    origin: source
+  - input:
+      key: Retail Trade
+      column: exit_rate_percent
+    expected: 15.67
+    origin: derived
+    note: exits_total / operating_at_start * 100
+  - input: Unknown size
+    expected: false
+    origin: derived
+    note: not a published row
+evidence:
+- publisher: Australian Bureau of Statistics
+  title: 8165.0 Counts of Australian Businesses, including Entries and Exits, June 2022 - June 2026, Data cube 1
+    (XLSX)
+  url: https://www.abs.gov.au/statistics/economy/business-indicators/counts-australian-businesses-including-entries-and-exits/jul2022-jun2026/8165DC01.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table 1, block 2025-26, row Construction, column Operating at end of financial year
+  value: 478651
+  unit: count
+  snippet: 'Table 1: Counts of businesses, Australia: Industry division'
+  source_license: CC-BY-4.0
+  content_sha256: 477690c133eaf70e5671643be4e255ac22bca46b7db6d236f91744b3a40d2d79
+  role: primary
+- publisher: Australian Bureau of Statistics
+  title: 8165.0 Counts of Australian Businesses, including Entries and Exits, June 2022 - June 2026, Data cube 1
+    (XLSX)
+  url: https://www.abs.gov.au/statistics/economy/business-indicators/counts-australian-businesses-including-entries-and-exits/jul2022-jun2026/8165DC01.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table 1, block 2025-26, row Retail Trade, column Entries - Births
+  value: 17925
+  unit: count
+  snippet: Retail Trade
+  source_license: CC-BY-4.0
+  content_sha256: 477690c133eaf70e5671643be4e255ac22bca46b7db6d236f91744b3a40d2d79
+  role: primary
+- publisher: Australian Bureau of Statistics
+  title: 8165.0 Counts of Australian Businesses, including Entries and Exits, June 2022 - June 2026, Data cube 1
+    (XLSX)
+  url: https://www.abs.gov.au/statistics/economy/business-indicators/counts-australian-businesses-including-entries-and-exits/jul2022-jun2026/8165DC01.xlsx
+  accessed_at: '2026-11-26'
+  locator: Table 2, row Construction, column Survived to June 2026
+  value: 259531
+  unit: count
+  snippet: 'Table 2: Counts of businesses, Australia: Industry division, business survival'
+  source_license: CC-BY-4.0
+  content_sha256: 477690c133eaf70e5671643be4e255ac22bca46b7db6d236f91744b3a40d2d79
+  role: primary
+assumed:
+- parameter: rows[*].entry_rate_percent
+  value: entries_total / operating_at_start * 100
+  method: derived
+  rationale: Entries during 2025-26 relative to businesses operating at its start; exit_rate_percent and birth_rate_percent
+    do the same for total exits and for births.
+- parameter: rows[*].share_of_businesses_at_end
+  value: operating_at_end / operating_at_end of All Industries
+  method: derived
+  rationale: Share of all businesses operating at the end of the year, for sampling a category.
+- parameter: valid_from, valid_to
+  value: 2025-07-01 to 2026-06-30
+  method: assumed
+  rationale: The 2025-26 financial year is taken as July 2025 to June 2026, consistent with the June reference points
+    of the cube's title and survival tables.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 21
+  tolerance: 0
+- statistic: value[All Industries,operating_at_end]
+  expected: 2814778
+  tolerance: 0
+- statistic: max[exit_rate_percent]
+  expected: 21.67
+  tolerance: 0
+notes: 'Counts of Australian businesses for 2025-26 by ANZSIC 2006 industry division (plus Currently Unknown and
+  All Industries) from Tables 1 and 2 of data cube 1, keyed by division name. Each row carries businesses operating
+  at the start and end of the year, entries and exits, derived entry, birth and exit rates, the division''s share
+  of all businesses, and survival of the June 2022 population to June 2026. Source: ABS release 8165.0, data cube
+  1, released 18 August 2026; flow columns come from the 2025-26 block of the flow table. Entries split into births
+  and other entries and exits into cancellations and other exits as the ABS publishes them. Survival columns follow
+  the businesses operating in June 2022 to June 2023, 2024, 2025 and 2026. The ABS website copyright page states
+  that, unless otherwise noted, its content is licensed under Creative Commons Attribution 4.0 International; that
+  page renders with varying bytes between fetches, so it is referenced rather than hashed and the entry is held
+  at license-review until the licence of this file is confirmed.'

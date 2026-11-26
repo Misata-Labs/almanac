@@ -1,0 +1,740 @@
+id: us-susb-employment-size-by-legal-form-2022
+title: US employer firms by enterprise employment size given legal form of organization, with receipts per employee
+  (SUSB 2022)
+kind: conditional
+domain: business
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2022-01-01'
+  end: '2022-12-31'
+tags:
+- firms
+- business
+- census
+- susb
+- legal-form
+- firm-size
+- employment-size
+- receipts
+use_cases:
+- pe-portfolio-demo
+- deal-sourcing-demo
+- synthetic-companies
+- valuation-demo
+- kyb-onboarding
+- company-generation
+spec:
+  variable: enterprise_employment_size_class
+  unit: ratio
+  given: legal_form_of_organization
+  distributions:
+    Total:
+      family: categorical
+      parameters:
+        shares:
+          <5: 0.629967
+          5-9: 0.161694
+          10-19: 0.102713
+          20-99: 0.087741
+          100-499: 0.014594
+          500+: 0.00329
+        firms:
+          <5: 4029041
+          5-9: 1034135
+          10-19: 656917
+          <20: 5720093
+          20-99: 561160
+          100-499: 93341
+          <500: 6374594
+          500+: 21041
+          Total: 6395635
+        establishments:
+          <5: 4035233
+          5-9: 1047874
+          10-19: 694360
+          <20: 5777467
+          20-99: 752126
+          100-499: 382869
+          <500: 6912462
+          500+: 1386100
+          Total: 8298562
+        employment:
+          <5: 6295615
+          5-9: 6810300
+          10-19: 8844269
+          <20: 21950184
+          20-99: 21976701
+          100-499: 18323671
+          <500: 62250556
+          500+: 73497851
+          Total: 135748407
+        annual_payroll_usd_thousands:
+          <5: 354954498
+          5-9: 311979624
+          10-19: 419510542
+          <20: 1086444664
+          20-99: 1174599502
+          100-499: 1204005353
+          <500: 3465049519
+          500+: 5499985744
+          Total: 8965035263
+        receipts_usd_thousands:
+          <5: 2084288587
+          5-9: 1632588564
+          10-19: 2026799227
+          <20: 5743676378
+          20-99: 5813332502
+          100-499: 6222162516
+          <500: 17779171396
+          500+: 33069825434
+          Total: 50848996830
+        receipts_per_employee_usd:
+          <5: 331070
+          5-9: 239723
+          10-19: 229165
+          <20: 261669
+          20-99: 264523
+          100-499: 339570
+          <500: 285607
+          500+: 449943
+          Total: 374583
+        annual_payroll_per_employee_usd:
+          <5: 56381
+          5-9: 45810
+          10-19: 47433
+          <20: 49496
+          20-99: 53447
+          100-499: 65708
+          <500: 55663
+          500+: 74832
+          Total: 66042
+    Corporation:
+      family: categorical
+      parameters:
+        shares:
+          <5: 0.567529
+          5-9: 0.165751
+          10-19: 0.113776
+          20-99: 0.111259
+          100-499: 0.029096
+          500+: 0.012589
+        firms:
+          <5: 510266
+          5-9: 149027
+          10-19: 102296
+          <20: 761589
+          20-99: 100033
+          100-499: 26160
+          <500: 887782
+          500+: 11319
+          Total: 899101
+        establishments:
+          <5: 511963
+          5-9: 152533
+          10-19: 111315
+          <20: 775811
+          20-99: 149185
+          100-499: 115182
+          <500: 1040178
+          500+: 991958
+          Total: 2032136
+        employment:
+          <5: 825501
+          5-9: 982440
+          10-19: 1378878
+          <20: 3186819
+          20-99: 3969884
+          100-499: 4926793
+          <500: 12083496
+          500+: 46745926
+          Total: 58829422
+        annual_payroll_usd_thousands:
+          <5: 57624346
+          5-9: 55764773
+          10-19: 84219564
+          <20: 197608683
+          20-99: 286050280
+          100-499: 424327743
+          <500: 907986706
+          500+: 3751273990
+          Total: 4659260696
+        receipts_usd_thousands:
+          <5: 333974753
+          5-9: 299664162
+          10-19: 416567012
+          <20: 1050205927
+          20-99: 1457868816
+          100-499: 2489792365
+          <500: 4997867108
+          500+: 25410362750
+          Total: 30408229858
+        receipts_per_employee_usd:
+          <5: 404572
+          5-9: 305020
+          10-19: 302106
+          <20: 329547
+          20-99: 367232
+          100-499: 505358
+          <500: 413611
+          500+: 543585
+          Total: 516888
+        annual_payroll_per_employee_usd:
+          <5: 69805
+          5-9: 56762
+          10-19: 61078
+          <20: 62008
+          20-99: 72055
+          100-499: 86127
+          <500: 75143
+          500+: 80248
+          Total: 79199
+    S-Corporation:
+      family: categorical
+      parameters:
+        shares:
+          <5: 0.643017
+          5-9: 0.159986
+          10-19: 0.10299
+          20-99: 0.081447
+          100-499: 0.01065
+          500+: 0.00191
+        firms:
+          <5: 2260296
+          5-9: 562375
+          10-19: 362023
+          <20: 3184694
+          20-99: 286299
+          100-499: 37438
+          <500: 3508431
+          500+: 6713
+          Total: 3515144
+        establishments:
+          <5: 2262831
+          5-9: 568932
+          10-19: 380826
+          <20: 3212589
+          20-99: 370001
+          100-499: 125879
+          <500: 3708469
+          500+: 112130
+          Total: 3820599
+        employment:
+          <5: 3432555
+          5-9: 3714771
+          10-19: 4854556
+          <20: 12001882
+          20-99: 10819152
+          100-499: 6540208
+          <500: 29361242
+          500+: 7414651
+          Total: 36775893
+        annual_payroll_usd_thousands:
+          <5: 207406411
+          5-9: 179403159
+          10-19: 234538285
+          <20: 621347855
+          20-99: 559625902
+          100-499: 376222775
+          <500: 1557196532
+          500+: 389527258
+          Total: 1946723790
+        receipts_usd_thousands:
+          <5: 1208824876
+          5-9: 926496766
+          10-19: 1116975669
+          <20: 3252297311
+          20-99: 2781636270
+          100-499: 1958199983
+          <500: 7992133564
+          500+: 1782521028
+          Total: 9774654592
+        receipts_per_employee_usd:
+          <5: 352165
+          5-9: 249409
+          10-19: 230088
+          <20: 270982
+          20-99: 257103
+          100-499: 299409
+          <500: 272200
+          500+: 240405
+          Total: 265790
+        annual_payroll_per_employee_usd:
+          <5: 60423
+          5-9: 48295
+          10-19: 48313
+          <20: 51771
+          20-99: 51725
+          100-499: 57525
+          <500: 53036
+          500+: 52535
+          Total: 52935
+    Partnership:
+      family: categorical
+      parameters:
+        shares:
+          <5: 0.541964
+          5-9: 0.169867
+          10-19: 0.127917
+          20-99: 0.130311
+          100-499: 0.022925
+          500+: 0.007016
+        firms:
+          <5: 422103
+          5-9: 132299
+          10-19: 99627
+          <20: 654029
+          20-99: 101491
+          100-499: 17855
+          <500: 773375
+          500+: 5464
+          Total: 778839
+        establishments:
+          <5: 422929
+          5-9: 134040
+          10-19: 104418
+          <20: 661387
+          20-99: 126522
+          100-499: 61363
+          <500: 849272
+          500+: 150017
+          Total: 999289
+        employment:
+          <5: 668951
+          5-9: 875041
+          10-19: 1350495
+          <20: 2894487
+          20-99: 3955863
+          100-499: 3014330
+          <500: 9864680
+          500+: 6755393
+          Total: 16620073
+        annual_payroll_usd_thousands:
+          <5: 39602461
+          5-9: 37075746
+          10-19: 57011056
+          <20: 133689263
+          20-99: 191237520
+          100-499: 199841419
+          <500: 524768202
+          500+: 473216512
+          Total: 997984714
+        receipts_usd_thousands:
+          <5: 274513838
+          5-9: 226613148
+          10-19: 304846708
+          <20: 805973694
+          20-99: 1003260099
+          100-499: 947043856
+          <500: 2756277649
+          500+: 2692659358
+          Total: 5448937007
+        receipts_per_employee_usd:
+          <5: 410365
+          5-9: 258974
+          10-19: 225730
+          <20: 278451
+          20-99: 253613
+          100-499: 314181
+          <500: 279409
+          500+: 398594
+          Total: 327853
+        annual_payroll_per_employee_usd:
+          <5: 59201
+          5-9: 42370
+          10-19: 42215
+          <20: 46188
+          20-99: 48343
+          100-499: 66297
+          <500: 53197
+          500+: 70050
+          Total: 60047
+    Sole Propietorship:
+      family: categorical
+      parameters:
+        shares:
+          <5: 0.765985
+          5-9: 0.139784
+          10-19: 0.057262
+          20-99: 0.030944
+          100-499: 0.004338
+          500+: 0.001687
+        firms:
+          <5: 600402
+          5-9: 109567
+          10-19: 44884
+          <20: 754853
+          20-99: 24255
+          100-499: 3400
+          <500: 782508
+          500+: 1322
+          Total: 783830
+        establishments:
+          <5: 600757
+          5-9: 110157
+          10-19: 46122
+          <20: 757036
+          20-99: 27248
+          100-499: 6313
+          <500: 790597
+          500+: 27445
+          Total: 818042
+        employment:
+          <5: 920328
+          5-9: 703067
+          10-19: 588645
+          <20: 2212040
+          20-99: 894707
+          100-499: 576626
+          <500: 3683373
+          500+: 1565107
+          Total: 5248480
+        annual_payroll_usd_thousands:
+          <5: 34233184
+          5-9: 22090298
+          10-19: 19324018
+          <20: 75647500
+          20-99: 38180227
+          100-499: 38684146
+          <500: 152511873
+          500+: 95304389
+          Total: 247816262
+        receipts_usd_thousands:
+          <5: 189943038
+          5-9: 104437524
+          10-19: 83457258
+          <20: 377837820
+          20-99: 169748078
+          100-499: 193772671
+          <500: 741358569
+          500+: 484687888
+          Total: 1226046457
+        receipts_per_employee_usd:
+          <5: 206386
+          5-9: 148546
+          10-19: 141779
+          <20: 170810
+          20-99: 189725
+          100-499: 336046
+          <500: 201272
+          500+: 309684
+          Total: 233600
+        annual_payroll_per_employee_usd:
+          <5: 37197
+          5-9: 31420
+          10-19: 32828
+          <20: 34198
+          20-99: 42673
+          100-499: 67087
+          <500: 41405
+          500+: 60893
+          Total: 47217
+    Nonprofit:
+      family: categorical
+      parameters:
+        shares:
+          <5: 0.535974
+          5-9: 0.184667
+          10-19: 0.111765
+          20-99: 0.124873
+          100-499: 0.034603
+          500+: 0.008118
+        firms:
+          <5: 232527
+          5-9: 80116
+          10-19: 48488
+          <20: 361131
+          20-99: 54175
+          100-499: 15012
+          <500: 430318
+          500+: 3522
+          Total: 433840
+        establishments:
+          <5: 232691
+          5-9: 80576
+          10-19: 50315
+          <20: 363582
+          20-99: 76351
+          100-499: 69693
+          <500: 509626
+          500+: 93396
+          Total: 603022
+        employment:
+          <5: 441394
+          5-9: 523965
+          10-19: 655852
+          <20: 1621211
+          20-99: 2283471
+          100-499: 3029057
+          <500: 6933739
+          500+: 9359701
+          Total: 16293440
+        annual_payroll_usd_thousands:
+          <5: 15752698
+          5-9: 17094241
+          10-19: 23581148
+          <20: 56428087
+          20-99: 96682853
+          100-499: 150931508
+          <500: 304042448
+          500+: 652558729
+          Total: 956601177
+        receipts_usd_thousands:
+          <5: 74321333
+          5-9: 70928038
+          10-19: 95518783
+          <20: 240768154
+          20-99: 358355923
+          100-499: 519122455
+          <500: 1118246532
+          500+: 1937516263
+          Total: 3055762795
+        receipts_per_employee_usd:
+          <5: 168379
+          5-9: 135368
+          10-19: 145641
+          <20: 148511
+          20-99: 156935
+          100-499: 171381
+          <500: 161276
+          500+: 207006
+          Total: 187546
+        annual_payroll_per_employee_usd:
+          <5: 35689
+          5-9: 32625
+          10-19: 35955
+          <20: 34806
+          20-99: 42340
+          100-499: 49828
+          <500: 43850
+          500+: 69720
+          Total: 58711
+    Government:
+      family: categorical
+      parameters:
+        shares:
+          <5: 0.039071
+          5-9: 0.094564
+          10-19: 0.07701
+          20-99: 0.138165
+          100-499: 0.358437
+          500+: 0.292752
+        firms:
+          <5: 69
+          5-9: 167
+          10-19: 136
+          <20: 372
+          20-99: 244
+          100-499: 633
+          <500: 1249
+          500+: 517
+          Total: 1766
+        establishments:
+          <5: 69
+          5-9: 173
+          10-19: 156
+          <20: 398
+          20-99: 479
+          100-499: 834
+          <500: 1711
+          500+: 1505
+          Total: 3216
+        employment:
+          <5: 172
+          5-9: 1162
+          10-19: 1720
+          <20: 3054
+          20-99: 13409
+          100-499: 153920
+          <500: 170383
+          500+: 1218342
+          Total: 1388725
+        annual_payroll_usd_thousands:
+          <5: 7418
+          5-9: 31832
+          10-19: 45443
+          <20: 84693
+          20-99: 654276
+          100-499: 8986799
+          <500: 9725768
+          500+: 104562911
+          Total: 114288679
+        receipts_usd_thousands:
+          <5: 56986
+          5-9: 337703
+          10-19: 463187
+          <20: 857876
+          20-99: 3064519
+          100-499: 26186436
+          <500: 30108831
+          500+: 452647032
+          Total: 482755863
+        receipts_per_employee_usd:
+          <5: 331314
+          5-9: 290622
+          10-19: 269295
+          <20: 280902
+          20-99: 228542
+          100-499: 170130
+          <500: 176713
+          500+: 371527
+          Total: 347625
+        annual_payroll_per_employee_usd:
+          <5: 43128
+          5-9: 27394
+          10-19: 26420
+          <20: 27732
+          20-99: 48794
+          100-499: 58386
+          <500: 57082
+          500+: 85824
+          Total: 82298
+    Other:
+      family: categorical
+      parameters:
+        shares:
+          <5: 0.444098
+          5-9: 0.1598
+          10-19: 0.121492
+          20-99: 0.124276
+          100-499: 0.074053
+          500+: 0.076281
+        firms:
+          <5: 3988
+          5-9: 1435
+          10-19: 1091
+          <20: 6514
+          20-99: 1116
+          100-499: 665
+          <500: 8295
+          500+: 685
+          Total: 8980
+        establishments:
+          <5: 3993
+          5-9: 1463
+          10-19: 1208
+          <20: 6664
+          20-99: 2340
+          100-499: 3605
+          <500: 12609
+          500+: 9649
+          Total: 22258
+        employment:
+          <5: 6714
+          5-9: 9854
+          10-19: 14123
+          <20: 30691
+          20-99: 40215
+          100-499: 82737
+          <500: 153643
+          500+: 438731
+          Total: 592374
+        annual_payroll_usd_thousands:
+          <5: 327980
+          5-9: 519575
+          10-19: 791028
+          <20: 1638583
+          20-99: 2168444
+          100-499: 5010963
+          <500: 8817990
+          500+: 33541955
+          Total: 42359945
+        receipts_usd_thousands:
+          <5: 2653763
+          5-9: 4111223
+          10-19: 8970610
+          <20: 15735596
+          20-99: 39398797
+          100-499: 88044750
+          <500: 143179143
+          500+: 309431115
+          Total: 452610258
+        receipts_per_employee_usd:
+          <5: 395258
+          5-9: 417214
+          10-19: 635177
+          <20: 512710
+          20-99: 979704
+          100-499: 1064152
+          <500: 931895
+          500+: 705287
+          Total: 764062
+        annual_payroll_per_employee_usd:
+          <5: 48850
+          5-9: 52727
+          10-19: 56010
+          <20: 53390
+          20-99: 53921
+          100-499: 60565
+          <500: 57393
+          500+: 76452
+          Total: 71509
+evidence:
+- publisher: US Census Bureau
+  title: 'Statistics of US Businesses 2022: US and states by legal form, NAICS sector and enterprise employment
+    size (us_state_naicssector_lfo_2022.xlsx)'
+  url: https://www2.census.gov/programs-surveys/susb/tables/2022/us_state_naicssector_lfo_2022.xlsx
+  accessed_at: '2026-11-26'
+  locator: 'sheet LFO, United States, LFO ''2: Corporation'', NAICS --, size ''9: 500+ employees'', column Firms'
+  value: 11319
+  unit: count
+  snippet: '2: Corporation'
+  source_license: unstated
+  content_sha256: 246200312e857ffe73ed945a309ac6ce599c99a2b7a29b3906c2f9fd9b7c6a8f
+  role: primary
+- publisher: US Census Bureau
+  title: 'Statistics of US Businesses 2022: US and states by legal form, NAICS sector and enterprise employment
+    size (us_state_naicssector_lfo_2022.xlsx)'
+  url: https://www2.census.gov/programs-surveys/susb/tables/2022/us_state_naicssector_lfo_2022.xlsx
+  accessed_at: '2026-11-26'
+  locator: 'sheet LFO, United States, LFO ''4: Partnership'', NAICS --, size ''2: <5 employees'', column Firms'
+  value: 422103
+  unit: count
+  snippet: '4: Partnership'
+  source_license: unstated
+  content_sha256: 246200312e857ffe73ed945a309ac6ce599c99a2b7a29b3906c2f9fd9b7c6a8f
+  role: primary
+assumed:
+- parameter: receipts_per_employee_usd
+  value: 1000 * receipts_usd_thousands / employment
+  method: derived
+  rationale: Receipts per employee in whole dollars from the published receipts ($1,000) and mid-March employment
+    of the same cell.
+- parameter: annual_payroll_per_employee_usd
+  value: 1000 * annual_payroll_usd_thousands / employment
+  method: derived
+  rationale: Annual payroll per employee in whole dollars from the published payroll ($1,000) and mid-March employment
+    of the same cell.
+- parameter: shares
+  value: firms in the class / firms in all mutually exclusive classes
+  method: derived
+  rationale: Shares are computed from the published firm counts; subtotal classes such as <20 and <500 are kept
+    in the measures but excluded from the shares.
+tests:
+- statistic: share["Corporation","<5"]
+  expected: 0.567529
+  tolerance: 0.005
+- statistic: sum_of_shares["Corporation"]
+  expected: 1
+  tolerance: 0.0001
+- statistic: share["S-Corporation","<5"]
+  expected: 0.643017
+  tolerance: 0.005
+- statistic: sum_of_shares["S-Corporation"]
+  expected: 1
+  tolerance: 0.0001
+- statistic: share["Partnership","<5"]
+  expected: 0.541964
+  tolerance: 0.005
+- statistic: sum_of_shares["Partnership"]
+  expected: 1
+  tolerance: 0.0001
+notes: For each legal form of organization (Total, Corporation, S-Corporation, Partnership, Sole Propietorship as
+  the source spells it, Nonprofit, Government, Other), the share of US employer firms in the enterprise employment
+  size classes <5, 5-9, 10-19, 20-99, 100-499 and 500+, with the published firms, establishments, employment, annual
+  payroll and receipts and derived receipts and payroll per employee by class and for the subtotals <20 and <500.
+  Pairs with the legal-form-by-sector entry to draw an entity type and a size together. SUSB applies noise to employment,
+  payroll and receipts (flags G, H and J mark low, medium and high noise); firm and establishment counts are published
+  without noise. Receipts come from the 2022 Economic Census. The Census Bureau publishes these files without a
+  licence statement, so the licence is recorded as unstated and the entry held at license-review.

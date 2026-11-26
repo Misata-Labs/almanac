@@ -1,0 +1,202 @@
+id: us-bds-firms-by-firm-size-2023
+title: US employer firms by firm employment size (1-4 to 10,000+), with employment, entry, exit and job flow rates
+  (BDS 2023)
+kind: marginal
+domain: business
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2023-01-01'
+  end: '2023-12-31'
+tags:
+- firms
+- business
+- census
+- bds
+- business-dynamics
+- firm-size
+- employment-size
+use_cases:
+- pe-portfolio-demo
+- deal-sourcing-demo
+- synthetic-companies
+- valuation-demo
+- kyb-onboarding
+- company-generation
+spec:
+  variable: firm_size
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        1 to 4: 0.59737
+        5 to 9: 0.173142
+        10 to 19: 0.111435
+        20 to 99: 0.097129
+        100 to 499: 0.016655
+        500 to 999: 0.002049
+        1000 to 2499: 0.00126
+        2500 to 4999: 0.000476
+        5000 to 9999: 0.000267
+        10000+: 0.000216
+      firms:
+        1 to 4: 3348018
+        5 to 9: 970392
+        10 to 19: 624548
+        20 to 99: 544370
+        100 to 499: 93344
+        500 to 999: 11485
+        1000 to 2499: 7061
+        2500 to 4999: 2670
+        5000 to 9999: 1498
+        10000+: 1210
+      establishments:
+        1 to 4: 3352910
+        5 to 9: 983897
+        10 to 19: 660252
+        20 to 99: 734178
+        100 to 499: 387099
+        500 to 999: 147601
+        1000 to 2499: 188486
+        2500 to 4999: 140673
+        5000 to 9999: 153232
+        10000+: 746655
+      employment:
+        1 to 4: 7210965
+        5 to 9: 6879260
+        10 to 19: 8857485
+        20 to 99: 22089278
+        100 to 499: 18503978
+        500 to 999: 7302627
+        1000 to 2499: 9883450
+        2500 to 4999: 7673421
+        5000 to 9999: 7955557
+        10000+: 41106423
+      establishment_entry_rate_percent:
+        1 to 4: 17.91
+        5 to 9: 3.739
+        10 to 19: 3.012
+        20 to 99: 3.91
+        100 to 499: 6.883
+        500 to 999: 7.078
+        1000 to 2499: 7.58
+        2500 to 4999: 5.324
+        5000 to 9999: 5.576
+        10000+: 5.804
+      establishment_exit_rate_percent:
+        1 to 4: 16.087
+        5 to 9: 3.697
+        10 to 19: 2.938
+        20 to 99: 2.709
+        100 to 499: 3.595
+        500 to 999: 3.716
+        1000 to 2499: 5.275
+        2500 to 4999: 4.811
+        5000 to 9999: 4.121
+        10000+: 6.409
+      job_creation_rate_percent:
+        1 to 4: 27.937
+        5 to 9: 18.297
+        10 to 19: 15.815
+        20 to 99: 14.229
+        100 to 499: 13.612
+        500 to 999: 13.684
+        1000 to 2499: 13.071
+        2500 to 4999: 12.646
+        5000 to 9999: 11.385
+        10000+: 10.194
+      job_destruction_rate_percent:
+        1 to 4: 26.256
+        5 to 9: 16.629
+        10 to 19: 13.502
+        20 to 99: 11.001
+        100 to 499: 10.374
+        500 to 999: 10.159
+        1000 to 2499: 9.442
+        2500 to 4999: 9.32
+        5000 to 9999: 9.267
+        10000+: 8.5
+      net_job_creation_rate_percent:
+        1 to 4: 1.681
+        5 to 9: 1.668
+        10 to 19: 2.313
+        20 to 99: 3.229
+        100 to 499: 3.237
+        500 to 999: 3.525
+        1000 to 2499: 3.63
+        2500 to 4999: 3.326
+        5000 to 9999: 2.118
+        10000+: 1.694
+      reallocation_rate_percent:
+        1 to 4: 52.513
+        5 to 9: 33.257
+        10 to 19: 27.005
+        20 to 99: 22.002
+        100 to 499: 20.749
+        500 to 999: 20.318
+        1000 to 2499: 18.883
+        2500 to 4999: 18.64
+        5000 to 9999: 18.534
+        10000+: 17.0
+      firm_deaths:
+        1 to 4: 469672
+        5 to 9: 31380
+        10 to 19: 14501
+        20 to 99: 7803
+        100 to 499: 570
+        500 to 999: 24
+        1000 to 2499: 7
+        2500 to 4999: null
+        5000 to 9999: 0
+        10000+: 0
+evidence:
+- publisher: US Census Bureau
+  title: 'Business Dynamics Statistics 1978-2023: by firm size (bds2023_fz.csv)'
+  url: https://www2.census.gov/programs-surveys/bds/tables/time-series/2023/bds2023_fz.csv
+  accessed_at: '2026-11-26'
+  locator: row year=2023, fsize='a) 1 to 4', column firms
+  value: 3348018
+  unit: count
+  snippet: 2023,a) 1 to 4,3348018
+  source_license: unstated
+  content_sha256: 403bf76c2b8725993ed0bb657801ac6b5d78053d60fed490af8101d154b6729f
+  role: primary
+- publisher: US Census Bureau
+  title: 'Business Dynamics Statistics 1978-2023: by firm size (bds2023_fz.csv)'
+  url: https://www2.census.gov/programs-surveys/bds/tables/time-series/2023/bds2023_fz.csv
+  accessed_at: '2026-11-26'
+  locator: row year=2023, fsize='j) 10000+', column firms
+  value: 1210
+  unit: count
+  snippet: 2023,j) 10000+,1210
+  source_license: unstated
+  content_sha256: 403bf76c2b8725993ed0bb657801ac6b5d78053d60fed490af8101d154b6729f
+  role: primary
+assumed:
+- parameter: shares
+  value: firms in the class / firms in all classes
+  method: derived
+  rationale: Shares are computed from the published firm counts of the mutually exclusive classes.
+tests:
+- statistic: share["1 to 4"]
+  expected: 0.59737
+  tolerance: 0.005
+- statistic: share["5 to 9"]
+  expected: 0.173142
+  tolerance: 0.005
+- statistic: share["10 to 19"]
+  expected: 0.111435
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: US employer firms in 2023 by firm employment size (1 to 4, 5 to 9, 10 to 19, 20 to 99, 100 to 499, 500 to
+  999, 1000 to 2499, 2500 to 4999, 5000 to 9999, 10000+), with the share of firms, establishments, employment, establishment
+  entry and exit rates, job creation, destruction, net and reallocation rates and firm deaths. BDS counts firms
+  and establishments in March of each year; entry, exit and job flow measures cover the twelve months before, and
+  rates are percentages of the average of the current and prior year's figure (the 'denom' column). Cells the source
+  marks X (not applicable), D (withheld to avoid disclosing data of individual companies), N or S are omitted or
+  null. The Census Bureau publishes these files without a licence statement, so the licence is recorded as unstated
+  and the entry held at license-review.

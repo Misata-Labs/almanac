@@ -1,0 +1,215 @@
+id: us-bonus-depreciation-section-168k
+title: US bonus depreciation percentage (26 U.S.C. 168(k)) by acquisition and placed-in-service date, with 100%
+  restored by Public Law 119-21
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2017-09-27'
+valid_to: null
+tags:
+- tax
+- private-equity
+- structuring
+- depreciation
+- bonus-depreciation
+- section-168k
+- capex
+- obbba
+use_cases:
+- lbo-modelling
+- valuation-demo
+- tax-demo
+- financial-reporting
+spec:
+  implementation: almanac.rules.us_bonus_depreciation
+  parameters:
+    full_expensing_acquired_after: '2025-01-19'
+    full_expensing_percent: 100
+    phase_down:
+      general:
+      - placed_in_service_after: '2017-09-27'
+        placed_in_service_before: '2023-01-01'
+        percent: 100
+      - placed_in_service_after: '2022-12-31'
+        placed_in_service_before: '2024-01-01'
+        percent: 80
+      - placed_in_service_after: '2023-12-31'
+        placed_in_service_before: '2025-01-01'
+        percent: 60
+      - placed_in_service_after: '2024-12-31'
+        placed_in_service_before: '2026-01-01'
+        percent: 40
+      - placed_in_service_after: '2025-12-31'
+        placed_in_service_before: '2027-01-01'
+        percent: 20
+      longer_production_period:
+      - placed_in_service_after: '2017-09-27'
+        placed_in_service_before: '2024-01-01'
+        percent: 100
+      - placed_in_service_after: '2023-12-31'
+        placed_in_service_before: '2025-01-01'
+        percent: 80
+      - placed_in_service_after: '2024-12-31'
+        placed_in_service_before: '2026-01-01'
+        percent: 60
+      - placed_in_service_after: '2025-12-31'
+        placed_in_service_before: '2027-01-01'
+        percent: 40
+      - placed_in_service_after: '2026-12-31'
+        placed_in_service_before: '2028-01-01'
+        percent: 20
+    binding_contract_rule: property is not treated as acquired after the date on which a written binding contract
+      is entered into for its acquisition (Public Law 119-21 section 70301(c)(4))
+    transitional_election: for the first taxable year ending after January 19, 2025 a taxpayer may elect 40 percent
+      (60 percent for longer production period property) instead of 100 percent
+  vectors:
+  - input:
+      acquired: '2025-03-01'
+      placed_in_service: '2025-04-01'
+    expected: 100
+    origin: source
+    note: 'Public Law 119-21 section 70301: acquired after January 19, 2025'
+  - input:
+      acquired: '2024-06-01'
+      placed_in_service: '2024-07-01'
+    expected: 60
+    origin: source
+    note: section 168(k)(6)(A)(iii)
+  - input:
+      acquired: '2024-12-01'
+      placed_in_service: '2025-06-01'
+    expected: 40
+    origin: source
+    note: 'section 168(k)(6)(A)(iv): acquired before the Act''s effective date'
+  - input:
+      acquired: '2024-12-01'
+      placed_in_service: '2026-03-01'
+    expected: 20
+    origin: source
+    note: section 168(k)(6)(A)(v)
+  - input:
+      acquired: '2024-12-01'
+      placed_in_service: '2026-03-01'
+      longer_production_period: true
+    expected: 40
+    origin: source
+    note: section 168(k)(6)(B)(iv)
+  - input:
+      acquired: '2019-05-01'
+      placed_in_service: '2019-05-02'
+    expected: 100
+    origin: source
+    note: section 168(k)(6)(A)(i)
+  - input:
+      acquired: '2024-12-01'
+      placed_in_service: '2027-02-01'
+    expected: 0
+    origin: derived
+    note: after the last phase-down window
+  - input:
+      acquired: '2026-11-01'
+      placed_in_service: '2031-01-01'
+    expected: 100
+    origin: derived
+    note: full expensing has no end date
+evidence:
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 168, Accelerated cost recovery system (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapB-partVI-sec168.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (k)(6)(A)(i)
+  value: 100 percent
+  unit: percent
+  snippet: placed in service after September 27, 2017, and before January 1, 2023, 100 percent
+  source_license: unstated
+  content_sha256: 0893fb48e146174081ffe6d064d47c419008e40369daee37526ef548f57d750d
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 168, Accelerated cost recovery system (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapB-partVI-sec168.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (k)(6)(A)(iii)
+  value: 60 percent
+  unit: percent
+  snippet: placed in service after December 31, 2023, and before January 1, 2025, 60 percent
+  source_license: unstated
+  content_sha256: 0893fb48e146174081ffe6d064d47c419008e40369daee37526ef548f57d750d
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 168, Accelerated cost recovery system (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapB-partVI-sec168.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (k)(6)(A)(iv)
+  value: 40 percent
+  unit: percent
+  snippet: placed in service after December 31, 2024, and before January 1, 2026, 40 percent
+  source_license: unstated
+  content_sha256: 0893fb48e146174081ffe6d064d47c419008e40369daee37526ef548f57d750d
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 168, Accelerated cost recovery system (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapB-partVI-sec168.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (k)(6)(A)(v)
+  value: 20 percent
+  unit: percent
+  snippet: placed in service after December 31, 2025, and before January 1, 2027, 20 percent
+  source_license: unstated
+  content_sha256: 0893fb48e146174081ffe6d064d47c419008e40369daee37526ef548f57d750d
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 168, Accelerated cost recovery system (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapB-partVI-sec168.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (k)(6)(B)(iv)
+  value: 40 percent
+  unit: percent
+  snippet: placed in service after December 31, 2025, and before January 1, 2027, 40 percent
+  source_license: unstated
+  content_sha256: 0893fb48e146174081ffe6d064d47c419008e40369daee37526ef548f57d750d
+  role: primary
+- publisher: US Government Publishing Office (govinfo)
+  title: Public Law 119-21, 139 Stat. 72 (July 4, 2025), USLM XML
+  url: https://www.govinfo.gov/content/pkg/PLAW-119publ21/uslm/PLAW-119publ21.xml
+  accessed_at: '2026-11-26'
+  locator: section 70301(c)(1)
+  value: January 19, 2025
+  unit: date
+  snippet: shall apply to property acquired after January 19, 2025.
+  source_license: unstated
+  content_sha256: 762ae9af06640f023ddb9eb6f474ff7cfa275691de338d4fd985cfb04a7b6dea
+  role: primary
+- publisher: US Government Publishing Office (govinfo)
+  title: Public Law 119-21, 139 Stat. 72 (July 4, 2025), USLM XML
+  url: https://www.govinfo.gov/content/pkg/PLAW-119publ21/uslm/PLAW-119publ21.xml
+  accessed_at: '2026-11-26'
+  locator: section 70301(b)(1)(A)
+  value: 100 percent
+  unit: percent
+  snippet: 100 percent
+  source_license: unstated
+  content_sha256: 762ae9af06640f023ddb9eb6f474ff7cfa275691de338d4fd985cfb04a7b6dea
+  role: primary
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count[general]
+  expected: 5
+  tolerance: 0
+- statistic: full_expensing_percent
+  expected: 100
+  tolerance: 0
+notes: Section 168(k) allows a first-year deduction of a percentage of the adjusted basis of qualified property.
+  The Tax Cuts and Jobs Act set the percentage at 100 for property placed in service after 27 September 2017 and
+  phased it down by 20 points a year from 2023 (one year later for longer production period property). Public Law
+  119-21 replaced the applicable percentage with 100 percent and removed the phase-down for property acquired after
+  19 January 2025; property acquired on or before that date under a binding contract keeps the phase-down by placed-in-service
+  date. The schedule is read from the 2024 edition of the Code and the change from the public law. Specified plants,
+  the transitional election of a reduced percentage, elections out and the pre-2017 regime for property acquired
+  before 28 September 2017 are outside the rule. Works of the US federal government carry no copyright in the United
+  States, but the cited resources state no reuse terms, so the licence is recorded as unstated and the entry held
+  at license-review.

@@ -1,0 +1,265 @@
+id: global-oecd-fdi-positions-by-industry-2024
+title: Inward and outward FDI positions of the US, UK, France and Japan by ISIC section, end-2024
+kind: rule
+domain: deals
+region: global
+status: license-review
+tier: A
+valid_from: '2024-12-31'
+valid_to: '2024-12-31'
+tags:
+- deals
+- fdi
+- cross-border
+- oecd
+- by-industry
+- reference-table
+use_cases:
+- deal-sourcing-demo
+- pe-portfolio-demo
+- valuation-demo
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    key: reporter ISO3 code and direction
+    unit: US dollars, millions, exchange-rate converted
+    sections:
+      A: Agriculture, forestry and fishing
+      B: Mining and quarrying
+      C: Manufacturing
+      D: Electricity, gas, steam and air conditioning supply
+      E: Water supply; sewerage, waste management and remediation activities
+      F: Construction
+      G: Wholesale and retail trade; repair of motor vehicles and motorcycles
+      H: Transportation and storage
+      I: Accommodation and food service activities
+      J: Information and communication
+      K: Financial and insurance activities
+      L: Real estate activities
+      M: Professional, scientific and technical activities
+      N: Administrative and support service activities
+      P: Education
+      Q: Human health and social work activities
+      R: Arts, entertainment and recreation
+      S: Other service activities
+    rows:
+      USA:inward:
+        total_usd_millions: 5707721.0
+        A: 6703.0
+        B: 99772.0
+        C: 2416081.0
+        D: 165283.0
+        E: 26722.0
+        F: 49195.0
+        G: 733710.0
+        H: 202913.0
+        I: 32679.0
+        J: 272193.0
+        K: 1179198.0
+        L: 146448.0
+        M: 257091.0
+        N: 85825.0
+        P: 5738.0
+        Q: 19144.0
+        R: 3246.0
+        S: 5776.0
+      GBR:inward:
+        total_usd_millions: 2669159.5
+        A: 2470.2
+        B: 63359.7
+        C: 421918.2
+        D: null
+        E: null
+        F: 13638.2
+        G: 237973.9
+        H: 113411.1
+        I: null
+        J: 184955.5
+        K: 743157.7
+        L: null
+        M: 245047.0
+        N: 218926.1
+        P: null
+        Q: null
+        R: null
+        S: null
+      FRA:inward:
+        total_usd_millions: 967406.0
+        A: 1025.3
+        B: 3047.0
+        C: 304269.7
+        D: 7141.1
+        E: 1771.2
+        F: 22065.2
+        G: 109262.4
+        H: 21432.6
+        I: 21659.0
+        J: 43893.6
+        K: 152163.9
+        L: 179895.1
+        M: 40868.5
+        N: 29091.0
+        P: 775.0
+        Q: 10320.0
+        R: 4448.4
+        S: 1641.4
+      JPN:inward:
+        total_usd_millions: 207434.5
+        A: 174.9
+        B: 183.6
+        C: 71489.2
+        D: null
+        E: null
+        F: 345.2
+        G: 2212.3
+        H: 8994.1
+        I: null
+        J: 18202.8
+        K: 76924.8
+        L: 4437.0
+        M: null
+        N: null
+        P: null
+        Q: null
+        R: null
+        S: null
+      USA:outward:
+        total_usd_millions: 6826786.0
+        A: 8269.0
+        B: 149966.0
+        C: 1090204.0
+        D: null
+        E: null
+        F: 8681.0
+        G: 309366.0
+        H: 69685.0
+        I: 44722.0
+        J: 389635.0
+        K: 4355080.0
+        L: 42457.0
+        M: 180687.0
+        N: 112995.0
+        P: 1968.0
+        Q: 12578.0
+        R: 16380.0
+        S: 13896.0
+      GBR:outward:
+        total_usd_millions: 2328615.0
+        A: 2727.4
+        B: 248687.7
+        C: 378436.8
+        D: null
+        E: null
+        F: 7874.8
+        G: 91865.5
+        H: 23243.0
+        I: null
+        J: 157527.3
+        K: 648229.8
+        L: null
+        M: 154842.6
+        N: 31124.1
+        P: null
+        Q: null
+        R: null
+        S: null
+      FRA:outward:
+        total_usd_millions: 1557521.3
+        A: 806.2
+        B: 125248.3
+        C: 484600.0
+        D: 70246.2
+        E: 17658.4
+        F: 27761.3
+        G: 119718.5
+        H: 31801.4
+        I: 13256.8
+        J: 103143.6
+        K: 342534.8
+        L: 125459.2
+        M: 51135.5
+        N: 20541.2
+        P: 415.5
+        Q: 8136.3
+        R: null
+        S: 841.5
+      JPN:outward:
+        total_usd_millions: 2113078.0
+        A: 3236.4
+        B: 92147.1
+        C: 770573.7
+        D: null
+        E: null
+        F: 11290.1
+        G: 372308.7
+        H: 20436.7
+        I: null
+        J: 99542.6
+        K: 520855.3
+        L: 63972.2
+        M: null
+        N: null
+        P: null
+        Q: null
+        R: null
+        S: null
+  vectors:
+  - input:
+      key: USA:inward
+      column: C
+    expected: 2416081.0
+    origin: source
+  - input:
+      key: FRA:outward
+      column: K
+    expected: 342534.8
+    origin: source
+  - input: CHN:inward
+    expected: false
+    origin: derived
+evidence:
+- publisher: OECD
+  title: OECD FDI positions by economic activity (DF_FDI_POS_IND), 2024, CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.DAF.INV,DSD_FDI@DF_FDI_POS_IND,1.0/USA+GBR+FRA+JPN.LE_FA_F.USD_EXC.DI+DO.NET_FDI.ALL.D.S1.W.IMC.A+B+C+D+E+F+G+H+I+J+K+L+M+N+P+Q+R+S+_T.A.?startPeriod=2024&endPeriod=2024&dimensionAtObservation=AllDimensions&format=csvfilewithlabels
+  accessed_at: '2026-11-26'
+  locator: REF_AREA=USA, MEASURE_PRINCIPLE=DI, ACTIVITY=C, 2024
+  value: '2416081'
+  unit: currency:USD
+  snippet: C,Manufacturing,A,Annual,CTRY_IND,Annual FDI by counterpart area and by economic activity - BMD4,2024,,2416081
+  source_license: unstated
+  content_sha256: d49a6c28fcab68c7563cd041193d364f2afd06228b422c6bf33b34a9cadcc258
+  role: primary
+- publisher: OECD
+  title: OECD FDI positions by economic activity (DF_FDI_POS_IND), 2024, CSV with labels
+  url: https://sdmx.oecd.org/public/rest/data/OECD.DAF.INV,DSD_FDI@DF_FDI_POS_IND,1.0/USA+GBR+FRA+JPN.LE_FA_F.USD_EXC.DI+DO.NET_FDI.ALL.D.S1.W.IMC.A+B+C+D+E+F+G+H+I+J+K+L+M+N+P+Q+R+S+_T.A.?startPeriod=2024&endPeriod=2024&dimensionAtObservation=AllDimensions&format=csvfilewithlabels
+  accessed_at: '2026-11-26'
+  locator: REF_AREA=FRA, MEASURE_PRINCIPLE=DO, ACTIVITY=K, 2024
+  value: '342534.80157906'
+  unit: currency:USD
+  snippet: K,Financial and insurance activities,A,Annual,CTRY_IND,Annual FDI by counterpart area and by economic
+    activity - BMD4,2024,,342534.80157906
+  source_license: unstated
+  content_sha256: d49a6c28fcab68c7563cd041193d364f2afd06228b422c6bf33b34a9cadcc258
+  role: primary
+assumed:
+- parameter: rows[*]
+  value: published value rounded to 0.1
+  method: derived
+  rationale: Positions in millions of US dollars kept to one decimal.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: value[USA:inward,C]
+  expected: 2416081.0
+  tolerance: 0
+- statistic: count
+  expected: 8
+  tolerance: 0
+notes: FDI positions at the end of 2024 by ISIC Rev. 4 section of the resident enterprise (inward) or of the resident
+  investor (outward), world counterpart, directional principle, all resident units, in millions of US dollars, from
+  OECD dataflow DF_FDI_POS_IND (BMD4). Null marks a confidential or unreported cell, so sections need not sum to
+  the total; net positions can be negative. Germany publishes only the all-activity total in this breakdown and
+  India does not report to the dataflow, so neither is included. No licence statement was found in the OECD file
+  or in a byte-stable OECD document, so the licence is recorded as unstated and the entry held at license-review.

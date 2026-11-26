@@ -1,0 +1,150 @@
+id: us-private-fund-adviser-exemption-and-form-pf-thresholds
+title: US private fund adviser registration exemption (under $150 million) and Form PF filing threshold (17 CFR
+  275.203(m)-1, 275.204(b)-1)
+kind: rule
+domain: funds
+region: US
+status: license-review
+tier: A
+valid_from: '2025-03-12'
+valid_to: null
+tags:
+- funds
+- private-equity
+- regulation
+- investment-advisers-act
+- adviser-registration
+- form-pf
+- aum-threshold
+use_cases:
+- fund-administration-demo
+- kyb-onboarding
+- pe-portfolio-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: USD
+    rows:
+      private_fund_adviser_exemption_us:
+        value: 150000000
+        unit: USD
+        comparison: less than
+        measure: private fund assets (regulatory assets under management of qualifying private funds), calculated
+          annually
+        paragraph: 275.203(m)-1(a)
+        effective: '2018-03-12'
+      private_fund_adviser_exemption_non_us:
+        value: 150000000
+        unit: USD
+        comparison: less than
+        measure: private fund assets managed at a place of business in the United States
+        paragraph: 275.203(m)-1(b)
+        effective: '2018-03-12'
+      form_pf_filing_threshold:
+        value: 150000000
+        unit: USD
+        comparison: at least
+        measure: private fund assets at the end of the most recently completed fiscal year, for registered advisers
+        paragraph: 275.204(b)-1(a)
+        effective: '2025-03-12'
+  vectors:
+  - input:
+      key: private_fund_adviser_exemption_us
+      column: value
+    expected: 150000000
+    origin: source
+  - input:
+      key: form_pf_filing_threshold
+      column: value
+    expected: 150000000
+    origin: source
+  - input:
+      key: form_pf_filing_threshold
+      column: comparison
+    expected: at least
+    origin: source
+  - input: large_private_equity_fund_adviser
+    expected: false
+    origin: derived
+    note: the Form PF large adviser thresholds are in the form's instructions, not the CFR text
+evidence:
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 275.203(m)-1, Private fund adviser exemption (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=275.203(m)-1
+  accessed_at: '2026-11-26'
+  locator: paragraph (a)(2)
+  value: $150 million
+  unit: text
+  snippet: Manages private fund assets of less than $150 million.
+  source_license: unstated
+  content_sha256: 203ae1bd4a9930d88330910a64c388075d8f46b318e39ca285d635bde4b72755
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 275.203(m)-1, Private fund adviser exemption (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=275.203(m)-1
+  accessed_at: '2026-11-26'
+  locator: paragraph (b)(2)
+  value: $150 million
+  unit: text
+  snippet: solely attributable to private fund assets, the total value of which is less than $150 million.
+  source_license: unstated
+  content_sha256: 203ae1bd4a9930d88330910a64c388075d8f46b318e39ca285d635bde4b72755
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 275.204(b)-1, Reporting by investment advisers to private funds (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=275.204(b)-1
+  accessed_at: '2026-11-26'
+  locator: paragraph (a)
+  value: $150 million
+  unit: text
+  snippet: you managed private fund assets of at least $150 million, you must complete and file a report on Form
+    PF
+  source_license: unstated
+  content_sha256: 44e70577ecbd4d558e2c13137360b57c982e8af163a02d56b64fef4962fd4470
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 17 CFR 275.203(m)-1 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-17.json?section=275.203(m)-1&issue_date%5Blte%5D=2026-11-02
+  accessed_at: '2026-11-26'
+  locator: content_versions[*].date, latest
+  value: '2018-03-12'
+  unit: date
+  snippet: '"date":"2018-03-12"'
+  source_license: unstated
+  content_sha256: 67ecbfe359ea8f557b79c35289906f24f57fa1f578dd72a4b6590520552b1940
+  role: supporting
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 17 CFR 275.204(b)-1 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-17.json?section=275.204(b)-1&issue_date%5Blte%5D=2026-11-02
+  accessed_at: '2026-11-26'
+  locator: content_versions[*].date, latest
+  value: '2025-03-12'
+  unit: date
+  snippet: '"date":"2025-03-12"'
+  source_license: unstated
+  content_sha256: 8b053c3ded5fcae19823693a5954bba0eff266870fbeccb2f5017d07eb790c07
+  role: supporting
+assumed:
+- parameter: rows.*.value
+  value: USD
+  method: derived
+  rationale: The regulation states the thresholds as '$150 million'; the builder multiplies by one million.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 3
+  tolerance: 0
+- statistic: max[value]
+  expected: 150000000
+  tolerance: 0
+notes: An investment adviser that advises only qualifying private funds and has less than the stated private fund
+  assets in the United States is exempt from SEC registration (it files as an exempt reporting adviser). A registered
+  adviser to private funds with at least the Form PF amount of private fund assets at its fiscal year end must file
+  Form PF; the higher thresholds for large hedge fund, liquidity fund and private equity fund advisers are set in
+  the form's instructions, which the CFR text does not reproduce, so they are left out. The rules state the amounts
+  in millions of dollars; the table carries them in dollars. Each row's effective date is the date its section's
+  current text took effect according to the eCFR. Works of the US federal government carry no copyright in the United
+  States, but the cited resources state no reuse terms, so the licence is recorded as unstated and the entry held
+  at license-review.

@@ -1,0 +1,134 @@
+id: us-venture-capital-fund-definition
+title: 'US venture capital fund definition for the adviser exemption (17 CFR 275.203(l)-1): 20% basket, 15% leverage,
+  120-day borrowing'
+kind: rule
+domain: funds
+region: US
+status: license-review
+tier: A
+valid_from: '2018-03-12'
+valid_to: null
+tags:
+- funds
+- private-equity
+- regulation
+- venture-capital
+- investment-advisers-act
+- fund-definition
+use_cases:
+- fund-administration-demo
+- kyb-onboarding
+- deal-sourcing-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      non_qualifying_investment_basket_percent:
+        value: 20
+        unit: percent
+        of: aggregate capital contributions and uncalled committed capital
+        paragraph: 275.203(l)-1(a)(2)
+      max_leverage_percent:
+        value: 15
+        unit: percent
+        of: aggregate capital contributions and uncalled committed capital
+        paragraph: 275.203(l)-1(a)(3)
+      max_borrowing_term_days:
+        value: 120
+        unit: calendar days
+        paragraph: 275.203(l)-1(a)(3)
+        description: borrowing, guarantees and leverage must be non-renewable for no longer than this term (portfolio
+          company guarantees up to the investment value excepted)
+      redemption_rights:
+        value: false
+        unit: boolean
+        paragraph: 275.203(l)-1(a)(4)
+        description: holders may not withdraw or redeem except in extraordinary circumstances
+      represents_venture_strategy:
+        value: true
+        unit: boolean
+        paragraph: 275.203(l)-1(a)(1)
+  vectors:
+  - input:
+      key: non_qualifying_investment_basket_percent
+      column: value
+    expected: 20
+    origin: source
+  - input:
+      key: max_leverage_percent
+      column: value
+    expected: 15
+    origin: source
+  - input:
+      key: max_borrowing_term_days
+      column: value
+    expected: 120
+    origin: source
+  - input: management_fee_cap
+    expected: false
+    origin: derived
+    note: the definition sets no fee terms
+evidence:
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 275.203(l)-1, Venture capital fund defined (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=275.203(l)-1
+  accessed_at: '2026-11-26'
+  locator: paragraph (a)(2)
+  value: 20 percent
+  unit: percent
+  snippet: holds no more than 20 percent of the amount of the fund's aggregate capital contributions and uncalled
+    committed capital
+  source_license: unstated
+  content_sha256: f3967b4b164521e6441cc9bf75b1021567a75e6997e244275eb05236b0877df1
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 275.203(l)-1, Venture capital fund defined (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=275.203(l)-1
+  accessed_at: '2026-11-26'
+  locator: paragraph (a)(3)
+  value: 15 percent
+  unit: percent
+  snippet: in excess of 15 percent of the private fund's aggregate capital contributions and uncalled committed
+    capital
+  source_license: unstated
+  content_sha256: f3967b4b164521e6441cc9bf75b1021567a75e6997e244275eb05236b0877df1
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 275.203(l)-1, Venture capital fund defined (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=275.203(l)-1
+  accessed_at: '2026-11-26'
+  locator: paragraph (a)(3)
+  value: 120 calendar days
+  unit: integer
+  snippet: is for a non-renewable term of no longer than 120 calendar days
+  source_license: unstated
+  content_sha256: f3967b4b164521e6441cc9bf75b1021567a75e6997e244275eb05236b0877df1
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 17 CFR 275.203(l)-1 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-17.json?section=275.203(l)-1&issue_date%5Blte%5D=2026-11-02
+  accessed_at: '2026-11-26'
+  locator: content_versions[*].date, latest
+  value: '2018-03-12'
+  unit: date
+  snippet: '"date":"2018-03-12"'
+  source_license: unstated
+  content_sha256: cbb2f82f13ab156738712cbf468a3910c34eebe20fd289966d743bad56237cd1
+  role: supporting
+assumed: []
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 5
+  tolerance: 0
+notes: An adviser that advises solely venture capital funds is exempt from SEC registration under section 203(l)
+  of the Advisers Act. A private fund is a venture capital fund if it represents that it pursues a venture strategy,
+  keeps assets other than qualifying investments (equity bought directly from qualifying portfolio companies) and
+  short-term holdings within the stated basket of its capital contributions and uncalled commitments, does not borrow
+  or guarantee beyond the stated share of that capital or for longer than the stated term, gives investors no redemption
+  rights except in extraordinary circumstances, and is not a registered fund or BDC. The same definition fixes which
+  funds can be qualifying venture capital funds under section 3(c)(1) of the Investment Company Act. Works of the
+  US federal government carry no copyright in the United States, but the cited resources state no reuse terms, so
+  the licence is recorded as unstated and the entry held at license-review.

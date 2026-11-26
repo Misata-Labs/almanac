@@ -1,0 +1,225 @@
+id: us-bds-firms-by-firm-age-2023
+title: US employer firms by firm age (0 to 26+ years), with employment, entry, exit and job flow rates (BDS 2023)
+kind: marginal
+domain: business
+region: US
+status: license-review
+tier: A
+observed_period:
+  start: '2023-01-01'
+  end: '2023-12-31'
+tags:
+- firms
+- business
+- census
+- bds
+- business-dynamics
+- firm-age
+- firm-vintage
+- start-ups
+use_cases:
+- pe-portfolio-demo
+- deal-sourcing-demo
+- synthetic-companies
+- valuation-demo
+- kyb-onboarding
+- company-generation
+spec:
+  variable: firm_age
+  unit: ratio
+  distribution:
+    family: categorical
+    parameters:
+      shares:
+        '0': 0.090955
+        '1': 0.071636
+        '2': 0.056875
+        '3': 0.051987
+        '4': 0.047799
+        '5': 0.042736
+        6 to 10: 0.16356
+        11 to 15: 0.108591
+        16 to 20: 0.093122
+        21 to 25: 0.065412
+        26+: 0.153647
+        Left Censored: 0.053682
+      firms:
+        '0': 508777
+        '1': 400710
+        '2': 318143
+        '3': 290799
+        '4': 267374
+        '5': 239052
+        6 to 10: 914911
+        11 to 15: 607426
+        16 to 20: 520898
+        21 to 25: 365895
+        26+: 859462
+        Left Censored: 300280
+      establishments:
+        '0': 512859
+        '1': 407410
+        '2': 325421
+        '3': 300198
+        '4': 275990
+        '5': 249607
+        6 to 10: 977224
+        11 to 15: 685023
+        16 to 20: 605205
+        21 to 25: 468927
+        26+: 1377025
+        Left Censored: 1310094
+      employment:
+        '0': 2440753
+        '1': 2521272
+        '2': 2320821
+        '3': 2552203
+        '4': 2455957
+        '5': 2442398
+        6 to 10: 10752243
+        11 to 15: 9312301
+        16 to 20: 8815380
+        21 to 25: 8233629
+        26+: 33282618
+        Left Censored: 52332869
+      establishment_entry_rate_percent:
+        '0': 200.0
+        '1': 0.411
+        '2': 4.879
+        '3': 4.599
+        '4': 4.442
+        '5': 4.429
+        6 to 10: 4.134
+        11 to 15: 3.847
+        16 to 20: 3.819
+        21 to 25: 3.435
+        26+: 3.745
+        Left Censored: 4.474
+      establishment_exit_rate_percent:
+        '0': null
+        '1': 25.678
+        '2': 18.092
+        '3': 14.038
+        '4': 12.539
+        '5': 11.549
+        6 to 10: 9.9
+        11 to 15: 8.488
+        16 to 20: 7.85
+        21 to 25: 7.522
+        26+: 7.065
+        Left Censored: 4.908
+      job_creation_rate_percent:
+        '0': 200.0
+        '1': 26.99
+        '2': 20.86
+        '3': 18.078
+        '4': 18.119
+        '5': 15.966
+        6 to 10: 14.71
+        11 to 15: 12.679
+        16 to 20: 12.463
+        21 to 25: 11.253
+        26+: 10.816
+        Left Censored: 9.992
+      job_destruction_rate_percent:
+        '0': null
+        '1': 25.018
+        '2': 21.493
+        '3': 18.339
+        '4': 16.997
+        '5': 16.459
+        6 to 10: 15.26
+        11 to 15: 13.463
+        16 to 20: 12.363
+        21 to 25: 11.792
+        26+: 10.473
+        Left Censored: 8.026
+      net_job_creation_rate_percent:
+        '0': 200.0
+        '1': 1.973
+        '2': -0.633
+        '3': -0.262
+        '4': 1.122
+        '5': -0.493
+        6 to 10: -0.55
+        11 to 15: -0.784
+        16 to 20: 0.099
+        21 to 25: -0.539
+        26+: 0.343
+        Left Censored: 1.966
+      reallocation_rate_percent:
+        '0': null
+        '1': 50.035
+        '2': 41.72
+        '3': 36.155
+        '4': 33.995
+        '5': 31.932
+        6 to 10: 29.42
+        11 to 15: 25.358
+        16 to 20: 24.727
+        21 to 25: 22.505
+        26+: 20.947
+        Left Censored: 16.052
+      firm_deaths:
+        '0': null
+        '1': 106493
+        '2': 55846
+        '3': 38712
+        '4': 31256
+        '5': 25810
+        6 to 10: 84448
+        11 to 15: 46822
+        16 to 20: 37935
+        21 to 25: 25634
+        26+: 57580
+        Left Censored: 13422
+evidence:
+- publisher: US Census Bureau
+  title: 'Business Dynamics Statistics 1978-2023: by firm age (bds2023_fa.csv)'
+  url: https://www2.census.gov/programs-surveys/bds/tables/time-series/2023/bds2023_fa.csv
+  accessed_at: '2026-11-26'
+  locator: row year=2023, fage='a) 0', column firms
+  value: 508777
+  unit: count
+  snippet: 2023,a) 0,508777
+  source_license: unstated
+  content_sha256: 52a36e61791aacfaedc0466a4d9b8c1c94a8b0dfbe05e967840119bf6d5695a1
+  role: primary
+- publisher: US Census Bureau
+  title: 'Business Dynamics Statistics 1978-2023: by firm age (bds2023_fa.csv)'
+  url: https://www2.census.gov/programs-surveys/bds/tables/time-series/2023/bds2023_fa.csv
+  accessed_at: '2026-11-26'
+  locator: row year=2023, fage='l) Left Censored', column firms
+  value: 300280
+  unit: count
+  snippet: 2023,l) Left Censored,300280
+  source_license: unstated
+  content_sha256: 52a36e61791aacfaedc0466a4d9b8c1c94a8b0dfbe05e967840119bf6d5695a1
+  role: primary
+assumed:
+- parameter: shares
+  value: firms in the class / firms in all classes
+  method: derived
+  rationale: Shares are computed from the published firm counts of the mutually exclusive classes.
+tests:
+- statistic: share["6 to 10"]
+  expected: 0.16356
+  tolerance: 0.005
+- statistic: share["26+"]
+  expected: 0.153647
+  tolerance: 0.005
+- statistic: share["11 to 15"]
+  expected: 0.108591
+  tolerance: 0.005
+- statistic: sum_of_shares
+  expected: 1
+  tolerance: 0.0001
+notes: US employer firms in 2023 by firm age in years (0, 1, 2, 3, 4, 5, 6 to 10, 11 to 15, 16 to 20, 21 to 25,
+  26+ and the source's Left Censored class of firms whose age the data cannot establish), with the share of firms,
+  establishments, employment, establishment entry and exit rates, job creation, destruction, net and reallocation
+  rates and firm deaths. Age 0 firms are start-ups, which is why their entry and job creation rates read 200. BDS
+  counts firms and establishments in March of each year; entry, exit and job flow measures cover the twelve months
+  before, and rates are percentages of the average of the current and prior year's figure (the 'denom' column).
+  Cells the source marks X (not applicable), D (withheld to avoid disclosing data of individual companies), N or
+  S are omitted or null. The Census Bureau publishes these files without a licence statement, so the licence is
+  recorded as unstated and the entry held at license-review.

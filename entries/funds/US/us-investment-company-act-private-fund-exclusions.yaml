@@ -1,0 +1,228 @@
+id: us-investment-company-act-private-fund-exclusions
+title: 'US Investment Company Act private fund exclusions: 3(c)(1) owner limits, qualifying venture fund cap, 3(c)(7)
+  qualified purchaser thresholds'
+kind: rule
+domain: funds
+region: US
+status: license-review
+tier: B
+valid_from: '2024-09-30'
+valid_to: null
+tags:
+- funds
+- private-equity
+- regulation
+- investment-company-act
+- section-3c1
+- section-3c7
+- qualified-purchaser
+- investor-eligibility
+use_cases:
+- fund-administration-demo
+- kyb-onboarding
+- kyc-onboarding
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: USD
+    rows:
+      section_3c1_max_beneficial_owners:
+        value: 100
+        unit: persons
+        section: 80a-3(c)(1)
+      section_3c1_max_beneficial_owners_qualifying_venture_capital_fund:
+        value: 250
+        unit: persons
+        section: 80a-3(c)(1)
+      qualifying_venture_capital_fund_max_capital:
+        value: 12000000
+        unit: USD
+        section: 80a-3(c)(1)(C)(i); 17 CFR 270.3c-7(a)
+        statutory_amount: 10000000
+        description: aggregate capital contributions and uncalled committed capital
+      section_3c1_look_through_voting_percent:
+        value: 10
+        unit: percent
+        section: 80a-3(c)(1)(A)
+        description: an investing fund owning this share or more of the voting securities is counted through to
+          its own holders
+      section_3c7_owners:
+        value: qualified purchasers only
+        unit: text
+        section: 80a-3(c)(7)(A)
+      qualified_purchaser_natural_person_investments:
+        value: 5000000
+        unit: USD
+        section: 80a-2(a)(51)(A)(i)
+        comparison: not less than
+      qualified_purchaser_family_company_investments:
+        value: 5000000
+        unit: USD
+        section: 80a-2(a)(51)(A)(ii)
+        comparison: not less than
+      qualified_purchaser_discretionary_investor_investments:
+        value: 25000000
+        unit: USD
+        section: 80a-2(a)(51)(A)(iv)
+        comparison: not less than
+  vectors:
+  - input:
+      key: section_3c1_max_beneficial_owners
+      column: value
+    expected: 100
+    origin: source
+  - input:
+      key: section_3c1_max_beneficial_owners_qualifying_venture_capital_fund
+      column: value
+    expected: 250
+    origin: source
+  - input:
+      key: qualifying_venture_capital_fund_max_capital
+      column: value
+    expected: 12000000
+    origin: source
+  - input:
+      key: qualified_purchaser_natural_person_investments
+      column: value
+    expected: 5000000
+    origin: source
+  - input:
+      key: qualified_purchaser_discretionary_investor_investments
+      column: value
+    expected: 25000000
+    origin: source
+  - input: section_3c5_mortgage_banker
+    expected: false
+    origin: derived
+    note: other exclusions are not part of this table
+evidence:
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 15 U.S.C. 80a-3, Definition of investment company (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap2D-subchapI-sec80a-3.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (c)(1)
+  value: 250 persons
+  unit: count
+  snippet: beneficially owned by not more than one hundred persons (or, in the case of a qualifying venture capital
+    fund, 250 persons)
+  source_license: unstated
+  content_sha256: ed168c11fa5cda849f854c7fc93f5ad7ed2c80a92ddc867c1e38652bb4824fe7
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 15 U.S.C. 80a-3, Definition of investment company (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap2D-subchapI-sec80a-3.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (c)(1)(A)
+  value: 10 per centum
+  unit: percent
+  snippet: if the company owns 10 per centum or more of the outstanding voting securities of the issuer
+  source_license: unstated
+  content_sha256: ed168c11fa5cda849f854c7fc93f5ad7ed2c80a92ddc867c1e38652bb4824fe7
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 15 U.S.C. 80a-3, Definition of investment company (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap2D-subchapI-sec80a-3.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (c)(1)(C)(i)
+  value: $10,000,000
+  unit: currency:USD
+  snippet: a venture capital fund that has not more than $10,000,000 in aggregate capital contributions and uncalled
+    committed
+  source_license: unstated
+  content_sha256: ed168c11fa5cda849f854c7fc93f5ad7ed2c80a92ddc867c1e38652bb4824fe7
+  role: supporting
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 15 U.S.C. 80a-3, Definition of investment company (United States Code 2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap2D-subchapI-sec80a-3.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (c)(7)(A)
+  value: qualified purchasers
+  unit: text
+  snippet: the outstanding securities of which are owned exclusively by persons who, at the time of acquisition
+    of such securities, are qualified purchasers
+  source_license: unstated
+  content_sha256: ed168c11fa5cda849f854c7fc93f5ad7ed2c80a92ddc867c1e38652bb4824fe7
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: 17 CFR 270.3c-7, Inflation-adjusted definition of qualifying venture capital fund (eCFR XML, 2026-11-02)
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-02/title-17.xml?section=270.3c-7
+  accessed_at: '2026-11-26'
+  locator: paragraph (a)
+  value: $12,000,000
+  unit: currency:USD
+  snippet: that has not more than $12,000,000 in aggregate capital contributions and uncalled committed capital
+  source_license: unstated
+  content_sha256: f194ebab86375c0c94721edda34a137314cb45f014197fe97bf800248b311630
+  role: primary
+- publisher: Office of the Federal Register via the eCFR API
+  title: eCFR versions of 17 CFR 270.3c-7 (JSON)
+  url: https://www.ecfr.gov/api/versioner/v1/versions/title-17.json?section=270.3c-7&issue_date%5Blte%5D=2026-11-02
+  accessed_at: '2026-11-26'
+  locator: content_versions[*].date, latest
+  value: '2024-09-30'
+  unit: date
+  snippet: '"date":"2024-09-30"'
+  source_license: unstated
+  content_sha256: 02ad6bec5d8b5d73a81ef6387f725dded5ce92ad741c439297099d4ebae571d6
+  role: supporting
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 15 U.S.C. 80a-2, Definitions; applicability; rulemaking considerations (United States Code 2024 edition,
+    HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap2D-subchapI-sec80a-2.htm
+  accessed_at: '2026-11-26'
+  locator: paragraph (51)(A)(i)
+  value: $5,000,000
+  unit: currency:USD
+  snippet: who owns not less than $5,000,000 in investments, as defined by the Commission;
+  source_license: unstated
+  content_sha256: 7a5cb07035df83421e4863cb29f74f57ebbd3565f2cf67fff005d07819aefb81
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 15 U.S.C. 80a-2, Definitions; applicability; rulemaking considerations (United States Code 2024 edition,
+    HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap2D-subchapI-sec80a-2.htm
+  accessed_at: '2026-11-26'
+  locator: paragraph (51)(A)(ii)
+  value: $5,000,000
+  unit: currency:USD
+  snippet: (ii) any company that owns not less than $5,000,000 in investments and that is owned directly or indirectly
+  source_license: unstated
+  content_sha256: 7a5cb07035df83421e4863cb29f74f57ebbd3565f2cf67fff005d07819aefb81
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 15 U.S.C. 80a-2, Definitions; applicability; rulemaking considerations (United States Code 2024 edition,
+    HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap2D-subchapI-sec80a-2.htm
+  accessed_at: '2026-11-26'
+  locator: paragraph (51)(A)(iv)
+  value: $25,000,000
+  unit: currency:USD
+  snippet: in the aggregate owns and invests on a discretionary basis, not less than $25,000,000 in investments.
+  source_license: unstated
+  content_sha256: 7a5cb07035df83421e4863cb29f74f57ebbd3565f2cf67fff005d07819aefb81
+  role: primary
+assumed:
+- parameter: rows.section_3c1_max_beneficial_owners.value
+  value: 100
+  method: derived
+  rationale: The statute writes the number in words ('one hundred persons'); the builder converts it.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 8
+  tolerance: 0
+- statistic: value[qualified_purchaser_family_company_investments,value]
+  expected: 5000000
+  tolerance: 0
+notes: 'The two exclusions from the definition of investment company that private equity and venture funds rely
+  on. Section 3(c)(1) covers an issuer not making a public offering whose securities are beneficially owned by no
+  more than 100 persons, or 250 for a qualifying venture capital fund, whose aggregate capital contributions and
+  uncalled committed capital may not exceed a statutory amount the SEC indexes every five years (17 CFR 270.3c-7
+  sets the current figure; valid_from is the date that rule''s current text took effect). An investing company holding
+  the stated share of the voting securities that is itself a private fund is looked through. Section 3(c)(7) covers
+  an issuer owned exclusively by qualified purchasers: natural persons and family companies owning the lower investments
+  amount, and persons investing at least the higher amount on a discretionary basis. Works of the US federal government
+  carry no copyright in the United States, but the cited resources state no reuse terms, so the licence is recorded
+  as unstated and the entry held at license-review.'

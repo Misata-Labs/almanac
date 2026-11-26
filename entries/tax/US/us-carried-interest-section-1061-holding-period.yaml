@@ -1,0 +1,128 @@
+id: us-carried-interest-section-1061-holding-period
+title: US carried interest three-year holding period for applicable partnership interests (26 U.S.C. 1061)
+kind: rule
+domain: tax
+region: US
+status: license-review
+tier: B
+valid_from: '2018-01-01'
+valid_to: null
+tags:
+- tax
+- private-equity
+- structuring
+- carried-interest
+- section-1061
+- capital-gains
+- fund-manager
+use_cases:
+- fund-administration-demo
+- tax-demo
+- lbo-modelling
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    rows:
+      applicable_partnership_interest_holding_period:
+        value: 3
+        unit: years
+        comparison: more than
+        section: 1061(a)
+        description: long-term capital gain on an applicable partnership interest is recharacterised as short-term
+          unless the asset was held for more than this period
+      general_long_term_holding_period:
+        value: 1
+        unit: years
+        comparison: more than
+        section: 1222(3)
+        description: the general holding period for long-term capital gain that section 1061 replaces for these
+          interests
+    applicable_trade_or_business: raising or returning capital and investing in, disposing of or developing specified
+      assets (securities, commodities, real estate held for rental or investment, cash, options or derivatives on
+      them)
+  vectors:
+  - input:
+      key: applicable_partnership_interest_holding_period
+      column: value
+    expected: 3
+    origin: source
+  - input:
+      key: general_long_term_holding_period
+      column: value
+    expected: 1
+    origin: derived
+    note: section 1222 is cited by section 1061(a)(2) but not fetched
+  - input: capital_interest_exception
+    expected: false
+    origin: derived
+    note: the exceptions are described in the notes, not as rows
+evidence:
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 1061, Partnership interests held in connection with performance of services (United States Code
+    2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapO-partIV-sec1061.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (a)(2)
+  value: 3 years
+  unit: integer
+  snippet: computed by applying paragraphs (3) and (4) of sections
+  source_license: unstated
+  content_sha256: e46d26518f85221e5129b48661d5a113d38190bda1f0fffc71a5c6de861938e3
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 1061, Partnership interests held in connection with performance of services (United States Code
+    2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapO-partIV-sec1061.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (a)
+  value: short-term capital gain
+  unit: text
+  snippet: shall be treated as short-term capital gain, notwithstanding section 83 or any election in effect under
+    section 83(b)
+  source_license: unstated
+  content_sha256: e46d26518f85221e5129b48661d5a113d38190bda1f0fffc71a5c6de861938e3
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 1061, Partnership interests held in connection with performance of services (United States Code
+    2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapO-partIV-sec1061.htm
+  accessed_at: '2026-11-26'
+  locator: subsection (c)(4)(A)
+  value: corporation
+  unit: text
+  snippet: any interest in a partnership directly or indirectly held by a corporation
+  source_license: unstated
+  content_sha256: e46d26518f85221e5129b48661d5a113d38190bda1f0fffc71a5c6de861938e3
+  role: primary
+- publisher: Office of the Law Revision Counsel, US House of Representatives, via govinfo
+  title: 26 U.S.C. 1061, Partnership interests held in connection with performance of services (United States Code
+    2024 edition, HTML)
+  url: https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapO-partIV-sec1061.htm
+  accessed_at: '2026-11-26'
+  locator: Effective Date note
+  value: December 31, 2017
+  unit: date
+  snippet: shall apply to taxable years beginning after December 31, 2017
+  source_license: unstated
+  content_sha256: e46d26518f85221e5129b48661d5a113d38190bda1f0fffc71a5c6de861938e3
+  role: primary
+assumed:
+- parameter: rows.general_long_term_holding_period.value
+  value: 1
+  method: derived
+  rationale: Section 1061(a)(2) substitutes 3 years for the 1 year in section 1222(3) and (4); the 1-year figure
+    is taken from that substitution clause.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: value[applicable_partnership_interest_holding_period,value]
+  expected: 3
+  tolerance: 0
+notes: Section 1061 recharacterises as short-term capital gain the part of a taxpayer's net long-term capital gain
+  on an applicable partnership interest (a carried interest received for substantial services in a business of raising
+  or returning capital and investing in specified assets) that would not be long-term if the holding period were
+  more than three years instead of more than one. Interests held by a corporation and capital interests commensurate
+  with capital contributed are excluded. The rule applies to taxable years beginning after 31 December 2017 and
+  was not changed by Public Law 119-21. Works of the US federal government carry no copyright in the United States,
+  but the cited resources state no reuse terms, so the licence is recorded as unstated and the entry held at license-review.

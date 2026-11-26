@@ -1,0 +1,1806 @@
+id: global-enterprise-survey-firm-age-collateral-growth-and-experience-by-economy
+title: 'World Bank Enterprise Surveys: firm age, collateral, sales growth and manager experience by economy, surveys
+  2006-2020'
+kind: rule
+domain: business
+region: global
+status: verified
+tier: A
+valid_from: '2006-01-01'
+valid_to: '2020-12-31'
+tags:
+- firms
+- business
+- smes
+- size-class
+- enterprise-surveys
+- world-bank
+- by-country
+- firm-age
+- collateral
+- sales-growth
+- productivity
+- management
+use_cases:
+- pe-portfolio-demo
+- deal-sourcing-demo
+- synthetic-companies
+- valuation-demo
+- kyb-onboarding
+- market-sizing
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    source: World Bank API source 13 (Enterprise Surveys)
+    years: 2006:2025
+    anchor_indicator: IC.FRM.FCHAR.CAR1
+    indicators:
+      IC.FRM.FCHAR.CAR1: establishment_age_years
+      IC.FRM.FIN.FIN11: loans_requiring_collateral_percent
+      IC.FRM.FIN.FIN10: collateral_value_percent_of_loan
+      IC.FRM.SLS.GROW.PEFT1: real_annual_sales_growth_percent
+      IC.FRM.PROD.GROW.PEFT3: real_annual_labor_productivity_growth_percent
+      IC.FRM.WRKF.WK8: top_manager_experience_years
+    rows:
+      AFG:
+        name: Afghanistan
+        survey_year: 2014
+        income_level: Low income
+        region: Middle East, North Africa, Afghanistan & Pakistan
+        establishment_age_years: 9.5
+        loans_requiring_collateral_percent: 70.7
+        collateral_value_percent_of_loan: null
+        real_annual_sales_growth_percent: 3
+        real_annual_labor_productivity_growth_percent: -1.3
+        top_manager_experience_years: 13.4
+      AGO:
+        name: Angola
+        survey_year: 2010
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 10
+        loans_requiring_collateral_percent: 94.6
+        collateral_value_percent_of_loan: null
+        real_annual_sales_growth_percent: 66.9
+        real_annual_labor_productivity_growth_percent: 60.3
+        top_manager_experience_years: 11.2
+      ALB:
+        name: Albania
+        survey_year: 2019
+        income_level: Upper middle income
+        region: Europe & Central Asia
+        establishment_age_years: 12.9
+        loans_requiring_collateral_percent: 89.5
+        collateral_value_percent_of_loan: 177.3
+        real_annual_sales_growth_percent: 3.1
+        real_annual_labor_productivity_growth_percent: -2.6
+        top_manager_experience_years: 16.9
+      ARG:
+        name: Argentina
+        survey_year: 2017
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 26.7
+        loans_requiring_collateral_percent: 47.8
+        collateral_value_percent_of_loan: 219.4
+        real_annual_sales_growth_percent: -6.6
+        real_annual_labor_productivity_growth_percent: -6.5
+        top_manager_experience_years: 26.6
+      ARM:
+        name: Armenia
+        survey_year: 2020
+        income_level: Upper middle income
+        region: Europe & Central Asia
+        establishment_age_years: 14.7
+        loans_requiring_collateral_percent: 71.7
+        collateral_value_percent_of_loan: 207.5
+        real_annual_sales_growth_percent: 5.8
+        real_annual_labor_productivity_growth_percent: 3.2
+        top_manager_experience_years: 15.8
+      ATG:
+        name: Antigua and Barbuda
+        survey_year: 2010
+        income_level: High income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 17.1
+        loans_requiring_collateral_percent: 91.7
+        collateral_value_percent_of_loan: 176.7
+        real_annual_sales_growth_percent: -3.8
+        real_annual_labor_productivity_growth_percent: -7.5
+        top_manager_experience_years: 15.2
+      AZE:
+        name: Azerbaijan
+        survey_year: 2019
+        income_level: Upper middle income
+        region: Europe & Central Asia
+        establishment_age_years: 15
+        loans_requiring_collateral_percent: 77.8
+        collateral_value_percent_of_loan: 198.6
+        real_annual_sales_growth_percent: 5.4
+        real_annual_labor_productivity_growth_percent: -3.2
+        top_manager_experience_years: 16.4
+      BDI:
+        name: Burundi
+        survey_year: 2014
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 15.5
+        loans_requiring_collateral_percent: 96.4
+        collateral_value_percent_of_loan: 284.8
+        real_annual_sales_growth_percent: -9.5
+        real_annual_labor_productivity_growth_percent: -16.6
+        top_manager_experience_years: 13.5
+      BEL:
+        name: Belgium
+        survey_year: 2020
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 33.2
+        loans_requiring_collateral_percent: 33.1
+        collateral_value_percent_of_loan: 162
+        real_annual_sales_growth_percent: 2.3
+        real_annual_labor_productivity_growth_percent: -0.5
+        top_manager_experience_years: 23.9
+      BEN:
+        name: Benin
+        survey_year: 2016
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 16.4
+        loans_requiring_collateral_percent: 79.2
+        collateral_value_percent_of_loan: 231.3
+        real_annual_sales_growth_percent: -6.5
+        real_annual_labor_productivity_growth_percent: -9.2
+        top_manager_experience_years: 20.1
+      BFA:
+        name: Burkina Faso
+        survey_year: 2009
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 12.7
+        loans_requiring_collateral_percent: 91.7
+        collateral_value_percent_of_loan: 175.5
+        real_annual_sales_growth_percent: 3.5
+        real_annual_labor_productivity_growth_percent: -1.5
+        top_manager_experience_years: 15.6
+      BGD:
+        name: Bangladesh
+        survey_year: 2013
+        income_level: Lower middle income
+        region: South Asia
+        establishment_age_years: 18.5
+        loans_requiring_collateral_percent: 84.4
+        collateral_value_percent_of_loan: 271.1
+        real_annual_sales_growth_percent: 2.4
+        real_annual_labor_productivity_growth_percent: -2.3
+        top_manager_experience_years: 18.3
+      BGR:
+        name: Bulgaria
+        survey_year: 2019
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 15.3
+        loans_requiring_collateral_percent: 71.4
+        collateral_value_percent_of_loan: 128.6
+        real_annual_sales_growth_percent: 1.8
+        real_annual_labor_productivity_growth_percent: 1.6
+        top_manager_experience_years: 17.2
+      BHS:
+        name: Bahamas, The
+        survey_year: 2010
+        income_level: High income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 24.2
+        loans_requiring_collateral_percent: 81.3
+        collateral_value_percent_of_loan: 231.6
+        real_annual_sales_growth_percent: 3
+        real_annual_labor_productivity_growth_percent: -1.6
+        top_manager_experience_years: 22.6
+      BIH:
+        name: Bosnia and Herzegovina
+        survey_year: 2019
+        income_level: Upper middle income
+        region: Europe & Central Asia
+        establishment_age_years: 20.2
+        loans_requiring_collateral_percent: 67.3
+        collateral_value_percent_of_loan: 212.3
+        real_annual_sales_growth_percent: 2.2
+        real_annual_labor_productivity_growth_percent: 0.3
+        top_manager_experience_years: 21.7
+      BLR:
+        name: Belarus
+        survey_year: 2018
+        income_level: Upper middle income
+        region: Europe & Central Asia
+        establishment_age_years: 17.2
+        loans_requiring_collateral_percent: 72.4
+        collateral_value_percent_of_loan: 150.9
+        real_annual_sales_growth_percent: -0.3
+        real_annual_labor_productivity_growth_percent: 0.4
+        top_manager_experience_years: 16.8
+      BLZ:
+        name: Belize
+        survey_year: 2010
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 17.2
+        loans_requiring_collateral_percent: 97.5
+        collateral_value_percent_of_loan: 182.4
+        real_annual_sales_growth_percent: 3.2
+        real_annual_labor_productivity_growth_percent: 0.4
+        top_manager_experience_years: 14.6
+      BOL:
+        name: Bolivia
+        survey_year: 2017
+        income_level: Lower middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 19.1
+        loans_requiring_collateral_percent: 95.8
+        collateral_value_percent_of_loan: 206.7
+        real_annual_sales_growth_percent: 11.6
+        real_annual_labor_productivity_growth_percent: -3.1
+        top_manager_experience_years: 20.1
+      BRA:
+        name: Brazil
+        survey_year: 2009
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 18.6
+        loans_requiring_collateral_percent: 23.3
+        collateral_value_percent_of_loan: 95.1
+        real_annual_sales_growth_percent: 2.6
+        real_annual_labor_productivity_growth_percent: -3.7
+        top_manager_experience_years: 20.5
+      BRB:
+        name: Barbados
+        survey_year: 2010
+        income_level: High income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 15
+        loans_requiring_collateral_percent: 50.9
+        collateral_value_percent_of_loan: 138.1
+        real_annual_sales_growth_percent: 5.8
+        real_annual_labor_productivity_growth_percent: 2.5
+        top_manager_experience_years: 16.7
+      BTN:
+        name: Bhutan
+        survey_year: 2015
+        income_level: Lower middle income
+        region: South Asia
+        establishment_age_years: 14.7
+        loans_requiring_collateral_percent: 94.5
+        collateral_value_percent_of_loan: 178.9
+        real_annual_sales_growth_percent: 13.4
+        real_annual_labor_productivity_growth_percent: 4.4
+        top_manager_experience_years: 12.1
+      BWA:
+        name: Botswana
+        survey_year: 2010
+        income_level: Upper middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 15.7
+        loans_requiring_collateral_percent: 64.7
+        collateral_value_percent_of_loan: 151.3
+        real_annual_sales_growth_percent: 13.6
+        real_annual_labor_productivity_growth_percent: 5.6
+        top_manager_experience_years: 18.1
+      CAF:
+        name: Central African Republic
+        survey_year: 2011
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 11.7
+        loans_requiring_collateral_percent: 83.9
+        collateral_value_percent_of_loan: 233.4
+        real_annual_sales_growth_percent: 12.1
+        real_annual_labor_productivity_growth_percent: 2.6
+        top_manager_experience_years: 11.3
+      CHL:
+        name: Chile
+        survey_year: 2010
+        income_level: High income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 24.7
+        loans_requiring_collateral_percent: 51.1
+        collateral_value_percent_of_loan: 209.5
+        real_annual_sales_growth_percent: 6.6
+        real_annual_labor_productivity_growth_percent: 3.9
+        top_manager_experience_years: 24.2
+      CHN:
+        name: China
+        survey_year: 2012
+        income_level: Upper middle income
+        region: East Asia & Pacific
+        establishment_age_years: 11.3
+        loans_requiring_collateral_percent: 77.6
+        collateral_value_percent_of_loan: 197
+        real_annual_sales_growth_percent: 5.4
+        real_annual_labor_productivity_growth_percent: -3.3
+        top_manager_experience_years: 14.7
+      CIV:
+        name: Cote d'Ivoire
+        survey_year: 2016
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 17
+        loans_requiring_collateral_percent: 85.7
+        collateral_value_percent_of_loan: 156.8
+        real_annual_sales_growth_percent: -12.1
+        real_annual_labor_productivity_growth_percent: -16.3
+        top_manager_experience_years: 20.3
+      CMR:
+        name: Cameroon
+        survey_year: 2016
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 20.8
+        loans_requiring_collateral_percent: 88.1
+        collateral_value_percent_of_loan: 259.9
+        real_annual_sales_growth_percent: 4.3
+        real_annual_labor_productivity_growth_percent: -1.9
+        top_manager_experience_years: 18.5
+      COD:
+        name: Congo, Dem. Rep.
+        survey_year: 2013
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 10.1
+        loans_requiring_collateral_percent: 71.9
+        collateral_value_percent_of_loan: 152.1
+        real_annual_sales_growth_percent: 5.9
+        real_annual_labor_productivity_growth_percent: 0.2
+        top_manager_experience_years: 12.6
+      COG:
+        name: Congo, Rep.
+        survey_year: 2009
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 13.2
+        loans_requiring_collateral_percent: 67.7
+        collateral_value_percent_of_loan: 47.3
+        real_annual_sales_growth_percent: 16.6
+        real_annual_labor_productivity_growth_percent: 8.1
+        top_manager_experience_years: 12.5
+      COL:
+        name: Colombia
+        survey_year: 2017
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 18.6
+        loans_requiring_collateral_percent: 50.5
+        collateral_value_percent_of_loan: 165.4
+        real_annual_sales_growth_percent: 10.5
+        real_annual_labor_productivity_growth_percent: 3.3
+        top_manager_experience_years: 24
+      CPV:
+        name: Cabo Verde
+        survey_year: 2009
+        income_level: Upper middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 19
+        loans_requiring_collateral_percent: 90.1
+        collateral_value_percent_of_loan: 176.4
+        real_annual_sales_growth_percent: -30.3
+        real_annual_labor_productivity_growth_percent: -30
+        top_manager_experience_years: 18
+      CRI:
+        name: Costa Rica
+        survey_year: 2010
+        income_level: High income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 20.5
+        loans_requiring_collateral_percent: 93.3
+        collateral_value_percent_of_loan: 251.4
+        real_annual_sales_growth_percent: -8.8
+        real_annual_labor_productivity_growth_percent: -12.9
+        top_manager_experience_years: 19.9
+      CYP:
+        name: Cyprus
+        survey_year: 2019
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 27.4
+        loans_requiring_collateral_percent: 91.1
+        collateral_value_percent_of_loan: 229.9
+        real_annual_sales_growth_percent: 11.9
+        real_annual_labor_productivity_growth_percent: 6.9
+        top_manager_experience_years: 25.8
+      CZE:
+        name: Czech Republic
+        survey_year: 2019
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 19.1
+        loans_requiring_collateral_percent: 61.4
+        collateral_value_percent_of_loan: 157.4
+        real_annual_sales_growth_percent: 3.8
+        real_annual_labor_productivity_growth_percent: 1.7
+        top_manager_experience_years: 25.6
+      DJI:
+        name: Djibouti
+        survey_year: 2013
+        income_level: Lower middle income
+        region: Middle East, North Africa, Afghanistan & Pakistan
+        establishment_age_years: 15.8
+        loans_requiring_collateral_percent: 84.1
+        collateral_value_percent_of_loan: 227.9
+        real_annual_sales_growth_percent: 0.1
+        real_annual_labor_productivity_growth_percent: -3.1
+        top_manager_experience_years: 17.5
+      DMA:
+        name: Dominica
+        survey_year: 2010
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 14.8
+        loans_requiring_collateral_percent: 88.2
+        collateral_value_percent_of_loan: 194.1
+        real_annual_sales_growth_percent: -1.5
+        real_annual_labor_productivity_growth_percent: -3.9
+        top_manager_experience_years: 9.5
+      DOM:
+        name: Dominican Republic
+        survey_year: 2016
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 20.2
+        loans_requiring_collateral_percent: 47.1
+        collateral_value_percent_of_loan: 173.8
+        real_annual_sales_growth_percent: 7.9
+        real_annual_labor_productivity_growth_percent: 0.7
+        top_manager_experience_years: 22
+      ECU:
+        name: Ecuador
+        survey_year: 2017
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 18.1
+        loans_requiring_collateral_percent: 58.1
+        collateral_value_percent_of_loan: 204.1
+        real_annual_sales_growth_percent: -1.4
+        real_annual_labor_productivity_growth_percent: -2.4
+        top_manager_experience_years: 19.7
+      EGY:
+        name: Egypt, Arab Rep.
+        survey_year: 2020
+        income_level: Lower middle income
+        region: Middle East, North Africa, Afghanistan & Pakistan
+        establishment_age_years: 19.6
+        loans_requiring_collateral_percent: 95.4
+        collateral_value_percent_of_loan: 215.8
+        real_annual_sales_growth_percent: -8.9
+        real_annual_labor_productivity_growth_percent: -12.5
+        top_manager_experience_years: 19
+      ERI:
+        name: Eritrea
+        survey_year: 2009
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 16
+        loans_requiring_collateral_percent: 66.2
+        collateral_value_percent_of_loan: null
+        real_annual_sales_growth_percent: -7.1
+        real_annual_labor_productivity_growth_percent: 0.4
+        top_manager_experience_years: 16
+      EST:
+        name: Estonia
+        survey_year: 2019
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 16.9
+        loans_requiring_collateral_percent: 70.2
+        collateral_value_percent_of_loan: 197.2
+        real_annual_sales_growth_percent: 4.5
+        real_annual_labor_productivity_growth_percent: 0.7
+        top_manager_experience_years: 20.3
+      ETH:
+        name: Ethiopia
+        survey_year: 2015
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 12.5
+        loans_requiring_collateral_percent: 85.8
+        collateral_value_percent_of_loan: 296.2
+        real_annual_sales_growth_percent: 0.2
+        real_annual_labor_productivity_growth_percent: -8.7
+        top_manager_experience_years: 13.5
+      FJI:
+        name: Fiji
+        survey_year: 2009
+        income_level: Upper middle income
+        region: East Asia & Pacific
+        establishment_age_years: 23.3
+        loans_requiring_collateral_percent: 70.3
+        collateral_value_percent_of_loan: 214.7
+        real_annual_sales_growth_percent: 7.9
+        real_annual_labor_productivity_growth_percent: 4.1
+        top_manager_experience_years: 19.1
+      FSM:
+        name: Micronesia, Fed. Sts.
+        survey_year: 2009
+        income_level: Upper middle income
+        region: East Asia & Pacific
+        establishment_age_years: 16.3
+        loans_requiring_collateral_percent: 71.7
+        collateral_value_percent_of_loan: 265.2
+        real_annual_sales_growth_percent: 2.4
+        real_annual_labor_productivity_growth_percent: -3.7
+        top_manager_experience_years: 16.2
+      GAB:
+        name: Gabon
+        survey_year: 2009
+        income_level: Upper middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 13.8
+        loans_requiring_collateral_percent: 52.5
+        collateral_value_percent_of_loan: null
+        real_annual_sales_growth_percent: 13.2
+        real_annual_labor_productivity_growth_percent: 7.5
+        top_manager_experience_years: 14.1
+      GEO:
+        name: Georgia
+        survey_year: 2019
+        income_level: Upper middle income
+        region: Europe & Central Asia
+        establishment_age_years: 10.5
+        loans_requiring_collateral_percent: 80.5
+        collateral_value_percent_of_loan: 194.2
+        real_annual_sales_growth_percent: -1.3
+        real_annual_labor_productivity_growth_percent: -4.7
+        top_manager_experience_years: 15.8
+      GHA:
+        name: Ghana
+        survey_year: 2013
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 14.9
+        loans_requiring_collateral_percent: 79.5
+        collateral_value_percent_of_loan: 240
+        real_annual_sales_growth_percent: 9.2
+        real_annual_labor_productivity_growth_percent: 4.9
+        top_manager_experience_years: 16.5
+      GIN:
+        name: Guinea
+        survey_year: 2016
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 10
+        loans_requiring_collateral_percent: 100
+        collateral_value_percent_of_loan: null
+        real_annual_sales_growth_percent: 10.6
+        real_annual_labor_productivity_growth_percent: -0.3
+        top_manager_experience_years: 11.3
+      GMB:
+        name: Gambia, The
+        survey_year: 2018
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 14.1
+        loans_requiring_collateral_percent: 92.5
+        collateral_value_percent_of_loan: 224.4
+        real_annual_sales_growth_percent: 8.3
+        real_annual_labor_productivity_growth_percent: -2.3
+        top_manager_experience_years: 19.3
+      GNB:
+        name: Guinea-Bissau
+        survey_year: 2006
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 10.4
+        loans_requiring_collateral_percent: null
+        collateral_value_percent_of_loan: null
+        real_annual_sales_growth_percent: 12.8
+        real_annual_labor_productivity_growth_percent: 5.6
+        top_manager_experience_years: 12.2
+      GRC:
+        name: Greece
+        survey_year: 2018
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 19.4
+        loans_requiring_collateral_percent: 74.9
+        collateral_value_percent_of_loan: 171.5
+        real_annual_sales_growth_percent: 4.3
+        real_annual_labor_productivity_growth_percent: 0.2
+        top_manager_experience_years: 23.2
+      GRD:
+        name: Grenada
+        survey_year: 2010
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 22.9
+        loans_requiring_collateral_percent: 66.6
+        collateral_value_percent_of_loan: 220.1
+        real_annual_sales_growth_percent: 1.9
+        real_annual_labor_productivity_growth_percent: -3.2
+        top_manager_experience_years: 23
+      GTM:
+        name: Guatemala
+        survey_year: 2017
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 28.5
+        loans_requiring_collateral_percent: 66.6
+        collateral_value_percent_of_loan: 190.1
+        real_annual_sales_growth_percent: 1.5
+        real_annual_labor_productivity_growth_percent: -0.7
+        top_manager_experience_years: 25.7
+      GUY:
+        name: Guyana
+        survey_year: 2010
+        income_level: High income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 24.1
+        loans_requiring_collateral_percent: 84.5
+        collateral_value_percent_of_loan: 202.2
+        real_annual_sales_growth_percent: 2
+        real_annual_labor_productivity_growth_percent: -3.9
+        top_manager_experience_years: 23.3
+      HND:
+        name: Honduras
+        survey_year: 2016
+        income_level: Lower middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 20.9
+        loans_requiring_collateral_percent: 72.8
+        collateral_value_percent_of_loan: 223.2
+        real_annual_sales_growth_percent: 0.2
+        real_annual_labor_productivity_growth_percent: -2
+        top_manager_experience_years: 23.4
+      HRV:
+        name: Croatia
+        survey_year: 2019
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 21.2
+        loans_requiring_collateral_percent: 98.1
+        collateral_value_percent_of_loan: 197.6
+        real_annual_sales_growth_percent: 2.1
+        real_annual_labor_productivity_growth_percent: 0.1
+        top_manager_experience_years: 24.7
+      HUN:
+        name: Hungary
+        survey_year: 2019
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 18.7
+        loans_requiring_collateral_percent: 61.2
+        collateral_value_percent_of_loan: 153.8
+        real_annual_sales_growth_percent: 5.1
+        real_annual_labor_productivity_growth_percent: 1.1
+        top_manager_experience_years: 23.9
+      IDN:
+        name: Indonesia
+        survey_year: 2015
+        income_level: Upper middle income
+        region: East Asia & Pacific
+        establishment_age_years: 19
+        loans_requiring_collateral_percent: 80.4
+        collateral_value_percent_of_loan: 241.1
+        real_annual_sales_growth_percent: -0.4
+        real_annual_labor_productivity_growth_percent: -0.7
+        top_manager_experience_years: 14.5
+      IND:
+        name: India
+        survey_year: 2014
+        income_level: Lower middle income
+        region: South Asia
+        establishment_age_years: 16.6
+        loans_requiring_collateral_percent: 84.7
+        collateral_value_percent_of_loan: 255.1
+        real_annual_sales_growth_percent: 2
+        real_annual_labor_productivity_growth_percent: -3.1
+        top_manager_experience_years: 11
+      IRQ:
+        name: Iraq
+        survey_year: 2011
+        income_level: Upper middle income
+        region: Middle East, North Africa, Afghanistan & Pakistan
+        establishment_age_years: 10.5
+        loans_requiring_collateral_percent: 49.5
+        collateral_value_percent_of_loan: 158.8
+        real_annual_sales_growth_percent: -44.1
+        real_annual_labor_productivity_growth_percent: -49.2
+        top_manager_experience_years: 9.5
+      ISR:
+        name: Israel
+        survey_year: 2013
+        income_level: High income
+        region: Middle East, North Africa, Afghanistan & Pakistan
+        establishment_age_years: 22.4
+        loans_requiring_collateral_percent: 56.7
+        collateral_value_percent_of_loan: 120.9
+        real_annual_sales_growth_percent: 2.8
+        real_annual_labor_productivity_growth_percent: -1.9
+        top_manager_experience_years: 28.8
+      ITA:
+        name: Italy
+        survey_year: 2019
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 23.9
+        loans_requiring_collateral_percent: 57.3
+        collateral_value_percent_of_loan: 105.3
+        real_annual_sales_growth_percent: 4.1
+        real_annual_labor_productivity_growth_percent: 1.9
+        top_manager_experience_years: 24
+      JAM:
+        name: Jamaica
+        survey_year: 2010
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 20.9
+        loans_requiring_collateral_percent: 97.1
+        collateral_value_percent_of_loan: 204.3
+        real_annual_sales_growth_percent: -5.7
+        real_annual_labor_productivity_growth_percent: -8.2
+        top_manager_experience_years: 16.1
+      JOR:
+        name: Jordan
+        survey_year: 2019
+        income_level: Upper middle income
+        region: Middle East, North Africa, Afghanistan & Pakistan
+        establishment_age_years: 21.7
+        loans_requiring_collateral_percent: 83.9
+        collateral_value_percent_of_loan: 274
+        real_annual_sales_growth_percent: -6.1
+        real_annual_labor_productivity_growth_percent: -7.3
+        top_manager_experience_years: 19.7
+      KAZ:
+        name: Kazakhstan
+        survey_year: 2019
+        income_level: Upper middle income
+        region: Europe & Central Asia
+        establishment_age_years: 10.6
+        loans_requiring_collateral_percent: 79.3
+        collateral_value_percent_of_loan: 158.3
+        real_annual_sales_growth_percent: 3.2
+        real_annual_labor_productivity_growth_percent: -2.4
+        top_manager_experience_years: 13.7
+      KEN:
+        name: Kenya
+        survey_year: 2018
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 18.2
+        loans_requiring_collateral_percent: 81.4
+        collateral_value_percent_of_loan: 252.7
+        real_annual_sales_growth_percent: -1.1
+        real_annual_labor_productivity_growth_percent: -5.9
+        top_manager_experience_years: 15.7
+      KGZ:
+        name: Kyrgyz Republic
+        survey_year: 2019
+        income_level: Lower middle income
+        region: Europe & Central Asia
+        establishment_age_years: 18.1
+        loans_requiring_collateral_percent: 93.6
+        collateral_value_percent_of_loan: 244.3
+        real_annual_sales_growth_percent: 1.2
+        real_annual_labor_productivity_growth_percent: -1.5
+        top_manager_experience_years: 17.4
+      KHM:
+        name: Cambodia
+        survey_year: 2016
+        income_level: Lower middle income
+        region: East Asia & Pacific
+        establishment_age_years: 13.2
+        loans_requiring_collateral_percent: 77.5
+        collateral_value_percent_of_loan: 165.1
+        real_annual_sales_growth_percent: 0.3
+        real_annual_labor_productivity_growth_percent: -4.9
+        top_manager_experience_years: 11.9
+      KNA:
+        name: St. Kitts and Nevis
+        survey_year: 2010
+        income_level: High income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 17.6
+        loans_requiring_collateral_percent: 88.4
+        collateral_value_percent_of_loan: 183.2
+        real_annual_sales_growth_percent: 1.9
+        real_annual_labor_productivity_growth_percent: -4.4
+        top_manager_experience_years: 20.3
+      LAO:
+        name: Lao PDR
+        survey_year: 2018
+        income_level: Lower middle income
+        region: East Asia & Pacific
+        establishment_age_years: 16.1
+        loans_requiring_collateral_percent: 93.2
+        collateral_value_percent_of_loan: 225.1
+        real_annual_sales_growth_percent: -3.3
+        real_annual_labor_productivity_growth_percent: -5.5
+        top_manager_experience_years: 17.2
+      LBN:
+        name: Lebanon
+        survey_year: 2019
+        income_level: Lower middle income
+        region: Middle East, North Africa, Afghanistan & Pakistan
+        establishment_age_years: 26.2
+        loans_requiring_collateral_percent: 87.1
+        collateral_value_percent_of_loan: 173
+        real_annual_sales_growth_percent: -10.5
+        real_annual_labor_productivity_growth_percent: -6.6
+        top_manager_experience_years: null
+      LBR:
+        name: Liberia
+        survey_year: 2017
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 14.3
+        loans_requiring_collateral_percent: 82.9
+        collateral_value_percent_of_loan: 171.8
+        real_annual_sales_growth_percent: 27.8
+        real_annual_labor_productivity_growth_percent: 9.1
+        top_manager_experience_years: 14.1
+      LCA:
+        name: St. Lucia
+        survey_year: 2010
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 14.3
+        loans_requiring_collateral_percent: 97.7
+        collateral_value_percent_of_loan: 194.5
+        real_annual_sales_growth_percent: 2.8
+        real_annual_labor_productivity_growth_percent: 0
+        top_manager_experience_years: 9.5
+      LKA:
+        name: Sri Lanka
+        survey_year: 2011
+        income_level: Upper middle income
+        region: South Asia
+        establishment_age_years: 23.2
+        loans_requiring_collateral_percent: 79.2
+        collateral_value_percent_of_loan: 193.6
+        real_annual_sales_growth_percent: -0.4
+        real_annual_labor_productivity_growth_percent: -2.4
+        top_manager_experience_years: 18.2
+      LSO:
+        name: Lesotho
+        survey_year: 2016
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 14.7
+        loans_requiring_collateral_percent: 97.8
+        collateral_value_percent_of_loan: 105.8
+        real_annual_sales_growth_percent: -1.5
+        real_annual_labor_productivity_growth_percent: -5.7
+        top_manager_experience_years: 10.1
+      LTU:
+        name: Lithuania
+        survey_year: 2019
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 16.5
+        loans_requiring_collateral_percent: 67.1
+        collateral_value_percent_of_loan: 163.6
+        real_annual_sales_growth_percent: 7.3
+        real_annual_labor_productivity_growth_percent: 6.7
+        top_manager_experience_years: 17
+      LUX:
+        name: Luxembourg
+        survey_year: 2020
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 25.6
+        loans_requiring_collateral_percent: 48.3
+        collateral_value_percent_of_loan: 117.6
+        real_annual_sales_growth_percent: 5.7
+        real_annual_labor_productivity_growth_percent: 0.7
+        top_manager_experience_years: 25.8
+      LVA:
+        name: Latvia
+        survey_year: 2019
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 18.6
+        loans_requiring_collateral_percent: 79.9
+        collateral_value_percent_of_loan: 176.2
+        real_annual_sales_growth_percent: 0.4
+        real_annual_labor_productivity_growth_percent: 0.5
+        top_manager_experience_years: 22.7
+      MAR:
+        name: Morocco
+        survey_year: 2019
+        income_level: Lower middle income
+        region: Middle East, North Africa, Afghanistan & Pakistan
+        establishment_age_years: 18.7
+        loans_requiring_collateral_percent: 71.8
+        collateral_value_percent_of_loan: 63.4
+        real_annual_sales_growth_percent: 13.3
+        real_annual_labor_productivity_growth_percent: 7.4
+        top_manager_experience_years: 14.9
+      MDA:
+        name: Moldova
+        survey_year: 2019
+        income_level: Upper middle income
+        region: Europe & Central Asia
+        establishment_age_years: 18.1
+        loans_requiring_collateral_percent: 90.4
+        collateral_value_percent_of_loan: 221.2
+        real_annual_sales_growth_percent: -1.4
+        real_annual_labor_productivity_growth_percent: 0.1
+        top_manager_experience_years: 21.3
+      MDG:
+        name: Madagascar
+        survey_year: 2013
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 17.1
+        loans_requiring_collateral_percent: 82.1
+        collateral_value_percent_of_loan: null
+        real_annual_sales_growth_percent: -0.8
+        real_annual_labor_productivity_growth_percent: 2.1
+        top_manager_experience_years: 15.6
+      MEX:
+        name: Mexico
+        survey_year: 2010
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 19
+        loans_requiring_collateral_percent: 67
+        collateral_value_percent_of_loan: 208.9
+        real_annual_sales_growth_percent: 0.7
+        real_annual_labor_productivity_growth_percent: 0.6
+        top_manager_experience_years: 19.4
+      MKD:
+        name: North Macedonia
+        survey_year: 2019
+        income_level: Upper middle income
+        region: Europe & Central Asia
+        establishment_age_years: 19.9
+        loans_requiring_collateral_percent: 76.4
+        collateral_value_percent_of_loan: 174.5
+        real_annual_sales_growth_percent: 3.5
+        real_annual_labor_productivity_growth_percent: -0.4
+        top_manager_experience_years: 20.3
+      MLI:
+        name: Mali
+        survey_year: 2016
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 20.7
+        loans_requiring_collateral_percent: 86.2
+        collateral_value_percent_of_loan: 233.2
+        real_annual_sales_growth_percent: 10.1
+        real_annual_labor_productivity_growth_percent: 7.1
+        top_manager_experience_years: 20.9
+      MLT:
+        name: Malta
+        survey_year: 2019
+        income_level: High income
+        region: Middle East, North Africa, Afghanistan & Pakistan
+        establishment_age_years: 30.7
+        loans_requiring_collateral_percent: 81.4
+        collateral_value_percent_of_loan: 188.6
+        real_annual_sales_growth_percent: 3.1
+        real_annual_labor_productivity_growth_percent: -0.2
+        top_manager_experience_years: 28.4
+      MMR:
+        name: Myanmar
+        survey_year: 2016
+        income_level: Lower middle income
+        region: East Asia & Pacific
+        establishment_age_years: 14.5
+        loans_requiring_collateral_percent: 98.4
+        collateral_value_percent_of_loan: 412.9
+        real_annual_sales_growth_percent: 2.4
+        real_annual_labor_productivity_growth_percent: 0.6
+        top_manager_experience_years: 13.5
+      MNE:
+        name: Montenegro
+        survey_year: 2019
+        income_level: Upper middle income
+        region: Europe & Central Asia
+        establishment_age_years: 17.5
+        loans_requiring_collateral_percent: 61.6
+        collateral_value_percent_of_loan: 208.8
+        real_annual_sales_growth_percent: -0.8
+        real_annual_labor_productivity_growth_percent: -5
+        top_manager_experience_years: 18.1
+      MNG:
+        name: Mongolia
+        survey_year: 2019
+        income_level: Upper middle income
+        region: East Asia & Pacific
+        establishment_age_years: 15.5
+        loans_requiring_collateral_percent: 99.7
+        collateral_value_percent_of_loan: 238.6
+        real_annual_sales_growth_percent: 4.3
+        real_annual_labor_productivity_growth_percent: -2.3
+        top_manager_experience_years: 14.4
+      MOZ:
+        name: Mozambique
+        survey_year: 2018
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 15
+        loans_requiring_collateral_percent: 90
+        collateral_value_percent_of_loan: 271.7
+        real_annual_sales_growth_percent: 1.8
+        real_annual_labor_productivity_growth_percent: -2.6
+        top_manager_experience_years: 15.6
+      MRT:
+        name: Mauritania
+        survey_year: 2014
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 15.4
+        loans_requiring_collateral_percent: 75.7
+        collateral_value_percent_of_loan: 110.8
+        real_annual_sales_growth_percent: 4.7
+        real_annual_labor_productivity_growth_percent: -2.6
+        top_manager_experience_years: 20.2
+      MUS:
+        name: Mauritius
+        survey_year: 2009
+        income_level: Upper middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 15.6
+        loans_requiring_collateral_percent: 81.1
+        collateral_value_percent_of_loan: 59.9
+        real_annual_sales_growth_percent: 6.7
+        real_annual_labor_productivity_growth_percent: -0.7
+        top_manager_experience_years: 17.4
+      MWI:
+        name: Malawi
+        survey_year: 2014
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 18.3
+        loans_requiring_collateral_percent: 92.6
+        collateral_value_percent_of_loan: 293.6
+        real_annual_sales_growth_percent: -9.6
+        real_annual_labor_productivity_growth_percent: -12.1
+        top_manager_experience_years: 15.4
+      MYS:
+        name: Malaysia
+        survey_year: 2015
+        income_level: Upper middle income
+        region: East Asia & Pacific
+        establishment_age_years: 16.1
+        loans_requiring_collateral_percent: 64.7
+        collateral_value_percent_of_loan: 182.6
+        real_annual_sales_growth_percent: 0.3
+        real_annual_labor_productivity_growth_percent: -0.3
+        top_manager_experience_years: 12
+      NAM:
+        name: Namibia
+        survey_year: 2014
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 9.7
+        loans_requiring_collateral_percent: 82.6
+        collateral_value_percent_of_loan: 91.9
+        real_annual_sales_growth_percent: 3.7
+        real_annual_labor_productivity_growth_percent: -2.4
+        top_manager_experience_years: 12
+      NER:
+        name: Niger
+        survey_year: 2017
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 15
+        loans_requiring_collateral_percent: 87.7
+        collateral_value_percent_of_loan: 159.5
+        real_annual_sales_growth_percent: 2.5
+        real_annual_labor_productivity_growth_percent: -5.3
+        top_manager_experience_years: 17.8
+      NGA:
+        name: Nigeria
+        survey_year: 2014
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 15.9
+        loans_requiring_collateral_percent: 88.8
+        collateral_value_percent_of_loan: 227.7
+        real_annual_sales_growth_percent: -8.1
+        real_annual_labor_productivity_growth_percent: -14.2
+        top_manager_experience_years: 12.5
+      NIC:
+        name: Nicaragua
+        survey_year: 2016
+        income_level: Lower middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 22.5
+        loans_requiring_collateral_percent: 90.6
+        collateral_value_percent_of_loan: 192.6
+        real_annual_sales_growth_percent: 2.9
+        real_annual_labor_productivity_growth_percent: -2.6
+        top_manager_experience_years: 21.6
+      NPL:
+        name: Nepal
+        survey_year: 2013
+        income_level: Lower middle income
+        region: South Asia
+        establishment_age_years: 14.2
+        loans_requiring_collateral_percent: 89.9
+        collateral_value_percent_of_loan: 364.2
+        real_annual_sales_growth_percent: 0.9
+        real_annual_labor_productivity_growth_percent: -4.4
+        top_manager_experience_years: 16.1
+      PAK:
+        name: Pakistan
+        survey_year: 2013
+        income_level: Lower middle income
+        region: Middle East, North Africa, Afghanistan & Pakistan
+        establishment_age_years: 21.8
+        loans_requiring_collateral_percent: 64
+        collateral_value_percent_of_loan: 153.4
+        real_annual_sales_growth_percent: -1
+        real_annual_labor_productivity_growth_percent: -5
+        top_manager_experience_years: 13.2
+      PAN:
+        name: Panama
+        survey_year: 2010
+        income_level: High income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 16.4
+        loans_requiring_collateral_percent: 67.9
+        collateral_value_percent_of_loan: 240.2
+        real_annual_sales_growth_percent: 6.4
+        real_annual_labor_productivity_growth_percent: -2.9
+        top_manager_experience_years: 11.2
+      PER:
+        name: Peru
+        survey_year: 2017
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 22.9
+        loans_requiring_collateral_percent: 47.9
+        collateral_value_percent_of_loan: 167.6
+        real_annual_sales_growth_percent: -2.2
+        real_annual_labor_productivity_growth_percent: -5.2
+        top_manager_experience_years: 24.2
+      PHL:
+        name: Philippines
+        survey_year: 2015
+        income_level: Upper middle income
+        region: East Asia & Pacific
+        establishment_age_years: 19.4
+        loans_requiring_collateral_percent: 51
+        collateral_value_percent_of_loan: 156.7
+        real_annual_sales_growth_percent: 5.4
+        real_annual_labor_productivity_growth_percent: 2.2
+        top_manager_experience_years: 16.8
+      PNG:
+        name: Papua New Guinea
+        survey_year: 2015
+        income_level: Lower middle income
+        region: East Asia & Pacific
+        establishment_age_years: 27.7
+        loans_requiring_collateral_percent: 75.1
+        collateral_value_percent_of_loan: 223.5
+        real_annual_sales_growth_percent: -8
+        real_annual_labor_productivity_growth_percent: -10.6
+        top_manager_experience_years: 22.5
+      POL:
+        name: Poland
+        survey_year: 2019
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 18.1
+        loans_requiring_collateral_percent: 48.1
+        collateral_value_percent_of_loan: 114.6
+        real_annual_sales_growth_percent: 3.1
+        real_annual_labor_productivity_growth_percent: 1.2
+        top_manager_experience_years: 17.6
+      PRT:
+        name: Portugal
+        survey_year: 2019
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 23.4
+        loans_requiring_collateral_percent: 57.8
+        collateral_value_percent_of_loan: 88.1
+        real_annual_sales_growth_percent: 3.3
+        real_annual_labor_productivity_growth_percent: 1.3
+        top_manager_experience_years: 28.9
+      PRY:
+        name: Paraguay
+        survey_year: 2017
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 23.4
+        loans_requiring_collateral_percent: 27.8
+        collateral_value_percent_of_loan: 190.1
+        real_annual_sales_growth_percent: 4.6
+        real_annual_labor_productivity_growth_percent: 0.6
+        top_manager_experience_years: 22.6
+      PSE:
+        name: West Bank and Gaza
+        survey_year: 2019
+        income_level: Lower middle income
+        region: Middle East, North Africa, Afghanistan & Pakistan
+        establishment_age_years: 21.2
+        loans_requiring_collateral_percent: 80.8
+        collateral_value_percent_of_loan: 182.8
+        real_annual_sales_growth_percent: -0.1
+        real_annual_labor_productivity_growth_percent: 3.5
+        top_manager_experience_years: 23.5
+      ROU:
+        name: Romania
+        survey_year: 2019
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 18.1
+        loans_requiring_collateral_percent: 56.7
+        collateral_value_percent_of_loan: 239.8
+        real_annual_sales_growth_percent: -0.7
+        real_annual_labor_productivity_growth_percent: -0.3
+        top_manager_experience_years: null
+      RUS:
+        name: Russian Federation
+        survey_year: 2019
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 11.4
+        loans_requiring_collateral_percent: 66.2
+        collateral_value_percent_of_loan: 176.8
+        real_annual_sales_growth_percent: -2
+        real_annual_labor_productivity_growth_percent: -5
+        top_manager_experience_years: 13.6
+      RWA:
+        name: Rwanda
+        survey_year: 2019
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 11.1
+        loans_requiring_collateral_percent: 99.4
+        collateral_value_percent_of_loan: 231.3
+        real_annual_sales_growth_percent: 11.8
+        real_annual_labor_productivity_growth_percent: 2.7
+        top_manager_experience_years: 11.6
+      SDN:
+        name: Sudan
+        survey_year: 2014
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 13.3
+        loans_requiring_collateral_percent: 100
+        collateral_value_percent_of_loan: 183.5
+        real_annual_sales_growth_percent: 13.2
+        real_annual_labor_productivity_growth_percent: 9.8
+        top_manager_experience_years: 17.9
+      SEN:
+        name: Senegal
+        survey_year: 2014
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 16.6
+        loans_requiring_collateral_percent: 78.9
+        collateral_value_percent_of_loan: 271.7
+        real_annual_sales_growth_percent: 4.9
+        real_annual_labor_productivity_growth_percent: -3.1
+        top_manager_experience_years: 19
+      SLB:
+        name: Solomon Islands
+        survey_year: 2015
+        income_level: Lower middle income
+        region: East Asia & Pacific
+        establishment_age_years: 16.8
+        loans_requiring_collateral_percent: 93.9
+        collateral_value_percent_of_loan: 247.2
+        real_annual_sales_growth_percent: 14.7
+        real_annual_labor_productivity_growth_percent: 2.7
+        top_manager_experience_years: 11.5
+      SLE:
+        name: Sierra Leone
+        survey_year: 2017
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 17.2
+        loans_requiring_collateral_percent: 87.3
+        collateral_value_percent_of_loan: 355.8
+        real_annual_sales_growth_percent: 19.1
+        real_annual_labor_productivity_growth_percent: 1.3
+        top_manager_experience_years: 12.2
+      SLV:
+        name: El Salvador
+        survey_year: 2016
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 21.7
+        loans_requiring_collateral_percent: 75.7
+        collateral_value_percent_of_loan: 205.1
+        real_annual_sales_growth_percent: 2.7
+        real_annual_labor_productivity_growth_percent: 1.5
+        top_manager_experience_years: 21.2
+      SRB:
+        name: Serbia
+        survey_year: 2019
+        income_level: Upper middle income
+        region: Europe & Central Asia
+        establishment_age_years: 19.9
+        loans_requiring_collateral_percent: 41
+        collateral_value_percent_of_loan: 101.1
+        real_annual_sales_growth_percent: 6.4
+        real_annual_labor_productivity_growth_percent: 4.7
+        top_manager_experience_years: 22
+      SSD:
+        name: South Sudan
+        survey_year: 2014
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 4.2
+        loans_requiring_collateral_percent: 80.4
+        collateral_value_percent_of_loan: 183.8
+        real_annual_sales_growth_percent: -56.1
+        real_annual_labor_productivity_growth_percent: -62.1
+        top_manager_experience_years: 8
+      SUR:
+        name: Suriname
+        survey_year: 2018
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 25.9
+        loans_requiring_collateral_percent: 88.4
+        collateral_value_percent_of_loan: 241.5
+        real_annual_sales_growth_percent: -14.1
+        real_annual_labor_productivity_growth_percent: -14.1
+        top_manager_experience_years: 23.9
+      SVK:
+        name: Slovak Republic
+        survey_year: 2019
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 16.9
+        loans_requiring_collateral_percent: 68.9
+        collateral_value_percent_of_loan: 167.1
+        real_annual_sales_growth_percent: 3.4
+        real_annual_labor_productivity_growth_percent: -1.6
+        top_manager_experience_years: 20.1
+      SVN:
+        name: Slovenia
+        survey_year: 2019
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 22.9
+        loans_requiring_collateral_percent: 68
+        collateral_value_percent_of_loan: 154.9
+        real_annual_sales_growth_percent: 7.3
+        real_annual_labor_productivity_growth_percent: 1.3
+        top_manager_experience_years: 21.8
+      SWE:
+        name: Sweden
+        survey_year: 2014
+        income_level: High income
+        region: Europe & Central Asia
+        establishment_age_years: 28.3
+        loans_requiring_collateral_percent: 51.5
+        collateral_value_percent_of_loan: 83.9
+        real_annual_sales_growth_percent: 1.4
+        real_annual_labor_productivity_growth_percent: 0.7
+        top_manager_experience_years: 23.7
+      SWZ:
+        name: Eswatini
+        survey_year: 2016
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 18.4
+        loans_requiring_collateral_percent: 64.3
+        collateral_value_percent_of_loan: 285.5
+        real_annual_sales_growth_percent: 0.7
+        real_annual_labor_productivity_growth_percent: -5.6
+        top_manager_experience_years: 12.7
+      TCD:
+        name: Chad
+        survey_year: 2018
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 13
+        loans_requiring_collateral_percent: 77.8
+        collateral_value_percent_of_loan: 165.2
+        real_annual_sales_growth_percent: -3.3
+        real_annual_labor_productivity_growth_percent: -3.2
+        top_manager_experience_years: 14.3
+      TGO:
+        name: Togo
+        survey_year: 2016
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 14.3
+        loans_requiring_collateral_percent: 90.9
+        collateral_value_percent_of_loan: 226.1
+        real_annual_sales_growth_percent: 12
+        real_annual_labor_productivity_growth_percent: 4.2
+        top_manager_experience_years: 17.4
+      THA:
+        name: Thailand
+        survey_year: 2016
+        income_level: Upper middle income
+        region: East Asia & Pacific
+        establishment_age_years: 19.8
+        loans_requiring_collateral_percent: 93.4
+        collateral_value_percent_of_loan: 320.1
+        real_annual_sales_growth_percent: -1.8
+        real_annual_labor_productivity_growth_percent: -3
+        top_manager_experience_years: 22.3
+      TJK:
+        name: Tajikistan
+        survey_year: 2019
+        income_level: Lower middle income
+        region: Europe & Central Asia
+        establishment_age_years: 11.8
+        loans_requiring_collateral_percent: 64.2
+        collateral_value_percent_of_loan: 125.5
+        real_annual_sales_growth_percent: 5.7
+        real_annual_labor_productivity_growth_percent: 2
+        top_manager_experience_years: 13.7
+      TLS:
+        name: Timor-Leste
+        survey_year: 2015
+        income_level: Lower middle income
+        region: East Asia & Pacific
+        establishment_age_years: 10.7
+        loans_requiring_collateral_percent: 74.8
+        collateral_value_percent_of_loan: 235.1
+        real_annual_sales_growth_percent: 3.2
+        real_annual_labor_productivity_growth_percent: -3.8
+        top_manager_experience_years: 13.3
+      TON:
+        name: Tonga
+        survey_year: 2009
+        income_level: Upper middle income
+        region: East Asia & Pacific
+        establishment_age_years: 12
+        loans_requiring_collateral_percent: 95.4
+        collateral_value_percent_of_loan: 195.4
+        real_annual_sales_growth_percent: -6.2
+        real_annual_labor_productivity_growth_percent: -6
+        top_manager_experience_years: 13.5
+      TTO:
+        name: Trinidad and Tobago
+        survey_year: 2010
+        income_level: High income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 20.7
+        loans_requiring_collateral_percent: 87.9
+        collateral_value_percent_of_loan: 139.5
+        real_annual_sales_growth_percent: 9.3
+        real_annual_labor_productivity_growth_percent: 1.3
+        top_manager_experience_years: 19.9
+      TUN:
+        name: Tunisia
+        survey_year: 2020
+        income_level: Lower middle income
+        region: Middle East, North Africa, Afghanistan & Pakistan
+        establishment_age_years: 21.6
+        loans_requiring_collateral_percent: 96
+        collateral_value_percent_of_loan: 319
+        real_annual_sales_growth_percent: 0.4
+        real_annual_labor_productivity_growth_percent: -5.1
+        top_manager_experience_years: null
+      TUR:
+        name: Turkey
+        survey_year: 2019
+        income_level: Upper middle income
+        region: Europe & Central Asia
+        establishment_age_years: 18.2
+        loans_requiring_collateral_percent: 37.9
+        collateral_value_percent_of_loan: 174.5
+        real_annual_sales_growth_percent: -0.3
+        real_annual_labor_productivity_growth_percent: -0.7
+        top_manager_experience_years: 24.9
+      TZA:
+        name: Tanzania
+        survey_year: 2013
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 13.7
+        loans_requiring_collateral_percent: 96.2
+        collateral_value_percent_of_loan: 240.2
+        real_annual_sales_growth_percent: -22.1
+        real_annual_labor_productivity_growth_percent: -27.6
+        top_manager_experience_years: 12.6
+      UGA:
+        name: Uganda
+        survey_year: 2013
+        income_level: Low income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 10.3
+        loans_requiring_collateral_percent: 86.7
+        collateral_value_percent_of_loan: 161.8
+        real_annual_sales_growth_percent: -32.7
+        real_annual_labor_productivity_growth_percent: -32.5
+        top_manager_experience_years: 11
+      UKR:
+        name: Ukraine
+        survey_year: 2019
+        income_level: Upper middle income
+        region: Europe & Central Asia
+        establishment_age_years: 18.1
+        loans_requiring_collateral_percent: 68.7
+        collateral_value_percent_of_loan: 173.6
+        real_annual_sales_growth_percent: -7.7
+        real_annual_labor_productivity_growth_percent: -7.7
+        top_manager_experience_years: 18.1
+      URY:
+        name: Uruguay
+        survey_year: 2017
+        income_level: High income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 25.9
+        loans_requiring_collateral_percent: 40.4
+        collateral_value_percent_of_loan: 241.9
+        real_annual_sales_growth_percent: 8.4
+        real_annual_labor_productivity_growth_percent: 7.4
+        top_manager_experience_years: 25.8
+      UZB:
+        name: Uzbekistan
+        survey_year: 2019
+        income_level: Lower middle income
+        region: Europe & Central Asia
+        establishment_age_years: 11.3
+        loans_requiring_collateral_percent: 96.4
+        collateral_value_percent_of_loan: 166.1
+        real_annual_sales_growth_percent: -2.5
+        real_annual_labor_productivity_growth_percent: -6.7
+        top_manager_experience_years: 14.2
+      VCT:
+        name: St. Vincent and the Grenadines
+        survey_year: 2010
+        income_level: Upper middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 19.4
+        loans_requiring_collateral_percent: 66.3
+        collateral_value_percent_of_loan: 211.1
+        real_annual_sales_growth_percent: 4.7
+        real_annual_labor_productivity_growth_percent: 0.9
+        top_manager_experience_years: 19.4
+      VEN:
+        name: Venezuela, RB
+        survey_year: 2010
+        income_level: Lower middle income
+        region: 'Latin America & Caribbean '
+        establishment_age_years: 17.8
+        loans_requiring_collateral_percent: 81.8
+        collateral_value_percent_of_loan: 265.9
+        real_annual_sales_growth_percent: -0.2
+        real_annual_labor_productivity_growth_percent: -6.6
+        top_manager_experience_years: 18.1
+      VNM:
+        name: Vietnam
+        survey_year: 2015
+        income_level: Upper middle income
+        region: East Asia & Pacific
+        establishment_age_years: 11.2
+        loans_requiring_collateral_percent: 91
+        collateral_value_percent_of_loan: 216
+        real_annual_sales_growth_percent: -0.8
+        real_annual_labor_productivity_growth_percent: -5.8
+        top_manager_experience_years: 16.6
+      VUT:
+        name: Vanuatu
+        survey_year: 2009
+        income_level: Lower middle income
+        region: East Asia & Pacific
+        establishment_age_years: 15.6
+        loans_requiring_collateral_percent: 91.2
+        collateral_value_percent_of_loan: 191.3
+        real_annual_sales_growth_percent: 11.8
+        real_annual_labor_productivity_growth_percent: -2.1
+        top_manager_experience_years: 18.5
+      WSM:
+        name: Samoa
+        survey_year: 2009
+        income_level: Upper middle income
+        region: East Asia & Pacific
+        establishment_age_years: 19.9
+        loans_requiring_collateral_percent: 82
+        collateral_value_percent_of_loan: 206.2
+        real_annual_sales_growth_percent: -1.6
+        real_annual_labor_productivity_growth_percent: -8.1
+        top_manager_experience_years: 21.4
+      XKX:
+        name: Kosovo
+        survey_year: 2019
+        income_level: Upper middle income
+        region: Europe & Central Asia
+        establishment_age_years: 16.3
+        loans_requiring_collateral_percent: 90.1
+        collateral_value_percent_of_loan: 269.1
+        real_annual_sales_growth_percent: 10
+        real_annual_labor_productivity_growth_percent: 9.9
+        top_manager_experience_years: 16.9
+      YEM:
+        name: Yemen, Rep.
+        survey_year: 2013
+        income_level: Low income
+        region: Middle East, North Africa, Afghanistan & Pakistan
+        establishment_age_years: 24
+        loans_requiring_collateral_percent: 87.7
+        collateral_value_percent_of_loan: 281.5
+        real_annual_sales_growth_percent: -19.9
+        real_annual_labor_productivity_growth_percent: -14.4
+        top_manager_experience_years: 20.5
+      ZAF:
+        name: South Africa
+        survey_year: 2007
+        income_level: Upper middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 15.7
+        loans_requiring_collateral_percent: 71.2
+        collateral_value_percent_of_loan: 103.6
+        real_annual_sales_growth_percent: 6
+        real_annual_labor_productivity_growth_percent: -2.2
+        top_manager_experience_years: 13.8
+      ZMB:
+        name: Zambia
+        survey_year: 2019
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 16.4
+        loans_requiring_collateral_percent: 93.1
+        collateral_value_percent_of_loan: 198.5
+        real_annual_sales_growth_percent: -3.4
+        real_annual_labor_productivity_growth_percent: -7
+        top_manager_experience_years: 16.7
+      ZWE:
+        name: Zimbabwe
+        survey_year: 2016
+        income_level: Lower middle income
+        region: 'Sub-Saharan Africa '
+        establishment_age_years: 22.2
+        loans_requiring_collateral_percent: 82
+        collateral_value_percent_of_loan: 223.4
+        real_annual_sales_growth_percent: -5.2
+        real_annual_labor_productivity_growth_percent: -1.5
+        top_manager_experience_years: 16.2
+  vectors:
+  - input:
+      key: IND
+      column: establishment_age_years
+    expected: 16.6
+    origin: source
+  - input:
+      key: IND
+      column: survey_year
+    expected: 2014
+    origin: source
+  - input:
+      key: BEL
+      column: establishment_age_years
+    expected: 33.2
+    origin: source
+    note: largest establishment_age_years
+  - input: WLD
+    expected: false
+    origin: derived
+    note: aggregates are excluded
+evidence:
+- publisher: World Bank
+  title: World Bank API, source 13, IC.FRM.FCHAR.CAR1, 2006:2025 (JSON)
+  url: https://api.worldbank.org/v2/country/all/indicator/IC.FRM.FCHAR.CAR1?source=13&date=2006:2025&format=json&per_page=20000
+  accessed_at: '2026-11-26'
+  locator: rows[countryiso3code=IND, date=2014].value
+  value: 16.6
+  unit: decimal
+  snippet: '"countryiso3code":"IND"'
+  source_license: CC-BY-4.0
+  content_sha256: 6934d1d56d2952408f6323c9d0ef09a4e7a655f5b1af15422023f1cae68c9263
+  role: primary
+- publisher: World Bank
+  title: World Bank API, source 13, IC.FRM.FIN.FIN11, 2006:2025 (JSON)
+  url: https://api.worldbank.org/v2/country/all/indicator/IC.FRM.FIN.FIN11?source=13&date=2006:2025&format=json&per_page=20000
+  accessed_at: '2026-11-26'
+  locator: rows[countryiso3code=IND, date=2014].value
+  value: 84.7
+  unit: percent
+  snippet: '"countryiso3code":"IND"'
+  source_license: CC-BY-4.0
+  content_sha256: 979cead01669ad19be502d7f04a2a3cc108fbf6a5b5ebc59cb9e6ead3a2f689d
+  role: primary
+- publisher: World Bank
+  title: World Bank API, source 13, IC.FRM.FIN.FIN10, 2006:2025 (JSON)
+  url: https://api.worldbank.org/v2/country/all/indicator/IC.FRM.FIN.FIN10?source=13&date=2006:2025&format=json&per_page=20000
+  accessed_at: '2026-11-26'
+  locator: rows[countryiso3code=IND, date=2014].value
+  value: 255.1
+  unit: percent
+  snippet: '"countryiso3code":"IND"'
+  source_license: CC-BY-4.0
+  content_sha256: aba04e4ad8a173fe797439238cb8d28d2b94d20cfa402f2725597a7df0819a2c
+  role: primary
+- publisher: World Bank
+  title: World Bank API, source 13, IC.FRM.SLS.GROW.PEFT1, 2006:2025 (JSON)
+  url: https://api.worldbank.org/v2/country/all/indicator/IC.FRM.SLS.GROW.PEFT1?source=13&date=2006:2025&format=json&per_page=20000
+  accessed_at: '2026-11-26'
+  locator: rows[countryiso3code=IND, date=2014].value
+  value: 2
+  unit: percent
+  snippet: '"countryiso3code":"IND"'
+  source_license: CC-BY-4.0
+  content_sha256: cac9f8d6ad8e4fc633c3bcfa9c643881d6ca9dca713ece2d479ff9d911b33a43
+  role: primary
+- publisher: World Bank
+  title: World Bank API, source 13, IC.FRM.PROD.GROW.PEFT3, 2006:2025 (JSON)
+  url: https://api.worldbank.org/v2/country/all/indicator/IC.FRM.PROD.GROW.PEFT3?source=13&date=2006:2025&format=json&per_page=20000
+  accessed_at: '2026-11-26'
+  locator: rows[countryiso3code=IND, date=2014].value
+  value: -3.1
+  unit: percent
+  snippet: '"countryiso3code":"IND"'
+  source_license: CC-BY-4.0
+  content_sha256: 1afd87b6fa401d7e84e54d1425db3ee5180de5dcb9086962e82fc7542856df6d
+  role: primary
+- publisher: World Bank
+  title: World Bank API, source 13, IC.FRM.WRKF.WK8, 2006:2025 (JSON)
+  url: https://api.worldbank.org/v2/country/all/indicator/IC.FRM.WRKF.WK8?source=13&date=2006:2025&format=json&per_page=20000
+  accessed_at: '2026-11-26'
+  locator: rows[countryiso3code=IND, date=2014].value
+  value: 11
+  unit: decimal
+  snippet: '"countryiso3code":"IND"'
+  source_license: CC-BY-4.0
+  content_sha256: 4259af9933ce79801e27af94c84c13f30c0b502db3d33d55101f1fe7cfad05d9
+  role: primary
+- publisher: World Bank
+  title: World Bank API, source 13, IC.FRM.FCHAR.CAR1, 2006:2025 (JSON)
+  url: https://api.worldbank.org/v2/country/all/indicator/IC.FRM.FCHAR.CAR1?source=13&date=2006:2025&format=json&per_page=20000
+  accessed_at: '2026-11-26'
+  locator: lastupdated
+  value: '2022-03-25'
+  unit: date
+  snippet: '"lastupdated":'
+  source_license: CC-BY-4.0
+  content_sha256: 6934d1d56d2952408f6323c9d0ef09a4e7a655f5b1af15422023f1cae68c9263
+  role: primary
+- publisher: World Bank
+  title: World Bank country API (region classification used to exclude aggregates)
+  url: https://api.worldbank.org/v2/country?format=json&per_page=400
+  accessed_at: '2026-11-26'
+  locator: country[id=IND].region.value
+  value: South Asia
+  unit: text
+  snippet: '"id":"IND"'
+  source_license: CC-BY-4.0
+  content_sha256: c9acf3932785191a649cbc04c3056af4cf64a236e5c3b49d49be25ddb0440bce
+  role: primary
+- publisher: World Bank
+  title: World Bank Data Catalog public licenses
+  url: https://datacatalog.worldbank.org/public-licenses
+  accessed_at: '2026-11-26'
+  locator: Data Access And Licensing
+  value: Creative Commons Attribution 4.0 International license
+  unit: text
+  snippet: The World Bank Group makes data publicly available according to open data standards
+  source_license: CC-BY-4.0
+  content_sha256: f7106582fe705d8ea31c2bd7ef726636942b870104a88d882563b16bcece3910
+  role: supporting
+assumed:
+- parameter: rows[*].survey_year
+  value: latest year in 2006:2025 with a published IC.FRM.FCHAR.CAR1 value
+  method: derived
+  rationale: Each economy's row is anchored on its most recent survey year for the first indicator; every other
+    column is taken from the same year and is null when that survey does not publish it, so all values in a row
+    come from one survey.
+- parameter: rows
+  value: economies only
+  method: derived
+  rationale: Rows whose region is 'Aggregates' in the World Bank country API are dropped.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 146
+  tolerance: 0
+- statistic: max[establishment_age_years]
+  expected: 33.2
+  tolerance: 0
+- statistic: max[survey_year]
+  expected: 2020
+  tolerance: 0
+notes: 'Firm-level survey indicators from the World Bank Enterprise Surveys as served by the World Bank API source
+  13 (Enterprise Surveys; data last updated 2022-03-25), one row per economy keyed by ISO 3166-1 alpha-3 code with
+  the year of its latest survey for IC.FRM.FCHAR.CAR1, its World Bank income level and region. Columns: average
+  age of the establishment in years, proportion of loans requiring collateral, value of collateral needed for a
+  loan as a percentage of the loan amount, real annual sales growth, real annual labour productivity growth (both
+  in percent), and the top manager''s years of experience in the firm''s sector. This World Bank API source was
+  last updated in 2022, so its latest surveys are older than those of the finance, trade and ownership table, and
+  the two tables'' survey years differ for many economies. Indicator codes: IC.FRM.FCHAR.CAR1, IC.FRM.FIN.FIN11,
+  IC.FRM.FIN.FIN10, IC.FRM.SLS.GROW.PEFT1, IC.FRM.PROD.GROW.PEFT3, IC.FRM.WRKF.WK8. 43 of 146 economies have a survey
+  from 2019 or later; older rows describe their survey year, not today. The values describe the firms each survey
+  covers, not all businesses in the economy. The World Bank licenses its datasets under CC BY 4.0.'

@@ -1,0 +1,244 @@
+id: gb-eis-seis-relief-rates-and-limits
+title: 'UK Enterprise Investment Scheme and Seed EIS: income tax relief rates, investor limits and company limits
+  (ITA 2007) from 6 April 2026'
+kind: rule
+domain: tax
+region: GB
+status: license-review
+tier: B
+valid_from: '2026-04-06'
+valid_to: null
+tags:
+- tax
+- private-equity
+- structuring
+- eis
+- seis
+- venture-capital
+- investor-relief
+- income-tax
+use_cases:
+- deal-sourcing-demo
+- tax-demo
+- fund-administration-demo
+- pe-portfolio-demo
+spec:
+  implementation: almanac.rules.lookup_table
+  parameters:
+    currency: GBP
+    rows:
+      eis_income_tax_relief_rate:
+        value: 30
+        unit: percent
+        section: ITA 2007 s. 158(2A)
+      eis_investor_annual_limit:
+        value: 1000000
+        unit: GBP
+        section: ITA 2007 s. 158(2ZA)(a)
+      eis_investor_annual_limit_with_kic_shares:
+        value: 2000000
+        unit: GBP
+        section: ITA 2007 s. 158(2ZA)(b)
+      seis_income_tax_relief_rate:
+        value: 50
+        unit: percent
+        section: ITA 2007 s. 257AB(3)
+      seis_investor_annual_limit:
+        value: 200000
+        unit: GBP
+        section: ITA 2007 s. 257AB(2)(b)
+      eis_company_annual_limit:
+        value: 10000000
+        unit: GBP
+        section: ITA 2007 s. 173A(1)(b)(i)
+      eis_company_annual_limit_kic:
+        value: 20000000
+        unit: GBP
+        section: ITA 2007 s. 173A(1)(a)(i)
+      eis_company_lifetime_limit:
+        value: 24000000
+        unit: GBP
+        section: ITA 2007 s. 173AA(1)(b)(i)
+      eis_company_lifetime_limit_kic:
+        value: 40000000
+        unit: GBP
+        section: ITA 2007 s. 173AA(1)(a)(i)
+      eis_gross_assets_before_issue:
+        value: 30000000
+        unit: GBP
+        section: ITA 2007 s. 186(A1)(a)
+      eis_gross_assets_after_issue:
+        value: 35000000
+        unit: GBP
+        section: ITA 2007 s. 186(A1)(b)
+      seis_gross_assets_before_issue:
+        value: 350000
+        unit: GBP
+        section: ITA 2007 s. 257DI(1)
+    specified_northern_ireland_company: lower company limits apply to specified Northern Ireland companies; not
+      tabulated
+  vectors:
+  - input:
+      key: eis_income_tax_relief_rate
+      column: value
+    expected: 30
+    origin: source
+  - input:
+      key: seis_income_tax_relief_rate
+      column: value
+    expected: 50
+    origin: source
+  - input:
+      key: eis_company_annual_limit
+      column: value
+    expected: 10000000
+    origin: source
+  - input:
+      key: eis_company_lifetime_limit_kic
+      column: value
+    expected: 40000000
+    origin: source
+  - input:
+      key: eis_gross_assets_after_issue
+      column: value
+    expected: 35000000
+    origin: source
+  - input:
+      key: seis_investor_annual_limit
+      column: value
+    expected: 200000
+    origin: source
+  - input: vct_income_tax_relief_rate
+    expected: false
+    origin: derived
+    note: venture capital trusts are not covered
+evidence:
+- publisher: The National Archives (legislation.gov.uk)
+  title: Income Tax Act 2007, section 158, form and amount of EIS relief (legislation.gov.uk HTML, version of 2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2007/3/section/158/2026-11-26/data.html
+  accessed_at: '2026-11-26'
+  locator: section 158(2A), the EIS rate
+  value: 30%
+  unit: percent
+  snippet: 30%
+  source_license: unstated
+  content_sha256: 01dce92e421075bcf89e1969996e392d816511bc17c9b0992c39e3eaa5f5c214
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Income Tax Act 2007, section 158, form and amount of EIS relief (legislation.gov.uk HTML, version of 2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2007/3/section/158/2026-11-26/data.html
+  accessed_at: '2026-11-26'
+  locator: section 158(2ZA)(a)
+  value: £1 million
+  unit: currency:GBP
+  snippet: 'if the qualifying shares do not include any KIC shares: £1 million'
+  source_license: unstated
+  content_sha256: 01dce92e421075bcf89e1969996e392d816511bc17c9b0992c39e3eaa5f5c214
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Income Tax Act 2007, section 257AB, form and amount of SEIS relief (legislation.gov.uk HTML, version of
+    2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2007/3/section/257AB/2026-11-26/data.html
+  accessed_at: '2026-11-26'
+  locator: section 257AB(3)
+  value: 50%
+  unit: percent
+  snippet: means 50%.
+  source_license: unstated
+  content_sha256: 3fcd161d54bd36102eee02fed8973f8e8600908e5d42bf48ad61fa3c9769c812
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Income Tax Act 2007, section 257AB, form and amount of SEIS relief (legislation.gov.uk HTML, version of
+    2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2007/3/section/257AB/2026-11-26/data.html
+  accessed_at: '2026-11-26'
+  locator: section 257AB(2)(b)
+  value: £200,000
+  unit: currency:GBP
+  snippet: in respect of which the individual is eligible for and claims SEIS relief, or
+  source_license: unstated
+  content_sha256: 3fcd161d54bd36102eee02fed8973f8e8600908e5d42bf48ad61fa3c9769c812
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Income Tax Act 2007, section 173A, maximum amount raised annually (legislation.gov.uk HTML, version of
+    2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2007/3/section/173A/2026-11-26/data.html
+  accessed_at: '2026-11-26'
+  locator: section 173A(1)
+  value: £10 million
+  unit: currency:GBP
+  snippet: £20 million;
+  source_license: unstated
+  content_sha256: 4326b207494524932c6a9eda1d8e7e3386cccd7cbcde1d029bdbae775ebecb8e
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Income Tax Act 2007, section 173A, maximum amount raised annually (legislation.gov.uk HTML, version of
+    2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2007/3/section/173A/2026-11-26/data.html
+  accessed_at: '2026-11-26'
+  locator: commentary to section 173A(1)
+  value: 6.4.2026
+  unit: date
+  snippet: substituted (6.4.2026) by
+  source_license: unstated
+  content_sha256: 4326b207494524932c6a9eda1d8e7e3386cccd7cbcde1d029bdbae775ebecb8e
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Income Tax Act 2007, section 173AA, maximum risk finance investments (legislation.gov.uk HTML, version
+    of 2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2007/3/section/173AA/2026-11-26/data.html
+  accessed_at: '2026-11-26'
+  locator: section 173AA(1)
+  value: £24 million
+  unit: currency:GBP
+  snippet: £40 million;
+  source_license: unstated
+  content_sha256: e6a3e4f85e9f5d4c8faa065c553f782f41abc996b9dfa5256d8d1ac674786cf8
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Income Tax Act 2007, section 186, gross assets requirement (legislation.gov.uk HTML, version of 2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2007/3/section/186/2026-11-26/data.html
+  accessed_at: '2026-11-26'
+  locator: section 186(A1)
+  value: £35 million
+  unit: currency:GBP
+  snippet: must not exceed £35 million immediately afterwards
+  source_license: unstated
+  content_sha256: 99539183775cde0e286921e85f22c84a43ebf04edcd96838f5ba63de82190943
+  role: primary
+- publisher: The National Archives (legislation.gov.uk)
+  title: Income Tax Act 2007, section 257DI, SEIS gross assets requirement (legislation.gov.uk HTML, version of
+    2026-11-26)
+  url: https://www.legislation.gov.uk/ukpga/2007/3/section/257DI/2026-11-26/data.html
+  accessed_at: '2026-11-26'
+  locator: section 257DI(1)
+  value: £350,000
+  unit: currency:GBP
+  snippet: immediately before the relevant shares are issued.
+  source_license: unstated
+  content_sha256: a4197406944d75a5f70783ec5d42ae5532bfd5543f16be596f11f79f687ee4fb
+  role: primary
+assumed:
+- parameter: rows.*.value
+  value: GBP
+  method: derived
+  rationale: The Act states several limits as '£N million'; the builder converts them to pounds.
+tests:
+- statistic: vector_pass_fraction
+  expected: 1
+  tolerance: 0
+- statistic: count
+  expected: 12
+  tolerance: 0
+- statistic: max[value]
+  expected: 40000000
+  tolerance: 0
+notes: The Enterprise Investment Scheme gives individual investors an income tax reduction at the EIS rate on subscriptions
+  for shares in qualifying unquoted trading companies up to an annual limit (higher where the excess is in knowledge-intensive
+  companies); the Seed EIS gives a higher rate on a smaller annual amount. Issuing companies are limited in how
+  much risk finance they can raise in any year and in their lifetime (higher for knowledge-intensive companies)
+  and must be below gross asset ceilings before and after the issue. Finance Act 2026 raised the EIS company limits
+  and gross asset ceilings with effect from 6 April 2026, the date the table takes as valid_from. Shares must be
+  held for at least three years. The HTML form of each section is cited because the XML lists unapplied effects
+  for the Act. legislation.gov.uk publishes Crown copyright legislation for reuse, but the cited resource carries
+  no licence statement of its own, so the licence is recorded as unstated and the entry held at license-review.
