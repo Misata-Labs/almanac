@@ -1278,8 +1278,7 @@ assumed:
 - parameter: annual_payroll_per_employee_usd
   value: 1000 * ap / emp
   method: derived
-  rationale: Annual payroll ($1,000) per mid-March employee in whole dollars, by class where the source publishes
-    both.
+  rationale: Annual payroll ($1,000) per employee in whole dollars, by class where the source publishes both.
 - parameter: label
   value: sector titles from the SUSB 2022 legal-form workbook
   method: derived
@@ -1314,10 +1313,10 @@ tests:
   tolerance: 0.0001
 notes: For each NAICS sector (keyed by the SUSB-style code, with 'all' for all sectors and '99' for industries not
   classified), the share of US establishments in each establishment employment size class (<5 to 1,000+), with establishment
-  counts, mid-March employment, annual payroll ($1,000) and derived annual payroll per employee by class and in
-  total. CBP counts establishments (single physical locations) with paid employees in the week of March 12; size
-  classes are the establishment's own employment, not the firm's. Employment, payroll and first-quarter payroll
-  carry noise flags (G low, H medium, J high, N not available); establishment counts carry none. Size classes whose
-  count the source prints as N are null and left out of the shares, so the published classes can add to slightly
-  less than the total. The Census Bureau publishes these files without a licence statement, so the licence is recorded
-  as unstated and the entry held at license-review.
+  counts, employment, annual payroll ($1,000) and derived annual payroll per employee by class and in total. CBP
+  counts establishments with paid employees; its size classes (columns n<5 to n1000) are the establishment's own
+  employment, not the firm's. Employment, payroll and first-quarter payroll carry noise flags (G low, H medium,
+  J high, N not available); establishment counts carry none. Size classes whose count the source prints as N are
+  null and left out of the shares, so the published classes can add to slightly less than the total. The Census
+  Bureau publishes these files without a licence statement, so the licence is recorded as unstated and the entry
+  held at license-review.

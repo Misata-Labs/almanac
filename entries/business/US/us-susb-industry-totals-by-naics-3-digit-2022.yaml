@@ -1466,13 +1466,13 @@ assumed:
 - parameter: receipts_per_employee_usd
   value: 1000 * receipts_usd_thousands / employment
   method: derived
-  rationale: Receipts per employee in whole dollars from the published receipts ($1,000) and mid-March employment
-    of the same cell.
+  rationale: Receipts per employee in whole dollars from the published receipts ($1,000) and employment of the same
+    cell.
 - parameter: annual_payroll_per_employee_usd
   value: 1000 * annual_payroll_usd_thousands / employment
   method: derived
-  rationale: Annual payroll per employee in whole dollars from the published payroll ($1,000) and mid-March employment
-    of the same cell.
+  rationale: Annual payroll per employee in whole dollars from the published payroll ($1,000) and employment of
+    the same cell.
 - parameter: receipts_per_establishment_usd
   value: 1000 * receipts_usd_thousands / establishments
   method: derived
@@ -1484,7 +1484,7 @@ assumed:
 - parameter: employees_per_establishment
   value: employment / establishments
   method: derived
-  rationale: Average mid-March employment per establishment, two decimals.
+  rationale: Average employment per establishment, two decimals.
 tests:
 - statistic: vector_pass_fraction
   expected: 1
@@ -1498,12 +1498,12 @@ tests:
 - statistic: value["31-33",employment]
   expected: 12188330
   tolerance: 0
-notes: Employer firms, establishments, mid-March employment, annual payroll and receipts (thousands of dollars)
-  for every NAICS sector and three-digit subsector in the United States in 2022, with derived receipts per establishment,
+notes: Employer firms, establishments, employment, annual payroll and receipts (thousands of dollars) for every
+  NAICS sector and three-digit subsector in the United States in 2022, with derived receipts per establishment,
   per firm and per employee, payroll per employee and employees per establishment. SUSB takes its 2022 receipts
   from the 2022 Economic Census, so this table stands in for the Economic Census core statistics, whose own files
   are published only as pipe-delimited .dat members that the verifier cannot search. It covers employer businesses
   only. SUSB applies noise to employment, payroll and receipts (flags G, H and J mark low, medium and high noise);
-  firm and establishment counts are published without noise. Receipts come from the 2022 Economic Census. The Census
-  Bureau publishes these files without a licence statement, so the licence is recorded as unstated and the entry
-  held at license-review.
+  firm and establishment counts carry no noise flag. The tables credit the 2022 County Business Patterns and Economic
+  Census as their source. The Census Bureau publishes these files without a licence statement, so the licence is
+  recorded as unstated and the entry held at license-review.

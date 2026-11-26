@@ -220,13 +220,14 @@ def zip_member(raw: bytes) -> bytes:
 
 SUSB_MEASURES = ("firms", "establishments", "employment", "annual_payroll_usd_thousands", "receipts_usd_thousands")
 SUSB_DERIVED = [
-    {"parameter": "receipts_per_employee_usd", "value": "1000 * receipts_usd_thousands / employment", "method": "derived", "rationale": "Receipts per employee in whole dollars from the published receipts ($1,000) and mid-March employment of the same cell."},
-    {"parameter": "annual_payroll_per_employee_usd", "value": "1000 * annual_payroll_usd_thousands / employment", "method": "derived", "rationale": "Annual payroll per employee in whole dollars from the published payroll ($1,000) and mid-March employment of the same cell."},
+    {"parameter": "receipts_per_employee_usd", "value": "1000 * receipts_usd_thousands / employment", "method": "derived", "rationale": "Receipts per employee in whole dollars from the published receipts ($1,000) and employment of the same cell."},
+    {"parameter": "annual_payroll_per_employee_usd", "value": "1000 * annual_payroll_usd_thousands / employment", "method": "derived", "rationale": "Annual payroll per employee in whole dollars from the published payroll ($1,000) and employment of the same cell."},
     {"parameter": "shares", "value": "firms in the class / firms in all mutually exclusive classes", "method": "derived", "rationale": "Shares are computed from the published firm counts; subtotal classes such as <20 and <500 are kept in the measures but excluded from the shares."},
 ]
 SUSB_NOISE_NOTE = (
     "SUSB applies noise to employment, payroll and receipts (flags G, H and J mark low, medium and high noise); "
-    "firm and establishment counts are published without noise. Receipts come from the 2022 Economic Census. "
+    "firm and establishment counts carry no noise flag. The tables credit the 2022 County Business Patterns and "
+    "Economic Census as their source. "
 )
 CLASSIC_SIZES = ["<5", "5-9", "10-19", "20-99", "100-499", "500+"]
 # Mutually exclusive classes interleaved with the published <20 and <500 subtotals and the total.
@@ -295,7 +296,7 @@ def susb_national_by_employment_size() -> Record:
         f"US employer firms by enterprise employment size, {len(exclusive)} classes from <5 to 20,000+ employees, with payroll and receipts (SUSB 2022)",
         "marginal", ("2022-01-01", "2022-12-31"), ["susb", "firm-size", "employment-size", "receipts", "payroll", "lower-middle-market", "categorical"], ["market-sizing", "company-generation"],
     )
-    entry["spec"] = {"variable": "enterprise_employment_size_class", "unit": "ratio", "distribution": {"family": "categorical", "parameters": {**params, "size_unit": "employees of the enterprise, mid-March 2022"}}}
+    entry["spec"] = {"variable": "enterprise_employment_size_class", "unit": "ratio", "distribution": {"family": "categorical", "parameters": {**params, "size_unit": "employees of the enterprise"}}}
     entry["evidence"] = [
         census_evidence(SUSB_DETAILED_URL, f"{SUSB_TITLE}: US and states, NAICS, detailed employment sizes (us_state_naics_detailedsizes_2022.txt)", "row STATE=00, NAICS=--, ENTRSIZE=01 (Total), column FIRM", total["firms"], "count", f"00,--,01,{total['firms']},{total['establishments']}"),
         census_evidence(SUSB_DETAILED_URL, f"{SUSB_TITLE}: US and states, NAICS, detailed employment sizes (us_state_naics_detailedsizes_2022.txt)", "row STATE=00, NAICS=--, ENTRSIZE=02 (<5), column FIRM", classes["<5"]["firms"], "count", f"00,--,02,{classes['<5']['firms']}"),
@@ -311,9 +312,9 @@ def susb_national_by_employment_size() -> Record:
     entry["notes"] = (
         "Employer firms (enterprises) in the United States in 2022 by enterprise employment size, the backbone of "
         "lower-middle-market sizing: the share of firms in each mutually exclusive size class, and for every class, and "
-        "for the subtotals <20, <500 and 500+ and the total, the published firms, establishments, mid-March employment, "
-        "annual payroll and receipts (both in thousands of dollars), with derived receipts and payroll per employee. "
-        "A firm's size is the employment of all its establishments together. " + SUSB_NOISE_NOTE + LICENSE_NOTE
+        "for the subtotals <20 and <500 and the total, the published firms, establishments, employment, annual payroll "
+        "and receipts (both in thousands of dollars), with derived receipts and payroll per employee. Classes are by "
+        "enterprise employment size, as the tables are titled. " + SUSB_NOISE_NOTE + LICENSE_NOTE
     )
     return entry
 
@@ -561,7 +562,7 @@ def susb_industry_totals() -> Record:
     entry["assumed"] = SUSB_DERIVED[:2] + [
         {"parameter": "receipts_per_establishment_usd", "value": "1000 * receipts_usd_thousands / establishments", "method": "derived", "rationale": "Average receipts per establishment in whole dollars."},
         {"parameter": "receipts_per_firm_usd", "value": "1000 * receipts_usd_thousands / firms", "method": "derived", "rationale": "Average receipts per firm in whole dollars; a firm counts once in each industry where it has an establishment."},
-        {"parameter": "employees_per_establishment", "value": "employment / establishments", "method": "derived", "rationale": "Average mid-March employment per establishment, two decimals."},
+        {"parameter": "employees_per_establishment", "value": "employment / establishments", "method": "derived", "rationale": "Average employment per establishment, two decimals."},
     ]
     entry["tests"] = [
         {"statistic": "vector_pass_fraction", "expected": 1, "tolerance": 0},
@@ -570,7 +571,7 @@ def susb_industry_totals() -> Record:
         {"statistic": 'value["31-33",employment]', "expected": rows["31-33"]["employment"], "tolerance": 0},
     ]
     entry["notes"] = (
-        "Employer firms, establishments, mid-March employment, annual payroll and receipts (thousands of dollars) for every "
+        "Employer firms, establishments, employment, annual payroll and receipts (thousands of dollars) for every "
         "NAICS sector and three-digit subsector in the United States in 2022, with derived receipts per establishment, per "
         "firm and per employee, payroll per employee and employees per establishment. SUSB takes its 2022 receipts from the "
         "2022 Economic Census, so this table stands in for the Economic Census core statistics, whose own files are "
@@ -597,8 +598,8 @@ BDS_MEASURES = {
     "firmdeath_firms": "firm_deaths",
 }
 BDS_NOTE = (
-    "BDS counts firms and establishments in March of each year; entry, exit and job flow measures cover the twelve months "
-    "before, and rates are percentages of the average of the current and prior year's figure (the 'denom' column). "
+    "Entry, exit and job flow measures cover the twelve months before the reference date ('during the last 12 months' "
+    "in the Census variable labels), and rates are percentages of the published denominator (the 'denom' column). "
     "Cells the source marks X (not applicable), D (withheld to avoid disclosing data of individual companies), N or S "
     "are omitted or null. "
 )
@@ -776,15 +777,15 @@ def bds_sector_rates(labels: Mapping[str, str]) -> Record:
 
 CBP_SIZES = [("<5", "<5"), ("5-9", "5_9"), ("10-19", "10_19"), ("20-49", "20_49"), ("50-99", "50_99"), ("100-249", "100_249"), ("250-499", "250_499"), ("500-999", "500_999"), ("1,000+", "1000")]
 CBP_NOTE = (
-    "CBP counts establishments (single physical locations) with paid employees in the week of March 12; size classes "
-    "are the establishment's own employment, not the firm's. Employment, payroll and first-quarter payroll carry noise "
+    "CBP counts establishments with paid employees; its size classes (columns n<5 to n1000) are the establishment's own "
+    "employment, not the firm's. Employment, payroll and first-quarter payroll carry noise "
     "flags (G low, H medium, J high, N not available); establishment counts carry none. Size classes whose count the "
     "source prints as N are null and left out of the shares, so the published classes can add to slightly less than "
     "the total. "
 )
 CBP_ASSUMED = [
     {"parameter": "shares", "value": "establishments in the class / establishments in all classes", "method": "derived", "rationale": "Shares are computed from the published establishment counts n<5 to n1000; classes printed as N are left out."},
-    {"parameter": "annual_payroll_per_employee_usd", "value": "1000 * ap / emp", "method": "derived", "rationale": "Annual payroll ($1,000) per mid-March employee in whole dollars, by class where the source publishes both."},
+    {"parameter": "annual_payroll_per_employee_usd", "value": "1000 * ap / emp", "method": "derived", "rationale": "Annual payroll ($1,000) per employee in whole dollars, by class where the source publishes both."},
 ]
 
 
@@ -848,7 +849,7 @@ def cbp_size_by_sector(labels: Mapping[str, str]) -> Record:
     entry["notes"] = (
         "For each NAICS sector (keyed by the SUSB-style code, with 'all' for all sectors and '99' for industries not "
         "classified), the share of US establishments in each establishment employment size class (<5 to 1,000+), with "
-        "establishment counts, mid-March employment, annual payroll ($1,000) and derived annual payroll per employee by "
+        "establishment counts, employment, annual payroll ($1,000) and derived annual payroll per employee by "
         "class and in total. " + CBP_NOTE + LICENSE_NOTE
     )
     return entry
@@ -874,7 +875,7 @@ def cbp_size_by_state(names: Mapping[str, str]) -> Record:
     entry["tests"] = share_tests(distributions["California"]["parameters"], "California", 1) + share_tests(distributions["Texas"]["parameters"], "Texas", 1) + share_tests(distributions["Vermont"]["parameters"], "Vermont", 1)
     entry["notes"] = (
         "For each state and the District of Columbia (keyed by name, with the FIPS code), the share of establishments in "
-        "each establishment employment size class (<5 to 1,000+) across all sectors, with establishment counts, mid-March "
+        "each establishment employment size class (<5 to 1,000+) across all sectors, with establishment counts, "
         "employment, annual payroll ($1,000) and derived payroll per employee by class. " + CBP_NOTE + LICENSE_NOTE
     )
     return entry
@@ -916,7 +917,7 @@ def cbp_sector_by_state(names: Mapping[str, str]) -> Record:
     entry["notes"] = (
         "For each state and the District of Columbia, the share of establishments in each NAICS sector (keyed by the "
         "SUSB-style sector code; the source writes 31----, 44---- and 48---- for 31-33, 44-45 and 48-49), with establishment "
-        "counts, mid-March employment, annual payroll ($1,000) and derived payroll per employee. Sector titles are in the "
+        "counts, employment, annual payroll ($1,000) and derived payroll per employee. Sector titles are in the "
         "CBP size-by-sector entry. " + CBP_NOTE + LICENSE_NOTE
     )
     return entry
@@ -1375,7 +1376,7 @@ def main() -> int:
         "US employer firms in 2023 by firm age in years (0, 1, 2, 3, 4, 5, 6 to 10, 11 to 15, 16 to 20, 21 to 25, 26+ and "
         "the source's Left Censored class of firms whose age the data cannot establish), with the share of firms, "
         "establishments, employment, establishment entry and exit rates, job creation, destruction, net and reallocation "
-        "rates and firm deaths. Age 0 firms are start-ups, which is why their entry and job creation rates read 200.",
+        "rates and firm deaths. Age 0 firms are start-ups; the source publishes their entry and job creation rates as 200.",
     ))
     finish(bds_marginal(
         "fz", "fsize", "us-bds-firms-by-firm-size-2023",
